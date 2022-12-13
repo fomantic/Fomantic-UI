@@ -731,48 +731,49 @@
 
                                         if (date !== null) {
                                             switch (settings.dateHandling) {
-                                                case 'date':
+                                                case 'date': {
                                                     values[name] = date;
 
                                                     break;
-
-                                                case 'input':
+                                                }
+                                                case 'input': {
                                                     values[name] = $calendar.calendar('get input date');
 
                                                     break;
-
+                                                }
                                                 case 'formatter': {
                                                     var type = $calendar.calendar('setting', 'type');
 
                                                     switch (type) {
-                                                        case 'date':
+                                                        case 'date': {
                                                             values[name] = settings.formatter.date(date);
 
                                                             break;
-
-                                                        case 'datetime':
+                                                        }
+                                                        case 'datetime': {
                                                             values[name] = settings.formatter.datetime(date);
 
                                                             break;
-
-                                                        case 'time':
+                                                        }
+                                                        case 'time': {
                                                             values[name] = settings.formatter.time(date);
 
                                                             break;
-
-                                                        case 'month':
+                                                        }
+                                                        case 'month': {
                                                             values[name] = settings.formatter.month(date);
 
                                                             break;
-
-                                                        case 'year':
+                                                        }
+                                                        case 'year': {
                                                             values[name] = settings.formatter.year(date);
 
                                                             break;
-
-                                                        default:
+                                                        }
+                                                        default: {
                                                             module.debug('Wrong calendar mode', $calendar, type);
                                                             values[name] = '';
+                                                        }
                                                     }
 
                                                     break;

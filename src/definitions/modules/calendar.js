@@ -695,11 +695,12 @@
                                     break;
                                 }
                                 // escape key
-                                case 27:
+                                case 27: {
                                     module.popup('hide');
                                     event.stopPropagation();
 
                                     break;
+                                }
                             }
                         }
 

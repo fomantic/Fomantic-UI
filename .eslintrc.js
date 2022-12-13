@@ -85,7 +85,6 @@ module.exports = {
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
-        'unicorn/switch-case-braces': ['error', 'avoid'],
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11

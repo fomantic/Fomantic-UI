@@ -414,22 +414,26 @@
                             if (step != NO_STEP) {
                                 event.preventDefault();
                                 switch (step) {
-                                    case SINGLE_STEP:
+                                    case SINGLE_STEP: {
                                         module.takeStep();
 
                                         break;
-                                    case BIG_STEP:
+                                    }
+                                    case BIG_STEP: {
                                         module.takeStep(module.get.multiplier());
 
                                         break;
-                                    case SINGLE_BACKSTEP:
+                                    }
+                                    case SINGLE_BACKSTEP: {
                                         module.backStep();
 
                                         break;
-                                    case BIG_BACKSTEP:
+                                    }
+                                    case BIG_BACKSTEP: {
                                         module.backStep(module.get.multiplier());
 
                                         break;
+                                    }
                                 }
                             }
                         }
@@ -616,12 +620,15 @@
                         }
 
                         switch (settings.labelType) {
-                            case settings.labelTypes.number:
+                            case settings.labelTypes.number: {
                                 return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision) / precision;
-                            case settings.labelTypes.letter:
+                            }
+                            case settings.labelTypes.letter: {
                                 return alphabet[value % 26];
-                            default:
+                            }
+                            default: {
                                 return value;
+                            }
                         }
                     },
                     value: function () {
@@ -632,7 +639,7 @@
                     },
                     thumbValue: function (which) {
                         switch (which) {
-                            case 'second':
+                            case 'second': {
                                 if (module.is.range()) {
                                     return module.secondThumbVal;
                                 }
@@ -640,9 +647,10 @@
                                 module.error(error.notrange);
 
                                 break;
-
-                            default:
+                            }
+                            default: {
                                 return module.thumbVal;
+                            }
                         }
                     },
                     multiplier: function () {
@@ -650,7 +658,7 @@
                     },
                     thumbPosition: function (which) {
                         switch (which) {
-                            case 'second':
+                            case 'second': {
                                 if (module.is.range()) {
                                     return secondPos;
                                 }
@@ -658,9 +666,10 @@
                                 module.error(error.notrange);
 
                                 break;
-
-                            default:
+                            }
+                            default: {
                                 return position;
+                            }
                         }
                     },
                     gapRatio: function () {

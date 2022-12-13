@@ -811,7 +811,7 @@
                         }
 
                         switch (position) {
-                            case 'top left':
+                            case 'top left': {
                                 positioning = {
                                     top: 'auto',
                                     bottom: parent.height - target.top + distanceAway,
@@ -820,7 +820,8 @@
                                 };
 
                                 break;
-                            case 'top center':
+                            }
+                            case 'top center': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -829,7 +830,8 @@
                                 };
 
                                 break;
-                            case 'top right':
+                            }
+                            case 'top right': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -838,7 +840,8 @@
                                 };
 
                                 break;
-                            case 'left center':
+                            }
+                            case 'left center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     right: parent.width - target.left + distanceAway,
@@ -847,7 +850,8 @@
                                 };
 
                                 break;
-                            case 'right center':
+                            }
+                            case 'right center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     left: target.left + target.width + distanceAway,
@@ -856,7 +860,8 @@
                                 };
 
                                 break;
-                            case 'bottom left':
+                            }
+                            case 'bottom left': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + offset,
@@ -865,7 +870,8 @@
                                 };
 
                                 break;
-                            case 'bottom center':
+                            }
+                            case 'bottom center': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -874,7 +880,8 @@
                                 };
 
                                 break;
-                            case 'bottom right':
+                            }
+                            case 'bottom right': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -883,6 +890,7 @@
                                 };
 
                                 break;
+                            }
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);

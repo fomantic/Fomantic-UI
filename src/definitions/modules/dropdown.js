@@ -1425,7 +1425,7 @@
                                 }
 
                                 switch (pressedKey) {
-                                    case keys.leftArrow:
+                                    case keys.leftArrow: {
                                         // activate previous label
                                         if ((isFocused || caretAtStart) && !hasActiveLabel) {
                                             module.verbose('Selecting previous label');
@@ -1449,8 +1449,8 @@
                                         }
 
                                         break;
-
-                                    case keys.rightArrow:
+                                    }
+                                    case keys.rightArrow: {
                                         // activate first label
                                         if (isFocused && !hasActiveLabel) {
                                             $label.first().addClass(className.active);
@@ -1482,9 +1482,9 @@
                                         }
 
                                         break;
-
+                                    }
                                     case keys.deleteKey:
-                                    case keys.backspace:
+                                    case keys.backspace: {
                                         if (hasActiveLabel) {
                                             module.verbose('Removing active labels');
                                             if (isLastLabel) {
@@ -1508,9 +1508,10 @@
                                         }
 
                                         break;
-
-                                    default:
+                                    }
+                                    default: {
                                         $activeLabel.removeClass(className.active);
+                                    }
                                 }
                             }
                         },
