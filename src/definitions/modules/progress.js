@@ -460,7 +460,7 @@
                                 if (isMultiple && allZero) {
                                     $bar.css('background', 'transparent');
                                 }
-                                if (firstNonZeroIndex == -1) {
+                                if (firstNonZeroIndex === -1) {
                                     firstNonZeroIndex = index;
                                 }
                                 lastNonZeroIndex = index;
@@ -475,10 +475,10 @@
                         values.forEach(function (_, index) {
                             var $bar = $($bars[index]);
                             $bar.css({
-                                borderTopLeftRadius: index == firstNonZeroIndex ? '' : '0',
-                                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : '0',
-                                borderTopRightRadius: index == lastNonZeroIndex ? '' : '0',
-                                borderBottomRightRadius: index == lastNonZeroIndex ? '' : '0',
+                                borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
+                                borderBottomLeftRadius: index === firstNonZeroIndex ? '' : '0',
+                                borderTopRightRadius: index === lastNonZeroIndex ? '' : '0',
+                                borderBottomRightRadius: index === lastNonZeroIndex ? '' : '0',
                             });
                         });
                         $module

@@ -189,7 +189,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -299,7 +299,7 @@
                                 module.precache(src, function () {
                                     module.set.image(src, function () {
                                         loadedCount++;
-                                        if (loadedCount == moduleCount) {
+                                        if (loadedCount === moduleCount) {
                                             settings.onAllLoaded.call(this);
                                         }
                                         settings.onLoad.call(this);

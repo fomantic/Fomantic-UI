@@ -411,7 +411,7 @@
                         }
                         if (first || module.is.focused()) {
                             var step = module.determine.keyMovement(event);
-                            if (step != NO_STEP) {
+                            if (step !== NO_STEP) {
                                 event.preventDefault();
                                 switch (step) {
                                     case SINGLE_STEP: {
@@ -447,7 +447,7 @@
                     },
                     resize: function (_event) {
                         // To avoid a useless performance cost, we only call the label refresh when its necessary
-                        if (gapRatio != module.get.gapRatio()) {
+                        if (gapRatio !== module.get.gapRatio()) {
                             module.setup.labels();
                             gapRatio = module.get.gapRatio();
                         }
@@ -463,7 +463,9 @@
                     module.setup.labels();
                 },
                 takeStep: function (multiplier) {
-                    multiplier = multiplier != undefined ? multiplier : 1;
+                    if (!multiplier) {
+                        multiplier = 1;
+                    }
                     var
                         step = module.get.step(),
                         currValue = module.get.currentThumbValue()
@@ -481,7 +483,9 @@
                 },
 
                 backStep: function (multiplier) {
-                    multiplier = multiplier != undefined ? multiplier : 1;
+                    if (!multiplier) {
+                        multiplier = 1;
+                    }
                     var
                         step = module.get.step(),
                         currValue = module.get.currentThumbValue()
@@ -836,7 +840,7 @@
                             difference = step === 0 ? value : Math.round(value / step) * step
                         ;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
-                        if (value != difference) {
+                        if (value !== difference) {
                             module.verbose('Rounding value to closest step: ' + difference);
                         }
                         // Use precision to avoid ugly Javascript floating point rounding issues
@@ -1002,7 +1006,7 @@
                     position: function (newValue, $element) {
                         var
                             newPos = module.handleNewValuePosition(newValue),
-                            $targetThumb = $element != undefined ? $element : $currThumb,
+                            $targetThumb = $element || $currThumb,
                             thumbVal = module.thumbVal || module.get.min(),
                             secondThumbVal = module.secondThumbVal || module.get.min()
                         ;

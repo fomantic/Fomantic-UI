@@ -1139,19 +1139,19 @@
                             } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.year]) {
                                     if (typeof d[metadata.year] === 'number') {
-                                        blocked = date.getFullYear() == d[metadata.year];
+                                        blocked = date.getFullYear() === d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
                                         blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
-                                        blocked = date.getMonth() == d[metadata.month];
+                                        blocked = date.getMonth() === d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
                                         blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
                                     } else if (d[metadata.month] instanceof Date) {
                                         var sdate = module.helper.sanitiseDate(d[metadata.month]);
 
-                                        blocked = (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
+                                        blocked = (date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear());
                                     }
                                 } else if (d[metadata.date] && mode === 'day') {
                                     if (d[metadata.date] instanceof Date) {
@@ -1188,7 +1188,7 @@
 
                                 if (d[metadata.days]) {
                                     if (typeof d[metadata.days] === 'number') {
-                                        blocked = date.getDay() == d[metadata.days];
+                                        blocked = date.getDay() === d[metadata.days];
                                     } else if (Array.isArray(d[metadata.days])) {
                                         blocked = d[metadata.days].indexOf(date.getDay()) > -1;
                                     }
@@ -1196,7 +1196,7 @@
 
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number') {
-                                        blocked = blocked && date.getHours() == d[metadata.hours];
+                                        blocked = blocked && date.getHours() === d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
                                         blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
                                     }
@@ -1242,7 +1242,7 @@
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.year]) {
-                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() == d[metadata.year]) {
+                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() === d[metadata.year]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.year])) {
@@ -1251,7 +1251,7 @@
                                             }
                                         }
                                     } else if (d[metadata.month]) {
-                                        if (typeof d[metadata.month] === 'number' && date.getMonth() == d[metadata.month]) {
+                                        if (typeof d[metadata.month] === 'number' && date.getMonth() === d[metadata.month]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.month])) {
@@ -1260,7 +1260,7 @@
                                             }
                                         } else if (d[metadata.month] instanceof Date) {
                                             var sdate = module.helper.sanitiseDate(d[metadata.month]);
-                                            if ((date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear())) {
+                                            if ((date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear())) {
                                                 return d;
                                             }
                                         }
@@ -1287,7 +1287,7 @@
                             var d;
                             var hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
-                                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
+                                    if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
                                         return d;
                                     }
                                     if (Array.isArray(d[metadata.hours])) {
@@ -1299,12 +1299,12 @@
                             };
                             for (var i = 0; i < hours.length; i++) {
                                 d = hours[i];
-                                if (typeof d === 'number' && date.getHours() == d) {
+                                if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.days] && hourCheck(date, d)) {
-                                        if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
+                                        if (typeof d[metadata.days] === 'number' && date.getDay() === d[metadata.days]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.days])) {

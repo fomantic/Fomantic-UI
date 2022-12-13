@@ -1413,7 +1413,7 @@
                                     hasActiveLabel    = $activeLabel.length > 0,
                                     hasMultipleActive = $activeLabel.length > 1,
                                     isFirstLabel      = labelIndex === 0,
-                                    isLastLabel       = labelIndex + 1 == labelCount,
+                                    isLastLabel       = labelIndex + 1 === labelCount,
                                     isSearch          = module.is.searchSelection(),
                                     isFocusedOnSearch = module.is.focusedOnSearch(),
                                     isFocused         = module.is.focused(),

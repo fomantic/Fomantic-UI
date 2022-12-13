@@ -185,7 +185,7 @@
 
                 is: {
                     complete: function () {
-                        return $side.filter('.' + className.active)[0] == $nextSide[0];
+                        return $side.filter('.' + className.active)[0] === $nextSide[0];
                     },
                     animating: function () {
                         return $module.hasClass(className.animating);

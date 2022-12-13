@@ -212,7 +212,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -497,7 +497,7 @@
                         var
                             $popupOffsetParent = module.get.offsetParent($popup),
                             targetElement      = $target[0],
-                            isWindowEl         = $boundary[0] == window,
+                            isWindowEl         = $boundary[0] === window,
                             targetOffset       = $target.offset(),
                             parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                                 ? $target.offsetParent().offset()
@@ -806,7 +806,7 @@
                         }
 
                         // if last attempt use specified last resort position
-                        if (searchDepth == settings.maxSearchDepth && typeof settings.lastResort === 'string') {
+                        if (searchDepth === settings.maxSearchDepth && typeof settings.lastResort === 'string') {
                             position = settings.lastResort;
                         }
 

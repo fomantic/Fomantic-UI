@@ -338,7 +338,7 @@
                             currentPath        = module.utilities.arrayToPath(currentPathArray),
 
                             isTab              = module.is.tab(currentPath),
-                            isLastIndex        = index + 1 == pathArray.length,
+                            isLastIndex        = index + 1 === pathArray.length,
 
                             $tab               = module.get.tabElement(currentPath),
                             $anchor,

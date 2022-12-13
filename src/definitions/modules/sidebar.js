@@ -456,7 +456,7 @@
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
-                            if (callbackCount == sidebarCount) {
+                            if (callbackCount === sidebarCount) {
                                 callback();
                             }
                         })
@@ -504,7 +504,7 @@
                         module.set.dimmed();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
@@ -544,7 +544,7 @@
                         module.remove.visible();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();

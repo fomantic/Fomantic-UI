@@ -147,7 +147,7 @@
                                 ? $icon.length === 1
                                 : settings.clearable
                         ;
-                        if (canClear && currentRating == rating) {
+                        if (canClear && currentRating === rating) {
                             module.clearRating();
                         } else {
                             module.set.rating(rating);

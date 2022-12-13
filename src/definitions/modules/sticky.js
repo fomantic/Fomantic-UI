@@ -190,7 +190,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -280,7 +280,7 @@
                         }
                         module.cache = {
                             fits: (element.height + settings.offset) <= scrollContext.height,
-                            sameHeight: element.height == context.height,
+                            sameHeight: element.height === context.height,
                             scrollContext: {
                                 height: scrollContext.height,
                             },
@@ -418,7 +418,7 @@
                     },
                     scroll: function (scroll) {
                         module.debug('Setting scroll on element', scroll);
-                        if (module.elementScroll == scroll) {
+                        if (module.elementScroll === scroll) {
                             return;
                         }
                         if (module.is.top()) {
@@ -444,7 +444,7 @@
 
                 is: {
                     standardScroll: function () {
-                        return $scroll[0] == window;
+                        return $scroll[0] === window;
                     },
                     top: function () {
                         return $module.hasClass(className.top);

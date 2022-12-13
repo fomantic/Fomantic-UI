@@ -865,7 +865,7 @@
                         // For each new rule, check if there's not already one with the same type
                         $.each(newValidation.rules, function (_index, rule) {
                             if ($.grep(validation[name].rules, function (item) {
-                                return item.type == rule.type;
+                                return item.type === rule.type;
                             }).length === 0) {
                                 validation[name].rules.push(rule);
                             }
@@ -1169,7 +1169,7 @@
                     optional: function (identifier, bool) {
                         bool = bool !== false;
                         $.each(validation, function (fieldName, field) {
-                            if (identifier == fieldName || identifier == field.identifier) {
+                            if (identifier === fieldName || identifier === field.identifier) {
                                 field.optional = bool;
                             }
                         });

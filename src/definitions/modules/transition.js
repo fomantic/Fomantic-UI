@@ -142,7 +142,7 @@
                     interval = interval !== undefined
                         ? interval
                         : settings.interval;
-                    shouldReverse = settings.reverse === 'auto' && direction == className.outward;
+                    shouldReverse = settings.reverse === 'auto' && direction === className.outward;
                     delay = shouldReverse || settings.reverse === true
                         ? ($allModules.length - index) * interval
                         : index * interval;
@@ -329,7 +329,7 @@
                     },
                     direction: function (direction) {
                         direction = direction || module.get.direction();
-                        if (direction == className.inward) {
+                        if (direction === className.inward) {
                             module.set.inward();
                         } else {
                             module.set.outward();
@@ -700,7 +700,7 @@
                             }
 
                             $clone.remove();
-                            if (currentAnimation != inAnimation) {
+                            if (currentAnimation !== inAnimation) {
                                 module.debug('Direction exists for animation', animation);
                                 directionExists = true;
                             } else if (currentAnimation === 'none' || !currentAnimation) {

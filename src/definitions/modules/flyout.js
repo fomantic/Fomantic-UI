@@ -675,7 +675,7 @@
                     $otherFlyouts
                         .flyout('hide', function () {
                             callbackCount++;
-                            if (callbackCount == flyoutCount) {
+                            if (callbackCount === flyoutCount) {
                                 callback();
                             }
                         })
@@ -715,7 +715,7 @@
                         module.set.dimmed();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $module[0]) {
+                        if (event.target === $module[0]) {
                             $module.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
@@ -756,7 +756,7 @@
                         module.remove.visible();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $module[0]) {
+                        if (event.target === $module[0]) {
                             $module.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
