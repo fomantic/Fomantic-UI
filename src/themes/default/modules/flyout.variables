@@ -2,9 +2,9 @@
              Flyout
 *******************************/
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Animation */
 @perspective: 1500px;
@@ -75,9 +75,9 @@
 @contentLineHeight: 1.4;
 @contentBackground: @white;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Width */
 @veryThinWidth: 120px;
@@ -89,9 +89,9 @@
 /* Height */
 @height: 36px;
 
-/*-------------------
+/* -------------------
       Inverted
---------------------*/
+-------------------- */
 @invertedBackground: @fullBlack;
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;

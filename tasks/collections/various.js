@@ -7,7 +7,7 @@
   https://github.com/Semantic-Org/Semantic-UI-Docs/
 */
 module.exports = function (gulp) {
-    var
+    let
         clean   = require('../clean'),
         version = require('../version')
     ;

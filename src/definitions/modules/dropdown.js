@@ -15,11 +15,9 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.dropdown = function (parameters) {
         var
@@ -28,18 +26,18 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
 
         $allModules.each(function (elementIndex) {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
                     : $.extend({}, $.fn.dropdown.settings),
 
@@ -66,13 +64,15 @@
                 $icon           = $module.find(selector.icon),
                 $clear          = $module.find(selector.clearIcon),
 
-                $combo = ($module.prev().find(selector.text).length > 0)
+                $combo = $module.prev().find(selector.text).length > 0
                     ? $module.prev().find(selector.text)
                     : $module.prev(),
 
                 $menu           = $module.children(selector.menu),
                 $item           = $menu.find(selector.item),
-                $divider        = settings.hideDividers ? $item.parent().children(selector.divider) : $(),
+                $divider        = settings.hideDividers
+                    ? $item.parent().children(selector.divider)
+                    : $(),
 
                 activated       = false,
                 itemActivated   = false,
@@ -245,7 +245,7 @@
                                 if (settings.hideAdditions) {
                                     $userChoice.addClass(className.hidden);
                                 }
-                                $userChoices = ($userChoices === undefined)
+                                $userChoices = $userChoices === undefined
                                     ? $userChoice
                                     : $userChoices.add($userChoice);
                                 module.verbose('Creating user choices for value', value, $userChoice);
@@ -281,7 +281,7 @@
                 },
 
                 search: function (query) {
-                    query = (query !== undefined)
+                    query = query !== undefined
                         ? query
                         : module.get.query();
                     module.verbose('Searching for query', query);
@@ -310,7 +310,7 @@
                         var
                             $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0),
                             $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0),
-                            hasNext        = ($nextAvailable.length > 0)
+                            hasNext        = $nextAvailable.length > 0
                         ;
                         if (hasNext) {
                             module.verbose('Moving selection to', $nextAvailable);
@@ -363,7 +363,7 @@
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
                             ;
-                            if (labelNode.length) {
+                            if (labelNode.length > 0) {
                                 if (!labelNode.attr('id')) {
                                     labelNode.attr('id', '_' + module.get.id() + '_formLabel');
                                 }
@@ -470,7 +470,7 @@
                     $search = $module.find(selector.search);
                     $input = $module.find(selector.input);
                     $icon = $module.find(selector.icon);
-                    $combo = ($module.prev().find(selector.text).length > 0)
+                    $combo = $module.prev().find(selector.text).length > 0
                         ? $module.prev().find(selector.text)
                         : $module.prev();
                     $menu = $module.children(selector.menu);
@@ -722,14 +722,14 @@
 
                 filter: function (query) {
                     var
-                        searchTerm = (query !== undefined)
+                        searchTerm = query !== undefined
                             ? query
                             : module.get.query(),
                         afterFiltered = function () {
                             if (module.is.multiple()) {
                                 module.filterActive();
                             }
-                            if (query || (!query && module.get.activeItem().length == 0)) {
+                            if (query || (!query && module.get.activeItem().length === 0)) {
                                 module.select.firstUnfiltered();
                             }
                             if (module.has.allResultsFiltered()) {
@@ -944,7 +944,7 @@
                                 // Dividers which are direct siblings are considered a group
                                 var $lastDivider = $(this).nextUntil(selector.item);
 
-                                return ($lastDivider.length ? $lastDivider : $(this))
+                                return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
                                     .nextUntil(selector.divider)
                                     .filter(selector.item + ':not(.' + className.filtered + ')')
@@ -961,32 +961,37 @@
                         termLength  = term.length,
                         queryLength = query.length
                     ;
-                    query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
-                    term = (settings.ignoreSearchCase ? term.toLowerCase() : term);
+                    query = settings.ignoreSearchCase ? query.toLowerCase() : query;
+                    term = settings.ignoreSearchCase ? term.toLowerCase() : term;
                     if (queryLength > termLength) {
                         return false;
                     }
                     if (queryLength === termLength) {
-                        return (query === term);
+                        return query === term;
                     }
-                    search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var
+                            continueSearch = false,
                             queryCharacter = query.charCodeAt(characterIndex)
                         ;
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
-                                continue search;
+                                continueSearch = true;
+
+                                break;
                             }
                         }
 
-                        return false;
+                        if (!continueSearch) {
+                            return false;
+                        }
                     }
 
                     return true;
                 },
                 exactSearch: function (query, term) {
-                    query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
-                    term = (settings.ignoreSearchCase ? term.toLowerCase() : term);
+                    query = settings.ignoreSearchCase ? query.toLowerCase() : query;
+                    term = settings.ignoreSearchCase ? term.toLowerCase() : term;
 
                     return term.indexOf(query) > -1;
                 },
@@ -1020,10 +1025,10 @@
                     var
                         $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0),
                         $activeItem        = $item.not(className.filtered).filter('.' + className.active).eq(0),
-                        $selectedItem      = ($currentlySelected.length > 0)
+                        $selectedItem      = $currentlySelected.length > 0
                             ? $currentlySelected
                             : $activeItem,
-                        hasSelected = ($selectedItem.length > 0)
+                        hasSelected = $selectedItem.length > 0
                     ;
                     if (settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                         module.debug('Forcing partial selection to selected item', $selectedItem);
@@ -1095,7 +1100,7 @@
                         }
                     },
                     blur: function (event) {
-                        pageLostFocus = (document.activeElement === this);
+                        pageLostFocus = document.activeElement === this;
                         if (!activated && !pageLostFocus) {
                             module.remove.activeLabel();
                             module.hide();
@@ -1143,7 +1148,7 @@
                             }
                         },
                         blur: function (event) {
-                            pageLostFocus = (document.activeElement === this);
+                            pageLostFocus = document.activeElement === this;
                             if (module.is.searchSelection(true) && !willRefocus) {
                                 if (!itemActivated && !pageLostFocus) {
                                     if (settings.forceSelection) {
@@ -1207,7 +1212,7 @@
                                 $activeLabels = $labels.filter('.' + className.active),
                                 $nextActive   = $label.nextAll('.' + className.active),
                                 $prevActive   = $label.prevAll('.' + className.active),
-                                $range = ($nextActive.length > 0)
+                                $range = $nextActive.length > 0
                                     ? $label.nextUntil($nextActive).add($activeLabels).add($label)
                                     : $label.prevUntil($prevActive).add($activeLabels).add($label)
                             ;
@@ -1242,7 +1247,7 @@
                     test: {
                         toggle: function (event) {
                             var
-                                toggleBehavior = (module.is.multiple())
+                                toggleBehavior = module.is.multiple()
                                     ? module.show
                                     : module.toggle
                             ;
@@ -1323,8 +1328,8 @@
                                 $item          = $(this),
                                 $subMenu       = $item.children(selector.menu),
                                 $otherMenus    = $item.siblings(selector.item).children(selector.menu),
-                                hasSubMenu     = ($subMenu.length > 0),
-                                isBubbledEvent = ($subMenu.find($target).length > 0)
+                                hasSubMenu     = $subMenu.length > 0,
+                                isBubbledEvent = $subMenu.find($target).length > 0
                             ;
                             if (!isBubbledEvent && hasSubMenu) {
                                 clearTimeout(module.itemTimer);
@@ -1355,14 +1360,14 @@
                         click: function (event, skipRefocus) {
                             var
                                 $choice        = $(this),
-                                $target        = (event)
+                                $target        = event
                                     ? $(event.target)
                                     : $(''),
                                 $subMenu       = $choice.find(selector.menu),
                                 text           = module.get.choiceText($choice),
                                 value          = module.get.choiceValue($choice, text),
-                                hasSubMenu     = ($subMenu.length > 0),
-                                isBubbledEvent = ($subMenu.find($target).length > 0)
+                                hasSubMenu     = $subMenu.length > 0,
+                                isBubbledEvent = $subMenu.find($target).length > 0
                             ;
                             // prevents IE11 bug where menu receives focus even though `tabindex=-1`
                             if (document.activeElement.tagName.toLowerCase() !== 'input') {
@@ -1405,15 +1410,15 @@
                                     activeValue       = $activeLabel.data(metadata.value),
                                     labelIndex        = $label.index($activeLabel),
                                     labelCount        = $label.length,
-                                    hasActiveLabel    = ($activeLabel.length > 0),
-                                    hasMultipleActive = ($activeLabel.length > 1),
-                                    isFirstLabel      = (labelIndex === 0),
-                                    isLastLabel       = (labelIndex + 1 == labelCount),
+                                    hasActiveLabel    = $activeLabel.length > 0,
+                                    hasMultipleActive = $activeLabel.length > 1,
+                                    isFirstLabel      = labelIndex === 0,
+                                    isLastLabel       = labelIndex + 1 == labelCount,
                                     isSearch          = module.is.searchSelection(),
                                     isFocusedOnSearch = module.is.focusedOnSearch(),
                                     isFocused         = module.is.focused(),
-                                    caretAtStart      = (isFocusedOnSearch && module.get.caretPosition(false) === 0),
-                                    isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0)
+                                    caretAtStart      = isFocusedOnSearch && module.get.caretPosition(false) === 0,
+                                    isSelectedSearch  = caretAtStart && module.get.caretPosition(true) !== 0
                                 ;
                                 if (isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                                     return;
@@ -1509,19 +1514,19 @@
                             var
                                 $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0),
                                 $activeItem        = $menu.children('.' + className.active).eq(0),
-                                $selectedItem      = ($currentlySelected.length > 0)
+                                $selectedItem      = $currentlySelected.length > 0
                                     ? $currentlySelected
                                     : $activeItem,
-                                $visibleItems = ($selectedItem.length > 0)
+                                $visibleItems = $selectedItem.length > 0
                                     ? $selectedItem.siblings(':not(.' + className.filtered + ')').addBack()
                                     : $menu.children(':not(.' + className.filtered + ')'),
                                 $subMenu              = $selectedItem.children(selector.menu),
                                 $parentMenu           = $selectedItem.closest(selector.menu),
-                                inVisibleMenu         = ($parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0),
-                                hasSubMenu            = ($subMenu.length > 0),
-                                hasSelectedItem       = ($selectedItem.length > 0),
-                                selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
-                                delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
+                                inVisibleMenu         = $parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0,
+                                hasSubMenu            = $subMenu.length > 0,
+                                hasSelectedItem       = $selectedItem.length > 0,
+                                selectedIsSelectable  = $selectedItem.not(selector.unselectable).length > 0,
+                                delimiterPressed      = event.key === settings.delimiter && module.is.multiple(),
                                 isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
                                 $nextItem,
                                 isSubMenuItem
@@ -1563,7 +1568,7 @@
                                 // sub-menu actions
                                 if (hasSelectedItem) {
                                     if (pressedKey == keys.leftArrow) {
-                                        isSubMenuItem = ($parentMenu[0] !== $menu[0]);
+                                        isSubMenuItem = $parentMenu[0] !== $menu[0];
 
                                         if (isSubMenuItem) {
                                             module.verbose('Left key pressed, closing sub-menu');
@@ -1598,7 +1603,7 @@
 
                                 // up arrow (traverse menu up)
                                 if (pressedKey == keys.upArrow) {
-                                    $nextItem = (hasSelectedItem && inVisibleMenu)
+                                    $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
                                     if ($visibleItems.index($nextItem) < 0) {
@@ -1606,25 +1611,26 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Up key pressed, changing active item');
-                                        $selectedItem
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Up key pressed, changing active item');
+                                    $selectedItem
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
                                 // down arrow (traverse menu down)
                                 if (pressedKey == keys.downArrow) {
-                                    $nextItem = (hasSelectedItem && inVisibleMenu)
+                                    $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
                                     if ($nextItem.length === 0) {
@@ -1632,19 +1638,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Down key pressed, changing active item');
-                                        $item
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Down key pressed, changing active item');
+                                    $item
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1716,8 +1723,8 @@
                     eventInModule: function (event, callback) {
                         var
                             $target    = $(event.target),
-                            inDocument = ($target.closest(document.documentElement).length > 0),
-                            inModule   = ($target.closest($module).length > 0)
+                            inDocument = $target.closest(document.documentElement).length > 0,
+                            inModule   = $target.closest($module).length > 0
                         ;
                         callback = isFunction(callback)
                             ? callback
@@ -1727,19 +1734,19 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown, canceling callback');
+
+                        return false;
                     },
                     eventOnElement: function (event, callback) {
                         var
                             $target      = $(event.target),
                             $label       = $target.closest(selector.siblingLabel),
                             inVisibleDOM = document.body.contains(event.target),
-                            notOnLabel   = ($module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels)),
-                            notInMenu    = ($target.closest($menu).length === 0)
+                            notOnLabel   = $module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels),
+                            notInMenu    = $target.closest($menu).length === 0
                         ;
                         callback = isFunction(callback)
                             ? callback
@@ -1749,11 +1756,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown menu, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown menu, canceling callback');
+
+                        return false;
                     },
                 },
 
@@ -1762,7 +1769,7 @@
                     nothing: function () {},
 
                     activate: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
@@ -1774,7 +1781,7 @@
                     },
 
                     select: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
@@ -1786,7 +1793,7 @@
                     },
 
                     combo: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         module.set.selected(value, $(element));
@@ -1811,7 +1818,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
+                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 
@@ -1824,7 +1831,7 @@
                         return String($search.val()).trim();
                     },
                     searchWidth: function (value) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : $search.val();
                         $sizer.text(value);
@@ -1837,21 +1844,15 @@
                             values = module.get.values(),
                             count
                         ;
-                        count = (module.is.multiple())
-                            ? Array.isArray(values)
-                                ? values.length
-                                : 0
-                            : (module.get.value() !== '')
-                                ? 1
-                                : 0;
+                        count = module.is.multiple()
+                            ? (Array.isArray(values) ? values.length : 0)
+                            : (module.get.value() !== '' ? 1 : 0);
 
                         return count;
                     },
                     transition: function ($subMenu) {
-                        return (settings.transition === 'auto')
-                            ? module.is.upward($subMenu)
-                                ? 'slide up'
-                                : 'slide down'
+                        return settings.transition === 'auto'
+                            ? (module.is.upward($subMenu) ? 'slide up' : 'slide down')
                             : settings.transition;
                     },
                     userValues: function () {
@@ -1866,7 +1867,7 @@
                             : [values];
 
                         return $.grep(values, function (value) {
-                            return (module.get.item(value) === false);
+                            return module.get.item(value) === false;
                         });
                     },
                     uniqueArray: function (array) {
@@ -1882,7 +1883,8 @@
                         ;
                         if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
-                        } else if (!returnEndPos && 'selectionStart' in input) {
+                        }
+                        if (!returnEndPos && 'selectionStart' in input) {
                             return input.selectionStart;
                         }
                         if (document.selection) {
@@ -1899,14 +1901,14 @@
                     },
                     value: function () {
                         var
-                            value = ($input.length > 0)
+                            value = $input.length > 0
                                 ? $input.val()
                                 : $module.data(metadata.value),
-                            isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '')
+                            isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === ''
                         ;
 
                         // prevents placeholder element from being selected when multiple
-                        return (value === undefined || isEmptyMultiselect)
+                        return value === undefined || isEmptyMultiselect
                             ? ''
                             : value;
                     },
@@ -1919,9 +1921,11 @@
                         }
 
                         return (!module.has.selectInput() && module.is.multiple())
-                            ? (typeof value == 'string') // delimited string
-                                ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
-                                : ''
+                            ? ((typeof value === 'string') // delimited string
+                                ? (raw
+                                    ? value
+                                    : module.escape.htmlEntities(value)).split(settings.delimiter)
+                                : '')
                             : value;
                     },
                     remoteValues: function () {
@@ -1930,7 +1934,7 @@
                             remoteValues = false
                         ;
                         if (values) {
-                            if (typeof values == 'string') {
+                            if (typeof values === 'string') {
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
@@ -1950,7 +1954,7 @@
                         return remoteValues;
                     },
                     choiceText: function ($choice, preserveHTML) {
-                        preserveHTML = (preserveHTML !== undefined)
+                        preserveHTML = preserveHTML !== undefined
                             ? preserveHTML
                             : settings.preserveHTML;
                         if ($choice) {
@@ -1963,9 +1967,9 @@
 
                             return ($choice.data(metadata.text) !== undefined)
                                 ? $choice.data(metadata.text)
-                                : (preserveHTML)
+                                : ((preserveHTML)
                                     ? $choice.html() && $choice.html().trim()
-                                    : $choice.text() && $choice.text().trim();
+                                    : $choice.text() && $choice.text().trim());
                         }
                     },
                     choiceValue: function ($choice, choiceText) {
@@ -1976,13 +1980,13 @@
 
                         return ($choice.data(metadata.value) !== undefined)
                             ? String($choice.data(metadata.value))
-                            : (typeof choiceText === 'string')
+                            : ((typeof choiceText === 'string')
                                 ? String(
                                     settings.ignoreSearchCase
                                         ? choiceText.toLowerCase()
                                         : choiceText
                                 ).trim()
-                                : String(choiceText);
+                                : String(choiceText));
                     },
                     inputEvent: function () {
                         var
@@ -1991,9 +1995,9 @@
                         if (input) {
                             return (input.oninput !== undefined)
                                 ? 'input'
-                                : (input.onpropertychange !== undefined)
+                                : ((input.onpropertychange !== undefined)
                                     ? 'propertychange'
-                                    : 'keyup';
+                                    : 'keyup');
                         }
 
                         return false;
@@ -2011,10 +2015,10 @@
                                     $option  = $(this),
                                     name     = $option.html(),
                                     disabled = $option.attr('disabled'),
-                                    value    = ($option.attr('value') !== undefined)
+                                    value    = $option.attr('value') !== undefined
                                         ? $option.attr('value')
                                         : name,
-                                    text     = ($option.data(metadata.text) !== undefined)
+                                    text     = $option.data(metadata.text) !== undefined
                                         ? $option.data(metadata.text)
                                         : name,
                                     group = $option.parent('optgroup')
@@ -2050,7 +2054,7 @@
                                 });
                             } else if (settings.sortSelect === 'natural') {
                                 values.sort(function (a, b) {
-                                    return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+                                    return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
                                 });
                             } else if (isFunction(settings.sortSelect)) {
                                 values.sort(settings.sortSelect);
@@ -2072,7 +2076,7 @@
                             $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
                         ;
 
-                        return ($selectedItem.length > 0)
+                        return $selectedItem.length > 0
                             ? $selectedItem
                             : $item.eq(0);
                     },
@@ -2080,10 +2084,10 @@
                         var
                             $items       = module.get.item(value),
                             $userItems   = module.create.userChoice(value),
-                            hasUserItems = ($userItems && $userItems.length > 0)
+                            hasUserItems = $userItems && $userItems.length > 0
                         ;
                         if (hasUserItems) {
-                            $items = ($items.length > 0)
+                            $items = $items.length > 0
                                 ? $items.add($userItems)
                                 : $userItems;
                         }
@@ -2096,14 +2100,14 @@
                             shouldSearch,
                             isMultiple
                         ;
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
-                            : (module.get.values() !== undefined)
+                            : ((module.get.values() !== undefined)
                                 ? module.get.values()
-                                : module.get.text();
+                                : module.get.text());
                         isMultiple = (module.is.multiple() && Array.isArray(value));
                         shouldSearch = (isMultiple)
-                            ? (value.length > 0)
+                            ? value.length > 0
                             : (value !== undefined && value !== null);
                         strict = (value === '' || value === false || value === true)
                             ? true
@@ -2121,10 +2125,8 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function (v) {
-                                            return String(v);
-                                        })) !== -1) {
-                                            $selectedItem = ($selectedItem)
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                            $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
                                         }
@@ -2161,7 +2163,7 @@
                 check: {
                     maxSelections: function (selectionCount) {
                         if (settings.maxSelections) {
-                            selectionCount = (selectionCount !== undefined)
+                            selectionCount = selectionCount !== undefined
                                 ? selectionCount
                                 : module.get.selectionCount();
                             if (selectionCount >= settings.maxSelections) {
@@ -2172,16 +2174,16 @@
                                 }
 
                                 return true;
-                            } else {
-                                module.verbose('No longer at maximum selection count');
-                                module.remove.message();
-                                module.remove.filteredItem();
-                                if (module.is.searchSelection()) {
-                                    module.filterItems();
-                                }
-
-                                return false;
                             }
+
+                            module.verbose('No longer at maximum selection count');
+                            module.remove.message();
+                            module.remove.filteredItem();
+                            if (module.is.searchSelection()) {
+                                module.filterItems();
+                            }
+
+                            return false;
                         }
 
                         return true;
@@ -2295,7 +2297,7 @@
                         }
                         name = sessionStorage.getItem(value + elementNamespace);
 
-                        return (name !== undefined)
+                        return name !== undefined
                             ? name
                             : false;
                     },
@@ -2366,7 +2368,7 @@
                         currentScroll = $menu.scrollTop(),
                         itemHeight    = $item.eq(0).outerHeight(),
                         itemsPerPage  = Math.floor(menuHeight / itemHeight),
-                        newScroll     = (direction == 'up')
+                        newScroll     = direction == 'up'
                             ? currentScroll - (itemHeight * itemsPerPage)
                             : currentScroll + (itemHeight * itemsPerPage),
                         $selectableItem = $item.not(selector.unselectable),
@@ -2374,17 +2376,17 @@
                         $nextSelectedItem,
                         elementIndex
                     ;
-                    elementIndex = (direction == 'up')
+                    elementIndex = direction == 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
-                    isWithinRange = (direction == 'up')
-                        ? (elementIndex >= 0)
-                        : (elementIndex < $selectableItem.length);
-                    $nextSelectedItem = (isWithinRange)
+                    isWithinRange = direction == 'up'
+                        ? elementIndex >= 0
+                        : elementIndex < $selectableItem.length;
+                    $nextSelectedItem = isWithinRange
                         ? $selectableItem.eq(elementIndex)
-                        : (direction == 'up')
+                        : ((direction == 'up')
                             ? $selectableItem.first()
-                            : $selectableItem.last();
+                            : $selectableItem.last());
                     if ($nextSelectedItem.length > 0) {
                         module.debug('Scrolling page', direction, $nextSelectedItem);
                         $currentItem
@@ -2393,7 +2395,7 @@
                         $nextSelectedItem
                             .addClass(className.selected)
                         ;
-                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                        if (settings.selectOnKeydown && module.is.single() && !$nextSelectedItem.hasClass(className.actionable)) {
                             module.set.selectedItem($nextSelectedItem);
                         }
                         $menu
@@ -2407,11 +2409,11 @@
                         var
                             isMultiple       = module.is.multiple(),
                             isSearch         = module.is.searchSelection(),
-                            isSearchMultiple = (isMultiple && isSearch),
-                            searchValue      = (isSearch)
+                            isSearchMultiple = isMultiple && isSearch,
+                            searchValue      = isSearch
                                 ? module.get.query()
                                 : '',
-                            hasSearchValue   = (typeof searchValue === 'string' && searchValue.length > 0),
+                            hasSearchValue   = typeof searchValue === 'string' && searchValue.length > 0,
                             searchWidth      = module.get.searchWidth(),
                             valueIsSet       = searchValue !== ''
                         ;
@@ -2495,8 +2497,8 @@
 
                         $item = $item || module.get.selectedItem();
                         $menu = $item.closest(selector.menu);
-                        hasActive = ($item && $item.length > 0);
-                        forceScroll = (forceScroll !== undefined)
+                        hasActive = $item && $item.length > 0;
+                        forceScroll = forceScroll !== undefined
                             ? forceScroll
                             : false;
                         if (module.get.activeItem().length === 0) {
@@ -2513,7 +2515,7 @@
                             if (!forceScroll) {
                                 menuHeight = $menu.height();
                                 belowPage = menuScroll + menuHeight < (offset + edgeTolerance);
-                                abovePage = ((offset - edgeTolerance) < menuScroll);
+                                abovePage = (offset - edgeTolerance) < menuScroll;
                             }
                             module.debug('Scrolling to active item', offset);
                             if (forceScroll || abovePage || belowPage) {
@@ -2638,9 +2640,9 @@
                         }
                         var
                             escapedValue = module.escape.value(value),
-                            hasInput     = ($input.length > 0),
+                            hasInput     = $input.length > 0,
                             currentValue = module.get.values(),
-                            stringValue  = (value !== undefined)
+                            stringValue  = value !== undefined
                                 ? String(value)
                                 : value
                         ;
@@ -2708,7 +2710,7 @@
                         var
                             isMultiple = module.is.multiple()
                         ;
-                        $selectedItem = (settings.allowAdditions)
+                        $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
                         if (!$selectedItem) {
@@ -2736,7 +2738,7 @@
                                     isActive       = $selected.hasClass(className.active),
                                     isActionable   = $selected.hasClass(className.actionable),
                                     isUserValue    = $selected.hasClass(className.addition),
-                                    shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1)
+                                    shouldAnimate  = isMultiple && $selectedItem && $selectedItem.length === 1
                                 ;
                                 if (isActionable) {
                                     if ((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
@@ -2856,7 +2858,7 @@
                         var
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                            hasOption    = ($option.length > 0)
+                            hasOption    = $option.length > 0
                         ;
                         if (hasOption) {
                             return;
@@ -2880,7 +2882,7 @@
                         var
                             $addition         = $menu.children(selector.addition),
                             $existingItem     = module.get.item(value),
-                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length,
+                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0,
                             hasUserSuggestion = $addition.length > 0,
                             html
                         ;
@@ -2925,9 +2927,9 @@
                     },
                     variables: function (message, term) {
                         var
-                            hasCount    = (message.search('{count}') !== -1),
-                            hasMaxCount = (message.search('{maxCount}') !== -1),
-                            hasTerm     = (message.search('{term}') !== -1),
+                            hasCount    = message.search('{count}') !== -1,
+                            hasMaxCount = message.search('{maxCount}') !== -1,
+                            hasTerm     = message.search('{term}') !== -1,
                             query
                         ;
                         module.verbose('Adding templated variables to message', message);
@@ -3040,7 +3042,7 @@
                         var
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                            hasOption    = ($option.length > 0)
+                            hasOption    = $option.length > 0
                         ;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
@@ -3066,7 +3068,7 @@
                         $item.filter(selector.addition).remove();
                     },
                     selected: function (value, $selectedItem, preventChangeTrigger) {
-                        $selectedItem = (settings.allowAdditions)
+                        $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
 
@@ -3136,7 +3138,7 @@
                             values = [values];
                         }
                         values = $.grep(values, function (value) {
-                            return (removedValue != value);
+                            return removedValue != value;
                         });
                         module.verbose('Removed value from delimited string', removedValue, values);
 
@@ -3164,7 +3166,7 @@
                                 var
                                     $label      = $(this),
                                     value       = $label.data(metadata.value),
-                                    stringValue = (value !== undefined)
+                                    stringValue = value !== undefined
                                         ? String(value)
                                         : value,
                                     isUserValue = module.is.userValue(stringValue)
@@ -3205,33 +3207,33 @@
                         }
                     },
                     diacritics: function (text) {
-                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036F]/g, '') : text;
                     },
                 },
 
                 has: {
                     menuSearch: function () {
-                        return (module.has.search() && $search.closest($menu).length > 0);
+                        return module.has.search() && $search.closest($menu).length > 0;
                     },
                     clearItem: function () {
-                        return ($clear.length > 0);
+                        return $clear.length > 0;
                     },
                     search: function () {
-                        return ($search.length > 0);
+                        return $search.length > 0;
                     },
                     sizer: function () {
-                        return ($sizer.length > 0);
+                        return $sizer.length > 0;
                     },
                     selectInput: function () {
-                        return ($input.is('select'));
+                        return $input.is('select');
                     },
                     minCharacters: function (searchTerm) {
                         if (settings.minCharacters && !iconClicked) {
-                            searchTerm = (searchTerm !== undefined)
+                            searchTerm = searchTerm !== undefined
                                 ? String(searchTerm)
                                 : String(module.get.query());
 
-                            return (searchTerm.length >= settings.minCharacters);
+                            return searchTerm.length >= settings.minCharacters;
                         }
                         iconClicked = false;
 
@@ -3249,22 +3251,22 @@
                         letter = letter.toLowerCase();
                         firstLetter = String(text).charAt(0).toLowerCase();
 
-                        return (letter == firstLetter);
+                        return letter == firstLetter;
                     },
                     input: function () {
-                        return ($input.length > 0);
+                        return $input.length > 0;
                     },
                     items: function () {
-                        return ($item.length > 0);
+                        return $item.length > 0;
                     },
                     menu: function () {
-                        return ($menu.length > 0);
+                        return $menu.length > 0;
                     },
                     subMenu: function ($currentMenu) {
                         return ($currentMenu || $menu).find(selector.menu).length > 0;
                     },
                     message: function () {
-                        return ($menu.children(selector.message).length !== 0);
+                        return $menu.children(selector.message).length > 0;
                     },
                     label: function (value) {
                         var
@@ -3275,26 +3277,26 @@
                             escapedValue = escapedValue.toLowerCase();
                         }
 
-                        return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0);
+                        return $labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0;
                     },
                     maxSelections: function () {
-                        return (settings.maxSelections && module.get.selectionCount() >= settings.maxSelections);
+                        return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
                     },
                     allResultsFiltered: function () {
                         var
                             $normalResults = $item.not(selector.addition)
                         ;
 
-                        return ($normalResults.filter(selector.unselectable).length === $normalResults.length);
+                        return $normalResults.filter(selector.unselectable).length === $normalResults.length;
                     },
                     userSuggestion: function () {
-                        return ($menu.children(selector.addition).length > 0);
+                        return $menu.children(selector.addition).length > 0;
                     },
                     query: function () {
-                        return (module.get.query() !== '');
+                        return module.get.query() !== '';
                     },
                     value: function (value) {
-                        return (settings.ignoreCase)
+                        return settings.ignoreCase
                             ? module.has.valueIgnoringCase(value)
                             : module.has.valueMatchingCase(value);
                     },
@@ -3303,12 +3305,10 @@
                             values   = module.get.values(true),
                             hasValue = Array.isArray(values)
                                 ? values && ($.inArray(value, values) !== -1)
-                                : (values == value)
+                                : values == value
                         ;
 
-                        return (hasValue)
-                            ? true
-                            : false;
+                        return !!hasValue;
                     },
                     valueIgnoringCase: function (value) {
                         var
@@ -3356,10 +3356,10 @@
                         return !!window.chrome && !window.StyleMedia;
                     },
                     alreadySetup: function () {
-                        return ($module.is('select') && $module.parent(selector.dropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
+                        return $module.is('select') && $module.parent(selector.dropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0;
                     },
                     animating: function ($subMenu) {
-                        return ($subMenu)
+                        return $subMenu
                             ? $subMenu.transition && $subMenu.transition('is animating')
                             : $menu.transition && $menu.transition('is animating');
                     },
@@ -3369,19 +3369,19 @@
                         return $selectedMenu.hasClass(className.leftward);
                     },
                     clearable: function () {
-                        return ($module.hasClass(className.clearable) || settings.clearable);
+                        return $module.hasClass(className.clearable) || settings.clearable;
                     },
                     disabled: function () {
                         return $module.hasClass(className.disabled);
                     },
                     focused: function () {
-                        return (document.activeElement === $module[0]);
+                        return document.activeElement === $module[0];
                     },
                     focusedOnSearch: function () {
-                        return (document.activeElement === $search[0]);
+                        return document.activeElement === $search[0];
                     },
                     allFiltered: function () {
-                        return ((module.is.multiple() || module.has.search()) && !(!settings.hideAdditions && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered());
+                        return (module.is.multiple() || module.has.search()) && !(!settings.hideAdditions && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered();
                     },
                     hidden: function ($subMenu) {
                         return !module.is.visible($subMenu);
@@ -3433,13 +3433,13 @@
                         return $module.hasClass(className.search);
                     },
                     searchSelection: function (deep) {
-                        return (module.has.search() && (deep ? $search.parents(selector.dropdown) : $search.parent(selector.dropdown)).length === 1);
+                        return module.has.search() && (deep ? $search.parents(selector.dropdown) : $search.parent(selector.dropdown)).length === 1;
                     },
                     selection: function () {
                         return $module.hasClass(className.selection);
                     },
                     userValue: function (value) {
-                        return ($.inArray(value, module.get.userValues()) !== -1);
+                        return $.inArray(value, module.get.userValues()) !== -1;
                     },
                     upward: function ($menu) {
                         var $element = $menu || $module;
@@ -3447,27 +3447,27 @@
                         return $element.hasClass(className.upward);
                     },
                     visible: function ($subMenu) {
-                        return ($subMenu)
+                        return $subMenu
                             ? $subMenu.hasClass(className.visible)
                             : $menu.hasClass(className.visible);
                     },
                     verticallyScrollableContext: function () {
                         var
-                            overflowY = ($context[0] !== window)
+                            overflowY = $context[0] !== window
                                 ? $context.css('overflow-y')
                                 : false
                         ;
 
-                        return (overflowY == 'auto' || overflowY == 'scroll');
+                        return overflowY == 'auto' || overflowY == 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
-                            overflowX = ($context[0] !== window)
+                            overflowX = $context[0] !== window
                                 ? $context.css('overflow-X')
                                 : false
                         ;
 
-                        return (overflowX == 'auto' || overflowX == 'scroll');
+                        return overflowX == 'auto' || overflowX == 'scroll';
                     },
                 },
 
@@ -3491,7 +3491,7 @@
                         ;
                         calculations = {
                             context: {
-                                offset: ($context[0] === window)
+                                offset: $context[0] === window
                                     ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollTop: $context.scrollTop(),
@@ -3509,7 +3509,7 @@
                             calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
                         }
                         onScreen = {
-                            above: (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
+                            above: calculations.context.scrollTop <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
                             below: (calculations.context.scrollTop + calculations.context.height) >= calculations.menu.offset.top - calculations.context.offset.top + calculations.menu.height,
                         };
                         if (onScreen.below) {
@@ -3538,7 +3538,7 @@
                         ;
                         calculations = {
                             context: {
-                                offset: ($context[0] === window)
+                                offset: $context[0] === window
                                     ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollLeft: $context.scrollLeft(),
@@ -3552,7 +3552,7 @@
                         if (module.is.horizontallyScrollableContext()) {
                             calculations.menu.offset.left += calculations.context.scrollLeft;
                         }
-                        isOffscreenRight = (calculations.menu.offset.left - calculations.context.offset.left + calculations.menu.width >= calculations.context.scrollLeft + calculations.context.width);
+                        isOffscreenRight = calculations.menu.offset.left - calculations.context.offset.left + calculations.menu.width >= calculations.context.scrollLeft + calculations.context.width;
                         if (isOffscreenRight) {
                             module.verbose('Dropdown cannot fit in context rightward', isOffscreenRight);
                             canOpenRightward = false;
@@ -3576,7 +3576,7 @@
                     show: function (callback, $subMenu) {
                         var
                             $currentMenu = $subMenu || $menu,
-                            start = ($subMenu)
+                            start = $subMenu
                                 ? function () {}
                                 : function () {
                                     module.hideSubMenus();
@@ -3625,7 +3625,7 @@
                     hide: function (callback, $subMenu) {
                         var
                             $currentMenu = $subMenu || $menu,
-                            start = ($subMenu)
+                            start = $subMenu
                                 ? function () {}
                                 : function () {
                                     module.unbind.intent();
@@ -3699,9 +3699,9 @@
                     value: function (value) {
                         var
                             multipleValues = Array.isArray(value),
-                            stringValue    = (typeof value === 'string'),
-                            isUnparsable   = (!stringValue && !multipleValues),
-                            hasQuotes      = (stringValue && value.search(regExp.quote) !== -1),
+                            stringValue    = typeof value === 'string',
+                            isUnparsable   = !stringValue && !multipleValues,
+                            hasQuotes      = stringValue && value.search(regExp.quote) !== -1,
                             values         = []
                         ;
                         if (isUnparsable || !hasQuotes) {
@@ -3725,8 +3725,8 @@
                     },
                     htmlEntities: function (string) {
                         var
-                            badChars     = /[<>"'`]/g,
-                            shouldEscape = /[&<>"'`]/,
+                            badChars     = /["'<>`]/g,
+                            shouldEscape = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -3739,7 +3739,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -3805,7 +3805,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -3856,11 +3856,11 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -3913,7 +3913,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : $allModules;
     };
@@ -4041,7 +4041,7 @@
         },
 
         regExp: {
-            escape: /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
+            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
             quote: /"/g,
         },
 
@@ -4157,8 +4157,8 @@
                 return string;
             }
             var
-                badChars     = /[<>"'`]/g,
-                shouldEscape = /[&<>"'`]/,
+                badChars     = /["'<>`]/g,
+                shouldEscape = /["&'<>`]/,
                 escape       = {
                     '<': '&lt;',
                     '>': '&gt;',
@@ -4171,7 +4171,7 @@
                 }
             ;
             if (shouldEscape.test(string)) {
-                string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                 return string.replace(badChars, escapedChar);
             }
@@ -4187,11 +4187,9 @@
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             html += '<i class="dropdown icon"></i>';
-            if (placeholder) {
-                html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
-            } else {
-                html += '<div class="text"></div>';
-            }
+            html += placeholder
+                ? '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>'
+                : '<div class="text"></div>';
             html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
@@ -4209,41 +4207,39 @@
             ;
             $.each(values, function (index, option) {
                 var
-                    itemType = (option[fields.type])
-                        ? option[fields.type]
-                        : 'item',
+                    itemType = option[fields.type] || 'item',
                     isMenu = itemType.indexOf('menu') !== -1
                 ;
 
                 if (itemType === 'item' || isMenu) {
                     var
-                        maybeText = (option[fields.text])
+                        maybeText = option[fields.text]
                             ? ' data-text="' + deQuote(option[fields.text], true) + '"'
                             : '',
-                        maybeActionable = (option[fields.actionable])
+                        maybeActionable = option[fields.actionable]
                             ? className.actionable + ' '
                             : '',
-                        maybeDisabled = (option[fields.disabled])
+                        maybeDisabled = option[fields.disabled]
                             ? className.disabled + ' '
                             : '',
-                        maybeDescriptionVertical = (option[fields.descriptionVertical])
+                        maybeDescriptionVertical = option[fields.descriptionVertical]
                             ? className.descriptionVertical + ' '
                             : '',
-                        hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
+                        hasDescription = escape(option[fields.description] || '', preserveHTML) != ''
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '">';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                     }
                     if (hasDescription) {
                         html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
-                        html += (!isMenu) ? '<span class="' + deQuote(className.text) + '">' : '';
+                        html += !isMenu ? '<span class="' + deQuote(className.text) + '">' : '';
                     }
                     if (isMenu) {
                         html += '<span class="' + deQuote(className.text) + '">';
@@ -4261,12 +4257,12 @@
                 } else if (itemType === 'header') {
                     var
                         groupName = escape(option[fields.name] || '', preserveHTML),
-                        groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
+                        groupIcon = deQuote(option[fields.icon] || className.groupIcon)
                     ;
                     if (groupName !== '' || groupIcon !== '') {
-                        html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
+                        html += '<div class="' + deQuote(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
-                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                         }
                         html += groupName;
                         html += '</div>';

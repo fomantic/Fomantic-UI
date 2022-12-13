@@ -15,11 +15,9 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.embed = function (parameters) {
         var
@@ -27,11 +25,11 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -39,7 +37,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.embed.settings, parameters)
                     : $.extend({}, $.fn.embed.settings),
 
@@ -208,32 +206,26 @@
                         return settings.placeholder || $module.data(metadata.placeholder);
                     },
                     icon: function () {
-                        return (settings.icon)
-                            ? settings.icon
-                            : ($module.data(metadata.icon) !== undefined)
-                                ? $module.data(metadata.icon)
-                                : module.determine.icon();
+                        return settings.icon || ($module.data(metadata.icon) !== undefined
+                            ? $module.data(metadata.icon)
+                            : module.determine.icon());
                     },
                     source: function (url) {
-                        return (settings.source)
-                            ? settings.source
-                            : ($module.data(metadata.source) !== undefined)
-                                ? $module.data(metadata.source)
-                                : module.determine.source();
+                        return settings.source || ($module.data(metadata.source) !== undefined
+                            ? $module.data(metadata.source)
+                            : module.determine.source());
                     },
                     type: function () {
                         var source = module.get.source();
 
-                        return (sources[source] !== undefined)
+                        return sources[source] !== undefined
                             ? sources[source].type
                             : false;
                     },
                     url: function () {
-                        return (settings.url)
-                            ? settings.url
-                            : ($module.data(metadata.url) !== undefined)
-                                ? $module.data(metadata.url)
-                                : module.determine.url();
+                        return settings.url || ($module.data(metadata.url) !== undefined
+                            ? $module.data(metadata.url)
+                            : module.determine.url());
                     },
                 },
 
@@ -265,7 +257,7 @@
                             source = module.get.source()
                         ;
 
-                        return (sources[source] !== undefined)
+                        return sources[source] !== undefined
                             ? sources[source].icon
                             : false;
                     },
@@ -275,7 +267,7 @@
                             source = settings.source || $module.data(metadata.source),
                             url
                         ;
-                        url = (sources[source] !== undefined)
+                        url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
                         if (url) {
@@ -344,7 +336,7 @@
                     },
                     parameters: function (source, extraParameters) {
                         var
-                            parameters = (sources[source] && sources[source].parameters !== undefined)
+                            parameters = sources[source] && sources[source].parameters !== undefined
                                 ? sources[source].parameters(settings)
                                 : {}
                         ;
@@ -360,7 +352,7 @@
 
                 has: {
                     embed: function () {
-                        return ($embed.length > 0);
+                        return $embed.length > 0;
                     },
                     placeholder: function () {
                         return settings.placeholder || $module.data(metadata.placeholder);
@@ -369,8 +361,8 @@
 
                 should: {
                     autoplay: function () {
-                        return (settings.autoplay === 'auto')
-                            ? (settings.placeholder || $module.data(metadata.placeholder) !== undefined)
+                        return settings.autoplay === 'auto'
+                            ? settings.placeholder || $module.data(metadata.placeholder) !== undefined
                             : settings.autoplay;
                     },
                 },
@@ -438,7 +430,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -467,7 +459,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -492,11 +484,11 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -549,7 +541,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

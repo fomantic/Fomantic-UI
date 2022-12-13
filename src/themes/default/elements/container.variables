@@ -2,9 +2,9 @@
             Container
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Minimum Gutter is used to determine  the maximum container width for a given device */
 
@@ -51,17 +51,9 @@
 @computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
 @largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
-/*-------------------
-       Scrolling
---------------------*/
-@scrollingMobileMaxHeight: 15em;
-@scrollingTabletMaxHeight: 18em;
-@scrollingComputerMaxHeight: 24em;
-@scrollingWidescreenMaxHeight: 30em;
-
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Text */
 @textWidth: 700px;

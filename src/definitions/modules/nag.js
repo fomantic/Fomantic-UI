@@ -15,28 +15,26 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.nag = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
                     : $.extend({}, $.fn.nag.settings),
 
@@ -49,7 +47,7 @@
 
                 $module         = $(this),
 
-                $context        = (settings.context)
+                $context        = settings.context
                     ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                     : $('body'),
 
@@ -164,20 +162,22 @@
                         }
                         if (expires instanceof Date && expires.getTime()) {
                             return expires.toUTCString();
-                        } else {
-                            module.error(error.expiresFormat);
                         }
+
+                        module.error(error.expiresFormat);
                     },
                     storage: function () {
                         if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                             module.debug('Using local storage');
 
                             return window.localStorage;
-                        } else if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+                        }
+                        if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
                             module.debug('Using session storage');
 
                             return window.sessionStorage;
-                        } else if ('cookie' in document) {
+                        }
+                        if ('cookie' in document) {
                             module.debug('Using cookie');
 
                             return {
@@ -188,12 +188,12 @@
                                         .replace(/[()]/g, escape)
                                     ;
                                     value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent)
+                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent)
                                     ;
 
                                     var cookieOptions = '';
                                     for (var option in options) {
-                                        if (options.hasOwnProperty(option)) {
+                                        if (Object.prototype.hasOwnProperty.call(options, option)) {
                                             cookieOptions += '; ' + option;
                                             if (typeof options[option] === 'string') {
                                                 cookieOptions += '=' + options[option].split(';')[0];
@@ -207,7 +207,7 @@
                                     for (var i = 0, il = cookies.length; i < il; i++) {
                                         var
                                             parts    = cookies[i].split('='),
-                                            foundKey = parts[0].replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+                                            foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
                                         ;
                                         if (key === foundKey) {
                                             return parts[1] || '';
@@ -218,9 +218,9 @@
                                     storage.setItem(key, '', options);
                                 },
                             };
-                        } else {
-                            module.error(error.noStorage);
                         }
+
+                        module.error(error.noStorage);
                     },
                     storageOptions: function () {
                         var
@@ -354,7 +354,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -405,11 +405,11 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -462,7 +462,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

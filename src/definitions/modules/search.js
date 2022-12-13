@@ -15,28 +15,26 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.search = function (parameters) {
         var
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
             returnedValue
         ;
-        $(this).each(function () {
+        $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.search.settings, parameters)
                     : $.extend({}, $.fn.search.settings),
 
@@ -168,7 +166,7 @@
                     },
                     blur: function (event) {
                         var
-                            pageLostFocus = (document.activeElement === this),
+                            pageLostFocus = document.activeElement === this,
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
@@ -217,7 +215,7 @@
                                 href    = $link.attr('href') || false,
                                 target  = $link.attr('target') || false,
                                 // title is used for result lookup
-                                value   = ($title.length > 0)
+                                value   = $title.length > 0
                                     ? $title.text()
                                     : false,
                                 results = module.get.results(),
@@ -242,7 +240,7 @@
                                 if (target == '_blank' || event.ctrlKey) {
                                     window.open(href);
                                 } else {
-                                    window.location.href = (href);
+                                    window.location.href = href;
                                 }
                             }
                         },
@@ -312,7 +310,7 @@
                             }
                         } else if (keyCode == keys.upArrow && hasActiveResult) {
                             module.verbose('Up key pressed, changing active result');
-                            newIndex = (currentIndex - 1 < 0)
+                            newIndex = currentIndex - 1 < 0
                                 ? currentIndex
                                 : currentIndex - 1;
                             $category
@@ -329,7 +327,7 @@
                             event.preventDefault();
                         } else if (keyCode == keys.downArrow) {
                             module.verbose('Down key pressed, changing active result');
-                            newIndex = (currentIndex + 1 >= resultSize)
+                            newIndex = currentIndex + 1 >= resultSize
                                 ? currentIndex
                                 : currentIndex + 1;
                             $category
@@ -433,16 +431,16 @@
                             isInDOM = $.contains(document.documentElement, event.target)
                         ;
 
-                        return (isInDOM && $target.closest(selector.message).length > 0);
+                        return isInDOM && $target.closest(selector.message).length > 0;
                     },
                     empty: function () {
-                        return ($results.html() === '');
+                        return $results.html() === '';
                     },
                     visible: function () {
-                        return ($results.filter(':visible').length > 0);
+                        return $results.filter(':visible').length > 0;
                     },
                     focused: function () {
-                        return ($prompt.filter(':focus').length > 0);
+                        return $prompt.filter(':focus').length > 0;
                     },
                 },
 
@@ -462,9 +460,9 @@
                             prompt = $prompt[0],
                             inputEvent   = (prompt !== undefined && prompt.oninput !== undefined)
                                 ? 'input'
-                                : (prompt !== undefined && prompt.onpropertychange !== undefined)
+                                : ((prompt !== undefined && prompt.onpropertychange !== undefined)
                                     ? 'propertychange'
-                                    : 'keyup'
+                                    : 'keyup')
                         ;
 
                         return inputEvent;
@@ -479,10 +477,10 @@
                         var
                             result       = false
                         ;
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : module.get.value();
-                        results = (results !== undefined)
+                        results = results !== undefined
                             ? results
                             : module.get.results();
                         if (settings.type === 'category') {
@@ -547,7 +545,7 @@
                         $searchButton.removeClass(className.pressed);
                     },
                     diacritics: function (text) {
-                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036F]/g, '') : text;
                     },
                 },
 
@@ -636,9 +634,9 @@
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
                                 var
-                                    notResult      = ($.inArray(result, results) == -1),
-                                    notFuzzyResult = ($.inArray(result, fuzzyResults) == -1),
-                                    notExactResults = ($.inArray(result, exactResults) == -1)
+                                    notResult      = $.inArray(result, results) == -1,
+                                    notFuzzyResult = $.inArray(result, fuzzyResults) == -1,
+                                    notExactResults = $.inArray(result, exactResults) == -1
                                 ;
                                 if (notResult && notFuzzyResult && notExactResults) {
                                     array.push(result);
@@ -646,7 +644,7 @@
                             }
                         ;
                         source = source || settings.source;
-                        searchFields = (searchFields !== undefined)
+                        searchFields = searchFields !== undefined
                             ? searchFields
                             : settings.searchFields;
 
@@ -665,15 +663,13 @@
                         $.each(searchFields, function (index, field) {
                             $.each(source, function (label, content) {
                                 var
-                                    fieldExists = (typeof content[field] == 'string') || (typeof content[field] == 'number')
+                                    fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
                                 if (fieldExists) {
                                     var text;
-                                    if (typeof content[field] === 'string') {
-                                        text = module.remove.diacritics(content[field]);
-                                    } else {
-                                        text = content[field].toString();
-                                    }
+                                    text = typeof content[field] === 'string'
+                                        ? module.remove.diacritics(content[field])
+                                        : content[field].toString();
                                     if (text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
@@ -713,19 +709,24 @@
                         return false;
                     }
                     if (queryLength === termLength) {
-                        return (query === term);
+                        return query === term;
                     }
-                    search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var
+                            continueSearch = false,
                             queryCharacter = query.charCodeAt(characterIndex)
                         ;
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
-                                continue search;
+                                continueSearch = true;
+
+                                break;
                             }
                         }
 
-                        return false;
+                        if (!continueSearch) {
+                            return false;
+                        }
                     }
 
                     return true;
@@ -771,7 +772,7 @@
                             numCharacters = searchTerm.length
                         ;
 
-                        return (numCharacters >= settings.minCharacters);
+                        return numCharacters >= settings.minCharacters;
                     },
                     results: function () {
                         if ($results.length === 0) {
@@ -809,7 +810,7 @@
                         if (settings.cache) {
                             module.verbose('Checking cache for generated html for query', name);
 
-                            return (typeof cache == 'object') && (cache[name] !== undefined)
+                            return (typeof cache === 'object') && (cache[name] !== undefined)
                                 ? cache[name]
                                 : false;
                         }
@@ -842,7 +843,7 @@
                     },
                     id: function (resultIndex, categoryIndex) {
                         var
-                            resultID      = (resultIndex + 1), // not zero indexed
+                            resultID      = resultIndex + 1, // not zero indexed
                             letterID,
                             id
                         ;
@@ -872,7 +873,7 @@
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
                         var
-                            $selectedResult = (categoryIndex !== undefined)
+                            $selectedResult = categoryIndex !== undefined
                                 ? $results
                                     .children().eq(categoryIndex)
                                     .children(selector.results)
@@ -934,7 +935,7 @@
                 write: {
                     cache: function (name, value) {
                         var
-                            cache = ($module.data(metadata.cache) !== undefined)
+                            cache = $module.data(metadata.cache) !== undefined
                                 ? $module.data(metadata.cache)
                                 : {}
                         ;
@@ -1044,8 +1045,8 @@
                     module.debug('Generating html from response', response);
                     var
                         template       = settings.templates[settings.type],
-                        isProperObject = ($.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results])),
-                        isProperArray  = (Array.isArray(response[fields.results]) && response[fields.results].length > 0),
+                        isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]),
+                        isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0,
                         html           = ''
                     ;
                     if (isProperObject || isProperArray) {
@@ -1131,7 +1132,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1160,7 +1161,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -1185,11 +1186,11 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1239,7 +1240,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -1357,8 +1358,8 @@
         },
 
         regExp: {
-            escape: /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
-            beginsWith: '(?:\s|^)',
+            escape: /[$()*+./?[\\\]^{|}-]/g,
+            beginsWith: '(?:\\s|^)',
         },
 
         // maps api response attributes to internal representation
@@ -1393,8 +1394,8 @@
                     return string;
                 }
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1406,7 +1407,7 @@
                         return escape[chr];
                     };
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }
@@ -1448,11 +1449,9 @@
                             // each item inside category
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
-                                if (result[fields.url]) {
-                                    html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
-                                } else {
-                                    html += '<a class="result">';
-                                }
+                                html += result[fields.url]
+                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                                    : '<a class="result">';
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
@@ -1479,17 +1478,15 @@
                         }
                     });
                     if (response[fields.action]) {
-                        if (fields.actionURL === false) {
-                            html += ''
+                        html += fields.actionURL === false
+                            ? ''
                                 + '<div class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
-                                + '</div>';
-                        } else {
-                            html += ''
+                                + '</div>'
+                            : ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
-                        }
                     }
 
                     return html;
@@ -1505,11 +1502,9 @@
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {
-                        if (result[fields.url]) {
-                            html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
-                        } else {
-                            html += '<a class="result">';
-                        }
+                        html += result[fields.url]
+                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                            : '<a class="result">';
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
@@ -1531,17 +1526,15 @@
                         html += '</a>';
                     });
                     if (response[fields.action]) {
-                        if (fields.actionURL === false) {
-                            html += ''
+                        html += fields.actionURL === false
+                            ? ''
                                 + '<div class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
-                                + '</div>';
-                        } else {
-                            html += ''
+                                + '</div>'
+                            : ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
-                        }
                     }
 
                     return html;

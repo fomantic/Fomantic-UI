@@ -2,7 +2,7 @@
  *         Build Task
  *******************************/
 
-var
+let
     gulp = require('gulp')
 ;
 

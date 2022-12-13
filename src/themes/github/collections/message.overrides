@@ -1,11 +1,11 @@
 .ui.info.message {
-  background: linear-gradient(#D8EBF8, #D0E3EF);
+    background: linear-gradient(#d8ebf8, #d0e3ef);
 }
 .ui.error.message {
-  background: linear-gradient(#F8D8D8, #EFD0D0);
+    background: linear-gradient(#f8d8d8, #efd0d0);
 }
 .ui.warning.message {
-  background: linear-gradient(#FFE3C8, #F5DAC0);
+    background: linear-gradient(#ffe3c8, #f5dac0);
 }
 .ui.success.message {
 }

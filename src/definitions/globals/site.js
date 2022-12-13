@@ -9,20 +9,26 @@
  */
 
 (function ($, window, document, undefined) {
+    'use strict';
+
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    $.site = $.fn.site = function (parameters) {
+    window = window !== undefined && window.Math === Math
+        ? window
+        : globalThis;
+
+    $.fn.site = function (parameters) {
         var
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
-            settings        = ($.isPlainObject(parameters))
+            settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.site.settings, parameters)
                 : $.extend({}, $.site.settings),
 
@@ -65,13 +71,13 @@
                         module.verbose('Console not available, normalizing events');
                         module.disable.console();
                     }
-                    if (typeof console.group == 'undefined' || typeof console.groupEnd == 'undefined' || typeof console.groupCollapsed == 'undefined') {
+                    if (console.group === undefined || console.groupEnd === undefined || console.groupCollapsed === undefined) {
                         module.verbose('Console group not available, normalizing events');
                         window.console.group = function () {};
                         window.console.groupEnd = function () {};
                         window.console.groupCollapsed = function () {};
                     }
-                    if (typeof console.markTimeline == 'undefined') {
+                    if (console.markTimeline === undefined) {
                         module.verbose('Mark timeline not available, normalizing events');
                         window.console.markTimeline = function () {};
                     }
@@ -96,7 +102,7 @@
             },
 
             moduleExists: function (name) {
-                return ($.fn[name] !== undefined && $.fn[name].settings !== undefined);
+                return $.fn[name] !== undefined && $.fn[name].settings !== undefined;
             },
 
             enabled: {
@@ -133,17 +139,17 @@
 
             change: {
                 setting: function (setting, value, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
-                        ? (modules === 'all')
+                    modules = typeof modules === 'string'
+                        ? (modules === 'all'
                             ? settings.modules
-                            : [modules]
+                            : [modules])
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
                         var
-                            namespace = (module.moduleExists(name))
+                            namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
                                 : true,
                             $existingModules
@@ -162,10 +168,10 @@
                     });
                 },
                 settings: function (newSettings, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
+                    modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
@@ -303,7 +309,7 @@
                         previousTime
                     ;
                     if (settings.performance) {
-                        currentTime = new Date().getTime();
+                        currentTime = Date.now();
                         previousTime = time || currentTime;
                         executionTime = currentTime - previousTime;
                         time = currentTime;
@@ -351,11 +357,11 @@
                 ;
                 passedArguments = passedArguments || queryArguments;
                 context = context || element;
-                if (typeof query == 'string' && object !== undefined) {
-                    query = query.split(/[\. ]/);
+                if (typeof query === 'string' && object !== undefined) {
+                    query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        var camelCaseValue = (depth != maxDepth)
+                        var camelCaseValue = depth != maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query
                         ;
@@ -407,10 +413,11 @@
             module.initialize();
         }
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
+    $.site = $.fn.site;
 
     $.site.settings = {
 

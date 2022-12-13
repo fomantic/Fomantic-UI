@@ -15,11 +15,9 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.slider = function (parameters) {
         var
@@ -29,11 +27,11 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             alphabet       = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -53,7 +51,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.slider.settings, parameters)
                     : $.extend({}, $.fn.slider.settings),
 
@@ -140,7 +138,7 @@
                         if ($module.attr('tabindex') === undefined) {
                             $module.attr('tabindex', 0);
                         }
-                        if ($module.find('.inner').length == 0) {
+                        if ($module.find('.inner').length === 0) {
                             $module.append("<div class='inner'>"
                                 + "<div class='track'></div>"
                                 + "<div class='track-fill'></div>"
@@ -151,7 +149,7 @@
                         $thumb = $module.find('.thumb:not(.second)');
                         $currThumb = $thumb;
                         if (module.is.range()) {
-                            if ($module.find('.thumb.second').length == 0) {
+                            if ($module.find('.thumb.second').length === 0) {
                                 $module.find('.inner').append("<div class='thumb second'></div>");
                             }
                             $secondThumb = $module.find('.thumb.second');
@@ -163,7 +161,7 @@
                     labels: function () {
                         if (module.is.labeled()) {
                             $labels = $module.find('.labels:not(.auto)');
-                            if ($labels.length != 0) {
+                            if ($labels.length > 0) {
                                 module.setup.customLabel();
                             } else {
                                 module.setup.autoLabel();
@@ -188,7 +186,9 @@
                                 attrValue = $child.attr('data-value')
                             ;
                             if (attrValue) {
-                                attrValue = attrValue > max ? max : attrValue < min ? min : attrValue;
+                                attrValue = attrValue > max
+                                    ? max
+                                    : (attrValue < min ? min : attrValue);
                                 ratio = (attrValue - min) / (max - min);
                             } else {
                                 ratio = (index + 1) / (numChildren + 1);
@@ -198,7 +198,7 @@
                     },
                     autoLabel: function () {
                         $labels = $module.find('.labels');
-                        if ($labels.length != 0) {
+                        if ($labels.length > 0) {
                             $labels.empty();
                         } else {
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
@@ -206,10 +206,10 @@
                         for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                             var
                                 labelText = module.get.label(i),
-                                $label = (labelText !== '')
-                                    ? !(i % module.get.gapRatio())
+                                $label = labelText !== ''
+                                    ? (!(i % module.get.gapRatio())
                                         ? $('<li class="label">' + labelText + '</li>')
-                                        : $('<li class="halftick label"></li>')
+                                        : $('<li class="halftick label"></li>'))
                                     : null,
                                 ratio  = i / len
                             ;
@@ -525,23 +525,23 @@
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
-                        } else {
-                            return $track.offset().left;
                         }
+
+                        return $track.offset().left;
                     },
                     trackLength: function () {
                         if (module.is.vertical()) {
                             return $track.height();
-                        } else {
-                            return $track.width();
                         }
+
+                        return $track.width();
                     },
                     trackLeft: function () {
                         if (module.is.vertical()) {
                             return $track.position().top;
-                        } else {
-                            return $track.position().left;
                         }
+
+                        return $track.position().left;
                     },
                     trackStartPos: function () {
                         return module.is.reversed() ? module.get.trackLeft() + module.get.trackLength() : module.get.trackLeft();
@@ -576,11 +576,7 @@
                         ;
                         if (step != 0) {
                             var split = String(step).split('.');
-                            if (split.length == 2) {
-                                decimalPlaces = split[1].length;
-                            } else {
-                                decimalPlaces = 0;
-                            }
+                            decimalPlaces = split.length == 2 ? split[1].length : 0;
                         } else {
                             decimalPlaces = settings.decimalPlaces;
                         }
@@ -623,7 +619,7 @@
                             case settings.labelTypes.number:
                                 return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision) / precision;
                             case settings.labelTypes.letter:
-                                return alphabet[(value) % 26];
+                                return alphabet[value % 26];
                             default:
                                 return value;
                         }
@@ -639,12 +635,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return module.secondThumbVal;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
-                            case 'first':
+
+                                module.error(error.notrange);
+
+                                break;
+
                             default:
                                 return module.thumbVal;
                         }
@@ -657,12 +653,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return secondPos;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
-                            case 'first':
+
+                                module.error(error.notrange);
+
+                                break;
+
                             default:
                                 return position;
                         }
@@ -726,8 +722,8 @@
                     thumbPos: function ($element) {
                         var
                             pos = module.is.vertical()
-                                ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
-                                : module.is.reversed() ? $element.css('right') : $element.css('left')
+                                ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
+                                : (module.is.reversed() ? $element.css('right') : $element.css('left'))
                         ;
 
                         return pos;
@@ -736,7 +732,9 @@
                         var
                             min = module.get.min(),
                             max = module.get.max(),
-                            value = val > max ? max : val < min ? min : val,
+                            value = val > max
+                                ? max
+                                : (val < min ? min : val),
                             trackLength = module.get.trackLength(),
                             ratio = (value - min) / (max - min),
                             position = Math.round(ratio * trackLength)
@@ -750,7 +748,7 @@
                             trackLength = module.get.trackLength(),
                             step = module.get.step(),
                             position = Math.round(ratio * trackLength),
-                            adjustedPos = (step == 0) ? position : Math.round(position / step) * step
+                            adjustedPos = step == 0 ? position : Math.round(position / step) * step
                         ;
 
                         return adjustedPos;
@@ -781,7 +779,9 @@
                             ratio,
                             value
                         ;
-                        newPos = newPos < 0 ? 0 : newPos > trackLength ? trackLength : newPos;
+                        newPos = newPos < 0
+                            ? 0
+                            : (newPos > trackLength ? trackLength : newPos);
                         ratio = newPos / trackLength;
                         if (module.is.reversed()) {
                             ratio = 1 - ratio;
@@ -823,8 +823,8 @@
                             ratio = (position - startPos) / (endPos - startPos),
                             range = module.get.max() - module.get.min(),
                             step = module.get.step(),
-                            value = (ratio * range),
-                            difference = (step == 0) ? value : Math.round(value / step) * step
+                            value = ratio * range,
+                            difference = step == 0 ? value : Math.round(value / step) * step
                         ;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
                         if (value != difference) {
@@ -840,29 +840,32 @@
                         var
                             key = event.which,
                             downArrow = module.is.vertical()
-                                ? module.is.reversed() ? keys.downArrow : keys.upArrow
+                                ? (module.is.reversed() ? keys.downArrow : keys.upArrow)
                                 : keys.downArrow,
                             upArrow = module.is.vertical()
-                                ? module.is.reversed() ? keys.upArrow : keys.downArrow
+                                ? (module.is.reversed() ? keys.upArrow : keys.downArrow)
                                 : keys.upArrow,
                             leftArrow = !module.is.vertical()
-                                ? module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                                ? (module.is.reversed() ? keys.rightArrow : keys.leftArrow)
                                 : keys.leftArrow,
                             rightArrow = !module.is.vertical()
-                                ? module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                                ? (module.is.reversed() ? keys.leftArrow : keys.rightArrow)
                                 : keys.rightArrow
                         ;
                         if (key == downArrow || key == leftArrow) {
                             return SINGLE_BACKSTEP;
-                        } else if (key == upArrow || key == rightArrow) {
-                            return SINGLE_STEP;
-                        } else if (key == keys.pageDown) {
-                            return BIG_BACKSTEP;
-                        } else if (key == keys.pageUp) {
-                            return BIG_STEP;
-                        } else {
-                            return NO_STEP;
                         }
+                        if (key == upArrow || key == rightArrow) {
+                            return SINGLE_STEP;
+                        }
+                        if (key == keys.pageDown) {
+                            return BIG_BACKSTEP;
+                        }
+                        if (key == keys.pageUp) {
+                            return BIG_STEP;
+                        }
+
+                        return NO_STEP;
                     },
                 },
 
@@ -1011,8 +1014,8 @@
                             thumbPosValue,
                             min = module.get.min(),
                             max = module.get.max(),
-                            thumbPosPercent = 100 * (newValue - min) / (max - min),
-                            trackStartPosPercent = 100 * (Math.min(thumbVal, secondThumbVal) - min) / (max - min),
+                            thumbPosPercent = 100 * ((newValue - min) / (max - min)),
+                            trackStartPosPercent = 100 * ((Math.min(thumbVal, secondThumbVal) - min) / (max - min)),
                             trackEndPosPercent = 100 * (1 - (Math.max(thumbVal, secondThumbVal) - min) / (max - min))
                         ;
                         if (module.is.vertical()) {
@@ -1041,9 +1044,11 @@
                             startMargin = module.get.trackStartMargin(),
                             endMargin   = module.get.trackEndMargin(),
                             posDir = module.is.vertical()
-                                ? module.is.reversed() ? 'bottom' : 'top'
-                                : module.is.reversed() ? 'right' : 'left',
-                            startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
+                                ? (module.is.reversed() ? 'bottom' : 'top')
+                                : (module.is.reversed() ? 'right' : 'left'),
+                            startMarginMod = module.is.reversed() && !module.is.vertical()
+                                ? ' - '
+                                : ' + '
                         ;
                         var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
                         $label.css(posDir, 'calc(' + position + startMarginMod + startMargin + ')');
@@ -1148,7 +1153,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1200,11 +1205,11 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1257,7 +1262,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -1302,9 +1307,7 @@
         // page up/down multiplier. How many more times the steps to take on page up/down press
         pageMultiplier: 2,
 
-        selector: {
-
-        },
+        selector: {},
 
         className: {
             reversed: 'reversed',

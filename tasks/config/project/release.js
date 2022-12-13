@@ -2,7 +2,7 @@
          Release Config
 *******************************/
 
-var
+let
     requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
@@ -13,9 +13,7 @@ var
          Derived Values
 *******************************/
 
-try {
-    config = requireDotFile('semantic.json', process.cwd());
-} catch (error) {}
+config = requireDotFile('semantic.json', process.cwd());
 
 try {
     npmPackage = require('../../../package.json');
@@ -28,7 +26,7 @@ try {
 }
 
 // looks for version in config or package.json (whichever is available)
-version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui')
+version = npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui'
     ? npmPackage.version
     : config.version;
 
@@ -43,16 +41,16 @@ module.exports = {
     url: 'https://fomantic-ui.com/',
 
     banner: ''
-        + '/*' + '\n'
-        + ' * # <%= title %> - <%= version %>' + '\n'
-        + ' * <%= repository %>' + '\n'
-        + ' * <%= url %>' + '\n'
-        + ' *' + '\n'
-        + ' * Copyright <%= year %> Contributors' + '\n'
-        + ' * Released under the MIT license' + '\n'
-        + ' * https://opensource.org/licenses/MIT' + '\n'
-        + ' *' + '\n'
-        + ' */' + '\n',
+        + '/*\n'
+        + ' * # <%= title %> - <%= version %>\n'
+        + ' * <%= repository %>\n'
+        + ' * <%= url %>\n'
+        + ' *\n'
+        + ' * Copyright <%= year %> Contributors\n'
+        + ' * Released under the MIT license\n'
+        + ' * https://opensource.org/licenses/MIT\n'
+        + ' *\n'
+        + ' */\n',
 
     version: version,
 
