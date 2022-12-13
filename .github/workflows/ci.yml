@@ -33,3 +33,20 @@ jobs:
       run: yarn
     - name: pre fomantic install & gulp build
       run: yarn gulp install
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: github/codeql-action/init@v2
+      with:
+        languages: 'javascript'
+        config-file: ./.github/codeql/codeql-config.yml
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
