@@ -44,7 +44,9 @@ const getPublishedVersion = async function () {
             .then((p) => {
                 let nightly = p['dist-tags'].nightly ?? '';
                 let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead ? '+' + (versionInfo.gitHead ?? '').slice(0, 7) : '';
+                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead
+                    ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
+                    : '';
 
                 return nightly + buildCommit;
             })

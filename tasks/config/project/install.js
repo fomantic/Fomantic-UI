@@ -20,7 +20,7 @@ let when = {
 
     // path
     changeRoot: function (questions) {
-        return (questions.useRoot !== undefined && questions.useRoot !== true);
+        return questions.useRoot !== undefined && questions.useRoot !== true;
     },
 
     // permissions
@@ -34,27 +34,27 @@ let when = {
     },
 
     allowOverwrite: function (questions) {
-        return (questions.overwrite === undefined || questions.overwrite == 'yes');
+        return questions.overwrite === undefined || questions.overwrite == 'yes';
     },
     notAuto: function (questions) {
-        return (questions.install !== 'auto' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install !== 'auto' && (questions.overwrite === undefined || questions.overwrite == 'yes');
     },
     custom: function (questions) {
-        return (questions.install === 'custom' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install === 'custom' && (questions.overwrite === undefined || questions.overwrite == 'yes');
     },
     express: function (questions) {
-        return (questions.install === 'express' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install === 'express' && (questions.overwrite === undefined || questions.overwrite == 'yes');
     },
 
     // customize
     customize: function (questions) {
-        return (questions.customize === true);
+        return questions.customize === true;
     },
     primaryColor: function (questions) {
-        return (questions.primaryColor);
+        return questions.primaryColor;
     },
     secondaryColor: function (questions) {
-        return (questions.secondaryColor);
+        return questions.secondaryColor;
     },
 };
 
@@ -148,7 +148,7 @@ module.exports = {
                     moduleFolders--;
                 }
                 if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return (moduleFolders > 1);
+                    return moduleFolders > 1;
                 }
 
                 // recurse downward

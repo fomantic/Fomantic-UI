@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,13 +28,13 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.search.settings, parameters)
                     : $.extend({}, $.fn.search.settings),
 
@@ -166,7 +166,7 @@
                     },
                     blur: function (event) {
                         var
-                            pageLostFocus = (document.activeElement === this),
+                            pageLostFocus = document.activeElement === this,
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
@@ -215,7 +215,7 @@
                                 href    = $link.attr('href') || false,
                                 target  = $link.attr('target') || false,
                                 // title is used for result lookup
-                                value   = ($title.length > 0)
+                                value   = $title.length > 0
                                     ? $title.text()
                                     : false,
                                 results = module.get.results(),
@@ -240,7 +240,7 @@
                                 if (target == '_blank' || event.ctrlKey) {
                                     window.open(href);
                                 } else {
-                                    window.location.href = (href);
+                                    window.location.href = href;
                                 }
                             }
                         },
@@ -310,7 +310,7 @@
                             }
                         } else if (keyCode == keys.upArrow && hasActiveResult) {
                             module.verbose('Up key pressed, changing active result');
-                            newIndex = (currentIndex - 1 < 0)
+                            newIndex = currentIndex - 1 < 0
                                 ? currentIndex
                                 : currentIndex - 1;
                             $category
@@ -327,7 +327,7 @@
                             event.preventDefault();
                         } else if (keyCode == keys.downArrow) {
                             module.verbose('Down key pressed, changing active result');
-                            newIndex = (currentIndex + 1 >= resultSize)
+                            newIndex = currentIndex + 1 >= resultSize
                                 ? currentIndex
                                 : currentIndex + 1;
                             $category
@@ -431,16 +431,16 @@
                             isInDOM = $.contains(document.documentElement, event.target)
                         ;
 
-                        return (isInDOM && $target.closest(selector.message).length > 0);
+                        return isInDOM && $target.closest(selector.message).length > 0;
                     },
                     empty: function () {
-                        return ($results.html() === '');
+                        return $results.html() === '';
                     },
                     visible: function () {
-                        return ($results.filter(':visible').length > 0);
+                        return $results.filter(':visible').length > 0;
                     },
                     focused: function () {
-                        return ($prompt.filter(':focus').length > 0);
+                        return $prompt.filter(':focus').length > 0;
                     },
                 },
 
@@ -460,9 +460,9 @@
                             prompt = $prompt[0],
                             inputEvent   = (prompt !== undefined && prompt.oninput !== undefined)
                                 ? 'input'
-                                : (prompt !== undefined && prompt.onpropertychange !== undefined)
+                                : ((prompt !== undefined && prompt.onpropertychange !== undefined)
                                     ? 'propertychange'
-                                    : 'keyup'
+                                    : 'keyup')
                         ;
 
                         return inputEvent;
@@ -477,10 +477,10 @@
                         var
                             result       = false
                         ;
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : module.get.value();
-                        results = (results !== undefined)
+                        results = results !== undefined
                             ? results
                             : module.get.results();
                         if (settings.type === 'category') {
@@ -634,9 +634,9 @@
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
                                 var
-                                    notResult      = ($.inArray(result, results) == -1),
-                                    notFuzzyResult = ($.inArray(result, fuzzyResults) == -1),
-                                    notExactResults = ($.inArray(result, exactResults) == -1)
+                                    notResult      = $.inArray(result, results) == -1,
+                                    notFuzzyResult = $.inArray(result, fuzzyResults) == -1,
+                                    notExactResults = $.inArray(result, exactResults) == -1
                                 ;
                                 if (notResult && notFuzzyResult && notExactResults) {
                                     array.push(result);
@@ -644,7 +644,7 @@
                             }
                         ;
                         source = source || settings.source;
-                        searchFields = (searchFields !== undefined)
+                        searchFields = searchFields !== undefined
                             ? searchFields
                             : settings.searchFields;
 
@@ -709,7 +709,7 @@
                         return false;
                     }
                     if (queryLength === termLength) {
-                        return (query === term);
+                        return query === term;
                     }
                     for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var
@@ -772,7 +772,7 @@
                             numCharacters = searchTerm.length
                         ;
 
-                        return (numCharacters >= settings.minCharacters);
+                        return numCharacters >= settings.minCharacters;
                     },
                     results: function () {
                         if ($results.length === 0) {
@@ -843,7 +843,7 @@
                     },
                     id: function (resultIndex, categoryIndex) {
                         var
-                            resultID      = (resultIndex + 1), // not zero indexed
+                            resultID      = resultIndex + 1, // not zero indexed
                             letterID,
                             id
                         ;
@@ -873,7 +873,7 @@
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
                         var
-                            $selectedResult = (categoryIndex !== undefined)
+                            $selectedResult = categoryIndex !== undefined
                                 ? $results
                                     .children().eq(categoryIndex)
                                     .children(selector.results)
@@ -935,7 +935,7 @@
                 write: {
                     cache: function (name, value) {
                         var
-                            cache = ($module.data(metadata.cache) !== undefined)
+                            cache = $module.data(metadata.cache) !== undefined
                                 ? $module.data(metadata.cache)
                                 : {}
                         ;
@@ -1045,8 +1045,8 @@
                     module.debug('Generating html from response', response);
                     var
                         template       = settings.templates[settings.type],
-                        isProperObject = ($.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results])),
-                        isProperArray  = (Array.isArray(response[fields.results]) && response[fields.results].length > 0),
+                        isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]),
+                        isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0,
                         html           = ''
                     ;
                     if (isProperObject || isProperArray) {
@@ -1190,7 +1190,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1240,7 +1240,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

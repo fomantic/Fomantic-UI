@@ -47,6 +47,10 @@ module.exports = {
                 VariableDeclarator: true,
             },
         }],
+        'no-extra-parens': 'off', /* TODO https://github.com/eslint/eslint/issues/16626#issuecomment-1341016901 ['error', 'all', {
+            nestedBinaryExpressions: false,
+            enforceForNewInMemberExpressions: false,
+        }], */
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -116,7 +120,6 @@ module.exports = {
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
         'prefer-rest-params': 'off', // about 180 errors to be fixed manually
-        'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
         'no-return-assign': 'off',

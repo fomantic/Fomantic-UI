@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -27,7 +27,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -35,7 +35,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                     : $.extend({}, $.fn.dimmer.settings),
 
@@ -343,10 +343,10 @@
                 has: {
                     dimmer: function () {
                         if (settings.dimmerName) {
-                            return ($module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0);
+                            return $module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0;
                         }
 
-                        return ($module.find(selector.dimmer).length > 0);
+                        return $module.find(selector.dimmer).length > 0;
                     },
                 },
 
@@ -355,7 +355,7 @@
                         return $dimmer.hasClass(className.active);
                     },
                     animating: function () {
-                        return ($dimmer.is(':animated') || $dimmer.hasClass(className.animating));
+                        return $dimmer.is(':animated') || $dimmer.hasClass(className.animating);
                     },
                     closable: function () {
                         if (settings.closable == 'auto') {
@@ -398,7 +398,7 @@
                         var
                             color      = $dimmer.css('background-color'),
                             colorArray = color.split(','),
-                            isRGB      = (colorArray && colorArray.length >= 3)
+                            isRGB      = colorArray && colorArray.length >= 3
                         ;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
@@ -575,7 +575,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -630,7 +630,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -370,7 +370,7 @@
                         return initialLoad;
                     },
                     radio: function () {
-                        return ($input.hasClass(className.radio) || $input.attr('type') == 'radio');
+                        return $input.hasClass(className.radio) || $input.attr('type') == 'radio';
                     },
                     indeterminate: function () {
                         return $input.prop('indeterminate') !== undefined && $input.prop('indeterminate');
@@ -450,7 +450,7 @@
                         return true;
                     },
                     ignoreCallbacks: function () {
-                        return (initialLoad && !settings.fireOnInit);
+                        return initialLoad && !settings.fireOnInit;
                     },
                 },
 
@@ -459,7 +459,7 @@
                         return !($module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly'));
                     },
                     uncheck: function () {
-                        return (typeof settings.uncheckable === 'boolean')
+                        return typeof settings.uncheckable === 'boolean'
                             ? settings.uncheckable
                             : !module.is.radio();
                     },
@@ -606,7 +606,7 @@
 
                 has: {
                     label: function () {
-                        return ($label.length > 0);
+                        return $label.length > 0;
                     },
                 },
 
@@ -767,7 +767,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -820,7 +820,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

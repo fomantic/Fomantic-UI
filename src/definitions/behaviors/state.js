@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -29,14 +29,14 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.state.settings, parameters)
                     : $.extend({}, $.fn.state.settings),
 
@@ -130,7 +130,7 @@
                         return $module.hasClass(className.loading);
                     },
                     inactive: function () {
-                        return !($module.hasClass(className.active));
+                        return !$module.hasClass(className.active);
                     },
                     state: function (state) {
                         if (className[state] === undefined) {
@@ -141,13 +141,13 @@
                     },
 
                     enabled: function () {
-                        return !($module.is(settings.filter.active));
+                        return !$module.is(settings.filter.active);
                     },
                     disabled: function () {
-                        return ($module.is(settings.filter.active));
+                        return $module.is(settings.filter.active);
                     },
                     textEnabled: function () {
-                        return !($module.is(settings.filter.text));
+                        return !$module.is(settings.filter.text);
                     },
 
                     // definitions for automatic type detection
@@ -339,7 +339,7 @@
 
                 get: {
                     text: function () {
-                        return (settings.selector.text)
+                        return settings.selector.text
                             ? $module.find(settings.selector.text).text()
                             : $module.html();
                     },
@@ -519,7 +519,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -572,7 +572,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
