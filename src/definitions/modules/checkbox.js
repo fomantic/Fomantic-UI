@@ -217,9 +217,9 @@
                             checkIndex = false
                         ;
 
-                        if (key == keyCode.left || key == keyCode.up) {
+                        if (key === keyCode.left || key === keyCode.up) {
                             checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
-                        } else if (key == keyCode.right || key == keyCode.down) {
+                        } else if (key === keyCode.right || key === keyCode.down) {
                             checkIndex = rIndex === rLen - 1 ? 0 : rIndex + 1;
                         }
 
@@ -237,21 +237,21 @@
                         }
 
                         shortcutPressed = false;
-                        if (key == keyCode.escape) {
+                        if (key === keyCode.escape) {
                             module.verbose('Escape key pressed blurring field');
                             $input.trigger('blur');
                             shortcutPressed = true;
                             event.stopPropagation();
                         } else if (!event.ctrlKey && module.can.change()) {
-                            if (key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) {
+                            if (key === keyCode.space || (key === keyCode.enter && settings.enableEnterKey)) {
                                 module.verbose('Enter/space key pressed, toggling checkbox');
                                 module.toggle();
                                 shortcutPressed = true;
                             } else if ($module.is('.toggle, .slider') && !module.is.radio()) {
-                                if (key == keyCode.left && module.is.checked()) {
+                                if (key === keyCode.left && module.is.checked()) {
                                     module.uncheck();
                                     shortcutPressed = true;
-                                } else if (key == keyCode.right && module.is.unchecked()) {
+                                } else if (key === keyCode.right && module.is.unchecked()) {
                                     module.check();
                                     shortcutPressed = true;
                                 }

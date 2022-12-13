@@ -852,16 +852,16 @@
                                 ? (module.is.reversed() ? keys.leftArrow : keys.rightArrow)
                                 : keys.rightArrow
                         ;
-                        if (key == downArrow || key == leftArrow) {
+                        if (key === downArrow || key === leftArrow) {
                             return SINGLE_BACKSTEP;
                         }
-                        if (key == upArrow || key == rightArrow) {
+                        if (key === upArrow || key === rightArrow) {
                             return SINGLE_STEP;
                         }
-                        if (key == keys.pageDown) {
+                        if (key === keys.pageDown) {
                             return BIG_BACKSTEP;
                         }
-                        if (key == keys.pageUp) {
+                        if (key === keys.pageUp) {
                             return BIG_STEP;
                         }
 

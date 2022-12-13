@@ -403,13 +403,13 @@
                                     escape: 27,
                                 }
                             ;
-                            if (key == keyCode.escape) {
+                            if (key === keyCode.escape) {
                                 module.verbose('Escape key pressed blurring field');
                                 $field[0]
                                     .blur()
                                 ;
                             }
-                            if (!event.ctrlKey && key == keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
+                            if (!event.ctrlKey && key === keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                 if (!keyHeldDown) {
                                     $field.one('keyup' + eventNamespace, module.event.field.keyup);
                                     module.submit();

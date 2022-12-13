@@ -1424,7 +1424,7 @@
                                     return;
                                 }
 
-                                if (pressedKey == keys.leftArrow) {
+                                if (pressedKey === keys.leftArrow) {
                                     // activate previous label
                                     if ((isFocused || caretAtStart) && !hasActiveLabel) {
                                         module.verbose('Selecting previous label');
@@ -1446,7 +1446,7 @@
                                         }
                                         event.preventDefault();
                                     }
-                                } else if (pressedKey == keys.rightArrow) {
+                                } else if (pressedKey === keys.rightArrow) {
                                     // activate first label
                                     if (isFocused && !hasActiveLabel) {
                                         $label.first().addClass(className.active);
@@ -1476,7 +1476,7 @@
                                         }
                                         event.preventDefault();
                                     }
-                                } else if (pressedKey == keys.deleteKey || pressedKey == keys.backspace) {
+                                } else if (pressedKey === keys.deleteKey || pressedKey === keys.backspace) {
                                     if (hasActiveLabel) {
                                         module.verbose('Removing active labels');
                                         if (isLastLabel) {
@@ -1490,7 +1490,7 @@
                                             module.show();
                                         }
                                         event.preventDefault();
-                                    } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
+                                    } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey === keys.backspace) {
                                         module.verbose('Removing last label on input backspace');
                                         $activeLabel = $label.last().addClass(className.active);
                                         module.remove.activeLabels($activeLabel);
@@ -1527,7 +1527,7 @@
                                 hasSelectedItem       = $selectedItem.length > 0,
                                 selectedIsSelectable  = $selectedItem.not(selector.unselectable).length > 0,
                                 delimiterPressed      = event.key === settings.delimiter && module.is.multiple(),
-                                isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
+                                isAdditionWithoutMenu = settings.allowAdditions && (pressedKey === keys.enter || delimiterPressed),
                                 $nextItem,
                                 isSubMenuItem
                             ;
@@ -1548,8 +1548,8 @@
                             // visible menu keyboard shortcuts
                             if (module.is.visible()) {
                                 // enter (select or open sub-menu)
-                                if (pressedKey == keys.enter || delimiterPressed) {
-                                    if (pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
+                                if (pressedKey === keys.enter || delimiterPressed) {
+                                    if (pressedKey === keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
                                         module.verbose('Pressed enter on unselectable category, opening sub menu');
                                         pressedKey = keys.rightArrow;
                                     } else if (selectedIsSelectable) {
@@ -1567,7 +1567,7 @@
 
                                 // sub-menu actions
                                 if (hasSelectedItem) {
-                                    if (pressedKey == keys.leftArrow) {
+                                    if (pressedKey === keys.leftArrow) {
                                         isSubMenuItem = $parentMenu[0] !== $menu[0];
 
                                         if (isSubMenuItem) {
@@ -1585,7 +1585,7 @@
                                     }
 
                                     // right arrow (show sub-menu)
-                                    if (pressedKey == keys.rightArrow) {
+                                    if (pressedKey === keys.rightArrow) {
                                         if (hasSubMenu) {
                                             module.verbose('Right key pressed, opening sub-menu');
                                             module.animate.show(false, $subMenu);
@@ -1602,7 +1602,7 @@
                                 }
 
                                 // up arrow (traverse menu up)
-                                if (pressedKey == keys.upArrow) {
+                                if (pressedKey === keys.upArrow) {
                                     $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
@@ -1629,7 +1629,7 @@
                                 }
 
                                 // down arrow (traverse menu down)
-                                if (pressedKey == keys.downArrow) {
+                                if (pressedKey === keys.downArrow) {
                                     $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
@@ -1656,28 +1656,28 @@
                                 }
 
                                 // page down (show next page)
-                                if (pressedKey == keys.pageUp) {
+                                if (pressedKey === keys.pageUp) {
                                     module.scrollPage('up');
                                     event.preventDefault();
                                 }
-                                if (pressedKey == keys.pageDown) {
+                                if (pressedKey === keys.pageDown) {
                                     module.scrollPage('down');
                                     event.preventDefault();
                                 }
 
                                 // escape (close menu)
-                                if (pressedKey == keys.escape) {
+                                if (pressedKey === keys.escape) {
                                     module.verbose('Escape key pressed, closing dropdown');
                                     module.hide();
                                     event.stopPropagation();
                                 }
                             } else {
                                 // delimiter key
-                                if (pressedKey == keys.enter || delimiterPressed) {
+                                if (pressedKey === keys.enter || delimiterPressed) {
                                     event.preventDefault();
                                 }
                                 // down arrow (open menu)
-                                if (pressedKey == keys.downArrow && !module.is.visible()) {
+                                if (pressedKey === keys.downArrow && !module.is.visible()) {
                                     module.verbose('Down key pressed, showing dropdown');
                                     module.show();
                                     event.preventDefault();
