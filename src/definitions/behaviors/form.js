@@ -345,14 +345,14 @@
                     },
                     fieldDirty: function ($el) {
                         var initialValue = $el.data(metadata.defaultValue);
-                        // Explicitly check for null/undefined here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
-                        if (initialValue == null) {
+                        // Explicitly check for undefined/null here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
+                        if (initialValue === undefined || initialValue === null) {
                             initialValue = '';
                         } else if (Array.isArray(initialValue)) {
                             initialValue = initialValue.toString();
                         }
                         var currentValue = $el.val();
-                        if (currentValue == null) {
+                        if (currentValue === undefined) {
                             currentValue = '';
                         } else if (Array.isArray(currentValue)) {
                             // multiple select values are returned as arrays which are never equal, so do string conversion first

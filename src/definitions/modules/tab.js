@@ -94,12 +94,12 @@
                     }
 
                     var activeTab = module.determine.activeTab();
-                    if (settings.autoTabActivation && instance === undefined && activeTab == null) {
+                    if (settings.autoTabActivation && instance === undefined && activeTab === null) {
                         activeTab = settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation;
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
-                    if (activeTab != null && settings.history) {
+                    if (activeTab !== null && settings.history) {
                         var autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);

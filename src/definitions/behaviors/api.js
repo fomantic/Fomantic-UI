@@ -478,7 +478,7 @@
                                 while (nameKeys.length > 0) {
                                     var k = nameKeys.pop();
 
-                                    if (k == '' && !Array.isArray(value)) { // foo[]
+                                    if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
                                     } else if (settings.regExp.fixed.test(k)) { // foo[n]
                                         value = build([], k, value);

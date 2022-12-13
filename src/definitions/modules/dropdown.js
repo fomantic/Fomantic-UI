@@ -4225,7 +4225,7 @@
                         maybeDescriptionVertical = option[fields.descriptionVertical]
                             ? className.descriptionVertical + ' '
                             : '',
-                        hasDescription = escape(option[fields.description] || '', preserveHTML) != ''
+                        hasDescription = escape(option[fields.description] || '', preserveHTML) !== ''
                     ;
                     html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {

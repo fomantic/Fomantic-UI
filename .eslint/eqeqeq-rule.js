@@ -9,7 +9,6 @@ module.exports = ruleComposer.filterReports(
         if (problem.node.type === 'BinaryExpression'
             && (problem.node.operator === '==' || problem.node.operator === '!=')
             && problem.node.right.type === 'Literal'
-            && problem.node.right.raw !== '\'\''
         ) {
             return problem;
         }

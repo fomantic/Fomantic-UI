@@ -352,7 +352,7 @@
                             ;
                             $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
                         }
-                        if (module.get.step() == 0 || module.is.smooth()) {
+                        if (module.get.step() === 0 || module.is.smooth()) {
                             var
                                 thumbVal = module.thumbVal,
                                 secondThumbVal = module.secondThumbVal,
@@ -574,7 +574,7 @@
                             decimalPlaces,
                             step = module.get.step()
                         ;
-                        if (step != 0) {
+                        if (step !== 0) {
                             var split = String(step).split('.');
                             decimalPlaces = split.length === 2 ? split[1].length : 0;
                         } else {

@@ -782,7 +782,7 @@
                             html = $results.html()
                         ;
 
-                        return html != '';
+                        return html !== '';
                     },
                 },
 

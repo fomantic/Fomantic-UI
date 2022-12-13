@@ -113,7 +113,7 @@ module.exports = {
         'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
-        eqeqeq: 'off', // about 300 errors to be fixed manually
+        eqeqeq: 'off', // about 180 errors to be fixed manually
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'no-shadow-restricted-names': 'off', // TODO https://github.com/fomantic/Fomantic-UI/pull/2604
