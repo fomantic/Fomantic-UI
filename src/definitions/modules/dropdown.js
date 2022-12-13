@@ -1424,82 +1424,93 @@
                                     return;
                                 }
 
-                                if (pressedKey === keys.leftArrow) {
-                                    // activate previous label
-                                    if ((isFocused || caretAtStart) && !hasActiveLabel) {
-                                        module.verbose('Selecting previous label');
-                                        $label.last().addClass(className.active);
-                                    } else if (hasActiveLabel) {
-                                        if (!event.shiftKey) {
+                                switch (pressedKey) {
+                                    case keys.leftArrow:
+                                        // activate previous label
+                                        if ((isFocused || caretAtStart) && !hasActiveLabel) {
                                             module.verbose('Selecting previous label');
-                                            $label.removeClass(className.active);
-                                        } else {
-                                            module.verbose('Adding previous label to selection');
-                                        }
-                                        if (isFirstLabel && !hasMultipleActive) {
-                                            $activeLabel.addClass(className.active);
-                                        } else {
-                                            $activeLabel.prev(selector.siblingLabel)
-                                                .addClass(className.active)
-                                                .end()
-                                            ;
-                                        }
-                                        event.preventDefault();
-                                    }
-                                } else if (pressedKey === keys.rightArrow) {
-                                    // activate first label
-                                    if (isFocused && !hasActiveLabel) {
-                                        $label.first().addClass(className.active);
-                                    }
-                                    // activate next label
-                                    if (hasActiveLabel) {
-                                        if (!event.shiftKey) {
-                                            module.verbose('Selecting next label');
-                                            $label.removeClass(className.active);
-                                        } else {
-                                            module.verbose('Adding next label to selection');
-                                        }
-                                        if (isLastLabel) {
-                                            if (isSearch) {
-                                                if (!isFocusedOnSearch) {
-                                                    module.focusSearch();
-                                                } else {
-                                                    $label.removeClass(className.active);
-                                                }
-                                            } else if (hasMultipleActive) {
-                                                $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            $label.last().addClass(className.active);
+                                        } else if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
+                                                module.verbose('Selecting previous label');
+                                                $label.removeClass(className.active);
                                             } else {
+                                                module.verbose('Adding previous label to selection');
+                                            }
+                                            if (isFirstLabel && !hasMultipleActive) {
                                                 $activeLabel.addClass(className.active);
+                                            } else {
+                                                $activeLabel.prev(selector.siblingLabel)
+                                                    .addClass(className.active)
+                                                    .end()
+                                                ;
                                             }
-                                        } else {
-                                            $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            event.preventDefault();
                                         }
-                                        event.preventDefault();
-                                    }
-                                } else if (pressedKey === keys.deleteKey || pressedKey === keys.backspace) {
-                                    if (hasActiveLabel) {
-                                        module.verbose('Removing active labels');
-                                        if (isLastLabel) {
-                                            if (isSearch && !isFocusedOnSearch) {
-                                                module.focusSearch();
+
+                                        break;
+
+                                    case keys.rightArrow:
+                                        // activate first label
+                                        if (isFocused && !hasActiveLabel) {
+                                            $label.first().addClass(className.active);
+                                        }
+                                        // activate next label
+                                        if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
+                                                module.verbose('Selecting next label');
+                                                $label.removeClass(className.active);
+                                            } else {
+                                                module.verbose('Adding next label to selection');
+                                            }
+                                            if (isLastLabel) {
+                                                if (isSearch) {
+                                                    if (!isFocusedOnSearch) {
+                                                        module.focusSearch();
+                                                    } else {
+                                                        $label.removeClass(className.active);
+                                                    }
+                                                } else if (hasMultipleActive) {
+                                                    $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                                } else {
+                                                    $activeLabel.addClass(className.active);
+                                                }
+                                            } else {
+                                                $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            }
+                                            event.preventDefault();
+                                        }
+
+                                        break;
+
+                                    case keys.deleteKey:
+                                    case keys.backspace:
+                                        if (hasActiveLabel) {
+                                            module.verbose('Removing active labels');
+                                            if (isLastLabel) {
+                                                if (isSearch && !isFocusedOnSearch) {
+                                                    module.focusSearch();
+                                                }
+                                            }
+                                            $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
+                                            module.remove.activeLabels($activeLabel);
+                                            if (!module.is.visible()) {
+                                                module.show();
+                                            }
+                                            event.preventDefault();
+                                        } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey === keys.backspace) {
+                                            module.verbose('Removing last label on input backspace');
+                                            $activeLabel = $label.last().addClass(className.active);
+                                            module.remove.activeLabels($activeLabel);
+                                            if (!module.is.visible()) {
+                                                module.show();
                                             }
                                         }
-                                        $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
-                                        module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()) {
-                                            module.show();
-                                        }
-                                        event.preventDefault();
-                                    } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey === keys.backspace) {
-                                        module.verbose('Removing last label on input backspace');
-                                        $activeLabel = $label.last().addClass(className.active);
-                                        module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()) {
-                                            module.show();
-                                        }
-                                    }
-                                } else {
-                                    $activeLabel.removeClass(className.active);
+
+                                        break;
+
+                                    default:
+                                        $activeLabel.removeClass(className.active);
                                 }
                             }
                         },
