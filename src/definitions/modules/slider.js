@@ -467,7 +467,7 @@
                     module.verbose('Taking a step');
                     if (step > 0) {
                         module.set.value(currValue + step * multiplier);
-                    } else if (step == 0) {
+                    } else if (step === 0) {
                         var
                             precision = module.get.precision(),
                             newValue = currValue + (multiplier / precision)
@@ -485,7 +485,7 @@
                     module.verbose('Going back a step');
                     if (step > 0) {
                         module.set.value(currValue - step * multiplier);
-                    } else if (step == 0) {
+                    } else if (step === 0) {
                         var
                             precision = module.get.precision(),
                             newValue = currValue - (multiplier / precision)
@@ -748,7 +748,7 @@
                             trackLength = module.get.trackLength(),
                             step = module.get.step(),
                             position = Math.round(ratio * trackLength),
-                            adjustedPos = step == 0 ? position : Math.round(position / step) * step
+                            adjustedPos = step === 0 ? position : Math.round(position / step) * step
                         ;
 
                         return adjustedPos;
@@ -824,7 +824,7 @@
                             range = module.get.max() - module.get.min(),
                             step = module.get.step(),
                             value = ratio * range,
-                            difference = step == 0 ? value : Math.round(value / step) * step
+                            difference = step === 0 ? value : Math.round(value / step) * step
                         ;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
                         if (value != difference) {

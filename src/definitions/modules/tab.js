@@ -12,7 +12,7 @@
     'use strict';
 
     function isWindow(obj) {
-        return obj != null && obj === obj.window;
+        return obj !== null && obj === obj.window;
     }
 
     function isFunction(obj) {
@@ -392,7 +392,7 @@
                                 settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                             }
                             settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
-                        } else if (tabPath.search('/') == -1 && tabPath !== '') {
+                        } else if (tabPath.search('/') === -1 && tabPath !== '') {
                             // look for in page anchor
                             tabPath = module.escape.string(tabPath);
                             $anchor = $('#' + tabPath + ', a[name="' + tabPath + '"]');

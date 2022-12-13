@@ -2049,10 +2049,10 @@
             },
 
             minCount: function (value, minCount) {
-                if (minCount == 0) {
+                if (minCount === 0) {
                     return true;
                 }
-                if (minCount == 1) {
+                if (minCount === 1) {
                     return value !== '';
                 }
 
@@ -2060,10 +2060,10 @@
             },
 
             exactCount: function (value, exactCount) {
-                if (exactCount == 0) {
+                if (exactCount === 0) {
                     return value === '';
                 }
-                if (exactCount == 1) {
+                if (exactCount === 1) {
                     return value !== '' && value.search(',') === -1;
                 }
 
@@ -2071,10 +2071,10 @@
             },
 
             maxCount: function (value, maxCount) {
-                if (maxCount == 0) {
+                if (maxCount === 0) {
                     return false;
                 }
-                if (maxCount == 1) {
+                if (maxCount === 1) {
                     return value.search(',') === -1;
                 }
 
