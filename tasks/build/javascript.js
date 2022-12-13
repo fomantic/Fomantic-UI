@@ -140,7 +140,9 @@ module.exports.watch = function (type, config) {
             }
 
             // Clear timeout
-            timeout && clearTimeout(timeout);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
 
             // Add file to internal changed files array
             if (!files.includes(path)) {

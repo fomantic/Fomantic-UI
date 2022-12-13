@@ -29,7 +29,7 @@ let
     project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth     = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
+    oAuth     = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
         ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 

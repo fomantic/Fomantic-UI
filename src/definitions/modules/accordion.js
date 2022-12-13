@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -27,14 +27,14 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                     : $.extend({}, $.fn.accordion.settings),
 
@@ -121,16 +121,16 @@
 
                 toggle: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                        $activeTitle = query !== undefined
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
                         isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = (isActive && !isAnimating),
-                        isOpening   = (!isActive && isAnimating)
+                        isOpen      = isActive && !isAnimating,
+                        isOpening   = !isActive && isAnimating
                     ;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
@@ -146,15 +146,15 @@
 
                 open: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                        $activeTitle = query !== undefined
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
                         isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = (isActive || isAnimating)
+                        isOpen      = isActive || isAnimating
                     ;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
@@ -216,16 +216,16 @@
 
                 close: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                        $activeTitle = query !== undefined
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating    = $activeContent.hasClass(className.animating),
                         isActive       = $activeContent.hasClass(className.active),
-                        isOpening      = (!isActive && isAnimating),
-                        isClosing      = (isActive && isAnimating)
+                        isOpening      = !isActive && isAnimating,
+                        isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
@@ -278,7 +278,7 @@
 
                 closeOthers: function (index) {
                     var
-                        $activeTitle = (index !== undefined)
+                        $activeTitle = index !== undefined
                             ? $title.eq(index)
                             : $(this).closest(selector.title),
                         $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title),
@@ -298,7 +298,7 @@
                         $openTitles = $openTitles.not($nestedTitles);
                         $openContents = $openTitles.next($content);
                     }
-                    if (($openTitles.length > 0)) {
+                    if ($openTitles.length > 0) {
                         module.debug('Exclusive enabled, closing other content', $openTitles);
                         $openTitles
                             .removeClass(className.active)
@@ -482,7 +482,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
@@ -533,7 +533,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

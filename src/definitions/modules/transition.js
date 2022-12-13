@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -30,7 +30,7 @@
             moduleArguments = arguments,
             query           = moduleArguments[0],
             queryArguments  = [].slice.call(arguments, 1),
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
 
             returnedValue
         ;
@@ -139,11 +139,11 @@
                             ? module.get.direction()
                             : 'static';
                     }
-                    interval = (interval !== undefined)
+                    interval = interval !== undefined
                         ? interval
                         : settings.interval;
-                    shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
-                    delay = (shouldReverse || settings.reverse === true)
+                    shouldReverse = settings.reverse == 'auto' && direction == className.outward;
+                    delay = shouldReverse || settings.reverse === true
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
@@ -253,7 +253,7 @@
                         var
                             style          = $module.attr('style'),
                             currentDisplay = $module.css('display'),
-                            emptyStyle     = (style === undefined || style === '')
+                            emptyStyle     = style === undefined || style === ''
                         ;
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
@@ -315,7 +315,7 @@
                     },
                     duration: function (animationName, duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration === 'number')
+                        duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
                         if (duration || duration === 0) {
@@ -525,7 +525,7 @@
                     animationClass: function (animation) {
                         var
                             animationClass = animation || settings.animation,
-                            directionClass = (module.can.transition() && !module.has.direction())
+                            directionClass = module.can.transition() && !module.has.direction()
                                 ? module.get.direction() + ' '
                                 : ''
                         ;
@@ -536,7 +536,7 @@
                             + animationClass;
                     },
                     currentAnimation: function () {
-                        return (module.cache && module.cache.animation !== undefined)
+                        return module.cache && module.cache.animation !== undefined
                             ? module.cache.animation
                             : false;
                     },
@@ -580,13 +580,13 @@
                         }
 
                         return (typeof duration === 'string')
-                            ? (duration.indexOf('ms') > -1)
+                            ? ((duration.indexOf('ms') > -1)
                                 ? parseFloat(duration)
-                                : parseFloat(duration) * 1000
+                                : parseFloat(duration) * 1000)
                             : duration;
                     },
                     displayType: function (shouldDetermine) {
-                        shouldDetermine = (shouldDetermine !== undefined)
+                        shouldDetermine = shouldDetermine !== undefined
                             ? shouldDetermine
                             : true;
                         if (settings.displayType) {
@@ -714,13 +714,13 @@
                             module.save.transitionExists(animation, directionExists);
                         }
 
-                        return (transitionExists !== undefined)
+                        return transitionExists !== undefined
                             ? transitionExists
                             : directionExists;
                     },
                     animate: function () {
                         // can transition does not return a value if animation does not exist
-                        return (module.can.transition() !== undefined);
+                        return module.can.transition() !== undefined;
                     },
                 },
 
@@ -741,7 +741,7 @@
                         animation = animation || settings.animation;
                         animation = '.' + animation.replace(' ', '.');
 
-                        return ($module.filter(animation).length > 0);
+                        return $module.filter(animation).length > 0;
                     },
                     visible: function () {
                         return $module.is(':visible');
@@ -750,7 +750,7 @@
                         return $module.css('visibility') === 'hidden';
                     },
                     supported: function () {
-                        return (animationEnd !== false);
+                        return animationEnd !== false;
                     },
                 },
 
@@ -943,7 +943,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -978,7 +978,7 @@
                         returnedValue = response;
                     }
 
-                    return (found !== undefined)
+                    return found !== undefined
                         ? found
                         : false;
                 },
@@ -986,7 +986,7 @@
             module.initialize();
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

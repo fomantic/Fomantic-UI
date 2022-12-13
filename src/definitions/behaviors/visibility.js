@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue,
 
@@ -38,7 +38,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.visibility.settings, parameters)
                     : $.extend({}, $.fn.visibility.settings),
 
@@ -227,7 +227,7 @@
                 },
 
                 precache: function (images, callback) {
-                    if (!(images instanceof Array)) {
+                    if (!Array.isArray(images)) {
                         images = [images];
                     }
                     var
@@ -427,21 +427,21 @@
                     },
                     verticallyScrollableContext: function () {
                         var
-                            overflowY = ($context[0] !== window)
+                            overflowY = $context[0] !== window
                                 ? $context.css('overflow-y')
                                 : false
                         ;
 
-                        return (overflowY == 'auto' || overflowY == 'scroll');
+                        return overflowY == 'auto' || overflowY == 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
-                            overflowX = ($context[0] !== window)
+                            overflowX = $context[0] !== window
                                 ? $context.css('overflow-x')
                                 : false
                         ;
 
-                        return (overflowX == 'auto' || overflowX == 'scroll');
+                        return overflowX == 'auto' || overflowX == 'scroll';
                     },
                 },
 
@@ -515,7 +515,7 @@
                     if (amount && newCallback) {
                         settings.onPassed[amount] = newCallback;
                     } else if (amount !== undefined) {
-                        return (module.get.pixelsPassed(amount) > calculations.pixelsPassed);
+                        return module.get.pixelsPassed(amount) > calculations.pixelsPassed;
                     } else if (calculations.passing) {
                         $.each(settings.onPassed, function (amount, callback) {
                             if (calculations.bottomVisible || calculations.pixelsPassed > module.get.pixelsPassed(amount)) {
@@ -873,7 +873,7 @@
                         ;
                         module.verbose('Saving element position');
                         // (quicker than $.extend)
-                        element.fits = (element.height < screen.height);
+                        element.fits = element.height < screen.height;
                         element.offset = $module.offset();
                         element.width = $module.outerWidth();
                         element.height = $module.outerHeight();
@@ -907,21 +907,21 @@
                         }
 
                         // visibility
-                        element.topPassed = (screen.top >= element.top);
-                        element.bottomPassed = (screen.top >= element.bottom);
+                        element.topPassed = screen.top >= element.top;
+                        element.bottomPassed = screen.top >= element.bottom;
                         element.topVisible = (screen.bottom >= element.top) && !element.topPassed;
                         element.bottomVisible = (screen.bottom >= element.bottom) && !element.bottomPassed;
                         element.pixelsPassed = 0;
                         element.percentagePassed = 0;
 
                         // meta calculations
-                        element.onScreen = ((element.topVisible || element.passing) && !element.bottomPassed);
-                        element.passing = (element.topPassed && !element.bottomPassed);
-                        element.offScreen = (!element.onScreen);
+                        element.onScreen = (element.topVisible || element.passing) && !element.bottomPassed;
+                        element.passing = element.topPassed && !element.bottomPassed;
+                        element.offScreen = !element.onScreen;
 
                         // passing calculations
                         if (element.passing) {
-                            element.pixelsPassed = (screen.top - element.top);
+                            element.pixelsPassed = screen.top - element.top;
                             element.percentagePassed = (screen.top - element.top) / element.height;
                         }
                         module.cache.element = element;
@@ -957,13 +957,13 @@
                             element = module.get.elementCalculations()
                         ;
                         if (amount.search('%') > -1) {
-                            return (element.height * (parseInt(amount, 10) / 100));
+                            return element.height * (parseInt(amount, 10) / 100);
                         }
 
                         return parseInt(amount, 10);
                     },
                     occurred: function (callback) {
-                        return (module.cache.occurred !== undefined)
+                        return module.cache.occurred !== undefined
                             ? module.cache.occurred[callback] || false
                             : false;
                     },
@@ -1127,7 +1127,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1182,7 +1182,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

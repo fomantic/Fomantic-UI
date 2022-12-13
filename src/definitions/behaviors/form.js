@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -29,7 +29,7 @@
 
             query            = arguments[0],
             legacyParameters = arguments[1],
-            methodInvoked    = (typeof query === 'string'),
+            methodInvoked    = typeof query === 'string',
             queryArguments   = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -136,7 +136,10 @@
                 },
 
                 attachEvents: function (selector, action) {
-                    action = action || 'submit';
+                    if (!action) {
+                        action = 'submit';
+                    }
+
                     $(selector).on('click' + eventNamespace, function (event) {
                         module[action]();
                         event.preventDefault();
@@ -193,7 +196,7 @@
                             defaultValue = $field.data(metadata.defaultValue) || '',
                             isCheckbox   = $element.is(selector.uiCheckbox),
                             isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                            isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
+                            isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
                             isErrored    = $fieldGroup.hasClass(className.error)
                         ;
                         if (isErrored) {
@@ -227,7 +230,7 @@
                             defaultValue = $field.data(metadata.defaultValue),
                             isCheckbox   = $element.is(selector.uiCheckbox),
                             isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                            isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
+                            isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
                             isErrored    = $fieldGroup.hasClass(className.error)
                         ;
                         if (defaultValue === undefined) {
@@ -260,7 +263,7 @@
                             allValid = true
                         ;
                         $.each(validation, function (fieldName, field) {
-                            if (!(module.validate.field(field, fieldName, true))) {
+                            if (!module.validate.field(field, fieldName, true)) {
                                 allValid = false;
                             }
                         });
@@ -273,7 +276,7 @@
                         $field.each(function (index, el) {
                             var
                                 $el = $(el),
-                                isCheckbox = ($el.filter(selector.checkbox).length > 0),
+                                isCheckbox = $el.filter(selector.checkbox).length > 0,
                                 isDirty
                             ;
 
@@ -283,7 +286,7 @@
 
                             $el.data(settings.metadata.isDirty, isDirty);
 
-                            formIsDirty |= isDirty;
+                            formIsDirty = formIsDirty || isDirty;
                         });
 
                         if (formIsDirty) {
@@ -296,11 +299,11 @@
 
                 is: {
                     bracketedRule: function (rule) {
-                        return (rule.type && rule.type.match(settings.regExp.bracket));
+                        return rule.type && rule.type.match(settings.regExp.bracket);
                     },
                     // duck type rule test
                     shorthandRules: function (rules) {
-                        return (typeof rules === 'string' || Array.isArray(rules));
+                        return typeof rules === 'string' || Array.isArray(rules);
                     },
                     empty: function ($field) {
                         if (!$field || $field.length === 0) {
@@ -373,10 +376,10 @@
                         return initialValue !== currentValue;
                     },
                     justDirty: function () {
-                        return (history[0] === 'dirty');
+                        return history[0] === 'dirty';
                     },
                     justClean: function () {
-                        return (history[0] === 'clean');
+                        return history[0] === 'clean';
                     },
                 },
 
@@ -394,7 +397,7 @@
                                 key          = event.which,
                                 isInput      = $field.is(selector.input),
                                 isCheckbox   = $field.is(selector.checkbox),
-                                isInDropdown = ($field.closest(selector.uiDropdown).length > 0),
+                                isInDropdown = $field.closest(selector.uiDropdown).length > 0,
                                 keyCode      = {
                                     enter: 13,
                                     escape: 27,
@@ -473,7 +476,7 @@
                             return false;
                         }
 
-                        return (rule.value !== undefined)
+                        return rule.value !== undefined
                             ? rule.value
                             : rule.type.match(settings.regExp.bracket)[1] + '';
                     },
@@ -494,9 +497,9 @@
                     inputEvent: function () {
                         return (document.createElement('input').oninput !== undefined)
                             ? 'input'
-                            : (document.createElement('input').onpropertychange !== undefined)
+                            : ((document.createElement('input').onpropertychange !== undefined)
                                 ? 'propertychange'
-                                : 'keyup';
+                                : 'keyup');
                     },
                     fieldsFromShorthand: function (fields) {
                         var
@@ -529,8 +532,8 @@
                             prompt        = isFunction(rule.prompt)
                                 ? rule.prompt(value)
                                 : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
-                            requiresValue = (prompt.search('{value}') !== -1),
-                            requiresName  = (prompt.search('{name}') !== -1),
+                            requiresValue = prompt.search('{value}') !== -1,
+                            requiresName  = prompt.search('{name}') !== -1,
                             $label,
                             name,
                             parts,
@@ -542,9 +545,9 @@
                                 suffixPrompt = (
                                     parts[0] === ''
                                         ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
-                                        : parts[1] === ''
+                                        : (parts[1] === ''
                                             ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
-                                            : settings.prompt.range
+                                            : settings.prompt.range)
                                 );
                                 prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
@@ -556,7 +559,7 @@
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
-                            name = ($label.length == 1)
+                            name = $label.length == 1
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
                             prompt = prompt.replace(/{name}/g, name);
@@ -573,8 +576,8 @@
                         if ($.isPlainObject(parameters)) {
                             var
                                 keys     = Object.keys(parameters),
-                                isLegacySettings = (keys.length > 0)
-                                    ? (parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined)
+                                isLegacySettings = keys.length > 0
+                                    ? parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined
                                     : false
                             ;
                             if (isLegacySettings) {
@@ -618,16 +621,20 @@
                         module.verbose('Finding field with identifier', identifier);
                         identifier = module.escape.string(identifier);
                         var t;
-                        if ((t = $field.filter('#' + identifier)).length > 0) {
+                        t = $field.filter('#' + identifier);
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[name="' + identifier + '"]')).length > 0) {
+                        t = $field.filter('[name="' + identifier + '"]');
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[name="' + identifier + '[]"]')).length > 0) {
+                        t = $field.filter('[name="' + identifier + '[]"]');
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]')).length > 0) {
+                        t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]');
+                        if (t.length > 0) {
                             return t;
                         }
                         module.error(error.noField.replace('{identifier}', identifier));
@@ -691,9 +698,9 @@
                                 value        = $field.val(),
                                 isCheckbox   = $field.is(selector.checkbox),
                                 isRadio      = $field.is(selector.radio),
-                                isMultiple   = (name.indexOf('[]') !== -1),
-                                isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
-                                isChecked    = (isCheckbox)
+                                isMultiple   = name.indexOf('[]') !== -1,
+                                isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
+                                isChecked    = isCheckbox
                                     ? $field.is(':checked')
                                     : false
                             ;
@@ -715,7 +722,7 @@
                                 } else {
                                     if (isRadio) {
                                         if (values[name] === undefined || values[name] === false) {
-                                            values[name] = (isChecked)
+                                            values[name] = isChecked
                                                 ? value || true
                                                 : false;
                                         }
@@ -866,9 +873,9 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = ($prompt.length > 0)
+                            promptExists = $prompt.length > 0
                         ;
-                        errors = (typeof errors === 'string')
+                        errors = typeof errors === 'string'
                             ? [errors]
                             : errors;
                         module.verbose('Adding field error state', identifier);
@@ -1007,11 +1014,11 @@
                             var
                                 $el        = $(el),
                                 $parent    = $el.parent(),
-                                isCheckbox = ($el.filter(selector.checkbox).length > 0),
+                                isCheckbox = $el.filter(selector.checkbox).length > 0,
                                 isDropdown = $parent.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                                 $calendar   = $el.closest(selector.uiCalendar),
-                                isCalendar  = ($calendar.length > 0 && module.can.useElement('calendar')),
-                                value      = (isCheckbox)
+                                isCalendar  = $calendar.length > 0 && module.can.useElement('calendar'),
+                                value      = isCheckbox
                                     ? $el.is(':checked')
                                     : $el.val()
                             ;
@@ -1050,9 +1057,9 @@
                                 isMultiple  = Array.isArray(value),
                                 isCheckbox  = $element.is(selector.uiCheckbox) && module.can.useElement('checkbox'),
                                 isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                                isRadio     = ($field.is(selector.radio) && isCheckbox),
-                                isCalendar  = ($calendar.length > 0 && module.can.useElement('calendar')),
-                                fieldExists = ($field.length > 0),
+                                isRadio     = $field.is(selector.radio) && isCheckbox,
+                                isCalendar  = $calendar.length > 0 && module.can.useElement('calendar'),
+                                fieldExists = $field.length > 0,
                                 $multipleField
                             ;
                             if (fieldExists) {
@@ -1128,7 +1135,7 @@
                             var
                                 $el        = $(el),
                                 $elGroup   = $el.closest($group),
-                                isCheckbox = ($el.filter(selector.checkbox).length > 0),
+                                isCheckbox = $el.filter(selector.checkbox).length > 0,
                                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
                                 isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                 validation = module.get.validation($el),
@@ -1151,7 +1158,7 @@
                         });
                     },
                     optional: function (identifier, bool) {
-                        bool = (bool !== false);
+                        bool = bool !== false;
                         $.each(validation, function (fieldName, field) {
                             if (identifier == fieldName || identifier == field.identifier) {
                                 field.optional = bool;
@@ -1221,7 +1228,7 @@
 
                     // takes a validation object and returns whether field passes validation
                     field: function (field, fieldName, showErrors) {
-                        showErrors = (showErrors !== undefined)
+                        showErrors = showErrors !== undefined
                             ? showErrors
                             : true;
                         if (typeof field === 'string') {
@@ -1232,7 +1239,7 @@
                         var
                             identifier    = field.identifier || fieldName,
                             $field        = module.get.field(identifier),
-                            $dependsField = (field.depends)
+                            $dependsField = field.depends
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
@@ -1295,11 +1302,13 @@
                             invalidFields = [],
                             isCheckbox = $field.is(selector.checkbox),
                             isValid = function (field) {
-                                var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
+                                var value = isCheckbox ? $(field).filter(':checked').val() : $(field).val();
                                 // cast to string avoiding encoding special values
-                                value = (value === undefined || value === '' || value === null)
+                                value = value === undefined || value === '' || value === null
                                     ? ''
-                                    : (settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim ? String(value + '').trim() : String(value + '');
+                                    : ((settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim
+                                        ? String(value + '').trim()
+                                        : String(value + ''));
 
                                 return ruleFunction.call(field, value, ancillary, $module);
                             }
@@ -1435,7 +1444,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
@@ -1474,7 +1483,7 @@
             module.initialize();
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -1682,7 +1691,7 @@
 
             // checkbox checked
             checked: function () {
-                return ($(this).filter(':checked').length > 0);
+                return $(this).filter(':checked').length > 0;
             },
 
             // is most likely an email
@@ -1706,10 +1715,10 @@
                 ;
                 // regular expression specified as /baz/gi (flags)
                 if (regExpParts) {
-                    regExp = (regExpParts.length >= 2)
+                    regExp = regExpParts.length >= 2
                         ? regExpParts[1]
                         : regExp;
-                    flags = (regExpParts.length >= 3)
+                    flags = regExpParts.length >= 3
                         ? regExpParts[2]
                         : '';
                 }
@@ -1775,36 +1784,36 @@
 
             // is value (case insensitive)
             is: function (value, text) {
-                text = (typeof text === 'string')
+                text = typeof text === 'string'
                     ? text.toLowerCase()
                     : text;
-                value = (typeof value === 'string')
+                value = typeof value === 'string'
                     ? value.toLowerCase()
                     : value;
 
-                return (value == text);
+                return value == text;
             },
 
             // is value
             isExactly: function (value, text) {
-                return (value == text);
+                return value == text;
             },
 
             // value is not another value (case insensitive)
             not: function (value, notValue) {
-                value = (typeof value === 'string')
+                value = typeof value === 'string'
                     ? value.toLowerCase()
                     : value;
-                notValue = (typeof notValue === 'string')
+                notValue = typeof notValue === 'string'
                     ? notValue.toLowerCase()
                     : notValue;
 
-                return (value != notValue);
+                return value != notValue;
             },
 
             // value is not another value (case sensitive)
             notExactly: function (value, notValue) {
-                return (value != notValue);
+                return value != notValue;
             },
 
             // value contains text (insensitive)
@@ -1812,7 +1821,7 @@
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
 
-                return (value.search(new RegExp(text, 'i')) !== -1);
+                return value.search(new RegExp(text, 'i')) !== -1;
             },
 
             // value contains text (case sensitive)
@@ -1820,7 +1829,7 @@
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
 
-                return (value.search(new RegExp(text)) !== -1);
+                return value.search(new RegExp(text)) !== -1;
             },
 
             // value contains text (insensitive)
@@ -1828,7 +1837,7 @@
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
 
-                return (value.search(new RegExp(text, 'i')) === -1);
+                return value.search(new RegExp(text, 'i')) === -1;
             },
 
             // value contains text (case sensitive)
@@ -1836,27 +1845,27 @@
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
 
-                return (value.search(new RegExp(text)) === -1);
+                return value.search(new RegExp(text)) === -1;
             },
 
             // is at least string length
             minLength: function (value, requiredLength) {
-                return (value !== undefined)
-                    ? (value.length >= requiredLength)
+                return value !== undefined
+                    ? value.length >= requiredLength
                     : false;
             },
 
             // is exactly length
             exactLength: function (value, requiredLength) {
-                return (value !== undefined)
-                    ? (value.length == requiredLength)
+                return value !== undefined
+                    ? value.length == requiredLength
                     : false;
             },
 
             // is less than length
             maxLength: function (value, maxLength) {
-                return (value !== undefined)
-                    ? (value.length <= maxLength)
+                return value !== undefined
+                    ? value.length <= maxLength
                     : false;
             },
 
@@ -1866,18 +1875,28 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
+                matchingElement = $module.find('[data-validate="' + identifier + '"]');
+                if (matchingElement.length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
-                    matchingValue = matchingElement;
+                } else {
+                    matchingElement = $module.find('#' + identifier);
+                    if (matchingElement.length > 0) {
+                        matchingValue = matchingElement.val();
+                    } else {
+                        matchingElement = $module.find('[name="' + identifier + '"]');
+                        if (matchingElement.length > 0) {
+                            matchingValue = matchingElement.val();
+                        } else {
+                            matchingElement = $module.find('[name="' + identifier + '[]"]');
+                            if (matchingElement.length > 0) {
+                                matchingValue = matchingElement;
+                            }
+                        }
+                    }
                 }
 
-                return (matchingValue !== undefined)
-                    ? (value.toString() == matchingValue.toString())
+                return matchingValue !== undefined
+                    ? value.toString() == matchingValue.toString()
                     : false;
             },
 
@@ -1888,18 +1907,28 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
+                matchingElement = $module.find('[data-validate="' + identifier + '"]');
+                if (matchingElement.length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
-                    matchingValue = matchingElement;
+                } else {
+                    matchingElement = $module.find('#' + identifier);
+                    if (matchingElement.length > 0) {
+                        matchingValue = matchingElement.val();
+                    } else {
+                        matchingElement = $module.find('[name="' + identifier + '"]');
+                        if (matchingElement.length > 0) {
+                            matchingValue = matchingElement.val();
+                        } else {
+                            matchingElement = $module.find('[name="' + identifier + '[]"]');
+                            if (matchingElement.length > 0) {
+                                matchingValue = matchingElement;
+                            }
+                        }
+                    }
                 }
 
-                return (matchingValue !== undefined)
-                    ? (value.toString() !== matchingValue.toString())
+                return matchingValue !== undefined
+                    ? value.toString() !== matchingValue.toString()
                     : false;
             },
 
@@ -1949,7 +1978,7 @@
                     },
                     valid         = {},
                     validCard     = false,
-                    requiredTypes = (typeof cardTypes === 'string')
+                    requiredTypes = typeof cardTypes === 'string'
                         ? cardTypes.split(',')
                         : false,
                     unionPay,
@@ -1970,8 +1999,8 @@
                         validation = cards[type];
                         if (validation) {
                             valid = {
-                                length: ($.inArray(cardNumber.length, validation.length) !== -1),
-                                pattern: (cardNumber.search(validation.pattern) !== -1),
+                                length: $.inArray(cardNumber.length, validation.length) !== -1,
+                                pattern: cardNumber.search(validation.pattern) !== -1,
                             };
                             if (valid.length > 0 && valid.pattern) {
                                 validCard = true;
@@ -1986,8 +2015,8 @@
 
                 // skip luhn for UnionPay
                 unionPay = {
-                    number: ($.inArray(cardNumber.length, cards.unionPay.length) !== -1),
-                    pattern: (cardNumber.search(cards.unionPay.pattern) !== -1),
+                    number: $.inArray(cardNumber.length, cards.unionPay.length) !== -1,
+                    pattern: cardNumber.search(cards.unionPay.pattern) !== -1,
                 };
                 if (unionPay.number && unionPay.pattern) {
                     return true;
@@ -2005,10 +2034,10 @@
                 ;
                 while (length--) {
                     sum += producedValue[multiple][parseInt(cardNumber.charAt(length), 10)];
-                    multiple ^= 1;
+                    multiple ^= 1; // eslint-disable-line no-bitwise
                 }
 
-                return (sum % 10 === 0 && sum > 0);
+                return sum % 10 === 0 && sum > 0;
             },
 
             minCount: function (value, minCount) {
@@ -2016,21 +2045,21 @@
                     return true;
                 }
                 if (minCount == 1) {
-                    return (value !== '');
+                    return value !== '';
                 }
 
-                return (value.split(',').length >= minCount);
+                return value.split(',').length >= minCount;
             },
 
             exactCount: function (value, exactCount) {
                 if (exactCount == 0) {
-                    return (value === '');
+                    return value === '';
                 }
                 if (exactCount == 1) {
-                    return (value !== '' && value.search(',') === -1);
+                    return value !== '' && value.search(',') === -1;
                 }
 
-                return (value.split(',').length == exactCount);
+                return value.split(',').length == exactCount;
             },
 
             maxCount: function (value, maxCount) {
@@ -2038,10 +2067,10 @@
                     return false;
                 }
                 if (maxCount == 1) {
-                    return (value.search(',') === -1);
+                    return value.search(',') === -1;
                 }
 
-                return (value.split(',').length <= maxCount);
+                return value.split(',').length <= maxCount;
             },
         },
 

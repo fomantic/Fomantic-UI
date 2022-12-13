@@ -37,7 +37,7 @@ try {
 }
 
 // extend user config with defaults
-gulpConfig = (!userConfig)
+gulpConfig = !userConfig
     ? extend(true, {}, defaults)
     : extend(false, {}, defaults, userConfig);
 

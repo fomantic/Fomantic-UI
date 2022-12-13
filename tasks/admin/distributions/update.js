@@ -27,7 +27,7 @@ let
     project        = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth          = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
+    oAuth          = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
         ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
@@ -64,7 +64,7 @@ module.exports = function (callback) {
             outputDirectory      = path.resolve(path.join(release.outputRoot, distribution.toLowerCase())),
             repoName             = release.distRepoRoot + distribution,
 
-            commitArgs = (oAuth.name !== undefined && oAuth.email !== undefined)
+            commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
                 ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
                 : '',
 
@@ -72,9 +72,9 @@ module.exports = function (callback) {
                 ? require(outputDirectory + 'package.json') // eslint-disable-line import/no-dynamic-require
                 : false,
 
-            isNewVersion  = (version && distributionPackage.version != version),
+            isNewVersion  = version && distributionPackage.version != version,
 
-            commitMessage = (isNewVersion)
+            commitMessage = isNewVersion
                 ? 'Updated distribution to version ' + version
                 : 'Updated files from main repo',
 
