@@ -1758,7 +1758,7 @@
                 if (!range || ['', '..'].indexOf(range) !== -1) {
 
                     // do nothing
-                } else if (range.indexOf('..') == -1) {
+                } else if (range.indexOf('..') === -1) {
                     if (regExp.test(range)) {
                         min = range - 0;
                         max = min;
@@ -1904,7 +1904,7 @@
                 }
 
                 return matchingValue !== undefined
-                    ? value.toString() == matchingValue.toString()
+                    ? value.toString() === matchingValue.toString()
                     : false;
             },
 

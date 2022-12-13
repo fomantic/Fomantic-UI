@@ -3319,7 +3319,7 @@
                             values = [values];
                         }
                         $.each(values, function (index, existingValue) {
-                            if (String(value).toLowerCase() == String(existingValue).toLowerCase()) {
+                            if (String(value).toLowerCase() === String(existingValue).toLowerCase()) {
                                 hasValue = true;
 
                                 return false;

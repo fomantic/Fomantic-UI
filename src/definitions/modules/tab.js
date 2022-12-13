@@ -701,7 +701,7 @@
                 utilities: {
                     filterArray: function (keepArray, removeArray) {
                         return $.grep(keepArray, function (keepValue) {
-                            return $.inArray(keepValue, removeArray) == -1;
+                            return $.inArray(keepValue, removeArray) === -1;
                         });
                     },
                     last: function (array) {

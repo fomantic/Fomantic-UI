@@ -435,7 +435,7 @@
                         }
                     },
                     activateFocus: function (event) {
-                        if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
+                        if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) !== NO_STEP) {
                             event.preventDefault();
                             module.event.keydown(event, true);
                             $module.trigger('focus');
