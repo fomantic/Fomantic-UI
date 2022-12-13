@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -49,7 +49,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
                     : $.extend({}, $.fn.sidebar.settings),
 
@@ -143,8 +143,8 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var
-                                clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                clickedContext  = ($context.is(event.target))
+                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
+                                clickedContext  = $context.is(event.target)
                             ;
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
@@ -309,7 +309,7 @@
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
                     var ignored = element.offsetHeight;
-                    element.scrollTop = element.scrollTop;
+                    element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
 
@@ -437,13 +437,13 @@
                 },
 
                 othersAnimating: function () {
-                    return ($sidebars.not($module).filter('.' + className.animating).length > 0);
+                    return $sidebars.not($module).filter('.' + className.animating).length > 0;
                 },
                 othersVisible: function () {
-                    return ($sidebars.not($module).filter('.' + className.visible).length > 0);
+                    return $sidebars.not($module).filter('.' + className.visible).length > 0;
                 },
                 othersActive: function () {
-                    return (module.othersVisible() || module.othersAnimating());
+                    return module.othersVisible() || module.othersAnimating();
                 },
 
                 hideOthers: function (callback) {
@@ -475,7 +475,7 @@
                 pushPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = (transition === 'overlay' || module.othersActive())
+                        $transition = transition === 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -521,7 +521,7 @@
                 pullPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = (transition == 'overlay' || module.othersActive())
+                        $transition = transition == 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -725,12 +725,12 @@
                             transition
                         ;
                         transition = (module.is.mobile())
-                            ? (settings.mobileTransition == 'auto')
+                            ? ((settings.mobileTransition == 'auto')
                                 ? settings.defaultTransition.mobile[direction]
-                                : settings.mobileTransition
-                            : (settings.transition == 'auto')
+                                : settings.mobileTransition)
+                            : ((settings.transition == 'auto')
                                 ? settings.defaultTransition.computer[direction]
-                                : settings.transition;
+                                : settings.transition);
                         module.verbose('Determined transition', transition);
 
                         return transition;
@@ -789,7 +789,7 @@
                                 isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
                                 isIE = ('ActiveXObject' in window)
                             ;
-                            module.cache.isIE = (isIE11 || isIE);
+                            module.cache.isIE = isIE11 || isIE;
                         }
 
                         return module.cache.isIE;
@@ -964,7 +964,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1017,7 +1017,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

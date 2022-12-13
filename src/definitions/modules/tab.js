@@ -19,7 +19,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -35,7 +35,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             initializedHistory = false,
@@ -44,8 +44,7 @@
 
         $allModules.each(function () {
             var
-
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.tab.settings, parameters)
                     : $.extend({}, $.fn.tab.settings),
 
@@ -260,7 +259,7 @@
                 cache: {
 
                     read: function (cacheKey) {
-                        return (cacheKey !== undefined)
+                        return cacheKey !== undefined
                             ? cache[cacheKey]
                             : false;
                     },
@@ -287,7 +286,7 @@
                 set: {
                     auto: function () {
                         var
-                            url = (typeof settings.path === 'string')
+                            url = typeof settings.path === 'string'
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
                         ;
@@ -324,11 +323,11 @@
 
                 changeTab: function (tabPath) {
                     var
-                        pushStateAvailable = (window.history && window.history.pushState),
-                        shouldIgnoreLoad   = (pushStateAvailable && settings.ignoreFirstLoad && firstLoad),
-                        remoteContent      = (settings.auto || $.isPlainObject(settings.apiSettings)),
+                        pushStateAvailable = window.history && window.history.pushState,
+                        shouldIgnoreLoad   = pushStateAvailable && settings.ignoreFirstLoad && firstLoad,
+                        remoteContent      = settings.auto || $.isPlainObject(settings.apiSettings),
                         // only add default path if not remote content
-                        pathArray = (remoteContent && !shouldIgnoreLoad)
+                        pathArray = remoteContent && !shouldIgnoreLoad
                             ? module.utilities.pathToArray(tabPath)
                             : module.get.defaultPathArray(tabPath)
                     ;
@@ -339,7 +338,7 @@
                             currentPath        = module.utilities.arrayToPath(currentPathArray),
 
                             isTab              = module.is.tab(currentPath),
-                            isLastIndex        = (index + 1 == pathArray.length),
+                            isLastIndex        = index + 1 == pathArray.length,
 
                             $tab               = module.get.tabElement(currentPath),
                             $anchor,
@@ -359,7 +358,7 @@
                             } else {
                                 nextPathArray = pathArray.slice(0, index + 2);
                                 nextPath = module.utilities.arrayToPath(nextPathArray);
-                                isLastTab = (!module.is.tab(nextPath));
+                                isLastTab = !module.is.tab(nextPath);
                                 if (isLastTab) {
                                     module.verbose('Tab parameters found', nextPathArray);
                                 }
@@ -432,7 +431,7 @@
 
                 scrollTo: function ($element) {
                     var
-                        scrollOffset = ($element && $element.length > 0)
+                        scrollOffset = $element && $element.length > 0
                             ? $element.offset().top
                             : false
                     ;
@@ -448,7 +447,7 @@
                             $tab = module.get.tabElement(tabPath),
                             tab  = $tab[0]
                         ;
-                        evaluateScripts = (evaluateScripts !== undefined)
+                        evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
                         if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
@@ -514,7 +513,7 @@
                                 },
                             },
                             request         = $tab.api('get request') || false,
-                            existingRequest = (request && request.state() === 'pending'),
+                            existingRequest = request && request.state() === 'pending',
                             requestSettings,
                             cachedContent
                         ;
@@ -555,7 +554,7 @@
                     tab: function (tabPath) {
                         var
                             $tab          = module.get.tabElement(tabPath),
-                            $deactiveTabs = (settings.deactivate == 'siblings')
+                            $deactiveTabs = settings.deactivate == 'siblings'
                                 ? $tab.siblings($tabs)
                                 : $tabs.not($tab),
                             isActive      = $tab.hasClass(className.active)
@@ -576,7 +575,7 @@
                     navigation: function (tabPath) {
                         var
                             $navigation         = module.get.navElement(tabPath),
-                            $deactiveNavigation = (settings.deactivate == 'siblings')
+                            $deactiveNavigation = settings.deactivate == 'siblings'
                                 ? $navigation.siblings($allModules)
                                 : $allModules.not($navigation),
                             isActive    = $navigation.hasClass(className.active)
@@ -612,8 +611,8 @@
 
                 is: {
                     tab: function (tabName) {
-                        return (tabName !== undefined)
-                            ? (module.get.tabElement(tabName).length > 0)
+                        return tabName !== undefined
+                            ? module.get.tabElement(tabName).length > 0
                             : false;
                     },
                 },
@@ -667,7 +666,7 @@
                         $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
                         $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(lastTab) + '"]');
 
-                        return ($fullPathTab.length > 0)
+                        return $fullPathTab.length > 0
                             ? $fullPathTab
                             : $simplePathTab;
                     },
@@ -702,7 +701,7 @@
                 utilities: {
                     filterArray: function (keepArray, removeArray) {
                         return $.grep(keepArray, function (keepValue) {
-                            return ($.inArray(keepValue, removeArray) == -1);
+                            return $.inArray(keepValue, removeArray) == -1;
                         });
                     },
                     last: function (array) {
@@ -838,7 +837,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -890,7 +889,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

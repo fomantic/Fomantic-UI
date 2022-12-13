@@ -47,6 +47,10 @@ module.exports = {
                 VariableDeclarator: true,
             },
         }],
+        'no-extra-parens': 'off', /* TODO https://github.com/eslint/eslint/issues/16626#issuecomment-1341016901 ['error', 'all', {
+            nestedBinaryExpressions: false,
+            enforceForNewInMemberExpressions: false,
+        }], */
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -80,6 +84,7 @@ module.exports = {
         'unicorn/no-null': 'off',
         'unicorn/no-this-assignment': 'off',
         'unicorn/numeric-separators-style': 'off',
+        'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
@@ -115,35 +120,12 @@ module.exports = {
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
         'prefer-rest-params': 'off', // about 180 errors to be fixed manually
-        'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
-        'no-bitwise': 'off',
-        'no-cond-assign': 'off',
-        'no-empty': 'off',
-        'no-labels': 'off',
-        'no-loop-func': 'off',
-        'no-new-func': 'off',
-        'no-path-concat': 'off',
-        'no-prototype-builtins': 'off',
         'no-return-assign': 'off',
-        'no-self-assign': 'off',
         'no-shadow-restricted-names': 'off',
-        'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
-        'unicorn/empty-brace-spaces': 'off',
-        'unicorn/escape-case': 'off',
-        'unicorn/new-for-builtins': 'off',
-        'unicorn/no-hex-escape': 'off',
-        'unicorn/no-instanceof-array': 'off',
-        'unicorn/no-process-exit': 'off',
-        'unicorn/no-useless-switch-case': 'off',
-        'unicorn/no-useless-undefined': 'off',
-        'unicorn/prefer-array-find': 'off',
-        'unicorn/prefer-default-parameters': 'off',
-        'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
-        'unicorn/prefer-switch': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

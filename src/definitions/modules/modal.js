@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -32,7 +32,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -48,7 +48,7 @@
 
         $allModules.each(function () {
             var
-                settings    = ($.isPlainObject(parameters))
+                settings    = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.modal.settings, parameters)
                     : $.extend({}, $.fn.modal.settings),
 
@@ -121,10 +121,14 @@
                         }
                         settings.actions.forEach(function (el) {
                             var
-                                icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                icon = el[fields.icon]
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    : '',
                                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                 cls = module.helpers.deQuote(el[fields.class] || ''),
-                                click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {}
                             ;
                             $actions.append($('<button/>', {
                                 html: icon + text,
@@ -425,7 +429,7 @@
                             $target   = $(event.target),
                             isRtl = module.is.rtl()
                         ;
-                        initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
+                        initialMouseDownInModal = $target.closest(selector.modal).length > 0;
                         if (initialMouseDownInModal) {
                             module.verbose('Mouse down event registered inside the modal');
                         }
@@ -452,7 +456,7 @@
                         }
                         var
                             $target   = $(event.target),
-                            isInModal = ($target.closest(selector.modal).length > 0),
+                            isInModal = $target.closest(selector.modal).length > 0,
                             isInDOM   = $.contains(document.documentElement, event.target)
                         ;
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
@@ -675,7 +679,7 @@
                 },
 
                 hideDimmer: function () {
-                    if ($dimmable.dimmer('is animating') || ($dimmable.dimmer('is active'))) {
+                    if ($dimmable.dimmer('is animating') || $dimmable.dimmer('is active')) {
                         module.unbind.scrollLock();
                         $dimmable.dimmer('hide', function () {
                             if (hadScrollbar) {
@@ -730,10 +734,10 @@
 
                 others: {
                     active: function () {
-                        return ($otherModals.filter('.' + className.active).length > 0);
+                        return $otherModals.filter('.' + className.active).length > 0;
                     },
                     animating: function () {
-                        return ($otherModals.filter('.' + className.animating).length > 0);
+                        return $otherModals.filter('.' + className.animating).length > 0;
                     },
                 },
 
@@ -917,12 +921,12 @@
                             scrollHeight   = module.cache.scrollHeight,
                             height         = module.cache.height,
                             paddingHeight  = settings.padding,
-                            startPosition  = (verticalCenter + topOffset)
+                            startPosition  = verticalCenter + topOffset
                         ;
 
-                        return (scrollHeight > height)
-                            ? (startPosition + scrollHeight + paddingHeight < contextHeight)
-                            : (height + (paddingHeight * 2) < contextHeight);
+                        return scrollHeight > height
+                            ? startPosition + scrollHeight + paddingHeight < contextHeight
+                            : height + (paddingHeight * 2) < contextHeight;
                     },
                 },
                 has: {
@@ -943,7 +947,7 @@
                                 isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
                                 isIE = ('ActiveXObject' in window)
                             ;
-                            module.cache.isIE = (isIE11 || isIE);
+                            module.cache.isIE = isIE11 || isIE;
                         }
 
                         return module.cache.isIE;
@@ -997,7 +1001,7 @@
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
-                            $input     = ($autofocus.length > 0)
+                            $input     = $autofocus.length > 0
                                 ? $autofocus.first()
                                 : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
                         ;
@@ -1051,7 +1055,7 @@
                             dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
                         ;
                         if (settings.inverted) {
-                            dimmerSettings.variation = (dimmerSettings.variation !== undefined)
+                            dimmerSettings.variation = dimmerSettings.variation !== undefined
                                 ? dimmerSettings.variation + ' inverted'
                                 : 'inverted';
                         }
@@ -1074,18 +1078,18 @@
                             var canFit = module.can.fit();
                             $module
                                 .css({
-                                    top: (!$module.hasClass('aligned') && canFit)
+                                    top: !$module.hasClass('aligned') && canFit
                                         ? $document.scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
-                                        : !canFit || $module.hasClass('top')
+                                        : (!canFit || $module.hasClass('top')
                                             ? $document.scrollTop() + settings.padding
-                                            : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
+                                            : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding)),
                                     marginLeft: -(module.cache.width / 2),
                                 })
                             ;
                         } else {
                             $module
                                 .css({
-                                    marginTop: (!$module.hasClass('aligned') && module.can.fit())
+                                    marginTop: !$module.hasClass('aligned') && module.can.fit()
                                         ? -(module.cache.height / 2)
                                         : settings.padding / 2,
                                     marginLeft: -(module.cache.width / 2),
@@ -1247,7 +1251,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
@@ -1311,7 +1315,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

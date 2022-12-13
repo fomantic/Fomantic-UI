@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,13 +28,13 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
                     : $.extend({}, $.fn.nag.settings),
 
@@ -47,7 +47,7 @@
 
                 $module         = $(this),
 
-                $context        = (settings.context)
+                $context        = settings.context
                     ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                     : $('body'),
 
@@ -193,7 +193,7 @@
 
                                     var cookieOptions = '';
                                     for (var option in options) {
-                                        if (options.hasOwnProperty(option)) {
+                                        if (Object.prototype.hasOwnProperty.call(options, option)) {
                                             cookieOptions += '; ' + option;
                                             if (typeof options[option] === 'string') {
                                                 cookieOptions += '=' + options[option].split(';')[0];
@@ -409,7 +409,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -462,7 +462,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
