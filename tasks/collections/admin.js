@@ -14,7 +14,7 @@
  *******************************/
 
 module.exports = function (gulp) {
-    let
+    const
         // less/css distributions
         initComponents      = require('../admin/components/init'),
         createComponents    = require('../admin/components/create'),

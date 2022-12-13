@@ -941,8 +941,8 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
                             module.cache.isIE = isIE11 || isIE;
                         }

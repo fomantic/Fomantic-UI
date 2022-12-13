@@ -495,9 +495,9 @@
                         return module.get.inputEvent();
                     },
                     inputEvent: function () {
-                        return (document.createElement('input').oninput !== undefined)
+                        return document.createElement('input').oninput !== undefined
                             ? 'input'
-                            : ((document.createElement('input').onpropertychange !== undefined)
+                            : (document.createElement('input').onpropertychange !== undefined
                                 ? 'propertychange'
                                 : 'keyup');
                     },
@@ -542,13 +542,11 @@
                         if (ancillary && ['integer', 'decimal', 'number'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt) {
-                                suffixPrompt = (
-                                    parts[0] === ''
-                                        ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
-                                        : (parts[1] === ''
-                                            ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
-                                            : settings.prompt.range)
-                                );
+                                suffixPrompt = parts[0] === ''
+                                    ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
+                                    : (parts[1] === ''
+                                        ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
+                                        : settings.prompt.range);
                                 prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
                             prompt = prompt.replace(/{min}/g, parts[0]);

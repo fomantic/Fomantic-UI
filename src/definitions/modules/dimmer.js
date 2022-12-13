@@ -48,7 +48,7 @@
                 moduleNamespace = 'module-' + namespace,
                 moduleSelector  = $allModules.selector || '',
 
-                clickEvent      = ('ontouchstart' in document.documentElement)
+                clickEvent      = 'ontouchstart' in document.documentElement
                     ? 'touchstart'
                     : 'click',
 

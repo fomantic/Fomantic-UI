@@ -2,8 +2,9 @@
          Release Config
 *******************************/
 
+const requireDotFile = require('require-dot-file');
+
 let
-    requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
     version

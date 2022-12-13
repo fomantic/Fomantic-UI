@@ -1920,8 +1920,8 @@
                             return '';
                         }
 
-                        return (!module.has.selectInput() && module.is.multiple())
-                            ? ((typeof value === 'string') // delimited string
+                        return !module.has.selectInput() && module.is.multiple()
+                            ? (typeof value === 'string' // delimited string
                                 ? (raw
                                     ? value
                                     : module.escape.htmlEntities(value)).split(settings.delimiter)
@@ -1965,9 +1965,9 @@
                                 $choice.find(selector.menuIcon).remove();
                             }
 
-                            return ($choice.data(metadata.text) !== undefined)
+                            return $choice.data(metadata.text) !== undefined
                                 ? $choice.data(metadata.text)
-                                : ((preserveHTML)
+                                : (preserveHTML
                                     ? $choice.html() && $choice.html().trim()
                                     : $choice.text() && $choice.text().trim());
                         }
@@ -1978,9 +1978,9 @@
                             return false;
                         }
 
-                        return ($choice.data(metadata.value) !== undefined)
+                        return $choice.data(metadata.value) !== undefined
                             ? String($choice.data(metadata.value))
-                            : ((typeof choiceText === 'string')
+                            : (typeof choiceText === 'string'
                                 ? String(
                                     settings.ignoreSearchCase
                                         ? choiceText.toLowerCase()
@@ -1993,9 +1993,9 @@
                             input = $search[0]
                         ;
                         if (input) {
-                            return (input.oninput !== undefined)
+                            return input.oninput !== undefined
                                 ? 'input'
-                                : ((input.onpropertychange !== undefined)
+                                : (input.onpropertychange !== undefined
                                     ? 'propertychange'
                                     : 'keyup');
                         }
@@ -2102,14 +2102,14 @@
                         ;
                         value = value !== undefined
                             ? value
-                            : ((module.get.values() !== undefined)
+                            : (module.get.values() !== undefined
                                 ? module.get.values()
                                 : module.get.text());
-                        isMultiple = (module.is.multiple() && Array.isArray(value));
-                        shouldSearch = (isMultiple)
+                        isMultiple = module.is.multiple() && Array.isArray(value);
+                        shouldSearch = isMultiple
                             ? value.length > 0
-                            : (value !== undefined && value !== null);
-                        strict = (value === '' || value === false || value === true)
+                            : value !== undefined && value !== null;
+                        strict = value === '' || value === false || value === true
                             ? true
                             : strict || false;
                         if (shouldSearch) {
@@ -2384,7 +2384,7 @@
                         : elementIndex < $selectableItem.length;
                     $nextSelectedItem = isWithinRange
                         ? $selectableItem.eq(elementIndex)
-                        : ((direction == 'up')
+                        : (direction == 'up'
                             ? $selectableItem.first()
                             : $selectableItem.last());
                     if ($nextSelectedItem.length > 0) {

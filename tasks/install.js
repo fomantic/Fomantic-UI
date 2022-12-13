@@ -13,7 +13,7 @@
    * Standard installer runs asking for paths to site files etc
 */
 
-let
+const
     gulp           = require('gulp'),
 
     // node dependencies

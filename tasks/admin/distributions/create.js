@@ -9,7 +9,7 @@
   * update package.json file
 */
 
-let
+const
     gulp            = require('gulp'),
 
     // node dependencies
