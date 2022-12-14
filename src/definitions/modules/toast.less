@@ -200,7 +200,7 @@
                 }
                 &:not(.vertical) {
                     &.actions > i.icon:not(.close) when (@variationToastActions) and (@variationToastIcon) {
-                        top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+                        top: e(%('calc(50%% - %d)', @toastIconCenteredAdjustment));
                         transform: none;
                     }
                     &.icon.icon.icon when (@variationToastIcon) {
@@ -519,10 +519,10 @@
             }
         }
         &.actions > .centered.image when (@variationToastActions) and (@variationToastImage) {
-            top: e(%("calc(50%% - %d)", @toastImageCenteredAdjustment));
+            top: e(%('calc(50%% - %d)', @toastImageCenteredAdjustment));
         }
         &.actions > .centered.icon when (@variationToastActions) and (@variationToastIcon) {
-            top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+            top: e(%('calc(50%% - %d)', @toastIconCenteredAdjustment));
         }
     }
     &.vertical when (@variationToastVertical) {

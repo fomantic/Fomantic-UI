@@ -1725,13 +1725,13 @@
     each(@variationButtonConsequences, {
         @consequence: @value;
 
-        @_backgroundColor: "@{consequence}Color";
-        @_backgroundColorHover: "@{consequence}ColorHover";
-        @_backgroundColorFocus: "@{consequence}ColorFocus";
-        @_backgroundColorDown: "@{consequence}ColorDown";
-        @_backgroundColorActive: "@{consequence}ColorActive";
-        @_textColor: "@{consequence}TextColor";
-        @_textShadow: "@{consequence}TextShadow";
+        @_backgroundColor: '@{consequence}Color';
+        @_backgroundColorHover: '@{consequence}ColorHover';
+        @_backgroundColorFocus: '@{consequence}ColorFocus';
+        @_backgroundColorDown: '@{consequence}ColorDown';
+        @_backgroundColorActive: '@{consequence}ColorActive';
+        @_textColor: '@{consequence}TextColor';
+        @_textShadow: '@{consequence}TextShadow';
 
         /* Standard */
         .ui.@{consequence}.buttons .button,
@@ -1827,7 +1827,7 @@
 
     /* Clearfix */
     .ui.buttons::after {
-        content: ".";
+        content: '.';
         display: block;
         height: 0;
         clear: both;
@@ -1975,7 +1975,7 @@
             }
             & when (@variationButtonInverted) {
                 .ui.spaced.basic.inverted.buttons .basic.button {
-                    margin-bottom: e(%("calc(%d + %d)", @spacedMargin, @basicColoredBorderSize));
+                    margin-bottom: e(%('calc(%d + %d)', @spacedMargin, @basicColoredBorderSize));
                     margin-top: @basicColoredBorderSize;
                 }
             }

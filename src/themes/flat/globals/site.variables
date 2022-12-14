@@ -6,15 +6,15 @@
         Paths
 -------------------- */
 
-@imagePath: "../../themes/default/assets/images";
-@fontPath: "../../themes/default/assets/fonts";
+@imagePath: '../../themes/default/assets/images';
+@fontPath: '../../themes/default/assets/fonts';
 
 /* -------------------
        Fonts
 -------------------- */
 
-@headerFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
-@pageFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@headerFont: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
 /* -------------------
       Site Colors

@@ -2,8 +2,8 @@
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontName}.woff2") format('woff2')
-            if(@supportIE, e(',') url("@{fontPath}/@{fontName}.woff") format('woff'));
+        src: url('@{fontPath}/@{fontName}.woff2') format('woff2')
+            if(@supportIE, e(',') url('@{fontPath}/@{fontName}.woff') format('woff'));
         font-style: normal;
         font-weight: @normal;
         font-variant: normal;

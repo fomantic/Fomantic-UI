@@ -35,25 +35,25 @@
 
 .ui.dropdown .item .left.dropdown.icon::before,
 .ui.dropdown .left.menu .item .dropdown.icon::before {
-    content: "\f0d9"/*rtl:"\f0da"*/;
+    content: '\f0d9'/*rtl:'\f0da'*/;
 }
 
 /* Vertical Menu Dropdown */
 .ui.vertical.menu .dropdown.item > .dropdown.icon::before {
-    content: "\f0da"/*rtl:"\f0d9"*/;
+    content: '\f0da'/*rtl:'\f0d9'*/;
 }
 
 /* Icons for Reference
 .dropdown.down.icon {
-  content: "\f0d7";
+  content: '\f0d7';
 }
 .dropdown.up.icon {
-  content: "\f0d8";
+  content: '\f0d8';
 }
 .dropdown.left.icon {
-  content: "\f0d9";
+  content: '\f0d9';
 }
 .dropdown.icon.icon {
-  content: "\f0da";
+  content: '\f0da';
 }
 */

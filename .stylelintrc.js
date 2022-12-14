@@ -18,13 +18,13 @@ module.exports = {
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
         'number-max-precision': 5,
         'rule-empty-line-before': null,
+        'string-quotes': null,
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
         'color-function-notation': 'legacy', // https://caniuse.com/mdn-css_types_color_rgba_space_separated_parameters
 
         // TODO
-        'string-quotes': null, // 1676 errors
         'at-rule-no-unknown': null, // 1081 errors
         'property-case': null, // 866 errors
         'at-rule-name-case': null, // 764 errors

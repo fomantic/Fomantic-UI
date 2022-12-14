@@ -518,7 +518,7 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         @escapedKey: replace(@key,'^([0-9])','\3$1 ');
         @normalizedKey: replace(@escapedKey,'_','.','g');
         i.icon.@{normalizedKey}::before {
-            content: "@{value}";
+            content: '@{value}';
             & when not (@fontFamily = false) {
                 font-family: @fontFamily;
             }
@@ -531,7 +531,7 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         @escapedKey: replace(@key,'^([0-9])','\3$1 ');
         @normalizedKey: replace(@escapedKey,'_','.','g');
         i.icon.@{normalizedKey}::after {
-            content: "@{value}";
+            content: '@{value}';
         }
     });
 };
