@@ -345,14 +345,14 @@
                     },
                     fieldDirty: function ($el) {
                         var initialValue = $el.data(metadata.defaultValue);
-                        // Explicitly check for null/undefined here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
-                        if (initialValue == null) {
+                        // Explicitly check for undefined/null here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
+                        if (initialValue === undefined || initialValue === null) {
                             initialValue = '';
                         } else if (Array.isArray(initialValue)) {
                             initialValue = initialValue.toString();
                         }
                         var currentValue = $el.val();
-                        if (currentValue == null) {
+                        if (currentValue === undefined || currentValue === null) {
                             currentValue = '';
                         } else if (Array.isArray(currentValue)) {
                             // multiple select values are returned as arrays which are never equal, so do string conversion first
@@ -403,13 +403,13 @@
                                     escape: 27,
                                 }
                             ;
-                            if (key == keyCode.escape) {
+                            if (key === keyCode.escape) {
                                 module.verbose('Escape key pressed blurring field');
                                 $field[0]
                                     .blur()
                                 ;
                             }
-                            if (!event.ctrlKey && key == keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
+                            if (!event.ctrlKey && key === keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                 if (!keyHeldDown) {
                                     $field.one('keyup' + eventNamespace, module.event.field.keyup);
                                     module.submit();
@@ -428,7 +428,7 @@
                                 $fieldGroup     = $field.closest($group),
                                 validationRules = module.get.validation($field)
                             ;
-                            if (validationRules && (settings.on == 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (validationRules && (settings.on === 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                 module.debug('Revalidating field', $field, validationRules);
                                 module.validate.field(validationRules);
                                 if (!settings.inline) {
@@ -442,7 +442,7 @@
                                 $fieldGroup = $field.closest($group),
                                 validationRules = module.get.validation($field)
                             ;
-                            if (validationRules && (settings.on == 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (validationRules && (settings.on === 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function () {
                                     module.debug('Revalidating field', $field, validationRules);
@@ -488,16 +488,16 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        if (type == 'checkbox' || type == 'radio' || type == 'hidden' || $input.is('select')) {
+                        if (type === 'checkbox' || type === 'radio' || type === 'hidden' || $input.is('select')) {
                             return 'change';
                         }
 
                         return module.get.inputEvent();
                     },
                     inputEvent: function () {
-                        return (document.createElement('input').oninput !== undefined)
+                        return document.createElement('input').oninput !== undefined
                             ? 'input'
-                            : ((document.createElement('input').onpropertychange !== undefined)
+                            : (document.createElement('input').onpropertychange !== undefined
                                 ? 'propertychange'
                                 : 'keyup');
                     },
@@ -542,13 +542,11 @@
                         if (ancillary && ['integer', 'decimal', 'number'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt) {
-                                suffixPrompt = (
-                                    parts[0] === ''
-                                        ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
-                                        : (parts[1] === ''
-                                            ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
-                                            : settings.prompt.range)
-                                );
+                                suffixPrompt = parts[0] === ''
+                                    ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
+                                    : (parts[1] === ''
+                                        ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
+                                        : settings.prompt.range);
                                 prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
                             prompt = prompt.replace(/{min}/g, parts[0]);
@@ -559,7 +557,7 @@
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
-                            name = $label.length == 1
+                            name = $label.length === 1
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
                             prompt = prompt.replace(/{name}/g, name);
@@ -732,42 +730,53 @@
                                         var date = $calendar.calendar('get date');
 
                                         if (date !== null) {
-                                            if (settings.dateHandling == 'date') {
-                                                values[name] = date;
-                                            } else if (settings.dateHandling == 'input') {
-                                                values[name] = $calendar.calendar('get input date');
-                                            } else if (settings.dateHandling == 'formatter') {
-                                                var type = $calendar.calendar('setting', 'type');
+                                            switch (settings.dateHandling) {
+                                                case 'date': {
+                                                    values[name] = date;
 
-                                                switch (type) {
-                                                    case 'date':
-                                                        values[name] = settings.formatter.date(date);
+                                                    break;
+                                                }
+                                                case 'input': {
+                                                    values[name] = $calendar.calendar('get input date');
 
-                                                        break;
+                                                    break;
+                                                }
+                                                case 'formatter': {
+                                                    var type = $calendar.calendar('setting', 'type');
 
-                                                    case 'datetime':
-                                                        values[name] = settings.formatter.datetime(date);
+                                                    switch (type) {
+                                                        case 'date': {
+                                                            values[name] = settings.formatter.date(date);
 
-                                                        break;
+                                                            break;
+                                                        }
+                                                        case 'datetime': {
+                                                            values[name] = settings.formatter.datetime(date);
 
-                                                    case 'time':
-                                                        values[name] = settings.formatter.time(date);
+                                                            break;
+                                                        }
+                                                        case 'time': {
+                                                            values[name] = settings.formatter.time(date);
 
-                                                        break;
+                                                            break;
+                                                        }
+                                                        case 'month': {
+                                                            values[name] = settings.formatter.month(date);
 
-                                                    case 'month':
-                                                        values[name] = settings.formatter.month(date);
+                                                            break;
+                                                        }
+                                                        case 'year': {
+                                                            values[name] = settings.formatter.year(date);
 
-                                                        break;
+                                                            break;
+                                                        }
+                                                        default: {
+                                                            module.debug('Wrong calendar mode', $calendar, type);
+                                                            values[name] = '';
+                                                        }
+                                                    }
 
-                                                    case 'year':
-                                                        values[name] = settings.formatter.year(date);
-
-                                                        break;
-
-                                                    default:
-                                                        module.debug('Wrong calendar mode', $calendar, type);
-                                                        values[name] = '';
+                                                    break;
                                                 }
                                             }
                                         } else {
@@ -856,7 +865,7 @@
                         // For each new rule, check if there's not already one with the same type
                         $.each(newValidation.rules, function (_index, rule) {
                             if ($.grep(validation[name].rules, function (item) {
-                                return item.type == rule.type;
+                                return item.type === rule.type;
                             }).length === 0) {
                                 validation[name].rules.push(rule);
                             }
@@ -1141,7 +1150,7 @@
                                 validation = module.get.validation($el),
                                 hasEmptyRule = validation
                                     ? $.grep(validation.rules, function (rule) {
-                                        return rule.type == 'empty';
+                                        return rule.type === 'empty';
                                     }) !== 0
                                     : false,
                                 identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
@@ -1160,7 +1169,7 @@
                     optional: function (identifier, bool) {
                         bool = bool !== false;
                         $.each(validation, function (fieldName, field) {
-                            if (identifier == fieldName || identifier == field.identifier) {
+                            if (identifier === fieldName || identifier === field.identifier) {
                                 field.optional = bool;
                             }
                         });
@@ -1444,16 +1453,16 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1750,7 +1759,7 @@
                 if (!range || ['', '..'].indexOf(range) !== -1) {
 
                     // do nothing
-                } else if (range.indexOf('..') == -1) {
+                } else if (range.indexOf('..') === -1) {
                     if (regExp.test(range)) {
                         min = range - 0;
                         max = min;
@@ -1858,7 +1867,7 @@
             // is exactly length
             exactLength: function (value, requiredLength) {
                 return value !== undefined
-                    ? value.length == requiredLength
+                    ? value.length === Number(requiredLength)
                     : false;
             },
 
@@ -1896,7 +1905,7 @@
                 }
 
                 return matchingValue !== undefined
-                    ? value.toString() == matchingValue.toString()
+                    ? value.toString() === matchingValue.toString()
                     : false;
             },
 
@@ -2041,10 +2050,12 @@
             },
 
             minCount: function (value, minCount) {
-                if (minCount == 0) {
+                minCount = Number(minCount);
+
+                if (minCount === 0) {
                     return true;
                 }
-                if (minCount == 1) {
+                if (minCount === 1) {
                     return value !== '';
                 }
 
@@ -2052,21 +2063,25 @@
             },
 
             exactCount: function (value, exactCount) {
-                if (exactCount == 0) {
+                exactCount = Number(exactCount);
+
+                if (exactCount === 0) {
                     return value === '';
                 }
-                if (exactCount == 1) {
+                if (exactCount === 1) {
                     return value !== '' && value.search(',') === -1;
                 }
 
-                return value.split(',').length == exactCount;
+                return value.split(',').length === exactCount;
             },
 
             maxCount: function (value, maxCount) {
-                if (maxCount == 0) {
+                maxCount = Number(maxCount);
+
+                if (maxCount === 0) {
                     return false;
                 }
-                if (maxCount == 1) {
+                if (maxCount === 1) {
                     return value.search(',') === -1;
                 }
 

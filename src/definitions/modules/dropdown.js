@@ -663,12 +663,12 @@
                                 ;
                             }
                         } else {
-                            if (settings.on == 'click') {
+                            if (settings.on === 'click') {
                                 $module
                                     .on('click' + eventNamespace, selector.icon, module.event.icon.click)
                                     .on('click' + eventNamespace, module.event.test.toggle)
                                 ;
-                            } else if (settings.on == 'hover') {
+                            } else if (settings.on === 'hover') {
                                 $module
                                     .on('mouseenter' + eventNamespace, module.delay.show)
                                     .on('mouseleave' + eventNamespace, module.delay.hide)
@@ -1413,7 +1413,7 @@
                                     hasActiveLabel    = $activeLabel.length > 0,
                                     hasMultipleActive = $activeLabel.length > 1,
                                     isFirstLabel      = labelIndex === 0,
-                                    isLastLabel       = labelIndex + 1 == labelCount,
+                                    isLastLabel       = labelIndex + 1 === labelCount,
                                     isSearch          = module.is.searchSelection(),
                                     isFocusedOnSearch = module.is.focusedOnSearch(),
                                     isFocused         = module.is.focused(),
@@ -1424,82 +1424,94 @@
                                     return;
                                 }
 
-                                if (pressedKey == keys.leftArrow) {
-                                    // activate previous label
-                                    if ((isFocused || caretAtStart) && !hasActiveLabel) {
-                                        module.verbose('Selecting previous label');
-                                        $label.last().addClass(className.active);
-                                    } else if (hasActiveLabel) {
-                                        if (!event.shiftKey) {
+                                switch (pressedKey) {
+                                    case keys.leftArrow: {
+                                        // activate previous label
+                                        if ((isFocused || caretAtStart) && !hasActiveLabel) {
                                             module.verbose('Selecting previous label');
-                                            $label.removeClass(className.active);
-                                        } else {
-                                            module.verbose('Adding previous label to selection');
-                                        }
-                                        if (isFirstLabel && !hasMultipleActive) {
-                                            $activeLabel.addClass(className.active);
-                                        } else {
-                                            $activeLabel.prev(selector.siblingLabel)
-                                                .addClass(className.active)
-                                                .end()
-                                            ;
-                                        }
-                                        event.preventDefault();
-                                    }
-                                } else if (pressedKey == keys.rightArrow) {
-                                    // activate first label
-                                    if (isFocused && !hasActiveLabel) {
-                                        $label.first().addClass(className.active);
-                                    }
-                                    // activate next label
-                                    if (hasActiveLabel) {
-                                        if (!event.shiftKey) {
-                                            module.verbose('Selecting next label');
-                                            $label.removeClass(className.active);
-                                        } else {
-                                            module.verbose('Adding next label to selection');
-                                        }
-                                        if (isLastLabel) {
-                                            if (isSearch) {
-                                                if (!isFocusedOnSearch) {
-                                                    module.focusSearch();
-                                                } else {
-                                                    $label.removeClass(className.active);
-                                                }
-                                            } else if (hasMultipleActive) {
-                                                $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            $label.last().addClass(className.active);
+                                        } else if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
+                                                module.verbose('Selecting previous label');
+                                                $label.removeClass(className.active);
                                             } else {
+                                                module.verbose('Adding previous label to selection');
+                                            }
+                                            if (isFirstLabel && !hasMultipleActive) {
                                                 $activeLabel.addClass(className.active);
+                                            } else {
+                                                $activeLabel.prev(selector.siblingLabel)
+                                                    .addClass(className.active)
+                                                    .end()
+                                                ;
                                             }
-                                        } else {
-                                            $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            event.preventDefault();
                                         }
-                                        event.preventDefault();
+
+                                        break;
                                     }
-                                } else if (pressedKey == keys.deleteKey || pressedKey == keys.backspace) {
-                                    if (hasActiveLabel) {
-                                        module.verbose('Removing active labels');
-                                        if (isLastLabel) {
-                                            if (isSearch && !isFocusedOnSearch) {
-                                                module.focusSearch();
+                                    case keys.rightArrow: {
+                                        // activate first label
+                                        if (isFocused && !hasActiveLabel) {
+                                            $label.first().addClass(className.active);
+                                        }
+                                        // activate next label
+                                        if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
+                                                module.verbose('Selecting next label');
+                                                $label.removeClass(className.active);
+                                            } else {
+                                                module.verbose('Adding next label to selection');
+                                            }
+                                            if (isLastLabel) {
+                                                if (isSearch) {
+                                                    if (!isFocusedOnSearch) {
+                                                        module.focusSearch();
+                                                    } else {
+                                                        $label.removeClass(className.active);
+                                                    }
+                                                } else if (hasMultipleActive) {
+                                                    $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                                } else {
+                                                    $activeLabel.addClass(className.active);
+                                                }
+                                            } else {
+                                                $activeLabel.next(selector.siblingLabel).addClass(className.active);
+                                            }
+                                            event.preventDefault();
+                                        }
+
+                                        break;
+                                    }
+                                    case keys.deleteKey:
+                                    case keys.backspace: {
+                                        if (hasActiveLabel) {
+                                            module.verbose('Removing active labels');
+                                            if (isLastLabel) {
+                                                if (isSearch && !isFocusedOnSearch) {
+                                                    module.focusSearch();
+                                                }
+                                            }
+                                            $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
+                                            module.remove.activeLabels($activeLabel);
+                                            if (!module.is.visible()) {
+                                                module.show();
+                                            }
+                                            event.preventDefault();
+                                        } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey === keys.backspace) {
+                                            module.verbose('Removing last label on input backspace');
+                                            $activeLabel = $label.last().addClass(className.active);
+                                            module.remove.activeLabels($activeLabel);
+                                            if (!module.is.visible()) {
+                                                module.show();
                                             }
                                         }
-                                        $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
-                                        module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()) {
-                                            module.show();
-                                        }
-                                        event.preventDefault();
-                                    } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
-                                        module.verbose('Removing last label on input backspace');
-                                        $activeLabel = $label.last().addClass(className.active);
-                                        module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()) {
-                                            module.show();
-                                        }
+
+                                        break;
                                     }
-                                } else {
-                                    $activeLabel.removeClass(className.active);
+                                    default: {
+                                        $activeLabel.removeClass(className.active);
+                                    }
                                 }
                             }
                         },
@@ -1527,7 +1539,7 @@
                                 hasSelectedItem       = $selectedItem.length > 0,
                                 selectedIsSelectable  = $selectedItem.not(selector.unselectable).length > 0,
                                 delimiterPressed      = event.key === settings.delimiter && module.is.multiple(),
-                                isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
+                                isAdditionWithoutMenu = settings.allowAdditions && (pressedKey === keys.enter || delimiterPressed),
                                 $nextItem,
                                 isSubMenuItem
                             ;
@@ -1548,8 +1560,8 @@
                             // visible menu keyboard shortcuts
                             if (module.is.visible()) {
                                 // enter (select or open sub-menu)
-                                if (pressedKey == keys.enter || delimiterPressed) {
-                                    if (pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
+                                if (pressedKey === keys.enter || delimiterPressed) {
+                                    if (pressedKey === keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
                                         module.verbose('Pressed enter on unselectable category, opening sub menu');
                                         pressedKey = keys.rightArrow;
                                     } else if (selectedIsSelectable) {
@@ -1567,7 +1579,7 @@
 
                                 // sub-menu actions
                                 if (hasSelectedItem) {
-                                    if (pressedKey == keys.leftArrow) {
+                                    if (pressedKey === keys.leftArrow) {
                                         isSubMenuItem = $parentMenu[0] !== $menu[0];
 
                                         if (isSubMenuItem) {
@@ -1585,7 +1597,7 @@
                                     }
 
                                     // right arrow (show sub-menu)
-                                    if (pressedKey == keys.rightArrow) {
+                                    if (pressedKey === keys.rightArrow) {
                                         if (hasSubMenu) {
                                             module.verbose('Right key pressed, opening sub-menu');
                                             module.animate.show(false, $subMenu);
@@ -1602,7 +1614,7 @@
                                 }
 
                                 // up arrow (traverse menu up)
-                                if (pressedKey == keys.upArrow) {
+                                if (pressedKey === keys.upArrow) {
                                     $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
@@ -1629,7 +1641,7 @@
                                 }
 
                                 // down arrow (traverse menu down)
-                                if (pressedKey == keys.downArrow) {
+                                if (pressedKey === keys.downArrow) {
                                     $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
@@ -1656,28 +1668,28 @@
                                 }
 
                                 // page down (show next page)
-                                if (pressedKey == keys.pageUp) {
+                                if (pressedKey === keys.pageUp) {
                                     module.scrollPage('up');
                                     event.preventDefault();
                                 }
-                                if (pressedKey == keys.pageDown) {
+                                if (pressedKey === keys.pageDown) {
                                     module.scrollPage('down');
                                     event.preventDefault();
                                 }
 
                                 // escape (close menu)
-                                if (pressedKey == keys.escape) {
+                                if (pressedKey === keys.escape) {
                                     module.verbose('Escape key pressed, closing dropdown');
                                     module.hide();
                                     event.stopPropagation();
                                 }
                             } else {
                                 // delimiter key
-                                if (pressedKey == keys.enter || delimiterPressed) {
+                                if (pressedKey === keys.enter || delimiterPressed) {
                                     event.preventDefault();
                                 }
                                 // down arrow (open menu)
-                                if (pressedKey == keys.downArrow && !module.is.visible()) {
+                                if (pressedKey === keys.downArrow && !module.is.visible()) {
                                     module.verbose('Down key pressed, showing dropdown');
                                     module.show();
                                     event.preventDefault();
@@ -1818,7 +1830,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
+                        if (settings.placeholder !== 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 
@@ -1920,8 +1932,8 @@
                             return '';
                         }
 
-                        return (!module.has.selectInput() && module.is.multiple())
-                            ? ((typeof value === 'string') // delimited string
+                        return !module.has.selectInput() && module.is.multiple()
+                            ? (typeof value === 'string' // delimited string
                                 ? (raw
                                     ? value
                                     : module.escape.htmlEntities(value)).split(settings.delimiter)
@@ -1965,9 +1977,9 @@
                                 $choice.find(selector.menuIcon).remove();
                             }
 
-                            return ($choice.data(metadata.text) !== undefined)
+                            return $choice.data(metadata.text) !== undefined
                                 ? $choice.data(metadata.text)
-                                : ((preserveHTML)
+                                : (preserveHTML
                                     ? $choice.html() && $choice.html().trim()
                                     : $choice.text() && $choice.text().trim());
                         }
@@ -1978,9 +1990,9 @@
                             return false;
                         }
 
-                        return ($choice.data(metadata.value) !== undefined)
+                        return $choice.data(metadata.value) !== undefined
                             ? String($choice.data(metadata.value))
-                            : ((typeof choiceText === 'string')
+                            : (typeof choiceText === 'string'
                                 ? String(
                                     settings.ignoreSearchCase
                                         ? choiceText.toLowerCase()
@@ -1993,9 +2005,9 @@
                             input = $search[0]
                         ;
                         if (input) {
-                            return (input.oninput !== undefined)
+                            return input.oninput !== undefined
                                 ? 'input'
-                                : ((input.onpropertychange !== undefined)
+                                : (input.onpropertychange !== undefined
                                     ? 'propertychange'
                                     : 'keyup');
                         }
@@ -2102,14 +2114,14 @@
                         ;
                         value = value !== undefined
                             ? value
-                            : ((module.get.values() !== undefined)
+                            : (module.get.values() !== undefined
                                 ? module.get.values()
                                 : module.get.text());
-                        isMultiple = (module.is.multiple() && Array.isArray(value));
-                        shouldSearch = (isMultiple)
+                        isMultiple = module.is.multiple() && Array.isArray(value);
+                        shouldSearch = isMultiple
                             ? value.length > 0
-                            : (value !== undefined && value !== null);
-                        strict = (value === '' || value === false || value === true)
+                            : value !== undefined && value !== null;
+                        strict = value === '' || value === false || value === true
                             ? true
                             : strict || false;
                         if (shouldSearch) {
@@ -2368,7 +2380,7 @@
                         currentScroll = $menu.scrollTop(),
                         itemHeight    = $item.eq(0).outerHeight(),
                         itemsPerPage  = Math.floor(menuHeight / itemHeight),
-                        newScroll     = direction == 'up'
+                        newScroll     = direction === 'up'
                             ? currentScroll - (itemHeight * itemsPerPage)
                             : currentScroll + (itemHeight * itemsPerPage),
                         $selectableItem = $item.not(selector.unselectable),
@@ -2376,15 +2388,15 @@
                         $nextSelectedItem,
                         elementIndex
                     ;
-                    elementIndex = direction == 'up'
+                    elementIndex = direction === 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
-                    isWithinRange = direction == 'up'
+                    isWithinRange = direction === 'up'
                         ? elementIndex >= 0
                         : elementIndex < $selectableItem.length;
                     $nextSelectedItem = isWithinRange
                         ? $selectableItem.eq(elementIndex)
-                        : ((direction == 'up')
+                        : (direction === 'up'
                             ? $selectableItem.first()
                             : $selectableItem.last());
                     if ($nextSelectedItem.length > 0) {
@@ -3319,7 +3331,7 @@
                             values = [values];
                         }
                         $.each(values, function (index, existingValue) {
-                            if (String(value).toLowerCase() == String(existingValue).toLowerCase()) {
+                            if (String(value).toLowerCase() === String(existingValue).toLowerCase()) {
                                 hasValue = true;
 
                                 return false;
@@ -3458,7 +3470,7 @@
                                 : false
                         ;
 
-                        return overflowY == 'auto' || overflowY == 'scroll';
+                        return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
@@ -3467,7 +3479,7 @@
                                 : false
                         ;
 
-                        return overflowX == 'auto' || overflowX == 'scroll';
+                        return overflowX === 'auto' || overflowX === 'scroll';
                     },
                 },
 
@@ -3860,17 +3872,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -4225,7 +4237,7 @@
                         maybeDescriptionVertical = option[fields.descriptionVertical]
                             ? className.descriptionVertical + ' '
                             : '',
-                        hasDescription = escape(option[fields.description] || '', preserveHTML) != ''
+                        hasDescription = escape(option[fields.description] || '', preserveHTML) !== ''
                     ;
                     html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {

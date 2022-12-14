@@ -83,10 +83,10 @@
                     module.setup.cache();
 
                     if (module.should.trackChanges()) {
-                        if (settings.type == 'image') {
+                        if (settings.type === 'image') {
                             module.setup.image();
                         }
-                        if (settings.type == 'fixed') {
+                        if (settings.type === 'fixed') {
                             module.setup.fixed();
                         }
 
@@ -131,7 +131,7 @@
                         .off('scroll' + eventNamespace, module.event.scroll)
                         .off('scrollchange' + eventNamespace, module.event.scrollchange)
                     ;
-                    if (settings.type == 'fixed') {
+                    if (settings.type === 'fixed') {
                         module.resetFixed();
                         module.remove.placeholder();
                     }
@@ -189,7 +189,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -299,7 +299,7 @@
                                 module.precache(src, function () {
                                     module.set.image(src, function () {
                                         loadedCount++;
-                                        if (loadedCount == moduleCount) {
+                                        if (loadedCount === moduleCount) {
                                             settings.onAllLoaded.call(this);
                                         }
                                         settings.onLoad.call(this);
@@ -432,7 +432,7 @@
                                 : false
                         ;
 
-                        return overflowY == 'auto' || overflowY == 'scroll';
+                        return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
@@ -441,13 +441,13 @@
                                 : false
                         ;
 
-                        return overflowX == 'auto' || overflowX == 'scroll';
+                        return overflowX === 'auto' || overflowX === 'scroll';
                     },
                 },
 
                 refresh: function () {
                     module.debug('Refreshing constants (width/height)');
-                    if (settings.type == 'fixed') {
+                    if (settings.type === 'fixed') {
                         module.resetFixed();
                     }
                     module.reset();
@@ -1127,17 +1127,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

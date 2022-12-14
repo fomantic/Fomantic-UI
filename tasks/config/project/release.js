@@ -2,8 +2,9 @@
          Release Config
 *******************************/
 
+const requireDotFile = require('require-dot-file');
+
 let
-    requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
     version
@@ -26,7 +27,7 @@ try {
 }
 
 // looks for version in config or package.json (whichever is available)
-version = npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui'
+version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
     ? npmPackage.version
     : config.version;
 

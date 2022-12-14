@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'airbnb-base',
         'plugin:unicorn/recommended',
+        'plugin:@internal/eslint-plugin/recommended',
     ],
     parserOptions: {
         ecmaVersion: '2020',
@@ -22,10 +23,10 @@ module.exports = {
         'class-methods-use-this': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
-            objects: 'always-multiline',
+            exports: 'always-multiline',
             functions: 'never',
             imports: 'always-multiline',
-            exports: 'always-multiline',
+            objects: 'always-multiline',
         }],
         'consistent-return': 'off',
         curly: ['error', 'all'],
@@ -47,10 +48,6 @@ module.exports = {
                 VariableDeclarator: true,
             },
         }],
-        'no-extra-parens': 'off', /* TODO https://github.com/eslint/eslint/issues/16626#issuecomment-1341016901 ['error', 'all', {
-            nestedBinaryExpressions: false,
-            enforceForNewInMemberExpressions: false,
-        }], */
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -60,8 +57,8 @@ module.exports = {
         'object-shorthand': ['error', 'never'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
-            prev: '*',
             next: ['continue', 'break', 'export', 'return', 'throw'],
+            prev: '*',
         }],
         'prefer-destructuring': 'off',
         'prefer-template': 'off',
@@ -88,7 +85,6 @@ module.exports = {
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
-        'unicorn/switch-case-braces': ['error', 'avoid'],
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
@@ -99,6 +95,7 @@ module.exports = {
         'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
+        'prefer-rest-params': 'off',
         'prefer-spread': 'off',
         'semi-style': 'off',
         'unicorn/no-array-for-each': 'off',
@@ -115,17 +112,11 @@ module.exports = {
         'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
-        eqeqeq: 'off', // about 300 errors to be fixed manually
+        eqeqeq: 'off', // about 20 errors to be fixed manually
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
+        'no-shadow-restricted-names': 'off', // TODO https://github.com/fomantic/Fomantic-UI/pull/2604
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
-        'prefer-rest-params': 'off', // about 180 errors to be fixed manually
-
-        // TODO
-        'no-return-assign': 'off',
-        'no-shadow-restricted-names': 'off',
-        'no-use-before-define': 'off',
-        'unicorn/prefer-negative-index': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

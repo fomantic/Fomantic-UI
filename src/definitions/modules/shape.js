@@ -185,7 +185,7 @@
 
                 is: {
                     complete: function () {
-                        return $side.filter('.' + className.active)[0] == $nextSide[0];
+                        return $side.filter('.' + className.active)[0] === $nextSide[0];
                     },
                     animating: function () {
                         return $module.hasClass(className.animating);
@@ -245,19 +245,19 @@
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
                             $activeSide = $side.filter('.' + settings.className.active),
-                            $nextSide   = (nextIndex)
+                            $nextSide   = nextIndex
                                 ? $side.eq(nextIndex)
-                                : (($activeSide.next(selector.side).length > 0)
+                                : ($activeSide.next(selector.side).length > 0
                                     ? $activeSide.next(selector.side)
                                     : $side.first()),
                             newWidth    = settings.width === 'next'
                                 ? $nextSide.outerWidth(true)
-                                : ((settings.width === 'initial')
+                                : (settings.width === 'initial'
                                     ? $module.width()
                                     : settings.width),
                             newHeight    = settings.height === 'next'
                                 ? $nextSide.outerHeight(true)
-                                : ((settings.height === 'initial')
+                                : (settings.height === 'initial'
                                     ? $module.height()
                                     : settings.height)
                         ;
@@ -704,17 +704,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

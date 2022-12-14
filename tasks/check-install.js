@@ -2,7 +2,7 @@
  *        Check Install
  *******************************/
 
-let
+const
     // node dependencies
     gulp    = require('gulp'),
     console = require('better-console'),

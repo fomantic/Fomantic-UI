@@ -13,7 +13,7 @@
    * Standard installer runs asking for paths to site files etc
 */
 
-let
+const
     gulp           = require('gulp'),
 
     // node dependencies
@@ -209,7 +209,7 @@ module.exports = function (callback) {
         --------------- */
 
         // if config exists and user specifies not to proceed
-        if (answers.overwrite !== undefined && answers.overwrite == 'no') {
+        if (answers.overwrite !== undefined && answers.overwrite === 'no') {
             callback();
 
             return;
@@ -270,7 +270,7 @@ module.exports = function (callback) {
             for (let destination in installPaths) {
                 if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
-                    installPaths[destination] = destination == 'config' || destination == 'configFolder'
+                    installPaths[destination] = destination === 'config' || destination === 'configFolder'
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
                         : path.normalize(path.join(installFolder, installPaths[destination]));
                 }

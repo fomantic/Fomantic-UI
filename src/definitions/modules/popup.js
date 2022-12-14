@@ -28,7 +28,7 @@
 
             moduleSelector = $allModules.selector || '',
 
-            clickEvent      = ('ontouchstart' in document.documentElement)
+            clickEvent      = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click',
 
@@ -212,7 +212,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -497,7 +497,7 @@
                         var
                             $popupOffsetParent = module.get.offsetParent($popup),
                             targetElement      = $target[0],
-                            isWindowEl         = $boundary[0] == window,
+                            isWindowEl         = $boundary[0] === window,
                             targetOffset       = $target.offset(),
                             parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                                 ? $target.offsetParent().offset()
@@ -587,10 +587,10 @@
                         return id;
                     },
                     startEvent: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             return 'mouseenter';
                         }
-                        if (settings.on == 'focus') {
+                        if (settings.on === 'focus') {
                             return 'focus';
                         }
 
@@ -600,10 +600,10 @@
                         return 'scroll';
                     },
                     endEvent: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             return 'mouseleave';
                         }
-                        if (settings.on == 'focus') {
+                        if (settings.on === 'focus') {
                             return 'blur';
                         }
 
@@ -698,7 +698,7 @@
                                 'bottom left': 'left center',
                                 'left center': 'top left',
                             },
-                            adjacentsAvailable = verticalPosition == 'top' || verticalPosition == 'bottom',
+                            adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom',
                             oppositeTried = false,
                             adjacentTried = false,
                             nextPosition  = false
@@ -764,11 +764,11 @@
 
                         if (module.should.centerArrow(calculations)) {
                             module.verbose('Adjusting offset to center arrow on small target element');
-                            if (position == 'top left' || position == 'bottom left') {
+                            if (position === 'top left' || position === 'bottom left') {
                                 offset += target.width / 2;
                                 offset -= settings.arrowPixelsFromEdge;
                             }
-                            if (position == 'top right' || position == 'bottom right') {
+                            if (position === 'top right' || position === 'bottom right') {
                                 offset -= target.width / 2;
                                 offset += settings.arrowPixelsFromEdge;
                             }
@@ -782,10 +782,10 @@
 
                         if (settings.inline) {
                             module.debug('Adding margin to calculation', target.margin);
-                            if (position == 'left center' || position == 'right center') {
+                            if (position === 'left center' || position === 'right center') {
                                 offset += target.margin.top;
                                 distanceAway += -target.margin.left;
-                            } else if (position == 'top left' || position == 'top center' || position == 'top right') {
+                            } else if (position === 'top left' || position === 'top center' || position === 'top right') {
                                 offset += target.margin.left;
                                 distanceAway -= target.margin.top;
                             } else {
@@ -798,7 +798,7 @@
 
                         if (module.is.rtl()) {
                             position = position.replace(/left|right/g, function (match) {
-                                return match == 'left'
+                                return match === 'left'
                                     ? 'right'
                                     : 'left';
                             });
@@ -806,12 +806,12 @@
                         }
 
                         // if last attempt use specified last resort position
-                        if (searchDepth == settings.maxSearchDepth && typeof settings.lastResort === 'string') {
+                        if (searchDepth === settings.maxSearchDepth && typeof settings.lastResort === 'string') {
                             position = settings.lastResort;
                         }
 
                         switch (position) {
-                            case 'top left':
+                            case 'top left': {
                                 positioning = {
                                     top: 'auto',
                                     bottom: parent.height - target.top + distanceAway,
@@ -820,7 +820,8 @@
                                 };
 
                                 break;
-                            case 'top center':
+                            }
+                            case 'top center': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -829,7 +830,8 @@
                                 };
 
                                 break;
-                            case 'top right':
+                            }
+                            case 'top right': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -838,7 +840,8 @@
                                 };
 
                                 break;
-                            case 'left center':
+                            }
+                            case 'left center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     right: parent.width - target.left + distanceAway,
@@ -847,7 +850,8 @@
                                 };
 
                                 break;
-                            case 'right center':
+                            }
+                            case 'right center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     left: target.left + target.width + distanceAway,
@@ -856,7 +860,8 @@
                                 };
 
                                 break;
-                            case 'bottom left':
+                            }
+                            case 'bottom left': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + offset,
@@ -865,7 +870,8 @@
                                 };
 
                                 break;
-                            case 'bottom center':
+                            }
+                            case 'bottom center': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -874,7 +880,8 @@
                                 };
 
                                 break;
-                            case 'bottom right':
+                            }
+                            case 'bottom right': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -883,6 +890,7 @@
                                 };
 
                                 break;
+                            }
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);
@@ -980,12 +988,12 @@
                 bind: {
                     events: function () {
                         module.debug('Binding popup events to module');
-                        if (settings.on == 'click') {
+                        if (settings.on === 'click') {
                             $module
                                 .on(clickEvent + eventNamespace, module.toggle)
                             ;
                         }
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             $module
                                 .on('touchstart' + eventNamespace, module.event.touchstart)
                             ;
@@ -1011,12 +1019,12 @@
                         }
                     },
                     close: function () {
-                        if (settings.hideOnScroll === true || (settings.hideOnScroll == 'auto' && settings.on != 'click')) {
+                        if (settings.hideOnScroll === true || (settings.hideOnScroll === 'auto' && settings.on !== 'click')) {
                             module.bind.closeOnScroll();
                         }
                         if (module.is.closable()) {
                             module.bind.clickaway();
-                        } else if (settings.on == 'hover' && openedWithTouch) {
+                        } else if (settings.on === 'hover' && openedWithTouch) {
                             module.bind.touchClose();
                         }
                     },
@@ -1079,8 +1087,8 @@
 
                 is: {
                     closable: function () {
-                        if (settings.closable == 'auto') {
-                            return settings.on != 'hover';
+                        if (settings.closable === 'auto') {
+                            return settings.on !== 'hover';
                         }
 
                         return settings.closable;
@@ -1248,17 +1256,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

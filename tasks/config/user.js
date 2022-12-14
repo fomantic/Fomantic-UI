@@ -2,7 +2,7 @@
              Set-up
 *******************************/
 
-let
+const
     // npm dependencies
     extend          = require('extend'),
     fs              = require('fs'),
@@ -11,8 +11,10 @@ let
 
     // semantic.json defaults
     defaults        = require('./defaults'),
-    config          = require('./project/config'),
+    config          = require('./project/config')
+;
 
+let
     // Final config object
     gulpConfig = {},
 
