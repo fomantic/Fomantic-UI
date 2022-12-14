@@ -1867,7 +1867,7 @@
             // is exactly length
             exactLength: function (value, requiredLength) {
                 return value !== undefined
-                    ? value.length == requiredLength
+                    ? value.length === Number(requiredLength)
                     : false;
             },
 
@@ -2072,7 +2072,7 @@
                     return value !== '' && value.search(',') === -1;
                 }
 
-                return value.split(',').length == exactCount;
+                return value.split(',').length === exactCount;
             },
 
             maxCount: function (value, maxCount) {
