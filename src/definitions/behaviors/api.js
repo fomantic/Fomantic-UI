@@ -12,7 +12,7 @@
     'use strict';
 
     function isWindow(obj) {
-        return obj != null && obj === obj.window;
+        return obj !== null && obj === obj.window;
     }
 
     function isFunction(obj) {
@@ -117,7 +117,7 @@
                             $module
                                 .on(triggerEvent + eventNamespace, module.event.trigger)
                             ;
-                        } else if (settings.on == 'now') {
+                        } else if (settings.on === 'now') {
                             module.debug('Querying API endpoint immediately');
                             module.query();
                         }
@@ -296,7 +296,7 @@
                     },
                     loading: function () {
                         return module.request
-                            ? module.request.state() == 'pending'
+                            ? module.request.state() === 'pending'
                             : false;
                     },
                     abortedRequest: function (xhr) {
@@ -334,13 +334,13 @@
                         return module.cancelled || false;
                     },
                     successful: function () {
-                        return module.request && module.request.state() == 'resolved';
+                        return module.request && module.request.state() === 'resolved';
                     },
                     failure: function () {
-                        return module.request && module.request.state() == 'rejected';
+                        return module.request && module.request.state() === 'rejected';
                     },
                     complete: function () {
-                        return module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected');
+                        return module.request && (module.request.state() === 'resolved' || module.request.state() === 'rejected');
                     },
                 },
 
@@ -478,7 +478,7 @@
                                 while (nameKeys.length > 0) {
                                     var k = nameKeys.pop();
 
-                                    if (k == '' && !Array.isArray(value)) { // foo[]
+                                    if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
                                     } else if (settings.regExp.fixed.test(k)) { // foo[n]
                                         value = build([], k, value);
@@ -525,7 +525,7 @@
                 event: {
                     trigger: function (event) {
                         module.query();
-                        if (event.type == 'submit' || event.type == 'click') {
+                        if (event.type === 'submit' || event.type === 'click') {
                             event.preventDefault();
                         }
                     },
@@ -614,15 +614,15 @@
                                 response     = module.get.responseFromXHR(xhr),
                                 errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                             ;
-                            if (status == 'aborted') {
+                            if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                 settings.onAbort.call(context, status, $module, xhr);
 
                                 return true;
                             }
-                            if (status == 'invalid') {
+                            if (status === 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                            } else if (status == 'error') {
+                            } else if (status === 'error') {
                                 if (xhr !== undefined) {
                                     module.debug('XHR produced a server error', status, httpMessage);
                                     // make sure we have an error to display to console
@@ -829,12 +829,12 @@
                         return data;
                     },
                     event: function () {
-                        if (isWindow(element) || settings.on == 'now') {
+                        if (isWindow(element) || settings.on === 'now') {
                             module.debug('API called without element, no events attached');
 
                             return false;
                         }
-                        if (settings.on == 'auto') {
+                        if (settings.on === 'auto') {
                             if ($module.is('input')) {
                                 return element.oninput !== undefined
                                     ? 'input'
@@ -1004,17 +1004,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
