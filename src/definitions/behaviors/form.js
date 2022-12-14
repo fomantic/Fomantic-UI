@@ -2050,6 +2050,8 @@
             },
 
             minCount: function (value, minCount) {
+                minCount = Number(minCount);
+
                 if (minCount === 0) {
                     return true;
                 }
@@ -2061,6 +2063,8 @@
             },
 
             exactCount: function (value, exactCount) {
+                exactCount = Number(exactCount);
+
                 if (exactCount === 0) {
                     return value === '';
                 }
@@ -2072,6 +2076,8 @@
             },
 
             maxCount: function (value, maxCount) {
+                maxCount = Number(maxCount);
+
                 if (maxCount === 0) {
                     return false;
                 }
