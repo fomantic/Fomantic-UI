@@ -352,7 +352,7 @@
                             initialValue = initialValue.toString();
                         }
                         var currentValue = $el.val();
-                        if (currentValue === undefined) {
+                        if (currentValue === undefined || currentValue === null) {
                             currentValue = '';
                         } else if (Array.isArray(currentValue)) {
                             // multiple select values are returned as arrays which are never equal, so do string conversion first
