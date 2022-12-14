@@ -2,13 +2,13 @@
      User Global Variables
 *******************************/
 
-@pageMinWidth : 1049px;
-@pageOverflowX : visible;
+@pageMinWidth: 1049px;
+@pageOverflowX: visible;
 
 @emSize: 13px;
-@fontSize : 13px;
-@fontName : 'Arial';
-@importGoogleFonts : false;
+@fontSize: 13px;
+@fontName: 'Arial';
+@importGoogleFonts: false;
 @importFonts: false;
 
 @h1: 2.25em;

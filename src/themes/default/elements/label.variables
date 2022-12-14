@@ -257,11 +257,11 @@
 -------------------- */
 
 /* Sizing */
-@mini : @9px;
-@tiny : @10px;
-@small : @11px;
-@medium : @12px;
-@large : @absoluteMedium;
-@big : @absoluteBig;
-@huge : @absoluteHuge;
-@massive : @absoluteMassive;
+@mini: @9px;
+@tiny: @10px;
+@small: @11px;
+@medium: @12px;
+@large: @absoluteMedium;
+@big: @absoluteBig;
+@huge: @absoluteHuge;
+@massive: @absoluteMassive;
