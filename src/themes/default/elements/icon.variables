@@ -80,9 +80,9 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 // Underscores in map keys will be replaced by dots to separate classnames at compile time
 
-/* Deprecated *In/Out Naming Conflict) */
+/* Deprecated (In/Out Naming Conflict) */
 @icon-deprecated-map: {
-    linkedin_in:\f0e1;
+    linkedin_in: '\f0e1';
     zoom_in: '\f00e';
     zoom_out: '\f010';
     sign_in: '\f2f6';
