@@ -4,7 +4,7 @@
 
 module.exports = function (gulp) {
     // rtl
-    let
+    const
         buildRTL = require('../rtl/build'),
         watchRTL = require('../rtl/watch')
     ;

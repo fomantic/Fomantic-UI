@@ -734,17 +734,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -932,13 +932,18 @@
                 return n1 * x * x;
             }
             if (x < 2 / d1) {
-                return n1 * (x -= 1.5 / d1) * x + 0.75;
+                x -= 1.5 / d1;
+
+                return n1 * x * x + 0.75;
             }
             if (x < 2.5 / d1) {
-                return n1 * (x -= 2.25 / d1) * x + 0.9375;
-            }
+                x -= 2.25 / d1;
 
-            return n1 * (x -= 2.625 / d1) * x + 0.984375;
+                return n1 * x * x + 0.9375;
+            }
+            x -= 2.625 / d1;
+
+            return n1 * x * x + 0.984375;
         },
         easeOutCubic: function (t) {
             return --t * t * t + 1;
