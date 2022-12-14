@@ -64,7 +64,7 @@
     & when (@importFonts) and not (@fontName = '') {
         each(@fonts, {
             @font-face {
-                each(@value,{
+                each(@value, {
                     @{key}: @value;
                 });
             }

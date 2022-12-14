@@ -57,9 +57,9 @@
 @simpleInvertedEndBackgroundColor: @invertedBackgroundColor;
 
 /* Intensity */
-@veryLightBackgroundColor: rgba(0,0,0,0.25);
-@lightBackgroundColor: rgba(0,0,0,0.45);
-@mediumBackgroundColor: rgba(0,0,0,0.65);
-@veryLightInvertedBackgroundColor: rgba(255,255,255,0.25);
-@lightInvertedBackgroundColor: rgba(255,255,255,0.45);
-@mediumInvertedBackgroundColor: rgba(255,255,255,0.65);
+@veryLightBackgroundColor: rgba(0, 0, 0, 0.25);
+@lightBackgroundColor: rgba(0, 0, 0, 0.45);
+@mediumBackgroundColor: rgba(0, 0, 0, 0.65);
+@veryLightInvertedBackgroundColor: rgba(255, 255, 255, 0.25);
+@lightInvertedBackgroundColor: rgba(255, 255, 255, 0.45);
+@mediumInvertedBackgroundColor: rgba(255, 255, 255, 0.65);

@@ -48,11 +48,11 @@ each(@size-map, {
 
 // for simplicity, class and alias names have to be unique and different to countrycode otherwise false
 each(@flags, {
-    @unicode: replace(@key,'@','');
-    @cc: replace(@flags[@@unicode][countrycode],'_','.','g');
-    @cls: replace(@flags[@@unicode][class],'_','.','g');
-    @alias: replace(@flags[@@unicode][aliasClass],'_','.','g');
-    @alias2: replace(@flags[@@unicode][aliasClass2],'_','.','g');
+    @unicode: replace(@key, '@', '');
+    @cc: replace(@flags[@@unicode][countrycode], '_', '.', 'g');
+    @cls: replace(@flags[@@unicode][class], '_', '.', 'g');
+    @alias: replace(@flags[@@unicode][aliasClass], '_', '.', 'g');
+    @alias2: replace(@flags[@@unicode][aliasClass2], '_', '.', 'g');
     & when (@cls = false){
         i.flag.@{cc}::before {
             background-image: url('@{flagPath}@{unicode}.@{flagFileType}');
