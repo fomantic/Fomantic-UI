@@ -12,6 +12,7 @@ module.exports = {
         'at-rule-name-case': null,
         'at-rule-no-unknown': null,
         'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
+        'color-function-notation': 'legacy',
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         'function-no-unknown': null,
         indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed
@@ -28,11 +29,9 @@ module.exports = {
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
-        'color-function-notation': 'legacy', // https://caniuse.com/mdn-css_types_color_rgba_space_separated_parameters
 
         // TODO
         'selector-not-notation': null, // 169 errors
-        'no-invalid-position-at-import-rule': null, // 104 errors
         'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
