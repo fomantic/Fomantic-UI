@@ -12,7 +12,7 @@
     'use strict';
 
     function isWindow(obj) {
-        return obj != null && obj === obj.window;
+        return obj !== null && obj === obj.window;
     }
 
     function isFunction(obj) {
@@ -94,12 +94,12 @@
                     }
 
                     var activeTab = module.determine.activeTab();
-                    if (settings.autoTabActivation && instance === undefined && activeTab == null) {
+                    if (settings.autoTabActivation && instance === undefined && activeTab === null) {
                         activeTab = settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation;
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
-                    if (activeTab != null && settings.history) {
+                    if (activeTab !== null && settings.history) {
                         var autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);
@@ -193,7 +193,7 @@
 
                         return false;
                     }
-                    if (settings.historyType == 'state') {
+                    if (settings.historyType === 'state') {
                         module.debug('Using HTML5 to manage state');
                         if (settings.path !== false) {
                             $.address
@@ -338,7 +338,7 @@
                             currentPath        = module.utilities.arrayToPath(currentPathArray),
 
                             isTab              = module.is.tab(currentPath),
-                            isLastIndex        = index + 1 == pathArray.length,
+                            isLastIndex        = index + 1 === pathArray.length,
 
                             $tab               = module.get.tabElement(currentPath),
                             $anchor,
@@ -392,7 +392,7 @@
                                 settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                             }
                             settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
-                        } else if (tabPath.search('/') == -1 && tabPath !== '') {
+                        } else if (tabPath.search('/') === -1 && tabPath !== '') {
                             // look for in page anchor
                             tabPath = module.escape.string(tabPath);
                             $anchor = $('#' + tabPath + ', a[name="' + tabPath + '"]');
@@ -450,7 +450,7 @@
                         evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
-                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
+                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
                                 .append($(html).clone(true))
@@ -481,7 +481,7 @@
                                     'X-Remote': true,
                                 },
                                 onSuccess: function (response) {
-                                    if (settings.cacheType == 'response') {
+                                    if (settings.cacheType === 'response') {
                                         module.cache.add(fullTabPath, response);
                                     }
                                     module.update.content(tabPath, response);
@@ -496,7 +496,7 @@
 
                                     if (settings.loadOnce) {
                                         module.cache.add(fullTabPath, true);
-                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
                                             var
                                                 $clone = $tab.children().clone(true)
@@ -525,7 +525,7 @@
                             module.activate.tab(tabPath);
                             module.debug('Adding cached content', fullTabPath);
                             if (!settings.loadOnce) {
-                                if (settings.evaluateScripts == 'once') {
+                                if (settings.evaluateScripts === 'once') {
                                     module.update.content(tabPath, cachedContent, false);
                                 } else {
                                     module.update.content(tabPath, cachedContent);
@@ -554,7 +554,7 @@
                     tab: function (tabPath) {
                         var
                             $tab          = module.get.tabElement(tabPath),
-                            $deactiveTabs = settings.deactivate == 'siblings'
+                            $deactiveTabs = settings.deactivate === 'siblings'
                                 ? $tab.siblings($tabs)
                                 : $tabs.not($tab),
                             isActive      = $tab.hasClass(className.active)
@@ -575,7 +575,7 @@
                     navigation: function (tabPath) {
                         var
                             $navigation         = module.get.navElement(tabPath),
-                            $deactiveNavigation = settings.deactivate == 'siblings'
+                            $deactiveNavigation = settings.deactivate === 'siblings'
                                 ? $navigation.siblings($allModules)
                                 : $allModules.not($navigation),
                             isActive    = $navigation.hasClass(className.active)
@@ -701,7 +701,7 @@
                 utilities: {
                     filterArray: function (keepArray, removeArray) {
                         return $.grep(keepArray, function (keepValue) {
-                            return $.inArray(keepValue, removeArray) == -1;
+                            return $.inArray(keepValue, removeArray) === -1;
                         });
                     },
                     last: function (array) {
@@ -837,17 +837,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

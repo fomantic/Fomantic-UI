@@ -72,7 +72,7 @@ module.exports = function (callback) {
                 ? require(outputDirectory + 'package.json') // eslint-disable-line import/no-dynamic-require
                 : false,
 
-            isNewVersion  = version && distributionPackage.version != version,
+            isNewVersion  = version && distributionPackage.version !== version,
 
             commitMessage = isNewVersion
                 ? 'Updated distribution to version ' + version
