@@ -32,7 +32,6 @@ module.exports = {
         'selector-not-notation': null, // 169 errors
         'no-invalid-position-at-import-rule': null, // 104 errors
         'function-no-unknown': null, // 67 errors
-        'length-zero-no-unit': null, // 64 errors
         'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
