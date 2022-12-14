@@ -43,7 +43,6 @@ module.exports = {
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-keyword-case': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
-        'no-empty-source': null, // 8 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
         'selector-attribute-quotes': null, // 7 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
