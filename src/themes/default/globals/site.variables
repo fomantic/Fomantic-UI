@@ -30,81 +30,81 @@
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @normal;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeLatin;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeLatin;
     };
     @boldLatin: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @bold;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeLatin;
+        font-style: normal;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeLatin;
     };
     @italicLatin: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format('woff'));
-        font-style     : italic;
-        font-weight    : @normal;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeLatin;
+        font-style: italic;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeLatin;
     };
     @boldItalicLatin: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format('woff'));
-        font-style     : italic;
-        font-weight    : @bold;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeLatin;
+        font-style: italic;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeLatin;
     };
     @regularSupplement: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @normal;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeSupplement;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeSupplement;
     };
     @boldSupplement: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @bold;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeSupplement;
+        font-style: normal;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeSupplement;
     };
     @italicSupplement: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format('woff'));
-        font-style     : italic;
-        font-weight    : @normal;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeSupplement;
+        font-style: italic;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeSupplement;
     };
     @boldItalicSupplement: {
         font-family: @fontName;
         src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format('woff'));
-        font-style     : italic;
-        font-weight    : @bold;
-        font-display   : @fontDisplay;
-        text-rendering : @textRendering;
-        unicode-range  : @unicodeRangeSupplement;
+        font-style: italic;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @textRendering;
+        unicode-range: @unicodeRangeSupplement;
     };
 };
 

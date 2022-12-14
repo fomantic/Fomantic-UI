@@ -5,7 +5,7 @@
 
 /*******************************
 
-Fomantic-UI integration of FontAwesome :
+Fomantic-UI integration of FontAwesome:
 
 // class names are separated
 i.icon.angle-left  =>  i.icon.angle.left
@@ -47,34 +47,34 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
         font-family: @fontName;
         src: url("@{fontPath}/@{fontName}.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{fontName}.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @normal;
-        font-display   : block;
-        font-variant   : normal;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: block;
+        font-variant: normal;
         text-decoration: inherit;
-        text-transform : none;
+        text-transform: none;
     };
     @outline: {
         font-family: @outlineFontName;
         src: url("@{fontPath}/@{outlineFontName}.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{outlineFontName}.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @normal;
-        font-display   : block;
-        font-variant   : normal;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: block;
+        font-variant: normal;
         text-decoration: inherit;
-        text-transform : none;
+        text-transform: none;
     };
     @brand: {
         font-family: @brandFontName;
         src: url("@{fontPath}/@{brandFontName}.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{brandFontName}.woff") format('woff'));
-        font-style     : normal;
-        font-weight    : @normal;
-        font-display   : block;
-        font-variant   : normal;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: block;
+        font-variant: normal;
         text-decoration: inherit;
-        text-transform : none;
+        text-transform: none;
     };
 };
 
