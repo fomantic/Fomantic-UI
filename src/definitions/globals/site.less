@@ -127,25 +127,25 @@ a:hover {
 
 & when (@useCustomScrollbars) {
     /* Force Simple Scrollbars */
-    body::-webkit-scrollbar {
+    body ::-webkit-scrollbar {
         -webkit-appearance: none;
         width: @customScrollbarWidth;
         height: @customScrollbarHeight;
     }
-    body::-webkit-scrollbar-track {
+    body ::-webkit-scrollbar-track {
         background: @trackBackground;
         border-radius: @trackBorderRadius;
     }
-    body::-webkit-scrollbar-thumb {
+    body ::-webkit-scrollbar-thumb {
         cursor: pointer;
         border-radius: @thumbBorderRadius;
         background: @thumbBackground;
         transition: @thumbTransition;
     }
-    body::-webkit-scrollbar-thumb:window-inactive {
+    body ::-webkit-scrollbar-thumb:window-inactive {
         background: @thumbInactiveBackground;
     }
-    body::-webkit-scrollbar-thumb:hover {
+    body ::-webkit-scrollbar-thumb:hover {
         background: @thumbHoverBackground;
     }
     body .ui {
