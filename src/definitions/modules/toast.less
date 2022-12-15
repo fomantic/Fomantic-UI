@@ -274,7 +274,7 @@
         & .progressing {
             animation-iteration-count: 1;
             animation-timing-function: linear;
-            &  when (@variationToastProgress) {
+            & when (@variationToastProgress) {
                 &.up {
                     animation-name: progressUp;
                 }
@@ -685,7 +685,7 @@
 /* ---------------
    Progress Bar
  ---------------- */
-&  when (@variationToastProgress) {
+& when (@variationToastProgress) {
     @keyframes progressDown {
         0% {
             width: 100%;

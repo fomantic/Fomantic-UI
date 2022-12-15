@@ -29,7 +29,7 @@
 @secondaryBackground: #F9F9F9;
 @secondaryColor: @textColor;
 
-@tertiaryBackground:  #F0F0F0;
+@tertiaryBackground: #F0F0F0;
 @tertiaryColor: @textColor;
 
 @secondaryInvertedBackground: #555555;

@@ -488,7 +488,7 @@
 & when not (@variationItemSizes = false) {
     each(@variationItemSizes, {
         @s: @{value}ItemSize;
-        .ui.@{value}.items > .item  {
+        .ui.@{value}.items > .item {
             font-size: @@s;
         }
     });

@@ -128,7 +128,7 @@
 /* Image Label */
 @imageLabelTextDistance: 0.8em;
 @imageLabelVerticalPadding: 0.2833em; /* Calculates as: @verticalLabel (from label.less) - @labelVerticalPadding (from here) */
-@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
@@ -400,7 +400,7 @@
 @invertedActiveColor: @invertedSelectedTextColor;
 @invertedArrowActiveColor: #3D3E3F;
 
-/* Inverted Active Hover  */
+/* Inverted Active Hover */
 @invertedActiveHoverBackground: @invertedActiveBackground;
 @invertedActiveHoverColor: @white;
 @invertedArrowActiveHoverColor: @invertedArrowActiveColor;

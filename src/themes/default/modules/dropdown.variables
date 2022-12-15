@@ -135,7 +135,7 @@
 @selectionMinWidth: 14em;
 @selectionVerticalPadding: @inputVerticalPadding;
 @selectionHorizontalPadding: @inputHorizontalPadding;
-@selectionBorderEmWidth:  @relative1px;
+@selectionBorderEmWidth: @relative1px;
 @selectionMinHeight: @inputLineHeight + (@selectionVerticalPadding * 2) - @selectionBorderEmWidth;
 @selectionBackground: @inputBackground;
 @selectionDisplay: inline-block;
@@ -279,7 +279,7 @@
 @labelHorizontalPadding: @relativeMini;
 @labelPadding: @labelVerticalPadding @labelHorizontalPadding;
 
-@imageLabelHeight: (1em + @labelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @labelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@labelVerticalPadding @labelHorizontalPadding -@labelVerticalPadding -@labelHorizontalPadding;
 
 /* -------------------

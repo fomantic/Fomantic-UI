@@ -128,7 +128,7 @@
 @secondaryBackground: @darkWhite;
 @secondaryColor: @mutedTextColor;
 
-@tertiaryBackground:  @midWhite;
+@tertiaryBackground: @midWhite;
 @tertiaryColor: @mutedTextColor;
 
 @secondaryInvertedLightness: 0.2;

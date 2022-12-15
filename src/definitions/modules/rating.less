@@ -173,7 +173,7 @@
 & when not (@variationRatingSizes = false) {
     each(@variationRatingSizes, {
         @s: @@value;
-        .ui.@{value}.rating  {
+        .ui.@{value}.rating {
             font-size: @s;
         }
     });

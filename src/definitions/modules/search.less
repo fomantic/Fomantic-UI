@@ -538,7 +538,7 @@
 & when not (@variationFeedSizes = false) {
     each(@variationFeedSizes, {
         @s: @{value}SearchSize;
-        .ui.@{value}.search  {
+        .ui.@{value}.search {
             font-size: @@s;
         }
     });

@@ -26,8 +26,8 @@
     content: "\e801";
 }
 
-/*  UTF Reference
+/* UTF Reference
 .check::before { content: '\e800'; }
-.dash::before  { content: '\e801'; }
+.dash::before { content: '\e801'; }
 .plus::before { content: '\e802'; }
 */

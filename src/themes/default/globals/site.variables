@@ -127,7 +127,7 @@
 /* This is the single variable that controls them all */
 @emSize: 14px;
 
-/* The size of page text  */
+/* The size of page text */
 @fontSize: 14px;
 
 /* -------------------

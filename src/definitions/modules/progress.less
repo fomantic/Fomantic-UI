@@ -503,7 +503,7 @@
     each(@variationProgressSizes, {
         @h: @{value}BarHeight;
         @s: @@value;
-        .ui.@{value}.progress  {
+        .ui.@{value}.progress {
             font-size: @s;
         }
         .ui.@{value}.progress .bar {
@@ -564,7 +564,7 @@
     .ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
         background: @indeterminatePulseColor;
     }
-    & when (@variationProgressSliding) or (@variationProgressSwinging)  or (@variationProgressFilling) {
+    & when (@variationProgressSliding) or (@variationProgressSwinging) or (@variationProgressFilling) {
         .ui.sliding.indeterminate.progress .bar,
         .ui.swinging.indeterminate.progress .bar,
         .ui.filling.indeterminate.progress .bar {
