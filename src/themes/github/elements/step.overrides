@@ -19,7 +19,7 @@
     display: block;
     border: none;
     top: 50%;
-    right: 0%;
+    right: 0;
     border-left: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     border-right: 1px solid rgba(0, 0, 0, 0.2);

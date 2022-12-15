@@ -21,7 +21,7 @@
 @overflow: hidden;
 
 @blurredStartFilter: initial;
-@blurredEndFilter: e("blur(5px) grayscale(0.7)");
+@blurredEndFilter: e('blur(5px) grayscale(0.7)');
 @blurredTransition: 800ms filter @defaultEasing;
 
 @blurredBackgroundColor: rgba(0, 0, 0, 0.6);
@@ -57,9 +57,9 @@
 @simpleInvertedEndBackgroundColor: @invertedBackgroundColor;
 
 /* Intensity */
-@veryLightBackgroundColor: rgba(0,0,0,0.25);
-@lightBackgroundColor: rgba(0,0,0,0.45);
-@mediumBackgroundColor: rgba(0,0,0,0.65);
-@veryLightInvertedBackgroundColor: rgba(255,255,255,0.25);
-@lightInvertedBackgroundColor: rgba(255,255,255,0.45);
-@mediumInvertedBackgroundColor: rgba(255,255,255,0.65);
+@veryLightBackgroundColor: rgba(0, 0, 0, 0.25);
+@lightBackgroundColor: rgba(0, 0, 0, 0.45);
+@mediumBackgroundColor: rgba(0, 0, 0, 0.65);
+@veryLightInvertedBackgroundColor: rgba(255, 255, 255, 0.25);
+@lightInvertedBackgroundColor: rgba(255, 255, 255, 0.45);
+@mediumInvertedBackgroundColor: rgba(255, 255, 255, 0.65);

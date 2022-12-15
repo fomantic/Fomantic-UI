@@ -16,7 +16,7 @@
     border: none;
     box-shadow: none !important;
     border-bottom: 1px solid #ddd;
-    border-radius: 0em !important;
+    border-radius: 0 !important;
 }
 .ui.form .selection.dropdown > .menu {
     border-top-width: 1px !important;

@@ -12,8 +12,8 @@
             Theme
 *******************************/
 
-@type : 'view';
-@element : 'card';
+@type: 'view';
+@element: 'card';
 
 @import (multiple) '../../theme.config';
 
@@ -284,8 +284,8 @@
     .ui.card .meta * {
         margin-right: @metaSpacing;
     }
-    .ui.cards > .card .meta :last-child,
-    .ui.card .meta :last-child {
+    .ui.cards > .card .meta:last-child,
+    .ui.card .meta:last-child {
         margin-right: 0;
     }
 
@@ -680,9 +680,9 @@
         .ui.cards > .@{color}.card,
         .ui.@{color}.card {
             box-shadow:
-            @borderShadow,
-            0 @coloredShadowDistance 0 0 @c,
-            @shadowBoxShadow
+                @borderShadow,
+                0 @coloredShadowDistance 0 0 @c,
+                @shadowBoxShadow
             ;
         }
         & when (@variationCardLink) {
@@ -693,9 +693,9 @@
             a.ui.@{color}.card:hover,
             .ui.link.@{color}.card:hover {
                 box-shadow:
-                @borderShadow,
-                0 @coloredShadowDistance 0 0 @h,
-                @shadowHoverBoxShadow
+                    @borderShadow,
+                    0 @coloredShadowDistance 0 0 @h,
+                    @shadowHoverBoxShadow
                 ;
             }
         }
@@ -732,9 +732,9 @@
             .ui.inverted.cards > .@{color}.card,
             .ui.inverted.@{color}.card {
                 box-shadow:
-                0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-                0 @coloredShadowDistance 0 0 @l,
-                0 0 0 @borderWidth @solidWhiteBorderColor
+                    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                    0 @coloredShadowDistance 0 0 @l,
+                    0 0 0 @borderWidth @solidWhiteBorderColor
                 ;
             }
             & when (@variationCardLink) {
@@ -745,9 +745,9 @@
                 a.ui.inverted.@{color}.card:hover,
                 .ui.link.inverted.@{color}.card:hover {
                     box-shadow:
-                    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-                    0 @coloredShadowDistance 0 0 @lh,
-                    0 0 0 @borderWidth @solidWhiteBorderColor
+                        0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                        0 @coloredShadowDistance 0 0 @lh,
+                        0 0 0 @borderWidth @solidWhiteBorderColor
                     ;
                 }
             }

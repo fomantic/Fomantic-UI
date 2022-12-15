@@ -17,6 +17,6 @@
 
 @metaColor: #A5A7AA;
 
-@linkHoverRaiseDistance: 0px;
+@linkHoverRaiseDistance: 0;
 @linkHoverBoxShadow: none;
 @linkHoverBorder: 1px solid #D0D0D8;
