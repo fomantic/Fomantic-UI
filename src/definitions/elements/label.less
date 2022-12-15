@@ -15,7 +15,7 @@
 @type: 'element';
 @element: 'label';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Label
@@ -247,7 +247,7 @@ a.ui.label {
         transform: translateY(-50%) translateX(50%) rotate(-45deg);
         top: @tagTriangleTopOffset;
         right: @tagTriangleRightOffset;
-        content: '';
+        content: "";
         background-color: inherit;
         background-image: @tagTriangleBackgroundImage;
         width: @tagTriangleSize;
@@ -258,7 +258,7 @@ a.ui.label {
     .ui.tag.labels .label::after,
     .ui.tag.label::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: -(@tagCircleSize / 2);
         margin-top: -(@tagCircleSize / 2);
@@ -377,7 +377,7 @@ a.ui.label {
 
     .ui.ribbon.label::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 100%;
         left: 0;
         background-color: transparent;
@@ -868,7 +868,7 @@ a.ui.active.label:hover::before {
     /* Arrow */
     .ui.pointing.label::before {
         position: absolute;
-        content: '';
+        content: "";
         transform: rotate(45deg);
         background-image: none;
         z-index: @pointingTriangleZIndex;

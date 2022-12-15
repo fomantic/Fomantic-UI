@@ -15,7 +15,7 @@
 @type: 'element';
 @element: 'icon';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Icon
@@ -515,8 +515,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 .generateIcons(@map, @fontFamily) {
     each(@map, {
-        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
-        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
+        @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
+        @normalizedKey: replace(@escapedKey, "_", ".", "g");
         i.icon.@{normalizedKey}::before {
             content: "@{value}";
             & when not (@fontFamily = false) {
@@ -528,8 +528,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 .generateSecondaryIcons(@map) {
     each(@map, {
-        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
-        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
+        @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
+        @normalizedKey: replace(@escapedKey, "_", ".", "g");
         i.icon.@{normalizedKey}::after {
             content: "@{value}";
         }

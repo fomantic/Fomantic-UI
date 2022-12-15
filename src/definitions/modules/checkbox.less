@@ -15,7 +15,7 @@
 @type: 'module';
 @element: 'checkbox';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
            Checkbox
@@ -67,7 +67,7 @@
     left: 0;
     width: @checkboxSize;
     height: @checkboxSize;
-    content: '';
+    content: "";
     background: @checkboxBackground;
     border-radius: @checkboxBorderRadius;
     transition: @checkboxTransition;
@@ -283,7 +283,7 @@
 
     /* Box */
     .ui.radio.checkbox label::before {
-        content: '';
+        content: "";
         transform: none;
         width: @radioSize;
         height: @radioSize;
@@ -295,7 +295,7 @@
     /* Bullet */
     .ui.radio.checkbox label::after {
         border: none;
-        content: '' !important;
+        content: "" !important;
         line-height: @radioSize;
         top: @bulletTop;
         left: @bulletLeft;
@@ -362,7 +362,7 @@
     .ui.slider.checkbox label::before {
         display: block;
         position: absolute;
-        content: '';
+        content: "";
         transform: none;
         border: none !important;
         left: 0;
@@ -379,7 +379,7 @@
     .ui.slider.checkbox label::after {
         background: @handleBackground;
         position: absolute;
-        content: '' !important;
+        content: "" !important;
         opacity: 1;
         z-index: 2;
         border: none;
@@ -472,7 +472,7 @@
     .ui.toggle.checkbox label::before {
         display: block;
         position: absolute;
-        content: '';
+        content: "";
         z-index: 1;
         transform: none;
         border: none;
@@ -488,7 +488,7 @@
     .ui.toggle.checkbox label::after {
         background: @handleBackground;
         position: absolute;
-        content: '' !important;
+        content: "" !important;
         opacity: 1;
         z-index: 2;
         border: none;

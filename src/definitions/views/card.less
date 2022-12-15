@@ -15,7 +15,7 @@
 @type: 'view';
 @element: 'card';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -78,7 +78,7 @@
 .ui.cards::after,
 .ui.card::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -156,7 +156,7 @@
 .ui.cards > .card > .content::after,
 .ui.card > .content::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -493,7 +493,7 @@
     }
     .ui.loading.card::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -504,7 +504,7 @@
     }
     .ui.loading.card::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;

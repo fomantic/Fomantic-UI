@@ -15,7 +15,7 @@
 @type: 'module';
 @element: 'modal';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Modal
@@ -455,7 +455,7 @@
 
     /* Fix for Firefox, Edge, IE11 */
     .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
-        content: '\00A0';
+        content: "\00A0";
         position: absolute;
         height: @scrollingMargin;
     }

@@ -15,7 +15,7 @@
 @type: 'module';
 @element: 'dropdown';
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Dropdown
@@ -638,7 +638,7 @@ select.ui.dropdown {
             @media (-moz-touch-enabled), (pointer: coarse) {
                 .ui.dropdown .scrollhint.menu:not(.hidden)::before {
                     animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
-                    content: '';
+                    content: "";
                     z-index: @scrollhintZIndex;
                     display: block;
                     position: absolute;
@@ -998,7 +998,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -1009,7 +1009,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         box-shadow: 0 0 0 1px transparent;
@@ -1551,7 +1551,7 @@ select.ui.dropdown {
         display: block;
         position: absolute;
         pointer-events: none;
-        content: '';
+        content: "";
         visibility: visible;
         transform: rotate(45deg);
         width: @pointingArrowSize;
