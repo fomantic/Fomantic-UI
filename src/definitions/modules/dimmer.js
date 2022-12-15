@@ -48,7 +48,7 @@
                 moduleNamespace = 'module-' + namespace,
                 moduleSelector  = $allModules.selector || '',
 
-                clickEvent      = ('ontouchstart' in document.documentElement)
+                clickEvent      = 'ontouchstart' in document.documentElement
                     ? 'touchstart'
                     : 'click',
 
@@ -106,12 +106,12 @@
 
                 bind: {
                     events: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             $dimmable
                                 .on('mouseenter' + eventNamespace, module.show)
                                 .on('mouseleave' + eventNamespace, module.hide)
                             ;
-                        } else if (settings.on == 'click') {
+                        } else if (settings.on === 'click') {
                             $dimmable
                                 .on(clickEvent + eventNamespace, module.toggle)
                             ;
@@ -265,7 +265,7 @@
                         } else {
                             module.verbose('Showing dimmer animation with javascript');
                             module.set.dimmed();
-                            if (settings.opacity == 'auto') {
+                            if (settings.opacity === 'auto') {
                                 settings.opacity = 0.8;
                             }
                             $dimmer
@@ -358,8 +358,8 @@
                         return $dimmer.is(':animated') || $dimmer.hasClass(className.animating);
                     },
                     closable: function () {
-                        if (settings.closable == 'auto') {
-                            return settings.on != 'hover';
+                        if (settings.closable === 'auto') {
+                            return settings.on !== 'hover';
                         }
 
                         return settings.closable;
@@ -575,17 +575,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

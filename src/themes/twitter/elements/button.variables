@@ -37,7 +37,7 @@
 
 @downBackgroundColor: #E1E8ED;
 @downColor: #292F33;
-@downPressedShadow: 0px 1px 4px rgba(0, 0, 0, 0.2) inset;
+@downPressedShadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
 
 @labeledIconBackgroundColor: rgba(85, 172, 238, 0.05);
 @labeledIconBorder: rgba(0, 0, 0, 0.1);

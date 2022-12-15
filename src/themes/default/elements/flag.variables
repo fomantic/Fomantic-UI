@@ -5,8 +5,8 @@
 /* --------------
     Path
 --------------- */
-@flagPath: "https://twemoji.maxcdn.com/v/latest/svg/";
-@flagFileType: "svg";
+@flagPath: 'https://twemoji.maxcdn.com/v/latest/svg/';
+@flagFileType: 'svg';
 
 /* -------------------
        Element

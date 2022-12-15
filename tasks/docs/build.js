@@ -2,7 +2,7 @@
  Build Docs
  *******************************/
 
-let
+const
     extend      = require('extend'),
     gulp        = require('gulp'),
 

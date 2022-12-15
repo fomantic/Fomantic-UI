@@ -237,7 +237,7 @@
                             if (href) {
                                 event.preventDefault();
                                 module.verbose('Opening search link found in result', $link);
-                                if (target == '_blank' || event.ctrlKey) {
+                                if (target === '_blank' || event.ctrlKey) {
                                     window.open(href);
                                 } else {
                                     window.location.href = href;
@@ -289,7 +289,7 @@
                         newIndex
                     ;
                     // search shortcuts
-                    if (keyCode == keys.escape) {
+                    if (keyCode === keys.escape) {
                         if (!module.is.visible()) {
                             module.verbose('Escape key pressed, blurring search field');
                             $prompt.trigger('blur');
@@ -300,7 +300,7 @@
                         resultsDismissed = true;
                     }
                     if (module.is.visible()) {
-                        if (keyCode == keys.enter) {
+                        if (keyCode === keys.enter) {
                             module.verbose('Enter key pressed, selecting active result');
                             if ($result.filter('.' + className.active).length > 0) {
                                 module.event.result.click.call($result.filter('.' + className.active), event);
@@ -308,7 +308,7 @@
 
                                 return false;
                             }
-                        } else if (keyCode == keys.upArrow && hasActiveResult) {
+                        } else if (keyCode === keys.upArrow && hasActiveResult) {
                             module.verbose('Up key pressed, changing active result');
                             newIndex = currentIndex - 1 < 0
                                 ? currentIndex
@@ -325,7 +325,7 @@
                             ;
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
-                        } else if (keyCode == keys.downArrow) {
+                        } else if (keyCode === keys.downArrow) {
                             module.verbose('Down key pressed, changing active result');
                             newIndex = currentIndex + 1 >= resultSize
                                 ? currentIndex
@@ -345,7 +345,7 @@
                         }
                     } else {
                         // query shortcuts
-                        if (keyCode == keys.enter) {
+                        if (keyCode === keys.enter) {
                             module.verbose('Enter key pressed, executing query');
                             module.query();
                             module.set.buttonPressed();
@@ -458,9 +458,9 @@
                     inputEvent: function () {
                         var
                             prompt = $prompt[0],
-                            inputEvent   = (prompt !== undefined && prompt.oninput !== undefined)
+                            inputEvent   = prompt !== undefined && prompt.oninput !== undefined
                                 ? 'input'
-                                : ((prompt !== undefined && prompt.onpropertychange !== undefined)
+                                : (prompt !== undefined && prompt.onpropertychange !== undefined
                                     ? 'propertychange'
                                     : 'keyup')
                         ;
@@ -596,7 +596,7 @@
                             module.debug('Using specified max results', results);
                             results = results.slice(0, settings.maxResults);
                         }
-                        if (settings.type == 'category') {
+                        if (settings.type === 'category') {
                             results = module.create.categoryResults(results);
                         }
                         searchHTML = module.generateResults({
@@ -634,9 +634,9 @@
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
                                 var
-                                    notResult      = $.inArray(result, results) == -1,
-                                    notFuzzyResult = $.inArray(result, fuzzyResults) == -1,
-                                    notExactResults = $.inArray(result, exactResults) == -1
+                                    notResult      = $.inArray(result, results) === -1,
+                                    notFuzzyResult = $.inArray(result, fuzzyResults) === -1,
+                                    notExactResults = $.inArray(result, exactResults) === -1
                                 ;
                                 if (notResult && notFuzzyResult && notExactResults) {
                                     array.push(result);
@@ -782,7 +782,7 @@
                             html = $results.html()
                         ;
 
-                        return html != '';
+                        return html !== '';
                     },
                 },
 
@@ -1052,7 +1052,7 @@
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
                             if (isProperObject) {
-                                if (settings.type == 'standard') {
+                                if (settings.type === 'standard') {
                                     module.error(error.maxResults);
                                 }
                             } else {
@@ -1190,17 +1190,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

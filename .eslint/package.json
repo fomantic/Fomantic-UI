@@ -1,0 +1,11 @@
+{
+  "name": "@internal/eslint-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "eslint-rule-composer": "^0.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "*"
+  }
+}

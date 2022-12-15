@@ -531,8 +531,8 @@
                             var focused = module.helper.dateEqual(cellDate, focusDate, mode);
                             var inRange = !rangeDate
                                 ? false
-                                : ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
-                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
+                                : (!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
+                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate));
                             $cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
 
                             if (module.helper.isTodayButton($cell)) {
@@ -662,7 +662,7 @@
                                         ? -1
                                         : (keyCode === 38
                                             ? -bigIncrement
-                                            : (keyCode == 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
+                                            : (keyCode === 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
                                     increment *= mode === 'minute' ? settings.minTimeGap : 1;
                                     var focusDate = module.get.focusDate() || module.get.date() || new Date();
                                     var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
@@ -695,11 +695,12 @@
                                     break;
                                 }
                                 // escape key
-                                case 27:
+                                case 27: {
                                     module.popup('hide');
                                     event.stopPropagation();
 
                                     break;
+                                }
                             }
                         }
 
@@ -1112,7 +1113,7 @@
                                 ss: ('0' + s).slice(-2),
                                 a: a,
                                 A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : (((D % 100) - (D % 10) === 10) ? 0 : D % 10)],
+                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
                                 w: w,
                                 ww: ('0' + w).slice(-2),
                             }
@@ -1123,7 +1124,7 @@
                                 return tokens[match];
                             }
 
-                            return match.slice(1, match.length - 1);
+                            return match.slice(1, -1);
                         });
                     },
                     isDisabled: function (date, mode) {
@@ -1138,19 +1139,19 @@
                             } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.year]) {
                                     if (typeof d[metadata.year] === 'number') {
-                                        blocked = date.getFullYear() == d[metadata.year];
+                                        blocked = date.getFullYear() === d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
                                         blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
-                                        blocked = date.getMonth() == d[metadata.month];
+                                        blocked = date.getMonth() === d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
                                         blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
                                     } else if (d[metadata.month] instanceof Date) {
                                         var sdate = module.helper.sanitiseDate(d[metadata.month]);
 
-                                        blocked = (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
+                                        blocked = (date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear());
                                     }
                                 } else if (d[metadata.date] && mode === 'day') {
                                     if (d[metadata.date] instanceof Date) {
@@ -1187,7 +1188,7 @@
 
                                 if (d[metadata.days]) {
                                     if (typeof d[metadata.days] === 'number') {
-                                        blocked = date.getDay() == d[metadata.days];
+                                        blocked = date.getDay() === d[metadata.days];
                                     } else if (Array.isArray(d[metadata.days])) {
                                         blocked = d[metadata.days].indexOf(date.getDay()) > -1;
                                     }
@@ -1195,7 +1196,7 @@
 
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number') {
-                                        blocked = blocked && date.getHours() == d[metadata.hours];
+                                        blocked = blocked && date.getHours() === d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
                                         blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
                                     }
@@ -1241,7 +1242,7 @@
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.year]) {
-                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() == d[metadata.year]) {
+                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() === d[metadata.year]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.year])) {
@@ -1250,7 +1251,7 @@
                                             }
                                         }
                                     } else if (d[metadata.month]) {
-                                        if (typeof d[metadata.month] === 'number' && date.getMonth() == d[metadata.month]) {
+                                        if (typeof d[metadata.month] === 'number' && date.getMonth() === d[metadata.month]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.month])) {
@@ -1259,7 +1260,7 @@
                                             }
                                         } else if (d[metadata.month] instanceof Date) {
                                             var sdate = module.helper.sanitiseDate(d[metadata.month]);
-                                            if ((date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear())) {
+                                            if ((date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear())) {
                                                 return d;
                                             }
                                         }
@@ -1286,7 +1287,7 @@
                             var d;
                             var hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
-                                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
+                                    if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
                                         return d;
                                     }
                                     if (Array.isArray(d[metadata.hours])) {
@@ -1298,12 +1299,12 @@
                             };
                             for (var i = 0; i < hours.length; i++) {
                                 d = hours[i];
-                                if (typeof d === 'number' && date.getHours() == d) {
+                                if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.days] && hourCheck(date, d)) {
-                                        if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
+                                        if (typeof d[metadata.days] === 'number' && date.getDay() === d[metadata.days]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.days])) {
@@ -1395,9 +1396,9 @@
 
                         return !date
                             ? date
-                            : ((minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
+                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0
                                 ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) // eslint-disable-line unicorn/no-nested-ternary
-                                : ((maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0) // eslint-disable-line unicorn/no-nested-ternary
+                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0 // eslint-disable-line unicorn/no-nested-ternary
                                     ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
                                     : date));
                     },
@@ -1523,17 +1524,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

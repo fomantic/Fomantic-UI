@@ -21,7 +21,7 @@
 @promptBoxShadow: 0 0 0 0 transparent inset;
 
 /* Mobile */
-@mobileMaxWidth: e("calc(100vw - 2rem)");
+@mobileMaxWidth: e('calc(100vw - 2rem)');
 
 /* Result Box */
 @resultsWidth: 18em;

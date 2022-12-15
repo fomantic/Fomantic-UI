@@ -9,7 +9,7 @@
   * update package.json file
 */
 
-let
+const
     gulp            = require('gulp'),
 
     // node dependencies
@@ -108,9 +108,8 @@ module.exports = function (callback) {
             createList = function (files) {
                 let filenames = '';
                 for (let file in files) {
-                    filenames += file == (files.length - 1)
-                        ? "'" + files[file] + "'"
-                        : "'" + files[file] + "',\n    ";
+                    filenames += "'" + files[file] + "'"
+                        + (file === files.length - 1 ? '' : ',\n    ');
                 }
 
                 return filenames;
@@ -131,7 +130,7 @@ module.exports = function (callback) {
                 ;
             });
 
-            if (distribution == 'CSS') {
+            if (distribution === 'CSS') {
                 tasks.push(function () {
                     let
                         themes,
@@ -150,7 +149,7 @@ module.exports = function (callback) {
 
                     return mergeStream(themes, components, releases);
                 });
-            } else if (distribution == 'LESS') {
+            } else if (distribution === 'LESS') {
                 tasks.push(function () {
                     let
                         definitions,

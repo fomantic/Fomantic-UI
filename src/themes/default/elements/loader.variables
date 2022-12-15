@@ -44,14 +44,14 @@
 @inlineMargin: 0;
 
 /* Exact Sizes (Avoids Rounding Errors) */
-@mini : @14px;
-@tiny : @16px;
-@small : @24px;
-@medium : @32px;
-@large : @48px;
-@big : @52px;
-@huge : @58px;
-@massive : @64px;
+@mini: @14px;
+@tiny: @16px;
+@small: @24px;
+@medium: @32px;
+@large: @48px;
+@big: @52px;
+@huge: @58px;
+@massive: @64px;
 
 @miniOffset: 0 0 0 -(@mini / 2);
 @tinyOffset: 0 0 0 -(@tiny / 2);

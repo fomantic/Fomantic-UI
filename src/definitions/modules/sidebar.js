@@ -249,7 +249,7 @@
                                 + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
-                        } else if (direction === 'top' || direction == 'bottom') {
+                        } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
@@ -268,7 +268,7 @@
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if (direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -399,7 +399,7 @@
                             module.debug('Other sidebars currently visible');
                             if (settings.exclusive) {
                                 // if not overlay queue animation after hide
-                                if (settings.transition != 'overlay') {
+                                if (settings.transition !== 'overlay') {
                                     module.hideOthers(module.show);
 
                                     return;
@@ -456,7 +456,7 @@
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
-                            if (callbackCount == sidebarCount) {
+                            if (callbackCount === sidebarCount) {
                                 callback();
                             }
                         })
@@ -504,7 +504,7 @@
                         module.set.dimmed();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
@@ -521,7 +521,7 @@
                 pullPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = transition == 'overlay' || module.othersActive()
+                        $transition = transition === 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -544,7 +544,7 @@
                         module.remove.visible();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
@@ -724,11 +724,11 @@
                             direction = module.get.direction(),
                             transition
                         ;
-                        transition = (module.is.mobile())
-                            ? ((settings.mobileTransition == 'auto')
+                        transition = module.is.mobile()
+                            ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
                                 : settings.mobileTransition)
-                            : ((settings.transition == 'auto')
+                            : (settings.transition === 'auto'
                                 ? settings.defaultTransition.computer[direction]
                                 : settings.transition);
                         module.verbose('Determined transition', transition);
@@ -786,8 +786,8 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
                             module.cache.isIE = isIE11 || isIE;
                         }
@@ -964,17 +964,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

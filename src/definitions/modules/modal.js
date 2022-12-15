@@ -941,8 +941,8 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
                             module.cache.isIE = isIE11 || isIE;
                         }
@@ -1248,16 +1248,16 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth != maxDepth
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];

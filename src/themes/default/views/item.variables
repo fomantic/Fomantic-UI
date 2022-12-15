@@ -168,10 +168,10 @@
 @invertedExtraColor: @invertedLightTextColor;
 @invertedDescriptionColor: @invertedTextColor;
 @invertedMetaColor: rgba(255, 255, 255, 0.8);
-@invertedLikeColor: lighten(@likeColor,10);
-@invertedLikeActiveColor: lighten(@likeActiveColor,10);
-@invertedFavoriteColor: lighten(@favoriteColor,10);
-@invertedFavoriteActiveColor: lighten(@favoriteActiveColor,10);
+@invertedLikeColor: lighten(@likeColor, 10);
+@invertedLikeActiveColor: lighten(@likeActiveColor, 10);
+@invertedFavoriteColor: lighten(@favoriteColor, 10);
+@invertedFavoriteActiveColor: lighten(@favoriteActiveColor, 10);
 @invertedDividedBorder: 1px solid @whiteBorderColor;
 
 @miniItemSize: @relativeMini;

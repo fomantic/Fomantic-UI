@@ -139,7 +139,7 @@
 
 /* Buttons */
 @buttonMargin: 0 -@borderWidth;
-@buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
+@buttonWidth: e(%('calc(100%% + %d)', @borderWidth * 2));
 
 /*******************************
             States
@@ -212,29 +212,29 @@
 
 @oneCard: @oneColumn;
 @oneCardOffset: 0;
-@twoCard: e(%("calc(%d - %d)", @twoColumn, @twoCardSpacing * 2));
+@twoCard: e(%('calc(%d - %d)', @twoColumn, @twoCardSpacing * 2));
 @twoCardOffset: -@twoCardSpacing;
-@threeCard: e(%("calc(%d - %d)", @threeColumn, @threeCardSpacing * 2));
+@threeCard: e(%('calc(%d - %d)', @threeColumn, @threeCardSpacing * 2));
 @threeCardOffset: -@threeCardSpacing;
-@fourCard: e(%("calc(%d - %d)", @fourColumn, @fourCardSpacing * 2));
+@fourCard: e(%('calc(%d - %d)', @fourColumn, @fourCardSpacing * 2));
 @fourCardOffset: -@fourCardSpacing;
-@fiveCard: e(%("calc(%d - %d)", @fiveColumn, @fiveCardSpacing * 2));
+@fiveCard: e(%('calc(%d - %d)', @fiveColumn, @fiveCardSpacing * 2));
 @fiveCardOffset: -@fiveCardSpacing;
-@sixCard: e(%("calc(%d - %d)", @sixColumn, @sixCardSpacing * 2));
+@sixCard: e(%('calc(%d - %d)', @sixColumn, @sixCardSpacing * 2));
 @sixCardOffset: -@sixCardSpacing;
-@sevenCard: e(%("calc(%d - %d)", @sevenColumn, @sevenCardSpacing * 2));
+@sevenCard: e(%('calc(%d - %d)', @sevenColumn, @sevenCardSpacing * 2));
 @sevenCardOffset: -@sevenCardSpacing;
-@eightCard: e(%("calc(%d - %d)", @eightColumn, @sevenCardSpacing * 2));
+@eightCard: e(%('calc(%d - %d)', @eightColumn, @sevenCardSpacing * 2));
 @eightCardOffset: -@sevenCardSpacing;
-@nineCard: e(%("calc(%d - %d)", @nineColumn, @nineCardSpacing * 2));
+@nineCard: e(%('calc(%d - %d)', @nineColumn, @nineCardSpacing * 2));
 @nineCardOffset: -@nineCardSpacing;
-@tenCard: e(%("calc(%d - %d)", @tenColumn, @tenCardSpacing * 2));
+@tenCard: e(%('calc(%d - %d)', @tenColumn, @tenCardSpacing * 2));
 @tenCardOffset: -@tenCardSpacing;
 
 /* Stackable */
 @stackableRowSpacing: 1em;
 @stackableCardSpacing: 1em;
-@stackableMargin: e(%("calc(%d - %d)", @oneColumn, @stackableCardSpacing * 2));
+@stackableMargin: e(%('calc(%d - %d)', @oneColumn, @stackableCardSpacing * 2));
 
 /* Sizes */
 @medium: 1em;

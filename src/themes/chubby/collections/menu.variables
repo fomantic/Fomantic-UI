@@ -4,9 +4,9 @@
 
 @background: @darkWhite;
 @boxShadow: none;
-@dividerSize: 0px;
+@dividerSize: 0;
 
-@verticalBoxShadow: 0px 0px 0px 2px @borderColor inset;
+@verticalBoxShadow: 0 0 0 2px @borderColor inset;
 @verticalActiveBoxShadow: none;
 
 @itemVerticalPadding: 1.25em;

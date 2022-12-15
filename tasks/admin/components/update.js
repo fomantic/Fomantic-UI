@@ -12,7 +12,7 @@
 
 */
 
-let
+const
     gulp           = require('gulp'),
 
     // node dependencies
@@ -76,7 +76,7 @@ module.exports = function (callback) {
                 ? require(outputDirectory + 'package.json') // eslint-disable-line import/no-dynamic-require
                 : false,
 
-            isNewVersion  = version && componentPackage.version != version,
+            isNewVersion  = version && componentPackage.version !== version,
 
             commitMessage = isNewVersion
                 ? 'Updated component to version ' + version
