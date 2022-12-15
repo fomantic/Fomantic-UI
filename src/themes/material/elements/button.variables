@@ -21,7 +21,7 @@
 @backgroundColor: @white;
 @backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.02));
 
-@solidBorderColor: #DDDDDD;
+@solidBorderColor: #dddddd;
 
 @borderBoxShadowColor: @solidBorderColor;
 @borderBoxShadow: 0 0 0 1px @solidBorderColor inset;
@@ -50,8 +50,8 @@
 @downTextColor: #222222;
 @downBoxShadow: @borderBoxShadow;
 
-@activeBackgroundColor: #F0F0F0;
-@activeBoxShadow: 0 0 0 1px #DDDDDD;
+@activeBackgroundColor: #f0f0f0;
+@activeBoxShadow: 0 0 0 1px #dddddd;
 
 /* -------------------
       Variations
@@ -66,7 +66,7 @@
 @basicDownBackground: @white;
 @basicDownBoxShadow: @downBoxShadow;
 
-@basicActiveBackground: #FFFFFF;
+@basicActiveBackground: #ffffff;
 @basicActiveBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 
 /* Labeled */
@@ -80,18 +80,18 @@
 @coloredBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
 
 /* Primary */
-@primaryColor: #4184F3;
-@primaryBoxShadow: 0 0 0 1px #0157E4 inset;
+@primaryColor: #4184f3;
+@primaryBoxShadow: 0 0 0 1px #0157e4 inset;
 
 /* Secondary */
-@secondaryColor: #EEEEEE;
+@secondaryColor: #eeeeee;
 @secondaryBackgroundImage: @backgroundImage;
 @secondaryTextColor: @textColor;
 @secondaryBoxShadow: @borderBoxShadow;
 
 /* Emotive */
-@positiveColor: #3D9400;
-@negativeColor: #D34836;
+@positiveColor: #3d9400;
+@negativeColor: #d34836;
 
 /* Inverted */
 @invertedBorderSize: 1px;

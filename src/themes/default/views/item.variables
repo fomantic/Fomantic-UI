@@ -85,10 +85,10 @@
 @actionTransition: color @defaultDuration @defaultEasing;
 
 /* Actions */
-@favoriteColor: #FFB70A;
-@favoriteActiveColor: #FFE623;
-@likeColor: #FF2733;
-@likeActiveColor: #FF2733;
+@favoriteColor: #ffb70a;
+@favoriteActiveColor: #ffe623;
+@likeColor: #ff2733;
+@likeActiveColor: #ff2733;
 
 /* Links */
 @headerLinkColor: @headerColor;

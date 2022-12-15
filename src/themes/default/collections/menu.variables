@@ -10,7 +10,7 @@
 @verticalMargin: @medium;
 @horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
-@background: #FFFFFF;
+@background: #ffffff;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: @normal;
@@ -83,7 +83,7 @@
 @arrowTransition: background @defaultDuration @defaultEasing;
 @arrowZIndex: 2;
 
-@arrowHoverColor: #F2F2F2;
+@arrowHoverColor: #f2f2f2;
 @arrowActiveColor: @arrowHoverColor;
 @arrowActiveHoverColor: @arrowActiveColor;
 
@@ -134,7 +134,7 @@
 /* Dropdown in Menu */
 @dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 
-@dropdownBackground: #FFFFFF;
+@dropdownBackground: #ffffff;
 @dropdownMenuDistance: 0;
 @dropdownMenuBorderRadius: @borderRadius;
 
@@ -204,7 +204,7 @@
 /* Vertical */
 @verticalBoxShadow: @boxShadow;
 @verticalPointerWidth: 2px;
-@verticalBackground: #FFFFFF;
+@verticalBackground: #ffffff;
 @verticalItemBackground: none;
 @verticalDividerBackground: @dividerBackground;
 
@@ -284,8 +284,8 @@
 @secondaryPointingInvertedActiveColor: @invertedSelectedTextColor;
 
 /* Tiered */
-@tieredActiveItemBackground: #FCFCFC;
-@tieredActiveMenuBackground: #FCFCFC;
+@tieredActiveItemBackground: #fcfcfc;
+@tieredActiveMenuBackground: #fcfcfc;
 
 @tieredSubMenuTextTransform: @normal;
 @tieredSubMenuFontWeight: @normal;
@@ -398,7 +398,7 @@
 /* Inverted Active */
 @invertedActiveBackground: @invertedArrowActiveColor;
 @invertedActiveColor: @invertedSelectedTextColor;
-@invertedArrowActiveColor: #3D3E3F;
+@invertedArrowActiveColor: #3d3e3f;
 
 /* Inverted Active Hover */
 @invertedActiveHoverBackground: @invertedActiveBackground;

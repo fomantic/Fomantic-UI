@@ -9,7 +9,7 @@
 /* Button */
 @verticalMargin: 0;
 @horizontalMargin: 0.25em;
-@backgroundColor: #E0E1E2;
+@backgroundColor: #e0e1e2;
 @backgroundImage: none;
 @background: @backgroundColor @backgroundImage;
 @lineHeight: 1em;
@@ -85,7 +85,7 @@
 -------------------- */
 
 /* Hovered */
-@hoverBackgroundColor: #CACBCD;
+@hoverBackgroundColor: #cacbcd;
 @hoverBackgroundImage: @backgroundImage;
 @hoverBoxShadow: @boxShadow;
 @hoverColor: @hoveredTextColor;
@@ -103,7 +103,7 @@
 @disabledBoxShadow: none;
 
 /* Pressed Down */
-@downBackgroundColor: #BABBBC;
+@downBackgroundColor: #babbbc;
 @downBackgroundImage: "";
 @downPressedShadow: none;
 @downBoxShadow:
@@ -113,7 +113,7 @@
 @downColor: @pressedTextColor;
 
 /* Active */
-@activeBackgroundColor: #C0C1C2;
+@activeBackgroundColor: #c0c1c2;
 @activeBackgroundImage: none;
 @activeColor: @selectedTextColor;
 @activeBoxShadow: @borderBoxShadow;
@@ -204,7 +204,7 @@
 @basicTextTransform: none;
 
 /* Basic Hover */
-@basicHoverBackground: #FFFFFF;
+@basicHoverBackground: #ffffff;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
     0 0 0 @basicBorderSize @selectedBorderColor inset,
@@ -217,7 +217,7 @@
 @basicFocusBoxShadow: @basicHoverBoxShadow;
 
 /* Basic Down */
-@basicDownBackground: #F8F8F8;
+@basicDownBackground: #f8f8f8;
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
     0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,

@@ -28,8 +28,8 @@
 
 @textAreaPadding: 1em;
 @textAreaBackground: transparent;
-@textAreaFocusBackground: #EEEEEE;
-@textAreaBorder: 1px solid #DDDDDD;
+@textAreaFocusBackground: #eeeeee;
+@textAreaBorder: 1px solid #dddddd;
 
 /* Divider */
 @dividerMargin: 1em 0;
@@ -49,8 +49,8 @@
 @inputErrorPointerSize: 0;
 
 /* Dropdown Error */
-@dropdownErrorHoverBackground: #FFF2F2;
-@dropdownErrorActiveBackground: #FDCFCF;
+@dropdownErrorHoverBackground: #fff2f2;
+@dropdownErrorActiveBackground: #fdcfcf;
 
 /* Focused Error */
 @inputErrorFocusBackground: @negativeBackgroundColor;

@@ -7,7 +7,7 @@
 -------------------- */
 @borderRadius: @circularRadius;
 @textTransform: uppercase;
-@backgroundColor: #FFFFFF;
+@backgroundColor: #ffffff;
 @backgroundImage: none;
 @fontWeight: bold;
 @textColor: rgba(0, 0, 0, 0.6);
@@ -36,19 +36,19 @@
         States
 -------------------- */
 
-@hoverBackgroundColor: #FAFAFA;
+@hoverBackgroundColor: #fafafa;
 @hoverBackgroundImage: none;
 @hoverBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.3) inset;
 
-@downBackgroundColor: #F0F0F0;
+@downBackgroundColor: #f0f0f0;
 @downBackgroundImage: none;
 @downBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.35) inset !important;
 
-@activeBackgroundColor: #DDDDDD;
+@activeBackgroundColor: #dddddd;
 @activeBackgroundImage: none;
 @activeBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.3) inset !important;
 
-@loadingBackgroundColor: #FFFFFF;
+@loadingBackgroundColor: #ffffff;
 
 /* -------------------
         Types
@@ -67,9 +67,9 @@
 /* Basic */
 @basicBoxShadow: 0 0 0 1px @borderColor;
 @iconOffset: 0.05em;
-@basicLoadingColor: #FFFFFF;
+@basicLoadingColor: #ffffff;
 
-@basicHoverBackground: #FAFAFA;
+@basicHoverBackground: #fafafa;
 @basicHoverBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
 
 @basicDownBackground: rgba(0, 0, 0, 0.02);

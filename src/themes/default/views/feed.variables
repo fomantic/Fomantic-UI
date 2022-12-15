@@ -120,8 +120,8 @@
 
 /* Like */
 @likeColor: "";
-@likeHoverColor: #FF2733;
-@likeActiveColor: #EF404A;
+@likeHoverColor: #ff2733;
+@likeActiveColor: #ef404a;
 @likeTransition: 0.2s color ease;
 
 /* Metadata Divider */

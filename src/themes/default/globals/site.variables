@@ -192,10 +192,10 @@
 -------------------- */
 
 /* Used on inputs, textarea etc */
-@focusedFormBorderColor: #85B7D9;
+@focusedFormBorderColor: #85b7d9;
 
 /* Used on dropdowns, other larger blocks */
-@focusedFormMutedBorderColor: #96C8DA;
+@focusedFormMutedBorderColor: #96c8da;
 
 /* -------------------
         Sizes
@@ -219,7 +219,7 @@
         Page
 -------------------- */
 
-@pageBackground: #FFFFFF;
+@pageBackground: #ffffff;
 @pageOverflowX: hidden;
 
 @lineHeight: 1.4285em;
@@ -236,7 +236,7 @@
        Links
 -------------------- */
 
-@linkColor: #4183C4;
+@linkColor: #4183c4;
 @linkUnderline: none;
 @linkHoverColor: darken(saturate(@linkColor, 20), 15, relative);
 @linkHoverUnderline: @linkUnderline;
@@ -283,7 +283,7 @@
   Highlighted Text
 -------------------- */
 
-@highlightBackground: #CCE2FF;
+@highlightBackground: #cce2ff;
 @highlightColor: @textColor;
 
 @inputHighlightBackground: rgba(100, 100, 100, 0.4);
@@ -332,58 +332,58 @@
 -------------------- */
 
 /* ---  Colors  --- */
-@red: #DB2828;
-@orange: #F2711C;
-@yellow: #FBBD08;
-@olive: #B5CC18;
-@green: #21BA45;
-@teal: #00B5AD;
-@blue: #2185D0;
-@violet: #6435C9;
-@purple: #A333C8;
-@pink: #E03997;
-@brown: #A5673F;
+@red: #db2828;
+@orange: #f2711c;
+@yellow: #fbbd08;
+@olive: #b5cc18;
+@green: #21ba45;
+@teal: #00b5ad;
+@blue: #2185d0;
+@violet: #6435c9;
+@purple: #a333c8;
+@pink: #e03997;
+@brown: #a5673f;
 @grey: #767676;
-@black: #1B1C1D;
+@black: #1b1c1d;
 
 /* ---  Light Colors  --- */
-@lightRed: #FF695E;
-@lightOrange: #FF851B;
-@lightYellow: #FFE21F;
-@lightOlive: #D9E778;
-@lightGreen: #2ECC40;
-@lightTeal: #6DFFFF;
-@lightBlue: #54C8FF;
-@lightViolet: #A291FB;
-@lightPurple: #DC73FF;
-@lightPink: #FF8EDF;
-@lightBrown: #D67C1C;
-@lightGrey: #DCDDDE;
+@lightRed: #ff695e;
+@lightOrange: #ff851b;
+@lightYellow: #ffe21f;
+@lightOlive: #d9e778;
+@lightGreen: #2ecc40;
+@lightTeal: #6dffff;
+@lightBlue: #54c8ff;
+@lightViolet: #a291fb;
+@lightPurple: #dc73ff;
+@lightPink: #ff8edf;
+@lightBrown: #d67c1c;
+@lightGrey: #dcddde;
 @lightBlack: #545454;
 
 /* ---   Neutrals  --- */
 @fullBlack: #000000;
-@offWhite: #F9FAFB;
-@darkWhite: #F3F4F5;
-@midWhite: #DCDDDE;
-@white: #FFFFFF;
+@offWhite: #f9fafb;
+@darkWhite: #f3f4f5;
+@midWhite: #dcddde;
+@white: #ffffff;
 
 /* --- Colored Backgrounds --- */
-@primaryBackground: #DFF0FF;
-@secondaryBackground: #F4F4F4;
-@redBackground: #FFE8E6;
-@orangeBackground: #FFEDDE;
-@yellowBackground: #FFF8DB;
-@oliveBackground: #FBFDEF;
-@greenBackground: #E5F9E7;
-@tealBackground: #E1F7F7;
-@blueBackground: #DFF0FF;
-@violetBackground: #EAE7FF;
-@purpleBackground: #F6E7FF;
-@pinkBackground: #FFE3FB;
-@brownBackground: #F1E2D3;
-@greyBackground: #F4F4F4;
-@blackBackground: #F4F4F4;
+@primaryBackground: #dff0ff;
+@secondaryBackground: #f4f4f4;
+@redBackground: #ffe8e6;
+@orangeBackground: #ffedde;
+@yellowBackground: #fff8db;
+@oliveBackground: #fbfdef;
+@greenBackground: #e5f9e7;
+@tealBackground: #e1f7f7;
+@blueBackground: #dff0ff;
+@violetBackground: #eae7ff;
+@purpleBackground: #f6e7ff;
+@pinkBackground: #ffe3fb;
+@brownBackground: #f1e2d3;
+@greyBackground: #f4f4f4;
+@blackBackground: #f4f4f4;
 
 /* --- Colored Headers --- */
 @primaryHeaderColor: darken(@primaryTextColor, 5);
@@ -407,10 +407,10 @@
 @secondaryTextColor: @invertedTextColor;
 @redTextColor: @red;
 @orangeTextColor: @orange;
-@yellowTextColor: #B58105; // Yellow text is difficult to read
-@oliveTextColor: #8ABC1E; // Olive is difficult to read
-@greenTextColor: #1EBC30; // Green is difficult to read
-@tealTextColor: #10A3A3; // Teal text is difficult to read
+@yellowTextColor: #b58105; // Yellow text is difficult to read
+@oliveTextColor: #8abc1e; // Olive is difficult to read
+@greenTextColor: #1ebc30; // Green is difficult to read
+@tealTextColor: #10a3a3; // Teal text is difficult to read
 @blueTextColor: @blue;
 @violetTextColor: @violet;
 @purpleTextColor: @purple;
@@ -424,10 +424,10 @@
 @lightSecondaryTextColor: @invertedTextColor;
 @lightRedTextColor: @lightRed;
 @lightOrangeTextColor: @lightOrange;
-@lightYellowTextColor: #B58105; // Yellow text is difficult to read
-@lightOliveTextColor: #8ABC1E; // Olive is difficult to read
-@lightGreenTextColor: #1EBC30; // Green is difficult to read
-@lightTealTextColor: #10A3A3; // Teal text is difficult to read
+@lightYellowTextColor: #b58105; // Yellow text is difficult to read
+@lightOliveTextColor: #8abc1e; // Olive is difficult to read
+@lightGreenTextColor: #1ebc30; // Green is difficult to read
+@lightTealTextColor: #10a3a3; // Teal text is difficult to read
 @lightBlueTextColor: @lightBlue;
 @lightVioletTextColor: @lightViolet;
 @lightPurpleTextColor: @lightPurple;
@@ -704,31 +704,31 @@
 
 /* Positive */
 @positiveColor: @green;
-@positiveBackgroundColor: #FCFFF5;
-@positiveBorderColor: #A3C293;
-@positiveHeaderColor: #1A531B;
-@positiveTextColor: #2C662D;
+@positiveBackgroundColor: #fcfff5;
+@positiveBorderColor: #a3c293;
+@positiveHeaderColor: #1a531b;
+@positiveTextColor: #2c662d;
 
 /* Negative */
 @negativeColor: @red;
-@negativeBackgroundColor: #FFF6F6;
-@negativeBorderColor: #E0B4B4;
-@negativeHeaderColor: #912D2B;
-@negativeTextColor: #9F3A38;
+@negativeBackgroundColor: #fff6f6;
+@negativeBorderColor: #e0b4b4;
+@negativeHeaderColor: #912d2b;
+@negativeTextColor: #9f3a38;
 
 /* Info */
-@infoColor: #31CCEC;
-@infoBackgroundColor: #F8FFFF;
-@infoBorderColor: #A9D5DE;
-@infoHeaderColor: #0E566C;
-@infoTextColor: #276F86;
+@infoColor: #31ccec;
+@infoBackgroundColor: #f8ffff;
+@infoBorderColor: #a9d5de;
+@infoHeaderColor: #0e566c;
+@infoTextColor: #276f86;
 
 /* Warning */
-@warningColor: #F2C037;
-@warningBorderColor: #C9BA9B;
-@warningBackgroundColor: #FFFAF3;
-@warningHeaderColor: #794B02;
-@warningTextColor: #573A08;
+@warningColor: #f2c037;
+@warningBorderColor: #c9ba9b;
+@warningBackgroundColor: #fffaf3;
+@warningHeaderColor: #794b02;
+@warningTextColor: #573a08;
 
 /* -------------------
         Paths
@@ -816,16 +816,16 @@
      Brand Colors
 -------------------- */
 
-@facebookColor: #3B5998;
-@twitterColor: #1DA1F2;
-@googlePlusColor: #DD4B39;
-@linkedInColor: #0077B5;
-@youtubeColor: #FF0000;
-@pinterestColor: #BD081C;
-@vkColor: #45668E;
-@instagramColor: #49769C;
-@telegramColor: #0088CC;
-@whatsAppColor: #25D366;
+@facebookColor: #3b5998;
+@twitterColor: #1da1f2;
+@googlePlusColor: #dd4b39;
+@linkedInColor: #0077b5;
+@youtubeColor: #ff0000;
+@pinterestColor: #bd081c;
+@vkColor: #45668e;
+@instagramColor: #49769c;
+@telegramColor: #0088cc;
+@whatsAppColor: #25d366;
 
 /* -------------------
       Borders
@@ -840,9 +840,9 @@
 @strongSelectedBorderColor: rgba(34, 36, 38, 0.5);
 @disabledBorderColor: rgba(34, 36, 38, 0.5);
 
-@solidInternalBorderColor: #FAFAFA;
-@solidBorderColor: #D4D4D5;
-@solidSelectedBorderColor: #BCBDBD;
+@solidInternalBorderColor: #fafafa;
+@solidBorderColor: #d4d4d5;
+@solidSelectedBorderColor: #bcbdbd;
 
 @whiteBorderColor: rgba(255, 255, 255, 0.1);
 @selectedWhiteBorderColor: rgba(255, 255, 255, 0.8);
@@ -1483,28 +1483,28 @@
 @inputWarningBoxShadow: none;
 
 /* AutoFill */
-@inputAutoFillBackground: #FFFFF0;
-@inputAutoFillBorder: #E5DFA1;
+@inputAutoFillBackground: #fffff0;
+@inputAutoFillBorder: #e5dfa1;
 @inputAutoFillFocusBackground: @inputAutoFillBackground;
-@inputAutoFillFocusBorder: #D5C315;
+@inputAutoFillFocusBorder: #d5c315;
 
-@inputAutoFillErrorBackground: #FFFAF0;
-@inputAutoFillErrorBorder: #E0B4B4;
+@inputAutoFillErrorBackground: #fffaf0;
+@inputAutoFillErrorBorder: #e0b4b4;
 
-@inputAutoFillInfoBackground: #F0FAFF;
+@inputAutoFillInfoBackground: #f0faff;
 @inputAutoFillInfoBorder: #b3e0e0;
 
-@inputAutoFillSuccessBackground: #F0FFF0;
+@inputAutoFillSuccessBackground: #f0fff0;
 @inputAutoFillSuccessBorder: #bee0b3;
 
-@inputAutoFillWarningBackground: #FFFFe0;
+@inputAutoFillWarningBackground: #ffffe0;
 @inputAutoFillWarningBorder: #e0e0b3;
 
 /* Dropdown state */
-@dropdownErrorHoverBackground: #FBE7E7;
+@dropdownErrorHoverBackground: #fbe7e7;
 @dropdownErrorSelectedBackground: @dropdownErrorHoverBackground;
-@dropdownErrorActiveBackground: #FDCFCF;
-@dropdownErrorLabelBackground: #EACBCB;
+@dropdownErrorActiveBackground: #fdcfcf;
+@dropdownErrorLabelBackground: #eacbcb;
 @dropdownErrorLabelColor: @errorTextColor;
 
 @dropdownInfoHoverBackground: #e9f2fb;

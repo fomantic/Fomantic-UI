@@ -1,4 +1,4 @@
-@background: #F3F3F3;
+@background: #f3f3f3;
 
 @boxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
 @borderRadius: 4px;
@@ -12,4 +12,4 @@
 @iconSize: 1.5em;
 @iconDistance: 1em;
 
-@warningBackgroundColor: #F9EDBE;
+@warningBackgroundColor: #f9edbe;

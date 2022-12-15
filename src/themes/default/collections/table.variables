@@ -144,16 +144,16 @@
 @warningBackgroundHover: darken(@warningBackgroundColor, 3);
 @warningColorHover: darken(@warningColor, 3);
 @invertedWarningColor: @warningTextColor;
-@invertedWarningBackgroundColor: #EEC97E;
+@invertedWarningBackgroundColor: #eec97e;
 
 /* Active */
 @activeColor: @textColor;
-@activeBackgroundColor: #E0E0E0;
+@activeBackgroundColor: #e0e0e0;
 @activeBoxShadow: @stateMarkerWidth 0 0 @activeColor inset;
 @invertedActiveColor: @textColor;
-@invertedActiveBackgroundColor: #A0A0A0;
+@invertedActiveBackgroundColor: #a0a0a0;
 
-@activeBackgroundHover: #EFEFEF;
+@activeBackgroundHover: #efefef;
 @activeColorHover: @selectedTextColor;
 
 /* --------------

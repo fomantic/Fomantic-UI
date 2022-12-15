@@ -13,6 +13,7 @@ module.exports = {
         'at-rule-no-unknown': null,
         'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
         'color-function-notation': 'legacy',
+        'color-hex-case': 'lower',
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         'function-no-unknown': null,
         indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed

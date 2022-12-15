@@ -3,7 +3,7 @@
 *******************************/
 
 @menuBorderRadius: @borderRadius;
-@menuBorderColor: #DADADA;
+@menuBorderColor: #dadada;
 @menuBoxShadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 @menuPadding: @relative8px 0;

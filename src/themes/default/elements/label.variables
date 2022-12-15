@@ -9,7 +9,7 @@
 @verticalAlign: baseline;
 @verticalMargin: 0;
 @horizontalMargin: @relative2px;
-@backgroundColor: #E8E8E8;
+@backgroundColor: #e8e8e8;
 @color: @mutedTextColor;
 @backgroundImage: none;
 @verticalPadding: 0.5833em; /* medium is not @emSize custom value required */
@@ -83,17 +83,17 @@
 -------------------- */
 
 /* Hover */
-@labelHoverBackgroundColor: #E0E0E0;
+@labelHoverBackgroundColor: #e0e0e0;
 @labelHoverBackgroundImage: none;
 @labelHoverTextColor: @hoveredTextColor;
 
 /* Active */
-@labelActiveBackgroundColor: #D0D0D0;
+@labelActiveBackgroundColor: #d0d0d0;
 @labelActiveBackgroundImage: none;
 @labelActiveTextColor: @selectedTextColor;
 
 /* Active Hover */
-@labelActiveHoverBackgroundColor: #C8C8C8;
+@labelActiveHoverBackgroundColor: #c8c8c8;
 @labelActiveHoverBackgroundImage: none;
 @labelActiveHoverTextColor: @selectedTextColor;
 

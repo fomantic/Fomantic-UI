@@ -7,7 +7,7 @@
 -------------------- */
 
 /* Item */
-@background: #FFFFFF;
+@background: #ffffff;
 @borderRadius: 0.325rem;
 @display: block;
 @float: left;

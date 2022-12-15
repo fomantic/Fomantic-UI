@@ -21,28 +21,28 @@
 -------------------- */
 
 /* ---  Colors  --- */
-@blue: #0074D9;
-@green: #2ECC40;
-@orange: #FF851B;
-@pink: #D9499A;
-@purple: #A24096;
-@red: #FF4136;
-@teal: #39CCCC;
-@yellow: #FFCB08;
+@blue: #0074d9;
+@green: #2ecc40;
+@orange: #ff851b;
+@pink: #d9499a;
+@purple: #a24096;
+@red: #ff4136;
+@teal: #39cccc;
+@yellow: #ffcb08;
 
 @black: #191919;
-@grey: #CCCCCC;
-@white: #FFFFFF;
+@grey: #cccccc;
+@white: #ffffff;
 
 /* ---  Light Colors  --- */
-@lightBlue: #54C8FF;
-@lightGreen: #2ECC40;
-@lightOrange: #FF851B;
-@lightPink: #FF8EDF;
-@lightPurple: #CDC6FF;
-@lightRed: #FF695E;
-@lightTeal: #6DFFFF;
-@lightYellow: #FFE21F;
+@lightBlue: #54c8ff;
+@lightGreen: #2ecc40;
+@lightOrange: #ff851b;
+@lightPink: #ff8edf;
+@lightPurple: #cdc6ff;
+@lightRed: #ff695e;
+@lightTeal: #6dffff;
+@lightYellow: #ffe21f;
 
 @primaryColor: @blue;
 @secondaryColor: @black;
@@ -51,19 +51,19 @@
         Page
 -------------------- */
 
-@bodyBackground: #FCFCFC;
+@bodyBackground: #fcfcfc;
 @fontSize: 14px;
 @textColor: rgba(0, 0, 0, 0.8);
 
 @headerMargin: 1em 0 1rem;
 @paragraphMargin: 0 0 1em;
 
-@linkColor: #009FDA;
+@linkColor: #009fda;
 @linkUnderline: none;
 @linkHoverColor: lighten(@linkColor, 5);
 @linkHoverUnderline: @linkUnderline;
 
-@highlightBackground: #FFFFCC;
+@highlightBackground: #ffffcc;
 @highlightColor: @textColor;
 
 /* -------------------

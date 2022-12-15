@@ -133,5 +133,5 @@
 /* Inverted */
 @invertedActiveBackground: #333333;
 @invertedActiveHoverBackground: #444444;
-@invertedHoverBackground: #3F3F3F;
+@invertedHoverBackground: #3f3f3f;
 @invertedDisabledBackground: #222222;

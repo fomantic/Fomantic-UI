@@ -27,7 +27,7 @@
 @textTransition: none;
 
 /* Menu */
-@menuBackground: #FFFFFF;
+@menuBackground: #ffffff;
 @menuMargin: 0;
 @menuPadding: 0 0;
 @menuTop: 100%;

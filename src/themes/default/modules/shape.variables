@@ -31,7 +31,7 @@
 
 /* Cube */
 @cubeSize: 15em;
-@cubeBackground: #E6E6E6;
+@cubeBackground: #e6e6e6;
 @cubePadding: 2em;
 @cubeTextColor: @textColor;
 @cubeBoxShadow: 0 0 2px rgba(0, 0, 0, 0.3);

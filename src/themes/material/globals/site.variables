@@ -21,7 +21,7 @@
       Page
 --------------- */
 
-@pageBackground: #F9F9F9;
+@pageBackground: #f9f9f9;
 @lineHeight: 1.33;
 @textColor: #212121;
 
@@ -55,35 +55,35 @@
 -------------------- */
 
 /* ---  Colors  --- */
-@black: #1B1C1D;
-@blue: #2196F3;
-@green: #4CAF50;
-@grey: #9E9E9E;
-@orange: #FF9800;
-@pink: #E91E63;
-@purple: #9C27B0;
-@red: #F44336;
+@black: #1b1c1d;
+@blue: #2196f3;
+@green: #4caf50;
+@grey: #9e9e9e;
+@orange: #ff9800;
+@pink: #e91e63;
+@purple: #9c27b0;
+@red: #f44336;
 @teal: #1de9b6;
-@yellow: #FFEB3B;
+@yellow: #ffeb3b;
 
 /* ---  Light Colors  --- */
 @lightBlack: #333333;
-@lightBlue: #2979FF;
-@lightGreen: #00E676;
-@lightOrange: #FF9100;
-@lightPink: #F50057;
-@lightPurple: #D500F9;
-@lightRed: #FF1744;
-@lightTeal: #1DE9B6;
-@lightYellow: #FFEA00;
+@lightBlue: #2979ff;
+@lightGreen: #00e676;
+@lightOrange: #ff9100;
+@lightPink: #f50057;
+@lightPurple: #d500f9;
+@lightRed: #ff1744;
+@lightTeal: #1de9b6;
+@lightYellow: #ffea00;
 
 /* ---   Neutrals  --- */
 @fullBlack: #000000;
-@darkGrey: #AAAAAA;
-@lightGrey: #DCDDDE;
-@offWhite: #FAFAFA;
-@darkWhite: #F0F0F0;
-@white: #FFFFFF;
+@darkGrey: #aaaaaa;
+@lightGrey: #dcddde;
+@offWhite: #fafafa;
+@darkWhite: #f0f0f0;
+@white: #ffffff;
 
 /* -------------------
     Brand Colors
@@ -105,7 +105,7 @@
        Links
 -------------------- */
 
-@linkColor: #009FDA;
+@linkColor: #009fda;
 @linkUnderline: none;
 @linkHoverColor: lighten(@linkColor, 5);
 @linkHoverUnderline: @linkUnderline;
@@ -114,7 +114,7 @@
   Highlighted Text
 -------------------- */
 
-@highlightBackground: #009FDA;
+@highlightBackground: #009fda;
 @highlightColor: @white;
 
 /* -------------------

@@ -84,11 +84,11 @@
 @actionHoverOpacity: 1;
 @actionTransition: color @defaultDuration @defaultEasing;
 
-@starColor: #FFB70A;
-@starActiveColor: #FFE623;
+@starColor: #ffb70a;
+@starActiveColor: #ffe623;
 
-@likeColor: #FF2733;
-@likeActiveColor: #FF2733;
+@likeColor: #ff2733;
+@likeActiveColor: #ff2733;
 
 /* Links */
 @contentLinkColor: "";

@@ -75,7 +75,7 @@
 
 /* Down */
 @downBorderColor: rgba(0, 0, 0, 0.3);
-@downBackground: #FAFAFA;
+@downBackground: #fafafa;
 @downColor: @textColor;
 @downBoxShadow: none;
 
