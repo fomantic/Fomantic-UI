@@ -15,8 +15,13 @@
         text-transform: none;
     };
 };
-@icon-deprecated-map: {};
-@icon-outline-map: {};
-@icon-outline-aliases-map: {};
-@icon-brand-map: {};
-@icon-brand-aliases-map: {};
+@icon-deprecated-map: {
+};
+@icon-outline-map: {
+};
+@icon-outline-aliases-map: {
+};
+@icon-brand-map: {
+};
+@icon-brand-aliases-map: {
+};
