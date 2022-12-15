@@ -336,7 +336,7 @@
             text: @successTextColor;
             invertedText: @formSuccessLabelBackground;
         };
-    }
+    };
 
     /* Colors */
 
@@ -372,7 +372,7 @@
                 color: @it;
             }
         }
-    })
+    });
 }
 & when not (@variationMessageColors = false) {
     each(@variationMessageColors, {
@@ -417,7 +417,7 @@
                 color: @invertedTextColor;
             }
         }
-    })
+    });
 }
 
 & when (@variationMessageInverted) {
@@ -440,7 +440,7 @@
         .ui.@{value}.message {
             font-size: @@s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

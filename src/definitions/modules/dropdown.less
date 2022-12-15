@@ -1117,7 +1117,7 @@ select.ui.dropdown {
         .ui.dropdown.@{state} > .menu .active.item {
             background-color: @formStates[@@state][dropdownActiveBackground];
         }
-    })
+    });
 }
 
 & when (@variationDropdownClear) {
@@ -1748,7 +1748,7 @@ select.ui.dropdown {
         .ui.@{value}.dropdown .menu > .item {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationDropdownInverted) {

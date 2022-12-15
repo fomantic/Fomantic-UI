@@ -38,7 +38,7 @@ span.ui.text {
                 color: @l;
             }
         }
-    })
+    });
 }
 
 & when not (@variationTextStates = false) {
@@ -49,7 +49,7 @@ span.ui.text {
         span.ui.@{state}.text {
             color: @c;
         }
-    })
+    });
 }
 
 & when (@variationTextDisabled) {
@@ -68,7 +68,7 @@ span.ui.medium.text {
         span.ui.@{value}.text {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();
