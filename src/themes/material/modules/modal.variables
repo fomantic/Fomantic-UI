@@ -5,7 +5,7 @@
 @headerVerticalPadding: 1.7142rem;
 @headerHorizontalPadding: 1.7142rem;
 @headerFontWeight: 400;
-@headerFontFamily: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+@headerFontFamily: 'Roboto', "Helvetica Neue", Arial, sans-serif;
 @headerBorder: none;
 
 @contentPadding: 1rem 2rem 2rem;

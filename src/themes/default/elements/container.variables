@@ -37,19 +37,19 @@
 @veryRelaxedGridGutterWidth: 5rem;
 
 @mobileGridWidth: @mobileWidth;
-@tabletGridWidth: e(%('calc(%d + %d)', @tabletWidth, @gridGutterWidth));
-@computerGridWidth: e(%('calc(%d + %d)', @computerWidth, @gridGutterWidth));
-@largeMonitorGridWidth: e(%('calc(%d + %d)', @largeMonitorWidth, @gridGutterWidth));
+@tabletGridWidth: e(%("calc(%d + %d)", @tabletWidth, @gridGutterWidth));
+@computerGridWidth: e(%("calc(%d + %d)", @computerWidth, @gridGutterWidth));
+@largeMonitorGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @gridGutterWidth));
 
 @mobileRelaxedGridWidth: @mobileWidth;
-@tabletRelaxedGridWidth: e(%('calc(%d + %d)', @tabletWidth, @relaxedGridGutterWidth));
-@computerRelaxedGridWidth: e(%('calc(%d + %d)', @computerWidth, @relaxedGridGutterWidth));
-@largeMonitorRelaxedGridWidth: e(%('calc(%d + %d)', @largeMonitorWidth, @relaxedGridGutterWidth));
+@tabletRelaxedGridWidth: e(%("calc(%d + %d)", @tabletWidth, @relaxedGridGutterWidth));
+@computerRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @relaxedGridGutterWidth));
+@largeMonitorRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @relaxedGridGutterWidth));
 
 @mobileVeryRelaxedGridWidth: @mobileWidth;
-@tabletVeryRelaxedGridWidth: e(%('calc(%d + %d)', @tabletWidth, @veryRelaxedGridGutterWidth));
-@computerVeryRelaxedGridWidth: e(%('calc(%d + %d)', @computerWidth, @veryRelaxedGridGutterWidth));
-@largeMonitorVeryRelaxedGridWidth: e(%('calc(%d + %d)', @largeMonitorWidth, @veryRelaxedGridGutterWidth));
+@tabletVeryRelaxedGridWidth: e(%("calc(%d + %d)", @tabletWidth, @veryRelaxedGridGutterWidth));
+@computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
+@largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
 /* -------------------
        Types

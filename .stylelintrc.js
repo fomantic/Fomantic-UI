@@ -24,7 +24,7 @@ module.exports = {
         'number-max-precision': 5,
         'property-case': null,
         'rule-empty-line-before': null,
-        'string-quotes': null,
+        'string-quotes': 'double',
         'value-keyword-case': null,
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11

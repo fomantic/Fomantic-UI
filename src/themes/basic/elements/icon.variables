@@ -2,12 +2,12 @@
    Icon Variables
 -------------------- */
 
-@fontPath: '../../themes/basic/assets/fonts';
+@fontPath: "../../themes/basic/assets/fonts";
 
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url('@{fontPath}/@{fontName}.woff') format('woff');
+        src: url("@{fontPath}/@{fontName}.woff") format('woff');
         font-style: normal;
         font-weight: @normal;
         font-variant: normal;

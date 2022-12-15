@@ -105,7 +105,7 @@
 @basicBackground: none @white;
 @basicBorderWidth: 1px;
 @basicBorderWidthOffset: -@basicBorderWidth;
-@basicBorderFullWidthOffset: e(%('calc(100%% + %d)', @basicBorderWidth));
+@basicBorderFullWidthOffset: e(%("calc(100%% + %d)", @basicBorderWidth));
 @basicBorder: @basicBorderWidth solid @borderColor;
 @basicColor: @textColor;
 @basicBoxShadow: none;
@@ -115,9 +115,9 @@
 @basicHoverBorder: @basicBorder;
 @basicHoverBoxShadow: @basicBoxShadow;
 
-@basicVerticalPadding: e(%('calc(%d - %d)', @verticalPadding, @basicBorderWidth));
-@basicHorizontalPadding: e(%('calc(%d - %d)', @horizontalPadding, @basicBorderWidth));
-@basicImageLabelPadding: e(%('calc(%d - %d)', @imageLabelTextDistance, @basicBorderWidth));
+@basicVerticalPadding: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
+@basicHorizontalPadding: e(%("calc(%d - %d)", @horizontalPadding, @basicBorderWidth));
+@basicImageLabelPadding: e(%("calc(%d - %d)", @imageLabelTextDistance, @basicBorderWidth));
 
 /* Tag */
 @tagCircleColor: @white;
@@ -133,24 +133,24 @@
 
 /* Ribbon */
 @ribbonTriangleSize: 1.2em;
-@basicRibbonTriangleSize: e(%('calc(%d - %d)', @ribbonTriangleSize, @basicBorderWidth));
-@basicRibbonTriangleSizeOffset: e(%('calc(1rem + %d - %d)', @ribbonTriangleSize, @basicBorderWidth));
+@basicRibbonTriangleSize: e(%("calc(%d - %d)", @ribbonTriangleSize, @basicBorderWidth));
+@basicRibbonTriangleSizeOffset: e(%("calc(1rem + %d - %d)", @ribbonTriangleSize, @basicBorderWidth));
 @ribbonShadowColor: rgba(0, 0, 0, 0.15);
 
 @ribbonMargin: 1rem;
-@ribbonOffset: e(%('calc(%d - %d)', -@ribbonMargin, @ribbonTriangleSize));
-@basicRibbonOffset: e(%('calc(%d - %d)', @verticalPadding, @basicBorderWidth));
-@ribbonDistance: e(%('calc(%d + %d)', @ribbonMargin, @ribbonTriangleSize));
-@rightRibbonOffset: e(%('calc(100%% + %d + %d)', @ribbonMargin, @ribbonTriangleSize));
+@ribbonOffset: e(%("calc(%d - %d)", -@ribbonMargin, @ribbonTriangleSize));
+@basicRibbonOffset: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
+@ribbonDistance: e(%("calc(%d + %d)", @ribbonMargin, @ribbonTriangleSize));
+@rightRibbonOffset: e(%("calc(100%% + %d + %d)", @ribbonMargin, @ribbonTriangleSize));
 
 @ribbonImageTopDistance: 1rem;
 @ribbonImageMargin: -0.05rem; /* Rounding Offset on Triangle */
-@ribbonImageOffset: e(%('calc(%d - %d)', -@ribbonImageMargin, @ribbonTriangleSize));
-@rightRibbonImageOffset: e(%('calc(100%% + %d + %d)', @ribbonImageMargin, @ribbonTriangleSize));
+@ribbonImageOffset: e(%("calc(%d - %d)", -@ribbonImageMargin, @ribbonTriangleSize));
+@rightRibbonImageOffset: e(%("calc(100%% + %d + %d)", @ribbonImageMargin, @ribbonTriangleSize));
 
 @ribbonTableMargin: @relativeMedium; /* Rounding Offset on Triangle */
-@ribbonTableOffset: e(%('calc(%d - %d)', -@ribbonTableMargin, @ribbonTriangleSize));
-@rightRibbonTableOffset: e(%('calc(100%% + %d + %d)', @ribbonTableMargin, @ribbonTriangleSize));
+@ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
+@rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
 /* Inverted */
 @invertedBackgroundColor: darken(@backgroundColor, 20);
@@ -204,7 +204,7 @@
 @attachedBorderRadius: @borderRadius;
 
 @attachedOffset: -@borderWidth;
-@attachedWidthOffset: e(%('calc(100%% + %d)', @borderWidth * 2));
+@attachedWidthOffset: e(%("calc(100%% + %d)", @borderWidth * 2));
 
 /* Corner */
 @cornerSizeRatio: 1;
