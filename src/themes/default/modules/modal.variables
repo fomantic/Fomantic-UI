@@ -51,12 +51,12 @@
 @contentBackground: @white;
 
 /* Image / Description */
-@imageWidth: '';
+@imageWidth: "";
 @imageIconSize: 8rem;
 @imageVerticalAlign: start;
 
 @descriptionDistance: 2em;
-@descriptionMinWidth: '';
+@descriptionMinWidth: "";
 @descriptionWidth: auto;
 @descriptionVerticalAlign: start;
 

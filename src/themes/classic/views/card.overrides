@@ -20,7 +20,7 @@
     0 3px 0 0 @borderColor
 ;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 
 /* Item Group */
 @horizontalSpacing: 0.5em;

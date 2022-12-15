@@ -60,7 +60,7 @@
 /* Piled */
 @piledZIndex: auto;
 @piledMargin: 3em;
-@piledBoxShadow: '';
+@piledBoxShadow: "";
 @piledDegrees: 1.2deg;
 @piledBorder: @border;
 

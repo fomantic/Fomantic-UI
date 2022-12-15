@@ -9,9 +9,9 @@
        Fonts
 -------------------- */
 
-@fontName: 'Lato';
-@fontFileNameLatin: 'LatoLatin';
-@fontFileNameSupplement: 'Lato';
+@fontName: "Lato";
+@fontFileNameLatin: "LatoLatin";
+@fontFileNameSupplement: "Lato";
 
 // based on https://github.com/twbs/bootstrap/blob/v5.1.3/scss/_variables.scss#L577 list
 @fallbackFonts: system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -110,12 +110,12 @@
 
 @googleFontName: @fontName;
 @importGoogleFonts: false;
-@googleFontSizes: 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
-@googleSubset: 'latin';
-@googleFontDisplay: 'swap';
+@googleFontSizes: "ital,wght@0,400%3B0,700%3B1,400%3B1,700";
+@googleSubset: "latin";
+@googleFontDisplay: "swap";
 
-@googleProtocol: 'https://';
-@googleFontRequest: '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}&display=@{googleFontDisplay}';
+@googleProtocol: "https://";
+@googleFontRequest: "@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}&display=@{googleFontDisplay}";
 
 @bold: bold;
 @normal: normal;
@@ -735,8 +735,8 @@
 -------------------- */
 
 /* For source only. Modified in gulp for dist */
-@imagePath: '../../themes/default/assets/images';
-@fontPath: '../../themes/default/assets/fonts';
+@imagePath: "../../themes/default/assets/images";
+@fontPath: "../../themes/default/assets/fonts";
 
 /* -------------------
        Em Sizes
@@ -1470,16 +1470,16 @@
 @transparentFormWarningBackground: @formWarningBackground;
 
 /* Input state */
-@inputErrorBorderRadius: '';
+@inputErrorBorderRadius: "";
 @inputErrorBoxShadow: none;
 
-@inputInfoBorderRadius: '';
+@inputInfoBorderRadius: "";
 @inputInfoBoxShadow: none;
 
-@inputSuccessBorderRadius: '';
+@inputSuccessBorderRadius: "";
 @inputSuccessBoxShadow: none;
 
-@inputWarningBorderRadius: '';
+@inputWarningBorderRadius: "";
 @inputWarningBoxShadow: none;
 
 /* AutoFill */

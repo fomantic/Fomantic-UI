@@ -217,13 +217,13 @@
 @selectionActiveHoverMenuBoxShadow: @selectionVisibleMenuBoxShadow;
 
 @selectionVisibleConnectingBorder: 0;
-@selectionVisibleIconOpacity: '';
+@selectionVisibleIconOpacity: "";
 
 /* --------------
      Search
 -------------- */
 
-@searchMinWidth: '';
+@searchMinWidth: "";
 
 /* Search Selection */
 @searchSelectionLineHeight: @inputLineHeight;
@@ -262,8 +262,8 @@
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
 
 /* Dropdown Icon */
-@multipleSelectionDropdownIconMargin: '';
-@multipleSelectionDropdownIconPadding: '';
+@multipleSelectionDropdownIconMargin: "";
+@multipleSelectionDropdownIconPadding: "";
 
 @multipleSelectionSearchAfterLabelDistance: @relative2px;
 

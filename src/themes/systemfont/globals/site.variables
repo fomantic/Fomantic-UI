@@ -2,7 +2,7 @@
      User Global Variables
 *******************************/
 
-@fontName: '';
+@fontName: "";
 @headerFont: @fallbackFonts;
 @pageFont: @fallbackFonts;
 @importGoogleFonts: false;

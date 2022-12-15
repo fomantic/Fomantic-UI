@@ -59,7 +59,7 @@
 @labeledIconBackgroundColor: transparent;
 @labeledIconPadding: (@horizontalPadding + 1em);
 @labeledIconBorder: rgba(0, 0, 0, 0.05);
-@labeledIconColor: '';
+@labeledIconColor: "";
 
 @labeledIconLeftShadow: none;
 @labeledIconRightShadow: none;

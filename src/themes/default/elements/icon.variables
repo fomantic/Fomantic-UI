@@ -36,11 +36,11 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 /* Solid Icons */
 @importIcons: true;
-@fontName: 'icons';
-@outlineFontName: 'outline-icons';
-@thinFontName: 'thin-icons';
-@brandFontName: 'brand-icons';
-@duotoneFontName: 'duotone-icons';
+@fontName: "icons";
+@outlineFontName: "outline-icons";
+@thinFontName: "thin-icons";
+@brandFontName: "brand-icons";
+@duotoneFontName: "duotone-icons";
 
 @fonts: {
     @solid: {

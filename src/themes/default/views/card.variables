@@ -26,7 +26,7 @@
     @borderShadow
 ;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 @transition:
     box-shadow @defaultDuration @defaultEasing,
     transform @defaultDuration @defaultEasing
@@ -68,7 +68,7 @@
 @contentBorder: none;
 
 /* Header */
-@headerMargin: '';
+@headerMargin: "";
 @headerFontWeight: @bold;
 @headerFontSize: @relativeBig;
 @headerLineHeightOffset: (-(@lineHeight - 1em) / 2);
@@ -91,8 +91,8 @@
 @likeActiveColor: #FF2733;
 
 /* Links */
-@contentLinkColor: '';
-@contentLinkHoverColor: '';
+@contentLinkColor: "";
+@contentLinkHoverColor: "";
 @contentLinkTransition: color @defaultDuration @defaultEasing;
 
 @headerLinkColor: @headerColor;
@@ -106,7 +106,7 @@
 @descriptionColor: rgba(0, 0, 0, 0.68);
 
 /* Content Image */
-@contentImageWidth: '';
+@contentImageWidth: "";
 @contentImageVerticalAlign: middle;
 
 /* Avatar Image */
@@ -118,7 +118,7 @@
 
 /* Dimmer */
 @dimmerZIndex: 10;
-@dimmerColor: '';
+@dimmerColor: "";
 
 /* Additional Content */
 @extraDivider: 1px solid rgba(0, 0, 0, 0.05);

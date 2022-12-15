@@ -18,7 +18,7 @@
 @width: 100%;
 @boxShadow: none;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 @transition: box-shadow @defaultDuration @defaultEasing;
 
 /* Responsive */
@@ -42,7 +42,7 @@
 /* Image */
 @imageDisplay: block;
 @imageFloat: none;
-@imageMaxHeight: '';
+@imageMaxHeight: "";
 @imageVerticalAlign: start;
 @imageMargin: 0;
 @imagePadding: 0;
@@ -95,8 +95,8 @@
 @headerLinkHoverColor: @linkHoverColor;
 @metaLinkColor: @lightTextColor;
 @metaLinkHoverColor: @textColor;
-@contentLinkColor: '';
-@contentLinkHoverColor: '';
+@contentLinkColor: "";
+@contentLinkHoverColor: "";
 @contentLinkTransition: color @defaultDuration @defaultEasing;
 
 /* Description */
@@ -107,7 +107,7 @@
 @descriptionColor: @textColor;
 
 /* Content Image */
-@contentImageWidth: '';
+@contentImageWidth: "";
 @contentImageVerticalAlign: center;
 
 /* Avatar Image */

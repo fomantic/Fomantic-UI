@@ -120,7 +120,7 @@
 -------------------- */
 
 /* Required */
-@requiredContent: '*';
+@requiredContent: "*";
 @requiredColor: @negativeColor;
 @requiredVerticalOffset: -0.2em;
 @requiredDistance: 0.2em;

@@ -97,10 +97,10 @@
 @definitionColumnFontWeight: @bold;
 @definitionColumnColor: @selectedTextColor;
 @definitionColumnFontSize: @relativeMedium;
-@definitionColumnTextTransform: '';
-@definitionColumnBoxShadow: '';
-@definitionColumnTextAlign: '';
-@definitionColumnHorizontalPadding: '';
+@definitionColumnTextTransform: "";
+@definitionColumnBoxShadow: "";
+@definitionColumnTextAlign: "";
+@definitionColumnHorizontalPadding: "";
 
 /* --------------
     Couplings
@@ -183,16 +183,16 @@
 @selectableInvertedTextColor: @invertedSelectedTextColor;
 
 /* Sortable */
-@sortableBackground: '';
+@sortableBackground: "";
 @sortableColor: @textColor;
 
 @sortableBorder: 1px solid @borderColor;
 @sortableIconWidth: auto;
 @sortableIconDistance: 0.5em;
 @sortableIconOpacity: 0.8;
-@sortableIconFont: 'Icons';
-@sortableIconAscending: '\f0d8';
-@sortableIconDescending: '\f0d7';
+@sortableIconFont: "Icons";
+@sortableIconAscending: "\f0d8";
+@sortableIconDescending: "\f0d7";
 @sortableDisabledColor: @disabledTextColor;
 
 @sortableHoverBackground: @transparentBlack;
@@ -245,7 +245,7 @@
 @basicTableCellBackground: transparent;
 @basicTableHeaderDivider: none;
 @basicTableCellBorder: 1px solid rgba(0, 0, 0, 0.1);
-@basicTableCellPadding: '';
+@basicTableCellPadding: "";
 @basicTableStripedBackground: @transparentBlack;
 
 /* Padded */

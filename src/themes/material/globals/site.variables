@@ -8,7 +8,7 @@
 
 @headerFont: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont: 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@googleFontName: 'Roboto';
+@googleFontName: "Roboto";
 
 /* -------------------
       Base Sizes
@@ -42,7 +42,7 @@
         Paths
 -------------------- */
 
-@imagePath: '../../themes/material/assets/images';
+@imagePath: "../../themes/material/assets/images";
 
 /* --------------
    Paragraphs

@@ -1,5 +1,5 @@
-@fontPath: '../../themes/github/assets/fonts';
-@fontName: 'octicons';
+@fontPath: "../../themes/github/assets/fonts";
+@fontName: "octicons";
 @fonts: {
     @solid: {
         font-family: @fontName;

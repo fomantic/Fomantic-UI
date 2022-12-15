@@ -63,7 +63,7 @@
 @dropdownIconDistance: 1em;
 
 /* Header */
-@headerBackground: '';
+@headerBackground: "";
 @headerWeight: @bold;
 @headerTextTransform: @normal;
 

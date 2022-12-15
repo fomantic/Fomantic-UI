@@ -8,7 +8,7 @@
 
 @stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
-@stepsBackground: '';
+@stepsBackground: "";
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
 

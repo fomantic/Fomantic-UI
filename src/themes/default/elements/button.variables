@@ -47,7 +47,7 @@
 @iconHeight: auto;
 @iconOpacity: 0.8;
 @iconDistance: @relative6px;
-@iconColor: '';
+@iconColor: "";
 @iconTransition: opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: baseline;
 
@@ -94,7 +94,7 @@
 /* Focused */
 @focusBackgroundColor: @hoverBackgroundColor;
 @focusBackgroundImage: none;
-@focusBoxShadow: '';
+@focusBoxShadow: "";
 @focusColor: @hoveredTextColor;
 @iconFocusOpacity: 0.85;
 
@@ -104,7 +104,7 @@
 
 /* Pressed Down */
 @downBackgroundColor: #BABBBC;
-@downBackgroundImage: '';
+@downBackgroundImage: "";
 @downPressedShadow: none;
 @downBoxShadow:
     @borderBoxShadow,
@@ -137,7 +137,7 @@
 -------------------- */
 
 /* Or */
-@orText: 'or';
+@orText: "or";
 
 @orGap: 0.3em;
 @orHeight: (@verticalPadding * 2) + 1em;
@@ -166,7 +166,7 @@
 /* Labeled */
 @labeledLabelFontSize: @medium;
 @labeledLabelAlign: center;
-@labeledLabelPadding: '';
+@labeledLabelPadding: "";
 @labeledLabelFontSize: @relativeMedium;
 @labeledLabelBorderColor: @borderColor;
 @labeledLabelBorderOffset: -@borderBoxShadowWidth;
@@ -178,7 +178,7 @@
 @labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);
 @labeledIconPadding: (@horizontalPadding + @labeledIconWidth);
 @labeledIconBorder: transparent;
-@labeledIconColor: '';
+@labeledIconColor: "";
 
 @labeledIconLeftShadow: -1px 0 0 0 @labeledIconBorder inset;
 @labeledIconRightShadow: 1px 0 0 0 @labeledIconBorder inset;
@@ -226,7 +226,7 @@
 
 /* Basic Active */
 @basicActiveBackground: @transparentBlack;
-@basicActiveBoxShadow: '';
+@basicActiveBoxShadow: "";
 @basicActiveTextColor: @selectedTextColor;
 
 /* Basic Inverted */

@@ -137,7 +137,7 @@
 ;
 @selectionCloseRight: 0;
 @selectionCloseIconOpacity: 0.8;
-@selectionCloseIconColor: '';
+@selectionCloseIconColor: "";
 @selectionCloseIconHoverOpacity: 1;
 @selectionCloseIconHoverColor: @red;
 

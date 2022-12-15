@@ -119,13 +119,13 @@
 @metadataElementSpacing: 0.75em;
 
 /* Like */
-@likeColor: '';
+@likeColor: "";
 @likeHoverColor: #FF2733;
 @likeActiveColor: #EF404A;
 @likeTransition: 0.2s color ease;
 
 /* Metadata Divider */
-@metadataDivider: '';
+@metadataDivider: "";
 @metadataDividerColor: rgba(0, 0, 0, 0.2);
 @metadataDividerOffset: -1em;
 
