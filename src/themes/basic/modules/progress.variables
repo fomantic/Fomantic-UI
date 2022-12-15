@@ -4,9 +4,9 @@
 
 @background: transparent;
 @border: none;
-@padding: 0em;
+@padding: 0;
 
-@progressLeft: 0em;
+@progressLeft: 0;
 @progressWidth: 100%;
 @progressTextAlign: center;
 

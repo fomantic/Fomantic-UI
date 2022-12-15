@@ -338,7 +338,7 @@ module.exports = function (callback) {
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder   : '" + pathToSite + "/';"
+                siteVariable = "@siteFolder: '" + pathToSite + "/';"
             ;
 
             // rewrite site variable in theme.less
