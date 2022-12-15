@@ -8,13 +8,13 @@
   * Registers component with NPM
 */
 
+// node dependencies
+const process = require('child_process');
+
+// config
+const release = require('../config/admin/release');
+
 let
-    // node dependencies
-    process = require('child_process'),
-
-    // config
-    release = require('../config/admin/release'),
-
     // register components and distributions
     repos   = release.distributions.concat(release.components),
     total   = repos.length,

@@ -2,7 +2,7 @@
            Summarize Docs
 *******************************/
 
-let
+const
     // node dependencies
     console      = require('better-console'),
     fs           = require('fs'),
@@ -24,7 +24,7 @@ function startsWith(str, prefix) {
 function inArray(needle, haystack) {
     let length = haystack.length;
     for (let i = 0; i < length; i++) {
-        if (haystack[i] == needle) {
+        if (haystack[i] === needle) {
             return true;
         }
     }
@@ -109,7 +109,6 @@ function parser(file, callback) {
             meta.category = meta.type;
             meta.filename = filename;
             meta.url = '/' + filename;
-            meta.title = meta.title;
             // Primary key will by filepath
             data[meta.element] = meta;
         } else {

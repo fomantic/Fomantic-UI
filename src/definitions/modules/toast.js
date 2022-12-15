@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,13 +28,13 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.toast.settings, parameters)
                     : $.extend({}, $.fn.toast.settings),
 
@@ -55,7 +55,7 @@
                 $progressBar,
                 $animationObject,
                 $close,
-                $context         = (settings.context)
+                $context         = settings.context
                     ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                     : $('body'),
 
@@ -147,7 +147,11 @@
                 create: {
                     container: function () {
                         module.verbose('Creating container');
-                        $context.append($('<div/>', { class: settings.position + ' ' + className.container + ' ' + (settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '') }));
+                        $context.append($('<div/>', {
+                            class: settings.position + ' ' + className.container + ' '
+                            + (settings.horizontal ? className.horizontal : '') + ' '
+                            + (settings.context && settings.context !== 'body' ? className.absolute : ''),
+                        }));
                     },
                     id: function () {
                         id = (Math.random().toString(16) + '000000000').slice(2, 10);
@@ -208,7 +212,7 @@
                         } else {
                             $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
                             $close = $toast.find('> i' + module.helpers.toClass(className.close));
-                            settings.closeIcon = ($close.length > 0);
+                            settings.closeIcon = $close.length > 0;
                             if (iconClass !== '') {
                                 $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
                             }
@@ -242,10 +246,15 @@
                             }
                             settings.actions.forEach(function (el) {
                                 var
-                                    icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                    icon = el[fields.icon]
+                                        ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
+                                            + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                        : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                     cls = module.helpers.deQuote(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                    click = el[fields.click] && isFunction(el[fields.click])
+                                        ? el[fields.click]
+                                        : function () {}
                                 ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
@@ -482,7 +491,13 @@
                         return id;
                     },
                     containers: function () {
-                        return $context.children(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not(' + module.helpers.toClass(className.horizontal) + ')') + (settings.context && settings.context !== 'body' ? module.helpers.toClass(className.absolute) : ':not(' + module.helpers.toClass(className.absolute) + ')'));
+                        return $context.children(module.helpers.toClass(settings.position) + selector.container
+                            + (settings.horizontal
+                                ? module.helpers.toClass(className.horizontal)
+                                : ':not(' + module.helpers.toClass(className.horizontal) + ')')
+                            + (settings.context && settings.context !== 'body'
+                                ? module.helpers.toClass(className.absolute)
+                                : ':not(' + module.helpers.toClass(className.absolute) + ')'));
                     },
                     container: function () {
                         return module.get.containers()[0];
@@ -497,7 +512,11 @@
                         return $(module.get.container()).find(selector.box);
                     },
                     iconClass: function () {
-                        return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+                        return typeof settings.showIcon === 'string'
+                            ? settings.showIcon
+                            : (settings.showIcon && settings.icons[settings.class]
+                                ? settings.icons[settings.class]
+                                : '');
                     },
                     remainingTime: function () {
                         return $animationObject ? $animationObject.css('opacity') * settings.displayTime : 0;
@@ -715,17 +734,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -769,7 +788,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -913,16 +932,21 @@
                 return n1 * x * x;
             }
             if (x < 2 / d1) {
-                return n1 * (x -= 1.5 / d1) * x + 0.75;
+                x -= 1.5 / d1;
+
+                return n1 * x * x + 0.75;
             }
             if (x < 2.5 / d1) {
-                return n1 * (x -= 2.25 / d1) * x + 0.9375;
-            }
+                x -= 2.25 / d1;
 
-            return n1 * (x -= 2.625 / d1) * x + 0.984375;
+                return n1 * x * x + 0.9375;
+            }
+            x -= 2.625 / d1;
+
+            return n1 * x * x + 0.984375;
         },
         easeOutCubic: function (t) {
-            return (--t) * t * t + 1;
+            return --t * t * t + 1;
         },
     });
 })(jQuery, window, document);

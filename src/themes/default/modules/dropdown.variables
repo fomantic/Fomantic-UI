@@ -39,7 +39,7 @@
 @menuBoxShadow: @raisedShadow;
 @menuBorderRadius: @borderRadius;
 @menuTransition: opacity @defaultDuration @defaultEasing;
-@menuMinWidth: e(%("calc(100%% + %d)", @menuBorderWidth * 2));
+@menuMinWidth: e(%('calc(100%% + %d)', @menuBorderWidth * 2));
 @menuZIndex: 11;
 
 /* Text */
@@ -329,7 +329,7 @@
 /* Scrolling */
 @scrollingMenuWidth: 100%;
 @scrollingMenuItemBorder: none;
-@scrollingMenuRightItemPadding: e(%("calc(%d + %d)", @itemHorizontalPadding, @scrollbarWidth));
+@scrollingMenuRightItemPadding: e(%('calc(%d + %d)', @itemHorizontalPadding, @scrollbarWidth));
 
 @scrollingMobileMaxItems: 4;
 @scrollingTabletMaxItems: 6;

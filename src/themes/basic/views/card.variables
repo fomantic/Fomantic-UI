@@ -11,15 +11,15 @@
 @border: none;
 @boxShadow: none;
 
-@contentPadding: 1em 0em;
+@contentPadding: 1em 0;
 
 @rowSpacing: 1.5em;
-@groupCardMargin: 0em @horizontalSpacing @rowSpacing;
+@groupCardMargin: 0 @horizontalSpacing @rowSpacing;
 
 @extraBackground: transparent;
 @extraDivider: none;
 @extraBoxShadow: none;
-@extraPadding: 0.5em 0em;
+@extraPadding: 0.5em 0;
 
 @extraLinkColor: @textColor;
 @extraLinkHoverColor: @linkHoverColor;

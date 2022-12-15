@@ -1,9 +1,9 @@
-@fontPath : '../../themes/material/assets/fonts';
+@fontPath: '../../themes/material/assets/fonts';
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontName}.woff2") format('woff2')
-            if(@supportIE, e(',') url("@{fontPath}/@{fontName}.woff") format('woff'));
+        src: url('@{fontPath}/@{fontName}.woff2') format('woff2')
+            if(@supportIE, e(',') url('@{fontPath}/@{fontName}.woff') format('woff'));
         font-style: normal;
         font-weight: @normal;
         font-variant: normal;
@@ -23,6 +23,6 @@
 @small: 13px;
 @medium: 16px;
 @large: 18px;
-@big : 20px;
+@big: 20px;
 @huge: 28px;
 @massive: 32px;

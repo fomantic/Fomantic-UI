@@ -12,8 +12,8 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'icon';
+@type: 'element';
+@element: 'icon';
 
 @import (multiple) '../../theme.config';
 
@@ -23,7 +23,7 @@
 & when (@importIcons) {
     each(@fonts, {
         @font-face {
-            each(@value,{
+            each(@value, {
                 @{key}: @value;
             });
         }
@@ -514,11 +514,11 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 }
 
 .generateIcons(@map, @fontFamily) {
-    each(@map,{
-        @escapedKey: replace(@key,'^([0-9])','\3$1 ');
-        @normalizedKey: replace(@escapedKey,'_','.','g');
+    each(@map, {
+        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
+        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
         i.icon.@{normalizedKey}::before {
-            content: "@{value}";
+            content: '@{value}';
             & when not (@fontFamily = false) {
                 font-family: @fontFamily;
             }
@@ -527,18 +527,18 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 };
 
 .generateSecondaryIcons(@map) {
-    each(@map,{
-        @escapedKey: replace(@key,'^([0-9])','\3$1 ');
-        @normalizedKey: replace(@escapedKey,'_','.','g');
+    each(@map, {
+        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
+        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
         i.icon.@{normalizedKey}::after {
-            content: "@{value}";
+            content: '@{value}';
         }
     });
 };
 
 & when (@variationIconDeprecated) {
     /* Deprecated *In/Out Naming Conflict) */
-    .generateIcons(@icon-deprecated-map,false);
+    .generateIcons(@icon-deprecated-map, false);
 }
 
 & when (@variationIconSolid) {
@@ -547,10 +547,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     *******************************/
 
     /* Icons */
-    .generateIcons(@icon-map,false);
+    .generateIcons(@icon-map, false);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-aliases-map,false);
+        .generateIcons(@icon-aliases-map, false);
     }
 }
 
@@ -564,10 +564,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     }
 
     /* Icons */
-    .generateIcons(@icon-outline-map,false);
+    .generateIcons(@icon-outline-map, false);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-outline-aliases-map,false);
+        .generateIcons(@icon-outline-aliases-map, false);
     }
 }
 
@@ -580,10 +580,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     i.icon.thin {
         font-family: @thinFontName;
     }
-    .generateIcons(@icon-thin-map,false);
+    .generateIcons(@icon-thin-map, false);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-thin-aliases-map,false);
+        .generateIcons(@icon-thin-aliases-map, false);
     }
 }
 
@@ -593,10 +593,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     *******************************/
 
     /* Icons */
-    .generateIcons(@icon-brand-map,@brandFontName);
+    .generateIcons(@icon-brand-map, @brandFontName);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-brand-aliases-map,@brandFontName);
+        .generateIcons(@icon-brand-aliases-map, @brandFontName);
     }
 }
 
@@ -630,12 +630,12 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         opacity: @duotoneSecondaryOpacity;
     }
 
-    .generateIcons(@icon-duotone-map,false);
+    .generateIcons(@icon-duotone-map, false);
     .generateSecondaryIcons(@icon-duotone-secondary-map);
 
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-duotone-aliases-map,false);
+        .generateIcons(@icon-duotone-aliases-map, false);
         .generateSecondaryIcons(@icon-duotone-secondary-aliases-map);
     }
 

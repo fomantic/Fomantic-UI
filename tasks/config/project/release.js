@@ -2,8 +2,9 @@
          Release Config
 *******************************/
 
+const requireDotFile = require('require-dot-file');
+
 let
-    requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
     version
@@ -13,9 +14,7 @@ let
          Derived Values
 *******************************/
 
-try {
-    config = requireDotFile('semantic.json', process.cwd());
-} catch (error) {}
+config = requireDotFile('semantic.json', process.cwd());
 
 try {
     npmPackage = require('../../../package.json');
@@ -28,7 +27,7 @@ try {
 }
 
 // looks for version in config or package.json (whichever is available)
-version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui')
+version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
     ? npmPackage.version
     : config.version;
 

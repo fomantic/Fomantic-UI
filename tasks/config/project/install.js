@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-let
+const
     fs             = require('fs'),
     path           = require('path'),
     requireDotFile = require('require-dot-file'),
@@ -20,7 +20,7 @@ let when = {
 
     // path
     changeRoot: function (questions) {
-        return (questions.useRoot !== undefined && questions.useRoot !== true);
+        return questions.useRoot !== undefined && questions.useRoot !== true;
     },
 
     // permissions
@@ -34,27 +34,27 @@ let when = {
     },
 
     allowOverwrite: function (questions) {
-        return (questions.overwrite === undefined || questions.overwrite == 'yes');
+        return questions.overwrite === undefined || questions.overwrite === 'yes';
     },
     notAuto: function (questions) {
-        return (questions.install !== 'auto' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install !== 'auto' && (questions.overwrite === undefined || questions.overwrite === 'yes');
     },
     custom: function (questions) {
-        return (questions.install === 'custom' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install === 'custom' && (questions.overwrite === undefined || questions.overwrite === 'yes');
     },
     express: function (questions) {
-        return (questions.install === 'express' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
+        return questions.install === 'express' && (questions.overwrite === undefined || questions.overwrite === 'yes');
     },
 
     // customize
     customize: function (questions) {
-        return (questions.customize === true);
+        return questions.customize === true;
     },
     primaryColor: function (questions) {
-        return (questions.primaryColor);
+        return questions.primaryColor;
     },
     secondaryColor: function (questions) {
-        return (questions.secondaryColor);
+        return questions.secondaryColor;
     },
 };
 
@@ -100,25 +100,25 @@ module.exports = {
                     folder        = pathArray[pathArray.length - 1],
                     nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if (folder == 'bower_components') {
+                if (folder === 'bower_components') {
                     return {
                         name: 'Bower',
                         root: nextDirectory,
                     };
                 }
-                if (folder == 'node_modules') {
+                if (folder === 'node_modules') {
                     return {
                         name: 'NPM',
                         root: nextDirectory,
                     };
                 }
-                if (folder == 'composer') {
+                if (folder === 'composer') {
                     return {
                         name: 'Composer',
                         root: nextDirectory,
                     };
                 }
-                if (path.resolve(directory) == path.resolve(nextDirectory)) {
+                if (path.resolve(directory) === path.resolve(nextDirectory)) {
                     return false;
                 }
 
@@ -127,7 +127,7 @@ module.exports = {
             }
         ;
         // start walk from current directory if none specified
-        directory = directory || (__dirname + path.sep);
+        directory = directory || path.join((__dirname, path.sep));
 
         return walk(directory);
     },
@@ -148,7 +148,7 @@ module.exports = {
                     moduleFolders--;
                 }
                 if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return (moduleFolders > 1);
+                    return moduleFolders > 1;
                 }
 
                 // recurse downward
@@ -156,7 +156,7 @@ module.exports = {
             }
         ;
         // start walk from current directory if none specified
-        directory = directory || (__dirname + path.sep);
+        directory = directory || path.join(__dirname, path.sep);
 
         return walk(directory);
     },
@@ -353,10 +353,10 @@ module.exports = {
 
                 // duplicated manually from tasks/defaults.js with additional property
                 choices: [
-                    { name: '\x1b[4mGlobal\x1b[0m', disabled: 'Styles that are applied across a site' },
+                    { name: '\u001B[4mGlobal\u001B[0m', disabled: 'Styles that are applied across a site' },
                     { name: 'reset', checked: true },
                     { name: 'site', checked: true },
-                    { name: '\x1b[4mElements\x1b[0m', disabled: 'Page elements with a single function' },
+                    { name: '\u001B[4mElements\u001B[0m', disabled: 'Page elements with a single function' },
                     { name: 'button', checked: true },
                     { name: 'container', checked: true },
                     { name: 'divider', checked: true },
@@ -373,21 +373,21 @@ module.exports = {
                     { name: 'reveal', checked: true },
                     { name: 'segment', checked: true },
                     { name: 'step', checked: true },
-                    { name: '\x1b[4mCollections\x1b[0m', disabled: 'Heterogeneous groups of components' },
+                    { name: '\u001B[4mCollections\u001B[0m', disabled: 'Heterogeneous groups of components' },
                     { name: 'breadcrumb', checked: true },
                     { name: 'form', checked: true },
                     { name: 'grid', checked: true },
                     { name: 'menu', checked: true },
                     { name: 'message', checked: true },
                     { name: 'table', checked: true },
-                    { name: '\x1b[4mViews\x1b[0m', disabled: 'Convention for presenting specific types of content' },
+                    { name: '\u001B[4mViews\u001B[0m', disabled: 'Convention for presenting specific types of content' },
                     { name: 'ad', checked: true },
                     { name: 'card', checked: true },
                     { name: 'comment', checked: true },
                     { name: 'feed', checked: true },
                     { name: 'item', checked: true },
                     { name: 'statistic', checked: true },
-                    { name: '\x1b[4mModules\x1b[0m', disabled: 'Components which need Javascript for interactivity' },
+                    { name: '\u001B[4mModules\u001B[0m', disabled: 'Components which need Javascript for interactivity' },
                     { name: 'accordion', checked: true },
                     { name: 'calendar', checked: true },
                     { name: 'checkbox', checked: true },
@@ -410,7 +410,7 @@ module.exports = {
                     { name: 'text', checked: true },
                     { name: 'toast', checked: true },
                     { name: 'transition', checked: true },
-                    { name: '\x1b[4mBehaviors\x1b[0m', disabled: 'Standalone javascript components' },
+                    { name: '\u001B[4mBehaviors\u001B[0m', disabled: 'Standalone javascript components' },
                     { name: 'api', checked: true },
                     { name: 'form', checked: true },
                     { name: 'state', checked: true },

@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -50,7 +50,7 @@
 
         $allModules.each(function () {
             var
-                settings             = ($.isPlainObject(parameters))
+                settings             = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.flyout.settings, parameters)
                     : $.extend({}, $.fn.flyout.settings),
 
@@ -128,10 +128,14 @@
                         }
                         settings.actions.forEach(function (el) {
                             var
-                                icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                icon = el[fields.icon]
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    : '',
                                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                 cls = module.helpers.deQuote(el[fields.class] || ''),
-                                click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {}
                             ;
                             $actions.append($('<button/>', {
                                 html: icon + text,
@@ -162,7 +166,7 @@
                         module.setup.cache();
                     });
 
-                    if (module.get.direction() == 'left' || module.get.direction() == 'right') {
+                    if (module.get.direction() === 'left' || module.get.direction() === 'right') {
                         module.setup.heights();
                         module.bind.resize();
                     }
@@ -262,8 +266,8 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var
-                                clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                clickedContext  = ($context.is(event.target))
+                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
+                                clickedContext  = $context.is(event.target)
                             ;
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
@@ -436,7 +440,7 @@
                                 + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
-                        } else if (direction === 'top' || direction == 'bottom') {
+                        } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
@@ -455,7 +459,7 @@
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if (direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -652,13 +656,13 @@
                 },
 
                 othersAnimating: function () {
-                    return ($flyouts.not($module).filter('.' + className.animating).length > 0);
+                    return $flyouts.not($module).filter('.' + className.animating).length > 0;
                 },
                 othersVisible: function () {
-                    return ($flyouts.not($module).filter('.' + className.visible).length > 0);
+                    return $flyouts.not($module).filter('.' + className.visible).length > 0;
                 },
                 othersActive: function () {
-                    return (module.othersVisible() || module.othersAnimating());
+                    return module.othersVisible() || module.othersAnimating();
                 },
 
                 hideOthers: function (callback) {
@@ -671,7 +675,7 @@
                     $otherFlyouts
                         .flyout('hide', function () {
                             callbackCount++;
-                            if (callbackCount == flyoutCount) {
+                            if (callbackCount === flyoutCount) {
                                 callback();
                             }
                         })
@@ -711,7 +715,7 @@
                         module.set.dimmed();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $module[0]) {
+                        if (event.target === $module[0]) {
                             $module.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
@@ -752,7 +756,7 @@
                         module.remove.visible();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $module[0]) {
+                        if (event.target === $module[0]) {
                             $module.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
@@ -794,7 +798,7 @@
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
-                            $input     = ($autofocus.length > 0)
+                            $input     = $autofocus.length > 0
                                 ? $autofocus.first()
                                 : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
                         ;
@@ -1011,10 +1015,10 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
-                            module.cache.isIE = (isIE11 || isIE);
+                            module.cache.isIE = isIE11 || isIE;
                         }
 
                         return module.cache.isIE;
@@ -1238,17 +1242,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1305,7 +1309,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

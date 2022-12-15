@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-let
+const
     fs       = require('fs'),
     path     = require('path'),
 
@@ -28,7 +28,7 @@ module.exports = {
                     configPath = path.normalize(directory);
                 } else {
                     // reached file system root, let's stop
-                    if (nextDirectory == directory) {
+                    if (nextDirectory === directory) {
                         return;
                     }
                     // otherwise recurse
@@ -60,12 +60,12 @@ module.exports = {
 
         // resolve paths (config location + base + path)
         for (folder in config.paths.source) {
-            if (config.paths.source.hasOwnProperty(folder)) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.source, folder)) {
                 sourcePaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.source[folder]));
             }
         }
         for (folder in config.paths.output) {
-            if (config.paths.output.hasOwnProperty(folder)) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.output, folder)) {
                 outputPaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.output[folder]));
             }
         }
@@ -114,16 +114,16 @@ module.exports = {
         }
 
         // remove duplicates from component array
-        if (config.components instanceof Array) {
+        if (Array.isArray(config.components)) {
             config.components = config.components.filter(function (component, index) {
-                return config.components.indexOf(component) == index;
+                return config.components.indexOf(component) === index;
             });
         }
 
-        const components = (Array.isArray(config.components) && config.components.length > 0)
+        const components = Array.isArray(config.components) && config.components.length > 0
             ? config.components
             : defaults.components;
-        const individuals =  (Array.isArray(config.individuals) && config.individuals.length > 0)
+        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
@@ -132,9 +132,11 @@ module.exports = {
         config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
         // components that should be built, but excluded from main .css/.js files
-        config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
-            ? '{' + individuals.join(',') + '}'
-            : undefined;
+        config.globs.individuals = individuals.length === 1
+            ? individuals[0]
+            : (individuals.length > 1
+                ? '{' + individuals.join(',') + '}'
+                : undefined);
     },
 
 };
