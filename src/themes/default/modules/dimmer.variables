@@ -5,7 +5,7 @@
 @dimmablePosition: relative;
 @dimmerPosition: absolute;
 
-@backgroundColor: rgba(0, 0, 0 , 0.85);
+@backgroundColor: rgba(0, 0, 0, 0.85);
 @lineHeight: 1;
 @perspective: 2000px;
 @padding: 1em;

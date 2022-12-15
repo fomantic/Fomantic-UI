@@ -1096,7 +1096,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     yin_yang: "\f6ad";
 };
 
-    @icon-aliases-map: {
+@icon-aliases-map: {
     add: "\f067";
     add_circle: "\f055";
     add_square: "\f0fe";

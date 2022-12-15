@@ -634,7 +634,7 @@ select.ui.dropdown {
     }
     & when (@variationDropdownScrollhint) {
         /* CSS specific to iOS devices or firefox mobile only */
-        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance: none) {
             @media (-moz-touch-enabled), (pointer: coarse) {
                 .ui.dropdown .scrollhint.menu:not(.hidden)::before {
                     animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
