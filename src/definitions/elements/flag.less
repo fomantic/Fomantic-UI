@@ -32,7 +32,7 @@ i.flag:not(.icon)::before {
     line-height: @flagLineHeight;
     background-repeat: no-repeat;
     background-position: center center;
-    & when not (@flagFileType = 'svg') {
+    & when not (@flagFileType = "svg") {
         background-size: contain;
     }
 }

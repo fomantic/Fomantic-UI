@@ -19,7 +19,7 @@
 @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 
 /* Component's site.variables */
-& when not (@theme = 'default') {
+& when not (@theme = "default") {
     @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
 }
 
@@ -61,7 +61,7 @@
     & when (@importGoogleFonts) {
         @import (css) url("@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}");
     }
-    & when (@importFonts) and not (@fontName = '') {
+    & when (@importFonts) and not (@fontName = "") {
         each(@fonts, {
             @font-face {
                 each(@value, {
@@ -77,7 +77,7 @@
 ------------------- */
 
 .loadUIOverrides() {
-    & when not (@theme = 'default') {
+    & when not (@theme = "default") {
         @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
     }
     @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
