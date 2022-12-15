@@ -8,7 +8,7 @@
 @background: #FFFFFF linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05));
 @fontWeight: normal;
 
-@activeBorderSize: 0em;
+@activeBorderSize: 0;
 
 @hoverBackground: rgba(0, 0, 0, 0.02);
 @downBackground: rgba(0, 0, 0, 0.06);
@@ -54,7 +54,7 @@
 
 @invertedBackground: @black linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0));
 @invertedBoxShadow:
-    0px 1px 2px 0px rgba(0, 0, 0, 0.15),
-    0px 0px 0px 1px rgba(255, 255, 255, 0.15)
+    0 1px 2px 0 rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.15)
 ;
 @secondaryVerticalPadding: 0.75em;

@@ -99,7 +99,7 @@
       Paragraph
 -------------------- */
 
-@paragraphMargin: 0em 0em 1.53em;
+@paragraphMargin: 0 0 1.53em;
 
 /* -------------------
        Links

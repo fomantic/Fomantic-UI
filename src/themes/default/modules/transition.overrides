@@ -55,7 +55,7 @@
     @keyframes browseOutLeft {
         0% {
             z-index: 999;
-            transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+            transform: translateX(0) rotateY(0) rotateX(0);
         }
         50% {
             z-index: -1;
@@ -66,14 +66,14 @@
         }
         100% {
             z-index: -1;
-            transform: translateX(0%) rotateY(0deg) rotateX(0deg) translateZ(-10px);
+            transform: translateX(0) rotateY(0) rotateX(0) translateZ(-10px);
             opacity: 0;
         }
     }
     @keyframes browseOutRight {
         0% {
             z-index: 999;
-            transform: translateX(0%) rotateY(0deg) rotateX(0deg);
+            transform: translateX(0) rotateY(0) rotateX(0);
         }
         50% {
             z-index: 1;
@@ -84,7 +84,7 @@
         }
         100% {
             z-index: 1;
-            transform: translateX(0%) rotateY(0deg) rotateX(0deg) translateZ(-10px);
+            transform: translateX(0) rotateY(0) rotateX(0) translateZ(-10px);
             opacity: 0;
         }
     }
@@ -183,7 +183,7 @@
         }
         100% {
             opacity: 1;
-            transform: translateY(0%);
+            transform: translateY(0);
         }
     }
     @keyframes fadeInDown {
@@ -193,7 +193,7 @@
         }
         100% {
             opacity: 1;
-            transform: translateY(0%);
+            transform: translateY(0);
         }
     }
     @keyframes fadeInLeft {
@@ -203,7 +203,7 @@
         }
         100% {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translateX(0);
         }
     }
     @keyframes fadeInRight {
@@ -213,7 +213,7 @@
         }
         100% {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translateX(0);
         }
     }
 
@@ -229,7 +229,7 @@
     @keyframes fadeOutUp {
         0% {
             opacity: 1;
-            transform: translateY(0%);
+            transform: translateY(0);
         }
         100% {
             opacity: 0;
@@ -239,7 +239,7 @@
     @keyframes fadeOutDown {
         0% {
             opacity: 1;
-            transform: translateY(0%);
+            transform: translateY(0);
         }
         100% {
             opacity: 0;
@@ -249,7 +249,7 @@
     @keyframes fadeOutLeft {
         0% {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translateX(0);
         }
         100% {
             opacity: 0;
@@ -259,7 +259,7 @@
     @keyframes fadeOutRight {
         0% {
             opacity: 1;
-            transform: translateX(0%);
+            transform: translateX(0);
         }
         100% {
             opacity: 0;
@@ -297,7 +297,7 @@
             opacity: 0;
         }
         100% {
-            transform: perspective(2000px) rotateY(0deg);
+            transform: perspective(2000px) rotateY(0);
             opacity: 1;
         }
     }
@@ -307,7 +307,7 @@
             opacity: 0;
         }
         100% {
-            transform: perspective(2000px) rotateX(0deg);
+            transform: perspective(2000px) rotateX(0);
             opacity: 1;
         }
     }
@@ -315,7 +315,7 @@
     /* Out */
     @keyframes horizontalFlipOut {
         0% {
-            transform: perspective(2000px) rotateY(0deg);
+            transform: perspective(2000px) rotateY(0);
             opacity: 1;
         }
         100% {
@@ -325,7 +325,7 @@
     }
     @keyframes verticalFlipOut {
         0% {
-            transform: perspective(2000px) rotateX(0deg);
+            transform: perspective(2000px) rotateX(0);
             opacity: 1;
         }
         100% {
@@ -727,7 +727,7 @@
             transform: perspective(1000px) rotateX(-7.5deg);
         }
         100% {
-            transform: perspective(1000px) rotateX(0deg);
+            transform: perspective(1000px) rotateX(0);
         }
     }
     @keyframes swingInY {
@@ -746,14 +746,14 @@
             transform: perspective(1000px) rotateY(7.5deg);
         }
         100% {
-            transform: perspective(1000px) rotateY(0deg);
+            transform: perspective(1000px) rotateY(0);
         }
     }
 
     /* Out */
     @keyframes swingOutX {
         0% {
-            transform: perspective(1000px) rotateX(0deg);
+            transform: perspective(1000px) rotateX(0);
         }
         40% {
             transform: perspective(1000px) rotateX(-7.5deg);
@@ -772,7 +772,7 @@
     }
     @keyframes swingOutY {
         0% {
-            transform: perspective(1000px) rotateY(0deg);
+            transform: perspective(1000px) rotateY(0);
         }
         40% {
             transform: perspective(1000px) rotateY(7.5deg);

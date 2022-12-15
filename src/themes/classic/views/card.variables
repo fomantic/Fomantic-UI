@@ -7,8 +7,8 @@
 -------------------- */
 
 /* Shadow */
-@shadowDistance: 0em;
-@padding: 0em;
+@shadowDistance: 0;
+@padding: 0;
 
 /* -------------------
        Content
