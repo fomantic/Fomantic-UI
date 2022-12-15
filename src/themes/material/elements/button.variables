@@ -6,26 +6,26 @@
        Element
 -------------------- */
 
-@googleFontName : 'Roboto';
-@pageFont : 'Roboto', Arial, sans-serif;
+@googleFontName: 'Roboto';
+@pageFont: 'Roboto', Arial, sans-serif;
 
 @medium: 13px;
 
-@verticalPadding : 0.8em;
-@horizontalPadding : 0.8em;
-@borderRadius : @relative3px;
-@color : #222222;
-@fontWeight : normal;
-@textTransform : none;
+@verticalPadding: 0.8em;
+@horizontalPadding: 0.8em;
+@borderRadius: @relative3px;
+@color: #222222;
+@fontWeight: normal;
+@textTransform: none;
 
-@backgroundColor : @white;
-@backgroundImage : linear-gradient(transparent, rgba(0, 0, 0, 0.02));
+@backgroundColor: @white;
+@backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.02));
 
 @solidBorderColor: #DDDDDD;
 
 @borderBoxShadowColor: @solidBorderColor;
-@borderBoxShadow: 0px 0px 0px 1px @solidBorderColor inset;
-@shadowBoxShadow: 0px 0px 0px 0px transparent;
+@borderBoxShadow: 0 0 0 1px @solidBorderColor inset;
+@shadowBoxShadow: 0 0 0 0 transparent;
 
 @transition:
     opacity 0.3s @defaultEasing,
@@ -42,7 +42,7 @@
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
     @borderBoxShadow,
-    0px 2px 3px 0px rgba(0, 0, 0, 0.2) !important
+    0 2px 3px 0 rgba(0, 0, 0, 0.2) !important
 ;
 
 @downBackgroundColor: @white;
@@ -51,14 +51,14 @@
 @downBoxShadow: @borderBoxShadow;
 
 @activeBackgroundColor: #F0F0F0;
-@activeBoxShadow: 0px 0px 0px 1px #DDDDDD;
+@activeBoxShadow: 0 0 0 1px #DDDDDD;
 
 /* -------------------
       Variations
 -------------------- */
 
 /* Basic */
-@basicBorderSize: 0px;
+@basicBorderSize: 0;
 @basicBorderRadius: 4px;
 @basicColoredBorderSize: 1px;
 @basicHoverBackground: @white;
@@ -67,27 +67,27 @@
 @basicDownBoxShadow: @downBoxShadow;
 
 @basicActiveBackground: #FFFFFF;
-@basicActiveBoxShadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+@basicActiveBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 
 /* Labeled */
 @labeledIconBackgroundColor: transparent;
 @labeledIconWidth: 2em;
 
-@labeledLabelBorderOffset: 0px;
+@labeledLabelBorderOffset: 0;
 
 /* Colored */
-@coloredBackgroundImage : @subtleGradient;
-@coloredBoxShadow : 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+@coloredBackgroundImage: @subtleGradient;
+@coloredBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
 
 /* Primary */
-@primaryColor : #4184F3;
-@primaryBoxShadow : 0px 0px 0px 1px #0157E4 inset;
+@primaryColor: #4184F3;
+@primaryBoxShadow: 0 0 0 1px #0157E4 inset;
 
 /* Secondary */
-@secondaryColor : #EEEEEE;
-@secondaryBackgroundImage : @backgroundImage;
-@secondaryTextColor : @textColor;
-@secondaryBoxShadow : @borderBoxShadow;
+@secondaryColor: #EEEEEE;
+@secondaryBackgroundImage: @backgroundImage;
+@secondaryTextColor: @textColor;
+@secondaryBoxShadow: @borderBoxShadow;
 
 /* Emotive */
 @positiveColor: #3D9400;

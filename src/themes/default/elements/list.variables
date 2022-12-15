@@ -174,9 +174,9 @@
 
 /* Ordered List */
 @orderedCountName: ordered;
-@orderedCountSeparator: ".";
-@orderedCountSuffix: ".";
-@orderedCountContent: counters(@orderedCountName, @orderedCountSeparator) " ";
+@orderedCountSeparator: '.';
+@orderedCountSuffix: '.';
+@orderedCountContent: counters(@orderedCountName, @orderedCountSeparator) ' ';
 @orderedCountContentSuffixed: counters(@orderedCountName, @orderedCountSeparator) @orderedCountSuffix;
 @orderedCountColor: @textColor;
 @orderedCountDistance: 1.25rem;

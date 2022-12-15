@@ -58,15 +58,15 @@
 @toastIconCenteredAdjustment: 1.2em;
 @toastImageCenteredAdjustment: 2em;
 
-@toastImageMiniImageAdjustment: e(%("calc(%d + %d)", @inputVerticalPadding, @toastMiniImageHeight));
+@toastImageMiniImageAdjustment: e(%('calc(%d + %d)', @inputVerticalPadding, @toastMiniImageHeight));
 @toastImageMiniImagePadding: 4.4em;
 
 /* Progressbar Colors */
-@toastInfoProgressColor: darken(@toastInfoColor,15);
-@toastWarningProgressColor: darken(@toastWarningColor,15);
-@toastErrorProgressColor: darken(@toastErrorColor,15);
-@toastSuccessProgressColor: darken(@toastSuccessColor,15);
-@toastNeutralProgressColor: darken(@toastNeutralColor,15);
+@toastInfoProgressColor: darken(@toastInfoColor, 15);
+@toastWarningProgressColor: darken(@toastWarningColor, 15);
+@toastErrorProgressColor: darken(@toastErrorColor, 15);
+@toastSuccessProgressColor: darken(@toastSuccessColor, 15);
+@toastNeutralProgressColor: darken(@toastNeutralColor, 15);
 
 /* Close Icon */
 @toastCloseTopDistance: 0.3em;
