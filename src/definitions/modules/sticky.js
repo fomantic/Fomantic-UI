@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -29,14 +29,14 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
 
         $allModules.each(function () {
             var
-                settings              = ($.isPlainObject(parameters))
+                settings              = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                     : $.extend({}, $.fn.sticky.settings),
 
@@ -190,7 +190,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -237,7 +237,7 @@
                         ;
                         $element.addClass(className.supported);
 
-                        return ($element.css('position').match('sticky'));
+                        return $element.css('position').match('sticky');
                     },
                 },
 
@@ -279,8 +279,8 @@
                             context.offset.left += scrollContext.left;
                         }
                         module.cache = {
-                            fits: ((element.height + settings.offset) <= scrollContext.height),
-                            sameHeight: (element.height == context.height),
+                            fits: (element.height + settings.offset) <= scrollContext.height,
+                            sameHeight: element.height === context.height,
                             scrollContext: {
                                 height: scrollContext.height,
                             },
@@ -320,8 +320,8 @@
                     scrollChange: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
 
-                        return (module.lastScroll)
-                            ? (scroll - module.lastScroll)
+                        return module.lastScroll
+                            ? scroll - module.lastScroll
                             : 0;
                     },
                     currentElementScroll: function () {
@@ -329,7 +329,7 @@
                             return module.elementScroll;
                         }
 
-                        return (module.is.top())
+                        return module.is.top()
                             ? Math.abs(parseInt($module.css('top'), 10)) || 0
                             : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
                     },
@@ -340,9 +340,9 @@
                             element        = module.cache.element,
                             scrollContext  = module.cache.scrollContext,
                             delta          = module.get.scrollChange(scroll),
-                            maxScroll      = (element.height - scrollContext.height + settings.offset),
+                            maxScroll      = element.height - scrollContext.height + settings.offset,
                             elementScroll  = module.get.currentElementScroll(),
-                            possibleScroll = (elementScroll + delta)
+                            possibleScroll = elementScroll + delta
                         ;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
@@ -418,13 +418,13 @@
                     },
                     scroll: function (scroll) {
                         module.debug('Setting scroll on element', scroll);
-                        if (module.elementScroll == scroll) {
+                        if (module.elementScroll === scroll) {
                             return;
                         }
                         if (module.is.top()) {
                             $module
                                 .css('bottom', '')
-                                .css('top', (-scroll) + 'px')
+                                .css('top', -scroll + 'px')
                             ;
                         }
                         if (module.is.bottom()) {
@@ -444,7 +444,7 @@
 
                 is: {
                     standardScroll: function () {
-                        return ($scroll[0] == window);
+                        return $scroll[0] === window;
                     },
                     top: function () {
                         return $module.hasClass(className.top);
@@ -453,10 +453,10 @@
                         return $module.hasClass(className.bottom);
                     },
                     initialPosition: function () {
-                        return (!module.is.fixed() && !module.is.bound());
+                        return !module.is.fixed() && !module.is.bound();
                     },
                     hidden: function () {
-                        return (!$module.is(':visible'));
+                        return !$module.is(':visible');
                     },
                     bound: function () {
                         return $module.hasClass(className.bound);
@@ -475,20 +475,20 @@
                         element        = cache.element,
                         scrollContext  = cache.scrollContext,
                         context        = cache.context,
-                        offset         = (module.is.bottom() && settings.pushing)
+                        offset         = module.is.bottom() && settings.pushing
                             ? settings.bottomOffset
                             : settings.offset,
                         scroll         = {
                             top: cachedPosition + offset,
                             bottom: cachedPosition + offset + scrollContext.height,
                         },
-                        elementScroll  = (fits)
+                        elementScroll  = fits
                             ? 0
                             : module.get.elementScroll(scroll.top),
 
                         // shorthand
                         doesntFit      = !fits,
-                        elementVisible = (element.height !== 0)
+                        elementVisible = element.height !== 0
                     ;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
@@ -795,17 +795,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -846,7 +846,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

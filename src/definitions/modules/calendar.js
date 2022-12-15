@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -30,7 +30,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue,
             timeGapTable = {
@@ -45,7 +45,7 @@
 
         $allModules.each(function () {
             var
-                settings = ($.isPlainObject(parameters))
+                settings = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.calendar.settings, parameters)
                     : $.extend({}, $.fn.calendar.settings),
 
@@ -283,7 +283,9 @@
                             year = display.getFullYear()
                         ;
 
-                        var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap.column;
+                        var columns = isDay
+                            ? (settings.showWeekNumbers ? 8 : 7)
+                            : (isHour ? 4 : timeGap.column);
                         var rows = isDay || isHour ? 6 : timeGap.row;
                         var pages = isDay ? multiMonth : 1;
 
@@ -308,7 +310,7 @@
                             }
 
                             var
-                                yearChange = isYear ? 10 : isMonth ? 1 : 0,
+                                yearChange = isYear ? 10 : (isMonth ? 1 : 0),
                                 monthChange = isDay ? 1 : 0,
                                 dayChange = isHour || isMinute ? 1 : 0,
                                 prevNextDay = isHour || isMinute ? day : 1,
@@ -316,18 +318,18 @@
                                 nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
                                 prevLast = isYear
                                     ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
-                                    : isMonth
+                                    : (isMonth
                                         ? new Date(year, 0, 0)
-                                        : isDay
+                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                             ? new Date(year, month, 0)
-                                            : new Date(year, month, day, -1),
+                                            : new Date(year, month, day, -1))),
                                 nextFirst = isYear
                                     ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
-                                    : isMonth
+                                    : (isMonth
                                         ? new Date(year + 1, 0, 1)
-                                        : isDay
+                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                             ? new Date(year, month + 1, 1)
-                                            : new Date(year, month, day + 1)
+                                            : new Date(year, month, day + 1)))
                             ;
 
                             var tempMode = mode;
@@ -349,16 +351,16 @@
 
                                 var headerDate = isYear || isMonth
                                     ? new Date(year, 0, 1)
-                                    : isDay
+                                    : (isDay
                                         ? new Date(year, month, 1)
-                                        : new Date(year, month, day, hour, minute);
+                                        : new Date(year, month, day, hour, minute));
                                 var headerText = $('<span/>').addClass(className.link).appendTo(cell);
                                 headerText.text(module.helper.dateFormat(formatter[mode + 'Header'], headerDate));
                                 var newMode = isMonth
                                     ? (settings.disableYear ? 'day' : 'year')
-                                    : isDay
-                                        ? (settings.disableMonth ? 'year' : 'month')
-                                        : 'day';
+                                    : (isDay
+                                        ? (settings.disableMonth ? 'year' : 'month') // eslint-disable-line unicorn/no-nested-ternary
+                                        : 'day');
                                 headerText.data(metadata.mode, newMode);
 
                                 if (p === 0) {
@@ -390,7 +392,9 @@
                             }
 
                             var tbody = $('<tbody/>').appendTo(table);
-                            i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
+                            i = isYear
+                                ? Math.ceil(year / 10) * 10 - 9
+                                : (isDay ? 1 - firstMonthDayColumn : 0);
                             for (r = 0; r < rows; r++) {
                                 row = $('<tr/>').appendTo(tbody);
                                 if (isDay && settings.showWeekNumbers) {
@@ -401,20 +405,20 @@
                                 for (c = 0; c < textColumns; c++, i++) {
                                     var cellDate = isYear
                                         ? new Date(i, month, 1, hour, minute)
-                                        : isMonth
+                                        : (isMonth
                                             ? new Date(year, i, 1, hour, minute)
-                                            : isDay
+                                            : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                                 ? new Date(year, month, i, hour, minute)
-                                                : isHour
+                                                : (isHour
                                                     ? new Date(year, month, day, i)
-                                                    : new Date(year, month, day, hour, i * settings.minTimeGap);
+                                                    : new Date(year, month, day, hour, i * settings.minTimeGap))));
                                     var cellText = isYear
                                         ? i
-                                        : isMonth
+                                        : (isMonth
                                             ? settings.text.monthsShort[i]
-                                            : isDay
+                                            : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                                 ? cellDate.getDate()
-                                                : module.helper.dateFormat(formatter.cellTime, cellDate);
+                                                : module.helper.dateFormat(formatter.cellTime, cellDate)));
                                     cell = $('<td/>').addClass(className.cell).appendTo(row);
                                     cell.text(cellText);
                                     cell.data(metadata.date, cellDate);
@@ -527,8 +531,8 @@
                             var focused = module.helper.dateEqual(cellDate, focusDate, mode);
                             var inRange = !rangeDate
                                 ? false
-                                : ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
-                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
+                                : (!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
+                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate));
                             $cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
 
                             if (module.helper.isTodayButton($cell)) {
@@ -643,38 +647,60 @@
 
                         if (module.popup('is visible')) {
                             var mode = module.get.mode();
-                            if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+                            switch (keyCode) {
                                 // arrow keys
-                                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap.column : 3;
-                                var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
-                                increment *= mode === 'minute' ? settings.minTimeGap : 1;
-                                var focusDate = module.get.focusDate() || module.get.date() || new Date();
-                                var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
-                                var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
-                                var day = focusDate.getDate() + (mode === 'day' ? increment : 0);
-                                var hour = focusDate.getHours() + (mode === 'hour' ? increment : 0);
-                                var minute = focusDate.getMinutes() + (mode === 'minute' ? increment : 0);
-                                var newFocusDate = new Date(year, month, day, hour, minute);
-                                if (settings.type === 'time') {
-                                    newFocusDate = module.helper.mergeDateTime(focusDate, newFocusDate);
-                                }
-                                if (module.helper.isDateInRange(newFocusDate, mode)) {
-                                    module.set.focusDate(newFocusDate);
-                                }
-                            } else if (keyCode === 13) {
-                                // enter
-                                var date = module.get.focusDate();
-                                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
-                                    if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
-                                        module.selectDate(date);
+                                case 37:
+                                case 38:
+                                case 39:
+                                case 40: {
+                                    var bigIncrement = mode === 'day'
+                                        ? 7
+                                        : (mode === 'hour'
+                                            ? 4
+                                            : (mode === 'minute' ? timeGap.column : 3)); // eslint-disable-line unicorn/no-nested-ternary
+                                    var increment = keyCode === 37
+                                        ? -1
+                                        : (keyCode === 38
+                                            ? -bigIncrement
+                                            : (keyCode === 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
+                                    increment *= mode === 'minute' ? settings.minTimeGap : 1;
+                                    var focusDate = module.get.focusDate() || module.get.date() || new Date();
+                                    var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
+                                    var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
+                                    var day = focusDate.getDate() + (mode === 'day' ? increment : 0);
+                                    var hour = focusDate.getHours() + (mode === 'hour' ? increment : 0);
+                                    var minute = focusDate.getMinutes() + (mode === 'minute' ? increment : 0);
+                                    var newFocusDate = new Date(year, month, day, hour, minute);
+                                    if (settings.type === 'time') {
+                                        newFocusDate = module.helper.mergeDateTime(focusDate, newFocusDate);
                                     }
+                                    if (module.helper.isDateInRange(newFocusDate, mode)) {
+                                        module.set.focusDate(newFocusDate);
+                                    }
+
+                                    break;
                                 }
-                                // disable form submission:
-                                event.preventDefault();
-                                event.stopPropagation();
-                            } else if (keyCode === 27) {
-                                module.popup('hide');
-                                event.stopPropagation();
+                                // enter key
+                                case 13: {
+                                    var date = module.get.focusDate();
+                                    if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
+                                        if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
+                                            module.selectDate(date);
+                                        }
+                                    }
+                                    // disable form submission:
+                                    event.preventDefault();
+                                    event.stopPropagation();
+
+                                    break;
+                                }
+                                // escape key
+                                case 27: {
+                                    module.popup('hide');
+                                    event.stopPropagation();
+
+                                    break;
+                                }
                             }
                         }
 
@@ -756,17 +782,14 @@
                 get: {
                     weekOfYear: function (weekYear, weekMonth, weekDay) {
                         // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
-                        var ms1d = 864e5, // milliseconds in a day
-                            ms7d = 7 * ms1d; // milliseconds in a week
+                        var ms1d = 24 * 3600 * 1000,
+                            ms7d = 7 * ms1d,
+                            DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an absolute day number
+                            AWN = Math.floor(DC3 / 7), // an absolute week number
+                            Wyr = new Date(AWN * ms7d).getUTCFullYear()
+                        ;
 
-                        // eslint-disable-next-line wrap-iife
-                        return function () { // return a closure so constants get calculated only once
-                            var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
-                                AWN = Math.floor(DC3 / 7), // an Absolute Week Number
-                                Wyr = new Date(AWN * ms7d).getUTCFullYear();
-
-                            return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
-                        }();
+                        return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
                     },
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
@@ -813,9 +836,9 @@
 
                         return settings.type === 'time'
                             ? 'hour'
-                            : settings.type === 'month'
+                            : (settings.type === 'month'
                                 ? 'month'
-                                : settings.type === 'year' ? 'year' : 'day';
+                                : (settings.type === 'year' ? 'year' : 'day')); // eslint-disable-line unicorn/no-nested-ternary
                     },
                     type: function () {
                         return $module.data(metadata.type) || settings.type;
@@ -1006,9 +1029,9 @@
                     } else {
                         var newMode = mode === 'year'
                             ? (!settings.disableMonth ? 'month' : 'day')
-                            : mode === 'month'
+                            : (mode === 'month'
                                 ? 'day'
-                                : mode === 'day' ? 'hour' : 'minute';
+                                : (mode === 'day' ? 'hour' : 'minute')); // eslint-disable-line unicorn/no-nested-ternary
                         module.set.mode(newMode);
                         if (mode === 'hour' || (mode === 'day' && module.get.date())) {
                             // the user has chosen enough to consider a valid date/time has been chosen
@@ -1090,7 +1113,7 @@
                                 ss: ('0' + s).slice(-2),
                                 a: a,
                                 A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : (((D % 100) - (D % 10) === 10) ? 0 : D % 10)],
+                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
                                 w: w,
                                 ww: ('0' + w).slice(-2),
                             }
@@ -1101,7 +1124,7 @@
                                 return tokens[match];
                             }
 
-                            return match.slice(1, match.length - 1);
+                            return match.slice(1, -1);
                         });
                     },
                     isDisabled: function (date, mode) {
@@ -1116,19 +1139,19 @@
                             } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.year]) {
                                     if (typeof d[metadata.year] === 'number') {
-                                        blocked = date.getFullYear() == d[metadata.year];
+                                        blocked = date.getFullYear() === d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
                                         blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
-                                        blocked = date.getMonth() == d[metadata.month];
+                                        blocked = date.getMonth() === d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
                                         blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
                                     } else if (d[metadata.month] instanceof Date) {
                                         var sdate = module.helper.sanitiseDate(d[metadata.month]);
 
-                                        blocked = (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
+                                        blocked = (date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear());
                                     }
                                 } else if (d[metadata.date] && mode === 'day') {
                                     if (d[metadata.date] instanceof Date) {
@@ -1165,7 +1188,7 @@
 
                                 if (d[metadata.days]) {
                                     if (typeof d[metadata.days] === 'number') {
-                                        blocked = date.getDay() == d[metadata.days];
+                                        blocked = date.getDay() === d[metadata.days];
                                     } else if (Array.isArray(d[metadata.days])) {
                                         blocked = d[metadata.days].indexOf(date.getDay()) > -1;
                                     }
@@ -1173,7 +1196,7 @@
 
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number') {
-                                        blocked = blocked && date.getHours() == d[metadata.hours];
+                                        blocked = blocked && date.getHours() === d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
                                         blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
                                     }
@@ -1219,7 +1242,7 @@
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.year]) {
-                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() == d[metadata.year]) {
+                                        if (typeof d[metadata.year] === 'number' && date.getFullYear() === d[metadata.year]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.year])) {
@@ -1228,7 +1251,7 @@
                                             }
                                         }
                                     } else if (d[metadata.month]) {
-                                        if (typeof d[metadata.month] === 'number' && date.getMonth() == d[metadata.month]) {
+                                        if (typeof d[metadata.month] === 'number' && date.getMonth() === d[metadata.month]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.month])) {
@@ -1237,7 +1260,7 @@
                                             }
                                         } else if (d[metadata.month] instanceof Date) {
                                             var sdate = module.helper.sanitiseDate(d[metadata.month]);
-                                            if ((date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear())) {
+                                            if ((date.getMonth() === sdate.getMonth()) && (date.getFullYear() === sdate.getFullYear())) {
                                                 return d;
                                             }
                                         }
@@ -1264,7 +1287,7 @@
                             var d;
                             var hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
-                                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
+                                    if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
                                         return d;
                                     }
                                     if (Array.isArray(d[metadata.hours])) {
@@ -1276,12 +1299,12 @@
                             };
                             for (var i = 0; i < hours.length; i++) {
                                 d = hours[i];
-                                if (typeof d === 'number' && date.getHours() == d) {
+                                if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
                                 if (d !== null && typeof d === 'object') {
                                     if (d[metadata.days] && hourCheck(date, d)) {
-                                        if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
+                                        if (typeof d[metadata.days] === 'number' && date.getDay() === d[metadata.days]) {
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.days])) {
@@ -1320,7 +1343,10 @@
                         return date;
                     },
                     dateDiff: function (date1, date2, mode) {
-                        mode = mode || 'day';
+                        if (!mode) {
+                            mode = 'day';
+                        }
+
                         var isTimeOnly = settings.type === 'time';
                         var isYear = mode === 'year';
                         var isYearOrMonth = isYear || mode === 'month';
@@ -1329,15 +1355,15 @@
                         // only care about a minute accuracy of settings.minTimeGap
                         date1 = new Date(
                             isTimeOnly ? 2000 : date1.getFullYear(),
-                            isTimeOnly ? 0 : isYear ? 0 : date1.getMonth(),
-                            isTimeOnly ? 1 : isYearOrMonth ? 1 : date1.getDate(),
+                            isTimeOnly ? 0 : (isYear ? 0 : date1.getMonth()),
+                            isTimeOnly ? 1 : (isYearOrMonth ? 1 : date1.getDate()),
                             !isHourOrMinute ? 0 : date1.getHours(),
                             !isMinute ? 0 : settings.minTimeGap * Math.floor(date1.getMinutes() / settings.minTimeGap)
                         );
                         date2 = new Date(
                             isTimeOnly ? 2000 : date2.getFullYear(),
-                            isTimeOnly ? 0 : isYear ? 0 : date2.getMonth(),
-                            isTimeOnly ? 1 : isYearOrMonth ? 1 : date2.getDate(),
+                            isTimeOnly ? 0 : (isYear ? 0 : date2.getMonth()),
+                            isTimeOnly ? 1 : (isYearOrMonth ? 1 : date2.getDate()),
                             !isHourOrMinute ? 0 : date2.getHours(),
                             !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap)
                         );
@@ -1370,14 +1396,14 @@
 
                         return !date
                             ? date
-                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
-                                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate)
-                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0)
+                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0
+                                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) // eslint-disable-line unicorn/no-nested-ternary
+                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0 // eslint-disable-line unicorn/no-nested-ternary
                                     ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
-                                    : date;
+                                    : date));
                     },
                     mergeDateTime: function (date, time) {
-                        return (!date || !time)
+                        return !date || !time
                             ? time
                             : new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
                     },
@@ -1498,17 +1524,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1551,7 +1577,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -1643,8 +1669,7 @@
             today: function (settings) {
                 return settings.type === 'date' ? settings.text.today : settings.text.now;
             },
-            cell: function (cell, date, cellOptions) {
-            },
+            cell: function (cell, date, cellOptions) {},
         },
 
         parser: {
@@ -1684,7 +1709,7 @@
                     month = -1,
                     year = -1
                 ;
-                var isAm = undefined;
+                var isAm;
 
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
@@ -1705,7 +1730,7 @@
                     // am/pm
                     isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0
                         ? true
-                        : $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
+                        : ($.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined);
 
                     // time with ':'
                     for (i = 0; i < numbers.length; i++) {
@@ -1771,7 +1796,9 @@
                     // numeric month
                     if (month < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            k = i > 1 || settings.monthFirst ? i : i === 1 ? 0 : 1;
+                            k = i > 1 || settings.monthFirst
+                                ? i
+                                : (i === 1 ? 0 : 1);
                             j = parseInt(numbers[k], 10);
                             if (isNaN(j)) {
                                 continue;
@@ -1897,28 +1924,22 @@
         },
 
         // callback when date changes
-        onChange: function (date, text, mode) {
-        },
+        onChange: function (date, text, mode) {},
 
         // callback before show animation, return false to prevent show
-        onShow: function () {
-        },
+        onShow: function () {},
 
         // callback after show animation
-        onVisible: function () {
-        },
+        onVisible: function () {},
 
         // callback before hide animation, return false to prevent hide
-        onHide: function () {
-        },
+        onHide: function () {},
 
         // callback after hide animation
-        onHidden: function () {
-        },
+        onHidden: function () {},
 
         // callback before item is selected, return false to prevent selection
-        onSelect: function (date, mode) {
-        },
+        onSelect: function (date, mode) {},
 
         // is the given date disabled?
         isDisabled: function (date, mode) {

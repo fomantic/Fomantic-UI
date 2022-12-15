@@ -2,7 +2,7 @@
           Clean Task
 *******************************/
 
-let
+const
     del    = require('del'),
     config = require('./config/user'),
     tasks  = require('./config/tasks')

@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'airbnb-base',
         'plugin:unicorn/recommended',
+        'plugin:@internal/eslint-plugin/recommended',
     ],
     parserOptions: {
         ecmaVersion: '2020',
@@ -22,10 +23,10 @@ module.exports = {
         'class-methods-use-this': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
-            objects: 'always-multiline',
+            exports: 'always-multiline',
             functions: 'never',
             imports: 'always-multiline',
-            exports: 'always-multiline',
+            objects: 'always-multiline',
         }],
         'consistent-return': 'off',
         curly: ['error', 'all'],
@@ -56,8 +57,8 @@ module.exports = {
         'object-shorthand': ['error', 'never'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
-            prev: '*',
             next: ['continue', 'break', 'export', 'return', 'throw'],
+            prev: '*',
         }],
         'prefer-destructuring': 'off',
         'prefer-template': 'off',
@@ -80,10 +81,10 @@ module.exports = {
         'unicorn/no-null': 'off',
         'unicorn/no-this-assignment': 'off',
         'unicorn/numeric-separators-style': 'off',
+        'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
-        'unicorn/switch-case-braces': ['error', 'avoid'],
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
@@ -94,6 +95,7 @@ module.exports = {
         'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
+        'prefer-rest-params': 'off',
         'prefer-spread': 'off',
         'semi-style': 'off',
         'unicorn/no-array-for-each': 'off',
@@ -110,40 +112,11 @@ module.exports = {
         'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
-        eqeqeq: 'off', // about 300 errors to be fixed manually
+        eqeqeq: 'off', // about 20 errors to be fixed manually
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
+        'no-shadow-restricted-names': 'off', // TODO https://github.com/fomantic/Fomantic-UI/pull/2604
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
-        'prefer-rest-params': 'off', // about 180 errors to be fixed manually
-        'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
-
-        // TODO
-        'no-bitwise': 'off',
-        'no-cond-assign': 'off',
-        'no-empty': 'off',
-        'no-labels': 'off',
-        'no-loop-func': 'off',
-        'no-new-func': 'off',
-        'no-path-concat': 'off',
-        'no-prototype-builtins': 'off',
-        'no-return-assign': 'off',
-        'no-self-assign': 'off',
-        'no-shadow-restricted-names': 'off',
-        'no-unused-expressions': 'off',
-        'no-use-before-define': 'off',
-        'unicorn/empty-brace-spaces': 'off',
-        'unicorn/escape-case': 'off',
-        'unicorn/new-for-builtins': 'off',
-        'unicorn/no-hex-escape': 'off',
-        'unicorn/no-instanceof-array': 'off',
-        'unicorn/no-process-exit': 'off',
-        'unicorn/no-useless-switch-case': 'off',
-        'unicorn/no-useless-undefined': 'off',
-        'unicorn/prefer-array-find': 'off',
-        'unicorn/prefer-default-parameters': 'off',
-        'unicorn/prefer-native-coercion-functions': 'off',
-        'unicorn/prefer-negative-index': 'off',
-        'unicorn/prefer-switch': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

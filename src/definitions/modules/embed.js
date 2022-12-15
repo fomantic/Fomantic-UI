@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -29,7 +29,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -37,7 +37,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.embed.settings, parameters)
                     : $.extend({}, $.fn.embed.settings),
 
@@ -206,24 +206,24 @@
                         return settings.placeholder || $module.data(metadata.placeholder);
                     },
                     icon: function () {
-                        return settings.icon || (($module.data(metadata.icon) !== undefined)
+                        return settings.icon || ($module.data(metadata.icon) !== undefined
                             ? $module.data(metadata.icon)
                             : module.determine.icon());
                     },
                     source: function (url) {
-                        return settings.source || (($module.data(metadata.source) !== undefined)
+                        return settings.source || ($module.data(metadata.source) !== undefined
                             ? $module.data(metadata.source)
                             : module.determine.source());
                     },
                     type: function () {
                         var source = module.get.source();
 
-                        return (sources[source] !== undefined)
+                        return sources[source] !== undefined
                             ? sources[source].type
                             : false;
                     },
                     url: function () {
-                        return settings.url || (($module.data(metadata.url) !== undefined)
+                        return settings.url || ($module.data(metadata.url) !== undefined
                             ? $module.data(metadata.url)
                             : module.determine.url());
                     },
@@ -257,7 +257,7 @@
                             source = module.get.source()
                         ;
 
-                        return (sources[source] !== undefined)
+                        return sources[source] !== undefined
                             ? sources[source].icon
                             : false;
                     },
@@ -267,7 +267,7 @@
                             source = settings.source || $module.data(metadata.source),
                             url
                         ;
-                        url = (sources[source] !== undefined)
+                        url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
                         if (url) {
@@ -336,7 +336,7 @@
                     },
                     parameters: function (source, extraParameters) {
                         var
-                            parameters = (sources[source] && sources[source].parameters !== undefined)
+                            parameters = sources[source] && sources[source].parameters !== undefined
                                 ? sources[source].parameters(settings)
                                 : {}
                         ;
@@ -352,7 +352,7 @@
 
                 has: {
                     embed: function () {
-                        return ($embed.length > 0);
+                        return $embed.length > 0;
                     },
                     placeholder: function () {
                         return settings.placeholder || $module.data(metadata.placeholder);
@@ -361,15 +361,15 @@
 
                 should: {
                     autoplay: function () {
-                        return (settings.autoplay === 'auto')
-                            ? (settings.placeholder || $module.data(metadata.placeholder) !== undefined)
+                        return settings.autoplay === 'auto'
+                            ? settings.placeholder || $module.data(metadata.placeholder) !== undefined
                             : settings.autoplay;
                     },
                 },
 
                 is: {
                     video: function () {
-                        return module.get.type() == 'video';
+                        return module.get.type() === 'video';
                     },
                 },
 
@@ -488,17 +488,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -541,7 +541,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

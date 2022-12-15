@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -217,9 +217,9 @@
                             checkIndex = false
                         ;
 
-                        if (key == keyCode.left || key == keyCode.up) {
+                        if (key === keyCode.left || key === keyCode.up) {
                             checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
-                        } else if (key == keyCode.right || key == keyCode.down) {
+                        } else if (key === keyCode.right || key === keyCode.down) {
                             checkIndex = rIndex === rLen - 1 ? 0 : rIndex + 1;
                         }
 
@@ -237,21 +237,21 @@
                         }
 
                         shortcutPressed = false;
-                        if (key == keyCode.escape) {
+                        if (key === keyCode.escape) {
                             module.verbose('Escape key pressed blurring field');
                             $input.trigger('blur');
                             shortcutPressed = true;
                             event.stopPropagation();
                         } else if (!event.ctrlKey && module.can.change()) {
-                            if (key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) {
+                            if (key === keyCode.space || (key === keyCode.enter && settings.enableEnterKey)) {
                                 module.verbose('Enter/space key pressed, toggling checkbox');
                                 module.toggle();
                                 shortcutPressed = true;
                             } else if ($module.is('.toggle, .slider') && !module.is.radio()) {
-                                if (key == keyCode.left && module.is.checked()) {
+                                if (key === keyCode.left && module.is.checked()) {
                                     module.uncheck();
                                     shortcutPressed = true;
-                                } else if (key == keyCode.right && module.is.unchecked()) {
+                                } else if (key === keyCode.right && module.is.unchecked()) {
                                     module.check();
                                     shortcutPressed = true;
                                 }
@@ -370,7 +370,7 @@
                         return initialLoad;
                     },
                     radio: function () {
-                        return ($input.hasClass(className.radio) || $input.attr('type') == 'radio');
+                        return $input.hasClass(className.radio) || $input.attr('type') === 'radio';
                     },
                     indeterminate: function () {
                         return $input.prop('indeterminate') !== undefined && $input.prop('indeterminate');
@@ -450,7 +450,7 @@
                         return true;
                     },
                     ignoreCallbacks: function () {
-                        return (initialLoad && !settings.fireOnInit);
+                        return initialLoad && !settings.fireOnInit;
                     },
                 },
 
@@ -459,7 +459,7 @@
                         return !($module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly'));
                     },
                     uncheck: function () {
-                        return (typeof settings.uncheckable === 'boolean')
+                        return typeof settings.uncheckable === 'boolean'
                             ? settings.uncheckable
                             : !module.is.radio();
                     },
@@ -606,7 +606,7 @@
 
                 has: {
                     label: function () {
-                        return ($label.length > 0);
+                        return $label.length > 0;
                     },
                 },
 
@@ -767,17 +767,17 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -820,7 +820,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

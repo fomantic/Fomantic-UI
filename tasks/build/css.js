@@ -220,7 +220,9 @@ module.exports.watch = function (type, config) {
     ])
         .on('all', function () {
             // Clear timeout and reset files
-            timeout && clearTimeout(timeout);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
             files = [];
 
             return gulp.series(method)();
@@ -240,7 +242,9 @@ module.exports.watch = function (type, config) {
             }
 
             // Clear timeout
-            timeout && clearTimeout(timeout);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
 
             // Determine which LESS file has to be recompiled
             let lessPath;

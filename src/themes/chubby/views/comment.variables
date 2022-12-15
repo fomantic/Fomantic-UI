@@ -8,7 +8,7 @@
 
 /* Comment */
 @commentBackground: #FFFFFF;
-@commentMargin: 1em 0em 0em;
+@commentMargin: 1em 0 0;
 @commentPadding: 1em 1.5em;
 @commentBorder: 1px solid rgba(0, 0, 0, 0.1);
 @commentDivider: 1px solid rgba(0, 0, 0, 0.1);
@@ -16,8 +16,8 @@
 @firstCommentPadding: 1em;
 
 /* Nested Comment */
-@nestedCommentsMargin: 0em 0em 0.5em 0.5em;
-@nestedCommentsPadding: 1em 0em 0em 1em;
+@nestedCommentsMargin: 0 0 0.5em 0.5em;
+@nestedCommentsPadding: 1em 0 0 1em;
 @nestedCommentBackground: #F0F0F0;
 
 /* Avatar */
@@ -35,7 +35,7 @@
 @authorFontWeight: bold;
 
 @metadataDisplay: block;
-@metadataSpacing: 0em;
+@metadataSpacing: 0;
 @metadataColor: @textColor;
 
 /* -------------------

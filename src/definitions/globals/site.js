@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -25,10 +25,10 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
-            settings        = ($.isPlainObject(parameters))
+            settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.site.settings, parameters)
                 : $.extend({}, $.site.settings),
 
@@ -102,7 +102,7 @@
             },
 
             moduleExists: function (name) {
-                return ($.fn[name] !== undefined && $.fn[name].settings !== undefined);
+                return $.fn[name] !== undefined && $.fn[name].settings !== undefined;
             },
 
             enabled: {
@@ -139,17 +139,17 @@
 
             change: {
                 setting: function (setting, value, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
-                        ? (modules === 'all')
+                    modules = typeof modules === 'string'
+                        ? (modules === 'all'
                             ? settings.modules
-                            : [modules]
+                            : [modules])
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
                         var
-                            namespace = (module.moduleExists(name))
+                            namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
                                 : true,
                             $existingModules
@@ -168,10 +168,10 @@
                     });
                 },
                 settings: function (newSettings, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
+                    modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
@@ -361,17 +361,17 @@
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        var camelCaseValue = (depth != maxDepth)
+                        var camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query
                         ;
-                        if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                        if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                             object = object[camelCaseValue];
                         } else if (object[camelCaseValue] !== undefined) {
                             found = object[camelCaseValue];
 
                             return false;
-                        } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                        } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                             object = object[value];
                         } else if (object[value] !== undefined) {
                             found = object[value];
@@ -413,7 +413,7 @@
             module.initialize();
         }
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

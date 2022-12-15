@@ -12,7 +12,7 @@
 
 */
 
-let
+const
     gulp      = require('gulp'),
 
     // node dependencies
@@ -29,7 +29,7 @@ let
     project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth     = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
+    oAuth     = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
         ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
@@ -84,7 +84,7 @@ module.exports = function (callback) {
         }
 
         // clean folder
-        if (release.outputRoot.search('../repos') == 0) {
+        if (release.outputRoot.startsWith('../repos')) {
             console.info('Cleaning dir', outputDirectory);
             del.sync([outputDirectory + '**/*'], { silent: true, force: true });
         }

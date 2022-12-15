@@ -12,8 +12,8 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'dropdown';
+@type: 'module';
+@element: 'dropdown';
 
 @import (multiple) '../../theme.config';
 
@@ -388,7 +388,7 @@ select.ui.dropdown {
         line-height: 1em;
         white-space: normal;
         outline: 0;
-        transform: rotateZ(0deg);
+        transform: rotateZ(0);
         min-width: @selectionMinWidth;
         min-height: @selectionMinHeight;
         background: @selectionBackground;
@@ -805,7 +805,7 @@ select.ui.dropdown {
     }
 
     .ui.dropdown select.noselection ~ .remove.icon,
-    .ui.dropdown input[value=''] ~ .remove.icon,
+    .ui.dropdown input[value=""] ~ .remove.icon,
     .ui.dropdown input:not([value]) ~ .remove.icon,
     .ui.dropdown.loading > .remove.icon {
         display: none;
@@ -1325,7 +1325,7 @@ select.ui.dropdown {
         @media all and (-ms-high-contrast: none) {
             .ui.scrolling.dropdown .menu,
             .ui.dropdown .scrolling.menu {
-                min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
+                min-width: e(%('calc(100%% - %d)', @scrollbarWidth));
             }
         }
     }
@@ -1946,7 +1946,7 @@ select.ui.dropdown {
                 scrollbar-arrow-color: @trackInvertedBackgroundHex;
             }
 
-            /* firefox : first color thumb, second track */
+            /* firefox: first color thumb, second track */
             scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
         }
     }

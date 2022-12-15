@@ -9,8 +9,8 @@
 
 @-webkit-keyframes loader-pulsar {
     0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
         opacity: 0;
     }
     20% {
@@ -40,8 +40,8 @@
 
 @keyframes loader-pulsar {
     0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
         opacity: 0;
     }
     20% {
