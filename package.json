@@ -86,7 +86,7 @@
     "stylelint-config-standard": "^29.0.0"
   },
   "engines": {
-    "node": ">=12",
+    "node": ">=14",
     "npm": ">=6.14.8"
   },
   "title": "Fomantic UI",

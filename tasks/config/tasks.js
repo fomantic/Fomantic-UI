@@ -17,12 +17,9 @@ let overrideBrowserslist = hasBrowserslistConfig ? undefined : [
     'android 4',
 ];
 
-// Node 12 does not support ??, so a little polyfill
-let nullish = (value, fallback) => (value !== undefined && value !== null ? value : fallback);
-
 module.exports = {
 
-    banner: nullish(config.banner, release.banner),
+    banner: config.banner ?? release.banner,
 
     log: {
         created: function (file) {
@@ -95,11 +92,11 @@ module.exports = {
 
         /* Comment Banners */
         header: {
-            year: nullish(config.header.year, new Date().getFullYear()),
-            title: nullish(config.header.title, release.title),
-            version: nullish(config.header.version, release.version),
-            repository: nullish(config.header.repository, release.repository),
-            url: nullish(config.header.url, release.url),
+            year: config.header.year ?? new Date().getFullYear(),
+            title: config.header.title ?? release.title,
+            version: config.header.version ?? release.version,
+            repository: config.header.repository ?? release.repository,
+            url: config.header.url ?? release.url,
         },
 
         plumber: {
