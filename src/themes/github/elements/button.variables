@@ -6,7 +6,7 @@
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
 @textTransform: none;
 @fontWeight: bold;
-@textColor: #333333;
+@textColor: #333;
 
 @textShadow: 0 1px 0 rgba(255, 255, 255, 0.9);
 @invertedTextShadow: 0 -1px 0 rgba(0, 0, 0, 0.25);

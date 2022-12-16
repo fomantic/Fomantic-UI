@@ -5,7 +5,7 @@
 /* Button Variables */
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
 @textTransform: none;
-@textColor: #111111;
+@textColor: #111;
 @fontWeight: normal;
 @transition:
     opacity @defaultDuration @defaultEasing,
@@ -38,7 +38,7 @@
 ;
 
 @labeledIconBackgroundColor: #313a43;
-@labeledIconColor: #ffffff;
+@labeledIconColor: #fff;
 @labeledIconBorder: transparent;
 
 @black: #444c55;

@@ -204,7 +204,7 @@
 @basicTextTransform: none;
 
 /* Basic Hover */
-@basicHoverBackground: #ffffff;
+@basicHoverBackground: #fff;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
     0 0 0 @basicBorderSize @selectedBorderColor inset,

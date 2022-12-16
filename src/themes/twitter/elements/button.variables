@@ -17,7 +17,7 @@
 
 @textTransform: none;
 @fontWeight: bold;
-@textColor: #333333;
+@textColor: #333;
 
 @horizontalPadding: 1.284em;
 @verticalPadding: 0.8571em;

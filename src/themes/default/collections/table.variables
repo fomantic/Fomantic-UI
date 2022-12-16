@@ -216,7 +216,7 @@
 @coloredBorderSizeCover: (@coloredBorderSize / 2);
 
 /* Inverted */
-@invertedBackground: #333333;
+@invertedBackground: #333;
 @invertedBorder: none;
 @invertedCellBorder: 1px solid @whiteBorderColor;
 @invertedCellBorderColor: @whiteBorderColor;

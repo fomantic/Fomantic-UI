@@ -83,7 +83,7 @@
 @activeHoverColor: @selectedTextColor;
 
 /* Loading */
-@loadingBackgroundColor: #ffffff;
+@loadingBackgroundColor: #fff;
 
 /* -------------------
         Types

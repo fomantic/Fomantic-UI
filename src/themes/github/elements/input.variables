@@ -7,7 +7,7 @@
 @verticalPadding: @relative7px;
 @horizontalPadding: @relative8px;
 
-@borderColor: #cccccc;
+@borderColor: #ccc;
 
 @focusBorderColor: #51a7e8;
 @focusBoxShadow:

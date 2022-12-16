@@ -21,7 +21,7 @@
 @blue: #80a6cd;
 @green: #78cb5b;
 @orange: #d26911;
-@black: #333333;
+@black: #333;
 @primaryColor: @green;
 @secondaryColor: @black;
 
@@ -32,7 +32,7 @@
 
 /* Borders */
 @borderColor: rgba(0, 0, 0, 0.13);
-@solidBorderColor: #dddddd;
+@solidBorderColor: #ddd;
 @internalBorderColor: rgba(0, 0, 0, 0.06);
 @selectedBorderColor: #51a7e8;
 
@@ -45,4 +45,4 @@
 
 @infoTextColor: #4e575b;
 @warningTextColor: #613a00;
-@errorTextColor: #991111;
+@errorTextColor: #911;

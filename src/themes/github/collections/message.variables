@@ -10,7 +10,7 @@
 
 @infoTextColor: #264c72;
 @warningTextColor: #613a00;
-@errorTextColor: #991111;
+@errorTextColor: #911;
 
 @floatingBoxShadow:
     0 0 0 1px rgba(0, 0, 0, 0.1) inset,

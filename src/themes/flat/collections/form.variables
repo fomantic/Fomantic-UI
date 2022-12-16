@@ -28,8 +28,8 @@
 
 @textAreaPadding: 1em;
 @textAreaBackground: transparent;
-@textAreaFocusBackground: #eeeeee;
-@textAreaBorder: 1px solid #dddddd;
+@textAreaFocusBackground: #eee;
+@textAreaBorder: 1px solid #ddd;
 
 /* Divider */
 @dividerMargin: 1em 0;

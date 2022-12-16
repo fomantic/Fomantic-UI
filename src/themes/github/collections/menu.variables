@@ -5,7 +5,7 @@
 @itemVerticalPadding: 1em;
 @itemHorizontalPadding: 1.25em;
 
-@background: #ffffff linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05));
+@background: #fff linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.05));
 @fontWeight: normal;
 
 @activeBorderSize: 0;
@@ -21,8 +21,8 @@
 @subMenuMargin: 0.5em -0.6em 0;
 @subMenuHorizontalPadding: 0.7em;
 
-@arrowHoverColor: #eeeeee;
-@arrowActiveColor: #eeeeee;
+@arrowHoverColor: #eee;
+@arrowActiveColor: #eee;
 @arrowVerticalHoverColor: #f4f4f4;
 @arrowVerticalActiveColor: #f4f4f4;
 
@@ -49,7 +49,7 @@
       Variations
 -------------------- */
 
-@verticalBackground: #ffffff;
+@verticalBackground: #fff;
 @verticalItemBackground: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.02));
 
 @invertedBackground: @black linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0));

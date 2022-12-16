@@ -7,7 +7,7 @@
 
 @textTransform: none;
 @fontWeight: @normal;
-@textColor: #333333;
+@textColor: #333;
 
 @verticalPadding: 1.1em;
 @horizontalPadding: 2.5em;
@@ -26,7 +26,7 @@
 @backgroundImage: none;
 @boxShadow: none;
 
-@hoverBackgroundColor: #dddddd;
+@hoverBackgroundColor: #ddd;
 @hoverBackgroundImage: none;
 @hoverBoxShadow: none;
 
@@ -34,7 +34,7 @@
 @downBackgroundImage: none;
 @downBoxShadow: none;
 
-@activeBackgroundColor: #cccccc;
+@activeBackgroundColor: #ccc;
 @activeBackgroundImage: none;
 @activeBoxShadow: none;
 

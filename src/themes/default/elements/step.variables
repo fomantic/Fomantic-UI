@@ -131,7 +131,7 @@
 @disabledColor: @disabledTextColor;
 
 /* Inverted */
-@invertedActiveBackground: #333333;
-@invertedActiveHoverBackground: #444444;
+@invertedActiveBackground: #333;
+@invertedActiveHoverBackground: #444;
 @invertedHoverBackground: #3f3f3f;
-@invertedDisabledBackground: #222222;
+@invertedDisabledBackground: #222;

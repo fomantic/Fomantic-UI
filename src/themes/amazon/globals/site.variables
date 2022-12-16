@@ -25,7 +25,7 @@
 @linkHoverUnderline: underline;
 
 @borderColor: rgba(0, 0, 0, 0.13);
-@solidBorderColor: #dddddd;
+@solidBorderColor: #ddd;
 @internalBorderColor: rgba(0, 0, 0, 0.06);
 @selectedBorderColor: #51a7e8;
 

@@ -32,8 +32,8 @@
 @tertiaryBackground: #f0f0f0;
 @tertiaryColor: @textColor;
 
-@secondaryInvertedBackground: #555555;
+@secondaryInvertedBackground: #555;
 @secondaryInvertedColor: @textColor;
 
-@tertiaryInvertedBackground: #333333;
+@tertiaryInvertedBackground: #333;
 @tertiaryInvertedColor: @textColor;

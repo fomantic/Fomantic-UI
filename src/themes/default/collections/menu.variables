@@ -10,7 +10,7 @@
 @verticalMargin: @medium;
 @horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
-@background: #ffffff;
+@background: #fff;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: @normal;
@@ -114,7 +114,7 @@
 
 /* Label */
 @labelOffset: -0.15em;
-@labelBackground: #999999;
+@labelBackground: #999;
 @labelTextColor: @white;
 
 @labelTextMargin: 1em;
@@ -134,7 +134,7 @@
 /* Dropdown in Menu */
 @dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 
-@dropdownBackground: #ffffff;
+@dropdownBackground: #fff;
 @dropdownMenuDistance: 0;
 @dropdownMenuBorderRadius: @borderRadius;
 
@@ -204,7 +204,7 @@
 /* Vertical */
 @verticalBoxShadow: @boxShadow;
 @verticalPointerWidth: 2px;
-@verticalBackground: #ffffff;
+@verticalBackground: #fff;
 @verticalItemBackground: none;
 @verticalDividerBackground: @dividerBackground;
 

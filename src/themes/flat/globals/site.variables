@@ -31,8 +31,8 @@
 @yellow: #ffcb08;
 
 @black: #191919;
-@grey: #cccccc;
-@white: #ffffff;
+@grey: #ccc;
+@white: #fff;
 
 /* ---  Light Colors  --- */
 @lightBlue: #54c8ff;
@@ -63,7 +63,7 @@
 @linkHoverColor: lighten(@linkColor, 5);
 @linkHoverUnderline: @linkUnderline;
 
-@highlightBackground: #ffffcc;
+@highlightBackground: #ffc;
 @highlightColor: @textColor;
 
 /* -------------------

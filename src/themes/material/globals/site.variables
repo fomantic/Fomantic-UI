@@ -67,7 +67,7 @@
 @yellow: #ffeb3b;
 
 /* ---  Light Colors  --- */
-@lightBlack: #333333;
+@lightBlack: #333;
 @lightBlue: #2979ff;
 @lightGreen: #00e676;
 @lightOrange: #ff9100;
@@ -78,12 +78,12 @@
 @lightYellow: #ffea00;
 
 /* ---   Neutrals  --- */
-@fullBlack: #000000;
-@darkGrey: #aaaaaa;
+@fullBlack: #000;
+@darkGrey: #aaa;
 @lightGrey: #dcddde;
 @offWhite: #fafafa;
 @darkWhite: #f0f0f0;
-@white: #ffffff;
+@white: #fff;
 
 /* -------------------
     Brand Colors

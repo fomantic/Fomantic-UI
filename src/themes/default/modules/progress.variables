@@ -20,7 +20,7 @@
 /* Bar */
 @barPosition: relative;
 @barHeight: 1.75em;
-@barBackground: #888888;
+@barBackground: #888;
 @barBorderRadius: @borderRadius;
 @barTransitionEasing: @defaultEasing;
 @barTransitionDuration: @defaultDuration;
