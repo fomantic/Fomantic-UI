@@ -24,7 +24,7 @@
         : globalThis;
 
     $.fn.api = function (parameters) {
-        var
+        let
             // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
@@ -41,7 +41,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.api.settings, parameters)
                     : $.extend({}, $.fn.api.settings),
@@ -109,7 +109,7 @@
 
                 bind: {
                     events: function () {
-                        var
+                        let
                             triggerEvent = module.get.event()
                         ;
                         if (triggerEvent) {
@@ -140,7 +140,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        var
+                        let
                             response
                         ;
                         if (window.Storage === undefined) {
@@ -346,7 +346,7 @@
 
                 add: {
                     urlData: function (url, urlData) {
-                        var
+                        let
                             requiredVariables,
                             optionalVariables
                         ;
@@ -357,7 +357,7 @@
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    var
+                                    let
                                         // allow legacy {$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(2, -1)
@@ -388,7 +388,7 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    var
+                                    let
                                         // allow legacy {/$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(3, -1)
@@ -419,7 +419,7 @@
                         return url;
                     },
                     formData: function (data) {
-                        var
+                        let
                             formData = {},
                             hasOtherData,
                             useFormDataApi = settings.serializeForm === 'formdata'
@@ -432,7 +432,7 @@
                             settings.processData = settings.processData !== undefined ? settings.processData : false;
                             settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
-                            var
+                            let
                                 formArray = $form.serializeArray(),
                                 pushes = {},
                                 pushValues = {},
@@ -452,7 +452,7 @@
                                 if (!settings.regExp.validate.test(el.name)) {
                                     return;
                                 }
-                                var
+                                let
                                     isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                     floatValue = parseFloat(el.value),
                                     value = (isCheckbox && el.value === 'on')
@@ -476,7 +476,7 @@
                                 }
 
                                 while (nameKeys.length > 0) {
-                                    var k = nameKeys.pop();
+                                    let k = nameKeys.pop();
 
                                     if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
@@ -534,7 +534,7 @@
                             // nothing special
                         },
                         done: function (response, textStatus, xhr) {
-                            var
+                            let
                                 context            = this,
                                 elapsedTime        = Date.now() - requestStartTime,
                                 timeLeft           = settings.loadingDuration - elapsedTime,
@@ -563,7 +563,7 @@
                             }, timeLeft);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var
+                            let
                                 context     = this,
                                 elapsedTime = Date.now() - requestStartTime,
                                 timeLeft    = settings.loadingDuration - elapsedTime
@@ -593,7 +593,7 @@
                             settings.onSuccess.call(context, response, $module, xhr);
                         },
                         complete: function (firstParameter, secondParameter) {
-                            var
+                            let
                                 xhr,
                                 response
                             ;
@@ -609,7 +609,7 @@
                             settings.onComplete.call(context, response, $module, xhr);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var
+                            let
                                 // pull response from xhr if available
                                 response     = module.get.responseFromXHR(xhr),
                                 errorMessage = module.get.errorFromRequest(response, status, httpMessage)
@@ -658,7 +658,7 @@
                     },
 
                     mockedXHR: function () {
-                        var
+                        let
                             // xhr does not simulate these properties of xhr but must return them
                             textStatus     = false,
                             status         = false,
@@ -704,7 +704,7 @@
                     },
 
                     xhr: function () {
-                        var
+                        let
                             xhr
                         ;
                         // ajax request promise
@@ -767,7 +767,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        var
+                        let
                             runSettings
                         ;
                         runSettings = settings.beforeSend.call($module, settings);
@@ -800,7 +800,7 @@
                             : $.extend(true, {}, settings);
                     },
                     urlEncodedValue: function (value) {
-                        var
+                        let
                             decodedValue   = window.decodeURIComponent(value),
                             encodedValue   = window.encodeURIComponent(value),
                             alreadyEncoded = decodedValue !== value
@@ -815,7 +815,7 @@
                         return encodedValue;
                     },
                     defaultData: function () {
-                        var
+                        let
                             data = {}
                         ;
                         if (!isWindow(element)) {
@@ -877,7 +877,7 @@
                 },
 
                 abort: function () {
-                    var
+                    let
                         xhr = module.get.xhr()
                     ;
                     if (xhr && xhr.state() !== 'resolved') {
@@ -943,7 +943,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -964,7 +964,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -992,7 +992,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -1004,7 +1004,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

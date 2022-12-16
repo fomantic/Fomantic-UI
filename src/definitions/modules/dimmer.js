@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.dimmer = function (parameters) {
-        var
+        let
             $allModules     = $(this),
 
             time            = Date.now(),
@@ -34,7 +34,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                     : $.extend({}, $.fn.dimmer.settings),
@@ -152,7 +152,7 @@
                 },
 
                 addContent: function (element) {
-                    var
+                    let
                         $content = $(element)
                     ;
                     module.debug('Add content to dimmer', $content);
@@ -162,7 +162,7 @@
                 },
 
                 create: function () {
-                    var
+                    let
                         $element = $(settings.template.dimmer(settings))
                     ;
                     if (settings.dimmerName) {
@@ -395,7 +395,7 @@
 
                 set: {
                     opacity: function (opacity) {
-                        var
+                        let
                             color      = $dimmer.css('background-color'),
                             colorArray = color.split(','),
                             isRGB      = colorArray && colorArray.length >= 3
@@ -511,7 +511,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -532,7 +532,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -563,7 +563,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -575,7 +575,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -710,7 +710,7 @@
 
         template: {
             dimmer: function (settings) {
-                var
+                let
                     d = $('<div/>').addClass('ui dimmer'),
                     l
                 ;

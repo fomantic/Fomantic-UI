@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.shape = function (parameters) {
-        var
+        let
             $allModules     = $(this),
 
             time            = Date.now(),
@@ -42,7 +42,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 moduleSelector = $allModules.selector || '',
                 settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
@@ -107,7 +107,7 @@
 
                 repaint: function () {
                     module.verbose('Forcing repaint event');
-                    var
+                    let
                         shape          = $sides[0] || document.createElement('div'),
                         fakeAssignment = shape.offsetWidth
                     ;
@@ -227,7 +227,7 @@
                     },
 
                     currentStageSize: function () {
-                        var
+                        let
                             $activeSide = $side.filter('.' + settings.className.active),
                             width       = $activeSide.outerWidth(true),
                             height      = $activeSide.outerHeight(true)
@@ -241,7 +241,7 @@
                     },
 
                     stageSize: function () {
-                        var
+                        let
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
                             $activeSide = $side.filter('.' + settings.className.active),
@@ -311,7 +311,7 @@
 
                             return;
                         }
-                        var
+                        let
                             transform = module.get.transform[type]()
                         ;
                         if (!module.is.animating()) {
@@ -354,7 +354,7 @@
 
                     transform: {
                         up: function () {
-                            var
+                            let
                                 translateZ = $activeSide.outerHeight(true) / 2,
                                 translateY = $nextSide.outerHeight(true) - translateZ
                             ;
@@ -365,7 +365,7 @@
                         },
 
                         down: function () {
-                            var
+                            let
                                 translate = {
                                     z: $activeSide.outerHeight(true) / 2,
                                 }
@@ -377,7 +377,7 @@
                         },
 
                         left: function () {
-                            var
+                            let
                                 translateZ = $activeSide.outerWidth(true) / 2,
                                 translateX = $nextSide.outerWidth(true) - translateZ
                             ;
@@ -388,7 +388,7 @@
                         },
 
                         right: function () {
-                            var
+                            let
                                 translate = {
                                     z: $activeSide.outerWidth(true) / 2,
                                 }
@@ -400,7 +400,7 @@
                         },
 
                         over: function () {
-                            var
+                            let
                                 translate = {
                                     x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                 }
@@ -412,7 +412,7 @@
                         },
 
                         back: function () {
-                            var
+                            let
                                 translate = {
                                     x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                 }
@@ -425,7 +425,7 @@
                     },
 
                     transitionEvent: function () {
-                        var
+                        let
                             element     = document.createElement('element'),
                             transitions = {
                                 transition: 'transitionend',
@@ -453,7 +453,7 @@
                 stage: {
 
                     above: function () {
-                        var
+                        let
                             box = {
                                 origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
@@ -478,7 +478,7 @@
                     },
 
                     below: function () {
-                        var
+                        let
                             box = {
                                 origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
@@ -503,7 +503,7 @@
                     },
 
                     left: function () {
-                        var
+                        let
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
@@ -532,7 +532,7 @@
                     },
 
                     right: function () {
-                        var
+                        let
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
@@ -561,7 +561,7 @@
                     },
 
                     behind: function () {
-                        var
+                        let
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
@@ -640,7 +640,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -661,7 +661,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -692,7 +692,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -704,7 +704,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -746,7 +746,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                var $inputs = $module.find('input');
+                let $inputs = $module.find('input');
                 if ($inputs.length > 0) {
                     $inputs.trigger('blur');
                     setTimeout(function () {

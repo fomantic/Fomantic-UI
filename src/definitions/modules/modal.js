@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.modal = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             $window        = $(window),
             $document      = $(document),
@@ -47,7 +47,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings    = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.modal.settings, parameters)
                     : $.extend({}, $.fn.modal.settings),
@@ -113,14 +113,14 @@
                         $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
                     }
                     if (module.has.configActions()) {
-                        var $actions = $module.find(selector.actions).addClass(settings.classActions);
+                        let $actions = $module.find(selector.actions).addClass(settings.classActions);
                         if ($actions.length === 0) {
                             $actions = $('<div/>', { class: className.actions + ' ' + (settings.classActions || '') }).appendTo($module);
                         } else {
                             $actions.empty();
                         }
                         settings.actions.forEach(function (el) {
-                            var
+                            let
                                 icon = el[fields.icon]
                                     ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
                                     : '',
@@ -136,7 +136,7 @@
                                 class: className.button + ' ' + cls,
                                 on: {
                                     click: function () {
-                                        var button = $(this);
+                                        let button = $(this);
                                         if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
                                             return;
                                         }
@@ -187,12 +187,12 @@
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {
-                            var titleId = '_' + module.get.id() + 'title';
+                            let titleId = '_' + module.get.id() + 'title';
                             $module.attr('aria-labelledby', titleId);
                             $('<div/>', { class: className.title, id: titleId }).appendTo($module);
                         }
                         if (settings.content !== '') {
-                            var descId = '_' + module.get.id() + 'desc';
+                            let descId = '_' + module.get.id() + 'desc';
                             $module.attr('aria-describedby', descId);
                             $('<div/>', { class: className.content, id: descId }).appendTo($module);
                         }
@@ -203,7 +203,7 @@
                         element = $module[0];
                     },
                     dimmer: function () {
-                        var
+                        let
                             defaultSettings = {
                                 debug: settings.debug,
                                 dimmerName: 'modals',
@@ -306,7 +306,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
+                    let
                         $toggle = $(selector)
                     ;
                     event = isFunction(module[event])
@@ -394,7 +394,7 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var
+                        let
                             keyCode   = event.which
                         ;
                         if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
@@ -403,7 +403,7 @@
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            var
+                            let
                                 keyCode = event.which
                             ;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
@@ -412,7 +412,7 @@
                             }
                         },
                         last: function (event) {
-                            var
+                            let
                                 keyCode = event.which
                             ;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
@@ -422,7 +422,7 @@
                         },
                     },
                     mousedown: function (event) {
-                        var
+                        let
                             $target   = $(event.target),
                             isRtl = module.is.rtl()
                         ;
@@ -451,7 +451,7 @@
 
                             return;
                         }
-                        var
+                        let
                             $target   = $(event.target),
                             isInModal = $target.closest(selector.modal).length > 0,
                             isInDOM   = $.contains(document.documentElement, event.target)
@@ -473,7 +473,7 @@
                         module.timer = setTimeout(method, delay);
                     },
                     keyboard: function (event) {
-                        var
+                        let
                             keyCode   = event.which
                         ;
                         if (keyCode === settings.keys.escape) {
@@ -599,7 +599,7 @@
                 },
 
                 hideModal: function (callback, keepDimmed, hideOthersToo) {
-                    var
+                    let
                         $previousModal = $otherModals.filter('.' + className.active).last()
                     ;
                     callback = isFunction(callback)
@@ -691,7 +691,7 @@
                 },
 
                 hideAll: function (callback) {
-                    var
+                    let
                         $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
                     ;
                     callback = isFunction(callback)
@@ -699,7 +699,7 @@
                         : function () {};
                     if ($visibleModals.length > 0) {
                         module.debug('Hiding all visible modals');
-                        var hideOk = true;
+                        let hideOk = true;
                         // check in reverse order trying to hide most top displayed modal first
                         $($visibleModals.get().reverse()).each(function (index, element) {
                             if (hideOk) {
@@ -715,7 +715,7 @@
                 },
 
                 hideOthers: function (callback) {
-                    var
+                    let
                         $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
                     ;
                     callback = isFunction(callback)
@@ -749,7 +749,7 @@
 
                 save: {
                     focus: function () {
-                        var
+                        let
                             $activeElement = $(document.activeElement),
                             inCurrentModal = $activeElement.closest($module).length > 0
                         ;
@@ -759,7 +759,7 @@
                     },
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        var
+                        let
                             bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
                             bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
@@ -774,10 +774,10 @@
                         }
                     },
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
+                            let
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
@@ -839,7 +839,7 @@
 
                 cacheSizes: function () {
                     $module.addClass(className.loading);
-                    var
+                    let
                         scrollHeight = $module.prop('scrollHeight'),
                         modalWidth   = $module.outerWidth(),
                         modalHeight  = $module.outerHeight()
@@ -867,7 +867,7 @@
                         if (preserveHTML) {
                             return string;
                         }
-                        var
+                        let
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
                             escape       = {
@@ -911,7 +911,7 @@
                         return settings.useFlex;
                     },
                     fit: function () {
-                        var
+                        let
                             contextHeight  = module.cache.contextHeight,
                             verticalCenter = module.cache.contextHeight / 2,
                             topOffset      = module.cache.topOffset,
@@ -940,7 +940,7 @@
                     },
                     ie: function () {
                         if (module.cache.isIE === undefined) {
-                            var
+                            let
                                 isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
                                 isIE = 'ActiveXObject' in window
                             ;
@@ -996,7 +996,7 @@
 
                 set: {
                     autofocus: function () {
-                        var
+                        let
                             $autofocus = $inputs.filter('[autofocus]'),
                             $input     = $autofocus.length > 0
                                 ? $autofocus.first()
@@ -1007,12 +1007,12 @@
                         }
                     },
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         if (settings.detachable || module.can.fit()) {
                             $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         }
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
+                            let
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
@@ -1038,7 +1038,7 @@
 
                             return;
                         }
-                        var
+                        let
                             defaultSettings = {
                                 debug: settings.debug,
                                 dimmerName: 'modals',
@@ -1072,7 +1072,7 @@
                     },
                     modalOffset: function () {
                         if (!settings.detachable) {
-                            var canFit = module.can.fit();
+                            let canFit = module.can.fit();
                             $module
                                 .css({
                                     top: !$module.hasClass('aligned') && canFit
@@ -1187,7 +1187,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -1208,7 +1208,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -1236,7 +1236,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -1248,7 +1248,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1461,7 +1461,7 @@
 
     $.fn.modal.settings.templates = {
         getArguments: function (args) {
-            var queryArguments = [].slice.call(args);
+            let queryArguments = [].slice.call(args);
             if ($.isPlainObject(queryArguments[0])) {
                 return $.extend({
                     handler: function () {},
@@ -1480,7 +1480,7 @@
             };
         },
         alert: function () {
-            var
+            let
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 approveFn = args.handler
@@ -1498,7 +1498,7 @@
             };
         },
         confirm: function () {
-            var
+            let
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 approveFn = function () {
@@ -1526,13 +1526,13 @@
             };
         },
         prompt: function () {
-            var
+            let
                 $this    = this,
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 input    = $($.parseHTML(args.content)).filter('.ui.input'),
                 approveFn = function () {
-                    var
+                    let
                         settings = $this.get.settings(),
                         inputField = $this.get.element().find(settings.selector.prompt)[0]
                     ;

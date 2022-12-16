@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.transition = function () {
-        var
+        let
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $allModules.each(function (index) {
-            var
+            let
                 $module  = $(this),
                 element  = this,
 
@@ -110,7 +110,7 @@
 
                 forceRepaint: function () {
                     module.verbose('Forcing element repaint');
-                    var
+                    let
                         $parentElement = $module.parent(),
                         $nextElement = $module.next()
                     ;
@@ -123,13 +123,13 @@
 
                 repaint: function () {
                     module.verbose('Repainting element');
-                    var
+                    let
                         fakeAssignment = element.offsetWidth
                     ;
                 },
 
                 delay: function (interval) {
-                    var
+                    let
                         direction = module.get.animationDirection(),
                         shouldReverse,
                         delay
@@ -229,7 +229,7 @@
 
                 force: {
                     visible: function () {
-                        var
+                        let
                             style          = $module.attr('style'),
                             userStyle      = module.get.userStyle(style),
                             displayType    = module.get.displayType(),
@@ -250,7 +250,7 @@
                         return true;
                     },
                     hidden: function () {
-                        var
+                        let
                             style          = $module.attr('style'),
                             currentDisplay = $module.css('display'),
                             emptyStyle     = style === undefined || style === ''
@@ -270,7 +270,7 @@
 
                 has: {
                     direction: function (animation) {
-                        var
+                        let
                             hasDirection = false
                         ;
                         animation = animation || settings.animation;
@@ -286,7 +286,7 @@
                         return hasDirection;
                     },
                     inlineDisplay: function () {
-                        var
+                        let
                             style = $module.attr('style') || ''
                         ;
 
@@ -301,7 +301,7 @@
 
                         // determine exact animation
                         animation = animation || settings.animation;
-                        var animationClass = module.get.animationClass(animation);
+                        let animationClass = module.get.animationClass(animation);
 
                         // save animation class in cache to restore class names
                         module.save.animation(animationClass);
@@ -405,7 +405,7 @@
 
                 restore: {
                     conditions: function () {
-                        var
+                        let
                             animation = module.get.currentAnimation()
                         ;
                         if (animation) {
@@ -420,7 +420,7 @@
 
                 add: {
                     failSafe: function () {
-                        var
+                        let
                             duration = module.get.duration()
                         ;
                         module.timer = setTimeout(function () {
@@ -523,7 +523,7 @@
                         });
                     },
                     animationClass: function (animation) {
-                        var
+                        let
                             animationClass = animation || settings.animation,
                             directionClass = module.can.transition() && !module.has.direction()
                                 ? module.get.direction() + ' '
@@ -551,7 +551,7 @@
                             : className.outward;
                     },
                     animationDirection: function (animation) {
-                        var
+                        let
                             direction
                         ;
                         animation = animation || settings.animation;
@@ -593,7 +593,7 @@
                             return settings.displayType;
                         }
                         if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
-                            var currentDisplay = $module.css('display');
+                            let currentDisplay = $module.css('display');
                             if (currentDisplay === '' || currentDisplay === 'none') {
                                 // create fake element to determine display state
                                 module.can.transition(true);
@@ -613,7 +613,7 @@
                         return $.fn.transition.exists[animation];
                     },
                     animationStartEvent: function () {
-                        var
+                        let
                             element     = document.createElement('div'),
                             animations  = {
                                 animation: 'animationstart',
@@ -632,7 +632,7 @@
                         return false;
                     },
                     animationEndEvent: function () {
-                        var
+                        let
                             element     = document.createElement('div'),
                             animations  = {
                                 animation: 'animationend',
@@ -655,7 +655,7 @@
 
                 can: {
                     transition: function (forced) {
-                        var
+                        let
                             animation         = settings.animation,
                             transitionExists  = module.get.transitionExists(animation),
                             displayType       = module.get.displayType(false),
@@ -878,7 +878,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -899,7 +899,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -931,7 +931,7 @@
                 },
                 // modified for transition to return invoke success
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -943,7 +943,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.sidebar = function (parameters) {
-        var
+        let
             $allModules     = $(this),
             $window         = $(window),
             $document       = $(document),
@@ -48,7 +48,7 @@
             returnedValue;
 
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
                     : $.extend({}, $.fn.sidebar.settings),
@@ -142,7 +142,7 @@
                 event: {
                     clickaway: function (event) {
                         if (settings.closable) {
-                            var
+                            let
                                 clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
                                 clickedContext  = $context.is(event.target)
                             ;
@@ -219,7 +219,7 @@
 
                 add: {
                     inlineCSS: function () {
-                        var
+                        let
                             width     = module.cache.width || $module.outerWidth(),
                             height    = module.cache.height || $module.outerHeight(),
                             isRTL     = module.is.rtl(),
@@ -308,7 +308,7 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
-                    var ignored = element.offsetHeight;
+                    let ignored = element.offsetHeight;
                     element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
@@ -346,7 +346,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
+                    let
                         $toggle = $(selector)
                     ;
                     event = isFunction(module[event])
@@ -373,7 +373,7 @@
                 save: {
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        var
+                        let
                             bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
                             bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
@@ -447,7 +447,7 @@
                 },
 
                 hideOthers: function (callback) {
-                    var
+                    let
                         $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
                         sidebarCount   = $otherSidebars.length,
                         callbackCount  = 0
@@ -473,7 +473,7 @@
                 },
 
                 pushPage: function (callback) {
-                    var
+                    let
                         transition = module.get.transition(),
                         $transition = transition === 'overlay' || module.othersActive()
                             ? $module
@@ -519,7 +519,7 @@
                 },
 
                 pullPage: function (callback) {
-                    var
+                    let
                         transition = module.get.transition(),
                         $transition = transition === 'overlay' || module.othersActive()
                             ? $module
@@ -584,10 +584,10 @@
 
                 set: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
+                            let
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
@@ -694,10 +694,10 @@
                 },
                 restore: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
+                            let
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
@@ -720,7 +720,7 @@
                         return className.left;
                     },
                     transition: function () {
-                        var
+                        let
                             direction = module.get.direction(),
                             transition
                         ;
@@ -736,7 +736,7 @@
                         return transition;
                     },
                     transitionEvent: function () {
-                        var
+                        let
                             element     = document.createElement('element'),
                             transitions = {
                                 transition: 'transitionend',
@@ -785,7 +785,7 @@
                     },
                     ie: function () {
                         if (module.cache.isIE === undefined) {
-                            var
+                            let
                                 isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
                                 isIE = 'ActiveXObject' in window
                             ;
@@ -796,7 +796,7 @@
                     },
 
                     ios: function () {
-                        var
+                        let
                             userAgent      = navigator.userAgent,
                             isIOS          = userAgent.match(regExp.ios),
                             isMobileChrome = userAgent.match(regExp.mobileChrome)
@@ -810,7 +810,7 @@
                         return false;
                     },
                     mobile: function () {
-                        var
+                        let
                             userAgent    = navigator.userAgent,
                             isMobile     = userAgent.match(regExp.mobile)
                         ;
@@ -903,7 +903,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -924,7 +924,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -952,7 +952,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -964,7 +964,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

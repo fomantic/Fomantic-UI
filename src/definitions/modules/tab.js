@@ -24,7 +24,7 @@
         : globalThis;
 
     $.fn.tab = function (parameters) {
-        var
+        let
             // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
@@ -43,7 +43,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.tab.settings, parameters)
                     : $.extend({}, $.fn.tab.settings),
@@ -93,14 +93,14 @@
                         initializedHistory = true;
                     }
 
-                    var activeTab = module.determine.activeTab();
+                    let activeTab = module.determine.activeTab();
                     if (settings.autoTabActivation && instance === undefined && activeTab === null) {
                         activeTab = settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation;
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
                     if (activeTab !== null && settings.history) {
-                        var autoUpdate = $.address.autoUpdate();
+                        let autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);
                         $.address.autoUpdate(autoUpdate);
@@ -138,7 +138,7 @@
                 },
 
                 determineTabs: function () {
-                    var
+                    let
                         $reference
                     ;
 
@@ -214,7 +214,7 @@
 
                 event: {
                     click: function (event) {
-                        var
+                        let
                             tabPath = $(this).data(metadata.tab)
                         ;
                         if (tabPath !== undefined) {
@@ -232,7 +232,7 @@
                     },
                     history: {
                         change: function (event) {
-                            var
+                            let
                                 tabPath   = event.pathNames.join('/') || module.get.initialPath(),
                                 pageTitle = settings.templates.determineTitle(tabPath) || false
                             ;
@@ -285,7 +285,7 @@
 
                 set: {
                     auto: function () {
-                        var
+                        let
                             url = typeof settings.path === 'string'
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
@@ -300,7 +300,7 @@
                         }
                     },
                     loading: function (tabPath) {
-                        var
+                        let
                             $tab      = module.get.tabElement(tabPath),
                             isLoading = $tab.hasClass(className.loading)
                         ;
@@ -322,7 +322,7 @@
                 },
 
                 changeTab: function (tabPath) {
-                    var
+                    let
                         pushStateAvailable = window.history && window.history.pushState,
                         shouldIgnoreLoad   = pushStateAvailable && settings.ignoreFirstLoad && firstLoad,
                         remoteContent      = settings.auto || $.isPlainObject(settings.apiSettings),
@@ -333,7 +333,7 @@
                     ;
                     tabPath = module.utilities.arrayToPath(pathArray);
                     $.each(pathArray, function (index, tab) {
-                        var
+                        let
                             currentPathArray   = pathArray.slice(0, index + 1),
                             currentPath        = module.utilities.arrayToPath(currentPathArray),
 
@@ -430,7 +430,7 @@
                 },
 
                 scrollTo: function ($element) {
-                    var
+                    let
                         scrollOffset = $element && $element.length > 0
                             ? $element.offset().top
                             : false
@@ -443,7 +443,7 @@
 
                 update: {
                     content: function (tabPath, html, evaluateScripts) {
-                        var
+                        let
                             $tab = module.get.tabElement(tabPath),
                             tab  = $tab[0]
                         ;
@@ -470,7 +470,7 @@
                 fetch: {
 
                     content: function (tabPath, fullTabPath) {
-                        var
+                        let
                             $tab        = module.get.tabElement(tabPath),
                             apiSettings = {
                                 dataType: 'html',
@@ -498,7 +498,7 @@
                                         module.cache.add(fullTabPath, true);
                                     } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
-                                            var
+                                            let
                                                 $clone = $tab.children().clone(true)
                                             ;
                                             $clone = $clone.not('script');
@@ -552,7 +552,7 @@
                         module.activate.navigation(tabPath);
                     },
                     tab: function (tabPath) {
-                        var
+                        let
                             $tab          = module.get.tabElement(tabPath),
                             $deactiveTabs = settings.deactivate === 'siblings'
                                 ? $tab.siblings($tabs)
@@ -573,7 +573,7 @@
                         }
                     },
                     navigation: function (tabPath) {
-                        var
+                        let
                             $navigation         = module.get.navElement(tabPath),
                             $deactiveNavigation = settings.deactivate === 'siblings'
                                 ? $navigation.siblings($allModules)
@@ -629,7 +629,7 @@
                         return module.utilities.pathToArray(module.get.defaultPath(tabPath));
                     },
                     defaultPath: function (tabPath) {
-                        var
+                        let
                             $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0),
                             defaultTab  = $defaultNav.data(metadata.tab) || false
                         ;
@@ -654,7 +654,7 @@
                         return $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
                     },
                     tabElement: function (tabPath) {
-                        var
+                        let
                             $fullPathTab,
                             $simplePathTab,
                             tabPathArray,
@@ -677,13 +677,13 @@
 
                 determine: {
                     activeTab: function () {
-                        var activeTab = null;
+                        let activeTab = null;
 
                         $tabs.each(function (_index, tab) {
-                            var $tab = $(tab);
+                            let $tab = $(tab);
 
                             if ($tab.hasClass(className.active)) {
-                                var
+                                let
                                     tabPath = $(this).data(metadata.tab),
                                     $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]')
                                 ;
@@ -776,7 +776,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -797,7 +797,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -825,7 +825,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -837,7 +837,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

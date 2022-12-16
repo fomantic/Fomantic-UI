@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.form = function (parameters) {
-        var
+        let
             $allModules      = $(this),
             moduleSelector   = $allModules.selector || '',
 
@@ -34,7 +34,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 $module     = $(this),
                 element     = this,
 
@@ -159,7 +159,7 @@
                         $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                     }
                     $field.each(function (index, el) {
-                        var
+                        let
                             $input     = $(el),
                             type       = $input.prop('type'),
                             inputEvent = module.get.changeEvent(type, $input)
@@ -187,7 +187,7 @@
 
                 clear: function () {
                     $field.each(function (index, el) {
-                        var
+                        let
                             $field       = $(el),
                             $element     = $field.parent(),
                             $fieldGroup  = $field.closest($group),
@@ -221,7 +221,7 @@
 
                 reset: function () {
                     $field.each(function (index, el) {
-                        var
+                        let
                             $field       = $(el),
                             $element     = $field.parent(),
                             $fieldGroup  = $field.closest($group),
@@ -259,7 +259,7 @@
 
                 determine: {
                     isValid: function () {
-                        var
+                        let
                             allValid = true
                         ;
                         $.each(validation, function (fieldName, field) {
@@ -271,10 +271,10 @@
                         return allValid;
                     },
                     isDirty: function (e) {
-                        var formIsDirty = false;
+                        let formIsDirty = false;
 
                         $field.each(function (index, el) {
-                            var
+                            let
                                 $el = $(el),
                                 isCheckbox = $el.filter(selector.checkbox).length > 0,
                                 isDirty
@@ -319,7 +319,7 @@
                         return String($field.val()).trim() === '';
                     },
                     valid: function (field, showErrors) {
-                        var
+                        let
                             allValid = true
                         ;
                         if (field) {
@@ -344,14 +344,14 @@
                         return !dirty;
                     },
                     fieldDirty: function ($el) {
-                        var initialValue = $el.data(metadata.defaultValue);
+                        let initialValue = $el.data(metadata.defaultValue);
                         // Explicitly check for undefined/null here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
                         if (initialValue === undefined || initialValue === null) {
                             initialValue = '';
                         } else if (Array.isArray(initialValue)) {
                             initialValue = initialValue.toString();
                         }
-                        var currentValue = $el.val();
+                        let currentValue = $el.val();
                         if (currentValue === undefined || currentValue === null) {
                             currentValue = '';
                         } else if (Array.isArray(currentValue)) {
@@ -359,10 +359,10 @@
                             currentValue = currentValue.toString();
                         }
                         // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison
-                        var boolRegex = /^(true|false)$/i;
-                        var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
+                        let boolRegex = /^(true|false)$/i;
+                        let isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
                         if (isBoolValue) {
-                            var regex = new RegExp('^' + initialValue + '$', 'i');
+                            let regex = new RegExp('^' + initialValue + '$', 'i');
 
                             return !regex.test(currentValue);
                         }
@@ -370,8 +370,8 @@
                         return currentValue !== initialValue;
                     },
                     checkboxDirty: function ($el) {
-                        var initialValue = $el.data(metadata.defaultValue);
-                        var currentValue = $el.is(':checked');
+                        let initialValue = $el.data(metadata.defaultValue);
+                        let currentValue = $el.is(':checked');
 
                         return initialValue !== currentValue;
                     },
@@ -392,7 +392,7 @@
                 event: {
                     field: {
                         keydown: function (event) {
-                            var
+                            let
                                 $field       = $(this),
                                 key          = event.which,
                                 isInput      = $field.is(selector.input),
@@ -423,7 +423,7 @@
                             keyHeldDown = false;
                         },
                         blur: function (event) {
-                            var
+                            let
                                 $field          = $(this),
                                 $fieldGroup     = $field.closest($group),
                                 validationRules = module.get.validation($field)
@@ -437,7 +437,7 @@
                             }
                         },
                         change: function (event) {
-                            var
+                            let
                                 $field      = $(this),
                                 $fieldGroup = $field.closest($group),
                                 validationRules = module.get.validation($field)
@@ -502,7 +502,7 @@
                                 : 'keyup');
                     },
                     fieldsFromShorthand: function (fields) {
-                        var
+                        let
                             fullFields = {}
                         ;
                         $.each(fields, function (name, rules) {
@@ -524,7 +524,7 @@
                         return fullFields;
                     },
                     prompt: function (rule, field) {
-                        var
+                        let
                             ruleName      = module.get.ruleName(rule),
                             ancillary     = module.get.ancillaryValue(rule),
                             $field        = module.get.field(field.identifier),
@@ -572,7 +572,7 @@
                     },
                     settings: function () {
                         if ($.isPlainObject(parameters)) {
-                            var
+                            let
                                 keys     = Object.keys(parameters),
                                 isLegacySettings = keys.length > 0
                                     ? parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined
@@ -618,7 +618,7 @@
                     field: function (identifier) {
                         module.verbose('Finding field with identifier', identifier);
                         identifier = module.escape.string(identifier);
-                        var t;
+                        let t;
                         t = $field.filter('#' + identifier);
                         if (t.length > 0) {
                             return t;
@@ -640,7 +640,7 @@
                         return $('<input/>');
                     },
                     fields: function (fields) {
-                        var
+                        let
                             $fields = $()
                         ;
                         $.each(fields, function (index, name) {
@@ -650,7 +650,7 @@
                         return $fields;
                     },
                     validation: function ($field) {
-                        var
+                        let
                             fieldValidation,
                             identifier
                         ;
@@ -672,7 +672,7 @@
                         return fieldValidation || false;
                     },
                     value: function (field) {
-                        var
+                        let
                             fields = [],
                             results
                         ;
@@ -682,14 +682,14 @@
                         return results[field];
                     },
                     values: function (fields) {
-                        var
+                        let
                             $fields = Array.isArray(fields)
                                 ? module.get.fields(fields)
                                 : $field,
                             values = {}
                         ;
                         $fields.each(function (index, field) {
-                            var
+                            let
                                 $field       = $(field),
                                 $calendar    = $field.closest(selector.uiCalendar),
                                 name         = $field.prop('name'),
@@ -727,7 +727,7 @@
                                     } else if (isCheckbox) {
                                         values[name] = isChecked ? value || true : false;
                                     } else if (isCalendar) {
-                                        var date = $calendar.calendar('get date');
+                                        let date = $calendar.calendar('get date');
 
                                         if (date !== null) {
                                             switch (settings.dateHandling) {
@@ -742,7 +742,7 @@
                                                     break;
                                                 }
                                                 case 'formatter': {
-                                                    var type = $calendar.calendar('setting', 'type');
+                                                    let type = $calendar.calendar('setting', 'type');
 
                                                     switch (type) {
                                                         case 'date': {
@@ -847,7 +847,7 @@
                                 rules: [],
                             };
                         }
-                        var
+                        let
                             newValidation = {
                                 rules: [],
                             }
@@ -878,7 +878,7 @@
                         module.refreshEvents();
                     },
                     prompt: function (identifier, errors, internal) {
-                        var
+                        let
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
@@ -940,7 +940,7 @@
                         module.determine.isDirty();
                     },
                     rule: function (field, rule) {
-                        var
+                        let
                             rules = Array.isArray(rule)
                                 ? rule
                                 : [rule]
@@ -962,7 +962,7 @@
                         });
                     },
                     field: function (field) {
-                        var
+                        let
                             fields = Array.isArray(field)
                                 ? field
                                 : [field]
@@ -986,7 +986,7 @@
                         module.remove.field(fields);
                     },
                     prompt: function (identifier) {
-                        var
+                        let
                             $field      = module.get.field(identifier),
                             $fieldGroup = $field.closest($group),
                             $prompt     = $fieldGroup.children(selector.prompt)
@@ -1020,7 +1020,7 @@
                     },
                     defaults: function () {
                         $field.each(function (index, el) {
-                            var
+                            let
                                 $el        = $(el),
                                 $parent    = $el.parent(),
                                 isCheckbox = $el.filter(selector.checkbox).length > 0,
@@ -1047,7 +1047,7 @@
                         ;
                     },
                     value: function (field, value) {
-                        var
+                        let
                             fields = {}
                         ;
                         fields[field] = value;
@@ -1059,7 +1059,7 @@
                             return;
                         }
                         $.each(fields, function (key, value) {
-                            var
+                            let
                                 $field      = module.get.field(key),
                                 $element    = $field.parent(),
                                 $calendar   = $field.closest(selector.uiCalendar),
@@ -1141,7 +1141,7 @@
                     autoCheck: function () {
                         module.debug('Enabling auto check on required fields');
                         $field.each(function (_index, el) {
-                            var
+                            let
                                 $el        = $(el),
                                 $elGroup   = $el.closest($group),
                                 isCheckbox = $el.filter(selector.checkbox).length > 0,
@@ -1179,7 +1179,7 @@
                 validate: {
 
                     form: function (event, ignoreCallbacks) {
-                        var values = module.get.values();
+                        let values = module.get.values();
 
                         // input keydown event will fire submit repeatedly by browser default
                         if (keyHeldDown) {
@@ -1209,7 +1209,7 @@
                                 event.stopImmediatePropagation();
                             }
                             if (settings.errorFocus && ignoreCallbacks !== true) {
-                                var
+                                let
                                     $focusElement,
                                     hasTabIndex = true
                                 ;
@@ -1245,7 +1245,7 @@
                             fieldName = field;
                             field = validation[field];
                         }
-                        var
+                        let
                             identifier    = field.identifier || fieldName,
                             $field        = module.get.field(identifier),
                             $dependsField = field.depends
@@ -1258,7 +1258,7 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
+                        let isDisabled = $field.filter(':not(:disabled)').length === 0;
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
@@ -1271,7 +1271,7 @@
                             }
                             $.each(field.rules, function (index, rule) {
                                 if (module.has.field(identifier)) {
-                                    var invalidFields = module.validate.rule(field, rule, true) || [];
+                                    let invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
                                         fieldErrors.push(module.get.prompt(rule, field));
@@ -1303,7 +1303,7 @@
 
                     // takes validation rule and returns whether field passes rule
                     rule: function (field, rule, internal) {
-                        var
+                        let
                             $field       = module.get.field(field.identifier),
                             ancillary    = module.get.ancillaryValue(rule),
                             ruleName     = module.get.ruleName(rule),
@@ -1311,7 +1311,7 @@
                             invalidFields = [],
                             isCheckbox = $field.is(selector.checkbox),
                             isValid = function (field) {
-                                var value = isCheckbox ? $(field).filter(':checked').val() : $(field).val();
+                                let value = isCheckbox ? $(field).filter(':checked').val() : $(field).val();
                                 // cast to string avoiding encoding special values
                                 value = value === undefined || value === '' || value === null
                                     ? ''
@@ -1389,7 +1389,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -1410,7 +1410,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -1441,7 +1441,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -1453,7 +1453,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1629,7 +1629,7 @@
 
             // template that produces error message
             error: function (errors) {
-                var
+                let
                     html = '<ul class="list">'
                 ;
                 $.each(errors, function (index, value) {
@@ -1645,7 +1645,7 @@
                 if (errors.length === 1) {
                     return errors[0];
                 }
-                var
+                let
                     html = '<ul class="ui list">'
                 ;
                 $.each(errors, function (index, value) {
@@ -1718,7 +1718,7 @@
                 if (regExp instanceof RegExp) {
                     return value.match(regExp);
                 }
-                var
+                let
                     regExpParts = regExp.match($.fn.form.settings.regExp.flags),
                     flags
                 ;
@@ -1751,7 +1751,7 @@
                 if (!(regExp instanceof RegExp)) {
                     regExp = $.fn.form.settings.regExp.integer;
                 }
-                var
+                let
                     min,
                     max,
                     parts
@@ -1880,7 +1880,7 @@
 
             // matches another field
             match: function (value, identifier, $module) {
-                var
+                let
                     matchingValue,
                     matchingElement
                 ;
@@ -1912,7 +1912,7 @@
             // different than another field
             different: function (value, identifier, $module) {
                 // use either id or name of field
-                var
+                let
                     matchingValue,
                     matchingElement
                 ;
@@ -1942,7 +1942,7 @@
             },
 
             creditCard: function (cardNumber, cardTypes) {
-                var
+                let
                     cards = {
                         visa: {
                             pattern: /^4/,
@@ -2032,7 +2032,7 @@
                 }
 
                 // verify luhn, adapted from  <https://gist.github.com/2134376>
-                var
+                let
                     length        = cardNumber.length,
                     multiple      = 0,
                     producedValue = [

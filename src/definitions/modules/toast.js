@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.toast = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
@@ -33,7 +33,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.toast.settings, parameters)
                     : $.extend({}, $.fn.toast.settings),
@@ -159,11 +159,11 @@
                     },
                     toast: function () {
                         $toastBox = $('<div/>', { class: className.box });
-                        var iconClass = module.get.iconClass();
+                        let iconClass = module.get.iconClass();
                         if (!isToastComponent) {
                             module.verbose('Creating toast');
                             $toast = $('<div/>', { role: 'alert' });
-                            var $content = $('<div/>', { class: className.content });
+                            let $content = $('<div/>', { class: className.content });
                             if (iconClass !== '') {
                                 $toast.append($('<i/>', { class: iconClass + ' ' + className.icon }));
                             }
@@ -175,7 +175,7 @@
                                 }));
                             }
                             if (settings.title !== '') {
-                                var titleId = '_' + module.get.id() + 'title';
+                                let titleId = '_' + module.get.id() + 'title';
                                 $toast.attr('aria-labelledby', titleId);
                                 $content.append($('<div/>', {
                                     class: className.title,
@@ -183,7 +183,7 @@
                                     html: module.helpers.escape(settings.title, settings.preserveHTML),
                                 }));
                             }
-                            var descId = '_' + module.get.id() + 'desc';
+                            let descId = '_' + module.get.id() + 'desc';
                             $toast.attr('aria-describedby', descId);
                             $content.append($('<div/>', {
                                 class: className.message,
@@ -245,7 +245,7 @@
                                 }
                             }
                             settings.actions.forEach(function (el) {
-                                var
+                                let
                                     icon = el[fields.icon]
                                         ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
@@ -262,7 +262,7 @@
                                     class: className.button + ' ' + cls,
                                     on: {
                                         click: function () {
-                                            var $button = $(this);
+                                            let $button = $(this);
                                             if ($button.is(selector.approve) || $button.is(selector.deny) || click.call(element, $module) === false) {
                                                 return;
                                             }
@@ -317,7 +317,7 @@
                             element = $toast[0];
                         }
                         if (settings.displayTime > 0) {
-                            var progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
+                            let progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
                             if (settings.showProgress) {
                                 $progress = $('<div/>', {
                                     class: className.progress + ' ' + (settings.classProgress || settings.class),
@@ -569,7 +569,7 @@
 
                 helpers: {
                     toClass: function (selector) {
-                        var
+                        let
                             classes = selector.trim().split(/\s+/),
                             result = ''
                         ;
@@ -587,7 +587,7 @@
                         if (preserveHTML) {
                             return string;
                         }
-                        var
+                        let
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
                             escape       = {
@@ -673,7 +673,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -694,7 +694,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -722,7 +722,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -734,7 +734,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -924,7 +924,7 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            var
+            let
                 n1 = 7.5625,
                 d1 = 2.75
             ;

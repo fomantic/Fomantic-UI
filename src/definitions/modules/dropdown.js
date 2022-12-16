@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.dropdown = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             $document      = $(document),
 
@@ -36,7 +36,7 @@
         ;
 
         $allModules.each(function (elementIndex) {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
                     : $.extend({}, $.fn.dropdown.settings),
@@ -220,7 +220,7 @@
                         module.verbose('Creating unique id for element', id);
                     },
                     userChoice: function (values) {
-                        var
+                        let
                             $userChoices,
                             $userChoice,
                             html
@@ -255,7 +255,7 @@
                         return $userChoices;
                     },
                     userLabels: function (value) {
-                        var
+                        let
                             userValues = module.get.userValues()
                         ;
                         if (userValues) {
@@ -307,7 +307,7 @@
                     },
                     nextAvailable: function ($selected) {
                         $selected = $selected.eq(0);
-                        var
+                        let
                             $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0),
                             $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0),
                             hasNext        = $nextAvailable.length > 0
@@ -324,7 +324,7 @@
 
                 setup: {
                     api: function () {
-                        var
+                        let
                             apiSettings = {
                                 debug: settings.debug,
                                 urlData: {
@@ -356,7 +356,7 @@
                         }
                         if (module.is.search() && !module.has.search()) {
                             module.verbose('Adding search input');
-                            var
+                            let
                                 labelNode = $module.prev('label')
                             ;
                             $search = $('<input />')
@@ -379,7 +379,7 @@
                         }
                     },
                     select: function () {
-                        var
+                        let
                             selectValues  = module.get.selectValues()
                         ;
                         module.debug('Dropdown initialized on a select', selectValues);
@@ -445,7 +445,7 @@
                         module.setup.returnedObject();
                     },
                     returnedObject: function () {
-                        var
+                        let
                             $firstModules = $allModules.slice(0, elementIndex),
                             $lastModules  = $allModules.slice(elementIndex + 1)
                         ;
@@ -563,7 +563,7 @@
                             });
                             // Hide submenus explicitly. On some browsers (esp. mobile), they will not automatically receive a
                             // mouseleave event
-                            var $subMenu = $module.find(selector.menu);
+                            let $subMenu = $module.find(selector.menu);
                             if ($subMenu.length > 0) {
                                 module.verbose('Hiding sub-menu', $subMenu);
                                 $subMenu.each(function () {
@@ -595,7 +595,7 @@
                 },
 
                 hideSubMenus: function () {
-                    var
+                    let
                         $subMenus = $menu.children(selector.item).find(selector.menu)
                     ;
                     module.verbose('Hiding sub menus', $subMenus);
@@ -721,7 +721,7 @@
                 },
 
                 filter: function (query) {
-                    var
+                    let
                         searchTerm = query !== undefined
                             ? query
                             : module.get.query(),
@@ -770,7 +770,7 @@
                                 if (settings.filterRemoteData) {
                                     module.filterItems(searchTerm);
                                 }
-                                var preSelected = $input.val();
+                                let preSelected = $input.val();
                                 if (!Array.isArray(preSelected)) {
                                     preSelected = preSelected && preSelected !== '' ? preSelected.split(settings.delimiter) : [];
                                 }
@@ -797,7 +797,7 @@
                     if (!Array.isArray(callbackParameters)) {
                         callbackParameters = [callbackParameters];
                     }
-                    var
+                    let
                         apiSettings = {
                             errorDuration: false,
                             cache: 'local',
@@ -826,21 +826,21 @@
                                 }
                             },
                             onSuccess: function (response, $module, xhr) {
-                                var
+                                let
                                     values          = response[fields.remoteValues]
                                 ;
                                 if (!Array.isArray(values)) {
                                     values = [];
                                 }
                                 module.remove.message();
-                                var menuConfig = {};
+                                let menuConfig = {};
                                 menuConfig[fields.values] = values;
                                 module.setup.menu(menuConfig);
 
                                 if (values.length === 0 && !settings.allowAdditions) {
                                     module.add.message(message.noResults);
                                 } else {
-                                    var value = module.is.multiple() ? module.get.values() : module.get.value();
+                                    let value = module.is.multiple() ? module.get.values() : module.get.value();
                                     if (value !== '') {
                                         module.verbose('Value(s) present after click icon, select value(s) in items');
                                         module.set.selected(value, null, true, true);
@@ -866,7 +866,7 @@
                 },
 
                 filterItems: function (query) {
-                    var
+                    let
                         searchTerm = module.remove.diacritics(
                             query !== undefined
                                 ? query
@@ -884,7 +884,7 @@
                         module.verbose('Searching for matching values', searchTerm);
                         $item
                             .each(function () {
-                                var
+                                let
                                     $choice = $(this),
                                     text,
                                     value
@@ -942,7 +942,7 @@
                             .filter(function () {
                                 // First find the last divider in this divider group
                                 // Dividers which are direct siblings are considered a group
-                                var $lastDivider = $(this).nextUntil(selector.item);
+                                let $lastDivider = $(this).nextUntil(selector.item);
 
                                 return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
@@ -957,7 +957,7 @@
                 },
 
                 fuzzySearch: function (query, term) {
-                    var
+                    let
                         termLength  = term.length,
                         queryLength = query.length
                     ;
@@ -969,8 +969,8 @@
                     if (queryLength === termLength) {
                         return query === term;
                     }
-                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
-                        var
+                    for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                        let
                             continueSearch = false,
                             queryCharacter = query.charCodeAt(characterIndex)
                         ;
@@ -1022,7 +1022,7 @@
                 },
 
                 forceSelection: function () {
-                    var
+                    let
                         $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0),
                         $activeItem        = $item.not(className.filtered).filter('.' + className.active).eq(0),
                         $selectedItem      = $currentlySelected.length > 0
@@ -1044,7 +1044,7 @@
                             module.clear();
                         }
                         module.debug('Creating dropdown with specified values', values);
-                        var menuConfig = {};
+                        let menuConfig = {};
                         menuConfig[fields.values] = values;
                         module.setup.menu(menuConfig);
                         $.each(values, function (index, item) {
@@ -1062,7 +1062,7 @@
                             $input.html('');
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
-                                var
+                                let
                                     value = settings.templates.deQuote(item[fields.value]),
                                     name = settings.templates.escape(
                                         item[fields.name] || '',
@@ -1078,7 +1078,7 @@
 
                 event: {
                     paste: function (event) {
-                        var
+                        let
                             pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
                             tokens = pasteValue.split(settings.delimiter)
                         ;
@@ -1124,7 +1124,7 @@
                         }
                     },
                     click: function (event) {
-                        var
+                        let
                             $target = $(event.target)
                         ;
                         // focus search
@@ -1206,7 +1206,7 @@
                     },
                     label: {
                         click: function (event) {
-                            var
+                            let
                                 $label        = $(this),
                                 $labels       = $module.find(selector.label),
                                 $activeLabels = $labels.filter('.' + className.active),
@@ -1231,7 +1231,7 @@
                     },
                     remove: {
                         click: function (event) {
-                            var
+                            let
                                 $label = $(this).parent()
                             ;
                             if ($label.hasClass(className.active)) {
@@ -1246,7 +1246,7 @@
                     },
                     test: {
                         toggle: function (event) {
-                            var
+                            let
                                 toggleBehavior = module.is.multiple()
                                     ? module.show
                                     : module.toggle
@@ -1294,7 +1294,7 @@
                     },
                     menu: {
                         mutation: function (mutations) {
-                            var
+                            let
                                 mutation   = mutations[0],
                                 $addedNode = mutation.addedNodes
                                     ? $(mutation.addedNodes[0])
@@ -1323,7 +1323,7 @@
                     },
                     item: {
                         mouseenter: function (event) {
-                            var
+                            let
                                 $target        = $(event.target),
                                 $item          = $(this),
                                 $subMenu       = $item.children(selector.menu),
@@ -1344,7 +1344,7 @@
                             }
                         },
                         mouseleave: function (event) {
-                            var
+                            let
                                 $subMenu = $(this).find(selector.menu)
                             ;
                             if ($subMenu.length > 0) {
@@ -1358,7 +1358,7 @@
                             }
                         },
                         click: function (event, skipRefocus) {
-                            var
+                            let
                                 $choice        = $(this),
                                 $target        = event
                                     ? $(event.target)
@@ -1399,12 +1399,12 @@
                     document: {
                         // label selection should occur even when element has no focus
                         keydown: function (event) {
-                            var
+                            let
                                 pressedKey    = event.which,
                                 isShortcutKey = module.is.inObject(pressedKey, keys)
                             ;
                             if (isShortcutKey) {
-                                var
+                                let
                                     $label            = $module.find(selector.label),
                                     $activeLabel      = $label.filter('.' + className.active),
                                     activeValue       = $activeLabel.data(metadata.value),
@@ -1518,12 +1518,12 @@
                     },
 
                     keydown: function (event) {
-                        var
+                        let
                             pressedKey    = event.which,
                             isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter
                         ;
                         if (isShortcutKey) {
-                            var
+                            let
                                 $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0),
                                 $activeItem        = $menu.children('.' + className.active).eq(0),
                                 $selectedItem      = $currentlySelected.length > 0
@@ -1705,11 +1705,11 @@
 
                 trigger: {
                     change: function () {
-                        var
+                        let
                             inputElement = $input[0]
                         ;
                         if (inputElement) {
-                            var events = document.createEvent('HTMLEvents');
+                            let events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
                             events.initEvent('change', true, false);
                             inputElement.dispatchEvent(events);
@@ -1733,7 +1733,7 @@
                         selectActionActive = false;
                     },
                     eventInModule: function (event, callback) {
-                        var
+                        let
                             $target    = $(event.target),
                             inDocument = $target.closest(document.documentElement).length > 0,
                             inModule   = $target.closest($module).length > 0
@@ -1753,7 +1753,7 @@
                         return false;
                     },
                     eventOnElement: function (event, callback) {
-                        var
+                        let
                             $target      = $(event.target),
                             $label       = $target.closest(selector.siblingLabel),
                             inVisibleDOM = document.body.contains(event.target),
@@ -1852,7 +1852,7 @@
                         return Math.ceil($sizer.width() + (module.is.edge() ? 3 : 1));
                     },
                     selectionCount: function () {
-                        var
+                        let
                             values = module.get.values(),
                             count
                         ;
@@ -1868,7 +1868,7 @@
                             : settings.transition;
                     },
                     userValues: function () {
-                        var
+                        let
                             values = module.get.values(true)
                         ;
                         if (!values) {
@@ -1888,7 +1888,7 @@
                         });
                     },
                     caretPosition: function (returnEndPos) {
-                        var
+                        let
                             input = $search[0],
                             range,
                             rangeLength
@@ -1912,7 +1912,7 @@
                         }
                     },
                     value: function () {
-                        var
+                        let
                             value = $input.length > 0
                                 ? $input.val()
                                 : $module.data(metadata.value),
@@ -1925,7 +1925,7 @@
                             : value;
                     },
                     values: function (raw) {
-                        var
+                        let
                             value = module.get.value()
                         ;
                         if (value === '') {
@@ -1941,7 +1941,7 @@
                             : value;
                     },
                     remoteValues: function () {
-                        var
+                        let
                             values = module.get.values(),
                             remoteValues = false
                         ;
@@ -1950,7 +1950,7 @@
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
-                                var
+                                let
                                     name = module.read.remoteData(value)
                                 ;
                                 module.verbose('Restoring value from session data', name, value);
@@ -2001,7 +2001,7 @@
                                 : String(choiceText));
                     },
                     inputEvent: function () {
-                        var
+                        let
                             input = $search[0]
                         ;
                         if (input) {
@@ -2015,7 +2015,7 @@
                         return false;
                     },
                     selectValues: function () {
-                        var
+                        let
                             select = {},
                             oldGroup = [],
                             values = []
@@ -2023,7 +2023,7 @@
                         $module
                             .find('option')
                             .each(function () {
-                                var
+                                let
                                     $option  = $(this),
                                     name     = $option.html(),
                                     disabled = $option.attr('disabled'),
@@ -2084,7 +2084,7 @@
                         return $item.filter('.' + className.active);
                     },
                     selectedItem: function () {
-                        var
+                        let
                             $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
                         ;
 
@@ -2093,7 +2093,7 @@
                             : $item.eq(0);
                     },
                     itemWithAdditions: function (value) {
-                        var
+                        let
                             $items       = module.get.item(value),
                             $userItems   = module.create.userChoice(value),
                             hasUserItems = $userItems && $userItems.length > 0
@@ -2107,7 +2107,7 @@
                         return $items;
                     },
                     item: function (value, strict) {
-                        var
+                        let
                             $selectedItem = false,
                             shouldSearch,
                             isMultiple
@@ -2127,7 +2127,7 @@
                         if (shouldSearch) {
                             $item
                                 .each(function () {
-                                    var
+                                    let
                                         $choice       = $(this),
                                         optionText    = module.get.choiceText($choice),
                                         optionValue   = module.get.choiceValue($choice, optionText)
@@ -2212,7 +2212,7 @@
                         module.restore.defaultValue();
                     },
                     defaultText: function () {
-                        var
+                        let
                             defaultText     = module.get.defaultText(),
                             placeholderText = module.get.placeholderText
                         ;
@@ -2228,7 +2228,7 @@
                         module.set.placeholderText();
                     },
                     defaultValue: function () {
-                        var
+                        let
                             defaultValue = module.get.defaultValue()
                         ;
                         if (defaultValue !== undefined) {
@@ -2270,7 +2270,7 @@
                         } else {
                             module.set.selected();
                         }
-                        var value = module.get.value();
+                        let value = module.get.value();
                         if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
                             $input.removeClass(className.noselection);
                         } else {
@@ -2279,7 +2279,7 @@
                         module.remove.initialLoad();
                     },
                     remoteValues: function () {
-                        var
+                        let
                             values = module.get.remoteValues()
                         ;
                         module.debug('Recreating selected from session data', values);
@@ -2299,7 +2299,7 @@
 
                 read: {
                     remoteData: function (value) {
-                        var
+                        let
                             name
                         ;
                         if (window.Storage === undefined) {
@@ -2322,21 +2322,21 @@
                         module.save.defaultValue();
                     },
                     defaultValue: function () {
-                        var
+                        let
                             value = module.get.value()
                         ;
                         module.verbose('Saving default value as', value);
                         $module.data(metadata.defaultValue, value);
                     },
                     defaultText: function () {
-                        var
+                        let
                             text = module.get.text()
                         ;
                         module.verbose('Saving default text as', text);
                         $module.data(metadata.defaultText, text);
                     },
                     placeholderText: function () {
-                        var
+                        let
                             text
                         ;
                         if (settings.placeholder !== false && $text.hasClass(className.placeholder)) {
@@ -2373,7 +2373,7 @@
                 },
 
                 scrollPage: function (direction, $selectedItem) {
-                    var
+                    let
                         $currentItem  = $selectedItem || module.get.selectedItem(),
                         $menu         = $currentItem.closest(selector.menu),
                         menuHeight    = $menu.outerHeight(),
@@ -2418,7 +2418,7 @@
 
                 set: {
                     filtered: function () {
-                        var
+                        let
                             isMultiple       = module.is.multiple(),
                             isSearch         = module.is.searchSelection(),
                             isSearchMultiple = isMultiple && isSearch,
@@ -2488,13 +2488,13 @@
                         }
                     },
                     partialSearch: function (text) {
-                        var
+                        let
                             length = module.get.query().length
                         ;
                         $search.val(text.slice(0, length));
                     },
                     scrollPosition: function ($item, forceScroll) {
-                        var
+                        let
                             edgeTolerance = 5,
                             $menu,
                             hasActive,
@@ -2560,7 +2560,7 @@
                         }
                     },
                     selectedItem: function ($item) {
-                        var
+                        let
                             value      = module.get.choiceValue($item),
                             searchText = module.get.choiceText($item, false),
                             text       = module.get.choiceText($item)
@@ -2573,7 +2573,7 @@
                         module.set.text(text);
                     },
                     selectedLetter: function (letter) {
-                        var
+                        let
                             $selectedItem         = $item.filter('.' + className.selected),
                             alreadySelectedLetter = $selectedItem.length > 0 && module.has.firstLetter($selectedItem, letter),
                             $nextValue            = false,
@@ -2632,11 +2632,11 @@
                         }
                     },
                     upward: function ($currentMenu) {
-                        var $element = $currentMenu || $module;
+                        let $element = $currentMenu || $module;
                         $element.addClass(className.upward);
                     },
                     leftward: function ($currentMenu) {
-                        var $element = $currentMenu || $menu;
+                        let $element = $currentMenu || $menu;
                         $element.addClass(className.leftward);
                     },
                     value: function (value, text, $selected, preventChangeTrigger) {
@@ -2650,7 +2650,7 @@
                         } else {
                             $input.addClass(className.noselection);
                         }
-                        var
+                        let
                             escapedValue = module.escape.value(value),
                             hasInput     = $input.length > 0,
                             currentValue = module.get.values(),
@@ -2719,7 +2719,7 @@
                             preventChangeTrigger = $selectedItem;
                             $selectedItem = undefined;
                         }
-                        var
+                        let
                             isMultiple = module.is.multiple()
                         ;
                         $selectedItem = settings.allowAdditions
@@ -2741,7 +2741,7 @@
                         // select each item
                         $selectedItem
                             .each(function () {
-                                var
+                                let
                                     $selected      = $(this),
                                     selectedText   = module.get.choiceText($selected),
                                     selectedValue  = module.get.choiceValue($selected, selectedText),
@@ -2804,7 +2804,7 @@
 
                 add: {
                     label: function (value, text, shouldAnimate) {
-                        var
+                        let
                             $next  = module.is.searchSelection()
                                 ? $search
                                 : $text,
@@ -2850,7 +2850,7 @@
                         }
                     },
                     message: function (message) {
-                        var
+                        let
                             $message = $menu.children(selector.message),
                             html     = settings.templates.message(module.add.variables(message))
                         ;
@@ -2867,7 +2867,7 @@
                         }
                     },
                     optionValue: function (value) {
-                        var
+                        let
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
                             hasOption    = $option.length > 0
@@ -2891,7 +2891,7 @@
                         module.observe.select();
                     },
                     userSuggestion: function (value) {
-                        var
+                        let
                             $addition         = $menu.children(selector.addition),
                             $existingItem     = module.get.item(value),
                             alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0,
@@ -2938,7 +2938,7 @@
                         module.refreshItems();
                     },
                     variables: function (message, term) {
-                        var
+                        let
                             hasCount    = message.search('{count}') !== -1,
                             hasMaxCount = message.search('{maxCount}') !== -1,
                             hasTerm     = message.search('{term}') !== -1,
@@ -2964,7 +2964,7 @@
                             $selectedItem = undefined;
                             addedText = undefined;
                         }
-                        var
+                        let
                             currentValue = module.get.values(true),
                             newValue
                         ;
@@ -3023,11 +3023,11 @@
                         initialLoad = false;
                     },
                     upward: function ($currentMenu) {
-                        var $element = $currentMenu || $module;
+                        let $element = $currentMenu || $module;
                         $element.removeClass(className.upward);
                     },
                     leftward: function ($currentMenu) {
-                        var $element = $currentMenu || $menu;
+                        let $element = $currentMenu || $menu;
                         $element.removeClass(className.leftward);
                     },
                     visible: function () {
@@ -3051,7 +3051,7 @@
                         module.remove.empty();
                     },
                     optionValue: function (value) {
-                        var
+                        let
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
                             hasOption    = $option.length > 0
@@ -3090,7 +3090,7 @@
 
                         $selectedItem
                             .each(function () {
-                                var
+                                let
                                     $selected     = $(this),
                                     selectedText  = module.get.choiceText($selected),
                                     selectedValue = module.get.choiceValue($selected, selectedText)
@@ -3124,7 +3124,7 @@
                         $item.removeClass(className.selected);
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
-                        var
+                        let
                             values = module.get.values(true),
                             newValue
                         ;
@@ -3157,7 +3157,7 @@
                         return values;
                     },
                     label: function (value, shouldAnimate) {
-                        var
+                        let
                             escapedValue  = module.escape.value(value),
                             $labels       = $module.find(selector.label),
                             $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]')
@@ -3175,7 +3175,7 @@
                         module.verbose('Removing labels', $labels);
                         $labels
                             .each(function () {
-                                var
+                                let
                                     $label      = $(this),
                                     value       = $label.data(metadata.value),
                                     stringValue = value !== undefined
@@ -3252,7 +3252,7 @@
                         return true;
                     },
                     firstLetter: function ($item, letter) {
-                        var
+                        let
                             text,
                             firstLetter
                         ;
@@ -3281,7 +3281,7 @@
                         return $menu.children(selector.message).length > 0;
                     },
                     label: function (value) {
-                        var
+                        let
                             escapedValue = module.escape.value(value),
                             $labels      = $module.find(selector.label)
                         ;
@@ -3295,7 +3295,7 @@
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
                     },
                     allResultsFiltered: function () {
-                        var
+                        let
                             $normalResults = $item.not(selector.addition)
                         ;
 
@@ -3313,7 +3313,7 @@
                             : module.has.valueMatchingCase(value);
                     },
                     valueMatchingCase: function (value) {
-                        var
+                        let
                             values   = module.get.values(true),
                             hasValue = Array.isArray(values)
                                 ? values && ($.inArray(value, values) !== -1)
@@ -3323,7 +3323,7 @@
                         return !!hasValue;
                     },
                     valueIgnoringCase: function (value) {
-                        var
+                        let
                             values   = module.get.values(true),
                             hasValue = false
                         ;
@@ -3376,7 +3376,7 @@
                             : $menu.transition && $menu.transition('is animating');
                     },
                     leftward: function ($subMenu) {
-                        var $selectedMenu = $subMenu || $menu;
+                        let $selectedMenu = $subMenu || $menu;
 
                         return $selectedMenu.hasClass(className.leftward);
                     },
@@ -3402,7 +3402,7 @@
                         return initialLoad;
                     },
                     inObject: function (needle, object) {
-                        var
+                        let
                             found = false
                         ;
                         $.each(object, function (index, property) {
@@ -3428,7 +3428,7 @@
                         return !module.is.multiple();
                     },
                     selectMutation: function (mutations) {
-                        var
+                        let
                             selectChanged = false
                         ;
                         $.each(mutations, function (index, mutation) {
@@ -3454,7 +3454,7 @@
                         return $.inArray(value, module.get.userValues()) !== -1;
                     },
                     upward: function ($menu) {
-                        var $element = $menu || $module;
+                        let $element = $menu || $module;
 
                         return $element.hasClass(className.upward);
                     },
@@ -3464,7 +3464,7 @@
                             : $menu.hasClass(className.visible);
                     },
                     verticallyScrollableContext: function () {
-                        var
+                        let
                             overflowY = $context[0] !== window
                                 ? $context.css('overflow-y')
                                 : false
@@ -3473,7 +3473,7 @@
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
-                        var
+                        let
                             overflowX = $context[0] !== window
                                 ? $context.css('overflow-X')
                                 : false
@@ -3492,7 +3492,7 @@
                         );
                     },
                     openDownward: function ($subMenu) {
-                        var
+                        let
                             $currentMenu    = $subMenu || $menu,
                             canOpenDownward,
                             onScreen,
@@ -3539,7 +3539,7 @@
                         return canOpenDownward;
                     },
                     openRightward: function ($subMenu) {
-                        var
+                        let
                             $currentMenu     = $subMenu || $menu,
                             canOpenRightward = true,
                             isOffscreenRight = false,
@@ -3586,7 +3586,7 @@
 
                 animate: {
                     show: function (callback, $subMenu) {
-                        var
+                        let
                             $currentMenu = $subMenu || $menu,
                             start = $subMenu
                                 ? function () {}
@@ -3635,7 +3635,7 @@
                         }
                     },
                     hide: function (callback, $subMenu) {
-                        var
+                        let
                             $currentMenu = $subMenu || $menu,
                             start = $subMenu
                                 ? function () {}
@@ -3709,7 +3709,7 @@
 
                 escape: {
                     value: function (value) {
-                        var
+                        let
                             multipleValues = Array.isArray(value),
                             stringValue    = typeof value === 'string',
                             isUnparsable   = !stringValue && !multipleValues,
@@ -3736,7 +3736,7 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string) {
-                        var
+                        let
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
                             escape       = {
@@ -3811,7 +3811,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -3832,7 +3832,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -3860,7 +3860,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -3872,7 +3872,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -4168,7 +4168,7 @@
             if (preserveHTML) {
                 return string;
             }
-            var
+            let
                 badChars     = /["'<>`]/g,
                 shouldEscape = /["&'<>`]/,
                 escape       = {
@@ -4192,7 +4192,7 @@
         },
         // generates dropdown from select values
         dropdown: function (select, fields, preserveHTML, className) {
-            var
+            let
                 placeholder = select.placeholder || false,
                 html        = '',
                 escape = $.fn.dropdown.settings.templates.escape,
@@ -4211,20 +4211,20 @@
 
         // generates just menu from select
         menu: function (response, fields, preserveHTML, className) {
-            var
+            let
                 values = response[fields.values] || [],
                 html   = '',
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             $.each(values, function (index, option) {
-                var
+                let
                     itemType = option[fields.type] || 'item',
                     isMenu = itemType.indexOf('menu') !== -1
                 ;
 
                 if (itemType === 'item' || isMenu) {
-                    var
+                    let
                         maybeText = option[fields.text]
                             ? ' data-text="' + deQuote(option[fields.text], true) + '"'
                             : '',
@@ -4267,7 +4267,7 @@
                     }
                     html += '</div>';
                 } else if (itemType === 'header') {
-                    var
+                    let
                         groupName = escape(option[fields.name] || '', preserveHTML),
                         groupIcon = deQuote(option[fields.icon] || className.groupIcon)
                     ;
@@ -4290,7 +4290,7 @@
 
         // generates label for multiselect
         label: function (value, text, preserveHTML, className) {
-            var
+            let
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;

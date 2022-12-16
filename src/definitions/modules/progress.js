@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.progress = function (parameters) {
-        var
+        let
             $allModules    = $(this),
 
             moduleSelector = $allModules.selector || '',
@@ -36,7 +36,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.progress.settings, parameters)
                     : $.extend({}, $.fn.progress.settings),
@@ -91,9 +91,9 @@
        * @returns {number} A precision. Could be 1, 10, 100, ... 1e+10.
        */
                     derivePrecision: function (min, total) {
-                        var precisionPower = 0;
-                        var precision = 1;
-                        var ratio = min / total;
+                        let precisionPower = 0;
+                        let precision = 1;
+                        let ratio = min / total;
                         while (precisionPower < 10) {
                             ratio *= precision;
                             if (ratio > 1) {
@@ -155,7 +155,7 @@
 
                 read: {
                     metadata: function () {
-                        var
+                        let
                             data = {
                                 percent: module.helper.forceArray($module.data(metadata.percent)),
                                 total: $module.data(metadata.total),
@@ -195,7 +195,7 @@
 
                 bind: {
                     transitionEnd: function (callback) {
-                        var
+                        let
                             transitionEnd = module.get.transitionEnd()
                         ;
                         $bars
@@ -212,7 +212,7 @@
                 },
 
                 increment: function (incrementValue) {
-                    var
+                    let
                         startValue,
                         newValue
                     ;
@@ -229,7 +229,7 @@
                     module.set.progress(newValue);
                 },
                 decrement: function (decrementValue) {
-                    var
+                    let
                         total     = module.get.total(),
                         startValue,
                         newValue
@@ -264,7 +264,7 @@
                             index = 0;
                         }
 
-                        var
+                        let
                             value   = module.get.value(index),
                             total   = module.get.total(),
                             percent = animating
@@ -331,7 +331,7 @@
                     },
 
                     transitionEnd: function () {
-                        var
+                        let
                             element     = document.createElement('element'),
                             transitions = {
                                 transition: 'transitionend',
@@ -350,7 +350,7 @@
 
                     // gets current displayed percentage (if animating values this is the intermediary value)
                     displayPercent: function (index) {
-                        var
+                        let
                             $bar           = $($bars[index]),
                             barWidth       = $bar.width(),
                             totalWidth     = $module.width(),
@@ -446,14 +446,14 @@
                     barWidth: function (values) {
                         module.debug('set bar width with ', values);
                         values = module.helper.forceArray(values);
-                        var firstNonZeroIndex = -1;
-                        var lastNonZeroIndex = -1;
-                        var valuesSum = module.helper.sum(values);
-                        var barCounts = $bars.length;
-                        var isMultiple = barCounts > 1;
-                        var percents = values.map(function (value, index) {
-                            var allZero = index === barCounts - 1 && valuesSum === 0;
-                            var $bar = $($bars[index]);
+                        let firstNonZeroIndex = -1;
+                        let lastNonZeroIndex = -1;
+                        let valuesSum = module.helper.sum(values);
+                        let barCounts = $bars.length;
+                        let isMultiple = barCounts > 1;
+                        let percents = values.map(function (value, index) {
+                            let allZero = index === barCounts - 1 && valuesSum === 0;
+                            let $bar = $($bars[index]);
                             if (value === 0 && isMultiple && !allZero) {
                                 $bar.css('display', 'none');
                             } else {
@@ -473,7 +473,7 @@
                             return parseFloat(value);
                         });
                         values.forEach(function (_, index) {
-                            var $bar = $($bars[index]);
+                            let $bar = $($bars[index]);
                             $bar.css({
                                 borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
                                 borderBottomLeftRadius: index === firstNonZeroIndex ? '' : '0',
@@ -507,10 +507,10 @@
                                 ? Math.max(0, Math.min(100, percent))
                                 : percent;
                         });
-                        var hasTotal = module.has.total();
-                        var totalPercent = module.helper.sum(percents);
-                        var isMultipleValues = percents.length > 1 && hasTotal;
-                        var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+                        let hasTotal = module.has.total();
+                        let totalPercent = module.helper.sum(percents);
+                        let isMultipleValues = percents.length > 1 && hasTotal;
+                        let sumTotal = module.helper.sum(module.helper.forceArray(module.value));
                         if (isMultipleValues && sumTotal > module.total) {
                             // Sum values instead of pecents to avoid precision issues when summing floats
                             module.error(error.sumExceedsTotal, sumTotal, module.total);
@@ -520,14 +520,14 @@
                         } else if (totalPercent < 0) {
                             module.error(error.tooLow, totalPercent);
                         } else {
-                            var autoPrecision = settings.precision > 0
+                            let autoPrecision = settings.precision > 0
                                 ? settings.precision
                                 : (isMultipleValues
                                     ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
                                     : 0);
 
                             // round display percentage
-                            var roundedPercents = percents.map(function (percent) {
+                            let roundedPercents = percents.map(function (percent) {
                                 return autoPrecision > 0
                                     ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                                     : Math.round(percent)
@@ -547,7 +547,7 @@
                         settings.onChange.call(element, percents, module.value, module.total);
                     },
                     labelInterval: function () {
-                        var
+                        let
                             animationCallback = function () {
                                 module.verbose('Bar finished animating, removing continuous label updates');
                                 clearInterval(module.interval);
@@ -559,7 +559,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            var
+                            let
                                 isInDOM = $.contains(document.documentElement, element)
                             ;
                             if (!isInDOM) {
@@ -607,7 +607,7 @@
                     },
                     barLabel: function (text) {
                         $progresses.each(function (index, element) {
-                            var $progress = $(element);
+                            let $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
                             } else if (settings.label === 'ratio' && module.has.total()) {
@@ -713,7 +713,7 @@
 
                 update: {
                     toNextValue: function () {
-                        var
+                        let
                             nextValue = module.nextValue
                         ;
                         if (nextValue) {
@@ -723,12 +723,12 @@
                         }
                     },
                     progress: function (values) {
-                        var hasTotal = module.has.total();
+                        let hasTotal = module.has.total();
                         if (hasTotal) {
                             module.set.value(values);
                         }
-                        var percentCompletes = module.helper.forceArray(values).map(function (value) {
-                            var
+                        let percentCompletes = module.helper.forceArray(values).map(function (value) {
+                            let
                                 percentComplete
                             ;
                             value = module.get.numericValue(value);
@@ -801,7 +801,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -822,7 +822,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -850,7 +850,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -862,7 +862,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

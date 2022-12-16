@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.embed = function (parameters) {
-        var
+        let
             $allModules     = $(this),
 
             moduleSelector  = $allModules.selector || '',
@@ -36,7 +36,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.embed.settings, parameters)
                     : $.extend({}, $.fn.embed.settings),
@@ -109,7 +109,7 @@
                 },
 
                 create: function () {
-                    var
+                    let
                         placeholder = module.get.placeholder()
                     ;
                     if (placeholder) {
@@ -120,7 +120,7 @@
                 },
 
                 createPlaceholder: function (placeholder) {
-                    var
+                    let
                         icon  = module.get.icon()
                     ;
                     placeholder = placeholder || module.get.placeholder();
@@ -216,7 +216,7 @@
                             : module.determine.source());
                     },
                     type: function () {
-                        var source = module.get.source();
+                        let source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].type
@@ -236,7 +236,7 @@
                         }
                     },
                     source: function (url) {
-                        var
+                        let
                             matchedSource = false
                         ;
                         url = url || module.get.url();
@@ -253,7 +253,7 @@
                         return matchedSource;
                     },
                     icon: function () {
-                        var
+                        let
                             source = module.get.source()
                         ;
 
@@ -262,7 +262,7 @@
                             : false;
                     },
                     url: function () {
-                        var
+                        let
                             id     = settings.id || $module.data(metadata.id),
                             source = settings.source || $module.data(metadata.source),
                             url
@@ -304,7 +304,7 @@
 
                 encode: {
                     parameters: function (parameters) {
-                        var
+                        let
                             urlString = [],
                             index
                         ;
@@ -319,7 +319,7 @@
                 generate: {
                     embed: function (url) {
                         module.debug('Generating embed html');
-                        var
+                        let
                             source = module.get.source(),
                             html,
                             parameters
@@ -335,7 +335,7 @@
                         return html;
                     },
                     parameters: function (source, extraParameters) {
-                        var
+                        let
                             parameters = sources[source] && sources[source].parameters !== undefined
                                 ? sources[source].parameters(settings)
                                 : {}
@@ -424,7 +424,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -445,7 +445,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -476,7 +476,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -488,7 +488,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -644,7 +644,7 @@
                 return String(string).replace(/"/g, encode ? '&quot;' : '');
             },
             iframe: function (url, parameters) {
-                var
+                let
                     src = url,
                     deQuote = $.fn.embed.settings.templates.deQuote
                 ;
@@ -658,7 +658,7 @@
                     + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon) {
-                var
+                let
                     html = '',
                     deQuote = $.fn.embed.settings.templates.deQuote
                 ;

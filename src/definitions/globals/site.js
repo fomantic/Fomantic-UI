@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.site = function (parameters) {
-        var
+        let
             time           = Date.now(),
             performance    = [],
 
@@ -107,7 +107,7 @@
 
             enabled: {
                 modules: function (modules) {
-                    var
+                    let
                         enabledModules = []
                     ;
                     modules = modules || settings.modules;
@@ -123,7 +123,7 @@
 
             disabled: {
                 modules: function (modules) {
-                    var
+                    let
                         disabledModules = []
                     ;
                     modules = modules || settings.modules;
@@ -148,7 +148,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
+                        let
                             namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
                                 : true,
@@ -175,7 +175,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
+                        let
                             $existingModules
                         ;
                         if (module.moduleExists(name)) {
@@ -303,7 +303,7 @@
             },
             performance: {
                 log: function (message) {
-                    var
+                    let
                         currentTime,
                         executionTime,
                         previousTime
@@ -324,7 +324,7 @@
                     module.performance.timer = setTimeout(module.performance.display, 500);
                 },
                 display: function () {
-                    var
+                    let
                         title = settings.name + ':',
                         totalTime = 0
                     ;
@@ -349,7 +349,7 @@
                 },
             },
             invoke: function (query, passedArguments, context) {
-                var
+                let
                     object = instance,
                     maxDepth,
                     found,
@@ -361,7 +361,7 @@
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        var camelCaseValue = depth !== maxDepth
+                        let camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query
                         ;

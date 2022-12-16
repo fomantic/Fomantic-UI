@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.nag = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
@@ -33,7 +33,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
                     : $.extend({}, $.fn.nag.settings),
@@ -191,8 +191,8 @@
                                         .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent)
                                     ;
 
-                                    var cookieOptions = '';
-                                    for (var option in options) {
+                                    let cookieOptions = '';
+                                    for (let option in options) {
                                         if (Object.prototype.hasOwnProperty.call(options, option)) {
                                             cookieOptions += '; ' + option;
                                             if (typeof options[option] === 'string') {
@@ -203,9 +203,9 @@
                                     document.cookie = key + '=' + value + cookieOptions;
                                 },
                                 getItem: function (key) {
-                                    var cookies = document.cookie.split('; ');
-                                    for (var i = 0, il = cookies.length; i < il; i++) {
-                                        var
+                                    let cookies = document.cookie.split('; ');
+                                    for (let i = 0, il = cookies.length; i < il; i++) {
+                                        let
                                             parts    = cookies[i].split('='),
                                             foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
                                         ;
@@ -223,7 +223,7 @@
                         module.error(error.noStorage);
                     },
                     storageOptions: function () {
-                        var
+                        let
                             options = {}
                         ;
                         if (settings.expires) {
@@ -252,7 +252,7 @@
 
                 storage: {
                     set: function (key, value) {
-                        var
+                        let
                             options = module.get.storageOptions()
                         ;
                         if (storage === window.localStorage && options.expires) {
@@ -267,12 +267,12 @@
                         }
                     },
                     get: function (key) {
-                        var
+                        let
                             storedValue
                         ;
                         storedValue = storage.getItem(key);
                         if (storage === window.localStorage) {
-                            var expiration = storage.getItem(key + settings.expirationKey);
+                            let expiration = storage.getItem(key + settings.expirationKey);
                             if (expiration !== null && expiration !== undefined && new Date(expiration) < new Date()) {
                                 module.debug('Value in localStorage has expired. Deleting key', key);
                                 module.storage.remove(key);
@@ -286,7 +286,7 @@
                         return storedValue;
                     },
                     remove: function (key) {
-                        var
+                        let
                             options = module.get.storageOptions()
                         ;
                         options.expires = module.get.expirationDate(-1);
@@ -348,7 +348,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -369,7 +369,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -397,7 +397,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -409,7 +409,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
