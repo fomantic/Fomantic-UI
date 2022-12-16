@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'header';
+@type: "element";
+@element: "header";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Header
@@ -152,7 +152,7 @@
                 font-size: @@sf;
             }
         }
-    })
+    });
 }
 
 /* --------------
@@ -178,7 +178,7 @@
                 font-size: @@shf;
             }
         }
-    })
+    });
 }
 
 & when (@variationHeaderSub) {
@@ -207,7 +207,7 @@
         margin: @iconHeaderTopMargin 0 @iconHeaderBottomMargin;
     }
     .ui.icon.header::after {
-        content: '';
+        content: "";
         display: block;
         height: 0;
         clear: both;
@@ -332,7 +332,7 @@
                 border-bottom: @dividedColoredBorderWidth solid @l;
             }
         }
-    })
+    });
 }
 
 & when (@variationHeaderAligned) {
@@ -358,7 +358,7 @@
     }
     .ui.justified.header::after {
         display: inline-block;
-        content: '';
+        content: "";
         width: 100%;
     }
 }
@@ -436,8 +436,8 @@
             .ui.@{value}.block.header {
                 font-size: @@s;
             }
-        })
-  }
+        });
+    }
 }
 
 & when (@variationHeaderAttached) {
@@ -478,8 +478,8 @@
             .ui.@{value}.attached.header {
                 font-size: @@s;
             }
-        })
-  }
+        });
+    }
 }
 
 /* -------------------

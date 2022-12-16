@@ -26,7 +26,7 @@
     @borderShadow
 ;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 @transition:
     box-shadow @defaultDuration @defaultEasing,
     transform @defaultDuration @defaultEasing
@@ -68,7 +68,7 @@
 @contentBorder: none;
 
 /* Header */
-@headerMargin: '';
+@headerMargin: "";
 @headerFontWeight: @bold;
 @headerFontSize: @relativeBig;
 @headerLineHeightOffset: (-(@lineHeight - 1em) / 2);
@@ -84,15 +84,15 @@
 @actionHoverOpacity: 1;
 @actionTransition: color @defaultDuration @defaultEasing;
 
-@starColor: #FFB70A;
-@starActiveColor: #FFE623;
+@starColor: #ffb70a;
+@starActiveColor: #ffe623;
 
-@likeColor: #FF2733;
-@likeActiveColor: #FF2733;
+@likeColor: #ff2733;
+@likeActiveColor: #ff2733;
 
 /* Links */
-@contentLinkColor: '';
-@contentLinkHoverColor: '';
+@contentLinkColor: "";
+@contentLinkHoverColor: "";
 @contentLinkTransition: color @defaultDuration @defaultEasing;
 
 @headerLinkColor: @headerColor;
@@ -106,7 +106,7 @@
 @descriptionColor: rgba(0, 0, 0, 0.68);
 
 /* Content Image */
-@contentImageWidth: '';
+@contentImageWidth: "";
 @contentImageVerticalAlign: middle;
 
 /* Avatar Image */
@@ -118,7 +118,7 @@
 
 /* Dimmer */
 @dimmerZIndex: 10;
-@dimmerColor: '';
+@dimmerColor: "";
 
 /* Additional Content */
 @extraDivider: 1px solid rgba(0, 0, 0, 0.05);
@@ -139,7 +139,7 @@
 
 /* Buttons */
 @buttonMargin: 0 -@borderWidth;
-@buttonWidth: e(%('calc(100%% + %d)', @borderWidth * 2));
+@buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
 
 /*******************************
             States
@@ -147,7 +147,7 @@
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);
-@loaderInvertedDimmerColor: rgba(0, 0, 0 , 0.85);
+@loaderInvertedDimmerColor: rgba(0, 0, 0, 0.85);
 @loaderDimmerZIndex: 100;
 
 /* Loading Spinner */
@@ -212,29 +212,29 @@
 
 @oneCard: @oneColumn;
 @oneCardOffset: 0;
-@twoCard: e(%('calc(%d - %d)', @twoColumn, @twoCardSpacing * 2));
+@twoCard: e(%("calc(%d - %d)", @twoColumn, @twoCardSpacing * 2));
 @twoCardOffset: -@twoCardSpacing;
-@threeCard: e(%('calc(%d - %d)', @threeColumn, @threeCardSpacing * 2));
+@threeCard: e(%("calc(%d - %d)", @threeColumn, @threeCardSpacing * 2));
 @threeCardOffset: -@threeCardSpacing;
-@fourCard: e(%('calc(%d - %d)', @fourColumn, @fourCardSpacing * 2));
+@fourCard: e(%("calc(%d - %d)", @fourColumn, @fourCardSpacing * 2));
 @fourCardOffset: -@fourCardSpacing;
-@fiveCard: e(%('calc(%d - %d)', @fiveColumn, @fiveCardSpacing * 2));
+@fiveCard: e(%("calc(%d - %d)", @fiveColumn, @fiveCardSpacing * 2));
 @fiveCardOffset: -@fiveCardSpacing;
-@sixCard: e(%('calc(%d - %d)', @sixColumn, @sixCardSpacing * 2));
+@sixCard: e(%("calc(%d - %d)", @sixColumn, @sixCardSpacing * 2));
 @sixCardOffset: -@sixCardSpacing;
-@sevenCard: e(%('calc(%d - %d)', @sevenColumn, @sevenCardSpacing * 2));
+@sevenCard: e(%("calc(%d - %d)", @sevenColumn, @sevenCardSpacing * 2));
 @sevenCardOffset: -@sevenCardSpacing;
-@eightCard: e(%('calc(%d - %d)', @eightColumn, @sevenCardSpacing * 2));
+@eightCard: e(%("calc(%d - %d)", @eightColumn, @sevenCardSpacing * 2));
 @eightCardOffset: -@sevenCardSpacing;
-@nineCard: e(%('calc(%d - %d)', @nineColumn, @nineCardSpacing * 2));
+@nineCard: e(%("calc(%d - %d)", @nineColumn, @nineCardSpacing * 2));
 @nineCardOffset: -@nineCardSpacing;
-@tenCard: e(%('calc(%d - %d)', @tenColumn, @tenCardSpacing * 2));
+@tenCard: e(%("calc(%d - %d)", @tenColumn, @tenCardSpacing * 2));
 @tenCardOffset: -@tenCardSpacing;
 
 /* Stackable */
 @stackableRowSpacing: 1em;
 @stackableCardSpacing: 1em;
-@stackableMargin: e(%('calc(%d - %d)', @oneColumn, @stackableCardSpacing * 2));
+@stackableMargin: e(%("calc(%d - %d)", @oneColumn, @stackableCardSpacing * 2));
 
 /* Sizes */
 @medium: 1em;

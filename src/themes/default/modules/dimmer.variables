@@ -5,7 +5,7 @@
 @dimmablePosition: relative;
 @dimmerPosition: absolute;
 
-@backgroundColor: rgba(0, 0, 0 , 0.85);
+@backgroundColor: rgba(0, 0, 0, 0.85);
 @lineHeight: 1;
 @perspective: 2000px;
 @padding: 1em;
@@ -21,7 +21,7 @@
 @overflow: hidden;
 
 @blurredStartFilter: initial;
-@blurredEndFilter: e('blur(5px) grayscale(0.7)');
+@blurredEndFilter: e("blur(5px) grayscale(0.7)");
 @blurredTransition: 800ms filter @defaultEasing;
 
 @blurredBackgroundColor: rgba(0, 0, 0, 0.6);
@@ -38,7 +38,7 @@
 -------------------- */
 
 /* Page Dimmer */
-@transformStyle: '';
+@transformStyle: "";
 @pageDimmerPosition: fixed;
 
 /* -------------------

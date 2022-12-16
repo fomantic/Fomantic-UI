@@ -2,7 +2,7 @@
        Header
 -------------------- */
 
-@headerFont: 'Roboto', Arial, sans-serif;
+@headerFont: "Roboto", Arial, sans-serif;
 @fontWeight: normal;
 
 @iconSize: 2em;

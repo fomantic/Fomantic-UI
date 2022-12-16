@@ -13,8 +13,8 @@
    Downloading and hosting the joxpixels assets locally may require an additional license depending on the usage
    Find joypixels licenses at https://www.joypixels.com/licenses
 */
-@emojiPath: 'https://cdn.jsdelivr.net/joypixels/assets/6.6/png/unicode/128/';
-@emojiFileType: 'png';
+@emojiPath: "https://cdn.jsdelivr.net/joypixels/assets/6.6/png/unicode/128/";
+@emojiFileType: "png";
 
 /* --------------
    Definition

@@ -1,9 +1,9 @@
-@fontPath: '../../themes/github/assets/fonts';
-@fontName: 'octicons';
+@fontPath: "../../themes/github/assets/fonts";
+@fontName: "octicons";
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url('@{fontPath}/@{fontName}.woff2') format('woff');
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff");
         font-style: normal;
         font-weight: @normal;
         font-variant: normal;
@@ -11,11 +11,16 @@
         text-transform: none;
     };
 };
-@icon-deprecated-map: {};
-@icon-outline-map: {};
-@icon-outline-aliases-map: {};
-@icon-brand-map: {};
-@icon-brand-aliases-map: {};
+@icon-deprecated-map: {
+};
+@icon-outline-map: {
+};
+@icon-outline-aliases-map: {
+};
+@icon-brand-map: {
+};
+@icon-brand-aliases-map: {
+};
 
 @width: 1em;
 @height: 1em;

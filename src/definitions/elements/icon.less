@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'icon';
+@type: "element";
+@element: "icon";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Icon
@@ -27,7 +27,7 @@
                 @{key}: @value;
             });
         }
-    })
+    });
 }
 
 i.icon {
@@ -339,7 +339,7 @@ i.emphasized.icons:not(.disabled) {
                 }
             }
         }
-    })
+    });
 }
 
 /* -------------------
@@ -360,7 +360,7 @@ i.icons {
             font-size: @s;
             vertical-align: middle;
         }
-    })
+    });
 }
 
 & when (@variationIconGroups) or (@variationIconCorner) {
@@ -515,10 +515,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 .generateIcons(@map, @fontFamily) {
     each(@map, {
-        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
-        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
+        @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
+        @normalizedKey: replace(@escapedKey, "_", ".", "g");
         i.icon.@{normalizedKey}::before {
-            content: '@{value}';
+            content: "@{value}";
             & when not (@fontFamily = false) {
                 font-family: @fontFamily;
             }
@@ -528,10 +528,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 .generateSecondaryIcons(@map) {
     each(@map, {
-        @escapedKey: replace(@key, '^([0-9])', '\3$1 ');
-        @normalizedKey: replace(@escapedKey, '_', '.', 'g');
+        @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
+        @normalizedKey: replace(@escapedKey, "_", ".", "g");
         i.icon.@{normalizedKey}::after {
-            content: '@{value}';
+            content: "@{value}";
         }
     });
 };
@@ -659,8 +659,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
                     color: @l;
                 }
             }
-        })
-  }
+        });
+    }
 }
 
 .loadUIOverrides();
