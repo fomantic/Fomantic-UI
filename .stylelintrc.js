@@ -42,7 +42,6 @@ module.exports = {
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
-        'selector-attribute-quotes': null, // 7 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'font-family-no-duplicate-names': null, // 2 errors
