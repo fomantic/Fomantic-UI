@@ -12,7 +12,7 @@ jobs:
     - uses: actions/setup-node@v3
     - name: Install dependencies
       run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
-    - name: Lint JS and CSS/LESS files
+    - name: Lint JS and LESS files
       run: npm run lint
   test:
     name: Test build process on node ${{ matrix.node-version }}
