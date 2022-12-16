@@ -424,7 +424,7 @@
                                     cell.data(metadata.date, cellDate);
                                     let adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
                                     let disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
-                                    var eventDate;
+                                    let eventDate = null;
                                     if (disabled) {
                                         let disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
                                         if (disabledDate !== null && disabledDate[metadata.message]) {
