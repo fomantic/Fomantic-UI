@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'view';
-@element: 'statistic';
+@type: "view";
+@element: "statistic";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
            Statistic
@@ -65,7 +65,7 @@
 /* Clearing */
 .ui.statistics::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -337,7 +337,7 @@
                 color: @l;
             }
         }
-    })
+    });
 }
 
 & when (@variationStatisticFloated) {
@@ -411,7 +411,7 @@
         .ui.@{value}.statistic > .text.value {
             font-size: @@ts;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

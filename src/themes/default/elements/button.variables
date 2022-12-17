@@ -9,7 +9,7 @@
 /* Button */
 @verticalMargin: 0;
 @horizontalMargin: 0.25em;
-@backgroundColor: #E0E1E2;
+@backgroundColor: #e0e1e2;
 @backgroundImage: none;
 @background: @backgroundColor @backgroundImage;
 @lineHeight: 1em;
@@ -47,7 +47,7 @@
 @iconHeight: auto;
 @iconOpacity: 0.8;
 @iconDistance: @relative6px;
-@iconColor: '';
+@iconColor: "";
 @iconTransition: opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: baseline;
 
@@ -85,7 +85,7 @@
 -------------------- */
 
 /* Hovered */
-@hoverBackgroundColor: #CACBCD;
+@hoverBackgroundColor: #cacbcd;
 @hoverBackgroundImage: @backgroundImage;
 @hoverBoxShadow: @boxShadow;
 @hoverColor: @hoveredTextColor;
@@ -94,7 +94,7 @@
 /* Focused */
 @focusBackgroundColor: @hoverBackgroundColor;
 @focusBackgroundImage: none;
-@focusBoxShadow: '';
+@focusBoxShadow: "";
 @focusColor: @hoveredTextColor;
 @iconFocusOpacity: 0.85;
 
@@ -103,8 +103,8 @@
 @disabledBoxShadow: none;
 
 /* Pressed Down */
-@downBackgroundColor: #BABBBC;
-@downBackgroundImage: '';
+@downBackgroundColor: #babbbc;
+@downBackgroundImage: "";
 @downPressedShadow: none;
 @downBoxShadow:
     @borderBoxShadow,
@@ -113,7 +113,7 @@
 @downColor: @pressedTextColor;
 
 /* Active */
-@activeBackgroundColor: #C0C1C2;
+@activeBackgroundColor: #c0c1c2;
 @activeBackgroundImage: none;
 @activeColor: @selectedTextColor;
 @activeBoxShadow: @borderBoxShadow;
@@ -137,7 +137,7 @@
 -------------------- */
 
 /* Or */
-@orText: 'or';
+@orText: "or";
 
 @orGap: 0.3em;
 @orHeight: (@verticalPadding * 2) + 1em;
@@ -166,7 +166,7 @@
 /* Labeled */
 @labeledLabelFontSize: @medium;
 @labeledLabelAlign: center;
-@labeledLabelPadding: '';
+@labeledLabelPadding: "";
 @labeledLabelFontSize: @relativeMedium;
 @labeledLabelBorderColor: @borderColor;
 @labeledLabelBorderOffset: -@borderBoxShadowWidth;
@@ -178,7 +178,7 @@
 @labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);
 @labeledIconPadding: (@horizontalPadding + @labeledIconWidth);
 @labeledIconBorder: transparent;
-@labeledIconColor: '';
+@labeledIconColor: "";
 
 @labeledIconLeftShadow: -1px 0 0 0 @labeledIconBorder inset;
 @labeledIconRightShadow: 1px 0 0 0 @labeledIconBorder inset;
@@ -204,7 +204,7 @@
 @basicTextTransform: none;
 
 /* Basic Hover */
-@basicHoverBackground: #FFFFFF;
+@basicHoverBackground: #fff;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
     0 0 0 @basicBorderSize @selectedBorderColor inset,
@@ -217,7 +217,7 @@
 @basicFocusBoxShadow: @basicHoverBoxShadow;
 
 /* Basic Down */
-@basicDownBackground: #F8F8F8;
+@basicDownBackground: #f8f8f8;
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
     0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
@@ -226,7 +226,7 @@
 
 /* Basic Active */
 @basicActiveBackground: @transparentBlack;
-@basicActiveBoxShadow: '';
+@basicActiveBoxShadow: "";
 @basicActiveTextColor: @selectedTextColor;
 
 /* Basic Inverted */

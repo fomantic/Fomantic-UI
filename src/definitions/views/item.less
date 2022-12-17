@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'view';
-@element: 'item';
+@type: "view";
+@element: "item";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -63,7 +63,7 @@
 
 .ui.items > .item::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -122,7 +122,7 @@
 }
 .ui.items > .item > .content::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -222,7 +222,7 @@
     .ui.items > .item .meta * {
         margin-right: @metaSpacing;
     }
-    .ui.items > .item .meta:last-child {
+    .ui.items > .item .meta :last-child {
         margin-right: 0;
     }
 
@@ -337,7 +337,7 @@
 
     .ui.items > .item .extra::after {
         display: block;
-        content: ' ';
+        content: " ";
         height: 0;
         clear: both;
         overflow: hidden;
@@ -488,10 +488,10 @@
 & when not (@variationItemSizes = false) {
     each(@variationItemSizes, {
         @s: @{value}ItemSize;
-        .ui.@{value}.items > .item  {
+        .ui.@{value}.items > .item {
             font-size: @@s;
         }
-    })
+    });
 }
 
 & when (@variationItemUnstackable) {

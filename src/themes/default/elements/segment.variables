@@ -60,7 +60,7 @@
 /* Piled */
 @piledZIndex: auto;
 @piledMargin: 3em;
-@piledBoxShadow: '';
+@piledBoxShadow: "";
 @piledDegrees: 1.2deg;
 @piledBorder: @border;
 
@@ -79,7 +79,7 @@
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);
-@loaderInvertedDimmerColor: rgba(0, 0, 0 , 0.85);
+@loaderInvertedDimmerColor: rgba(0, 0, 0, 0.85);
 @loaderDimmerZIndex: 100;
 
 /* Loading Spinner */
@@ -101,7 +101,7 @@
 @attachedTopOffset: 0;
 @attachedBottomOffset: 0;
 @attachedHorizontalOffset: -@borderWidth;
-@attachedWidth: e(%('calc(100%% + %d)', -@attachedHorizontalOffset * 2));
+@attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
@@ -128,7 +128,7 @@
 @secondaryBackground: @darkWhite;
 @secondaryColor: @mutedTextColor;
 
-@tertiaryBackground:  @midWhite;
+@tertiaryBackground: @midWhite;
 @tertiaryColor: @mutedTextColor;
 
 @secondaryInvertedLightness: 0.2;

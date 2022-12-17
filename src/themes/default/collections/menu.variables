@@ -10,7 +10,7 @@
 @verticalMargin: @medium;
 @horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
-@background: #FFFFFF;
+@background: #fff;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: @normal;
@@ -63,7 +63,7 @@
 @dropdownIconDistance: 1em;
 
 /* Header */
-@headerBackground: '';
+@headerBackground: "";
 @headerWeight: @bold;
 @headerTextTransform: @normal;
 
@@ -83,7 +83,7 @@
 @arrowTransition: background @defaultDuration @defaultEasing;
 @arrowZIndex: 2;
 
-@arrowHoverColor: #F2F2F2;
+@arrowHoverColor: #f2f2f2;
 @arrowActiveColor: @arrowHoverColor;
 @arrowActiveHoverColor: @arrowActiveColor;
 
@@ -114,7 +114,7 @@
 
 /* Label */
 @labelOffset: -0.15em;
-@labelBackground: #999999;
+@labelBackground: #999;
 @labelTextColor: @white;
 
 @labelTextMargin: 1em;
@@ -128,13 +128,13 @@
 /* Image Label */
 @imageLabelTextDistance: 0.8em;
 @imageLabelVerticalPadding: 0.2833em; /* Calculates as: @verticalLabel (from label.less) - @labelVerticalPadding (from here) */
-@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
 @dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 
-@dropdownBackground: #FFFFFF;
+@dropdownBackground: #fff;
 @dropdownMenuDistance: 0;
 @dropdownMenuBorderRadius: @borderRadius;
 
@@ -204,7 +204,7 @@
 /* Vertical */
 @verticalBoxShadow: @boxShadow;
 @verticalPointerWidth: 2px;
-@verticalBackground: #FFFFFF;
+@verticalBackground: #fff;
 @verticalItemBackground: none;
 @verticalDividerBackground: @dividerBackground;
 
@@ -284,8 +284,8 @@
 @secondaryPointingInvertedActiveColor: @invertedSelectedTextColor;
 
 /* Tiered */
-@tieredActiveItemBackground: #FCFCFC;
-@tieredActiveMenuBackground: #FCFCFC;
+@tieredActiveItemBackground: #fcfcfc;
+@tieredActiveMenuBackground: #fcfcfc;
 
 @tieredSubMenuTextTransform: @normal;
 @tieredSubMenuFontWeight: @normal;
@@ -321,7 +321,7 @@
 @tabularVerticalBackground: none @tabularBackgroundColor;
 
 @tabularFluidOffset: 1px;
-@tabularFluidWidth: e(%('calc(100%% + %d)', @tabularFluidOffset * 2));
+@tabularFluidWidth: e(%("calc(100%% + %d)", @tabularFluidOffset * 2));
 
 @tabularActiveBackground: none @white;
 @tabularActiveColor: @selectedTextColor;
@@ -398,9 +398,9 @@
 /* Inverted Active */
 @invertedActiveBackground: @invertedArrowActiveColor;
 @invertedActiveColor: @invertedSelectedTextColor;
-@invertedArrowActiveColor: #3D3E3F;
+@invertedArrowActiveColor: #3d3e3f;
 
-/* Inverted Active Hover  */
+/* Inverted Active Hover */
 @invertedActiveHoverBackground: @invertedActiveBackground;
 @invertedActiveHoverColor: @white;
 @invertedArrowActiveHoverColor: @invertedArrowActiveColor;
@@ -426,7 +426,7 @@
 @attachedTopOffset: 0;
 @attachedBottomOffset: 0;
 @attachedHorizontalOffset: -@borderWidth;
-@attachedWidth: e(%('calc(100%% + %d)', -@attachedHorizontalOffset * 2));
+@attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
