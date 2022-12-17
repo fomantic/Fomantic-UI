@@ -51,12 +51,12 @@
 @contentBackground: @white;
 
 /* Image / Description */
-@imageWidth: '';
+@imageWidth: "";
 @imageIconSize: 8rem;
 @imageVerticalAlign: start;
 
 @descriptionDistance: 2em;
-@descriptionMinWidth: '';
+@descriptionMinWidth: "";
 @descriptionWidth: auto;
 @descriptionVerticalAlign: start;
 
@@ -79,7 +79,7 @@
 @mobileHeaderPadding: 0.75rem 1rem;
 @mobileContentPadding: 1rem;
 @mobileImagePadding: 0 0 1rem;
-@mobileDescriptionPadding: 1rem 0 ;
+@mobileDescriptionPadding: 1rem 0;
 @mobileButtonDistance: 1rem;
 @mobileActionPadding: 1rem 1rem (1rem - @mobileButtonDistance);
 @mobileImageIconSize: 5rem;
@@ -253,7 +253,7 @@
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
 @invertedHeaderBackgroundColor: @darkTextColor;
-@invertedActionBackground: #191A1B;
+@invertedActionBackground: #191a1b;
 @invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
 @invertedActionColor: @white;
 @invertedDimmerCloseColor: rgba(0, 0, 0, 0.85);

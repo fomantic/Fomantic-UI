@@ -26,7 +26,7 @@ i.flag:not(.icon) {
 /* Sprite */
 i.flag:not(.icon)::before {
     display: inline-block;
-    content: '';
+    content: "";
     background: url(@spritePath) no-repeat -108px -1976px;
     width: @width;
     height: @height;

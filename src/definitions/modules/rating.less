@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'rating';
+@type: "module";
+@element: "rating";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
            Rating
@@ -131,7 +131,7 @@
                 -webkit-text-stroke: @c 0.78px;
             }
         }
-    })
+    });
 }
 
 /*******************************
@@ -173,10 +173,10 @@
 & when not (@variationRatingSizes = false) {
     each(@variationRatingSizes, {
         @s: @@value;
-        .ui.@{value}.rating  {
+        .ui.@{value}.rating {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

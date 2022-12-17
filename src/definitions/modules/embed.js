@@ -563,7 +563,7 @@
 
         // standard video settings
         autoplay: 'auto',
-        color: '#444444',
+        color: '#444',
         hd: true,
         brandedUI: false,
 

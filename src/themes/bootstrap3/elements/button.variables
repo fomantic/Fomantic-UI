@@ -19,11 +19,11 @@
 
 @borderBoxShadowColor: rgba(0, 0, 0, 0.14);
 
-@green: #5CB85C;
-@red: #D9534F;
-@blue: #337AB7;
-@green: #60B044;
-@orange: #F0AD4E;
+@green: #5cb85c;
+@red: #d9534f;
+@blue: #337ab7;
+@green: #60b044;
+@orange: #f0ad4e;
 
 @primaryColor: @blue;
 @secondaryColor: @green;
@@ -37,7 +37,7 @@
 @basicActiveBackground: transparent;
 @basicHoverBackground: transparent;
 @basicDownBoxShadow:
-    0 0 0 1px #ADADAD inset,
+    0 0 0 1px #adadad inset,
     0 3px 5px rgba(0, 0, 0, 0.125) inset
 ;
 
@@ -46,17 +46,17 @@
 
 /* States */
 
-@hoverBackgroundColor: #E6E6E6;
+@hoverBackgroundColor: #e6e6e6;
 @hoverBoxShadow:
-    0 0 0 1px #ADADAD inset
+    0 0 0 1px #adadad inset
 ;
 
-@downBackgroundColor: #E6E6E6;
+@downBackgroundColor: #e6e6e6;
 @downBoxShadow:
-    0 0 0 1px #ADADAD inset,
+    0 0 0 1px #adadad inset,
     0 3px 5px rgba(0, 0, 0, 0.125) inset
 ;
 
-@activeBackgroundColor: #E6E6E6;
+@activeBackgroundColor: #e6e6e6;
 
 @disabledOpacity: 0.65;

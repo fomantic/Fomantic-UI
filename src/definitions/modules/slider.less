@@ -2,10 +2,10 @@
              Theme
  *******************************/
 
-@type: 'module';
-@element: 'slider';
+@type: "module";
+@element: "slider";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 .ui.slider:not(.vertical):not(.checkbox) {
     width: 100%;
@@ -206,7 +206,7 @@
     }
     & when (@variationSliderTicked) {
         .ui.labeled.ticked.slider > .labels .label::after {
-            content: ' ';
+            content: " ";
             height: @labelHeight;
             width: @labelWidth;
             background: @labelColor;
@@ -329,7 +329,7 @@
             }
         }
 
-    })
+    });
 }
 
 & when (@variationSliderBasic) {
@@ -413,7 +413,7 @@
                 }
             }
         }
-    })
+    });
 }
 
 .loadUIOverrides();

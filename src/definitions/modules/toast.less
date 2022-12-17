@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'toast';
+@type: "module";
+@element: "toast";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
         Toast container
@@ -200,7 +200,7 @@
                 }
                 &:not(.vertical) {
                     &.actions > i.icon:not(.close) when (@variationToastActions) and (@variationToastIcon) {
-                        top: e(%('calc(50%% - %d)', @toastIconCenteredAdjustment));
+                        top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
                         transform: none;
                     }
                     &.icon.icon.icon when (@variationToastIcon) {
@@ -274,7 +274,7 @@
         & .progressing {
             animation-iteration-count: 1;
             animation-timing-function: linear;
-            &  when (@variationToastProgress) {
+            & when (@variationToastProgress) {
                 &.up {
                     animation-name: progressUp;
                 }
@@ -519,10 +519,10 @@
             }
         }
         &.actions > .centered.image when (@variationToastActions) and (@variationToastImage) {
-            top: e(%('calc(50%% - %d)', @toastImageCenteredAdjustment));
+            top: e(%("calc(50%% - %d)", @toastImageCenteredAdjustment));
         }
         &.actions > .centered.icon when (@variationToastActions) and (@variationToastIcon) {
-            top: e(%('calc(50%% - %d)', @toastIconCenteredAdjustment));
+            top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
         }
     }
     &.vertical when (@variationToastVertical) {
@@ -651,7 +651,7 @@
                 color: @toastInvertedTextColor;
             }
         }
-    })
+    });
 }
 
 & when (@variationToastInverted) {
@@ -685,7 +685,7 @@
 /* ---------------
    Progress Bar
  ---------------- */
-&  when (@variationToastProgress) {
+& when (@variationToastProgress) {
     @keyframes progressDown {
         0% {
             width: 100%;
