@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'collection';
-@element: 'table';
+@type: "collection";
+@element: "table";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Table
@@ -259,8 +259,8 @@
                     }
                 }
             }
-        })
-  }
+        });
+    }
     & when (@variationTableScrolling) {
         & when (@variationTableScrollingShort) {
             .ui.scrolling.table.short > tbody {
@@ -398,7 +398,7 @@
         display: block;
         overflow-y: scroll;
         overscroll-behavior: @overscrollBehavior;
-        scrollbar-width: thin;  /* Firefox */
+        scrollbar-width: thin; /* Firefox */
         & > tr {
             display: table;
             table-layout: fixed;
@@ -814,7 +814,6 @@
     --------------- */
 
     @media only screen and (max-width: @largestTabletScreen) {
-
         .ui[class*="tablet stackable"].table,
         .ui[class*="tablet stackable"].table > thead,
         .ui[class*="tablet stackable"].table > thead > tr,
@@ -893,8 +892,8 @@
                     }
                 }
             }
-        })
-  }
+        });
+    }
 }
 
 & when (@variationTableAligned) {
@@ -1304,7 +1303,7 @@
             }
         }
 
-    })
+    });
 }
 
 & when (@variationTableEqualWidth) {
@@ -1456,7 +1455,7 @@
         font-style: normal;
         font-weight: @normal;
         text-decoration: inherit;
-        content: '';
+        content: "";
         height: 1em;
         width: @sortableIconWidth;
         opacity: @sortableIconOpacity;
@@ -1926,7 +1925,7 @@
         .ui.@{value}.table {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'popup';
+@type: "module";
+@element: "popup";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Popup
@@ -54,7 +54,7 @@
 
 .ui.popup::before {
     position: absolute;
-    content: '';
+    content: "";
     width: @arrowSize;
     height: @arrowSize;
     background: @arrowBackground;
@@ -81,7 +81,7 @@
     [data-tooltip]::before {
         pointer-events: none;
         position: absolute;
-        content: '';
+        content: "";
         font-size: @medium;
         width: @arrowSize;
         height: @arrowSize;
@@ -221,7 +221,7 @@
             background: @invertedArrowBottomBackground;
         }
 
-        /* Popup  */
+        /* Popup */
         [data-tooltip][data-inverted]::after {
             background: @tooltipInvertedBackground;
             color: @tooltipInvertedColor;
@@ -634,7 +634,7 @@
         }
     }
     & when (@variationPopupRight) {
-        /* --- Right Center  --- */
+        /* --- Right Center --- */
 
         /* rtl:rename */
         .ui.right.center.popup::before {
@@ -783,7 +783,7 @@
          Colors
     --------------- */
 
-    /* Inverted colors  */
+    /* Inverted colors */
     .ui.inverted.popup {
         background: @invertedBackground;
         color: @invertedColor;
@@ -847,7 +847,7 @@
                 }
             }
         }
-    })
+    });
 }
 
 & when (@variationPopupFlowing) {
@@ -879,7 +879,7 @@
                 font-size: @s;
             }
         }
-    })
+    });
 }
 
 .loadUIOverrides();

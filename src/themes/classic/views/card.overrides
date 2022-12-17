@@ -7,7 +7,7 @@
 -------------------- */
 
 /* Item */
-@background: #FFFFFF;
+@background: #fff;
 @borderRadius: 0.325rem;
 @display: block;
 @float: left;
@@ -20,7 +20,7 @@
     0 3px 0 0 @borderColor
 ;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 
 /* Item Group */
 @horizontalSpacing: 0.5em;

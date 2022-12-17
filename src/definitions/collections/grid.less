@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'collection';
-@element: 'grid';
+@type: "collection";
+@element: "grid";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -141,7 +141,7 @@
     margin: (@rowSpacing / 2) (@gutterWidth / 2);
 }
 .ui.grid .column + .ui.vertical.divider {
-    height: e(%('calc(50%% - %d)', (@rowSpacing / 2)));
+    height: e(%("calc(50%% - %d)", (@rowSpacing / 2)));
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -1092,10 +1092,10 @@
         }
         .ui[class*="vertically divided"].grid > .row::before {
             position: absolute;
-            content: '';
+            content: "";
             top: 0;
             left: 0;
-            width: e(%('calc(100%% - %d)', @gutterWidth));
+            width: e(%("calc(100%% - %d)", @gutterWidth));
             height: 1px;
             margin: 0 (@gutterWidth / 2);
             box-shadow: @verticallyDividedBorder;
@@ -1136,13 +1136,13 @@
         .ui.relaxed[class*="vertically divided"].grid > .row::before {
             margin-left: (@relaxedGutterWidth / 2);
             margin-right: (@relaxedGutterWidth / 2);
-            width: e(%('calc(100%% - %d)', @relaxedGutterWidth));
+            width: e(%("calc(100%% - %d)", @relaxedGutterWidth));
         }
         & when (@variationGridVeryRelaxed) {
             .ui[class*="very relaxed"][class*="vertically divided"].grid > .row::before {
                 margin-left: (@veryRelaxedGutterWidth / 2);
                 margin-right: (@veryRelaxedGutterWidth / 2);
-                width: e(%('calc(100%% - %d)', @veryRelaxedGutterWidth));
+                width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
             }
         }
     }
@@ -1334,7 +1334,7 @@
             background-color: @c;
             color: @white;
         }
-    })
+    });
 }
 
 & when (@variationGridEqualWidth) {

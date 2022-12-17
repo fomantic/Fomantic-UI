@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'input';
+@type: "element";
+@element: "input";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
            Standard
@@ -113,7 +113,7 @@
 
     .ui.loading.loading.input > i.icon::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -124,7 +124,7 @@
     }
     .ui.loading.loading.input > i.icon::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -212,7 +212,7 @@
         .ui.input.@{state} > input:focus:-ms-input-placeholder when (@supportIE){
             color: @formStates[@@state][inputPlaceholderFocusColor] !important;
         }
-    })
+    });
 }
 
 /*******************************
@@ -476,7 +476,7 @@
         .ui.icon.input:not([class*="left icon"]) > .ui.dropdown > .dropdown.icon {
             padding-right: initial;
         }
-        .ui.icon.input:not([class*="left icon"]):not(:has(.ui.dropdown~input)) > .ui.dropdown > .dropdown.icon {
+        .ui.icon.input:not([class*="left icon"]):not(:has(.ui.dropdown ~ input)) > .ui.dropdown > .dropdown.icon {
             padding-right: @labeledMargin;
         }
     }
@@ -505,7 +505,7 @@
     }
 }
 & when (@variationInputCorner) {
-    /* Corner Label Position  */
+    /* Corner Label Position */
     .ui.input > .ui.corner.label {
         top: @borderWidth;
         right: @borderWidth;
@@ -545,7 +545,7 @@
         .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
             border-left: @borderWidth solid @borderColor;
         }
-    })
+    });
 }
 
 & when (@variationInputAction) {
@@ -750,8 +750,8 @@
                     background-color: @lh;
                 }
             }
-        })
-  }
+        });
+    }
 
     & when not (@variationInputColors = false) {
         each(@variationInputColors, {
@@ -785,8 +785,8 @@
                     background: @h;
                 }
             }
-        })
-  }
+        });
+    }
 }
 
 /* --------------------
@@ -802,7 +802,7 @@
         .ui.@{value}.input {
             font-size: @@s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

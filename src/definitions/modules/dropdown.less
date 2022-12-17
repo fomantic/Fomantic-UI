@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'dropdown';
+@type: "module";
+@element: "dropdown";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Dropdown
@@ -428,7 +428,7 @@ select.ui.dropdown {
         }
     }
 
-    /*  Selection Menu */
+    /* Selection Menu */
     .ui.selection.dropdown .menu {
         overflow-x: hidden;
         overflow-y: auto;
@@ -633,12 +633,12 @@ select.ui.dropdown {
         box-shadow: none !important;
     }
     & when (@variationDropdownScrollhint) {
-        /* CSS specific to iOS devices or firefox mobile only  */
-        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+        /* CSS specific to iOS devices or firefox mobile only */
+        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance: none) {
             @media (-moz-touch-enabled), (pointer: coarse) {
                 .ui.dropdown .scrollhint.menu:not(.hidden)::before {
                     animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
-                    content: '';
+                    content: "";
                     z-index: @scrollhintZIndex;
                     display: block;
                     position: absolute;
@@ -998,7 +998,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -1009,7 +1009,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         box-shadow: 0 0 0 1px transparent;
@@ -1117,7 +1117,7 @@ select.ui.dropdown {
         .ui.dropdown.@{state} > .menu .active.item {
             background-color: @formStates[@@state][dropdownActiveBackground];
         }
-    })
+    });
 }
 
 & when (@variationDropdownClear) {
@@ -1288,7 +1288,7 @@ select.ui.dropdown {
          Scrolling
     --------------- */
 
-    /*  Selection Menu */
+    /* Selection Menu */
     .ui.scrolling.dropdown .menu,
     .ui.dropdown .scrolling.menu {
         overflow-x: hidden;
@@ -1325,7 +1325,7 @@ select.ui.dropdown {
         @media all and (-ms-high-contrast: none) {
             .ui.scrolling.dropdown .menu,
             .ui.dropdown .scrolling.menu {
-                min-width: e(%('calc(100%% - %d)', @scrollbarWidth));
+                min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
             }
         }
     }
@@ -1551,7 +1551,7 @@ select.ui.dropdown {
         display: block;
         position: absolute;
         pointer-events: none;
-        content: '';
+        content: "";
         visibility: visible;
         transform: rotate(45deg);
         width: @pointingArrowSize;
@@ -1748,7 +1748,7 @@ select.ui.dropdown {
         .ui.@{value}.dropdown .menu > .item {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationDropdownInverted) {

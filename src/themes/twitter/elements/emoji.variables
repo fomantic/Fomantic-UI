@@ -5,8 +5,8 @@
 /* --------------
     Path
 --------------- */
-@emojiPath: 'https://twemoji.maxcdn.com/v/latest/svg/';
-@emojiFileType: 'svg';
+@emojiPath: "https://twemoji.maxcdn.com/v/latest/svg/";
+@emojiFileType: "svg";
 
 /* --------------
    Definition

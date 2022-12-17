@@ -34,12 +34,12 @@
 *******************************/
 
 /* Horizontal / Vertical */
-@horizontalMargin: '';
+@horizontalMargin: "";
 @horizontalDividerMargin: 1em;
-@horizontalRulerOffset: e(%('calc(-50%% - %d)', @horizontalDividerMargin));
+@horizontalRulerOffset: e(%("calc(-50%% - %d)", @horizontalDividerMargin));
 
 @verticalDividerMargin: 1rem;
-@verticalDividerHeight: e(%('calc(100%% - %d)', @verticalDividerMargin));
+@verticalDividerHeight: e(%("calc(100%% - %d)", @verticalDividerMargin));
 
 /* Inverted */
 @invertedTextColor: @white;

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'view';
-@element: 'card';
+@type: "view";
+@element: "card";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -78,7 +78,7 @@
 .ui.cards::after,
 .ui.card::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -156,7 +156,7 @@
 .ui.cards > .card > .content::after,
 .ui.card > .content::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -284,8 +284,8 @@
     .ui.card .meta * {
         margin-right: @metaSpacing;
     }
-    .ui.cards > .card .meta:last-child,
-    .ui.card .meta:last-child {
+    .ui.cards > .card .meta :last-child,
+    .ui.card .meta :last-child {
         margin-right: 0;
     }
 
@@ -493,7 +493,7 @@
     }
     .ui.loading.card::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -504,7 +504,7 @@
     }
     .ui.loading.card::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -705,7 +705,7 @@
             .ui.basic.cards > .@{color}.card,
             .ui.basic.@{color}.card {
                 background: @l;
-                &  when (@isVeryDark) {
+                & when (@isVeryDark) {
                     & .header,
                     .content,
                     .meta,
@@ -772,7 +772,7 @@
                 }
             }
         }
-    })
+    });
 }
 
 & when (@variationCardEqualWidth) {
@@ -1093,7 +1093,7 @@
         .ui.@{value}.cards .card {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationCardInverted) {

@@ -29,7 +29,7 @@
 @disabledOpacity: 0.6;
 
 /* States */
-@hoveredItemBackground: #4078C0;
+@hoveredItemBackground: #4078c0;
 @hoveredItemColor: @white;
 
 @pointingArrowSize: @relative9px;
