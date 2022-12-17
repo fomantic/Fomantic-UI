@@ -519,7 +519,7 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         @normalizedKey: replace(@escapedKey, "_", @iconClassSeparator, "g");
         @unorderedKey: e(%(".%s::%s",@normalizedKey, @pseudo));
         @orderedKey: e(%('[%s*="%s"]::%s', @iconForcedAttribute, @normalizedKey, @pseudo));
-        @selectorKey: if(@iconForcedOrder or @iconClassSeparator = ' ', @orderedKey, @unorderedKey);
+        @selectorKey: if(@iconForcedOrder or @iconClassSeparator = " ", @orderedKey, @unorderedKey);
         i.icon@{selectorKey} {
             content: "@{value}";
             & when not (@fontFamily = false) {
