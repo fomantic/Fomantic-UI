@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'button';
+@type: "element";
+@element: "button";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Button
@@ -131,7 +131,7 @@
     }
     .ui.loading.button::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -142,7 +142,7 @@
     }
     .ui.loading.button::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -640,7 +640,6 @@
 
     /* Tablet Or Below */
     @media only screen and (max-width: @largestMobileScreen) {
-
         .ui.stackable.buttons {
             flex-direction: column;
             width: 100%;
@@ -686,17 +685,17 @@
 
     .ui.compact.buttons .button,
     .ui.compact.button {
-        padding: @compactVerticalPadding @compactHorizontalPadding ( @compactVerticalPadding + @shadowOffset );
+        padding: @compactVerticalPadding @compactHorizontalPadding (@compactVerticalPadding + @shadowOffset);
     }
 
     .ui.compact.icon.buttons .button,
     .ui.compact.icon.button {
-        padding: @compactVerticalPadding @compactVerticalPadding ( @compactVerticalPadding + @shadowOffset );
+        padding: @compactVerticalPadding @compactVerticalPadding (@compactVerticalPadding + @shadowOffset);
     }
 
     .ui.compact.labeled.icon.buttons .button,
     .ui.compact.labeled.icon.button {
-        padding: @compactVerticalPadding (@compactHorizontalPadding + @labeledIconWidth) ( @compactVerticalPadding + @shadowOffset );
+        padding: @compactVerticalPadding (@compactHorizontalPadding + @labeledIconWidth) (@compactVerticalPadding + @shadowOffset);
     }
 
     .ui.compact.labeled.icon.buttons .button > .icon,
@@ -725,7 +724,7 @@
         .ui.ui.ui.ui.@{value}.button {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationButtonIcon) {
@@ -735,7 +734,7 @@
 
     .ui.icon.buttons .button,
     .ui.icon.button:not(.animated):not(.compact):not(.labeled) {
-        padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
+        padding: @verticalPadding @verticalPadding (@verticalPadding + @shadowOffset);
     }
     .ui.animated.icon.button > .content > .icon,
     .ui.icon.buttons .button > .icon,
@@ -812,7 +811,6 @@
         background-color: @transparentBlack;
     }
     & when (@variationButtonGroups) {
-
         .ui.basic.buttons .button:hover {
             box-shadow: @basicHoverBoxShadow inset;
         }
@@ -923,7 +921,6 @@
     }
 
     .ui.tertiary.button:hover {
-
         & when (@tertiaryHoverWithUnderline = true) {
             box-shadow: inset 0 -@tertiaryLineHeight 0 @tertiaryHoverLineColor;
         }
@@ -1718,20 +1715,20 @@
                 color: @a;
             }
         }
-    })
+    });
 }
 
 & when not (@variationButtonConsequences = false) {
     each(@variationButtonConsequences, {
         @consequence: @value;
 
-        @_backgroundColor: '@{consequence}Color';
-        @_backgroundColorHover: '@{consequence}ColorHover';
-        @_backgroundColorFocus: '@{consequence}ColorFocus';
-        @_backgroundColorDown: '@{consequence}ColorDown';
-        @_backgroundColorActive: '@{consequence}ColorActive';
-        @_textColor: '@{consequence}TextColor';
-        @_textShadow: '@{consequence}TextShadow';
+        @_backgroundColor: "@{consequence}Color";
+        @_backgroundColorHover: "@{consequence}ColorHover";
+        @_backgroundColorFocus: "@{consequence}ColorFocus";
+        @_backgroundColorDown: "@{consequence}ColorDown";
+        @_backgroundColorActive: "@{consequence}ColorActive";
+        @_textColor: "@{consequence}TextColor";
+        @_textShadow: "@{consequence}TextShadow";
 
         /* Standard */
         .ui.@{consequence}.buttons .button,
@@ -1805,7 +1802,7 @@
                 margin-left: -@basicColoredBorderSize;
             }
         }
-    })
+    });
 }
 
 & when (@variationButtonGroups) {
@@ -1827,7 +1824,7 @@
 
     /* Clearfix */
     .ui.buttons::after {
-        content: '.';
+        content: ".";
         display: block;
         height: 0;
         clear: both;
@@ -1857,7 +1854,7 @@
         border-bottom-right-radius: @borderRadius;
     }
     & when (@variationButtonVertical) {
-        /* Vertical  Style */
+        /* Vertical Style */
         .ui.vertical.buttons {
             display: inline-flex;
             flex-direction: column;
@@ -1975,7 +1972,7 @@
             }
             & when (@variationButtonInverted) {
                 .ui.spaced.basic.inverted.buttons .basic.button {
-                    margin-bottom: e(%('calc(%d + %d)', @spacedMargin, @basicColoredBorderSize));
+                    margin-bottom: e(%("calc(%d + %d)", @spacedMargin, @basicColoredBorderSize));
                     margin-top: @basicColoredBorderSize;
                 }
             }

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'segment';
+@type: "element";
+@element: "segment";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Segment
@@ -202,7 +202,7 @@
     .ui.piled.segment::before {
         background-color: @white;
         visibility: visible;
-        content: '';
+        content: "";
         display: block;
         height: 100%;
         left: 0;
@@ -254,7 +254,7 @@
     .ui.stacked.segments::after,
     .ui.stacked.segment::before,
     .ui.stacked.segment::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -(@stackedHeight / 2);
         left: 0;
@@ -522,7 +522,7 @@
     .ui.loading.segments::before,
     .ui.loading.segment::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -534,7 +534,7 @@
     .ui.loading.segments::after,
     .ui.loading.segment::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -574,7 +574,7 @@
     -------------------- */
 
     .ui.clearing.segment::after {
-        content: '';
+        content: "";
         display: block;
         clear: both;
     }
@@ -598,7 +598,7 @@
                 }
             }
         }
-    })
+    });
 }
 
 & when (@variationSegmentAligned) {
@@ -902,7 +902,7 @@
         .ui.@{value}.segment {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

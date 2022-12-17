@@ -10,7 +10,7 @@
 @backfaceVisibility: hidden;
 
 @pulsatingColor: #808080;
-@pulsatingInvertedColor: #ffffff;
+@pulsatingInvertedColor: #fff;
 @pulsatingDuration: 2000ms;
 @pulsatingDistance: 0.8rem;
 @pulsatingOpacity: 50%;

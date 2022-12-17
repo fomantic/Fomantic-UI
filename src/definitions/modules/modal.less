@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'modal';
+@type: "module";
+@element: "modal";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Modal
@@ -260,7 +260,6 @@
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
-
     .ui.modal > .header {
         padding: @mobileHeaderPadding;
     }
@@ -455,7 +454,7 @@
 
     /* Fix for Firefox, Edge, IE11 */
     .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
-        content: '\00A0';
+        content: "\00A0";
         position: absolute;
         height: @scrollingMargin;
     }
@@ -580,7 +579,7 @@
                 margin: @@wm;
             }
         }
-    })
+    });
 }
 
 & when (@variationModalInverted) {

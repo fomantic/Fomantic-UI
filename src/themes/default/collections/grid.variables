@@ -19,7 +19,7 @@
 @gutterWidth: 2rem;
 @rowSpacing: 2rem;
 
-@tableWidth: e(%('calc(100%% + %d)', @gutterWidth));
+@tableWidth: e(%("calc(100%% + %d)", @gutterWidth));
 @columnMaxImageWidth: 100%;
 
 @consecutiveGridDistance: (@rowSpacing / 2);

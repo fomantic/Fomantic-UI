@@ -20,4 +20,4 @@
 @widescreenMargin: auto;
 @widescreenMonitorGutter: 0;
 
-@tableWidth: '';
+@tableWidth: "";

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'element';
-@element: 'loader';
+@type: "element";
+@element: "loader";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Loader
@@ -36,7 +36,7 @@
 /* Static Shape */
 .ui.loader::before {
     position: absolute;
-    content: '';
+    content: "";
     top: 0;
     left: 50%;
     width: 100%;
@@ -48,7 +48,7 @@
 /* Active Shape */
 .ui.loader::after {
     position: absolute;
-    content: '';
+    content: "";
     top: 0;
     left: 50%;
     width: 100%;
@@ -192,7 +192,7 @@
                 padding-top: (@s + @textDistance);
             }
         }
-    })
+    });
 }
 
 /* -------------------
@@ -226,7 +226,7 @@
         .ui.inverted.@{color}.loader.loader.loader::after {
             color: @l;
         }
-    })
+    });
 }
 
 .ui.elastic.loader.loader::before,
@@ -368,7 +368,7 @@
         0%,
         1% {
             border-left-color: transparent;
-            border-bottom-color: transparent
+            border-bottom-color: transparent;
         }
         1.1%,
         50% {
@@ -396,7 +396,7 @@
         0%,
         1% {
             border-left-color: transparent;
-            border-bottom-color: transparent
+            border-bottom-color: transparent;
         }
         1.1%,
         50% {

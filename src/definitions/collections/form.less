@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'collection';
-@element: 'form';
+@type: "collection";
+@element: "form";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Elements
@@ -98,8 +98,8 @@
 }
 
 /* Set max height on unusual input */
-.ui.form::-webkit-datetime-edit,
-.ui.form::-webkit-inner-spin-button {
+.ui.form ::-webkit-datetime-edit,
+.ui.form ::-webkit-inner-spin-button {
     height: @inputLineHeight;
 }
 
@@ -281,7 +281,7 @@
 }
 
 & when (@variationFormInline) {
-    /* Inline  */
+    /* Inline */
     .ui.form .inline.fields .field:not(.wide) .ui.input,
     .ui.form .inline.field:not(.wide) .ui.input {
         width: auto;
@@ -322,7 +322,7 @@
         .ui.form .@{state}.message:empty {
             display: none;
         }
-    })
+    });
 }
 
 /* Assumptions */
@@ -383,24 +383,24 @@
 --------------------- */
 
 /* browsers require these rules separate */
-.ui.form::-webkit-input-placeholder {
+.ui.form ::-webkit-input-placeholder {
     color: @inputPlaceholderColor;
 }
-.ui.form:-ms-input-placeholder when (@supportIE) {
+.ui.form :-ms-input-placeholder when (@supportIE) {
     color: @inputPlaceholderColor !important;
 }
-.ui.form::-moz-placeholder {
+.ui.form ::-moz-placeholder {
     color: @inputPlaceholderColor;
     opacity: 1;
 }
 
-.ui.form:focus::-webkit-input-placeholder {
+.ui.form :focus::-webkit-input-placeholder {
     color: @inputPlaceholderFocusColor;
 }
-.ui.form:focus:-ms-input-placeholder when (@supportIE) {
+.ui.form :focus:-ms-input-placeholder when (@supportIE) {
     color: @inputPlaceholderFocusColor !important;
 }
-.ui.form:focus::-moz-placeholder {
+.ui.form :focus::-moz-placeholder {
     color: @inputPlaceholderFocusColor;
 }
 
@@ -740,7 +740,7 @@
                 color: @lbg;
             }
         }
-    })
+    });
 }
 
 & when (@variationFormDisabled) {
@@ -750,7 +750,7 @@
 
     .ui.form .disabled.fields .field,
     .ui.form .disabled.field,
-    .ui.form .field:disabled {
+    .ui.form .field :disabled {
         pointer-events: @disabledPointerEvents;
         opacity: @disabledOpacity;
     }
@@ -758,7 +758,7 @@
     .ui.form .fields.disabled > label {
         opacity: @disabledLabelOpacity;
     }
-    .ui.form .field.disabled:disabled {
+    .ui.form .field.disabled :disabled {
         opacity: 1;
     }
 }
@@ -775,7 +775,7 @@
     }
     .ui.loading.form::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -790,7 +790,7 @@
 
     .ui.loading.form::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -1167,7 +1167,7 @@
         .ui.@{value}.form .field .dropdown .menu > .item {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

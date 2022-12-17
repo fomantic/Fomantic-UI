@@ -16,10 +16,10 @@
    Load Theme
 --------------- */
 
-@type: 'element';
-@element: 'step';
+@type: "element";
+@element: "step";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Plural
@@ -79,7 +79,7 @@
     display: none;
     position: absolute;
     z-index: 2;
-    content: '';
+    content: "";
     top: @arrowTopOffset;
     right: @arrowRightOffset;
     background-color: @arrowBackgroundColor;
@@ -252,7 +252,6 @@
 
 /* Mobile (Default) */
 @media only screen and (max-width: (@largestMobileScreen)) {
-
     .ui.steps:not(.unstackable) {
         display: inline-flex;
         overflow: visible;
@@ -396,7 +395,6 @@
 
     /* Tablet Or Below */
     @media only screen and (max-width: @largestTabletScreen) {
-
         .ui[class*="tablet stackable"].steps {
             display: inline-flex;
             overflow: visible;
@@ -551,7 +549,7 @@
         .ui.@{value}.step {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationStepInverted) {

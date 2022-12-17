@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'collection';
-@element: 'message';
+@type: "collection";
+@element: "message";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Message
@@ -95,7 +95,7 @@
 }
 .ui.message .list:not(.ui) li::before {
     position: absolute;
-    content: '•';
+    content: "•";
     left: -1em;
     height: 100%;
     vertical-align: baseline;
@@ -286,7 +286,6 @@
      Types
 --------------- */
 & when not (@variationMessageConsequences = false) {
-
     @consequences: {
         @positive: {
             background: @positiveBackgroundColor;
@@ -336,7 +335,7 @@
             text: @successTextColor;
             invertedText: @formSuccessLabelBackground;
         };
-    }
+    };
 
     /* Colors */
 
@@ -372,7 +371,7 @@
                 color: @it;
             }
         }
-    })
+    });
 }
 & when not (@variationMessageColors = false) {
     each(@variationMessageColors, {
@@ -417,7 +416,7 @@
                 color: @invertedTextColor;
             }
         }
-    })
+    });
 }
 
 & when (@variationMessageInverted) {
@@ -440,7 +439,7 @@
         .ui.@{value}.message {
             font-size: @@s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();
