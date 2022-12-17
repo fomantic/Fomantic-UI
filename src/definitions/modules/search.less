@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type: 'module';
-@element: 'search';
+@type: "module";
+@element: "search";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Search
@@ -192,7 +192,7 @@
 
     .ui.loading.search .input > i.icon::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -203,7 +203,7 @@
     }
     .ui.loading.search .input > i.icon::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -538,10 +538,10 @@
 & when not (@variationFeedSizes = false) {
     each(@variationFeedSizes, {
         @s: @{value}SearchSize;
-        .ui.@{value}.search  {
+        .ui.@{value}.search {
             font-size: @@s;
         }
-    })
+    });
 }
 
 /* --------------
