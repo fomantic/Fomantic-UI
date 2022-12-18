@@ -26,8 +26,10 @@ module.exports = {
         'property-case': null,
         'property-no-vendor-prefix': [true, {
             ignoreProperties: [
+                'background-clip', // https://caniuse.com/background-clip-text
                 'appearance', // https://caniuse.com/css-appearance
                 'backdrop-filter', // https://caniuse.com/css-backdrop-filter
+                'text-size-adjust', // https://caniuse.com/text-size-adjust
             ],
         }],
         'rule-empty-line-before': null,

@@ -155,6 +155,8 @@
         perspective: @perspective;
         transform-origin: center center;
         &.modals {
+            // https://github.com/fomantic/Fomantic-UI/pull/1491
+            // stylelint-disable-next-line property-no-vendor-prefix
             -moz-perspective: none;
         }
     }
