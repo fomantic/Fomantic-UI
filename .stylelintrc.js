@@ -24,6 +24,12 @@ module.exports = {
         'no-duplicate-selectors': null,
         'number-max-precision': 5,
         'property-case': null,
+        'property-no-vendor-prefix': [true, {
+            ignoreProperties: [
+                'appearance', // https://caniuse.com/css-appearance
+                'backdrop-filter', // https://caniuse.com/css-backdrop-filter
+            ],
+        }],
         'rule-empty-line-before': null,
         'string-quotes': 'double',
         'value-keyword-case': null,
@@ -35,7 +41,6 @@ module.exports = {
         'selector-not-notation': null, // 169 errors
         'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
-        'property-no-vendor-prefix': null, // 49 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
