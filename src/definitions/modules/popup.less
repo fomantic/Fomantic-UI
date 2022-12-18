@@ -175,6 +175,7 @@
     [data-tooltip][data-position="left center"]:hover::after,
     [data-tooltip][data-position="right center"]:hover::after {
         transform: translateY(-50%) scale(1) !important;
+        // stylelint-disable-next-line property-no-vendor-prefix -- https://github.com/fomantic/Fomantic-UI/pull/1537
         -moz-transform: translateY(-50%) scale(1.0001) !important;
     }
     [data-tooltip][data-position="top left"]::after,
