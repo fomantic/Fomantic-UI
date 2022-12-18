@@ -78,7 +78,10 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
 };
 
-// Underscores in map keys will be replaced by dots to separate classnames at compile time
+// Underscores in map keys will be replaced by @iconClassSeparator to separate classnames at compile time
+@iconClassSeparator: ".";
+@iconForcedOrder: false;
+@iconForcedAttribute: class;
 
 /* Deprecated (In/Out Naming Conflict) */
 @icon-deprecated-map: {
