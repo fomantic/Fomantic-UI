@@ -434,7 +434,6 @@ select.ui.dropdown {
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
         border-top-width: 0 !important;
         width: auto;
         outline: none;
@@ -634,7 +633,7 @@ select.ui.dropdown {
     }
     & when (@variationDropdownScrollhint) {
         /* CSS specific to iOS devices or firefox mobile only */
-        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance: none) {
+        @supports (-webkit-touch-callout: none) or (-moz-appearance: none) {
             @media (-moz-touch-enabled), (pointer: coarse) {
                 .ui.dropdown .scrollhint.menu:not(.hidden)::before {
                     animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
@@ -751,7 +750,6 @@ select.ui.dropdown {
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
     }
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.search.dropdown .menu {
@@ -1295,7 +1293,6 @@ select.ui.dropdown {
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
         min-width: 100% !important;
         width: auto !important;
     }
