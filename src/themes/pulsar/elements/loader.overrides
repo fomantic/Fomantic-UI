@@ -6,31 +6,6 @@
     animation: loader-pulsar 2s infinite linear;
 }
 
-@-webkit-keyframes loader-pulsar {
-    0% {
-        transform: rotate(0);
-        opacity: 0;
-    }
-    20% {
-        transform: rotate(360deg);
-    }
-    40% {
-        transform: rotate(740deg);
-        opacity: 1;
-    }
-    60% {
-        transform: rotate(1120deg);
-        opacity: 1;
-    }
-    80% {
-        transform: rotate(1440deg);
-    }
-    100% {
-        transform: rotate(1800deg);
-        opacity: 0;
-    }
-}
-
 @keyframes loader-pulsar {
     0% {
         transform: rotate(0);
