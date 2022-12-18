@@ -1,0 +1,18 @@
+﻿diff --git a/src/language-css/printer-postcss.js b/src/language-css/printer-postcss.js
+index 4ba444c8d..4f7738bfa 100644
+--- a/src/language-css/printer-postcss.js
++++ b/src/language-css/printer-postcss.js
+@@ -886,11 +886,11 @@ function genericPrint(path, options, print) {
+ 
+       if (!node.open) {
+         const printed = path.map(print, "groups");
+-        const res = [];
++        const res = [hardline];
+ 
+         for (let i = 0; i < printed.length; i++) {
+           if (i !== 0) {
+-            res.push([",", line]);
++            res.push([",", hardline]);
+           }
+           res.push(printed[i]);
+         }

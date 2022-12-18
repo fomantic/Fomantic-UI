@@ -1,0 +1,18 @@
+﻿diff --git a/src/language-css/printer-postcss.js b/src/language-css/printer-postcss.js
+index 4ba444c8d..431cdc7a6 100644
+--- a/src/language-css/printer-postcss.js
++++ b/src/language-css/printer-postcss.js
+@@ -155,7 +155,12 @@ function genericPrint(path, options, print) {
+ 
+       return [
+         node.raws.before.replace(/[\s;]/g, ""),
+-        insideICSSRuleNode(path) ? node.prop : maybeToLowerCase(node.prop),
++        (parentNode.type === "css-atrule" &&
++          typeof parentNode.raws.params === "string" &&
++          parentNode.raws.params.startsWith(":")) ||
++        insideICSSRuleNode(path)
++          ? node.prop
++          : maybeToLowerCase(node.prop),
+         trimmedBetween.startsWith("//") ? " " : "",
+         trimmedBetween,
+         node.extend ? "" : " ",
