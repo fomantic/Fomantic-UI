@@ -641,6 +641,9 @@
         font-weight: @definitionHeaderFontWeight;
         color: @definitionHeaderColor;
         box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        // https://github.com/fomantic/Fomantic-UI/pull/884
+        // stylelint-disable-next-line property-no-vendor-prefix
+        -moz-transform: scale(1);
     }
 
     .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
@@ -653,6 +656,9 @@
         font-weight: @definitionFooterFontWeight;
         color: @definitionFooterColor;
         box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        // https://github.com/fomantic/Fomantic-UI/pull/884
+        // stylelint-disable-next-line property-no-vendor-prefix
+        -moz-transform: scale(1);
     }
 
     /* Highlight Defining Column */
