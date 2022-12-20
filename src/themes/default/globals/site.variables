@@ -175,8 +175,7 @@
 @fonts: {
     @regularLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -185,8 +184,7 @@
     };
     @boldLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format("woff"));
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -195,8 +193,7 @@
     };
     @italicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format("woff"));
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -205,8 +202,7 @@
     };
     @boldItalicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format("woff"));
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -215,8 +211,7 @@
     };
     @regularSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -225,8 +220,7 @@
     };
     @boldSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format("woff"));
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -235,8 +229,7 @@
     };
     @italicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format("woff"));
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -245,8 +238,7 @@
     };
     @boldItalicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format("woff"));
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
