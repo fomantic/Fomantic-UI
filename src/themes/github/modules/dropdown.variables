@@ -3,8 +3,7 @@
 *******************************/
 
 @transition:
-    width @defaultDuration @defaultEasing
-;
+    width @defaultDuration @defaultEasing;
 
 @menuPadding: 0;
 

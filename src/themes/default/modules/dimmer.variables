@@ -12,8 +12,7 @@
 
 @duration: 0.5s;
 @transition:
-    all @duration linear
-;
+    all @duration linear;
 @zIndex: 1000;
 @textAlign: center;
 @verticalAlign: middle;

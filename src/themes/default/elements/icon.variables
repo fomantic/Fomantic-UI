@@ -2107,14 +2107,12 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     -@cornerIconStroke -@cornerIconStroke 0 @white,
     @cornerIconStroke -@cornerIconStroke 0 @white,
     -@cornerIconStroke @cornerIconStroke 0 @white,
-    @cornerIconStroke @cornerIconStroke 0 @white
-;
+    @cornerIconStroke @cornerIconStroke 0 @white;
 @cornerIconInvertedShadow:
     -@cornerIconStroke -@cornerIconStroke 0 @black,
     @cornerIconStroke -@cornerIconStroke 0 @black,
     -@cornerIconStroke @cornerIconStroke 0 @black,
-    @cornerIconStroke @cornerIconStroke 0 @black
-;
+    @cornerIconStroke @cornerIconStroke 0 @black;
 
 @cornerOffset: 0;
 @borderedGroupCornerOffset: 1.15em;

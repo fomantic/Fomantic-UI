@@ -25,5 +25,4 @@
 /* Handle */
 @handleBackground: @white @subtleGradient;
 @handleBoxShadow:
-    0 0 0 1px @selectedBorderColor inset
-;
+    0 0 0 1px @selectedBorderColor inset;
