@@ -59,8 +59,6 @@
 
                 instance        = $module.data(moduleNamespace),
 
-                requestAnimationFrame = window.requestAnimationFrame,
-
                 element         = this,
                 disabled        = false,
 

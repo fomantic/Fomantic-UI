@@ -37,8 +37,6 @@
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
-            requestAnimationFrame = window.requestAnimationFrame,
-
             returnedValue
         ;
 
