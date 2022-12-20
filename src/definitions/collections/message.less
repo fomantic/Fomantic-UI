@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'collection';
-@element : 'message';
+@type: "collection";
+@element: "message";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Message
@@ -95,7 +95,7 @@
 }
 .ui.message .list:not(.ui) li::before {
     position: absolute;
-    content: '•';
+    content: "•";
     left: -1em;
     height: 100%;
     vertical-align: baseline;
@@ -286,57 +286,56 @@
      Types
 --------------- */
 & when not (@variationMessageConsequences = false) {
-
     @consequences: {
         @positive: {
-            background     : @positiveBackgroundColor;
-            header         : @positiveHeaderColor;
-            boxShadow      : @positiveBoxShadow;
-            boxFloatShadow : @positiveBoxFloatingShadow;
-            text           : @positiveTextColor;
-            invertedText   : @positiveBorderColor;
+            background: @positiveBackgroundColor;
+            header: @positiveHeaderColor;
+            boxShadow: @positiveBoxShadow;
+            boxFloatShadow: @positiveBoxFloatingShadow;
+            text: @positiveTextColor;
+            invertedText: @positiveBorderColor;
         };
         @negative: {
-            background     : @negativeBackgroundColor;
-            header         : @negativeHeaderColor;
-            boxShadow      : @negativeBoxShadow;
-            boxFloatShadow : @negativeBoxFloatingShadow;
-            text           : @negativeTextColor;
-            invertedText   : @negativeBorderColor;
+            background: @negativeBackgroundColor;
+            header: @negativeHeaderColor;
+            boxShadow: @negativeBoxShadow;
+            boxFloatShadow: @negativeBoxFloatingShadow;
+            text: @negativeTextColor;
+            invertedText: @negativeBorderColor;
         };
         @info: {
-            background     : @infoBackgroundColor;
-            header         : @infoHeaderColor;
-            boxShadow      : @infoBoxShadow;
-            boxFloatShadow : @infoBoxFloatingShadow;
-            text           : @infoTextColor;
-            invertedText   : @formInfoLabelBackground;
+            background: @infoBackgroundColor;
+            header: @infoHeaderColor;
+            boxShadow: @infoBoxShadow;
+            boxFloatShadow: @infoBoxFloatingShadow;
+            text: @infoTextColor;
+            invertedText: @formInfoLabelBackground;
         };
         @warning: {
-            background     : @warningBackgroundColor;
-            header         : @warningHeaderColor;
-            boxShadow      : @warningBoxShadow;
-            boxFloatShadow : @warningBoxFloatingShadow;
-            text           : @warningTextColor;
-            invertedText   : @formWarningLabelBackground;
+            background: @warningBackgroundColor;
+            header: @warningHeaderColor;
+            boxShadow: @warningBoxShadow;
+            boxFloatShadow: @warningBoxFloatingShadow;
+            text: @warningTextColor;
+            invertedText: @formWarningLabelBackground;
         };
         @error: {
-            background     : @errorBackgroundColor;
-            header         : @errorHeaderColor;
-            boxShadow      : @errorBoxShadow;
-            boxFloatShadow : @errorBoxFloatingShadow;
-            text           : @errorTextColor;
-            invertedText   : @formErrorLabelBackground;
+            background: @errorBackgroundColor;
+            header: @errorHeaderColor;
+            boxShadow: @errorBoxShadow;
+            boxFloatShadow: @errorBoxFloatingShadow;
+            text: @errorTextColor;
+            invertedText: @formErrorLabelBackground;
         };
         @success: {
-            background     : @successBackgroundColor;
-            header         : @successHeaderColor;
-            boxShadow      : @successBoxShadow;
-            boxFloatShadow : @successBoxFloatingShadow;
-            text           : @successTextColor;
-            invertedText   : @formSuccessLabelBackground;
+            background: @successBackgroundColor;
+            header: @successHeaderColor;
+            boxShadow: @successBoxShadow;
+            boxFloatShadow: @successBoxFloatingShadow;
+            text: @successTextColor;
+            invertedText: @formSuccessLabelBackground;
         };
-    }
+    };
 
     /* Colors */
 
@@ -372,7 +371,7 @@
                 color: @it;
             }
         }
-    })
+    });
 }
 & when not (@variationMessageColors = false) {
     each(@variationMessageColors, {
@@ -417,7 +416,7 @@
                 color: @invertedTextColor;
             }
         }
-    })
+    });
 }
 
 & when (@variationMessageInverted) {
@@ -440,7 +439,7 @@
         .ui.@{value}.message {
             font-size: @@s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

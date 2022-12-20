@@ -25,7 +25,7 @@
 
 /* Result Box */
 @resultsWidth: 18em;
-@resultsBackground: #FFFFFF;
+@resultsBackground: #fff;
 @resultsDistance: 0.5em;
 @resultsBorderRadius: @defaultBorderRadius;
 @resultsBorder: 1px solid @solidBorderColor;
@@ -106,7 +106,7 @@
 
 /* Hover */
 @resultHoverBackground: @offWhite;
-@actionHoverBackground: #E0E0E0;
+@actionHoverBackground: #e0e0e0;
 
 /* Loading */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
@@ -137,7 +137,7 @@
 ;
 @selectionCloseRight: 0;
 @selectionCloseIconOpacity: 0.8;
-@selectionCloseIconColor: '';
+@selectionCloseIconColor: "";
 @selectionCloseIconHoverOpacity: 1;
 @selectionCloseIconHoverColor: @red;
 

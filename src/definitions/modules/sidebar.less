@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'sidebar';
+@type: "module";
+@element: "sidebar";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Sidebar
@@ -31,7 +31,6 @@
     will-change: transform;
     transform: translate3d(0, 0, 0);
     visibility: hidden;
-    -webkit-overflow-scrolling: touch;
     height: 100% !important;
     max-height: 100%;
     border-radius: 0 !important;
@@ -161,7 +160,7 @@ body.pushable > .pusher {
     position: fixed;
     top: 0;
     right: 0;
-    content: '';
+    content: "";
     background: @dimmerColor;
     overflow: hidden;
     opacity: 0;
@@ -406,12 +405,12 @@ body.pushable > .pusher {
     }
     & when (@variationSidebarTop) {
         .ui.top.overlay.sidebar {
-            transform: translate3d(0%, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
     }
     & when (@variationSidebarBottom) {
         .ui.bottom.overlay.sidebar {
-            transform: translate3d(0%, 100%, 0);
+            transform: translate3d(0, 100%, 0);
         }
     }
 
@@ -424,22 +423,22 @@ body.pushable > .pusher {
     /* End - Sidebar */
     & when (@variationSidebarLeft) {
         .ui.visible.left.overlay.sidebar {
-            transform: translate3d(0%, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
     }
     & when (@variationSidebarRight) {
         .ui.visible.right.overlay.sidebar {
-            transform: translate3d(0%, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
     }
     & when (@variationSidebarTop) {
         .ui.visible.top.overlay.sidebar {
-            transform: translate3d(0%, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
     }
     & when (@variationSidebarBottom) {
         .ui.visible.bottom.overlay.sidebar {
-            transform: translate3d(0%, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
     }
 
@@ -474,18 +473,18 @@ body.pushable > .pusher {
     }
     & when (@variationSidebarTop) {
         .ui.top.push.sidebar {
-            transform: translate3d(0%, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
     }
     & when (@variationSidebarBottom) {
         .ui.bottom.push.sidebar {
-            transform: translate3d(0%, 100%, 0);
+            transform: translate3d(0, 100%, 0);
         }
     }
 
     /* End */
     .ui.visible.push.sidebar {
-        transform: translate3d(0%, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -535,7 +534,7 @@ body.pushable > .pusher {
     }
     & when (@variationSidebarBottom) {
         .ui.bottom.slide.along.sidebar {
-            transform: translate3d(0%, 50%, 0);
+            transform: translate3d(0, 50%, 0);
         }
     }
 
@@ -546,7 +545,7 @@ body.pushable > .pusher {
 
     /* End */
     .ui.visible.slide.along.sidebar {
-        transform: translate3d(0%, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -573,12 +572,12 @@ body.pushable > .pusher {
     }
     & when (@variationSidebarTop) {
         .ui.top.slide.out.sidebar {
-            transform: translate3d(0%, 50%, 0);
+            transform: translate3d(0, 50%, 0);
         }
     }
     & when (@variationSidebarBottom) {
         .ui.bottom.slide.out.sidebar {
-            transform: translate3d(0%, -50%, 0);
+            transform: translate3d(0, -50%, 0);
         }
     }
 
@@ -589,7 +588,7 @@ body.pushable > .pusher {
 
     /* End */
     .ui.visible.slide.out.sidebar {
-        transform: translate3d(0%, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -616,12 +615,12 @@ body.pushable > .pusher {
     }
     & when (@variationSidebarTop) {
         .ui.top.scale.down.sidebar {
-            transform: translate3d(0%, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
     }
     & when (@variationSidebarBottom) {
         .ui.bottom.scale.down.sidebar {
-            transform: translate3d(0%, 100%, 0);
+            transform: translate3d(0, 100%, 0);
         }
     }
 

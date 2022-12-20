@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'flag';
+@type: "element";
+@element: "flag";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Flag
@@ -27,12 +27,12 @@ i.flag:not(.icon) {
 }
 
 i.flag:not(.icon)::before {
-    content: '\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
+    content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
     display: inline-block;
     line-height: @flagLineHeight;
     background-repeat: no-repeat;
     background-position: center center;
-    & when not (@flagFileType = 'svg') {
+    & when not (@flagFileType = "svg") {
         background-size: contain;
     }
 }
@@ -48,11 +48,11 @@ each(@size-map, {
 
 // for simplicity, class and alias names have to be unique and different to countrycode otherwise false
 each(@flags, {
-    @unicode: replace(@key,'@','');
-    @cc: replace(@flags[@@unicode][countrycode],'_','.','g');
-    @cls: replace(@flags[@@unicode][class],'_','.','g');
-    @alias: replace(@flags[@@unicode][aliasClass],'_','.','g');
-    @alias2: replace(@flags[@@unicode][aliasClass2],'_','.','g');
+    @unicode: replace(@key, "@", "");
+    @cc: replace(@flags[@@unicode][countrycode], "_", ".", "g");
+    @cls: replace(@flags[@@unicode][class], "_", ".", "g");
+    @alias: replace(@flags[@@unicode][aliasClass], "_", ".", "g");
+    @alias2: replace(@flags[@@unicode][aliasClass2], "_", ".", "g");
     & when (@cls = false){
         i.flag.@{cc}::before {
             background-image: url("@{flagPath}@{unicode}.@{flagFileType}");

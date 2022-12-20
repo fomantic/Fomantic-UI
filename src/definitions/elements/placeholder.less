@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'placeholder';
+@type: "element";
+@element: "placeholder";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /* -------------------
       Content
@@ -34,10 +34,10 @@
 
 @keyframes placeholderShimmer {
     0% {
-        background-position: -@placeholderLoadingGradientWidth 0
+        background-position: -@placeholderLoadingGradientWidth 0;
     }
     100% {
-        background-position: @placeholderLoadingGradientWidth 0
+        background-position: @placeholderLoadingGradientWidth 0;
     }
 }
 
@@ -100,7 +100,7 @@
     .ui.placeholder .line::after {
         top: 100%;
         position: absolute;
-        content: '';
+        content: "";
         background-color: inherit;
     }
     .ui.placeholder .line::before {
@@ -176,7 +176,7 @@
         .ui.placeholder .image.header::after {
             display: block;
             height: @placeholderLineMargin;
-            content: '';
+            content: "";
             margin-left: @placeholderImageWidth;
         }
     }
@@ -192,7 +192,7 @@
 .ui.placeholder .paragraph:not(:first-child)::before,
 .ui.placeholder .header:not(:first-child)::before {
     height: @placeholderSpacing;
-    content: '';
+    content: "";
     display: block;
 }
 

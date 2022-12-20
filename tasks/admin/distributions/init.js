@@ -84,7 +84,7 @@ module.exports = function (callback) {
         }
 
         // clean folder
-        if (release.outputRoot.search('../repos') == 0) {
+        if (release.outputRoot.startsWith('../repos')) {
             console.info('Cleaning dir', outputDirectory);
             del.sync([outputDirectory + '**/*'], { silent: true, force: true });
         }

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'toast';
+@type: "module";
+@element: "toast";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
         Toast container
@@ -274,7 +274,7 @@
         & .progressing {
             animation-iteration-count: 1;
             animation-timing-function: linear;
-            &  when (@variationToastProgress) {
+            & when (@variationToastProgress) {
                 &.up {
                     animation-name: progressUp;
                 }
@@ -651,7 +651,7 @@
                 color: @toastInvertedTextColor;
             }
         }
-    })
+    });
 }
 
 & when (@variationToastInverted) {
@@ -685,7 +685,7 @@
 /* ---------------
    Progress Bar
  ---------------- */
-&  when (@variationToastProgress) {
+& when (@variationToastProgress) {
     @keyframes progressDown {
         0% {
             width: 100%;

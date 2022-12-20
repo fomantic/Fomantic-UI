@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'progress';
+@type: "module";
+@element: "progress";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Progress
@@ -331,7 +331,7 @@
         min-width: @activeMinWidth;
     }
     .ui.active.progress .bar::after {
-        content: '';
+        content: "";
         opacity: 0;
         position: absolute;
         top: 0;
@@ -486,7 +486,7 @@
                 background-color: @l;
             }
         }
-    })
+    });
 }
 
 /* --------------
@@ -503,13 +503,13 @@
     each(@variationProgressSizes, {
         @h: @{value}BarHeight;
         @s: @@value;
-        .ui.@{value}.progress  {
+        .ui.@{value}.progress {
             font-size: @s;
         }
         .ui.@{value}.progress .bar {
             height: @@h;
         }
-    })
+    });
 }
 
 & when (@variationProgressIndeterminate) {
@@ -527,7 +527,7 @@
         right: 0;
     }
     .ui.indeterminate.progress .bar::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         bottom: 0;
@@ -564,7 +564,7 @@
     .ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
         background: @indeterminatePulseColor;
     }
-    & when (@variationProgressSliding) or (@variationProgressSwinging)  or (@variationProgressFilling) {
+    & when (@variationProgressSliding) or (@variationProgressSwinging) or (@variationProgressFilling) {
         .ui.sliding.indeterminate.progress .bar,
         .ui.swinging.indeterminate.progress .bar,
         .ui.filling.indeterminate.progress .bar {

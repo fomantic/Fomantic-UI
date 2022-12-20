@@ -8,6 +8,6 @@
 @testBackground: @lightBlack;
 @testColor: @white;
 @testFontWeight: @bold;
-@testText: 'Ad';
+@testText: "Ad";
 @testFontSize: @relativeMedium;
 @testMobileFontSize: @relativeTiny;

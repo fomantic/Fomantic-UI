@@ -209,7 +209,7 @@ module.exports = function (callback) {
         --------------- */
 
         // if config exists and user specifies not to proceed
-        if (answers.overwrite !== undefined && answers.overwrite == 'no') {
+        if (answers.overwrite !== undefined && answers.overwrite === 'no') {
             callback();
 
             return;
@@ -270,7 +270,7 @@ module.exports = function (callback) {
             for (let destination in installPaths) {
                 if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
-                    installPaths[destination] = destination == 'config' || destination == 'configFolder'
+                    installPaths[destination] = destination === 'config' || destination === 'configFolder'
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
                         : path.normalize(path.join(installFolder, installPaths[destination]));
                 }
@@ -338,7 +338,7 @@ module.exports = function (callback) {
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder   : '" + pathToSite + "/';"
+                siteVariable = "@siteFolder: '" + pathToSite + "/';"
             ;
 
             // rewrite site variable in theme.less

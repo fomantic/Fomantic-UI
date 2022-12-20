@@ -8,7 +8,7 @@
 
 @stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
-@stepsBackground: '';
+@stepsBackground: "";
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
 
@@ -131,7 +131,7 @@
 @disabledColor: @disabledTextColor;
 
 /* Inverted */
-@invertedActiveBackground: #333333;
-@invertedActiveHoverBackground: #444444;
-@invertedHoverBackground: #3F3F3F;
-@invertedDisabledBackground: #222222;
+@invertedActiveBackground: #333;
+@invertedActiveHoverBackground: #444;
+@invertedHoverBackground: #3f3f3f;
+@invertedDisabledBackground: #222;

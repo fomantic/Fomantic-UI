@@ -95,6 +95,6 @@
 @invertedBackground: @fullBlack;
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
-@invertedActionBackground: #191A1B;
+@invertedActionBackground: #191a1b;
 @invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
 @invertedActionColor: @white;

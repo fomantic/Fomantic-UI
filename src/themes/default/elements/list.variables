@@ -162,7 +162,7 @@
 @bulletOffset: -@bulletDistance;
 
 @bulletOpacity: 1;
-@bulletCharacter: '\2022';
+@bulletCharacter: "\2022";
 @bulletColor: inherit;
 @bulletLinkColor: @textColor;
 @bulletVerticalAlign: top;

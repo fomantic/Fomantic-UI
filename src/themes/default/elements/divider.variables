@@ -34,7 +34,7 @@
 *******************************/
 
 /* Horizontal / Vertical */
-@horizontalMargin: '';
+@horizontalMargin: "";
 @horizontalDividerMargin: 1em;
 @horizontalRulerOffset: e(%("calc(-50%% - %d)", @horizontalDividerMargin));
 

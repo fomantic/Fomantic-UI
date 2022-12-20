@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'emoji';
+@type: "element";
+@element: "emoji";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Emoji
@@ -28,12 +28,12 @@ em[data-emoji] {
 }
 
 em[data-emoji]::before {
-    content: '\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
+    content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0";
     display: inline-block;
     line-height: @emojiLineHeight;
     background-repeat: no-repeat;
     background-position: center center;
-    & when not (@emojiFileType = 'svg') {
+    & when not (@emojiFileType = "svg") {
         background-size: contain;
     }
 }
@@ -77,7 +77,7 @@ each(@size-map, {
     }
 });
 
-each(@emoji-map,{
+each(@emoji-map, {
     & when (@variationEmojiColons) {
         em[data-emoji=":@{value}:"]::before {
             background-image: url("@{emojiPath}@{key}.@{emojiFileType}");

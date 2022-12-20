@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'view';
-@element : 'card';
+@type: "view";
+@element: "card";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -78,7 +78,7 @@
 .ui.cards::after,
 .ui.card::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -156,7 +156,7 @@
 .ui.cards > .card > .content::after,
 .ui.card > .content::after {
     display: block;
-    content: ' ';
+    content: " ";
     height: 0;
     clear: both;
     overflow: hidden;
@@ -493,7 +493,7 @@
     }
     .ui.loading.card::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -504,7 +504,7 @@
     }
     .ui.loading.card::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -550,13 +550,6 @@
         background-position: center;
         justify-content: center;
         align-items: center;
-        display: -webkit-box;
-        display: -moz-box;
-        & when (@supportIE) {
-            display: -ms-flexbox;
-        }
-
-        display: -webkit-flex;
         display: flex;
         width: 100%;
         border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
@@ -680,9 +673,9 @@
         .ui.cards > .@{color}.card,
         .ui.@{color}.card {
             box-shadow:
-            @borderShadow,
-            0 @coloredShadowDistance 0 0 @c,
-            @shadowBoxShadow
+                @borderShadow,
+                0 @coloredShadowDistance 0 0 @c,
+                @shadowBoxShadow
             ;
         }
         & when (@variationCardLink) {
@@ -693,9 +686,9 @@
             a.ui.@{color}.card:hover,
             .ui.link.@{color}.card:hover {
                 box-shadow:
-                @borderShadow,
-                0 @coloredShadowDistance 0 0 @h,
-                @shadowHoverBoxShadow
+                    @borderShadow,
+                    0 @coloredShadowDistance 0 0 @h,
+                    @shadowHoverBoxShadow
                 ;
             }
         }
@@ -705,7 +698,7 @@
             .ui.basic.cards > .@{color}.card,
             .ui.basic.@{color}.card {
                 background: @l;
-                &  when (@isVeryDark) {
+                & when (@isVeryDark) {
                     & .header,
                     .content,
                     .meta,
@@ -732,9 +725,9 @@
             .ui.inverted.cards > .@{color}.card,
             .ui.inverted.@{color}.card {
                 box-shadow:
-                0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-                0 @coloredShadowDistance 0 0 @l,
-                0 0 0 @borderWidth @solidWhiteBorderColor
+                    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                    0 @coloredShadowDistance 0 0 @l,
+                    0 0 0 @borderWidth @solidWhiteBorderColor
                 ;
             }
             & when (@variationCardLink) {
@@ -745,9 +738,9 @@
                 a.ui.inverted.@{color}.card:hover,
                 .ui.link.inverted.@{color}.card:hover {
                     box-shadow:
-                    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-                    0 @coloredShadowDistance 0 0 @lh,
-                    0 0 0 @borderWidth @solidWhiteBorderColor
+                        0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                        0 @coloredShadowDistance 0 0 @lh,
+                        0 0 0 @borderWidth @solidWhiteBorderColor
                     ;
                 }
             }
@@ -772,7 +765,7 @@
                 }
             }
         }
-    })
+    });
 }
 
 & when (@variationCardEqualWidth) {
@@ -1093,7 +1086,7 @@
         .ui.@{value}.cards .card {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationCardInverted) {

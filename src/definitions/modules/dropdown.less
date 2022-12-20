@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'dropdown';
+@type: "module";
+@element: "dropdown";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Dropdown
@@ -388,7 +388,7 @@ select.ui.dropdown {
         line-height: 1em;
         white-space: normal;
         outline: 0;
-        transform: rotateZ(0deg);
+        transform: rotateZ(0);
         min-width: @selectionMinWidth;
         min-height: @selectionMinHeight;
         background: @selectionBackground;
@@ -428,13 +428,12 @@ select.ui.dropdown {
         }
     }
 
-    /*  Selection Menu */
+    /* Selection Menu */
     .ui.selection.dropdown .menu {
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
         border-top-width: 0 !important;
         width: auto;
         outline: none;
@@ -633,12 +632,12 @@ select.ui.dropdown {
         box-shadow: none !important;
     }
     & when (@variationDropdownScrollhint) {
-        /* CSS specific to iOS devices or firefox mobile only  */
-        @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+        /* CSS specific to iOS devices or firefox mobile only */
+        @supports (-webkit-touch-callout: none) or (-moz-appearance: none) {
             @media (-moz-touch-enabled), (pointer: coarse) {
                 .ui.dropdown .scrollhint.menu:not(.hidden)::before {
                     animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
-                    content: '';
+                    content: "";
                     z-index: @scrollhintZIndex;
                     display: block;
                     position: absolute;
@@ -751,7 +750,6 @@ select.ui.dropdown {
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
     }
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.search.dropdown .menu {
@@ -805,7 +803,7 @@ select.ui.dropdown {
     }
 
     .ui.dropdown select.noselection ~ .remove.icon,
-    .ui.dropdown input[value=''] ~ .remove.icon,
+    .ui.dropdown input[value=""] ~ .remove.icon,
     .ui.dropdown input:not([value]) ~ .remove.icon,
     .ui.dropdown.loading > .remove.icon {
         display: none;
@@ -998,7 +996,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -1009,7 +1007,7 @@ select.ui.dropdown {
     }
     .ui.loading.dropdown > i.icon::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         box-shadow: 0 0 0 1px transparent;
@@ -1117,7 +1115,7 @@ select.ui.dropdown {
         .ui.dropdown.@{state} > .menu .active.item {
             background-color: @formStates[@@state][dropdownActiveBackground];
         }
-    })
+    });
 }
 
 & when (@variationDropdownClear) {
@@ -1288,14 +1286,13 @@ select.ui.dropdown {
          Scrolling
     --------------- */
 
-    /*  Selection Menu */
+    /* Selection Menu */
     .ui.scrolling.dropdown .menu,
     .ui.dropdown .scrolling.menu {
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        -webkit-overflow-scrolling: touch;
         min-width: 100% !important;
         width: auto !important;
     }
@@ -1551,7 +1548,7 @@ select.ui.dropdown {
         display: block;
         position: absolute;
         pointer-events: none;
-        content: '';
+        content: "";
         visibility: visible;
         transform: rotate(45deg);
         width: @pointingArrowSize;
@@ -1748,7 +1745,7 @@ select.ui.dropdown {
         .ui.@{value}.dropdown .menu > .item {
             font-size: @s;
         }
-    })
+    });
 }
 
 & when (@variationDropdownInverted) {
@@ -1946,7 +1943,7 @@ select.ui.dropdown {
                 scrollbar-arrow-color: @trackInvertedBackgroundHex;
             }
 
-            /* firefox : first color thumb, second track */
+            /* firefox: first color thumb, second track */
             scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
         }
     }

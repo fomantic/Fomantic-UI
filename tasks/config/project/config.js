@@ -28,7 +28,7 @@ module.exports = {
                     configPath = path.normalize(directory);
                 } else {
                     // reached file system root, let's stop
-                    if (nextDirectory == directory) {
+                    if (nextDirectory === directory) {
                         return;
                     }
                     // otherwise recurse
@@ -116,7 +116,7 @@ module.exports = {
         // remove duplicates from component array
         if (Array.isArray(config.components)) {
             config.components = config.components.filter(function (component, index) {
-                return config.components.indexOf(component) == index;
+                return config.components.indexOf(component) === index;
             });
         }
 

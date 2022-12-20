@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'modal';
+@type: "module";
+@element: "modal";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Modal
@@ -260,7 +260,6 @@
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
-
     .ui.modal > .header {
         padding: @mobileHeaderPadding;
     }
@@ -447,7 +446,6 @@
     .scrolling.dimmable.dimmed > .dimmer {
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
-        -webkit-overflow-scrolling: touch;
     }
     .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
         margin: @scrollingMargin auto;
@@ -455,7 +453,7 @@
 
     /* Fix for Firefox, Edge, IE11 */
     .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
-        content: '\00A0';
+        content: "\00A0";
         position: absolute;
         height: @scrollingMargin;
     }
@@ -464,7 +462,6 @@
     .scrolling.undetached.dimmable.dimmed {
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
-        -webkit-overflow-scrolling: touch;
     }
     .scrolling.undetached.dimmable.dimmed > .dimmer {
         overflow: hidden;
@@ -550,37 +547,37 @@
         .ui.@{value}.modal > .header:not(.ui) {
             font-size: @@hs;
         }
-        @media only screen and (max-width : @largestMobileScreen) {
+        @media only screen and (max-width: @largestMobileScreen) {
             .ui.@{value}.modal {
                 width: @@mw;
                 margin: @@mm;
             }
         }
-        @media only screen and (min-width : @tabletBreakpoint) {
+        @media only screen and (min-width: @tabletBreakpoint) {
             .ui.@{value}.modal {
                 width: @@tw;
                 margin: @@tm;
             }
         }
-        @media only screen and (min-width : @computerBreakpoint) {
+        @media only screen and (min-width: @computerBreakpoint) {
             .ui.@{value}.modal {
                 width: @@cw;
                 margin: @@cm;
             }
         }
-        @media only screen and (min-width : @largeMonitorBreakpoint) {
+        @media only screen and (min-width: @largeMonitorBreakpoint) {
             .ui.@{value}.modal {
                 width: @@lw;
                 margin: @@lm;
             }
         }
-        @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+        @media only screen and (min-width: @widescreenMonitorBreakpoint) {
             .ui.@{value}.modal {
                 width: @@ww;
                 margin: @@wm;
             }
         }
-    })
+    });
 }
 
 & when (@variationModalInverted) {

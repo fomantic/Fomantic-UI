@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'loader';
+@type: "element";
+@element: "loader";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Loader
@@ -36,7 +36,7 @@
 /* Static Shape */
 .ui.loader::before {
     position: absolute;
-    content: '';
+    content: "";
     top: 0;
     left: 50%;
     width: 100%;
@@ -48,7 +48,7 @@
 /* Active Shape */
 .ui.loader::after {
     position: absolute;
-    content: '';
+    content: "";
     top: 0;
     left: 50%;
     width: 100%;
@@ -192,7 +192,7 @@
                 padding-top: (@s + @textDistance);
             }
         }
-    })
+    });
 }
 
 /* -------------------
@@ -226,7 +226,7 @@
         .ui.inverted.@{color}.loader.loader.loader::after {
             color: @l;
         }
-    })
+    });
 }
 
 .ui.elastic.loader.loader::before,
@@ -328,6 +328,8 @@
     .ui.elastic.loading.loading.loading > i.icon::before,
     .ui.elastic.loader.loader::before {
         animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+        // https://github.com/fomantic/Fomantic-UI/pull/363
+        // stylelint-disable-next-line property-no-vendor-prefix
         -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
         border-right-color: transparent;
     }
@@ -368,7 +370,7 @@
         0%,
         1% {
             border-left-color: transparent;
-            border-bottom-color: transparent
+            border-bottom-color: transparent;
         }
         1.1%,
         50% {
@@ -396,7 +398,7 @@
         0%,
         1% {
             border-left-color: transparent;
-            border-bottom-color: transparent
+            border-bottom-color: transparent;
         }
         1.1%,
         50% {

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'collection';
-@element : 'form';
+@type: "collection";
+@element: "form";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Elements
@@ -281,7 +281,7 @@
 }
 
 & when (@variationFormInline) {
-    /* Inline  */
+    /* Inline */
     .ui.form .inline.fields .field:not(.wide) .ui.input,
     .ui.form .inline.field:not(.wide) .ui.input {
         width: auto;
@@ -322,7 +322,7 @@
         .ui.form .@{state}.message:empty {
             display: none;
         }
-    })
+    });
 }
 
 /* Assumptions */
@@ -740,7 +740,7 @@
                 color: @lbg;
             }
         }
-    })
+    });
 }
 
 & when (@variationFormDisabled) {
@@ -775,7 +775,7 @@
     }
     .ui.loading.form::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         background: @loaderDimmerColor;
@@ -790,7 +790,7 @@
 
     .ui.loading.form::after {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         margin: @loaderMargin;
@@ -1167,7 +1167,7 @@
         .ui.@{value}.form .field .dropdown .menu > .item {
             font-size: @s;
         }
-    })
+    });
 }
 
 .loadUIOverrides();

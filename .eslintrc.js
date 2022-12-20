@@ -85,7 +85,6 @@ module.exports = {
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
-        'unicorn/switch-case-braces': ['error', 'avoid'],
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
@@ -113,7 +112,7 @@ module.exports = {
         'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
-        eqeqeq: 'off', // about 300 errors to be fixed manually
+        eqeqeq: 'off', // about 20 errors to be fixed manually
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)

@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'module';
-@element : 'flyout';
+@type: "module";
+@element: "flyout";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Flyout
@@ -31,7 +31,6 @@
     will-change: transform;
     transform: translate3d(0, 0, 0);
     visibility: hidden;
-    -webkit-overflow-scrolling: touch;
     height: 100%;
     max-height: 100%;
     max-width: 100%;
@@ -279,7 +278,7 @@ body.pushable > .pusher {
     position: fixed;
     top: 0;
     right: 0;
-    content: '';
+    content: "";
     background: @dimmerColor;
     overflow: hidden;
     opacity: 0;
@@ -610,12 +609,12 @@ body.pushable > .pusher {
     }
     & when (@variationFlyoutTop) {
         .ui.top.overlay.flyout {
-            transform: translate3d(0%, -100%, 0);
+            transform: translate3d(0, -100%, 0);
         }
     }
     & when (@variationFlyoutBottom) {
         .ui.bottom.overlay.flyout {
-            transform: translate3d(0%, 100%, 0);
+            transform: translate3d(0, 100%, 0);
         }
     }
 
@@ -627,7 +626,7 @@ body.pushable > .pusher {
 
     /* End - flyout */
     .ui.visible.overlay.flyout {
-        transform: translate3d(0%, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 
     /* End - Pusher */

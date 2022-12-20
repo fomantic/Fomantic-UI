@@ -13,10 +13,10 @@
             Theme
 *******************************/
 
-@type : 'collection';
-@element : 'menu';
+@type: "collection";
+@element: "menu";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Standard
@@ -39,7 +39,7 @@
 }
 
 .ui.menu::after {
-    content: '';
+    content: "";
     display: block;
     height: 0;
     clear: both;
@@ -97,7 +97,7 @@
 /* Border */
 .ui.menu .item::before {
     position: absolute;
-    content: '';
+    content: "";
     top: 0;
     right: 0;
     height: 100%;
@@ -569,7 +569,7 @@ Floated Menu / Item
     /* --- Border --- */
     .ui.vertical.menu .item::before {
         position: absolute;
-        content: '';
+        content: "";
         top: 0;
         left: 0;
         width: 100%;
@@ -1319,7 +1319,7 @@ Floated Menu / Item
         }
         .ui.stackable.menu .item::before {
             position: absolute;
-            content: '';
+            content: "";
             top: auto;
             bottom: 0;
             left: 0;
@@ -1368,7 +1368,7 @@ Floated Menu / Item
                 color: @c;
             }
         }
-    })
+    });
 }
 
 & when (@variationMenuInverted) {
@@ -1530,8 +1530,8 @@ Floated Menu / Item
                     }
                 }
             }
-        })
-  }
+        });
+    }
 
     & when (@variationMenuPointing) {
         .ui.ui.ui.inverted.pointing.menu .active.item::after {
@@ -1756,7 +1756,7 @@ Floated Menu / Item
     .ui.pointing.menu .item::after {
         visibility: hidden;
         position: absolute;
-        content: '';
+        content: "";
         top: 100%;
         left: 50%;
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -1841,7 +1841,7 @@ Floated Menu / Item
         .ui.inverted.pointing.menu .@{color}.active.item::after {
             background-color: @c;
         }
-    })
+    });
 }
 
 & when (@variationMenuAttached) {
@@ -1945,7 +1945,7 @@ Floated Menu / Item
                 width: @@w;
             }
         }
-    })
+    });
 }
 
 /* -------------------

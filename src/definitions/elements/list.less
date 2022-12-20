@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type : 'element';
-@element : 'list';
+@type: "element";
+@element: "list";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             List
@@ -64,7 +64,7 @@ ul.ui.list > li:first-child::after,
 ol.ui.list > li:first-child::after,
 .ui.list > .list > .item::after,
 .ui.list > .item::after {
-    content: '';
+    content: "";
     display: block;
     height: 0;
     clear: both;
@@ -1020,7 +1020,7 @@ ol.ui.list ol li,
                 font-size: @s;
             }
         }
-    })
+    });
 }
 
 .loadUIOverrides();
