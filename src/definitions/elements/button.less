@@ -903,11 +903,7 @@
     .ui.tertiary.button {
         transition: color @defaultDuration @defaultEasing !important;
         border-radius: 0;
-        margin:
-            (@verticalPadding - @tertiaryVerticalPadding)
-            (@horizontalMargin)
-            (@verticalPadding + @shadowOffset + @verticalMargin - @tertiaryVerticalPadding)
-            0 !important;
+        margin: (@verticalPadding - @tertiaryVerticalPadding) (@horizontalMargin) (@verticalPadding + @shadowOffset + @verticalMargin - @tertiaryVerticalPadding) 0 !important;
         padding: @tertiaryVerticalPadding @tertiaryHorizontalPadding !important;
 
         & when (@tertiaryWithUnderline = true) {
