@@ -57,15 +57,15 @@ hr {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
+ * 1. Correct the odd `em` font sizing in all browsers.
  */
 
 pre {
+    // https://github.com/necolas/normalize.css/issues/519
     font-family:
         monospace,
-        monospace; /* 1 */
-    font-size: 1em; /* 2 */
+        monospace;
+    font-size: 1em; /* 1 */
 }
 
 /* Text-level semantics
@@ -100,17 +100,17 @@ strong {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
+ * 1. Correct the odd `em` font sizing in all browsers.
  */
 
 code,
 kbd,
 samp {
+    // https://github.com/necolas/normalize.css/issues/519
     font-family:
         monospace,
-        monospace; /* 1 */
-    font-size: 1em; /* 2 */
+        monospace;
+    font-size: 1em; /* 1 */
 }
 
 /**

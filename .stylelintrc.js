@@ -16,11 +16,12 @@ module.exports = {
         'color-hex-case': 'lower',
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         'function-no-unknown': null,
-        indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed
+        'import-notation': null,
+        indentation: null, // handled by Prettier
         linebreaks: 'unix',
         'max-line-length': null,
         'no-descending-specificity': null,
-        'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
+        'no-extra-semicolons': null, // handled by Prettier
         'no-duplicate-selectors': null,
         'number-max-precision': 5,
         'property-case': null,
@@ -36,19 +37,11 @@ module.exports = {
         'string-quotes': 'double',
         'value-keyword-case': null,
 
-        // fix compatibility with Prettier
-        'declaration-bang-space-before': null,
-        'declaration-block-semicolon-space-before': null,
-        'declaration-colon-newline-after': null,
-        'declaration-empty-line-before': null, // TODO
-        'selector-combinator-space-before': null,
-
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
+        'selector-not-notation': null, // https://caniuse.com/css-not-sel-list
 
         // TODO
-        'selector-not-notation': null, // 169 errors
-        'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
