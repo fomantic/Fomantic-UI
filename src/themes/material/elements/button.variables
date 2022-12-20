@@ -7,7 +7,10 @@
 -------------------- */
 
 @googleFontName: "Roboto";
-@pageFont: "Roboto", Arial, sans-serif;
+@pageFont:
+    "Roboto",
+    Arial,
+    sans-serif;
 
 @medium: 13px;
 

@@ -3,10 +3,42 @@
 ***********************************************************/
 
 /* General */
-@variationAllSizes: mini, tiny, small, large, big, huge, massive;
-@variationAllColors: primary, secondary, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black;
-@variationAllStates: error, info, success, warning;
-@variationAllConsequences: positive, negative, error, info, success, warning;
+@variationAllSizes:
+    mini,
+    tiny,
+    small,
+    large,
+    big,
+    huge,
+    massive;
+@variationAllColors:
+    primary,
+    secondary,
+    red,
+    orange,
+    yellow,
+    olive,
+    green,
+    teal,
+    blue,
+    violet,
+    purple,
+    pink,
+    brown,
+    grey,
+    black;
+@variationAllStates:
+    error,
+    info,
+    success,
+    warning;
+@variationAllConsequences:
+    positive,
+    negative,
+    error,
+    info,
+    success,
+    warning;
 
 /*******************************
            Elements
