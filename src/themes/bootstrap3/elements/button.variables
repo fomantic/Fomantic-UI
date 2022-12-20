@@ -50,8 +50,7 @@
 /* States */
 
 @hoverBackgroundColor: #e6e6e6;
-@hoverBoxShadow:
-    0 0 0 1px #adadad inset;
+@hoverBoxShadow: 0 0 0 1px #adadad inset;
 
 @downBackgroundColor: #e6e6e6;
 @downBoxShadow:
