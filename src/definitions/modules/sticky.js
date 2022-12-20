@@ -55,13 +55,7 @@
 
                 instance              = $module.data(moduleNamespace),
 
-                requestAnimationFrame = window.requestAnimationFrame
-                    || window.mozRequestAnimationFrame
-                    || window.webkitRequestAnimationFrame
-                    || window.msRequestAnimationFrame
-                    || function (callback) {
-                        setTimeout(callback, 0);
-                    },
+                requestAnimationFrame = window.requestAnimationFrame,
 
                 element         = this,
 
@@ -768,7 +762,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
