@@ -37,14 +37,6 @@
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
-            requestAnimationFrame = window.requestAnimationFrame
-                || window.mozRequestAnimationFrame
-                || window.webkitRequestAnimationFrame
-                || window.msRequestAnimationFrame
-                || function (callback) {
-                    setTimeout(callback, 0);
-                },
-
             returnedValue
         ;
 
@@ -437,14 +429,12 @@
                             style += ''
                                 + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
-                                + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
                         } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
-                                + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + ' }';
                         }
@@ -456,13 +446,11 @@
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
                             } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + ' }';
                             }
@@ -470,7 +458,6 @@
                             style += ''
                                 + ' body.pushable > .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .pusher::after,'
                                 + ' body.pushable > .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .pusher::after {'
-                                + '   -webkit-transform: translate3d(0, 0, 0);'
                                 + '           transform: translate3d(0, 0, 0);'
                                 + ' }';
                         }
@@ -1215,7 +1202,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

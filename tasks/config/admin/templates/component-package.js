@@ -1,8 +1,8 @@
 Package.describe({
-    name: 'semantic:ui-{component}',
-    summary: 'Semantic UI - {Component}: Single component release',
+    name: 'fomantic:ui-{component}',
+    summary: 'Fomantic UI - {Component}: Single component release',
     version: '{version}',
-    git: 'git://github.com/Semantic-Org/UI-{Component}.git',
+    git: 'git://github.com/fomantic/UI-{Component}.git',
 });
 
 Package.onUse(function (api) {

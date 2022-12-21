@@ -11,10 +11,10 @@ const
 ;
 
 module.exports = function (callback) {
-    console.info('Building Semantic');
+    console.info('Building Fomantic');
 
     if (!install.isSetup()) {
-        console.error('Cannot find semantic.json. Run "gulp install" to set-up Semantic');
+        console.error('Cannot find semantic.json. Run "gulp install" to set-up Fomantic');
 
         return 1;
     }
