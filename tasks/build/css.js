@@ -122,7 +122,7 @@ function pack(type, compress) {
 
 function buildCSS(src, type, config, opts, callback) {
     if (!install.isSetup()) {
-        console.error('Cannot build CSS files. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build CSS files. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;
