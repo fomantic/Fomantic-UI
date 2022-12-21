@@ -455,7 +455,9 @@
         .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
             flex: 1 1 auto;
             & when (@supportIE) {
-                -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+                // https://github.com/Semantic-Org/Semantic-UI/issues/2550
+                // stylelint-disable-next-line property-no-vendor-prefix
+                -ms-flex: 1 1 0;
             }
         }
         .ui.horizontal.segments > .segment {
