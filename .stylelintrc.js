@@ -14,6 +14,7 @@ module.exports = {
         'color-function-notation': 'legacy',
         'color-hex-case': 'lower',
         'declaration-colon-newline-after': null, // handled by Prettier
+        'font-family-no-missing-generic-family-keyword': null,
         'function-no-unknown': null,
         'import-notation': null,
         indentation: null, // handled by Prettier
@@ -46,7 +47,6 @@ module.exports = {
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
         'value-no-vendor-prefix': null, // 9 errors
-        'font-family-no-missing-generic-family-keyword': null, // 8 errors
     },
     reportNeedlessDisables: true,
 };
