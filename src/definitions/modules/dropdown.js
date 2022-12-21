@@ -8,7 +8,7 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
@@ -3582,6 +3582,14 @@
                     useAPI: function () {
                         return $.fn.api !== undefined;
                     },
+                    useElement: function (element) {
+                        if ($.fn[element] !== undefined) {
+                            return true;
+                        }
+                        module.error(error.noElement.replace('{element}', element));
+
+                        return false;
+                    },
                 },
 
                 animate: {
@@ -3613,7 +3621,7 @@
                                     displayType: module.get.displayType(),
                                 }).transition('show');
                                 callback.call(element);
-                            } else if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            } else if (module.can.useElement('transition') && $module.transition('is supported')) {
                                 $currentMenu
                                     .transition({
                                         animation: transition + ' in',
@@ -3629,8 +3637,6 @@
                                         },
                                     })
                                 ;
-                            } else {
-                                module.error(error.noTransition, transition);
                             }
                         }
                     },
@@ -3845,7 +3851,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -4048,7 +4054,7 @@
             method: 'The method you called is not defined.',
             noAPI: 'The API module is required to load resources remotely',
             noStorage: 'Saving remote data requires session storage',
-            noTransition: 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>',
+            noElement: 'This module requires ui {element}',
             noNormalize: '"ignoreDiacritics" setting will be ignored. Browser does not support String().normalize(). You may consider including <https://cdn.jsdelivr.net/npm/unorm@1.4.1/lib/unorm.min.js> as a polyfill.',
         },
 

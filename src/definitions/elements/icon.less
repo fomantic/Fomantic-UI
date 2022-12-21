@@ -443,8 +443,7 @@ i.icons {
     }
 }
 
-& when ((@variationIconGroups) or (@variationIconCorner))
-and ((@variationIconBordered) or (@variationIconCircular)) {
+& when ((@variationIconGroups) or (@variationIconCorner)) and ((@variationIconBordered) or (@variationIconCircular)) {
     /*************************************************
        Bordered/circular with corner or group icons
     *************************************************/
@@ -513,32 +512,25 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     }
 }
 
-.generateIcons(@map, @fontFamily) {
+.generateIcons(@map, @fontFamily: false, @pseudo: before) {
     each(@map, {
         @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
-        @normalizedKey: replace(@escapedKey, "_", ".", "g");
-        i.icon.@{normalizedKey}::before {
+        @normalizedKey: replace(@escapedKey, "_", @iconClassSeparator, "g");
+        @unorderedKey: e(%(".%s::%s",@normalizedKey, @pseudo));
+        @orderedKey: e(%('[%s*="%s"]::%s', @iconForcedAttribute, @normalizedKey, @pseudo));
+        @selectorKey: if(@iconForcedOrder or @iconClassSeparator = " ", @orderedKey, @unorderedKey);
+        i.icon@{selectorKey} {
             content: "@{value}";
             & when not (@fontFamily = false) {
                 font-family: @fontFamily;
             }
         }
     });
-};
-
-.generateSecondaryIcons(@map) {
-    each(@map, {
-        @escapedKey: replace(@key, "^([0-9])", "\3$1 ");
-        @normalizedKey: replace(@escapedKey, "_", ".", "g");
-        i.icon.@{normalizedKey}::after {
-            content: "@{value}";
-        }
-    });
-};
+}
 
 & when (@variationIconDeprecated) {
     /* Deprecated *In/Out Naming Conflict) */
-    .generateIcons(@icon-deprecated-map, false);
+    .generateIcons(@icon-deprecated-map);
 }
 
 & when (@variationIconSolid) {
@@ -547,10 +539,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     *******************************/
 
     /* Icons */
-    .generateIcons(@icon-map, false);
+    .generateIcons(@icon-map);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-aliases-map, false);
+        .generateIcons(@icon-aliases-map);
     }
 }
 
@@ -564,10 +556,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     }
 
     /* Icons */
-    .generateIcons(@icon-outline-map, false);
+    .generateIcons(@icon-outline-map);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-outline-aliases-map, false);
+        .generateIcons(@icon-outline-aliases-map);
     }
 }
 
@@ -580,10 +572,10 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     i.icon.thin {
         font-family: @thinFontName;
     }
-    .generateIcons(@icon-thin-map, false);
+    .generateIcons(@icon-thin-map);
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-thin-aliases-map, false);
+        .generateIcons(@icon-thin-aliases-map);
     }
 }
 
@@ -630,13 +622,13 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         opacity: @duotoneSecondaryOpacity;
     }
 
-    .generateIcons(@icon-duotone-map, false);
-    .generateSecondaryIcons(@icon-duotone-secondary-map);
+    .generateIcons(@icon-duotone-map);
+    .generateIcons(@icon-duotone-secondary-map, false, after);
 
     & when (@variationIconAliases) {
         /* Aliases */
-        .generateIcons(@icon-duotone-aliases-map, false);
-        .generateSecondaryIcons(@icon-duotone-secondary-aliases-map);
+        .generateIcons(@icon-duotone-aliases-map);
+        .generateIcons(@icon-duotone-secondary-aliases-map, false, after);
     }
 
     /*

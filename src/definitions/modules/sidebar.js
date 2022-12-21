@@ -8,7 +8,7 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
@@ -36,14 +36,6 @@
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
-
-            requestAnimationFrame = window.requestAnimationFrame
-                || window.mozRequestAnimationFrame
-                || window.webkitRequestAnimationFrame
-                || window.msRequestAnimationFrame
-                || function (callback) {
-                    setTimeout(callback, 0);
-                },
 
             returnedValue;
 
@@ -246,14 +238,12 @@
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
                         } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + ' }';
                         }
@@ -265,13 +255,11 @@
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
                             } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + ' }';
                             }
@@ -279,7 +267,6 @@
                             style += ''
                                 + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
                                 + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
-                                + '   -webkit-transform: translate3d(0, 0, 0);'
                                 + '           transform: translate3d(0, 0, 0);'
                                 + ' }';
                         }
@@ -937,7 +924,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

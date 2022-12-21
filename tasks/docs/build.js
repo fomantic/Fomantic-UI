@@ -95,10 +95,10 @@ module.exports = function (callback) {
          Build
     --------------- */
 
-    console.info('Building Semantic for docs');
+    console.info('Building Fomantic for docs');
 
     if (!install.isSetup()) {
-        console.error('Cannot build files. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build files. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;

@@ -22,8 +22,7 @@
 @iconPadding: 0;
 @iconTransition:
     transform @defaultDuration @defaultEasing,
-    opacity @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: baseline;
 @iconTransform: none;
 @iconTransformRight: @menuIconTransform;
@@ -61,8 +60,7 @@
 @styledBorderRadius: @defaultBorderRadius;
 @styledBoxShadow:
     @subtleShadow,
-    0 0 0 1px @borderColor
-;
+    0 0 0 1px @borderColor;
 
 /* Content */
 @styledContentMargin: 0;
@@ -81,8 +79,7 @@
 @styledTitleBorder: 1px solid @borderColor;
 @styledTitleTransition:
     background @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing;
 
 /* Styled Title States */
 @styledTitleHoverBackground: transparent;
@@ -103,8 +100,7 @@
 @invertedStyledTitleBorder: 1px solid @whiteBorderColor;
 @invertedStyledBoxShadow:
     @subtleShadow,
-    0 0 0 1px @whiteBorderColor
-;
+    0 0 0 1px @whiteBorderColor;
 @invertedStyledTitleHoverBackground: transparent;
 @invertedStyledTitleHoverColor: @invertedTextColor;
 @invertedStyledActiveTitleBackground: transparent;

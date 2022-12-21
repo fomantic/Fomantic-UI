@@ -17,8 +17,7 @@
 @width: 300px;
 @boxShadow:
     0 0 0 1px @borderColor,
-    0 3px 0 0 @borderColor
-;
+    0 3px 0 0 @borderColor;
 @border: none;
 @zIndex: "";
 
@@ -87,8 +86,7 @@
 @hoverBorder: none;
 @hoverBoxShadow:
     0 0 0 1px @selectedBorderColor,
-    0 3px 0 0 @selectedBorderColor
-;
+    0 3px 0 0 @selectedBorderColor;
 
 /* -------------------
       Variations

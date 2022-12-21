@@ -14,8 +14,7 @@
 @borderRadius: @defaultBorderRadius;
 @transition:
     background @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing;
 @background: @white;
 @color: @textColor;
 @borderWidth: 1px;
@@ -169,8 +168,7 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
     @boxShadow,
-    @attachedBoxShadow
-;
+    @attachedBoxShadow;
 
 /* Striped */
 @stripedBackground: rgba(0, 0, 50, 0.02);
