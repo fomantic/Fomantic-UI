@@ -11,10 +11,9 @@ module.exports = {
         'at-rule-empty-line-before': null,
         'at-rule-name-case': null,
         'at-rule-no-unknown': null,
-        'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
         'color-function-notation': 'legacy',
         'color-hex-case': 'lower',
-        'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
+        'declaration-colon-newline-after': null, // handled by Prettier
         'function-no-unknown': null,
         'import-notation': null,
         indentation: null, // handled by Prettier

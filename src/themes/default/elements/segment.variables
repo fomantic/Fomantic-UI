@@ -131,6 +131,7 @@
 @tertiaryColor: @mutedTextColor;
 
 @secondaryInvertedLightness: 0.2;
+// prettier-ignore
 @secondaryInvertedBackground:
     lighten(@black, (@secondaryInvertedLightness * 100))
     linear-gradient(
@@ -140,6 +141,7 @@
 @secondaryInvertedColor: @invertedMutedTextColor;
 
 @tertiaryInvertedLightness: 0.35;
+// prettier-ignore
 @tertiaryInvertedBackground:
     lighten(@black, (@tertiaryInvertedLightness * 100))
     linear-gradient(
