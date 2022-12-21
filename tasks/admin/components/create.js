@@ -169,7 +169,7 @@ module.exports = function (callback) {
                     .pipe(flatten())
                     .pipe(jsonEditor(function (bower) {
                         bower.name = packageName;
-                        bower.description = capitalizedComponent + ' - Semantic UI';
+                        bower.description = capitalizedComponent + ' - Fomantic UI';
                         if (isJavascript) {
                             bower.main = isCSS
                                 ? [component + '.js', component + '.css']
@@ -205,7 +205,7 @@ module.exports = function (callback) {
                         if (version) {
                             npm.version = version;
                         }
-                        npm.title = 'Semantic UI - ' + capitalizedComponent;
+                        npm.title = 'Fomantic UI - ' + capitalizedComponent;
                         npm.description = 'Single component release of ' + component;
                         npm.repository = {
                             type: 'git',

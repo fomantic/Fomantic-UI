@@ -4,7 +4,7 @@
 
 /*
   Lets you serve files to a local documentation instance
-  https://github.com/Semantic-Org/Semantic-UI-Docs/
+  https://github.com/fomantic/Fomantic-UI-Docs/
 */
 module.exports = function (gulp) {
     let
