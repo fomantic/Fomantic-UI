@@ -38,9 +38,7 @@
 @variationButtonWrapping: true;
 @variationButtonWrapped: true;
 @variationButtonSpaced: true;
-@variationButtonConsequences:
-    positive,
-    negative;
+@variationButtonConsequences: positive, negative;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 
@@ -83,13 +81,7 @@
 @variationHeaderDividing: true;
 @variationHeaderBlock: true;
 @variationHeaderAttached: true;
-@variationHeaderTags:
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6;
+@variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 @variationHeaderColors: @variationAllColors;
 
@@ -690,10 +682,7 @@
 @variationSliderTicked: true;
 @variationSliderVertical: true;
 @variationSliderBasic: true;
-@variationSliderSizes:
-    small,
-    large,
-    big;
+@variationSliderSizes: small, large, big;
 @variationSliderColors: @variationAllColors;
 
 /* Tab */

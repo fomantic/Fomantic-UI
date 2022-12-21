@@ -11,10 +11,12 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     - name: Install dependencies
-      run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript github:fomantic/prettier#ca4fc1130f
+      run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
     - name: Lint JS and LESS files
+      run: npm run lint
+    - name: Assert LESS files formatting using Prettier
       run: >
-        npm run lint
+        yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript github:fomantic/prettier#2.8.1-patched
         && npx prettier --loglevel warn '!dist' '!test/coverage' '!src/semantic.less' '**/*.{css,less,overrides,variables}' --write
         && git restore package.json yarn.lock
         && git add . -N && git diff --exit-code
