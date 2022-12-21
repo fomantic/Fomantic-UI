@@ -11,8 +11,7 @@
     opacity @defaultDuration @defaultEasing,
     background-color @defaultDuration @defaultEasing,
     color @defaultDuration @defaultEasing,
-    background @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing;
 
 @hoverBackgroundColor: #e0e0e0;
 
@@ -24,18 +23,14 @@
 @backgroundImage: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
 @boxShadow:
     0 1px 0 1px rgba(255, 255, 255, 0.3) inset,
-    0 0 0 1px #adb2bb inset
-;
+    0 0 0 1px #adb2bb inset;
 
 @coloredBackgroundImage: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
-@coloredBoxShadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.2) inset
-;
+@coloredBoxShadow: 0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
 
 @downBoxShadow:
     0 0 0 1px #adb2bb inset,
-    0 1px 3px rgba(0, 0, 0, 0.2) inset
-;
+    0 1px 3px rgba(0, 0, 0, 0.2) inset;
 
 @labeledIconBackgroundColor: #313a43;
 @labeledIconColor: #fff;

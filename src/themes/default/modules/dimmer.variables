@@ -11,9 +11,7 @@
 @padding: 1em;
 
 @duration: 0.5s;
-@transition:
-    all @duration linear
-;
+@transition: all @duration linear;
 @zIndex: 1000;
 @textAlign: center;
 @verticalAlign: middle;

@@ -328,6 +328,8 @@
     .ui.elastic.loading.loading.loading > i.icon::before,
     .ui.elastic.loader.loader::before {
         animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+        // https://github.com/fomantic/Fomantic-UI/pull/363
+        // stylelint-disable-next-line property-no-vendor-prefix
         -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
         border-right-color: transparent;
     }
