@@ -27,8 +27,8 @@ module.exports = {
         notes: './RELEASE-NOTES.md',
     },
 
-    org: 'Semantic-Org',
-    repo: 'Semantic-UI',
+    org: 'fomantic',
+    repo: 'Fomantic-UI',
 
     // files created for package managers
     files: {
@@ -39,18 +39,18 @@ module.exports = {
     },
 
     // root name for distribution repos
-    distRepoRoot: 'Semantic-UI-',
+    distRepoRoot: 'Fomantic-UI-',
 
     // root name for single component repos
     componentRepoRoot: 'UI-',
 
     // root name for package managers
-    packageRoot: 'semantic-ui-',
+    packageRoot: 'fomantic-ui-',
 
     // root path to repos
     outputRoot: '../repos/',
 
-    homepage: 'http://www.semantic-ui.com',
+    homepage: 'https://www.fomantic-ui.com',
 
     // distributions that get separate repos
     distributions: [

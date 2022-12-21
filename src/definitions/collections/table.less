@@ -641,6 +641,8 @@
         font-weight: @definitionHeaderFontWeight;
         color: @definitionHeaderColor;
         box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        // https://github.com/fomantic/Fomantic-UI/pull/884
+        // stylelint-disable-next-line property-no-vendor-prefix
         -moz-transform: scale(1);
     }
 
@@ -654,6 +656,8 @@
         font-weight: @definitionFooterFontWeight;
         color: @definitionFooterColor;
         box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        // https://github.com/fomantic/Fomantic-UI/pull/884
+        // stylelint-disable-next-line property-no-vendor-prefix
         -moz-transform: scale(1);
     }
 

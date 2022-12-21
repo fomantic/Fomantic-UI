@@ -32,8 +32,7 @@
     background-color 0.3s @defaultEasing,
     color 0.3s @defaultEasing,
     box-shadow 0.3s @defaultEasing,
-    background 0.3s @defaultEasing
-;
+    background 0.3s @defaultEasing;
 
 /* -------------------
         State
@@ -42,8 +41,7 @@
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
     @borderBoxShadow,
-    0 2px 3px 0 rgba(0, 0, 0, 0.2) !important
-;
+    0 2px 3px 0 rgba(0, 0, 0, 0.2) !important;
 
 @downBackgroundColor: @white;
 @downBackgroundImage: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));

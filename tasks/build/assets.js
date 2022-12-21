@@ -29,7 +29,7 @@ function build(src, config) {
 
 function buildAssets(src, config, callback) {
     if (!install.isSetup()) {
-        console.error('Cannot build assets. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build assets. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;

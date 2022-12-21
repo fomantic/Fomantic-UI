@@ -22,7 +22,7 @@ const
 // export task
 module.exports = function () {
     if (!install.isSetup()) {
-        console.error('Cannot watch files. Run "gulp install" to set-up Semantic');
+        console.error('Cannot watch files. Run "gulp install" to set-up Fomantic');
 
         return;
     }
