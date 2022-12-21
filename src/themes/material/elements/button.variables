@@ -25,7 +25,7 @@
 
 @borderBoxShadowColor: @solidBorderColor;
 @borderBoxShadow: 0 0 0 1px @solidBorderColor inset;
-@shadowBoxShadow: 0 0 0 0 transparent;
+@shadowBoxShadow: 0 transparent;
 
 @transition:
     opacity 0.3s @defaultEasing,
