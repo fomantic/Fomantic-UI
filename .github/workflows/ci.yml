@@ -11,13 +11,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     - name: Install dependencies
-      run: >
-        yarn
-        && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript github:prettier/prettier#2.8.1
-        && (cd node_modules/prettier && git apply -v ../../.github/fix-prettier-14007-no-unstable-semicolon.patch)
-        && (cd node_modules/prettier && git apply -v ../../.github/fix-prettier-14008-no-space-after-unary-minus.patch)
-        && (cd node_modules/prettier && git apply -v ../../.github/fix-prettier-14034-no-property-name-lower-if-inside-variable-declaration.patch)
-        && (cd node_modules/prettier && git apply -v ../../.github/fix-prettier-value-with-comma.patch)
+      run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript github:fomantic/prettier#ca4fc1130f
     - name: Lint JS and LESS files
       run: >
         npm run lint
