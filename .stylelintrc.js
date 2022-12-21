@@ -46,7 +46,6 @@ module.exports = {
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
-        'value-no-vendor-prefix': null, // 9 errors
     },
     reportNeedlessDisables: true,
 };

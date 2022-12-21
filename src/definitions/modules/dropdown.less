@@ -556,7 +556,6 @@ select.ui.dropdown {
 
     /* User addition item */
     .ui.dropdown > .menu > .stuck.addition.item:first-child {
-        position: -webkit-sticky;
         position: sticky;
         top: 0;
         box-shadow: @selectionVisibleBoxShadow;
@@ -1411,6 +1410,7 @@ select.ui.dropdown {
         position: absolute;
         & when (@supportIE) {
             /* IE hack to make dropdown icons appear inline */
+            // stylelint-disable-next-line value-no-vendor-prefix
             display: -ms-inline-flexbox !important;
         }
 
