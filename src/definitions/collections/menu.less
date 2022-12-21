@@ -962,13 +962,11 @@ Floated Menu / Item
         }
 
         .ui.secondary.pointing.menu .item {
-            border-bottom-color: transparent;
-            border-bottom-style: solid;
+            border-bottom: @secondaryPointingBorderWidth solid transparent;
             border-radius: 0;
             align-self: flex-end;
             margin: 0 0 -@secondaryPointingBorderWidth;
             padding: @secondaryPointingItemVerticalPadding @secondaryPointingItemHorizontalPadding;
-            border-bottom-width: @secondaryPointingBorderWidth;
             transition: @secondaryItemTransition;
         }
         .ui.secondary.pointing.menu .ui.dropdown .menu .item {
@@ -1034,17 +1032,13 @@ Floated Menu / Item
             /* Vertical Pointing */
             .ui.secondary.vertical.pointing.menu {
                 border-bottom-width: 0;
-                border-right-width: @secondaryPointingBorderWidth;
-                border-right-style: solid;
-                border-right-color: @secondaryPointingBorderColor;
+                border-right: @secondaryPointingBorderWidth solid @secondaryPointingBorderColor;
             }
             .ui.secondary.vertical.pointing.menu .item {
                 border-bottom: none;
-                border-right-style: solid;
-                border-right-color: transparent;
+                border-right: @secondaryPointingBorderWidth solid transparent;
                 border-radius: 0 !important;
                 margin: @secondaryVerticalPointingItemMargin;
-                border-right-width: @secondaryPointingBorderWidth;
             }
 
             /* Vertical Active */

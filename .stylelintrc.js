@@ -45,7 +45,6 @@ module.exports = {
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
-        'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
     },
