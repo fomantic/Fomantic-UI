@@ -48,7 +48,6 @@ module.exports = {
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
-        'function-linear-gradient-no-nonstandard-direction': null, // 1 error
     },
     reportNeedlessDisables: true,
 };
