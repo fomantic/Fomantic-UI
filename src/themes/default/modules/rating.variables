@@ -13,8 +13,7 @@
     opacity @defaultDuration @defaultEasing,
     background @defaultDuration @defaultEasing,
     text-shadow @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing;
 
 /* -------------------
         Types

@@ -443,8 +443,7 @@ i.icons {
     }
 }
 
-& when ((@variationIconGroups) or (@variationIconCorner))
-and ((@variationIconBordered) or (@variationIconCircular)) {
+& when ((@variationIconGroups) or (@variationIconCorner)) and ((@variationIconBordered) or (@variationIconCircular)) {
     /*************************************************
        Bordered/circular with corner or group icons
     *************************************************/
@@ -527,7 +526,7 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
             }
         }
     });
-};
+}
 
 & when (@variationIconDeprecated) {
     /* Deprecated *In/Out Naming Conflict) */
