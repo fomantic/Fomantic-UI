@@ -14,6 +14,12 @@ jobs:
       run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
     - name: Lint JS and LESS files
       run: npm run lint
+    - name: Assert LESS files formatting using Prettier
+      run: >
+        yarn add -D github:fomantic/prettier#2.8.1-patched
+        && npx prettier --loglevel warn '!dist' '!test/coverage' '!src/semantic.less' '**/*.{css,less,overrides,variables}' --write
+        && git restore package.json yarn.lock
+        && git add . -N && git diff --exit-code
   test:
     name: Test build process on node ${{ matrix.node-version }}
     runs-on: ubuntu-latest

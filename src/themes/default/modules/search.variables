@@ -16,8 +16,7 @@
     background-color @defaultDuration @defaultEasing,
     color @defaultDuration @defaultEasing,
     box-shadow @defaultDuration @defaultEasing,
-    border-color @defaultDuration @defaultEasing
-;
+    border-color @defaultDuration @defaultEasing;
 @promptBoxShadow: 0 0 0 0 transparent inset;
 
 /* Mobile */
@@ -133,8 +132,7 @@
 @selectionCloseTop: 0;
 @selectionCloseTransition:
     color @defaultDuration @defaultEasing,
-    opacity @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing;
 @selectionCloseRight: 0;
 @selectionCloseIconOpacity: 0.8;
 @selectionCloseIconColor: "";
@@ -149,8 +147,7 @@
 @categoryDivider: 1px solid @internalBorderColor;
 @categoryTransition:
     background @defaultDuration @defaultEasing,
-    border-color @defaultDuration @defaultEasing
-;
+    border-color @defaultDuration @defaultEasing;
 
 @categoryResultsWidth: 28em;
 

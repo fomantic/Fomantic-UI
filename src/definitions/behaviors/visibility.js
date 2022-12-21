@@ -8,7 +8,7 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
@@ -58,14 +58,6 @@
                 $placeholder,
 
                 instance        = $module.data(moduleNamespace),
-
-                requestAnimationFrame = window.requestAnimationFrame
-                    || window.mozRequestAnimationFrame
-                    || window.webkitRequestAnimationFrame
-                    || window.msRequestAnimationFrame
-                    || function (callback) {
-                        setTimeout(callback, 0);
-                    },
 
                 element         = this,
                 disabled        = false,
@@ -1100,7 +1092,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

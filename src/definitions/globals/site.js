@@ -8,7 +8,7 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
@@ -60,44 +60,15 @@
             },
 
             normalize: function () {
-                module.fix.console();
-                module.fix.requestAnimationFrame();
+                // keep the function for backward compatibility
+                // eslint-disable-next-line no-useless-return
+                return;
             },
 
             fix: {
-                console: function () {
-                    module.debug('Normalizing window.console');
-                    if (console === undefined || console.log === undefined) {
-                        module.verbose('Console not available, normalizing events');
-                        module.disable.console();
-                    }
-                    if (console.group === undefined || console.groupEnd === undefined || console.groupCollapsed === undefined) {
-                        module.verbose('Console group not available, normalizing events');
-                        window.console.group = function () {};
-                        window.console.groupEnd = function () {};
-                        window.console.groupCollapsed = function () {};
-                    }
-                    if (console.markTimeline === undefined) {
-                        module.verbose('Mark timeline not available, normalizing events');
-                        window.console.markTimeline = function () {};
-                    }
-                },
                 consoleClear: function () {
                     module.debug('Disabling programmatic console clearing');
                     window.console.clear = function () {};
-                },
-                requestAnimationFrame: function () {
-                    module.debug('Normalizing requestAnimationFrame');
-                    if (window.requestAnimationFrame === undefined) {
-                        module.debug('RequestAnimationFrame not available, normalizing event');
-                        window.requestAnimationFrame = window.requestAnimationFrame
-                            || window.mozRequestAnimationFrame
-                            || window.webkitRequestAnimationFrame
-                            || window.msRequestAnimationFrame
-                            || function (callback) {
-                                setTimeout(callback, 0);
-                            };
-                    }
                 },
             },
 
@@ -244,7 +215,7 @@
                         groupEnd: function () {},
                         info: function () {},
                         log: function () {},
-                        markTimeline: function () {},
+                        table: function () {},
                         warn: function () {},
                     };
                 }
@@ -334,7 +305,7 @@
                         totalTime += data['Execution Time'];
                     });
                     title += ' ' + totalTime + 'ms';
-                    if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                    if (performance.length > 0) {
                         console.groupCollapsed(title);
                         if (console.table) {
                             console.table(performance);
@@ -441,21 +412,23 @@
             'dimmer',
             'dropdown',
             'embed',
+            'flyout',
             'form',
             'modal',
             'nag',
             'popup',
-            'slider',
+            'progress',
             'rating',
+            'search',
             'shape',
             'sidebar',
+            'slider',
             'state',
             'sticky',
             'tab',
             'toast',
             'transition',
             'visibility',
-            'visit',
         ],
 
         siteNamespace: 'site',

@@ -11,9 +11,7 @@
 @backgroundImage: none;
 @fontWeight: bold;
 @textColor: rgba(0, 0, 0, 0.6);
-@boxShadow:
-    0 0 0 2px rgba(0, 0, 0, 0.2) inset
-;
+@boxShadow: 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
 
 /* Padding */
 @verticalPadding: 1.25em;

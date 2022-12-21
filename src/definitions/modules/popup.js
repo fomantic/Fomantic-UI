@@ -8,7 +8,7 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
@@ -414,7 +414,7 @@
                 animate: {
                     show: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                             module.set.visible();
                             $popup
                                 .transition({
@@ -431,8 +431,6 @@
                                     },
                                 })
                             ;
-                        } else {
-                            module.error(error.noTransition);
                         }
                     },
                     hide: function (callback) {
@@ -1073,6 +1071,17 @@
                     },
                 },
 
+                can: {
+                    useElement: function (element) {
+                        if ($.fn[element] !== undefined) {
+                            return true;
+                        }
+                        module.error(error.noElement.replace('{element}', element));
+
+                        return false;
+                    },
+                },
+
                 has: {
                     popup: function () {
                         return $popup && $popup.length > 0;
@@ -1229,7 +1238,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -1445,7 +1454,7 @@
             invalidPosition: 'The position you specified is not a valid position',
             cannotPlace: 'Popup does not fit within the boundaries of the viewport',
             method: 'The method you called is not defined.',
-            noTransition: 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>',
+            noElement: 'This module requires ui {element}',
             notFound: 'The target or popup you specified does not exist on the page',
         },
 

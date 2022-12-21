@@ -550,13 +550,6 @@
         background-position: center;
         justify-content: center;
         align-items: center;
-        display: -webkit-box;
-        display: -moz-box;
-        & when (@supportIE) {
-            display: -ms-flexbox;
-        }
-
-        display: -webkit-flex;
         display: flex;
         width: 100%;
         border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
@@ -682,8 +675,7 @@
             box-shadow:
                 @borderShadow,
                 0 @coloredShadowDistance 0 0 @c,
-                @shadowBoxShadow
-            ;
+                @shadowBoxShadow;
         }
         & when (@variationCardLink) {
             .ui.cards a.@{color}.card:hover,
@@ -695,8 +687,7 @@
                 box-shadow:
                     @borderShadow,
                     0 @coloredShadowDistance 0 0 @h,
-                    @shadowHoverBoxShadow
-                ;
+                    @shadowHoverBoxShadow;
             }
         }
         & when (@variationCardBasic) {
@@ -734,8 +725,7 @@
                 box-shadow:
                     0 @shadowDistance 3px 0 @solidWhiteBorderColor,
                     0 @coloredShadowDistance 0 0 @l,
-                    0 0 0 @borderWidth @solidWhiteBorderColor
-                ;
+                    0 0 0 @borderWidth @solidWhiteBorderColor;
             }
             & when (@variationCardLink) {
                 .ui.inverted.cards a.@{color}.card:hover,
@@ -747,8 +737,7 @@
                     box-shadow:
                         0 @shadowDistance 3px 0 @solidWhiteBorderColor,
                         0 @coloredShadowDistance 0 0 @lh,
-                        0 0 0 @borderWidth @solidWhiteBorderColor
-                    ;
+                        0 0 0 @borderWidth @solidWhiteBorderColor;
                 }
             }
             & when (@variationCardBasic) {
