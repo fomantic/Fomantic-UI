@@ -61,11 +61,8 @@ hr {
  */
 
 pre {
-    // https://github.com/necolas/normalize.css/issues/519
-    font-family:
-        monospace,
-        monospace;
-    font-size: 1em; /* 1 */
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
 }
 
 /* Text-level semantics
@@ -106,11 +103,8 @@ strong {
 code,
 kbd,
 samp {
-    // https://github.com/necolas/normalize.css/issues/519
-    font-family:
-        monospace,
-        monospace;
-    font-size: 1em; /* 1 */
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
 }
 
 /**
