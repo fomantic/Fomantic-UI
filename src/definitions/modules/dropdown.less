@@ -435,7 +435,6 @@ select.ui.dropdown {
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
         border-top-width: 0 !important;
-        width: auto;
         outline: none;
         margin: 0 -@menuBorderWidth;
         min-width: @menuMinWidth;
@@ -557,7 +556,6 @@ select.ui.dropdown {
 
     /* User addition item */
     .ui.dropdown > .menu > .stuck.addition.item:first-child {
-        position: -webkit-sticky;
         position: sticky;
         top: 0;
         box-shadow: @selectionVisibleBoxShadow;
@@ -1412,6 +1410,7 @@ select.ui.dropdown {
         position: absolute;
         & when (@supportIE) {
             /* IE hack to make dropdown icons appear inline */
+            // stylelint-disable-next-line value-no-vendor-prefix
             display: -ms-inline-flexbox !important;
         }
 
@@ -1614,7 +1613,7 @@ select.ui.dropdown {
     .ui.left.pointing.dropdown > .menu::after {
         top: 1em;
         left: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(-45deg);
     }
     .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu {
@@ -1626,7 +1625,7 @@ select.ui.dropdown {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(135deg);
     }
 
@@ -1641,7 +1640,7 @@ select.ui.dropdown {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(135deg);
     }
 

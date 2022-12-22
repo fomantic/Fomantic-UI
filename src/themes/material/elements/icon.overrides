@@ -825,16 +825,16 @@ i.icon.explore::before {
 i.icon.exposure::before {
     content: "\e3ca";
 }
-i.icon.exposure.neg.1::before {
+i.icon.exposure.neg.one::before {
     content: "\e3cb";
 }
-i.icon.exposure.neg.2::before {
+i.icon.exposure.neg.two::before {
     content: "\e3cc";
 }
-i.icon.exposure.plus.1::before {
+i.icon.exposure.plus.one::before {
     content: "\e3cd";
 }
-i.icon.exposure.plus.2::before {
+i.icon.exposure.plus.two::before {
     content: "\e3ce";
 }
 i.icon.exposure.zero::before {
@@ -891,34 +891,34 @@ i.icon.file.upload::before {
 i.icon.filter::before {
     content: "\e3d3";
 }
-i.icon.filter.1::before {
+i.icon.filter.one::before {
     content: "\e3d0";
 }
-i.icon.filter.2::before {
+i.icon.filter.two::before {
     content: "\e3d1";
 }
-i.icon.filter.3::before {
+i.icon.filter.three::before {
     content: "\e3d2";
 }
-i.icon.filter.4::before {
+i.icon.filter.four::before {
     content: "\e3d4";
 }
-i.icon.filter.5::before {
+i.icon.filter.five::before {
     content: "\e3d5";
 }
-i.icon.filter.6::before {
+i.icon.filter.six::before {
     content: "\e3d6";
 }
-i.icon.filter.7::before {
+i.icon.filter.seven::before {
     content: "\e3d7";
 }
-i.icon.filter.8::before {
+i.icon.filter.eight::before {
     content: "\e3d8";
 }
-i.icon.filter.9::before {
+i.icon.filter.nine::before {
     content: "\e3d9";
 }
-i.icon.filter.9.plus::before {
+i.icon.filter.nine.plus::before {
     content: "\e3da";
 }
 i.icon.filter.b.and.w::before {
@@ -1524,16 +1524,16 @@ i.icon.lock.outline::before {
 i.icon.looks::before {
     content: "\e3fc";
 }
-i.icon.looks.3::before {
+i.icon.looks.three::before {
     content: "\e3fb";
 }
-i.icon.looks.4::before {
+i.icon.looks.four::before {
     content: "\e3fd";
 }
-i.icon.looks.5::before {
+i.icon.looks.five::before {
     content: "\e3fe";
 }
-i.icon.looks.6::before {
+i.icon.looks.six::before {
     content: "\e3ff";
 }
 i.icon.looks.one::before {
@@ -2274,7 +2274,7 @@ i.icon.shuffle::before {
 i.icon.signal.cellular.four.bar::before {
     content: "\e1c8";
 }
-i.icon.signal.cellular.connected.no.internet.4.bar::before {
+i.icon.signal.cellular.connected.no.internet.four.bar::before {
     content: "\e1cd";
 }
 i.icon.signal.cellular.no.sim::before {

@@ -1,5 +1,5 @@
 .ui.button {
-    background-image: linear-gradient(center top, #f7f8fa, #e7e9ec) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: linear-gradient(to bottom, #f7f8fa, #e7e9ec) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 .ui.primary.button {
