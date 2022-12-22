@@ -19,6 +19,7 @@ module.exports = {
         'function-no-unknown': null,
         'import-notation': null,
         indentation: null, // handled by Prettier
+        'keyframes-name-pattern': null,
         linebreaks: 'unix',
         'max-line-length': null,
         'no-descending-specificity': null,
@@ -44,7 +45,6 @@ module.exports = {
         'selector-no-vendor-prefix': null,
 
         // TODO
-        'keyframes-name-pattern': null, // 50 errors
         'selector-class-pattern': null, // 19 errors
     },
     reportNeedlessDisables: true,
