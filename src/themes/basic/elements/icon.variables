@@ -15,7 +15,7 @@
         text-transform: none;
     };
 };
-@icon-map {
+@icon-map: {
     circle_attention: "\2757"; /* '❗' */
     circle_help: "\e704"; /* '' */
     circle_info: "\e705"; /* '' */
