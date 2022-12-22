@@ -41,7 +41,6 @@
     up_arrow: "\e75f"; /* '' */
     folder: "\e810"; /* '' */
     open_folder: "📂"; /* '\1f4c2' */
-    globe: "𝌍"; /* '\1d30d' */
     desk_globe: "🌐"; /* '\1f310' */
     star: "\e801"; /* '' */
     star_empty: "\e800"; /* '' */
