@@ -11,6 +11,7 @@ module.exports = {
         'at-rule-empty-line-before': null,
         'at-rule-name-case': null,
         'at-rule-no-unknown': null,
+        'block-no-empty': null,
         'color-function-notation': 'legacy',
         'color-hex-case': 'lower',
         'declaration-colon-newline-after': null, // handled by Prettier
@@ -43,7 +44,6 @@ module.exports = {
 
         // TODO
         'keyframes-name-pattern': null, // 50 errors
-        'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
     },
