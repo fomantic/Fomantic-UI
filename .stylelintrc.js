@@ -43,9 +43,6 @@ module.exports = {
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
         'selector-not-notation': null, // https://caniuse.com/css-not-sel-list
         'selector-no-vendor-prefix': null,
-
-        // TODO
-        'selector-class-pattern': null, // 19 errors
     },
     reportNeedlessDisables: true,
 };
