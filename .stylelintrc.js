@@ -41,10 +41,10 @@ module.exports = {
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
         'selector-not-notation': null, // https://caniuse.com/css-not-sel-list
+        'selector-no-vendor-prefix': null,
 
         // TODO
         'keyframes-name-pattern': null, // 50 errors
-        'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
     },
     reportNeedlessDisables: true,
