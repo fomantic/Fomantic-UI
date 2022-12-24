@@ -19,6 +19,7 @@
 & when not (@site = "default") {
     @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 }
+
 /* Component's site.variables */
 & when not (@theme = "default") {
     @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
@@ -51,10 +52,12 @@
 & when not (@site = "default") {
     @import (optional) "@{themesFolder}/@{site}/globals/colors.less";
 }
+
 /* Packaged Theme */
 & when not (@theme = "default") {
     @import (optional) "@{themesFolder}/@{theme}/globals/colors.less";
 }
+
 /* Site Theme */
 @import (optional) "@{siteFolder}/globals/colors.less";
 
