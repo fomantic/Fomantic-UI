@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.rating = function (parameters) {
-        var
+        let
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
@@ -33,7 +33,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.rating.settings, parameters)
                     : $.extend({}, $.fn.rating.settings),
@@ -99,7 +99,7 @@
 
                 setup: {
                     layout: function () {
-                        var
+                        let
                             maxRating = module.get.maxRating(),
                             icon      = module.get.icon(),
                             html      = $.fn.rating.settings.templates.icon(maxRating, icon)
@@ -114,7 +114,7 @@
 
                 event: {
                     mouseenter: function () {
-                        var
+                        let
                             $activeIcon = $(this)
                         ;
                         $activeIcon
@@ -139,7 +139,7 @@
                         ;
                     },
                     click: function () {
-                        var
+                        let
                             $activeIcon   = $(this),
                             currentRating = module.get.rating(),
                             rating        = $icon.index($activeIcon) + 1,
@@ -210,7 +210,7 @@
 
                 get: {
                     icon: function () {
-                        var icon = $module.data(metadata.icon);
+                        let icon = $module.data(metadata.icon);
                         if (icon) {
                             $module.removeData(metadata.icon);
                         }
@@ -236,7 +236,7 @@
                         return settings.maxRating;
                     },
                     rating: function () {
-                        var
+                        let
                             currentRating = $icon.filter('.' + className.active).length
                         ;
                         module.verbose('Current rating retrieved', currentRating);
@@ -247,7 +247,7 @@
 
                 set: {
                     rating: function (rating) {
-                        var
+                        let
                             ratingIndex = Math.floor(
                                 rating - 1 >= 0
                                     ? rating - 1
@@ -350,7 +350,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -371,7 +371,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -402,7 +402,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -414,7 +414,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -522,7 +522,7 @@
                 return String(string).replace(/"/g, encode ? '&quot;' : '');
             },
             icon: function (maxRating, iconClass) {
-                var
+                let
                     icon = 1,
                     html = '',
                     deQuote = $.fn.rating.settings.templates.deQuote

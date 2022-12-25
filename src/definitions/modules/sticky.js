@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.sticky = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             $document      = $(document),
             moduleSelector = $allModules.selector || '',
@@ -35,7 +35,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings              = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                     : $.extend({}, $.fn.sticky.settings),
@@ -224,7 +224,7 @@
 
                 supports: {
                     sticky: function () {
-                        var
+                        let
                             $element = $('<div/>')
                         ;
                         $element.addClass(className.supported);
@@ -241,7 +241,7 @@
                         module.elementScroll = scroll;
                     },
                     positions: function () {
-                        var
+                        let
                             scrollContext = {
                                 height: $scroll.height(),
                             },
@@ -299,7 +299,7 @@
 
                 get: {
                     direction: function (scroll) {
-                        var
+                        let
                             direction = 'down'
                         ;
                         scroll = scroll || $scroll.scrollTop();
@@ -328,7 +328,7 @@
 
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
-                        var
+                        let
                             element        = module.cache.element,
                             scrollContext  = module.cache.scrollContext,
                             delta          = module.get.scrollChange(scroll),
@@ -373,7 +373,7 @@
                         ;
                     },
                     containerSize: function () {
-                        var
+                        let
                             tagName = $container[0].tagName
                         ;
                         if (tagName === 'HTML' || tagName === 'body') {
@@ -381,7 +381,7 @@
                             // module.error(error.container, tagName, $module);
                             module.determineContainer();
                         } else {
-                            var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
+                            let tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
                             if (tallestHeight - $container.outerHeight() > settings.jitter) {
                                 module.debug('Context is taller than container. Specifying exact height for container', module.cache.context.height);
                                 $container.css({
@@ -401,7 +401,7 @@
                         }
                     },
                     minimumSize: function () {
-                        var
+                        let
                             element   = module.cache.element
                         ;
                         $container
@@ -459,7 +459,7 @@
                 },
 
                 stick: function (scrollPosition) {
-                    var
+                    let
                         cachedPosition = scrollPosition || $scroll.scrollTop(),
                         cache          = module.cache,
                         fits           = cache.fits,
@@ -726,7 +726,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -747,7 +747,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 0);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -775,7 +775,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -787,7 +787,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.state = function (parameters) {
-        var
+        let
             $allModules     = $(this),
 
             moduleSelector  = $allModules.selector || '',
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.state.settings, parameters)
                     : $.extend({}, $.fn.state.settings),
@@ -107,7 +107,7 @@
 
                 add: {
                     defaults: function () {
-                        var
+                        let
                             userStates = parameters && $.isPlainObject(parameters.states)
                                 ? parameters.states
                                 : {}
@@ -197,7 +197,7 @@
 
                 toggle: {
                     state: function () {
-                        var
+                        let
                             apiRequest,
                             requestCancelled
                         ;
@@ -350,7 +350,7 @@
 
                 flash: {
                     text: function (text, duration, callback) {
-                        var
+                        let
                             previousText = module.get.text();
                         module.debug('Flashing text message', text, duration);
                         text = text || settings.text.flash;
@@ -367,7 +367,7 @@
                 reset: {
                     // on mouseout sets text to previous value
                     text: function () {
-                        var
+                        let
                             activeText   = text.active || $module.data(metadata.storedText),
                             inactiveText = text.inactive || $module.data(metadata.storedText)
                         ;
@@ -385,7 +385,7 @@
 
                 update: {
                     text: function (text) {
-                        var
+                        let
                             currentText = module.get.text();
                         if (text && text !== currentText) {
                             module.debug('Updating text', text);
@@ -458,7 +458,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -479,7 +479,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -507,7 +507,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -519,7 +519,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

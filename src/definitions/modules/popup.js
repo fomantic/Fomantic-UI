@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.popup = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             $document      = $(document),
             $window        = $(window),
@@ -42,7 +42,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.popup.settings, parameters)
                     : $.extend({}, $.fn.popup.settings),
@@ -178,7 +178,7 @@
 
                 event: {
                     start: function (event) {
-                        var
+                        let
                             delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.show
                                 : settings.delay
@@ -189,7 +189,7 @@
                         }
                     },
                     end: function () {
-                        var
+                        let
                             delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.hide
                                 : settings.delay
@@ -221,7 +221,7 @@
                         });
                     },
                     hideGracefully: function (event) {
-                        var
+                        let
                             $target = $(event.target),
                             isInDOM = $.contains(document.documentElement, event.target),
                             inPopup = $target.closest(selector.popup).length > 0
@@ -238,7 +238,7 @@
 
                 // generates popup html from metadata
                 create: function () {
-                    var
+                    let
                         html      = module.get.html(),
                         title     = module.get.title(),
                         content   = module.get.content()
@@ -492,7 +492,7 @@
                         return $popup.offset();
                     },
                     calculations: function () {
-                        var
+                        let
                             $popupOffsetParent = module.get.offsetParent($popup),
                             targetElement      = $target[0],
                             isWindowEl         = $boundary[0] === window,
@@ -544,7 +544,7 @@
 
                         // if popup offset context is not same as target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
-                            var
+                            let
                                 popupOffset        = $popupOffsetParent.offset()
                             ;
                             calculations.target.top -= popupOffset.top;
@@ -608,7 +608,7 @@
                         return false;
                     },
                     distanceFromBoundary: function (offset, calculations) {
-                        var
+                        let
                             distanceFromBoundary = {},
                             popup,
                             boundary
@@ -632,7 +632,7 @@
                         return distanceFromBoundary;
                     },
                     offsetParent: function ($element) {
-                        var
+                        let
                             element = $element !== undefined
                                 ? $element[0]
                                 : $target[0],
@@ -640,7 +640,7 @@
                             $node    = $(parentNode)
                         ;
                         if (parentNode) {
-                            var
+                            let
                                 is2D     = $node.css('transform') === 'none',
                                 isStatic = $node.css('position') === 'static',
                                 isBody   = $node.is('body')
@@ -671,7 +671,7 @@
                         };
                     },
                     nextPosition: function (position) {
-                        var
+                        let
                             positions          = position.split(' '),
                             verticalPosition   = positions[0],
                             horizontalPosition = positions[1],
@@ -738,7 +738,7 @@
 
                             return;
                         }
-                        var
+                        let
                             offset,
                             distanceAway,
                             target,
@@ -1103,7 +1103,7 @@
                         return settings.closable;
                     },
                     offstage: function (distanceFromBoundary, position) {
-                        var
+                        let
                             offstage = []
                         ;
                         // return boundaries that have been surpassed
@@ -1204,7 +1204,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -1225,7 +1225,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -1253,7 +1253,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -1265,7 +1265,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1487,7 +1487,7 @@
 
         templates: {
             escape: function (string) {
-                var
+                let
                     badChars     = /["'<>`]/g,
                     shouldEscape = /["&'<>`]/,
                     escape       = {
@@ -1510,7 +1510,7 @@
                 return string;
             },
             popup: function (text) {
-                var
+                let
                     html   = '',
                     escape = $.fn.popup.settings.templates.escape
                 ;

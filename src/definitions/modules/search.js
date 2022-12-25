@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.search = function (parameters) {
-        var
+        let
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
@@ -33,7 +33,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.search.settings, parameters)
                     : $.extend({}, $.fn.search.settings),
@@ -165,7 +165,7 @@
                         }
                     },
                     blur: function (event) {
-                        var
+                        let
                             pageLostFocus = document.activeElement === this,
                             callback      = function () {
                                 module.cancel.query();
@@ -206,7 +206,7 @@
                         },
                         click: function (event) {
                             module.debug('Search result selected');
-                            var
+                            let
                                 $result = $(this),
                                 $title  = $result.find(selector.title).eq(0),
                                 $link   = $result.is('a[href]')
@@ -221,7 +221,7 @@
                                 results = module.get.results(),
                                 result  = $result.data(metadata.result) || module.get.result(value, results)
                             ;
-                            var oldValue = module.get.value();
+                            let oldValue = module.get.value();
                             if (isFunction(settings.onSelect)) {
                                 if (settings.onSelect.call(element, result, results) === false) {
                                     module.debug('Custom onSelect callback cancelled default select action');
@@ -247,7 +247,7 @@
                     },
                 },
                 ensureVisible: function ($el) {
-                    var
+                    let
                         elTop,
                         elBottom,
                         resultsScrollTop,
@@ -269,7 +269,7 @@
                     }
                 },
                 handleKeyboard: function (event) {
-                    var
+                    let
                         // force selector refresh
                         $result         = $module.find(selector.result),
                         $category       = $module.find(selector.category),
@@ -356,7 +356,7 @@
 
                 setup: {
                     api: function (searchTerm, callback) {
-                        var
+                        let
                             apiSettings = {
                                 debug: settings.debug,
                                 on: false,
@@ -426,7 +426,7 @@
                         if (!event.target) {
                             return;
                         }
-                        var
+                        let
                             $target = $(event.target),
                             isInDOM = $.contains(document.documentElement, event.target)
                         ;
@@ -456,7 +456,7 @@
                         }
                     },
                     inputEvent: function () {
-                        var
+                        let
                             prompt = $prompt[0],
                             inputEvent   = prompt !== undefined && prompt.oninput !== undefined
                                 ? 'input'
@@ -474,7 +474,7 @@
                         return $module.data(metadata.results);
                     },
                     result: function (value, results) {
-                        var
+                        let
                             result       = false
                         ;
                         value = value !== undefined
@@ -553,7 +553,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    var
+                    let
                         searchTerm = module.get.value(),
                         cache = module.read.cache(searchTerm)
                     ;
@@ -585,7 +585,7 @@
 
                 search: {
                     local: function (searchTerm) {
-                        var
+                        let
                             results = module.search.object(searchTerm, settings.source),
                             searchHTML
                         ;
@@ -624,7 +624,7 @@
                     },
                     object: function (searchTerm, source, searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
-                        var
+                        let
                             results      = [],
                             exactResults = [],
                             fuzzyResults = [],
@@ -633,7 +633,7 @@
 
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
-                                var
+                                let
                                     notResult      = $.inArray(result, results) === -1,
                                     notFuzzyResult = $.inArray(result, fuzzyResults) === -1,
                                     notExactResults = $.inArray(result, exactResults) === -1
@@ -662,11 +662,11 @@
                         // iterate through search fields looking for matches
                         $.each(searchFields, function (index, field) {
                             $.each(source, function (label, content) {
-                                var
+                                let
                                     fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
                                 if (fieldExists) {
-                                    var text;
+                                    let text;
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
@@ -696,7 +696,7 @@
                     return term.indexOf(query) > -1;
                 },
                 fuzzySearch: function (query, term) {
-                    var
+                    let
                         termLength  = term.length,
                         queryLength = query.length
                     ;
@@ -711,8 +711,8 @@
                     if (queryLength === termLength) {
                         return query === term;
                     }
-                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
-                        var
+                    for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                        let
                             continueSearch = false,
                             queryCharacter = query.charCodeAt(characterIndex)
                         ;
@@ -735,11 +735,11 @@
                 parse: {
                     response: function (response, searchTerm) {
                         if (Array.isArray(response)) {
-                            var o = {};
+                            let o = {};
                             o[fields.results] = response;
                             response = o;
                         }
-                        var
+                        let
                             searchHTML = module.generateResults(response)
                         ;
                         module.verbose('Parsing server response', response);
@@ -767,7 +767,7 @@
 
                 has: {
                     minimumCharacters: function () {
-                        var
+                        let
                             searchTerm    = module.get.value(),
                             numCharacters = searchTerm.length
                         ;
@@ -778,7 +778,7 @@
                         if ($results.length === 0) {
                             return false;
                         }
-                        var
+                        let
                             html = $results.html()
                         ;
 
@@ -788,7 +788,7 @@
 
                 clear: {
                     cache: function (value) {
-                        var
+                        let
                             cache = $module.data(metadata.cache)
                         ;
                         if (!value) {
@@ -804,7 +804,7 @@
 
                 read: {
                     cache: function (name) {
-                        var
+                        let
                             cache = $module.data(metadata.cache)
                         ;
                         if (settings.cache) {
@@ -821,7 +821,7 @@
 
                 create: {
                     categoryResults: function (results) {
-                        var
+                        let
                             categoryResults = {}
                         ;
                         $.each(results, function (index, result) {
@@ -842,7 +842,7 @@
                         return categoryResults;
                     },
                     id: function (resultIndex, categoryIndex) {
-                        var
+                        let
                             resultID      = resultIndex + 1, // not zero indexed
                             letterID,
                             id
@@ -872,7 +872,7 @@
                 inject: {
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
-                        var
+                        let
                             $selectedResult = categoryIndex !== undefined
                                 ? $results
                                     .children().eq(categoryIndex)
@@ -890,7 +890,7 @@
                     },
                     id: function (results) {
                         module.debug('Injecting unique ids into results');
-                        var
+                        let
                             // since results may be object, we must use counters
                             categoryIndex = 0,
                             resultIndex   = 0
@@ -934,7 +934,7 @@
 
                 write: {
                     cache: function (name, value) {
-                        var
+                        let
                             cache = $module.data(metadata.cache) !== undefined
                                 ? $module.data(metadata.cache)
                                 : {}
@@ -991,7 +991,7 @@
                                     silent: settings.silent,
                                     duration: settings.duration,
                                     onShow: function () {
-                                        var $firstResult = $module.find(selector.result).eq(0);
+                                        let $firstResult = $module.find(selector.result).eq(0);
                                         module.ensureVisible($firstResult);
                                     },
                                     onComplete: function () {
@@ -1043,7 +1043,7 @@
 
                 generateResults: function (response) {
                     module.debug('Generating html from response', response);
-                    var
+                    let
                         template       = settings.templates[settings.type],
                         isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]),
                         isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0,
@@ -1126,7 +1126,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -1147,7 +1147,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -1178,7 +1178,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -1190,7 +1190,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
@@ -1393,7 +1393,7 @@
                 if (preserveHTML) {
                     return string;
                 }
-                var
+                let
                     badChars     = /["'<>`]/g,
                     shouldEscape = /["&'<>`]/,
                     escape       = {
@@ -1415,7 +1415,7 @@
                 return string;
             },
             message: function (message, type, header) {
-                var
+                let
                     html = ''
                 ;
                 if (message !== undefined && type !== undefined) {
@@ -1432,7 +1432,7 @@
                 return html;
             },
             category: function (response, fields, preserveHTML) {
-                var
+                let
                     html = '',
                     escape = $.fn.search.settings.templates.escape
                 ;
@@ -1495,7 +1495,7 @@
                 return false;
             },
             standard: function (response, fields, preserveHTML) {
-                var
+                let
                     html = '',
                     escape = $.fn.search.settings.templates.escape
                 ;

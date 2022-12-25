@@ -91,7 +91,6 @@ module.exports = {
         'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
-        'no-var': 'off', // https://github.com/fomantic/Fomantic-UI/pull/2584
         'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',

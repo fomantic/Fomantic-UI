@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.checkbox = function (parameters) {
-        var
+        let
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
@@ -34,7 +34,7 @@
         ;
 
         $allModules.each(function () {
-            var
+            let
                 settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters),
 
                 className       = settings.className,
@@ -149,7 +149,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
+                    let
                         $element = $(selector)
                     ;
                     event = isFunction(module[event])
@@ -179,7 +179,7 @@
                         }
                     },
                     click: function (event) {
-                        var
+                        let
                             $target = $(event.target)
                         ;
                         if ($target.is(selector.input)) {
@@ -197,7 +197,7 @@
                         event.preventDefault();
                     },
                     keydown: function (event) {
-                        var
+                        let
                             key     = event.which,
                             keyCode = {
                                 enter: 13,
@@ -210,7 +210,7 @@
                             }
                         ;
 
-                        var
+                        let
                             r = module.get.radios(),
                             rIndex = r.index($module),
                             rLen = r.length,
@@ -351,7 +351,7 @@
 
                 get: {
                     radios: function () {
-                        var
+                        let
                             name = module.get.name()
                         ;
 
@@ -580,11 +580,11 @@
 
                 trigger: {
                     change: function () {
-                        var
+                        let
                             inputElement = $input[0]
                         ;
                         if (inputElement) {
-                            var events = document.createEvent('HTMLEvents');
+                            let events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
                             events.initEvent('change', true, false);
                             inputElement.dispatchEvent(events);
@@ -632,7 +632,7 @@
                 },
 
                 uncheckOthers: function () {
-                    var
+                    let
                         $radios = module.get.otherRadios()
                     ;
                     module.debug('Unchecking other radios', $radios);
@@ -706,7 +706,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -727,7 +727,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -755,7 +755,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -767,7 +767,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

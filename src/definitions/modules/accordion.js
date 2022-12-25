@@ -20,7 +20,7 @@
         : globalThis;
 
     $.fn.accordion = function (parameters) {
-        var
+        let
             $allModules     = $(this),
 
             time            = Date.now(),
@@ -33,7 +33,7 @@
             returnedValue
         ;
         $allModules.each(function () {
-            var
+            let
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                     : $.extend({}, $.fn.accordion.settings),
@@ -120,7 +120,7 @@
                 },
 
                 toggle: function (query) {
-                    var
+                    let
                         $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
@@ -145,7 +145,7 @@
                 },
 
                 open: function (query) {
-                    var
+                    let
                         $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
@@ -215,7 +215,7 @@
                 },
 
                 close: function (query) {
-                    var
+                    let
                         $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
@@ -277,7 +277,7 @@
                 },
 
                 closeOthers: function (index) {
-                    var
+                    let
                         $activeTitle = index !== undefined
                             ? $title.eq(index)
                             : $(this).closest(selector.title),
@@ -343,7 +343,7 @@
 
                     display: function () {
                         module.verbose('Removing inline display from element', this);
-                        var $element = $(this);
+                        let $element = $(this);
                         $element.css('display', '');
                         if ($element.attr('style') === '') {
                             $element
@@ -355,7 +355,7 @@
 
                     opacity: function () {
                         module.verbose('Removing inline opacity from element', this);
-                        var $element = $(this);
+                        let $element = $(this);
                         $element.css('opacity', '');
                         if ($element.attr('style') === '') {
                             $element
@@ -421,7 +421,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
+                        let
                             currentTime,
                             executionTime,
                             previousTime
@@ -442,7 +442,7 @@
                         module.performance.timer = setTimeout(module.performance.display, 500);
                     },
                     display: function () {
-                        var
+                        let
                             title = settings.name + ':',
                             totalTime = 0
                         ;
@@ -470,7 +470,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
+                    let
                         object = instance,
                         maxDepth,
                         found,
@@ -482,7 +482,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
