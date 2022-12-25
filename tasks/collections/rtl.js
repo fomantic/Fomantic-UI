@@ -2,8 +2,9 @@
  *     Define RTL Sub-Tasks
  *******************************/
 
-const buildRTL = require('../rtl/build');
-const watchRTL = require('../rtl/watch');
+const buildRTL = require('../rtl/build'),
+    watchRTL = require('../rtl/watch')
+;
 
 module.exports = function (gulp) {
     gulp.task('watch-rtl', watchRTL);
