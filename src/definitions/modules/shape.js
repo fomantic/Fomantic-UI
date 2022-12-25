@@ -8,37 +8,27 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.shape = function (parameters) {
         var
             $allModules     = $(this),
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
-
-            requestAnimationFrame = window.requestAnimationFrame
-                || window.mozRequestAnimationFrame
-                || window.webkitRequestAnimationFrame
-                || window.msRequestAnimationFrame
-                || function (callback) {
-                    setTimeout(callback, 0);
-                },
 
             returnedValue
         ;
@@ -46,7 +36,7 @@
         $allModules.each(function () {
             var
                 moduleSelector = $allModules.selector || '',
-                settings       = ($.isPlainObject(parameters))
+                settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
                     : $.extend({}, $.fn.shape.settings),
 
@@ -187,7 +177,7 @@
 
                 is: {
                     complete: function () {
-                        return ($side.filter('.' + className.active)[0] == $nextSide[0]);
+                        return $side.filter('.' + className.active)[0] === $nextSide[0];
                     },
                     animating: function () {
                         return $module.hasClass(className.animating);
@@ -201,7 +191,7 @@
 
                     defaultSide: function () {
                         $activeSide = $side.filter('.' + settings.className.active);
-                        $nextSide = ($activeSide.next(selector.side).length > 0)
+                        $nextSide = $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
                         nextIndex = false;
@@ -211,17 +201,13 @@
 
                     duration: function (duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
                         module.verbose('Setting animation duration', duration);
                         if (settings.duration || settings.duration === 0) {
                             $sides.add($side)
                                 .css({
-                                    '-webkit-transition-duration': duration,
-                                    '-moz-transition-duration': duration,
-                                    '-ms-transition-duration': duration,
-                                    '-o-transition-duration': duration,
                                     'transition-duration': duration,
                                 })
                             ;
@@ -247,21 +233,21 @@
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
                             $activeSide = $side.filter('.' + settings.className.active),
-                            $nextSide   = (nextIndex)
+                            $nextSide   = nextIndex
                                 ? $side.eq(nextIndex)
-                                : ($activeSide.next(selector.side).length > 0)
+                                : ($activeSide.next(selector.side).length > 0
                                     ? $activeSide.next(selector.side)
-                                    : $side.first(),
-                            newWidth    = (settings.width === 'next')
+                                    : $side.first()),
+                            newWidth    = settings.width === 'next'
                                 ? $nextSide.outerWidth(true)
-                                : (settings.width === 'initial')
+                                : (settings.width === 'initial'
                                     ? $module.width()
-                                    : settings.width,
-                            newHeight    = (settings.height === 'next')
+                                    : settings.width),
+                            newHeight    = settings.height === 'next'
                                 ? $nextSide.outerHeight(true)
-                                : (settings.height === 'initial')
+                                : (settings.height === 'initial'
                                     ? $module.height()
-                                    : settings.height
+                                    : settings.height)
                         ;
                         $activeSide.removeClass(className.active);
                         $nextSide.addClass(className.active);
@@ -445,7 +431,7 @@
                     },
 
                     nextSide: function () {
-                        return ($activeSide.next(selector.side).length > 0)
+                        return $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
                     },
@@ -457,10 +443,10 @@
                     above: function () {
                         var
                             box = {
-                                origin: (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
+                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
-                                    active: ($nextSide.outerHeight(true) / 2),
-                                    next: ($activeSide.outerHeight(true) / 2),
+                                    active: $nextSide.outerHeight(true) / 2,
+                                    next: $activeSide.outerHeight(true) / 2,
                                 },
                             }
                         ;
@@ -482,10 +468,10 @@
                     below: function () {
                         var
                             box = {
-                                origin: (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
+                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
-                                    active: ($nextSide.outerHeight(true) / 2),
-                                    next: ($activeSide.outerHeight(true) / 2),
+                                    active: $nextSide.outerHeight(true) / 2,
+                                    next: $activeSide.outerHeight(true) / 2,
                                 },
                             }
                         ;
@@ -511,10 +497,10 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -540,10 +526,10 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -569,10 +555,10 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -648,7 +634,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -677,9 +663,9 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -702,21 +688,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -765,7 +751,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

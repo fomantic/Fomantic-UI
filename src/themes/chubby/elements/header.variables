@@ -1,8 +1,8 @@
-/*-------------------
+/* -------------------
        Header
---------------------*/
+-------------------- */
 
-@headerFont : 'Source Sans Pro', Helvetica Neue, Helvetica, Arial, sans-serif;
+@headerFont: "Source Sans Pro", Helvetica Neue, Helvetica, Arial, sans-serif;
 @fontWeight: bold;
 @textTransform: none;
 

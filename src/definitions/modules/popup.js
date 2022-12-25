@@ -8,18 +8,16 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.popup = function (parameters) {
         var
@@ -30,22 +28,22 @@
 
             moduleSelector = $allModules.selector || '',
 
-            clickEvent      = ('ontouchstart' in document.documentElement)
+            clickEvent      = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.popup.settings, parameters)
                     : $.extend({}, $.fn.popup.settings),
 
@@ -62,7 +60,7 @@
                 $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
                 $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
                 $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
-                $target            = (settings.target)
+                $target            = settings.target
                     ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
                     : $module,
 
@@ -138,11 +136,11 @@
                             ;
                         }
                     } else {
-                        $offsetParent = (settings.inline)
+                        $offsetParent = settings.inline
                             ? module.get.offsetParent($target)
-                            : module.has.popup()
+                            : (module.has.popup()
                                 ? module.get.offsetParent($popup)
-                                : $body;
+                                : $body);
                     }
                     if ($offsetParent.is('html') && $offsetParent[0] !== $body[0]) {
                         module.debug('Setting page as offset parent');
@@ -181,7 +179,7 @@
                 event: {
                     start: function (event) {
                         var
-                            delay = ($.isPlainObject(settings.delay))
+                            delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.show
                                 : settings.delay
                         ;
@@ -192,7 +190,7 @@
                     },
                     end: function () {
                         var
-                            delay = ($.isPlainObject(settings.delay))
+                            delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.hide
                                 : settings.delay
                         ;
@@ -214,7 +212,7 @@
                         [].forEach.call(mutations, function (mutation) {
                             if (mutation.removedNodes) {
                                 [].forEach.call(mutation.removedNodes, function (node) {
-                                    if (node == element || $(node).find(element).length > 0) {
+                                    if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
@@ -226,7 +224,7 @@
                         var
                             $target = $(event.target),
                             isInDOM = $.contains(document.documentElement, event.target),
-                            inPopup = ($target.closest(selector.popup).length > 0)
+                            inPopup = $target.closest(selector.popup).length > 0
                         ;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
@@ -284,7 +282,7 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length !== 0) {
+                    } else if ($target.next(selector.popup).length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
                         settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
@@ -327,7 +325,8 @@
                             module.debug('onShow callback returned false, cancelling popup animation');
 
                             return;
-                        } else if (!settings.preserve && !settings.popup) {
+                        }
+                        if (!settings.preserve && !settings.popup) {
                             module.refresh();
                         }
                         if ($popup && module.set.position()) {
@@ -371,12 +370,10 @@
                         return false;
                     }
                     if (settings.inline || settings.popup) {
-                        return (module.has.popup());
-                    } else {
-                        return ($popup.closest($context).length >= 1)
-                            ? true
-                            : false;
+                        return module.has.popup();
                     }
+
+                    return $popup.closest($context).length > 0;
                 },
 
                 removePopup: function () {
@@ -411,13 +408,13 @@
                 },
                 supports: {
                     svg: function () {
-                        return (typeof SVGGraphicsElement !== 'undefined');
+                        return typeof SVGGraphicsElement !== 'undefined';
                     },
                 },
                 animate: {
                     show: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                             module.set.visible();
                             $popup
                                 .transition({
@@ -434,8 +431,6 @@
                                     },
                                 })
                             ;
-                        } else {
-                            module.error(error.noTransition);
                         }
                     },
                     hide: function (callback) {
@@ -500,16 +495,16 @@
                         var
                             $popupOffsetParent = module.get.offsetParent($popup),
                             targetElement      = $target[0],
-                            isWindowEl         = ($boundary[0] == window),
+                            isWindowEl         = $boundary[0] === window,
                             targetOffset       = $target.offset(),
                             parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                                 ? $target.offsetParent().offset()
                                 : { top: 0, left: 0 },
-                            screenPosition = (isWindowEl)
+                            screenPosition = isWindowEl
                                 ? { top: 0, left: 0 }
                                 : $boundary.offset(),
                             calculations   = {},
-                            scroll = (isWindowEl)
+                            scroll = isWindowEl
                                 ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                                 : { top: 0, left: 0 },
                             screen
@@ -567,13 +562,13 @@
                         }
 
                         // add in margins if inline
-                        calculations.target.margin.top = (settings.inline)
+                        calculations.target.margin.top = settings.inline
                             ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                             : 0;
-                        calculations.target.margin.left = (settings.inline)
-                            ? module.is.rtl()
+                        calculations.target.margin.left = settings.inline
+                            ? (module.is.rtl()
                                 ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
-                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10)
+                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
                             : 0;
                         // calculate screen boundaries
                         screen = calculations.screen;
@@ -590,9 +585,10 @@
                         return id;
                     },
                     startEvent: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             return 'mouseenter';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on === 'focus') {
                             return 'focus';
                         }
 
@@ -602,9 +598,10 @@
                         return 'scroll';
                     },
                     endEvent: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             return 'mouseleave';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on === 'focus') {
                             return 'blur';
                         }
 
@@ -624,10 +621,10 @@
 
                         if (offset) {
                             distanceFromBoundary = {
-                                top: (offset.top - boundary.top),
-                                left: (offset.left - boundary.left),
-                                right: (boundary.right - (offset.left + popup.width)),
-                                bottom: (boundary.bottom - (offset.top + popup.height)),
+                                top: offset.top - boundary.top,
+                                left: offset.left - boundary.left,
+                                right: boundary.right - (offset.left + popup.width),
+                                bottom: boundary.bottom - (offset.top + popup.height),
                             };
                             module.verbose('Distance from boundaries determined', offset, distanceFromBoundary);
                         }
@@ -636,7 +633,7 @@
                     },
                     offsetParent: function ($element) {
                         var
-                            element = ($element !== undefined)
+                            element = $element !== undefined
                                 ? $element[0]
                                 : $target[0],
                             parentNode = element.parentNode,
@@ -644,20 +641,20 @@
                         ;
                         if (parentNode) {
                             var
-                                is2D     = ($node.css('transform') === 'none'),
-                                isStatic = ($node.css('position') === 'static'),
+                                is2D     = $node.css('transform') === 'none',
+                                isStatic = $node.css('position') === 'static',
                                 isBody   = $node.is('body')
                             ;
                             while (parentNode && !isBody && isStatic && is2D) {
                                 parentNode = parentNode.parentNode;
                                 $node = $(parentNode);
-                                is2D = ($node.css('transform') === 'none');
-                                isStatic = ($node.css('position') === 'static');
+                                is2D = $node.css('transform') === 'none';
+                                isStatic = $node.css('position') === 'static';
                                 isBody = $node.is('body');
                             }
                         }
 
-                        return ($node && $node.length > 0)
+                        return $node && $node.length > 0
                             ? $node
                             : $();
                     },
@@ -699,7 +696,7 @@
                                 'bottom left': 'left center',
                                 'left center': 'top left',
                             },
-                            adjacentsAvailable = (verticalPosition == 'top' || verticalPosition == 'bottom'),
+                            adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom',
                             oppositeTried = false,
                             adjacentTried = false,
                             nextPosition  = false
@@ -715,13 +712,13 @@
                         if (settings.prefer === 'opposite') {
                             nextPosition = [opposite[verticalPosition], horizontalPosition];
                             nextPosition = nextPosition.join(' ');
-                            oppositeTried = (triedPositions[nextPosition] === true);
+                            oppositeTried = triedPositions[nextPosition] === true;
                             module.debug('Trying opposite strategy', nextPosition);
                         }
                         if ((settings.prefer === 'adjacent') && adjacentsAvailable) {
                             nextPosition = [verticalPosition, adjacent[horizontalPosition]];
                             nextPosition = nextPosition.join(' ');
-                            adjacentTried = (triedPositions[nextPosition] === true);
+                            adjacentTried = triedPositions[nextPosition] === true;
                             module.debug('Trying adjacent strategy', nextPosition);
                         }
                         if (adjacentTried || oppositeTried) {
@@ -765,12 +762,12 @@
 
                         if (module.should.centerArrow(calculations)) {
                             module.verbose('Adjusting offset to center arrow on small target element');
-                            if (position == 'top left' || position == 'bottom left') {
-                                offset += (target.width / 2);
+                            if (position === 'top left' || position === 'bottom left') {
+                                offset += target.width / 2;
                                 offset -= settings.arrowPixelsFromEdge;
                             }
-                            if (position == 'top right' || position == 'bottom right') {
-                                offset -= (target.width / 2);
+                            if (position === 'top right' || position === 'bottom right') {
+                                offset -= target.width / 2;
                                 offset += settings.arrowPixelsFromEdge;
                             }
                         }
@@ -783,10 +780,10 @@
 
                         if (settings.inline) {
                             module.debug('Adding margin to calculation', target.margin);
-                            if (position == 'left center' || position == 'right center') {
+                            if (position === 'left center' || position === 'right center') {
                                 offset += target.margin.top;
                                 distanceAway += -target.margin.left;
-                            } else if (position == 'top left' || position == 'top center' || position == 'top right') {
+                            } else if (position === 'top left' || position === 'top center' || position === 'top right') {
                                 offset += target.margin.left;
                                 distanceAway -= target.margin.top;
                             } else {
@@ -799,7 +796,7 @@
 
                         if (module.is.rtl()) {
                             position = position.replace(/left|right/g, function (match) {
-                                return (match == 'left')
+                                return match === 'left'
                                     ? 'right'
                                     : 'left';
                             });
@@ -807,12 +804,12 @@
                         }
 
                         // if last attempt use specified last resort position
-                        if (searchDepth == settings.maxSearchDepth && typeof settings.lastResort === 'string') {
+                        if (searchDepth === settings.maxSearchDepth && typeof settings.lastResort === 'string') {
                             position = settings.lastResort;
                         }
 
                         switch (position) {
-                            case 'top left':
+                            case 'top left': {
                                 positioning = {
                                     top: 'auto',
                                     bottom: parent.height - target.top + distanceAway,
@@ -821,7 +818,8 @@
                                 };
 
                                 break;
-                            case 'top center':
+                            }
+                            case 'top center': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -830,7 +828,8 @@
                                 };
 
                                 break;
-                            case 'top right':
+                            }
+                            case 'top right': {
                                 positioning = {
                                     bottom: parent.height - target.top + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -839,7 +838,8 @@
                                 };
 
                                 break;
-                            case 'left center':
+                            }
+                            case 'left center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     right: parent.width - target.left + distanceAway,
@@ -848,7 +848,8 @@
                                 };
 
                                 break;
-                            case 'right center':
+                            }
+                            case 'right center': {
                                 positioning = {
                                     top: target.top + (target.height / 2) - (popup.height / 2) + offset,
                                     left: target.left + target.width + distanceAway,
@@ -857,7 +858,8 @@
                                 };
 
                                 break;
-                            case 'bottom left':
+                            }
+                            case 'bottom left': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + offset,
@@ -866,7 +868,8 @@
                                 };
 
                                 break;
-                            case 'bottom center':
+                            }
+                            case 'bottom center': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     left: target.left + (target.width / 2) - (popup.width / 2) + offset,
@@ -875,7 +878,8 @@
                                 };
 
                                 break;
-                            case 'bottom right':
+                            }
+                            case 'bottom right': {
                                 positioning = {
                                     top: target.top + target.height + distanceAway,
                                     right: parent.width - target.left - target.width - offset,
@@ -884,6 +888,7 @@
                                 };
 
                                 break;
+                            }
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);
@@ -911,22 +916,21 @@
                                 position = module.get.nextPosition(position);
                                 module.debug('Trying new position', position);
 
-                                return ($popup)
+                                return $popup
                                     ? module.set.position(position, calculations)
                                     : false;
+                            }
+                            if (settings.lastResort) {
+                                module.debug('No position found, showing with last position');
                             } else {
-                                if (settings.lastResort) {
-                                    module.debug('No position found, showing with last position');
-                                } else {
-                                    module.debug('Popup could not find a position to display', $popup);
-                                    module.error(error.cannotPlace, element);
-                                    module.remove.attempts();
-                                    module.remove.loading();
-                                    module.reset();
-                                    settings.onUnplaceable.call($popup, element);
+                                module.debug('Popup could not find a position to display', $popup);
+                                module.error(error.cannotPlace, element);
+                                module.remove.attempts();
+                                module.remove.loading();
+                                module.reset();
+                                settings.onUnplaceable.call($popup, element);
 
-                                    return false;
-                                }
+                                return false;
                             }
                         }
                         module.debug('Position is on stage', position);
@@ -982,12 +986,12 @@
                 bind: {
                     events: function () {
                         module.debug('Binding popup events to module');
-                        if (settings.on == 'click') {
+                        if (settings.on === 'click') {
                             $module
                                 .on(clickEvent + eventNamespace, module.toggle)
                             ;
                         }
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             $module
                                 .on('touchstart' + eventNamespace, module.event.touchstart)
                             ;
@@ -1013,12 +1017,12 @@
                         }
                     },
                     close: function () {
-                        if (settings.hideOnScroll === true || (settings.hideOnScroll == 'auto' && settings.on != 'click')) {
+                        if (settings.hideOnScroll === true || (settings.hideOnScroll === 'auto' && settings.on !== 'click')) {
                             module.bind.closeOnScroll();
                         }
                         if (module.is.closable()) {
                             module.bind.clickaway();
-                        } else if (settings.on == 'hover' && openedWithTouch) {
+                        } else if (settings.on === 'hover' && openedWithTouch) {
                             module.bind.touchClose();
                         }
                     },
@@ -1067,9 +1071,20 @@
                     },
                 },
 
+                can: {
+                    useElement: function (element) {
+                        if ($.fn[element] !== undefined) {
+                            return true;
+                        }
+                        module.error(error.noElement.replace('{element}', element));
+
+                        return false;
+                    },
+                },
+
                 has: {
                     popup: function () {
-                        return ($popup && $popup.length > 0);
+                        return $popup && $popup.length > 0;
                     },
                 },
 
@@ -1081,8 +1096,8 @@
 
                 is: {
                     closable: function () {
-                        if (settings.closable == 'auto') {
-                            return settings.on != 'hover';
+                        if (settings.closable === 'auto') {
+                            return settings.on !== 'hover';
                         }
 
                         return settings.closable;
@@ -1111,13 +1126,13 @@
                         return $module.hasClass(className.active);
                     },
                     animating: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.animating));
+                        return $popup !== undefined && $popup.hasClass(className.animating);
                     },
                     fluid: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.fluid));
+                        return $popup !== undefined && $popup.hasClass(className.fluid);
                     },
                     visible: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.popupVisible));
+                        return $popup !== undefined && $popup.hasClass(className.popupVisible);
                     },
                     dropdown: function () {
                         return $module.hasClass(className.dropdown);
@@ -1195,7 +1210,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1223,7 +1238,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -1246,21 +1261,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1301,7 +1316,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -1439,7 +1454,7 @@
             invalidPosition: 'The position you specified is not a valid position',
             cannotPlace: 'Popup does not fit within the boundaries of the viewport',
             method: 'The method you called is not defined.',
-            noTransition: 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>',
+            noElement: 'This module requires ui {element}',
             notFound: 'The target or popup you specified does not exist on the page',
         },
 
@@ -1473,8 +1488,8 @@
         templates: {
             escape: function (string) {
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1487,7 +1502,7 @@
                     }
                 ;
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }
@@ -1499,12 +1514,12 @@
                     html   = '',
                     escape = $.fn.popup.settings.templates.escape
                 ;
-                if (typeof text !== undefined) {
-                    if (typeof text.title !== undefined && text.title) {
+                if (text !== undefined) {
+                    if (text.title) {
                         text.title = escape(text.title);
                         html += '<div class="header">' + text.title + '</div>';
                     }
-                    if (typeof text.content !== undefined && text.content) {
+                    if (text.content) {
                         text.content = escape(text.content);
                         html += '<div class="content">' + text.content + '</div>';
                     }

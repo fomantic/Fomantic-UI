@@ -8,34 +8,33 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isWindow(obj) {
-        return obj != null && obj === obj.window;
+        return obj !== null && obj === obj.window;
     }
+
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
-    $.api = $.fn.api = function (parameters) {
+    $.fn.api = function (parameters) {
         var
             // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
                 : $(this),
             moduleSelector = $allModules.selector || '',
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -43,7 +42,7 @@
 
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.api.settings, parameters)
                     : $.extend({}, $.fn.api.settings),
 
@@ -63,7 +62,7 @@
                 $form           = $module.closest(selector.form),
 
                 // context used for state
-                $context        = (settings.stateContext)
+                $context        = settings.stateContext
                     ? ([window, document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
                     : $module,
 
@@ -118,7 +117,7 @@
                             $module
                                 .on(triggerEvent + eventNamespace, module.event.trigger)
                             ;
-                        } else if (settings.on == 'now') {
+                        } else if (settings.on === 'now') {
                             module.debug('Querying API endpoint immediately');
                             module.query();
                         }
@@ -127,7 +126,7 @@
 
                 decode: {
                     json: function (response) {
-                        if (response !== undefined && typeof response == 'string') {
+                        if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
                             } catch (e) {
@@ -158,11 +157,6 @@
                 },
                 write: {
                     cachedResponse: function (url, response) {
-                        if (response && response === '') {
-                            module.debug('Response empty, not caching', response);
-
-                            return;
-                        }
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 
@@ -213,9 +207,9 @@
                         module.error(error.beforeSend);
 
                         return;
-                    } else {
-                        module.cancelled = false;
                     }
+
+                    module.cancelled = false;
 
                     // get url
                     url = module.get.templatedURL();
@@ -280,13 +274,13 @@
 
                 should: {
                     removeError: function () {
-                        return (settings.hideError === true || (settings.hideError === 'auto' && !module.is.form()));
+                        return settings.hideError === true || (settings.hideError === 'auto' && !module.is.form());
                     },
                 },
 
                 is: {
                     disabled: function () {
-                        return ($module.filter(selector.disabled).length > 0);
+                        return $module.filter(selector.disabled).length > 0;
                     },
                     expectingJSON: function () {
                         return settings.dataType === 'json' || settings.dataType === 'jsonp';
@@ -295,14 +289,14 @@
                         return $module.is('form') || $context.is('form');
                     },
                     mocked: function () {
-                        return (settings.mockResponse || settings.mockResponseAsync || settings.response || settings.responseAsync);
+                        return settings.mockResponse || settings.mockResponseAsync || settings.response || settings.responseAsync;
                     },
                     input: function () {
                         return $module.is('input');
                     },
                     loading: function () {
-                        return (module.request)
-                            ? (module.request.state() == 'pending')
+                        return module.request
+                            ? module.request.state() === 'pending'
                             : false;
                     },
                     abortedRequest: function (xhr) {
@@ -310,14 +304,14 @@
                             module.verbose('XHR request determined to be aborted');
 
                             return true;
-                        } else {
-                            module.verbose('XHR request was not aborted');
-
-                            return false;
                         }
+
+                        module.verbose('XHR request was not aborted');
+
+                        return false;
                     },
                     validResponse: function (response) {
-                        if ((!module.is.expectingJSON()) || !isFunction(settings.successTest)) {
+                        if (!module.is.expectingJSON() || !isFunction(settings.successTest)) {
                             module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
 
                             return true;
@@ -327,26 +321,26 @@
                             module.debug('Response passed success test', response);
 
                             return true;
-                        } else {
-                            module.debug('Response failed success test', response);
-
-                            return false;
                         }
+
+                        module.debug('Response failed success test', response);
+
+                        return false;
                     },
                 },
 
                 was: {
                     cancelled: function () {
-                        return (module.cancelled || false);
+                        return module.cancelled || false;
                     },
                     successful: function () {
-                        return (module.request && module.request.state() == 'resolved');
+                        return module.request && module.request.state() === 'resolved';
                     },
                     failure: function () {
-                        return (module.request && module.request.state() == 'rejected');
+                        return module.request && module.request.state() === 'rejected';
                     },
                     complete: function () {
-                        return (module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected'));
+                        return module.request && (module.request.state() === 'resolved' || module.request.state() === 'rejected');
                     },
                 },
 
@@ -365,16 +359,16 @@
                                 $.each(requiredVariables, function (index, templatedString) {
                                     var
                                         // allow legacy {$var} style
-                                        variable = (templatedString.indexOf('$') !== -1)
+                                        variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(2, -1)
                                             : templatedString.slice(1, -1),
-                                        value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
+                                        value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                             ? urlData[variable]
-                                            : ($module.data(variable) !== undefined)
+                                            : ($module.data(variable) !== undefined
                                                 ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined)
+                                                : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
                                                     ? $context.data(variable)
-                                                    : urlData[variable]
+                                                    : urlData[variable]))
                                     ;
                                     // remove value
                                     if (value === undefined) {
@@ -382,13 +376,13 @@
                                         url = false;
 
                                         return false;
-                                    } else {
-                                        module.verbose('Found required variable', variable, value);
-                                        value = (settings.encodeParameters)
-                                            ? module.get.urlEncodedValue(value)
-                                            : value;
-                                        url = url.replace(templatedString, value);
                                     }
+
+                                    module.verbose('Found required variable', variable, value);
+                                    value = settings.encodeParameters
+                                        ? module.get.urlEncodedValue(value)
+                                        : value;
+                                    url = url.replace(templatedString, value);
                                 });
                             }
                             if (optionalVariables) {
@@ -396,16 +390,16 @@
                                 $.each(optionalVariables, function (index, templatedString) {
                                     var
                                         // allow legacy {/$var} style
-                                        variable = (templatedString.indexOf('$') !== -1)
+                                        variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(3, -1)
                                             : templatedString.slice(2, -1),
-                                        value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
+                                        value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                             ? urlData[variable]
-                                            : ($module.data(variable) !== undefined)
+                                            : ($module.data(variable) !== undefined
                                                 ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined)
+                                                : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
                                                     ? $context.data(variable)
-                                                    : urlData[variable]
+                                                    : urlData[variable]))
                                     ;
                                     // optional replacement
                                     if (value !== undefined) {
@@ -414,11 +408,9 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        if (url.indexOf('/' + templatedString) !== -1) {
-                                            url = url.replace('/' + templatedString, '');
-                                        } else {
-                                            url = url.replace(templatedString, '');
-                                        }
+                                        url = url.indexOf('/' + templatedString) !== -1
+                                            ? url.replace('/' + templatedString, '')
+                                            : url.replace(templatedString, '');
                                     }
                                 });
                             }
@@ -437,8 +429,8 @@
 
                         if (useFormDataApi) {
                             formData = new FormData($form[0]);
-                            settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
-                            settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
+                            settings.processData = settings.processData !== undefined ? settings.processData : false;
+                            settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
                             var
                                 formArray = $form.serializeArray(),
@@ -469,8 +461,7 @@
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value)),
                                     nameKeys = el.name.match(settings.regExp.key) || [],
-                                    k,
-                                    pushKey = el.name.replace(/\[\]$/, '')
+                                    pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
@@ -484,8 +475,10 @@
                                     value = pushValues[pushKey];
                                 }
 
-                                while ((k = nameKeys.pop()) !== undefined) {
-                                    if (k == '' && !Array.isArray(value)) { // foo[]
+                                while (nameKeys.length > 0) {
+                                    var k = nameKeys.pop();
+
+                                    if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
                                     } else if (settings.regExp.fixed.test(k)) { // foo[n]
                                         value = build([], k, value);
@@ -532,7 +525,7 @@
                 event: {
                     trigger: function (event) {
                         module.query();
-                        if (event.type == 'submit' || event.type == 'click') {
+                        if (event.type === 'submit' || event.type === 'click') {
                             event.preventDefault();
                         }
                     },
@@ -543,15 +536,15 @@
                         done: function (response, textStatus, xhr) {
                             var
                                 context            = this,
-                                elapsedTime        = (new Date().getTime() - requestStartTime),
-                                timeLeft           = (settings.loadingDuration - elapsedTime),
-                                translatedResponse = (isFunction(settings.onResponse))
-                                    ? module.is.expectingJSON() && !settings.rawResponse
+                                elapsedTime        = Date.now() - requestStartTime,
+                                timeLeft           = settings.loadingDuration - elapsedTime,
+                                translatedResponse = isFunction(settings.onResponse)
+                                    ? (module.is.expectingJSON() && !settings.rawResponse
                                         ? settings.onResponse.call(context, $.extend(true, {}, response))
-                                        : settings.onResponse.call(context, response)
+                                        : settings.onResponse.call(context, response))
                                     : false
                             ;
-                            timeLeft = (timeLeft > 0)
+                            timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
                             if (translatedResponse) {
@@ -572,10 +565,10 @@
                         fail: function (xhr, status, httpMessage) {
                             var
                                 context     = this,
-                                elapsedTime = (new Date().getTime() - requestStartTime),
-                                timeLeft    = (settings.loadingDuration - elapsedTime)
+                                elapsedTime = Date.now() - requestStartTime,
+                                timeLeft    = settings.loadingDuration - elapsedTime
                             ;
-                            timeLeft = (timeLeft > 0)
+                            timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
                             if (timeLeft > 0) {
@@ -621,14 +614,15 @@
                                 response     = module.get.responseFromXHR(xhr),
                                 errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                             ;
-                            if (status == 'aborted') {
+                            if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                 settings.onAbort.call(context, status, $module, xhr);
 
                                 return true;
-                            } else if (status == 'invalid') {
+                            }
+                            if (status === 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                            } else if (status == 'error') {
+                            } else if (status === 'error') {
                                 if (xhr !== undefined) {
                                     module.debug('XHR produced a server error', status, httpMessage);
                                     // make sure we have an error to display to console
@@ -733,7 +727,7 @@
                     loading: function () {
                         module.verbose('Adding loading state to element', $context);
                         $context.addClass(className.loading);
-                        requestStartTime = new Date().getTime();
+                        requestStartTime = Date.now();
                     },
                 },
 
@@ -754,17 +748,17 @@
                     },
                     responseFromXHR: function (xhr) {
                         return $.isPlainObject(xhr)
-                            ? (module.is.expectingJSON())
+                            ? (module.is.expectingJSON()
                                 ? module.decode.json(xhr.responseText)
-                                : xhr.responseText
+                                : xhr.responseText)
                             : false;
                     },
                     errorFromRequest: function (response, status, httpMessage) {
-                        return ($.isPlainObject(response) && response.error !== undefined)
+                        return $.isPlainObject(response) && response.error !== undefined
                             ? response.error // use json error message
-                            : (settings.error[status] !== undefined) // use server error message
+                            : (settings.error[status] !== undefined // use server error message
                                 ? settings.error[status]
-                                : httpMessage;
+                                : httpMessage);
                     },
                     request: function () {
                         return module.request || false;
@@ -801,7 +795,7 @@
                             return runSettings;
                         }
 
-                        return (runSettings !== undefined)
+                        return runSettings !== undefined
                             ? $.extend(true, {}, runSettings)
                             : $.extend(true, {}, settings);
                     },
@@ -809,7 +803,7 @@
                         var
                             decodedValue   = window.decodeURIComponent(value),
                             encodedValue   = window.encodeURIComponent(value),
-                            alreadyEncoded = (decodedValue !== value)
+                            alreadyEncoded = decodedValue !== value
                         ;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
@@ -827,9 +821,7 @@
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();
-                            } else if (module.is.form()) {
-
-                            } else {
+                            } else if (!module.is.form()) {
                                 data.text = $module.text();
                             }
                         }
@@ -837,29 +829,31 @@
                         return data;
                     },
                     event: function () {
-                        if (isWindow(element) || settings.on == 'now') {
+                        if (isWindow(element) || settings.on === 'now') {
                             module.debug('API called without element, no events attached');
 
                             return false;
-                        } else if (settings.on == 'auto') {
-                            if ($module.is('input')) {
-                                return (element.oninput !== undefined)
-                                    ? 'input'
-                                    : (element.onpropertychange !== undefined)
-                                        ? 'propertychange'
-                                        : 'keyup';
-                            } else if ($module.is('form')) {
-                                return 'submit';
-                            } else {
-                                return 'click';
-                            }
-                        } else {
-                            return settings.on;
                         }
+                        if (settings.on === 'auto') {
+                            if ($module.is('input')) {
+                                return element.oninput !== undefined
+                                    ? 'input'
+                                    : (element.onpropertychange !== undefined
+                                        ? 'propertychange'
+                                        : 'keyup');
+                            }
+                            if ($module.is('form')) {
+                                return 'submit';
+                            }
+
+                            return 'click';
+                        }
+
+                        return settings.on;
                     },
                     templatedURL: function (action) {
-                        action = action || $module.data(metadata.action) || settings.action || false;
-                        url = $module.data(metadata.url) || settings.url || false;
+                        action = action || settings.action || $module.data(metadata.action) || false;
+                        url = settings.url || $module.data(metadata.url) || false;
                         if (url) {
                             module.debug('Using specified url', url);
 
@@ -955,7 +949,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -983,7 +977,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -1006,21 +1000,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1063,10 +1057,11 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
+    $.api = $.fn.api;
 
     $.api.settings = {
 
@@ -1192,13 +1187,13 @@
         },
 
         regExp: {
-            required: /\{\$*[a-z0-9]+\}/gi,
-            optional: /\{\/\$*[a-z0-9]+\}/gi,
-            validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
-            key: /[a-z0-9_-]+|(?=\[\])/gi,
+            required: /{\$*[\da-z]+}/gi,
+            optional: /{\/\$*[\da-z]+}/gi,
+            validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
+            key: /[\w-]+|(?=\[])/gi,
             push: /^$/,
             fixed: /^\d+$/,
-            named: /^[a-z0-9_-]+$/i,
+            named: /^[\w-]+$/i,
         },
 
         className: {

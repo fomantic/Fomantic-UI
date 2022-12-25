@@ -2,6 +2,22 @@
  *    Admin Task Collection
  *******************************/
 
+const
+    // less/css distributions
+    initComponents      = require('../admin/components/init'),
+    createComponents    = require('../admin/components/create'),
+    updateComponents    = require('../admin/components/update'),
+
+    // single component releases
+    initDistributions   = require('../admin/distributions/init'),
+    createDistributions = require('../admin/distributions/create'),
+    updateDistributions = require('../admin/distributions/update'),
+
+    release             = require('../admin/release'),
+    publish             = require('../admin/publish'),
+    register            = require('../admin/register')
+;
+
 /*
   This are tasks to be run by project maintainers
   - Creating Component Repos
@@ -14,22 +30,6 @@
  *******************************/
 
 module.exports = function (gulp) {
-    var
-        // less/css distributions
-        initComponents      = require('../admin/components/init'),
-        createComponents    = require('../admin/components/create'),
-        updateComponents    = require('../admin/components/update'),
-
-        // single component releases
-        initDistributions   = require('../admin/distributions/init'),
-        createDistributions = require('../admin/distributions/create'),
-        updateDistributions = require('../admin/distributions/update'),
-
-        release             = require('../admin/release'),
-        publish             = require('../admin/publish'),
-        register            = require('../admin/register')
-    ;
-
     /* Release */
     gulp.task('init distributions', initDistributions);
     gulp.task('init distributions').description = 'Grabs each component from GitHub';

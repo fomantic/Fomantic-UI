@@ -2,7 +2,7 @@
              Set-up
 *******************************/
 
-var
+const
     // npm dependencies
     extend          = require('extend'),
     fs              = require('fs'),
@@ -11,8 +11,10 @@ var
 
     // semantic.json defaults
     defaults        = require('./defaults'),
-    config          = require('./project/config'),
+    config          = require('./project/config')
+;
 
+let
     // Final config object
     gulpConfig = {},
 
@@ -37,7 +39,7 @@ try {
 }
 
 // extend user config with defaults
-gulpConfig = (!userConfig)
+gulpConfig = !userConfig
     ? extend(true, {}, defaults)
     : extend(false, {}, defaults, userConfig);
 

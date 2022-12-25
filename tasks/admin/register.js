@@ -8,13 +8,13 @@
   * Registers component with NPM
 */
 
-var
-    // node dependencies
-    process = require('child_process'),
+// node dependencies
+const process = require('child_process');
 
-    // config
-    release = require('../config/admin/release'),
+// config
+const release = require('../config/admin/release');
 
+let
     // register components and distributions
     repos   = release.distributions.concat(release.components),
     total   = repos.length,
@@ -35,7 +35,7 @@ module.exports = function (callback) {
 
             return;
         }
-        var
+        let
             repo            = repos[index].toLowerCase(),
             outputDirectory = release.outputRoot + repo + '/',
             exec            = process.exec,

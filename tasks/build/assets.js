@@ -2,7 +2,7 @@
  Build Task
  *******************************/
 
-var
+const
     gulp      = require('gulp'),
 
     // gulp dependencies
@@ -29,7 +29,7 @@ function build(src, config) {
 
 function buildAssets(src, config, callback) {
     if (!install.isSetup()) {
-        console.error('Cannot build assets. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build assets. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;
@@ -42,7 +42,7 @@ function buildAssets(src, config, callback) {
     }
 
     // copy assets
-    var assets         = () => build(src, config);
+    let assets         = () => build(src, config);
     assets.displayName = 'Building Assets';
 
     gulp.series(assets)(callback);

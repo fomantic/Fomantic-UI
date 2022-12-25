@@ -4,8 +4,8 @@ const path = require('path');
 const childProcess = require('child_process');
 
 // npm
-const fetch = require('node-fetch');
-const semver = require('semver');
+const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies
+const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
 const actions = require('@actions/core');
 
 // pkg
@@ -44,7 +44,9 @@ const getPublishedVersion = async function () {
             .then((p) => {
                 let nightly = p['dist-tags'].nightly ?? '';
                 let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead ? '+' + (versionInfo.gitHead ?? '').slice(0, 7) : '';
+                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead
+                    ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
+                    : '';
 
                 return nightly + buildCommit;
             })
@@ -59,7 +61,7 @@ const getNightlyVersion = async function () {
         actions.setOutput('shouldPublish', false);
 
         console.log('No new commits since last publish. Exiting.');
-        process.exit(0);
+        process.exit(0); // eslint-disable-line unicorn/no-process-exit
 
         return;
     }

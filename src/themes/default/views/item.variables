@@ -2,9 +2,9 @@
              Item
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Group */
 @groupMargin: 1.5em 0;
@@ -18,7 +18,7 @@
 @width: 100%;
 @boxShadow: none;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 @transition: box-shadow @defaultDuration @defaultEasing;
 
 /* Responsive */
@@ -35,15 +35,14 @@
 @mobileImageMaxHeight: 250px;
 @mobileContentImageDistance: 1.5em;
 
-
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Image */
 @imageDisplay: block;
 @imageFloat: none;
-@imageMaxHeight: '';
+@imageMaxHeight: "";
 @imageVerticalAlign: start;
 @imageMargin: 0;
 @imagePadding: 0;
@@ -86,20 +85,19 @@
 @actionTransition: color @defaultDuration @defaultEasing;
 
 /* Actions */
-@favoriteColor: #FFB70A;
-@favoriteActiveColor: #FFE623;
-@likeColor: #FF2733;
-@likeActiveColor: #FF2733;
+@favoriteColor: #ffb70a;
+@favoriteActiveColor: #ffe623;
+@likeColor: #ff2733;
+@likeActiveColor: #ff2733;
 
 /* Links */
 @headerLinkColor: @headerColor;
 @headerLinkHoverColor: @linkHoverColor;
 @metaLinkColor: @lightTextColor;
 @metaLinkHoverColor: @textColor;
-@contentLinkColor: '';
-@contentLinkHoverColor: '';
+@contentLinkColor: "";
+@contentLinkHoverColor: "";
 @contentLinkTransition: color @defaultDuration @defaultEasing;
-
 
 /* Description */
 @descriptionDistance: 0.6em;
@@ -109,7 +107,7 @@
 @descriptionColor: @textColor;
 
 /* Content Image */
-@contentImageWidth: '';
+@contentImageWidth: "";
 @contentImageVerticalAlign: center;
 
 /* Avatar Image */
@@ -131,14 +129,14 @@
 @extraTop: 0;
 @extraLeft: 0;
 @extraWidth: 100%;
-@extraPadding: 0 0 0;
+@extraPadding: 0;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Relaxed */
 @relaxedItemSpacing: 1.5em;
@@ -151,7 +149,6 @@
 
 @dividedFirstLastMargin: 0;
 @dividedFirstLastPadding: 0;
-
 
 /* Unstackable */
 @unstackableMobileImageWidth: 125px;
@@ -171,10 +168,10 @@
 @invertedExtraColor: @invertedLightTextColor;
 @invertedDescriptionColor: @invertedTextColor;
 @invertedMetaColor: rgba(255, 255, 255, 0.8);
-@invertedLikeColor: lighten(@likeColor,10);
-@invertedLikeActiveColor: lighten(@likeActiveColor,10);
-@invertedFavoriteColor: lighten(@favoriteColor,10);
-@invertedFavoriteActiveColor: lighten(@favoriteActiveColor,10);
+@invertedLikeColor: lighten(@likeColor, 10);
+@invertedLikeActiveColor: lighten(@likeActiveColor, 10);
+@invertedFavoriteColor: lighten(@favoriteColor, 10);
+@invertedFavoriteActiveColor: lighten(@favoriteActiveColor, 10);
 @invertedDividedBorder: 1px solid @whiteBorderColor;
 
 @miniItemSize: @relativeMini;

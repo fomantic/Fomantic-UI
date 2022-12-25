@@ -12,7 +12,7 @@
 
 */
 
-var
+const
     gulp      = require('gulp'),
 
     // node dependencies
@@ -24,13 +24,12 @@ var
     mkdirp    = require('mkdirp'),
 
     // admin files
-    github    = require('../../config/admin/github.js'),
     release   = require('../../config/admin/release'),
     project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth     = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
-        ? require('../../config/admin/oauth')
+    oAuth     = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
     // shorthand
@@ -38,7 +37,9 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    const github = require('../../config/admin/github'); // eslint-disable-line global-require
+
+    let
         index = -1,
         total = release.components.length,
         timer,
@@ -62,7 +63,7 @@ module.exports = function (callback) {
             return;
         }
 
-        var
+        let
             component            = release.components[index],
             outputDirectory      = path.resolve(release.outputRoot + component),
             capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
@@ -85,7 +86,7 @@ module.exports = function (callback) {
         }
 
         // clean folder
-        if (release.outputRoot.search('../repos') == 0) {
+        if (release.outputRoot.startsWith('../repos')) {
             console.info('Cleaning dir', outputDirectory);
             del.sync([outputDirectory + '**/*'], { silent: true, force: true });
         }
@@ -141,7 +142,7 @@ module.exports = function (callback) {
             });
         }
 
-        function nextRepo() {
+        function nextRepo() { // eslint-disable-line unicorn/consistent-function-scoping
             // console.log('Sleeping for 1 second...');
             // avoid rate throttling
             global.clearTimeout(timer);

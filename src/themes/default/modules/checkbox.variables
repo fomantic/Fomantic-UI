@@ -6,7 +6,6 @@
 @checkboxColor: @textColor;
 @checkboxLineHeight: @checkboxSize;
 
-
 /* Label */
 @labelDistance: 1.85714em; /* 26px @ 14/em */
 
@@ -15,11 +14,10 @@
 @checkboxBorder: 1px solid @solidBorderColor;
 @checkboxBorderRadius: @3px;
 @checkboxTransition:
-  border @defaultDuration @defaultEasing,
-  opacity @defaultDuration @defaultEasing,
-  transform @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing
-;
+    border @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
+    transform @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing;
 
 /* Checkmark */
 @checkboxCheckFontSize: 14px;
@@ -32,9 +30,9 @@
 @labelColor: @textColor;
 @labelTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hover */
 @checkboxHoverBackground: @checkboxBackground;
@@ -75,11 +73,12 @@
 @disabledCheckboxOpacity: 0.5;
 @disabledCheckboxLabelColor: rgba(0, 0, 0, 1);
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Radio */
+
 /* Uses px to avoid rounding issues with circles */
 
 @radioSize: 15px;
@@ -105,9 +104,8 @@
 /* Slider & Toggle Handle */
 @handleBackground: @white @subtleGradient;
 @handleBoxShadow:
-  @subtleShadow,
-  0 0 0 1px @borderColor inset
-;
+    @subtleShadow,
+    0 0 0 1px @borderColor inset;
 
 /* Slider */
 @sliderHandleSize: 1.5rem;
@@ -144,8 +142,6 @@
 @sliderOnFocusLineColor: @lightBlackFocus;
 @sliderOnFocusLabelColor: @sliderOnLabelColor;
 
-
-
 /* Toggle */
 @toggleLaneWidth: 3.5rem;
 @toggleHandleSize: 1.5rem;
@@ -157,13 +153,11 @@
 @toggleHandleRadius: @circularRadius;
 @toggleHandleOffset: 0;
 @toggleHandleTransition:
-  background @toggleTransitionDuration @defaultEasing,
-  left @toggleTransitionDuration @defaultEasing
-;
+    background @toggleTransitionDuration @defaultEasing,
+    left @toggleTransitionDuration @defaultEasing;
 @toggleHandleTransitionRightAligned:
-  background @toggleTransitionDuration @defaultEasing,
-  right @toggleTransitionDuration @defaultEasing
-;
+    background @toggleTransitionDuration @defaultEasing,
+    right @toggleTransitionDuration @defaultEasing;
 
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;
@@ -177,7 +171,6 @@
 @toggleLabelDistance: @toggleLaneWidth + 1rem;
 @toggleLabelLineHeight: 1.5rem;
 @toggleLabelOffset: 0.15em;
-
 
 @toggleFocusColor: @veryStrongTransparentBlack;
 @toggleHoverColor: @toggleFocusColor;
@@ -193,33 +186,31 @@
 @toggleOnFocusLaneColor: @primaryColorFocus;
 @toggleOnFocusLabelColor: @toggleOnLabelColor;
 
-
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;
 
 @miniCheckboxSize: @relativeMini;
 @miniCheckboxCircleScale: (@miniRaw / 2);
-@miniCheckboxCircleLeft: unit(((@miniRaw - @miniCheckboxCircleScale) / 2) + 0.05 , em);
+@miniCheckboxCircleLeft: unit(((@miniRaw - @miniCheckboxCircleScale) / 2) + 0.05, em);
 @tinyCheckboxSize: @relativeTiny;
 @tinyCheckboxCircleScale: (@tinyRaw / 2);
-@tinyCheckboxCircleLeft: unit(((@tinyRaw - @tinyCheckboxCircleScale) / 2) + 0.05 , em);
+@tinyCheckboxCircleLeft: unit(((@tinyRaw - @tinyCheckboxCircleScale) / 2) + 0.05, em);
 @smallCheckboxSize: @relativeSmall;
 @smallCheckboxCircleScale: (@smallRaw / 2);
-@smallCheckboxCircleLeft: unit(((@smallRaw - @smallCheckboxCircleScale) / 2) + 0.05 , em);
+@smallCheckboxCircleLeft: unit(((@smallRaw - @smallCheckboxCircleScale) / 2) + 0.05, em);
 @largeCheckboxSize: @relativeLarge;
 @largeCheckboxCircleScale: (@largeRaw / 2);
-@largeCheckboxCircleLeft: unit(((@largeRaw - @largeCheckboxCircleScale) / 2) + 0.05 , em);
+@largeCheckboxCircleLeft: unit(((@largeRaw - @largeCheckboxCircleScale) / 2) + 0.05, em);
 @bigCheckboxSize: @relativeBig;
 @bigCheckboxCircleScale: (@bigRaw / 2);
-@bigCheckboxCircleLeft: unit(((@bigRaw - @bigCheckboxCircleScale) / 2) + 0.05 , em);
+@bigCheckboxCircleLeft: unit(((@bigRaw - @bigCheckboxCircleScale) / 2) + 0.05, em);
 @hugeCheckboxSize: @relativeHuge;
 @hugeCheckboxCircleScale: (@hugeRaw / 2);
-@hugeCheckboxCircleLeft: unit(((@hugeRaw - @hugeCheckboxCircleScale) / 2) + 0.05 , em);
+@hugeCheckboxCircleLeft: unit(((@hugeRaw - @hugeCheckboxCircleScale) / 2) + 0.05, em);
 @massiveCheckboxSize: @relativeMassive;
 @massiveCheckboxCircleScale: (@massiveRaw / 2);
-@massiveCheckboxCircleLeft: unit(((@massiveRaw - @massiveCheckboxCircleScale) / 2) + 0.05 , em);
+@massiveCheckboxCircleLeft: unit(((@massiveRaw - @massiveCheckboxCircleScale) / 2) + 0.05, em);

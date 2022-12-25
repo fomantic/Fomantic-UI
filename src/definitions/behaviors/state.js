@@ -8,18 +8,16 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.state = function (parameters) {
         var
@@ -27,18 +25,18 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.state.settings, parameters)
                     : $.extend({}, $.fn.state.settings),
 
@@ -132,7 +130,7 @@
                         return $module.hasClass(className.loading);
                     },
                     inactive: function () {
-                        return !($module.hasClass(className.active));
+                        return !$module.hasClass(className.active);
                     },
                     state: function (state) {
                         if (className[state] === undefined) {
@@ -143,13 +141,13 @@
                     },
 
                     enabled: function () {
-                        return !($module.is(settings.filter.active));
+                        return !$module.is(settings.filter.active);
                     },
                     disabled: function () {
-                        return ($module.is(settings.filter.active));
+                        return $module.is(settings.filter.active);
                     },
                     textEnabled: function () {
-                        return !($module.is(settings.filter.text));
+                        return !$module.is(settings.filter.text);
                     },
 
                     // definitions for automatic type detection
@@ -235,7 +233,7 @@
                         }
                         $.when(apiRequest)
                             .then(function () {
-                                if (apiRequest.state() == 'resolved') {
+                                if (apiRequest.state() === 'resolved') {
                                     module.debug('API request succeeded');
                                     settings.activateTest = function () {
                                         return true;
@@ -341,7 +339,7 @@
 
                 get: {
                     text: function () {
-                        return (settings.selector.text)
+                        return settings.selector.text
                             ? $module.find(settings.selector.text).text()
                             : $module.html();
                     },
@@ -466,7 +464,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -494,7 +492,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -517,21 +515,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -574,7 +572,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

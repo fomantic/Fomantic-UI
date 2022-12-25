@@ -1,7 +1,9 @@
 /*******************************
  Serve Docs
  *******************************/
-var
+
+const
+    extend      = require('extend'),
     gulp        = require('gulp'),
 
     // node dependencies
@@ -11,7 +13,7 @@ var
     print       = require('gulp-print').default,
 
     // user config
-    config      = require('../config/docs'),
+    configDocs      = require('../config/docs'),
 
     // task config
     tasks       = require('../config/tasks'),
@@ -27,7 +29,8 @@ var
 
 module.exports = function () {
     // use a different config
-    config = configSetup.addDerivedValues(config);
+    const config = extend(true, {}, configDocs);
+    configSetup.addDerivedValues(config);
 
     console.clear();
     console.log('Watching source files for changes');

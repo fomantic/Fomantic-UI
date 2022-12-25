@@ -10,9 +10,7 @@
 
 */
 
-var
-    gulp = require('gulp')
-;
+const gulp = require('gulp');
 
 /* Release All */
 module.exports = function (callback) {

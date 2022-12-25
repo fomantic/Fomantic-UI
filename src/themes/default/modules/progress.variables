@@ -2,9 +2,9 @@
             Progress
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalSpacing: 1em;
 @margin: @verticalSpacing 0 (@labelHeight + @verticalSpacing);
@@ -20,14 +20,13 @@
 /* Bar */
 @barPosition: relative;
 @barHeight: 1.75em;
-@barBackground: #888888;
+@barBackground: #888;
 @barBorderRadius: @borderRadius;
 @barTransitionEasing: @defaultEasing;
 @barTransitionDuration: @defaultDuration;
 @barTransition:
-  width @barTransitionDuration @barTransitionEasing,
-  background-color @barTransitionDuration @barTransitionEasing
-;
+    width @barTransitionDuration @barTransitionEasing,
+    background-color @barTransitionDuration @barTransitionEasing;
 @barInitialWidth: 0;
 @barMinWidth: 2em;
 
@@ -63,16 +62,16 @@
 @labelTextAlign: center;
 @labelTransition: color 0.4s @defaultEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-@indicatingFirstColor: #D95C5C;
-@indicatingSecondColor: #EFBC72;
-@indicatingThirdColor: #E6BB48;
-@indicatingFourthColor: #DDC928;
-@indicatingFifthColor: #B4D95C;
-@indicatingSixthColor: #66DA81;
+@indicatingFirstColor: #d95c5c;
+@indicatingSecondColor: #efbc72;
+@indicatingThirdColor: #e6bb48;
+@indicatingFourthColor: #ddc928;
+@indicatingFifthColor: #b4d95c;
+@indicatingSixthColor: #66da81;
 
 @indicatingFirstLabelColor: @textColor;
 @indicatingSecondLabelColor: @textColor;
@@ -88,9 +87,9 @@
 @invertedIndicatingFifthLabelColor: @invertedTextColor;
 @invertedIndicatingSixthLabelColor: @invertedTextColor;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Active */
 @activePulseColor: @white;
@@ -98,10 +97,9 @@
 @activePulseDuration: 2s;
 @activeMinWidth: @barMinWidth;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Attached */
 @attachedBackground: transparent;

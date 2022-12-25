@@ -12,7 +12,7 @@
 
 */
 
-var
+const
     gulp           = require('gulp'),
 
     // node dependencies
@@ -22,13 +22,12 @@ var
     git            = require('gulp-git'),
 
     // admin files
-    github         = require('../../config/admin/github.js'),
     release        = require('../../config/admin/release'),
     project        = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth          = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
-        ? require('../../config/admin/oauth')
+    oAuth          = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
     // shorthand
@@ -36,7 +35,9 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    const github = require('../../config/admin/github'); // eslint-disable-line global-require
+
+    let
         index = -1,
         total = release.components.length,
         timer,
@@ -59,7 +60,7 @@ module.exports = function (callback) {
             return;
         }
 
-        var
+        let
             component            = release.components[index],
             outputDirectory      = path.resolve(path.join(release.outputRoot, component)),
             capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
@@ -68,17 +69,17 @@ module.exports = function (callback) {
             gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git',
             repoURL              = 'https://github.com/' + release.org + '/' + repoName + '/',
 
-            commitArgs = (oAuth.name !== undefined && oAuth.email !== undefined)
+            commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
                 ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
                 : '',
 
             componentPackage = fs.existsSync(outputDirectory + 'package.json')
-                ? require(outputDirectory + 'package.json')
+                ? require(outputDirectory + 'package.json') // eslint-disable-line global-require, import/no-dynamic-require
                 : false,
 
-            isNewVersion  = (version && componentPackage.version != version),
+            isNewVersion  = version && componentPackage.version !== version,
 
-            commitMessage = (isNewVersion)
+            commitMessage = isNewVersion
                 ? 'Updated component to version ' + version
                 : 'Updated files from main repo',
 

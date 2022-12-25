@@ -7,13 +7,12 @@
 
    For more notes
 
-   * Runs automatically after npm update (hooks)
-   * (NPM) Install - Will ask for where to put semantic (outside pm folder)
-   * (NPM) Upgrade - Will look for semantic install, copy over files and update if new version
+   * (NPM) Install - Will ask for where to put fomantic (outside pm folder)
+   * (NPM) Upgrade - Will look for fomantic install, copy over files and update if new version
    * Standard installer runs asking for paths to site files etc
 */
 
-var
+const
     gulp           = require('gulp'),
 
     // node dependencies
@@ -54,7 +53,7 @@ var
 
 // Export install task
 module.exports = function (callback) {
-    var
+    let
         currentConfig = requireDotFile('semantic.json', process.cwd()),
         manager       = install.getPackageManager(),
         rootQuestions = questions.root,
@@ -84,7 +83,7 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        var
+        let
             updateFolder = path.join(manager.root, currentConfig.base),
             updatePaths  = {
                 config: path.join(manager.root, files.config),
@@ -141,21 +140,21 @@ module.exports = function (callback) {
                     .pipe(gulp.dest(manager.root))
                 ;
 
-                console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
+                console.info('Update complete! Run "\u001B[92mgulp build\u001B[0m" to rebuild dist/ files.');
 
-                callback();
-
-                return;
-            } else {
-                console.log('Current version of Fomantic UI already installed');
                 callback();
 
                 return;
             }
-        } else {
-            console.error('Cannot locate files to update at path: ', updatePaths.definition);
-            console.log('Running installer');
+
+            console.log('Current version of Fomantic UI already installed');
+            callback();
+
+            return;
         }
+
+        console.error('Cannot locate files to update at path:', updatePaths.definition);
+        console.log('Running installer');
     }
 
     /* --------------
@@ -209,7 +208,7 @@ module.exports = function (callback) {
         --------------- */
 
         // if config exists and user specifies not to proceed
-        if (answers.overwrite !== undefined && answers.overwrite == 'no') {
+        if (answers.overwrite !== undefined && answers.overwrite === 'no') {
             callback();
 
             return;
@@ -226,7 +225,7 @@ module.exports = function (callback) {
              Paths
         --------------- */
 
-        var
+        let
             installPaths = {
                 config: files.config,
                 configFolder: folders.config,
@@ -267,10 +266,10 @@ module.exports = function (callback) {
             installFolder = path.join(manager.root, answers.semanticRoot);
 
             // add install folder to all output paths
-            for (var destination in installPaths) {
-                if (installPaths.hasOwnProperty(destination)) {
+            for (let destination in installPaths) {
+                if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
-                    installPaths[destination] = (destination == 'config' || destination == 'configFolder')
+                    installPaths[destination] = destination === 'config' || destination === 'configFolder'
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
                         : path.normalize(path.join(installFolder, installPaths[destination]));
                 }
@@ -286,7 +285,7 @@ module.exports = function (callback) {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
 
-            console.log('Installing to \x1b[92m' + answers.semanticRoot + '\x1b[0m');
+            console.log('Installing to \u001B[92m' + answers.semanticRoot + '\u001B[0m');
 
             console.info('Copying UI definitions');
             wrench.copyDirSyncRecursive(source.definitions, installPaths.definition, settings.wrench.overwrite);
@@ -334,15 +333,15 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create theme.config', function () {
-            var
+            let
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder   : '" + pathToSite + "/';"
+                siteVariable = "@siteFolder: '" + pathToSite + "/';"
             ;
 
             // rewrite site variable in theme.less
-            console.info('Adjusting @siteFolder to: ', pathToSite + '/');
+            console.info('Adjusting @siteFolder to:', pathToSite + '/');
 
             if (fs.existsSync(installPaths.themeConfig)) {
                 console.info('Modifying src/theme.config (LESS config)', installPaths.themeConfig);
@@ -352,16 +351,16 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder))
                 ;
-            } else {
-                console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
-
-                return gulp.src(source.themeConfig)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' }))
-                    .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder))
-                ;
             }
+
+            console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
+
+            return gulp.src(source.themeConfig)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' }))
+                .pipe(replace(regExp.siteVariable, siteVariable))
+                .pipe(gulp.dest(installPaths.themeConfigFolder))
+            ;
         });
 
         /* --------------
@@ -369,7 +368,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            var
+            let
                 jsonConfig = install.createJSON(answers)
             ;
 
@@ -383,16 +382,16 @@ module.exports = function (callback) {
                     .pipe(jsonEditor(jsonConfig))
                     .pipe(gulp.dest(installPaths.configFolder))
                 ;
-            } else {
-                console.info('Creating config file (semantic.json)', installPaths.config);
-
-                return gulp.src(source.config)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' })) // remove .template from ext
-                    .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
-                    .pipe(gulp.dest(installPaths.configFolder))
-                ;
             }
+
+            console.info('Creating config file (semantic.json)', installPaths.config);
+
+            return gulp.src(source.config)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' })) // remove .template from ext
+                .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
+                .pipe(gulp.dest(installPaths.configFolder))
+            ;
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);
@@ -401,7 +400,7 @@ module.exports = function (callback) {
     gulp.task('clean up install', function (callback) {
         // Completion Message
         if (installFolder && !install.shouldAutoInstall()) {
-            console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
+            console.log('\n Setup Complete! \n Installing Peer Dependencies. \u001B[0;31mPlease refrain from ctrl + c\u001B[0m... \n After completion navigate to \u001B[92m' + answers.semanticRoot + '\u001B[0m and run "\u001B[92mgulp build\u001B[0m" to build');
             callback();
         } else {
             console.log('');

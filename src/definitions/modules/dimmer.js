@@ -8,28 +8,26 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.dimmer = function (parameters) {
         var
             $allModules     = $(this),
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -37,7 +35,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                     : $.extend({}, $.fn.dimmer.settings),
 
@@ -50,7 +48,7 @@
                 moduleNamespace = 'module-' + namespace,
                 moduleSelector  = $allModules.selector || '',
 
-                clickEvent      = ('ontouchstart' in document.documentElement)
+                clickEvent      = 'ontouchstart' in document.documentElement
                     ? 'touchstart'
                     : 'click',
 
@@ -72,11 +70,9 @@
                     } else {
                         $dimmable = $module;
                         if (module.has.dimmer()) {
-                            if (settings.dimmerName) {
-                                $dimmer = $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName);
-                            } else {
-                                $dimmer = $dimmable.find(selector.dimmer);
-                            }
+                            $dimmer = settings.dimmerName
+                                ? $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName)
+                                : $dimmable.find(selector.dimmer);
                         } else {
                             $dimmer = module.create();
                         }
@@ -110,12 +106,12 @@
 
                 bind: {
                     events: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             $dimmable
                                 .on('mouseenter' + eventNamespace, module.show)
                                 .on('mouseleave' + eventNamespace, module.hide)
                             ;
-                        } else if (settings.on == 'click') {
+                        } else if (settings.on === 'click') {
                             $dimmable
                                 .on(clickEvent + eventNamespace, module.toggle)
                             ;
@@ -269,7 +265,7 @@
                         } else {
                             module.verbose('Showing dimmer animation with javascript');
                             module.set.dimmed();
-                            if (settings.opacity == 'auto') {
+                            if (settings.opacity === 'auto') {
                                 settings.opacity = 0.8;
                             }
                             $dimmer
@@ -338,19 +334,19 @@
                     duration: function () {
                         if (module.is.active()) {
                             return settings.transition.hideDuration || settings.duration.hide || settings.duration;
-                        } else {
-                            return settings.transition.showDuration || settings.duration.show || settings.duration;
                         }
+
+                        return settings.transition.showDuration || settings.duration.show || settings.duration;
                     },
                 },
 
                 has: {
                     dimmer: function () {
                         if (settings.dimmerName) {
-                            return ($module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0);
-                        } else {
-                            return ($module.find(selector.dimmer).length > 0);
+                            return $module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0;
                         }
+
+                        return $module.find(selector.dimmer).length > 0;
                     },
                 },
 
@@ -359,11 +355,11 @@
                         return $dimmer.hasClass(className.active);
                     },
                     animating: function () {
-                        return ($dimmer.is(':animated') || $dimmer.hasClass(className.animating));
+                        return $dimmer.is(':animated') || $dimmer.hasClass(className.animating);
                     },
                     closable: function () {
-                        if (settings.closable == 'auto') {
-                            return settings.on != 'hover';
+                        if (settings.closable === 'auto') {
+                            return settings.on !== 'hover';
                         }
 
                         return settings.closable;
@@ -402,7 +398,7 @@
                         var
                             color      = $dimmer.css('background-color'),
                             colorArray = color.split(','),
-                            isRGB      = (colorArray && colorArray.length >= 3)
+                            isRGB      = colorArray && colorArray.length >= 3
                         ;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
@@ -521,7 +517,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -550,9 +546,9 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -575,21 +571,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -634,7 +630,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -723,7 +719,7 @@
                         .addClass(settings.className.loader)
                         .addClass(settings.loaderVariation)
                     ;
-                    if (!!settings.loaderText) {
+                    if (settings.loaderText) {
                         l.text(settings.loaderText);
                         l.addClass('text');
                     }

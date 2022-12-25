@@ -8,31 +8,29 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.transition = function () {
         var
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             moduleArguments = arguments,
             query           = moduleArguments[0],
             queryArguments  = [].slice.call(arguments, 1),
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
 
             returnedValue
         ;
@@ -141,11 +139,11 @@
                             ? module.get.direction()
                             : 'static';
                     }
-                    interval = (interval !== undefined)
+                    interval = interval !== undefined
                         ? interval
                         : settings.interval;
-                    shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
-                    delay = (shouldReverse || settings.reverse === true)
+                    shouldReverse = settings.reverse === 'auto' && direction === className.outward;
+                    delay = shouldReverse || settings.reverse === true
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
@@ -169,14 +167,15 @@
                             }
 
                             return false;
-                        } else if (!settings.allowRepeats && module.is.occurring()) {
+                        }
+                        if (!settings.allowRepeats && module.is.occurring()) {
                             module.debug('Animation is already occurring, will not execute repeated animation', settings.animation);
 
                             return false;
-                        } else {
-                            module.debug('New animation started, completing previous early', settings.animation);
-                            instance.complete();
                         }
+
+                        module.debug('New animation started, completing previous early', settings.animation);
+                        instance.complete();
                     }
                     if (module.can.animate()) {
                         module.set.animating(settings.animation);
@@ -254,7 +253,7 @@
                         var
                             style          = $module.attr('style'),
                             currentDisplay = $module.css('display'),
-                            emptyStyle     = (style === undefined || style === '')
+                            emptyStyle     = style === undefined || style === ''
                         ;
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
@@ -316,7 +315,7 @@
                     },
                     duration: function (animationName, duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
                         if (duration || duration === 0) {
@@ -330,7 +329,7 @@
                     },
                     direction: function (direction) {
                         direction = direction || module.get.direction();
-                        if (direction == className.inward) {
+                        if (direction === className.inward) {
                             module.set.inward();
                         } else {
                             module.set.outward();
@@ -490,38 +489,43 @@
                 },
                 get: {
                     settings: function (animation, duration, onComplete) {
-                        if (typeof animation == 'object') { // single settings object
+                        if (typeof animation === 'object') { // single settings object
                             return $.extend(true, {}, $.fn.transition.settings, animation);
-                        } else if (typeof onComplete == 'function') { // all arguments provided
+                        }
+                        if (typeof onComplete === 'function') { // all arguments provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: onComplete,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'string' || typeof duration == 'number') { // only duration provided
+                        }
+                        if (typeof duration === 'string' || typeof duration === 'number') { // only duration provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'object') { // duration is actually settings object
+                        }
+                        if (typeof duration === 'object') { // duration is actually settings object
                             return $.extend({}, $.fn.transition.settings, duration, {
                                 animation: animation,
                             });
-                        } else if (typeof duration == 'function') { // duration is actually callback
+                        }
+                        if (typeof duration === 'function') { // duration is actually callback
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: duration,
                             });
-                        } else { // only animation provided
-                            return $.extend({}, $.fn.transition.settings, {
-                                animation: animation,
-                            });
                         }
+
+                        // only animation provided
+                        return $.extend({}, $.fn.transition.settings, {
+                            animation: animation,
+                        });
                     },
                     animationClass: function (animation) {
                         var
                             animationClass = animation || settings.animation,
-                            directionClass = (module.can.transition() && !module.has.direction())
+                            directionClass = module.can.transition() && !module.has.direction()
                                 ? module.get.direction() + ' '
                                 : ''
                         ;
@@ -532,7 +536,7 @@
                             + animationClass;
                     },
                     currentAnimation: function () {
-                        return (module.cache && module.cache.animation !== undefined)
+                        return module.cache && module.cache.animation !== undefined
                             ? module.cache.animation
                             : false;
                     },
@@ -575,14 +579,14 @@
                             duration = $module.css('animation-duration') || 0;
                         }
 
-                        return (typeof duration === 'string')
-                            ? (duration.indexOf('ms') > -1)
+                        return typeof duration === 'string'
+                            ? (duration.indexOf('ms') > -1
                                 ? parseFloat(duration)
-                                : parseFloat(duration) * 1000
+                                : parseFloat(duration) * 1000)
                             : duration;
                     },
                     displayType: function (shouldDetermine) {
-                        shouldDetermine = (shouldDetermine !== undefined)
+                        shouldDetermine = shouldDetermine !== undefined
                             ? shouldDetermine
                             : true;
                         if (settings.displayType) {
@@ -696,10 +700,10 @@
                             }
 
                             $clone.remove();
-                            if (currentAnimation != inAnimation) {
+                            if (currentAnimation !== inAnimation) {
                                 module.debug('Direction exists for animation', animation);
                                 directionExists = true;
-                            } else if (currentAnimation == 'none' || !currentAnimation) {
+                            } else if (currentAnimation === 'none' || !currentAnimation) {
                                 module.debug('No animation defined in css', animation);
 
                                 return;
@@ -710,13 +714,13 @@
                             module.save.transitionExists(animation, directionExists);
                         }
 
-                        return (transitionExists !== undefined)
+                        return transitionExists !== undefined
                             ? transitionExists
                             : directionExists;
                     },
                     animate: function () {
                         // can transition does not return a value if animation does not exist
-                        return (module.can.transition() !== undefined);
+                        return module.can.transition() !== undefined;
                     },
                 },
 
@@ -737,7 +741,7 @@
                         animation = animation || settings.animation;
                         animation = '.' + animation.replace(' ', '.');
 
-                        return ($module.filter(animation).length > 0);
+                        return $module.filter(animation).length > 0;
                     },
                     visible: function () {
                         return $module.is(':visible');
@@ -746,7 +750,7 @@
                         return $module.css('visibility') === 'hidden';
                     },
                     supported: function () {
-                        return (animationEnd !== false);
+                        return animationEnd !== false;
                     },
                 },
 
@@ -880,7 +884,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -909,9 +913,9 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -935,21 +939,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -974,7 +978,7 @@
                         returnedValue = response;
                     }
 
-                    return (found !== undefined)
+                    return found !== undefined
                         ? found
                         : false;
                 },
@@ -982,7 +986,7 @@
             module.initialize();
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

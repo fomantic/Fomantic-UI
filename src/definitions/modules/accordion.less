@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type    : 'module';
-@element : 'accordion';
+@type: "module";
+@element: "accordion";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
             Accordion
@@ -23,76 +23,76 @@
 
 .ui.accordion,
 .ui.accordion .accordion {
-  max-width: 100%;
+    max-width: 100%;
 }
 .ui.accordion .accordion {
-  margin: @childAccordionMargin;
-  padding: @childAccordionPadding;
+    margin: @childAccordionMargin;
+    padding: @childAccordionPadding;
 }
 
 /* Title */
 .ui.accordion.menu .item > .title,
 .ui.accordion > .title,
 .ui.accordion .accordion > .title {
-  cursor: pointer;
-  padding: @titlePadding;
-  font-family: @titleFont;
-  font-size: @titleFontSize;
-  color: @titleColor;
-  list-style: none;
-  line-height: @titleLineHeight;
+    cursor: pointer;
+    padding: @titlePadding;
+    font-family: @titleFont;
+    font-size: @titleFontSize;
+    color: @titleColor;
+    list-style: none;
+    line-height: @titleLineHeight;
 }
 
 /* Default Styling */
 .ui.accordion:not(.styled) .title ~ .content,
 .ui.accordion:not(.styled) .accordion .title ~ .content {
-  margin: @contentMargin;
-  padding: @contentPadding;
+    margin: @contentMargin;
+    padding: @contentPadding;
 }
 .ui.accordion:not(.styled) .title ~ .content:last-child {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* Arrow */
 .ui.accordion .ui.header > .dropdown.icon,
 .ui.accordion .title > .dropdown.icon,
 .ui.accordion .accordion .title > .dropdown.icon {
-  display: @iconDisplay;
-  float: @iconFloat;
-  opacity: @iconOpacity;
-  width: @iconWidth;
-  height: @iconHeight;
-  margin: @iconMargin;
-  padding: @iconPadding;
-  font-size: @iconFontSize;
-  transition: @iconTransition;
-  vertical-align: @iconVerticalAlign;
-  transform: @iconTransform;
-  &.right when (@variationAccordionRightDropdown) {
-    float:right;
-    transform: @iconTransformRight;
-  }
+    display: @iconDisplay;
+    float: @iconFloat;
+    opacity: @iconOpacity;
+    width: @iconWidth;
+    height: @iconHeight;
+    margin: @iconMargin;
+    padding: @iconPadding;
+    font-size: @iconFontSize;
+    transition: @iconTransition;
+    vertical-align: @iconVerticalAlign;
+    transform: @iconTransform;
+    &.right when (@variationAccordionRightDropdown) {
+        float: right;
+        transform: @iconTransformRight;
+    }
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 /* Menu */
 .ui.accordion.menu .item .title {
-  display: block;
-  padding: @menuTitlePadding;
+    display: block;
+    padding: @menuTitlePadding;
 }
 .ui.accordion.menu .item .title > .dropdown.icon {
-  float: @menuIconFloat;
-  margin: @menuIconMargin;
-  transform: @menuIconTransform;
+    float: @menuIconFloat;
+    margin: @menuIconMargin;
+    transform: @menuIconTransform;
 }
 
 /* Header */
 .ui.accordion .ui.header > .dropdown.icon {
-  font-size: @iconFontSize;
-  margin: @iconMargin;
+    font-size: @iconFontSize;
+    margin: @iconMargin;
 }
 
 /*******************************
@@ -103,11 +103,11 @@
 .ui.accordion .accordion[open] > .title > .dropdown.icon,
 .ui.accordion .active.title > .dropdown.icon,
 .ui.accordion .accordion .active.title > .dropdown.icon {
-  transform: @activeIconTransform;
+    transform: @activeIconTransform;
 }
 
 .ui.accordion.menu .item .active.title > .dropdown.icon {
-  transform: @activeIconTransform;
+    transform: @activeIconTransform;
 }
 
 /*******************************
@@ -115,137 +115,134 @@
 *******************************/
 
 & when (@variationAccordionStyled) {
-  /*--------------
-       Styled
-  ---------------*/
+    /* --------------
+         Styled
+    --------------- */
 
-  .ui.styled.accordion {
-    width: @styledWidth;
-  }
+    .ui.styled.accordion {
+        width: @styledWidth;
+    }
 
-  .ui.styled.accordion,
-  .ui.styled.accordion .accordion {
-    border-radius: @styledBorderRadius;
-    background: @styledBackground;
-    box-shadow: @styledBoxShadow;
-  }
-  .ui.styled.accordion > .title,
-  .ui.styled.accordion .accordion > .title {
-    margin: @styledTitleMargin;
-    padding: @styledTitlePadding;
-    color: @styledTitleColor;
-    font-weight: @styledTitleFontWeight;
-    border-top: @styledTitleBorder;
-    transition: @styledTitleTransition;
-  }
-  .ui.styled.accordion > .title:first-child,
-  .ui.styled.accordion .accordion > .title:first-child {
-    border-top: none;
-  }
+    .ui.styled.accordion,
+    .ui.styled.accordion .accordion {
+        border-radius: @styledBorderRadius;
+        background: @styledBackground;
+        box-shadow: @styledBoxShadow;
+    }
+    .ui.styled.accordion > .title,
+    .ui.styled.accordion .accordion > .title {
+        margin: @styledTitleMargin;
+        padding: @styledTitlePadding;
+        color: @styledTitleColor;
+        font-weight: @styledTitleFontWeight;
+        border-top: @styledTitleBorder;
+        transition: @styledTitleTransition;
+    }
+    .ui.styled.accordion > .title:first-child,
+    .ui.styled.accordion .accordion > .title:first-child {
+        border-top: none;
+    }
 
+    /* Content */
+    .ui.styled.accordion > .content {
+        margin: @styledContentMargin;
+        padding: @styledContentPadding;
+    }
+    .ui.styled.accordion .accordion > .content {
+        margin: @styledChildContentMargin;
+        padding: @styledChildContentPadding;
+    }
 
-  /* Content */
-  .ui.styled.accordion > .content {
-    margin: @styledContentMargin;
-    padding: @styledContentPadding;
-  }
-  .ui.styled.accordion .accordion > .content {
-    margin: @styledChildContentMargin;
-    padding: @styledChildContentPadding;
-  }
+    /* Hover */
+    .ui.styled.accordion > .title:hover {
+        background: @styledTitleHoverBackground;
+        color: @styledTitleHoverColor;
+    }
+    .ui.styled.accordion .accordion > .title:hover {
+        background: @styledHoverChildTitleBackground;
+        color: @styledHoverChildTitleColor;
+    }
 
-
-  /* Hover */
-  .ui.styled.accordion > .title:hover {
-    background: @styledTitleHoverBackground;
-    color: @styledTitleHoverColor;
-  }
-  .ui.styled.accordion .accordion > .title:hover {
-    background: @styledHoverChildTitleBackground;
-    color: @styledHoverChildTitleColor;
-  }
-
-
-  /* Active */
-  .ui.styled.accordion[open] > .title,
-  .ui.styled.accordion .active.title {
-    background: @styledActiveTitleBackground;
-    color: @styledActiveTitleColor;
-  }
-  .ui.styled.accordion .accordion[open] > .title,
-  .ui.styled.accordion .accordion .active.title {
-    background: @styledActiveChildTitleBackground;
-    color: @styledActiveChildTitleColor;
-  }
+    /* Active */
+    .ui.styled.accordion[open] > .title,
+    .ui.styled.accordion .active.title {
+        background: @styledActiveTitleBackground;
+        color: @styledActiveTitleColor;
+    }
+    .ui.styled.accordion .accordion[open] > .title,
+    .ui.styled.accordion .accordion .active.title {
+        background: @styledActiveChildTitleBackground;
+        color: @styledActiveChildTitleColor;
+    }
 }
 
 & when (@variationAccordionCompact) {
-  /*--------------
-       Compact
-  ---------------*/
+    /* --------------
+         Compact
+    --------------- */
 
-  /* Default Styling */
+    /* Default Styling */
 
-  .ui.compact.accordion:not(.styled) > .title,
-  .ui.compact.accordion:not(.styled) .accordion > .title {
-    padding: @titlePaddingCompact;
-  }
+    .ui.compact.accordion:not(.styled) > .title,
+    .ui.compact.accordion:not(.styled) .accordion > .title {
+        padding: @titlePaddingCompact;
+    }
 
-  .ui.compact.accordion:not(.styled) .title ~ .content,
-  .ui.compact.accordion:not(.styled) .accordion .title ~ .content {
-    padding: @contentPaddingCompact;
-  }
+    .ui.compact.accordion:not(.styled) .title ~ .content,
+    .ui.compact.accordion:not(.styled) .accordion .title ~ .content {
+        padding: @contentPaddingCompact;
+    }
 
-  /* Styled */
+    /* Styled */
 
-  .ui.compact.styled.accordion > .title,
-  .ui.compact.styled.accordion .accordion > .title {
-    padding: @styledTitlePaddingCompact;
-  }
+    .ui.compact.styled.accordion > .title,
+    .ui.compact.styled.accordion .accordion > .title {
+        padding: @styledTitlePaddingCompact;
+    }
 
-  .ui.compact.styled.accordion .title ~ .content,
-  .ui.compact.styled.accordion .accordion .title ~ .content {
-    padding: @styledContentPaddingCompact;
-  }
+    .ui.compact.styled.accordion .title ~ .content,
+    .ui.compact.styled.accordion .accordion .title ~ .content {
+        padding: @styledContentPaddingCompact;
+    }
 }
-  /*--------------
+
+/* --------------
     Very Compact
-  ---------------*/
+  --------------- */
 
 & when (@variationAccordionVeryCompact) {
-  .ui[class*="very compact"].accordion:not(.styled) > .title,
-  .ui[class*="very compact"].accordion:not(.styled) .accordion > .title {
-    padding: @titlePaddingVeryCompact;
-  }
+    .ui[class*="very compact"].accordion:not(.styled) > .title,
+    .ui[class*="very compact"].accordion:not(.styled) .accordion > .title {
+        padding: @titlePaddingVeryCompact;
+    }
 
-  .ui[class*="very compact"].accordion:not(.styled) .title ~ .content,
-  .ui[class*="very compact"].accordion:not(.styled) .accordion .title ~ .content {
-    padding: @contentPaddingVeryCompact;
-  }
+    .ui[class*="very compact"].accordion:not(.styled) .title ~ .content,
+    .ui[class*="very compact"].accordion:not(.styled) .accordion .title ~ .content {
+        padding: @contentPaddingVeryCompact;
+    }
 
-  .ui[class*="very compact"].styled.accordion > .title,
-  .ui[class*="very compact"].styled.accordion .accordion > .title {
-    padding: @styledTitlePaddingVeryCompact;
-  }
+    .ui[class*="very compact"].styled.accordion > .title,
+    .ui[class*="very compact"].styled.accordion .accordion > .title {
+        padding: @styledTitlePaddingVeryCompact;
+    }
 
-  .ui[class*="very compact"].styled.accordion .title ~ .content,
-  .ui[class*="very compact"].styled.accordion .accordion .title ~ .content {
-    padding: @styledContentPaddingVeryCompact;
-  }
+    .ui[class*="very compact"].styled.accordion .title ~ .content,
+    .ui[class*="very compact"].styled.accordion .accordion .title ~ .content {
+        padding: @styledContentPaddingVeryCompact;
+    }
 }
-
 
 /*******************************
             States
 *******************************/
 
-/*--------------
+/* --------------
    Not Active
----------------*/
+--------------- */
 
 .ui.accordion:not(details) .title ~ .content:not(.active),
 .ui.accordion .accordion:not(details) .title ~ .content:not(.active) {
-  display: none;
+    display: none;
 }
 
 /*******************************
@@ -253,119 +250,118 @@
 *******************************/
 
 & when (@variationAccordionFluid) {
-  /*--------------
-       Fluid
-  ---------------*/
+    /* --------------
+         Fluid
+    --------------- */
 
-  .ui.fluid.accordion,
-  .ui.fluid.accordion .accordion {
-    width: 100%;
-  }
+    .ui.fluid.accordion,
+    .ui.fluid.accordion .accordion {
+        width: 100%;
+    }
 }
 
 & when (@variationAccordionInverted) {
-  /*--------------
-       Inverted
-  ---------------*/
+    /* --------------
+         Inverted
+    --------------- */
 
-  .ui.inverted.accordion.menu .item > .title,
-  .ui.inverted.accordion > .title,
-  .ui.inverted.accordion .accordion > .title {
-    color: @invertedTitleColor;
-  }
-  & when (@variationAccordionStyled) {
-    .ui.inverted.styled.accordion,
-    .ui.inverted.styled.accordion .accordion {
-      background: @invertedStyledBackground;
-      box-shadow: @invertedStyledBoxShadow;
+    .ui.inverted.accordion.menu .item > .title,
+    .ui.inverted.accordion > .title,
+    .ui.inverted.accordion .accordion > .title {
+        color: @invertedTitleColor;
     }
-    .ui.inverted.styled.accordion > .title,
-    .ui.inverted.styled.accordion .accordion > .title {
-      color: @invertedStyledTitleColor;
-      border-top: @invertedStyledTitleBorder;
-    }
+    & when (@variationAccordionStyled) {
+        .ui.inverted.styled.accordion,
+        .ui.inverted.styled.accordion .accordion {
+            background: @invertedStyledBackground;
+            box-shadow: @invertedStyledBoxShadow;
+        }
+        .ui.inverted.styled.accordion > .title,
+        .ui.inverted.styled.accordion .accordion > .title {
+            color: @invertedStyledTitleColor;
+            border-top: @invertedStyledTitleBorder;
+        }
 
-    /* Hover */
-    .ui.inverted.styled.accordion > .title:hover {
-      background: @invertedStyledTitleHoverBackground;
-      color: @invertedStyledTitleHoverColor;
-    }
-    .ui.inverted.styled.accordion .accordion > .title:hover {
-      background: @invertedStyledHoverChildTitleBackground;
-      color: @invertedStyledHoverChildTitleColor;
-    }
+        /* Hover */
+        .ui.inverted.styled.accordion > .title:hover {
+            background: @invertedStyledTitleHoverBackground;
+            color: @invertedStyledTitleHoverColor;
+        }
+        .ui.inverted.styled.accordion .accordion > .title:hover {
+            background: @invertedStyledHoverChildTitleBackground;
+            color: @invertedStyledHoverChildTitleColor;
+        }
 
-    /* Active */
-    .ui.inverted.styled.accordion[open] > .title,
-    .ui.inverted.styled.accordion .active.title {
-      background: @invertedStyledActiveTitleBackground;
-      color: @invertedStyledActiveTitleColor;
+        /* Active */
+        .ui.inverted.styled.accordion[open] > .title,
+        .ui.inverted.styled.accordion .active.title {
+            background: @invertedStyledActiveTitleBackground;
+            color: @invertedStyledActiveTitleColor;
+        }
+        .ui.inverted.styled.accordion .accordion[open] > .title,
+        .ui.inverted.styled.accordion .accordion .active.title {
+            background: @invertedStyledActiveChildTitleBackground;
+            color: @invertedStyledActiveChildTitleColor;
+        }
     }
-    .ui.inverted.styled.accordion .accordion[open] > .title,
-    .ui.inverted.styled.accordion .accordion .active.title {
-      background: @invertedStyledActiveChildTitleBackground;
-      color: @invertedStyledActiveChildTitleColor;
-    }
-  }
 }
 
 & when (@variationAccordionBasicStyled) {
-  .ui.basic.styled.accordion,
-  .ui.basic.styled.accordion .accordion {
-    background: transparent;
-    box-shadow: none;
-  }
-  .ui.basic.styled.accordion > .title,
-  .ui.basic.styled.accordion .accordion > .title {
-    border: none;
-    color: @basicStyledTitleColor;
-  }
-  .ui.basic.styled.accordion > .title:hover,
-  .ui.basic.styled.accordion .accordion > .title:hover {
-    background: transparent;
-    color: @basicStyledTitleHoverColor;
-  }
-  .ui.basic.styled.accordion[open] > .title,
-  .ui.basic.styled.accordion .active.title,
-  .ui.basic.styled.accordion .accordion[open] > .title,
-  .ui.basic.styled.accordion .accordion .active.title {
-    background: transparent;
-    color: @basicStyledActiveTitleColor;
-  }
-  & when (@variationAccordionInverted) {
-    .ui.inverted.basic.styled.accordion > .title,
-    .ui.inverted.basic.styled.accordion .accordion > .title {
-      background: transparent;
-      color: @invertedBasicStyledTitleColor;
+    .ui.basic.styled.accordion,
+    .ui.basic.styled.accordion .accordion {
+        background: transparent;
+        box-shadow: none;
     }
-    .ui.inverted.basic.styled.accordion > .title:hover,
-    .ui.inverted.basic.styled.accordion .accordion > .title:hover {
-      background: transparent;
-      color: @invertedBasicStyledTitleHoverColor;
+    .ui.basic.styled.accordion > .title,
+    .ui.basic.styled.accordion .accordion > .title {
+        border: none;
+        color: @basicStyledTitleColor;
     }
-    .ui.inverted.basic.styled.accordion[open] > .title,
-    .ui.inverted.basic.styled.accordion .active.title,
-    .ui.inverted.basic.styled.accordion .accordion[open] > .title,
-    .ui.inverted.basic.styled.accordion .accordion .active.title {
-      background: transparent;
-      color: @invertedBasicStyledActiveTitleColor;
+    .ui.basic.styled.accordion > .title:hover,
+    .ui.basic.styled.accordion .accordion > .title:hover {
+        background: transparent;
+        color: @basicStyledTitleHoverColor;
     }
-  }
+    .ui.basic.styled.accordion[open] > .title,
+    .ui.basic.styled.accordion .active.title,
+    .ui.basic.styled.accordion .accordion[open] > .title,
+    .ui.basic.styled.accordion .accordion .active.title {
+        background: transparent;
+        color: @basicStyledActiveTitleColor;
+    }
+    & when (@variationAccordionInverted) {
+        .ui.inverted.basic.styled.accordion > .title,
+        .ui.inverted.basic.styled.accordion .accordion > .title {
+            background: transparent;
+            color: @invertedBasicStyledTitleColor;
+        }
+        .ui.inverted.basic.styled.accordion > .title:hover,
+        .ui.inverted.basic.styled.accordion .accordion > .title:hover {
+            background: transparent;
+            color: @invertedBasicStyledTitleHoverColor;
+        }
+        .ui.inverted.basic.styled.accordion[open] > .title,
+        .ui.inverted.basic.styled.accordion .active.title,
+        .ui.inverted.basic.styled.accordion .accordion[open] > .title,
+        .ui.inverted.basic.styled.accordion .accordion .active.title {
+            background: transparent;
+            color: @invertedBasicStyledActiveTitleColor;
+        }
+    }
 }
 
 & when (@variationAccordionTree) {
-  .ui.tree.accordion:not(.styled) .title ~ .content,
-  .ui.tree.accordion:not(.styled) .accordion .title ~ .content {
-    padding:@treeContentPadding;
-  }
-  .ui.tree.accordion > .content,
-  .ui.tree.accordion .accordion > .content {
-    margin-left: @treeContentLeftMargin;
-  }
-  .ui.tree.accordion .accordion {
-    margin-top: @treeContentTopMargin;
-  }
+    .ui.tree.accordion:not(.styled) .title ~ .content,
+    .ui.tree.accordion:not(.styled) .accordion .title ~ .content {
+        padding: @treeContentPadding;
+    }
+    .ui.tree.accordion > .content,
+    .ui.tree.accordion .accordion > .content {
+        margin-left: @treeContentLeftMargin;
+    }
+    .ui.tree.accordion .accordion {
+        margin-top: @treeContentTopMargin;
+    }
 }
 
 .loadUIOverrides();
-

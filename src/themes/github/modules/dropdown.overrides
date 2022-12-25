@@ -4,47 +4,46 @@
 
 /* Smaller Icon */
 .ui.dropdown > .dropdown.icon {
-  font-size: 12px;
+    font-size: 12px;
 }
-
 
 /* Dropdown Carets */
 @font-face {
-  font-family: 'Dropdown';
-  src: url(data:application/font-woff;base64,d09GRk9UVE8AAASEAAsAAAAABwQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAAC5AAAAU8AAAHrSr22AUZGVE0AAARQAAAAHAAAAByNrZ/TR0RFRgAABDQAAAAcAAAAIAAnABhPUy8yAAABYAAAAEIAAABgTadXCGNtYXAAAAKEAAAAVAAAAWQFcOKQaGVhZAAAAQgAAAAyAAAANg+j805oaGVhAAABPAAAABsAAAAkAwcBDWhtdHgAAARsAAAAFgAAAB4EAQASbWF4cAAAAVgAAAAGAAAABgAIUABuYW1lAAABpAAAAN8AAAG2rSbAM3Bvc3QAAALYAAAADAAAACAAAwAAeJxjYGRgYADiKjtG3nh+m68M3EwMIHCBwT0CRN9PyHYCUp6Mqox5QJqDASwNAMNOBrgAAHicY2BkYGB88P8BkFRlYACTjAyogB0AWWsDFgAAAFAAAAgAAHicY2Bm+Mg4gYGVgYHRhzGNgYHBHUp/ZZBkaGFABYwCSJyANNcUBgcGhg+3GB/8fwCUfMCgAFIDV6AAhIwAUbEMSQAAeJx1zTEKwkAUBNBJjIoKIggW2mwvBEVvIAgiNhY2VjEuQUh2YY2FeACPYOltvIH3cZJ8ywQS3p/d+QEwwAce/o8v9tDGUOzTU3GDXokD+ihuooeHuMX8Je5ijC9bXtCRP1T20Kcq+/RE3KAX4oDeipsYIRa3mD/FXSzxLtZeeGyR8bUwHGObWUvsoZHghhQRHEed3NLI1d+vyw/c43DleZErzBFixli768UaNQ9n9d11OedsJdxiyk0RZ40zsxPu/G7K7k66IUvW5CrRRrso12d1uqtNbHfcF+IHrnU+mwB4nGNgYGBmgGAZBkYGEIgD8hjBfBYGJyDNxcDBwASEjAwKH279//v/P1iVwofrYDbj/8dgPkQvGwMPkGRhYAWy2MHCbEDMxIAXMOOXHvIAAINhDt14nGNgZsALAAB9AAR4nE2Pv0rEQBCHZ3J7d4vGqEcOFaKC/zolZ6OWwmElNj6ClYWmyivcblyzE+RaK8EHsPMxBBtrwUdwA1fobpI7ZWBYfux8fD8ExgAR+fVVcpMkt4AeIAzLLSi3sdzxyt1WucqU31I+25iDtcvej1Kzh99V7+a19NoRPC1GAEsRvCxHwCP87MG8I7WgDRwWoAcrEMGmnT3YT+N0kB7G6Vk8PHLr2K0Tt04HB3FjMhUCQIESM7xDhfeYA3dcz5IZdOAcHuAD14MgeAu+zTNTRV5oTUR5obgZdwpVZFqQzEfKTiaE4JNwEralHGUuErnQNjE2oYxUwS0ldBTSxI3L7cOyKo60ib0lezSl1Rw+GXdq1pQiH03SdzKka4ymosLQTMcedSuIlEJUMqNcUi0jdIP5Ysb++leqLtSI/NWSTS0xq0WyYajQXPSVP/cLitO4NgB4nGNgZGBg4AFiAQYJBiYgzQLEIJoRggEFbQBAAAAAAQAAAADeTO04AAAAANAAR1gAAAAA32BrQnicY2BAAEYQVoVghu0MQgwMAAc/ARcAAA==) format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: Dropdown;
+    src: url("data:application/font-woff;base64,d09GRk9UVE8AAASEAAsAAAAABwQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABDRkYgAAAC5AAAAU8AAAHrSr22AUZGVE0AAARQAAAAHAAAAByNrZ/TR0RFRgAABDQAAAAcAAAAIAAnABhPUy8yAAABYAAAAEIAAABgTadXCGNtYXAAAAKEAAAAVAAAAWQFcOKQaGVhZAAAAQgAAAAyAAAANg+j805oaGVhAAABPAAAABsAAAAkAwcBDWhtdHgAAARsAAAAFgAAAB4EAQASbWF4cAAAAVgAAAAGAAAABgAIUABuYW1lAAABpAAAAN8AAAG2rSbAM3Bvc3QAAALYAAAADAAAACAAAwAAeJxjYGRgYADiKjtG3nh+m68M3EwMIHCBwT0CRN9PyHYCUp6Mqox5QJqDASwNAMNOBrgAAHicY2BkYGB88P8BkFRlYACTjAyogB0AWWsDFgAAAFAAAAgAAHicY2Bm+Mg4gYGVgYHRhzGNgYHBHUp/ZZBkaGFABYwCSJyANNcUBgcGhg+3GB/8fwCUfMCgAFIDV6AAhIwAUbEMSQAAeJx1zTEKwkAUBNBJjIoKIggW2mwvBEVvIAgiNhY2VjEuQUh2YY2FeACPYOltvIH3cZJ8ywQS3p/d+QEwwAce/o8v9tDGUOzTU3GDXokD+ihuooeHuMX8Je5ijC9bXtCRP1T20Kcq+/RE3KAX4oDeipsYIRa3mD/FXSzxLtZeeGyR8bUwHGObWUvsoZHghhQRHEed3NLI1d+vyw/c43DleZErzBFixli768UaNQ9n9d11OedsJdxiyk0RZ40zsxPu/G7K7k66IUvW5CrRRrso12d1uqtNbHfcF+IHrnU+mwB4nGNgYGBmgGAZBkYGEIgD8hjBfBYGJyDNxcDBwASEjAwKH279//v/P1iVwofrYDbj/8dgPkQvGwMPkGRhYAWy2MHCbEDMxIAXMOOXHvIAAINhDt14nGNgZsALAAB9AAR4nE2Pv0rEQBCHZ3J7d4vGqEcOFaKC/zolZ6OWwmElNj6ClYWmyivcblyzE+RaK8EHsPMxBBtrwUdwA1fobpI7ZWBYfux8fD8ExgAR+fVVcpMkt4AeIAzLLSi3sdzxyt1WucqU31I+25iDtcvej1Kzh99V7+a19NoRPC1GAEsRvCxHwCP87MG8I7WgDRwWoAcrEMGmnT3YT+N0kB7G6Vk8PHLr2K0Tt04HB3FjMhUCQIESM7xDhfeYA3dcz5IZdOAcHuAD14MgeAu+zTNTRV5oTUR5obgZdwpVZFqQzEfKTiaE4JNwEralHGUuErnQNjE2oYxUwS0ldBTSxI3L7cOyKo60ib0lezSl1Rw+GXdq1pQiH03SdzKka4ymosLQTMcedSuIlEJUMqNcUi0jdIP5Ysb++leqLtSI/NWSTS0xq0WyYajQXPSVP/cLitO4NgB4nGNgZGBg4AFiAQYJBiYgzQLEIJoRggEFbQBAAAAAAQAAAADeTO04AAAAANAAR1gAAAAA32BrQnicY2BAAEYQVoVghu0MQgwMAAc/ARcAAA==") format("woff");
+    font-weight: normal;
+    font-style: normal;
 }
 
 .ui.dropdown > .dropdown.icon {
-  font-family: 'Dropdown';
-  line-height: 1;
-  height: 1em;
-  width: 1.23em;
-  backface-visibility: hidden;
-  font-weight: normal;
-  font-style: normal;
-  text-align: center;
+    font-family: Dropdown;
+    line-height: 1;
+    height: 1em;
+    width: 1.23em;
+    backface-visibility: hidden;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
 }
 
 .ui.dropdown > .dropdown.icon {
-  width: auto;
+    width: auto;
 }
 .ui.dropdown > .dropdown.icon::before {
-  content: '\f0d7';
+    content: "\f0d7";
 }
 
 /* Sub Menu */
 .ui.dropdown .menu .item .dropdown.icon::before {
-  content: '\f0da'/*rtl:'\f0d9'*/;
+    content: "\f0da" /* rtl: "\f0d9" */;
 }
 
 .ui.dropdown .item .left.dropdown.icon::before,
 .ui.dropdown .left.menu .item .dropdown.icon::before {
-  content: "\f0d9"/*rtl:"\f0da"*/;
+    content: "\f0d9" /* rtl: "\f0da" */;
 }
 
 /* Vertical Menu Dropdown */
 .ui.vertical.menu .dropdown.item > .dropdown.icon::before {
-  content: "\f0da"/*rtl:"\f0d9"*/;
+    content: "\f0da" /* rtl: "\f0d9" */;
 }

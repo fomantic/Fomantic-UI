@@ -8,18 +8,16 @@
  *
  */
 
-(function ($, window, document, undefined) {
+(function ($, window, document) {
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = window !== undefined && window.Math === Math
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.sidebar = function (parameters) {
         var
@@ -32,26 +30,18 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
-
-            requestAnimationFrame = window.requestAnimationFrame
-                || window.mozRequestAnimationFrame
-                || window.webkitRequestAnimationFrame
-                || window.msRequestAnimationFrame
-                || function (callback) {
-                    setTimeout(callback, 0);
-                },
 
             returnedValue;
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
                     : $.extend({}, $.fn.sidebar.settings),
 
@@ -145,8 +135,8 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var
-                                clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                clickedContext  = ($context.is(event.target))
+                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
+                                clickedContext  = $context.is(event.target)
                             ;
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
@@ -248,14 +238,12 @@
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
-                        } else if (direction === 'top' || direction == 'bottom') {
+                        } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                 + ' }';
                         }
@@ -267,13 +255,11 @@
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if (direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                     + ' }';
                             }
@@ -281,7 +267,6 @@
                             style += ''
                                 + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
                                 + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
-                                + '   -webkit-transform: translate3d(0, 0, 0);'
                                 + '           transform: translate3d(0, 0, 0);'
                                 + ' }';
                         }
@@ -311,7 +296,7 @@
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
                     var ignored = element.offsetHeight;
-                    element.scrollTop = element.scrollTop;
+                    element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
 
@@ -376,7 +361,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var
-                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
                             bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
@@ -401,13 +386,13 @@
                             module.debug('Other sidebars currently visible');
                             if (settings.exclusive) {
                                 // if not overlay queue animation after hide
-                                if (settings.transition != 'overlay') {
+                                if (settings.transition !== 'overlay') {
                                     module.hideOthers(module.show);
 
                                     return;
-                                } else {
-                                    module.hideOthers();
                                 }
+
+                                module.hideOthers();
                             } else {
                                 settings.transition = 'overlay';
                             }
@@ -439,13 +424,13 @@
                 },
 
                 othersAnimating: function () {
-                    return ($sidebars.not($module).filter('.' + className.animating).length > 0);
+                    return $sidebars.not($module).filter('.' + className.animating).length > 0;
                 },
                 othersVisible: function () {
-                    return ($sidebars.not($module).filter('.' + className.visible).length > 0);
+                    return $sidebars.not($module).filter('.' + className.visible).length > 0;
                 },
                 othersActive: function () {
-                    return (module.othersVisible() || module.othersAnimating());
+                    return module.othersVisible() || module.othersAnimating();
                 },
 
                 hideOthers: function (callback) {
@@ -458,7 +443,7 @@
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
-                            if (callbackCount == sidebarCount) {
+                            if (callbackCount === sidebarCount) {
                                 callback();
                             }
                         })
@@ -477,7 +462,7 @@
                 pushPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = (transition === 'overlay' || module.othersActive())
+                        $transition = transition === 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -506,7 +491,7 @@
                         module.set.dimmed();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
@@ -523,7 +508,7 @@
                 pullPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = (transition == 'overlay' || module.othersActive())
+                        $transition = transition === 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -546,7 +531,7 @@
                         module.remove.visible();
                     };
                     transitionEnd = function (event) {
-                        if (event.target == $transition[0]) {
+                        if (event.target === $transition[0]) {
                             $transition.off(transitionEvent + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
@@ -711,9 +696,11 @@
                     direction: function () {
                         if ($module.hasClass(className.top)) {
                             return className.top;
-                        } else if ($module.hasClass(className.right)) {
+                        }
+                        if ($module.hasClass(className.right)) {
                             return className.right;
-                        } else if ($module.hasClass(className.bottom)) {
+                        }
+                        if ($module.hasClass(className.bottom)) {
                             return className.bottom;
                         }
 
@@ -724,13 +711,13 @@
                             direction = module.get.direction(),
                             transition
                         ;
-                        transition = (module.is.mobile())
-                            ? (settings.mobileTransition == 'auto')
+                        transition = module.is.mobile()
+                            ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
-                                : settings.mobileTransition
-                            : (settings.transition == 'auto')
+                                : settings.mobileTransition)
+                            : (settings.transition === 'auto'
                                 ? settings.defaultTransition.computer[direction]
-                                : settings.transition;
+                                : settings.transition);
                         module.verbose('Determined transition', transition);
 
                         return transition;
@@ -786,10 +773,10 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
-                            module.cache.isIE = (isIE11 || isIE);
+                            module.cache.isIE = isIE11 || isIE;
                         }
 
                         return module.cache.isIE;
@@ -805,9 +792,9 @@
                             module.verbose('Browser was found to be iOS', userAgent);
 
                             return true;
-                        } else {
-                            return false;
                         }
+
+                        return false;
                     },
                     mobile: function () {
                         var
@@ -818,11 +805,11 @@
                             module.verbose('Browser was found to be mobile', userAgent);
 
                             return true;
-                        } else {
-                            module.verbose('Browser is not mobile, using regular transition', userAgent);
-
-                            return false;
                         }
+
+                        module.verbose('Browser is not mobile, using regular transition', userAgent);
+
+                        return false;
                     },
                     hidden: function () {
                         return !module.is.visible();
@@ -909,7 +896,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -937,7 +924,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -960,21 +947,21 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
-                            if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
+                            if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
                                 found = object[camelCaseValue];
 
                                 return false;
-                            } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
+                            } else if ($.isPlainObject(object[value]) && (depth !== maxDepth)) {
                                 object = object[value];
                             } else if (object[value] !== undefined) {
                                 found = object[value];
@@ -1017,7 +1004,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

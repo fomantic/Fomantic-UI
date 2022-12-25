@@ -2,19 +2,19 @@
              Step
 *******************************/
 
-/*-------------------
+/* -------------------
        Group
---------------------*/
+-------------------- */
 
 @stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
-@stepsBackground: '';
+@stepsBackground: "";
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
 
-/*-------------------
+/* -------------------
       Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 0;
 @horizontalMargin: 0;
@@ -24,11 +24,10 @@
 @horizontalPadding: 2em;
 
 @transition:
-  background-color @defaultDuration @defaultEasing,
-  opacity @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing
-;
+    background-color @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing;
 @lineHeight: @relativeLarge;
 @alignItems: center;
 @justifyContent: center;
@@ -57,7 +56,6 @@
 @descriptionFontWeight: @normal;
 @descriptionColor: @textColor;
 
-
 /* Arrow */
 @arrowBackgroundColor: @backgroundColor;
 @arrowTopOffset: 50%;
@@ -73,9 +71,9 @@
 /* Mobile */
 @mobileIconDistance: @iconDistance;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Vertical */
 @verticalDivider: @divider;
@@ -92,9 +90,9 @@
 @verticalActiveArrowDisplay: block;
 @verticalActiveLastArrowDisplay: block;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 @attachedHorizontalOffset: -@borderWidth;
 @attachedVerticalOffset: 0;
@@ -103,9 +101,9 @@
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 /* Completed */
 @completedColor: @positiveColor;
@@ -127,13 +125,12 @@
 @activeHoverBackground: @lightGrey;
 @activeHoverColor: @textColor;
 
-
 /* Disabled */
 @disabledBackground: @background;
 @disabledColor: @disabledTextColor;
 
 /* Inverted */
-@invertedActiveBackground: #333333;
-@invertedActiveHoverBackground: #444444;
-@invertedHoverBackground: #3F3F3F;
-@invertedDisabledBackground: #222222;
+@invertedActiveBackground: #333;
+@invertedActiveHoverBackground: #444;
+@invertedHoverBackground: #3f3f3f;
+@invertedDisabledBackground: #222;

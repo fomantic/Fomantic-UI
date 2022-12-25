@@ -2,21 +2,20 @@
             Dropdown
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
-  width @defaultDuration @defaultEasing
-;
+    box-shadow @defaultDuration @defaultEasing,
+    width @defaultDuration @defaultEasing;
 @borderRadius: @defaultBorderRadius;
 
 @raisedShadow: 0 2px 3px 0 @borderColor;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Icon */
 @dropdownIconSize: @relative12px;
@@ -27,9 +26,9 @@
 @textTransition: none;
 
 /* Menu */
-@menuBackground: #FFFFFF;
+@menuBackground: #fff;
 @menuMargin: 0;
-@menuPadding: 0 0;
+@menuPadding: 0;
 @menuTop: 100%;
 @menuTextAlign: left;
 
@@ -124,18 +123,18 @@
 /* Floated Content */
 @floatedDistance: 1em;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-/*------------
+/* ------------
    Selection
---------------*/
+-------------- */
 
 @selectionMinWidth: 14em;
 @selectionVerticalPadding: @inputVerticalPadding;
 @selectionHorizontalPadding: @inputHorizontalPadding;
-@selectionBorderEmWidth:  @relative1px;
+@selectionBorderEmWidth: @relative1px;
 @selectionMinHeight: @inputLineHeight + (@selectionVerticalPadding * 2) - @selectionBorderEmWidth;
 @selectionBackground: @inputBackground;
 @selectionDisplay: inline-block;
@@ -217,13 +216,13 @@
 @selectionActiveHoverMenuBoxShadow: @selectionVisibleMenuBoxShadow;
 
 @selectionVisibleConnectingBorder: 0;
-@selectionVisibleIconOpacity: '';
+@selectionVisibleIconOpacity: "";
 
-/*--------------
+/* --------------
      Search
---------------*/
+-------------- */
 
-@searchMinWidth: '';
+@searchMinWidth: "";
 
 /* Search Selection */
 @searchSelectionLineHeight: @inputLineHeight;
@@ -238,16 +237,15 @@
 @searchWidescreenMaxMenuHeight: @selectionWidescreenMaxMenuHeight;
 
 /* Inline */
-@inlineIconMargin: 0 @relative3px 0 @relative3px;
+@inlineIconMargin: 0 @relative3px;
 @inlineTextColor: inherit;
 @inlineTextFontWeight: @bold;
 @inlineMenuDistance: @relative3px;
 @inlineMenuBorderRadius: @borderRadius;
 
-
-/*--------------
+/* --------------
     Multiple
---------------*/
+-------------- */
 
 /* Split Actual Padding Between Child and Parent (allows for label spacing) */
 @multipleSelectionVerticalPadding: (@searchSelectionVerticalPadding * (1/3));
@@ -263,8 +261,8 @@
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
 
 /* Dropdown Icon */
-@multipleSelectionDropdownIconMargin: '';
-@multipleSelectionDropdownIconPadding: '';
+@multipleSelectionDropdownIconMargin: "";
+@multipleSelectionDropdownIconPadding: "";
 
 @multipleSelectionSearchAfterLabelDistance: @relative2px;
 
@@ -280,12 +278,12 @@
 @labelHorizontalPadding: @relativeMini;
 @labelPadding: @labelVerticalPadding @labelHorizontalPadding;
 
-@imageLabelHeight: (1em + @labelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @labelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@labelVerticalPadding @labelHorizontalPadding -@labelVerticalPadding -@labelHorizontalPadding;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 /* Addition */
 @additionZIndex: @hoveredZIndex + 1;
@@ -323,9 +321,9 @@
 @clearableIconSelectionPosition: 3em;
 @clearableIconInlinePosition: 2.2em;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Scrolling */
 @scrollingMenuWidth: 100%;
@@ -402,9 +400,9 @@
 @scrollhintStartColor: rgba(0, 0, 0, 0.75);
 @scrollhintEndColor: rgba(0, 0, 0, 0);
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 /* General rules and basic dropdowns */
 @invertedMenuBackground: @black;

@@ -2,17 +2,16 @@
             Comments
 *******************************/
 
-
-/*-------------------
+/* -------------------
        View
---------------------*/
+-------------------- */
 
 @maxWidth: 650px;
 @margin: 1.5em 0;
 
-/*-------------------
+/* -------------------
       Elements
---------------------*/
+-------------------- */
 
 /* Comment */
 @commentBackground: none;
@@ -76,15 +75,14 @@
 
 @commentReplyDistance: @replyDistance;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Threaded */
-@threadedCommentMargin: -1.5em 0 -1em  (@avatarWidth / 2);
+@threadedCommentMargin: -1.5em 0 -1em (@avatarWidth / 2);
 @threadedCommentPadding: 3em 0 2em 2.25em;
 @threadedCommentBoxShadow: -1px 0 0 @borderColor;
-
 
 /* Minimal */
 @minimalActionPosition: absolute;

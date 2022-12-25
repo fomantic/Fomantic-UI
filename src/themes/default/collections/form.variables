@@ -2,9 +2,9 @@
              Form
 *******************************/
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
+-------------------- */
 
 /* Form */
 @gutterWidth: 1em;
@@ -36,9 +36,8 @@
 @inputBorderRadius: @absoluteBorderRadius;
 @inputColor: @textColor;
 @inputTransition:
-  color @defaultDuration @defaultEasing,
-  border-color @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing;
 @inputBoxShadow: 0 0 0 0 transparent inset;
 
 /* Select */
@@ -79,9 +78,9 @@
 @inlinePromptMargin: -0.25em 0 -0.5em 0.5em;
 @inlinePromptBorderWidth: 1px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Focus */
 @inputFocusPointerSize: 0;
@@ -108,19 +107,19 @@
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);
-@loaderInvertedDimmerColor: rgba(0, 0, 0 , 0.85);
+@loaderInvertedDimmerColor: rgba(0, 0, 0, 0.85);
 @loaderDimmerZIndex: 100;
 
 /* Loading Spinner */
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Required */
-@requiredContent: '*';
+@requiredContent: "*";
 @requiredColor: @negativeColor;
 @requiredVerticalOffset: -0.2em;
 @requiredDistance: 0.2em;
@@ -134,9 +133,9 @@
 @invertedLabelColor: @invertedTextColor;
 @invertedInputBoxShadow: none;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Grouped Fields */
 @groupedMargin: @fieldMargin;
@@ -164,11 +163,11 @@
 @inlineLabelTextTransform: @labelTextTransform;
 @inlineCalendarWidth: 13.11em;
 
-@groupedInlineLabelMargin: 0.035714em 1em 0 0;
+@groupedInlineLabelMargin: 0.03571em 1em 0 0;
 @groupedInlineCheckboxBottomMargin: 0.4em;
 
-/*-------------------
+/* -------------------
        Groups
---------------------*/
+-------------------- */
 
 @inlineFieldsMargin: 0 1em 0 0;

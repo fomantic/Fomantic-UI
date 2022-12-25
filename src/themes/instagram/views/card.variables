@@ -2,22 +2,21 @@
              Card
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 @borderBoxShadow: none;
 @shadowBoxShadow: none;
 @boxShadow: none;
 
-
-@internalBorderColor: #EDEDEE;
-@border: 1px solid #EDEDEE;
+@internalBorderColor: #ededee;
+@border: 1px solid #ededee;
 
 @contentPadding: 14px 20px;
 
-@metaColor: #A5A7AA;
+@metaColor: #a5a7aa;
 
-@linkHoverRaiseDistance: 0px;
+@linkHoverRaiseDistance: 0;
 @linkHoverBoxShadow: none;
-@linkHoverBorder: 1px solid #D0D0D8;
+@linkHoverBorder: 1px solid #d0d0d8;

@@ -5,24 +5,22 @@
   Logs into GitHub using OAuth
 */
 
-var
+const
     fs          = require('fs'),
     path        = require('path'),
-    githubAPI   = require('@octokit/rest'),
+    GithubAPI   = require('@octokit/rest'),
 
     // stores oauth info for GitHub API
-    oAuthConfig = path.join(__dirname, 'oauth.js'),
-    oAuth       = fs.existsSync(oAuthConfig)
-        ? require(oAuthConfig)
-        : false,
-    github
+    oAuth       = fs.existsSync(path.join(__dirname, './oauth.js'))
+        ? require('./oauth.js') // eslint-disable-line import/extensions
+        : false
 ;
 
 if (!oAuth) {
     console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
 }
 
-github = new githubAPI({
+let github = new GithubAPI({
     version: '3.0.0',
     debug: true,
     protocol: 'https',

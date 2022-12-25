@@ -88,7 +88,7 @@ function pack(type, compress) {
 
 function buildJS(src, type, config, callback) {
     if (!install.isSetup()) {
-        console.error('Cannot build Javascript. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build Javascript. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;
@@ -140,7 +140,9 @@ module.exports.watch = function (type, config) {
             }
 
             // Clear timeout
-            timeout && clearTimeout(timeout);
+            if (timeout) {
+                clearTimeout(timeout);
+            }
 
             // Add file to internal changed files array
             if (!files.includes(path)) {

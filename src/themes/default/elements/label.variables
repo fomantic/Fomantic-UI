@@ -2,14 +2,14 @@
              Label
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalAlign: baseline;
 @verticalMargin: 0;
 @horizontalMargin: @relative2px;
-@backgroundColor: #E8E8E8;
+@backgroundColor: #e8e8e8;
 @color: @mutedTextColor;
 @backgroundImage: none;
 @verticalPadding: 0.5833em; /* medium is not @emSize custom value required */
@@ -30,9 +30,9 @@
 @groupVerticalMargin: 0.5em;
 @groupHorizontalMargin: 0.5em;
 
-/*-------------------
+/* -------------------
         Parts
---------------------*/
+-------------------- */
 
 /* Link */
 @linkOpacity: 0.5;
@@ -56,9 +56,9 @@
 @deleteMargin: 0.5em;
 @deleteTransition: background @labelTransitionDuration @labelTransitionEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Image Label */
 @imageLabelBackground: @backgroundColor;
@@ -78,29 +78,28 @@
 @imageLabelDetailPadding: @imageLabelVerticalPadding @imageLabelHorizontalPadding;
 @imageLabelDetailMargin: -@imageLabelVerticalPadding -@imageLabelHorizontalPadding -@imageLabelVerticalPadding @imageLabelDetailDistance;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hover */
-@labelHoverBackgroundColor: #E0E0E0;
+@labelHoverBackgroundColor: #e0e0e0;
 @labelHoverBackgroundImage: none;
 @labelHoverTextColor: @hoveredTextColor;
 
 /* Active */
-@labelActiveBackgroundColor: #D0D0D0;
+@labelActiveBackgroundColor: #d0d0d0;
 @labelActiveBackgroundImage: none;
 @labelActiveTextColor: @selectedTextColor;
 
 /* Active Hover */
-@labelActiveHoverBackgroundColor: #C8C8C8;
+@labelActiveHoverBackgroundColor: #c8c8c8;
 @labelActiveHoverBackgroundImage: none;
 @labelActiveHoverTextColor: @selectedTextColor;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Basic */
 @basicBackground: none @white;
@@ -154,7 +153,7 @@
 @rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
 /* Inverted */
-@invertedBackgroundColor: darken(@backgroundColor,20);
+@invertedBackgroundColor: darken(@backgroundColor, 20);
 @invertedBackground: @black;
 @invertedBoxShadowSize: 2px;
 @invertedBorderSize: 1px;
@@ -253,16 +252,16 @@
 @floatingAlignOffset: 1.2em;
 @floatingZIndex: 100;
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 /* Sizing */
-@mini    : @9px;
-@tiny    : @10px;
-@small   : @11px;
-@medium  : @12px;
-@large   : @absoluteMedium;
-@big     : @absoluteBig;
-@huge    : @absoluteHuge;
-@massive : @absoluteMassive;
+@mini: @9px;
+@tiny: @10px;
+@small: @11px;
+@medium: @12px;
+@large: @absoluteMedium;
+@big: @absoluteBig;
+@huge: @absoluteHuge;
+@massive: @absoluteMassive;
