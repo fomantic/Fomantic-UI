@@ -59,7 +59,7 @@
 @contentDivider: @borderWidth solid @internalBorderColor;
 @contentMargin: 0;
 @contentBackground: none;
-@contentPadding: 1em 1em;
+@contentPadding: 1em;
 @contentFontSize: 1em;
 @contentBorderRadius: 0;
 @contentBoxShadow: none;
@@ -125,7 +125,7 @@
 @extraWidth: auto;
 @extraTop: 0;
 @extraLeft: 0;
-@extraMargin: 0 0;
+@extraMargin: 0;
 @extraPadding: 0.75em 1em;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
