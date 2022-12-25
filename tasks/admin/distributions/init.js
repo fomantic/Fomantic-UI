@@ -24,7 +24,6 @@ const
     mkdirp    = require('mkdirp'),
 
     // admin files
-    github    = require('../../config/admin/github'),
     release   = require('../../config/admin/release'),
     project   = require('../../config/project/release'),
 
@@ -38,6 +37,8 @@ const
 ;
 
 module.exports = function (callback) {
+    const github = require('../../config/admin/github'); // eslint-disable-line global-require
+
     let
         index = -1,
         total = release.distributions.length,
