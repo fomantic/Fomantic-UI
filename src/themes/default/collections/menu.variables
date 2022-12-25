@@ -343,7 +343,7 @@
 @textMenuMargin: @relativeMedium -(@textMenuItemSpacing);
 @textMenuItemColor: @mutedTextColor;
 @textMenuItemFontWeight: @normal;
-@textMenuItemMargin: 0 0;
+@textMenuItemMargin: 0;
 @textMenuItemPadding: @relative5px @textMenuItemSpacing;
 @textMenuItemTransition: opacity @defaultDuration @defaultEasing;
 

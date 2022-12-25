@@ -1,7 +1,10 @@
+const eqeqeqRule = require('./eqeqeq-rule');
+const noExtraParensRule = require('./no-extra-parens-rule');
+
 module.exports = {
     rules: {
-        eqeqeq: require('./eqeqeq-rule'),
-        'no-extra-parens': require('./no-extra-parens-rule'),
+        eqeqeq: eqeqeqRule,
+        'no-extra-parens': noExtraParensRule,
     },
     configs: {
         recommended: {

@@ -29,7 +29,7 @@
 @groupedBoxShadow: @boxShadow;
 @groupedBorderRadius: @borderRadius;
 
-@nestedGroupMargin: @verticalMargin @verticalMargin;
+@nestedGroupMargin: @verticalMargin;
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
