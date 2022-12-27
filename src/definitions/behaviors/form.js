@@ -28,7 +28,6 @@
             performance      = [],
 
             query            = arguments[0],
-            legacyParameters = arguments[1],
             methodInvoked    = typeof query === 'string',
             queryArguments   = [].slice.call(arguments, 1),
             returnedValue
@@ -572,27 +571,12 @@
                     },
                     settings: function () {
                         if ($.isPlainObject(parameters)) {
-                            var
-                                keys     = Object.keys(parameters),
-                                isLegacySettings = keys.length > 0
-                                    ? parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined
-                                    : false
-                            ;
-                            if (isLegacySettings) {
-                                // 1.x (ducktyped)
-                                settings = $.extend(true, {}, $.fn.form.settings, legacyParameters);
-                                validation = $.extend(true, {}, $.fn.form.settings.defaults, parameters);
-                                module.error(settings.error.oldSyntax, element);
-                                module.verbose('Extending settings from legacy parameters', validation, settings);
-                            } else {
-                                // 2.x
-                                if (parameters.fields) {
-                                    parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
-                                }
-                                settings = $.extend(true, {}, $.fn.form.settings, parameters);
-                                validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
-                                module.verbose('Extending settings', validation, settings);
+                            if (parameters.fields) {
+                                parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
                             }
+                            settings = $.extend(true, {}, $.fn.form.settings, parameters);
+                            validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
+                            module.verbose('Extending settings', validation, settings);
                         } else {
                             settings = $.extend(true, {}, $.fn.form.settings);
                             validation = $.extend(true, {}, $.fn.form.settings.defaults);
@@ -1620,7 +1604,6 @@
             identifier: 'You must specify a string identifier for each field',
             method: 'The method you called is not defined.',
             noRule: 'There is no rule matching the one you specified',
-            oldSyntax: 'Starting in 2.0 forms now only take a single settings object. Validation settings converted to new syntax automatically.',
             noField: 'Field identifier {identifier} not found',
             noElement: 'This module requires ui {element}',
         },

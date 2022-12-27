@@ -2,7 +2,8 @@
  *     Define RTL Sub-Tasks
  *******************************/
 
-const buildRTL = require('../rtl/build'),
+const
+    buildRTL = require('../rtl/build'),
     watchRTL = require('../rtl/watch')
 ;
 
