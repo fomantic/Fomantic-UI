@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
     - name: Install dependencies
-      run: yarn && yarn add -D eslint-config-airbnb-base eslint-plugin-unicorn eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+      run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^45 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
     - name: Lint JS and LESS files
       run: npm run lint
     - name: Assert LESS files formatting using Prettier
