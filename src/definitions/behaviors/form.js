@@ -934,7 +934,11 @@
                         }
                         if (rule === undefined) {
                             module.debug('Removed all rules');
-                            delete validation[field];
+                            if (module.has.field(field)) {
+                                validation[field].rules = [];
+                            } else {
+                                delete validation[field];
+                            }
 
                             return;
                         }
