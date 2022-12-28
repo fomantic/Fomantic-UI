@@ -951,6 +951,7 @@
                         if (rule === undefined) {
                             module.debug('Removed all rules');
                             validation[field].rules = [];
+                            delete validation[field];
 
                             return;
                         }
@@ -1140,6 +1141,35 @@
                     },
                     autoCheck: function () {
                         module.debug('Enabling auto check on required fields');
+                        if (validation) {
+                            $.each(validation, function (fieldName) {
+                                var
+                                    identifier = module.escape.string(fieldName),
+                                    found = false,
+                                    t
+                                ;
+                                t = $field.filter('#' + identifier);
+                                if (t.length > 0) {
+                                    found = true;
+                                }
+                                t = $field.filter('[name="' + identifier + '"]');
+                                if (t.length > 0) {
+                                    found = true;
+                                }
+                                t = $field.filter('[name="' + identifier + '[]"]');
+                                if (t.length > 0) {
+                                    found = true;
+                                }
+                                t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]');
+                                if (t.length > 0) {
+                                    found = true;
+                                }
+                                if (!found) {
+                                    module.verbose("Field not found, removing from validation", fieldName);
+                                    module.remove.field(fieldName);
+                                }
+                            });
+                        }
                         $field.each(function (_index, el) {
                             var
                                 $el        = $(el),
