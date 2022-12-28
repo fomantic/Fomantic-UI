@@ -1165,7 +1165,7 @@
                                     found = true;
                                 }
                                 if (!found) {
-                                    module.verbose("Field not found, removing from validation", fieldName);
+                                    module.verbose('Field not found, removing from validation', fieldName);
                                     module.remove.field(fieldName);
                                 }
                             });
