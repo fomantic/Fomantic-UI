@@ -1361,7 +1361,7 @@
                             var
                                 $choice        = $(this),
                                 $target        = event
-                                    ? $(event.target)
+                                    ? $(event.target || '')
                                     : $(''),
                                 $subMenu       = $choice.find(selector.menu),
                                 text           = module.get.choiceText($choice),
@@ -1379,7 +1379,7 @@
                                         module.remove.userAddition();
                                     }
                                     module.remove.filteredItem();
-                                    if (!module.is.visible()) {
+                                    if (!module.is.visible() && $target.length > 0) {
                                         module.show();
                                     }
                                     module.remove.searchTerm();
