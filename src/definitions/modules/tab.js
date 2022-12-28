@@ -78,7 +78,6 @@
 
                 initialize: function () {
                     module.debug('Initializing tab menu item', $module);
-                    module.fix.callbacks();
                     module.determineTabs();
 
                     module.debug('Determining tabs', settings.context, $tabs);
@@ -166,24 +165,6 @@
                         $tabs = $context.find(selector.tabs);
                         module.debug('Searching tab context for tabs', $context, $tabs);
                     }
-                },
-
-                fix: {
-                    callbacks: function () {
-                        if ($.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit)) {
-                            if (parameters.onTabLoad) {
-                                parameters.onLoad = parameters.onTabLoad;
-                                delete parameters.onTabLoad;
-                                module.error(error.legacyLoad, parameters.onLoad);
-                            }
-                            if (parameters.onTabInit) {
-                                parameters.onFirstLoad = parameters.onTabInit;
-                                delete parameters.onTabInit;
-                                module.error(error.legacyInit, parameters.onFirstLoad);
-                            }
-                            settings = $.extend(true, {}, $.fn.tab.settings, parameters);
-                        }
-                    },
                 },
 
                 initializeHistory: function () {
@@ -810,7 +791,7 @@
                         if (moduleSelector) {
                             title += ' \'' + moduleSelector + '\'';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -947,8 +928,6 @@
             noContent: 'The tab you specified is missing a content url.',
             path: 'History enabled, but no path was specified',
             recursion: 'Max recursive depth reached',
-            legacyInit: 'onTabInit has been renamed to onFirstLoad in 2.0, please adjust your code.',
-            legacyLoad: 'onTabLoad has been renamed to onLoad in 2.0. Please adjust your code',
             state: 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>',
         },
 

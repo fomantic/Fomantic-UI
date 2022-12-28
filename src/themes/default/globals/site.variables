@@ -28,8 +28,7 @@
 @fonts: {
     @regularLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -38,8 +37,7 @@
     };
     @boldLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format("woff"));
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -48,8 +46,7 @@
     };
     @italicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format("woff"));
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -58,8 +55,7 @@
     };
     @boldItalicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format("woff"));
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -68,8 +64,7 @@
     };
     @regularSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -78,8 +73,7 @@
     };
     @boldSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format("woff"));
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -88,8 +82,7 @@
     };
     @italicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format("woff"));
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -98,8 +91,7 @@
     };
     @boldItalicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format("woff"));
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -546,124 +538,94 @@
 
 @primaryBoxShadow:
     0 0 0 @borderWidth @primaryBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @primaryBoxFloatingShadow:
     0 0 0 @borderWidth @primaryBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @secondaryBoxShadow:
     0 0 0 @borderWidth @secondaryBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @secondaryBoxFloatingShadow:
     0 0 0 @borderWidth @secondaryBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @redBoxShadow:
     0 0 0 @borderWidth @redBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @redBoxFloatingShadow:
     0 0 0 @borderWidth @redBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @orangeBoxShadow:
     0 0 0 @borderWidth @orangeBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @orangeBoxFloatingShadow:
     0 0 0 @borderWidth @orangeBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @yellowBoxShadow:
     0 0 0 @borderWidth @yellowBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @yellowBoxFloatingShadow:
     0 0 0 @borderWidth @yellowBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @oliveBoxShadow:
     0 0 0 @borderWidth @oliveBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @oliveBoxFloatingShadow:
     0 0 0 @borderWidth @oliveBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @greenBoxShadow:
     0 0 0 @borderWidth @greenBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @greenBoxFloatingShadow:
     0 0 0 @borderWidth @greenBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @tealBoxShadow:
     0 0 0 @borderWidth @tealBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @tealBoxFloatingShadow:
     0 0 0 @borderWidth @tealBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @blueBoxShadow:
     0 0 0 @borderWidth @blueBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @blueBoxFloatingShadow:
     0 0 0 @borderWidth @blueBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @violetBoxShadow:
     0 0 0 @borderWidth @violetBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @violetBoxFloatingShadow:
     0 0 0 @borderWidth @violetBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @purpleBoxShadow:
     0 0 0 @borderWidth @purpleBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @purpleBoxFloatingShadow:
     0 0 0 @borderWidth @purpleBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @pinkBoxShadow:
     0 0 0 @borderWidth @pinkBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @pinkBoxFloatingShadow:
     0 0 0 @borderWidth @pinkBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @brownBoxShadow:
     0 0 0 @borderWidth @brownBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @brownBoxFloatingShadow:
     0 0 0 @borderWidth @brownBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @greyBoxShadow:
     0 0 0 @borderWidth @greyBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @greyBoxFloatingShadow:
     0 0 0 @borderWidth @greyBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 @blackBoxShadow:
     0 0 0 @borderWidth @blackBorderColor inset,
-    @shadowShadow
-;
+    @shadowShadow;
 @blackBoxFloatingShadow:
     0 0 0 @borderWidth @blackBorderColor inset,
-    @floatingShadow
-;
+    @floatingShadow;
 
 /* -------------------
      Alpha Colors
@@ -686,13 +648,10 @@
 @subtleGradient: linear-gradient(transparent, @transparentBlack);
 
 /* Differentiating Layers */
-@subtleShadow:
-    0 1px 2px 0 @borderColor
-;
+@subtleShadow: 0 1px 2px 0 @borderColor;
 @floatingShadow:
     0 2px 4px 0 rgba(34, 36, 38, 0.12),
-    0 2px 10px 0 rgba(34, 36, 38, 0.15)
-;
+    0 2px 10px 0 rgba(34, 36, 38, 0.15);
 
 /*******************************
            Power-User
@@ -1094,8 +1053,7 @@
 /* ---  Shadows  --- */
 @floatingShadowHover:
     0 2px 4px 0 rgba(34, 36, 38, 0.15),
-    0 2px 10px 0 rgba(34, 36, 38, 0.25)
-;
+    0 2px 10px 0 rgba(34, 36, 38, 0.25);
 
 /* ---  Colors  --- */
 @primaryColorHover: saturate(darken(@primaryColor, 5), 10, relative);

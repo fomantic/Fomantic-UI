@@ -23,8 +23,7 @@
 
 .ui.grid {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: stretch;
     padding: 0;
 }
@@ -34,10 +33,7 @@
 ----------------------- */
 
 .ui.grid {
-    margin-top: -(@rowSpacing / 2);
-    margin-bottom: -(@rowSpacing / 2);
-    margin-left: -(@gutterWidth / 2);
-    margin-right: -(@gutterWidth / 2);
+    margin: -(@rowSpacing / 2) -(@gutterWidth / 2);
 }
 & when (@variationGridRelaxed) {
     .ui.relaxed.grid {
@@ -84,8 +80,7 @@
 .ui.grid > .row {
     position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: inherit;
     align-items: stretch;
     width: 100% !important;
@@ -1696,7 +1691,7 @@
         .ui.stackable.grid > .column:not(.row),
         .ui.grid > .stackable.stackable.stackable.row > .column {
             width: 100% !important;
-            margin: 0 0 !important;
+            margin: 0 !important;
             box-shadow: none !important;
             padding: (@stackableRowSpacing / 2) (@stackableGutter / 2);
         }
@@ -1908,10 +1903,7 @@
 
     /* Row */
     .ui.ui.ui.compact.grid > .row {
-        padding-top: (@compactRowSpacing / 2);
-        padding-bottom: (@compactRowSpacing / 2);
-        padding-left: 0;
-        padding-right: 0;
+        padding: (@compactRowSpacing / 2) 0;
     }
 
     /* Columns */
@@ -1955,10 +1947,7 @@
 
         /* Row */
         .ui.ui.ui[class*="very compact"].grid > .row {
-            padding-top: (@veryCompactRowSpacing / 2);
-            padding-bottom: (@veryCompactRowSpacing / 2);
-            padding-left: 0;
-            padding-right: 0;
+            padding: (@veryCompactRowSpacing / 2) 0;
         }
 
         /* Columns */

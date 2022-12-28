@@ -36,7 +36,7 @@
 /* Actions */
 @actionBorder: 1px solid @borderColor;
 @actionBackground: @offWhite;
-@actionPadding: 1rem 1rem;
+@actionPadding: 1rem;
 @actionAlign: right;
 
 @buttonDistance: 0.75em;

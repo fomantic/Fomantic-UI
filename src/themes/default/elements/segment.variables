@@ -29,7 +29,7 @@
 @groupedBoxShadow: @boxShadow;
 @groupedBorderRadius: @borderRadius;
 
-@nestedGroupMargin: @verticalMargin @verticalMargin;
+@nestedGroupMargin: @verticalMargin;
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
@@ -106,8 +106,7 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
     @boxShadow,
-    @attachedBoxShadow
-;
+    @attachedBoxShadow;
 
 /* Inverted */
 @invertedBackground: @black;
@@ -132,21 +131,21 @@
 @tertiaryColor: @mutedTextColor;
 
 @secondaryInvertedLightness: 0.2;
+// prettier-ignore
 @secondaryInvertedBackground:
     lighten(@black, (@secondaryInvertedLightness * 100))
     linear-gradient(
         rgba(255, 255, 255, @secondaryInvertedLightness) 0,
         rgba(255, 255, 255, @secondaryInvertedLightness) 100%
-    )
-;
+    );
 @secondaryInvertedColor: @invertedMutedTextColor;
 
 @tertiaryInvertedLightness: 0.35;
+// prettier-ignore
 @tertiaryInvertedBackground:
     lighten(@black, (@tertiaryInvertedLightness * 100))
     linear-gradient(
         rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
         rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
-    )
-;
+    );
 @tertiaryInvertedColor: @invertedMutedTextColor;

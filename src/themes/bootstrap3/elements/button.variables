@@ -38,8 +38,7 @@
 @basicHoverBackground: transparent;
 @basicDownBoxShadow:
     0 0 0 1px #adadad inset,
-    0 3px 5px rgba(0, 0, 0, 0.125) inset
-;
+    0 3px 5px rgba(0, 0, 0, 0.125) inset;
 
 @groupButtonOffset: 0 0 0 -1px;
 @verticalGroupOffset: 0 0 -1px 0;
@@ -47,15 +46,12 @@
 /* States */
 
 @hoverBackgroundColor: #e6e6e6;
-@hoverBoxShadow:
-    0 0 0 1px #adadad inset
-;
+@hoverBoxShadow: 0 0 0 1px #adadad inset;
 
 @downBackgroundColor: #e6e6e6;
 @downBoxShadow:
     0 0 0 1px #adadad inset,
-    0 3px 5px rgba(0, 0, 0, 0.125) inset
-;
+    0 3px 5px rgba(0, 0, 0, 0.125) inset;
 
 @activeBackgroundColor: #e6e6e6;
 

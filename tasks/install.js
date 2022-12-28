@@ -7,9 +7,8 @@
 
    For more notes
 
-   * Runs automatically after npm update (hooks)
-   * (NPM) Install - Will ask for where to put semantic (outside pm folder)
-   * (NPM) Upgrade - Will look for semantic install, copy over files and update if new version
+   * (NPM) Install - Will ask for where to put fomantic (outside pm folder)
+   * (NPM) Upgrade - Will look for fomantic install, copy over files and update if new version
    * Standard installer runs asking for paths to site files etc
 */
 
