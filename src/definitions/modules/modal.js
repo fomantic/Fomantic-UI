@@ -267,7 +267,7 @@
                             // mutationobserver only provides the parent nodes
                             // so let's collect all childs as well to find nested inputs
                             var $addedInputs = $(collectNodes(mutations[0].addedNodes)).filter('[tabindex], :input').filter(':visible');
-                            var $removedInputs = $(mutations[0].removedNodes).filter('[tabindex], :input');
+                            var $removedInputs = $(collectNodes(mutations[0].removedNodes)).filter('[tabindex], :input');
                             if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                 module.refreshInputs();
                                 if (settings.autofocus && $inputs.filter(':focus').length === 0) {
