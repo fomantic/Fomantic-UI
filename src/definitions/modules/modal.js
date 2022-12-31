@@ -255,9 +255,24 @@
                                 module.debug('DOM tree modified, refreshing');
                                 module.refresh();
                             }
-                            module.refreshInputs();
-                            if (settings.autofocus && $inputs.filter(':focus').length === 0) {
-                                module.set.autofocus();
+                            function collectNodes(parent) {
+                                var nodes = [];
+                                for (var c = 0, cl = parent.length; c < cl; c++) {
+                                    Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                    nodes.push(parent[c]);
+                                }
+
+                                return nodes;
+                            }
+                            // mutationobserver only provides the parent nodes
+                            // so let's collect all childs as well to find nested inputs
+                            var $addedInputs = $(collectNodes(mutations[0].addedNodes)).filter('[tabindex], :input').filter(':visible');
+                            var $removedInputs = $(mutations[0].removedNodes).filter('[tabindex], :input');
+                            if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                module.refreshInputs();
+                                if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                                    module.set.autofocus();
+                                }
                             }
                         });
                         observer.observe(element, {
