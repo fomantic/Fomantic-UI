@@ -8,6 +8,16 @@
  *
  */
 
+/// <reference path="../../../types/index.d.ts" />
+
+interface JQueryStatic {
+    flyout: FomanticUI.Flyout;
+}
+
+interface JQuery<TElement = HTMLElement> extends Iterable<TElement> {
+    flyout: FomanticUI.Flyout;
+}
+
 (function ($, window, document) {
     'use strict';
 
@@ -17,7 +27,7 @@
 
     window = window !== undefined && window.Math === Math
         ? window
-        : globalThis;
+        : <any> globalThis;
 
     $.fn.flyout = function (parameters) {
         var
@@ -28,13 +38,11 @@
             $head           = $('head'),
             $body           = $('body'),
 
-            moduleSelector  = $allModules.selector || '',
-
-            time            = Date.now(),
+            time: number    = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
+            methodInvoked: boolean   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -59,7 +67,7 @@
                 namespace            = settings.namespace,
                 fields               = settings.fields,
                 regExp               = settings.regExp,
-                error                = settings.error,
+                error: FomanticUI.Flyout.ErrorSettings                = settings.error,
 
                 eventNamespace       = '.' + namespace,
                 moduleNamespace      = 'module-' + namespace,
@@ -74,19 +82,19 @@
                 $pusher              = $context.children(selector.pusher),
                 $style,
 
-                isFlyoutComponent    = $module.hasClass('flyout'),
+                isFlyoutComponent: boolean    = $module.hasClass('flyout'),
 
                 element              = this,
                 instance             = isFlyoutComponent ? $module.data(moduleNamespace) : undefined,
 
                 ignoreRepeatedEvents = false,
-                isBody               = $context[0] === $body[0],
+                isBody: boolean      = $context[0] === $body[0],
                 initialBodyMargin    = '',
-                tempBodyMargin       = '',
+                tempBodyMargin: number       = 0,
                 hadScrollbar         = false,
 
                 elementNamespace,
-                id,
+                id: string,
                 observer,
                 currentScroll,
                 transitionEvent,
@@ -96,7 +104,7 @@
 
             module = {
 
-                initialize: function () {
+                initialize: function (): void {
                     module.debug('Initializing flyout', parameters);
 
                     module.create.id();
@@ -179,7 +187,7 @@
                     }
                 },
 
-                instantiate: function () {
+                instantiate: function (): void {
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
@@ -188,7 +196,7 @@
                 },
 
                 create: {
-                    flyout: function () {
+                    flyout: function (): void {
                         module.verbose('Programmaticaly create flyout', $context);
                         $module = $('<div/>', { class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage });
                         if (settings.closeIcon) {
@@ -223,7 +231,7 @@
                     },
                 },
 
-                destroy: function () {
+                destroy: function (): void {
                     if (observer) {
                         observer.disconnect();
                     }
@@ -246,7 +254,7 @@
                 },
 
                 event: {
-                    keyboard: function (event) {
+                    keyboard: function (event): void {
                         var
                             keyCode   = event.which
                         ;
@@ -260,10 +268,10 @@
                             event.preventDefault();
                         }
                     },
-                    resize: function () {
+                    resize: function (): void {
                         module.setup.heights();
                     },
-                    clickaway: function (event) {
+                    clickaway: function (event): void {
                         if (settings.closable) {
                             var
                                 clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
@@ -279,10 +287,10 @@
                             }
                         }
                     },
-                    close: function (event) {
+                    close: function (event): void {
                         module.hide();
                     },
-                    closeKeyUp: function (event) {
+                    closeKeyUp: function (event): void {
                         var
                             keyCode   = event.which
                         ;
@@ -291,7 +299,7 @@
                         }
                     },
                     inputKeyDown: {
-                        first: function (event) {
+                        first: function (event): void {
                             var
                                 keyCode = event.which
                             ;
@@ -300,7 +308,7 @@
                                 event.preventDefault();
                             }
                         },
-                        last: function (event) {
+                        last: function (event): void {
                             var
                                 keyCode = event.which
                             ;
@@ -351,11 +359,11 @@
                 },
 
                 bind: {
-                    resize: function () {
+                    resize: function (): void {
                         module.verbose('Adding resize event to window', $window);
                         $window.on('resize' + elementNamespace, module.event.resize);
                     },
-                    events: function () {
+                    events: function (): void {
                         module.verbose('Attaching events');
                         $module
                             .on('click' + eventNamespace, selector.close, module.event.close)
@@ -366,14 +374,14 @@
                             .on('keyup' + elementNamespace, module.event.closeKeyUp)
                         ;
                     },
-                    clickaway: function () {
+                    clickaway: function (): void {
                         module.verbose('Adding clickaway events to context', $context);
                         $context
                             .on('click' + elementNamespace, module.event.clickaway)
                             .on('touchend' + elementNamespace, module.event.clickaway)
                         ;
                     },
-                    scrollLock: function () {
+                    scrollLock: function (): void {
                         if (settings.scrollLock) {
                             module.debug('Disabling page scroll');
                             hadScrollbar = module.has.scrollbar();
@@ -393,11 +401,11 @@
                     },
                 },
                 unbind: {
-                    clickaway: function () {
+                    clickaway: function (): void {
                         module.verbose('Removing clickaway events from context', $context);
                         $context.off(elementNamespace);
                     },
-                    scrollLock: function () {
+                    scrollLock: function (): void {
                         module.verbose('Removing scroll lock from page');
                         if (hadScrollbar) {
                             module.restore.bodyMargin();
@@ -409,7 +417,7 @@
                 },
 
                 add: {
-                    inlineCSS: function () {
+                    inlineCSS: function (): void {
                         var
                             width     = module.cache.width || $module.outerWidth(),
                             height    = module.cache.height || $module.outerHeight(),
@@ -487,7 +495,7 @@
                         ;
                     },
                 },
-                observeChanges: function () {
+                observeChanges: function (): void {
                     if ('MutationObserver' in window) {
                         observer = new MutationObserver(function (mutations) {
                             module.refreshInputs();
@@ -499,7 +507,7 @@
                         module.debug('Setting up mutation observer', observer);
                     }
                 },
-                refresh: function () {
+                refresh: function (): void {
                     module.verbose('Refreshing selector cache');
                     $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                     module.refreshFlyouts();
@@ -507,12 +515,12 @@
                     module.clear.cache();
                 },
 
-                refreshFlyouts: function () {
+                refreshFlyouts: function (): void {
                     module.verbose('Refreshing other flyouts');
                     $flyouts = $context.children(selector.flyout);
                 },
 
-                refreshInputs: function () {
+                refreshInputs: function (): void {
                     if ($inputs) {
                         $inputs
                             .off('keydown' + elementNamespace)
@@ -533,13 +541,13 @@
                 },
 
                 setup: {
-                    cache: function () {
+                    cache: function (): void {
                         module.cache = {
                             width: $module.outerWidth(),
                             height: $module.outerHeight(),
                         };
                     },
-                    layout: function () {
+                    layout: function (): void {
                         if ($context.children(selector.pusher).length === 0) {
                             module.debug('Adding wrapper element for flyout');
                             module.error(error.pusher);
@@ -576,7 +584,7 @@
                     },
                 },
 
-                attachEvents: function (selector, event) {
+                attachEvents: function (selector, event): void {
                     var
                         $toggle = $(selector)
                     ;
@@ -593,7 +601,7 @@
                     }
                 },
 
-                show: function (callback) {
+                show: function (callback): void {
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -655,17 +663,17 @@
                     }
                 },
 
-                othersAnimating: function () {
+                othersAnimating: function (): boolean {
                     return $flyouts.not($module).filter('.' + className.animating).length > 0;
                 },
-                othersVisible: function () {
+                othersVisible: function (): boolean {
                     return $flyouts.not($module).filter('.' + className.visible).length > 0;
                 },
-                othersActive: function () {
+                othersActive: function (): boolean {
                     return module.othersVisible() || module.othersAnimating();
                 },
 
-                hideOthers: function (callback) {
+                hideOthers: function (callback): void {
                     var
                         $otherFlyouts = $flyouts.not($module).filter('.' + className.visible),
                         flyoutCount   = $otherFlyouts.length,
@@ -682,7 +690,7 @@
                     ;
                 },
 
-                toggle: function () {
+                toggle: function (): void {
                     module.verbose('Determining toggled direction');
                     if (module.is.hidden()) {
                         module.show();
@@ -691,7 +699,7 @@
                     }
                 },
 
-                pushPage: function (callback) {
+                pushPage: function (callback): void {
                     var
                         animate,
                         dim,
@@ -729,7 +737,7 @@
                     }
                 },
 
-                pullPage: function (callback) {
+                pullPage: function (callback): void {
                     var
                         animate,
                         transitionEnd
@@ -776,26 +784,26 @@
                     requestAnimationFrame(animate);
                 },
 
-                scrollToTop: function () {
+                scrollToTop: function (): void {
                     module.verbose('Scrolling to top of page to avoid animation issues');
                     $module.scrollTop(0);
                     (isBody ? $window : $context)[0].scrollTo(0, 0);
                 },
 
-                scrollBack: function () {
+                scrollBack: function (): void {
                     module.verbose('Scrolling back to original page position');
                     (isBody ? $window : $context)[0].scrollTo(0, currentScroll);
                 },
 
                 clear: {
-                    cache: function () {
+                    cache: function (): void {
                         module.verbose('Clearing cached dimensions');
                         module.cache = {};
                     },
                 },
 
                 set: {
-                    autofocus: function () {
+                    autofocus: function (): void {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
                             $input     = $autofocus.length > 0
@@ -806,14 +814,14 @@
                             $input.trigger('focus');
                         }
                     },
-                    dimmerStyles: function () {
+                    dimmerStyles: function (): void {
                         if (settings.blurring) {
                             $pusher.addClass(className.blurring);
                         } else {
                             $pusher.removeClass(className.blurring);
                         }
                     },
-                    bodyMargin: function () {
+                    bodyMargin: function (): void {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
@@ -827,53 +835,53 @@
 
                     // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
                     // (This is no longer necessary in latest iOS)
-                    ios: function () {
+                    ios: function (): void {
                         $html.addClass(className.ios);
                     },
 
                     // container
-                    pushed: function () {
+                    pushed: function (): void {
                         $context.addClass(className.pushed);
                     },
-                    pushable: function () {
+                    pushable: function (): void {
                         $context.addClass(className.pushable);
                     },
 
                     // pusher
-                    dimmed: function () {
+                    dimmed: function (): void {
                         $pusher.addClass(className.dimmed);
                     },
 
                     // flyout
-                    active: function () {
+                    active: function (): void {
                         $module.addClass(className.active);
                     },
-                    animating: function () {
+                    animating: function (): void {
                         $module.addClass(className.animating);
                     },
-                    closing: function () {
+                    closing: function (): void {
                         $pusher.addClass(className.closing);
                     },
-                    direction: function (direction) {
+                    direction: function (direction): void {
                         direction = direction || module.get.direction();
                         $module.addClass(className[direction]);
                     },
-                    visible: function () {
+                    visible: function (): void {
                         $module.addClass(className.visible);
                     },
-                    overlay: function () {
+                    overlay: function (): void {
                         $module.addClass(className.overlay);
                     },
                 },
                 remove: {
 
-                    inlineCSS: function () {
+                    inlineCSS: function (): void {
                         module.debug('Removing inline css styles', $style);
                         if ($style && $style.length > 0) {
                             $style.remove();
                         }
                     },
-                    keyboardShortcuts: function () {
+                    keyboardShortcuts: function (): void {
                         module.verbose('Removing keyboard shortcuts');
                         $document
                             .off('keydown' + eventNamespace)
@@ -881,42 +889,42 @@
                     },
 
                     // ios scroll on html not document
-                    ios: function () {
+                    ios: function (): void {
                         $html.removeClass(className.ios);
                     },
 
                     // context
-                    pushed: function () {
+                    pushed: function (): void {
                         $context.removeClass(className.pushed);
                     },
-                    pushable: function () {
+                    pushable: function (): void {
                         $context.removeClass(className.pushable);
                     },
 
                     // flyout
-                    active: function () {
+                    active: function (): void {
                         $module.removeClass(className.active);
                     },
-                    animating: function () {
+                    animating: function (): void {
                         $module.removeClass(className.animating);
                     },
-                    closing: function () {
+                    closing: function (): void {
                         $pusher.removeClass(className.closing);
                     },
-                    direction: function (direction) {
+                    direction: function (direction): void {
                         direction = direction || module.get.direction();
                         $module.removeClass(className[direction]);
                     },
-                    visible: function () {
+                    visible: function (): void {
                         $module.removeClass(className.visible);
                     },
-                    overlay: function () {
+                    overlay: function (): void {
                         $module.removeClass(className.overlay);
                     },
                 },
 
                 get: {
-                    direction: function () {
+                    direction: function (): string {
                         if ($module.hasClass(className.top)) {
                             return className.top;
                         }
@@ -1071,10 +1079,10 @@
                 },
 
                 has: {
-                    configActions: function () {
+                    configActions: function (): boolean {
                         return Array.isArray(settings.actions) && settings.actions.length > 0;
                     },
-                    scrollbar: function () {
+                    scrollbar: function (): boolean {
                         return isBody || $context.css('overflow-y') !== 'hidden';
                     },
                 },
@@ -1099,16 +1107,16 @@
                 },
 
                 helpers: {
-                    deQuote: function (string) {
+                    deQuote: function (string): string {
                         return String(string).replace(/"/g, '');
                     },
-                    escape: function (string, preserveHTML) {
+                    escape: function (string: string, preserveHTML: boolean): string {
                         if (preserveHTML) {
                             return string;
                         }
                         var
-                            badChars     = /["'<>`]/g,
-                            shouldEscape = /["&'<>`]/,
+                            badChars: RegExp     = /["'<>`]/g,
+                            shouldEscape: RegExp = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -1182,9 +1190,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime: number,
+                            executionTime: number,
+                            previousTime: number
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -1203,18 +1211,15 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title: string = settings.name + ':',
+                            totalTime: number = 0
                         ;
-                        time = false;
+                        time = 0;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
@@ -1232,7 +1237,7 @@
                 invoke: function (query, passedArguments, context) {
                     var
                         object = instance,
-                        maxDepth,
+                        maxDepth: number,
                         found,
                         response
                     ;
@@ -1241,7 +1246,7 @@
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
-                        $.each(query, function (depth, value) {
+                        $.each(query, function (depth: number, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query

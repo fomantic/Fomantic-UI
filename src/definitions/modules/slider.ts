@@ -8,6 +8,8 @@
  *
  */
 
+/// <reference path="../../../types/index.d.ts" />
+
 (function ($, window, document) {
     'use strict';
 
@@ -17,15 +19,13 @@
 
     window = window !== undefined && window.Math === Math
         ? window
-        : globalThis;
+        : <any> globalThis;
 
     $.fn.slider = function (parameters) {
         var
             $allModules    = $(this),
             $document      = $(document),
             $window        = $(window),
-
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -1185,15 +1185,12 @@
                             title = settings.name + ':',
                             totalTime = 0
                         ;
-                        time = false;
+                        time = 0;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
@@ -1221,7 +1218,7 @@
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
-                        $.each(query, function (depth, value) {
+                        $.each(query, function (depth: number, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
