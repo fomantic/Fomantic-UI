@@ -19,6 +19,7 @@
   "license": "MIT",
   "author": "Jack Lukic <jack@semantic-ui.com>",
   "main": "dist/semantic.js",
+  "types": "types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/fomantic/Fomantic-UI.git"
@@ -59,6 +60,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-rtlcss": "^2.0.0",
     "gulp-tap": "^1.0.1",
+    "gulp-typescript": "^5.0.0",
     "gulp-uglify": "^3.0.1",
     "inquirer": "^8.2.0",
     "jquery": "^3.4.0",
@@ -69,11 +71,14 @@
     "normalize-path": "^3.0.0",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
+    "typescript": "^4.9.4",
     "wrench-sui": "^0.0.3",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@internal/eslint-plugin": "file:.eslint",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "18.11.18",
     "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^2.4.0",
     "eslint": "^8.29.0",
