@@ -16,6 +16,7 @@ const
 
     css        = require('./build/css'),
     js         = require('./build/javascript'),
+    ts         = require('./build/typescript'),
     assets     = require('./build/assets')
 ;
 
@@ -34,6 +35,12 @@ module.exports = function () {
         Watch CSS
     --------------- */
     css.watch('default', config);
+
+    /* --------------
+        Watch TS
+    --------------- */
+
+    ts.watch('default', config);
 
     /* --------------
         Watch JS

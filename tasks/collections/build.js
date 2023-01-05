@@ -9,6 +9,7 @@ module.exports = function (gulp) {
 
         build       = require('../build'),
         buildJS     = require('../build/javascript'),
+        buildTS     = require('../build/typescript'),
         buildCSS    = require('../build/css'),
         buildAssets = require('../build/assets')
     ;
@@ -19,7 +20,7 @@ module.exports = function (gulp) {
     gulp.task('build', build);
     gulp.task('build').description = 'Builds all files from source';
 
-    gulp.task('build-javascript', buildJS);
+    gulp.task('build-javascript', buildTS);
     gulp.task('build-javascript').description = 'Builds all javascript from source';
 
     gulp.task('build-css', buildCSS);
