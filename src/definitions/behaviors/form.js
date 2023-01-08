@@ -934,7 +934,11 @@
                         }
                         if (rule === undefined) {
                             module.debug('Removed all rules');
-                            validation[field].rules = [];
+                            if (module.has.field(field)) {
+                                validation[field].rules = [];
+                            } else {
+                                delete validation[field];
+                            }
 
                             return;
                         }
@@ -1124,6 +1128,14 @@
                     },
                     autoCheck: function () {
                         module.debug('Enabling auto check on required fields');
+                        if (validation) {
+                            $.each(validation, function (fieldName) {
+                                if (!module.has.field(fieldName)) {
+                                    module.verbose('Field not found, removing from validation', fieldName);
+                                    module.remove.field(fieldName);
+                                }
+                            });
+                        }
                         $field.each(function (_index, el) {
                             var
                                 $el        = $(el),
@@ -1228,6 +1240,11 @@
                             module.verbose('Validating field', field);
                             fieldName = field;
                             field = validation[field];
+                        }
+                        if (!field) {
+                            module.debug('Unable to find field validation. Skipping', fieldName);
+
+                            return true;
                         }
                         var
                             identifier    = field.identifier || fieldName,
