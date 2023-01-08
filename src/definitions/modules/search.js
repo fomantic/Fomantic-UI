@@ -1338,7 +1338,7 @@
         },
 
         error: {
-            source: 'Cannot search. No source used, and Semantic API module was not included',
+            source: 'Cannot search. No source used, and Fomantic API module was not included',
             noResultsHeader: 'No Results',
             noResults: 'Your search returned no results',
             logging: 'Error in debug logging, exiting.',
