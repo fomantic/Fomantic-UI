@@ -45,7 +45,9 @@
 
 /* Scrolling Content */
 @contentMinHeight: calc(100vh - 9.1rem);
+@contentMinHeightWithoutHeader: calc(100vh - 4.7rem);
 @scrollingContentMaxHeight: @contentMinHeight;
+@scrollingContentMaxHeightWithoutHeader: @contentMinHeightWithoutHeader;
 @scrollingContentMaxHeightTopBottom: calc(80vh - 9.1rem);
 
 /* Close Icon */
