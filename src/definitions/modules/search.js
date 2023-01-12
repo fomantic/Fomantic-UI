@@ -670,7 +670,7 @@
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
-                                    if (text.search(matchRegExp) !== -1) {
+                                    if (settings.fullTextSearch !== 'all' && text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
                                     } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
@@ -706,7 +706,7 @@
                     ;
                     for (w = 0; w < wL; w++) {
                         found = module.exactSearch(allWords[w], term);
-                        if (found && !matchAll) {
+                        if ((!found && matchAll) || (found && !matchAll)) {
                             break;
                         }
                     }
