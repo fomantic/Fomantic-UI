@@ -2829,7 +2829,7 @@
                         if (settings.label.variation) {
                             $label.addClass(settings.label.variation);
                         }
-                        if (shouldAnimate === true) {
+                        if (shouldAnimate === true && settings.label.transition) {
                             module.debug('Animating in label', $label);
                             $label
                                 .addClass(className.hidden)
