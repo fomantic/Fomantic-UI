@@ -674,7 +674,10 @@
                                         // content starts with value (first in results)
                                         addResult(results, content);
                                     } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
-                                        // content fuzzy matches (last in results)
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'some' && module.wordSearch(searchTerm, text)) {
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'all' && module.wordSearch(searchTerm, text, true)) {
                                         addResult(exactResults, content);
                                     } else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text)) {
                                         // content fuzzy matches (last in results)
@@ -694,6 +697,21 @@
                     term = term.toLowerCase();
 
                     return term.indexOf(query) > -1;
+                },
+                wordSearch: function (query, term, matchAll) {
+                    var allWords = query.split(/\s+/),
+                        w,
+                        wL = allWords.length,
+                        found = false
+                    ;
+                    for (w = 0; w < wL; w++) {
+                        found = module.exactSearch(allWords[w], term);
+                        if (found && !matchAll) {
+                            break;
+                        }
+                    }
+
+                    return found;
                 },
                 fuzzySearch: function (query, term) {
                     var
