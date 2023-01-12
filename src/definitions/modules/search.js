@@ -660,8 +660,10 @@
                             return [];
                         }
                         // iterate through search fields looking for matches
-                        $.each(searchFields, function (index, field) {
-                            $.each(source, function (label, content) {
+                        var lastSearchFieldIndex = searchFields.length - 1;
+                        $.each(source, function (label, content) {
+                            var concatenatedContent = [];
+                            $.each(searchFields, function (index, field) {
                                 var
                                     fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
@@ -670,6 +672,13 @@
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
+                                    if (settings.fullTextSearch === 'all') {
+                                        concatenatedContent.push(text);
+                                        if (index < lastSearchFieldIndex) {
+                                            return true;
+                                        }
+                                        text = concatenatedContent.join(' ');
+                                    }
                                     if (settings.fullTextSearch !== 'all' && text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
