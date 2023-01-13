@@ -560,9 +560,12 @@
                         var
                             $header = $module.children(selector.header),
                             $content = $module.children(selector.content),
-                            $actions = $module.children(selector.actions)
+                            $actions = $module.children(selector.actions),
+                            newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0)
                         ;
-                        $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
+                        if (newContentHeight > 0) {
+                            $content.css('min-height', String(newContentHeight) + 'px');
+                        }
                     },
                 },
 

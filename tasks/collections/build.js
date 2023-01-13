@@ -2,7 +2,8 @@
  *    Define Build Sub-Tasks
  *******************************/
 
-const watch = require('../watch'),
+const
+    watch = require('../watch'),
 
     // build sub-tasks
     build = require('../build'),

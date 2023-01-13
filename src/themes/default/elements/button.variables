@@ -104,9 +104,7 @@
 @downBackgroundColor: #babbbc;
 @downBackgroundImage: "";
 @downPressedShadow: none;
-@downBoxShadow:
-    @borderBoxShadow,
-    @downPressedShadow;
+@downBoxShadow: @downPressedShadow;
 @downColor: @pressedTextColor;
 
 /* Active */

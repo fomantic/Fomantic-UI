@@ -3,7 +3,8 @@
  *******************************/
 
 // docs tasks
-const install = require('../install'),
+const
+    install = require('../install'),
     checkInstall = require('../check-install')
 ;
 
