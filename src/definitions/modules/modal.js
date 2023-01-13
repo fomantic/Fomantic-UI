@@ -251,31 +251,48 @@
                 observeChanges: function () {
                     if ('MutationObserver' in window) {
                         observer = new MutationObserver(function (mutations) {
-                            if (settings.observeChanges) {
+                            var collectNodes = function (parent) {
+                                    var nodes = [];
+                                    for (var c = 0, cl = parent.length; c < cl; c++) {
+                                        Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                        nodes.push(parent[c]);
+                                    }
+
+                                    return nodes;
+                                },
+                                shouldRefresh = false,
+                                shouldRefreshInputs = false
+                            ;
+                            mutations.every(function (mutation) {
+                                if (mutation.type === 'attributes') {
+                                    if (mutation.attributeName === 'disabled' || $(mutation.target).is('.input, [tabindex], :input')) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                } else {
+                                    shouldRefresh = true;
+                                    // mutationobserver only provides the parent nodes
+                                    // so let's collect all childs as well to find nested inputs
+                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('[tabindex], :input').filter(':visible:enabled'),
+                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('[tabindex], :input');
+                                    if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                }
+
+                                return !shouldRefreshInputs;
+                            });
+
+                            if (shouldRefresh && settings.observeChanges) {
                                 module.debug('DOM tree modified, refreshing');
                                 module.refresh();
                             }
-                            function collectNodes(parent) {
-                                var nodes = [];
-                                for (var c = 0, cl = parent.length; c < cl; c++) {
-                                    Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
-                                    nodes.push(parent[c]);
-                                }
-
-                                return nodes;
-                            }
-                            // mutationobserver only provides the parent nodes
-                            // so let's collect all childs as well to find nested inputs
-                            var $addedInputs = $(collectNodes(mutations[0].addedNodes)).filter('[tabindex], :input').filter(':visible');
-                            var $removedInputs = $(collectNodes(mutations[0].removedNodes)).filter('[tabindex], :input');
-                            if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                            if (shouldRefreshInputs) {
                                 module.refreshInputs();
-                                if (settings.autofocus && $inputs.filter(':focus').length === 0) {
-                                    module.set.autofocus();
-                                }
                             }
                         });
                         observer.observe(element, {
+                            attributeFilter: ['class', 'disabled'],
+                            attributes: true,
                             childList: true,
                             subtree: true,
                         });
@@ -304,7 +321,7 @@
                             .off('keydown' + elementEventNamespace)
                         ;
                     }
-                    $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                    $inputs = $module.find('[tabindex], :input').filter(':visible:enabled').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
                     $inputs.first()
@@ -313,6 +330,9 @@
                     $inputs.last()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
                     ;
+                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                        module.set.autofocus();
+                    }
                 },
 
                 attachEvents: function (selector, event) {
@@ -592,9 +612,6 @@
                                             module.save.focus();
                                             module.set.active();
                                             module.refreshInputs();
-                                            if (settings.autofocus) {
-                                                module.set.autofocus();
-                                            }
                                             callback();
                                         },
                                     })

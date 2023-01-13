@@ -477,12 +477,42 @@
                 observeChanges: function () {
                     if ('MutationObserver' in window) {
                         observer = new MutationObserver(function (mutations) {
-                            module.refreshInputs();
-                            if (settings.autofocus && $inputs.filter(':focus').length === 0) {
-                                module.set.autofocus();
+                            var collectNodes = function (parent) {
+                                    var nodes = [];
+                                    for (var c = 0, cl = parent.length; c < cl; c++) {
+                                        Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                        nodes.push(parent[c]);
+                                    }
+
+                                    return nodes;
+                                },
+                                shouldRefreshInputs = false
+                            ;
+                            mutations.every(function (mutation) {
+                                if (mutation.type === 'attributes') {
+                                    if (mutation.attributeName === 'disabled' || $(mutation.target).is('.input, [tabindex], :input')) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                } else {
+                                    // mutationobserver only provides the parent nodes
+                                    // so let's collect all childs as well to find nested inputs
+                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('[tabindex], :input').filter(':visible:enabled'),
+                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('[tabindex], :input');
+                                    if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                }
+
+                                return !shouldRefreshInputs;
+                            });
+
+                            if (shouldRefreshInputs) {
+                                module.refreshInputs();
                             }
                         });
                         observer.observe(element, {
+                            attributeFilter: ['class', 'disabled'],
+                            attributes: true,
                             childList: true,
                             subtree: true,
                         });
@@ -511,7 +541,7 @@
                     if (!settings.dimPage) {
                         return;
                     }
-                    $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                    $inputs = $module.find('[tabindex], :input').filter(':visible:enabled').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
                     $inputs.first()
@@ -520,6 +550,9 @@
                     $inputs.last()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
                     ;
+                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                        module.set.autofocus();
+                    }
                 },
 
                 setup: {
@@ -614,9 +647,6 @@
                             }
                             module.save.focus();
                             module.refreshInputs();
-                            if (settings.autofocus) {
-                                module.set.autofocus();
-                            }
                         });
                         settings.onChange.call(element);
                     } else {
