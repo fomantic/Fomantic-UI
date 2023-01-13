@@ -660,8 +660,10 @@
                             return [];
                         }
                         // iterate through search fields looking for matches
-                        $.each(searchFields, function (index, field) {
-                            $.each(source, function (label, content) {
+                        var lastSearchFieldIndex = searchFields.length - 1;
+                        $.each(source, function (label, content) {
+                            var concatenatedContent = [];
+                            $.each(searchFields, function (index, field) {
                                 var
                                     fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
@@ -670,11 +672,21 @@
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
-                                    if (text.search(matchRegExp) !== -1) {
+                                    if (settings.fullTextSearch === 'all') {
+                                        concatenatedContent.push(text);
+                                        if (index < lastSearchFieldIndex) {
+                                            return true;
+                                        }
+                                        text = concatenatedContent.join(' ');
+                                    }
+                                    if (settings.fullTextSearch !== 'all' && text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
                                     } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
-                                        // content fuzzy matches (last in results)
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'some' && module.wordSearch(searchTerm, text)) {
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'all' && module.wordSearch(searchTerm, text, true)) {
                                         addResult(exactResults, content);
                                     } else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text)) {
                                         // content fuzzy matches (last in results)
@@ -694,6 +706,21 @@
                     term = term.toLowerCase();
 
                     return term.indexOf(query) > -1;
+                },
+                wordSearch: function (query, term, matchAll) {
+                    var allWords = query.split(/\s+/),
+                        w,
+                        wL = allWords.length,
+                        found = false
+                    ;
+                    for (w = 0; w < wL; w++) {
+                        found = module.exactSearch(allWords[w], term);
+                        if ((!found && matchAll) || (found && !matchAll)) {
+                            break;
+                        }
+                    }
+
+                    return found;
                 },
                 fuzzySearch: function (query, term) {
                     var
