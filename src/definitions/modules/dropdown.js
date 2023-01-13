@@ -1080,12 +1080,28 @@
                     paste: function (event) {
                         var
                             pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
-                            tokens = pasteValue.split(settings.delimiter)
+                            tokens = pasteValue.split(settings.delimiter),
+                            notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
+                                notFoundTokens.push(value);
+                            }
                         });
                         event.preventDefault();
+                        if (notFoundTokens.length > 0) {
+                            var searchEl = $search[0],
+                                startPos = searchEl.selectionStart,
+                                endPos = searchEl.selectionEnd,
+                                orgText = searchEl.value,
+                                pasteText = notFoundTokens.join(settings.delimiter),
+                                newEndPos = startPos + pasteText.length
+                            ;
+                            $search.val(orgText.slice(0, startPos) + pasteText + orgText.slice(endPos));
+                            searchEl.selectionStart = newEndPos;
+                            searchEl.selectionEnd = newEndPos;
+                            module.event.input(event);
+                        }
                     },
                     change: function () {
                         if (!internalChange) {
@@ -2726,7 +2742,7 @@
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
                         if (!$selectedItem) {
-                            return;
+                            return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
                         if (module.is.multiple()) {
