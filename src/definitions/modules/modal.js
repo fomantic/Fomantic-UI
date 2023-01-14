@@ -265,15 +265,15 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (mutation.attributeName === 'disabled' || $(mutation.target).is('.input, [tabindex], :input')) {
+                                    if (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input')) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
                                     shouldRefresh = true;
                                     // mutationobserver only provides the parent nodes
                                     // so let's collect all childs as well to find nested inputs
-                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('[tabindex], :input').filter(':visible:enabled'),
-                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('[tabindex], :input');
+                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
+                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                     if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                         shouldRefreshInputs = true;
                                     }
@@ -321,9 +321,14 @@
                             .off('keydown' + elementEventNamespace)
                         ;
                     }
-                    $inputs = $module.find('[tabindex], :input').filter(':visible:enabled').filter(function () {
+                    $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
+                    $module.removeAttr('tabindex');
+                    if ($inputs.length === 0) {
+                        $inputs = $module;
+                        $module.attr('tabindex', -1);
+                    }
                     $inputs.first()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
                     ;
@@ -366,6 +371,7 @@
                         ;
                         $window
                             .on('resize' + elementEventNamespace, module.event.resize)
+                            .on('focus' + elementEventNamespace, module.event.focus)
                         ;
                     },
                     scrollLock: function () {
@@ -521,6 +527,11 @@
                     resize: function () {
                         if ($dimmable.dimmer('is active') && (module.is.animating() || module.is.active())) {
                             requestAnimationFrame(module.refresh);
+                        }
+                    },
+                    focus: function () {
+                        if ($dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
+                            module.set.autofocus();
                         }
                     },
                 },
