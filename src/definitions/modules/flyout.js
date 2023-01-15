@@ -257,9 +257,7 @@
                     },
                     focus: function () {
                         if (module.is.visible() && settings.autofocus && settings.dimPage) {
-                            setTimeout(function () {
-                                module.set.autofocus();
-                            }, 0);
+                            requestAnimationFrame(module.set.autofocus);
                         }
                     },
                     clickaway: function (event) {

@@ -531,9 +531,7 @@
                     },
                     focus: function () {
                         if ($dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
-                            setTimeout(function () {
-                                module.set.autofocus();
-                            }, 0);
+                            requestAnimationFrame(module.set.autofocus);
                         }
                     },
                 },
