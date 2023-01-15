@@ -125,9 +125,9 @@
                         }
                     }
                     if (settings.popup) {
-                        module.set.loading();
+                        module.set.invisible();
                         $offsetParent = module.get.offsetParent();
-                        module.remove.loading();
+                        module.remove.invisible();
                         if (settings.movePopup && module.has.popup() && module.get.offsetParent($popup)[0] !== $offsetParent[0]) {
                             module.debug('Moving popup to the same offset parent as target');
                             $popup
@@ -902,7 +902,7 @@
                             .removeClass(className.position)
                             .addClass(position)
                         ;
-                        module.set.loading();
+                        module.set.invisible();
 
                         popupOffset = module.get.popupOffset();
 
@@ -926,7 +926,7 @@
                                 module.debug('Popup could not find a position to display', $popup);
                                 module.error(error.cannotPlace, element);
                                 module.remove.attempts();
-                                module.remove.loading();
+                                module.remove.invisible();
                                 module.reset();
                                 settings.onUnplaceable.call($popup, element);
 
@@ -935,7 +935,7 @@
                         }
                         module.debug('Position is on stage', position);
                         module.remove.attempts();
-                        module.remove.loading();
+                        module.remove.invisible();
                         if (settings.setFluidWidth && module.is.fluid()) {
                             module.set.fluidWidth(calculations);
                         }
@@ -951,6 +951,10 @@
 
                     loading: function () {
                         $popup.addClass(className.loading);
+                    },
+
+                    invisible: function () {
+                        $popup.addClass(className.invisible);
                     },
 
                     variation: function (variation) {
@@ -969,6 +973,9 @@
                 remove: {
                     loading: function () {
                         $popup.removeClass(className.loading);
+                    },
+                    invisible: function () {
+                        $popup.removeClass(className.invisible);
                     },
                     variation: function (variation) {
                         variation = variation || module.get.variation();
@@ -1477,6 +1484,7 @@
             basic: 'basic',
             animating: 'animating',
             dropdown: 'dropdown',
+            invisible: 'invisible',
             fluid: 'fluid',
             loading: 'loading',
             popup: 'ui popup',

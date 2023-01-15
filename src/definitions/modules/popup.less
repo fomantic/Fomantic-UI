@@ -704,10 +704,19 @@
 *******************************/
 & when (@variationPopupLoading) {
     .ui.loading.popup {
-        display: block;
-        visibility: hidden;
-        z-index: @loadingZIndex;
+        cursor: default;
+        pointer-events: @loadingPointerEvents;
+        user-select: none;
+        & * {
+            opacity: @loadingOpacity;
+        }
     }
+}
+
+.ui.invisible.popup {
+    display: block;
+    visibility: hidden;
+    z-index: @loadingZIndex;
 }
 
 .ui.animating.popup,
