@@ -125,9 +125,9 @@
                         }
                     }
                     if (settings.popup) {
-                        $popup.addClass(className.loading);
+                        module.set.loading();
                         $offsetParent = module.get.offsetParent();
-                        $popup.removeClass(className.loading);
+                        module.remove.loading();
                         if (settings.movePopup && module.has.popup() && module.get.offsetParent($popup)[0] !== $offsetParent[0]) {
                             module.debug('Moving popup to the same offset parent as target');
                             $popup
@@ -901,8 +901,8 @@
                             .css(positioning)
                             .removeClass(className.position)
                             .addClass(position)
-                            .addClass(className.loading)
                         ;
+                        module.set.loading();
 
                         popupOffset = module.get.popupOffset();
 
@@ -947,6 +947,10 @@
                         calculations = calculations || module.get.calculations();
                         module.debug('Automatically setting element width to parent width', calculations.parent.width);
                         $popup.css('width', calculations.container.width);
+                    },
+
+                    loading: function () {
+                        $popup.addClass(className.loading);
                     },
 
                     variation: function (variation) {
