@@ -1038,10 +1038,18 @@
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
+                            $rawInputs = $inputs.filter(':input'),
                             $input     = $autofocus.length > 0
                                 ? $autofocus.first()
-                                : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+                                : ($rawInputs.length > 0
+                                    ? $rawInputs
+                                    : $inputs.filter(':not(i.close)')
+                                ).first()
                         ;
+                        // check if only the close icon is remaining
+                        if ($input.length === 0 && $inputs.length > 0) {
+                            $input = $inputs.first();
+                        }
                         if ($input.length > 0) {
                             $input.trigger('focus');
                         }
