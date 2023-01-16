@@ -626,7 +626,6 @@
 
         // error
         error: {
-            beforeSend: 'The before send function has cancelled state change',
             method: 'The method you called is not defined.',
         },
 
