@@ -377,8 +377,6 @@
                             tagName = $container[0].tagName
                         ;
                         if (tagName === 'HTML' || tagName === 'body') {
-                            // this can trigger for too many reasons
-                            // module.error(error.container, tagName, $module);
                             module.determineContainer();
                         } else {
                             var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
@@ -804,6 +802,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -896,7 +896,6 @@
         onBottom: function () {},
 
         error: {
-            container: 'Sticky element must be inside a relative container',
             visible: 'Element is hidden, you must call refresh after element becomes visible. Use silent setting to suppress this warning in production.',
             method: 'The method you called is not defined.',
             invalidContext: 'Context specified does not exist',

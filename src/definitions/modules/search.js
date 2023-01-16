@@ -1234,6 +1234,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -1368,8 +1370,6 @@
             source: 'Cannot search. No source used, and Fomantic API module was not included',
             noResultsHeader: 'No Results',
             noResults: 'Your search returned no results',
-            logging: 'Error in debug logging, exiting.',
-            noEndpoint: 'No search endpoint was specified',
             noTemplate: 'A valid template name was not specified.',
             oldSearchSyntax: 'searchFullText setting has been renamed fullTextSearch for consistency, please adjust your settings.',
             serverError: 'There was an issue querying the server.',
