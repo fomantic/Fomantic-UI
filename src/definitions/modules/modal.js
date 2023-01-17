@@ -604,7 +604,7 @@
                                     $module.detach().appendTo($dimmer);
                                 }
                             }
-                            if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.transition && $.fn.transition !== undefined) {
                                 module.debug('Showing modal with css animations');
                                 $module
                                     .transition({
@@ -652,7 +652,7 @@
 
                     if (module.is.animating() || module.is.active()) {
                         module.debug('Hiding modal');
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             module.remove.active();
                             $module
                                 .transition({
@@ -988,9 +988,7 @@
                         return module.cache.isIE;
                     },
                     animating: function () {
-                        return $module.transition('is supported')
-                            ? $module.transition('is animating')
-                            : $module.is(':visible');
+                        return $module.transition('is animating');
                     },
                     scrolling: function () {
                         return $dimmable.hasClass(className.scrolling);

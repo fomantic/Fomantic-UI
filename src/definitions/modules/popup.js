@@ -414,7 +414,7 @@
                 animate: {
                     show: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
+                        if (settings.transition && module.can.useElement('transition')) {
                             module.set.visible();
                             $popup
                                 .transition({
@@ -436,7 +436,7 @@
                     hide: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
                         module.debug('Hiding pop-up');
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             $popup
                                 .transition({
                                     animation: (settings.transition.hideMethod || settings.transition) + ' out',
