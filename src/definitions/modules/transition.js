@@ -46,7 +46,6 @@
                 error,
                 className,
                 metadata,
-                animationEnd,
 
                 moduleNamespace,
                 eventNamespace,
@@ -68,9 +67,6 @@
                     eventNamespace = '.' + settings.namespace;
                     moduleNamespace = 'module-' + settings.namespace;
                     instance = $module.data(moduleNamespace) || module;
-
-                    // get vendor specific events
-                    animationEnd = module.get.animationEndEvent();
 
                     if (methodInvoked) {
                         methodInvoked = module.invoke(query);
@@ -152,11 +148,7 @@
 
                 animate: function (overrideSettings) {
                     settings = overrideSettings || settings;
-                    if (!module.is.supported()) {
-                        module.error(error.support);
 
-                        return false;
-                    }
                     module.debug('Preparing animation', settings.animation);
                     if (module.is.animating()) {
                         if (settings.queue) {
@@ -195,7 +187,7 @@
                     module.debug('Queueing animation of', animation);
                     module.queuing = true;
                     $module
-                        .one(animationEnd + '.queue' + eventNamespace, function () {
+                        .one('animationend.queue' + eventNamespace, function () {
                             module.queuing = false;
                             module.repaint();
                             module.animate.apply(this, settings);
@@ -375,7 +367,7 @@
                         module.debug('Starting tween', animationClass);
                         $module
                             .addClass(animationClass)
-                            .one(animationEnd + '.complete' + eventNamespace, module.complete)
+                            .one('animationend.complete' + eventNamespace, module.complete)
                         ;
                         if (settings.useFailSafe) {
                             module.add.failSafe();
@@ -424,7 +416,7 @@
                             duration = module.get.duration()
                         ;
                         module.timer = setTimeout(function () {
-                            $module.triggerHandler(animationEnd);
+                            $module.triggerHandler('animationend');
                         }, duration + settings.failSafeDelay);
                         module.verbose('Adding fail safe timer', module.timer);
                     },
@@ -612,45 +604,6 @@
                     transitionExists: function (animation) {
                         return $.fn.transition.exists[animation];
                     },
-                    animationStartEvent: function () {
-                        var
-                            element     = document.createElement('div'),
-                            animations  = {
-                                animation: 'animationstart',
-                                OAnimation: 'oAnimationStart',
-                                MozAnimation: 'mozAnimationStart',
-                                WebkitAnimation: 'webkitAnimationStart',
-                            },
-                            animation
-                        ;
-                        for (animation in animations) {
-                            if (element.style[animation] !== undefined) {
-                                return animations[animation];
-                            }
-                        }
-
-                        return false;
-                    },
-                    animationEndEvent: function () {
-                        var
-                            element     = document.createElement('div'),
-                            animations  = {
-                                animation: 'animationend',
-                                OAnimation: 'oAnimationEnd',
-                                MozAnimation: 'mozAnimationEnd',
-                                WebkitAnimation: 'webkitAnimationEnd',
-                            },
-                            animation
-                        ;
-                        for (animation in animations) {
-                            if (element.style[animation] !== undefined) {
-                                return animations[animation];
-                            }
-                        }
-
-                        return false;
-                    },
-
                 },
 
                 can: {
@@ -749,9 +702,6 @@
                     hidden: function () {
                         return $module.css('visibility') === 'hidden';
                     },
-                    supported: function () {
-                        return animationEnd !== false;
-                    },
                 },
 
                 hide: function () {
@@ -801,13 +751,13 @@
 
                 stop: function () {
                     module.debug('Stopping current animation');
-                    $module.triggerHandler(animationEnd);
+                    $module.triggerHandler('animationend');
                 },
 
                 stopAll: function () {
                     module.debug('Stopping all animation');
                     module.remove.queueCallback();
-                    $module.triggerHandler(animationEnd);
+                    $module.triggerHandler('animationend');
                 },
 
                 clear: {
@@ -945,8 +895,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
@@ -1078,7 +1027,6 @@
         error: {
             noAnimation: 'Element is no longer attached to DOM. Unable to animate.  Use silent setting to suppress this warning in production.',
             method: 'The method you called is not defined',
-            support: 'This browser does not support CSS animations',
         },
 
     };
