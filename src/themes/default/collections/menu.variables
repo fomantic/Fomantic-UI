@@ -24,10 +24,7 @@
 @itemVerticalPadding: @relativeSmall;
 @itemHorizontalPadding: @relativeLarge;
 @itemTextTransform: none;
-@itemTransition:
-    background @defaultDuration @defaultEasing,
-    box-shadow @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing;
+@itemTransition: background @defaultDuration @defaultEasing, box-shadow @defaultDuration @defaultEasing, color @defaultDuration @defaultEasing;
 @itemFontWeight: @normal;
 @itemTextColor: @textColor;
 

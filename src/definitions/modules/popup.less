@@ -137,9 +137,7 @@
         pointer-events: none;
         visibility: hidden;
         opacity: 0;
-        transition:
-            transform @tooltipDuration @tooltipEasing,
-            opacity @tooltipDuration @tooltipEasing;
+        transition: transform @tooltipDuration @tooltipEasing, opacity @tooltipDuration @tooltipEasing;
     }
     [data-tooltip]::before {
         transform: rotate(45deg) scale(0) !important;

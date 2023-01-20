@@ -38,9 +38,7 @@
 @borderBoxShadowColor: transparent;
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
-@boxShadow:
-    @borderBoxShadow,
-    @shadowBoxShadow;
+@boxShadow: @borderBoxShadow, @shadowBoxShadow;
 
 /* Icon */
 @iconHeight: auto;
@@ -56,12 +54,7 @@
 /* Loader */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
 
-@transition:
-    opacity @defaultDuration @defaultEasing,
-    background-color @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing,
-    box-shadow @defaultDuration @defaultEasing,
-    background @defaultDuration @defaultEasing;
+@transition: opacity @defaultDuration @defaultEasing, background-color @defaultDuration @defaultEasing, color @defaultDuration @defaultEasing, box-shadow @defaultDuration @defaultEasing, background @defaultDuration @defaultEasing;
 
 /*
 @willChange: box-shadow, transform, opacity, color, background;
@@ -122,9 +115,7 @@
 /* Loading */
 @loadingOpacity: 1;
 @loadingPointerEvents: auto;
-@loadingTransition:
-    all 0s linear,
-    opacity @defaultDuration @defaultEasing;
+@loadingTransition: all 0s linear, opacity @defaultDuration @defaultEasing;
 
 /* -------------------
         Types
@@ -200,9 +191,7 @@
 /* Basic Hover */
 @basicHoverBackground: #fff;
 @basicHoverTextColor: @hoveredTextColor;
-@basicHoverBoxShadow:
-    0 0 0 @basicBorderSize @selectedBorderColor inset,
-    0 0 0 0 @borderColor inset;
+@basicHoverBoxShadow: 0 0 0 @basicBorderSize @selectedBorderColor inset, 0 0 0 0 @borderColor inset;
 
 /* Basic Focus */
 @basicFocusBackground: @basicHoverBackground;
@@ -212,9 +201,7 @@
 /* Basic Down */
 @basicDownBackground: #f8f8f8;
 @basicDownTextColor: @pressedTextColor;
-@basicDownBoxShadow:
-    0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
-    0 1px 4px 0 @borderColor inset;
+@basicDownBoxShadow: 0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset, 0 1px 4px 0 @borderColor inset;
 
 /* Basic Active */
 @basicActiveBackground: @transparentBlack;

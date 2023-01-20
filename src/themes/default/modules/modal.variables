@@ -7,9 +7,7 @@
 @zIndex: 1001;
 @borderRadius: @defaultBorderRadius;
 @transformOrigin: 50% 25%;
-@boxShadow:
-    1px 3px 3px 0 rgba(0, 0, 0, 0.2),
-    1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+@boxShadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
 
 /* Close Icon */
 @closeOpacity: 0.8;
@@ -23,11 +21,7 @@
 @closePadding: @closeHitBoxOffset 0 0 0;
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
-@closeShadow:
-    -1px -1px 2px rgba(0, 0, 0, 0.3),
-    1px -1px 2px rgba(0, 0, 0, 0.3),
-    -1px 2px 2px rgba(0, 0, 0, 0.3),
-    1px 2px 2px rgba(0, 0, 0, 0.3);
+@closeShadow: -1px -1px 2px rgba(0, 0, 0, 0.3), 1px -1px 2px rgba(0, 0, 0, 0.3), -1px 2px 2px rgba(0, 0, 0, 0.3), 1px 2px 2px rgba(0, 0, 0, 0.3);
 
 /* Header */
 @headerMargin: 0;
@@ -255,8 +249,4 @@
 @invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
 @invertedActionColor: @white;
 @invertedDimmerCloseColor: rgba(0, 0, 0, 0.85);
-@invertedCloseShadow:
-    -1px -1px 2px rgba(255, 255, 255, 0.3),
-    1px -1px 2px rgba(255, 255, 255, 0.3),
-    -1px 2px 2px rgba(255, 255, 255, 0.3),
-    1px 2px 2px rgba(255, 255, 255, 0.3);
+@invertedCloseShadow: -1px -1px 2px rgba(255, 255, 255, 0.3), 1px -1px 2px rgba(255, 255, 255, 0.3), -1px 2px 2px rgba(255, 255, 255, 0.3), 1px 2px 2px rgba(255, 255, 255, 0.3);

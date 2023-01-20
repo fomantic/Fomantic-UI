@@ -35,9 +35,7 @@
 @inputBorder: 1px solid @borderColor;
 @inputBorderRadius: @absoluteBorderRadius;
 @inputColor: @textColor;
-@inputTransition:
-    color @defaultDuration @defaultEasing,
-    border-color @defaultDuration @defaultEasing;
+@inputTransition: color @defaultDuration @defaultEasing, border-color @defaultDuration @defaultEasing;
 @inputBoxShadow: 0 0 0 0 transparent inset;
 
 /* Select */

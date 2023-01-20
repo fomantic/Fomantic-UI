@@ -119,10 +119,7 @@
 @selectionListItemBorderRadius: 0.5em;
 @selectionListItemVerticalPadding: 0.5em;
 @selectionListItemHorizontalPadding: 0.5em;
-@selectionListTransition:
-    @defaultDuration color @defaultEasing,
-    @defaultDuration padding-left @defaultEasing,
-    @defaultDuration background-color @defaultEasing;
+@selectionListTransition: @defaultDuration color @defaultEasing, @defaultDuration padding-left @defaultEasing, @defaultDuration background-color @defaultEasing;
 
 /* Selection List States */
 @selectionListBackground: transparent;
@@ -147,10 +144,7 @@
 /* Animated List */
 @animatedDuration: 0.25s;
 @animatedDelay: 0.1s;
-@animatedListTransition:
-    @animatedDuration color @defaultEasing @animatedDelay,
-    @animatedDuration padding-left @defaultEasing @animatedDelay,
-    @animatedDuration background-color @defaultEasing @animatedDelay;
+@animatedListTransition: @animatedDuration color @defaultEasing @animatedDelay, @animatedDuration padding-left @defaultEasing @animatedDelay, @animatedDuration background-color @defaultEasing @animatedDelay;
 @animatedListIndent: 1em;
 
 /* Bulleted */

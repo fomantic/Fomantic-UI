@@ -536,96 +536,36 @@
 @shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
 @borderWidth: 1px;
 
-@primaryBoxShadow:
-    0 0 0 @borderWidth @primaryBorderColor inset,
-    @shadowShadow;
-@primaryBoxFloatingShadow:
-    0 0 0 @borderWidth @primaryBorderColor inset,
-    @floatingShadow;
-@secondaryBoxShadow:
-    0 0 0 @borderWidth @secondaryBorderColor inset,
-    @shadowShadow;
-@secondaryBoxFloatingShadow:
-    0 0 0 @borderWidth @secondaryBorderColor inset,
-    @floatingShadow;
-@redBoxShadow:
-    0 0 0 @borderWidth @redBorderColor inset,
-    @shadowShadow;
-@redBoxFloatingShadow:
-    0 0 0 @borderWidth @redBorderColor inset,
-    @floatingShadow;
-@orangeBoxShadow:
-    0 0 0 @borderWidth @orangeBorderColor inset,
-    @shadowShadow;
-@orangeBoxFloatingShadow:
-    0 0 0 @borderWidth @orangeBorderColor inset,
-    @floatingShadow;
-@yellowBoxShadow:
-    0 0 0 @borderWidth @yellowBorderColor inset,
-    @shadowShadow;
-@yellowBoxFloatingShadow:
-    0 0 0 @borderWidth @yellowBorderColor inset,
-    @floatingShadow;
-@oliveBoxShadow:
-    0 0 0 @borderWidth @oliveBorderColor inset,
-    @shadowShadow;
-@oliveBoxFloatingShadow:
-    0 0 0 @borderWidth @oliveBorderColor inset,
-    @floatingShadow;
-@greenBoxShadow:
-    0 0 0 @borderWidth @greenBorderColor inset,
-    @shadowShadow;
-@greenBoxFloatingShadow:
-    0 0 0 @borderWidth @greenBorderColor inset,
-    @floatingShadow;
-@tealBoxShadow:
-    0 0 0 @borderWidth @tealBorderColor inset,
-    @shadowShadow;
-@tealBoxFloatingShadow:
-    0 0 0 @borderWidth @tealBorderColor inset,
-    @floatingShadow;
-@blueBoxShadow:
-    0 0 0 @borderWidth @blueBorderColor inset,
-    @shadowShadow;
-@blueBoxFloatingShadow:
-    0 0 0 @borderWidth @blueBorderColor inset,
-    @floatingShadow;
-@violetBoxShadow:
-    0 0 0 @borderWidth @violetBorderColor inset,
-    @shadowShadow;
-@violetBoxFloatingShadow:
-    0 0 0 @borderWidth @violetBorderColor inset,
-    @floatingShadow;
-@purpleBoxShadow:
-    0 0 0 @borderWidth @purpleBorderColor inset,
-    @shadowShadow;
-@purpleBoxFloatingShadow:
-    0 0 0 @borderWidth @purpleBorderColor inset,
-    @floatingShadow;
-@pinkBoxShadow:
-    0 0 0 @borderWidth @pinkBorderColor inset,
-    @shadowShadow;
-@pinkBoxFloatingShadow:
-    0 0 0 @borderWidth @pinkBorderColor inset,
-    @floatingShadow;
-@brownBoxShadow:
-    0 0 0 @borderWidth @brownBorderColor inset,
-    @shadowShadow;
-@brownBoxFloatingShadow:
-    0 0 0 @borderWidth @brownBorderColor inset,
-    @floatingShadow;
-@greyBoxShadow:
-    0 0 0 @borderWidth @greyBorderColor inset,
-    @shadowShadow;
-@greyBoxFloatingShadow:
-    0 0 0 @borderWidth @greyBorderColor inset,
-    @floatingShadow;
-@blackBoxShadow:
-    0 0 0 @borderWidth @blackBorderColor inset,
-    @shadowShadow;
-@blackBoxFloatingShadow:
-    0 0 0 @borderWidth @blackBorderColor inset,
-    @floatingShadow;
+@primaryBoxShadow: 0 0 0 @borderWidth @primaryBorderColor inset, @shadowShadow;
+@primaryBoxFloatingShadow: 0 0 0 @borderWidth @primaryBorderColor inset, @floatingShadow;
+@secondaryBoxShadow: 0 0 0 @borderWidth @secondaryBorderColor inset, @shadowShadow;
+@secondaryBoxFloatingShadow: 0 0 0 @borderWidth @secondaryBorderColor inset, @floatingShadow;
+@redBoxShadow: 0 0 0 @borderWidth @redBorderColor inset, @shadowShadow;
+@redBoxFloatingShadow: 0 0 0 @borderWidth @redBorderColor inset, @floatingShadow;
+@orangeBoxShadow: 0 0 0 @borderWidth @orangeBorderColor inset, @shadowShadow;
+@orangeBoxFloatingShadow: 0 0 0 @borderWidth @orangeBorderColor inset, @floatingShadow;
+@yellowBoxShadow: 0 0 0 @borderWidth @yellowBorderColor inset, @shadowShadow;
+@yellowBoxFloatingShadow: 0 0 0 @borderWidth @yellowBorderColor inset, @floatingShadow;
+@oliveBoxShadow: 0 0 0 @borderWidth @oliveBorderColor inset, @shadowShadow;
+@oliveBoxFloatingShadow: 0 0 0 @borderWidth @oliveBorderColor inset, @floatingShadow;
+@greenBoxShadow: 0 0 0 @borderWidth @greenBorderColor inset, @shadowShadow;
+@greenBoxFloatingShadow: 0 0 0 @borderWidth @greenBorderColor inset, @floatingShadow;
+@tealBoxShadow: 0 0 0 @borderWidth @tealBorderColor inset, @shadowShadow;
+@tealBoxFloatingShadow: 0 0 0 @borderWidth @tealBorderColor inset, @floatingShadow;
+@blueBoxShadow: 0 0 0 @borderWidth @blueBorderColor inset, @shadowShadow;
+@blueBoxFloatingShadow: 0 0 0 @borderWidth @blueBorderColor inset, @floatingShadow;
+@violetBoxShadow: 0 0 0 @borderWidth @violetBorderColor inset, @shadowShadow;
+@violetBoxFloatingShadow: 0 0 0 @borderWidth @violetBorderColor inset, @floatingShadow;
+@purpleBoxShadow: 0 0 0 @borderWidth @purpleBorderColor inset, @shadowShadow;
+@purpleBoxFloatingShadow: 0 0 0 @borderWidth @purpleBorderColor inset, @floatingShadow;
+@pinkBoxShadow: 0 0 0 @borderWidth @pinkBorderColor inset, @shadowShadow;
+@pinkBoxFloatingShadow: 0 0 0 @borderWidth @pinkBorderColor inset, @floatingShadow;
+@brownBoxShadow: 0 0 0 @borderWidth @brownBorderColor inset, @shadowShadow;
+@brownBoxFloatingShadow: 0 0 0 @borderWidth @brownBorderColor inset, @floatingShadow;
+@greyBoxShadow: 0 0 0 @borderWidth @greyBorderColor inset, @shadowShadow;
+@greyBoxFloatingShadow: 0 0 0 @borderWidth @greyBorderColor inset, @floatingShadow;
+@blackBoxShadow: 0 0 0 @borderWidth @blackBorderColor inset, @shadowShadow;
+@blackBoxFloatingShadow: 0 0 0 @borderWidth @blackBorderColor inset, @floatingShadow;
 
 /* -------------------
      Alpha Colors
@@ -650,9 +590,7 @@
 /* Differentiating Layers */
 @subtleShadow: 0 1px 2px 0 @borderColor;
 @bottomShadow: 0 2px 1px -1px @borderColor;
-@floatingShadow:
-    0 2px 4px 0 rgba(34, 36, 38, 0.12),
-    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+@floatingShadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 
 /*******************************
            Power-User
@@ -1052,9 +990,7 @@
 -------------------- */
 
 /* ---  Shadows  --- */
-@floatingShadowHover:
-    0 2px 4px 0 rgba(34, 36, 38, 0.15),
-    0 2px 10px 0 rgba(34, 36, 38, 0.25);
+@floatingShadowHover: 0 2px 4px 0 rgba(34, 36, 38, 0.15), 0 2px 10px 0 rgba(34, 36, 38, 0.25);
 
 /* ---  Colors  --- */
 @primaryColorHover: saturate(darken(@primaryColor, 5), 10, relative);
