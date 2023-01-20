@@ -20,7 +20,9 @@
 @iconDisplay: inline-block;
 @iconMargin: 0 0.25rem 0 0;
 @iconPadding: 0;
-@iconTransition: transform @defaultDuration @defaultEasing, opacity @defaultDuration @defaultEasing;
+@iconTransition:
+    transform @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: baseline;
 @iconTransform: none;
 @iconTransformRight: @menuIconTransform;
@@ -56,7 +58,9 @@
 @styledWidth: 600px;
 @styledBackground: @white;
 @styledBorderRadius: @defaultBorderRadius;
-@styledBoxShadow: @subtleShadow, 0 0 0 1px @borderColor;
+@styledBoxShadow:
+    @subtleShadow,
+    0 0 0 1px @borderColor;
 
 /* Content */
 @styledContentMargin: 0;
@@ -73,7 +77,9 @@
 @styledTitleColor: @unselectedTextColor;
 @styledTitleTransition: background-color @defaultDuration @defaultEasing;
 @styledTitleBorder: 1px solid @borderColor;
-@styledTitleTransition: background @defaultDuration @defaultEasing, color @defaultDuration @defaultEasing;
+@styledTitleTransition:
+    background @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 
 /* Styled Title States */
 @styledTitleHoverBackground: transparent;
@@ -92,7 +98,9 @@
 @invertedStyledTitleColor: @invertedUnselectedTextColor;
 @invertedStyledBackground: @black;
 @invertedStyledTitleBorder: 1px solid @whiteBorderColor;
-@invertedStyledBoxShadow: @subtleShadow, 0 0 0 1px @whiteBorderColor;
+@invertedStyledBoxShadow:
+    @subtleShadow,
+    0 0 0 1px @whiteBorderColor;
 @invertedStyledTitleHoverBackground: transparent;
 @invertedStyledTitleHoverColor: @invertedTextColor;
 @invertedStyledActiveTitleBackground: transparent;

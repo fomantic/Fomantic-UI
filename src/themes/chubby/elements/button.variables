@@ -3,7 +3,10 @@
 -------------------- */
 
 /* Button Variables */
-@pageFont: "Source Sans Pro", Arial, sans-serif;
+@pageFont:
+    "Source Sans Pro",
+    Arial,
+    sans-serif;
 
 @textTransform: none;
 @fontWeight: @normal;

@@ -12,7 +12,9 @@
 @shadowBoxShadow: 0 -@shadowDistance 0 0 @borderColor inset;
 @backgroundColor: #fafafa;
 @backgroundImage: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09));
-@boxShadow: 0 0 0 1px @borderColor inset, @shadowBoxShadow;
+@boxShadow:
+    0 0 0 1px @borderColor inset,
+    @shadowBoxShadow;
 
 /* Padding */
 @verticalPadding: 0.8em;
@@ -23,7 +25,9 @@
 -------------------- */
 
 @groupBoxShadow: none;
-@groupButtonBoxShadow: 0 0 0 1px @borderColor inset, @shadowBoxShadow;
+@groupButtonBoxShadow:
+    0 0 0 1px @borderColor inset,
+    @shadowBoxShadow;
 @verticalBoxShadow: 0 0 0 1px @borderColor inset;
 @groupButtonOffset: 0 0 0 -1px;
 @verticalGroupOffset: 0 0 -1px 0;
@@ -42,26 +46,34 @@
 /* Focused */
 @focusBackgroundColor: "";
 @focusBackgroundImage: none;
-@focusBoxShadow: 0 0 1px rgba(81, 167, 232, 0.8) inset, 0 0 3px 2px rgba(81, 167, 232, 0.8);
+@focusBoxShadow:
+    0 0 1px rgba(81, 167, 232, 0.8) inset,
+    0 0 3px 2px rgba(81, 167, 232, 0.8);
 @focusColor: @hoveredTextColor;
 @iconFocusOpacity: 0.85;
 
 /* Pressed Down */
 @downBackgroundColor: #f1f1f1;
 @downBackgroundImage: "";
-@downBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
+@downBoxShadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1) inset,
+    0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
 @downColor: @pressedTextColor;
 
 /* Active */
 @activeBackgroundColor: #dadada;
 @activeBackgroundImage: none;
 @activeColor: @selectedTextColor;
-@activeBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
+@activeBoxShadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1) inset,
+    0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
 
 /* Active + Hovered */
 @activeHoverBackgroundColor: #dadada;
 @activeHoverBackgroundImage: none;
-@activeHoverBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset, 0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
+@activeHoverBoxShadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1) inset,
+    0 1px 4px 0 rgba(0, 0, 0, 0.1) inset !important;
 @activeHoverColor: @selectedTextColor;
 
 /* Loading */

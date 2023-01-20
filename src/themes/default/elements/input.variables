@@ -22,7 +22,9 @@
 @boxShadow: none;
 
 @borderRadius: @defaultBorderRadius;
-@transition: box-shadow @defaultDuration @defaultEasing, border-color @defaultDuration @defaultEasing;
+@transition:
+    box-shadow @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing;
 
 /* -------------------
         Types

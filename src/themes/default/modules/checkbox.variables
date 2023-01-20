@@ -13,7 +13,11 @@
 @checkboxBackground: @white;
 @checkboxBorder: 1px solid @solidBorderColor;
 @checkboxBorderRadius: @3px;
-@checkboxTransition: border @defaultDuration @defaultEasing, opacity @defaultDuration @defaultEasing, transform @defaultDuration @defaultEasing, box-shadow @defaultDuration @defaultEasing;
+@checkboxTransition:
+    border @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
+    transform @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing;
 
 /* Checkmark */
 @checkboxCheckFontSize: 14px;
@@ -99,7 +103,9 @@
 
 /* Slider & Toggle Handle */
 @handleBackground: @white @subtleGradient;
-@handleBoxShadow: @subtleShadow, 0 0 0 1px @borderColor inset;
+@handleBoxShadow:
+    @subtleShadow,
+    0 0 0 1px @borderColor inset;
 
 /* Slider */
 @sliderHandleSize: 1.5rem;
@@ -146,8 +152,12 @@
 
 @toggleHandleRadius: @circularRadius;
 @toggleHandleOffset: 0;
-@toggleHandleTransition: background @toggleTransitionDuration @defaultEasing, left @toggleTransitionDuration @defaultEasing;
-@toggleHandleTransitionRightAligned: background @toggleTransitionDuration @defaultEasing, right @toggleTransitionDuration @defaultEasing;
+@toggleHandleTransition:
+    background @toggleTransitionDuration @defaultEasing,
+    left @toggleTransitionDuration @defaultEasing;
+@toggleHandleTransitionRightAligned:
+    background @toggleTransitionDuration @defaultEasing,
+    right @toggleTransitionDuration @defaultEasing;
 
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;

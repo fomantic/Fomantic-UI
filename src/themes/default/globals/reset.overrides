@@ -64,7 +64,9 @@ hr {
 pre {
     // https://github.com/necolas/normalize.css/issues/519
     // stylelint-disable-next-line font-family-no-duplicate-names
-    font-family: monospace, monospace; /* 1 */
+    font-family:
+        monospace,
+        monospace; /* 1 */
     font-size: 1em; /* 2 */
 }
 
@@ -109,7 +111,9 @@ kbd,
 samp {
     // https://github.com/necolas/normalize.css/issues/519
     // stylelint-disable-next-line font-family-no-duplicate-names
-    font-family: monospace, monospace; /* 1 */
+    font-family:
+        monospace,
+        monospace; /* 1 */
     font-size: 1em; /* 2 */
 }
 

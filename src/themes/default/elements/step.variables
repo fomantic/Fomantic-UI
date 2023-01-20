@@ -23,7 +23,11 @@
 @verticalPadding: @relativeLarge;
 @horizontalPadding: 2em;
 
-@transition: background-color @defaultDuration @defaultEasing, opacity @defaultDuration @defaultEasing, color @defaultDuration @defaultEasing, box-shadow @defaultDuration @defaultEasing;
+@transition:
+    background-color @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing;
 @lineHeight: @relativeLarge;
 @alignItems: center;
 @justifyContent: center;

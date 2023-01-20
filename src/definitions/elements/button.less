@@ -215,7 +215,9 @@
     }
 
     .ui.animated.button .content {
-        will-change: transform, opacity;
+        will-change:
+            transform,
+            opacity;
     }
     .ui.animated.button .visible.content {
         position: relative;
@@ -256,7 +258,9 @@
         /* Vertical */
         .ui.vertical.animated.button .visible.content,
         .ui.vertical.animated.button .hidden.content {
-            transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+            transition:
+                top @animationDuration @animationEasing,
+                transform @animationDuration @animationEasing;
         }
         .ui.vertical.animated.button .visible.content {
             transform: translateY(0);
@@ -282,7 +286,9 @@
         /* Fade */
         .ui.fade.animated.button .visible.content,
         .ui.fade.animated.button .hidden.content {
-            transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+            transition:
+                opacity @animationDuration @animationEasing,
+                transform @animationDuration @animationEasing;
         }
         .ui.fade.animated.button .visible.content {
             left: auto;

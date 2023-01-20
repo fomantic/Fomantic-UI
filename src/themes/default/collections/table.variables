@@ -12,7 +12,9 @@
 @borderCollapse: separate;
 @borderSpacing: 0;
 @borderRadius: @defaultBorderRadius;
-@transition: background @defaultDuration @defaultEasing, color @defaultDuration @defaultEasing;
+@transition:
+    background @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 @background: @white;
 @color: @textColor;
 @borderWidth: 1px;
