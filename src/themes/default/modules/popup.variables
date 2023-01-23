@@ -109,7 +109,8 @@
        States
 -------------------- */
 
-@loadingOpacity: 0.7;
+@loadingOpacity: 0.3;
+@loadingColoredPercent: 30%;
 @loadingPointerEvents: none;
 @loadingZIndex: -1;
 

@@ -715,7 +715,7 @@
 
 .ui.invisible.popup {
     display: block;
-    visibility: hidden;
+    visibility: hidden !important;
     z-index: @loadingZIndex;
 }
 
@@ -816,6 +816,8 @@
         @color: @value;
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
+        @cl: lighten(@c, @loadingColoredPercent);
+        @ll: darken(@l, @loadingColoredPercent);
 
         & when not (@variationPopupTooltip) {
             .ui.ui.ui.@{color}.popup::before,
@@ -823,6 +825,9 @@
                 background: @c;
                 color: @white;
                 border: none;
+                .loading& when (@variationPopupLoading) {
+                    background: @cl;
+                }
             }
             .ui.ui.ui.@{color}.popup::before {
                 box-shadow: none;
@@ -832,6 +837,9 @@
                 .ui.inverted.@{color}.popup {
                     background: @l;
                     color: @black;
+                    .loading& when (@variationPopupLoading) {
+                        background: @ll;
+                    }
                 }
             }
         }
@@ -844,6 +852,12 @@
                 color: @white;
                 border: none;
             }
+            & when (@variationPopupLoading) {
+                .ui.ui.ui.@{color}.loading.popup::before,
+                .ui.@{color}.loading.popup {
+                    background: @cl;
+                }
+            }
             .ui.ui.ui.@{color}.popup::before,
             [data-tooltip][data-variation~="@{color}"]::before {
                 box-shadow: none;
@@ -855,6 +869,12 @@
                 [data-tooltip][data-inverted][data-variation~="@{color}"]::before {
                     background: @l;
                     color: @black;
+                }
+                & when (@variationPopupLoading) {
+                    .ui.ui.ui.inverted.@{color}.loading.popup::before,
+                    .ui.inverted.@{color}.loading.popup {
+                        background: @ll;
+                    }
                 }
             }
         }
