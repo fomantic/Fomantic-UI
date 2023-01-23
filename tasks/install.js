@@ -78,7 +78,7 @@ module.exports = function (callback) {
     }
 
     if (!manager) {
-        console.log('\u001b[92mgulp install\u001b[0m must run inside \u001b[92mnode_modules'+path.sep+'fomantic-ui\u001b[0m');
+        console.log('\u001B[92mgulp install\u001B[0m must run inside \u001B[92mnode_modules' + path.sep + 'fomantic-ui\u001B[0m');
         console.error('Aborting.');
         callback();
 
