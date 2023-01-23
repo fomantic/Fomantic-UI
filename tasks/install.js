@@ -77,6 +77,14 @@ module.exports = function (callback) {
         return;
     }
 
+    if (!manager) {
+        console.log('\u001b[92mgulp install\u001b[0m must run inside \u001b[92mnode_modules'+path.sep+'fomantic-ui\u001b[0m');
+        console.error('Aborting.');
+        callback();
+
+        return;
+    }
+
     /* -----------------
         Update SUI
     ----------------- */
