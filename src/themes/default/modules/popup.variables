@@ -113,6 +113,11 @@
 @loadingColoredPercent: 30%;
 @loadingPointerEvents: none;
 @loadingZIndex: -1;
+@loaderSize: 2em;
+@loaderLineZIndex: 101;
+
+/* backward compatible just in case */
+@invisibleZIndex: @loadingZIndex;
 
 /* -------------------
        Variations
