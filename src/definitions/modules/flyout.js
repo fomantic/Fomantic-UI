@@ -549,7 +549,7 @@
                     if (!settings.dimPage) {
                         return;
                     }
-                    $inputs = $module.find('[tabindex], :input:enabled').filter(':visible').filter(function () {
+                    $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
                     $module.removeAttr('tabindex');
@@ -847,7 +847,7 @@
                             $input = $inputs.first();
                         }
                         if ($input.length > 0) {
-                            $input.trigger('focus');
+                            $input[0].focus();
                         }
                     },
                     dimmerStyles: function () {

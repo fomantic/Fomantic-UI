@@ -1049,7 +1049,7 @@
                             $input = $inputs.first();
                         }
                         if ($input.length > 0) {
-                            $input.trigger('focus');
+                            $input[0].focus();
                         }
                     },
                     bodyMargin: function () {
