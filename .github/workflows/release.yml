@@ -29,6 +29,7 @@ jobs:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
       run: |
+        sed '/^\/dist\/$/d' -i .gitignore
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         yarn config set registry https://registry.npmjs.org
         yarn publish --non-interactive

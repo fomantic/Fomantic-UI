@@ -44,7 +44,6 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 - When you implement a new feature or fix a bug think about backwards compatibility. If your change is backwards compatible it is most likely to be merged sooner since you won't need to wait for a breaking change update.
 - Please commit using the [AngularJS Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) this is more of a nice to have and isn't required.
 - Please try and stick to a similar code style so everyone can read your code.
-- When you commit don't include your dist files, this can cause merge conflicts and also adds unnecessary changes to the PR.
 
 #### Setup your environment
 These few steps are the easiest way to setup your dev environment.
