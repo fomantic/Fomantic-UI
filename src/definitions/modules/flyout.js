@@ -80,6 +80,7 @@
                 elementNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 currentScroll,
                 transitionEvent,
 
@@ -498,7 +499,7 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input')) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input'))) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -652,6 +653,7 @@
                             }
                         }
                         module.set.dimmerStyles();
+                        module.set.observeAttributes(false);
                         module.pushPage(function () {
                             callback.call(element);
                             settings.onVisible.call(element);
@@ -660,6 +662,7 @@
                             }
                             module.save.focus();
                             module.refreshInputs();
+                            requestAnimationFrame(module.set.observeAttributes);
                         });
                         settings.onChange.call(element);
                     } else {
@@ -680,6 +683,7 @@
                     if (module.is.visible() || module.is.animating()) {
                         module.debug('Hiding flyout', callback);
                         module.refreshFlyouts();
+                        module.set.observeAttributes(false);
                         module.pullPage(function () {
                             callback.call(element);
                             if (isFunction(settings.onHidden)) {
@@ -831,6 +835,9 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
@@ -847,7 +854,7 @@
                             $input = $inputs.first();
                         }
                         if ($input.length > 0) {
-                            $input[0].focus();
+                            $input.trigger('focus');
                         }
                     },
                     dimmerStyles: function () {
