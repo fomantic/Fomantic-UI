@@ -82,6 +82,7 @@
                 elementEventNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 module
             ;
             module = {
@@ -265,7 +266,7 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input')) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input'))) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -606,6 +607,7 @@
                             }
                             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                                 module.debug('Showing modal with css animations');
+                                module.set.observeAttributes(false);
                                 $module
                                     .transition({
                                         debug: settings.debug,
@@ -623,6 +625,7 @@
                                             module.save.focus();
                                             module.set.active();
                                             module.refreshInputs();
+                                            requestAnimationFrame(module.set.observeAttributes);
                                             callback();
                                         },
                                     })
@@ -654,6 +657,7 @@
                         module.debug('Hiding modal');
                         if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                             module.remove.active();
+                            module.set.observeAttributes(false);
                             $module
                                 .transition({
                                     debug: settings.debug,
@@ -1033,6 +1037,9 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
@@ -1049,7 +1056,7 @@
                             $input = $inputs.first();
                         }
                         if ($input.length > 0) {
-                            $input[0].focus();
+                            $input.trigger('focus');
                         }
                     },
                     bodyMargin: function () {
