@@ -266,7 +266,7 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input'))) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -325,10 +325,11 @@
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    $module.removeAttr('tabindex');
                     if ($inputs.length === 0) {
                         $inputs = $module;
                         $module.attr('tabindex', -1);
+                    } else {
+                        $module.removeAttr('tabindex');
                     }
                     $inputs.first()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
