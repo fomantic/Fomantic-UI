@@ -909,8 +909,6 @@
 
                                 return false;
                             } else {
-                                module.error(error.method, query);
-
                                 return false;
                             }
                         });
@@ -1026,7 +1024,6 @@
         // possible errors
         error: {
             noAnimation: 'Element is no longer attached to DOM. Unable to animate.  Use silent setting to suppress this warning in production.',
-            method: 'The method you called is not defined',
         },
 
     };
