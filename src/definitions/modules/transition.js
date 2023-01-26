@@ -702,6 +702,10 @@
                     hidden: function () {
                         return $module.css('visibility') === 'hidden';
                     },
+                    supported: function () {
+                        // keep method for backward compatibility until 2.10.0
+                        return true;
+                    },
                 },
 
                 hide: function () {
