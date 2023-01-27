@@ -627,7 +627,7 @@
 
                         return $fields;
                     },
-                    fieldLabel: function(identifier) {
+                    fieldLabel: function (identifier) {
                         var $field = typeof identifier === 'string'
                                 ? module.get.field(identifier)
                                 : identifier,
@@ -824,7 +824,7 @@
                     },
                 },
 
-                checkErrors: function(errors, internal) {
+                checkErrors: function (errors, internal) {
                     if (!errors || errors.length === 0) {
                         if (!internal) {
                             module.error(settings.error.noErrorMessage);
