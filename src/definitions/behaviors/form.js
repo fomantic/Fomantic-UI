@@ -596,7 +596,7 @@
                         // refresh selector cache
                         (instance || module).refresh();
                     },
-                    field: function (identifier) {
+                    field: function (identifier, strict) {
                         module.verbose('Finding field with identifier', identifier);
                         identifier = module.escape.string(identifier);
                         var t;
@@ -618,7 +618,7 @@
                         }
                         module.error(error.noField.replace('{identifier}', identifier));
 
-                        return $('<input/>');
+                        return strict ? [] : $('<input/>');
                     },
                     fields: function (fields) {
                         var
@@ -641,30 +641,14 @@
                             ? $label.text()
                             : $field.prop('placeholder') || (useIdAsFallback ? identifier : settings.text.unspecifiedField);
                     },
-                    fieldValue: function (identifier, $module) {
+                    fieldValue: function (identifier) {
                         // use either id or name of field
                         var
                             matchingValue,
-                            matchingElement
+                            matchingElement = module.get.field(identifier, true)
                         ;
-                        matchingElement = $module.find('[data-validate="' + identifier + '"]');
                         if (matchingElement.length > 0) {
                             matchingValue = matchingElement.val();
-                        } else {
-                            matchingElement = $module.find('#' + identifier);
-                            if (matchingElement.length > 0) {
-                                matchingValue = matchingElement.val();
-                            } else {
-                                matchingElement = $module.find('[name="' + identifier + '"]');
-                                if (matchingElement.length > 0) {
-                                    matchingValue = matchingElement.val();
-                                } else {
-                                    matchingElement = $module.find('[name="' + identifier + '[]"]');
-                                    if (matchingElement.length > 0) {
-                                        matchingValue = matchingElement;
-                                    }
-                                }
-                            }
                         }
 
                         return matchingValue;
@@ -822,16 +806,8 @@
 
                     field: function (identifier) {
                         module.verbose('Checking for existence of a field with identifier', identifier);
-                        identifier = module.escape.string(identifier);
-                        if (typeof identifier !== 'string') {
-                            module.error(error.identifier, identifier);
-                        }
 
-                        return (
-                            $field.filter('#' + identifier).length > 0
-                                || $field.filter('[name="' + identifier + '"]').length > 0
-                                || $field.filter('[data-' + metadata.validate + '="' + identifier + '"]').length > 0
-                        );
+                        return module.get.field(identifier, true).length > 0;
                     },
 
                 },
@@ -1696,7 +1672,6 @@
         },
 
         error: {
-            identifier: 'You must specify a string identifier for each field',
             method: 'The method you called is not defined.',
             noRule: 'There is no rule matching the one you specified',
             noField: 'Field identifier {identifier} not found',
@@ -1959,7 +1934,7 @@
 
             // matches another field
             match: function (value, identifier, $module, module) {
-                var matchingValue = module.get.fieldValue(identifier, $module);
+                var matchingValue = module.get.fieldValue(identifier);
 
                 return matchingValue !== undefined
                     ? value.toString() === matchingValue.toString()
@@ -1968,7 +1943,7 @@
 
             // different than another field
             different: function (value, identifier, $module, module) {
-                var matchingValue = module.get.fieldValue(identifier, $module);
+                var matchingValue = module.get.fieldValue(identifier);
 
                 return matchingValue !== undefined
                     ? value.toString() !== matchingValue.toString()
