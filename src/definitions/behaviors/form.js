@@ -638,6 +638,34 @@
                             ? $label.text()
                             : $field.prop('placeholder') || settings.text.unspecifiedField;
                     },
+                    fieldValue: function (identifier, $module) {
+                        // use either id or name of field
+                        var
+                            matchingValue,
+                            matchingElement
+                        ;
+                        matchingElement = $module.find('[data-validate="' + identifier + '"]');
+                        if (matchingElement.length > 0) {
+                            matchingValue = matchingElement.val();
+                        } else {
+                            matchingElement = $module.find('#' + identifier);
+                            if (matchingElement.length > 0) {
+                                matchingValue = matchingElement.val();
+                            } else {
+                                matchingElement = $module.find('[name="' + identifier + '"]');
+                                if (matchingElement.length > 0) {
+                                    matchingValue = matchingElement.val();
+                                } else {
+                                    matchingElement = $module.find('[name="' + identifier + '[]"]');
+                                    if (matchingElement.length > 0) {
+                                        matchingValue = matchingElement;
+                                    }
+                                }
+                            }
+                        }
+
+                        return matchingValue;
+                    },
                     validation: function ($field) {
                         var
                             fieldValidation,
@@ -1928,29 +1956,7 @@
 
             // matches another field
             match: function (value, identifier, $module) {
-                var
-                    matchingValue,
-                    matchingElement
-                ;
-                matchingElement = $module.find('[data-validate="' + identifier + '"]');
-                if (matchingElement.length > 0) {
-                    matchingValue = matchingElement.val();
-                } else {
-                    matchingElement = $module.find('#' + identifier);
-                    if (matchingElement.length > 0) {
-                        matchingValue = matchingElement.val();
-                    } else {
-                        matchingElement = $module.find('[name="' + identifier + '"]');
-                        if (matchingElement.length > 0) {
-                            matchingValue = matchingElement.val();
-                        } else {
-                            matchingElement = $module.find('[name="' + identifier + '[]"]');
-                            if (matchingElement.length > 0) {
-                                matchingValue = matchingElement;
-                            }
-                        }
-                    }
-                }
+                var matchingValue = module.get.fieldValue(identifier, $module);
 
                 return matchingValue !== undefined
                     ? value.toString() === matchingValue.toString()
@@ -1959,30 +1965,7 @@
 
             // different than another field
             different: function (value, identifier, $module) {
-                // use either id or name of field
-                var
-                    matchingValue,
-                    matchingElement
-                ;
-                matchingElement = $module.find('[data-validate="' + identifier + '"]');
-                if (matchingElement.length > 0) {
-                    matchingValue = matchingElement.val();
-                } else {
-                    matchingElement = $module.find('#' + identifier);
-                    if (matchingElement.length > 0) {
-                        matchingValue = matchingElement.val();
-                    } else {
-                        matchingElement = $module.find('[name="' + identifier + '"]');
-                        if (matchingElement.length > 0) {
-                            matchingValue = matchingElement.val();
-                        } else {
-                            matchingElement = $module.find('[name="' + identifier + '[]"]');
-                            if (matchingElement.length > 0) {
-                                matchingValue = matchingElement;
-                            }
-                        }
-                    }
-                }
+                var matchingValue = module.get.fieldValue(identifier, $module);
 
                 return matchingValue !== undefined
                     ? value.toString() !== matchingValue.toString()
