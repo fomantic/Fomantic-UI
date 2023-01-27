@@ -1392,7 +1392,7 @@
                                         ? String(value + '').trim()
                                         : String(value + ''));
 
-                                return ruleFunction.call(field, value, ancillary, $module);
+                                return ruleFunction.call(field, value, ancillary, $module, module);
                             }
                         ;
                         if (!isFunction(ruleFunction)) {
@@ -1955,7 +1955,7 @@
             },
 
             // matches another field
-            match: function (value, identifier, $module) {
+            match: function (value, identifier, $module, module) {
                 var matchingValue = module.get.fieldValue(identifier, $module);
 
                 return matchingValue !== undefined
@@ -1964,7 +1964,7 @@
             },
 
             // different than another field
-            different: function (value, identifier, $module) {
+            different: function (value, identifier, $module, module) {
                 var matchingValue = module.get.fieldValue(identifier, $module);
 
                 return matchingValue !== undefined
