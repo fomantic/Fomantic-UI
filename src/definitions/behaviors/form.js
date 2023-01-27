@@ -549,6 +549,9 @@
                             prompt = prompt.replace(/{min}/g, parts[0]);
                             prompt = prompt.replace(/{max}/g, parts[1]);
                         }
+                        if (ancillary && ['match', 'different'].indexOf(ruleName) >= 0) {
+                            prompt = prompt.replace(/{ruleValue}/g, module.get.fieldLabel(ancillary, true));
+                        }
                         if (requiresValue) {
                             prompt = prompt.replace(/{value}/g, $field.val());
                         }
@@ -627,7 +630,7 @@
 
                         return $fields;
                     },
-                    fieldLabel: function (identifier) {
+                    fieldLabel: function (identifier, useIdAsFallback) {
                         var $field = typeof identifier === 'string'
                                 ? module.get.field(identifier)
                                 : identifier,
@@ -636,7 +639,7 @@
 
                         return $label.length === 1
                             ? $label.text()
-                            : $field.prop('placeholder') || settings.text.unspecifiedField;
+                            : $field.prop('placeholder') || (useIdAsFallback ? identifier : settings.text.unspecifiedField);
                     },
                     fieldValue: function (identifier, $module) {
                         // use either id or name of field
