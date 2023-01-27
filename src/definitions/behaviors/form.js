@@ -533,8 +533,6 @@
                                 : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
                             requiresValue = prompt.search('{value}') !== -1,
                             requiresName  = prompt.search('{name}') !== -1,
-                            $label,
-                            name,
                             parts,
                             suffixPrompt
                         ;
@@ -555,11 +553,7 @@
                             prompt = prompt.replace(/{value}/g, $field.val());
                         }
                         if (requiresName) {
-                            $label = $field.closest(selector.group).find('label').eq(0);
-                            name = $label.length === 1
-                                ? $label.text()
-                                : $field.prop('placeholder') || settings.text.unspecifiedField;
-                            prompt = prompt.replace(/{name}/g, name);
+                            prompt = prompt.replace(/{name}/g, module.get.fieldLabel($field));
                         }
                         prompt = prompt.replace(/{identifier}/g, field.identifier);
                         prompt = prompt.replace(/{ruleValue}/g, ancillary);
@@ -632,6 +626,17 @@
                         });
 
                         return $fields;
+                    },
+                    fieldLabel: function(identifier) {
+                        var $field = typeof identifier === 'string'
+                                ? module.get.field(identifier)
+                                : identifier,
+                            $label = $field.closest(selector.group).find('label').eq(0)
+                        ;
+
+                        return $label.length === 1
+                            ? $label.text()
+                            : $field.prop('placeholder') || settings.text.unspecifiedField;
                     },
                     validation: function ($field) {
                         var
@@ -819,6 +824,22 @@
                     },
                 },
 
+                checkErrors: function(errors, internal) {
+                    if (!errors || errors.length === 0) {
+                        if (!internal) {
+                            module.error(settings.error.noErrorMessage);
+                        }
+
+                        return false;
+                    }
+                    if (!internal) {
+                        errors = typeof errors === 'string'
+                            ? [errors]
+                            : errors;
+                    }
+
+                    return errors;
+                },
                 add: {
                     // alias
                     rule: function (name, rules) {
@@ -862,15 +883,16 @@
                         module.refreshEvents();
                     },
                     prompt: function (identifier, errors, internal) {
+                        errors = module.checkErrors(errors);
+                        if (errors === false) {
+                            return;
+                        }
                         var
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
                             promptExists = $prompt.length > 0
                         ;
-                        errors = typeof errors === 'string'
-                            ? [errors]
-                            : errors;
                         module.verbose('Adding field error state', identifier);
                         if (!internal) {
                             $fieldGroup
@@ -903,11 +925,33 @@
                         }
                     },
                     errors: function (errors) {
+                        errors = module.checkErrors(errors);
+                        if (errors === false) {
+                            return;
+                        }
                         module.debug('Adding form error messages', errors);
                         module.set.error();
-                        $message
-                            .html(settings.templates.error(errors))
-                        ;
+                        var customErrors = [];
+                        if ($.isPlainObject(errors)) {
+                            $.each(Object.keys(errors), function (i, id) {
+                                if (module.checkErrors(errors[id], true) !== false) {
+                                    if (settings.inline) {
+                                        module.add.prompt(id, errors[id]);
+                                    } else {
+                                        customErrors.push(settings.prompt.addErrors
+                                            .replace(/{name}/g, module.get.fieldLabel(id))
+                                            .replace(/{error}/g, errors[id]));
+                                    }
+                                }
+                            });
+                        } else {
+                            customErrors = errors;
+                        }
+                        if (customErrors.length > 0) {
+                            $message
+                                .html(settings.templates.error(customErrors))
+                            ;
+                        }
                     },
                 },
 
@@ -1581,7 +1625,7 @@
             notExactly: '{name} cannot be set to exactly "{ruleValue}"',
             contain: '{name} must contain "{ruleValue}"',
             containExactly: '{name} must contain exactly "{ruleValue}"',
-            doesntContain: '{name} cannot contain  "{ruleValue}"',
+            doesntContain: '{name} cannot contain "{ruleValue}"',
             doesntContainExactly: '{name} cannot contain exactly "{ruleValue}"',
             minLength: '{name} must be at least {ruleValue} characters',
             exactLength: '{name} must be exactly {ruleValue} characters',
@@ -1592,6 +1636,7 @@
             minCount: '{name} must have at least {ruleValue} choices',
             exactCount: '{name} must have exactly {ruleValue} choices',
             maxCount: '{name} must have {ruleValue} or less choices',
+            addErrors: '{name}: {error}',
         },
 
         selector: {
@@ -1625,6 +1670,7 @@
             noRule: 'There is no rule matching the one you specified',
             noField: 'Field identifier {identifier} not found',
             noElement: 'This module requires ui {element}',
+            noErrorMessage: 'No error message provided',
         },
 
         templates: {
