@@ -13,18 +13,8 @@
        Fonts
 -------------------- */
 
-@headerFont:
-    "Open Sans",
-    "Helvetica Neue",
-    Arial,
-    Helvetica,
-    sans-serif;
-@pageFont:
-    "Open Sans",
-    "Helvetica Neue",
-    Arial,
-    Helvetica,
-    sans-serif;
+@headerFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@pageFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 
 /* -------------------
       Site Colors
