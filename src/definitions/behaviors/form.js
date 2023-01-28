@@ -618,14 +618,14 @@
                         }
                         module.error(error.noField.replace('{identifier}', identifier));
 
-                        return strict ? [] : $('<input/>');
+                        return strict ? $() : $('<input/>');
                     },
-                    fields: function (fields) {
+                    fields: function (fields, strict) {
                         var
                             $fields = $()
                         ;
                         $.each(fields, function (index, name) {
-                            $fields = $fields.add(module.get.field(name));
+                            $fields = $fields.add(module.get.field(name, strict));
                         });
 
                         return $fields;
@@ -640,18 +640,6 @@
                         return $label.length === 1
                             ? $label.text()
                             : $field.prop('placeholder') || (useIdAsFallback ? identifier : settings.text.unspecifiedField);
-                    },
-                    fieldValue: function (identifier) {
-                        // use either id or name of field
-                        var
-                            matchingValue,
-                            matchingElement = module.get.field(identifier, true)
-                        ;
-                        if (matchingElement.length > 0) {
-                            matchingValue = matchingElement.val();
-                        }
-
-                        return matchingValue;
                     },
                     validation: function ($field) {
                         var
@@ -675,20 +663,22 @@
 
                         return fieldValidation || false;
                     },
-                    value: function (field) {
+                    value: function (field, strict) {
                         var
                             fields = [],
-                            results
+                            results,
+                            resultKeys
                         ;
                         fields.push(field);
-                        results = module.get.values.call(element, fields);
+                        results = module.get.values.call(element, fields, strict);
+                        resultKeys = Object.keys(results);
 
-                        return results[field];
+                        return resultKeys.length > 0 ? results[resultKeys[0]] : undefined;
                     },
-                    values: function (fields) {
+                    values: function (fields, strict) {
                         var
                             $fields = Array.isArray(fields)
-                                ? module.get.fields(fields)
+                                ? module.get.fields(fields, strict)
                                 : $field,
                             values = {}
                         ;
@@ -1371,7 +1361,7 @@
                                         ? String(value + '').trim()
                                         : String(value + ''));
 
-                                return ruleFunction.call(field, value, ancillary, $module, module);
+                                return ruleFunction.call(field, value, ancillary, module);
                             }
                         ;
                         if (!isFunction(ruleFunction)) {
@@ -1933,8 +1923,8 @@
             },
 
             // matches another field
-            match: function (value, identifier, $module, module) {
-                var matchingValue = module.get.fieldValue(identifier);
+            match: function (value, identifier, module) {
+                var matchingValue = module.get.value(identifier, true);
 
                 return matchingValue !== undefined
                     ? value.toString() === matchingValue.toString()
@@ -1942,8 +1932,8 @@
             },
 
             // different than another field
-            different: function (value, identifier, $module, module) {
-                var matchingValue = module.get.fieldValue(identifier);
+            different: function (value, identifier, module) {
+                var matchingValue = module.get.value(identifier, true);
 
                 return matchingValue !== undefined
                     ? value.toString() !== matchingValue.toString()
