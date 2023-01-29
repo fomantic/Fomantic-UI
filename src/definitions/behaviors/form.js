@@ -193,7 +193,7 @@
                             $prompt      = $fieldGroup.find(selector.prompt),
                             $calendar    = $field.closest(selector.uiCalendar),
                             defaultValue = $field.data(metadata.defaultValue) || '',
-                            isCheckbox   = $element.is(selector.uiCheckbox),
+                            isCheckbox   = $field.is(selector.checkbox),
                             isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                             isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
                             isErrored    = $fieldGroup.hasClass(className.error)
@@ -227,7 +227,7 @@
                             $calendar    = $field.closest(selector.uiCalendar),
                             $prompt      = $fieldGroup.find(selector.prompt),
                             defaultValue = $field.data(metadata.defaultValue),
-                            isCheckbox   = $element.is(selector.uiCheckbox),
+                            isCheckbox   = $field.is(selector.checkbox),
                             isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                             isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
                             isErrored    = $fieldGroup.hasClass(className.error)
@@ -244,7 +244,7 @@
                             module.verbose('Resetting dropdown value', $element, defaultValue);
                             $element.dropdown('restore defaults', true);
                         } else if (isCheckbox) {
-                            module.verbose('Resetting checkbox value', $element, defaultValue);
+                            module.verbose('Resetting checkbox value', $field, defaultValue);
                             $field.prop('checked', defaultValue);
                         } else if (isCalendar) {
                             $calendar.calendar('set date', defaultValue);
@@ -677,7 +677,7 @@
                     },
                     values: function (fields, strict) {
                         var
-                            $fields = Array.isArray(fields)
+                            $fields = Array.isArray(fields) && fields.length > 0
                                 ? module.get.fields(fields, strict)
                                 : $field,
                             values = {}
@@ -928,16 +928,23 @@
                         }
                         module.debug('Adding form error messages', errors);
                         module.set.error();
-                        var customErrors = [];
+                        var customErrors = [],
+                            tempErrors
+                        ;
                         if ($.isPlainObject(errors)) {
                             $.each(Object.keys(errors), function (i, id) {
                                 if (module.checkErrors(errors[id], true) !== false) {
                                     if (settings.inline) {
                                         module.add.prompt(id, errors[id]);
                                     } else {
-                                        customErrors.push(settings.prompt.addErrors
-                                            .replace(/{name}/g, module.get.fieldLabel(id))
-                                            .replace(/{error}/g, errors[id]));
+                                        tempErrors = module.checkErrors(errors[id]);
+                                        if (tempErrors !== false) {
+                                            $.each(tempErrors, function (index, tempError) {
+                                                customErrors.push(settings.prompt.addErrors
+                                                    .replace(/{name}/g, module.get.fieldLabel(id))
+                                                    .replace(/{error}/g, tempError));
+                                            });
+                                        }
                                     }
                                 }
                             });
@@ -1053,15 +1060,19 @@
                                 $el        = $(el),
                                 $parent    = $el.parent(),
                                 isCheckbox = $el.filter(selector.checkbox).length > 0,
-                                isDropdown = $parent.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                                $calendar   = $el.closest(selector.uiCalendar),
-                                isCalendar  = $calendar.length > 0 && module.can.useElement('calendar'),
+                                isDropdown = ($parent.is(selector.uiDropdown) || $el.is(selector.uiDropdown)) && module.can.useElement('dropdown'),
+                                $calendar  = $el.closest(selector.uiCalendar),
+                                isCalendar = $calendar.length > 0 && module.can.useElement('calendar'),
                                 value      = isCheckbox
                                     ? $el.is(':checked')
                                     : $el.val()
                             ;
                             if (isDropdown) {
-                                $parent.dropdown('save defaults');
+                                if ($parent.is(selector.uiDropdown)) {
+                                    $parent.dropdown('save defaults');
+                                } else {
+                                    $el.dropdown('save defaults');
+                                }
                             } else if (isCalendar) {
                                 $calendar.calendar('refresh');
                             }
