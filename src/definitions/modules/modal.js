@@ -678,6 +678,7 @@
                                     },
                                     onComplete: function () {
                                         module.unbind.scrollLock();
+                                        module.remove.active();
                                         if (settings.allowMultiple) {
                                             $previousModal.addClass(className.front);
                                             $module.removeClass(className.front);
