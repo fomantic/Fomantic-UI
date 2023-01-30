@@ -208,7 +208,7 @@
                             module.restore.conditions();
                             module.hide();
                         } else if (module.is.inward()) {
-                            module.verbose('Animation is outward, showing element');
+                            module.verbose('Animation is inward, showing element');
                             module.restore.conditions();
                             module.show();
                         } else {
