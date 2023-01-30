@@ -116,33 +116,29 @@
                         module.set.active();
                     };
                     settings.onBeforeChange.call($nextSide[0]);
-                    if (module.get.transitionEvent()) {
-                        module.verbose('Starting CSS animation');
+                    module.verbose('Starting CSS animation');
+                    $module
+                        .addClass(className.animating)
+                    ;
+                    $sides
+                        .css(propertyObject)
+                        .one('transitionend', callback)
+                    ;
+                    module.set.duration(settings.duration);
+                    requestAnimationFrame(function () {
                         $module
                             .addClass(className.animating)
                         ;
-                        $sides
-                            .css(propertyObject)
-                            .one(module.get.transitionEvent(), callback)
+                        $activeSide
+                            .addClass(className.hidden)
                         ;
-                        module.set.duration(settings.duration);
-                        requestAnimationFrame(function () {
-                            $module
-                                .addClass(className.animating)
-                            ;
-                            $activeSide
-                                .addClass(className.hidden)
-                            ;
-                        });
-                    } else {
-                        callback();
-                    }
+                    });
                 },
 
                 queue: function (method) {
                     module.debug('Queueing animation of', method);
                     $sides
-                        .one(module.get.transitionEvent(), function () {
+                        .one('transitionend', function () {
                             module.debug('Executing queued animation');
                             setTimeout(function () {
                                 $module.shape(method);
@@ -410,24 +406,6 @@
                                 transform: 'translateX(' + translate.x + 'px) rotateY(-180deg)',
                             };
                         },
-                    },
-
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
 
                     nextSide: function () {

@@ -3637,7 +3637,7 @@
                                     displayType: module.get.displayType(),
                                 }).transition('show');
                                 callback.call(element);
-                            } else if (module.can.useElement('transition') && $module.transition('is supported')) {
+                            } else if (module.can.useElement('transition')) {
                                 $currentMenu
                                     .transition({
                                         animation: transition + ' in',
@@ -3679,7 +3679,7 @@
                                     displayType: module.get.displayType(),
                                 }).transition('hide');
                                 callback.call(element);
-                            } else if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            } else if ($.fn.transition !== undefined) {
                                 $currentMenu
                                     .transition({
                                         animation: transition + ' out',

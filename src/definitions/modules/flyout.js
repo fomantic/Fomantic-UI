@@ -82,7 +82,6 @@
                 observer,
                 observeAttributes = false,
                 currentScroll,
-                transitionEvent,
 
                 module
             ;
@@ -145,8 +144,6 @@
                             }));
                         });
                     }
-
-                    transitionEvent = module.get.transitionEvent();
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
@@ -757,13 +754,13 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                     if (settings.dimPage && !module.othersVisible()) {
                         requestAnimationFrame(dim);
@@ -798,7 +795,7 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
                             module.remove.overlay();
@@ -812,8 +809,8 @@
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                 },
 
@@ -980,23 +977,6 @@
                         }
 
                         return className.left;
-                    },
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
                     id: function () {
                         return id;
