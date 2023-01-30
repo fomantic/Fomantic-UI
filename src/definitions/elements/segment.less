@@ -761,6 +761,14 @@
     .ui.tab.segment[class*="bottom attached"]:last-child {
         margin-bottom: @verticalMargin;
     }
+    .ui.left.attached.segment {
+        border-left:none;
+        margin-left: 0;
+    }
+    .ui.right.attached.segment {
+        border-right:none;
+        margin-right: 0;
+    }
 }
 
 & when (@variationSegmentFitted) {
