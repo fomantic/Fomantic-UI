@@ -101,7 +101,7 @@
 
 /* Description */
 @descriptionDistance: 0.6em;
-@descriptionMaxWidth: auto;
+@descriptionMaxWidth: none;
 @descriptionFontSize: 1em;
 @descriptionLineHeight: @lineHeight;
 @descriptionColor: @textColor;

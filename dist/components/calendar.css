@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.9.0 - Calendar
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.1 - Calendar
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -13,14 +13,16 @@
             Popup
 *******************************/
 
-.ui.calendar .ui.popup {
+.ui.calendar.popup {
   max-width: none;
   padding: 0;
   border: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+.ui.calendar.popup.inverted::before {
+  background: #2b2b2b;
 }
 
 
@@ -28,7 +30,8 @@
             Calendar
 *******************************/
 
-.ui.calendar .calendar:focus {
+.ui.calendar .calendar:focus,
+.ui.calendar.popup:focus {
   outline: 0;
 }
 
@@ -37,11 +40,11 @@
             Grid
 *******************************/
 
-.ui.calendar .ui.popup .ui.grid {
+.ui.calendar.popup .ui.grid {
   display: block;
   white-space: nowrap;
 }
-.ui.calendar .ui.popup .ui.grid > .column {
+.ui.calendar.popup .ui.grid > .column {
   width: auto;
 }
 
@@ -95,12 +98,12 @@
   cursor: pointer;
 }
 .ui.calendar .ui.table tr .prev.link {
-  width: 14.28571429%;
+  width: 14.28571%;
   position: absolute;
   left: 0;
 }
 .ui.calendar .ui.table tr .next.link {
-  width: 14.28571429%;
+  width: 14.28571%;
   position: absolute;
   right: 0;
 }
@@ -114,36 +117,31 @@
   background: rgba(0, 0, 0, 0.03);
 }
 
-/*--------------
+/* --------------
      States
----------------*/
-
+--------------- */
 .ui.calendar .ui.table tr td.today {
   font-weight: bold;
 }
 .ui.calendar .ui.table tr td.range {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-.ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
-.ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+.ui.calendar:not(.disabled):focus .ui.table tbody tr td.focus,
+.ui.calendar:not(.disabled).popup.active .ui.table tbody tr td.focus {
+  box-shadow: inset 0 0 0 1px #85b7d9;
 }
 .ui.inverted.calendar .ui.table.inverted tr td.range {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.inverted.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+.ui.inverted.calendar:not(.disabled).popup.active .ui.table.inverted tbody tr td.focus {
+  box-shadow: inset 0 0 0 1px #85b7d9;
 }
-.ui.inverted.calendar .ui.inverted.table tr .disabled {
+.ui.inverted.calendar .ui.ui.ui.inverted.table tr .disabled {
   color: rgba(225, 225, 225, 0.3);
 }
 .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
@@ -174,10 +172,9 @@
 *******************************/
 
 
-/*--------------------
-          Disabled
-  ---------------------*/
-
+/* --------------------
+            Disabled
+    --------------------- */
 .ui.disabled.calendar {
   opacity: 0.45;
 }

@@ -1,38 +1,25 @@
 /*!
- * # Fomantic-UI 2.9.0 - Loader
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.1 - Loader
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
-/*-------------------
+/* -------------------
       Content
---------------------*/
-
+-------------------- */
 .ui.placeholder {
   position: static;
   overflow: hidden;
-  -webkit-animation: placeholderShimmer 2s linear;
-          animation: placeholderShimmer 2s linear;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  background-color: #FFFFFF;
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0.08)), color-stop(15%, rgba(0, 0, 0, 0.15)), color-stop(30%, rgba(0, 0, 0, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
+  animation: placeholderShimmer 2s linear;
+  animation-iteration-count: infinite;
+  background-color: #fff;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
   background-size: 1200px 100%;
   max-width: 30rem;
-}
-@-webkit-keyframes placeholderShimmer {
-  0% {
-    background-position: -1200px 0;
-  }
-  100% {
-    background-position: 1200px 0;
-  }
 }
 @keyframes placeholderShimmer {
   0% {
@@ -46,27 +33,23 @@
   margin-top: 2rem;
 }
 .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
 .ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.45s;
-          animation-delay: 0.45s;
+  animation-delay: 0.45s;
 }
 .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder {
-  -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 .ui.placeholder,
 .ui.placeholder > ::before,
 .ui.placeholder .image.header::after,
 .ui.placeholder .line,
 .ui.placeholder .line::after {
-  background-color: #FFFFFF;
+  background-color: #fff;
 }
 .ui.placeholder.hidden {
   display: none;
@@ -100,7 +83,7 @@
 .ui.placeholder .line::after {
   top: 100%;
   position: absolute;
-  content: '';
+  content: "";
   background-color: inherit;
 }
 .ui.placeholder .line::before {
@@ -145,7 +128,7 @@
   overflow: hidden;
 }
 
-/* Header Line 1 & 2*/
+/* Header Line 1 & 2 */
 .ui.placeholder .header .line {
   margin-bottom: 0.64285714em;
 }
@@ -162,6 +145,7 @@
 .ui.placeholder .header .line:nth-child(2)::after {
   width: 60%;
 }
+
 /* Image Header */
 .ui.placeholder .image.header .line {
   margin-left: 3em;
@@ -172,7 +156,7 @@
 .ui.placeholder .image.header::after {
   display: block;
   height: 0.85714286em;
-  content: '';
+  content: "";
   margin-left: 3em;
 }
 
@@ -186,14 +170,12 @@
 .ui.placeholder .paragraph:not(:first-child)::before,
 .ui.placeholder .header:not(:first-child)::before {
   height: 1.42857143em;
-  content: '';
+  content: "";
   display: block;
 }
 
 /* Inverted Content Loader */
 .ui.inverted.placeholder {
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0.08)), color-stop(15%, rgba(255, 255, 255, 0.14)), color-stop(30%, rgba(255, 255, 255, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
 }
 .ui.inverted.placeholder,
@@ -201,7 +183,7 @@
 .ui.inverted.placeholder .image.header::after,
 .ui.inverted.placeholder .line,
 .ui.inverted.placeholder .line::after {
-  background-color: #1B1C1D;
+  background-color: #1b1c1d;
 }
 
 
@@ -210,10 +192,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
-
+-------------------- */
 .ui.placeholder .full.line.line.line::after {
   width: 0;
 }
@@ -233,10 +214,9 @@
   width: 80%;
 }
 
-/*-------------------
-          Fluid
-  --------------------*/
-
+/* -------------------
+            Fluid
+    -------------------- */
 .ui.fluid.placeholder {
   max-width: none;
 }

@@ -655,7 +655,7 @@
                 return ''
                     + '<iframe src="' + deQuote(src) + '"'
                     + ' width="100%" height="100%"'
-                    + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                    + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon) {
                 var

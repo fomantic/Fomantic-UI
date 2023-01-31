@@ -82,6 +82,7 @@
                 elementEventNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 module
             ;
             module = {
@@ -251,13 +252,48 @@
                 observeChanges: function () {
                     if ('MutationObserver' in window) {
                         observer = new MutationObserver(function (mutations) {
-                            if (settings.observeChanges) {
+                            var collectNodes = function (parent) {
+                                    var nodes = [];
+                                    for (var c = 0, cl = parent.length; c < cl; c++) {
+                                        Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                        nodes.push(parent[c]);
+                                    }
+
+                                    return nodes;
+                                },
+                                shouldRefresh = false,
+                                shouldRefreshInputs = false
+                            ;
+                            mutations.every(function (mutation) {
+                                if (mutation.type === 'attributes') {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                } else {
+                                    shouldRefresh = true;
+                                    // mutationobserver only provides the parent nodes
+                                    // so let's collect all childs as well to find nested inputs
+                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
+                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
+                                    if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                }
+
+                                return !shouldRefreshInputs;
+                            });
+
+                            if (shouldRefresh && settings.observeChanges) {
                                 module.debug('DOM tree modified, refreshing');
                                 module.refresh();
                             }
-                            module.refreshInputs();
+                            if (shouldRefreshInputs) {
+                                module.refreshInputs();
+                            }
                         });
                         observer.observe(element, {
+                            attributeFilter: ['class', 'disabled'],
+                            attributes: true,
                             childList: true,
                             subtree: true,
                         });
@@ -286,15 +322,24 @@
                             .off('keydown' + elementEventNamespace)
                         ;
                     }
-                    $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                    $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
+                    if ($inputs.length === 0) {
+                        $inputs = $module;
+                        $module.attr('tabindex', -1);
+                    } else {
+                        $module.removeAttr('tabindex');
+                    }
                     $inputs.first()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
                     ;
                     $inputs.last()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
                     ;
+                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                        module.set.autofocus();
+                    }
                 },
 
                 attachEvents: function (selector, event) {
@@ -328,6 +373,7 @@
                         ;
                         $window
                             .on('resize' + elementEventNamespace, module.event.resize)
+                            .on('focus' + elementEventNamespace, module.event.focus)
                         ;
                     },
                     scrollLock: function () {
@@ -485,6 +531,11 @@
                             requestAnimationFrame(module.refresh);
                         }
                     },
+                    focus: function () {
+                        if ($dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
+                            requestAnimationFrame(module.set.autofocus);
+                        }
+                    },
                 },
 
                 toggle: function () {
@@ -555,8 +606,9 @@
                                     $module.detach().appendTo($dimmer);
                                 }
                             }
-                            if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.transition && $.fn.transition !== undefined) {
                                 module.debug('Showing modal with css animations');
+                                module.set.observeAttributes(false);
                                 $module
                                     .transition({
                                         debug: settings.debug,
@@ -574,9 +626,7 @@
                                             module.save.focus();
                                             module.set.active();
                                             module.refreshInputs();
-                                            if (settings.autofocus) {
-                                                module.set.autofocus();
-                                            }
+                                            requestAnimationFrame(module.set.observeAttributes);
                                             callback();
                                         },
                                     })
@@ -606,8 +656,9 @@
 
                     if (module.is.animating() || module.is.active()) {
                         module.debug('Hiding modal');
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             module.remove.active();
+                            module.set.observeAttributes(false);
                             $module
                                 .transition({
                                     debug: settings.debug,
@@ -627,6 +678,7 @@
                                     },
                                     onComplete: function () {
                                         module.unbind.scrollLock();
+                                        module.remove.active();
                                         if (settings.allowMultiple) {
                                             $previousModal.addClass(className.front);
                                             $module.removeClass(className.front);
@@ -942,9 +994,7 @@
                         return module.cache.isIE;
                     },
                     animating: function () {
-                        return $module.transition('is supported')
-                            ? $module.transition('is animating')
-                            : $module.is(':visible');
+                        return $module.transition('is animating');
                     },
                     scrolling: function () {
                         return $dimmable.hasClass(className.scrolling);
@@ -987,13 +1037,24 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
+                            $rawInputs = $inputs.filter(':input'),
                             $input     = $autofocus.length > 0
                                 ? $autofocus.first()
-                                : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+                                : ($rawInputs.length > 0
+                                    ? $rawInputs
+                                    : $inputs.filter(':not(i.close)')
+                                ).first()
                         ;
+                        // check if only the close icon is remaining
+                        if ($input.length === 0 && $inputs.length > 0) {
+                            $input = $inputs.first();
+                        }
                         if ($input.length > 0) {
                             $input.trigger('focus');
                         }
@@ -1256,6 +1317,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });

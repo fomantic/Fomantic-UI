@@ -888,7 +888,7 @@
                                 .html(settings.templates.prompt(errors))
                             ;
                             if (!promptExists) {
-                                if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
+                                if (settings.transition && module.can.useElement('transition')) {
                                     module.verbose('Displaying error with css transition', settings.transition);
                                     $prompt.transition(settings.transition + ' in', settings.duration);
                                 } else {
@@ -984,7 +984,7 @@
                         ;
                         if (settings.inline && $prompt.is(':visible')) {
                             module.verbose('Removing prompt for field', identifier);
-                            if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
+                            if (settings.transition && module.can.useElement('transition')) {
                                 $prompt.transition(settings.transition + ' out', settings.duration, function () {
                                     $prompt.remove();
                                 });
@@ -1470,6 +1470,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
