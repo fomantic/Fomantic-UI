@@ -91,7 +91,8 @@
                 selectObserver,
                 menuObserver,
                 classObserver,
-                module
+                module,
+                tempDisableApiCache = false
             ;
 
             module = {
@@ -858,11 +859,12 @@
                     if (!$module.api('get request')) {
                         module.setup.api();
                     }
-                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
+                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks, tempDisableApiCache ? { cache: false } : {});
                     $module
                         .api('setting', apiSettings)
                         .api('query')
                     ;
+                    tempDisableApiCache = false;
                 },
 
                 filterItems: function (query) {
@@ -2388,6 +2390,11 @@
                     module.set.value('', null, null, preventChangeTrigger);
                 },
 
+                clearCache: function (value) {
+                    module.debug('Clearing cache', value);
+                    tempDisableApiCache = true;
+                },
+
                 scrollPage: function (direction, $selectedItem) {
                     var
                         $currentItem  = $selectedItem || module.get.selectedItem(),
@@ -3438,7 +3445,7 @@
                         return settings.apiSettings && module.can.useAPI();
                     },
                     noApiCache: function () {
-                        return settings.apiSettings && !settings.apiSettings.cache;
+                        return tempDisableApiCache || (settings.apiSettings && !settings.apiSettings.cache);
                     },
                     single: function () {
                         return !module.is.multiple();
