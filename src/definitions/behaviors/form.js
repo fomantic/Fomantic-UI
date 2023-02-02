@@ -536,9 +536,9 @@
                             parts,
                             suffixPrompt
                         ;
-                        if (ancillary && ['integer', 'decimal', 'number'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
+                        if (ancillary && ['integer', 'decimal', 'number', 'size'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
                             parts = ancillary.split('..', 2);
-                            if (!rule.prompt) {
+                            if (!rule.prompt && ruleName !== 'size') {
                                 suffixPrompt = parts[0] === ''
                                     ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
                                     : (parts[1] === ''
@@ -1638,6 +1638,7 @@
             minLength: '{name} must be at least {ruleValue} characters',
             exactLength: '{name} must be exactly {ruleValue} characters',
             maxLength: '{name} cannot be longer than {ruleValue} characters',
+            size: '{name} must have a length between {min} and {max} characters',
             match: '{name} must match {ruleValue} field',
             different: '{name} must have a different value than {ruleValue} field',
             creditCard: '{name} must be a valid credit card number',
@@ -1799,7 +1800,7 @@
             integer: function (value, range) {
                 return $.fn.form.settings.rules.range(value, range, 'integer');
             },
-            range: function (value, range, regExp) {
+            range: function (value, range, regExp, testLength) {
                 if (typeof regExp === 'string') {
                     regExp = $.fn.form.settings.regExp[regExp];
                 }
@@ -1827,6 +1828,9 @@
                     if (regExp.test(parts[1])) {
                         max = parts[1] - 0;
                     }
+                }
+                if (testLength) {
+                    value = value.length;
                 }
 
                 return (
@@ -1913,24 +1917,22 @@
             },
 
             // is at least string length
-            minLength: function (value, requiredLength) {
-                return value !== undefined
-                    ? value.length >= requiredLength
-                    : false;
+            minLength: function (value, minLength) {
+                return $.fn.form.settings.rules.range(value, minLength + '..', 'integer', true);
             },
 
             // is exactly length
             exactLength: function (value, requiredLength) {
-                return value !== undefined
-                    ? value.length === Number(requiredLength)
-                    : false;
+                return $.fn.form.settings.rules.range(value, requiredLength + '..' + requiredLength, 'integer', true);
             },
 
             // is less than length
             maxLength: function (value, maxLength) {
-                return value !== undefined
-                    ? value.length <= maxLength
-                    : false;
+                return $.fn.form.settings.rules.range(value, '..' + maxLength, 'integer', true);
+            },
+
+            size: function (value, range) {
+                return $.fn.form.settings.rules.range(value, range, 'integer', true);
             },
 
             // matches another field
