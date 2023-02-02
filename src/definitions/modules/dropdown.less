@@ -425,6 +425,12 @@ select.ui.dropdown {
         /* Compact */
         .ui.compact.selection.dropdown {
             min-width: 0;
+            & > .menu {
+                width: auto;
+            }
+            &:not(.multiline) {
+                width: max-content;
+            }
         }
     }
 
