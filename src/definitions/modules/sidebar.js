@@ -69,7 +69,6 @@
                 elementNamespace,
                 id,
                 currentScroll,
-                transitionEvent,
                 initialBodyMargin = '',
                 tempBodyMargin = '',
                 hadScrollbar = false,
@@ -83,8 +82,6 @@
                     module.debug('Initializing sidebar', parameters);
 
                     module.create.id();
-
-                    transitionEvent = module.get.transitionEvent();
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
@@ -492,13 +489,13 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
-                            $transition.off(transitionEvent + elementNamespace, transitionEnd);
+                            $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
                         }
                     };
-                    $transition.off(transitionEvent + elementNamespace);
-                    $transition.on(transitionEvent + elementNamespace, transitionEnd);
+                    $transition.off('transitionend' + elementNamespace);
+                    $transition.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                     if (settings.dimPage && !module.othersVisible()) {
                         requestAnimationFrame(dim);
@@ -532,7 +529,7 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
-                            $transition.off(transitionEvent + elementNamespace, transitionEnd);
+                            $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
                             module.remove.transition();
@@ -546,8 +543,8 @@
                             callback.call(element);
                         }
                     };
-                    $transition.off(transitionEvent + elementNamespace);
-                    $transition.on(transitionEvent + elementNamespace, transitionEnd);
+                    $transition.off('transitionend' + elementNamespace);
+                    $transition.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                 },
 
@@ -721,23 +718,6 @@
                         module.verbose('Determined transition', transition);
 
                         return transition;
-                    },
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
                 },
                 has: {
