@@ -82,6 +82,7 @@
                 elementEventNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 module
             ;
             module = {
@@ -265,7 +266,7 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input')) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -324,10 +325,11 @@
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    $module.removeAttr('tabindex');
                     if ($inputs.length === 0) {
                         $inputs = $module;
                         $module.attr('tabindex', -1);
+                    } else {
+                        $module.removeAttr('tabindex');
                     }
                     $inputs.first()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
@@ -604,8 +606,9 @@
                                     $module.detach().appendTo($dimmer);
                                 }
                             }
-                            if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.transition && $.fn.transition !== undefined) {
                                 module.debug('Showing modal with css animations');
+                                module.set.observeAttributes(false);
                                 $module
                                     .transition({
                                         debug: settings.debug,
@@ -623,6 +626,7 @@
                                             module.save.focus();
                                             module.set.active();
                                             module.refreshInputs();
+                                            requestAnimationFrame(module.set.observeAttributes);
                                             callback();
                                         },
                                     })
@@ -652,8 +656,9 @@
 
                     if (module.is.animating() || module.is.active()) {
                         module.debug('Hiding modal');
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             module.remove.active();
+                            module.set.observeAttributes(false);
                             $module
                                 .transition({
                                     debug: settings.debug,
@@ -673,6 +678,7 @@
                                     },
                                     onComplete: function () {
                                         module.unbind.scrollLock();
+                                        module.remove.active();
                                         if (settings.allowMultiple) {
                                             $previousModal.addClass(className.front);
                                             $module.removeClass(className.front);
@@ -988,9 +994,7 @@
                         return module.cache.isIE;
                     },
                     animating: function () {
-                        return $module.transition('is supported')
-                            ? $module.transition('is animating')
-                            : $module.is(':visible');
+                        return $module.transition('is animating');
                     },
                     scrolling: function () {
                         return $dimmable.hasClass(className.scrolling);
@@ -1033,6 +1037,9 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),

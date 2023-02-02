@@ -408,7 +408,7 @@
                         return module.is.focused() && !module.is.visible() && !module.is.empty();
                     },
                     transition: function () {
-                        return settings.transition && $.fn.transition !== undefined && $module.transition('is supported');
+                        return settings.transition && $.fn.transition !== undefined;
                     },
                 },
 
