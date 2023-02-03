@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Item
+ * # Fomantic-UI 2.9.2 - Item
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -162,7 +162,7 @@
     --------------- */
 .ui.items > .item > .content > .description {
   margin-top: 0.6em;
-  max-width: auto;
+  max-width: none;
   font-size: 1em;
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);

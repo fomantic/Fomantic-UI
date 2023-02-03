@@ -1,9 +1,12 @@
-
-
-/*******************************
-             Theme
- *******************************/
-
+/*!
+ * # Fomantic-UI 2.9.2 - Slider
+ * https://github.com/fomantic/Fomantic-UI/
+ *
+ *
+ * Released under the MIT license
+ * https://opensource.org/licenses/MIT
+ *
+ */
 .ui.slider:not(.vertical):not(.checkbox) {
   width: 100%;
   padding: 1em 0.5em;

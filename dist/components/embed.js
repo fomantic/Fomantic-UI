@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Embed
+ * # Fomantic-UI 2.9.2 - Embed
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -655,7 +655,7 @@
                 return ''
                     + '<iframe src="' + deQuote(src) + '"'
                     + ' width="100%" height="100%"'
-                    + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                    + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon) {
                 var

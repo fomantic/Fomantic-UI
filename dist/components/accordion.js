@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Accordion
+ * # Fomantic-UI 2.9.2 - Accordion
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -175,7 +175,7 @@
                         .addClass(className.animating)
                     ;
                     if (settings.animateChildren) {
-                        if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                        if ($.fn.transition !== undefined) {
                             $activeContent
                                 .children()
                                 .transition({
@@ -239,7 +239,7 @@
                             .addClass(className.animating)
                         ;
                         if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if ($.fn.transition !== undefined) {
                                 $activeContent
                                     .children()
                                     .transition({
@@ -308,7 +308,7 @@
                             .stop(true, true)
                         ;
                         if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if ($.fn.transition !== undefined) {
                                 $openContents
                                     .children()
                                     .transition({

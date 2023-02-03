@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Segment
+ * # Fomantic-UI 2.9.2 - Segment
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -363,7 +363,7 @@
   bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+  box-shadow: 0 2px 1px -1px rgba(34, 36, 38, 0.15);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 
@@ -731,7 +731,7 @@
 .ui.attached.segment:not(.basic) {
   border: 1px solid #d4d4d5;
 }
-.ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
+.ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top):not([class*="left attached"]):not([class*="right attached"]) {
   border-top: none;
 }
 
@@ -756,7 +756,7 @@
   margin-top: 0;
   top: 0;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+  box-shadow: 0 2px 1px -1px rgba(34, 36, 38, 0.15);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui.segment[class*="bottom attached"]:last-child {
@@ -764,6 +764,28 @@
 }
 .ui.tab.segment[class*="bottom attached"]:last-child {
   margin-bottom: 1rem;
+}
+.ui[class*="left attached"].segment {
+  margin-right: 0;
+}
+.ui[class*="right attached"].segment {
+  margin-left: 0;
+}
+.ui.seamless.attached.segment:not(.top):not(.bottom):not([class*="right attached"]):not([class*="left attached"]) {
+  border-top: none;
+  border-bottom: none;
+}
+.ui.seamless.attached.segment.top {
+  border-bottom: none;
+}
+.ui.seamless.attached.segment.bottom {
+  border-top: none;
+}
+.ui.seamless.attached.segment[class*="left attached"] {
+  border-right: none;
+}
+.ui.seamless.attached.segment[class*="right attached"] {
+  border-left: none;
 }
 
 /* --------------

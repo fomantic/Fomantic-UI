@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Step
+ * # Fomantic-UI 2.9.2 - Step
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -137,7 +137,7 @@
 .ui.steps .step > i.icon ~ .content {
   display: block;
   flex: 0 1 auto;
-  align-self: middle;
+  align-self: center;
 }
 
 /* Horizontal Icon */
@@ -168,7 +168,7 @@
   position: static;
   text-align: center;
   content: counter(ordered);
-  align-self: middle;
+  align-self: center;
   margin-right: 1rem;
   font-size: 2.5em;
   counter-increment: ordered;
@@ -177,7 +177,7 @@
 }
 .ui.ordered.steps .step > * {
   display: block;
-  align-self: middle;
+  align-self: center;
 }
 
 /* --------------

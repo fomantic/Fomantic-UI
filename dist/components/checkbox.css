@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Checkbox
+ * # Fomantic-UI 2.9.2 - Checkbox
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -379,10 +379,10 @@
 
 /* Active */
 .ui.slider.checkbox input:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(0, 0, 0, 0.95);
 }
 .ui.slider.checkbox input:checked ~ label::before {
-  background-color: #545454 !important;
+  background-color: #545454;
 }
 .ui.slider.checkbox input:checked ~ label::after {
   left: 2rem;
@@ -390,10 +390,10 @@
 
 /* Active Focus */
 .ui.slider.checkbox input:focus:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(0, 0, 0, 0.95);
 }
 .ui.slider.checkbox input:focus:checked ~ label::before {
-  background-color: #000000 !important;
+  background-color: #000000;
 }
 .ui.right.aligned.slider.checkbox label {
   padding-left: 0;
@@ -483,10 +483,10 @@
 
 /* Active */
 .ui.toggle.checkbox input:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(0, 0, 0, 0.95);
 }
 .ui.toggle.checkbox input:checked ~ label::before {
-  background-color: #2185d0 !important;
+  background-color: #2185d0;
 }
 .ui.toggle.checkbox input:checked ~ label::after {
   left: 2.15rem;
@@ -495,10 +495,10 @@
 
 /* Active Focus */
 .ui.toggle.checkbox input:focus:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(0, 0, 0, 0.95);
 }
 .ui.toggle.checkbox input:focus:checked ~ label::before {
-  background-color: #0d71bb !important;
+  background-color: #0d71bb;
 }
 .ui.right.aligned.toggle.checkbox label {
   padding-left: 0;
@@ -523,8 +523,8 @@
 /* --------------
          Fitted
     --------------- */
-.ui.fitted.checkbox label {
-  padding-left: 0 !important;
+.ui.ui.fitted.checkbox label {
+  padding-left: 0;
 }
 .ui.fitted.toggle.checkbox {
   width: 3.5rem;
@@ -536,14 +536,14 @@
 /* --------------
          Inverted
     --------------- */
-.ui.inverted.checkbox label,
-.ui.inverted.checkbox + label {
-  color: rgba(255, 255, 255, 0.9) !important;
+.ui.ui.ui.inverted.checkbox label,
+.ui.ui.ui.inverted.checkbox + label {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Hover */
-.ui.inverted.checkbox label:hover {
-  color: #ffffff !important;
+.ui.ui.inverted.checkbox label:hover {
+  color: #ffffff;
 }
 .ui.inverted.checkbox label:hover::before {
   border-color: rgba(34, 36, 38, 0.5);
@@ -555,55 +555,55 @@
 }
 
 /* Slider Line */
-.ui.inverted.slider.checkbox label::before {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+.ui.ui.inverted.slider.checkbox label::before {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Slider Hover */
-.ui.inverted.slider.checkbox label:hover::before {
-  background: rgba(255, 255, 255, 0.7) !important;
+.ui.ui.inverted.slider.checkbox label:hover::before {
+  background: rgba(255, 255, 255, 0.7);
 }
 
 /* Slider Active */
-.ui.inverted.slider.checkbox input:checked ~ label {
-  color: #ffffff !important;
+.ui.ui.inverted.slider.checkbox input:checked ~ label {
+  color: #ffffff;
 }
-.ui.inverted.slider.checkbox input:checked ~ label::before {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+.ui.ui.inverted.slider.checkbox input:checked ~ label::before {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Slider Active Focus */
-.ui.inverted.slider.checkbox input:focus:checked ~ label {
-  color: #ffffff !important;
+.ui.ui.inverted.slider.checkbox input:focus:checked ~ label {
+  color: #ffffff;
 }
-.ui.inverted.slider.checkbox input:focus:checked ~ label::before {
-  background-color: rgba(255, 255, 255, 0.8) !important;
+.ui.ui.inverted.slider.checkbox input:focus:checked ~ label::before {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Toggle Switch */
-.ui.inverted.toggle.checkbox label::before {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+.ui.ui.inverted.toggle.checkbox label::before {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* Toggle Hover */
-.ui.inverted.toggle.checkbox label:hover::before {
-  background: #ffffff !important;
+.ui.ui.inverted.toggle.checkbox label:hover::before {
+  background: #ffffff;
 }
 
 /* Toggle Active */
-.ui.inverted.toggle.checkbox input:checked ~ label {
-  color: #ffffff !important;
+.ui.ui.inverted.toggle.checkbox input:checked ~ label {
+  color: #ffffff;
 }
-.ui.inverted.toggle.checkbox input:checked ~ label::before {
-  background-color: #2185d0 !important;
+.ui.ui.inverted.toggle.checkbox input:checked ~ label::before {
+  background-color: #2185d0;
 }
 
 /* Toggle Active Focus */
-.ui.inverted.toggle.checkbox input:focus:checked ~ label {
-  color: #ffffff !important;
+.ui.ui.inverted.toggle.checkbox input:focus:checked ~ label {
+  color: #ffffff;
 }
-.ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
-  background-color: #0d71bb !important;
+.ui.ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
+  background-color: #0d71bb;
 }
 
 /* --------------------

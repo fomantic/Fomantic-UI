@@ -1,9 +1,8 @@
-/*
- * # Fomantic - Menu
+/*!
+ * # Fomantic-UI 2.9.2 - Menu
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
- * Copyright 2015 Contributor
  * Released under the MIT license
  * https://opensource.org/licenses/MIT
  *
@@ -746,7 +745,7 @@ Floated Menu / Item
 .ui.compact.menu .item:last-child {
   border-radius: 0 0.28571429rem 0.28571429rem 0;
 }
-.ui.pagination.menu .item:last-child::before {
+.ui.pagination.menu:not(.wrapping) .item:last-child::before {
   display: none;
 }
 .ui.pagination.menu .item {
@@ -1430,11 +1429,16 @@ Floated Menu / Item
   float: right;
   margin: 0 0 0 0.5rem;
 }
-.ui.center.aligned.menu,
-.ui.centered.menu {
+.ui.center.aligned.menu:not(.fluid),
+.ui.centered.menu:not(.fluid) {
   display: inline-flex;
   transform: translateX(-50%);
   margin-left: 50%;
+}
+.ui.center.aligned.menu .item,
+.ui.centered.menu .item {
+  flex: 1 0 auto;
+  justify-content: center;
 }
 
 /* --------------
@@ -1964,7 +1968,7 @@ Floated Menu / Item
   margin-top: 0;
   top: 0;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+  box-shadow: none;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui[class*="bottom attached"].menu:last-child {
@@ -1993,6 +1997,26 @@ Floated Menu / Item
   margin-left: 0;
   margin-right: 0;
   width: 100%;
+}
+.ui.wrapping.menu {
+  flex-wrap: wrap;
+}
+.ui.wrapping.menu .item::before {
+  right: auto;
+  left: 0;
+}
+.ui.wrapping.menu .item:first-child::before {
+  display: none;
+}
+.ui.wrapping.menu:not(.tabular) .item:last-of-type,
+.ui.wrapping.menu:not(.tabular) .item:last-child {
+  border-right: 1px solid rgba(34, 36, 38, 0.1);
+}
+.ui.wrapped.menu:not(.tabular) .item:first-child {
+  border-bottom-left-radius: 0;
+}
+.ui.wrapped.menu:not(.tabular) .item:last-child {
+  border-top-right-radius: 0;
 }
 
 /* --------------

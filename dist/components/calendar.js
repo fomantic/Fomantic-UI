@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Calendar
+ * # Fomantic-UI 2.9.2 - Calendar
  * https://github.com/fomantic/Fomantic-UI/
  *
  *

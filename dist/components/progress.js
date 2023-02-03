@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Progress
+ * # Fomantic-UI 2.9.2 - Progress
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -59,7 +59,6 @@
                 instance        = $module.data(moduleNamespace),
 
                 animating = false,
-                transitionEnd,
                 module
             ;
             module = {
@@ -115,7 +114,6 @@
 
                 initialize: function () {
                     module.set.duration();
-                    module.set.transitionEvent();
                     module.debug(element);
 
                     module.read.metadata();
@@ -195,17 +193,14 @@
 
                 bind: {
                     transitionEnd: function (callback) {
-                        var
-                            transitionEnd = module.get.transitionEnd()
-                        ;
                         $bars
-                            .one(transitionEnd + eventNamespace, function (event) {
+                            .one('transitionend' + eventNamespace, function (event) {
                                 clearTimeout(module.failSafeTimer);
                                 callback.call(this, event);
                             })
                         ;
                         module.failSafeTimer = setTimeout(function () {
-                            $bars.triggerHandler(transitionEnd);
+                            $bars.triggerHandler('transitionend');
                         }, settings.duration + settings.failSafeDelay);
                         module.verbose('Adding fail safe timer', module.timer);
                     },
@@ -328,24 +323,6 @@
                                 ? +value.replace(/[^\d.]/g, '')
                                 : false)
                             : value;
-                    },
-
-                    transitionEnd: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
 
                     // gets current displayed percentage (if animating values this is the intermediary value)
@@ -686,9 +663,6 @@
                         module.bind.transitionEnd(function () {
                             settings.onError.call(element, module.value, module.total);
                         });
-                    },
-                    transitionEvent: function () {
-                        transitionEnd = module.get.transitionEnd();
                     },
                     total: function (totalValue) {
                         module.total = totalValue;

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Grid
+ * # Fomantic-UI 2.9.2 - Grid
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1931,6 +1931,12 @@
 .ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
 .ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
   padding: 0.5em;
+}
+.ui.grid .left.attached.column {
+  padding-right: 0;
+}
+.ui.grid .right.attached.column {
+  padding-left: 0;
 }
 
 

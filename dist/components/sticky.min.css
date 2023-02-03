@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Sticky
+ * # Fomantic-UI 2.9.2 - Sticky
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
