@@ -40,6 +40,7 @@
 
                 namespace       = settings.namespace,
                 className       = settings.className,
+                error           = settings.error,
                 metadata        = settings.metadata,
                 selector        = settings.selector,
                 cssVars         = settings.cssVars,
@@ -431,6 +432,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -492,7 +495,6 @@
 
         error: {
             method: 'The method you called is not defined',
-            noMaximum: 'No maximum rating specified. Cannot generate HTML automatically',
         },
 
         metadata: {

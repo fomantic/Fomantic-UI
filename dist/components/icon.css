@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.9.0 - Icon
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.2 - Icon
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -14,28 +14,31 @@
 *******************************/
 
 @font-face {
-  font-family: 'icons';
-  src: url("./../themes/default/assets/fonts/icons.woff2") format('woff2') , url("./../themes/default/assets/fonts/icons.woff") format('woff');
+  font-family: "icons";
+  src: url("./../themes/default/assets/fonts/icons.woff2") format("woff2") , url("./../themes/default/assets/fonts/icons.woff") format("woff");
   font-style: normal;
   font-weight: normal;
+  font-display: block;
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
 }
 @font-face {
-  font-family: 'outline-icons';
-  src: url("./../themes/default/assets/fonts/outline-icons.woff2") format('woff2') , url("./../themes/default/assets/fonts/outline-icons.woff") format('woff');
+  font-family: "outline-icons";
+  src: url("./../themes/default/assets/fonts/outline-icons.woff2") format("woff2") , url("./../themes/default/assets/fonts/outline-icons.woff") format("woff");
   font-style: normal;
   font-weight: normal;
+  font-display: block;
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
 }
 @font-face {
-  font-family: 'brand-icons';
-  src: url("./../themes/default/assets/fonts/brand-icons.woff2") format('woff2') , url("./../themes/default/assets/fonts/brand-icons.woff") format('woff');
+  font-family: "brand-icons";
+  src: url("./../themes/default/assets/fonts/brand-icons.woff2") format("woff2") , url("./../themes/default/assets/fonts/brand-icons.woff") format("woff");
   font-style: normal;
   font-weight: normal;
+  font-display: block;
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
@@ -46,7 +49,7 @@ i.icon {
   margin: 0 0.25rem 0 0;
   width: 1.18em;
   height: 1em;
-  font-family: 'icons';
+  font-family: "icons";
   font-style: normal;
   font-weight: normal;
   text-decoration: inherit;
@@ -67,18 +70,16 @@ i.icon::before {
 *******************************/
 
 
-/*--------------
-      Loading
-  ---------------*/
-
+/* --------------
+        Loading
+    --------------- */
 i.loading.icon {
   height: 1em;
   line-height: 1;
 }
 i.loading.icon,
 i.loading.icons {
-  -webkit-animation: loader 2s linear infinite;
-          animation: loader 2s linear infinite;
+  animation: loader 2s linear infinite;
 }
 
 
@@ -107,25 +108,22 @@ i.disabled.icons {
 *******************************/
 
 
-/*-------------------
-          Fitted
-  --------------------*/
-
+/* -------------------
+            Fitted
+    -------------------- */
 i.fitted.icons,
 i.fitted.icon {
   width: auto;
   margin: 0 !important;
 }
 
-/*-------------------
-           Link
-  --------------------*/
-
+/* -------------------
+             Link
+    -------------------- */
 i.link.icon:not(.disabled),
 i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: 0.8;
-  -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
 i.link.icon:hover,
@@ -133,209 +131,174 @@ i.link.icons:hover {
   opacity: 1;
 }
 
-/*-------------------
-        Circular
-  --------------------*/
-
+/* -------------------
+          Circular
+    -------------------- */
 i.circular.icon {
   border-radius: 500em !important;
   line-height: 1 !important;
   padding: 0.5em 0 !important;
-  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
   width: 2em !important;
   height: 2em !important;
 }
 i.circular.icon.colored {
-  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
-          box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
 }
 i.circular.inverted.icon {
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
-/*-------------------
-        Flipped
-  --------------------*/
-
+/* -------------------
+          Flipped
+    -------------------- */
 i.flipped.icon,
 i.horizontally.flipped.icon {
-  -webkit-transform: scale(-1, 1);
-          transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 i.vertically.flipped.icon {
-  -webkit-transform: scale(1, -1);
-          transform: scale(1, -1);
+  transform: scale(1, -1);
 }
 .icons i.flipped.icon:not(.corner):not(:first-child),
 .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1);
-          transform: translateX(-50%) translateY(-50%) scale(-1, 1);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1);
 }
 .icons i.vertically.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1);
-          transform: translateX(-50%) translateY(-50%) scale(1, -1);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1);
 }
 
-/*-------------------
-        Rotated
-  --------------------*/
-
+/* -------------------
+          Rotated
+    -------------------- */
 i.rotated.icon,
 i.right.rotated.icon,
 i.clockwise.rotated.icon {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 i.left.rotated.icon,
 i.counterclockwise.rotated.icon {
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 i.halfway.rotated.icon {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
 .icons i.right.rotated.icon:not(.corner):not(:first-child),
 .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(90deg);
-          transform: translateX(-50%) translateY(-50%) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(90deg);
 }
 .icons i.left.rotated.icon:not(.corner):not(:first-child),
 .icons i.counterclockwise.rotated.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-          transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
 }
 .icons i.halfway.rotated.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-          transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) rotate(180deg);
 }
 
-/*--------------------------
-        Flipped & Rotated
-  ---------------------------*/
-
+/* --------------------------
+          Flipped & Rotated
+    --------------------------- */
 i.rotated.flipped.icon,
 i.right.rotated.flipped.icon,
 i.clockwise.rotated.flipped.icon {
-  -webkit-transform: scale(-1, 1) rotate(90deg);
-          transform: scale(-1, 1) rotate(90deg);
+  transform: scale(-1, 1) rotate(90deg);
 }
 i.left.rotated.flipped.icon,
 i.counterclockwise.rotated.flipped.icon {
-  -webkit-transform: scale(-1, 1) rotate(-90deg);
-          transform: scale(-1, 1) rotate(-90deg);
+  transform: scale(-1, 1) rotate(-90deg);
 }
 i.halfway.rotated.flipped.icon {
-  -webkit-transform: scale(-1, 1) rotate(180deg);
-          transform: scale(-1, 1) rotate(180deg);
+  transform: scale(-1, 1) rotate(180deg);
 }
 i.rotated.vertically.flipped.icon,
 i.right.rotated.vertically.flipped.icon,
 i.clockwise.rotated.vertically.flipped.icon {
-  -webkit-transform: scale(1, -1) rotate(90deg);
-          transform: scale(1, -1) rotate(90deg);
+  transform: scale(1, -1) rotate(90deg);
 }
 i.left.rotated.vertically.flipped.icon,
 i.counterclockwise.rotated.vertically.flipped.icon {
-  -webkit-transform: scale(1, -1) rotate(-90deg);
-          transform: scale(1, -1) rotate(-90deg);
+  transform: scale(1, -1) rotate(-90deg);
 }
 i.halfway.rotated.vertically.flipped.icon {
-  -webkit-transform: scale(1, -1) rotate(180deg);
-          transform: scale(1, -1) rotate(180deg);
+  transform: scale(1, -1) rotate(180deg);
 }
 .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
 .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
 .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
-          transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
 }
 .icons i.left.rotated.flipped.icon:not(.corner):not(:first-child),
 .icons i.counterclockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
-          transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
 }
 .icons i.halfway.rotated.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
-          transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
 }
 .icons i.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
 .icons i.right.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
 .icons i.clockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
-          transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
 }
 .icons i.left.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
 .icons i.counterclockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
-          transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
 }
 .icons i.halfway.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
-  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
-          transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
 }
 
-/*-------------------
-        Bordered
-  --------------------*/
-
+/* -------------------
+          Bordered
+    -------------------- */
 i.bordered.icon {
   line-height: 1;
   vertical-align: baseline;
   width: 2em;
   height: 2em;
   padding: 0.5em 0 !important;
-  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 }
 i.bordered.icon.colored {
-  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
-          box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
 }
 i.bordered.inverted.icon {
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
-/*-------------------
-        Inverted
-  --------------------*/
-
+/* -------------------
+          Inverted
+    -------------------- */
 
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: #1B1C1D;
-  color: #FFFFFF;
+  background-color: #1b1c1d;
+  color: #fff;
 }
 i.inverted.icon {
-  color: #FFFFFF;
+  color: #fff;
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
-
+-------------------- */
 i.primary.icon.icon.icon.icon.icon {
-  color: #2185D0;
+  color: #2185d0;
 }
 i.inverted.primary.icon.icon.icon.icon.icon {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 i.inverted.bordered.primary.icon.icon.icon.icon.icon,
 i.inverted.circular.primary.icon.icon.icon.icon.icon,
 i.inverted.bordered.primary.icons,
 i.inverted.circular.primary.icons {
-  background-color: #2185D0;
-  color: #FFFFFF;
+  background-color: #2185d0;
+  color: #fff;
 }
 i.secondary.icon.icon.icon.icon.icon {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 i.inverted.secondary.icon.icon.icon.icon.icon {
   color: #545454;
@@ -344,167 +307,167 @@ i.inverted.bordered.secondary.icon.icon.icon.icon.icon,
 i.inverted.circular.secondary.icon.icon.icon.icon.icon,
 i.inverted.bordered.secondary.icons,
 i.inverted.circular.secondary.icons {
-  background-color: #1B1C1D;
-  color: #FFFFFF;
+  background-color: #1b1c1d;
+  color: #fff;
 }
 i.red.icon.icon.icon.icon.icon {
-  color: #DB2828;
+  color: #db2828;
 }
 i.inverted.red.icon.icon.icon.icon.icon {
-  color: #FF695E;
+  color: #ff695e;
 }
 i.inverted.bordered.red.icon.icon.icon.icon.icon,
 i.inverted.circular.red.icon.icon.icon.icon.icon,
 i.inverted.bordered.red.icons,
 i.inverted.circular.red.icons {
-  background-color: #DB2828;
-  color: #FFFFFF;
+  background-color: #db2828;
+  color: #fff;
 }
 i.orange.icon.icon.icon.icon.icon {
-  color: #F2711C;
+  color: #f2711c;
 }
 i.inverted.orange.icon.icon.icon.icon.icon {
-  color: #FF851B;
+  color: #ff851b;
 }
 i.inverted.bordered.orange.icon.icon.icon.icon.icon,
 i.inverted.circular.orange.icon.icon.icon.icon.icon,
 i.inverted.bordered.orange.icons,
 i.inverted.circular.orange.icons {
-  background-color: #F2711C;
-  color: #FFFFFF;
+  background-color: #f2711c;
+  color: #fff;
 }
 i.yellow.icon.icon.icon.icon.icon {
-  color: #FBBD08;
+  color: #fbbd08;
 }
 i.inverted.yellow.icon.icon.icon.icon.icon {
-  color: #FFE21F;
+  color: #ffe21f;
 }
 i.inverted.bordered.yellow.icon.icon.icon.icon.icon,
 i.inverted.circular.yellow.icon.icon.icon.icon.icon,
 i.inverted.bordered.yellow.icons,
 i.inverted.circular.yellow.icons {
-  background-color: #FBBD08;
-  color: #FFFFFF;
+  background-color: #fbbd08;
+  color: #fff;
 }
 i.olive.icon.icon.icon.icon.icon {
-  color: #B5CC18;
+  color: #b5cc18;
 }
 i.inverted.olive.icon.icon.icon.icon.icon {
-  color: #D9E778;
+  color: #d9e778;
 }
 i.inverted.bordered.olive.icon.icon.icon.icon.icon,
 i.inverted.circular.olive.icon.icon.icon.icon.icon,
 i.inverted.bordered.olive.icons,
 i.inverted.circular.olive.icons {
-  background-color: #B5CC18;
-  color: #FFFFFF;
+  background-color: #b5cc18;
+  color: #fff;
 }
 i.green.icon.icon.icon.icon.icon {
-  color: #21BA45;
+  color: #21ba45;
 }
 i.inverted.green.icon.icon.icon.icon.icon {
-  color: #2ECC40;
+  color: #2ecc40;
 }
 i.inverted.bordered.green.icon.icon.icon.icon.icon,
 i.inverted.circular.green.icon.icon.icon.icon.icon,
 i.inverted.bordered.green.icons,
 i.inverted.circular.green.icons {
-  background-color: #21BA45;
-  color: #FFFFFF;
+  background-color: #21ba45;
+  color: #fff;
 }
 i.teal.icon.icon.icon.icon.icon {
-  color: #00B5AD;
+  color: #00b5ad;
 }
 i.inverted.teal.icon.icon.icon.icon.icon {
-  color: #6DFFFF;
+  color: #6dffff;
 }
 i.inverted.bordered.teal.icon.icon.icon.icon.icon,
 i.inverted.circular.teal.icon.icon.icon.icon.icon,
 i.inverted.bordered.teal.icons,
 i.inverted.circular.teal.icons {
-  background-color: #00B5AD;
-  color: #FFFFFF;
+  background-color: #00b5ad;
+  color: #fff;
 }
 i.blue.icon.icon.icon.icon.icon {
-  color: #2185D0;
+  color: #2185d0;
 }
 i.inverted.blue.icon.icon.icon.icon.icon {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 i.inverted.bordered.blue.icon.icon.icon.icon.icon,
 i.inverted.circular.blue.icon.icon.icon.icon.icon,
 i.inverted.bordered.blue.icons,
 i.inverted.circular.blue.icons {
-  background-color: #2185D0;
-  color: #FFFFFF;
+  background-color: #2185d0;
+  color: #fff;
 }
 i.violet.icon.icon.icon.icon.icon {
-  color: #6435C9;
+  color: #6435c9;
 }
 i.inverted.violet.icon.icon.icon.icon.icon {
-  color: #A291FB;
+  color: #a291fb;
 }
 i.inverted.bordered.violet.icon.icon.icon.icon.icon,
 i.inverted.circular.violet.icon.icon.icon.icon.icon,
 i.inverted.bordered.violet.icons,
 i.inverted.circular.violet.icons {
-  background-color: #6435C9;
-  color: #FFFFFF;
+  background-color: #6435c9;
+  color: #fff;
 }
 i.purple.icon.icon.icon.icon.icon {
-  color: #A333C8;
+  color: #a333c8;
 }
 i.inverted.purple.icon.icon.icon.icon.icon {
-  color: #DC73FF;
+  color: #dc73ff;
 }
 i.inverted.bordered.purple.icon.icon.icon.icon.icon,
 i.inverted.circular.purple.icon.icon.icon.icon.icon,
 i.inverted.bordered.purple.icons,
 i.inverted.circular.purple.icons {
-  background-color: #A333C8;
-  color: #FFFFFF;
+  background-color: #a333c8;
+  color: #fff;
 }
 i.pink.icon.icon.icon.icon.icon {
-  color: #E03997;
+  color: #e03997;
 }
 i.inverted.pink.icon.icon.icon.icon.icon {
-  color: #FF8EDF;
+  color: #ff8edf;
 }
 i.inverted.bordered.pink.icon.icon.icon.icon.icon,
 i.inverted.circular.pink.icon.icon.icon.icon.icon,
 i.inverted.bordered.pink.icons,
 i.inverted.circular.pink.icons {
-  background-color: #E03997;
-  color: #FFFFFF;
+  background-color: #e03997;
+  color: #fff;
 }
 i.brown.icon.icon.icon.icon.icon {
-  color: #A5673F;
+  color: #a5673f;
 }
 i.inverted.brown.icon.icon.icon.icon.icon {
-  color: #D67C1C;
+  color: #d67c1c;
 }
 i.inverted.bordered.brown.icon.icon.icon.icon.icon,
 i.inverted.circular.brown.icon.icon.icon.icon.icon,
 i.inverted.bordered.brown.icons,
 i.inverted.circular.brown.icons {
-  background-color: #A5673F;
-  color: #FFFFFF;
+  background-color: #a5673f;
+  color: #fff;
 }
 i.grey.icon.icon.icon.icon.icon {
   color: #767676;
 }
 i.inverted.grey.icon.icon.icon.icon.icon {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 i.inverted.bordered.grey.icon.icon.icon.icon.icon,
 i.inverted.circular.grey.icon.icon.icon.icon.icon,
 i.inverted.bordered.grey.icons,
 i.inverted.circular.grey.icons {
   background-color: #767676;
-  color: #FFFFFF;
+  color: #fff;
 }
 i.black.icon.icon.icon.icon.icon {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 i.inverted.black.icon.icon.icon.icon.icon {
   color: #545454;
@@ -513,14 +476,13 @@ i.inverted.bordered.black.icon.icon.icon.icon.icon,
 i.inverted.circular.black.icon.icon.icon.icon.icon,
 i.inverted.bordered.black.icons,
 i.inverted.circular.black.icons {
-  background-color: #1B1C1D;
-  color: #FFFFFF;
+  background-color: #1b1c1d;
+  color: #fff;
 }
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
-
+-------------------- */
 i.icon,
 i.icons {
   font-size: 1em;
@@ -565,8 +527,8 @@ i.massive.massive.massive.icons {
 
 
 /*******************************
-              Groups
-  *******************************/
+                Groups
+    *******************************/
 
 i.icons {
   display: inline-block;
@@ -584,8 +546,7 @@ i.icons .icon {
   margin: 0;
 }
 i.icons .icon:not(.corner):not(.rotated):not(.flipped) {
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 i.icons .icon:first-child {
   position: static;
@@ -594,8 +555,7 @@ i.icons .icon:first-child {
   vertical-align: top;
 }
 i.icons:not(.bordered):not(.circular) .icon:first-child:not(.rotated):not(.flipped) {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 /* Corner Icon */
@@ -605,11 +565,10 @@ i.icons .corner.icon {
   right: 0;
   bottom: 0;
   font-size: 0.45em;
-  text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 i.icons .corner.icon:not(.rotated):not(.flipped) {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 i.icons .icon.corner[class*="top right"] {
   top: 0;
@@ -636,26 +595,24 @@ i.icons .icon.corner[class*="bottom right"] {
   bottom: 0;
 }
 i.icons .inverted.corner.icon {
-  text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
+  text-shadow: -1px -1px 0 #1b1c1d, 1px -1px 0 #1b1c1d, -1px 1px 0 #1b1c1d, 1px 1px 0 #1b1c1d;
 }
 
 
 /*************************************************
-     Bordered/circular with corner or group icons
-  *************************************************/
+       Bordered/circular with corner or group icons
+    *************************************************/
 
 i.bordered.icons,
 i.circular.icons {
   width: 2em;
   height: 2em;
-  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
   vertical-align: middle;
 }
 i.bordered.icons.colored,
 i.circular.icons.colored {
-  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
-          box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
 }
 i.circular.icons {
   border-radius: 500em;
@@ -663,18 +620,16 @@ i.circular.icons {
 i.bordered.icons i.icon:first-child,
 i.circular.icons i.icon:first-child {
   position: absolute;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 /* Inverted Icon */
 i.bordered.inverted.icons,
 i.circular.inverted.icons {
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  background-color: #1B1C1D;
-  color: #FFFFFF;
+  box-shadow: none;
+  background-color: #1b1c1d;
+  color: #fff;
 }
 
 /* Corner Icon */
@@ -731,11 +686,17 @@ i.icon.log.out::before {
 i.icon.sign.out::before {
   content: "\f2f5";
 }
+i.icon.sign.in.alternate::before {
+  content: "\f2f6";
+}
+i.icon.sign.out.alternate::before {
+  content: "\f2f5";
+}
 
 
 /*******************************
-          Solid Icons
-  *******************************/
+            Solid Icons
+    *******************************/
 
 
 /* Icons */
@@ -3004,14 +2965,8 @@ i.icon.shuttle.van::before {
 i.icon.sign::before {
   content: "\f4d9";
 }
-i.icon.sign.in.alternate::before {
-  content: "\f2f6";
-}
 i.icon.sign.language::before {
   content: "\f2a7";
-}
-i.icon.sign.out.alternate::before {
-  content: "\f2f5";
 }
 i.icon.signal::before {
   content: "\f012";
@@ -4101,9 +4056,6 @@ i.icon.idea::before {
 i.icon.ils::before {
   content: "\f20b";
 }
-i.icon.in.cart::before {
-  content: "\f218";
-}
 i.icon.inr::before {
   content: "\f156";
 }
@@ -4154,9 +4106,6 @@ i.icon.lira::before {
 }
 i.icon.list.layout::before {
   content: "\f00b";
-}
-i.icon.log.out::before {
-  content: "\f2f5";
 }
 i.icon.magnify::before {
   content: "\f00e";
@@ -4376,12 +4325,6 @@ i.icon.shutdown::before {
 }
 i.icon.sidebar::before {
   content: "\f0c9";
-}
-i.icon.sign.in::before {
-  content: "\f2f6";
-}
-i.icon.sign.out::before {
-  content: "\f2f5";
 }
 i.icon.signing::before {
   content: "\f2a7";
@@ -4605,20 +4548,14 @@ i.icon.zip::before {
 i.icon.zoom::before {
   content: "\f00e";
 }
-i.icon.zoom.in::before {
-  content: "\f00e";
-}
-i.icon.zoom.out::before {
-  content: "\f010";
-}
 
 
 /*******************************
-           Outline Icons
-  *******************************/
+             Outline Icons
+    *******************************/
 
 i.icon.outline {
-  font-family: 'outline-icons';
+  font-family: "outline-icons";
 }
 
 /* Icons */
@@ -5080,2057 +5017,2040 @@ i.icon.window.restore.outline::before {
 
 
 /*******************************
-         Thin Icons
-  *******************************/
-
-
-/* Icons */
-i.icon.thin {
-  font-family: 'thin-icons';
-}
-
-/* Aliases */
-
-
-/*******************************
-            Brand Icons
-  *******************************/
+              Brand Icons
+    *******************************/
 
 
 /* Icons */
 i.icon.\35 00px::before {
   content: "\f26e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.accessible::before {
   content: "\f368";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.accusoft::before {
   content: "\f369";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.acquisitions.incorporated::before {
   content: "\f6af";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.adn::before {
   content: "\f170";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.adversal::before {
   content: "\f36a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.affiliatetheme::before {
   content: "\f36b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.airbnb::before {
   content: "\f834";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.algolia::before {
   content: "\f36c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.alipay::before {
   content: "\f642";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.amazon::before {
   content: "\f270";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.amazon.pay::before {
   content: "\f42c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.amilia::before {
   content: "\f36d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.android::before {
   content: "\f17b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.angellist::before {
   content: "\f209";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.angrycreative::before {
   content: "\f36e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.angular::before {
   content: "\f420";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.app.store::before {
   content: "\f36f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.app.store.ios::before {
   content: "\f370";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.apper::before {
   content: "\f371";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.apple::before {
   content: "\f179";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.apple.pay::before {
   content: "\f415";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.artstation::before {
   content: "\f77a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.asymmetrik::before {
   content: "\f372";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.atlassian::before {
   content: "\f77b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.audible::before {
   content: "\f373";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.autoprefixer::before {
   content: "\f41c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.avianex::before {
   content: "\f374";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.aviato::before {
   content: "\f421";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.aws::before {
   content: "\f375";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bandcamp::before {
   content: "\f2d5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.battle.net::before {
   content: "\f835";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.behance::before {
   content: "\f1b4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.behance.square::before {
   content: "\f1b5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bimobject::before {
   content: "\f378";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bitbucket::before {
   content: "\f171";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bitcoin::before {
   content: "\f379";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bity::before {
   content: "\f37a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.black.tie::before {
   content: "\f27e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.blackberry::before {
   content: "\f37b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.blogger::before {
   content: "\f37c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.blogger.b::before {
   content: "\f37d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bluetooth::before {
   content: "\f293";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bluetooth.b::before {
   content: "\f294";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bootstrap::before {
   content: "\f836";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.btc::before {
   content: "\f15a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.buffer::before {
   content: "\f837";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.buromobelexperte::before {
   content: "\f37f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.buy.n.large::before {
   content: "\f8a6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.buysellads::before {
   content: "\f20d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.canadian.maple.leaf::before {
   content: "\f785";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.amazon.pay::before {
   content: "\f42d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.amex::before {
   content: "\f1f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.apple.pay::before {
   content: "\f416";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.diners.club::before {
   content: "\f24c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.discover::before {
   content: "\f1f2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.jcb::before {
   content: "\f24b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.mastercard::before {
   content: "\f1f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.paypal::before {
   content: "\f1f4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.stripe::before {
   content: "\f1f5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cc.visa::before {
   content: "\f1f0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.centercode::before {
   content: "\f380";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.centos::before {
   content: "\f789";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.chrome::before {
   content: "\f268";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.chromecast::before {
   content: "\f838";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cloudflare::before {
   content: "\e07d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cloudscale::before {
   content: "\f383";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cloudsmith::before {
   content: "\f384";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cloudversify::before {
   content: "\f385";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.codepen::before {
   content: "\f1cb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.codiepie::before {
   content: "\f284";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.confluence::before {
   content: "\f78d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.connectdevelop::before {
   content: "\f20e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.contao::before {
   content: "\f26d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cotton.bureau::before {
   content: "\f89e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cpanel::before {
   content: "\f388";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons::before {
   content: "\f25e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.by::before {
   content: "\f4e7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.nc::before {
   content: "\f4e8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.nc.eu::before {
   content: "\f4e9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.nc.jp::before {
   content: "\f4ea";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.nd::before {
   content: "\f4eb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.pd::before {
   content: "\f4ec";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.pd.alternate::before {
   content: "\f4ed";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.remix::before {
   content: "\f4ee";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.sa::before {
   content: "\f4ef";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.sampling::before {
   content: "\f4f0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.sampling.plus::before {
   content: "\f4f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.share::before {
   content: "\f4f2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.creative.commons.zero::before {
   content: "\f4f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.critical.role::before {
   content: "\f6c9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.css3::before {
   content: "\f13c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.css3.alternate::before {
   content: "\f38b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.cuttlefish::before {
   content: "\f38c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.d.and.d::before {
   content: "\f38d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.d.and.d.beyond::before {
   content: "\f6ca";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dailymotion::before {
   content: "\e052";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dashcube::before {
   content: "\f210";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.deezer::before {
   content: "\e077";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.delicious::before {
   content: "\f1a5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.deploydog::before {
   content: "\f38e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.deskpro::before {
   content: "\f38f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dev::before {
   content: "\f6cc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.deviantart::before {
   content: "\f1bd";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dhl::before {
   content: "\f790";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.diaspora::before {
   content: "\f791";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.digg::before {
   content: "\f1a6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.digital.ocean::before {
   content: "\f391";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.discord::before {
   content: "\f392";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.discourse::before {
   content: "\f393";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dochub::before {
   content: "\f394";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.docker::before {
   content: "\f395";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.draft2digital::before {
   content: "\f396";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dribbble::before {
   content: "\f17d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dribbble.square::before {
   content: "\f397";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dropbox::before {
   content: "\f16b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.drupal::before {
   content: "\f1a9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dyalog::before {
   content: "\f399";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.earlybirds::before {
   content: "\f39a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ebay::before {
   content: "\f4f4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.edge::before {
   content: "\f282";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.edge.legacy::before {
   content: "\e078";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.elementor::before {
   content: "\f430";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ello::before {
   content: "\f5f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ember::before {
   content: "\f423";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.empire::before {
   content: "\f1d1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.envira::before {
   content: "\f299";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.erlang::before {
   content: "\f39d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ethereum::before {
   content: "\f42e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.etsy::before {
   content: "\f2d7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.evernote::before {
   content: "\f839";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.expeditedssl::before {
   content: "\f23e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.facebook::before {
   content: "\f09a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.facebook.f::before {
   content: "\f39e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.facebook.messenger::before {
   content: "\f39f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.facebook.square::before {
   content: "\f082";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fantasy.flight.games::before {
   content: "\f6dc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fedex::before {
   content: "\f797";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fedora::before {
   content: "\f798";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.figma::before {
   content: "\f799";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.firefox::before {
   content: "\f269";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.firefox.browser::before {
   content: "\e007";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.first.order::before {
   content: "\f2b0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.first.order.alternate::before {
   content: "\f50a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.firstdraft::before {
   content: "\f3a1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.flickr::before {
   content: "\f16e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.flipboard::before {
   content: "\f44d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fly::before {
   content: "\f417";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.font.awesome::before {
   content: "\f2b4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.font.awesome.alternate::before {
   content: "\f35c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.font.awesome.flag::before {
   content: "\f425";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fonticons::before {
   content: "\f280";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fonticons.fi::before {
   content: "\f3a2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fort.awesome::before {
   content: "\f286";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fort.awesome.alternate::before {
   content: "\f3a3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.forumbee::before {
   content: "\f211";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.foursquare::before {
   content: "\f180";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.free.code.camp::before {
   content: "\f2c5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.freebsd::before {
   content: "\f3a4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fulcrum::before {
   content: "\f50b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.galactic.republic::before {
   content: "\f50c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.galactic.senate::before {
   content: "\f50d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.get.pocket::before {
   content: "\f265";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gg::before {
   content: "\f260";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gg.circle::before {
   content: "\f261";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.git::before {
   content: "\f1d3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.git.alternate::before {
   content: "\f841";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.git.square::before {
   content: "\f1d2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.github::before {
   content: "\f09b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.github.alternate::before {
   content: "\f113";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.github.square::before {
   content: "\f092";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gitkraken::before {
   content: "\f3a6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gitlab::before {
   content: "\f296";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gitter::before {
   content: "\f426";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.glide::before {
   content: "\f2a5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.glide.g::before {
   content: "\f2a6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gofore::before {
   content: "\f3a7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.goodreads::before {
   content: "\f3a8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.goodreads.g::before {
   content: "\f3a9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google::before {
   content: "\f1a0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.drive::before {
   content: "\f3aa";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.pay::before {
   content: "\e079";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.play::before {
   content: "\f3ab";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.plus::before {
   content: "\f2b3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.plus.g::before {
   content: "\f0d5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.plus.square::before {
   content: "\f0d4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.wallet::before {
   content: "\f1ee";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gratipay::before {
   content: "\f184";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.grav::before {
   content: "\f2d6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gripfire::before {
   content: "\f3ac";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.grunt::before {
   content: "\f3ad";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.guilded::before {
   content: "\e07e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gulp::before {
   content: "\f3ae";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hacker.news::before {
   content: "\f1d4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hacker.news.square::before {
   content: "\f3af";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hackerrank::before {
   content: "\f5f7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hips::before {
   content: "\f452";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hire.a.helper::before {
   content: "\f3b0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hive::before {
   content: "\e07f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hooli::before {
   content: "\f427";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hornbill::before {
   content: "\f592";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hotjar::before {
   content: "\f3b1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.houzz::before {
   content: "\f27c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.html5::before {
   content: "\f13b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.hubspot::before {
   content: "\f3b2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ideal::before {
   content: "\e013";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.imdb::before {
   content: "\f2d8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.innosoft::before {
   content: "\e080";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.instagram::before {
   content: "\f16d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.instagram.square::before {
   content: "\e055";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.instalod::before {
   content: "\e081";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.intercom::before {
   content: "\f7af";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.internet.explorer::before {
   content: "\f26b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.invision::before {
   content: "\f7b0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ioxhost::before {
   content: "\f208";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.itch.io::before {
   content: "\f83a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.itunes::before {
   content: "\f3b4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.itunes.note::before {
   content: "\f3b5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.java::before {
   content: "\f4e4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.jedi.order::before {
   content: "\f50e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.jenkins::before {
   content: "\f3b6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.jira::before {
   content: "\f7b1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.joget::before {
   content: "\f3b7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.joomla::before {
   content: "\f1aa";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.js::before {
   content: "\f3b8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.js.square::before {
   content: "\f3b9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.jsfiddle::before {
   content: "\f1cc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.kaggle::before {
   content: "\f5fa";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.keybase::before {
   content: "\f4f5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.keycdn::before {
   content: "\f3ba";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.kickstarter::before {
   content: "\f3bb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.kickstarter.k::before {
   content: "\f3bc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.korvue::before {
   content: "\f42f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.laravel::before {
   content: "\f3bd";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.lastfm::before {
   content: "\f202";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.lastfm.square::before {
   content: "\f203";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.leanpub::before {
   content: "\f212";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.lesscss::before {
   content: "\f41d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.linechat::before {
   content: "\f3c0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.linkedin::before {
   content: "\f08c";
-  font-family: 'brand-icons';
-}
-i.icon.linkedin.in::before {
-  content: "\f0e1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.linode::before {
   content: "\f2b8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.linux::before {
   content: "\f17c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.lyft::before {
   content: "\f3c3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.magento::before {
   content: "\f3c4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mailchimp::before {
   content: "\f59e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mandalorian::before {
   content: "\f50f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.markdown::before {
   content: "\f60f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mastodon::before {
   content: "\f4f6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.maxcdn::before {
   content: "\f136";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mdb::before {
   content: "\f8ca";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.medapps::before {
   content: "\f3c6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.medium::before {
   content: "\f23a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.medium.m::before {
   content: "\f3c7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.medrt::before {
   content: "\f3c8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.meetup::before {
   content: "\f2e0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.megaport::before {
   content: "\f5a3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mendeley::before {
   content: "\f7b3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.microblog::before {
   content: "\e01a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.microsoft::before {
   content: "\f3ca";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mix::before {
   content: "\f3cb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mixcloud::before {
   content: "\f289";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mixer::before {
   content: "\e056";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mizuni::before {
   content: "\f3cc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.modx::before {
   content: "\f285";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.monero::before {
   content: "\f3d0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.napster::before {
   content: "\f3d2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.neos::before {
   content: "\f612";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.nimblr::before {
   content: "\f5a8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.node::before {
   content: "\f419";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.node.js::before {
   content: "\f3d3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.npm::before {
   content: "\f3d4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ns8::before {
   content: "\f3d5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.nutritionix::before {
   content: "\f3d6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.octopus.deploy::before {
   content: "\e082";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.odnoklassniki::before {
   content: "\f263";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.odnoklassniki.square::before {
   content: "\f264";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.old.republic::before {
   content: "\f510";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.opencart::before {
   content: "\f23d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.openid::before {
   content: "\f19b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.opera::before {
   content: "\f26a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.optin.monster::before {
   content: "\f23c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.orcid::before {
   content: "\f8d2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.osi::before {
   content: "\f41a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.page4::before {
   content: "\f3d7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pagelines::before {
   content: "\f18c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.palfed::before {
   content: "\f3d8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.patreon::before {
   content: "\f3d9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.paypal::before {
   content: "\f1ed";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.penny.arcade::before {
   content: "\f704";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.perbyte::before {
   content: "\e083";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.periscope::before {
   content: "\f3da";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.phabricator::before {
   content: "\f3db";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.phoenix.framework::before {
   content: "\f3dc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.phoenix.squadron::before {
   content: "\f511";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.php::before {
   content: "\f457";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper::before {
   content: "\f2ae";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper.alternate::before {
   content: "\f1a8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper.hat::before {
   content: "\f4e5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper.pp::before {
   content: "\f1a7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper.square::before {
   content: "\e01e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pinterest::before {
   content: "\f0d2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pinterest.p::before {
   content: "\f231";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pinterest.square::before {
   content: "\f0d3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.playstation::before {
   content: "\f3df";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.product.hunt::before {
   content: "\f288";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pushed::before {
   content: "\f3e1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.python::before {
   content: "\f3e2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.qq::before {
   content: "\f1d6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.quinscape::before {
   content: "\f459";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.quora::before {
   content: "\f2c4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.r.project::before {
   content: "\f4f7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.raspberry.pi::before {
   content: "\f7bb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ravelry::before {
   content: "\f2d9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.react::before {
   content: "\f41b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.reacteurope::before {
   content: "\f75d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.readme::before {
   content: "\f4d5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.rebel::before {
   content: "\f1d0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.reddit::before {
   content: "\f1a1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.reddit.alien::before {
   content: "\f281";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.reddit.square::before {
   content: "\f1a2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.redhat::before {
   content: "\f7bc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.redriver::before {
   content: "\f3e3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.redyeti::before {
   content: "\f69d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.renren::before {
   content: "\f18b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.replyd::before {
   content: "\f3e6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.researchgate::before {
   content: "\f4f8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.resolving::before {
   content: "\f3e7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.rev::before {
   content: "\f5b2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.rocketchat::before {
   content: "\f3e8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.rockrms::before {
   content: "\f3e9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.rust::before {
   content: "\e07a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.safari::before {
   content: "\f267";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.salesforce::before {
   content: "\f83b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sass::before {
   content: "\f41e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.schlix::before {
   content: "\f3ea";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.scribd::before {
   content: "\f28a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.searchengin::before {
   content: "\f3eb";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sellcast::before {
   content: "\f2da";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sellsy::before {
   content: "\f213";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.servicestack::before {
   content: "\f3ec";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.shirtsinbulk::before {
   content: "\f214";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.shopify::before {
   content: "\e057";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.shopware::before {
   content: "\f5b5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.simplybuilt::before {
   content: "\f215";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sistrix::before {
   content: "\f3ee";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sith::before {
   content: "\f512";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sketch::before {
   content: "\f7c6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.skyatlas::before {
   content: "\f216";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.skype::before {
   content: "\f17e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.slack::before {
   content: "\f198";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.slack.hash::before {
   content: "\f3ef";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.slideshare::before {
   content: "\f1e7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.snapchat::before {
   content: "\f2ab";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.snapchat.ghost::before {
   content: "\f2ac";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.snapchat.square::before {
   content: "\f2ad";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.soundcloud::before {
   content: "\f1be";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sourcetree::before {
   content: "\f7d3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.speakap::before {
   content: "\f3f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.speaker.deck::before {
   content: "\f83c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.spotify::before {
   content: "\f1bc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.squarespace::before {
   content: "\f5be";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stack.exchange::before {
   content: "\f18d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stack.overflow::before {
   content: "\f16c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stackpath::before {
   content: "\f842";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.staylinked::before {
   content: "\f3f5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.steam::before {
   content: "\f1b6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.steam.square::before {
   content: "\f1b7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.steam.symbol::before {
   content: "\f3f6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.sticker.mule::before {
   content: "\f3f7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.strava::before {
   content: "\f428";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stripe::before {
   content: "\f429";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stripe.s::before {
   content: "\f42a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.studiovinari::before {
   content: "\f3f8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stumbleupon::before {
   content: "\f1a4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stumbleupon.circle::before {
   content: "\f1a3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.superpowers::before {
   content: "\f2dd";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.supple::before {
   content: "\f3f9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.suse::before {
   content: "\f7d6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.swift::before {
   content: "\f8e1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.symfony::before {
   content: "\f83d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.teamspeak::before {
   content: "\f4f9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.telegram::before {
   content: "\f2c6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.telegram.plane::before {
   content: "\f3fe";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.tencent.weibo::before {
   content: "\f1d5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.themeco::before {
   content: "\f5c6";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.themeisle::before {
   content: "\f2b2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.think.peaks::before {
   content: "\f731";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.tiktok::before {
   content: "\e07b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.trade.federation::before {
   content: "\f513";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.trello::before {
   content: "\f181";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.tumblr::before {
   content: "\f173";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.tumblr.square::before {
   content: "\f174";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.twitch::before {
   content: "\f1e8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.twitter::before {
   content: "\f099";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.twitter.square::before {
   content: "\f081";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.typo3::before {
   content: "\f42b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.uber::before {
   content: "\f402";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ubuntu::before {
   content: "\f7df";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.uikit::before {
   content: "\f403";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.umbraco::before {
   content: "\f8e8";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.uncharted::before {
   content: "\e084";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.uniregistry::before {
   content: "\f404";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.unity::before {
   content: "\e049";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.unsplash::before {
   content: "\e07c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.untappd::before {
   content: "\f405";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ups::before {
   content: "\f7e0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.usb::before {
   content: "\f287";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.usps::before {
   content: "\f7e1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ussunnah::before {
   content: "\f407";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vaadin::before {
   content: "\f408";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.viacoin::before {
   content: "\f237";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.viadeo::before {
   content: "\f2a9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.viadeo.square::before {
   content: "\f2aa";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.viber::before {
   content: "\f409";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vimeo::before {
   content: "\f40a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vimeo.square::before {
   content: "\f194";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vimeo.v::before {
   content: "\f27d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vine::before {
   content: "\f1ca";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vk::before {
   content: "\f189";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vnv::before {
   content: "\f40b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.vuejs::before {
   content: "\f41f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.watchman.monitoring::before {
   content: "\e087";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.waze::before {
   content: "\f83f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.weebly::before {
   content: "\f5cc";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.weibo::before {
   content: "\f18a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.weixin::before {
   content: "\f1d7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.whatsapp::before {
   content: "\f232";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.whatsapp.square::before {
   content: "\f40c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.whmcs::before {
   content: "\f40d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wikipedia.w::before {
   content: "\f266";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.windows::before {
   content: "\f17a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wix::before {
   content: "\f5cf";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wizards.of.the.coast::before {
   content: "\f730";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wodu::before {
   content: "\e088";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wolf.pack.battalion::before {
   content: "\f514";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wordpress::before {
   content: "\f19a";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wordpress.simple::before {
   content: "\f411";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wpbeginner::before {
   content: "\f297";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wpexplorer::before {
   content: "\f2de";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wpforms::before {
   content: "\f298";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wpressr::before {
   content: "\f3e4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.xbox::before {
   content: "\f412";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.xing::before {
   content: "\f168";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.xing.square::before {
   content: "\f169";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.y.combinator::before {
   content: "\f23b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yahoo::before {
   content: "\f19e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yammer::before {
   content: "\f840";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yandex::before {
   content: "\f413";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yandex.international::before {
   content: "\f414";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yarn::before {
   content: "\f7e3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yelp::before {
   content: "\f1e9";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yoast::before {
   content: "\f2b1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.youtube::before {
   content: "\f167";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.youtube.square::before {
   content: "\f431";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.zhihu::before {
   content: "\f63f";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 
 /* Aliases */
 i.icon.american.express::before {
   content: "\f1f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.american.express.card::before {
   content: "\f1f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.amex::before {
   content: "\f1f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bitbucket.square::before {
   content: "\f171";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.bluetooth.alternative::before {
   content: "\f294";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.amazon.pay::before {
   content: "\f42d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.american.express::before {
   content: "\f1f3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.diners.club::before {
   content: "\f24c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.discover::before {
   content: "\f1f2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.jcb::before {
   content: "\f24b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.mastercard::before {
   content: "\f1f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.paypal::before {
   content: "\f1f4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.stripe::before {
   content: "\f1f5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.credit.card.visa::before {
   content: "\f1f0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.diners.club::before {
   content: "\f24c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.diners.club.card::before {
   content: "\f24c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.discover::before {
   content: "\f1f2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.discover.card::before {
   content: "\f1f2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.disk.outline::before {
   content: "\f369";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.dribble::before {
   content: "\f17d";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.eercast::before {
   content: "\f2da";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.envira.gallery::before {
   content: "\f299";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.fa::before {
   content: "\f2b4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.facebook.official::before {
   content: "\f082";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.five.hundred.pixels::before {
   content: "\f26e";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.gittip::before {
   content: "\f184";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.plus.circle::before {
   content: "\f2b3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.google.plus.official::before {
   content: "\f2b3";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.japan.credit.bureau::before {
   content: "\f24b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.japan.credit.bureau.card::before {
   content: "\f24b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.jcb::before {
   content: "\f24b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.linkedin.square::before {
   content: "\f08c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mastercard::before {
   content: "\f1f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.mastercard.card::before {
   content: "\f1f1";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.microsoft.edge::before {
   content: "\f282";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ms.edge::before {
   content: "\f282";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.new.pied.piper::before {
   content: "\f2ae";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.optinmonster::before {
   content: "\f23c";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.paypal.card::before {
   content: "\f1f4";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pied.piper.hat::before {
   content: "\f2ae";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.pocket::before {
   content: "\f265";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.stripe.card::before {
   content: "\f1f5";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.theme.isle::before {
   content: "\f2b2";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.visa::before {
   content: "\f1f0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.visa.card::before {
   content: "\f1f0";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wechat::before {
   content: "\f1d7";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wikipedia::before {
   content: "\f266";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wordpress.beginner::before {
   content: "\f297";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.wordpress.forms::before {
   content: "\f298";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.yc::before {
   content: "\f23b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.ycombinator::before {
   content: "\f23b";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 i.icon.youtube.play::before {
   content: "\f167";
-  font-family: 'brand-icons';
+  font-family: "brand-icons";
 }
 
 
