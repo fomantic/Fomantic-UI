@@ -29,7 +29,7 @@
 @groupedBoxShadow: @boxShadow;
 @groupedBorderRadius: @borderRadius;
 
-@nestedGroupMargin: @verticalMargin @verticalMargin;
+@nestedGroupMargin: @verticalMargin;
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
@@ -104,9 +104,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow;
+@attachedBottomBoxShadow: @bottomShadow;
 
 /* Inverted */
 @invertedBackground: @black;

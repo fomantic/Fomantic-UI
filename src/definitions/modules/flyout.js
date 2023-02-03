@@ -80,8 +80,8 @@
                 elementNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 currentScroll,
-                transitionEvent,
 
                 module
             ;
@@ -144,8 +144,6 @@
                             }));
                         });
                     }
-
-                    transitionEvent = module.get.transitionEvent();
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
@@ -255,6 +253,11 @@
                     resize: function () {
                         module.setup.heights();
                     },
+                    focus: function () {
+                        if (module.is.visible() && settings.autofocus && settings.dimPage) {
+                            requestAnimationFrame(module.set.autofocus);
+                        }
+                    },
                     clickaway: function (event) {
                         if (settings.closable) {
                             var
@@ -356,6 +359,9 @@
                         ;
                         $closeIcon
                             .on('keyup' + elementNamespace, module.event.closeKeyUp)
+                        ;
+                        $window
+                            .on('focus' + elementNamespace, module.event.focus)
                         ;
                     },
                     clickaway: function () {
@@ -477,9 +483,42 @@
                 observeChanges: function () {
                     if ('MutationObserver' in window) {
                         observer = new MutationObserver(function (mutations) {
-                            module.refreshInputs();
+                            var collectNodes = function (parent) {
+                                    var nodes = [];
+                                    for (var c = 0, cl = parent.length; c < cl; c++) {
+                                        Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                        nodes.push(parent[c]);
+                                    }
+
+                                    return nodes;
+                                },
+                                shouldRefreshInputs = false
+                            ;
+                            mutations.every(function (mutation) {
+                                if (mutation.type === 'attributes') {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                } else {
+                                    // mutationobserver only provides the parent nodes
+                                    // so let's collect all childs as well to find nested inputs
+                                    var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
+                                        $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
+                                    if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                        shouldRefreshInputs = true;
+                                    }
+                                }
+
+                                return !shouldRefreshInputs;
+                            });
+
+                            if (shouldRefreshInputs) {
+                                module.refreshInputs();
+                            }
                         });
                         observer.observe(element, {
+                            attributeFilter: ['class', 'disabled'],
+                            attributes: true,
                             childList: true,
                             subtree: true,
                         });
@@ -508,15 +547,24 @@
                     if (!settings.dimPage) {
                         return;
                     }
-                    $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                    $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
+                    if ($inputs.length === 0) {
+                        $inputs = $module;
+                        $module.attr('tabindex', -1);
+                    } else {
+                        $module.removeAttr('tabindex');
+                    }
                     $inputs.first()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
                     ;
                     $inputs.last()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
                     ;
+                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                        module.set.autofocus();
+                    }
                 },
 
                 setup: {
@@ -557,9 +605,12 @@
                         var
                             $header = $module.children(selector.header),
                             $content = $module.children(selector.content),
-                            $actions = $module.children(selector.actions)
+                            $actions = $module.children(selector.actions),
+                            newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0)
                         ;
-                        $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
+                        if (newContentHeight > 0) {
+                            $content.css('min-height', String(newContentHeight) + 'px');
+                        }
                     },
                 },
 
@@ -600,6 +651,7 @@
                             }
                         }
                         module.set.dimmerStyles();
+                        module.set.observeAttributes(false);
                         module.pushPage(function () {
                             callback.call(element);
                             settings.onVisible.call(element);
@@ -608,9 +660,7 @@
                             }
                             module.save.focus();
                             module.refreshInputs();
-                            if (settings.autofocus) {
-                                module.set.autofocus();
-                            }
+                            requestAnimationFrame(module.set.observeAttributes);
                         });
                         settings.onChange.call(element);
                     } else {
@@ -631,6 +681,7 @@
                     if (module.is.visible() || module.is.animating()) {
                         module.debug('Hiding flyout', callback);
                         module.refreshFlyouts();
+                        module.set.observeAttributes(false);
                         module.pullPage(function () {
                             callback.call(element);
                             if (isFunction(settings.onHidden)) {
@@ -703,13 +754,13 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                     if (settings.dimPage && !module.othersVisible()) {
                         requestAnimationFrame(dim);
@@ -744,7 +795,7 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
                             module.remove.overlay();
@@ -758,8 +809,8 @@
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                 },
 
@@ -782,13 +833,24 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
+                            $rawInputs = $inputs.filter(':input'),
                             $input     = $autofocus.length > 0
                                 ? $autofocus.first()
-                                : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+                                : ($rawInputs.length > 0
+                                    ? $rawInputs
+                                    : $inputs.filter(':not(i.close)')
+                                ).first()
                         ;
+                        // check if only the close icon is remaining
+                        if ($input.length === 0 && $inputs.length > 0) {
+                            $input = $inputs.first();
+                        }
                         if ($input.length > 0) {
                             $input.trigger('focus');
                         }
@@ -915,23 +977,6 @@
                         }
 
                         return className.left;
-                    },
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
                     id: function () {
                         return id;

@@ -694,7 +694,7 @@
 *******************************/
 
 /* Immediate Nested Grid */
-.ui.popup > .ui.grid:not(.padded) {
+.ui.ui.ui.popup > .ui.grid:not(.padded) {
     width: @nestedGridWidth;
     margin: @nestedGridMargin;
 }
@@ -704,10 +704,34 @@
 *******************************/
 & when (@variationPopupLoading) {
     .ui.loading.popup {
-        display: block;
-        visibility: hidden;
-        z-index: @loadingZIndex;
+        cursor: default;
+        pointer-events: @loadingPointerEvents;
+        user-select: none;
+        & * {
+            opacity: @loadingOpacity;
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 50%;
+            margin: @loaderMargin;
+            width: @loaderSize;
+            height: @loaderSize;
+            animation: loader @loaderSpeed infinite linear;
+            border: @loaderLineWidth solid @loaderLineColor;
+            border-radius: @circularRadius;
+            box-shadow: 0 0 0 1px transparent;
+            visibility: visible;
+            z-index: @loaderLineZIndex;
+        }
     }
+}
+
+.ui.invisible.popup {
+    display: block;
+    visibility: hidden !important;
+    z-index: @invisibleZIndex;
 }
 
 .ui.animating.popup,
@@ -793,7 +817,7 @@
         box-shadow: @invertedBoxShadow;
     }
     .ui.inverted.popup .header {
-        background-color: @invertedHeaderBackground;
+        background: @invertedHeaderBackground;
         color: @invertedHeaderColor;
     }
     .ui.inverted.popup::before {
@@ -807,6 +831,8 @@
         @color: @value;
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
+        @cl: lighten(@c, @loadingColoredPercent);
+        @ll: darken(@l, @loadingColoredPercent);
 
         & when not (@variationPopupTooltip) {
             .ui.ui.ui.@{color}.popup::before,
@@ -814,6 +840,9 @@
                 background: @c;
                 color: @white;
                 border: none;
+                .loading& when (@variationPopupLoading) {
+                    background: @cl;
+                }
             }
             .ui.ui.ui.@{color}.popup::before {
                 box-shadow: none;
@@ -823,6 +852,9 @@
                 .ui.inverted.@{color}.popup {
                     background: @l;
                     color: @black;
+                    .loading& when (@variationPopupLoading) {
+                        background: @ll;
+                    }
                 }
             }
         }
@@ -835,6 +867,12 @@
                 color: @white;
                 border: none;
             }
+            & when (@variationPopupLoading) {
+                .ui.ui.ui.@{color}.loading.popup::before,
+                .ui.@{color}.loading.popup {
+                    background: @cl;
+                }
+            }
             .ui.ui.ui.@{color}.popup::before,
             [data-tooltip][data-variation~="@{color}"]::before {
                 box-shadow: none;
@@ -846,6 +884,12 @@
                 [data-tooltip][data-inverted][data-variation~="@{color}"]::before {
                     background: @l;
                     color: @black;
+                }
+                & when (@variationPopupLoading) {
+                    .ui.ui.ui.inverted.@{color}.loading.popup::before,
+                    .ui.inverted.@{color}.loading.popup {
+                        background: @ll;
+                    }
                 }
             }
         }

@@ -1,9 +1,8 @@
-/*
- * # Fomantic - Menu
+/*!
+ * # Fomantic-UI - Menu
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
- * Copyright 2015 Contributor
  * Released under the MIT license
  * https://opensource.org/licenses/MIT
  *
@@ -796,7 +795,7 @@ Floated Menu / Item
     .ui.compact.menu .item:last-child {
         border-radius: 0 @borderRadius @borderRadius 0;
     }
-    .ui.pagination.menu .item:last-child::before {
+    .ui.pagination.menu:not(.wrapping) .item:last-child::before {
         display: none;
     }
 
@@ -962,13 +961,11 @@ Floated Menu / Item
         }
 
         .ui.secondary.pointing.menu .item {
-            border-bottom-color: transparent;
-            border-bottom-style: solid;
+            border-bottom: @secondaryPointingBorderWidth solid transparent;
             border-radius: 0;
             align-self: flex-end;
             margin: 0 0 -@secondaryPointingBorderWidth;
             padding: @secondaryPointingItemVerticalPadding @secondaryPointingItemHorizontalPadding;
-            border-bottom-width: @secondaryPointingBorderWidth;
             transition: @secondaryItemTransition;
         }
         .ui.secondary.pointing.menu .ui.dropdown .menu .item {
@@ -1034,17 +1031,13 @@ Floated Menu / Item
             /* Vertical Pointing */
             .ui.secondary.vertical.pointing.menu {
                 border-bottom-width: 0;
-                border-right-width: @secondaryPointingBorderWidth;
-                border-right-style: solid;
-                border-right-color: @secondaryPointingBorderColor;
+                border-right: @secondaryPointingBorderWidth solid @secondaryPointingBorderColor;
             }
             .ui.secondary.vertical.pointing.menu .item {
                 border-bottom: none;
-                border-right-style: solid;
-                border-right-color: transparent;
+                border-right: @secondaryPointingBorderWidth solid transparent;
                 border-radius: 0 !important;
                 margin: @secondaryVerticalPointingItemMargin;
-                border-right-width: @secondaryPointingBorderWidth;
             }
 
             /* Vertical Active */
@@ -1283,6 +1276,7 @@ Floated Menu / Item
     }
 
     /* Icon */
+    .ui.labeled.icon.menu > .right.menu > .item > i.icon:not(.dropdown),
     .ui.labeled.icon.menu > .item > i.icon:not(.dropdown) {
         height: 1em;
         display: block;
@@ -1495,11 +1489,16 @@ Floated Menu / Item
 }
 
 & when (@variationMenuCentered) {
-    .ui.center.aligned.menu,
-    .ui.centered.menu {
+    .ui.center.aligned.menu:not(.fluid),
+    .ui.centered.menu:not(.fluid) {
         display: inline-flex;
         transform: translateX(-50%);
         margin-left: 50%;
+    }
+    .ui.center.aligned.menu .item,
+    .ui.centered.menu .item {
+        flex: 1 0 auto;
+        justify-content: center;
     }
 }
 
@@ -1590,6 +1589,7 @@ Floated Menu / Item
         .ui.compact.vertical.menu {
             & when (@supportIE) {
                 /* IE hack to make dropdown icons appear inline */
+                // stylelint-disable-next-line value-no-vendor-prefix
                 display: -ms-inline-flexbox !important;
             }
 
@@ -1915,6 +1915,35 @@ Floated Menu / Item
             margin-left: 0;
             margin-right: 0;
             width: 100%;
+        }
+    }
+}
+
+& when (@variationMenuWrapping) {
+    .ui.wrapping.menu {
+        flex-wrap: wrap;
+        & .item::before {
+            right: auto;
+            left: 0;
+        }
+        & .item:first-child::before {
+            display: none;
+        }
+        &:not(.tabular) .item {
+            &:last-of-type,
+            &:last-child {
+                border-right: @dividerSize solid @dividerBackground;
+            }
+        }
+    }
+    & when (@variationMenuWrapped) {
+        .ui.wrapped.menu:not(.tabular) .item {
+            &:first-child {
+                border-bottom-left-radius: 0;
+            }
+            &:last-child {
+                border-top-right-radius: 0;
+            }
         }
     }
 }

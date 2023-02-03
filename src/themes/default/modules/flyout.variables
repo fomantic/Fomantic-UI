@@ -36,7 +36,7 @@
 /* Actions */
 @actionBorder: 1px solid @borderColor;
 @actionBackground: @offWhite;
-@actionPadding: 1rem 1rem;
+@actionPadding: 1rem;
 @actionAlign: right;
 
 @buttonDistance: 0.75em;
@@ -45,7 +45,9 @@
 
 /* Scrolling Content */
 @contentMinHeight: calc(100vh - 9.1rem);
+@contentMinHeightWithoutHeader: calc(100vh - 4.7rem);
 @scrollingContentMaxHeight: @contentMinHeight;
+@scrollingContentMaxHeightWithoutHeader: @contentMinHeightWithoutHeader;
 @scrollingContentMaxHeightTopBottom: calc(80vh - 9.1rem);
 
 /* Close Icon */

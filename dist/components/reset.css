@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.9.0 - Reset
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.2 - Reset
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -18,12 +18,10 @@
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* iPad Input Shadows */
@@ -83,8 +81,7 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   
 /* 1 */
   height: 0;
@@ -215,9 +212,9 @@ textarea {
  */
 button,
 input {
+  overflow: visible;
   
 /* 1 */
-  overflow: visible;
 }
 /**
  * Remove the inheritance of text transform in Edge, Firefox, and IE.
@@ -225,9 +222,9 @@ input {
  */
 button,
 select {
+  text-transform: none;
   
 /* 1 */
-  text-transform: none;
 }
 /**
  * Correct the inability to style clickable types in iOS and Safari.
@@ -270,8 +267,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   
 /* 1 */
   color: inherit;
@@ -308,8 +304,7 @@ textarea {
  */
 [type="checkbox"],
 [type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   
 /* 1 */
   padding: 0;

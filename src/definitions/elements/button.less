@@ -704,7 +704,7 @@
 
     .ui.compact.labeled.icon.buttons .button > .icon,
     .ui.compact.labeled.icon.button > .icon {
-        padding: @compactVerticalPadding 0 @compactVerticalPadding 0;
+        padding: @compactVerticalPadding 0;
     }
 }
 
@@ -816,11 +816,11 @@
     }
     & when (@variationButtonGroups) {
         .ui.basic.buttons .button:hover {
-            box-shadow: @basicHoverBoxShadow inset;
+            box-shadow: @basicHoverBoxShadow;
         }
 
         .ui.basic.buttons .button:active {
-            box-shadow: @basicDownBoxShadow inset;
+            box-shadow: @basicDownBoxShadow;
         }
 
         .ui.basic.buttons .active.button {
@@ -1005,7 +1005,7 @@
         border-bottom-left-radius: inherit;
         text-align: center;
         animation: none;
-        padding: @verticalPadding 0 @verticalPadding 0;
+        padding: @verticalPadding 0;
         margin: @labeledIconMargin;
         width: @labeledIconWidth;
         background-color: @labeledIconBackgroundColor;

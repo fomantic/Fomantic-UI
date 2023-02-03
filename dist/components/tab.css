@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.9.0 - Tab
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.2 - Tab
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -23,19 +23,17 @@
 *******************************/
 
 
-/*--------------------
+/* --------------------
        Active
----------------------*/
-
+--------------------- */
 .ui.tab.active,
 .ui.tab.open {
   display: block;
 }
 
-/*--------------------
-         Loading
-  ---------------------*/
-
+/* --------------------
+           Loading
+    --------------------- */
 .ui.tab.loading {
   position: relative;
   overflow: hidden;
@@ -49,7 +47,7 @@
 .ui.tab.loading::before,
 .ui.tab.loading.segment::before {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 50%;
   margin: -1.25em 0 0 -1.25em;
@@ -61,18 +59,16 @@
 .ui.tab.loading::after,
 .ui.tab.loading.segment::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 50%;
   margin: -1.25em 0 0 -1.25em;
   width: 2.5em;
   height: 2.5em;
-  -webkit-animation: loader 0.6s infinite linear;
-          animation: loader 0.6s infinite linear;
+  animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  -webkit-box-shadow: 0 0 0 1px transparent;
-          box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 

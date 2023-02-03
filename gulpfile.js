@@ -6,7 +6,10 @@ const
     gulp   = require('gulp'),
 
     // read user config to know what task to load
-    config = require('./tasks/config/user')
+    config = require('./tasks/config/user'),
+
+    admin = require('./tasks/collections/admin'),
+    rtl = require('./tasks/collections/rtl')
 ;
 
 /*******************************
@@ -30,10 +33,10 @@ require('./tasks/collections/docs')(gulp);
 --------------- */
 
 if (config.rtl) {
-    require('./tasks/collections/rtl')(gulp);
+    rtl(gulp);
 }
 
 /* Admin Tasks */
 if (config.admin) {
-    require('./tasks/collections/admin')(gulp);
+    admin(gulp);
 }

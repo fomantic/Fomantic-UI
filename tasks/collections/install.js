@@ -2,17 +2,17 @@
  *   Define Install Sub-Tasks
  *******************************/
 
+// docs tasks
+const
+    install = require('../install'),
+    checkInstall = require('../check-install')
+;
+
 /*
   Lets you serve files to a local documentation instance
   https://github.com/fomantic/Fomantic-UI-Docs/
 */
 module.exports = function (gulp) {
-    let
-        // docs tasks
-        install      = require('../install'),
-        checkInstall = require('../check-install')
-    ;
-
     gulp.task('install', install);
     gulp.task('install').description = 'Runs set-up';
 

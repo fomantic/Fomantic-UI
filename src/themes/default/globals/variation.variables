@@ -233,6 +233,7 @@
 @variationSegmentSecondary: true;
 @variationSegmentTertiary: true;
 @variationSegmentAttached: true;
+@variationSegmentSeamless: true;
 @variationSegmentFitted: true;
 @variationSegmentScrolling: true;
 @variationSegmentScrollingShort: true;
@@ -294,6 +295,7 @@
 @variationGridDivided: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
+@variationGridAttached: true;
 @variationGridStretched: true;
 @variationGridJustified: true;
 @variationGridReversed: true;
@@ -325,6 +327,8 @@
 @variationMenuAttached: true;
 @variationMenuIcon: true;
 @variationMenuEqualWidth: true;
+@variationMenuWrapping: true;
+@variationMenuWrapped: true;
 @variationMenuSizes: @variationAllSizes;
 @variationMenuColors: @variationAllColors;
 

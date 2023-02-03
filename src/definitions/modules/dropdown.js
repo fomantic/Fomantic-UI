@@ -1080,12 +1080,28 @@
                     paste: function (event) {
                         var
                             pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
-                            tokens = pasteValue.split(settings.delimiter)
+                            tokens = pasteValue.split(settings.delimiter),
+                            notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
+                                notFoundTokens.push(value);
+                            }
                         });
                         event.preventDefault();
+                        if (notFoundTokens.length > 0) {
+                            var searchEl = $search[0],
+                                startPos = searchEl.selectionStart,
+                                endPos = searchEl.selectionEnd,
+                                orgText = searchEl.value,
+                                pasteText = notFoundTokens.join(settings.delimiter),
+                                newEndPos = startPos + pasteText.length
+                            ;
+                            $search.val(orgText.slice(0, startPos) + pasteText + orgText.slice(endPos));
+                            searchEl.selectionStart = newEndPos;
+                            searchEl.selectionEnd = newEndPos;
+                            module.event.input(event);
+                        }
                     },
                     change: function () {
                         if (!internalChange) {
@@ -1361,7 +1377,7 @@
                             var
                                 $choice        = $(this),
                                 $target        = event
-                                    ? $(event.target)
+                                    ? $(event.target || '')
                                     : $(''),
                                 $subMenu       = $choice.find(selector.menu),
                                 text           = module.get.choiceText($choice),
@@ -1379,7 +1395,7 @@
                                         module.remove.userAddition();
                                     }
                                     module.remove.filteredItem();
-                                    if (!module.is.visible()) {
+                                    if (!module.is.visible() && $target.length > 0) {
                                         module.show();
                                     }
                                     module.remove.searchTerm();
@@ -2726,7 +2742,7 @@
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
                         if (!$selectedItem) {
-                            return;
+                            return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
                         if (module.is.multiple()) {
@@ -2829,7 +2845,7 @@
                         if (settings.label.variation) {
                             $label.addClass(settings.label.variation);
                         }
-                        if (shouldAnimate === true) {
+                        if (shouldAnimate === true && settings.label.transition) {
                             module.debug('Animating in label', $label);
                             $label
                                 .addClass(className.hidden)
@@ -3621,7 +3637,7 @@
                                     displayType: module.get.displayType(),
                                 }).transition('show');
                                 callback.call(element);
-                            } else if (module.can.useElement('transition') && $module.transition('is supported')) {
+                            } else if (module.can.useElement('transition')) {
                                 $currentMenu
                                     .transition({
                                         animation: transition + ' in',
@@ -3663,7 +3679,7 @@
                                     displayType: module.get.displayType(),
                                 }).transition('hide');
                                 callback.call(element);
-                            } else if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            } else if ($.fn.transition !== undefined) {
                                 $currentMenu
                                     .transition({
                                         animation: transition + ' out',

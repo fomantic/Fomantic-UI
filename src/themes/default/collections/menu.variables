@@ -343,7 +343,7 @@
 @textMenuMargin: @relativeMedium -(@textMenuItemSpacing);
 @textMenuItemColor: @mutedTextColor;
 @textMenuItemFontWeight: @normal;
-@textMenuItemMargin: 0 0;
+@textMenuItemMargin: 0;
 @textMenuItemPadding: @relative5px @textMenuItemSpacing;
 @textMenuItemTransition: opacity @defaultDuration @defaultEasing;
 
@@ -428,9 +428,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow;
+@attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Resize large sizes */
 @mini: @11px;
