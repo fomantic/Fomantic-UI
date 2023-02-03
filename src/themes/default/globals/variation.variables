@@ -233,6 +233,7 @@
 @variationSegmentSecondary: true;
 @variationSegmentTertiary: true;
 @variationSegmentAttached: true;
+@variationSegmentSeamless: true;
 @variationSegmentFitted: true;
 @variationSegmentScrolling: true;
 @variationSegmentScrollingShort: true;
