@@ -326,6 +326,8 @@
 @variationMenuAttached: true;
 @variationMenuIcon: true;
 @variationMenuEqualWidth: true;
+@variationMenuWrapping: true;
+@variationMenuWrapped: true;
 @variationMenuSizes: @variationAllSizes;
 @variationMenuColors: @variationAllColors;
 
