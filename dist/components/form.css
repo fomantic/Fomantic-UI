@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Form
+ * # Fomantic-UI 2.9.2 - Form
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -359,24 +359,29 @@
 --------------------- */
 
 /* browsers require these rules separate */
-.ui.form ::-webkit-input-placeholder {
+.ui.form :-ms-input-placeholder {
+  color: rgba(191, 191, 191, 0.87);
+}
+.ui.form ::-ms-input-placeholder {
+  color: rgba(191, 191, 191, 0.87);
+}
+.ui.form ::placeholder {
   color: rgba(191, 191, 191, 0.87);
 }
 .ui.form :-ms-input-placeholder {
   color: rgba(191, 191, 191, 0.87) !important;
 }
-.ui.form ::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.87);
-  opacity: 1;
+.ui.form :focus:-ms-input-placeholder {
+  color: rgba(115, 115, 115, 0.87);
 }
-.ui.form :focus::-webkit-input-placeholder {
+.ui.form :focus::-ms-input-placeholder {
+  color: rgba(115, 115, 115, 0.87);
+}
+.ui.form :focus::placeholder {
   color: rgba(115, 115, 115, 0.87);
 }
 .ui.form :focus:-ms-input-placeholder {
   color: rgba(115, 115, 115, 0.87) !important;
-}
-.ui.form :focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.87);
 }
 
 /* --------------------
@@ -608,23 +613,29 @@
 }
 
 /* Placeholder */
-.ui.form .error ::-webkit-input-placeholder {
+.ui.form .error :-ms-input-placeholder {
+  color: #e7bdbc;
+}
+.ui.form .error ::-ms-input-placeholder {
+  color: #e7bdbc;
+}
+.ui.form .error ::placeholder {
   color: #e7bdbc;
 }
 .ui.form .error :-ms-input-placeholder {
   color: #e7bdbc !important;
 }
-.ui.form .error ::-moz-placeholder {
-  color: #e7bdbc;
+.ui.form .error :focus:-ms-input-placeholder {
+  color: #da9796;
 }
-.ui.form .error :focus::-webkit-input-placeholder {
+.ui.form .error :focus::-ms-input-placeholder {
+  color: #da9796;
+}
+.ui.form .error :focus::placeholder {
   color: #da9796;
 }
 .ui.form .error :focus:-ms-input-placeholder {
   color: #da9796 !important;
-}
-.ui.form .error :focus::-moz-placeholder {
-  color: #da9796;
 }
 
 /*------------------
@@ -827,23 +838,29 @@
 }
 
 /* Placeholder */
-.ui.form .info ::-webkit-input-placeholder {
+.ui.form .info :-ms-input-placeholder {
+  color: #98cfe1;
+}
+.ui.form .info ::-ms-input-placeholder {
+  color: #98cfe1;
+}
+.ui.form .info ::placeholder {
   color: #98cfe1;
 }
 .ui.form .info :-ms-input-placeholder {
   color: #98cfe1 !important;
 }
-.ui.form .info ::-moz-placeholder {
-  color: #98cfe1;
+.ui.form .info :focus:-ms-input-placeholder {
+  color: #70bdd6;
 }
-.ui.form .info :focus::-webkit-input-placeholder {
+.ui.form .info :focus::-ms-input-placeholder {
+  color: #70bdd6;
+}
+.ui.form .info :focus::placeholder {
   color: #70bdd6;
 }
 .ui.form .info :focus:-ms-input-placeholder {
   color: #70bdd6 !important;
-}
-.ui.form .info :focus::-moz-placeholder {
-  color: #70bdd6;
 }
 
 /*------------------
@@ -1046,23 +1063,29 @@
 }
 
 /* Placeholder */
-.ui.form .success ::-webkit-input-placeholder {
+.ui.form .success :-ms-input-placeholder {
+  color: #8fcf90;
+}
+.ui.form .success ::-ms-input-placeholder {
+  color: #8fcf90;
+}
+.ui.form .success ::placeholder {
   color: #8fcf90;
 }
 .ui.form .success :-ms-input-placeholder {
   color: #8fcf90 !important;
 }
-.ui.form .success ::-moz-placeholder {
-  color: #8fcf90;
+.ui.form .success :focus:-ms-input-placeholder {
+  color: #6cbf6d;
 }
-.ui.form .success :focus::-webkit-input-placeholder {
+.ui.form .success :focus::-ms-input-placeholder {
+  color: #6cbf6d;
+}
+.ui.form .success :focus::placeholder {
   color: #6cbf6d;
 }
 .ui.form .success :focus:-ms-input-placeholder {
   color: #6cbf6d !important;
-}
-.ui.form .success :focus::-moz-placeholder {
-  color: #6cbf6d;
 }
 
 /*------------------
@@ -1265,23 +1288,29 @@
 }
 
 /* Placeholder */
-.ui.form .warning ::-webkit-input-placeholder {
+.ui.form .warning :-ms-input-placeholder {
+  color: #edad3e;
+}
+.ui.form .warning ::-ms-input-placeholder {
+  color: #edad3e;
+}
+.ui.form .warning ::placeholder {
   color: #edad3e;
 }
 .ui.form .warning :-ms-input-placeholder {
   color: #edad3e !important;
 }
-.ui.form .warning ::-moz-placeholder {
-  color: #edad3e;
+.ui.form .warning :focus:-ms-input-placeholder {
+  color: #e39715;
 }
-.ui.form .warning :focus::-webkit-input-placeholder {
+.ui.form .warning :focus::-ms-input-placeholder {
+  color: #e39715;
+}
+.ui.form .warning :focus::placeholder {
   color: #e39715;
 }
 .ui.form .warning :focus:-ms-input-placeholder {
   color: #e39715 !important;
-}
-.ui.form .warning :focus::-moz-placeholder {
-  color: #e39715;
 }
 
 /*------------------

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Flyout
+ * # Fomantic-UI 2.9.2 - Flyout
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -80,8 +80,8 @@
                 elementNamespace,
                 id,
                 observer,
+                observeAttributes = false,
                 currentScroll,
-                transitionEvent,
 
                 module
             ;
@@ -144,8 +144,6 @@
                             }));
                         });
                     }
-
-                    transitionEvent = module.get.transitionEvent();
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
@@ -498,7 +496,7 @@
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input')) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -549,13 +547,14 @@
                     if (!settings.dimPage) {
                         return;
                     }
-                    $inputs = $module.find('[tabindex], :input:enabled').filter(':visible').filter(function () {
+                    $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    $module.removeAttr('tabindex');
                     if ($inputs.length === 0) {
                         $inputs = $module;
                         $module.attr('tabindex', -1);
+                    } else {
+                        $module.removeAttr('tabindex');
                     }
                     $inputs.first()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
@@ -652,6 +651,7 @@
                             }
                         }
                         module.set.dimmerStyles();
+                        module.set.observeAttributes(false);
                         module.pushPage(function () {
                             callback.call(element);
                             settings.onVisible.call(element);
@@ -660,6 +660,7 @@
                             }
                             module.save.focus();
                             module.refreshInputs();
+                            requestAnimationFrame(module.set.observeAttributes);
                         });
                         settings.onChange.call(element);
                     } else {
@@ -680,6 +681,7 @@
                     if (module.is.visible() || module.is.animating()) {
                         module.debug('Hiding flyout', callback);
                         module.refreshFlyouts();
+                        module.set.observeAttributes(false);
                         module.pullPage(function () {
                             callback.call(element);
                             if (isFunction(settings.onHidden)) {
@@ -752,13 +754,13 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                     if (settings.dimPage && !module.othersVisible()) {
                         requestAnimationFrame(dim);
@@ -793,7 +795,7 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $module[0]) {
-                            $module.off(transitionEvent + elementNamespace, transitionEnd);
+                            $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
                             module.remove.overlay();
@@ -807,8 +809,8 @@
                             callback.call(element);
                         }
                     };
-                    $module.off(transitionEvent + elementNamespace);
-                    $module.on(transitionEvent + elementNamespace, transitionEnd);
+                    $module.off('transitionend' + elementNamespace);
+                    $module.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                 },
 
@@ -831,6 +833,9 @@
                 },
 
                 set: {
+                    observeAttributes: function (state) {
+                        observeAttributes = state !== false;
+                    },
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
@@ -972,23 +977,6 @@
                         }
 
                         return className.left;
-                    },
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
                     id: function () {
                         return id;

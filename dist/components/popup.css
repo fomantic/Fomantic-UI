@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Popup
+ * # Fomantic-UI 2.9.2 - Popup
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -594,8 +594,33 @@
 *******************************/
 
 .ui.loading.popup {
+  cursor: default;
+  pointer-events: none;
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.ui.loading.popup * {
+  opacity: 0.3;
+}
+.ui.loading.popup::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  margin: -1em 0 0 -1em;
+  width: 2em;
+  height: 2em;
+  animation: loader 0.6s infinite linear;
+  border: 0.2em solid #767676;
+  border-radius: 500rem;
+  box-shadow: 0 0 0 1px transparent;
+  visibility: visible;
+  z-index: 101;
+}
+.ui.invisible.popup {
   display: block;
-  visibility: hidden;
+  visibility: hidden !important;
   z-index: -1;
 }
 .ui.animating.popup,
@@ -670,7 +695,7 @@
   box-shadow: none;
 }
 .ui.inverted.popup .header {
-  background-color: none;
+  background: none;
   color: #fff;
 }
 .ui.inverted.popup::before {
@@ -685,6 +710,10 @@
   color: #fff;
   border: none;
 }
+.ui.ui.ui.primary.loading.popup::before,
+.ui.primary.loading.popup {
+  background: #9bcbef;
+}
 .ui.ui.ui.primary.popup::before,
 [data-tooltip][data-variation~="primary"]::before {
   box-shadow: none;
@@ -696,6 +725,10 @@
   background: #54c8ff;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.primary.loading.popup::before,
+.ui.inverted.primary.loading.popup {
+  background: #007eba;
+}
 .ui.ui.ui.secondary.popup::before,
 .ui.secondary.popup,
 [data-tooltip][data-variation~="secondary"]::after,
@@ -703,6 +736,10 @@
   background: #1b1c1d;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.secondary.loading.popup::before,
+.ui.secondary.loading.popup {
+  background: #65696c;
 }
 .ui.ui.ui.secondary.popup::before,
 [data-tooltip][data-variation~="secondary"]::before {
@@ -715,6 +752,10 @@
   background: #545454;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.secondary.loading.popup::before,
+.ui.inverted.secondary.loading.popup {
+  background: #080808;
+}
 .ui.ui.ui.red.popup::before,
 .ui.red.popup,
 [data-tooltip][data-variation~="red"]::after,
@@ -722,6 +763,10 @@
   background: #db2828;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.red.loading.popup::before,
+.ui.red.loading.popup {
+  background: #f1abab;
 }
 .ui.ui.ui.red.popup::before,
 [data-tooltip][data-variation~="red"]::before {
@@ -734,6 +779,10 @@
   background: #ff695e;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.red.loading.popup::before,
+.ui.inverted.red.loading.popup {
+  background: #c40d00;
+}
 .ui.ui.ui.orange.popup::before,
 .ui.orange.popup,
 [data-tooltip][data-variation~="orange"]::after,
@@ -741,6 +790,10 @@
   background: #f2711c;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.orange.loading.popup::before,
+.ui.orange.loading.popup {
+  background: #faccad;
 }
 .ui.ui.ui.orange.popup::before,
 [data-tooltip][data-variation~="orange"]::before {
@@ -753,6 +806,10 @@
   background: #ff851b;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.orange.loading.popup::before,
+.ui.inverted.orange.loading.popup {
+  background: #813c00;
+}
 .ui.ui.ui.yellow.popup::before,
 .ui.yellow.popup,
 [data-tooltip][data-variation~="yellow"]::after,
@@ -760,6 +817,10 @@
   background: #fbbd08;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.yellow.loading.popup::before,
+.ui.yellow.loading.popup {
+  background: #fde59f;
 }
 .ui.ui.ui.yellow.popup::before,
 [data-tooltip][data-variation~="yellow"]::before {
@@ -772,6 +833,10 @@
   background: #ffe21f;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.yellow.loading.popup::before,
+.ui.inverted.yellow.loading.popup {
+  background: #857400;
+}
 .ui.ui.ui.olive.popup::before,
 .ui.olive.popup,
 [data-tooltip][data-variation~="olive"]::after,
@@ -779,6 +844,10 @@
   background: #b5cc18;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.olive.loading.popup::before,
+.ui.olive.loading.popup {
+  background: #e4f18c;
 }
 .ui.ui.ui.olive.popup::before,
 [data-tooltip][data-variation~="olive"]::before {
@@ -791,6 +860,10 @@
   background: #d9e778;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.olive.loading.popup::before,
+.ui.inverted.olive.loading.popup {
+  background: #97a81e;
+}
 .ui.ui.ui.green.popup::before,
 .ui.green.popup,
 [data-tooltip][data-variation~="green"]::after,
@@ -798,6 +871,10 @@
   background: #21ba45;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.green.loading.popup::before,
+.ui.green.loading.popup {
+  background: #8aeaa0;
 }
 .ui.ui.ui.green.popup::before,
 [data-tooltip][data-variation~="green"]::before {
@@ -810,6 +887,10 @@
   background: #2ecc40;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.green.loading.popup::before,
+.ui.inverted.green.loading.popup {
+  background: #124f19;
+}
 .ui.ui.ui.teal.popup::before,
 .ui.teal.popup,
 [data-tooltip][data-variation~="teal"]::after,
@@ -817,6 +898,10 @@
   background: #00b5ad;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.teal.loading.popup::before,
+.ui.teal.loading.popup {
+  background: #4ffff7;
 }
 .ui.ui.ui.teal.popup::before,
 [data-tooltip][data-variation~="teal"]::before {
@@ -829,6 +914,10 @@
   background: #6dffff;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.teal.loading.popup::before,
+.ui.inverted.teal.loading.popup {
+  background: #00d3d3;
+}
 .ui.ui.ui.blue.popup::before,
 .ui.blue.popup,
 [data-tooltip][data-variation~="blue"]::after,
@@ -836,6 +925,10 @@
   background: #2185d0;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.blue.loading.popup::before,
+.ui.blue.loading.popup {
+  background: #9bcbef;
 }
 .ui.ui.ui.blue.popup::before,
 [data-tooltip][data-variation~="blue"]::before {
@@ -848,6 +941,10 @@
   background: #54c8ff;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.blue.loading.popup::before,
+.ui.inverted.blue.loading.popup {
+  background: #007eba;
+}
 .ui.ui.ui.violet.popup::before,
 .ui.violet.popup,
 [data-tooltip][data-variation~="violet"]::after,
@@ -855,6 +952,10 @@
   background: #6435c9;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.violet.loading.popup::before,
+.ui.violet.loading.popup {
+  background: #c1adea;
 }
 .ui.ui.ui.violet.popup::before,
 [data-tooltip][data-variation~="violet"]::before {
@@ -867,6 +968,10 @@
   background: #a291fb;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.violet.loading.popup::before,
+.ui.inverted.violet.loading.popup {
+  background: #2d09ea;
+}
 .ui.ui.ui.purple.popup::before,
 .ui.purple.popup,
 [data-tooltip][data-variation~="purple"]::after,
@@ -874,6 +979,10 @@
   background: #a333c8;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.purple.loading.popup::before,
+.ui.purple.loading.popup {
+  background: #daabe9;
 }
 .ui.ui.ui.purple.popup::before,
 [data-tooltip][data-variation~="purple"]::before {
@@ -886,6 +995,10 @@
   background: #dc73ff;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.purple.loading.popup::before,
+.ui.inverted.purple.loading.popup {
+  background: #a300d9;
+}
 .ui.ui.ui.pink.popup::before,
 .ui.pink.popup,
 [data-tooltip][data-variation~="pink"]::after,
@@ -893,6 +1006,10 @@
   background: #e03997;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.pink.loading.popup::before,
+.ui.pink.loading.popup {
+  background: #f5bddc;
 }
 .ui.ui.ui.pink.popup::before,
 [data-tooltip][data-variation~="pink"]::before {
@@ -905,6 +1022,10 @@
   background: #ff8edf;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.pink.loading.popup::before,
+.ui.inverted.pink.loading.popup {
+  background: #f400af;
+}
 .ui.ui.ui.brown.popup::before,
 .ui.brown.popup,
 [data-tooltip][data-variation~="brown"]::after,
@@ -912,6 +1033,10 @@
   background: #a5673f;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.brown.loading.popup::before,
+.ui.brown.loading.popup {
+  background: #dbb8a2;
 }
 .ui.ui.ui.brown.popup::before,
 [data-tooltip][data-variation~="brown"]::before {
@@ -924,6 +1049,10 @@
   background: #d67c1c;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.brown.loading.popup::before,
+.ui.inverted.brown.loading.popup {
+  background: #4f2e0a;
+}
 .ui.ui.ui.grey.popup::before,
 .ui.grey.popup,
 [data-tooltip][data-variation~="grey"]::after,
@@ -931,6 +1060,10 @@
   background: #767676;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.grey.loading.popup::before,
+.ui.grey.loading.popup {
+  background: #c3c3c3;
 }
 .ui.ui.ui.grey.popup::before,
 [data-tooltip][data-variation~="grey"]::before {
@@ -943,6 +1076,10 @@
   background: #dcddde;
   color: #1b1c1d;
 }
+.ui.ui.ui.inverted.grey.loading.popup::before,
+.ui.inverted.grey.loading.popup {
+  background: #8d9194;
+}
 .ui.ui.ui.black.popup::before,
 .ui.black.popup,
 [data-tooltip][data-variation~="black"]::after,
@@ -950,6 +1087,10 @@
   background: #1b1c1d;
   color: #fff;
   border: none;
+}
+.ui.ui.ui.black.loading.popup::before,
+.ui.black.loading.popup {
+  background: #65696c;
 }
 .ui.ui.ui.black.popup::before,
 [data-tooltip][data-variation~="black"]::before {
@@ -961,6 +1102,10 @@
 [data-tooltip][data-inverted][data-variation~="black"]::before {
   background: #545454;
   color: #1b1c1d;
+}
+.ui.ui.ui.inverted.black.loading.popup::before,
+.ui.inverted.black.loading.popup {
+  background: #080808;
 }
 
 /* --------------

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Search
+ * # Fomantic-UI 2.9.2 - Search
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -408,7 +408,7 @@
                         return module.is.focused() && !module.is.visible() && !module.is.empty();
                     },
                     transition: function () {
-                        return settings.transition && $.fn.transition !== undefined && $module.transition('is supported');
+                        return settings.transition && $.fn.transition !== undefined;
                     },
                 },
 

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Dropdown
+ * # Fomantic-UI 2.9.2 - Dropdown
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -402,6 +402,13 @@ select.ui.dropdown {
 /* Compact */
 .ui.compact.selection.dropdown {
   min-width: 0;
+}
+.ui.compact.selection.dropdown > .menu {
+  width: auto;
+}
+.ui.compact.selection.dropdown > .menu:not(.multiline) {
+  width: -webkit-max-content;
+  width: max-content;
 }
 
 /* Selection Menu */
@@ -1860,11 +1867,6 @@ select.ui.dropdown {
 }
 
 /* Selection for form elements */
-.ui.inverted.dropdown textarea::-webkit-selection,
-.ui.inverted.dropdown input::-webkit-selection {
-  background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
-}
 .ui.inverted.dropdown textarea::selection,
 .ui.inverted.dropdown input::selection {
   background-color: rgba(255, 255, 255, 0.25);

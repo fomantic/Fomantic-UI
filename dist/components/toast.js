@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Toast
+ * # Fomantic-UI 2.9.2 - Toast
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -397,7 +397,7 @@
                 animate: {
                     show: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
+                        if (settings.transition && module.can.useElement('transition')) {
                             module.set.visible();
                             $toastBox
                                 .transition({
@@ -417,7 +417,7 @@
                     },
                     close: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             $toastBox
                                 .transition({
                                     animation: settings.transition.hideMethod + ' out',

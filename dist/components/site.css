@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Site
+ * # Fomantic-UI 2.9.2 - Site
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -253,21 +253,12 @@ body .ui.inverted:not(.dimmer) {
 
 
 /* Site */
-::-webkit-selection {
-  background-color: #cce2ff;
-  color: rgba(0, 0, 0, 0.87);
-}
 ::selection {
   background-color: #cce2ff;
   color: rgba(0, 0, 0, 0.87);
 }
 
 /* Form */
-textarea::-webkit-selection,
-input::-webkit-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
-}
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);

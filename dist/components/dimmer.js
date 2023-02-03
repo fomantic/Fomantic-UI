@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Dimmer
+ * # Fomantic-UI 2.9.2 - Dimmer
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -229,7 +229,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
-                        if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
+                        if (settings.useCSS && $.fn.transition !== undefined) {
                             if (settings.useFlex) {
                                 module.debug('Using flex dimmer');
                                 module.remove.legacy();
@@ -288,7 +288,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
-                        if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
+                        if (settings.useCSS && $.fn.transition !== undefined) {
                             module.verbose('Hiding dimmer with css');
                             $dimmer
                                 .transition({

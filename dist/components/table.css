@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.1 - Table
+ * # Fomantic-UI 2.9.2 - Table
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1238,7 +1238,7 @@
   margin-top: 0;
   top: 0;
   margin-bottom: 1em;
-  box-shadow: none, none;
+  box-shadow: none;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui[class*="bottom attached"].table:last-child {
