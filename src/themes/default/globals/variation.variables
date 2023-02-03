@@ -294,6 +294,7 @@
 @variationGridDivided: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
+@variationGridAttached: true;
 @variationGridStretched: true;
 @variationGridJustified: true;
 @variationGridReversed: true;
