@@ -171,7 +171,12 @@
                         $(window).on('beforeunload' + eventNamespace, module.event.beforeUnload);
                     }
 
-                    $field.on('change click keyup keydown blur', function (e) {
+                    $field.on(
+                        'change' + eventNamespace +
+                        ' click' + eventNamespace +
+                        ' keyup' + eventNamespace +
+                        ' keydown' + eventNamespace +
+                        ' blur' + eventNamespace, function (e) {
                         module.determine.isDirty();
                     });
 
