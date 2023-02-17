@@ -56,7 +56,11 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+                $context        = [window, document].indexOf(settings.context) < 0
+                    ? settings.context instanceof jQuery
+                        ? settings.context
+                        : $document.find(settings.context)
+                    : $(settings.context),
                 $text           = $module.find(selector.text),
                 $search         = $module.find(selector.search),
                 $sizer          = $module.find(selector.sizer),

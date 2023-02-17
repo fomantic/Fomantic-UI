@@ -54,7 +54,11 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                $context        = [window, document].indexOf(settings.context) < 0
+                    ? settings.context instanceof jQuery
+                        ? settings.context
+                        : $document.find(settings.context)
+                    : $body,
                 isBody          = $context[0] === $body[0],
                 $closeIcon      = $module.find(selector.closeIcon),
                 $inputs,

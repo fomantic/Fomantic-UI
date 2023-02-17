@@ -48,7 +48,11 @@
                 $module         = $(this),
 
                 $context        = settings.context
-                    ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
+                    ? ([window, document].indexOf(settings.context) < 0
+                        ? settings.context instanceof jQuery
+                            ? settings.context
+                            : $(document).find(settings.context)
+                        : $(settings.context))
                     : $('body'),
 
                 element         = this,

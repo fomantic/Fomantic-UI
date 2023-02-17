@@ -38,6 +38,13 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function(context) {
+                return [window, document].indexOf(context) < 0
+                    ? context instanceof jQuery
+                        ? context
+                        : $document.find(context)
+                    : $(context);
+            },
 
             returnedValue
         ;
@@ -57,11 +64,11 @@
                 moduleNamespace    = 'module-' + namespace,
 
                 $module            = $(this),
-                $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
-                $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
-                $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
+                $context           = contextCheck(settings.context),
+                $scrollContext     = contextCheck(settings.scrollContext),
+                $boundary          = contextCheck(settings.boundary),
                 $target            = settings.target
-                    ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
+                    ? contextCheck(settings.target)
                     : $module,
 
                 $popup,

@@ -31,6 +31,13 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function(context) {
+                return [window, document].indexOf(context) < 0
+                    ? context instanceof jQuery
+                        ? context
+                        : $document.find(context)
+                    : $(context);
+            },
             returnedValue
         ;
 
@@ -49,7 +56,7 @@
 
                 $module               = $(this),
                 $window               = $(window),
-                $scroll               = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
+                $scroll               = contextCheck(settings.scrollContext),
                 $container,
                 $context,
 
@@ -128,7 +135,7 @@
 
                 determineContainer: function () {
                     if (settings.container) {
-                        $container = [window, document].indexOf(settings.container) < 0 ? $document.find(settings.container) : $(settings.container);
+                        $container = contextCheck(settings.container);
                     } else {
                         $container = $module.offsetParent();
                     }
@@ -136,7 +143,7 @@
 
                 determineContext: function () {
                     if (settings.context) {
-                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
+                        $context = contextCheck(settings.context);
                     } else {
                         $context = $container;
                     }
