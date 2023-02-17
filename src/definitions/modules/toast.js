@@ -57,7 +57,7 @@
                 $close,
                 $context         = settings.context
                     ? ([window, document].indexOf(settings.context) < 0
-                        ? (settings.context instanceof jQuery
+                        ? (settings.context instanceof jQuery // eslint-disable-line unicorn/no-nested-ternary
                             ? settings.context
                             : $(document).find(settings.context))
                         : $(settings.context))
