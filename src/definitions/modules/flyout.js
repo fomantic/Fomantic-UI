@@ -36,11 +36,11 @@
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
-            contextCheck   = function(context) {
+            contextCheck   = function (context) {
                 return [window, document].indexOf(context) < 0
-                    ? context instanceof jQuery
+                    ? (context instanceof jQuery
                         ? context
-                        : $document.find(context)
+                        : $document.find(context))
                     : $body;
             },
             returnedValue

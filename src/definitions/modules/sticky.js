@@ -31,11 +31,11 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function(context) {
+            contextCheck   = function (context) {
                 return [window, document].indexOf(context) < 0
-                    ? context instanceof jQuery
+                    ? (context instanceof jQuery
                         ? context
-                        : $document.find(context)
+                        : $document.find(context))
                     : $(context);
             },
             returnedValue
@@ -134,19 +134,11 @@
                 },
 
                 determineContainer: function () {
-                    if (settings.container) {
-                        $container = contextCheck(settings.container);
-                    } else {
-                        $container = $module.offsetParent();
-                    }
+                    $container = settings.container ? contextCheck(settings.container) : $module.offsetParent();
                 },
 
                 determineContext: function () {
-                    if (settings.context) {
-                        $context = contextCheck(settings.context);
-                    } else {
-                        $context = $container;
-                    }
+                    $context = settings.context ? contextCheck(settings.context) : $container;
                     if ($context.length === 0) {
                         module.error(error.invalidContext, settings.context, $module);
                     }

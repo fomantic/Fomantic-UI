@@ -57,9 +57,9 @@
 
                 $module         = $(this),
                 $context        = [window, document].indexOf(settings.context) < 0
-                    ? settings.context instanceof jQuery
+                    ? (settings.context instanceof jQuery
                         ? settings.context
-                        : $document.find(settings.context)
+                        : $document.find(settings.context))
                     : $(settings.context),
                 $text           = $module.find(selector.text),
                 $search         = $module.find(selector.search),
