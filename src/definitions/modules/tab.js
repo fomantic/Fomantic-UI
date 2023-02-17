@@ -153,9 +153,9 @@
                         module.verbose('Determined parent element for creating context', $context);
                     } else if (settings.context) {
                         $context = [window, document].indexOf(settings.context) < 0
-                            ? settings.context instanceof jQuery
+                            ? (settings.context instanceof jQuery
                                 ? settings.context
-                                : $document.find(settings.context)
+                                : $document.find(settings.context))
                             : $(settings.context);
                         module.verbose('Using selector for tab context', settings.context, $context);
                     } else {

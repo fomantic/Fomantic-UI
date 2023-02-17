@@ -64,9 +64,9 @@
                 // context used for state
                 $context        = settings.stateContext
                     ? ([window, document].indexOf(settings.stateContext) < 0
-                        ? settings.stateContext instanceof jQuery
+                        ? (settings.stateContext instanceof jQuery
                             ? settings.stateContext
-                            : $(document).find(settings.stateContext)
+                            : $(document).find(settings.stateContext))
                         : $(settings.stateContext))
                     : $module,
 

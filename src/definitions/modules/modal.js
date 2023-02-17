@@ -55,9 +55,9 @@
 
                 $module         = $(this),
                 $context        = [window, document].indexOf(settings.context) < 0
-                    ? settings.context instanceof jQuery
+                    ? (settings.context instanceof jQuery
                         ? settings.context
-                        : $document.find(settings.context)
+                        : $document.find(settings.context))
                     : $body,
                 isBody          = $context[0] === $body[0],
                 $closeIcon      = $module.find(selector.closeIcon),
