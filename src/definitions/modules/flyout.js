@@ -539,7 +539,7 @@
                 },
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = contextCheck(settings.context);
+                    $context = contextCheck(settings.context, window);
                     module.refreshFlyouts();
                     $pusher = $context.children(selector.pusher);
                     module.clear.cache();

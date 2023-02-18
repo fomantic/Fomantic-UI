@@ -289,7 +289,7 @@
 
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = contextCheck(settings.context);
+                    $context = contextCheck(settings.context, window);
                     module.refreshSidebars();
                     $pusher = $context.children(selector.pusher);
                     $fixed = $context.children(selector.fixed);

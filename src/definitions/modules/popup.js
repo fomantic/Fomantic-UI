@@ -73,9 +73,7 @@
                 $context           = contextCheck(settings.context, window),
                 $scrollContext     = contextCheck(settings.scrollContext, window),
                 $boundary          = contextCheck(settings.boundary, window),
-                $target            = settings.target
-                    ? contextCheck(settings.target, window)
-                    : $module,
+                $target            = settings.target ? contextCheck(settings.target, window) : $module,
 
                 $popup,
                 $offsetParent,
