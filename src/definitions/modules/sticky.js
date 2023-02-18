@@ -31,12 +31,18 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context) {
-                return [window, document].indexOf(context) < 0
-                    ? (context instanceof jQuery
-                        ? context
-                        : $document.find(context))
-                    : $(context);
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
             },
             returnedValue
         ;
@@ -56,7 +62,7 @@
 
                 $module               = $(this),
                 $window               = $(window),
-                $scroll               = contextCheck(settings.scrollContext),
+                $scroll               = contextCheck(settings.scrollContext, window),
                 $container,
                 $context,
 
@@ -134,11 +140,11 @@
                 },
 
                 determineContainer: function () {
-                    $container = settings.container ? contextCheck(settings.container) : $module.offsetParent();
+                    $container = settings.container ? contextCheck(settings.container, window) : $module.offsetParent();
                 },
 
                 determineContext: function () {
-                    $context = settings.context ? contextCheck(settings.context) : $container;
+                    $context = settings.context ? contextCheck(settings.context, window) : $container;
                     if ($context.length === 0) {
                         module.error(error.invalidContext, settings.context, $module);
                     }

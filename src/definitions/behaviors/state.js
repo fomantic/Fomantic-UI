@@ -31,7 +31,19 @@
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
         $allModules.each(function () {
@@ -69,11 +81,7 @@
 
                     // bind events with delegated events
                     if (settings.context && moduleSelector !== '') {
-                        ([window, document].indexOf(settings.context) < 0
-                            ? (settings.context instanceof jQuery
-                                ? settings.context
-                                : $(document).find(settings.context))
-                            : $(settings.context))
+                        contextCheck(settings.context, window)
                             .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                             .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
                             .on(moduleSelector, 'click' + eventNamespace, module.toggle.state)

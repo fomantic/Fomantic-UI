@@ -36,7 +36,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
 
@@ -62,13 +74,7 @@
                 $form           = $module.closest(selector.form),
 
                 // context used for state
-                $context        = settings.stateContext
-                    ? ([window, document].indexOf(settings.stateContext) < 0
-                        ? (settings.stateContext instanceof jQuery // eslint-disable-line unicorn/no-nested-ternary
-                            ? settings.stateContext
-                            : $(document).find(settings.stateContext))
-                        : $(settings.stateContext))
-                    : $module,
+                $context        = settings.stateContext ? contextCheck(settings.stateContext, window) : $module,
 
                 // request details
                 ajaxSettings,

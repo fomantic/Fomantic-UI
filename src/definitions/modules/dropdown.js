@@ -32,6 +32,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue
         ;
 
@@ -56,11 +69,7 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0
-                    ? (settings.context instanceof jQuery
-                        ? settings.context
-                        : $document.find(settings.context))
-                    : $(settings.context),
+                $context        = contextCheck(settings.context, window),
                 $text           = $module.find(selector.text),
                 $search         = $module.find(selector.search),
                 $sizer          = $module.find(selector.sizer),
