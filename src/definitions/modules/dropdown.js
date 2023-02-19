@@ -2076,7 +2076,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: text,
+                                        text: module.escape.htmlEntities(text, true),
                                         disabled: disabled,
                                     });
                                 }
@@ -3459,7 +3459,7 @@
                             selectChanged = false
                         ;
                         $.each(mutations, function (index, mutation) {
-                            if ($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
+                            if ($(mutation.target).is('option, optgroup') || $(mutation.addedNodes).is('select') || ($(mutation.target).is('select') && mutation.type !== 'attributes')) {
                                 selectChanged = true;
 
                                 return false;
@@ -3768,7 +3768,7 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string) {
+                    htmlEntities: function (string, forceAmpersand) {
                         var
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
@@ -3784,7 +3784,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
+                            string = string.replace(forceAmpersand ? /&/g : /&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
