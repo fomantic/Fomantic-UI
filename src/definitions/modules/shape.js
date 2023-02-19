@@ -35,7 +35,6 @@
 
         $allModules.each(function () {
             var
-                moduleSelector = $allModules.selector || '',
                 settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
                     : $.extend({}, $.fn.shape.settings),
@@ -637,9 +636,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
