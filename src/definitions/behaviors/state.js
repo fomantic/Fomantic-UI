@@ -31,7 +31,19 @@
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
         $allModules.each(function () {
@@ -51,6 +63,7 @@
                 moduleNamespace = namespace + '-module',
 
                 $module         = $(this),
+                $context        = settings.context ? contextCheck(settings.context, window) : $module,
 
                 element         = this,
                 instance        = $module.data(moduleNamespace),
@@ -68,19 +81,11 @@
                     }
 
                     // bind events with delegated events
-                    if (settings.context && moduleSelector !== '') {
-                        ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
-                            .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
-                            .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
-                            .on(moduleSelector, 'click' + eventNamespace, module.toggle.state)
-                        ;
-                    } else {
-                        $module
-                            .on('mouseenter' + eventNamespace, module.change.text)
-                            .on('mouseleave' + eventNamespace, module.reset.text)
-                            .on('click' + eventNamespace, module.toggle.state)
-                        ;
-                    }
+                    $context
+                        .on('mouseenter' + eventNamespace, module.change.text)
+                        .on('mouseleave' + eventNamespace, module.reset.text)
+                        .on('click' + eventNamespace, module.toggle.state)
+                    ;
                     module.instantiate();
                 },
 
@@ -94,8 +99,11 @@
 
                 destroy: function () {
                     module.verbose('Destroying previous module', instance);
-                    $module
+                    $context
                         .off(eventNamespace)
+                    ;
+                    $module
+                        .removeData(metadata.storedText)
                         .removeData(moduleNamespace)
                     ;
                 },

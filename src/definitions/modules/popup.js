@@ -38,6 +38,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
+
+                return $context;
+            },
 
             returnedValue
         ;
@@ -57,12 +70,10 @@
                 moduleNamespace    = 'module-' + namespace,
 
                 $module            = $(this),
-                $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
-                $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
-                $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
-                $target            = settings.target
-                    ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
-                    : $module,
+                $context           = contextCheck(settings.context, window),
+                $scrollContext     = contextCheck(settings.scrollContext, window),
+                $boundary          = contextCheck(settings.boundary, window),
+                $target            = settings.target ? contextCheck(settings.target, window) : $module,
 
                 $popup,
                 $offsetParent,

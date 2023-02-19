@@ -36,7 +36,19 @@
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $body;
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue;
 
         $allModules.each(function () {
@@ -55,7 +67,7 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                $context        = contextCheck(settings.context, window),
                 isBody          = $context[0] === $body[0],
 
                 $sidebars       = $module.children(selector.sidebar),
@@ -277,7 +289,7 @@
 
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                    $context = contextCheck(settings.context, window);
                     module.refreshSidebars();
                     $pusher = $context.children(selector.pusher);
                     $fixed = $context.children(selector.fixed);
