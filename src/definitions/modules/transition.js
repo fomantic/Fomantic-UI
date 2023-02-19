@@ -22,7 +22,6 @@
     $.fn.transition = function () {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -863,9 +862,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }

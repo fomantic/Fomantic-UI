@@ -28,15 +28,25 @@
             $head           = $('head'),
             $body           = $('body'),
 
-            moduleSelector  = $allModules.selector || '',
-
             time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $body;
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
 
@@ -57,7 +67,7 @@
                 moduleNamespace      = 'module-' + namespace,
 
                 $module              = $(this),
-                $context             = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                $context             = contextCheck(settings.context, window),
                 $closeIcon           = $module.find(selector.close),
                 $inputs,
                 $focusedElement,
@@ -527,7 +537,7 @@
                 },
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                    $context = contextCheck(settings.context, window);
                     module.refreshFlyouts();
                     $pusher = $context.children(selector.pusher);
                     module.clear.cache();
@@ -1244,9 +1254,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
