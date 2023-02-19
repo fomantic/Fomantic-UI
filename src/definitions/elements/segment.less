@@ -437,6 +437,7 @@
             border-radius: @groupedBorderRadius;
             border: @groupedBorder;
         }
+        .ui.wrapping.horizontal.segments,
         .ui.stackable.horizontal.segments {
             flex-wrap: wrap;
         }
@@ -473,7 +474,7 @@
         .ui.segments > .horizontal.segments:first-child {
             border-top: none;
         }
-        .ui.horizontal.segments:not(.stackable) > .segment:first-child {
+        .ui.horizontal.segments:not(.stackable):not(.wrapping) > .segment:first-child {
             border-left: none;
         }
         .ui.horizontal.segments > .segment:first-child {
