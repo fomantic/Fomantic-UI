@@ -41,7 +41,7 @@
             contextCheck   = function (context, win) {
                 var $context;
                 if ([window, document].indexOf(context) >= 0) {
-                    $context = $body;
+                    $context = $(context);
                 } else {
                     $context = $(win.document).find(context);
                     if ($context.length === 0) {
