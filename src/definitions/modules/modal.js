@@ -548,7 +548,7 @@
                             requestAnimationFrame(module.refresh);
                         }
                     },
-                    focus: function() {
+                    focus: function () {
                         windowRefocused = true;
                     },
                     click: function (event) {
