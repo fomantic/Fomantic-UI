@@ -57,6 +57,9 @@
             Table
 *******************************/
 
+.ui.calendar.popup .ui.table {
+    width: auto;
+}
 .ui.calendar .ui.table.year,
 .ui.calendar .ui.table.month,
 .ui.calendar .ui.table.minute {
@@ -177,7 +180,7 @@
 }
 
 & when (@variationCalendarMultiMonth) {
-    .ui.calendar.popup > .ui.ui.grid {
+    .ui.ui.ui.calendar.popup > .ui.ui.grid {
         margin: @multiMonthMargin;
         & > .column:not(:first-child) {
             padding-left: @multiMonthPadding;
