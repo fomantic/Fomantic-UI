@@ -86,6 +86,7 @@
                 initialBodyMargin    = '',
                 tempBodyMargin       = '',
                 hadScrollbar         = false,
+                windowRefocused      = false,
 
                 elementNamespace,
                 id,
@@ -264,8 +265,14 @@
                         module.setup.heights();
                     },
                     focus: function () {
-                        if (module.is.visible() && settings.autofocus && settings.dimPage) {
-                            requestAnimationFrame(module.set.autofocus);
+                        windowRefocused = true;
+                    },
+                    click: function (event) {
+                        if (windowRefocused && module.is.visible() && settings.autofocus && settings.dimPage) {
+                            windowRefocused = false;
+                            if (document.activeElement !== event.target) {
+                                requestAnimationFrame(module.set.autofocus);
+                            }
                         }
                     },
                     clickaway: function (event) {
@@ -372,6 +379,9 @@
                         ;
                         $window
                             .on('focus' + elementNamespace, module.event.focus)
+                        ;
+                        $context
+                            .on('click' + elementNamespace, module.event.click)
                         ;
                     },
                     clickaway: function () {

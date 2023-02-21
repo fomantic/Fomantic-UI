@@ -88,6 +88,7 @@
                 tempBodyMargin = '',
                 keepScrollingClass = false,
                 hadScrollbar = false,
+                windowRefocused = false,
 
                 elementEventNamespace,
                 id,
@@ -251,6 +252,7 @@
                         .off(eventNamespace)
                     ;
                     $window.off(elementEventNamespace);
+                    $context.off(elementEventNamespace);
                     $dimmer.off(elementEventNamespace);
                     $closeIcon.off(elementEventNamespace);
                     if ($inputs) {
@@ -386,6 +388,9 @@
                         $window
                             .on('resize' + elementEventNamespace, module.event.resize)
                             .on('focus' + elementEventNamespace, module.event.focus)
+                        ;
+                        $context
+                            .on('click' + elementEventNamespace, module.event.click)
                         ;
                     },
                     scrollLock: function () {
@@ -543,9 +548,15 @@
                             requestAnimationFrame(module.refresh);
                         }
                     },
-                    focus: function () {
-                        if ($dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
-                            requestAnimationFrame(module.set.autofocus);
+                    focus: function() {
+                        windowRefocused = true;
+                    },
+                    click: function (event) {
+                        if (windowRefocused && $dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
+                            windowRefocused = false;
+                            if (document.activeElement !== event.target) {
+                                requestAnimationFrame(module.set.autofocus);
+                            }
                         }
                     },
                 },
