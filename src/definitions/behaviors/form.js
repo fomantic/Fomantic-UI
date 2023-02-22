@@ -507,7 +507,7 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        return ['file','checkbox','radio','hidden'].indexOf(type) >= 0 || $input.is('select') ? 'change' : 'input';
+                        return ['file', 'checkbox', 'radio', 'hidden'].indexOf(type) >= 0 || $input.is('select') ? 'change' : 'input';
                     },
                     fieldsFromShorthand: function (fields) {
                         var
