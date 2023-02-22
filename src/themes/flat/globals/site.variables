@@ -2,105 +2,100 @@
          Site Settings
 *******************************/
 
-/*-------------------
+/* -------------------
         Paths
---------------------*/
+-------------------- */
 
-@imagePath : "../../themes/default/assets/images";
-@fontPath  : "../../themes/default/assets/fonts";
+@imagePath: "../../themes/default/assets/images";
+@fontPath: "../../themes/default/assets/fonts";
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
-@headerFont    : "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
-@pageFont      : "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@headerFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@pageFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 
-/*-------------------
+/* -------------------
       Site Colors
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
-@blue             : #0074D9;
-@green            : #2ECC40;
-@orange           : #FF851B;
-@pink             : #D9499A;
-@purple           : #A24096;
-@red              : #FF4136;
-@teal             : #39CCCC;
-@yellow           : #FFCB08;
+/* ---  Colors  --- */
+@blue: #0074d9;
+@green: #2ecc40;
+@orange: #ff851b;
+@pink: #d9499a;
+@purple: #a24096;
+@red: #ff4136;
+@teal: #39cccc;
+@yellow: #ffcb08;
 
-@black            : #191919;
-@grey             : #CCCCCC;
-@white            : #FFFFFF;
+@black: #191919;
+@grey: #ccc;
+@white: #fff;
 
-/*---  Light Colors  ---*/
-@lightBlue        : #54C8FF;
-@lightGreen       : #2ECC40;
-@lightOrange      : #FF851B;
-@lightPink        : #FF8EDF;
-@lightPurple      : #CDC6FF;
-@lightRed         : #FF695E;
-@lightTeal        : #6DFFFF;
-@lightYellow      : #FFE21F;
+/* ---  Light Colors  --- */
+@lightBlue: #54c8ff;
+@lightGreen: #2ecc40;
+@lightOrange: #ff851b;
+@lightPink: #ff8edf;
+@lightPurple: #cdc6ff;
+@lightRed: #ff695e;
+@lightTeal: #6dffff;
+@lightYellow: #ffe21f;
 
-@primaryColor     : @blue;
-@secondaryColor   : @black;
+@primaryColor: @blue;
+@secondaryColor: @black;
 
-
-/*-------------------
+/* -------------------
         Page
---------------------*/
+-------------------- */
 
-@bodyBackground      : #FCFCFC;
-@fontSize            : 14px;
-@textColor           : rgba(0, 0, 0, 0.8);
+@bodyBackground: #fcfcfc;
+@fontSize: 14px;
+@textColor: rgba(0, 0, 0, 0.8);
 
-@headerMargin        : 1em 0em 1rem;
-@paragraphMargin     : 0em 0em 1em;
+@headerMargin: 1em 0 1rem;
+@paragraphMargin: 0 0 1em;
 
-@linkColor           : #009FDA;
-@linkUnderline       : none;
-@linkHoverColor      : lighten( @linkColor, 5);
-@linkHoverUnderline  : @linkUnderline;
+@linkColor: #009fda;
+@linkUnderline: none;
+@linkHoverColor: lighten(@linkColor, 5);
+@linkHoverUnderline: @linkUnderline;
 
-@highlightBackground : #FFFFCC;
-@highlightColor      : @textColor;
+@highlightBackground: #ffc;
+@highlightColor: @textColor;
 
-
-
-/*-------------------
+/* -------------------
   Background Colors
---------------------*/
+-------------------- */
 
-@subtleTransparentBlack : rgba(0, 0, 0, 0.03);
-@transparentBlack       : rgba(0, 0, 0, 0.05);
-@strongTransparentBlack : rgba(0, 0, 0, 0.10);
+@subtleTransparentBlack: rgba(0, 0, 0, 0.03);
+@transparentBlack: rgba(0, 0, 0, 0.05);
+@strongTransparentBlack: rgba(0, 0, 0, 0.1);
 
-@subtleTransparentWhite : rgba(255, 255, 255, 0.01);
-@transparentWhite       : rgba(255, 255, 255, 0.05);
-@strongTransparentWhite : rgba(255, 255, 255, 0.01);
+@subtleTransparentWhite: rgba(255, 255, 255, 0.01);
+@transparentWhite: rgba(255, 255, 255, 0.05);
+@strongTransparentWhite: rgba(255, 255, 255, 0.01);
 
 /* Used for differentiating neutrals */
 @subtleGradient: linear-gradient(transparent, rgba(0, 0, 0, 0.05));
 
 /* Used for differentiating layers */
-@subtleShadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
+@subtleShadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
-
-/*-------------------
+/* -------------------
         Grid
---------------------*/
+-------------------- */
 
 @columnCount: 16;
 
-/*-------------------
+/* -------------------
      Breakpoints
---------------------*/
+-------------------- */
 
-@mobileBreakpoint            : 320px;
-@tabletBreakpoint            : 768px;
-@computerBreakpoint          : 992px;
-@largeMonitorBreakpoint      : 1400px;
-@widescreenMonitorBreakpoint : 1900px;
-
+@mobileBreakpoint: 320px;
+@tabletBreakpoint: 768px;
+@computerBreakpoint: 992px;
+@largeMonitorBreakpoint: 1400px;
+@widescreenMonitorBreakpoint: 1900px;

@@ -8,110 +8,109 @@
  *
  */
 
-
 /*******************************
             Theme
 *******************************/
 
-@type    : 'module';
-@element : 'transition';
+@type: "module";
+@element: "transition";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
           Transitions
 *******************************/
 
 .transition {
-  animation-iteration-count: 1;
-  animation-duration: @transitionDefaultDuration;
-  animation-timing-function: @transitionDefaultEasing;
-  animation-fill-mode: @transitionDefaultFill;
+    animation-iteration-count: 1;
+    animation-duration: @transitionDefaultDuration;
+    animation-timing-function: @transitionDefaultEasing;
+    animation-fill-mode: @transitionDefaultFill;
 }
 
 /*******************************
             States
 *******************************/
 
-
 /* Animating */
 .animating.transition {
-  backface-visibility: @backfaceVisibility;
-  visibility: visible !important;
+    backface-visibility: @backfaceVisibility;
+    visibility: visible !important;
 }
 
 & when (@variationTransitionLoading) {
-  /* Loading */
-  .loading.transition {
-    position: absolute;
-    top: -99999px;
-    left: -99999px;
-  }
+    /* Loading */
+    .loading.transition {
+        position: absolute;
+        top: -99999px;
+        left: -99999px;
+    }
 }
 
 /* Hidden */
 .hidden.transition {
-  display: none;
-  visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 
 /* Visible */
 .visible.transition {
-  display: block !important;
-  visibility: visible !important;
-/*  backface-visibility: @backfaceVisibility;
-  transform: @use3DAcceleration;*/
+    display: block !important;
+    visibility: visible !important;
+
+    /* backface-visibility: @backfaceVisibility;
+      transform: @use3DAcceleration; */
 }
 
 & when (@variationTransitionDisabled) {
-  /* Disabled */
-  .disabled.transition {
-    animation-play-state: paused;
-  }
+    /* Disabled */
+    .disabled.transition {
+        animation-play-state: paused;
+    }
 }
 
 /*******************************
           Variations
 *******************************/
 & when (@variationTransitionLooping) {
-  .looping.transition {
-    animation-iteration-count: infinite;
-  }
+    .looping.transition {
+        animation-iteration-count: infinite;
+    }
 }
 
 & when (@variationTransitionPulsating) {
-  /* Pulsating */
-  .pulsating.transition {
-    animation-name: pulsating;
-    animation-duration: @pulsatingDuration;
-    box-shadow: 0 0 0 0 fade(@pulsatingColor, @pulsatingOpacity);
-  }
-  & when (@variationTransitionInverted) {
-    .inverted.pulsating.transition {
-      box-shadow: 0 0 0 0 fade(@pulsatingInvertedColor, @pulsatingInvertedOpacity);
+    /* Pulsating */
+    .pulsating.transition {
+        animation-name: pulsating;
+        animation-duration: @pulsatingDuration;
+        box-shadow: 0 0 0 0 fade(@pulsatingColor, @pulsatingOpacity);
     }
-  }
-  @keyframes pulsating {
-    100% {
-      box-shadow: 0 0 0 @pulsatingDistance rgba(255,255,255,0);
-    }
-  }
-  & when not (@variationTransitionColors = false) {
-    each(@variationTransitionColors, {
-      @color: @value;
-      @c: @colors[@@color][color];
-      @l: @colors[@@color][light];
-
-      .@{color}.pulsating.transition {
-        box-shadow: 0 0 0 0 fade(@c, @pulsatingOpacity);
-      }
-      & when (@variationTransitionInverted) {
-        .@{color}.inverted.pulsating.transition {
-          box-shadow: 0 0 0 0 fade(@l, @pulsatingInvertedOpacity);
+    & when (@variationTransitionInverted) {
+        .inverted.pulsating.transition {
+            box-shadow: 0 0 0 0 fade(@pulsatingInvertedColor, @pulsatingInvertedOpacity);
         }
-      }
-    })
-  }
+    }
+    @keyframes pulsating {
+        100% {
+            box-shadow: 0 0 0 @pulsatingDistance rgba(255, 255, 255, 0);
+        }
+    }
+    & when not (@variationTransitionColors = false) {
+        each(@variationTransitionColors, {
+            @color: @value;
+            @c: @colors[@@color][color];
+            @l: @colors[@@color][light];
+
+            .@{color}.pulsating.transition {
+                box-shadow: 0 0 0 0 fade(@c, @pulsatingOpacity);
+            }
+            & when (@variationTransitionInverted) {
+                .@{color}.inverted.pulsating.transition {
+                    box-shadow: 0 0 0 0 fade(@l, @pulsatingInvertedOpacity);
+                }
+            }
+        });
+    }
 }
 
 .loadUIOverrides();

@@ -2,15 +2,15 @@
              Feed
 *******************************/
 
-/*-------------------
+/* -------------------
         Feed
---------------------*/
+-------------------- */
 
 @margin: 1em 0;
 
-/*-------------------
+/* -------------------
       Elements
---------------------*/
+-------------------- */
 
 /* Event */
 @eventWidth: 100%;
@@ -119,13 +119,13 @@
 @metadataElementSpacing: 0.75em;
 
 /* Like */
-@likeColor: '';
-@likeHoverColor: #FF2733;
-@likeActiveColor: #EF404A;
+@likeColor: "";
+@likeHoverColor: #ff2733;
+@likeActiveColor: #ef404a;
 @likeTransition: 0.2s color ease;
 
 /* Metadata Divider */
-@metadataDivider: '';
+@metadataDivider: "";
 @metadataDividerColor: rgba(0, 0, 0, 0.2);
 @metadataDividerOffset: -1em;
 
@@ -136,6 +136,6 @@
 
 @metadataActionHoverColor: @selectedTextColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */

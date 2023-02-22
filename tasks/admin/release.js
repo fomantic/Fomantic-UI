@@ -10,19 +10,15 @@
 
 */
 
-var
-  gulp = require('gulp')
-;
+const gulp = require('gulp');
 
 /* Release All */
 module.exports = function (callback) {
-
-  gulp.series(
-    //'build', // build Semantic
-    'init distributions', // sync with current github version
-    'create distributions', // update each repo with changes from master repo
-    'init components', // sync with current github version
-    'create components', // update each repo
-  )(callback);
-
+    gulp.series(
+        // 'build', // build Fomantic
+        'init distributions', // sync with current github version
+        'create distributions', // update each repo with changes from master repo
+        'init components', // sync with current github version
+        'create components' // update each repo
+    )(callback);
 };

@@ -4,7 +4,7 @@
 
 @transitionDelay: 0.1s;
 @transitionDuration: 0.5s;
-@transitionEasing: cubic-bezier(0.175, 0.885, 0.320, 1);
+@transitionEasing: cubic-bezier(0.175, 0.885, 0.32, 1);
 @transition: all @transitionDuration @defaultEasing @transitionDelay;
 
 @bottomZIndex: 2;

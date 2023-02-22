@@ -2,9 +2,9 @@
             Divider
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @margin: 1rem 0;
 @borderStyle: solid;
@@ -21,21 +21,20 @@
 @color: @darkTextColor;
 @textTransform: uppercase;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 /* Icon */
 @dividerIconSize: 1rem;
 @dividerIconMargin: 0;
-
 
 /*******************************
          Variations
 *******************************/
 
 /* Horizontal / Vertical */
-@horizontalMargin: '';
+@horizontalMargin: "";
 @horizontalDividerMargin: 1em;
 @horizontalRulerOffset: e(%("calc(-50%% - %d)", @horizontalDividerMargin));
 

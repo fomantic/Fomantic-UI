@@ -8,15 +8,14 @@
  *
  */
 
-
 /*******************************
             Theme
 *******************************/
 
-@type    : 'global';
-@element : 'site';
+@type: "global";
+@element: "site";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Page
@@ -26,23 +25,23 @@
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 html {
-  font-size: @emSize;
+    font-size: @emSize;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: @pageOverflowX;
-  min-width: @pageMinWidth;
-  background: @pageBackground;
-  font-family: @pageFont;
-  font-size: @fontSize;
-  line-height: @lineHeight;
-  color: @textColor;
+    margin: 0;
+    padding: 0;
+    overflow-x: @pageOverflowX;
+    min-width: @pageMinWidth;
+    background: @pageBackground;
+    font-family: @pageFont;
+    font-size: @fontSize;
+    line-height: @lineHeight;
+    color: @textColor;
 }
 
 /*******************************
@@ -54,28 +53,28 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: @headerFont;
-  line-height: @headerLineHeight;
-  margin: @headerMargin;
-  font-weight: @headerFontWeight;
-  padding: 0;
+    font-family: @headerFont;
+    line-height: @headerLineHeight;
+    margin: @headerMargin;
+    font-weight: @headerFontWeight;
+    padding: 0;
 }
 
 h1 {
-  min-height: 1rem;
-  font-size: @h1;
+    min-height: 1rem;
+    font-size: @h1;
 }
 h2 {
-  font-size: @h2;
+    font-size: @h2;
 }
 h3 {
-  font-size: @h3;
+    font-size: @h3;
 }
 h4 {
-  font-size: @h4;
+    font-size: @h4;
 }
 h5 {
-  font-size: @h5;
+    font-size: @h5;
 }
 
 h1:first-child,
@@ -83,7 +82,7 @@ h2:first-child,
 h3:first-child,
 h4:first-child,
 h5:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 h1:last-child,
@@ -91,105 +90,104 @@ h2:last-child,
 h3:last-child,
 h4:last-child,
 h5:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
-
 
 /*******************************
              Text
 *******************************/
 
 p {
-  margin: @paragraphMargin;
-  line-height: @paragraphLineHeight;
+    margin: @paragraphMargin;
+    line-height: @paragraphLineHeight;
 }
 p:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 p:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
-/*-------------------
+/* -------------------
         Links
---------------------*/
+-------------------- */
 
 a {
-  color: @linkColor;
-  text-decoration: @linkUnderline;
+    color: @linkColor;
+    text-decoration: @linkUnderline;
 }
 a:hover {
-  color: @linkHoverColor;
-  text-decoration: @linkHoverUnderline;
+    color: @linkHoverColor;
+    text-decoration: @linkHoverUnderline;
 }
-
 
 /*******************************
          Scrollbars
 *******************************/
 
 & when (@useCustomScrollbars) {
-
-  /* Force Simple Scrollbars */
-  body ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: @customScrollbarWidth;
-    height: @customScrollbarHeight;
-  }
-  body ::-webkit-scrollbar-track {
-    background: @trackBackground;
-    border-radius: @trackBorderRadius;
-  }
-  body ::-webkit-scrollbar-thumb {
-    cursor: pointer;
-    border-radius: @thumbBorderRadius;
-    background: @thumbBackground;
-    transition: @thumbTransition;
-  }
-  body ::-webkit-scrollbar-thumb:window-inactive {
-    background: @thumbInactiveBackground;
-  }
-  body ::-webkit-scrollbar-thumb:hover {
-    background: @thumbHoverBackground;
-  }
-  body .ui {
-    & when (@supportIE) {
-      /* IE11 */
-      scrollbar-face-color: @thumbBackgroundHex;
-      scrollbar-shadow-color: @thumbBackgroundHex;
-      scrollbar-track-color: @trackBackgroundHex;
-      scrollbar-arrow-color: @trackBackgroundHex;
+    /* Force Simple Scrollbars */
+    body ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: @customScrollbarWidth;
+        height: @customScrollbarHeight;
     }
-    /* firefox : first color thumb, second track*/
-    scrollbar-color:  @thumbBackground @trackBackground;
-    scrollbar-width: thin;
-  }
-
-  /* Inverted UI */
-  body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
-    background: @trackInvertedBackground;
-  }
-  body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb {
-    background: @thumbInvertedBackground;
-  }
-  body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
-    background: @thumbInvertedInactiveBackground;
-  }
-  body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
-    background: @thumbInvertedHoverBackground;
-  }
-
-  body .ui.inverted:not(.dimmer) {
-    & when (@supportIE) {
-      /* IE11 */
-      scrollbar-face-color: @thumbInvertedBackgroundHex;
-      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-      scrollbar-track-color: @trackInvertedBackgroundHex;
-      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+    body ::-webkit-scrollbar-track {
+        background: @trackBackground;
+        border-radius: @trackBorderRadius;
     }
-    /* firefox : first color thumb, second track */
-    scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
-  }
+    body ::-webkit-scrollbar-thumb {
+        cursor: pointer;
+        border-radius: @thumbBorderRadius;
+        background: @thumbBackground;
+        transition: @thumbTransition;
+    }
+    body ::-webkit-scrollbar-thumb:window-inactive {
+        background: @thumbInactiveBackground;
+    }
+    body ::-webkit-scrollbar-thumb:hover {
+        background: @thumbHoverBackground;
+    }
+    body .ui {
+        & when (@supportIE) {
+            /* IE11 */
+            scrollbar-face-color: @thumbBackgroundHex;
+            scrollbar-shadow-color: @thumbBackgroundHex;
+            scrollbar-track-color: @trackBackgroundHex;
+            scrollbar-arrow-color: @trackBackgroundHex;
+        }
+
+        /* firefox: first color thumb, second track */
+        scrollbar-color: @thumbBackground @trackBackground;
+        scrollbar-width: thin;
+    }
+
+    /* Inverted UI */
+    body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
+        background: @trackInvertedBackground;
+    }
+    body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb {
+        background: @thumbInvertedBackground;
+    }
+    body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
+        background: @thumbInvertedInactiveBackground;
+    }
+    body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
+        background: @thumbInvertedHoverBackground;
+    }
+
+    body .ui.inverted:not(.dimmer) {
+        & when (@supportIE) {
+            /* IE11 */
+            scrollbar-face-color: @thumbInvertedBackgroundHex;
+            scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+            scrollbar-track-color: @trackInvertedBackgroundHex;
+            scrollbar-arrow-color: @trackInvertedBackgroundHex;
+        }
+
+        /* firefox: first color thumb, second track */
+        scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+    }
 }
 
 /*******************************
@@ -197,34 +195,16 @@ a:hover {
 *******************************/
 
 /* Site */
-::-webkit-selection {
-  background-color: @highlightBackground;
-  color: @highlightColor;
-}
-::-moz-selection {
-  background-color: @highlightBackground;
-  color: @highlightColor;
-}
 ::selection {
-  background-color: @highlightBackground;
-  color: @highlightColor;
+    background-color: @highlightBackground;
+    color: @highlightColor;
 }
 
 /* Form */
-textarea::-webkit-selection,
-input::-webkit-selection {
-  background-color: @inputHighlightBackground;
-  color: @inputHighlightColor;
-}
-textarea::-moz-selection,
-input::-moz-selection {
-  background-color: @inputHighlightBackground;
-  color: @inputHighlightColor;
-}
 textarea::selection,
 input::selection {
-  background-color: @inputHighlightBackground;
-  color: @inputHighlightColor;
+    background-color: @inputHighlightBackground;
+    color: @inputHighlightColor;
 }
 
 .loadUIOverrides();

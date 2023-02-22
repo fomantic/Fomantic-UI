@@ -12,10 +12,10 @@
             Theme
 *******************************/
 
-@type    : 'global';
-@element : 'reset';
+@type: "global";
+@element: "reset";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
              Reset
@@ -25,16 +25,19 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* iPad Input Shadows */
-input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
-  -webkit-appearance: none;
-  -moz-appearance: none; /* mobile firefox too! */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none; /* mobile firefox too! */
 }
 
 .loadUIOverrides();

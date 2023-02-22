@@ -62,11 +62,11 @@
 @toastImageMiniImagePadding: 4.4em;
 
 /* Progressbar Colors */
-@toastInfoProgressColor: darken(@toastInfoColor,15);
-@toastWarningProgressColor: darken(@toastWarningColor,15);
-@toastErrorProgressColor: darken(@toastErrorColor,15);
-@toastSuccessProgressColor: darken(@toastSuccessColor,15);
-@toastNeutralProgressColor: darken(@toastNeutralColor,15);
+@toastInfoProgressColor: darken(@toastInfoColor, 15);
+@toastWarningProgressColor: darken(@toastWarningColor, 15);
+@toastErrorProgressColor: darken(@toastErrorColor, 15);
+@toastSuccessProgressColor: darken(@toastSuccessColor, 15);
+@toastNeutralProgressColor: darken(@toastNeutralColor, 15);
 
 /* Close Icon */
 @toastCloseTopDistance: 0.3em;
@@ -77,8 +77,8 @@
 @toastCloseDistanceVertical: 1em;
 
 /* Actions */
-@toastActionBackground: rgba(255, 255, 255, .25);
-@toastActionBorder: 1px solid rgba(0, 0, 0, .2);
+@toastActionBackground: rgba(255, 255, 255, 0.25);
+@toastActionBorder: 1px solid rgba(0, 0, 0, 0.2);
 @toastActionMargin: -1em;
 @toastActionMarginTop: 0.5em;
 @toastActionMarginLeft: 1em;

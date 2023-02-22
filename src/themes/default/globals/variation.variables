@@ -233,6 +233,7 @@
 @variationSegmentSecondary: true;
 @variationSegmentTertiary: true;
 @variationSegmentAttached: true;
+@variationSegmentSeamless: true;
 @variationSegmentFitted: true;
 @variationSegmentScrolling: true;
 @variationSegmentScrollingShort: true;
@@ -259,7 +260,6 @@
 @variationTextStates: @variationAllStates;
 @variationTextSizes: @variationAllSizes;
 @variationTextColors: @variationAllColors;
-
 
 /*******************************
            Collections
@@ -295,6 +295,7 @@
 @variationGridDivided: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
+@variationGridAttached: true;
 @variationGridStretched: true;
 @variationGridJustified: true;
 @variationGridReversed: true;
@@ -326,6 +327,8 @@
 @variationMenuAttached: true;
 @variationMenuIcon: true;
 @variationMenuEqualWidth: true;
+@variationMenuWrapping: true;
+@variationMenuWrapped: true;
 @variationMenuSizes: @variationAllSizes;
 @variationMenuColors: @variationAllColors;
 
@@ -386,7 +389,6 @@
 @variationTableOverflowingVeryLong: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
-
 
 /*******************************
              Views
@@ -482,7 +484,6 @@
 @variationStatisticSizes: @variationAllSizes;
 @variationStatisticColors: @variationAllColors;
 
-
 /*******************************
             Modules
 *******************************/
@@ -572,6 +573,7 @@
 @variationFlyoutLeft: true;
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
+@variationFlyoutScrolling: true;
 
 /* Modal */
 @variationModalInverted: true;

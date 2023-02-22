@@ -2,15 +2,15 @@
         Import Directives
 *******************************/
 
-/*------------------
+/* ------------------
        Theme
--------------------*/
+------------------- */
 
 @theme: @@element;
 
-/*--------------------
+/* --------------------
    Site Variables
----------------------*/
+--------------------- */
 
 /* Default site.variables */
 @import "@{themesFolder}/default/globals/site.variables";
@@ -19,17 +19,14 @@
 @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 
 /* Component's site.variables */
-& when not (@theme = 'default') {
-  @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
-}
+@import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
 
 /* Site theme site.variables */
 @import (optional) "@{siteFolder}/globals/site.variables";
 
-
-/*-------------------
+/* -------------------
  Component Variables
----------------------*/
+--------------------- */
 
 /* Default */
 @import "@{themesFolder}/default/@{type}s/@{element}.variables";
@@ -40,49 +37,53 @@
 /* Site Theme */
 @import (optional) "@{siteFolder}/@{type}s/@{element}.variables";
 
-
-/*-------------------------
+/* -------------------------
     Central Color Map
--------------------------*/
+------------------------- */
 
 /* Default */
 @import "@{themesFolder}/default/globals/colors.less";
 
-/* Site Theme */
+/* Packaged colors.less */
 @import (optional) "@{themesFolder}/@{site}/globals/colors.less";
 
+/* Packaged Theme */
+@import (optional) "@{themesFolder}/@{theme}/globals/colors.less";
+
+/* Site Theme */
+@import (optional) "@{siteFolder}/globals/colors.less";
 
 /*******************************
              Mix-ins
 *******************************/
 
-/*------------------
+/* ------------------
        Fonts
--------------------*/
+------------------- */
 
 .loadFonts() {
-  & when (@importGoogleFonts) {
-    @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
-  }
-  & when (@importFonts) and not (@fontName = ''){
-    each(@fonts, {
-      @font-face {
-        each(@value,{
-            @{key}: @value;
+    & when (@importGoogleFonts) {
+        @import (css) url("@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}");
+    }
+    & when (@importFonts) and not (@fontName = "") {
+        each(@fonts, {
+            @font-face {
+                each(@value, {
+                    @{key}: @value;
+                });
+            }
         });
-      }
-    })
-  }
+    }
 }
 
-/*------------------
+/* ------------------
      Overrides
--------------------*/
+------------------- */
 
 .loadUIOverrides() {
-  & when not (@theme = 'default') {
-    @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
-  }
-  @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
-  @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
+    & when not (@theme = "default") {
+        @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
+    }
+    @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
+    @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
 }

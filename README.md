@@ -57,7 +57,7 @@ Fomantic includes an interactive installer to help setup your project.
 * IE 11[^2]
 * Microsoft Edge 12-44[^2]
 
-[^1]: Fomantic-UI should basically still work in iOS Safari 7+, Android 4.4+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
+[^1]: Fomantic-UI should basically still work in iOS Safari 9+, Android 6+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
 [^2]: Fomantic-UI should basically still work in IE11 / old Edge, but, starting from v2.9.0, we won't support them anymore in terms of dedicated bugfixes.
 
 ---

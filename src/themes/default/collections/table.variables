@@ -2,9 +2,9 @@
              Table
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @horizontalMargin: 0;
@@ -13,9 +13,8 @@
 @borderSpacing: 0;
 @borderRadius: @defaultBorderRadius;
 @transition:
-  background @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 @background: @white;
 @color: @textColor;
 @borderWidth: 1px;
@@ -24,9 +23,9 @@
 @textAlign: left;
 @verticalAlign: middle;
 
-/*--------------
+/* --------------
      Parts
----------------*/
+--------------- */
 
 /* Table Row */
 @rowBorder: 1px solid @internalBorderColor;
@@ -78,9 +77,9 @@
 @responsiveCellBoxShadow: none;
 @responsiveCellHeaderFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Definition */
 @definitionPageBackground: @white;
@@ -97,21 +96,20 @@
 @definitionColumnFontWeight: @bold;
 @definitionColumnColor: @selectedTextColor;
 @definitionColumnFontSize: @relativeMedium;
-@definitionColumnTextTransform: '';
-@definitionColumnBoxShadow: '';
-@definitionColumnTextAlign: '';
-@definitionColumnHorizontalPadding: '';
+@definitionColumnTextTransform: "";
+@definitionColumnBoxShadow: "";
+@definitionColumnTextAlign: "";
+@definitionColumnHorizontalPadding: "";
 
-
-/*--------------
+/* --------------
     Couplings
----------------*/
+--------------- */
 
 @iconVerticalAlign: baseline;
 
-/*--------------
+/* --------------
      States
----------------*/
+--------------- */
 
 @stateMarkerWidth: 0;
 
@@ -145,21 +143,21 @@
 @warningBackgroundHover: darken(@warningBackgroundColor, 3);
 @warningColorHover: darken(@warningColor, 3);
 @invertedWarningColor: @warningTextColor;
-@invertedWarningBackgroundColor: #EEC97E;
+@invertedWarningBackgroundColor: #eec97e;
 
 /* Active */
 @activeColor: @textColor;
-@activeBackgroundColor: #E0E0E0;
+@activeBackgroundColor: #e0e0e0;
 @activeBoxShadow: @stateMarkerWidth 0 0 @activeColor inset;
 @invertedActiveColor: @textColor;
-@invertedActiveBackgroundColor: #A0A0A0;
+@invertedActiveBackgroundColor: #a0a0a0;
 
-@activeBackgroundHover: #EFEFEF;
+@activeBackgroundHover: #efefef;
 @activeColorHover: @selectedTextColor;
 
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 
 /* Attached */
 @attachedTopOffset: 0;
@@ -168,10 +166,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-  @boxShadow,
-  @attachedBoxShadow
-;
+@attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Striped */
 @stripedBackground: rgba(0, 0, 50, 0.02);
@@ -184,16 +179,16 @@
 @selectableInvertedTextColor: @invertedSelectedTextColor;
 
 /* Sortable */
-@sortableBackground: '';
+@sortableBackground: "";
 @sortableColor: @textColor;
 
 @sortableBorder: 1px solid @borderColor;
 @sortableIconWidth: auto;
 @sortableIconDistance: 0.5em;
 @sortableIconOpacity: 0.8;
-@sortableIconFont: 'Icons';
-@sortableIconAscending: '\f0d8';
-@sortableIconDescending: '\f0d7';
+@sortableIconFont: "Icons";
+@sortableIconAscending: "\f0d8";
+@sortableIconDescending: "\f0d7";
 @sortableDisabledColor: @disabledTextColor;
 
 @sortableHoverBackground: @transparentBlack;
@@ -217,7 +212,7 @@
 @coloredBorderSizeCover: (@coloredBorderSize / 2);
 
 /* Inverted */
-@invertedBackground: #333333;
+@invertedBackground: #333;
 @invertedBorder: none;
 @invertedCellBorder: 1px solid @whiteBorderColor;
 @invertedCellBorderColor: @whiteBorderColor;
@@ -246,7 +241,7 @@
 @basicTableCellBackground: transparent;
 @basicTableHeaderDivider: none;
 @basicTableCellBorder: 1px solid rgba(0, 0, 0, 0.1);
-@basicTableCellPadding: '';
+@basicTableCellPadding: "";
 @basicTableStripedBackground: @transparentBlack;
 
 /* Padded */
@@ -294,7 +289,6 @@
 @overflowingTabletMaxHeight: (@overflowingItemHeight * @overflowingTabletMaxItems);
 @overflowingComputerMaxHeight: (@overflowingItemHeight * @overflowingComputerMaxItems);
 @overflowingWidescreenMaxHeight: (@overflowingItemHeight * @overflowingWidescreenMaxItems);
-
 
 /* Sizes */
 @small: 0.9em;

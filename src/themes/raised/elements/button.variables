@@ -2,11 +2,11 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
-@backgroundColor: #F8F8F8;
+@backgroundColor: #f8f8f8;
 @backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.05));
 @verticalAlign: middle;
 @borderRadius: 0.4em;
@@ -19,9 +19,8 @@
 
 /* transition box shadow as well */
 @transition:
-  opacity @defaultDuration @defaultEasing,
-  background-color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing,
+    background-color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing;

@@ -1,13 +1,13 @@
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
 /* Button Variables */
-@pageFont: 'Source Sans Pro', Arial, sans-serif;
+@pageFont: "Source Sans Pro", Arial, sans-serif;
 
 @textTransform: none;
 @fontWeight: @normal;
-@textColor: #333333;
+@textColor: #333;
 
 @verticalPadding: 1.1em;
 @horizontalPadding: 2.5em;
@@ -17,30 +17,30 @@
 @basicFontWeight: bold;
 @basicTextTransform: uppercase;
 
-@blue: #4A88CB;
+@blue: #4a88cb;
 @primaryColor: @blue;
 
 @borderRadius: 0.25em;
 
-@backgroundColor: #E6EAED;
+@backgroundColor: #e6eaed;
 @backgroundImage: none;
 @boxShadow: none;
 
-@hoverBackgroundColor: #DDDDDD;
+@hoverBackgroundColor: #ddd;
 @hoverBackgroundImage: none;
 @hoverBoxShadow: none;
 
-@downBackgroundColor: #D0D0D0;
+@downBackgroundColor: #d0d0d0;
 @downBackgroundImage: none;
 @downBoxShadow: none;
 
-@activeBackgroundColor: #CCCCCC;
+@activeBackgroundColor: #ccc;
 @activeBackgroundImage: none;
 @activeBoxShadow: none;
 
 @verticalBoxShadow: none;
 
-@loadingBackgroundColor: #F0F0F0;
+@loadingBackgroundColor: #f0f0f0;
 
 @compactVerticalPadding: (@verticalPadding * 0.5);
 @compactHorizontalPadding: (@horizontalPadding * 0.5);

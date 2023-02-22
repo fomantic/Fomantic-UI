@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.9.0 - Loader
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.2 - Loader
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -23,14 +23,13 @@
   margin: 0;
   text-align: center;
   z-index: 1000;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 /* Static Shape */
 .ui.loader::before {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   left: 50%;
   width: 100%;
@@ -42,17 +41,15 @@
 /* Active Shape */
 .ui.loader::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   left: 50%;
   width: 100%;
   height: 100%;
-  -webkit-animation: loader 0.6s infinite linear;
-          animation: loader 0.6s infinite linear;
+  animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  -webkit-box-shadow: 0 0 0 1px transparent;
-          box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 /* Speeds */
@@ -60,35 +57,25 @@
 .ui.fast.loading.loading .input > i.icon::after,
 .ui.fast.loading.loading > i.icon::after,
 .ui.fast.loader::after {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  animation-duration: 0.3s;
 }
 .ui.slow.loading.loading::after,
 .ui.slow.loading.loading .input > i.icon::after,
 .ui.slow.loading.loading > i.icon::after,
 .ui.slow.loader::after {
-  -webkit-animation-duration: 0.9s;
-          animation-duration: 0.9s;
+  animation-duration: 0.9s;
 }
 
 /* Active Animation */
-@-webkit-keyframes loader {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
 @keyframes loader {
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
-/*-------------------
+/* -------------------
       Coupling
---------------------*/
-
+-------------------- */
 
 /* Show inside active dimmer */
 .ui.dimmer > .loader {
@@ -117,10 +104,9 @@
 *******************************/
 
 
-/*-------------------
-          Text
-  --------------------*/
-
+/* -------------------
+            Text
+    -------------------- */
 .ui.ui.ui.ui.text.loader {
   width: auto;
   height: auto;
@@ -135,8 +121,7 @@
 
 .ui.indeterminate.loader::after {
   animation-direction: reverse;
-  -webkit-animation-duration: 1.2s;
-          animation-duration: 1.2s;
+  animation-duration: 1.2s;
 }
 .ui.loader.active,
 .ui.loader.visible {
@@ -153,10 +138,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
-
+-------------------- */
 .ui.loader {
   width: 2.28571429rem;
   height: 2.28571429rem;
@@ -278,10 +262,9 @@
   padding-top: 5.35714286rem;
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
-
+-------------------- */
 .ui.primary.elastic.loader.loader::before,
 .ui.primary.basic.elastic.loading.button::before,
 .ui.primary.basic.elastic.loading.button::after,
@@ -292,7 +275,7 @@
 .ui.primary.loading.loading.loading.loading .input > i.icon::after,
 .ui.primary.loading.loading.loading.loading > i.icon::after,
 .ui.primary.loader.loader.loader::after {
-  color: #2185D0;
+  color: #2185d0;
 }
 .ui.inverted.primary.elastic.loader::before,
 .ui.inverted.primary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -302,7 +285,7 @@
 .ui.inverted.primary.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.primary.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.primary.loader.loader.loader::after {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 .ui.secondary.elastic.loader.loader::before,
 .ui.secondary.basic.elastic.loading.button::before,
@@ -314,7 +297,7 @@
 .ui.secondary.loading.loading.loading.loading .input > i.icon::after,
 .ui.secondary.loading.loading.loading.loading > i.icon::after,
 .ui.secondary.loader.loader.loader::after {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 .ui.inverted.secondary.elastic.loader::before,
 .ui.inverted.secondary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -336,7 +319,7 @@
 .ui.red.loading.loading.loading.loading .input > i.icon::after,
 .ui.red.loading.loading.loading.loading > i.icon::after,
 .ui.red.loader.loader.loader::after {
-  color: #DB2828;
+  color: #db2828;
 }
 .ui.inverted.red.elastic.loader::before,
 .ui.inverted.red.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -346,7 +329,7 @@
 .ui.inverted.red.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.red.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.red.loader.loader.loader::after {
-  color: #FF695E;
+  color: #ff695e;
 }
 .ui.orange.elastic.loader.loader::before,
 .ui.orange.basic.elastic.loading.button::before,
@@ -358,7 +341,7 @@
 .ui.orange.loading.loading.loading.loading .input > i.icon::after,
 .ui.orange.loading.loading.loading.loading > i.icon::after,
 .ui.orange.loader.loader.loader::after {
-  color: #F2711C;
+  color: #f2711c;
 }
 .ui.inverted.orange.elastic.loader::before,
 .ui.inverted.orange.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -368,7 +351,7 @@
 .ui.inverted.orange.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.orange.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.orange.loader.loader.loader::after {
-  color: #FF851B;
+  color: #ff851b;
 }
 .ui.yellow.elastic.loader.loader::before,
 .ui.yellow.basic.elastic.loading.button::before,
@@ -380,7 +363,7 @@
 .ui.yellow.loading.loading.loading.loading .input > i.icon::after,
 .ui.yellow.loading.loading.loading.loading > i.icon::after,
 .ui.yellow.loader.loader.loader::after {
-  color: #FBBD08;
+  color: #fbbd08;
 }
 .ui.inverted.yellow.elastic.loader::before,
 .ui.inverted.yellow.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -390,7 +373,7 @@
 .ui.inverted.yellow.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.yellow.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.yellow.loader.loader.loader::after {
-  color: #FFE21F;
+  color: #ffe21f;
 }
 .ui.olive.elastic.loader.loader::before,
 .ui.olive.basic.elastic.loading.button::before,
@@ -402,7 +385,7 @@
 .ui.olive.loading.loading.loading.loading .input > i.icon::after,
 .ui.olive.loading.loading.loading.loading > i.icon::after,
 .ui.olive.loader.loader.loader::after {
-  color: #B5CC18;
+  color: #b5cc18;
 }
 .ui.inverted.olive.elastic.loader::before,
 .ui.inverted.olive.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -412,7 +395,7 @@
 .ui.inverted.olive.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.olive.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.olive.loader.loader.loader::after {
-  color: #D9E778;
+  color: #d9e778;
 }
 .ui.green.elastic.loader.loader::before,
 .ui.green.basic.elastic.loading.button::before,
@@ -424,7 +407,7 @@
 .ui.green.loading.loading.loading.loading .input > i.icon::after,
 .ui.green.loading.loading.loading.loading > i.icon::after,
 .ui.green.loader.loader.loader::after {
-  color: #21BA45;
+  color: #21ba45;
 }
 .ui.inverted.green.elastic.loader::before,
 .ui.inverted.green.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -434,7 +417,7 @@
 .ui.inverted.green.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.green.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.green.loader.loader.loader::after {
-  color: #2ECC40;
+  color: #2ecc40;
 }
 .ui.teal.elastic.loader.loader::before,
 .ui.teal.basic.elastic.loading.button::before,
@@ -446,7 +429,7 @@
 .ui.teal.loading.loading.loading.loading .input > i.icon::after,
 .ui.teal.loading.loading.loading.loading > i.icon::after,
 .ui.teal.loader.loader.loader::after {
-  color: #00B5AD;
+  color: #00b5ad;
 }
 .ui.inverted.teal.elastic.loader::before,
 .ui.inverted.teal.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -456,7 +439,7 @@
 .ui.inverted.teal.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.teal.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.teal.loader.loader.loader::after {
-  color: #6DFFFF;
+  color: #6dffff;
 }
 .ui.blue.elastic.loader.loader::before,
 .ui.blue.basic.elastic.loading.button::before,
@@ -468,7 +451,7 @@
 .ui.blue.loading.loading.loading.loading .input > i.icon::after,
 .ui.blue.loading.loading.loading.loading > i.icon::after,
 .ui.blue.loader.loader.loader::after {
-  color: #2185D0;
+  color: #2185d0;
 }
 .ui.inverted.blue.elastic.loader::before,
 .ui.inverted.blue.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -478,7 +461,7 @@
 .ui.inverted.blue.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.blue.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.blue.loader.loader.loader::after {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 .ui.violet.elastic.loader.loader::before,
 .ui.violet.basic.elastic.loading.button::before,
@@ -490,7 +473,7 @@
 .ui.violet.loading.loading.loading.loading .input > i.icon::after,
 .ui.violet.loading.loading.loading.loading > i.icon::after,
 .ui.violet.loader.loader.loader::after {
-  color: #6435C9;
+  color: #6435c9;
 }
 .ui.inverted.violet.elastic.loader::before,
 .ui.inverted.violet.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -500,7 +483,7 @@
 .ui.inverted.violet.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.violet.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.violet.loader.loader.loader::after {
-  color: #A291FB;
+  color: #a291fb;
 }
 .ui.purple.elastic.loader.loader::before,
 .ui.purple.basic.elastic.loading.button::before,
@@ -512,7 +495,7 @@
 .ui.purple.loading.loading.loading.loading .input > i.icon::after,
 .ui.purple.loading.loading.loading.loading > i.icon::after,
 .ui.purple.loader.loader.loader::after {
-  color: #A333C8;
+  color: #a333c8;
 }
 .ui.inverted.purple.elastic.loader::before,
 .ui.inverted.purple.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -522,7 +505,7 @@
 .ui.inverted.purple.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.purple.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.purple.loader.loader.loader::after {
-  color: #DC73FF;
+  color: #dc73ff;
 }
 .ui.pink.elastic.loader.loader::before,
 .ui.pink.basic.elastic.loading.button::before,
@@ -534,7 +517,7 @@
 .ui.pink.loading.loading.loading.loading .input > i.icon::after,
 .ui.pink.loading.loading.loading.loading > i.icon::after,
 .ui.pink.loader.loader.loader::after {
-  color: #E03997;
+  color: #e03997;
 }
 .ui.inverted.pink.elastic.loader::before,
 .ui.inverted.pink.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -544,7 +527,7 @@
 .ui.inverted.pink.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.pink.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.pink.loader.loader.loader::after {
-  color: #FF8EDF;
+  color: #ff8edf;
 }
 .ui.brown.elastic.loader.loader::before,
 .ui.brown.basic.elastic.loading.button::before,
@@ -556,7 +539,7 @@
 .ui.brown.loading.loading.loading.loading .input > i.icon::after,
 .ui.brown.loading.loading.loading.loading > i.icon::after,
 .ui.brown.loader.loader.loader::after {
-  color: #A5673F;
+  color: #a5673f;
 }
 .ui.inverted.brown.elastic.loader::before,
 .ui.inverted.brown.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -566,7 +549,7 @@
 .ui.inverted.brown.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.brown.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.brown.loader.loader.loader::after {
-  color: #D67C1C;
+  color: #d67c1c;
 }
 .ui.grey.elastic.loader.loader::before,
 .ui.grey.basic.elastic.loading.button::before,
@@ -588,7 +571,7 @@
 .ui.inverted.grey.loading.loading.loading.loading .input > i.icon::after,
 .ui.inverted.grey.loading.loading.loading.loading > i.icon::after,
 .ui.inverted.grey.loader.loader.loader::after {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 .ui.black.elastic.loader.loader::before,
 .ui.black.basic.elastic.loading.button::before,
@@ -600,7 +583,7 @@
 .ui.black.loading.loading.loading.loading .input > i.icon::after,
 .ui.black.loading.loading.loading.loading > i.icon::after,
 .ui.black.loader.loader.loader::after {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 .ui.inverted.black.elastic.loader::before,
 .ui.inverted.black.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -623,7 +606,7 @@
   border-color: currentColor;
 }
 .ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic)::before {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.elastic.basic.loading.button::before,
 .ui.elastic.basic.loading.button::after {
@@ -633,18 +616,16 @@
   border-bottom-color: currentColor;
 }
 
-/*-------------------
-         Inline
-  --------------------*/
-
+/* -------------------
+           Inline
+    -------------------- */
 .ui.inline.loader {
   position: relative;
   vertical-align: middle;
   margin: 0;
   left: 0;
   top: 0;
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 .ui.inline.loader.active,
 .ui.inline.loader.visible {
@@ -685,12 +666,11 @@
   border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
-/*-------------------
-         Elastic
-  --------------------*/
-
+/* -------------------
+           Elastic
+    -------------------- */
 .ui.dimmer > .ui.elastic.loader {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.inverted.dimmer > .ui.elastic.loader {
   color: #767676;
@@ -699,83 +679,45 @@
 .ui.elastic.loading.loading .input > i.icon::after,
 .ui.elastic.loading.loading > i.icon::after,
 .ui.elastic.loader.loader::after {
-  -webkit-animation: loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
-          animation: loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation: loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+  animation-delay: 0.3s;
 }
 .ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
 .ui.elastic.loading.loading.loading .input > i.icon::before,
 .ui.elastic.loading.loading.loading > i.icon::before,
 .ui.elastic.loader.loader::before {
-  -webkit-animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
-          animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+  animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
   -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
   border-right-color: transparent;
 }
 .ui.elastic.inline.loader:empty {
-  -webkit-animation: loader 8s infinite linear;
-          animation: loader 8s infinite linear;
+  animation: loader 8s infinite linear;
 }
 .ui.slow.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
 .ui.slow.elastic.loading.loading .input > i.icon::after,
 .ui.slow.elastic.loading.loading > i.icon::after,
 .ui.slow.elastic.loader.loader::after {
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
-  -webkit-animation-delay: 0.45s;
-          animation-delay: 0.45s;
+  animation-duration: 1.5s;
+  animation-delay: 0.45s;
 }
 .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
 .ui.slow.elastic.loading.loading.loading .input > i.icon::before,
 .ui.slow.elastic.loading.loading.loading > i.icon::before,
 .ui.slow.elastic.loader.loader::before {
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  animation-duration: 1.5s;
 }
 .ui.fast.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
 .ui.fast.elastic.loading.loading .input > i.icon::after,
 .ui.fast.elastic.loading.loading > i.icon::after,
 .ui.fast.elastic.loader.loader::after {
-  -webkit-animation-duration: 0.66s;
-          animation-duration: 0.66s;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation-duration: 0.66s;
+  animation-delay: 0.2s;
 }
 .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
 .ui.fast.elastic.loading.loading.loading .input > i.icon::before,
 .ui.fast.elastic.loading.loading.loading > i.icon::before,
 .ui.fast.elastic.loader.loader::before {
-  -webkit-animation-duration: 0.66s;
-          animation-duration: 0.66s;
-}
-@-webkit-keyframes elastic-loader {
-  0%,
-  1% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-  }
-  1.1%,
-  50% {
-    border-left-color: inherit;
-  }
-  10%,
-  35.1% {
-    border-bottom-color: transparent;
-  }
-  10.1%,
-  35% {
-    border-bottom-color: inherit;
-  }
-  50.1% {
-    border-left-color: transparent;
-  }
-  100% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+  animation-duration: 0.66s;
 }
 @keyframes elastic-loader {
   0%,
@@ -801,36 +743,7 @@
   100% {
     border-left-color: transparent;
     border-bottom-color: transparent;
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes currentcolor-elastic-loader {
-  0%,
-  1% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-  }
-  1.1%,
-  50% {
-    border-left-color: currentColor;
-  }
-  10%,
-  35.1% {
-    border-bottom-color: transparent;
-  }
-  10.1%,
-  35% {
-    border-bottom-color: currentColor;
-  }
-  50.1% {
-    border-left-color: transparent;
-  }
-  100% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @keyframes currentcolor-elastic-loader {
@@ -857,8 +770,7 @@
   100% {
     border-left-color: transparent;
     border-bottom-color: transparent;
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

@@ -2,9 +2,9 @@
             Image
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @placeholderColor: transparent;
 @roundedBorderRadius: 0.3125em;
@@ -13,18 +13,17 @@
 @imageVerticalMargin: 0.5rem;
 @imageBorder: 1px solid rgba(0, 0, 0, 0.1);
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Avatar */
 @avatarSize: 2em;
 @avatarMargin: 0.25em;
 
-
-/*-------------------
+/* -------------------
        Variations
---------------------*/
+-------------------- */
 
 /* Spaced */
 @spacedDistance: 0.5em;

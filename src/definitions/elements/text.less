@@ -4,73 +4,71 @@
  *
  *
  * Released under the MIT license
- * https://github.com/fomantic/Fomantic-UI/blob/master/LICENSE.md
+ * https://opensource.org/licenses/MIT
  *
  */
-
 
 /*******************************
             Theme
 *******************************/
 
-@type    : 'element';
-@element : 'text';
+@type: "element";
+@element: "text";
 
-@import (multiple) '../../theme.config';
-
+@import (multiple) "../../theme.config";
 
 /*******************************
              Text
 *******************************/
 span.ui.text {
-  line-height: @lineHeight;
+    line-height: @lineHeight;
 }
 
 & when not (@variationTextColors = false) {
-  each(@variationTextColors, {
-    @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
+    each(@variationTextColors, {
+        @color: @value;
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
 
-    span.ui.@{color}.text {
-      color: @c;
-    }
-    & when (@variationTextInverted) {
-      span.ui.inverted.@{color}.text {
-        color: @l;
-      }
-    }
-  })
+        span.ui.@{color}.text {
+            color: @c;
+        }
+        & when (@variationTextInverted) {
+            span.ui.inverted.@{color}.text {
+                color: @l;
+            }
+        }
+    });
 }
 
 & when not (@variationTextStates = false) {
-  each(@variationTextStates, {
-    @state: @value;
-    @c: @textStates[@@state][color];
+    each(@variationTextStates, {
+        @state: @value;
+        @c: @textStates[@@state][color];
 
-    span.ui.@{state}.text {
-      color: @c;
-    }
-  })
+        span.ui.@{state}.text {
+            color: @c;
+        }
+    });
 }
 
 & when (@variationTextDisabled) {
-  span.ui.disabled.text {
-    opacity: @disabledOpacity;
-  }
+    span.ui.disabled.text {
+        opacity: @disabledOpacity;
+    }
 }
 
 /* Sizes */
 span.ui.medium.text {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationTextSizes = false) {
-  each(@variationTextSizes, {
-    @s: @@value;
-    span.ui.@{value}.text {
-      font-size: @s;
-    }
-  })
+    each(@variationTextSizes, {
+        @s: @@value;
+        span.ui.@{value}.text {
+            font-size: @s;
+        }
+    });
 }
 
 .loadUIOverrides();
