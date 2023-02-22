@@ -163,7 +163,7 @@
     [data-tooltip][data-position="bottom center"]::after {
         transform: translateX(-50%) scale(0) !important;
     }
-    [data-tooltip]:not([data-position]):hover:after,
+    [data-tooltip]:not([data-position]):hover::after,
     [data-tooltip][data-position="top center"]:hover::after,
     [data-tooltip][data-position="bottom center"]:hover::after {
         transform: translateX(-50%) scale(1);
@@ -466,12 +466,12 @@
     }
 
     & when (@variationPopupBasic) {
-      /*--------------
-          Basic
-      ---------------*/
-      [data-tooltip][data-variation~="basic"]::before {
-          display: none;
-      }
+        /*--------------
+            Basic
+        ---------------*/
+        [data-tooltip][data-variation~="basic"]::before {
+            display: none;
+        }
     }
 
     & when (@variationPopupMultiline) {
