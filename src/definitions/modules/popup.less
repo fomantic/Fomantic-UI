@@ -113,23 +113,6 @@
         z-index: @tooltipZIndex;
     }
 
-    /* Default Position (Top Center) */
-    [data-tooltip]:not([data-position])::before {
-        top: auto;
-        right: auto;
-        bottom: 100%;
-        left: 50%;
-        background: @tooltipArrowBottomBackground;
-        margin-left: @tooltipArrowHorizontalOffset;
-        margin-bottom: -@tooltipArrowVerticalOffset;
-    }
-    [data-tooltip]:not([data-position])::after {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 100%;
-        margin-bottom: @tooltipDistanceAway;
-    }
-
     /* Animation */
     [data-tooltip]::before,
     [data-tooltip]::after {
