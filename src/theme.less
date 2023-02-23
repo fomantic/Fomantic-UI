@@ -19,7 +19,9 @@
 @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 
 /* Component's site.variables */
-@import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
+& when not (@theme = 'default') {
+    @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
+}
 
 /* Site theme site.variables */
 @import (optional) "@{siteFolder}/globals/site.variables";
