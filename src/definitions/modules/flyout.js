@@ -268,12 +268,12 @@
                         windowRefocused = true;
                     },
                     click: function (event) {
-                        if (windowRefocused && module.is.visible() && settings.autofocus && settings.dimPage) {
-                            windowRefocused = false;
-                            if (document.activeElement !== event.target) {
+                        if (windowRefocused && document.activeElement !== event.target && module.is.visible() && settings.autofocus && settings.dimPage) {
+                            if ($(document.activeElement).closest(selector.flyout).length === 0) {
                                 requestAnimationFrame(module.set.autofocus);
                             }
                         }
+                        windowRefocused = false;
                     },
                     clickaway: function (event) {
                         if (settings.closable) {

@@ -552,12 +552,12 @@
                         windowRefocused = true;
                     },
                     click: function (event) {
-                        if (windowRefocused && $dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
-                            windowRefocused = false;
-                            if (document.activeElement !== event.target) {
+                        if (windowRefocused && document.activeElement !== event.target && $dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
+                            if ($(document.activeElement).closest(selector.modal).length === 0) {
                                 requestAnimationFrame(module.set.autofocus);
                             }
                         }
+                        windowRefocused = false;
                     },
                 },
 
