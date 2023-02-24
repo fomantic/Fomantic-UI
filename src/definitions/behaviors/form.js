@@ -22,7 +22,6 @@
     $.fn.form = function (parameters) {
         var
             $allModules      = $(this),
-            moduleSelector   = $allModules.selector || '',
 
             time             = Date.now(),
             performance      = [],
@@ -171,7 +170,11 @@
                         $(window).on('beforeunload' + eventNamespace, module.event.beforeUnload);
                     }
 
-                    $field.on('change click keyup keydown blur', function (e) {
+                    $field.on('change' + eventNamespace
+                        + ' click' + eventNamespace
+                        + ' keyup' + eventNamespace
+                        + ' keydown' + eventNamespace
+                        + ' blur' + eventNamespace, function (e) {
                         module.determine.isDirty();
                     });
 
@@ -1473,9 +1476,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
