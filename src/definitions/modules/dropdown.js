@@ -2401,8 +2401,8 @@
                     module.set.value('', null, null, preventChangeTrigger);
                 },
 
-                clearCache: function (value) {
-                    module.debug('Clearing cache', value);
+                clearCache: function () {
+                    module.debug('Clearing API cache once');
                     tempDisableApiCache = true;
                 },
 
