@@ -880,6 +880,14 @@ select.ui.dropdown {
         height: @imageLabelHeight;
     }
 
+    .ui.multiple.dropdown:not(.selection):not(.labeled) > .dropdown.icon {
+        margin-right: @dropdownIconMultipleMarginRight;
+    }
+    .ui.multiple.dropdown:not(.selection):not(.labeled):not(.search) > .text:first-child ~ .dropdown.icon {
+        margin-top: @dropdownIconMultipleMarginTop;
+        position: absolute;
+    }
+
     & when (@variationDropdownSearch) {
         /* -----------------
           Multiple Search
