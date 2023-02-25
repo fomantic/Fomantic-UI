@@ -268,10 +268,8 @@
                         windowRefocused = true;
                     },
                     click: function (event) {
-                        if (windowRefocused && document.activeElement !== event.target && module.is.visible() && settings.autofocus && settings.dimPage) {
-                            if ($(document.activeElement).closest(selector.flyout).length === 0) {
-                                requestAnimationFrame(module.set.autofocus);
-                            }
+                        if (windowRefocused && document.activeElement !== event.target && module.is.visible() && settings.autofocus && settings.dimPage && $(document.activeElement).closest(selector.flyout).length === 0) {
+                            requestAnimationFrame(module.set.autofocus);
                         }
                         windowRefocused = false;
                     },
