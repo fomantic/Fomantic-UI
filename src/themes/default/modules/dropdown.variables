@@ -21,8 +21,7 @@
 @dropdownIconSize: @relative12px;
 @dropdownIconMargin: 0 0 0 1em;
 @dropdownIconMinWidth: 1em;
-@dropdownIconMultipleMarginRight: -1em;
-@dropdownIconMultipleMarginTop: 0.75em;
+@dropdownIconMultipleRight: -1.5em;
 
 /* Current Text */
 @textTransition: none;
@@ -261,6 +260,8 @@
 @multipleSelectionChildMargin: @multipleSelectionChildVerticalMargin 0 @multipleSelectionChildVerticalMargin @multipleSelectionChildLeftMargin;
 @multipleSelectionChildLineHeight: @relative17px;
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
+
+@multipleSearchMinWidth: 5.05em;
 
 /* Dropdown Icon */
 @multipleSelectionDropdownIconMargin: "";
