@@ -210,7 +210,7 @@
         }
 
         /* Arrow Position */
-        [data-tooltip][data-inverted]::before {
+        [data-tooltip]:not([data-position])[data-inverted]::before {
             background: @invertedArrowBottomBackground;
         }
 
