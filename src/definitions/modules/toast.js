@@ -117,11 +117,11 @@
                     if ($toastBox) {
                         module.debug('Removing toast', $toastBox);
                         module.unbind.events();
+                        settings.onRemove.call($toastBox, element);
                         $toastBox.remove();
                         $toastBox = undefined;
                         $toast = undefined;
                         $animationObject = undefined;
-                        settings.onRemove.call($toastBox, element);
                         $progress = undefined;
                         $progressBar = undefined;
                         $close = undefined;
