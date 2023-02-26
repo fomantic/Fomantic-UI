@@ -132,7 +132,7 @@
         transition-delay: 0s;
     }
     [data-tooltip]::before {
-        transform: rotate(45deg) scale(0) !important;
+        transform: rotate(45deg) scale(@tooltipScaleInit);
         transform-origin: center top;
     }
     [data-tooltip]::after {
