@@ -1196,8 +1196,8 @@
                                 $el        = $(el),
                                 $elGroup   = $el.closest($group),
                                 isCheckbox = $el.filter(selector.checkbox).length > 0,
-                                isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required) || $elGroup.parent().parent().hasClass(className.required),
-                                isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled) || $elGroup.parent().parent().hasClass(className.disabled),
+                                isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
+                                isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                 validation = module.get.validation($el),
                                 hasEmptyRule = validation
                                     ? $.grep(validation.rules, function (rule) {
