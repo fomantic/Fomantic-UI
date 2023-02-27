@@ -527,6 +527,11 @@
             color: @c;
         }
 
+        // needs separate selector because not supported by every browser
+        .ui.form .fields:has(.@{state}) > label {
+            color: @c;
+        }
+
         .ui.form .fields.@{state} .field .ui.label,
         .ui.form .field.@{state} .ui.label {
             background-color: @lbg;
@@ -727,6 +732,11 @@
         & when (@variationFormInverted) {
             .ui.inverted.form .fields.@{state} .field label,
             .ui.inverted.form .@{state}.field label {
+                color: @lbg;
+            }
+
+            // needs separate selector because not supported by every browser
+            .ui.inverted.form .fields:has(.@{state}) > label {
                 color: @lbg;
             }
         }
