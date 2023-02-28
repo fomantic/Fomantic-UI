@@ -103,9 +103,7 @@
                     module.setup.layout();
                     module.setup.labels();
 
-                    if (!module.is.disabled()) {
-                        module.bind.events();
-                    }
+                    module.bind.events();
 
                     module.read.metadata();
                     module.read.settings();
@@ -401,6 +399,9 @@
                         }
                     },
                     keydown: function (event, first) {
+                        if (module.is.disabled()) {
+                            return;
+                        }
                         if (settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
                             $currThumb = undefined;
                         }
@@ -437,7 +438,7 @@
                         }
                     },
                     activateFocus: function (event) {
-                        if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) !== NO_STEP) {
+                        if (!module.is.disabled() && !module.is.focused() && module.is.hover() && module.determine.keyMovement(event) !== NO_STEP) {
                             event.preventDefault();
                             module.event.keydown(event, true);
                             $module.trigger('focus');
