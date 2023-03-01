@@ -447,11 +447,12 @@
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
     }
-    .scrolling.dimmable .ui.scrolling.modal {
+    .modals.dimmer .ui.scrolling.modal.fullscreen {
         top: 0;
     }
     .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
         margin: @scrollingMargin auto;
+        top: @scrollingTop;
     }
 
     /* Fix for Firefox, Edge, IE11 */
