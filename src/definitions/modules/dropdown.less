@@ -816,7 +816,7 @@ select.ui.dropdown {
     .ui.dropdown:not(.selection) > .remove.icon ~ .dropdown.icon {
         margin-left: @clearableIconMargin;
     }
-    .ui.dropdown:not(.selection) > .remove.icon {
+    .ui.dropdown:not(.selection):not(.multiple) > .remove.icon {
         margin-top: -@clearableIconMarginTop;
     }
 }
@@ -879,6 +879,18 @@ select.ui.dropdown {
         margin: @imageLabelImageMargin;
         height: @imageLabelHeight;
     }
+    .ui.multiple.dropdown:not(.selection):not(.labeled) {
+        & > .dropdown.icon {
+            right: @dropdownIconMultipleRight;
+        }
+        & > .remove.icon {
+            margin-right: @dropdownIconMultipleRight;
+        }
+        &:not(.search) > .remove.icon ~ .text.default,
+        > .text.default:first-child {
+            overflow: inherit;
+        }
+    }
 
     & when (@variationDropdownSearch) {
         /* -----------------
@@ -918,6 +930,13 @@ select.ui.dropdown {
 
         .ui.multiple.search.dropdown.button {
             min-width: @selectionMinWidth;
+        }
+        .ui.multiple.search.dropdown > span.sizer {
+            display: none;
+        }
+        .ui.multiple.search.dropdown:not(.selection) > .remove.icon + input.search,
+        .ui.multiple.search.dropdown:not(.selection) > input.search:first-child {
+            min-width: @multipleSearchMinWidth;
         }
     }
 }
