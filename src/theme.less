@@ -6,7 +6,7 @@
        Theme
 ------------------- */
 
-@theme: @@element;
+@theme: if(@@element = "default", "", @@element);
 
 /* --------------------
    Site Variables
@@ -80,10 +80,11 @@
      Overrides
 ------------------- */
 
+// Keep empty mixin in case of custom components using it so they dont break
 .loadUIOverrides() {
-    & when not (@theme = "default") {
-        @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
-    }
-    @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
-    @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
+    /* loadUIOverrides mixin is deprecated and will be removed in 2.10.0
+       Replace mixin call by
+          @import (multiple, optional) "../../overrides.less";
+       instead
+    */
 }

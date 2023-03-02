@@ -86,7 +86,6 @@
         width: @arrowSize;
         height: @arrowSize;
         background: @tooltipArrowBackground;
-        transform: rotate(45deg);
         z-index: @arrowZIndex;
         box-shadow: @tooltipArrowBoxShadow;
     }
@@ -114,23 +113,6 @@
         z-index: @tooltipZIndex;
     }
 
-    /* Default Position (Top Center) */
-    [data-tooltip]:not([data-position])::before {
-        top: auto;
-        right: auto;
-        bottom: 100%;
-        left: 50%;
-        background: @tooltipArrowBottomBackground;
-        margin-left: @tooltipArrowHorizontalOffset;
-        margin-bottom: -@tooltipArrowVerticalOffset;
-    }
-    [data-tooltip]:not([data-position])::after {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 100%;
-        margin-bottom: @tooltipDistanceAway;
-    }
-
     /* Animation */
     [data-tooltip]::before,
     [data-tooltip]::after {
@@ -141,8 +123,16 @@
             transform @tooltipDuration @tooltipEasing,
             opacity @tooltipDuration @tooltipEasing;
     }
+    [data-tooltip]::after,
+    [data-tooltip]:hover::before {
+        transition-delay: @tooltipDelay;
+    }
+    [data-tooltip]::before,
+    [data-tooltip]:hover::after {
+        transition-delay: 0s;
+    }
     [data-tooltip]::before {
-        transform: rotate(45deg) scale(0) !important;
+        transform: rotate(45deg) scale(@tooltipScaleInit);
         transform-origin: center top;
     }
     [data-tooltip]::after {
@@ -155,26 +145,27 @@
         opacity: 1;
     }
     [data-tooltip]:hover::before {
-        transform: rotate(45deg) scale(1) !important;
+        transform: rotate(45deg) scale(1);
     }
 
     /* Animation Position */
-    [data-tooltip]::after,
+    [data-tooltip]:not([data-position])::after,
     [data-tooltip][data-position="top center"]::after,
     [data-tooltip][data-position="bottom center"]::after {
-        transform: translateX(-50%) scale(0) !important;
+        transform: translateX(-50%) scale(@tooltipScaleInit);
     }
-    [data-tooltip]:hover::after,
+    [data-tooltip]:not([data-position]):hover::after,
+    [data-tooltip][data-position="top center"]:hover::after,
     [data-tooltip][data-position="bottom center"]:hover::after {
-        transform: translateX(-50%) scale(1) !important;
+        transform: translateX(-50%) scale(1);
     }
     [data-tooltip][data-position="left center"]::after,
     [data-tooltip][data-position="right center"]::after {
-        transform: translateY(-50%) scale(0) !important;
+        transform: translateY(-50%) scale(@tooltipScaleInit);
     }
     [data-tooltip][data-position="left center"]:hover::after,
     [data-tooltip][data-position="right center"]:hover::after {
-        transform: translateY(-50%) scale(1) !important;
+        transform: translateY(-50%) scale(1);
         // https://github.com/fomantic/Fomantic-UI/pull/1537
         // stylelint-disable-next-line property-no-vendor-prefix
         -moz-transform: translateY(-50%) scale(1.0001) !important;
@@ -183,13 +174,13 @@
     [data-tooltip][data-position="top right"]::after,
     [data-tooltip][data-position="bottom left"]::after,
     [data-tooltip][data-position="bottom right"]::after {
-        transform: scale(0) !important;
+        transform: scale(@tooltipScaleInit);
     }
     [data-tooltip][data-position="top left"]:hover::after,
     [data-tooltip][data-position="top right"]:hover::after,
     [data-tooltip][data-position="bottom left"]:hover::after,
     [data-tooltip][data-position="bottom right"]:hover::after {
-        transform: scale(1) !important;
+        transform: scale(1);
     }
     & when (@variationPopupFixed) {
         [data-tooltip][data-variation~="fixed"]::after {
@@ -215,11 +206,11 @@
 
         /* Arrow */
         [data-tooltip][data-inverted]::before {
-            box-shadow: none !important;
+            box-shadow: none;
         }
 
         /* Arrow Position */
-        [data-tooltip][data-inverted]::before {
+        [data-tooltip]:not([data-position])[data-inverted]::before {
             background: @invertedArrowBottomBackground;
         }
 
@@ -241,15 +232,16 @@
                 background: @arrowBottomBackground;
             }
             & when (@variationPopupCenter) {
-                /* Top Center */
+                /* Top Center (default) */
+                [data-tooltip]:not([data-position])::after,
                 [data-position="top center"][data-tooltip]::after {
                     top: auto;
                     right: auto;
                     left: 50%;
                     bottom: 100%;
-                    transform: translateX(-50%);
                     margin-bottom: @tooltipDistanceAway;
                 }
+                [data-tooltip]:not([data-position])::before,
                 [data-position="top center"][data-tooltip]::before {
                     top: auto;
                     right: auto;
@@ -310,7 +302,6 @@
                     right: auto;
                     left: 50%;
                     top: 100%;
-                    transform: translateX(-50%);
                     margin-top: @tooltipDistanceAway;
                 }
                 [data-position="bottom center"][data-tooltip]::before {
@@ -362,7 +353,6 @@
                     right: 100%;
                     top: 50%;
                     margin-right: @tooltipDistanceAway;
-                    transform: translateY(-50%);
                 }
                 [data-position="left center"][data-tooltip]::before {
                     right: 100%;
@@ -379,7 +369,6 @@
                     left: 100%;
                     top: 50%;
                     margin-left: @tooltipDistanceAway;
-                    transform: translateY(-50%);
                 }
                 [data-position="right center"][data-tooltip]::before {
                     left: 100%;
@@ -452,6 +441,19 @@
                 }
             }
         }
+    }
+
+    [data-position="top left"][data-tooltip]::after {
+        transform-origin: bottom left;
+    }
+    [data-position="top right"][data-tooltip]::after {
+        transform-origin: bottom right;
+    }
+    [data-position="bottom left"][data-tooltip]::after {
+        transform-origin: top left;
+    }
+    [data-position="bottom right"][data-tooltip]::after {
+        transform-origin: top right;
     }
 
     & when (@variationPopupBasic) {
@@ -822,7 +824,7 @@
     }
     .ui.inverted.popup::before {
         background-color: @invertedArrowColor;
-        box-shadow: none !important;
+        box-shadow: none;
     }
 }
 
@@ -928,4 +930,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";
