@@ -207,4 +207,6 @@ a.ui.nag {
         border-radius: @borderRadius;
     }
 }
-.loadUIOverrides();
+
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";
