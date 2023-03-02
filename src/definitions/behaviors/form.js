@@ -643,7 +643,7 @@
                         var $field = typeof identifier === 'string'
                                 ? module.get.field(identifier)
                                 : identifier,
-                            $label = $field.closest(selector.group).find('label').eq(0)
+                            $label = $field.closest(selector.group).find('label:not(:empty)').eq(0)
                         ;
 
                         return $label.length === 1
