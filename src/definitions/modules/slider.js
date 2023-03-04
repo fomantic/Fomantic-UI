@@ -351,7 +351,11 @@
                         }
                         if (module.is.range() && (settings.minRange || settings.maxRange)) {
                             var currentRangeDiff = module.get.currentRangeDiff(value);
-                            if ((settings.minRange && currentRangeDiff < settings.minRange) || (settings.maxRange && currentRangeDiff > settings.maxRange)) {
+                            if ((settings.minRange && currentRangeDiff < settings.minRange)
+                                || (settings.maxRange && currentRangeDiff > settings.maxRange)
+                                || (settings.preventCrossover && value > module.thumbVal && value > module.secondThumbVal)
+                                || (settings.preventCrossover && value < module.thumbVal && value < module.secondThumbVal)
+                            ) {
                                 return;
                             }
                         }
@@ -1040,12 +1044,12 @@
                             }
                             if (!$currThumb.hasClass('second')) {
                                 if (settings.preventCrossover && module.is.range()) {
-                                    newValue = Math.min(module.secondThumbVal, newValue);
+                                    newValue = Math.min(module.secondThumbVal - (settings.minRange || 0), newValue);
                                 }
                                 module.thumbVal = newValue;
                             } else {
                                 if (settings.preventCrossover && module.is.range()) {
-                                    newValue = Math.max(module.thumbVal, newValue);
+                                    newValue = Math.max(module.thumbVal + (settings.minRange || 0), newValue);
                                 }
                                 module.secondThumbVal = newValue;
                             }
