@@ -350,11 +350,13 @@
                             $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
                         }
                         if (module.is.range() && (settings.minRange || settings.maxRange)) {
-                            var currentRangeDiff = module.get.currentRangeDiff(value);
+                            var currentRangeDiff = module.get.currentRangeDiff(value),
+                                isSecondThumb = $currThumb.hasClass('second')
+                            ;
                             if ((settings.minRange && currentRangeDiff < settings.minRange)
                                 || (settings.maxRange && currentRangeDiff > settings.maxRange)
-                                || (settings.preventCrossover && value > module.thumbVal && value > module.secondThumbVal)
-                                || (settings.preventCrossover && value < module.thumbVal && value < module.secondThumbVal)
+                                || (settings.preventCrossover && !isSecondThumb && value > module.secondThumbVal)
+                                || (settings.preventCrossover && isSecondThumb && value < module.thumbVal)
                             ) {
                                 return;
                             }
