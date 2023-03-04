@@ -202,9 +202,10 @@
                         for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                             var
                                 labelText = module.get.label(i),
-                                $label = labelText !== ''
+                                showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0,
+                                $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
                                     ? (!(i % module.get.gapRatio())
-                                        ? $('<li class="label">' + labelText + '</li>')
+                                        ? $('<li class="label">' + (showLabel ? labelText : '') + '</li>')
                                         : $('<li class="halftick label"></li>'))
                                     : null,
                                 ratio  = i / len
@@ -348,6 +349,12 @@
                             ;
                             $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
                         }
+                        if (module.is.range() && (settings.minRange || settings.maxRange)) {
+                            var currentRangeDiff = module.get.currentRangeDiff(value);
+                            if ((settings.minRange && currentRangeDiff < settings.minRange) || (settings.maxRange && currentRangeDiff > settings.maxRange)) {
+                                return;
+                            }
+                        }
                         if (module.get.step() === 0 || module.is.smooth()) {
                             var
                                 thumbVal = module.thumbVal,
@@ -383,6 +390,17 @@
                             return;
                         }
                         var value = module.determine.valueFromEvent(event);
+                        if (module.is.range() && (settings.minRange || settings.maxRange)) {
+                            if ($currThumb === undefined) {
+                                $currThumb = value <= module.get.currentThumbValue() ? $thumb : $secondThumb;
+                            }
+                            var currentRangeDiff = module.get.currentRangeDiff(value);
+                            if (settings.minRange && currentRangeDiff < settings.minRange) {
+                                value = module.get.edgeValue(value, settings.minRange);
+                            } else if (settings.maxRange && currentRangeDiff > settings.maxRange) {
+                                value = module.get.edgeValue(value, settings.maxRange);
+                            }
+                        }
                         module.set.value(value);
                         module.unbind.slidingEvents();
                         touchIdentifier = undefined;
@@ -503,7 +521,7 @@
 
                 is: {
                     range: function () {
-                        return $module.hasClass(settings.className.range);
+                        return $module.hasClass(className.range);
                     },
                     hover: function () {
                         return isHover;
@@ -512,23 +530,56 @@
                         return $module.is(':focus');
                     },
                     disabled: function () {
-                        return $module.hasClass(settings.className.disabled);
+                        return $module.hasClass(className.disabled);
                     },
                     labeled: function () {
-                        return $module.hasClass(settings.className.labeled);
+                        var isLabeled = $module.hasClass(className.labeled);
+                        if (!isLabeled && (settings.restrictedLabels.length > 0 || settings.showLabelTicks !== false)) {
+                            $module.addClass(className.labeled);
+                            isLabeled = true;
+                        }
+
+                        return isLabeled;
                     },
                     reversed: function () {
-                        return $module.hasClass(settings.className.reversed);
+                        return $module.hasClass(className.reversed);
                     },
                     vertical: function () {
-                        return $module.hasClass(settings.className.vertical);
+                        return $module.hasClass(className.vertical);
                     },
                     smooth: function () {
-                        return settings.smooth || $module.hasClass(settings.className.smooth);
+                        return settings.smooth || $module.hasClass(className.smooth);
                     },
                 },
 
                 get: {
+                    currentRangeDiff: function (value) {
+                        var currentRangeDiff;
+                        if ($currThumb.hasClass('second')) {
+                            currentRangeDiff = module.thumbVal < value
+                                ? value - module.thumbVal
+                                : module.thumbVal - value;
+                        } else {
+                            currentRangeDiff = module.secondThumbVal > value
+                                ? module.secondThumbVal - value
+                                : value - module.secondThumbVal;
+                        }
+
+                        return currentRangeDiff;
+                    },
+                    edgeValue: function (value, edgeValue) {
+                        if ($currThumb.hasClass('second')) {
+                            value = module.thumbVal < value
+                                ? module.thumbVal + edgeValue
+                                : module.thumbVal - edgeValue;
+                        } else {
+                            value = module.secondThumbVal < value
+                                ? module.secondThumbVal + edgeValue
+                                : module.secondThumbVal - edgeValue;
+                        }
+
+                        return value;
+                    },
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
@@ -732,13 +783,10 @@
                         return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
                     },
                     thumbPos: function ($element) {
-                        var
-                            pos = module.is.vertical()
-                                ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
-                                : (module.is.reversed() ? $element.css('right') : $element.css('left'))
+                        return module.is.vertical()
+                            ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
+                            : (module.is.reversed() ? $element.css('right') : $element.css('left'))
                         ;
-
-                        return pos;
                     },
                     positionFromValue: function (val) {
                         var
@@ -762,6 +810,7 @@
                             position = Math.round(ratio * trackLength),
                             adjustedPos = step === 0 ? position : Math.round(position / step) * step
                         ;
+                        module.verbose('Determined position: ' + position + ' from ratio: ' + ratio);
 
                         return adjustedPos;
                     },
@@ -1097,6 +1146,14 @@
                     settings: function () {
                         if (settings.start !== false) {
                             if (module.is.range()) {
+                                var rangeDiff = settings.end - settings.start;
+                                if (rangeDiff < 0
+                                    || (settings.minRange && rangeDiff < settings.minRange)
+                                    || (settings.maxRange && rangeDiff > settings.maxRange)
+                                    || (settings.minRange && settings.maxRange && settings.minRange > settings.maxRange)
+                                ) {
+                                    module.error(error.invalidRanges, settings.start, settings.end, settings.minRange, settings.maxRange);
+                                }
                                 module.debug('Start position set from settings', settings.start, settings.end);
                                 module.set.rangeValue(settings.start, settings.end);
                             } else {
@@ -1289,6 +1346,7 @@
         error: {
             method: 'The method you called is not defined.',
             notrange: 'This slider is not a range slider',
+            invalidRanges: 'Invalid range settings (start/end/minRange/maxRange)',
         },
 
         metadata: {
@@ -1301,6 +1359,8 @@
         step: 1,
         start: 0,
         end: 20,
+        minRange: false,
+        maxRange: false,
         labelType: 'number',
         showLabelTicks: false,
         smooth: false,
@@ -1336,6 +1396,8 @@
             rightArrow: 39,
             downArrow: 40,
         },
+
+        restrictedLabels: [],
 
         labelTypes: {
             number: 'number',
