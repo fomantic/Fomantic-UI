@@ -521,7 +521,13 @@
 
                 is: {
                     range: function () {
-                        return $module.hasClass(className.range);
+                        var isRange = $module.hasClass(className.range);
+                        if (!isRange && (settings.minRange || settings.maxRange)) {
+                            $module.addClass(className.range);
+                            isRange = true;
+                        }
+
+                        return isRange;
                     },
                     hover: function () {
                         return isHover;
