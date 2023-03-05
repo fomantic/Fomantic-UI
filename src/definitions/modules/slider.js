@@ -134,11 +134,14 @@
                         if ($module.attr('tabindex') === undefined) {
                             $module.attr('tabindex', 0);
                         }
+                        var possibleTooltip = settings.showThumbTooltip
+                            ? 'data-position="' + settings.tooltipConfig.position + '" data-variation="' + settings.tooltipConfig.variation + '"'
+                            : '';
                         if ($module.find('.inner').length === 0) {
-                            $module.append("<div class='inner'>"
-                                + "<div class='track'></div>"
-                                + "<div class='track-fill'></div>"
-                                + "<div class='thumb'></div>"
+                            $module.append('<div class="inner">'
+                                + '<div class="track"></div>'
+                                + '<div class="track-fill"></div>'
+                                + '<div class="thumb" ' + possibleTooltip + '></div>'
                                 + '</div>');
                         }
                         precision = module.get.precision();
@@ -146,7 +149,7 @@
                         $currThumb = $thumb;
                         if (module.is.range()) {
                             if ($module.find('.thumb.second').length === 0) {
-                                $module.find('.inner').append("<div class='thumb second'></div>");
+                                $module.find('.inner').append('<div class="thumb second" ' + possibleTooltip + '></div>');
                             }
                             $secondThumb = $module.find('.thumb.second');
                         }
@@ -1070,6 +1073,10 @@
                             thumbVal = module.thumbVal || module.get.min(),
                             secondThumbVal = module.secondThumbVal || module.get.min()
                         ;
+                        if (settings.showThumbTooltip) {
+                            var precision = module.get.precision();
+                            $targetThumb.attr('data-tooltip', Math.round(newValue * precision) / precision);
+                        }
                         if (module.is.range()) {
                             if (!$targetThumb.hasClass('second')) {
                                 position = newPos;
@@ -1410,6 +1417,11 @@
         },
 
         restrictedLabels: [],
+        showThumbTooltip: false,
+        tooltipConfig: {
+            position: 'top center',
+            variation: 'tiny black',
+        },
 
         labelTypes: {
             number: 'number',
