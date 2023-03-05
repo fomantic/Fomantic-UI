@@ -134,24 +134,33 @@
                         if ($module.attr('tabindex') === undefined) {
                             $module.attr('tabindex', 0);
                         }
-                        var possibleTooltip = settings.showThumbTooltip
-                            ? 'data-position="' + settings.tooltipConfig.position + '" data-variation="' + settings.tooltipConfig.variation + '"'
-                            : '';
                         if ($module.find('.inner').length === 0) {
                             $module.append('<div class="inner">'
                                 + '<div class="track"></div>'
                                 + '<div class="track-fill"></div>'
-                                + '<div class="thumb" ' + possibleTooltip + '></div>'
+                                + '<div class="thumb"></div>'
                                 + '</div>');
                         }
                         precision = module.get.precision();
                         $thumb = $module.find('.thumb:not(.second)');
+                        if (settings.showThumbTooltip) {
+                            $thumb
+                                .attr('data-position', settings.tooltipConfig.position)
+                                .attr('data-variation', settings.tooltipConfig.variation)
+                            ;
+                        }
                         $currThumb = $thumb;
                         if (module.is.range()) {
                             if ($module.find('.thumb.second').length === 0) {
-                                $module.find('.inner').append('<div class="thumb second" ' + possibleTooltip + '></div>');
+                                $module.find('.inner').append('<div class="thumb second"></div>');
                             }
                             $secondThumb = $module.find('.thumb.second');
+                            if (settings.showThumbTooltip) {
+                                $secondThumb
+                                    .attr('data-position', settings.tooltipConfig.position)
+                                    .attr('data-variation', settings.tooltipConfig.variation)
+                                ;
+                            }
                         }
                         $track = $module.find('.track');
                         $trackFill = $module.find('.track-fill');
