@@ -140,7 +140,7 @@
 @ribbonMargin: 1rem;
 @ribbonOffset: e(%("calc(%d - %d)", -@ribbonMargin, @ribbonTriangleSize));
 @ribbonCenterSize: 1em;
-@ribbonCenterOffset: e(%("calc(50% - %d)",@ribbonCenterSize));
+@ribbonCenterOffset: e(%("calc(50% - %d)", @ribbonCenterSize));
 @basicRibbonOffset: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
 @ribbonDistance: e(%("calc(%d + %d)", @ribbonMargin, @ribbonTriangleSize));
 @rightRibbonOffset: e(%("calc(100%% + %d + %d)", @ribbonMargin, @ribbonTriangleSize));
