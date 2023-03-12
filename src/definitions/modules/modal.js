@@ -620,7 +620,7 @@
                             ignoreRepeatedEvents = false;
                             if (settings.allowMultiple) {
                                 if (module.others.active()) {
-                                    $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
+                                    $otherModals.filter('.' + className.active).find(selector.dimmer).removeClass('out').addClass('transition fade in active');
                                 }
 
                                 if (settings.detachable) {
@@ -692,6 +692,8 @@
                                     onStart: function () {
                                         if (!module.others.active() && !module.others.animating() && !keepDimmed) {
                                             module.hideDimmer();
+                                        } else if (settings.allowMultiple) {
+                                            (hideOthersToo ? $allModals : $previousModal).find(selector.dimmer).removeClass('in').addClass('out');
                                         }
                                         if (settings.keyboardShortcuts && !module.others.active()) {
                                             module.remove.keyboardShortcuts();
@@ -704,11 +706,7 @@
                                             $previousModal.addClass(className.front);
                                             $module.removeClass(className.front);
 
-                                            if (hideOthersToo) {
-                                                $allModals.find(selector.dimmer).removeClass('active');
-                                            } else {
-                                                $previousModal.find(selector.dimmer).removeClass('active');
-                                            }
+                                            (hideOthersToo ? $allModals : $previousModal).find(selector.dimmer).removeClass('active');
                                         }
                                         if (isFunction(settings.onHidden)) {
                                             settings.onHidden.call(element);
