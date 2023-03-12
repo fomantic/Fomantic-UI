@@ -240,6 +240,11 @@
             margin-bottom: 0;
         }
     }
+    @supports selector(:has(.f)) {
+        *:has(> .ui.piled.segment) {
+            z-index: 0;
+        }
+    }
 }
 
 & when (@variationSegmentStacked) {
