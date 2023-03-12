@@ -133,6 +133,7 @@
 /* Scrolling Margin */
 @scrollingMargin: 2rem;
 @mobileScrollingMargin: @mobileTopAlignedMargin;
+@scrollingTop: 1em;
 
 /* Scrolling Content */
 @scrollingContentMaxHeight: calc(80vh - 10rem);
