@@ -189,6 +189,8 @@
         margin: @piledMargin 0;
         box-shadow: @piledBoxShadow;
         z-index: @piledZIndex;
+        background-color: @white;
+        border: @piledBorder;
     }
     .ui.piled.segment:first-child {
         margin-top: 0;
@@ -200,7 +202,7 @@
     .ui.piled.segments::before,
     .ui.piled.segment::after,
     .ui.piled.segment::before {
-        background-color: @white;
+        background-color: inherit;
         visibility: visible;
         content: "";
         display: block;
@@ -208,8 +210,14 @@
         left: 0;
         position: absolute;
         width: 100%;
-        border: @piledBorder;
+        border: inherit;
         box-shadow: @piledBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.inverted.piled.segment {
+            background-color: @invertedBackground;
+            border: @invertedPiledBorder;
+        }
     }
     .ui.piled.segments::before,
     .ui.piled.segment::before {

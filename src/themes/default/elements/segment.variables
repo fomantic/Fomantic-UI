@@ -63,6 +63,7 @@
 @piledBoxShadow: "";
 @piledDegrees: 1.2deg;
 @piledBorder: @border;
+@invertedPiledBorder: @borderWidth solid @solidWhiteBorderColor;
 
 /* Circular */
 @circularPadding: 2em;
