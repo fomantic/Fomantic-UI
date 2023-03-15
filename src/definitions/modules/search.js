@@ -561,6 +561,7 @@
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
                             module.save.results(cache.results);
+                            settings.onResults.call(element, cache.results, true);
                             module.addResults(cache.html);
                             module.inject.id(cache.results);
                             callback();
@@ -1345,7 +1346,7 @@
         onResultsAdd: false,
 
         onSearchQuery: function (query) {},
-        onResults: function (response) {},
+        onResults: function (response, fromCache) {},
 
         onResultsOpen: function () {},
         onResultsClose: function () {},
