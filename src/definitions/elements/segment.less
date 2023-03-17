@@ -191,6 +191,7 @@
         z-index: @piledZIndex;
         background-color: @white;
         border: @piledBorder;
+        color: @textColor;
     }
     .ui.piled.segment:first-child {
         margin-top: 0;
@@ -217,6 +218,7 @@
         .ui.inverted.piled.segment {
             background-color: @invertedBackground;
             border: @invertedPiledBorder;
+            color: @invertedTextColor;
         }
     }
     .ui.piled.segments::before,
@@ -272,7 +274,7 @@
         position: absolute;
         bottom: -(@stackedHeight / 2);
         left: 0;
-        border-top: 1px solid @borderColor;
+        border-top: @borderWidth solid @stackedBorderColor;
         background: @stackedPageBackground;
         width: 100%;
         height: @stackedHeight;
@@ -291,12 +293,14 @@
     }
     & when (@variationSegmentInverted) {
         /* Inverted */
-        .ui.stacked.inverted.segments::before,
-        .ui.stacked.inverted.segments::after,
-        .ui.stacked.inverted.segment::before,
-        .ui.stacked.inverted.segment::after {
-            background-color: @subtleTransparentBlack;
-            border-top: 1px solid @selectedBorderColor;
+        .ui.stacked.inverted.segments,
+        .ui.stacked.inverted.segment {
+            border: @borderWidth solid @invertedStackedBorderColor;
+            &::before,
+            &::after {
+                background-color: @subtleTransparentBlack;
+                border-top: @borderWidth solid @invertedStackedBorderColor;
+            }
         }
     }
 }
@@ -367,6 +371,12 @@
     .ui.raised.raised.segments,
     .ui.raised.raised.segment {
         box-shadow: @raisedBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.inverted.raised.raised.segments,
+        .ui.inverted.raised.raised.segment {
+            box-shadow: @invertedRaisedBoxShadow;
+        }
     }
 }
 

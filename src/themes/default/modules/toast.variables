@@ -36,6 +36,7 @@
 @toastInvertedColor: @black;
 
 @toastBoxBorder: 1px solid rgba(34, 36, 38, 0.12);
+@invertedToastBoxBorder: 1px solid rgba(225, 225, 225, 0.5);
 
 /* Icon */
 @toastIconContentPadding: 3em;
