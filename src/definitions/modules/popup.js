@@ -818,12 +818,12 @@
                         if (searchDepth === settings.maxSearchDepth && typeof settings.lastResort === 'string') {
                             position = settings.lastResort;
                         }
-            if(position === 'top right' || position === 'bottom right') {
-              var possibleMargin = calculations.boundary.right - calculations.parent.width;
-              if(possibleMargin > 0) {
-                offset -= possibleMargin;
-              }
-            }
+                        if (position === 'top right' || position === 'bottom right') {
+                            var possibleMargin = calculations.boundary.right - calculations.parent.width;
+                            if (possibleMargin > 0) {
+                                offset -= possibleMargin;
+                            }
+                        }
                         switch (position) {
                             case 'top left': {
                                 positioning = {
