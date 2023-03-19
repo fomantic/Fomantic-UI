@@ -64,11 +64,10 @@
 
 /* browsers require these rules separate */
 
-.ui.input > input::-webkit-input-placeholder {
+.ui.input > input::placeholder {
     color: @placeholderColor;
 }
 .ui.input > input::-moz-placeholder {
-    color: @placeholderColor;
     opacity: 1;
 }
 .ui.input > input:-ms-input-placeholder when (@supportIE) {
@@ -148,12 +147,8 @@
     color: @focusColor;
     box-shadow: @focusBoxShadow;
 }
-.ui.input.focus > input::-webkit-input-placeholder,
-.ui.input > input:focus::-webkit-input-placeholder {
-    color: @placeholderFocusColor;
-}
-.ui.input.focus > input::-moz-placeholder,
-.ui.input > input:focus::-moz-placeholder {
+.ui.input.focus > input::placeholder,
+.ui.input > input:focus::placeholder {
     color: @placeholderFocusColor;
 }
 & when (@supportIE) {
@@ -192,10 +187,7 @@
         }
 
         /* Placeholder */
-        .ui.input.@{state} > input::-webkit-input-placeholder {
-            color: @formStates[@@state][inputPlaceholderColor];
-        }
-        .ui.input.@{state} > input::-moz-placeholder {
+        .ui.input.@{state} > input::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
         .ui.input.@{state} > input:-ms-input-placeholder when (@supportIE) {
@@ -203,10 +195,7 @@
         }
 
         /* Focused Placeholder */
-        .ui.input.@{state} > input:focus::-webkit-input-placeholder {
-            color: @formStates[@@state][inputPlaceholderFocusColor];
-        }
-        .ui.input.@{state} > input:focus::-moz-placeholder {
+        .ui.input.@{state} > input:focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
         }
         .ui.input.@{state} > input:focus:-ms-input-placeholder when (@supportIE){
@@ -258,10 +247,7 @@
             color: inherit;
         }
 
-        .ui.transparent.inverted.input > input::-webkit-input-placeholder {
-            color: @transparentInvertedPlaceholderColor;
-        }
-        .ui.transparent.inverted.input > input::-moz-placeholder {
+        .ui.transparent.inverted.input > input::placeholder {
             color: @transparentInvertedPlaceholderColor;
         }
         .ui.transparent.inverted.input > input:-ms-input-placeholder when (@supportIE) {
@@ -805,4 +791,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

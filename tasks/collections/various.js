@@ -2,7 +2,8 @@
  *   Define Various Sub-Tasks
  *******************************/
 
-const clean = require('../clean'),
+const
+    clean = require('../clean'),
     version = require('../version')
 ;
 

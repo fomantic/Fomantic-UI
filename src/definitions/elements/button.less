@@ -816,11 +816,11 @@
     }
     & when (@variationButtonGroups) {
         .ui.basic.buttons .button:hover {
-            box-shadow: @basicHoverBoxShadow inset;
+            box-shadow: @basicHoverBoxShadow;
         }
 
         .ui.basic.buttons .button:active {
-            box-shadow: @basicDownBoxShadow inset;
+            box-shadow: @basicDownBoxShadow;
         }
 
         .ui.basic.buttons .active.button {
@@ -2005,4 +2005,6 @@
         }
     }
 }
-.loadUIOverrides();
+
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

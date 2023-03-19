@@ -428,9 +428,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow;
+@attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Resize large sizes */
 @mini: @11px;

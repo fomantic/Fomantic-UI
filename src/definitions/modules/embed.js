@@ -23,8 +23,6 @@
         var
             $allModules     = $(this),
 
-            moduleSelector  = $allModules.selector || '',
-
             time            = Date.now(),
             performance     = [],
 
@@ -455,9 +453,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
@@ -655,7 +650,7 @@
                 return ''
                     + '<iframe src="' + deQuote(src) + '"'
                     + ' width="100%" height="100%"'
-                    + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                    + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon) {
                 var

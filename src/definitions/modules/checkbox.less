@@ -409,10 +409,10 @@
 
     /* Active */
     .ui.slider.checkbox input:checked ~ label {
-        color: @sliderOnLabelColor !important;
+        color: @sliderOnLabelColor;
     }
     .ui.slider.checkbox input:checked ~ label::before {
-        background-color: @sliderOnLineColor !important;
+        background-color: @sliderOnLineColor;
     }
     .ui.slider.checkbox input:checked ~ label::after {
         left: @sliderTravelDistance;
@@ -420,10 +420,10 @@
 
     /* Active Focus */
     .ui.slider.checkbox input:focus:checked ~ label {
-        color: @sliderOnFocusLabelColor !important;
+        color: @sliderOnFocusLabelColor;
     }
     .ui.slider.checkbox input:focus:checked ~ label::before {
-        background-color: @sliderOnFocusLineColor !important;
+        background-color: @sliderOnFocusLineColor;
     }
 
     & when (@variationCheckboxRightAligned) {
@@ -520,10 +520,10 @@
 
     /* Active */
     .ui.toggle.checkbox input:checked ~ label {
-        color: @toggleOnLabelColor !important;
+        color: @toggleOnLabelColor;
     }
     .ui.toggle.checkbox input:checked ~ label::before {
-        background-color: @toggleOnLaneColor !important;
+        background-color: @toggleOnLaneColor;
     }
     .ui.toggle.checkbox input:checked ~ label::after {
         left: @toggleOnOffset;
@@ -532,10 +532,10 @@
 
     /* Active Focus */
     .ui.toggle.checkbox input:focus:checked ~ label {
-        color: @toggleOnFocusLabelColor !important;
+        color: @toggleOnFocusLabelColor;
     }
     .ui.toggle.checkbox input:focus:checked ~ label::before {
-        background-color: @toggleOnFocusLaneColor !important;
+        background-color: @toggleOnFocusLaneColor;
     }
 
     & when (@variationCheckboxRightAligned) {
@@ -563,8 +563,8 @@
          Fitted
     --------------- */
 
-    .ui.fitted.checkbox label {
-        padding-left: 0 !important;
+    .ui.ui.fitted.checkbox label {
+        padding-left: 0;
     }
 
     .ui.fitted.toggle.checkbox {
@@ -580,14 +580,14 @@
     /* --------------
          Inverted
     --------------- */
-    .ui.inverted.checkbox label,
-    .ui.inverted.checkbox + label {
-        color: @invertedTextColor !important;
+    .ui.ui.ui.inverted.checkbox label,
+    .ui.ui.ui.inverted.checkbox + label {
+        color: @invertedTextColor;
     }
 
     /* Hover */
-    .ui.inverted.checkbox label:hover {
-        color: @invertedHoveredTextColor !important;
+    .ui.ui.inverted.checkbox label:hover {
+        color: @invertedHoveredTextColor;
     }
     .ui.inverted.checkbox label:hover::before {
         border-color: @strongSelectedBorderColor;
@@ -599,56 +599,56 @@
         }
 
         /* Slider Line */
-        .ui.inverted.slider.checkbox label::before {
-            background-color: @invertedUnselectedTextColor !important;
+        .ui.ui.inverted.slider.checkbox label::before {
+            background-color: @invertedUnselectedTextColor;
         }
 
         /* Slider Hover */
-        .ui.inverted.slider.checkbox label:hover::before {
-            background: @invertedLightTextColor !important;
+        .ui.ui.inverted.slider.checkbox label:hover::before {
+            background: @invertedLightTextColor;
         }
 
         /* Slider Active */
-        .ui.inverted.slider.checkbox input:checked ~ label {
-            color: @invertedSelectedTextColor !important;
+        .ui.ui.inverted.slider.checkbox input:checked ~ label {
+            color: @invertedSelectedTextColor;
         }
-        .ui.inverted.slider.checkbox input:checked ~ label::before {
-            background-color: @selectedWhiteBorderColor !important;
+        .ui.ui.inverted.slider.checkbox input:checked ~ label::before {
+            background-color: @selectedWhiteBorderColor;
         }
 
         /* Slider Active Focus */
-        .ui.inverted.slider.checkbox input:focus:checked ~ label {
-            color: @invertedSelectedTextColor !important;
+        .ui.ui.inverted.slider.checkbox input:focus:checked ~ label {
+            color: @invertedSelectedTextColor;
         }
-        .ui.inverted.slider.checkbox input:focus:checked ~ label::before {
-            background-color: @selectedWhiteBorderColor !important;
+        .ui.ui.inverted.slider.checkbox input:focus:checked ~ label::before {
+            background-color: @selectedWhiteBorderColor;
         }
     }
     & when (@variationCheckboxToggle) {
         /* Toggle Switch */
-        .ui.inverted.toggle.checkbox label::before {
-            background-color: @invertedTextColor !important;
+        .ui.ui.inverted.toggle.checkbox label::before {
+            background-color: @invertedTextColor;
         }
 
         /* Toggle Hover */
-        .ui.inverted.toggle.checkbox label:hover::before {
-            background: @invertedHoveredTextColor !important;
+        .ui.ui.inverted.toggle.checkbox label:hover::before {
+            background: @invertedHoveredTextColor;
         }
 
         /* Toggle Active */
-        .ui.inverted.toggle.checkbox input:checked ~ label {
-            color: @invertedSelectedTextColor !important;
+        .ui.ui.inverted.toggle.checkbox input:checked ~ label {
+            color: @invertedSelectedTextColor;
         }
-        .ui.inverted.toggle.checkbox input:checked ~ label::before {
-            background-color: @toggleOnLaneColor !important;
+        .ui.ui.inverted.toggle.checkbox input:checked ~ label::before {
+            background-color: @toggleOnLaneColor;
         }
 
         /* Toggle Active Focus */
-        .ui.inverted.toggle.checkbox input:focus:checked ~ label {
-            color: @invertedSelectedTextColor !important;
+        .ui.ui.inverted.toggle.checkbox input:focus:checked ~ label {
+            color: @invertedSelectedTextColor;
         }
-        .ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
-            background-color: @toggleOnFocusLaneColor !important;
+        .ui.ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
+            background-color: @toggleOnFocusLaneColor;
         }
     }
 }
@@ -696,4 +696,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

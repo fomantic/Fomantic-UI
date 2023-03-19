@@ -63,6 +63,7 @@
 @piledBoxShadow: "";
 @piledDegrees: 1.2deg;
 @piledBorder: @border;
+@invertedPiledBorder: @borderWidth solid @solidWhiteBorderColor;
 
 /* Circular */
 @circularPadding: 2em;
@@ -72,6 +73,8 @@
 @stackedPageBackground: @subtleTransparentBlack;
 @stackedPadding: @verticalPadding + (0.4em);
 @tallStackedPadding: @verticalPadding + (0.8em);
+@stackedBorderColor: @borderColor;
+@invertedStackedBorderColor: rgba(225, 225, 225, 0.5);
 
 /*******************************
             States
@@ -92,6 +95,7 @@
 
 /* Raised */
 @raisedBoxShadow: @floatingShadow;
+@invertedRaisedBoxShadow: @invertedFloatingShadow;
 
 /* Padded */
 @paddedSegmentPadding: 1.5em;
@@ -104,9 +108,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow;
+@attachedBottomBoxShadow: @bottomShadow;
 
 /* Inverted */
 @invertedBackground: @black;

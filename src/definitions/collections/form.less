@@ -383,25 +383,21 @@
 --------------------- */
 
 /* browsers require these rules separate */
-.ui.form ::-webkit-input-placeholder {
+.ui.form ::placeholder {
     color: @inputPlaceholderColor;
 }
 .ui.form :-ms-input-placeholder when (@supportIE) {
     color: @inputPlaceholderColor !important;
 }
 .ui.form ::-moz-placeholder {
-    color: @inputPlaceholderColor;
     opacity: 1;
 }
 
-.ui.form :focus::-webkit-input-placeholder {
+.ui.form :focus::placeholder {
     color: @inputPlaceholderFocusColor;
 }
 .ui.form :focus:-ms-input-placeholder when (@supportIE) {
     color: @inputPlaceholderFocusColor !important;
-}
-.ui.form :focus::-moz-placeholder {
-    color: @inputPlaceholderFocusColor;
 }
 
 /* --------------------
@@ -531,6 +527,12 @@
             color: @c;
         }
 
+        @supports selector(:has(.f)) {
+            .ui.form .fields:has(.@{state}) > label {
+                color: @c;
+            }
+        }
+
         .ui.form .fields.@{state} .field .ui.label,
         .ui.form .field.@{state} .ui.label {
             background-color: @lbg;
@@ -649,24 +651,18 @@
         }
 
         /* Placeholder */
-        .ui.form .@{state} ::-webkit-input-placeholder {
+        .ui.form .@{state} ::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
         .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
             color: @formStates[@@state][inputPlaceholderColor] !important;
         }
-        .ui.form .@{state} ::-moz-placeholder {
-            color: @formStates[@@state][inputPlaceholderColor];
-        }
 
-        .ui.form .@{state} :focus::-webkit-input-placeholder {
+        .ui.form .@{state} :focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
         }
         .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
             color: @formStates[@@state][inputPlaceholderFocusColor] !important;
-        }
-        .ui.form .@{state} :focus::-moz-placeholder {
-            color: @formStates[@@state][inputPlaceholderFocusColor];
         }
 
         /*------------------
@@ -738,6 +734,12 @@
             .ui.inverted.form .fields.@{state} .field label,
             .ui.inverted.form .@{state}.field label {
                 color: @lbg;
+            }
+
+            @supports selector(:has(.f)) {
+                .ui.inverted.form .fields:has(.@{state}) > label {
+                    color: @lbg;
+                }
             }
         }
     });
@@ -814,10 +816,11 @@
          Required Field
     --------------------- */
 
-    .ui.form .required.fields:not(.grouped) > .field > label::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
-    .ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after,
     .ui.form label.required::after {
         margin: @requiredMargin;
@@ -825,7 +828,8 @@
         color: @requiredColor;
     }
 
-    .ui.form .required.fields:not(.grouped) > .field > label::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
     .ui.form label.required::after {
@@ -833,12 +837,18 @@
         vertical-align: top;
     }
 
-    .ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after {
         position: absolute;
         top: 0;
         left: 100%;
     }
+}
+
+.ui.ui.ui.ui.form .fields > label:empty::after,
+.ui.ui.ui.ui.form .field > label:empty::after {
+    content: " ";
+    display: inline-block;
 }
 
 /*******************************
@@ -1170,4 +1180,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

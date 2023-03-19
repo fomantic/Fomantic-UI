@@ -139,6 +139,13 @@
                 box-shadow: @floatingShadow;
                 border: @toastBoxBorder;
             }
+            & when (@variationToastInverted) {
+                &.inverted.floating,
+                &.inverted.hoverfloating:hover {
+                    box-shadow: @invertedFloatingShadow;
+                    border: @invertedToastBoxBorder;
+                }
+            }
         }
         & when (@variationToastCompact) {
             &.compact,
@@ -714,4 +721,5 @@
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

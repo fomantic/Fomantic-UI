@@ -35,7 +35,6 @@
 
         $allModules.each(function () {
             var
-                moduleSelector = $allModules.selector || '',
                 settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
                     : $.extend({}, $.fn.shape.settings),
@@ -116,33 +115,29 @@
                         module.set.active();
                     };
                     settings.onBeforeChange.call($nextSide[0]);
-                    if (module.get.transitionEvent()) {
-                        module.verbose('Starting CSS animation');
+                    module.verbose('Starting CSS animation');
+                    $module
+                        .addClass(className.animating)
+                    ;
+                    $sides
+                        .css(propertyObject)
+                        .one('transitionend', callback)
+                    ;
+                    module.set.duration(settings.duration);
+                    requestAnimationFrame(function () {
                         $module
                             .addClass(className.animating)
                         ;
-                        $sides
-                            .css(propertyObject)
-                            .one(module.get.transitionEvent(), callback)
+                        $activeSide
+                            .addClass(className.hidden)
                         ;
-                        module.set.duration(settings.duration);
-                        requestAnimationFrame(function () {
-                            $module
-                                .addClass(className.animating)
-                            ;
-                            $activeSide
-                                .addClass(className.hidden)
-                            ;
-                        });
-                    } else {
-                        callback();
-                    }
+                    });
                 },
 
                 queue: function (method) {
                     module.debug('Queueing animation of', method);
                     $sides
-                        .one(module.get.transitionEvent(), function () {
+                        .one('transitionend', function () {
                             module.debug('Executing queued animation');
                             setTimeout(function () {
                                 $module.shape(method);
@@ -412,24 +407,6 @@
                         },
                     },
 
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
-                    },
-
                     nextSide: function () {
                         return $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
@@ -659,9 +636,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
@@ -709,6 +683,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });

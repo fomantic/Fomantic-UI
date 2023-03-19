@@ -8,19 +8,16 @@
 }
 
 /* Checkmark */
-.ui.checkbox label::after,
-.ui.checkbox .box::after {
+.ui.checkbox label::after {
     font-family: Checkbox;
 }
 
 /* Checked */
-.ui.checkbox input:checked ~ .box::after,
 .ui.checkbox input:checked ~ label::after {
     content: "\e800";
 }
 
 /* Indeterminate */
-.ui.checkbox input:indeterminate ~ .box::after,
 .ui.checkbox input:indeterminate ~ label::after {
     font-size: 12px;
     content: "\e801";

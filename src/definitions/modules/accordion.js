@@ -45,7 +45,6 @@
 
                 eventNamespace  = '.' + namespace,
                 moduleNamespace = 'module-' + namespace,
-                moduleSelector  = $allModules.selector || '',
 
                 $module  = $(this),
                 $title   = $module.find(selector.title),
@@ -175,7 +174,7 @@
                         .addClass(className.animating)
                     ;
                     if (settings.animateChildren) {
-                        if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                        if ($.fn.transition !== undefined) {
                             $activeContent
                                 .children()
                                 .transition({
@@ -239,7 +238,7 @@
                             .addClass(className.animating)
                         ;
                         if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if ($.fn.transition !== undefined) {
                                 $activeContent
                                     .children()
                                     .transition({
@@ -308,7 +307,7 @@
                             .stop(true, true)
                         ;
                         if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if ($.fn.transition !== undefined) {
                                 $openContents
                                     .children()
                                     .transition({
@@ -452,9 +451,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
