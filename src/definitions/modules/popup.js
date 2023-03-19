@@ -248,9 +248,11 @@
                 // generates popup html from metadata
                 create: function () {
                     var
+                        targetSibling = $target.next(selector.popup),
+                        contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false,
                         html      = module.get.html(),
                         title     = module.get.title(),
-                        content   = module.get.content()
+                        content   = module.get.content(contentFallback)
                     ;
 
                     if (html || content || title) {
@@ -291,10 +293,10 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length > 0) {
+                    } else if (targetSibling.length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
-                        settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
+                        settings.popup = targetSibling.data(metadata.activator, $module);
                         module.refresh();
                         if (settings.hoverable) {
                             module.bind.popup();
@@ -484,10 +486,10 @@
 
                         return $module.data(metadata.title) || settings.title;
                     },
-                    content: function () {
+                    content: function (fallback) {
                         $module.removeData(metadata.content);
 
-                        return $module.data(metadata.content) || settings.content || $module.attr('title');
+                        return $module.data(metadata.content) || settings.content || fallback;
                     },
                     variation: function () {
                         $module.removeData(metadata.variation);
