@@ -28,15 +28,25 @@
             $html           = $('html'),
             $head           = $('head'),
 
-            moduleSelector  = $allModules.selector || '',
-
             time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $body;
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue;
 
         $allModules.each(function () {
@@ -55,7 +65,7 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                $context        = contextCheck(settings.context, window),
                 isBody          = $context[0] === $body[0],
 
                 $sidebars       = $module.children(selector.sidebar),
@@ -69,7 +79,6 @@
                 elementNamespace,
                 id,
                 currentScroll,
-                transitionEvent,
                 initialBodyMargin = '',
                 tempBodyMargin = '',
                 hadScrollbar = false,
@@ -83,8 +92,6 @@
                     module.debug('Initializing sidebar', parameters);
 
                     module.create.id();
-
-                    transitionEvent = module.get.transitionEvent();
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
@@ -280,7 +287,7 @@
 
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                    $context = contextCheck(settings.context, window);
                     module.refreshSidebars();
                     $pusher = $context.children(selector.pusher);
                     $fixed = $context.children(selector.fixed);
@@ -492,13 +499,13 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
-                            $transition.off(transitionEvent + elementNamespace, transitionEnd);
+                            $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             callback.call(element);
                         }
                     };
-                    $transition.off(transitionEvent + elementNamespace);
-                    $transition.on(transitionEvent + elementNamespace, transitionEnd);
+                    $transition.off('transitionend' + elementNamespace);
+                    $transition.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                     if (settings.dimPage && !module.othersVisible()) {
                         requestAnimationFrame(dim);
@@ -532,7 +539,7 @@
                     };
                     transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
-                            $transition.off(transitionEvent + elementNamespace, transitionEnd);
+                            $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
                             module.remove.closing();
                             module.remove.transition();
@@ -546,8 +553,8 @@
                             callback.call(element);
                         }
                     };
-                    $transition.off(transitionEvent + elementNamespace);
-                    $transition.on(transitionEvent + elementNamespace, transitionEnd);
+                    $transition.off('transitionend' + elementNamespace);
+                    $transition.on('transitionend' + elementNamespace, transitionEnd);
                     requestAnimationFrame(animate);
                 },
 
@@ -721,23 +728,6 @@
                         module.verbose('Determined transition', transition);
 
                         return transition;
-                    },
-                    transitionEvent: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
                 },
                 has: {
@@ -921,9 +911,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

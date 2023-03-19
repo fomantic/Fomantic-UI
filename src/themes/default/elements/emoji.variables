@@ -10,7 +10,7 @@
 /* --------------
     Path
 --------------- */
-@emojiPath: "https://twemoji.maxcdn.com/v/latest/svg/";
+@emojiPath: "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/";
 @emojiFileType: "svg";
 
 /* --------------
