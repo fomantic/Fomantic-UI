@@ -117,7 +117,6 @@
     [data-tooltip]::before,
     [data-tooltip]::after {
         pointer-events: none;
-        visibility: hidden;
         opacity: 0;
         transition:
             transform @tooltipDuration @tooltipEasing,
@@ -138,9 +137,10 @@
     [data-tooltip]::after {
         transform-origin: center bottom;
     }
+    [data-tooltip][data-variation~="visible"]::before,
+    [data-tooltip][data-variation~="visible"]::after,
     [data-tooltip]:hover::before,
     [data-tooltip]:hover::after {
-        visibility: visible;
         pointer-events: auto;
         opacity: 1;
     }
