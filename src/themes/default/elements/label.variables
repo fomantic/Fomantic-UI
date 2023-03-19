@@ -139,11 +139,14 @@
 
 @ribbonMargin: 1rem;
 @ribbonOffset: e(%("calc(%d - %d)", -@ribbonMargin, @ribbonTriangleSize));
+@ribbonCenterSize: 1em;
+@ribbonCenterOffset: e(%("calc(50% - %d)", @ribbonCenterSize));
 @basicRibbonOffset: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
 @ribbonDistance: e(%("calc(%d + %d)", @ribbonMargin, @ribbonTriangleSize));
 @rightRibbonOffset: e(%("calc(100%% + %d + %d)", @ribbonMargin, @ribbonTriangleSize));
 
 @ribbonImageTopDistance: 1rem;
+@ribbonImageBottomDistance: @ribbonImageTopDistance;
 @ribbonImageMargin: -0.05rem; /* Rounding Offset on Triangle */
 @ribbonImageOffset: e(%("calc(%d - %d)", -@ribbonImageMargin, @ribbonTriangleSize));
 @rightRibbonImageOffset: e(%("calc(100%% + %d + %d)", @ribbonImageMargin, @ribbonTriangleSize));
@@ -151,6 +154,8 @@
 @ribbonTableMargin: @relativeMedium; /* Rounding Offset on Triangle */
 @ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
 @rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
+
+@ribbonZIndex: 1;
 
 /* Inverted */
 @invertedBackgroundColor: darken(@backgroundColor, 20);

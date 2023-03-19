@@ -24,14 +24,25 @@
             $allModules    = $(this),
             $document      = $(document),
 
-            moduleSelector = $allModules.selector || '',
-
             time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue
         ;
 
@@ -56,7 +67,7 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+                $context        = contextCheck(settings.context, window),
                 $text           = $module.find(selector.text),
                 $search         = $module.find(selector.search),
                 $sizer          = $module.find(selector.sizer),
@@ -91,7 +102,8 @@
                 selectObserver,
                 menuObserver,
                 classObserver,
-                module
+                module,
+                tempDisableApiCache = false
             ;
 
             module = {
@@ -858,11 +870,12 @@
                     if (!$module.api('get request')) {
                         module.setup.api();
                     }
-                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
+                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks, tempDisableApiCache ? { cache: false } : {});
                     $module
                         .api('setting', apiSettings)
                         .api('query')
                     ;
+                    tempDisableApiCache = false;
                 },
 
                 filterItems: function (query) {
@@ -2065,7 +2078,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: text,
+                                        text: module.escape.htmlEntities(text, true),
                                         disabled: disabled,
                                     });
                                 }
@@ -2386,6 +2399,11 @@
 
                 clearValue: function (preventChangeTrigger) {
                     module.set.value('', null, null, preventChangeTrigger);
+                },
+
+                clearCache: function () {
+                    module.debug('Clearing API cache once');
+                    tempDisableApiCache = true;
                 },
 
                 scrollPage: function (direction, $selectedItem) {
@@ -3438,7 +3456,7 @@
                         return settings.apiSettings && module.can.useAPI();
                     },
                     noApiCache: function () {
-                        return settings.apiSettings && !settings.apiSettings.cache;
+                        return tempDisableApiCache || (settings.apiSettings && !settings.apiSettings.cache);
                     },
                     single: function () {
                         return !module.is.multiple();
@@ -3448,7 +3466,7 @@
                             selectChanged = false
                         ;
                         $.each(mutations, function (index, mutation) {
-                            if ($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
+                            if ($(mutation.target).is('option, optgroup') || $(mutation.addedNodes).is('select') || ($(mutation.target).is('select') && mutation.type !== 'attributes')) {
                                 selectChanged = true;
 
                                 return false;
@@ -3757,7 +3775,7 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string) {
+                    htmlEntities: function (string, forceAmpersand) {
                         var
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
@@ -3773,7 +3791,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
+                            string = string.replace(forceAmpersand ? /&/g : /&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -3864,9 +3882,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
