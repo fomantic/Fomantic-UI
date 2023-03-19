@@ -88,6 +88,7 @@
 /* Loading Spinner */
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
+@loadingMinHeight: @loaderSize * 1.5;
 
 /*******************************
             Variations
