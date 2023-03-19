@@ -15,3 +15,13 @@ updates:
   - dependency-name: gulp-replace
     versions:
     - 1.1.0
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "06:00"
+  open-pull-requests-limit: 99
+  target-branch: develop
+  labels:
+  - type/dependencies
+  - state/awaiting-reviews

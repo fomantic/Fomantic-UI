@@ -2,16 +2,16 @@
              Nag
 *******************************/
 
-/*--------------
+/* --------------
    Collection
----------------*/
+--------------- */
 
 @position: relative;
 @width: 100%;
 @zIndex: 999;
 @margin: 0;
 
-@background: #777777;
+@background: #909090;
 @opacity: 0.95;
 @minHeight: 0;
 @padding: 0.75em 1em;
@@ -24,10 +24,9 @@
 
 @transition: 0.2s background ease;
 
-
-/*--------------
+/* --------------
     Elements
----------------*/
+--------------- */
 
 /* Title */
 @titleColor: @white;
@@ -41,10 +40,9 @@
 @closeTransition: opacity 0.2s ease;
 @closeOpacity: 0.4;
 
-
-/*--------------
+/* --------------
       States
----------------*/
+--------------- */
 
 /* Hover */
 @nagHoverBackground: @background;
@@ -52,9 +50,9 @@
 
 @closeHoverOpacity: 1;
 
-/*--------------
+/* --------------
    Variations
----------------*/
+--------------- */
 
 /* Top / Bottom */
 @top: 0;
@@ -68,9 +66,8 @@
 @invertedTitleColor: @mutedTextColor;
 @invertedCloseColor: @mutedTextColor;
 
-/*--------------
+/* --------------
       Plural
----------------*/
+--------------- */
 
 @groupedBorderRadius: 0;
-

@@ -1,8 +1,8 @@
-/*-------------------
+/* -------------------
    Accordion Variables
---------------------*/
+-------------------- */
 
-@iconMargin: 0em 0.5em 0em 0em;
+@iconMargin: 0 0.5em 0 0;
 
 @styledActiveTitleBackground: @subtleGradient;
 @styledActiveTitleColor: @primaryColor;

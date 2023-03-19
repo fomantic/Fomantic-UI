@@ -13,11 +13,10 @@
 @promptBorderRadius: @circularRadius;
 @promptColor: @textColor;
 @promptTransition:
-  background-color @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  border-color @defaultDuration @defaultEasing
-;
+    background-color @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing;
 @promptBoxShadow: 0 0 0 0 transparent inset;
 
 /* Mobile */
@@ -25,7 +24,7 @@
 
 /* Result Box */
 @resultsWidth: 18em;
-@resultsBackground: #FFFFFF;
+@resultsBackground: #fff;
 @resultsDistance: 0.5em;
 @resultsBorderRadius: @defaultBorderRadius;
 @resultsBorder: 1px solid @solidBorderColor;
@@ -95,7 +94,6 @@
 @actionFontWeight: @bold;
 @actionAlign: center;
 
-
 /*******************************
             States
 *******************************/
@@ -107,7 +105,7 @@
 
 /* Hover */
 @resultHoverBackground: @offWhite;
-@actionHoverBackground: #E0E0E0;
+@actionHoverBackground: #e0e0e0;
 
 /* Loading */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
@@ -124,7 +122,6 @@
 @resultActiveDescriptionColor: @darkTextColor;
 @resultsZIndex: 998;
 
-
 /*******************************
             Types
 *******************************/
@@ -134,12 +131,11 @@
 
 @selectionCloseTop: 0;
 @selectionCloseTransition:
-  color @defaultDuration @defaultEasing,
-  opacity @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing;
 @selectionCloseRight: 0;
 @selectionCloseIconOpacity: 0.8;
-@selectionCloseIconColor: '';
+@selectionCloseIconColor: "";
 @selectionCloseIconHoverOpacity: 1;
 @selectionCloseIconHoverColor: @red;
 
@@ -150,9 +146,8 @@
 @categoryBoxShadow: none;
 @categoryDivider: 1px solid @internalBorderColor;
 @categoryTransition:
-  background @defaultDuration @defaultEasing,
-  border-color @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing;
 
 @categoryResultsWidth: 28em;
 

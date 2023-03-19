@@ -1,7 +1,7 @@
 ![Fomantic Logo](https://fomantic-ui.com/images/logo.png#128)
 
 # Fomantic-UI
-A community fork of the popular Semantic-UI framework.
+The official community fork of the popular Semantic-UI framework.
 
 [![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
@@ -19,7 +19,7 @@ A community fork of the popular Semantic-UI framework.
 
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=fomantic/Fomantic-UI)](https://dependabot.com)
+[![Dependabot Status](https://badgen.net/github/dependabot/fomantic/Fomantic-UI/?icon=dependabot)](https://github.com/features/security)
 [![Known Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
 
 ---
@@ -47,18 +47,18 @@ $ npm install fomantic-ui@nightly
 
 Fomantic includes an interactive installer to help setup your project.
 
-* For more details on setup visit our [getting started guide](http://fomantic-ui.com/introduction/getting-started.html).
-* To learn more about theming please read our [theming guide](http://fomantic-ui.com/usage/theming.html)
+* For more details on setup visit our [getting started guide](https://fomantic-ui.com/introduction/getting-started.html).
+* To learn more about theming please read our [theming guide](https://fomantic-ui.com/usage/theming.html)
 
 ### 💻 Browser Support
 
-* Last 2 Versions FF, Chrome, Safari Mac
-* IE 11+
-* Android 4.4+, Chrome for Android 44+
-* iOS Safari 7+
-* Microsoft Edge 12+
+* Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
+* Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
+* IE 11[^2]
+* Microsoft Edge 12-44[^2]
 
-Although some components will work in IE9, [grids](http://semantic-ui.com/collections/grid.html) and other [flexbox](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes) components are not supported by IE9 and may not appear correctly.
+[^1]: Fomantic-UI should basically still work in iOS Safari 9+, Android 6+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
+[^2]: Fomantic-UI should basically still work in IE11 / old Edge, but, starting from v2.9.0, we won't support them anymore in terms of dedicated bugfixes.
 
 ---
 

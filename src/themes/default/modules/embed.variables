@@ -2,9 +2,9 @@
              Video
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Simple */
 @background: @lightGrey;
@@ -23,28 +23,24 @@
 @iconBackground: @veryStrongTransparentBlack;
 @iconSize: 6rem;
 @iconTransition:
-  opacity @transitionDuration @transitionEasing,
-  color @transitionDuration @transitionEasing
-;
+    opacity @transitionDuration @transitionEasing,
+    color @transitionDuration @transitionEasing;
 @iconColor: @white;
-@iconShadow:
-  0 2px 10px rgba(34, 36, 38, 0.2)
-;
+@iconShadow: 0 2px 10px rgba(34, 36, 38, 0.2);
 @iconZIndex: 10;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 /* Hover */
 @hoverPlaceholderBackground: @placeholderBackground;
 @hoverPlaceholderBackgroundOpacity: 1;
 @hoverIconColor: @white;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Aspect Ratios */
 @squareRatio: (1/1) * 100%;

@@ -2,9 +2,9 @@
             Input
 *******************************/
 
-/*-------------------
+/* -------------------
       Element
---------------------*/
+-------------------- */
 
 @inputFont: @pageFont;
 @verticalPadding: @inputVerticalPadding;
@@ -23,13 +23,12 @@
 
 @borderRadius: @defaultBorderRadius;
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
-  border-color @defaultDuration @defaultEasing
-;
+    box-shadow @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Icon Input */
 @iconWidth: (@verticalPadding * 2) + @glyphWidth;
@@ -60,11 +59,14 @@
 
 @labeledMargin: 2.5em;
 @labeledIconInputMargin: 3.25em;
+@labeledAndIconMargin: 4em;
 @labeledIconMargin: 1.25em;
 
-/*-------------------
+@labeledDropdownZIndex: 10;
+
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Placeholder */
 @placeholderColor: @inputPlaceholderColor;
@@ -72,7 +74,7 @@
 
 /* Down */
 @downBorderColor: rgba(0, 0, 0, 0.3);
-@downBackground: #FAFAFA;
+@downBackground: #fafafa;
 @downColor: @textColor;
 @downBoxShadow: none;
 
@@ -85,9 +87,21 @@
 /* Loader */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
 
-/*-------------------
+/* file */
+@fileButtonMargin: 1em;
+@fileButtonTextColor: @mutedTextColor;
+@fileButtonTextColorHover: @hoveredTextColor;
+@fileButtonBackground: #e0e1e2;
+@fileButtonBackgroundHover: #cacbcd;
+@fileButtonFontWeight: @bold;
+
+@fileButtonInvertedBackground: #e0e1e2;
+@fileButtonInvertedBackgroundHover: @white;
+@fileButtonInvertedTextColor: @mutedTextColor;
+
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @transparentInvertedPlaceholderColor: @invertedUnselectedTextColor;

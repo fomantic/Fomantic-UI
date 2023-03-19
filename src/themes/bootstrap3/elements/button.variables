@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
 /* Button Variables */
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -17,47 +17,42 @@
 @backgroundColor: @white;
 @backgroundImage: none;
 
-
 @borderBoxShadowColor: rgba(0, 0, 0, 0.14);
 
-@green: #5CB85C;
-@red: #D9534F;
-@blue: #337AB7;
-@green: #60B044;
-@orange: #F0AD4E;
+@green: #5cb85c;
+@red: #d9534f;
+@blue: #337ab7;
+@green: #60b044;
+@orange: #f0ad4e;
 
 @primaryColor: @blue;
 @secondaryColor: @green;
 
 @labeledIconBackgroundColor: transparent;
 
-@basicBorderSize: 0px;
-@basicColoredBorderSize: 0px;
-@invertedBorderSize: 0px;
+@basicBorderSize: 0;
+@basicColoredBorderSize: 0;
+@invertedBorderSize: 0;
 
 @basicActiveBackground: transparent;
 @basicHoverBackground: transparent;
 @basicDownBoxShadow:
-  0px 0px 0px 1px #ADADAD inset,
-  0 3px 5px rgba(0, 0, 0, 0.125) inset
-;
+    0 0 0 1px #adadad inset,
+    0 3px 5px rgba(0, 0, 0, 0.125) inset;
 
-@groupButtonOffset: 0px 0px 0px -1px;
-@verticalGroupOffset: 0px 0px -1px 0px;
+@groupButtonOffset: 0 0 0 -1px;
+@verticalGroupOffset: 0 0 -1px 0;
 
 /* States */
 
-@hoverBackgroundColor: #E6E6E6;
-@hoverBoxShadow:
-  0px 0px 0px 1px #ADADAD inset
-;
+@hoverBackgroundColor: #e6e6e6;
+@hoverBoxShadow: 0 0 0 1px #adadad inset;
 
-@downBackgroundColor: #E6E6E6;
+@downBackgroundColor: #e6e6e6;
 @downBoxShadow:
-  0px 0px 0px 1px #ADADAD inset,
-  0 3px 5px rgba(0, 0, 0, 0.125) inset
-;
+    0 0 0 1px #adadad inset,
+    0 3px 5px rgba(0, 0, 0, 0.125) inset;
 
-@activeBackgroundColor: #E6E6E6;
+@activeBackgroundColor: #e6e6e6;
 
 @disabledOpacity: 0.65;

@@ -1,52 +1,52 @@
 /*******************************
              Item
 *******************************/
-/*-------------------
+
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Item */
-@background: #FFFFFF;
+@background: #fff;
 @borderRadius: 0.325rem;
 @display: block;
 @float: left;
-@margin: 0em @horizontalSpacing @rowSpacing;
-@minHeight: 0px;
-@padding: 0em;
+@margin: 0 @horizontalSpacing @rowSpacing;
+@minHeight: 0;
+@padding: 0;
 @width: 300px;
 @boxShadow:
-  0px 0px 0px 1px @borderColor,
-  0px 3px 0px 0px @borderColor
-;
+    0 0 0 1px @borderColor,
+    0 3px 0 0 @borderColor;
 @border: none;
-@zIndex: '';
+@zIndex: "";
 
 /* Item Group */
 @horizontalSpacing: 0.5em;
 @rowSpacing: 2.5em;
 @groupMargin: 1em -@horizontalSpacing;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Image */
 @imageBackground: @transparentBlack;
-@imagePadding: 0em;
-@imageBorderRadius: @borderRadius @borderRadius 0em 0em;
+@imagePadding: 0;
+@imageBorderRadius: @borderRadius @borderRadius 0 0;
 @imageBoxShadow: none;
 @imageBorder: none;
 
 /* Content */
-@contentMargin: 0em;
+@contentMargin: 0;
 @contentPadding: 0.75em 1em;
 @contentFontSize: 1em;
 @contentBorder: none;
-@contentBorderRadius: 0em;
+@contentBorderRadius: 0;
 @contentBoxShadow: none;
 
 /* Title */
-@titleMargin: 0em;
+@titleMargin: 0;
 @titleFont: @headerFont;
 @titleFontWeight: bold;
 @titleFontSize: 1.25em;
@@ -70,29 +70,27 @@
 /* Additional Content */
 @extraDisplay: absolute;
 @extraTop: 100%;
-@extraLeft: 0em;
+@extraLeft: 0;
 @extraWidth: 100%;
 
 @extraPadding: 0.5em 0.75em;
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @hoverCursor: pointer;
 @hoverZIndex: 5;
 @hoverBorder: none;
 @hoverBoxShadow:
-  0px 0px 0px 1px @selectedBorderColor,
-  0px 3px 0px 0px @selectedBorderColor
-;
+    0 0 0 1px @selectedBorderColor,
+    0 3px 0 0 @selectedBorderColor;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Sizes */
 @medium: 1em;

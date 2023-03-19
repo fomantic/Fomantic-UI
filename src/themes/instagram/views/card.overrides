@@ -2,11 +2,10 @@
            Overrides
 *******************************/
 
-
-@import url(https://fonts.googleapis.com/css?family=Montserrat:700,400);
+@import (css) url("https://fonts.googleapis.com/css2?family=Montserrat");
 
 .ui.cards > .card,
 .ui.card {
-  font-family: 'Montserrat';
-  font-size-adjust: 0.5;
+    font-family: Montserrat;
+    font-size-adjust: 0.5;
 }

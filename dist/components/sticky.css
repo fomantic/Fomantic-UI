@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI - Sticky
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.2 - Sticky
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -15,7 +15,6 @@
 
 .ui.sticky {
   position: static;
-  -webkit-transition: none;
   transition: none;
   z-index: 800;
 }
@@ -58,10 +57,6 @@
 *******************************/
 
 .ui.native.sticky {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
   position: sticky;
 }
 

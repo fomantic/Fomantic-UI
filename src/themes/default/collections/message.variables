@@ -4,15 +4,15 @@
 
 // @textColor
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @verticalPadding: 1em;
 @horizontalPadding: 1.5em;
 @padding: @verticalPadding @horizontalPadding;
-@background: #F8F8F9;
+@background: #f8f8f9;
 @lineHeightOffset: ((@lineHeight - 1em) / 2);
 
 @borderRadius: @defaultBorderRadius;
@@ -20,16 +20,14 @@
 @borderShadow: 0 0 0 @borderWidth @strongBorderColor inset;
 @shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
 @boxShadow:
-  @borderShadow,
-  @shadowShadow
-;
+    @borderShadow,
+    @shadowShadow;
 
 @transition:
-  opacity @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing;
 
 /* Header */
 @headerFontSize: @relativeLarge;
@@ -59,10 +57,9 @@
 @closeOpacity: 0.7;
 @closeTransition: opacity @defaultDuration @defaultEasing;
 
-
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Icon Message */
 @iconSize: 3em;
@@ -75,155 +72,119 @@
 @attachedYOffset: -1px;
 @attachedBoxShadow: 0 0 0 @borderWidth @borderColor inset;
 @attachedBottomBoxShadow:
-  @attachedBoxShadow,
-  @subtleShadow
-;
+    @attachedBoxShadow,
+    @subtleShadow;
 
 /* Floating */
 @floatingBoxShadow:
-  @borderShadow,
-  @floatingShadow
-;
+    @borderShadow,
+    @floatingShadow;
 
 /* Colors */
 @redBoxShadow:
-  0 0 0 @borderWidth @redBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @redBorderColor inset,
+    @shadowShadow;
 @redBoxFloatingShadow:
-  0 0 0 @borderWidth @redBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @redBorderColor inset,
+    @floatingShadow;
 @orangeBoxShadow:
-  0 0 0 @borderWidth @orangeBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @orangeBorderColor inset,
+    @shadowShadow;
 @orangeBoxFloatingShadow:
-  0 0 0 @borderWidth @orangeBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @orangeBorderColor inset,
+    @floatingShadow;
 @yellowBoxShadow:
-  0 0 0 @borderWidth @yellowBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @yellowBorderColor inset,
+    @shadowShadow;
 @yellowBoxFloatingShadow:
-   0 0 0 @borderWidth @yellowBorderColor inset,
-   @floatingShadow
-;
+    0 0 0 @borderWidth @yellowBorderColor inset,
+    @floatingShadow;
 @oliveBoxShadow:
-  0 0 0 @borderWidth @oliveBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @oliveBorderColor inset,
+    @shadowShadow;
 @oliveBoxFloatingShadow:
-  0 0 0 @borderWidth @oliveBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @oliveBorderColor inset,
+    @floatingShadow;
 @greenBoxShadow:
-  0 0 0 @borderWidth @greenBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @greenBorderColor inset,
+    @shadowShadow;
 @greenBoxFloatingShadow:
-  0 0 0 @borderWidth @greenBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @greenBorderColor inset,
+    @floatingShadow;
 @tealBoxShadow:
-  0 0 0 @borderWidth @tealBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @tealBorderColor inset,
+    @shadowShadow;
 @tealBoxFloatingShadow:
-  0 0 0 @borderWidth @tealBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @tealBorderColor inset,
+    @floatingShadow;
 @blueBoxShadow:
-  0 0 0 @borderWidth @blueBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @blueBorderColor inset,
+    @shadowShadow;
 @blueBoxFloatingShadow:
-  0 0 0 @borderWidth @blueBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @blueBorderColor inset,
+    @floatingShadow;
 @violetBoxShadow:
-  0 0 0 @borderWidth @violetBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @violetBorderColor inset,
+    @shadowShadow;
 @violetBoxFloatingShadow:
-  0 0 0 @borderWidth @violetBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @violetBorderColor inset,
+    @floatingShadow;
 @purpleBoxShadow:
-  0 0 0 @borderWidth @purpleBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @purpleBorderColor inset,
+    @shadowShadow;
 @purpleBoxFloatingShadow:
-  0 0 0 @borderWidth @purpleBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @purpleBorderColor inset,
+    @floatingShadow;
 @pinkBoxShadow:
-  0 0 0 @borderWidth @pinkBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @pinkBorderColor inset,
+    @shadowShadow;
 @pinkBoxFloatingShadow:
-  0 0 0 @borderWidth @pinkBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @pinkBorderColor inset,
+    @floatingShadow;
 @brownBoxShadow:
-  0 0 0 @borderWidth @brownBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @brownBorderColor inset,
+    @shadowShadow;
 @brownBoxFloatingShadow:
-  0 0 0 @borderWidth @brownBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @brownBorderColor inset,
+    @floatingShadow;
 
 /* Warning / Positive / Negative / Info */
 @positiveBoxShadow:
-  0 0 0 @borderWidth @positiveBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @positiveBorderColor inset,
+    @shadowShadow;
 @positiveBoxFloatingShadow:
-  0 0 0 @borderWidth @positiveBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @positiveBorderColor inset,
+    @floatingShadow;
 @negativeBoxShadow:
-  0 0 0 @borderWidth @negativeBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @negativeBorderColor inset,
+    @shadowShadow;
 @negativeBoxFloatingShadow:
-  0 0 0 @borderWidth @negativeBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @negativeBorderColor inset,
+    @floatingShadow;
 @infoBoxShadow:
-  0 0 0 @borderWidth @infoBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @infoBorderColor inset,
+    @shadowShadow;
 @infoBoxFloatingShadow:
-  0 0 0 @borderWidth @infoBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @infoBorderColor inset,
+    @floatingShadow;
 @warningBoxShadow:
-  0 0 0 @borderWidth @warningBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @warningBorderColor inset,
+    @shadowShadow;
 @warningBoxFloatingShadow:
-  0 0 0 @borderWidth @warningBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @warningBorderColor inset,
+    @floatingShadow;
 @errorBoxShadow:
-  0 0 0 @borderWidth @errorBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @errorBorderColor inset,
+    @shadowShadow;
 @errorBoxFloatingShadow:
-  0 0 0 @borderWidth @errorBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @errorBorderColor inset,
+    @floatingShadow;
 @successBoxShadow:
-  0 0 0 @borderWidth @successBorderColor inset,
-  @shadowShadow
-;
+    0 0 0 @borderWidth @successBorderColor inset,
+    @shadowShadow;
 @successBoxFloatingShadow:
-  0 0 0 @borderWidth @successBorderColor inset,
-  @floatingShadow
-;
+    0 0 0 @borderWidth @successBorderColor inset,
+    @floatingShadow;
 
 @miniMessageSize: @relativeMini;
 @tinyMessageSize: @relativeTiny;

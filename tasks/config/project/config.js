@@ -2,14 +2,12 @@
             Set-up
 *******************************/
 
-var
-  extend   = require('extend'),
-  fs       = require('fs'),
-  path     = require('path'),
+const
+    fs       = require('fs'),
+    path     = require('path'),
 
-  defaults = require('../defaults')
+    defaults = require('../defaults')
 ;
-
 
 /*******************************
             Exports
@@ -17,138 +15,128 @@ var
 
 module.exports = {
 
-  getPath: function(file, directory) {
-    var
-      configPath,
-      walk = function(directory) {
-        var
-          nextDirectory = path.resolve( path.join(directory, path.sep, '..') ),
-          currentPath   = path.normalize( path.join(directory, file) )
+    getPath: function (file, directory) {
+        let
+            configPath,
+            walk = function (directory) {
+                let
+                    nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
+                    currentPath   = path.normalize(path.join(directory, file))
+                ;
+                if (fs.existsSync(currentPath)) {
+                    // found file
+                    configPath = path.normalize(directory);
+                } else {
+                    // reached file system root, let's stop
+                    if (nextDirectory === directory) {
+                        return;
+                    }
+                    // otherwise recurse
+                    walk(nextDirectory, file);
+                }
+            }
         ;
-        if( fs.existsSync(currentPath) ) {
-          // found file
-          configPath = path.normalize(directory);
-          return;
+
+        // start walk from outside require-dot-files directory
+        file = file || defaults.files.config;
+        directory = directory || path.join(__dirname, path.sep, '..');
+        walk(directory);
+
+        return configPath || '';
+    },
+
+    // adds additional derived values to a config object
+    addDerivedValues: function (config) {
+        /* --------------
+            File Paths
+        --------------- */
+
+        let
+            configPath = this.getPath(),
+            sourcePaths = {},
+            outputPaths = {},
+            folder
+        ;
+
+        // resolve paths (config location + base + path)
+        for (folder in config.paths.source) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.source, folder)) {
+                sourcePaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.source[folder]));
+            }
         }
-        else {
-          // reached file system root, let's stop
-          if(nextDirectory == directory) {
-            return;
-          }
-          // otherwise recurse
-          walk(nextDirectory, file);
+        for (folder in config.paths.output) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.output, folder)) {
+                outputPaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.output[folder]));
+            }
         }
-      }
-    ;
 
-    // start walk from outside require-dot-files directory
-    file      = file || defaults.files.config;
-    directory = directory || path.join(__dirname, path.sep, '..');
-    walk(directory);
-    return configPath || '';
-  },
+        // set config paths to full paths
+        config.paths.source = sourcePaths;
+        config.paths.output = outputPaths;
 
-  // adds additional derived values to a config object
-  addDerivedValues: function(config) {
+        // resolve "clean" command path
+        config.paths.clean = path.resolve(path.join(configPath, config.base, config.paths.clean));
 
-    config = config || extend(false, {}, defaults);
+        /* --------------
+             CSS URLs
+        --------------- */
 
-    /*--------------
-       File Paths
-    ---------------*/
+        // determine asset paths in css by finding relative path between themes and output
+        // force forward slashes
 
-    var
-      configPath = this.getPath(),
-      sourcePaths = {},
-      outputPaths = {},
-      folder
-    ;
+        config.paths.assets = {
+            source: '../../themes', // source asset path is always the same
+            uncompressed: './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replace(/\\/g, '/'),
+            compressed: './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replace(/\\/g, '/'),
+            packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replace(/\\/g, '/'),
+        };
 
-    // resolve paths (config location + base + path)
-    for(folder in config.paths.source) {
-      if(config.paths.source.hasOwnProperty(folder)) {
-        sourcePaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.source[folder]));
-      }
-    }
-    for(folder in config.paths.output) {
-      if(config.paths.output.hasOwnProperty(folder)) {
-        outputPaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.output[folder]));
-      }
-    }
+        /* --------------
+            Permission
+        --------------- */
 
-    // set config paths to full paths
-    config.paths.source = sourcePaths;
-    config.paths.output = outputPaths;
+        if (config.permission) {
+            config.hasPermissions = true;
+            config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
+        } else {
+            // pass blank object to avoid causing errors
+            config.permission = {};
+            config.hasPermissions = false;
+            config.parsedPermissions = {};
+        }
 
-    // resolve "clean" command path
-    config.paths.clean = path.resolve( path.join(configPath, config.base, config.paths.clean) );
+        /* --------------
+             Globs
+        --------------- */
 
-    /*--------------
-        CSS URLs
-    ---------------*/
+        if (!config.globs) {
+            config.globs = {};
+        }
 
-    // determine asset paths in css by finding relative path between themes and output
-    // force forward slashes
+        // remove duplicates from component array
+        if (Array.isArray(config.components)) {
+            config.components = config.components.filter(function (component, index) {
+                return config.components.indexOf(component) === index;
+            });
+        }
 
-    config.paths.assets = {
-      source       : '../../themes', // source asset path is always the same
-      uncompressed : './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replace(/\\/g, '/'),
-      compressed   : './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replace(/\\/g, '/'),
-      packaged     : './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replace(/\\/g, '/')
-    };
+        const components = Array.isArray(config.components) && config.components.length > 0
+            ? config.components
+            : defaults.components;
+        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
+            ? config.individuals
+            : [];
+        const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
-    /*--------------
-       Permission
-    ---------------*/
+        // takes component object and creates file glob matching selected components
+        config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
-    if(config.permission) {
-      config.hasPermissions = true;
-      config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
-    }
-    else {
-      // pass blank object to avoid causing errors
-      config.permission     = {};
-      config.hasPermissions = false;
-      config.parsedPermissions = {};
-    }
-
-    /*--------------
-         Globs
-    ---------------*/
-
-    if(!config.globs) {
-      config.globs = {};
-    }
-
-    // remove duplicates from component array
-    if(config.components instanceof Array) {
-      config.components = config.components.filter(function(component, index) {
-        return config.components.indexOf(component) == index;
-      });
-    }
-
-    const components = (Array.isArray(config.components) && config.components.length >= 1)
-      ? config.components
-      : defaults.components
-    ;
-    const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
-      ? config.individuals
-      : []
-    ;
-    const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
-
-    // takes component object and creates file glob matching selected components
-    config.globs.components = '{' + componentsExceptIndividuals.join(',') + '}';
-
-    // components that should be built, but excluded from main .css/.js files
-    config.globs.individuals = (individuals.length >= 1)
-      ? '{' + individuals.join(',') + '}'
-      : undefined
-    ;
-
-    return config;
-
-  }
+        // components that should be built, but excluded from main .css/.js files
+        config.globs.individuals = individuals.length === 1
+            ? individuals[0]
+            : (individuals.length > 1
+                ? '{' + individuals.join(',') + '}'
+                : undefined);
+    },
 
 };
-

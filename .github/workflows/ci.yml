@@ -1,21 +1,58 @@
 name: CI
-on: [pull_request]
+on: [push, pull_request]
+permissions:
+  contents: read
+
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+    - name: Install dependencies
+      run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^45 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+    - name: Lint JS and LESS files
+      run: npm run lint
+    - name: Assert LESS files formatting using Prettier
+      run: >
+        yarn add -D github:fomantic/prettier#2.8.3-patched
+        && npx prettier --loglevel warn '!dist' '!test/coverage' '!src/semantic.less' '**/*.{css,less,overrides,variables}' --write
+        && git restore package.json yarn.lock
+        && git add . -N && git diff --color --exit-code
   test:
-    name: Test build process on node ${{ matrix.node_version }}
+    name: Test build process on node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        node_version: [8, 10, 11, 12, 13, 14]
+        node-version: [12, 14, 16, 18, latest]
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
       run: sh ./scripts/preinstall.sh
-    - name: install dependencies
-      run: npm install --ignore-scripts
+    - name: Install dependencies
+      run: yarn
     - name: pre fomantic install & gulp build
-      run: npx gulp install
+      run: yarn gulp install
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - uses: actions/checkout@v3
+    - uses: github/codeql-action/init@v2
+      with:
+        languages: 'javascript'
+        config-file: ./.github/codeql/codeql-config.yml
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2

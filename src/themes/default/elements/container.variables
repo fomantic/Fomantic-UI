@@ -2,29 +2,33 @@
             Container
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
-/* Minimum Gutter is used to determine  the maximum container width for a given device */
+/* Minimum Gutter is used to determine the maximum container width for a given device */
 
 @maxWidth: 100%;
+@wideRatio: 1.2;
 
 /* Devices */
 @mobileMinimumGutter: 0;
 @mobileWidth: auto;
 @mobileGutter: 1em;
 
-@tabletMinimumGutter: (@emSize  * 1);
+@tabletMinimumGutter: (@emSize * 1);
 @tabletWidth: @tabletBreakpoint - (@tabletMinimumGutter * 2) - @scrollbarWidth;
+@tabletWideWidth: (@tabletBreakpoint - (@tabletMinimumGutter * 2) - @scrollbarWidth) * @wideRatio;
 @tabletGutter: auto;
 
-@computerMinimumGutter: (@emSize  * 1.5);
+@computerMinimumGutter: (@emSize * 1.5);
 @computerWidth: @computerBreakpoint - (@computerMinimumGutter * 2) - @scrollbarWidth;
+@computerWideWidth: (@computerBreakpoint - (@computerMinimumGutter * 2) - @scrollbarWidth) * @wideRatio;
 @computerGutter: auto;
 
-@largeMonitorMinimumGutter: (@emSize  * 2);
+@largeMonitorMinimumGutter: (@emSize * 2);
 @largeMonitorWidth: @largeMonitorBreakpoint - (@largeMonitorMinimumGutter * 2) - @scrollbarWidth;
+@largeMonitorWideWidth: (@largeMonitorBreakpoint - (@largeMonitorMinimumGutter * 2) - @scrollbarWidth) * @wideRatio;
 @largeMonitorGutter: auto;
 
 /* Coupling (Add Negative Margin to container size) */
@@ -47,9 +51,9 @@
 @computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
 @largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Text */
 @textWidth: 700px;

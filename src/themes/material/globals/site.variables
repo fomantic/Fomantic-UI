@@ -2,126 +2,124 @@
          Site Settings
 *******************************/
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
-@headerFont        : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@pageFont          : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@googleFontName    : 'Roboto';
+@headerFont: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@pageFont: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@googleFontName: "Roboto";
 
-/*-------------------
+/* -------------------
       Base Sizes
---------------------*/
+-------------------- */
 
-@emSize            : 14px;
-@fontSize          : 13px;
+@emSize: 14px;
+@fontSize: 13px;
 
-/*--------------
+/* --------------
       Page
----------------*/
+--------------- */
 
-@pageBackground      : #F9F9F9;
-@lineHeight          : 1.33;
-@textColor           : #212121;
+@pageBackground: #f9f9f9;
+@lineHeight: 1.33;
+@textColor: #212121;
 
-/*--------------
+/* --------------
   Page Heading
----------------*/
+--------------- */
 
-@headerLineHeight : 1.33em;
-@headerFontWeight : 400;
+@headerLineHeight: 1.33em;
+@headerFontWeight: 400;
 
-@h1               : 2.25rem;
-@h2               : 2rem;
-@h3               : 1.75rem;
-@h4               : 1.5rem;
-@h5               : 1.25rem;
+@h1: 2.25rem;
+@h2: 2rem;
+@h3: 1.75rem;
+@h4: 1.5rem;
+@h5: 1.25rem;
 
-
-/*-------------------
+/* -------------------
         Paths
---------------------*/
+-------------------- */
 
-@imagePath : '../../themes/material/assets/images';
-@fontPath  : '../../themes/material/assets/fonts';
+@imagePath: "../../themes/material/assets/images";
 
-/*--------------
+/* --------------
    Paragraphs
----------------*/
+--------------- */
 
 @paragraphLineHeight: 1.7em;
 
-/*-------------------
+/* -------------------
       Site Colors
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
-@black            : #1B1C1D;
-@blue             : #2196F3;
-@green            : #4CAF50;
-@grey             : #9E9E9E;
-@orange           : #FF9800;
-@pink             : #E91E63;
-@purple           : #9C27B0;
-@red              : #F44336;
-@teal             : #1de9b6;
-@yellow           : #FFEB3B;
+/* ---  Colors  --- */
+@black: #1b1c1d;
+@blue: #2196f3;
+@green: #4caf50;
+@grey: #9e9e9e;
+@orange: #ff9800;
+@pink: #e91e63;
+@purple: #9c27b0;
+@red: #f44336;
+@teal: #1de9b6;
+@yellow: #ffeb3b;
 
-/*---  Light Colors  ---*/
-@lightBlack       : #333333;
-@lightBlue        : #2979FF;
-@lightGreen       : #00E676;
-@lightOrange      : #FF9100;
-@lightPink        : #F50057;
-@lightPurple      : #D500F9;
-@lightRed         : #FF1744;
-@lightTeal        : #1DE9B6;
-@lightYellow      : #FFEA00;
+/* ---  Light Colors  --- */
+@lightBlack: #333;
+@lightBlue: #2979ff;
+@lightGreen: #00e676;
+@lightOrange: #ff9100;
+@lightPink: #f50057;
+@lightPurple: #d500f9;
+@lightRed: #ff1744;
+@lightTeal: #1de9b6;
+@lightYellow: #ffea00;
 
-/*---   Neutrals  ---*/
-@fullBlack        : #000000;
-@darkGrey         : #AAAAAA;
-@lightGrey        : #DCDDDE;
-@offWhite         : #FAFAFA;
-@darkWhite        : #F0F0F0;
-@white            : #FFFFFF;
+/* ---   Neutrals  --- */
+@fullBlack: #000;
+@darkGrey: #aaa;
+@lightGrey: #dcddde;
+@offWhite: #fafafa;
+@darkWhite: #f0f0f0;
+@white: #fff;
 
-/*-------------------
+/* -------------------
     Brand Colors
---------------------*/
+-------------------- */
 
-@primaryColor        : @blue;
-@secondaryColor      : @grey;
+@primaryColor: @blue;
+@secondaryColor: @grey;
 
-@lightPrimaryColor   : @lightBlue;
-@lightSecondaryColor : @lightGrey;
+@lightPrimaryColor: @lightBlue;
+@lightSecondaryColor: @lightGrey;
 
-/*-------------------
+/* -------------------
       Paragraph
---------------------*/
+-------------------- */
 
-@paragraphMargin     : 0em 0em 1.53em;
+@paragraphMargin: 0 0 1.53em;
 
-/*-------------------
+/* -------------------
        Links
---------------------*/
+-------------------- */
 
-@linkColor           : #009FDA;
-@linkUnderline       : none;
-@linkHoverColor      : lighten(@linkColor, 5);
-@linkHoverUnderline  : @linkUnderline;
+@linkColor: #009fda;
+@linkUnderline: none;
+@linkHoverColor: lighten(@linkColor, 5);
+@linkHoverUnderline: @linkUnderline;
 
-/*-------------------
+/* -------------------
   Highlighted Text
---------------------*/
+-------------------- */
 
-@highlightBackground : #009FDA;
-@highlightColor      : @white;
+@highlightBackground: #009fda;
+@highlightColor: @white;
 
-/*-------------------
+/* -------------------
        Accents
---------------------*/
+-------------------- */
 
 /* 4px @ default em */
 @relativeBorderRadius: @relative4px;

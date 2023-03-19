@@ -2,9 +2,9 @@
              Popup
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @zIndex: 1900;
 @background: @white;
@@ -21,9 +21,9 @@
 @fontStyle: @normal;
 @borderRadius: @defaultBorderRadius;
 
-/*-------------------
+/* -------------------
        Parts
---------------------*/
+-------------------- */
 
 /* Placement */
 @arrowSize: @relative10px;
@@ -31,7 +31,6 @@
 @arrowDistanceFromEdge: 1em;
 @boxArrowOffset: 0;
 @popupDistanceAway: @arrowSize;
-
 
 /* Header */
 @headerFontFamily: @headerFont;
@@ -62,9 +61,9 @@
 @rightArrowBoxShadow: -@arrowStroke @arrowStroke 0 0 @arrowColor;
 @bottomArrowBoxShadow: -@arrowStroke -@arrowStroke 0 0 @arrowColor;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Tooltip */
 @tooltipBackground: @background;
@@ -80,16 +79,16 @@
 @tooltipLineHeight: @lineHeight;
 @tooltipDistanceAway: @relative7px;
 @tooltipZIndex: 1900;
-@tooltipDuration: @defaultDuration;
+@tooltipDuration: 0.2s;
 @tooltipEasing: @defaultEasing;
+@tooltipDelay: 0.04s;
+@tooltipScaleInit: 0.8;
 
 /* Inverted */
 @tooltipInvertedBackground: @invertedBackground;
 @tooltipInvertedColor: @invertedColor;
 @tooltipInvertedBorder: @invertedBorder;
 @tooltipInvertedBoxShadow: @invertedBoxShadow;
-@tooltipInvertedHeaderBackground: @invertedHeaderBackground;
-@tooltipInvertedHeaderColor: @invertedHeaderColor;
 
 /* Arrow */
 @tooltipArrowVerticalOffset: -@2px;
@@ -100,23 +99,33 @@
 @tooltipArrowCenterBackground: @arrowCenterBackground;
 @tooltipArrowBottomBackground: @arrowBottomBackground;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 /* Grid Inside Popup */
 @nestedGridMargin: -0.7rem -0.875rem; /* (padding * @medium) */
 @nestedGridWidth: e("calc(100% + 1.75rem)");
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
+@loadingOpacity: 0.3;
+@loadingColoredPercent: 30%;
+@loadingPointerEvents: none;
 @loadingZIndex: -1;
+@loaderSize: 2em;
+@loaderLineZIndex: 101;
 
-/*-------------------
+/* backward compatible just in case */
+@invisibleZIndex: @loadingZIndex;
+
+/* -------------------
        Variations
---------------------*/
+-------------------- */
+
+@multilineWhiteSpace: pre-line;
 
 /* Wide */
 @wideWidth: 350px;

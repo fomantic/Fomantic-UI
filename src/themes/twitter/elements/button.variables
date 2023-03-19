@@ -1,23 +1,23 @@
-/*-------------------
+/* -------------------
    Global Variables
---------------------*/
+-------------------- */
 
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
-@textColor: #66757F;
-@blue: #55ACEE;
+@textColor: #66757f;
+@blue: #55acee;
 
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
-@backgroundColor: #F5F8FA;
+@backgroundColor: #f5f8fa;
 @backgroundImage: linear-gradient(@white, @backgroundColor);
-@color: #66757F;
-@borderBoxShadowColor: #E1E8ED;
+@color: #66757f;
+@borderBoxShadowColor: #e1e8ed;
 
 @textTransform: none;
 @fontWeight: bold;
-@textColor: #333333;
+@textColor: #333;
 
 @horizontalPadding: 1.284em;
 @verticalPadding: 0.8571em;
@@ -27,18 +27,17 @@
 @primaryColor: @blue;
 @coloredBackgroundImage: @subtleGradient;
 
-
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
-@hoverBackgroundColor: #E1E8ED;
+@hoverBackgroundColor: #e1e8ed;
 @hoverBackgroundImage: linear-gradient(@white, @hoverBackgroundColor);
-@hoverColor: #292F33;
+@hoverColor: #292f33;
 
-@downBackgroundColor: #E1E8ED;
-@downColor: #292F33;
-@downPressedShadow: 0px 1px 4px rgba(0, 0, 0, 0.2) inset;
+@downBackgroundColor: #e1e8ed;
+@downColor: #292f33;
+@downPressedShadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
 
 @labeledIconBackgroundColor: rgba(85, 172, 238, 0.05);
 @labeledIconBorder: rgba(0, 0, 0, 0.1);

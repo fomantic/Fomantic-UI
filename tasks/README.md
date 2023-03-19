@@ -7,11 +7,9 @@
 
 ## How to use
 
-These tasks can be imported into your own gulpfile allowing you to avoid using Semantic's build tools
+These tasks can be imported into your own gulpfile allowing you to avoid using Fomantic's build tools
 
 ```javascript
-var
-  watch = require('path/to/semantic/tasks/watch')
-;
+const watch = require('path/to/fomantic/tasks/watch');
 gulp.task('watch ui', watch);
 ```
