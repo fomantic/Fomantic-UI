@@ -95,8 +95,6 @@
                     if (module.is.ios()) {
                         module.set.ios();
                     }
-                    transitionEvent = module.get.transitionEvent();
-
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
