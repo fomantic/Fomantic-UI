@@ -1623,29 +1623,36 @@ Floated Menu / Item
     }
 }
 
-/* -------------------
-      Evenly Sized
--------------------- */
-
-.ui.item.menu,
-.ui.item.menu .item {
-    width: 100%;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    text-align: center;
-    justify-content: center;
-}
-.ui.attached.item.menu:not(.tabular) {
-    margin: 0 @attachedHorizontalOffset !important;
-}
-
-.ui.item.menu .item:last-child::before {
-    display: none;
-}
-
 & when (@variationMenuEqualWidth) {
+    /* -------------------
+          Evenly Sized
+    -------------------- */
+
+    .ui[class*="equal width"].menu > .item {
+        flex: 1;
+    }
+
+    .ui[class*="equal width"].menu > .item,
+    .ui.item.menu,
+    .ui.item.menu .item {
+        width: 100%;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: center;
+        justify-content: center;
+    }
+    .ui.attached[class*="equal width"].menu:not(.tabular),
+    .ui.attached.item.menu:not(.tabular) {
+        margin: 0 @attachedHorizontalOffset !important;
+    }
+
+    .ui[class*="equal width"].menu > .item:last-child::before,
+    .ui.item.menu .item:last-child::before {
+        display: none;
+    }
+
     .ui.menu.two.item .item {
         width: 50%;
     }
@@ -2011,4 +2018,5 @@ Floated Menu / Item
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

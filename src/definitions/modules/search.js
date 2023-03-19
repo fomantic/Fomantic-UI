@@ -22,7 +22,6 @@
     $.fn.search = function (parameters) {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -562,6 +561,7 @@
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
                             module.save.results(cache.results);
+                            settings.onResults.call(element, cache.results, true);
                             module.addResults(cache.html);
                             module.inject.id(cache.results);
                             callback();
@@ -1184,9 +1184,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
@@ -1349,7 +1346,7 @@
         onResultsAdd: false,
 
         onSearchQuery: function (query) {},
-        onResults: function (response) {},
+        onResults: function (response, fromCache) {},
 
         onResultsOpen: function () {},
         onResultsClose: function () {},
