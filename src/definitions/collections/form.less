@@ -527,9 +527,10 @@
             color: @c;
         }
 
-        // needs separate selector because not supported by every browser
-        .ui.form .fields:has(.@{state}) > label {
-            color: @c;
+        @supports selector(:has(.f)) {
+            .ui.form .fields:has(.@{state}) > label {
+                color: @c;
+            }
         }
 
         .ui.form .fields.@{state} .field .ui.label,
@@ -735,9 +736,10 @@
                 color: @lbg;
             }
 
-            // needs separate selector because not supported by every browser
-            .ui.inverted.form .fields:has(.@{state}) > label {
-                color: @lbg;
+            @supports selector(:has(.f)) {
+                .ui.inverted.form .fields:has(.@{state}) > label {
+                    color: @lbg;
+                }
             }
         }
     });
