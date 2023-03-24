@@ -616,13 +616,19 @@
         @color: @value;
         @c: @colors[@@color][color];
         & when not (@color=primary) and not (@color=secondary) {
-            .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+            .ui.ui.ui.ui.ui.@{color}.segment:not(.inverted) {
                 border-top: @coloredBorderSize solid @c;
             }
             & when (@variationSegmentInverted) {
-                .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+                .ui.ui.ui.ui.ui.inverted.@{color}.segment {
                     background-color: @c;
                     color: @white;
+                    & when not (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                        border-color: c;
+                    }
+                }
+                .ui.ui.inverted.@{color}.segment:not(.piled) when (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                    border-color: @c;
                 }
             }
         }
