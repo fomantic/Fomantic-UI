@@ -4010,7 +4010,7 @@
         forceSelection: false, // force a choice on blur with search selection
 
         allowAdditions: false, // whether multiple select should allow user added values
-        keepSearchTerm: false, // whether the search value should be kept when selecting a value.
+        keepSearchTerm: false, // whether the search value should be kept and menu stays filtered on item selection
         ignoreCase: false, // whether to consider case sensitivity when creating labels
         ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
         hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
