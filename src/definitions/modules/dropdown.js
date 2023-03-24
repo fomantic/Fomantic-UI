@@ -1407,11 +1407,13 @@
                                     if (settings.allowAdditions) {
                                         module.remove.userAddition();
                                     }
-                                    module.remove.filteredItem();
+                                    if (!settings.keepSearchTerm) {
+                                        module.remove.filteredItem();
+                                        module.remove.searchTerm();
+                                    }
                                     if (!module.is.visible() && $target.length > 0) {
                                         module.show();
                                     }
-                                    module.remove.searchTerm();
                                     if (!module.is.focusedOnSearch() && skipRefocus !== true) {
                                         module.focusSearch(true);
                                     }
@@ -1597,7 +1599,9 @@
                                         module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                         module.event.item.click.call($selectedItem, event);
                                         if (module.is.searchSelection()) {
-                                            module.remove.searchTerm();
+                                            if (!settings.keepSearchTerm) {
+                                                module.remove.searchTerm();
+                                            }
                                             if (module.is.multiple()) {
                                                 $search.trigger('focus');
                                             }
@@ -1814,7 +1818,7 @@
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
-                            module.set.selected(value, $(element));
+                            module.set.selected(value, $(element), false, settings.keepSearchTerm);
                             if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                                 module.hideAndClear();
                             }
@@ -2464,7 +2468,7 @@
                             valueIsSet       = searchValue !== ''
                         ;
                         if (isMultiple && hasSearchValue) {
-                            module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
+                            module.verbose('Adjusting input width', searchWidth);
                             $search.css('width', searchWidth + 'px');
                         }
                         if (hasSearchValue || (isSearchMultiple && valueIsSet)) {
@@ -2763,7 +2767,7 @@
                             return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
-                        if (module.is.multiple()) {
+                        if (module.is.multiple() && !keepSearchTerm) {
                             module.remove.searchWidth();
                         }
                         if (module.is.single()) {
@@ -4006,6 +4010,7 @@
         forceSelection: false, // force a choice on blur with search selection
 
         allowAdditions: false, // whether multiple select should allow user added values
+        keepSearchTerm: false, // whether the search value should be kept when selecting a value.
         ignoreCase: false, // whether to consider case sensitivity when creating labels
         ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
         hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
@@ -4024,8 +4029,6 @@
         transition: 'auto', // auto transition will slide down or up based on direction
         duration: 200, // duration of transition
         displayType: false, // displayType of transition
-
-        glyphWidth: 1.037, // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
         headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 
