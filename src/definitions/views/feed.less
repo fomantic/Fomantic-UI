@@ -293,6 +293,9 @@
             top: 0;
             height: 100%;
         }
+        &:first-child::before {
+            top: @connectedFirstOffset;
+        }
         &:last-child::before {
             height: @connectedLastHeight;
         }
