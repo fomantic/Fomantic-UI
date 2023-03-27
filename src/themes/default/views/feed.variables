@@ -139,6 +139,7 @@
 /* -------------------
       Variations
 -------------------- */
+
 /* Connected */
 @connectedColor: #bbbbbb;
 @connectedBorderWidth: 2px;
