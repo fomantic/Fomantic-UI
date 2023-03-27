@@ -139,3 +139,18 @@
 /* -------------------
       Variations
 -------------------- */
+/* Connected */
+@connectedColor: #bbbbbb;
+@connectedBorderWidth: 2px;
+@connectedLastHeight: 1em;
+@connectedBorderOffset: 1.3em;
+@connectedBackground: @white;
+
+/* Inverted */
+@invertedIconLabelColor: @invertedLightTextColor;
+@invertedLikeColor: @invertedLightTextColor;
+@invertedLikeHoverColor: @invertedSelectedTextColor;
+@invertedLikeActiveColor: @invertedLikeColor;
+
+@invertedConnectedColor: #444444;
+@invertedConnectedBackground: @black;

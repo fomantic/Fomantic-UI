@@ -454,6 +454,8 @@
 @variationFeedExtra: true;
 @variationFeedDate: true;
 @variationFeedLike: true;
+@variationFeedConnected: true;
+@variationFeedRightFloated: true;
 @variationFeedSizes: @variationAllSizes;
 
 /* Item */

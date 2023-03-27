@@ -146,13 +146,15 @@
         /* Date inside Summary */
         .ui.feed > .event > .content .summary > .date {
             display: @summaryDateDisplay;
-            float: @summaryDateFloat;
             font-weight: @summaryDateFontWeight;
             font-size: @summaryDateFontSize;
             font-style: @summaryDateFontStyle;
             margin: @summaryDateMargin;
             padding: @summaryDatePadding;
             color: @summaryDateColor;
+            &:not(.floated) {
+                float: @summaryDateFloat;
+            }
         }
     }
 }
@@ -274,6 +276,42 @@
 /*******************************
             Variations
 *******************************/
+& when (@variationFeedRightFloated) {
+    /*rtl:rename*/
+    .ui.feed .right.floated {
+        float: right;
+    }
+}
+& when (@variationFeedConnected) {
+    .ui.connected.feed > .event {
+        position: relative;
+        &::before {
+            border-left: @connectedBorderWidth solid @connectedColor;
+            content: "";
+            left: @connectedBorderOffset;
+            position: absolute;
+            top: 0;
+            height: 100%;
+        }
+        &:last-child::before {
+            height: @connectedLastHeight;
+        }
+        & > .label {
+            position: relative;
+            & i.icon::before {
+                background: @connectedBackground;
+            }
+        }
+    }
+    .ui.inverted.connected.feed > .event {
+        &::before {
+            border-left-color: @invertedConnectedColor;
+        }
+        & > .label i.icon::before {
+            background: @invertedConnectedBackground;
+        }
+    }
+}
 
 .ui.feed {
     font-size: @medium;
@@ -294,12 +332,15 @@
 
     .ui.inverted.feed > .event {
         background: @black;
+        & > .label i.icon {
+            color: @invertedIconLabelColor;
+        }
     }
 
     & when (@variationFeedDate) or (@variationFeedLike) {
         .ui.inverted.feed > .event > .content .date,
         .ui.inverted.feed > .event > .content .meta .like {
-            color: @invertedLightTextColor;
+            color: @invertedLikeColor;
         }
     }
 
@@ -312,7 +353,10 @@
 
     & when (@variationFeedLike) {
         .ui.inverted.feed > .event > .content .meta .like:hover {
-            color: @invertedSelectedTextColor;
+            color: @invertedLikeHoverColor;
+        }
+        .ui.inverted.feed > .event > .content .meta .active.like i.icon {
+            color: @invertedLikeActiveColor;
         }
     }
 }
