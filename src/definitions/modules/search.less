@@ -411,6 +411,12 @@
             max-height: @scrollingWidescreenMaxResultsHeight;
         }
     }
+    & when (@variationSearchResizable) {
+        .ui.scrolling.resizable.search > .results {
+            resize: vertical;
+            max-height: none;
+        }
+    }
 }
 
 @media only screen and (max-width: @largestMobileScreen) {

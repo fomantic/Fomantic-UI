@@ -292,6 +292,12 @@
             }
         }
     }
+    & when (@variationContainerResizable) {
+        .ui.resizable.scrolling.container {
+            resize: vertical;
+            max-height: none;
+        }
+    }
 }
 
 // stylelint-disable no-invalid-position-at-import-rule

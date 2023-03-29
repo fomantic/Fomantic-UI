@@ -285,6 +285,12 @@
                 max-height: @scrollingMobileMaxBodyHeight * 3;
             }
         }
+        & when (@variationTableResizable) {
+            .ui.resizable.scrolling.table > tbody {
+                resize: vertical;
+                max-height: none;
+            }
+        }
     }
     & when (@variationTableOverflowing) {
         & when (@variationTableOverflowingShort) {

@@ -945,6 +945,12 @@
             }
         }
     }
+    & when (@variationSegmentResizable) {
+        .ui.resizable.scrolling.segment {
+            resize: vertical;
+            max-height: none;
+        }
+    }
 }
 
 /* -------------------

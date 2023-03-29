@@ -51,6 +51,7 @@
 @variationContainerFluid: true;
 @variationContainerAligned: true;
 @variationContainerJustified: true;
+@variationContainerResizable: true;
 @variationContainerScrolling: true;
 @variationContainerScrollingShort: true;
 @variationContainerScrollingVeryShort: true;
@@ -235,6 +236,7 @@
 @variationSegmentAttached: true;
 @variationSegmentSeamless: true;
 @variationSegmentFitted: true;
+@variationSegmentResizable: true;
 @variationSegmentScrolling: true;
 @variationSegmentScrollingShort: true;
 @variationSegmentScrollingVeryShort: true;
@@ -372,6 +374,7 @@
 @variationTableMarked: true;
 @variationTableEqualWidth: true;
 @variationTableWide: true;
+@variationTableResizable: true;
 @variationTableScrolling: true;
 @variationTableScrollingShort: true;
 @variationTableScrollingVeryShort: true;
@@ -546,6 +549,7 @@
 @variationDropdownLeft: true;
 @variationDropdownUpward: true;
 @variationDropdownSimple: true;
+@variationDropdownResizable: true;
 @variationDropdownScrolling: true;
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
@@ -573,6 +577,7 @@
 @variationFlyoutLeft: true;
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
+@variationFlyoutResizable: true;
 @variationFlyoutScrolling: true;
 
 /* Modal */
@@ -581,6 +586,7 @@
 @variationModalFullscreen: true;
 @variationModalOverlay: true;
 @variationModalAligned: true;
+@variationModalResizable: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
 @variationModalCloseInside: true;
@@ -653,6 +659,7 @@
 @variationSearchVeryShort: true;
 @variationSearchLong: true;
 @variationSearchVeryLong: true;
+@variationSearchResizable: true;
 @variationSearchScrolling: true;
 @variationSearchSizes: @variationAllSizes;
 

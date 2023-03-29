@@ -481,6 +481,12 @@
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
     }
+    & when (@variationTableResizable) {
+        .ui.modal > .resizable.scrolling.content {
+            resize: vertical;
+            max-height: none;
+        }
+    }
 }
 
 & when (@variationModalOverlay) {

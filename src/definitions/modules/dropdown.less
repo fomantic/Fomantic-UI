@@ -1373,6 +1373,13 @@ select.ui.dropdown {
             max-height: @scrollingWidescreenMaxMenuHeight;
         }
     }
+    & when (@variationDropdownResizable) {
+        .ui.scrolling.resizable.dropdown .menu,
+        .ui.dropdown .scrolling.resizable.menu {
+            resize: vertical;
+            max-height: none;
+        }
+    }
 }
 
 & when (@variationInputLabeled) {
