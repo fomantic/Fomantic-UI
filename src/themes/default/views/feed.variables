@@ -141,18 +141,25 @@
 -------------------- */
 
 /* Connected */
-@connectedColor: #bbbbbb;
+@connectedBorderColor: @borderColor;
 @connectedBorderWidth: 2px;
-@connectedLastHeight: 1em;
-@connectedFirstOffset: 0.5em;
-@connectedBorderOffset: 1.25em;
-@connectedBackground: @white;
+@connectedBorder: @connectedBorderWidth solid @connectedBorderColor;
+@connectedBorderLeftOffset: 1.2em;
+@connectedBorderTopOffset: 2.1em;
+@connectedBorderHeight: e(%("calc(100%% - %d)", @iconLabelSize));
+@connectedBorderZIndex: 1;
+
+/* Divided */
+@dividedBorderColor: @borderColor;
+@dividedBorderWidth: @borderWidth;
+@dividedBorder: @dividedBorderWidth solid @dividedBorderColor;
 
 /* Inverted */
+@invertedBackground: @black;
 @invertedIconLabelColor: @invertedLightTextColor;
 @invertedLikeColor: @invertedLightTextColor;
 @invertedLikeHoverColor: @invertedSelectedTextColor;
 @invertedLikeActiveColor: @invertedLikeColor;
 
-@invertedConnectedColor: #444444;
-@invertedConnectedBackground: @black;
+@invertedConnectedBorderColor: @whiteBorderColor;
+@invertedDividedBorderColor: @whiteBorderColor;

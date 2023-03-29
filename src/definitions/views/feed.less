@@ -43,10 +43,11 @@
     padding: @eventPadding;
     margin: @eventMargin;
     background: @eventBackground;
-    border-top: @eventDivider;
+    &:not(:first-child) {
+        border-top: @eventDivider;
+    }
 }
-.ui.feed > .event:first-child {
-    border-top: 0;
+.ui.feed:not(.connected) > .event:first-child {
     padding-top: 0;
 }
 .ui.feed > .event:last-child {
@@ -285,33 +286,35 @@
 & when (@variationFeedConnected) {
     .ui.connected.feed > .event {
         position: relative;
-        &::before {
-            border-left: @connectedBorderWidth solid @connectedColor;
+        &:not(:last-child)::before {
+            border-left: @connectedBorder;
             content: "";
-            left: @connectedBorderOffset;
+            left: @connectedBorderLeftOffset;
             position: absolute;
-            top: 0;
-            height: 100%;
-        }
-        &:first-child::before {
-            top: @connectedFirstOffset;
-        }
-        &:last-child::before {
-            height: @connectedLastHeight;
+            top: @connectedBorderTopOffset;
+            height: @connectedBorderHeight;
+            z-index: @connectedBorderZIndex;
         }
         & > .label {
             position: relative;
-            & i.icon::before {
-                background: @connectedBackground;
+        }
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.connected.feed > .event {
+            &::before {
+                border-left-color: @invertedConnectedBorderColor;
             }
         }
     }
-    .ui.inverted.connected.feed > .event {
-        &::before {
-            border-left-color: @invertedConnectedColor;
-        }
-        & > .label i.icon::before {
-            background: @invertedConnectedBackground;
+}
+
+& when(@variationFeedDivided) {
+    .ui.divided.feed > .event:not(:first-child) {
+        border-top: @dividedBorder;
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.divided.feed > .event {
+            border-top-color: @invertedDividedBorderColor;
         }
     }
 }

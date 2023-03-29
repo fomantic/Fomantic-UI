@@ -455,6 +455,7 @@
 @variationFeedDate: true;
 @variationFeedLike: true;
 @variationFeedConnected: true;
+@variationFeedDivided: true;
 @variationFeedRightFloated: true;
 @variationFeedSizes: @variationAllSizes;
 
