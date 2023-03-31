@@ -283,7 +283,19 @@
                             }
                         });
                         if (allValid) {
-                            allValid = $module[0].querySelectorAll(':invalid').length === 0;
+                            var nativeInvalid = $module[0].querySelectorAll(':invalid'),
+                                fieldErrors,
+                                identifier;
+                            for (var i = 0; i < nativeInvalid.length; i++) {
+                                if (nativeInvalid[i] && nativeInvalid[i].validationMessage) {
+                                    identifier = nativeInvalid[i].name || nativeInvalid[i].id;
+                                    fieldErrors = [nativeInvalid[i].validationMessage];
+                                    formErrors = formErrors.concat(fieldErrors);
+                                    module.add.prompt(identifier, fieldErrors, true);
+                                    settings.onInvalid.call(module.get.field(identifier, true), fieldErrors);
+                                    allValid = false;
+                                }
+                            }
                         }
                         return allValid;
                     },
