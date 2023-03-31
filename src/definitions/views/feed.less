@@ -386,7 +386,7 @@
             height: @orderedConnectedBorderHeight;
         }
 
-/* workaround until all browsers support :has() */
+        /* workaround until all browsers support :has() */
         .ui.connected.labeled.feed > .event::before,
         .ui.connected.feed > .labeled.event::before {
             top: @orderedConnectedLabeledBorderTopOffset;
@@ -394,7 +394,7 @@
         }
     }
 }
-& when (@variationFeedConnected)  and ((@variationFeedOrdered) or (@variationFeedLabelText)) {
+& when (@variationFeedConnected) and ((@variationFeedOrdered) or (@variationFeedLabelText)) {
     @supports selector(:has(.f)) {
         .ui.connected.feed > .event:has(> .label[data-text] > *)::before,
         .ui.ordered.connected.feed > .event:has(> .label > *)::before {
