@@ -130,10 +130,13 @@
                     module.bindEvents();
                 },
 
-                submit: function () {
+                submit: function (event) {
                     module.verbose('Submitting form', $module);
                     submitting = true;
                     $module.trigger('submit');
+                    if (event) {
+                        event.preventDefault();
+                    }
                 },
 
                 attachEvents: function (selector, action) {
@@ -279,7 +282,9 @@
                                 allValid = false;
                             }
                         });
-
+                        if (allValid) {
+                            allValid = $module[0].querySelectorAll(':invalid').length === 0;
+                        }
                         return allValid;
                     },
                     isDirty: function (e) {
@@ -431,9 +436,8 @@
                             if (!event.ctrlKey && key === keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                 if (!keyHeldDown) {
                                     $field.one('keyup' + eventNamespace, module.event.field.keyup);
-                                    module.submit();
+                                    module.submit(event);
                                     module.debug('Enter pressed on input submitting form');
-                                    event.preventDefault();
                                 }
                                 keyHeldDown = true;
                             }
