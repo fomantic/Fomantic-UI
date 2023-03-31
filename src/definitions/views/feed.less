@@ -461,24 +461,24 @@
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
 
-        .ui.feed > .event > .@{color}.label::before,
+        .ui.ui.feed > .event > .@{color}.label::before,
         .ui.@{color}.feed > .event > .label::before {
             background: @c;
         }
         & when (@variationFeedBasic) {
-            .ui.@{color}.basic.feed > .event > .label::before,
-            .ui.feed > .event > .@{color}.basic.label::before {
+            .ui.ui.feed > .event > .@{color}.basic.label::before,
+            .ui.@{color}.basic.feed > .event > .label::before {
                 color: @c;
             }
         }
         & when (@variationFeedInverted) {
-            .ui.inverted.feed > .event > .@{color}.label::before,
+            .ui.feed > .event > .inverted.@{color}.label::before,
             .ui.inverted.@{color}.feed > .event > .label::before {
                 background: @l;
             }
             & when (@variationFeedBasic) {
-                .ui.inverted.@{color}.basic.feed > .event > .label::before,
-                .ui.inverted.feed > .event > ,@{color}.basic.label::before {
+                .ui.feed > .event > .inverted.@{color}.basic.label::before,
+                .ui.inverted.@{color}.basic.feed > .event > .label::before {
                     color: @l;
                 }
             }
