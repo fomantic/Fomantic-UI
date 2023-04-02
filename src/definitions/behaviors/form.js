@@ -77,6 +77,7 @@
                 initialize: function () {
                     // settings grabbed at run time
                     module.get.settings();
+                    $module.addClass(className.initial);
                     if (methodInvoked) {
                         if (instance === undefined) {
                             module.instantiate();
@@ -162,6 +163,7 @@
                         .on('click' + eventNamespace, selector.reset, module.reset)
                         .on('click' + eventNamespace, selector.clear, module.clear)
                     ;
+                    $(selector.field).on('invalid', module.event.field.invalid);
                     if (settings.keyboardShortcuts) {
                         $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                     }
@@ -277,26 +279,15 @@
                         var
                             allValid = true
                         ;
-                        $.each(validation, function (fieldName, field) {
-                            if (!module.validate.field(field, fieldName, true)) {
+                        $field.each(function (index, el) {
+                            var $el = $(el),
+                                validation = module.get.validation($el) || {},
+                                identifier = module.get.identifier(validation, $el)
+                            ;
+                            if (!module.validate.field(validation, identifier, true)) {
                                 allValid = false;
                             }
                         });
-                        if (allValid) {
-                            var nativeInvalid = $module[0].querySelectorAll(':invalid'),
-                                fieldErrors,
-                                identifier;
-                            for (var i = 0; i < nativeInvalid.length; i++) {
-                                if (nativeInvalid[i] && nativeInvalid[i].validationMessage) {
-                                    identifier = nativeInvalid[i].name || nativeInvalid[i].id;
-                                    fieldErrors = [nativeInvalid[i].validationMessage];
-                                    formErrors = formErrors.concat(fieldErrors);
-                                    module.add.prompt(identifier, fieldErrors, true);
-                                    settings.onInvalid.call(module.get.field(identifier, true), fieldErrors);
-                                    allValid = false;
-                                }
-                            }
-                        }
 
                         return allValid;
                     },
@@ -458,15 +449,18 @@
                         keyup: function () {
                             keyHeldDown = false;
                         },
+                        invalid: function(event) {
+                            event.preventDefault();
+                        },
                         blur: function (event) {
                             var
                                 $field          = $(this),
-                                $fieldGroup     = $field.closest($group),
-                                validationRules = module.get.validation($field)
+                                validationRules = module.get.validation($field) || {},
+                                identifier      = module.get.identifier(validationRules, $field)
                             ;
-                            if (validationRules && (settings.on === 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (settings.on === 'blur' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 module.debug('Revalidating field', $field, validationRules);
-                                module.validate.field(validationRules);
+                                module.validate.field(validationRules, identifier);
                                 if (!settings.inline) {
                                     module.validate.form(false, true);
                                 }
@@ -475,14 +469,14 @@
                         change: function (event) {
                             var
                                 $field      = $(this),
-                                $fieldGroup = $field.closest($group),
-                                validationRules = module.get.validation($field)
+                                validationRules = module.get.validation($field) || {},
+                                identifier = module.get.identifier(validationRules, $field)
                             ;
-                            if (validationRules && (settings.on === 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (settings.on === 'change' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function () {
                                     module.debug('Revalidating field', $field, validationRules);
-                                    module.validate.field(validationRules);
+                                    module.validate.field(validationRules, identifier);
                                     if (!settings.inline) {
                                         module.validate.form(false, true);
                                     }
@@ -547,6 +541,9 @@
                         });
 
                         return fullFields;
+                    },
+                    identifier: function(validation, $el) {
+                        return validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate);
                     },
                     prompt: function (rule, field) {
                         var
@@ -991,7 +988,7 @@
                         $message.empty();
                     },
                     states: function () {
-                        $module.removeClass(className.error).removeClass(className.success);
+                        $module.removeClass(className.error).removeClass(className.success).addClass(className.initial);
                         if (!settings.inline) {
                             module.remove.errors();
                         }
@@ -1228,7 +1225,7 @@
                                         return rule.type === 'empty';
                                     }) !== 0
                                     : false,
-                                identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
+                                identifier = module.get.identifier(validation, $el)
                             ;
                             if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
                                 if (isCheckbox) {
@@ -1260,7 +1257,7 @@
                         if (keyHeldDown) {
                             return false;
                         }
-
+                        $module.removeClass(className.initial);
                         // reset errors
                         formErrors = [];
                         if (module.determine.isValid()) {
@@ -1332,14 +1329,22 @@
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
-                            fieldErrors = []
+                            fieldErrors = [],
+                            isDisabled = $field.filter(':not(:disabled)').length === 0,
+                            validationMessage = $field[0].validationMessage
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
-                        if (isDisabled) {
+                        if(validationMessage) {
+                            module.debug('Field is natively invalid', identifier);
+                            fieldErrors.push(validationMessage);
+                            fieldValid = false;
+                            if (showErrors) {
+                                $field.closest($group).addClass(className.error);
+                            }
+                        } else if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
                             module.debug('Field is optional and blank. Skipping', identifier);
@@ -1362,10 +1367,12 @@
                                     }
                                 }
                             });
+                        } else if (showErrors) {
+                            $field.closest($group).removeClass(className.error);
                         }
                         if (fieldValid) {
                             if (showErrors) {
-                                module.remove.prompt(identifier, fieldErrors);
+                                module.remove.prompt(identifier);
                                 settings.onValid.call($field);
                             }
                         } else {
@@ -1690,6 +1697,7 @@
         },
 
         className: {
+            initial: 'initial',
             error: 'error',
             label: 'ui basic red pointing prompt label',
             pressed: 'down',
