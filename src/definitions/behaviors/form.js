@@ -449,7 +449,7 @@
                         keyup: function () {
                             keyHeldDown = false;
                         },
-                        invalid: function(event) {
+                        invalid: function (event) {
                             event.preventDefault();
                         },
                         blur: function (event) {
@@ -542,7 +542,7 @@
 
                         return fullFields;
                     },
-                    identifier: function(validation, $el) {
+                    identifier: function (validation, $el) {
                         return validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate);
                     },
                     prompt: function (rule, field) {
@@ -1337,7 +1337,7 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if(validationMessage) {
+                        if (validationMessage) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
