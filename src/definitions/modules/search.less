@@ -394,21 +394,33 @@
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.scrolling.search > .results {
             max-height: @scrollingMobileMaxResultsHeight;
+            .resizable& when (@variationSearchResizable) {
+                height: @scrollingMobileMaxResultsHeight;
+            }
         }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
         .ui.scrolling.search > .results {
             max-height: @scrollingTabletMaxResultsHeight;
+            .resizable& when (@variationSearchResizable) {
+                height: @scrollingTabletMaxResultsHeight;
+            }
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
         .ui.scrolling.search > .results {
             max-height: @scrollingComputerMaxResultsHeight;
+            .resizable& when (@variationSearchResizable) {
+                height: @scrollingComputerMaxResultsHeight;
+            }
         }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
         .ui.scrolling.search > .results {
             max-height: @scrollingWidescreenMaxResultsHeight;
+            .resizable& when (@variationSearchResizable) {
+                height: @scrollingWidescreenMaxResultsHeight;
+            }
         }
     }
     & when (@variationSearchResizable) {

@@ -1354,11 +1354,23 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingMobileMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingMobileMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingTabletMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingTabletMaxMenuHeight;
+            }
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
@@ -1366,11 +1378,23 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingComputerMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingComputerMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingWidescreenMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingWidescreenMaxMenuHeight;
+            }
         }
     }
     & when (@variationDropdownResizable) {
