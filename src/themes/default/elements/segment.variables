@@ -152,3 +152,6 @@
         rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
     );
 @tertiaryInvertedColor: @invertedMutedTextColor;
+
+/* Resizable */
+@resizableDirection: vertical;

@@ -577,7 +577,6 @@
 @variationFlyoutLeft: true;
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
-@variationFlyoutResizable: true;
 @variationFlyoutScrolling: true;
 
 /* Modal */
