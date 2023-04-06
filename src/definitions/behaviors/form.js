@@ -1344,16 +1344,16 @@
                             if (showErrors) {
                                 $field.closest($group).addClass(className.error);
                             }
-                        } else if (isDisabled) {
+                        } else if (showErrors) {
+                            $field.closest($group).removeClass(className.error);
+                        }
+                        if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
                             module.debug('Field is optional and blank. Skipping', identifier);
                         } else if (field.depends && module.is.empty($dependsField)) {
                             module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
                         } else if (field.rules !== undefined) {
-                            if (showErrors) {
-                                $field.closest($group).removeClass(className.error);
-                            }
                             $.each(field.rules, function (index, rule) {
                                 if (module.has.field(identifier)) {
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
@@ -1367,8 +1367,6 @@
                                     }
                                 }
                             });
-                        } else if (showErrors) {
-                            $field.closest($group).removeClass(className.error);
                         }
                         if (fieldValid) {
                             if (showErrors) {
@@ -1662,8 +1660,8 @@
             isExactly: '{name} must be exactly "{ruleValue}"',
             not: '{name} cannot be set to "{ruleValue}"',
             notExactly: '{name} cannot be set to exactly "{ruleValue}"',
-            contain: '{name} must contain "{ruleValue}"',
-            containExactly: '{name} must contain exactly "{ruleValue}"',
+            contains: '{name} must contain "{ruleValue}"',
+            containsExactly: '{name} must contain exactly "{ruleValue}"',
             doesntContain: '{name} cannot contain "{ruleValue}"',
             doesntContainExactly: '{name} cannot contain exactly "{ruleValue}"',
             minLength: '{name} must be at least {ruleValue} characters',
