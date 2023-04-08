@@ -90,8 +90,14 @@
             display: block;
             text-align: center;
             margin-top: @textLabelTopMargin;
+            &.ui {
+                margin-top: @uiTextLabelTopMargin;
+            }
             &.multiline {
                 margin-top: @multilineTextLabelTopMargin;
+                &.ui {
+                    margin-top: @uiMultilineTextLabelTopMargin;
+                }
             }
         }
     }
