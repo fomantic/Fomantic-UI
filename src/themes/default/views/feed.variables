@@ -192,3 +192,4 @@
 
 @invertedConnectedBorderColor: @whiteBorderColor;
 @invertedDividedBorderColor: @whiteBorderColor;
+@invertedTextLabelColor: @white;

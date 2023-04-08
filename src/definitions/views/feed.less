@@ -432,6 +432,9 @@
         & > .label i.icon when (@variationFeedLabelIcon) {
             color: @invertedIconLabelColor;
         }
+        & > .label .text:not(.ui) when (@variationFeedLabelText) {
+            color: @invertedTextLabelColor;
+        }
     }
 
     & when (@variationFeedDate) or (@variationFeedLike) {
