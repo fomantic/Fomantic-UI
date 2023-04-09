@@ -3,7 +3,7 @@
 *******************************/
 
 /*
- This will create individual distribution repositories for each SUI distribution
+ This will create individual distribution repositories for each FUI distribution
 
   * copy distribution files to release
   * update package.json file
@@ -153,6 +153,8 @@ module.exports = function (callback) {
                 tasks.push(function () {
                     let
                         definitions,
+                        overridesImport,
+                        lessImport,
                         themeImport,
                         themeConfig,
                         siteTheme,
@@ -161,7 +163,10 @@ module.exports = function (callback) {
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory))
                     ;
-                    themeImport = gulp.src('src/semantic.less', { base: 'src/' })
+                    overridesImport = gulp.src('src/overrides.less', { base: 'src/' })
+                        .pipe(gulp.dest(outputDirectory))
+                    ;
+                    lessImport = gulp.src('src/semantic.less', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory))
                     ;
                     themeImport = gulp.src('src/theme.less', { base: 'src/' })
@@ -177,7 +182,7 @@ module.exports = function (callback) {
                         .pipe(gulp.dest(outputDirectory))
                     ;
 
-                    return mergeStream(definitions, themeImport, themeConfig, siteTheme, themes);
+                    return mergeStream(definitions, overridesImport, lessImport, themeImport, themeConfig, siteTheme, themes);
                 });
             }
 

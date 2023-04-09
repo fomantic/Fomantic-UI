@@ -9,7 +9,7 @@ let defaultBrowsers = browserslist(browserslist.defaults);
 let userBrowsers = browserslist();
 let hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
 
-var prefix = config.prefix || {};
+let prefix = config.prefix || {};
 if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
     prefix.overrideBrowserslist = [
         'last 2 Chrome versions',
@@ -114,10 +114,7 @@ module.exports = {
                     let
                         regExp = {
                             variable: /@(\S.*?)\s/,
-                            theme: /themes[/\\]+(.*?)[/\\].*/,
-                            element: /[/\\]([^*/\\]*)\.overrides/,
                         },
-                        theme,
                         element
                     ;
                     if (error && error.filename && /theme.less/.test(error.filename)) {
@@ -127,10 +124,6 @@ module.exports = {
                                 console.error('Missing theme.config value for', element);
                             }
                             console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
-                        } else if (error.line === 84) {
-                            element = regExp.element.exec(error.message)[1];
-                            theme = regExp.theme.exec(error.message)[1];
-                            console.error(theme + ' is not an available theme for ' + element);
                         } else {
                             console.error(error);
                         }

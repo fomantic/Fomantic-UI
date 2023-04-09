@@ -396,7 +396,7 @@
     @1f1e8-1f1ff: {
         countrycode: cz;
         class: czechia;
-        aliasClass: false;
+        aliasClass: czech_republic;
         aliasClass2: false;
     };
     @1f1e9-1f1f0: {
