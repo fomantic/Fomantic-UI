@@ -88,6 +88,7 @@
                 tempBodyMargin = '',
                 keepScrollingClass = false,
                 hadScrollbar = false,
+                windowRefocused = false,
 
                 elementEventNamespace,
                 id,
@@ -251,6 +252,7 @@
                         .off(eventNamespace)
                     ;
                     $window.off(elementEventNamespace);
+                    $context.off(elementEventNamespace);
                     $dimmer.off(elementEventNamespace);
                     $closeIcon.off(elementEventNamespace);
                     if ($inputs) {
@@ -272,11 +274,12 @@
                                     return nodes;
                                 },
                                 shouldRefresh = false,
-                                shouldRefreshInputs = false
+                                shouldRefreshInputs = false,
+                                ignoreAutofocus = true
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -287,6 +290,9 @@
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                     if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                         shouldRefreshInputs = true;
+                                        if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
+                                            ignoreAutofocus = false;
+                                        }
                                     }
                                 }
 
@@ -298,7 +304,7 @@
                                 module.refresh();
                             }
                             if (shouldRefreshInputs) {
-                                module.refreshInputs();
+                                module.refreshInputs(ignoreAutofocus);
                             }
                         });
                         observer.observe(element, {
@@ -326,7 +332,7 @@
                     $allModals = $otherModals.add($module);
                 },
 
-                refreshInputs: function () {
+                refreshInputs: function (ignoreAutofocus) {
                     if ($inputs) {
                         $inputs
                             .off('keydown' + elementEventNamespace)
@@ -335,8 +341,8 @@
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    if ($inputs.length === 0) {
-                        $inputs = $module;
+                    if ($inputs.filter(':input').length === 0) {
+                        $inputs = $module.add($inputs);
                         $module.attr('tabindex', -1);
                     } else {
                         $module.removeAttr('tabindex');
@@ -347,7 +353,7 @@
                     $inputs.last()
                         .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
                     ;
-                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                    if (!ignoreAutofocus && settings.autofocus && $inputs.filter(':focus').length === 0) {
                         module.set.autofocus();
                     }
                 },
@@ -384,6 +390,9 @@
                         $window
                             .on('resize' + elementEventNamespace, module.event.resize)
                             .on('focus' + elementEventNamespace, module.event.focus)
+                        ;
+                        $context
+                            .on('click' + elementEventNamespace, module.event.click)
                         ;
                     },
                     scrollLock: function () {
@@ -542,9 +551,13 @@
                         }
                     },
                     focus: function () {
-                        if ($dimmable.dimmer('is active') && module.is.active() && settings.autofocus) {
+                        windowRefocused = true;
+                    },
+                    click: function (event) {
+                        if (windowRefocused && document.activeElement !== event.target && $dimmable.dimmer('is active') && module.is.active() && settings.autofocus && $(document.activeElement).closest(selector.modal).length === 0) {
                             requestAnimationFrame(module.set.autofocus);
                         }
+                        windowRefocused = false;
                     },
                 },
 
@@ -609,7 +622,7 @@
                             ignoreRepeatedEvents = false;
                             if (settings.allowMultiple) {
                                 if (module.others.active()) {
-                                    $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
+                                    $otherModals.filter('.' + className.active).find(selector.dimmer).removeClass('out').addClass('transition fade in active');
                                 }
 
                                 if (settings.detachable) {
@@ -681,6 +694,8 @@
                                     onStart: function () {
                                         if (!module.others.active() && !module.others.animating() && !keepDimmed) {
                                             module.hideDimmer();
+                                        } else if (settings.allowMultiple) {
+                                            (hideOthersToo ? $allModals : $previousModal).find(selector.dimmer).removeClass('in').addClass('out');
                                         }
                                         if (settings.keyboardShortcuts && !module.others.active()) {
                                             module.remove.keyboardShortcuts();
@@ -693,11 +708,7 @@
                                             $previousModal.addClass(className.front);
                                             $module.removeClass(className.front);
 
-                                            if (hideOthersToo) {
-                                                $allModals.find(selector.dimmer).removeClass('active');
-                                            } else {
-                                                $previousModal.find(selector.dimmer).removeClass('active');
-                                            }
+                                            (hideOthersToo ? $allModals : $previousModal).find(selector.dimmer).removeClass('active');
                                         }
                                         if (isFunction(settings.onHidden)) {
                                             settings.onHidden.call(element);
@@ -1054,20 +1065,14 @@
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
                             $rawInputs = $inputs.filter(':input'),
-                            $input     = $autofocus.length > 0
-                                ? $autofocus.first()
+                            $input     = ($autofocus.length > 0
+                                ? $autofocus
                                 : ($rawInputs.length > 0
                                     ? $rawInputs
-                                    : $inputs.filter(':not(i.close)')
-                                ).first()
+                                    : $module)
+                            ).first()
                         ;
-                        // check if only the close icon is remaining
-                        if ($input.length === 0 && $inputs.length > 0) {
-                            $input = $inputs.first();
-                        }
-                        if ($input.length > 0) {
-                            $input.trigger('focus');
-                        }
+                        $input.trigger('focus');
                     },
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';

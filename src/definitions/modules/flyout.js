@@ -86,6 +86,7 @@
                 initialBodyMargin    = '',
                 tempBodyMargin       = '',
                 hadScrollbar         = false,
+                windowRefocused      = false,
 
                 elementNamespace,
                 id,
@@ -264,9 +265,13 @@
                         module.setup.heights();
                     },
                     focus: function () {
-                        if (module.is.visible() && settings.autofocus && settings.dimPage) {
+                        windowRefocused = true;
+                    },
+                    click: function (event) {
+                        if (windowRefocused && document.activeElement !== event.target && module.is.visible() && settings.autofocus && settings.dimPage && $(document.activeElement).closest(selector.flyout).length === 0) {
                             requestAnimationFrame(module.set.autofocus);
                         }
+                        windowRefocused = false;
                     },
                     clickaway: function (event) {
                         if (settings.closable) {
@@ -372,6 +377,9 @@
                         ;
                         $window
                             .on('focus' + elementNamespace, module.event.focus)
+                        ;
+                        $context
+                            .on('click' + elementNamespace, module.event.click)
                         ;
                     },
                     clickaway: function () {
@@ -502,11 +510,12 @@
 
                                     return nodes;
                                 },
-                                shouldRefreshInputs = false
+                                shouldRefreshInputs = false,
+                                ignoreAutofocus = true
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -516,6 +525,9 @@
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                     if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                         shouldRefreshInputs = true;
+                                        if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
+                                            ignoreAutofocus = false;
+                                        }
                                     }
                                 }
 
@@ -523,7 +535,7 @@
                             });
 
                             if (shouldRefreshInputs) {
-                                module.refreshInputs();
+                                module.refreshInputs(ignoreAutofocus);
                             }
                         });
                         observer.observe(element, {
@@ -548,7 +560,7 @@
                     $flyouts = $context.children(selector.flyout);
                 },
 
-                refreshInputs: function () {
+                refreshInputs: function (ignoreAutofocus) {
                     if ($inputs) {
                         $inputs
                             .off('keydown' + elementNamespace)
@@ -560,8 +572,8 @@
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    if ($inputs.length === 0) {
-                        $inputs = $module;
+                    if ($inputs.filter(':input').length === 0) {
+                        $inputs = $module.add($inputs);
                         $module.attr('tabindex', -1);
                     } else {
                         $module.removeAttr('tabindex');
@@ -572,7 +584,7 @@
                     $inputs.last()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
                     ;
-                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                    if (!ignoreAutofocus && settings.autofocus && $inputs.filter(':focus').length === 0) {
                         module.set.autofocus();
                     }
                 },
@@ -850,20 +862,14 @@
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
                             $rawInputs = $inputs.filter(':input'),
-                            $input     = $autofocus.length > 0
-                                ? $autofocus.first()
+                            $input     = ($autofocus.length > 0
+                                ? $autofocus
                                 : ($rawInputs.length > 0
                                     ? $rawInputs
-                                    : $inputs.filter(':not(i.close)')
-                                ).first()
+                                    : $module)
+                            ).first()
                         ;
-                        // check if only the close icon is remaining
-                        if ($input.length === 0 && $inputs.length > 0) {
-                            $input = $inputs.first();
-                        }
-                        if ($input.length > 0) {
-                            $input.trigger('focus');
-                        }
+                        $input.trigger('focus');
                     },
                     dimmerStyles: function () {
                         if (settings.blurring) {

@@ -527,6 +527,12 @@
             color: @c;
         }
 
+        @supports selector(:has(.f)) {
+            .ui.form .fields:has(.@{state}) > label {
+                color: @c;
+            }
+        }
+
         .ui.form .fields.@{state} .field .ui.label,
         .ui.form .field.@{state} .ui.label {
             background-color: @lbg;
@@ -579,14 +585,7 @@
             box-shadow: @formStates[@@state][boxShadow];
         }
         & when (@state=error) and (@variationFormInvalid) {
-            .ui.form .field input:not(:placeholder-shown):invalid {
-                color: @c;
-                background: @bg;
-                border-color: @formStates[@@state][borderColor];
-                border-radius: @formStates[@@state][borderRadius];
-                box-shadow: @formStates[@@state][boxShadow];
-            }
-            .ui.form .field input:not(:-ms-input-placeholder):invalid when (@supportIE) {
+            .ui.form:not(.initial) .field input:invalid {
                 color: @c;
                 background: @bg;
                 border-color: @formStates[@@state][borderColor];
@@ -729,6 +728,12 @@
             .ui.inverted.form .@{state}.field label {
                 color: @lbg;
             }
+
+            @supports selector(:has(.f)) {
+                .ui.inverted.form .fields:has(.@{state}) > label {
+                    color: @lbg;
+                }
+            }
         }
     });
 }
@@ -804,10 +809,11 @@
          Required Field
     --------------------- */
 
-    .ui.form .required.fields:not(.grouped) > .field > label::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
-    .ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after,
     .ui.form label.required::after {
         margin: @requiredMargin;
@@ -815,7 +821,8 @@
         color: @requiredColor;
     }
 
-    .ui.form .required.fields:not(.grouped) > .field > label::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
     .ui.form label.required::after {
@@ -823,12 +830,18 @@
         vertical-align: top;
     }
 
-    .ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after {
         position: absolute;
         top: 0;
         left: 100%;
     }
+}
+
+.ui.ui.ui.ui.form .fields > label:empty::after,
+.ui.ui.ui.ui.form .field > label:empty::after {
+    content: " ";
+    display: inline-block;
 }
 
 /*******************************
@@ -1160,4 +1173,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

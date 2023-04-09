@@ -189,6 +189,9 @@
         margin: @piledMargin 0;
         box-shadow: @piledBoxShadow;
         z-index: @piledZIndex;
+        background-color: @white;
+        border: @piledBorder;
+        color: @textColor;
     }
     .ui.piled.segment:first-child {
         margin-top: 0;
@@ -200,7 +203,7 @@
     .ui.piled.segments::before,
     .ui.piled.segment::after,
     .ui.piled.segment::before {
-        background-color: @white;
+        background-color: inherit;
         visibility: visible;
         content: "";
         display: block;
@@ -208,8 +211,15 @@
         left: 0;
         position: absolute;
         width: 100%;
-        border: @piledBorder;
+        border: inherit;
         box-shadow: @piledBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.inverted.piled.segment {
+            background-color: @invertedBackground;
+            border: @invertedPiledBorder;
+            color: @invertedTextColor;
+        }
     }
     .ui.piled.segments::before,
     .ui.piled.segment::before {
@@ -240,6 +250,12 @@
             margin-bottom: 0;
         }
     }
+    @supports selector(:has(.f)) {
+        *:has(> .ui.piled.segment) {
+            z-index: 0;
+            position: relative;
+        }
+    }
 }
 
 & when (@variationSegmentStacked) {
@@ -258,7 +274,7 @@
         position: absolute;
         bottom: -(@stackedHeight / 2);
         left: 0;
-        border-top: 1px solid @borderColor;
+        border-top: @borderWidth solid @stackedBorderColor;
         background: @stackedPageBackground;
         width: 100%;
         height: @stackedHeight;
@@ -277,12 +293,14 @@
     }
     & when (@variationSegmentInverted) {
         /* Inverted */
-        .ui.stacked.inverted.segments::before,
-        .ui.stacked.inverted.segments::after,
-        .ui.stacked.inverted.segment::before,
-        .ui.stacked.inverted.segment::after {
-            background-color: @subtleTransparentBlack;
-            border-top: 1px solid @selectedBorderColor;
+        .ui.stacked.inverted.segments,
+        .ui.stacked.inverted.segment {
+            border: @borderWidth solid @invertedStackedBorderColor;
+            &::before,
+            &::after {
+                background-color: @subtleTransparentBlack;
+                border-top: @borderWidth solid @invertedStackedBorderColor;
+            }
         }
     }
 }
@@ -353,6 +371,12 @@
     .ui.raised.raised.segments,
     .ui.raised.raised.segment {
         box-shadow: @raisedBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.inverted.raised.raised.segments,
+        .ui.inverted.raised.raised.segment {
+            box-shadow: @invertedRaisedBoxShadow;
+        }
     }
 }
 
@@ -521,6 +545,7 @@
         pointer-events: none;
         user-select: none;
         transition: all 0s linear;
+        min-height: @loadingMinHeight;
     }
     .ui.loading.segments::before,
     .ui.loading.segment::before {
@@ -591,13 +616,19 @@
         @color: @value;
         @c: @colors[@@color][color];
         & when not (@color=primary) and not (@color=secondary) {
-            .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+            .ui.ui.ui.ui.ui.@{color}.segment:not(.inverted) {
                 border-top: @coloredBorderSize solid @c;
             }
             & when (@variationSegmentInverted) {
-                .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+                .ui.ui.ui.ui.ui.inverted.@{color}.segment {
                     background-color: @c;
                     color: @white;
+                    & when not (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                        border-color: c;
+                    }
+                }
+                .ui.ui.inverted.@{color}.segment:not(.piled) when (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                    border-color: @c;
                 }
             }
         }
@@ -934,4 +965,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

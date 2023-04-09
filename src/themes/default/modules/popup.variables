@@ -79,8 +79,10 @@
 @tooltipLineHeight: @lineHeight;
 @tooltipDistanceAway: @relative7px;
 @tooltipZIndex: 1900;
-@tooltipDuration: @defaultDuration;
+@tooltipDuration: 0.2s;
 @tooltipEasing: @defaultEasing;
+@tooltipDelay: 0.04s;
+@tooltipScaleInit: 0.8;
 
 /* Inverted */
 @tooltipInvertedBackground: @invertedBackground;

@@ -22,6 +22,7 @@
     $.fn.form = function (parameters) {
         var
             $allModules      = $(this),
+            $window        = $(window),
 
             time             = Date.now(),
             performance      = [],
@@ -60,6 +61,8 @@
                 namespace,
                 moduleNamespace,
                 eventNamespace,
+                attachEventsSelector,
+                attachEventsAction,
 
                 submitting = false,
                 dirty = false,
@@ -74,6 +77,7 @@
                 initialize: function () {
                     // settings grabbed at run time
                     module.get.settings();
+                    $module.addClass(className.initial);
                     if (methodInvoked) {
                         if (instance === undefined) {
                             module.instantiate();
@@ -127,10 +131,13 @@
                     module.bindEvents();
                 },
 
-                submit: function () {
+                submit: function (event) {
                     module.verbose('Submitting form', $module);
                     submitting = true;
                     $module.trigger('submit');
+                    if (event) {
+                        event.preventDefault();
+                    }
                 },
 
                 attachEvents: function (selector, action) {
@@ -142,6 +149,9 @@
                         module[action]();
                         event.preventDefault();
                     });
+
+                    attachEventsSelector = selector;
+                    attachEventsAction = action;
                 },
 
                 bindEvents: function () {
@@ -153,6 +163,7 @@
                         .on('click' + eventNamespace, selector.reset, module.reset)
                         .on('click' + eventNamespace, selector.clear, module.clear)
                     ;
+                    $field.on('invalid' + eventNamespace, module.event.field.invalid);
                     if (settings.keyboardShortcuts) {
                         $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                     }
@@ -167,7 +178,7 @@
 
                     // Dirty events
                     if (settings.preventLeaving) {
-                        $(window).on('beforeunload' + eventNamespace, module.event.beforeUnload);
+                        $window.on('beforeunload' + eventNamespace, module.event.beforeUnload);
                     }
 
                     $field.on('change' + eventNamespace
@@ -185,6 +196,9 @@
                     $module.on('clean' + eventNamespace, function (e) {
                         settings.onClean.call();
                     });
+                    if (attachEventsSelector) {
+                        module.attachEvents(attachEventsSelector, attachEventsAction);
+                    }
                 },
 
                 clear: function () {
@@ -233,6 +247,7 @@
                             isCheckbox   = $field.is(selector.checkbox),
                             isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                             isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
+                            isFile       = $field.is(selector.file),
                             isErrored    = $fieldGroup.hasClass(className.error)
                         ;
                         if (defaultValue === undefined) {
@@ -253,7 +268,7 @@
                             $calendar.calendar('set date', defaultValue);
                         } else {
                             module.verbose('Resetting field value', $field, defaultValue);
-                            $field.val(defaultValue);
+                            $field.val(isFile ? '' : defaultValue);
                         }
                     });
                     module.remove.states();
@@ -264,8 +279,12 @@
                         var
                             allValid = true
                         ;
-                        $.each(validation, function (fieldName, field) {
-                            if (!module.validate.field(field, fieldName, true)) {
+                        $field.each(function (index, el) {
+                            var $el = $(el),
+                                validation = module.get.validation($el) || {},
+                                identifier = module.get.identifier(validation, $el)
+                            ;
+                            if (!module.validate.field(validation, identifier, true)) {
                                 allValid = false;
                             }
                         });
@@ -389,6 +408,13 @@
                     $module.off(eventNamespace);
                     $field.off(eventNamespace);
                     $submit.off(eventNamespace);
+                    if (settings.preventLeaving) {
+                        $window.off(eventNamespace);
+                    }
+                    if (attachEventsSelector) {
+                        $(attachEventsSelector).off(eventNamespace);
+                        attachEventsSelector = undefined;
+                    }
                 },
 
                 event: {
@@ -414,9 +440,8 @@
                             if (!event.ctrlKey && key === keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                 if (!keyHeldDown) {
                                     $field.one('keyup' + eventNamespace, module.event.field.keyup);
-                                    module.submit();
+                                    module.submit(event);
                                     module.debug('Enter pressed on input submitting form');
-                                    event.preventDefault();
                                 }
                                 keyHeldDown = true;
                             }
@@ -424,15 +449,18 @@
                         keyup: function () {
                             keyHeldDown = false;
                         },
+                        invalid: function (event) {
+                            event.preventDefault();
+                        },
                         blur: function (event) {
                             var
                                 $field          = $(this),
-                                $fieldGroup     = $field.closest($group),
-                                validationRules = module.get.validation($field)
+                                validationRules = module.get.validation($field) || {},
+                                identifier      = module.get.identifier(validationRules, $field)
                             ;
-                            if (validationRules && (settings.on === 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (settings.on === 'blur' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 module.debug('Revalidating field', $field, validationRules);
-                                module.validate.field(validationRules);
+                                module.validate.field(validationRules, identifier);
                                 if (!settings.inline) {
                                     module.validate.form(false, true);
                                 }
@@ -441,14 +469,14 @@
                         change: function (event) {
                             var
                                 $field      = $(this),
-                                $fieldGroup = $field.closest($group),
-                                validationRules = module.get.validation($field)
+                                validationRules = module.get.validation($field) || {},
+                                identifier = module.get.identifier(validationRules, $field)
                             ;
-                            if (validationRules && (settings.on === 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (settings.on === 'change' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function () {
                                     module.debug('Revalidating field', $field, validationRules);
-                                    module.validate.field(validationRules);
+                                    module.validate.field(validationRules, identifier);
                                     if (!settings.inline) {
                                         module.validate.form(false, true);
                                     }
@@ -490,18 +518,7 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        if (type === 'checkbox' || type === 'radio' || type === 'hidden' || $input.is('select')) {
-                            return 'change';
-                        }
-
-                        return module.get.inputEvent();
-                    },
-                    inputEvent: function () {
-                        return document.createElement('input').oninput !== undefined
-                            ? 'input'
-                            : (document.createElement('input').onpropertychange !== undefined
-                                ? 'propertychange'
-                                : 'keyup');
+                        return ['file', 'checkbox', 'radio', 'hidden'].indexOf(type) >= 0 || $input.is('select') ? 'change' : 'input';
                     },
                     fieldsFromShorthand: function (fields) {
                         var
@@ -524,6 +541,9 @@
                         });
 
                         return fullFields;
+                    },
+                    identifier: function (validation, $el) {
+                        return validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate);
                     },
                     prompt: function (rule, field) {
                         var
@@ -637,7 +657,7 @@
                         var $field = typeof identifier === 'string'
                                 ? module.get.field(identifier)
                                 : identifier,
-                            $label = $field.closest(selector.group).find('label').eq(0)
+                            $label = $field.closest(selector.group).find('label:not(:empty)').eq(0)
                         ;
 
                         return $label.length === 1
@@ -968,7 +988,7 @@
                         $message.empty();
                     },
                     states: function () {
-                        $module.removeClass(className.error).removeClass(className.success);
+                        $module.removeClass(className.error).removeClass(className.success).addClass(className.initial);
                         if (!settings.inline) {
                             module.remove.errors();
                         }
@@ -1106,6 +1126,7 @@
                                 $field      = module.get.field(key),
                                 $element    = $field.parent(),
                                 $calendar   = $field.closest(selector.uiCalendar),
+                                isFile      = $field.is(selector.file),
                                 isMultiple  = Array.isArray(value),
                                 isCheckbox  = $element.is(selector.uiCheckbox) && module.can.useElement('checkbox'),
                                 isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
@@ -1148,7 +1169,7 @@
                                     $calendar.calendar('set date', value);
                                 } else {
                                     module.verbose('Setting field value', value, $field);
-                                    $field.val(value);
+                                    $field.val(isFile ? '' : value);
                                 }
                             }
                         });
@@ -1204,7 +1225,7 @@
                                         return rule.type === 'empty';
                                     }) !== 0
                                     : false,
-                                identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
+                                identifier = module.get.identifier(validation, $el)
                             ;
                             if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
                                 if (isCheckbox) {
@@ -1236,7 +1257,7 @@
                         if (keyHeldDown) {
                             return false;
                         }
-
+                        $module.removeClass(className.initial);
                         // reset errors
                         formErrors = [];
                         if (module.determine.isValid()) {
@@ -1308,13 +1329,24 @@
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
-                            fieldErrors = []
+                            fieldErrors = [],
+                            isDisabled = $field.filter(':not(:disabled)').length === 0,
+                            validationMessage = $field[0].validationMessage
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
+                        if (validationMessage) {
+                            module.debug('Field is natively invalid', identifier);
+                            fieldErrors.push(validationMessage);
+                            fieldValid = false;
+                            if (showErrors) {
+                                $field.closest($group).addClass(className.error);
+                            }
+                        } else if (showErrors) {
+                            $field.closest($group).removeClass(className.error);
+                        }
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
@@ -1322,9 +1354,6 @@
                         } else if (field.depends && module.is.empty($dependsField)) {
                             module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
                         } else if (field.rules !== undefined) {
-                            if (showErrors) {
-                                $field.closest($group).removeClass(className.error);
-                            }
                             $.each(field.rules, function (index, rule) {
                                 if (module.has.field(identifier)) {
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
@@ -1341,7 +1370,7 @@
                         }
                         if (fieldValid) {
                             if (showErrors) {
-                                module.remove.prompt(identifier, fieldErrors);
+                                module.remove.prompt(identifier);
                                 settings.onValid.call($field);
                             }
                         } else {
@@ -1631,8 +1660,8 @@
             isExactly: '{name} must be exactly "{ruleValue}"',
             not: '{name} cannot be set to "{ruleValue}"',
             notExactly: '{name} cannot be set to exactly "{ruleValue}"',
-            contain: '{name} must contain "{ruleValue}"',
-            containExactly: '{name} must contain exactly "{ruleValue}"',
+            contains: '{name} must contain "{ruleValue}"',
+            containsExactly: '{name} must contain exactly "{ruleValue}"',
             doesntContain: '{name} cannot contain "{ruleValue}"',
             doesntContainExactly: '{name} cannot contain exactly "{ruleValue}"',
             minLength: '{name} must be at least {ruleValue} characters',
@@ -1651,9 +1680,10 @@
         selector: {
             checkbox: 'input[type="checkbox"], input[type="radio"]',
             clear: '.clear',
-            field: 'input:not(.search):not([type="file"]):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
+            field: 'input:not(.search):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
+            file: 'input[type="file"]',
             group: '.field',
-            input: 'input:not([type="file"])',
+            input: 'input',
             message: '.error.message',
             prompt: '.prompt.label',
             radio: 'input[type="radio"]',
@@ -1665,6 +1695,7 @@
         },
 
         className: {
+            initial: 'initial',
             error: 'error',
             label: 'ui basic red pointing prompt label',
             pressed: 'down',
