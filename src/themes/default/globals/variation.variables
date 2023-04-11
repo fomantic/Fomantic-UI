@@ -128,7 +128,7 @@
 @variationInputDisabled: true;
 @variationInputInverted: true;
 @variationInputStates: @variationAllStates;
-@variationInputInvalid: true;
+@variationInputInvalid: false;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
