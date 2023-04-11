@@ -21,9 +21,7 @@
 @width: 290px;
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
-@boxShadow:
-    @shadowBoxShadow,
-    @borderShadow;
+@boxShadow: @shadowBoxShadow, @borderShadow;
 @border: none;
 @zIndex: "";
 @transition:
@@ -164,9 +162,7 @@
 @linkHoverTransform: translateY(-@linkHoverRaiseDistance);
 
 @shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
-@linkHoverBoxShadow:
-    @shadowHoverBoxShadow,
-    @borderShadow;
+@linkHoverBoxShadow: @shadowHoverBoxShadow, @borderShadow;
 
 /* Horizontal */
 @horizontalMinWidth: 270px;
@@ -174,12 +170,8 @@
 @horizontalImageWidth: 150px;
 
 /* Raised */
-@raisedShadow:
-    @borderShadow,
-    @floatingShadow;
-@raisedShadowHover:
-    @borderShadow,
-    @floatingShadowHover;
+@raisedShadow: @borderShadow, @floatingShadow;
+@raisedShadowHover: @borderShadow, @floatingShadowHover;
 
 /* Basic Raised */
 @basicRaisedShadow: @floatingShadow;

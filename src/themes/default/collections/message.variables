@@ -19,9 +19,7 @@
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @strongBorderColor inset;
 @shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
-@boxShadow:
-    @borderShadow,
-    @shadowShadow;
+@boxShadow: @borderShadow, @shadowShadow;
 
 @transition:
     opacity @defaultDuration @defaultEasing,
@@ -71,14 +69,10 @@
 @attachedXOffset: -1px;
 @attachedYOffset: -1px;
 @attachedBoxShadow: 0 0 0 @borderWidth @borderColor inset;
-@attachedBottomBoxShadow:
-    @attachedBoxShadow,
-    @subtleShadow;
+@attachedBottomBoxShadow: @attachedBoxShadow, @subtleShadow;
 
 /* Floating */
-@floatingBoxShadow:
-    @borderShadow,
-    @floatingShadow;
+@floatingBoxShadow: @borderShadow, @floatingShadow;
 
 /* Colors */
 @redBoxShadow:
