@@ -38,9 +38,7 @@
 @borderBoxShadowColor: transparent;
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
-@boxShadow:
-    @borderBoxShadow,
-    @shadowBoxShadow;
+@boxShadow: @borderBoxShadow, @shadowBoxShadow;
 
 /* Icon */
 @iconHeight: auto;
