@@ -474,3 +474,6 @@
 /* Scrollhint */
 @invertedScrollhintStartColor: rgba(255, 255, 255, 0.75);
 @invertedScrollhintEndColor: rgba(255, 255, 255, 0);
+
+/* Resizable */
+@resizableDirection: vertical;
