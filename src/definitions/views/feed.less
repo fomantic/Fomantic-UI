@@ -470,9 +470,23 @@
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
 
-        .ui.ui.feed > .event > .@{color}.label::before,
-        .ui.@{color}.feed > .event > .label::before {
-            background: @c;
+        & when (@variationFeedOrdered) or (@variationFeedLabelText) {
+            .ui.ui.feed > .event > .@{color}.label::before,
+            .ui.@{color}.feed > .event > .label::before {
+                background: @c;
+            }
+        }
+        & when (@variationFeedConnected) {
+            .ui.@{color}.connected.feed > .event::before,
+            .ui.connected.feed > .@{color}.event::before {
+                border-color: @c;
+            }
+            & when (@variationFeedInverted) {
+                .ui.inverted.@{color}.connected.feed > .event::before,
+                .ui.connected.feed > .inverted.@{color}.event::before {
+                    border-color: @l;
+                }
+            }
         }
         & when (@variationFeedBasic) {
             .ui.ui.feed > .event > .@{color}.basic.label::before,
@@ -499,6 +513,13 @@
     .ui.ui.ui.basic.feed > .event > .label::before {
         background: @orderedBasicBackground;
         border-color: currentColor;
+    }
+}
+& when (@variationFeedDisabled) {
+    .ui.disabled.feed,
+    .ui.feed .disabled.event {
+        opacity: @disabledOpacity;
+        pointer-events: @disabledPointerEvents;
     }
 }
 

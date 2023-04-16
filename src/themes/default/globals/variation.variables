@@ -448,6 +448,7 @@
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedDisabled: true;
 @variationFeedMeta: true;
 @variationFeedSummary: true;
 @variationFeedUser: true;

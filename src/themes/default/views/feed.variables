@@ -31,7 +31,7 @@
 @iconLabelSize: 1.5em;
 @iconLabelPadding: 0.25em;
 @iconLabelBackground: none;
-@iconLabelBorderRadius: none;
+@iconLabelBorderRadius: 0;
 @iconLabelBorder: none;
 @iconLabelColor: rgba(0, 0, 0, 0.6);
 
