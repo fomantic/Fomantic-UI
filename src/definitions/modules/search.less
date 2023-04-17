@@ -367,6 +367,19 @@
         transition: @categoryResultTransition;
         padding: @categoryResultPadding;
     }
+
+    & when (@variationSearchHorizontalCategory) {
+        .ui.horizontal.category.search > .results .category,
+        .ui.horizontal.category.search > .results .category > .name,
+        .ui.horizontal.category.search > .results .category > .results {
+            display: block;
+        }
+
+        .ui.horizontal.category.search > .results .category > .results {
+            width: 100%;
+            border-left: 0;
+        }
+    }
 }
 
 /*******************************
