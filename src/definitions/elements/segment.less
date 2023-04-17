@@ -368,13 +368,13 @@
            Raised
     -------------------- */
 
-    .ui.raised.raised.segments,
-    .ui.raised.raised.segment {
+    .ui.ui.raised.segments,
+    .ui.ui.raised.segment {
         box-shadow: @raisedBoxShadow;
     }
     & when (@variationSegmentInverted) {
-        .ui.inverted.raised.raised.segments,
-        .ui.inverted.raised.raised.segment {
+        .ui.ui.inverted.raised.segments,
+        .ui.ui.inverted.raised.segment {
             box-shadow: @invertedRaisedBoxShadow;
         }
     }
@@ -848,24 +848,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingMobileMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingMobileMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingMobileMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingMobileMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingMobileMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingMobileMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 3;
+                }
             }
         }
     }
@@ -874,24 +889,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingTabletMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingTabletMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingTabletMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingTabletMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingTabletMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingTabletMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 3;
+                }
             }
         }
     }
@@ -899,24 +929,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingComputerMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingComputerMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingComputerMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingComputerMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingComputerMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingComputerMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 3;
+                }
             }
         }
     }
@@ -924,25 +969,46 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingWidescreenMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingWidescreenMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingWidescreenMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingWidescreenMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingWidescreenMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingWidescreenMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 3;
+                }
             }
+        }
+    }
+    & when (@variationSegmentResizable) {
+        .ui.resizable.scrolling.segment {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }
