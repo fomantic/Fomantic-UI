@@ -1331,7 +1331,8 @@
                             fieldValid  = true,
                             fieldErrors = [],
                             isDisabled = $field.filter(':not(:disabled)').length === 0,
-                            validationMessage = $field[0].validationMessage
+                            validationMessage = $field[0].validationMessage,
+                            errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
@@ -1354,8 +1355,9 @@
                         } else if (field.depends && module.is.empty($dependsField)) {
                             module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
                         } else if (field.rules !== undefined) {
+                            errorLimit = field.errorLimit || settings.errorLimit;
                             $.each(field.rules, function (index, rule) {
-                                if (module.has.field(identifier)) {
+                                if (module.has.field(identifier) && (!errorLimit || fieldErrors.length < errorLimit)) {
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
@@ -1607,6 +1609,7 @@
         preventLeaving: false,
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
+        errorLimit: 0,
 
         onValid: function () {},
         onInvalid: function () {},

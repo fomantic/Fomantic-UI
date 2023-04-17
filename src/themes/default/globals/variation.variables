@@ -653,6 +653,7 @@
 @variationSearchDisabled: true;
 @variationSearchSelection: true;
 @variationSearchCategory: true;
+@variationSearchHorizontalCategory: true;
 @variationSearchLoading: true;
 @variationSearchAligned: true;
 @variationSearchFluid: true;
