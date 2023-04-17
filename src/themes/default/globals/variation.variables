@@ -439,6 +439,7 @@
 
 /* Comment */
 @variationCommentInverted: true;
+@variationCommentDisabled: true;
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
 @variationCommentAvatar: true;
@@ -461,6 +462,7 @@
 
 /* Item */
 @variationItemInverted: true;
+@variationItemDisabled: true;
 @variationItemImage: true;
 @variationItemHeader: true;
 @variationItemDescription: true;
