@@ -662,14 +662,14 @@
 
     .ui.invisible.checkbox {
         display: block;
+        & input {
+            left: -99999px;
+            position: absolute;
+        }
         &
         label::before,
         label::after {
             display: none;
-        }
-        & input {
-            left: -99999px;
-            position: absolute;
         }
         & label {
             transition: @invisibleCheckboxLabelTransition;
@@ -685,14 +685,13 @@
         &:not(:hover):focus + label:not(.image) {
             box-shadow: @invisibleCheckboxFocusBoxShadow;
         }
-        &
-        + label.image,
+        & + label.image,
         .basic& + label {
             box-shadow: none;
         }
     }
 
-    .ui.invisible.checkbox input:not(:checked){
+    .ui.invisible.checkbox input:not(:checked) {
         & + label.image {
             opacity: @invisibleCheckboxImageOpacityUnchecked;
             filter: @invisibleCheckboxImageFilterUnchecked;
