@@ -88,7 +88,7 @@
                     }
 
                     if (settings.displayTime > 0) {
-                        setTimeout(function () {module.hide(); }, settings.displayTime);
+                        setTimeout(function () { module.hide(); }, settings.displayTime);
                     }
                     module.show();
                 },
