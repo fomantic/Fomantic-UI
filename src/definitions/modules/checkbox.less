@@ -661,7 +661,9 @@
     --------------- */
 
     .ui.invisible.checkbox {
-        display: block;
+        &:not(.compact) {
+            display: block;
+        }
         & input {
             left: -99999px;
             position: absolute;
