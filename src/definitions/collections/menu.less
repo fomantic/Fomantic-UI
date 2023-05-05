@@ -1936,7 +1936,7 @@ Floated Menu / Item
         & .item:first-child::before {
             display: none;
         }
-        &:not(.tabular) .item {
+        &:not(.secondary):not(.text):not(.tabular):not(.borderless) .item {
             &:last-of-type,
             &:last-child {
                 border-right: @dividerSize solid @dividerBackground;
@@ -1944,7 +1944,7 @@ Floated Menu / Item
         }
     }
     & when (@variationMenuWrapped) {
-        .ui.wrapped.menu:not(.tabular) .item {
+        .ui.wrapped.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item {
             &:first-child {
                 border-bottom-left-radius: 0;
             }

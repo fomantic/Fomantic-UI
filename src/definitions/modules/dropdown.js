@@ -1097,8 +1097,8 @@
                             notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
-                                notFoundTokens.push(value);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
+                                notFoundTokens.push(value.trim());
                             }
                         });
                         event.preventDefault();
