@@ -39,7 +39,6 @@
 --------------------*/
 
 @menuTitlePadding: 0;
-@menuIconFloat: right;
 @menuIconMargin: @lineHeightOffset 0 0 1em;
 @menuIconTransform: rotate(180deg);
 

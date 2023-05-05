@@ -108,12 +108,10 @@
 
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
-@itemDropdownIconFloat: right;
 @itemDropdownIconOrder: 1;
 @itemDropdownIconMargin: @itemLineHeightOffset 0 0 auto;
 
 /* Description */
-@itemDescriptionFloat: right;
 @itemDescriptionOrder: 1;
 @itemDescriptionMargin: 0 0 0 auto;
 @itemDescriptionPadding: 0 0 0 1em;
