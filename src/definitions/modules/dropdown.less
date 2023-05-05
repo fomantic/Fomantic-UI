@@ -359,7 +359,7 @@
 
   /* Dropdown Menu */
   .ui.label.dropdown .menu {
-    min-width: 100%;
+    width: 100%;
   }
 }
 
@@ -373,7 +373,7 @@
     margin: 0;
   }
   .ui.button.dropdown .menu {
-    min-width: 100%;
+    width: 100%;
   }
 }
 
@@ -930,7 +930,7 @@ select.ui.dropdown {
   }
   .ui.inline.dropdown .dropdown.icon {
     margin: @inlineIconMargin;
-    vertical-align: baseline;
+    vertical-align: middle;
   }
   .ui.inline.dropdown > .text {
     font-weight: @inlineTextFontWeight;
@@ -1426,7 +1426,7 @@ select.ui.dropdown {
   .ui.simple.active.dropdown > .menu,
   .ui.simple.dropdown:hover > .menu {
     overflow: visible;
-    width: auto;
+    width: 100%;
     height: auto;
     top: 100%;
     opacity: 1;
@@ -1434,11 +1434,21 @@ select.ui.dropdown {
   .ui.simple.dropdown > .menu > .item:active > .menu,
   .ui.simple.dropdown .menu .item:hover > .menu {
     overflow: visible;
-    width: auto;
+    width: 100%;
     height: auto;
     top: 0 !important;
     left: 100%;
     opacity: 1;
+  }
+  .ui.simple.upward.active.dropdown > .menu,
+  .ui.simple.upward.dropdown:hover > .menu {
+    top: auto !important;
+  }
+
+  .ui.simple.upward.dropdown > .menu > .item:active > .menu,
+  .ui.simple.upward.dropdown .menu .item:hover > .menu {
+    bottom: 0 !important;
+    top: auto !important;
   }
   .ui.simple.dropdown > .menu > .item:active > .left.menu,
   .ui.simple.dropdown .menu .item:hover > .left.menu, 
@@ -1502,7 +1512,7 @@ select.ui.dropdown {
   .ui:not(.upward).floating.dropdown > .menu {
     margin-top: @floatingMenuDistance;
   }
-  .ui.upward.floating.dropdown > .menu {
+  .ui.upward.floating.dropdown:not(.simple) > .menu {
     margin-bottom: @floatingMenuDistance;
   }
 }
