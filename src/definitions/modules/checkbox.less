@@ -696,6 +696,9 @@
         & + label.image {
             opacity: @invisibleCheckboxImageOpacityUnchecked;
             filter: @invisibleCheckboxImageFilterUnchecked;
+            .disabled& when (@variationCheckboxDisabled) {
+                opacity: @invisibleCheckboxImageOpacityUncheckedDisabled;
+            }
         }
         &:not(:hover):focus + label.image {
             opacity: @invisibleCheckboxImageOpacityFocus;
