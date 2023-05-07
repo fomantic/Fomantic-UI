@@ -1897,7 +1897,7 @@
                     },
                     transition: function ($subMenu) {
                         return settings.transition === 'auto'
-                            ? (module.is.upward($subMenu) ? 'slide up' : 'slide down')
+                            ? (module.is.upward($subMenu) ? 'slide up' : 'slide')
                             : settings.transition;
                     },
                     userValues: function () {
