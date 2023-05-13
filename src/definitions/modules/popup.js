@@ -194,7 +194,7 @@
                         ;
                         clearTimeout(module.hideTimer);
                         if (!openedWithTouch || (openedWithTouch && settings.addTouchEvents)) {
-                            module.showTimer = setTimeout(module.show, delay);
+                            module.showTimer = setTimeout(function () { module.show(); }, delay);
                         }
                     },
                     end: function () {
@@ -204,7 +204,7 @@
                                 : settings.delay
                         ;
                         clearTimeout(module.showTimer);
-                        module.hideTimer = setTimeout(module.hide, delay);
+                        module.hideTimer = setTimeout(function () { module.hide(); }, delay);
                     },
                     touchstart: function (event) {
                         openedWithTouch = true;
@@ -1244,7 +1244,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
