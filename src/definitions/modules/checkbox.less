@@ -56,9 +56,12 @@
     cursor: auto;
     position: relative;
     display: block;
-    padding-left: @labelDistance;
     outline: none;
     font-size: @labelFontSize;
+}
+
+.ui.checkbox:not(.invisible) label {
+    padding-left: @labelDistance;
 }
 
 .ui.checkbox label::before {
@@ -130,8 +133,8 @@
     background: @checkboxHoverBackground;
     border-color: @checkboxHoverBorderColor;
 }
-.ui.checkbox label:hover,
-.ui.checkbox + label:hover {
+.ui.checkbox:not(.invisible) label:hover,
+.ui.checkbox:not(.invisible) + label:hover {
     color: @labelHoverColor;
 }
 
@@ -146,7 +149,7 @@
 .ui.checkbox label:active::after {
     color: @checkboxPressedColor;
 }
-.ui.checkbox input:active ~ label {
+.ui.checkbox:not(.invisible) input:active ~ label {
     color: @labelPressedColor;
 }
 
@@ -161,7 +164,7 @@
 .ui.checkbox input:focus ~ label::after {
     color: @checkboxFocusCheckColor;
 }
-.ui.checkbox input:focus ~ label {
+.ui.checkbox:not(.invisible) input:focus ~ label {
     color: @labelFocusColor;
 }
 
@@ -649,6 +652,59 @@
         }
         .ui.ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
             background-color: @toggleOnFocusLaneColor;
+        }
+    }
+}
+& when (@variationCheckboxInvisible) {
+    /* --------------
+         Invisible
+    --------------- */
+
+    .ui.invisible.checkbox {
+        &:not(.compact) {
+            display: block;
+        }
+        & input {
+            left: -99999px;
+            position: absolute;
+        }
+        & label::before,
+        & label::after {
+            display: none;
+        }
+        & label {
+            transition: @invisibleCheckboxLabelTransition;
+        }
+    }
+    .ui.ui.ui.ui.ui.invisible.checkbox input:not(:checked) {
+        & + label {
+            background: @invisibleCheckboxBackground;
+            border-color: @invisibleCheckboxBorderColor;
+            box-shadow: @invisibleCheckboxBoxShadow;
+            color: @invisibleCheckboxColor;
+        }
+        &:not(:hover):focus + label:not(.image) {
+            box-shadow: @invisibleCheckboxFocusBoxShadow;
+        }
+        & + label.image,
+        .basic& + label {
+            box-shadow: none;
+        }
+    }
+
+    .ui.invisible.checkbox input:not(:checked) {
+        & + label.image {
+            opacity: @invisibleCheckboxImageOpacityUnchecked;
+            filter: @invisibleCheckboxImageFilterUnchecked;
+        }
+        &:not(:hover):focus + label.image {
+            opacity: @invisibleCheckboxImageOpacityFocus;
+        }
+        & when (@variationCheckboxDisabled) {
+            &[disabled] + label.image,
+            .disabled& + label.image {
+                opacity: @invisibleCheckboxImageOpacityUncheckedDisabled;
+            }
         }
     }
 }
