@@ -775,6 +775,7 @@
                     ;
                     if (settings.useLabels && module.has.maxSelections()) {
                         module.show();
+
                         return;
                     }
                     if (settings.apiSettings) {
