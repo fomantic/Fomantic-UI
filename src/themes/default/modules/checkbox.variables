@@ -190,6 +190,18 @@
       Variations
 -------------------- */
 
+/* Invisible */
+@invisibleCheckboxLabelTransition: all @defaultDuration @defaultEasing;
+@invisibleCheckboxBackground: transparent;
+@invisibleCheckboxBorderColor: transparent;
+@invisibleCheckboxColor: inherit;
+@invisibleCheckboxBoxShadow: 0 0 0 @borderWidth @borderColor inset;
+@invisibleCheckboxFocusBoxShadow: 0 0 0 @borderWidth @selectedBorderColor inset;
+@invisibleCheckboxImageOpacityUnchecked: 0.5;
+@invisibleCheckboxImageOpacityUncheckedDisabled: @invisibleCheckboxImageOpacityUnchecked * @disabledCheckboxOpacity;
+@invisibleCheckboxImageOpacityFocus: 0.75;
+@invisibleCheckboxImageFilterUnchecked: grayscale(1);
+
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;
 

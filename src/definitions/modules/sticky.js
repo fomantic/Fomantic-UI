@@ -746,7 +746,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 0);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 0);
                     },
                     display: function () {
                         var
