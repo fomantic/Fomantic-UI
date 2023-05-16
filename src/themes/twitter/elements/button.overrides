@@ -3,11 +3,10 @@
 *******************************/
 
 .ui.primary.button {
-  box-shadow:
-    0px 0px 0px 1px #3B88C3 inset,
-    0 2px 0 rgba(255, 255, 255, 0.15) inset
-  ;
+    box-shadow:
+        0 0 0 1px #3b88c3 inset,
+        0 2px 0 rgba(255, 255, 255, 0.15) inset;
 }
 .ui.primary.button > .icon {
-  color: #FFFFFF;
+    color: #fff;
 }

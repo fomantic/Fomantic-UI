@@ -1,17 +1,17 @@
 {
-  "name": "semantic",
+  "name": "fomantic",
   "version": "1.0.0",
-  "title": "Semantic UI",
-  "description": "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
-  "homepage": "http://www.semantic-ui.com",
+  "title": "Fomantic UI",
+  "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
+  "homepage": "https://www.fomantic-ui.com",
   "author": "Jack Lukic <jack@semantic-ui.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Semantic-Org/Semantic-UI.git"
+    "url": "git://github.com/fomantic/Fomantic-UI.git"
   },
   "bugs": {
-    "url": "https://github.com/Semantic-Org/Semantic-UI/issues"
+    "url": "https://github.com/fomantic/Fomantic-UI/issues"
   },
   "devDependencies": {}
 }

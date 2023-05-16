@@ -1,15 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import (css) url("https://fonts.googleapis.com/css2?family=Roboto");
 
 .ui.primary.button:hover {
-  box-shadow:
-    0px 0px 0px 1px rgba(0, 0, 0, 0.3) inset,
-    0px 2px 3px 0px rgba(0, 0, 0, 0.35) !important
-  ;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.3) inset,
+        0 2px 3px 0 rgba(0, 0, 0, 0.35) !important;
 }
 
 .ui.secondary.button:hover {
-  box-shadow:
-    0px 0px 0px 1px rgba(0, 0, 0, 0.2) inset,
-    0px 2px 3px 0px rgba(0, 0, 0, 0.3) !important
-  ;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+        0 2px 3px 0 rgba(0, 0, 0, 0.3) !important;
 }

@@ -2,13 +2,12 @@
          Site Settings
 *******************************/
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
-@googleFontName    : 'Droid Sans';
+@googleFontName: "Droid Sans";
 
 /* Kufi imported in site.overrides */
-@headerFont        : 'Droid Arabic Kufi', 'Droid Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@pageFont          : 'Droid Arabic Kufi', 'Droid Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-
+@headerFont: "Droid Arabic Kufi", "Droid Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@pageFont: "Droid Arabic Kufi", "Droid Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;

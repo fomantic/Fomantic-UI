@@ -2,20 +2,18 @@
            Overrides
 *******************************/
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import (css) url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro");
 
 .ui.labeled.icon.buttons > .button > .icon,
 .ui.labeled.icon.button > .icon {
-  box-shadow:
-    -1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
-    -1px 0px 0px 0px rgba(0, 0, 0, 0.05) inset
-  ;
+    box-shadow:
+        -1px 0 0 0 rgba(255, 255, 255, 0.2) inset,
+        -1px 0 0 0 rgba(0, 0, 0, 0.05) inset;
 }
 
 .ui.right.labeled.icon.buttons .button .icon,
 .ui.right.labeled.icon.button .icon {
-  box-shadow:
-    1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset,
-    1px 0px 0px 0px rgba(0, 0, 0, 0.05) inset
-  ;
+    box-shadow:
+        1px 0 0 0 rgba(255, 255, 255, 0.2) inset,
+        1px 0 0 0 rgba(0, 0, 0, 0.05) inset;
 }

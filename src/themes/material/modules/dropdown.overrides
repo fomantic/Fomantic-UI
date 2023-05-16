@@ -1,5 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import (css) url("https://fonts.googleapis.com/css2?family=Roboto");
 
 .ui.dropdown {
-  font-family: 'Roboto';
+    font-family: Roboto;
 }

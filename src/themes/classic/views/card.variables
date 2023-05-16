@@ -2,21 +2,21 @@
              Card
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Shadow */
-@shadowDistance: 0em;
-@padding: 0em;
+@shadowDistance: 0;
+@padding: 0;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Additional Content */
 @extraDivider: 1px solid rgba(0, 0, 0, 0.05);
-@extraBackground: #FAFAFA @subtleGradient;
+@extraBackground: #fafafa @subtleGradient;
 @extraPadding: 0.75em 1em;
 @extraBoxShadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 @extraColor: @lightTextColor;

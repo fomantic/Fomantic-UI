@@ -2,62 +2,61 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
-@googleFontName : 'Roboto';
-@pageFont       : 'Roboto', Arial, sans-serif;
+@googleFontName: "Roboto";
+@pageFont: "Roboto", Arial, sans-serif;
 
 @medium: 13px;
 
-@verticalPadding   : 0.8em;
-@horizontalPadding : 0.8em;
-@borderRadius      : @relative3px;
-@color             : #222222;
-@fontWeight        : normal;
-@textTransform     : none;
+@verticalPadding: 0.8em;
+@horizontalPadding: 0.8em;
+@borderRadius: @relative3px;
+@color: #222;
+@fontWeight: normal;
+@textTransform: none;
 
-@backgroundColor      : @white;
-@backgroundImage      : linear-gradient(transparent, rgba(0, 0, 0, 0.02));
+@backgroundColor: @white;
+@backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.02));
 
-@solidBorderColor: #DDDDDD;
+@solidBorderColor: #ddd;
 
 @borderBoxShadowColor: @solidBorderColor;
-@borderBoxShadow: 0px 0px 0px 1px @solidBorderColor inset;
-@shadowBoxShadow: 0px 0px 0px 0px transparent;
+@borderBoxShadow: 0 0 0 1px @solidBorderColor inset;
+@shadowBoxShadow: 0 0 0 0 transparent;
 
 @transition:
-  opacity 0.3s @defaultEasing,
-  background-color 0.3s @defaultEasing,
-  color 0.3s @defaultEasing,
-  box-shadow 0.3s @defaultEasing,
-  background 0.3s @defaultEasing
-;
-/*-------------------
+    opacity 0.3s @defaultEasing,
+    background-color 0.3s @defaultEasing,
+    color 0.3s @defaultEasing,
+    box-shadow 0.3s @defaultEasing,
+    background 0.3s @defaultEasing;
+
+/* -------------------
         State
---------------------*/
+-------------------- */
 
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
-  @borderBoxShadow,
-  0px 2px 3px 0px rgba(0, 0, 0, 0.2) !important
-;
+    @borderBoxShadow,
+    0 2px 3px 0 rgba(0, 0, 0, 0.2) !important;
 
 @downBackgroundColor: @white;
 @downBackgroundImage: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
-@downTextColor: #222222;
+@downTextColor: #222;
 @downBoxShadow: @borderBoxShadow;
 
-@activeBackgroundColor: #F0F0F0;
-@activeBoxShadow: 0px 0px 0px 1px #DDDDDD;
+@activeBackgroundColor: #f0f0f0;
+@activeBoxShadow: 0 0 0 1px #ddd;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Basic */
-@basicBorderSize: 0px;
+@basicBorderSize: 0;
 @basicBorderRadius: 4px;
 @basicColoredBorderSize: 1px;
 @basicHoverBackground: @white;
@@ -65,33 +64,32 @@
 @basicDownBackground: @white;
 @basicDownBoxShadow: @downBoxShadow;
 
-@basicActiveBackground: #FFFFFF;
-@basicActiveBoxShadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+@basicActiveBackground: #fff;
+@basicActiveBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 
 /* Labeled */
 @labeledIconBackgroundColor: transparent;
 @labeledIconWidth: 2em;
 
-@labeledLabelBorderOffset: 0px;
+@labeledLabelBorderOffset: 0;
 
 /* Colored */
-@coloredBackgroundImage : @subtleGradient;
-@coloredBoxShadow       : 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+@coloredBackgroundImage: @subtleGradient;
+@coloredBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
 
 /* Primary */
-@primaryColor       : #4184F3;
-@primaryBoxShadow   : 0px 0px 0px 1px #0157E4 inset;
+@primaryColor: #4184f3;
+@primaryBoxShadow: 0 0 0 1px #0157e4 inset;
 
 /* Secondary */
-@secondaryColor           : #EEEEEE;
-@secondaryBackgroundImage : @backgroundImage;
-@secondaryTextColor       : @textColor;
-@secondaryBoxShadow       : @borderBoxShadow;
+@secondaryColor: #eee;
+@secondaryBackgroundImage: @backgroundImage;
+@secondaryTextColor: @textColor;
+@secondaryBoxShadow: @borderBoxShadow;
 
 /* Emotive */
-@positiveColor: #3D9400;
-@negativeColor: #D34836;
+@positiveColor: #3d9400;
+@negativeColor: #d34836;
 
 /* Inverted */
 @invertedBorderSize: 1px;
-

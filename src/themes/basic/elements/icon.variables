@@ -1,12 +1,165 @@
-/*-------------------
+/* -------------------
    Icon Variables
---------------------*/
+-------------------- */
 
-@fontPath  : "../../themes/basic/assets/fonts";
+@fontPath: "../../themes/basic/assets/fonts";
 
-@src:
-  url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
-  url("@{fontPath}/@{fontName}.woff") format('woff'),
-  url("@{fontPath}/@{fontName}.ttf") format('truetype'),
-  url("@{fontPath}/@{fontName}.svg#icons") format('svg')
-;
+@fonts: {
+    @solid: {
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
+        font-style: normal;
+        font-weight: @normal;
+        font-variant: normal;
+        text-decoration: inherit;
+        text-transform: none;
+    };
+};
+@icon-map: {
+    circle_attention: "\2757"; /* ❗ */
+    circle_help: "\e704"; /*  */
+    circle_info: "\e705"; /*  */
+    add: "\2795"; /* ➕ */
+    chart: "\1f4c8"; /* 📈 */
+    chart_bar: "\1f4ca"; /* 📊 */
+    chart_pie: "\e7a2"; /*  */
+    resize_full: "\e744"; /*  */
+    resize_horizontal: "\2b0d"; /* ⬍ */
+    resize_small: "\e746"; /*  */
+    resize_vertical: "\2b0c"; /* ⬌ */
+    down: "\2193"; /* ↓ */
+    down_triangle: "\25be"; /* ▾ */
+    down_arrow: "\e75c"; /*  */
+    left: "\2190"; /* ← */
+    left_triangle: "\25c2"; /* ◂ */
+    left_arrow: "\e75d"; /*  */
+    right: "\2192"; /* → */
+    right_triangle: "\25b8"; /* ▸ */
+    right_arrow: "\e75e"; /*  */
+    up: "\2191"; /* ↑ */
+    up_triangle: "\25b4"; /* ▴ */
+    up_arrow: "\e75f"; /*  */
+    folder: "\e810"; /*  */
+    open_folder: "\1f4c2"; /* 📂 */
+    desk_globe: "\1f310"; /* 🌐 */
+    star: "\e801"; /*  */
+    star_empty: "\e800"; /*  */
+    star_half: "\e701"; /*  */
+    lock: "\1f512"; /* 🔒 */
+    unlock: "\1f513"; /* 🔓 */
+    layout_grid: "\e80c"; /*  */
+    layout_block: "\e708"; /*  */
+    layout_list: "\e80b"; /*  */
+    heart_empty: "\2661"; /* ♡ */
+    heart: "\2665"; /* ♥ */
+    asterisk: "\2731"; /* ✱ */
+    attachment: "\1f4ce"; /* 📎 */
+    attention: "\26a0"; /* ⚠ */
+    trophy: "\1f3c9"; /* 🏉 */
+    barcode: "\e792"; /*  */
+    cart: "\e813"; /*  */
+    block: "\1f6ab"; /* 🚫 */
+    book: "📖";
+    bookmark: "\1f516"; /* 🔖 */
+    calendar: "\1f4c5"; /* 📅 */
+    cancel: "\2716"; /* ✖ */
+    close: "\e80d"; /*  */
+    color: "\e794"; /*  */
+    chat: "\e720"; /*  */
+    check: "\2611"; /* ☑ */
+    time: "\1f554"; /* 🕔 */
+    cloud: "\2601"; /* ☁ */
+    code: "\e714"; /*  */
+    email: "\40"; /* @ */
+    settings: "\26ef"; /* ⛯ */
+    setting: "\2699"; /* ⚙ */
+    comment: "\e802"; /*  */
+    clockwise_counter: "\27f2"; /* ⟲ */
+    clockwise: "\27f3"; /* ⟳ */
+    cube: "\e807"; /*  */
+    direction: "\27a2"; /* ➢ */
+    doc: "\1f4c4"; /* 📄 */
+    docs: "\e736"; /*  */
+    dollar: "\1f4b5"; /* 💵 */
+    paint: "\e7b5"; /*  */
+    edit: "\270d"; /* ✍ */
+    eject: "\2ecf"; /* ⻏ */
+    export: "\e715"; /*  */
+    hide: "\e70b"; /*  */
+    unhide: "\e80f"; /*  */
+    facebook: "\f301"; /*  */
+    fast-forward: "\e804"; /*  */
+    fire: "\1f525"; /* 🔥 */
+    flag: "\2691"; /* ⚑ */
+    lightning: "\26a1"; /* ⚡ */
+    lab: "\68"; /* h */
+    flight: "\2708"; /* ✈ */
+    forward: "\27a6"; /* ➦ */
+    gift: "\1f381"; /* 🎁 */
+    github: "\f308"; /*  */
+    globe: "\e817"; /*  */
+    headphones: "\1f3a7"; /* 🎧 */
+    question: "\2753"; /* ❓ */
+    home: "\2302"; /* ⌂ */
+    i: "\2139"; /* ℹ */
+    idea: "\1f4a1"; /* 💡 */
+    open: "\1f517"; /* 🔗 */
+    content: "\e782"; /*  */
+    location: "\e724"; /*  */
+    mail: "\2709"; /* ✉ */
+    mic: "\1f3a4"; /* 🎤 */
+    minus: "\2d"; /* - */
+    money: "\1f4b0"; /* 💰 */
+    off: "\e78e"; /*  */
+    pause: "\e808"; /*  */
+    photos: "\e812"; /*  */
+    photo: "\1f304"; /* 🌄 */
+    pin: "\1f4cc"; /* 📌 */
+    play: "\e809"; /*  */
+    plus: "\2b"; /* + */
+    print: "\e716"; /*  */
+    rss: "\e73a"; /*  */
+    search: "\1f50d"; /* 🔍 */
+    shuffle: "\e803"; /*  */
+    tag: "\e80a"; /*  */
+    tags: "\e70d"; /*  */
+    terminal: "\e7ac"; /*  */
+    thumbs_down: "\1f44e"; /* 👎 */
+    thumbs_up: "\1f44d"; /* 👍 */
+    to-end: "\e806"; /*  */
+    to-start: "\e805"; /*  */
+    top_list: "\1f3c6"; /* 🏆 */
+    trash: "\e729"; /*  */
+    twitter: "\f303"; /*  */
+    upload: "\e711"; /*  */
+    user_add: "\e700"; /*  */
+    user: "\1f464"; /* 👤 */
+    community: "\e814"; /*  */
+    users: "\1f465"; /* 👥 */
+    id: "\e722"; /*  */
+    url: "\1f517"; /* 🔗 */
+    zoom_in: "\e750"; /*  */
+    zoom_out: "\e751"; /*  */
+};
+@icon-aliases-map: {
+    delete: "\e80d"; /*  */
+    dropdown: "\25be"; /* ▾ */
+    help: "\e704"; /*  */
+    info: "\e705"; /*  */
+    error: "\e80d"; /*  */
+    dislike: "\2661"; /* ♡ */
+    like: "\2665"; /* ♥ */
+    eye: "\e80f"; /*  */
+    eye_hidden: "\e70b"; /*  */
+    date: "\1f4c5"; /* 📅 */
+};
+@icon-deprecated-map: {
+};
+@icon-outline-map: {
+};
+@icon-outline-aliases-map: {
+};
+@icon-brand-map: {
+};
+@icon-brand-aliases-map: {
+};

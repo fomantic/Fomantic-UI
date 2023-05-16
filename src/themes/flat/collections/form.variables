@@ -2,16 +2,15 @@
              Form
 *******************************/
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
-
+-------------------- */
 
 /* Text */
-@paragraphMargin: 1em 0em;
+@paragraphMargin: 1em 0;
 
 /* Field */
-@fieldMargin: 0em 0em 1em;
+@fieldMargin: 0 0 1em;
 
 /* Form Label */
 @labelFontSize: @relative11px;
@@ -23,41 +22,41 @@
 @inputHorizontalPadding: 0.5em;
 @inputBackground: transparent;
 @inputBorder: none;
-@inputBorderRadius: 0em;
+@inputBorderRadius: 0;
 @inputBoxShadow: none;
 @invertedInputColor: @invertedTextColor;
 
 @textAreaPadding: 1em;
 @textAreaBackground: transparent;
-@textAreaFocusBackground: #EEEEEE;
-@textAreaBorder: 1px solid #DDDDDD;
+@textAreaFocusBackground: #eee;
+@textAreaBorder: 1px solid #ddd;
 
 /* Divider */
-@dividerMargin: 1em 0em;
+@dividerMargin: 1em 0;
 
 /* Validation Prompt */
-@validationMargin: 0em 0em 0em 1em;
+@validationMargin: 0 0 0 1em;
 @validationArrowOffset: -0.3em;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Disabled */
 
 /* Focus */
-@inputFocusPointerSize: 0px;
-@inputErrorPointerSize: 0px;
+@inputFocusPointerSize: 0;
+@inputErrorPointerSize: 0;
 
 /* Dropdown Error */
-@dropdownErrorHoverBackground: #FFF2F2;
-@dropdownErrorActiveBackground: #FDCFCF;
+@dropdownErrorHoverBackground: #fff2f2;
+@dropdownErrorActiveBackground: #fdcfcf;
 
 /* Focused Error */
 @inputErrorFocusBackground: @negativeBackgroundColor;
 @inputErrorFocusColor: @negativeColorHover;
 @inputErrorFocusBorder: @negativeBorderColor;
-@inputErrorFocusBoxShadow: @inputErrorPointerSize 0em 0em 0em @negativeColorHover inset;
+@inputErrorFocusBoxShadow: @inputErrorPointerSize 0 0 0 @negativeColorHover inset;
 
 /* Placeholder */
 @inputPlaceholderColor: lighten(@inputColor, 55);

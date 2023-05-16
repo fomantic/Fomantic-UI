@@ -2,13 +2,14 @@
      User Global Variables
 *******************************/
 
-@pageMinWidth  : 1049px;
-@pageOverflowX : visible;
+@pageMinWidth: 1049px;
+@pageOverflowX: visible;
 
 @emSize: 13px;
-@fontSize : 13px;
-@fontName : 'Arial';
-@importGoogleFonts : false;
+@fontSize: 13px;
+@fontName: "Arial";
+@importGoogleFonts: false;
+@importFonts: false;
 
 @h1: 2.25em;
 
@@ -16,17 +17,17 @@
 
 @disabledOpacity: 0.3;
 
-@black: #444C55;
-@orange: #FDE07B;
+@black: #444c55;
+@orange: #fde07b;
 
-@linkColor: #0066C0;
-@linkHoverColor: #C45500;
+@linkColor: #0066c0;
+@linkHoverColor: #c45500;
 @linkHoverUnderline: underline;
 
 @borderColor: rgba(0, 0, 0, 0.13);
-@solidBorderColor: #DDDDDD;
+@solidBorderColor: #ddd;
 @internalBorderColor: rgba(0, 0, 0, 0.06);
-@selectedBorderColor: #51A7E8;
+@selectedBorderColor: #51a7e8;
 
 /* Breakpoints */
 @largeMonitorBreakpoint: 1049px;
@@ -34,10 +35,9 @@
 @tabletBreakpoint: @largeMonitorBreakpoint;
 
 /* Colors */
-@blue: #80A6CD;
-@green: #60B044;
-@orange: #D26911;
+@blue: #80a6cd;
+@green: #60b044;
+@orange: #d26911;
 
-
-@infoBackgroundColor: #E6F1F6;
-@infoTextColor: #4E575B;
+@infoBackgroundColor: #e6f1f6;
+@infoTextColor: #4e575b;

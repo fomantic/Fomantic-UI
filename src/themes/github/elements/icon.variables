@@ -1,6 +1,236 @@
-@fontPath: '../../themes/github/assets/fonts';
-@fontName: 'octicons';
-@fallbackSRC: '';
+@fontPath: "../../themes/github/assets/fonts";
+@fontName: "octicons";
+@fonts: {
+    @solid: {
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
+        font-style: normal;
+        font-weight: @normal;
+        font-variant: normal;
+        text-decoration: inherit;
+        text-transform: none;
+    };
+};
+@icon-map: {
+    alert: "\f02d"; /*  */
+    alignment_align: "\f08a"; /*  */
+    alignment_aligned_to: "\f08e"; /*  */
+    alignment_unalign: "\f08b"; /*  */
+    arrow_down: "\f03f"; /*  */
+    arrow_left: "\f040"; /*  */
+    arrow_right: "\f03e"; /*  */
+    arrow_small_down: "\f0a0"; /*  */
+    arrow_small_left: "\f0a1"; /*  */
+    arrow_small_right: "\f071"; /*  */
+    arrow_small_up: "\f09f"; /*  */
+    arrow_up: "\f03d"; /*  */
+    beer: "\f069"; /*  */
+    book: "\f007"; /*  */
+    bookmark: "\f07b"; /*  */
+    briefcase: "\f0d3"; /*  */
+    broadcast: "\f048"; /*  */
+    browser: "\f0c5"; /*  */
+    bug: "\f091"; /*  */
+    calendar: "\f068"; /*  */
+    check: "\f03a"; /*  */
+    checklist: "\f076"; /*  */
+    chevron_down: "\f0a3"; /*  */
+    chevron_left: "\f0a4"; /*  */
+    chevron_right: "\f078"; /*  */
+    chevron_up: "\f0a2"; /*  */
+    circle_slash: "\f084"; /*  */
+    circuit_board: "\f0d6"; /*  */
+    clippy: "\f035"; /*  */
+    clock: "\f046"; /*  */
+    cloud_download: "\f00b"; /*  */
+    cloud_upload: "\f00c"; /*  */
+    code: "\f05f"; /*  */
+    color_mode: "\f065"; /*  */
+    comment: "\f02b"; /*  */
+    comment_discussion: "\f04f"; /*  */
+    credit_card: "\f045"; /*  */
+    dash: "\f0ca"; /*  */
+    dashboard: "\f07d"; /*  */
+    database: "\f096"; /*  */
+    device_camera: "\f056"; /*  */
+    device_camera_video: "\f057"; /*  */
+    device_desktop: "\f27c"; /*  */
+    device_mobile: "\f038"; /*  */
+    diff: "\f04d"; /*  */
+    diff_added: "\f06b"; /*  */
+    diff_ignored: "\f099"; /*  */
+    diff_modified: "\f06d"; /*  */
+    diff_removed: "\f06c"; /*  */
+    diff_renamed: "\f06e"; /*  */
+    ellipsis: "\f09a"; /*  */
+    eye: "\f04e"; /*  */
+    file_binary: "\f094"; /*  */
+    file_code: "\f010"; /*  */
+    file_directory: "\f016"; /*  */
+    file_media: "\f012"; /*  */
+    file_pdf: "\f014"; /*  */
+    file_submodule: "\f017"; /*  */
+    file_symlink_directory: "\f0b1"; /*  */
+    file_symlink_file: "\f0b0"; /*  */
+    file_text: "\f011"; /*  */
+    file_zip: "\f013"; /*  */
+    flame: "\f0d2"; /*  */
+    fold: "\f0cc"; /*  */
+    gear: "\f02f"; /*  */
+    gift: "\f042"; /*  */
+    gist: "\f00e"; /*  */
+    gist_secret: "\f08c"; /*  */
+    git_branch: "\f020"; /*  */
+    git_commit: "\f01f"; /*  */
+    git_compare: "\f0ac"; /*  */
+    git_merge: "\f023"; /*  */
+    git_pull_request: "\f009"; /*  */
+    globe: "\f0b6"; /*  */
+    graph: "\f043"; /*  */
+    heart: "\2665"; /* ♥ */
+    history: "\f07e"; /*  */
+    home: "\f08d"; /*  */
+    horizontal_rule: "\f070"; /*  */
+    hourglass: "\f09e"; /*  */
+    hubot: "\f09d"; /*  */
+    inbox: "\f0cf"; /*  */
+    info: "\f059"; /*  */
+    issue_closed: "\f028"; /*  */
+    issue_opened: "\f026"; /*  */
+    issue_reopened: "\f027"; /*  */
+    jersey: "\f019"; /*  */
+    jump_down: "\f072"; /*  */
+    jump_left: "\f0a5"; /*  */
+    jump_right: "\f0a6"; /*  */
+    jump_up: "\f073"; /*  */
+    key: "\f049"; /*  */
+    keyboard: "\f00d"; /*  */
+    law: "\f0d8"; /*  */
+    light_bulb: "\f000"; /*  */
+    linkify: "\f05c"; /*  */
+    linkify_external: "\f07f"; /*  */
+    list_ordered: "\f062"; /*  */
+    list_unordered: "\f061"; /*  */
+    location: "\f060"; /*  */
+    lock: "\f06a"; /*  */
+    logo_github: "\f092"; /*  */
+    mail: "\f03b"; /*  */
+    mail_read: "\f03c"; /*  */
+    mail_reply: "\f051"; /*  */
+    mark_github: "\f00a"; /*  */
+    markdown: "\f0c9"; /*  */
+    megaphone: "\f077"; /*  */
+    mention: "\f0be"; /*  */
+    microscope: "\f089"; /*  */
+    milestone: "\f075"; /*  */
+    mirror: "\f024"; /*  */
+    mortar_board: "\f0d7"; /*  */
+    move_down: "\f0a8"; /*  */
+    move_left: "\f074"; /*  */
+    move_right: "\f0a9"; /*  */
+    move_up: "\f0a7"; /*  */
+    mute: "\f080"; /*  */
+    no_newline: "\f09c"; /*  */
+    octoface: "\f008"; /*  */
+    organization: "\f037"; /*  */
+    package: "\f0c4"; /*  */
+    paintcan: "\f0d1"; /*  */
+    pencil: "\f058"; /*  */
+    person: "\f018"; /*  */
+    pin: "\f041"; /*  */
+    playback_fast_forward: "\f0bd"; /*  */
+    playback_pause: "\f0bb"; /*  */
+    playback_play: "\f0bf"; /*  */
+    playback_rewind: "\f0bc"; /*  */
+    plug: "\f0d4"; /*  */
+    plus: "\f05d"; /*  */
+    podium: "\f0af"; /*  */
+    primitive_dot: "\f052"; /*  */
+    primitive_square: "\f053"; /*  */
+    pulse: "\f085"; /*  */
+    puzzle: "\f0c0"; /*  */
+    question: "\f02c"; /*  */
+    quote: "\f063"; /*  */
+    radio_tower: "\f030"; /*  */
+    repo: "\f001"; /*  */
+    repo_clone: "\f04c"; /*  */
+    repo_force_push: "\f04a"; /*  */
+    repo_forked: "\f002"; /*  */
+    repo_pull: "\f006"; /*  */
+    repo_push: "\f005"; /*  */
+    rocket: "\f033"; /*  */
+    rss: "\f034"; /*  */
+    ruby: "\f047"; /*  */
+    screen_full: "\f066"; /*  */
+    screen_normal: "\f067"; /*  */
+    search: "\f02e"; /*  */
+    server: "\f097"; /*  */
+    settings: "\f07c"; /*  */
+    sign_in: "\f036"; /*  */
+    sign_out: "\f032"; /*  */
+    split: "\f0c6"; /*  */
+    squirrel: "\f0b2"; /*  */
+    star: "\f02a"; /*  */
+    steps: "\f0c7"; /*  */
+    stop: "\f08f"; /*  */
+    sync: "\f087"; /*  */
+    tag: "\f015"; /*  */
+    telescope: "\f088"; /*  */
+    terminal: "\f0c8"; /*  */
+    three_bars: "\f05e"; /*  */
+    thumbsdown: "\f0db"; /*  */
+    thumbsup: "\f0da"; /*  */
+    tools: "\f031"; /*  */
+    trashcan: "\f0d0"; /*  */
+    triangle_down: "\f05b"; /*  */
+    triangle_left: "\f044"; /*  */
+    triangle_right: "\f05a"; /*  */
+    triangle_up: "\f0aa"; /*  */
+    unfold: "\f039"; /*  */
+    unmute: "\f0ba"; /*  */
+    versions: "\f064"; /*  */
+    remove_close: "\f081"; /*  */
+    zap: "\26a1"; /* ⚡ */
+};
+@icon-aliases-map: {
+    comment_add: "\f02b"; /*  */
+    eye_unwatch: "\f04e"; /*  */
+    eye_watch: "\f04e"; /*  */
+    git_branch_create: "\f020"; /*  */
+    git_branch_delete: "\f020"; /*  */
+    git_pull_request_abandoned: "\f009"; /*  */
+    gist_private: "\f06a"; /*  */
+    mirror_private: "\f06a"; /*  */
+    git_fork_private: "\f06a"; /*  */
+    mirror_public: "\f024"; /*  */
+    person_add: "\f018"; /*  */
+    person_follow: "\f018"; /*  */
+    repo_create: "\f05d"; /*  */
+    gist_new: "\f05d"; /*  */
+    file_directory_create: "\f05d"; /*  */
+    file_add: "\f05d"; /*  */
+    repo_delete: "\f001"; /*  */
+    gist_fork: "\f002"; /*  */
+    search_save: "\f02e"; /*  */
+    log_in: "\f036"; /*  */
+    log_out: "\f032"; /*  */
+    star_delete: "\f02a"; /*  */
+    star_add: "\f02a"; /*  */
+    repo_sync: "\f087"; /*  */
+    tag_add: "\f015"; /*  */
+    tag_remove: "\f015"; /*  */
+    x: "\f081"; /*  */
+};
+@icon-deprecated-map: {
+};
+@icon-outline-map: {
+};
+@icon-outline-aliases-map: {
+};
+@icon-brand-map: {
+};
+@icon-brand-aliases-map: {
+};
 
 @width: 1em;
 @height: 1em;
@@ -8,6 +238,6 @@
 @small: 13px;
 @medium: 16px;
 @large: 18px;
-@big : 20px;
+@big: 20px;
 @huge: 28px;
 @massive: 32px;

@@ -1,0 +1,10 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName: "";
+@headerFont: @fallbackFonts;
+@pageFont: @fallbackFonts;
+@importGoogleFonts: false;
+@importFonts: false;
+@bold: 600;
