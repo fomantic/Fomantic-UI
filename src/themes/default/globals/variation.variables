@@ -512,6 +512,7 @@
 @variationCheckboxDisabled: true;
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
+@variationCheckboxInvisible: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
 @variationCheckboxToggle: true;
