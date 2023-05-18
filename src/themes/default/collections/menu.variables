@@ -157,6 +157,7 @@
 @secondaryDropdownMenuDistance: @relative5px;
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
+@dropdownUpwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 
 /* --------------
      States
