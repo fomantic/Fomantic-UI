@@ -324,6 +324,7 @@
 @clearableIconPosition: 2em;
 @clearableIconSelectionPosition: 3em;
 @clearableIconInlinePosition: 2.2em;
+@clearableIconVerticalPosition: 0.86571429em;
 
 /* -------------------
       Variations
