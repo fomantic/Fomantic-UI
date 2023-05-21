@@ -1090,14 +1090,16 @@
                                     ? $el.is(':checked')
                                     : $el.val()
                             ;
-                            if (isDropdown) {
-                                if ($parent.is(selector.uiDropdown)) {
-                                    $parent.dropdown('save defaults');
-                                } else {
-                                    $el.dropdown('save defaults');
+                            if (!settings.ignoreModulesOnInit) {
+                                if (isDropdown) {
+                                    if ($parent.is(selector.uiDropdown)) {
+                                        $parent.dropdown('save defaults');
+                                    } else {
+                                        $el.dropdown('save defaults');
+                                    }
+                                } else if (isCalendar) {
+                                    $calendar.calendar('refresh');
                                 }
-                            } else if (isCalendar) {
-                                $calendar.calendar('refresh');
                             }
                             $el.data(metadata.defaultValue, value);
                             $el.data(metadata.isDirty, false);
@@ -1606,6 +1608,7 @@
         duration: 200,
 
         autoCheckRequired: false,
+        ignoreModulesOnInit: false,
         preventLeaving: false,
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
