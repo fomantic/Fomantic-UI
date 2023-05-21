@@ -222,10 +222,13 @@
                         }
                         if (isDropdown) {
                             module.verbose('Resetting dropdown value', $element, defaultValue);
+                            module.checkInstance($element, 'dropdown');
                             $element.dropdown('clear', true);
                         } else if (isCheckbox) {
                             $field.prop('checked', false);
                         } else if (isCalendar) {
+                            module.verbose('Resetting calendar value', $calendar, defaultValue);
+                            module.checkInstance($calendar, 'calendar');
                             $calendar.calendar('clear');
                         } else {
                             module.verbose('Resetting field value', $field, defaultValue);
@@ -260,11 +263,14 @@
                         }
                         if (isDropdown) {
                             module.verbose('Resetting dropdown value', $element, defaultValue);
+                            module.checkInstance($element, 'dropdown');
                             $element.dropdown('restore defaults', true);
                         } else if (isCheckbox) {
                             module.verbose('Resetting checkbox value', $field, defaultValue);
                             $field.prop('checked', defaultValue);
                         } else if (isCalendar) {
+                            module.verbose('Resetting calendar value', $calendar, defaultValue);
+                            module.checkInstance($calendar, 'calendar');
                             $calendar.calendar('set date', defaultValue);
                         } else {
                             module.verbose('Resetting field value', $field, defaultValue);
@@ -744,6 +750,7 @@
                                     } else if (isCheckbox) {
                                         values[name] = isChecked ? value || true : false;
                                     } else if (isCalendar) {
+                                        module.checkInstance($element, 'calendar');
                                         var date = $calendar.calendar('get date');
 
                                         if (date !== null) {
@@ -859,6 +866,11 @@
                     }
 
                     return errors;
+                },
+                checkInstance: function ($element, namespace) {
+                    if (!settings.initChildModules && !$element.data('module-' + namespace)) {
+                        module.error(error.noInstance.replace('{module}', namespace), $element);
+                    }
                 },
                 add: {
                     // alias
@@ -1090,7 +1102,7 @@
                                     ? $el.is(':checked')
                                     : $el.val()
                             ;
-                            if (!settings.ignoreModulesOnInit) {
+                            if (settings.initChildModules) {
                                 if (isDropdown) {
                                     if ($parent.is(selector.uiDropdown)) {
                                         $parent.dropdown('save defaults');
@@ -1166,8 +1178,11 @@
                                     }
                                 } else if (isDropdown) {
                                     module.verbose('Setting dropdown value', value, $element);
+                                    module.checkInstance($element, 'dropdown');
                                     $element.dropdown('set selected', value);
                                 } else if (isCalendar) {
+                                    module.verbose('Setting calendar value', value, $calendar);
+                                    module.checkInstance($calendar, 'calendar');
                                     $calendar.calendar('set date', value);
                                 } else {
                                     module.verbose('Setting field value', value, $field);
@@ -1608,7 +1623,7 @@
         duration: 200,
 
         autoCheckRequired: false,
-        ignoreModulesOnInit: false,
+        initChildModules: true,
         preventLeaving: false,
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
@@ -1716,6 +1731,7 @@
             noField: 'Field identifier {identifier} not found',
             noElement: 'This module requires ui {element}',
             noErrorMessage: 'No error message provided',
+            noInstance: 'Child module {module} was not instantiated before usage'
         },
 
         templates: {
