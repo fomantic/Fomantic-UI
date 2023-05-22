@@ -363,7 +363,7 @@
                             module.verbose('Adding clear icon');
                             $clear = $('<i />')
                                 .addClass('remove icon')
-                                .insertBefore($text)
+                                .insertAfter($icon)
                             ;
                         }
                         if (module.is.search() && !module.has.search()) {
