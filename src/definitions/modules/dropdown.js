@@ -529,7 +529,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
+                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache() && !module.has.maxSelections()) {
                         module.clearItems();
                     }
                     if (!module.can.show() && module.is.remote()) {
@@ -774,6 +774,8 @@
                         }
                     ;
                     if (settings.useLabels && module.has.maxSelections()) {
+                        module.show();
+
                         return;
                     }
                     if (settings.apiSettings) {
@@ -2170,7 +2172,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2231,7 +2233,7 @@
                             return false;
                         }
 
-                        return true;
+                        return false;
                     },
                     disabled: function () {
                         $search.attr('tabindex', module.is.disabled() ? -1 : 0);
@@ -2321,7 +2323,7 @@
                                 $.each(values, function (value, name) {
                                     module.set.text(name);
                                 });
-                            } else {
+                            } else if (settings.useLabels) {
                                 $.each(values, function (value, name) {
                                     module.add.label(value, name);
                                 });
