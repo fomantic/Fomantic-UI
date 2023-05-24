@@ -162,6 +162,9 @@
     font-family: @inputFont;
     line-height: @textAreaLineHeight;
     resize: @textAreaResize;
+    &:focus when not (@textAreaFocusOutline = none) {
+        outline: @textAreaFocusOutline;
+    }
 }
 .ui.form textarea:not([rows]) {
     height: @textAreaHeight;
@@ -424,6 +427,9 @@
     border-radius: @inputFocusBorderRadius;
     background: @inputFocusBackground;
     box-shadow: @inputFocusBoxShadow;
+    & when not (@inputFocusOutline = none) {
+        outline: @inputFocusOutline;
+    }
 }
 & when (@variationInputAction) {
     .ui.form .ui.action.input:not([class*="left action"]) {

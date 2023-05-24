@@ -36,6 +36,9 @@
     font-size: @relativeMedium;
     line-height: @checkboxLineHeight;
     min-width: @checkboxSize;
+    &:focus when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 /* HTML Checkbox */
@@ -50,6 +53,9 @@
     z-index: 3;
     width: @checkboxSize;
     height: @checkboxSize;
+    &:focus when not (@inputFocusOutline = none) {
+        outline: @inputFocusOutline;
+    }
 }
 
 .ui.checkbox label {
@@ -58,6 +64,9 @@
     display: block;
     outline: none;
     font-size: @labelFontSize;
+    &:focus when not (@labelFocusOutline = none) {
+        outline: @labelFocusOutline;
+    }
 }
 
 .ui.checkbox:not(.invisible) label {

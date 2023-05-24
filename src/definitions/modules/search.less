@@ -183,6 +183,9 @@
     border-color: @promptFocusBorderColor;
     background: @promptFocusBackground;
     color: @promptFocusColor;
+    & when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 & when (@variationSearchLoading) {

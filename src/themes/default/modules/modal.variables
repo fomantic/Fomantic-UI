@@ -16,6 +16,7 @@
 @closeOpacityDimmed: 0.1;
 @closeSize: 1.25em;
 @closeColor: @white;
+@closeFocusOutline: @focusOutline;
 
 @closeHitbox: 2.25rem;
 @closeDistance: 0.25rem;

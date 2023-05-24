@@ -56,6 +56,9 @@
         transition: @iconTransition;
         cursor: pointer;
     }
+    &:focus when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 /* --------------------
