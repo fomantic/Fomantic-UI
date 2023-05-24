@@ -911,7 +911,8 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = $prompt.length > 0
+                            promptExists = $prompt.length > 0,
+                            canTransition = settings.transition && module.can.useElement('transition')
                         ;
                         module.verbose('Adding field error state', identifier);
                         if (!internal) {
@@ -920,8 +921,22 @@
                             ;
                         }
                         if (settings.inline) {
+                            if (promptExists) {
+                                if (canTransition) {
+                                    if ($prompt.transition('is animating')) {
+                                        $prompt.transition('stop all');
+                                    }
+                                } else if ($prompt.is(':animated')) {
+                                    $prompt.stop(true, true);
+                                }
+                                $prompt = $fieldGroup.children(selector.prompt);
+                                promptExists = $prompt.length > 0;
+                            }
                             if (!promptExists) {
                                 $prompt = $('<div/>').addClass(className.label);
+                                if(!canTransition) {
+                                    $prompt.css('display', 'none')
+                                }
                                 $prompt
                                     .appendTo($fieldGroup)
                                 ;
@@ -930,7 +945,7 @@
                                 .html(settings.templates.prompt(errors))
                             ;
                             if (!promptExists) {
-                                if (settings.transition && module.can.useElement('transition')) {
+                                if (canTransition) {
                                     module.verbose('Displaying error with css transition', settings.transition);
                                     $prompt.transition(settings.transition + ' in', settings.duration);
                                 } else {
@@ -939,9 +954,9 @@
                                         .fadeIn(settings.duration)
                                     ;
                                 }
-                            } else {
-                                module.verbose('Inline errors are disabled, no inline error added', identifier);
                             }
+                        } else {
+                            module.verbose('Inline errors are disabled, no inline error added', identifier);
                         }
                     },
                     errors: function (errors) {
