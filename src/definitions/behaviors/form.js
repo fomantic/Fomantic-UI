@@ -934,8 +934,8 @@
                             }
                             if (!promptExists) {
                                 $prompt = $('<div/>').addClass(className.label);
-                                if(!canTransition) {
-                                    $prompt.css('display', 'none')
+                                if (!canTransition) {
+                                    $prompt.css('display', 'none');
                                 }
                                 $prompt
                                     .appendTo($fieldGroup)
