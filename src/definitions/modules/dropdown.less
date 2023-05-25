@@ -1580,17 +1580,17 @@ select.ui.dropdown {
         Floating
     --------------- */
 
-  .ui.floating.dropdown .menu {
-    right: auto;
-    box-shadow: @floatingMenuBoxShadow !important;
-    border-radius: @floatingMenuBorderRadius !important;
-  }
-  .ui:not(.upward).floating.dropdown > .menu {
-    margin-top: @floatingMenuDistance;
-  }
-  .ui.upward.floating.dropdown:not(.simple) > .menu {
-    margin-bottom: @floatingMenuDistance;
-  }
+    .ui.floating.dropdown .menu {
+        right: auto;
+        box-shadow: @floatingMenuBoxShadow !important;
+        border-radius: @floatingMenuBorderRadius !important;
+    }
+    .ui:not(.upward).floating.dropdown > .menu {
+        margin-top: @floatingMenuDistance;
+    }
+    .ui.upward.floating.dropdown:not(.simple) > .menu {
+        margin-bottom: @floatingMenuDistance;
+    }
 }
 
 & when (@variationDropdownPointing) {
