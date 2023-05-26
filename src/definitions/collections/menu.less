@@ -187,6 +187,7 @@
 
 & when (@variationMenuVertical) {
     .ui.vertical.menu .item > .header:not(.ui) {
+        flex: 0 0 100%;
         margin: @verticalHeaderMargin;
         font-size: @verticalHeaderFontSize;
         font-weight: @verticalHeaderFontWeight;
@@ -200,7 +201,6 @@
 /* Dropdown Icon */
 .ui.menu .item > i.dropdown.icon {
     padding: 0;
-    float: @dropdownIconFloat;
     margin: 0 0 0 @dropdownIconDistance;
 }
 
@@ -211,6 +211,10 @@
     background: @dropdownBackground;
     margin: @dropdownMenuDistance 0 0;
     box-shadow: @dropdownMenuBoxShadow;
+}
+.ui.menu .upward.dropdown.item .menu {
+    border-radius: @dropdownMenuBorderRadius @dropdownMenuBorderRadius 0 0;
+    box-shadow: @dropdownUpwardMenuBoxShadow;
 }
 .ui.menu .dropdown.item:not(.column) .menu {
     flex-direction: column;
@@ -244,14 +248,12 @@
 }
 
 .ui.menu .ui.dropdown.item .menu .item:not(.filtered) {
-    display: block;
+    display: flex;
 }
 .ui.menu .ui.dropdown .menu > .item > .icons,
 .ui.menu .ui.dropdown .menu > .item > i.icon:not(.dropdown) {
-    display: inline-block;
     font-size: @dropdownItemIconFontSize !important;
-    float: @dropdownItemIconFloat;
-    margin: @dropdownItemIconMargin !important;
+    order: 0;
 }
 
 & when (@variationMenuSecondary) or (@variationMenuText) {
@@ -279,9 +281,17 @@
 & when (@variationMenuVertical) {
     /* Vertical */
     .ui.vertical.menu .dropdown.item > i.icon {
-        float: right;
         content: "\f0da";
-        margin-left: 1em;
+        margin-left: auto;
+        order: @verticalIconOrder;
+    }
+    .ui.vertical.menu .dropdown.item > i.dropdown.icon {
+        margin-left: @dropdownIconDistance;
+        padding-left: 0;
+        order: 100;
+    }
+    .ui.vertical.menu .dropdown.item > i.dropdown.icon:only-of-type {
+        margin-left: auto;
     }
     .ui.vertical.menu .dropdown.item .menu {
         left: 100%;
@@ -297,6 +307,7 @@
     }
     .ui.vertical.menu .dropdown.item.upward .menu {
         bottom: 0;
+        top: auto !important;
     }
     .ui.vertical.menu .dropdown.item:not(.upward) .menu {
         top: 0;
@@ -325,8 +336,7 @@
 }
 & when (@variationMenuVertical) {
     .ui.vertical.menu .item > .label {
-        margin-top: @labelOffset;
-        margin-bottom: @labelOffset;
+        margin: @labelOffset 0 @labelOffset auto;
         padding: @labelVerticalPadding @labelHorizontalPadding;
     }
 }
@@ -535,7 +545,9 @@ Floated Menu / Item
 
     /* --- Item --- */
     .ui.vertical.menu .item {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         background: @verticalItemBackground;
         border-top: none;
         border-right: none;
@@ -549,15 +561,15 @@ Floated Menu / Item
 
     /* --- Label --- */
     .ui.vertical.menu .item > .label {
-        float: right;
+        order: 1;
         text-align: center;
     }
 
     /* --- Icon --- */
     .ui.vertical.menu .item > i.icon,
     .ui.vertical.menu .item > i.icons {
+        order: @verticalIconOrder;
         width: @iconWidth;
-        float: @verticalIconFloat;
         margin: @verticalIconMargin;
     }
     .ui.vertical.menu .item > .label + i.icon {
@@ -582,6 +594,7 @@ Floated Menu / Item
 
     /* --- Sub Menu --- */
     .ui.vertical.menu .item > .menu {
+        flex: 0 0 100%;
         margin: @subMenuMargin;
     }
     .ui.vertical.menu .menu .item {
@@ -1282,6 +1295,7 @@ Floated Menu / Item
         display: block;
         font-size: @labeledIconSize !important;
         margin: 0 auto @labeledIconTextMargin !important;
+        order: 0;
     }
     & when (@variationMenuFluid) {
         /* Fluid */
