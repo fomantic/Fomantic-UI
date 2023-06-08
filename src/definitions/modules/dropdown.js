@@ -363,7 +363,7 @@
                             module.verbose('Adding clear icon');
                             $clear = $('<i />')
                                 .addClass('remove icon')
-                                .insertBefore($text)
+                                .insertAfter($icon)
                             ;
                         }
                         if (module.is.search() && !module.has.search()) {
@@ -529,7 +529,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
+                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache() && !module.has.maxSelections()) {
                         module.clearItems();
                     }
                     if (!module.can.show() && module.is.remote()) {
@@ -774,6 +774,8 @@
                         }
                     ;
                     if (settings.useLabels && module.has.maxSelections()) {
+                        module.show();
+
                         return;
                     }
                     if (settings.apiSettings) {
@@ -1097,8 +1099,8 @@
                             notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
-                                notFoundTokens.push(value);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
+                                notFoundTokens.push(value.trim());
                             }
                         });
                         event.preventDefault();
@@ -1231,7 +1233,7 @@
                             module.set.filtered();
                         }
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.search, settings.delay.search);
+                        module.timer = setTimeout(function () { module.search(); }, settings.delay.search);
                     },
                     label: {
                         click: function (event) {
@@ -2170,7 +2172,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2231,7 +2233,7 @@
                             return false;
                         }
 
-                        return true;
+                        return false;
                     },
                     disabled: function () {
                         $search.attr('tabindex', module.is.disabled() ? -1 : 0);
@@ -2321,7 +2323,7 @@
                                 $.each(values, function (value, name) {
                                     module.set.text(name);
                                 });
-                            } else {
+                            } else if (settings.useLabels) {
                                 $.each(values, function (value, name) {
                                     module.add.label(value, name);
                                 });
@@ -3742,12 +3744,12 @@
                     show: function () {
                         module.verbose('Delaying show event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.show, settings.delay.show);
+                        module.timer = setTimeout(function () { module.show(); }, settings.delay.show);
                     },
                     hide: function () {
                         module.verbose('Delaying hide event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.hide, settings.delay.hide);
+                        module.timer = setTimeout(function () { module.hide(); }, settings.delay.hide);
                     },
                 },
 
@@ -3873,7 +3875,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var

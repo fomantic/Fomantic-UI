@@ -99,7 +99,7 @@
                     module.bind.events();
 
                     if (settings.history && !initializedHistory) {
-                        module.initializeHistory();
+                        settings.history = module.initializeHistory();
                         initializedHistory = true;
                     }
 
@@ -109,7 +109,7 @@
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
-                    if (activeTab !== null && settings.history) {
+                    if (activeTab !== null && settings.history && settings.historyType === 'state') {
                         var autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);
@@ -202,6 +202,8 @@
                     $.address
                         .bind('change', module.event.history.change)
                     ;
+
+                    return true;
                 },
 
                 event: {
@@ -786,7 +788,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var

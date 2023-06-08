@@ -241,7 +241,9 @@
                             $input.trigger('blur');
                             shortcutPressed = true;
                             event.stopPropagation();
-                        } else if (!event.ctrlKey && module.can.change()) {
+                        } else if (!module.can.change()) {
+                            shortcutPressed = true;
+                        } else if (!event.ctrlKey) {
                             if (key === keyCode.space || (key === keyCode.enter && settings.enableEnterKey)) {
                                 module.verbose('Enter/space key pressed, toggling checkbox');
                                 module.toggle();
@@ -723,7 +725,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
