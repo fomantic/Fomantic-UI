@@ -2,6 +2,218 @@ declare namespace FomanticUI {
     interface Dropdown {
         settings: DropdownSettings;
 
+        /**
+         * Recreates dropdown menu from passed values.
+         * values should be an object with the following structure: { values: [ {value, text, name} ] }.
+         */
+        (behavior: 'setup menu', values: object): void;
+
+        /**
+         * Changes dropdown to use new values.
+         * values structure: [ {value, text, name} ].
+         */
+        (behavior: 'change values', values: object): void;
+
+        /**
+         * Refreshes all cached selectors and data
+         */
+        (behavior: 'refresh'): void;
+
+        /**
+         * Toggles current visibility of dropdown
+         */
+        (behavior: 'toggle'): void;
+
+        /**
+         * Shows dropdown.
+         * If a function is provided to callback, it's called after the dropdown-menu is shown.
+         * Set preventFocus to true if you don't want the dropdown field to focus after the menu is shown
+         */
+        (behavior: 'show', callback: Function, preventFocus: boolean): void;
+
+        /**
+         * Hides dropdown.
+         * If a function is provided to callback, it's called after the dropdown-menu is hidden.
+         * Set preventBlur to true if you don't want the dropdown field to blur after the menu is hidden
+         */
+        (behavior: 'hide', callback:Function, preventBlur: boolean): void;
+
+        /**
+         * Clears dropdown of selection.
+         * Set preventChangeTrigger to true to omit the change event (default: false).
+         */
+        (behavior: 'clear', preventChangeTrigger: boolean): void;
+
+        /**
+         * Hides all other dropdowns that is not current dropdown
+         */
+        (behavior: 'hide others'): void;
+
+        /**
+         * Restores dropdown text and value to its value on page load.
+         * Set preventChangeTrigger to true to omit the change event (default: false).
+         */
+        (behavior: 'restore defaults', preventChangeTrigger: boolean): void;
+
+        /**
+         * Restores dropdown text to its value on page load
+         */
+        (behavior: 'restore default text'): void;
+
+        /**
+         * Restores dropdown text to its prompt, placeholder text
+         */
+        (behavior: 'restore placeholder text'): void;
+
+        /**
+         * Restores dropdown value to its value on page load
+         */
+        (behavior: 'restore default value'): void;
+
+        /**
+         * Saves current text and value as new defaults (for use with restore)
+         */
+        (behavior: 'save defaults'): void;
+
+        /**
+         * Sets value as selected.
+         * Set preventChangeTrigger to true to omit the change event (default: false).
+         */
+        (behavior: 'set selected', value: string, preventChangeTrigger: boolean): void;
+
+        /**
+         * Remove value from selected
+         */
+        (behavior: 'remove selected', value: string): void;
+
+        /**
+         * Adds a group of values as selected
+         */
+        (behavior: 'set selected', values: string[]): void;
+
+        /**
+         * Sets selected values to exactly specified values, removing current selection
+         */
+        (behavior: 'set exactly', values: string[]): void;
+
+        /**
+         * Sets dropdown text to a value
+         */
+        (behavior: 'text', text: string): void;
+
+        /**
+         * Sets dropdown input to value (does not update display state).
+         * Set preventChangeTrigger to true to omit the change event (default: false).
+         */
+        (behavior: 'set value', value: string, preventChangeTrigger: boolean): void;
+
+        /**
+         * Returns current dropdown text
+         */
+        (behavior: 'get text'): string;
+
+        /**
+         * Returns current dropdown input value.
+         * When the dropdown was created out of a select tag, the value will always be an array, otherwise a string (delimited when multiple)
+         */
+        (behavior: 'get value'): string | string[];
+
+        /**
+         * Returns current dropdown input values as array.
+         * Useful for multiple selection dropdowns regardless if made out of a div or select
+         */
+        (behavior: 'get values'): string[];
+
+        /**
+         * Returns DOM element that matches a given input value
+         */
+        (behavior: 'get item', value: string): HTMLElement;
+
+        /**
+         * Returns current search term entered
+         */
+        (behavior: 'get query'): string;
+
+        /**
+         * Adds touch events to element
+         */
+        (behavior: 'bind touch events'): void;
+
+        /**
+         * Adds mouse events to element
+         */
+        (behavior: 'bind mouse events'): void;
+
+        /**
+         * Binds a click to document to determine if you click away from a dropdown
+         */
+        (behavior: 'bind intent'): void;
+
+        /**
+         * Unbinds document intent click
+         */
+        (behavior: 'unbind intent'): void;
+
+        /**
+         * Returns whether event occurred inside dropdown
+         */
+        (behavior: 'determine eventInModule'): boolean;
+
+        /**
+         * Triggers preset item selection action based on settings passing text/value
+         */
+        (behavior: 'determine select action', text: string, value: string): void;
+
+        /**
+         * Sets dropdown to active state
+         */
+        (behavior: 'set active'): void;
+
+        /**
+         * Sets dropdown to visible state
+         */
+        (behavior: 'set visible'): void;
+
+        /**
+         * Removes dropdown active state
+         */
+        (behavior: 'remove active'): void;
+
+        /**
+         * Removes dropdown visible state
+         */
+        (behavior: 'remove visible'): void;
+
+        /**
+         * Returns whether dropdown is a selection dropdown
+         */
+        (behavior: 'is selection'): boolean;
+
+        /**
+         * Returns whether dropdown is animated
+         */
+        (behavior: 'is animated'): boolean;
+
+        /**
+         * Returns whether dropdown is visible
+         */
+        (behavior: 'is visible'): boolean;
+
+        /**
+         * Returns whether dropdown is hidden
+         */
+        (behavior: 'is hidden'): boolean;
+
+        /**
+         * Returns dropdown value as set on page load
+         */
+        (behavior: 'get default text'): string;
+
+        /**
+         * Returns placeholder text
+         */
+        (behavior: 'get placeholder text'): string;
+
         (behavior: 'destroy'): JQuery;
         <K extends keyof DropdownSettings>(behavior: 'setting', name: K, value?: undefined): DropdownSettings._Impl[K];
         <K extends keyof DropdownSettings>(behavior: 'setting', name: K, value: DropdownSettings._Impl[K]): JQuery;
@@ -126,7 +338,7 @@ declare namespace FomanticUI {
              * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
              * @default false
              */
-            apiSettings: false | ApiSettings;
+            apiSettings: false | APISettings;
 
             /**
              * Whether dropdown should select new option when using keyboard shortcuts.
@@ -437,6 +649,31 @@ declare namespace FomanticUI {
              */
             className: Dropdown.ClassNameSettings;
 
+            /**
+             * Class names used to determine element messages.
+             */
+            message: Dropdown.MessageSettings;
+
+            /**
+             * 
+             */
+            regExp: Dropdown.RegExpSettings;
+
+            /**
+             * 
+             */
+            metadata: Dropdown.MetadataSettings;
+
+            /**
+             * 
+             */
+            fields: Dropdown.FieldsSettings;
+
+            /**
+             * 
+             */
+            keys: Dropdown.KeysSettings;
+
             // endregion
 
             // region Debug Settings
@@ -471,7 +708,7 @@ declare namespace FomanticUI {
              */
             verbose: boolean;
 
-            errors: Dropdown.ErrorSettings;
+            error: Dropdown.ErrorSettings;
 
             // endregion
         }
@@ -807,6 +1044,294 @@ declare namespace FomanticUI {
                  * @default 'actionable'
                  */
                 actionable: string;
+            }
+        }
+
+        type MessageSettings = MessageSettings.Param;
+
+        namespace MessageSettings {
+            type Param = (
+                | Pick<_Impl, 'addResult'>
+                | Pick<_Impl, 'count'>
+                | Pick<_Impl, 'maxSelections'>
+                | Pick<_Impl, 'noResults'>
+                | Pick<_Impl, 'serverError'>
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 'Add <b>{term}</b>'
+                 */
+                addResult: string;
+
+                /**
+                 * @default '{count} selected'
+                 */
+                count: string;
+
+                /**
+                 * @default 'Max {maxCount} selections'
+                 */
+                maxSelections: string;
+
+                /**
+                 * @default 'No results found.'
+                 */
+                noResults: string;
+
+                /**
+                 * @default 'There was an error contacting the server'
+                 */
+                serverError: string;
+            }
+        }
+
+        type RegExpSettings = RegExpSettings.Param;
+
+        namespace RegExpSettings {
+            type Param = (
+                | Pick<_Impl, 'escape'>
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default '/[-[\]{}()*+?.,\\^$|#\s]/g'
+                 */
+                escape: string;  
+            }
+        }
+
+        type MetadataSettings = MetadataSettings.Param;
+
+        namespace MetadataSettings {
+            type Param = (
+                | Pick<_Impl, 'defaultText'>
+                | Pick<_Impl, 'defaultValue'>
+                | Pick<_Impl, 'placeholderText'>
+                | Pick<_Impl, 'text'>
+                | Pick<_Impl, 'value'>
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 'defaultText'
+                 */
+                defaultText: string;
+
+                /**
+                 * @default 'defaultValue'
+                 */
+                defaultValue: string;  
+
+                /**
+                 * @default 'placeholderText'
+                 */
+                placeholderText: string;  
+
+                /**
+                 * @default 'text'
+                 */
+                text: string;  
+
+                /**
+                 * @default 'value'
+                 */
+                value: string;  
+            }
+        }
+
+        type FieldsSettings = FieldsSettings.Param;
+
+        namespace FieldsSettings {
+            type Param = (
+                | Pick<_Impl, 'remoteValues'>
+                | Pick<_Impl, 'values'>
+                | Pick<_Impl, 'disabled'>
+                | Pick<_Impl, 'name'>
+                | Pick<_Impl, 'description'>
+                | Pick<_Impl, 'descriptionVertical'>
+                | Pick<_Impl, 'value'>
+                | Pick<_Impl, 'text'>
+                | Pick<_Impl, 'type'>
+                | Pick<_Impl, 'image'>
+                | Pick<_Impl, 'imageClass'>
+                | Pick<_Impl, 'icon'>
+                | Pick<_Impl, 'iconClass'>
+                | Pick<_Impl, 'class'>
+                | Pick<_Impl, 'divider'>
+                | Pick<_Impl, 'actionable'>
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * Grouping for api results
+                 * @default 'results'
+                 */
+                remoteValues: string;
+
+                /**
+                 * Grouping for all dropdown values
+                 * @default 'values'
+                 */
+                values: string;  
+
+                /**
+                 * Whether value should be disabled
+                 * @default 'disabled'
+                 */
+                disabled: string;  
+
+                /**
+                 * Displayed dropdown text
+                 * @default 'name'
+                 */
+                name: string;
+
+                /**
+                 * Displayed dropdown description
+                 * @default 'description'
+                 */
+                description: string;
+
+                /**
+                 * Whether description should be vertical
+                 * @default 'descriptionVertical'
+                 */
+                descriptionVertical: string;
+
+                /**
+                 * Actual dropdown value
+                 * @default 'value'
+                 */
+                value: string;
+
+                /**
+                 * Displayed text when selected
+                 * @default 'text'
+                 */
+                text: string;
+
+                /**
+                 * Type of dropdown element
+                 * @default 'type'
+                 */
+                type: string;
+
+                /**
+                 * Optional image path
+                 * @default 'image'
+                 */
+                image: string;
+
+                /**
+                 * Optional individual class for image
+                 * @default 'imageClass'
+                 */
+                imageClass: string;
+
+                /**
+                 * Optional icon name
+                 * @default 'icon'
+                 */
+                icon: string;
+
+                /**
+                 * Optional individual class for icon (for example to use flag instead)
+                 * @default 'iconClass'
+                 */
+                iconClass: string;
+
+                /**
+                 * Optional individual class for item/header
+                 * @default 'class'
+                 */
+                class: string;
+
+                /**
+                 * Optional divider append for group headers
+                 * @default 'divider'
+                 */
+                divider: string;
+
+                /**
+                 * Optional actionable item
+                 * @default 'actionable'
+                 */
+                actionable: string;
+            }
+        }
+
+        type KeysSettings = KeysSettings.Param;
+
+        namespace KeysSettings {
+            type Param = (
+                | Pick<_Impl, 'backspace'>
+                | Pick<_Impl, 'deleteKey'>
+                | Pick<_Impl, 'enter'>
+                | Pick<_Impl, 'escape'>
+                | Pick<_Impl, 'pageUp'>
+                | Pick<_Impl, 'pageDown'>
+                | Pick<_Impl, 'leftArrow'>
+                | Pick<_Impl, 'upArrow'>
+                | Pick<_Impl, 'rightArrow'>
+                | Pick<_Impl, 'downArrow'>
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 8
+                 */
+                backspace: number;
+
+                /**
+                 * @default 46
+                 */
+                deleteKey: number;
+
+                /**
+                 * @default 13
+                 */
+                enter: number;
+
+                /**
+                 * @default 27
+                 */
+                escape: number;
+
+                /**
+                 * @default 33
+                 */
+                pageUp: number;
+
+                /**
+                 * @default 34
+                 */
+                pageDown: number;
+
+                /**
+                 * @default 37
+                 */
+                leftArrow: number;
+
+                /**
+                 * @default 38
+                 */
+                upArrow: number;
+
+                /**
+                 * @default 39
+                 */
+                rightArrow: number;
+
+                /**
+                 * @default 40
+                 */
+                downArrow: number;
             }
         }
 

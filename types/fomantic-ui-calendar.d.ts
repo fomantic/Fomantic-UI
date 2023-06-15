@@ -2,7 +2,95 @@ declare namespace FomanticUI {
     interface Calendar {
         settings: CalendarSettings;
 
-        (behavior: 'refresh' | 'destroy'): JQuery;
+        /**
+         * Refresh the calendar
+         */
+        (behavior: 'refresh'): JQuery;
+
+        /**
+         * Call the popup module (e.g. passing show will show the calendar popup)
+         */
+        (behavior: 'popup', arguments: any): JQuery;
+
+        /**
+         * Focus the calendar input
+         */
+        (behavior: 'focus'): JQuery;
+
+        /**
+         * Blur the calendar input
+         */
+        (behavior: 'blur'): JQuery;
+
+        /**
+         * Clear the selected date
+         */
+        (behavior: 'clear'): JQuery;
+
+        /**
+         * Get the selected date
+         */
+        (behavior: 'get date'): Date | string;
+
+        /**
+         * Set the selected date.
+         * Pass false to updateInput to disable updating the input.
+         * Pass false to fireChange to disable the onBeforeChange and onChange callbacks for this change
+         */
+        (behavior: 'set date', date: string, updateInput: boolean, fireChange: boolean): JQuery;
+
+        /**
+         * Get the current selection mode (year, month, day, hour, minute)
+         */
+        (behavior: 'get mode'): 'year' | 'month' | 'day' | 'hour' | 'minute';
+
+        /**
+         * Set the current selection mode (year, month, day, hour, minute)
+         */
+        (behavior: 'set mode', mode: 'year' | 'month' | 'day' | 'hour' | 'minute'): JQuery;
+
+        /**
+         * Get the start date for range selection
+         */
+        (behavior: 'get startDate'): Date | string;
+
+        /**
+         * Set the start date for range selection
+         */
+        (behavior: 'set startDate', date: Date | string): JQuery;
+
+        /**
+         * Get the end date for range selection
+         */
+        (behavior: 'get endDate'): Date | string;
+
+        /**
+         * Set the end date for range selection
+         */
+        (behavior: 'set endDate', date: Date | string): JQuery;
+
+        /**
+         * Get the currently focused date
+         */
+        (behavior: 'get focusDate'): Date | string;
+
+        /**
+         * Set the currently focused date
+         */
+        (behavior: 'set focusDate', date: Date | string): JQuery;
+
+        /**
+         * Set the minimal selectable date
+         */
+        (behavior: 'set minDate', date: Date | string): JQuery;
+
+        /**
+         * Set the maximal selectable date
+         */
+        (behavior: 'set maxDate', date: Date | string): JQuery;
+
+        (behavior: 'destroy'): JQuery;
+
         <K extends keyof CalendarSettings>(behavior: 'setting', name: K, value?: undefined): CalendarSettings._Impl[K];
         <K extends keyof CalendarSettings>(behavior: 'setting', name: K, value: CalendarSettings._Impl[K]): JQuery;
         (behavior: 'setting', value: CalendarSettings): JQuery;

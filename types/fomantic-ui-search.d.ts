@@ -166,7 +166,7 @@ declare namespace FomanticUI {
              * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
              * @default {}
              */
-            apiSettings: ApiSettings;
+            apiSettings: APISettings;
 
             /**
              * Minimum characters to query for results.

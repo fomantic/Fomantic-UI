@@ -205,6 +205,17 @@ declare namespace FomanticUI {
             closable: boolean;
 
             /**
+             * Custom settings to extend UI dimmer.
+             */
+            dimmerSettings: DimmerSettings;
+
+            /**
+             * Custom settings to extend UI dimmer.
+             * @default 'scale'
+             */
+            transition: string | TransitionSettings;
+
+            /**
              * Duration of animation.
              * The value will be ignored when individual hide/show duration values are provided via the 'transition' setting.
              * @default 400

@@ -2,6 +2,31 @@ declare namespace FomanticUI {
     interface Toast {
         settings: ToastSettings;
 
+        /**
+         * Pauses the display time decrease (and possible progress bar animation)
+         */
+        (behavior: 'animate pause'): JQuery;
+
+        /**
+         * Continues decreasing display time (and possible progress bar animation)
+         */
+        (behavior: 'animate continue'): JQuery;
+
+        /**
+         * Closes the toast
+         */
+        (behavior: 'close'): JQuery;
+
+        /**
+         * Returns all toasts as an array of objects which are visible within the current toast-container
+         */
+        (behavior: 'get toasts'): object[];
+
+        /**
+         * Returns the remaining time in milliseconds
+         */
+        (behavior: 'get remainingTime'): number;
+
         (behavior: 'refresh' | 'destroy'): JQuery;
         <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined): ToastSettings._Impl[K];
         <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings._Impl[K]): JQuery;
