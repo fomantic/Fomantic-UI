@@ -10,10 +10,10 @@
   "commitConvention": "angular",
   "contributors": [
     {
-      "login": "hammy2899",
+      "login": "y0hami",
       "name": "Sean",
       "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
-      "profile": "https://github.com/hammy2899",
+      "profile": "https://github.com/y0hami",
       "contributions": [
         "question",
         "bug",
@@ -648,6 +648,15 @@
       "profile": "http://www.mathieumitchell.com",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "brian-codes",
+      "name": "Brian McCluskey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37519149?v=4",
+      "profile": "https://github.com/brian-codes",
+      "contributions": [
+        "security"
       ]
     }
   ],

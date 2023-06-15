@@ -29,14 +29,25 @@
             $allModules     = isFunction(this)
                 ? $(window)
                 : $(this),
-            moduleSelector = $allModules.selector || '',
             time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
 
@@ -62,9 +73,7 @@
                 $form           = $module.closest(selector.form),
 
                 // context used for state
-                $context        = settings.stateContext
-                    ? ([window, document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
-                    : $module,
+                $context        = settings.stateContext ? contextCheck(settings.stateContext, window) : $module,
 
                 // request details
                 ajaxSettings,
@@ -637,7 +646,7 @@
                                 module.debug('Adding error state');
                                 module.set.error();
                                 if (module.should.removeError()) {
-                                    setTimeout(module.remove.error, settings.errorDuration);
+                                    setTimeout(function () { module.remove.error(); }, settings.errorDuration);
                                 }
                             }
                             module.debug('API Request failed', errorMessage, xhr);
@@ -961,7 +970,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -974,10 +983,7 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

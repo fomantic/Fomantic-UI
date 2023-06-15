@@ -39,6 +39,7 @@
     overflow-y: hidden;
     z-index: @topLayer;
     background: #fff;
+    outline: none;
 }
 
 /* GPU Layers for Child Elements */
@@ -101,11 +102,19 @@
 }
 .ui.flyout.left > .content,
 .ui.flyout.right > .content {
+    min-height: @contentMinHeightWithoutHeader;
+}
+.ui.flyout.left > .header + .content,
+.ui.flyout.right > .header + .content {
     min-height: @contentMinHeight;
 }
 & when(@variationFlyoutScrolling) {
     .ui.flyout.left > .scrolling.content,
     .ui.flyout.right > .scrolling.content {
+        max-height: @scrollingContentMaxHeightWithoutHeader;
+    }
+    .ui.flyout.left > .header + .scrolling.content,
+    .ui.flyout.right > .header + .scrolling.content {
         max-height: @scrollingContentMaxHeight;
     }
 
@@ -636,4 +645,5 @@ body.pushable > .pusher {
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

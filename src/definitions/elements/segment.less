@@ -189,6 +189,9 @@
         margin: @piledMargin 0;
         box-shadow: @piledBoxShadow;
         z-index: @piledZIndex;
+        background-color: @white;
+        border: @piledBorder;
+        color: @textColor;
     }
     .ui.piled.segment:first-child {
         margin-top: 0;
@@ -200,7 +203,7 @@
     .ui.piled.segments::before,
     .ui.piled.segment::after,
     .ui.piled.segment::before {
-        background-color: @white;
+        background-color: inherit;
         visibility: visible;
         content: "";
         display: block;
@@ -208,8 +211,15 @@
         left: 0;
         position: absolute;
         width: 100%;
-        border: @piledBorder;
+        border: inherit;
         box-shadow: @piledBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.inverted.piled.segment {
+            background-color: @invertedBackground;
+            border: @invertedPiledBorder;
+            color: @invertedTextColor;
+        }
     }
     .ui.piled.segments::before,
     .ui.piled.segment::before {
@@ -240,6 +250,12 @@
             margin-bottom: 0;
         }
     }
+    @supports selector(:has(.f)) {
+        *:has(> .ui.piled.segment) {
+            z-index: 0;
+            position: relative;
+        }
+    }
 }
 
 & when (@variationSegmentStacked) {
@@ -258,7 +274,7 @@
         position: absolute;
         bottom: -(@stackedHeight / 2);
         left: 0;
-        border-top: 1px solid @borderColor;
+        border-top: @borderWidth solid @stackedBorderColor;
         background: @stackedPageBackground;
         width: 100%;
         height: @stackedHeight;
@@ -277,12 +293,14 @@
     }
     & when (@variationSegmentInverted) {
         /* Inverted */
-        .ui.stacked.inverted.segments::before,
-        .ui.stacked.inverted.segments::after,
-        .ui.stacked.inverted.segment::before,
-        .ui.stacked.inverted.segment::after {
-            background-color: @subtleTransparentBlack;
-            border-top: 1px solid @selectedBorderColor;
+        .ui.stacked.inverted.segments,
+        .ui.stacked.inverted.segment {
+            border: @borderWidth solid @invertedStackedBorderColor;
+            &::before,
+            &::after {
+                background-color: @subtleTransparentBlack;
+                border-top: @borderWidth solid @invertedStackedBorderColor;
+            }
         }
     }
 }
@@ -350,9 +368,15 @@
            Raised
     -------------------- */
 
-    .ui.raised.raised.segments,
-    .ui.raised.raised.segment {
+    .ui.ui.raised.segments,
+    .ui.ui.raised.segment {
         box-shadow: @raisedBoxShadow;
+    }
+    & when (@variationSegmentInverted) {
+        .ui.ui.inverted.raised.segments,
+        .ui.ui.inverted.raised.segment {
+            box-shadow: @invertedRaisedBoxShadow;
+        }
     }
 }
 
@@ -437,6 +461,7 @@
             border-radius: @groupedBorderRadius;
             border: @groupedBorder;
         }
+        .ui.wrapping.horizontal.segments,
         .ui.stackable.horizontal.segments {
             flex-wrap: wrap;
         }
@@ -473,7 +498,7 @@
         .ui.segments > .horizontal.segments:first-child {
             border-top: none;
         }
-        .ui.horizontal.segments:not(.stackable) > .segment:first-child {
+        .ui.horizontal.segments:not(.stackable):not(.wrapping) > .segment:first-child {
             border-left: none;
         }
         .ui.horizontal.segments > .segment:first-child {
@@ -520,6 +545,7 @@
         pointer-events: none;
         user-select: none;
         transition: all 0s linear;
+        min-height: @loadingMinHeight;
     }
     .ui.loading.segments::before,
     .ui.loading.segment::before {
@@ -590,13 +616,19 @@
         @color: @value;
         @c: @colors[@@color][color];
         & when not (@color=primary) and not (@color=secondary) {
-            .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+            .ui.ui.ui.ui.ui.@{color}.segment:not(.inverted) {
                 border-top: @coloredBorderSize solid @c;
             }
             & when (@variationSegmentInverted) {
-                .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+                .ui.ui.ui.ui.ui.inverted.@{color}.segment {
                     background-color: @c;
                     color: @white;
+                    & when not (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                        border-color: c;
+                    }
+                }
+                .ui.ui.inverted.@{color}.segment:not(.piled) when (@variationSegmentPiled) and ((@variationSegmentAttached) or (@variationSegmentStacked)) {
+                    border-color: @c;
                 }
             }
         }
@@ -727,7 +759,7 @@
             border: @attachedBorder;
         }
     }
-    .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
+    .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top):not([class*="left attached"]):not([class*="right attached"]) {
         border-top: none;
     }
 
@@ -761,6 +793,32 @@
     .ui.tab.segment[class*="bottom attached"]:last-child {
         margin-bottom: @verticalMargin;
     }
+    .ui[class*="left attached"].segment {
+        margin-right: 0;
+    }
+    .ui[class*="right attached"].segment {
+        margin-left: 0;
+    }
+    & when (@variationSegmentSeamless) {
+        .ui.seamless.attached.segment {
+            &:not(.top):not(.bottom):not([class*="right attached"]):not([class*="left attached"]) {
+                border-top: none;
+                border-bottom: none;
+            }
+            &.top {
+                border-bottom: none;
+            }
+            &.bottom {
+                border-top: none;
+            }
+            &[class*="left attached"] {
+                border-right: none;
+            }
+            &[class*="right attached"] {
+                border-left: none;
+            }
+        }
+    }
 }
 
 & when (@variationSegmentFitted) {
@@ -790,24 +848,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingMobileMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingMobileMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingMobileMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingMobileMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingMobileMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingMobileMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingMobileMaxHeight * 3;
+                }
             }
         }
     }
@@ -816,24 +889,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingTabletMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingTabletMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingTabletMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingTabletMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingTabletMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingTabletMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingTabletMaxHeight * 3;
+                }
             }
         }
     }
@@ -841,24 +929,39 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingComputerMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingComputerMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingComputerMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingComputerMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingComputerMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingComputerMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingComputerMaxHeight * 3;
+                }
             }
         }
     }
@@ -866,25 +969,46 @@
         & when (@variationSegmentScrollingShort) {
             .ui.scrolling.segment.short {
                 max-height: @scrollingWidescreenMaxHeight * 0.75;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryShort) {
             .ui.scrolling.segment[class*="very short"] {
                 max-height: @scrollingWidescreenMaxHeight * 0.5;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.segment {
             max-height: @scrollingWidescreenMaxHeight;
+            &.resizable when (@variationSegmentResizable) {
+                height: @scrollingWidescreenMaxHeight;
+            }
         }
         & when (@variationSegmentScrollingLong) {
             .ui.scrolling.segment.long {
                 max-height: @scrollingWidescreenMaxHeight * 2;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 2;
+                }
             }
         }
         & when (@variationSegmentScrollingVeryLong) {
             .ui.scrolling.segment[class*="very long"] {
                 max-height: @scrollingWidescreenMaxHeight * 3;
+                &.resizable when (@variationSegmentResizable) {
+                    height: @scrollingWidescreenMaxHeight * 3;
+                }
             }
+        }
+    }
+    & when (@variationSegmentResizable) {
+        .ui.resizable.scrolling.segment {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }
@@ -907,4 +1031,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

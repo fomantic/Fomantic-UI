@@ -7,9 +7,8 @@
 
    For more notes
 
-   * Runs automatically after npm update (hooks)
-   * (NPM) Install - Will ask for where to put semantic (outside pm folder)
-   * (NPM) Upgrade - Will look for semantic install, copy over files and update if new version
+   * (NPM) Install - Will ask for where to put fomantic (outside pm folder)
+   * (NPM) Upgrade - Will look for fomantic install, copy over files and update if new version
    * Standard installer runs asking for paths to site files etc
 */
 
@@ -70,16 +69,24 @@ module.exports = function (callback) {
         root: path.normalize(__dirname + '/../'),
     }; */
 
-    /* Don't do end user config if SUI is a sub-module */
+    /* Don't do end user config if FUI is a sub-module */
     if (install.isSubModule()) {
-        console.info('SUI is a sub-module, skipping end-user install');
+        console.info('FUI is a sub-module, skipping end-user install');
+        callback();
+
+        return;
+    }
+
+    if (!fs.existsSync(source.site)) {
+        console.log('Missing _site folder. \u001B[92mgulp install\u001B[0m must run inside \u001B[92mnode_modules' + path.sep + 'fomantic-ui\u001B[0m');
+        console.error('Aborting.');
         callback();
 
         return;
     }
 
     /* -----------------
-        Update SUI
+        Update FUI
     ----------------- */
 
     // run update scripts if semantic.json exists
@@ -89,6 +96,7 @@ module.exports = function (callback) {
             updatePaths  = {
                 config: path.join(manager.root, files.config),
                 tasks: path.join(updateFolder, folders.tasks),
+                overridesImport: path.join(updateFolder, folders.overridesImport),
                 themeImport: path.join(updateFolder, folders.themeImport),
                 definition: path.join(currentConfig.paths.source.definitions),
                 site: path.join(currentConfig.paths.source.site),
@@ -125,7 +133,11 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(gulp.dest(updatePaths.themeImport))
                 ;
-
+                console.info('Updating overrides import file');
+                gulp.src(source.overridesImport)
+                    .pipe(plumber())
+                    .pipe(gulp.dest(updatePaths.overridesImport))
+                ;
                 console.info('Adding new site theme files...');
                 wrench.copyDirSyncRecursive(source.site, updatePaths.site, settings.wrench.merge);
 
@@ -180,7 +192,7 @@ module.exports = function (callback) {
     }
 
     /* --------------
-       Create SUI
+       Create FUI
     --------------- */
 
     gulp.task('run setup', function (callback) {
@@ -256,6 +268,7 @@ module.exports = function (callback) {
             // special install paths only for PM install
             installPaths = extend(false, {}, installPaths, {
                 definition: folders.definitions,
+                overridesImport: folders.overridesImport,
                 lessImport: folders.lessImport,
                 tasks: folders.tasks,
                 theme: folders.themes,
@@ -303,6 +316,10 @@ module.exports = function (callback) {
             gulp.src(source.themeImport)
                 .pipe(plumber())
                 .pipe(gulp.dest(installPaths.themeImport))
+            ;
+            gulp.src(source.overridesImport)
+                .pipe(plumber())
+                .pipe(gulp.dest(installPaths.overridesImport))
             ;
             gulp.src(source.lessImport)
                 .pipe(plumber())

@@ -232,10 +232,7 @@
     .ui.divider.inverted,
     .ui.divider.inverted::after,
     .ui.divider.inverted::before {
-        border-top-color: @invertedShadowColor !important;
-        border-left-color: @invertedShadowColor !important;
-        border-bottom-color: @invertedHighlightColor !important;
-        border-right-color: @invertedHighlightColor !important;
+        border-color: @invertedShadowColor @invertedHighlightColor @invertedHighlightColor @invertedShadowColor !important;
     }
 }
 
@@ -285,4 +282,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

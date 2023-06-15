@@ -45,8 +45,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontName}.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -56,8 +55,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @outline: {
         font-family: @outlineFontName;
-        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{outlineFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{outlineFontName}.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -67,8 +65,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @brand: {
         font-family: @brandFontName;
-        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2")
-            if(@supportIE, e(",") url("@{fontPath}/@{brandFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{brandFontName}.woff") format("woff"));
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -92,6 +89,8 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     in_cart: "\f218";
     log_out: "\f2f5";
     sign_out: "\f2f5";
+    sign_in_alternate: "\f2f6";
+    sign_out_alternate: "\f2f5";
 };
 
 /* Icons */
@@ -851,9 +850,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     shower: "\f2cc";
     shuttle_van: "\f5b6";
     sign: "\f4d9";
-    sign_in_alternate: "\f2f6";
     sign_language: "\f2a7";
-    sign_out_alternate: "\f2f5";
     signal: "\f012";
     signature: "\f5b7";
     sim_card: "\f7c4";
@@ -1219,7 +1216,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     hourglass_zero: "\f253";
     idea: "\f0eb";
     ils: "\f20b";
-    in_cart: "\f218";
     inr: "\f156";
     intergender: "\f224";
     intersex: "\f224";
@@ -1237,7 +1233,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     linkify: "\f0c1";
     lira: "\f195";
     list_layout: "\f00b";
-    log_out: "\f2f5";
     magnify: "\f00e";
     mail: "\f0e0";
     mail_forward: "\f064";
@@ -1311,8 +1306,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     shuffle: "\f074";
     shutdown: "\f011";
     sidebar: "\f0c9";
-    sign_in: "\f2f6";
-    sign_out: "\f2f5";
     signing: "\f2a7";
     signup: "\f044";
     sliders: "\f1de";
@@ -1387,8 +1380,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     yen: "\f157";
     zip: "\f187";
     zoom: "\f00e";
-    zoom_in: "\f00e";
-    zoom_out: "\f010";
 };
 
 @icon-outline-map: {
@@ -1793,7 +1784,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     lesscss: "\f41d";
     linechat: "\f3c0";
     linkedin: "\f08c";
-    linkedin_in: "\f0e1";
     linode: "\f2b8";
     linux: "\f17c";
     lyft: "\f3c3";
@@ -2107,14 +2097,12 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     -@cornerIconStroke -@cornerIconStroke 0 @white,
     @cornerIconStroke -@cornerIconStroke 0 @white,
     -@cornerIconStroke @cornerIconStroke 0 @white,
-    @cornerIconStroke @cornerIconStroke 0 @white
-;
+    @cornerIconStroke @cornerIconStroke 0 @white;
 @cornerIconInvertedShadow:
     -@cornerIconStroke -@cornerIconStroke 0 @black,
     @cornerIconStroke -@cornerIconStroke 0 @black,
     -@cornerIconStroke @cornerIconStroke 0 @black,
-    @cornerIconStroke @cornerIconStroke 0 @black
-;
+    @cornerIconStroke @cornerIconStroke 0 @black;
 
 @cornerOffset: 0;
 @borderedGroupCornerOffset: 1.15em;

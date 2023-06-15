@@ -42,7 +42,7 @@
 .ui.breadcrumb .divider {
     display: inline-block;
     opacity: @dividerOpacity;
-    margin: 0 @dividerSpacing 0;
+    margin: 0 @dividerSpacing;
     font-size: @dividerSize;
     color: @dividerColor;
     vertical-align: @dividerVerticalAlign;
@@ -115,4 +115,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

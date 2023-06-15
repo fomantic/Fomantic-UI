@@ -425,6 +425,12 @@ select.ui.dropdown {
         /* Compact */
         .ui.compact.selection.dropdown {
             min-width: 0;
+            & > .menu {
+                width: auto;
+                &:not(.multiline) {
+                    width: max-content;
+                }
+            }
         }
     }
 
@@ -435,7 +441,6 @@ select.ui.dropdown {
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
         border-top-width: 0 !important;
-        width: auto;
         outline: none;
         margin: 0 -@menuBorderWidth;
         min-width: @menuMinWidth;
@@ -557,7 +562,6 @@ select.ui.dropdown {
 
     /* User addition item */
     .ui.dropdown > .menu > .stuck.addition.item:first-child {
-        position: -webkit-sticky;
         position: sticky;
         top: 0;
         box-shadow: @selectionVisibleBoxShadow;
@@ -812,7 +816,7 @@ select.ui.dropdown {
     .ui.dropdown:not(.selection) > .remove.icon ~ .dropdown.icon {
         margin-left: @clearableIconMargin;
     }
-    .ui.dropdown:not(.selection) > .remove.icon {
+    .ui.dropdown:not(.selection):not(.multiple) > .remove.icon {
         margin-top: -@clearableIconMarginTop;
     }
 }
@@ -875,6 +879,18 @@ select.ui.dropdown {
         margin: @imageLabelImageMargin;
         height: @imageLabelHeight;
     }
+    .ui.multiple.dropdown:not(.selection):not(.labeled) {
+        & > .dropdown.icon {
+            right: @dropdownIconMultipleRight;
+        }
+        & > .remove.icon {
+            margin-right: @dropdownIconMultipleRight;
+        }
+        &:not(.search) > .remove.icon ~ .text.default,
+        > .text.default:first-child {
+            overflow: inherit;
+        }
+    }
 
     & when (@variationDropdownSearch) {
         /* -----------------
@@ -914,6 +930,13 @@ select.ui.dropdown {
 
         .ui.multiple.search.dropdown.button {
             min-width: @selectionMinWidth;
+        }
+        .ui.multiple.search.dropdown > span.sizer {
+            display: none;
+        }
+        .ui.multiple.search.dropdown:not(.selection) > .remove.icon + input.search,
+        .ui.multiple.search.dropdown:not(.selection) > input.search:first-child {
+            min-width: @multipleSearchMinWidth;
         }
     }
 }
@@ -1305,8 +1328,8 @@ select.ui.dropdown {
         margin: 0 !important;
         border-top: @menuBorder;
     }
-    .ui.scrolling.dropdown .menu .item.item.item,
-    .ui.dropdown .scrolling.menu > .item.item.item {
+    .ui.ui.ui.scrolling.dropdown .menu .item,
+    .ui.ui.ui.dropdown .scrolling.menu > .item {
         border-top: @scrollingMenuItemBorder;
     }
     .ui.scrolling.dropdown .menu .item:first-child,
@@ -1331,11 +1354,23 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingMobileMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingMobileMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingTabletMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingTabletMaxMenuHeight;
+            }
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
@@ -1343,11 +1378,30 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingComputerMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingComputerMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingWidescreenMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingWidescreenMaxMenuHeight;
+            }
+        }
+    }
+    & when (@variationDropdownResizable) {
+        .ui.scrolling.resizable.dropdown .menu,
+        .ui.dropdown .scrolling.resizable.menu {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }
@@ -1412,6 +1466,7 @@ select.ui.dropdown {
         position: absolute;
         & when (@supportIE) {
             /* IE hack to make dropdown icons appear inline */
+            // stylelint-disable-next-line value-no-vendor-prefix
             display: -ms-inline-flexbox !important;
         }
 
@@ -1614,7 +1669,7 @@ select.ui.dropdown {
     .ui.left.pointing.dropdown > .menu::after {
         top: 1em;
         left: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(-45deg);
     }
     .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu {
@@ -1626,7 +1681,7 @@ select.ui.dropdown {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(135deg);
     }
 
@@ -1641,7 +1696,7 @@ select.ui.dropdown {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
-        margin: 0 0 0 0;
+        margin: 0;
         transform: rotate(135deg);
     }
 
@@ -1899,16 +1954,6 @@ select.ui.dropdown {
     }
 
     /* Selection for form elements */
-    .ui.inverted.dropdown textarea::-webkit-selection,
-    .ui.inverted.dropdown input::-webkit-selection {
-        background-color: @invertedInputHighlightBackground;
-        color: @invertedInputHighlightColor;
-    }
-    .ui.inverted.dropdown textarea::-moz-selection,
-    .ui.inverted.dropdown input::-moz-selection {
-        background-color: @invertedInputHighlightBackground;
-        color: @invertedInputHighlightColor;
-    }
     .ui.inverted.dropdown textarea::selection,
     .ui.inverted.dropdown input::selection {
         background-color: @invertedInputHighlightBackground;
@@ -1956,4 +2001,5 @@ select.ui.dropdown {
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

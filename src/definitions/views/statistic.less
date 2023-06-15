@@ -371,7 +371,7 @@
         }
         .ui.stackable.statistics > .statistic {
             width: 100% !important;
-            margin: 0 0 !important;
+            margin: 0 !important;
             padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
         }
     }
@@ -414,4 +414,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

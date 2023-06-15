@@ -6,7 +6,9 @@ const
     gulp   = require('gulp'),
 
     // read user config to know what task to load
-    config = require('./tasks/config/user') // eslint-disable-line import/extensions
+    config = require('./tasks/config/user'), // eslint-disable-line import/extensions
+
+    rtl = require('./tasks/collections/rtl') // eslint-disable-line import/extensions
 ;
 
 /*******************************
@@ -30,5 +32,5 @@ require('./tasks/collections/docs')(gulp); // eslint-disable-line import/extensi
 --------------- */
 
 if (config.rtl) {
-    require('./tasks/collections/rtl')(gulp); // eslint-disable-line import/extensions
+    rtl(gulp);
 }

@@ -23,8 +23,6 @@
         var
             $allModules     = $(this),
 
-            moduleSelector  = $allModules.selector || '',
-
             time            = Date.now(),
             performance     = [],
 
@@ -442,7 +440,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -455,13 +453,10 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -655,7 +650,7 @@
                 return ''
                     + '<iframe src="' + deQuote(src) + '"'
                     + ' width="100%" height="100%"'
-                    + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                    + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon) {
                 var

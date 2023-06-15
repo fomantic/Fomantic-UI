@@ -107,8 +107,7 @@
                 0 -@shadowWidth 0 @c,
                 -@shadowWidth 0 0 @c,
                 0 @shadowWidth 0 @c,
-                @shadowWidth 0 0 @c
-            ;
+                @shadowWidth 0 0 @c;
         }
         .ui.@{color}.rating .icon.selected,
         .ui.@{color}.rating .icon.selected.active,
@@ -119,8 +118,7 @@
                 0 -@shadowWidth 0 @h,
                 -@shadowWidth 0 0 @h,
                 0 @shadowWidth 0 @h,
-                @shadowWidth 0 0 @h
-            ;
+                @shadowWidth 0 0 @h;
 
             -webkit-text-stroke: unset;
             background-clip: unset;
@@ -179,4 +177,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

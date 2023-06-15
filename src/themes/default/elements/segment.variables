@@ -29,7 +29,7 @@
 @groupedBoxShadow: @boxShadow;
 @groupedBorderRadius: @borderRadius;
 
-@nestedGroupMargin: @verticalMargin @verticalMargin;
+@nestedGroupMargin: @verticalMargin;
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
@@ -63,6 +63,7 @@
 @piledBoxShadow: "";
 @piledDegrees: 1.2deg;
 @piledBorder: @border;
+@invertedPiledBorder: @borderWidth solid @solidWhiteBorderColor;
 
 /* Circular */
 @circularPadding: 2em;
@@ -72,6 +73,8 @@
 @stackedPageBackground: @subtleTransparentBlack;
 @stackedPadding: @verticalPadding + (0.4em);
 @tallStackedPadding: @verticalPadding + (0.8em);
+@stackedBorderColor: @borderColor;
+@invertedStackedBorderColor: rgba(225, 225, 225, 0.5);
 
 /*******************************
             States
@@ -85,6 +88,7 @@
 /* Loading Spinner */
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
+@loadingMinHeight: @loaderSize * 1.5;
 
 /*******************************
             Variations
@@ -92,6 +96,7 @@
 
 /* Raised */
 @raisedBoxShadow: @floatingShadow;
+@invertedRaisedBoxShadow: @invertedFloatingShadow;
 
 /* Padded */
 @paddedSegmentPadding: 1.5em;
@@ -104,10 +109,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow
-;
+@attachedBottomBoxShadow: @bottomShadow;
 
 /* Inverted */
 @invertedBackground: @black;
@@ -132,21 +134,24 @@
 @tertiaryColor: @mutedTextColor;
 
 @secondaryInvertedLightness: 0.2;
+// prettier-ignore
 @secondaryInvertedBackground:
     lighten(@black, (@secondaryInvertedLightness * 100))
     linear-gradient(
         rgba(255, 255, 255, @secondaryInvertedLightness) 0,
         rgba(255, 255, 255, @secondaryInvertedLightness) 100%
-    )
-;
+    );
 @secondaryInvertedColor: @invertedMutedTextColor;
 
 @tertiaryInvertedLightness: 0.35;
+// prettier-ignore
 @tertiaryInvertedBackground:
     lighten(@black, (@tertiaryInvertedLightness * 100))
     linear-gradient(
         rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
         rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
-    )
-;
+    );
 @tertiaryInvertedColor: @invertedMutedTextColor;
+
+/* Resizable */
+@resizableDirection: vertical;

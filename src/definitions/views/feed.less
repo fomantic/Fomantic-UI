@@ -43,42 +43,75 @@
     padding: @eventPadding;
     margin: @eventMargin;
     background: @eventBackground;
-    border-top: @eventDivider;
+    &:not(:first-child) {
+        border-top: @eventDivider;
+    }
 }
-.ui.feed > .event:first-child {
-    border-top: 0;
+.ui.feed:not(.connected) > .event:first-child {
     padding-top: 0;
 }
 .ui.feed > .event:last-child {
     padding-bottom: 0;
 }
 
-/* Event Label */
-.ui.feed > .event > .label {
-    display: block;
-    flex: 0 0 auto;
-    width: @labelWidth;
-    height: @labelHeight;
-    align-self: @labelAlignSelf;
-    text-align: @labelTextAlign;
-}
-.ui.feed > .event > .label .icon {
-    opacity: @iconLabelOpacity;
-    font-size: @iconLabelSize;
-    width: @iconLabelWidth;
-    padding: @iconLabelPadding;
-    background: @iconLabelBackground;
-    border: @iconLabelBorder;
-    border-radius: @iconLabelBorderRadius;
-    color: @iconLabelColor;
-}
-.ui.feed > .event > .label img {
-    width: @imageLabelWidth;
-    height: @imageLabelHeight;
-    border-radius: @imageLabelBorderRadius;
-}
-.ui.feed > .event > .label + .content {
-    margin: @labeledContentMargin;
+& when (@variationFeedLabel) {
+    /* Event Label */
+
+    .ui.feed > .event > .label {
+        display: block;
+        flex: 0 0 auto;
+        width: @labelWidth;
+        height: @labelHeight;
+        align-self: @labelAlignSelf;
+        text-align: @labelTextAlign;
+    }
+
+    & when (@variationFeedLabelIcon) {
+        .ui.feed > .event > .label .icon {
+            opacity: @iconLabelOpacity;
+            font-size: @iconLabelSize;
+            width: @iconLabelWidth;
+            padding: @iconLabelPadding;
+            background: @iconLabelBackground;
+            border: @iconLabelBorder;
+            border-radius: @iconLabelBorderRadius;
+            color: @iconLabelColor;
+        }
+    }
+    & when (@variationFeedLabelImage) {
+        .ui.feed > .event > .label img {
+            width: @imageLabelWidth;
+            height: @imageLabelHeight;
+            border-radius: @imageLabelBorderRadius;
+        }
+    }
+    & when (@variationFeedLabelText) {
+        .ui.feed > .event > .label > .text {
+            display: block;
+            text-align: center;
+            margin-top: @textLabelTopMargin;
+            &.ui {
+                margin-top: @uiTextLabelTopMargin;
+            }
+            &.multiline {
+                margin-top: @multilineTextLabelTopMargin;
+                &.ui {
+                    margin-top: @uiMultilineTextLabelTopMargin;
+                }
+            }
+        }
+    }
+    & when (@variationFeedLabelUiLabel) {
+        .ui.feed > .event > .label > .ui.label {
+            margin-top: @uiLabelTopMargin;
+            position: relative;
+            z-index: @uiLabelZIndex;
+        }
+    }
+
+    .ui.feed > .event > .label + .content {
+        margin: @labeledContentMargin;
+    }
 }
 
 /* --------------
@@ -146,13 +179,15 @@
         /* Date inside Summary */
         .ui.feed > .event > .content .summary > .date {
             display: @summaryDateDisplay;
-            float: @summaryDateFloat;
             font-weight: @summaryDateFontWeight;
             font-size: @summaryDateFontSize;
             font-style: @summaryDateFontStyle;
             margin: @summaryDateMargin;
             padding: @summaryDatePadding;
             color: @summaryDateColor;
+            &:not(.floated) {
+                float: @summaryDateFloat;
+            }
         }
     }
 }
@@ -274,6 +309,106 @@
 /*******************************
             Variations
 *******************************/
+& when (@variationFeedRightFloated) {
+    /* rtl:rename */
+    .ui.feed .right.floated {
+        float: right;
+    }
+}
+& when (@variationFeedConnected) {
+    .ui.connected.feed > .event {
+        position: relative;
+        &:not(:last-child)::before {
+            border-left: @connectedBorder;
+            content: "";
+            left: @connectedBorderLeftOffset;
+            position: absolute;
+            top: @connectedBorderTopOffset;
+            height: @connectedBorderHeight;
+        }
+        & > .label when (@variationFeedLabel) {
+            position: relative;
+        }
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.connected.feed > .event {
+            &::before {
+                border-left-color: @invertedConnectedBorderColor;
+            }
+        }
+    }
+}
+
+& when(@variationFeedDivided) {
+    .ui.divided.feed > .event:not(:first-child) {
+        border-top: @dividedBorder;
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.divided.feed > .event {
+            border-top-color: @invertedDividedBorderColor;
+        }
+    }
+}
+& when (@variationFeedLabelText) {
+    .ui.ui.feed > .event > .label[data-text]::before {
+        content: attr(data-text);
+    }
+}
+& when (@variationFeedOrdered) or (@variationFeedLabelText) {
+    .ui.feed > .event > .label[data-text]::before,
+    .ui.ordered.feed > .event > .label::before {
+        text-align: center;
+        line-height: 1;
+        height: @orderedHeight;
+        background: @orderedBackground;
+        color: @orderedColor;
+        border-radius: @orderedBorderRadius;
+        padding-top: @orderedTopOffset;
+        position: relative;
+        display: block;
+        margin-bottom: @orderedBottomMargin;
+        border: @orderedBorder;
+    }
+}
+& when (@variationFeedOrdered) {
+    .ui.ordered.feed {
+        counter-reset: @orderedCountName;
+        & > .event > .label::before {
+            counter-increment: @orderedCountName;
+            content: @orderedCountContent;
+        }
+    }
+    & when (@variationFeedBasic) {
+        .ui.ordered.basic.feed > .event > .label::before,
+        .ui.ordered.feed > .event > .basic.label::before {
+            border-color: @orderedBasicBorderColor;
+            color: @orderedBasicColor;
+            background: @orderedBasicBackground;
+        }
+    }
+    & when (@variationFeedConnected) {
+        .ui.ordered.connected.feed > .event::before {
+            top: @orderedConnectedBorderTopOffset;
+            height: @orderedConnectedBorderHeight;
+        }
+
+        /* workaround until all browsers support :has() */
+        .ui.connected.labeled.feed > .event::before,
+        .ui.connected.feed > .labeled.event::before {
+            top: @orderedConnectedLabeledBorderTopOffset;
+            height: @orderedConnectedLabeledBorderHeight;
+        }
+    }
+}
+& when (@variationFeedConnected) and ((@variationFeedOrdered) or (@variationFeedLabelText)) {
+    @supports selector(:has(.f)) {
+        .ui.connected.feed > .event:has(> .label[data-text] > *)::before,
+        .ui.ordered.connected.feed > .event:has(> .label > *)::before {
+            top: @orderedConnectedLabeledBorderTopOffset;
+            height: @orderedConnectedLabeledBorderHeight;
+        }
+    }
+}
 
 .ui.feed {
     font-size: @medium;
@@ -294,12 +429,18 @@
 
     .ui.inverted.feed > .event {
         background: @black;
+        & > .label i.icon when (@variationFeedLabelIcon) {
+            color: @invertedIconLabelColor;
+        }
+        & > .label .text:not(.ui) when (@variationFeedLabelText) {
+            color: @invertedTextLabelColor;
+        }
     }
 
     & when (@variationFeedDate) or (@variationFeedLike) {
         .ui.inverted.feed > .event > .content .date,
         .ui.inverted.feed > .event > .content .meta .like {
-            color: @invertedLightTextColor;
+            color: @invertedLikeColor;
         }
     }
 
@@ -312,9 +453,75 @@
 
     & when (@variationFeedLike) {
         .ui.inverted.feed > .event > .content .meta .like:hover {
-            color: @invertedSelectedTextColor;
+            color: @invertedLikeHoverColor;
+        }
+        .ui.inverted.feed > .event > .content .meta .active.like i.icon {
+            color: @invertedLikeActiveColor;
         }
     }
 }
 
-.loadUIOverrides();
+/* --------------
+     Colors
+--------------- */
+& when not (@variationFeedColors = false) {
+    each(@variationFeedColors, {
+        @color: @value;
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
+
+        & when (@variationFeedOrdered) or (@variationFeedLabelText) {
+            .ui.ui.feed > .event > .@{color}.label::before,
+            .ui.@{color}.feed > .event > .label::before {
+                background: @c;
+            }
+        }
+        & when (@variationFeedConnected) {
+            .ui.@{color}.connected.feed > .event::before,
+            .ui.connected.feed > .@{color}.event::before {
+                border-color: @c;
+            }
+            & when (@variationFeedInverted) {
+                .ui.inverted.@{color}.connected.feed > .event::before,
+                .ui.connected.feed > .inverted.@{color}.event::before {
+                    border-color: @l;
+                }
+            }
+        }
+        & when (@variationFeedBasic) {
+            .ui.ui.feed > .event > .@{color}.basic.label::before,
+            .ui.@{color}.basic.feed > .event > .label::before {
+                color: @c;
+            }
+        }
+        & when (@variationFeedInverted) {
+            .ui.feed > .event > .inverted.@{color}.label::before,
+            .ui.inverted.@{color}.feed > .event > .label::before {
+                background: @l;
+            }
+            & when (@variationFeedBasic) {
+                .ui.feed > .event > .inverted.@{color}.basic.label::before,
+                .ui.inverted.@{color}.basic.feed > .event > .label::before {
+                    color: @l;
+                }
+            }
+        }
+    });
+}
+& when (@variationFeedBasic) {
+    .ui.ui.feed > .event > .basic.label::before,
+    .ui.ui.ui.basic.feed > .event > .label::before {
+        background: @orderedBasicBackground;
+        border-color: currentColor;
+    }
+}
+& when (@variationFeedDisabled) {
+    .ui.disabled.feed,
+    .ui.feed .disabled.event {
+        opacity: @disabledOpacity;
+        pointer-events: @disabledPointerEvents;
+    }
+}
+
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

@@ -290,5 +290,13 @@
         }
     }
 }
+& when (@variationCommentDisabled) {
+    .ui.disabled.comments,
+    .ui.comments .disabled.comment {
+        opacity: @disabledOpacity;
+        pointer-events: @disabledPointerEvents;
+    }
+}
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

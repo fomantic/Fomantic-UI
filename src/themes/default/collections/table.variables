@@ -14,8 +14,7 @@
 @borderRadius: @defaultBorderRadius;
 @transition:
     background @defaultDuration @defaultEasing,
-    color @defaultDuration @defaultEasing
-;
+    color @defaultDuration @defaultEasing;
 @background: @white;
 @color: @textColor;
 @borderWidth: 1px;
@@ -167,10 +166,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-    @boxShadow,
-    @attachedBoxShadow
-;
+@attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Striped */
 @stripedBackground: rgba(0, 0, 50, 0.02);
@@ -298,3 +294,6 @@
 @small: 0.9em;
 @medium: 1em;
 @large: 1.1em;
+
+/* Resizable */
+@resizableDirection: vertical;

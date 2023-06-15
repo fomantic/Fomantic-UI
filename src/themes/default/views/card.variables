@@ -21,16 +21,12 @@
 @width: 290px;
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
-@boxShadow:
-    @shadowBoxShadow,
-    @borderShadow
-;
+@boxShadow: @shadowBoxShadow, @borderShadow;
 @border: none;
 @zIndex: "";
 @transition:
     box-shadow @defaultDuration @defaultEasing,
-    transform @defaultDuration @defaultEasing
-;
+    transform @defaultDuration @defaultEasing;
 
 /* Card Group */
 @horizontalSpacing: 1em;
@@ -61,7 +57,7 @@
 @contentDivider: @borderWidth solid @internalBorderColor;
 @contentMargin: 0;
 @contentBackground: none;
-@contentPadding: 1em 1em;
+@contentPadding: 1em;
 @contentFontSize: 1em;
 @contentBorderRadius: 0;
 @contentBoxShadow: none;
@@ -127,7 +123,7 @@
 @extraWidth: auto;
 @extraTop: 0;
 @extraLeft: 0;
-@extraMargin: 0 0;
+@extraMargin: 0;
 @extraPadding: 0.75em 1em;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
@@ -166,10 +162,7 @@
 @linkHoverTransform: translateY(-@linkHoverRaiseDistance);
 
 @shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
-@linkHoverBoxShadow:
-    @shadowHoverBoxShadow,
-    @borderShadow
-;
+@linkHoverBoxShadow: @shadowHoverBoxShadow, @borderShadow;
 
 /* Horizontal */
 @horizontalMinWidth: 270px;
@@ -177,22 +170,12 @@
 @horizontalImageWidth: 150px;
 
 /* Raised */
-@raisedShadow:
-    @borderShadow,
-    @floatingShadow
-;
-@raisedShadowHover:
-    @borderShadow,
-    @floatingShadowHover
-;
+@raisedShadow: @borderShadow, @floatingShadow;
+@raisedShadowHover: @borderShadow, @floatingShadowHover;
 
 /* Basic Raised */
-@basicRaisedShadow:
-    @floatingShadow
-;
-@basicRaisedShadowHover:
-    @floatingShadowHover
-;
+@basicRaisedShadow: @floatingShadow;
+@basicRaisedShadowHover: @floatingShadowHover;
 
 /* Card Count */
 @wideCardSpacing: 1em;
@@ -258,5 +241,4 @@
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
     0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-    0 0 0 @borderWidth @solidWhiteBorderColor
-;
+    0 0 0 @borderWidth @solidWhiteBorderColor;

@@ -6,7 +6,7 @@
        Theme
 ------------------- */
 
-@theme: @@element;
+@theme: if(@@element = "default", "", @@element);
 
 /* --------------------
    Site Variables
@@ -19,9 +19,7 @@
 @import (optional) "@{themesFolder}/@{site}/globals/site.variables";
 
 /* Component's site.variables */
-& when not (@theme = "default") {
-    @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
-}
+@import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
 
 /* Site theme site.variables */
 @import (optional) "@{siteFolder}/globals/site.variables";
@@ -46,8 +44,14 @@
 /* Default */
 @import "@{themesFolder}/default/globals/colors.less";
 
-/* Site Theme */
+/* Packaged colors.less */
 @import (optional) "@{themesFolder}/@{site}/globals/colors.less";
+
+/* Packaged Theme */
+@import (optional) "@{themesFolder}/@{theme}/globals/colors.less";
+
+/* Site Theme */
+@import (optional) "@{siteFolder}/globals/colors.less";
 
 /*******************************
              Mix-ins
@@ -76,10 +80,11 @@
      Overrides
 ------------------- */
 
+// Keep empty mixin in case of custom components using it so they dont break
 .loadUIOverrides() {
-    & when not (@theme = "default") {
-        @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
-    }
-    @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
-    @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
+    /* loadUIOverrides mixin is deprecated and will be removed in 2.10.0
+       Replace mixin call by
+          @import (multiple, optional) "../../overrides.less";
+       instead
+    */
 }

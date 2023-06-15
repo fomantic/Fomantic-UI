@@ -58,8 +58,7 @@
     position: relative;
     display: flex;
     flex: 1 0 auto;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-flow: row wrap;
     vertical-align: middle;
     align-items: center;
     justify-content: @justifyContent;
@@ -618,4 +617,5 @@
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

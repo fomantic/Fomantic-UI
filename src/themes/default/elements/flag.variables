@@ -5,7 +5,7 @@
 /* --------------
     Path
 --------------- */
-@flagPath: "https://twemoji.maxcdn.com/v/latest/svg/";
+@flagPath: "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/";
 @flagFileType: "svg";
 
 /* -------------------
@@ -396,7 +396,7 @@
     @1f1e8-1f1ff: {
         countrycode: cz;
         class: czechia;
-        aliasClass: false;
+        aliasClass: czech_republic;
         aliasClass2: false;
     };
     @1f1e9-1f1f0: {
@@ -1159,7 +1159,7 @@
         countrycode: sa;
         class: saudi_arabia;
         aliasClass: saudiarabia;
-        aliasClass2: saudi
+        aliasClass2: saudi;
     };
     @1f1f8-1f1f3: {
         countrycode: sn;
@@ -1579,7 +1579,7 @@
         countrycode: sj;
         class: svalbard_and_jan_mayen;
         aliasClass: svalbard;
-        aliasClass2: jan_mayen
+        aliasClass2: jan_mayen;
     };
     @1f1f9-1f1e6: {
         countrycode: ta;
@@ -1598,7 +1598,7 @@
         class: united_nations;
         aliasClass: united_nations;
         aliasClass2: false;
-    }
+    };
 };
 
 @size-map: {

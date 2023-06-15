@@ -46,7 +46,6 @@
 
                 eventNamespace  = '.' + namespace,
                 moduleNamespace = 'module-' + namespace,
-                moduleSelector  = $allModules.selector || '',
 
                 clickEvent      = 'ontouchstart' in document.documentElement
                     ? 'touchstart'
@@ -229,7 +228,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
-                        if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
+                        if (settings.useCSS && $.fn.transition !== undefined) {
                             if (settings.useFlex) {
                                 module.debug('Using flex dimmer');
                                 module.remove.legacy();
@@ -288,7 +287,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
-                        if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
+                        if (settings.useCSS && $.fn.transition !== undefined) {
                             module.verbose('Hiding dimmer with css');
                             $dimmer
                                 .transition({
@@ -529,7 +528,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -542,13 +541,10 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

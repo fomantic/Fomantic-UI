@@ -27,8 +27,7 @@
     background-color @defaultDuration @defaultEasing,
     opacity @defaultDuration @defaultEasing,
     color @defaultDuration @defaultEasing,
-    box-shadow @defaultDuration @defaultEasing
-;
+    box-shadow @defaultDuration @defaultEasing;
 @lineHeight: @relativeLarge;
 @alignItems: center;
 @justifyContent: center;
@@ -43,7 +42,7 @@
 /* Icon */
 @iconDistance: 1rem;
 @iconSize: 2.5em;
-@iconAlign: middle;
+@iconAlign: center;
 
 /* Title */
 @titleFontFamily: @headerFont;

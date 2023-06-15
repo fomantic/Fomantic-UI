@@ -120,7 +120,7 @@
     --------------- */
 
     /* Specificity hack */
-    .ui.loading.loading.loading.loading.loading.loading.button {
+    .ui.ui.ui.ui.ui.ui.loading.button {
         position: relative;
         cursor: default;
         text-shadow: none !important;
@@ -256,7 +256,9 @@
         /* Vertical */
         .ui.vertical.animated.button .visible.content,
         .ui.vertical.animated.button .hidden.content {
-            transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+            transition:
+                top @animationDuration @animationEasing,
+                transform @animationDuration @animationEasing;
         }
         .ui.vertical.animated.button .visible.content {
             transform: translateY(0);
@@ -282,7 +284,9 @@
         /* Fade */
         .ui.fade.animated.button .visible.content,
         .ui.fade.animated.button .hidden.content {
-            transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+            transition:
+                opacity @animationDuration @animationEasing,
+                transform @animationDuration @animationEasing;
         }
         .ui.fade.animated.button .visible.content {
             left: auto;
@@ -700,7 +704,7 @@
 
     .ui.compact.labeled.icon.buttons .button > .icon,
     .ui.compact.labeled.icon.button > .icon {
-        padding: @compactVerticalPadding 0 @compactVerticalPadding 0;
+        padding: @compactVerticalPadding 0;
     }
 }
 
@@ -812,11 +816,11 @@
     }
     & when (@variationButtonGroups) {
         .ui.basic.buttons .button:hover {
-            box-shadow: @basicHoverBoxShadow inset;
+            box-shadow: @basicHoverBoxShadow;
         }
 
         .ui.basic.buttons .button:active {
-            box-shadow: @basicDownBoxShadow inset;
+            box-shadow: @basicDownBoxShadow;
         }
 
         .ui.basic.buttons .active.button {
@@ -897,6 +901,7 @@
     .ui.tertiary.button {
         transition: color @defaultDuration @defaultEasing !important;
         border-radius: 0;
+        // prettier-ignore
         margin:
             (@verticalPadding - @tertiaryVerticalPadding)
             (@horizontalMargin)
@@ -1000,7 +1005,7 @@
         border-bottom-left-radius: inherit;
         text-align: center;
         animation: none;
-        padding: @verticalPadding 0 @verticalPadding 0;
+        padding: @verticalPadding 0;
         margin: @labeledIconMargin;
         width: @labeledIconWidth;
         background-color: @labeledIconBackgroundColor;
@@ -2000,4 +2005,6 @@
         }
     }
 }
-.loadUIOverrides();
+
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

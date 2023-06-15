@@ -17,8 +17,7 @@
     border @defaultDuration @defaultEasing,
     opacity @defaultDuration @defaultEasing,
     transform @defaultDuration @defaultEasing,
-    box-shadow @defaultDuration @defaultEasing
-;
+    box-shadow @defaultDuration @defaultEasing;
 
 /* Checkmark */
 @checkboxCheckFontSize: 14px;
@@ -106,8 +105,7 @@
 @handleBackground: @white @subtleGradient;
 @handleBoxShadow:
     @subtleShadow,
-    0 0 0 1px @borderColor inset
-;
+    0 0 0 1px @borderColor inset;
 
 /* Slider */
 @sliderHandleSize: 1.5rem;
@@ -156,12 +154,10 @@
 @toggleHandleOffset: 0;
 @toggleHandleTransition:
     background @toggleTransitionDuration @defaultEasing,
-    left @toggleTransitionDuration @defaultEasing
-;
+    left @toggleTransitionDuration @defaultEasing;
 @toggleHandleTransitionRightAligned:
     background @toggleTransitionDuration @defaultEasing,
-    right @toggleTransitionDuration @defaultEasing
-;
+    right @toggleTransitionDuration @defaultEasing;
 
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;
@@ -193,6 +189,18 @@
 /* -------------------
       Variations
 -------------------- */
+
+/* Invisible */
+@invisibleCheckboxLabelTransition: all @defaultDuration @defaultEasing;
+@invisibleCheckboxBackground: transparent;
+@invisibleCheckboxBorderColor: transparent;
+@invisibleCheckboxColor: inherit;
+@invisibleCheckboxBoxShadow: 0 0 0 @borderWidth @borderColor inset;
+@invisibleCheckboxFocusBoxShadow: 0 0 0 @borderWidth @selectedBorderColor inset;
+@invisibleCheckboxImageOpacityUnchecked: 0.5;
+@invisibleCheckboxImageOpacityUncheckedDisabled: @invisibleCheckboxImageOpacityUnchecked * @disabledCheckboxOpacity;
+@invisibleCheckboxImageOpacityFocus: 0.75;
+@invisibleCheckboxImageFilterUnchecked: grayscale(1);
 
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;

@@ -195,11 +195,17 @@
         & when (@variationContainerScrollingShort) {
             .ui.scrolling.container.short {
                 max-height: @scrollingMobileMaxHeight * 0.75;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingMobileMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationContainerScrollingVeryShort) {
             .ui.scrolling.container[class*="very short"] {
                 max-height: @scrollingMobileMaxHeight * 0.5;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingMobileMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.container {
@@ -208,11 +214,17 @@
         & when (@variationContainerScrollingLong) {
             .ui.scrolling.container.long {
                 max-height: @scrollingMobileMaxHeight * 2;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingMobileMaxHeight * 2;
+                }
             }
         }
         & when (@variationContainerScrollingVeryLong) {
             .ui.scrolling.container[class*="very long"] {
                 max-height: @scrollingMobileMaxHeight * 3;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingMobileMaxHeight * 3;
+                }
             }
         }
     }
@@ -221,24 +233,39 @@
         & when (@variationContainerScrollingShort) {
             .ui.scrolling.container.short {
                 max-height: @scrollingTabletMaxHeight * 0.75;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingTabletMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationContainerScrollingVeryShort) {
             .ui.scrolling.container[class*="very short"] {
                 max-height: @scrollingTabletMaxHeight * 0.5;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingTabletMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.container {
             max-height: @scrollingTabletMaxHeight;
+            &.resizable when (@variationContainerResizable) {
+                height: @scrollingTabletMaxHeight;
+            }
         }
         & when (@variationContainerScrollingLong) {
             .ui.scrolling.container.long {
                 max-height: @scrollingTabletMaxHeight * 2;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingTabletMaxHeight * 2;
+                }
             }
         }
         & when (@variationContainerScrollingVeryLong) {
             .ui.scrolling.container[class*="very long"] {
                 max-height: @scrollingTabletMaxHeight * 3;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingTabletMaxHeight * 3;
+                }
             }
         }
     }
@@ -246,24 +273,39 @@
         & when (@variationContainerScrollingShort) {
             .ui.scrolling.container.short {
                 max-height: @scrollingComputerMaxHeight * 0.75;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingComputerMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationContainerScrollingVeryShort) {
             .ui.scrolling.container[class*="very short"] {
                 max-height: @scrollingComputerMaxHeight * 0.5;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingComputerMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.container {
             max-height: @scrollingComputerMaxHeight;
+            &.resizable when (@variationContainerResizable) {
+                height: @scrollingComputerMaxHeight;
+            }
         }
         & when (@variationContainerScrollingLong) {
             .ui.scrolling.container.long {
                 max-height: @scrollingComputerMaxHeight * 2;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingComputerMaxHeight * 2;
+                }
             }
         }
         & when (@variationContainerScrollingVeryLong) {
             .ui.scrolling.container[class*="very long"] {
                 max-height: @scrollingComputerMaxHeight * 3;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingComputerMaxHeight * 3;
+                }
             }
         }
     }
@@ -271,27 +313,49 @@
         & when (@variationContainerScrollingShort) {
             .ui.scrolling.container.short {
                 max-height: @scrollingWidescreenMaxHeight * 0.75;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.75;
+                }
             }
         }
         & when (@variationContainerScrollingVeryShort) {
             .ui.scrolling.container[class*="very short"] {
                 max-height: @scrollingWidescreenMaxHeight * 0.5;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingWidescreenMaxHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.container {
             max-height: @scrollingWidescreenMaxHeight;
+            &.resizable when (@variationContainerResizable) {
+                height: @scrollingWidescreenMaxHeight;
+            }
         }
         & when (@variationContainerScrollingLong) {
             .ui.scrolling.container.long {
                 max-height: @scrollingWidescreenMaxHeight * 2;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingWidescreenMaxHeight * 2;
+                }
             }
         }
         & when (@variationContainerScrollingVeryLong) {
             .ui.scrolling.container[class*="very long"] {
                 max-height: @scrollingWidescreenMaxHeight * 3;
+                &.resizable when (@variationContainerResizable) {
+                    height: @scrollingWidescreenMaxHeight * 3;
+                }
             }
+        }
+    }
+    & when (@variationContainerResizable) {
+        .ui.resizable.scrolling.container {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

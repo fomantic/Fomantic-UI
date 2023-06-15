@@ -177,7 +177,7 @@
 }
 
 & when (@variationCalendarMultiMonth) {
-    .ui.calendar.popup > .ui.ui.grid {
+    .ui.ui.ui.calendar.popup > .ui.ui.grid {
         margin: @multiMonthMargin;
         & > .column:not(:first-child) {
             padding-left: @multiMonthPadding;
@@ -215,4 +215,5 @@
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

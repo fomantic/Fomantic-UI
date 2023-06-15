@@ -30,14 +30,25 @@
                 ? $(window)
                 : $(this),
             $document      = $(document),
-            moduleSelector  = $allModules.selector || '',
             time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             initializedHistory = false,
             returnedValue
         ;
@@ -78,7 +89,6 @@
 
                 initialize: function () {
                     module.debug('Initializing tab menu item', $module);
-                    module.fix.callbacks();
                     module.determineTabs();
 
                     module.debug('Determining tabs', settings.context, $tabs);
@@ -89,7 +99,7 @@
                     module.bind.events();
 
                     if (settings.history && !initializedHistory) {
-                        module.initializeHistory();
+                        settings.history = module.initializeHistory();
                         initializedHistory = true;
                     }
 
@@ -99,7 +109,7 @@
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
-                    if (activeTab !== null && settings.history) {
+                    if (activeTab !== null && settings.history && settings.historyType === 'state') {
                         var autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);
@@ -153,7 +163,7 @@
                         $context = $reference.parent();
                         module.verbose('Determined parent element for creating context', $context);
                     } else if (settings.context) {
-                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
+                        $context = contextCheck(settings.context, window);
                         module.verbose('Using selector for tab context', settings.context, $context);
                     } else {
                         $context = $('body');
@@ -166,24 +176,6 @@
                         $tabs = $context.find(selector.tabs);
                         module.debug('Searching tab context for tabs', $context, $tabs);
                     }
-                },
-
-                fix: {
-                    callbacks: function () {
-                        if ($.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit)) {
-                            if (parameters.onTabLoad) {
-                                parameters.onLoad = parameters.onTabLoad;
-                                delete parameters.onTabLoad;
-                                module.error(error.legacyLoad, parameters.onLoad);
-                            }
-                            if (parameters.onTabInit) {
-                                parameters.onFirstLoad = parameters.onTabInit;
-                                delete parameters.onTabInit;
-                                module.error(error.legacyInit, parameters.onFirstLoad);
-                            }
-                            settings = $.extend(true, {}, $.fn.tab.settings, parameters);
-                        }
-                    },
                 },
 
                 initializeHistory: function () {
@@ -210,6 +202,8 @@
                     $.address
                         .bind('change', module.event.history.change)
                     ;
+
+                    return true;
                 },
 
                 event: {
@@ -794,7 +788,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -807,10 +801,7 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -947,8 +938,6 @@
             noContent: 'The tab you specified is missing a content url.',
             path: 'History enabled, but no path was specified',
             recursion: 'Max recursive depth reached',
-            legacyInit: 'onTabInit has been renamed to onFirstLoad in 2.0, please adjust your code.',
-            legacyLoad: 'onTabLoad has been renamed to onLoad in 2.0. Please adjust your code',
             state: 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>',
         },
 

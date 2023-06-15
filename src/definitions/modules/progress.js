@@ -23,8 +23,6 @@
         var
             $allModules    = $(this),
 
-            moduleSelector = $allModules.selector || '',
-
             time           = Date.now(),
             performance    = [],
 
@@ -59,7 +57,6 @@
                 instance        = $module.data(moduleNamespace),
 
                 animating = false,
-                transitionEnd,
                 module
             ;
             module = {
@@ -115,7 +112,6 @@
 
                 initialize: function () {
                     module.set.duration();
-                    module.set.transitionEvent();
                     module.debug(element);
 
                     module.read.metadata();
@@ -195,17 +191,14 @@
 
                 bind: {
                     transitionEnd: function (callback) {
-                        var
-                            transitionEnd = module.get.transitionEnd()
-                        ;
                         $bars
-                            .one(transitionEnd + eventNamespace, function (event) {
+                            .one('transitionend' + eventNamespace, function (event) {
                                 clearTimeout(module.failSafeTimer);
                                 callback.call(this, event);
                             })
                         ;
                         module.failSafeTimer = setTimeout(function () {
-                            $bars.triggerHandler(transitionEnd);
+                            $bars.triggerHandler('transitionend');
                         }, settings.duration + settings.failSafeDelay);
                         module.verbose('Adding fail safe timer', module.timer);
                     },
@@ -328,24 +321,6 @@
                                 ? +value.replace(/[^\d.]/g, '')
                                 : false)
                             : value;
-                    },
-
-                    transitionEnd: function () {
-                        var
-                            element     = document.createElement('element'),
-                            transitions = {
-                                transition: 'transitionend',
-                                OTransition: 'oTransitionEnd',
-                                MozTransition: 'transitionend',
-                                WebkitTransition: 'webkitTransitionEnd',
-                            },
-                            transition
-                        ;
-                        for (transition in transitions) {
-                            if (element.style[transition] !== undefined) {
-                                return transitions[transition];
-                            }
-                        }
                     },
 
                     // gets current displayed percentage (if animating values this is the intermediary value)
@@ -687,9 +662,6 @@
                             settings.onError.call(element, module.value, module.total);
                         });
                     },
-                    transitionEvent: function () {
-                        transitionEnd = module.get.transitionEnd();
-                    },
                     total: function (totalValue) {
                         module.total = totalValue;
                     },
@@ -819,7 +791,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -832,10 +804,7 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

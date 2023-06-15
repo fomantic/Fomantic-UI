@@ -86,7 +86,6 @@
         width: @arrowSize;
         height: @arrowSize;
         background: @tooltipArrowBackground;
-        transform: rotate(45deg);
         z-index: @arrowZIndex;
         box-shadow: @tooltipArrowBoxShadow;
     }
@@ -114,67 +113,59 @@
         z-index: @tooltipZIndex;
     }
 
-    /* Default Position (Top Center) */
-    [data-tooltip]:not([data-position])::before {
-        top: auto;
-        right: auto;
-        bottom: 100%;
-        left: 50%;
-        background: @tooltipArrowBottomBackground;
-        margin-left: @tooltipArrowHorizontalOffset;
-        margin-bottom: -@tooltipArrowVerticalOffset;
-    }
-    [data-tooltip]:not([data-position])::after {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 100%;
-        margin-bottom: @tooltipDistanceAway;
-    }
-
     /* Animation */
     [data-tooltip]::before,
     [data-tooltip]::after {
         pointer-events: none;
-        visibility: hidden;
         opacity: 0;
         transition:
             transform @tooltipDuration @tooltipEasing,
             opacity @tooltipDuration @tooltipEasing;
     }
+    [data-tooltip]::after,
+    [data-tooltip]:hover::before {
+        transition-delay: @tooltipDelay;
+    }
+    [data-tooltip]::before,
+    [data-tooltip]:hover::after {
+        transition-delay: 0s;
+    }
     [data-tooltip]::before {
-        transform: rotate(45deg) scale(0) !important;
+        transform: rotate(45deg) scale(@tooltipScaleInit);
         transform-origin: center top;
     }
     [data-tooltip]::after {
         transform-origin: center bottom;
     }
+    [data-tooltip][data-variation~="visible"]::before,
+    [data-tooltip][data-variation~="visible"]::after,
     [data-tooltip]:hover::before,
     [data-tooltip]:hover::after {
-        visibility: visible;
         pointer-events: auto;
         opacity: 1;
     }
     [data-tooltip]:hover::before {
-        transform: rotate(45deg) scale(1) !important;
+        transform: rotate(45deg) scale(1);
     }
 
     /* Animation Position */
-    [data-tooltip]::after,
+    [data-tooltip]:not([data-position])::after,
     [data-tooltip][data-position="top center"]::after,
     [data-tooltip][data-position="bottom center"]::after {
-        transform: translateX(-50%) scale(0) !important;
+        transform: translateX(-50%) scale(@tooltipScaleInit);
     }
-    [data-tooltip]:hover::after,
+    [data-tooltip]:not([data-position]):hover::after,
+    [data-tooltip][data-position="top center"]:hover::after,
     [data-tooltip][data-position="bottom center"]:hover::after {
-        transform: translateX(-50%) scale(1) !important;
+        transform: translateX(-50%) scale(1);
     }
     [data-tooltip][data-position="left center"]::after,
     [data-tooltip][data-position="right center"]::after {
-        transform: translateY(-50%) scale(0) !important;
+        transform: translateY(-50%) scale(@tooltipScaleInit);
     }
     [data-tooltip][data-position="left center"]:hover::after,
     [data-tooltip][data-position="right center"]:hover::after {
-        transform: translateY(-50%) scale(1) !important;
+        transform: translateY(-50%) scale(1);
         // https://github.com/fomantic/Fomantic-UI/pull/1537
         // stylelint-disable-next-line property-no-vendor-prefix
         -moz-transform: translateY(-50%) scale(1.0001) !important;
@@ -183,13 +174,13 @@
     [data-tooltip][data-position="top right"]::after,
     [data-tooltip][data-position="bottom left"]::after,
     [data-tooltip][data-position="bottom right"]::after {
-        transform: scale(0) !important;
+        transform: scale(@tooltipScaleInit);
     }
     [data-tooltip][data-position="top left"]:hover::after,
     [data-tooltip][data-position="top right"]:hover::after,
     [data-tooltip][data-position="bottom left"]:hover::after,
     [data-tooltip][data-position="bottom right"]:hover::after {
-        transform: scale(1) !important;
+        transform: scale(1);
     }
     & when (@variationPopupFixed) {
         [data-tooltip][data-variation~="fixed"]::after {
@@ -215,11 +206,11 @@
 
         /* Arrow */
         [data-tooltip][data-inverted]::before {
-            box-shadow: none !important;
+            box-shadow: none;
         }
 
         /* Arrow Position */
-        [data-tooltip][data-inverted]::before {
+        [data-tooltip]:not([data-position])[data-inverted]::before {
             background: @invertedArrowBottomBackground;
         }
 
@@ -241,15 +232,16 @@
                 background: @arrowBottomBackground;
             }
             & when (@variationPopupCenter) {
-                /* Top Center */
+                /* Top Center (default) */
+                [data-tooltip]:not([data-position])::after,
                 [data-position="top center"][data-tooltip]::after {
                     top: auto;
                     right: auto;
                     left: 50%;
                     bottom: 100%;
-                    transform: translateX(-50%);
                     margin-bottom: @tooltipDistanceAway;
                 }
+                [data-tooltip]:not([data-position])::before,
                 [data-position="top center"][data-tooltip]::before {
                     top: auto;
                     right: auto;
@@ -310,7 +302,6 @@
                     right: auto;
                     left: 50%;
                     top: 100%;
-                    transform: translateX(-50%);
                     margin-top: @tooltipDistanceAway;
                 }
                 [data-position="bottom center"][data-tooltip]::before {
@@ -362,7 +353,6 @@
                     right: 100%;
                     top: 50%;
                     margin-right: @tooltipDistanceAway;
-                    transform: translateY(-50%);
                 }
                 [data-position="left center"][data-tooltip]::before {
                     right: 100%;
@@ -379,7 +369,6 @@
                     left: 100%;
                     top: 50%;
                     margin-left: @tooltipDistanceAway;
-                    transform: translateY(-50%);
                 }
                 [data-position="right center"][data-tooltip]::before {
                     left: 100%;
@@ -452,6 +441,19 @@
                 }
             }
         }
+    }
+
+    [data-position="top left"][data-tooltip]::after {
+        transform-origin: bottom left;
+    }
+    [data-position="top right"][data-tooltip]::after {
+        transform-origin: bottom right;
+    }
+    [data-position="bottom left"][data-tooltip]::after {
+        transform-origin: top left;
+    }
+    [data-position="bottom right"][data-tooltip]::after {
+        transform-origin: top right;
     }
 
     & when (@variationPopupBasic) {
@@ -694,7 +696,7 @@
 *******************************/
 
 /* Immediate Nested Grid */
-.ui.popup > .ui.grid:not(.padded) {
+.ui.ui.ui.popup > .ui.grid:not(.padded) {
     width: @nestedGridWidth;
     margin: @nestedGridMargin;
 }
@@ -704,10 +706,34 @@
 *******************************/
 & when (@variationPopupLoading) {
     .ui.loading.popup {
-        display: block;
-        visibility: hidden;
-        z-index: @loadingZIndex;
+        cursor: default;
+        pointer-events: @loadingPointerEvents;
+        user-select: none;
+        & * {
+            opacity: @loadingOpacity;
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 50%;
+            margin: @loaderMargin;
+            width: @loaderSize;
+            height: @loaderSize;
+            animation: loader @loaderSpeed infinite linear;
+            border: @loaderLineWidth solid @loaderLineColor;
+            border-radius: @circularRadius;
+            box-shadow: 0 0 0 1px transparent;
+            visibility: visible;
+            z-index: @loaderLineZIndex;
+        }
     }
+}
+
+.ui.invisible.popup {
+    display: block;
+    visibility: hidden !important;
+    z-index: @invisibleZIndex;
 }
 
 .ui.animating.popup,
@@ -793,12 +819,12 @@
         box-shadow: @invertedBoxShadow;
     }
     .ui.inverted.popup .header {
-        background-color: @invertedHeaderBackground;
+        background: @invertedHeaderBackground;
         color: @invertedHeaderColor;
     }
     .ui.inverted.popup::before {
         background-color: @invertedArrowColor;
-        box-shadow: none !important;
+        box-shadow: none;
     }
 }
 
@@ -807,6 +833,8 @@
         @color: @value;
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
+        @cl: lighten(@c, @loadingColoredPercent);
+        @ll: darken(@l, @loadingColoredPercent);
 
         & when not (@variationPopupTooltip) {
             .ui.ui.ui.@{color}.popup::before,
@@ -814,6 +842,9 @@
                 background: @c;
                 color: @white;
                 border: none;
+                .loading& when (@variationPopupLoading) {
+                    background: @cl;
+                }
             }
             .ui.ui.ui.@{color}.popup::before {
                 box-shadow: none;
@@ -823,6 +854,9 @@
                 .ui.inverted.@{color}.popup {
                     background: @l;
                     color: @black;
+                    .loading& when (@variationPopupLoading) {
+                        background: @ll;
+                    }
                 }
             }
         }
@@ -835,6 +869,12 @@
                 color: @white;
                 border: none;
             }
+            & when (@variationPopupLoading) {
+                .ui.ui.ui.@{color}.loading.popup::before,
+                .ui.@{color}.loading.popup {
+                    background: @cl;
+                }
+            }
             .ui.ui.ui.@{color}.popup::before,
             [data-tooltip][data-variation~="@{color}"]::before {
                 box-shadow: none;
@@ -846,6 +886,12 @@
                 [data-tooltip][data-inverted][data-variation~="@{color}"]::before {
                     background: @l;
                     color: @black;
+                }
+                & when (@variationPopupLoading) {
+                    .ui.ui.ui.inverted.@{color}.loading.popup::before,
+                    .ui.inverted.@{color}.loading.popup {
+                        background: @ll;
+                    }
                 }
             }
         }
@@ -884,4 +930,5 @@
     });
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

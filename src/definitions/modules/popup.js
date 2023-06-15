@@ -26,8 +26,6 @@
             $window        = $(window),
             $body          = $('body'),
 
-            moduleSelector = $allModules.selector || '',
-
             clickEvent      = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click',
@@ -38,6 +36,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
+
+                return $context;
+            },
 
             returnedValue
         ;
@@ -57,12 +68,10 @@
                 moduleNamespace    = 'module-' + namespace,
 
                 $module            = $(this),
-                $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
-                $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
-                $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
-                $target            = settings.target
-                    ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
-                    : $module,
+                $context           = contextCheck(settings.context, window),
+                $scrollContext     = contextCheck(settings.scrollContext, window),
+                $boundary          = contextCheck(settings.boundary, window),
+                $target            = settings.target ? contextCheck(settings.target, window) : $module,
 
                 $popup,
                 $offsetParent,
@@ -125,9 +134,9 @@
                         }
                     }
                     if (settings.popup) {
-                        $popup.addClass(className.loading);
+                        module.set.invisible();
                         $offsetParent = module.get.offsetParent();
-                        $popup.removeClass(className.loading);
+                        module.remove.invisible();
                         if (settings.movePopup && module.has.popup() && module.get.offsetParent($popup)[0] !== $offsetParent[0]) {
                             module.debug('Moving popup to the same offset parent as target');
                             $popup
@@ -185,7 +194,7 @@
                         ;
                         clearTimeout(module.hideTimer);
                         if (!openedWithTouch || (openedWithTouch && settings.addTouchEvents)) {
-                            module.showTimer = setTimeout(module.show, delay);
+                            module.showTimer = setTimeout(function () { module.show(); }, delay);
                         }
                     },
                     end: function () {
@@ -195,7 +204,7 @@
                                 : settings.delay
                         ;
                         clearTimeout(module.showTimer);
-                        module.hideTimer = setTimeout(module.hide, delay);
+                        module.hideTimer = setTimeout(function () { module.hide(); }, delay);
                     },
                     touchstart: function (event) {
                         openedWithTouch = true;
@@ -239,9 +248,11 @@
                 // generates popup html from metadata
                 create: function () {
                     var
+                        targetSibling = $target.next(selector.popup),
+                        contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false,
                         html      = module.get.html(),
                         title     = module.get.title(),
-                        content   = module.get.content()
+                        content   = module.get.content(contentFallback)
                     ;
 
                     if (html || content || title) {
@@ -282,10 +293,10 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length > 0) {
+                    } else if (targetSibling.length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
-                        settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
+                        settings.popup = targetSibling.data(metadata.activator, $module);
                         module.refresh();
                         if (settings.hoverable) {
                             module.bind.popup();
@@ -414,7 +425,7 @@
                 animate: {
                     show: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && module.can.useElement('transition')) {
                             module.set.visible();
                             $popup
                                 .transition({
@@ -431,14 +442,12 @@
                                     },
                                 })
                             ;
-                        } else {
-                            module.error(error.noTransition);
                         }
                     },
                     hide: function (callback) {
                         callback = isFunction(callback) ? callback : function () {};
                         module.debug('Hiding pop-up');
-                        if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.transition && $.fn.transition !== undefined) {
                             $popup
                                 .transition({
                                     animation: (settings.transition.hideMethod || settings.transition) + ' out',
@@ -477,10 +486,10 @@
 
                         return $module.data(metadata.title) || settings.title;
                     },
-                    content: function () {
+                    content: function (fallback) {
                         $module.removeData(metadata.content);
 
-                        return $module.data(metadata.content) || settings.content || $module.attr('title');
+                        return $module.data(metadata.content) || settings.content || fallback;
                     },
                     variation: function () {
                         $module.removeData(metadata.variation);
@@ -903,8 +912,8 @@
                             .css(positioning)
                             .removeClass(className.position)
                             .addClass(position)
-                            .addClass(className.loading)
                         ;
+                        module.set.invisible();
 
                         popupOffset = module.get.popupOffset();
 
@@ -928,7 +937,7 @@
                                 module.debug('Popup could not find a position to display', $popup);
                                 module.error(error.cannotPlace, element);
                                 module.remove.attempts();
-                                module.remove.loading();
+                                module.remove.invisible();
                                 module.reset();
                                 settings.onUnplaceable.call($popup, element);
 
@@ -937,7 +946,7 @@
                         }
                         module.debug('Position is on stage', position);
                         module.remove.attempts();
-                        module.remove.loading();
+                        module.remove.invisible();
                         if (settings.setFluidWidth && module.is.fluid()) {
                             module.set.fluidWidth(calculations);
                         }
@@ -949,6 +958,14 @@
                         calculations = calculations || module.get.calculations();
                         module.debug('Automatically setting element width to parent width', calculations.parent.width);
                         $popup.css('width', calculations.container.width);
+                    },
+
+                    loading: function () {
+                        $popup.addClass(className.loading);
+                    },
+
+                    invisible: function () {
+                        $popup.addClass(className.invisible);
                     },
 
                     variation: function (variation) {
@@ -967,6 +984,9 @@
                 remove: {
                     loading: function () {
                         $popup.removeClass(className.loading);
+                    },
+                    invisible: function () {
+                        $popup.removeClass(className.invisible);
                     },
                     variation: function (variation) {
                         variation = variation || module.get.variation();
@@ -1070,6 +1090,17 @@
                         $scrollContext
                             .off(elementNamespace)
                         ;
+                    },
+                },
+
+                can: {
+                    useElement: function (element) {
+                        if ($.fn[element] !== undefined) {
+                            return true;
+                        }
+                        module.error(error.noElement.replace('{element}', element));
+
+                        return false;
                     },
                 },
 
@@ -1213,7 +1244,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1226,10 +1257,7 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -1273,6 +1301,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -1445,7 +1475,7 @@
             invalidPosition: 'The position you specified is not a valid position',
             cannotPlace: 'Popup does not fit within the boundaries of the viewport',
             method: 'The method you called is not defined.',
-            noTransition: 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>',
+            noElement: 'This module requires ui {element}',
             notFound: 'The target or popup you specified does not exist on the page',
         },
 
@@ -1464,6 +1494,7 @@
             basic: 'basic',
             animating: 'animating',
             dropdown: 'dropdown',
+            invisible: 'invisible',
             fluid: 'fluid',
             loading: 'loading',
             popup: 'ui popup',

@@ -38,10 +38,7 @@
 @borderBoxShadowColor: transparent;
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
-@boxShadow:
-    @borderBoxShadow,
-    @shadowBoxShadow
-;
+@boxShadow: @borderBoxShadow, @shadowBoxShadow;
 
 /* Icon */
 @iconHeight: auto;
@@ -62,8 +59,7 @@
     background-color @defaultDuration @defaultEasing,
     color @defaultDuration @defaultEasing,
     box-shadow @defaultDuration @defaultEasing,
-    background @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing;
 
 /*
 @willChange: box-shadow, transform, opacity, color, background;
@@ -77,8 +73,8 @@
 @groupBoxShadow: none;
 @groupButtonBoxShadow: @boxShadow;
 @verticalBoxShadow: none;
-@groupButtonOffset: 0 0 0 0;
-@verticalGroupOffset: 0 0 0 0;
+@groupButtonOffset: 0;
+@verticalGroupOffset: 0;
 
 /* -------------------
         States
@@ -106,10 +102,7 @@
 @downBackgroundColor: #babbbc;
 @downBackgroundImage: "";
 @downPressedShadow: none;
-@downBoxShadow:
-    @borderBoxShadow,
-    @downPressedShadow
-;
+@downBoxShadow: @downPressedShadow;
 @downColor: @pressedTextColor;
 
 /* Active */
@@ -129,8 +122,7 @@
 @loadingPointerEvents: auto;
 @loadingTransition:
     all 0s linear,
-    opacity @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing;
 
 /* -------------------
         Types
@@ -208,8 +200,7 @@
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
     0 0 0 @basicBorderSize @selectedBorderColor inset,
-    0 0 0 0 @borderColor inset
-;
+    0 0 0 0 @borderColor inset;
 
 /* Basic Focus */
 @basicFocusBackground: @basicHoverBackground;
@@ -221,8 +212,7 @@
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
     0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
-    0 1px 4px 0 @borderColor inset
-;
+    0 1px 4px 0 @borderColor inset;
 
 /* Basic Active */
 @basicActiveBackground: @transparentBlack;

@@ -88,7 +88,7 @@ function pack(type, compress) {
 
 function buildJS(src, type, config, callback) {
     if (!install.isSetup()) {
-        console.error('Cannot build Javascript. Run "gulp install" to set-up Semantic');
+        console.error('Cannot build Javascript. Run "gulp install" to set-up Fomantic');
         callback();
 
         return;

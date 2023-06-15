@@ -256,8 +256,7 @@ img.ui.image {
     }
     .ui.centered.images {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
         align-items: stretch;
         justify-content: center;
     }
@@ -297,7 +296,7 @@ img.ui.image {
 
     .ui.images {
         font-size: 0;
-        margin: 0 -@imageHorizontalMargin 0;
+        margin: 0 -@imageHorizontalMargin;
     }
 
     .ui.images .image,
@@ -308,4 +307,5 @@ img.ui.image {
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

@@ -9,13 +9,19 @@ let defaultBrowsers = browserslist(browserslist.defaults);
 let userBrowsers = browserslist();
 let hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
 
-let overrideBrowserslist = hasBrowserslistConfig ? undefined : [
-    'last 2 versions',
-    '> 1%',
-    'opera 12.1',
-    'bb 10',
-    'android 4',
-];
+let prefix = config.prefix || {};
+if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
+    prefix.overrideBrowserslist = [
+        'last 2 Chrome versions',
+        'last 2 Firefox versions',
+        'last 2 Safari versions',
+        'last 4 iOS major versions',
+        'last 4 Android major versions',
+        'last 4 ChromeAndroid versions',
+        'Edge 12',
+        'ie 11',
+    ];
+}
 
 // Node 12 does not support ??, so a little polyfill
 let nullish = (value, fallback) => (value !== undefined && value !== null ? value : fallback);
@@ -108,10 +114,7 @@ module.exports = {
                     let
                         regExp = {
                             variable: /@(\S.*?)\s/,
-                            theme: /themes[/\\]+(.*?)[/\\].*/,
-                            element: /[/\\]([^*/\\]*)\.overrides/,
                         },
-                        theme,
                         element
                     ;
                     if (error && error.filename && /theme.less/.test(error.filename)) {
@@ -121,10 +124,6 @@ module.exports = {
                                 console.error('Missing theme.config value for', element);
                             }
                             console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
-                        } else if (error.line === 84) {
-                            element = regExp.element.exec(error.message)[1];
-                            theme = regExp.theme.exec(error.message)[1];
-                            console.error(theme + ' is not an available theme for ' + element);
                         } else {
                             console.error(error);
                         }
@@ -136,10 +135,8 @@ module.exports = {
             },
         },
 
-        /* What Browsers to Prefix */
-        prefix: {
-            overrideBrowserslist: overrideBrowserslist,
-        },
+        /* Browserslist Prefix config */
+        prefix: prefix,
 
         /* File Renames */
         rename: {

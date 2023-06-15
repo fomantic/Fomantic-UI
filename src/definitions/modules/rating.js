@@ -22,7 +22,6 @@
     $.fn.rating = function (parameters) {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -40,6 +39,7 @@
 
                 namespace       = settings.namespace,
                 className       = settings.className,
+                error           = settings.error,
                 metadata        = settings.metadata,
                 selector        = settings.selector,
                 cssVars         = settings.cssVars,
@@ -368,7 +368,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -381,13 +381,10 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -431,6 +428,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -492,7 +491,6 @@
 
         error: {
             method: 'The method you called is not defined',
-            noMaximum: 'No maximum rating specified. Cannot generate HTML automatically',
         },
 
         metadata: {

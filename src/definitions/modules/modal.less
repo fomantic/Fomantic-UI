@@ -34,6 +34,7 @@
     border-radius: @borderRadius;
     user-select: text;
     will-change: top, left, margin, transform, opacity;
+    outline: none;
 }
 
 .ui.modal > :first-child:not(.close):not(.dimmer),
@@ -436,19 +437,22 @@
         overflow: hidden;
     }
     .scrolling.dimmable > .dimmer {
-        justify-content: flex-start;
+        justify-content: center;
         position: fixed;
     }
     .scrolling.dimmable:not(body) > .dimmer {
-        justify-content: center;
         position: absolute;
     }
     .scrolling.dimmable.dimmed > .dimmer {
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
     }
+    .modals.dimmer .ui.scrolling.modal.fullscreen {
+        top: 0;
+    }
     .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
         margin: @scrollingMargin auto;
+        top: @scrollingTop;
     }
 
     /* Fix for Firefox, Edge, IE11 */
@@ -476,6 +480,12 @@
         max-height: @scrollingContentMaxHeight;
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
+    }
+    & when (@variationTableResizable) {
+        .ui.modal > .resizable.scrolling.content {
+            resize: @resizableDirection;
+            max-height: none;
+        }
     }
 }
 
@@ -619,4 +629,5 @@
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

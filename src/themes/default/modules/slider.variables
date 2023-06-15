@@ -29,7 +29,9 @@
 @thumbHeight: @height;
 @thumbBorderRadius: 100%;
 @thumbBackground: @white @subtleGradient;
-@thumbShadow: @subtleShadow, 0 0 0 1px @borderColor inset;
+@thumbShadow:
+    @subtleShadow,
+    0 0 0 1px @borderColor inset;
 @thumbTransitionDuration: 0.3s;
 @thumbTransition: background @thumbTransitionDuration @defaultEasing;
 @thumbVerticalSliderOffset: 0.03em;

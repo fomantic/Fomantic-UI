@@ -139,6 +139,13 @@
                 box-shadow: @floatingShadow;
                 border: @toastBoxBorder;
             }
+            & when (@variationToastInverted) {
+                &.inverted.floating,
+                &.inverted.hoverfloating:hover {
+                    box-shadow: @invertedFloatingShadow;
+                    border: @invertedToastBoxBorder;
+                }
+            }
         }
         & when (@variationToastCompact) {
             &.compact,
@@ -589,7 +596,9 @@
 }
 
 .ui.hoverfloating.message:hover when (@variationToastMessage) and (@variationToastFloating) {
-    box-shadow: 0 0 0 1px inset, @floatingShadow;
+    box-shadow:
+        0 0 0 1px inset,
+        @floatingShadow;
 }
 
 .ui.center.toast-container .toast-box,
@@ -712,4 +721,5 @@
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

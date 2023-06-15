@@ -101,7 +101,7 @@
 
 /* Description */
 @descriptionDistance: 0.6em;
-@descriptionMaxWidth: auto;
+@descriptionMaxWidth: none;
 @descriptionFontSize: 1em;
 @descriptionLineHeight: @lineHeight;
 @descriptionColor: @textColor;
@@ -129,7 +129,7 @@
 @extraTop: 0;
 @extraLeft: 0;
 @extraWidth: 100%;
-@extraPadding: 0 0 0;
+@extraPadding: 0;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;

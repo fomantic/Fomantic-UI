@@ -22,7 +22,6 @@
     $.fn.search = function (parameters) {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -170,7 +169,7 @@
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
-                                module.timer = setTimeout(module.hideResults, settings.hideDelay);
+                                module.timer = setTimeout(function () { module.hideResults(); }, settings.hideDelay);
                             }
                         ;
                         if (pageLostFocus) {
@@ -408,7 +407,7 @@
                         return module.is.focused() && !module.is.visible() && !module.is.empty();
                     },
                     transition: function () {
-                        return settings.transition && $.fn.transition !== undefined && $module.transition('is supported');
+                        return settings.transition && $.fn.transition !== undefined;
                     },
                 },
 
@@ -562,6 +561,7 @@
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
                             module.save.results(cache.results);
+                            settings.onResults.call(element, cache.results, true);
                             module.addResults(cache.html);
                             module.inject.id(cache.results);
                             callback();
@@ -660,8 +660,10 @@
                             return [];
                         }
                         // iterate through search fields looking for matches
-                        $.each(searchFields, function (index, field) {
-                            $.each(source, function (label, content) {
+                        var lastSearchFieldIndex = searchFields.length - 1;
+                        $.each(source, function (label, content) {
+                            var concatenatedContent = [];
+                            $.each(searchFields, function (index, field) {
                                 var
                                     fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
@@ -670,11 +672,21 @@
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
-                                    if (text.search(matchRegExp) !== -1) {
+                                    if (settings.fullTextSearch === 'all') {
+                                        concatenatedContent.push(text);
+                                        if (index < lastSearchFieldIndex) {
+                                            return true;
+                                        }
+                                        text = concatenatedContent.join(' ');
+                                    }
+                                    if (settings.fullTextSearch !== 'all' && text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
                                     } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
-                                        // content fuzzy matches (last in results)
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'some' && module.wordSearch(searchTerm, text)) {
+                                        addResult(exactResults, content);
+                                    } else if (settings.fullTextSearch === 'all' && module.wordSearch(searchTerm, text, true)) {
                                         addResult(exactResults, content);
                                     } else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text)) {
                                         // content fuzzy matches (last in results)
@@ -694,6 +706,21 @@
                     term = term.toLowerCase();
 
                     return term.indexOf(query) > -1;
+                },
+                wordSearch: function (query, term, matchAll) {
+                    var allWords = query.split(/\s+/),
+                        w,
+                        wL = allWords.length,
+                        found = false
+                    ;
+                    for (w = 0; w < wL; w++) {
+                        found = module.exactSearch(allWords[w], term);
+                        if ((!found && matchAll) || (found && !matchAll)) {
+                            break;
+                        }
+                    }
+
+                    return found;
                 },
                 fuzzySearch: function (query, term) {
                     var
@@ -1144,7 +1171,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1157,13 +1184,10 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);
@@ -1207,6 +1231,8 @@
 
                                 return false;
                             } else {
+                                module.error(error.method, query);
+
                                 return false;
                             }
                         });
@@ -1320,7 +1346,7 @@
         onResultsAdd: false,
 
         onSearchQuery: function (query) {},
-        onResults: function (response) {},
+        onResults: function (response, fromCache) {},
 
         onResultsOpen: function () {},
         onResultsClose: function () {},
@@ -1338,11 +1364,9 @@
         },
 
         error: {
-            source: 'Cannot search. No source used, and Semantic API module was not included',
+            source: 'Cannot search. No source used, and Fomantic API module was not included',
             noResultsHeader: 'No Results',
             noResults: 'Your search returned no results',
-            logging: 'Error in debug logging, exiting.',
-            noEndpoint: 'No search endpoint was specified',
             noTemplate: 'A valid template name was not specified.',
             oldSearchSyntax: 'searchFullText setting has been renamed fullTextSearch for consistency, please adjust your settings.',
             serverError: 'There was an issue querying the server.',

@@ -8,8 +8,7 @@
 
 @transition:
     box-shadow @defaultDuration @defaultEasing,
-    width @defaultDuration @defaultEasing
-;
+    width @defaultDuration @defaultEasing;
 @borderRadius: @defaultBorderRadius;
 
 @raisedShadow: 0 2px 3px 0 @borderColor;
@@ -22,6 +21,7 @@
 @dropdownIconSize: @relative12px;
 @dropdownIconMargin: 0 0 0 1em;
 @dropdownIconMinWidth: 1em;
+@dropdownIconMultipleRight: -1.5em;
 
 /* Current Text */
 @textTransition: none;
@@ -29,7 +29,7 @@
 /* Menu */
 @menuBackground: #fff;
 @menuMargin: 0;
-@menuPadding: 0 0;
+@menuPadding: 0;
 @menuTop: 100%;
 @menuTextAlign: left;
 
@@ -238,7 +238,7 @@
 @searchWidescreenMaxMenuHeight: @selectionWidescreenMaxMenuHeight;
 
 /* Inline */
-@inlineIconMargin: 0 @relative3px 0 @relative3px;
+@inlineIconMargin: 0 @relative3px;
 @inlineTextColor: inherit;
 @inlineTextFontWeight: @bold;
 @inlineMenuDistance: @relative3px;
@@ -260,6 +260,8 @@
 @multipleSelectionChildMargin: @multipleSelectionChildVerticalMargin 0 @multipleSelectionChildVerticalMargin @multipleSelectionChildLeftMargin;
 @multipleSelectionChildLineHeight: @relative17px;
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
+
+@multipleSearchMinWidth: 5.05em;
 
 /* Dropdown Icon */
 @multipleSelectionDropdownIconMargin: "";
@@ -472,3 +474,6 @@
 /* Scrollhint */
 @invertedScrollhintStartColor: rgba(255, 255, 255, 0.75);
 @invertedScrollhintEndColor: rgba(255, 255, 255, 0);
+
+/* Resizable */
+@resizableDirection: vertical;

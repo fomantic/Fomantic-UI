@@ -22,7 +22,6 @@
     $.fn.visibility = function (parameters) {
         var
             $allModules    = $(this),
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -30,6 +29,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue,
 
             moduleCount    = $allModules.length,
@@ -53,19 +65,11 @@
                 $window         = $(window),
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+                $context        = contextCheck(settings.context, window),
 
                 $placeholder,
 
                 instance        = $module.data(moduleNamespace),
-
-                requestAnimationFrame = window.requestAnimationFrame
-                    || window.mozRequestAnimationFrame
-                    || window.webkitRequestAnimationFrame
-                    || window.msRequestAnimationFrame
-                    || function (callback) {
-                        setTimeout(callback, 0);
-                    },
 
                 element         = this,
                 disabled        = false,
@@ -1084,7 +1088,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1097,10 +1101,7 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
-                        if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                        if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
                                 console.table(performance);

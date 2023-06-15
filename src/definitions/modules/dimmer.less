@@ -220,7 +220,7 @@ body.dimmable > .dimmer {
     .light.light.light.light.light.dimmer {
         background: @lightBackgroundColor;
     }
-    .very.light.light.light.light.dimmer {
+    .very.very.very.very.light.dimmer {
         background: @veryLightBackgroundColor;
     }
 }
@@ -249,7 +249,7 @@ body.dimmable > .dimmer {
         .light.light.light.light.light.inverted.dimmer {
             background: @lightInvertedBackgroundColor;
         }
-        .very.light.light.light.light.inverted.dimmer {
+        .very.very.very.very.light.inverted.dimmer {
             background: @veryLightInvertedBackgroundColor;
         }
     }
@@ -390,4 +390,5 @@ body.dimmable > .dimmer {
     }
 }
 
-.loadUIOverrides();
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";
