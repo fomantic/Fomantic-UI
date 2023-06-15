@@ -55,3 +55,10 @@ interface JQuery {
     transition: FomanticUI.Transition;
     visibility: FomanticUI.Visibility;
 }
+
+interface JQueryStatic {
+    api:        FomanticUI.API;
+    flyout:     FomanticUI.Flyout;
+    modal:      FomanticUI.Modal;
+    toast:      FomanticUI.Toast;
+}
