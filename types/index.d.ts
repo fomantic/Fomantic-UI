@@ -1,7 +1,6 @@
 // Type definitions for fomantic-ui 2.9
 // Project: https://github.com/fomantic/Fomantic-UI
 // Definitions by: Fomantic Team <https://github.com/fomantic>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference types="jquery" />
 
