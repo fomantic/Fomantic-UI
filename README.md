@@ -17,10 +17,14 @@ The official community fork of the popular Semantic-UI framework.
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![CDNJS](https://img.shields.io/cdnjs/v/fomantic-ui?color=e95420)](https://cdnjs.com/libraries/fomantic-ui)
 
+[![CI](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml)
+[![Nightly Build](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml)
+
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
 [![Dependabot Status](https://badgen.net/github/dependabot/fomantic/Fomantic-UI/?icon=dependabot)](https://github.com/features/security)
-[![Known Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
+[![Known Build Dependency Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7496/badge)](https://bestpractices.coreinfrastructure.org/projects/7496)
 
 ---
 
