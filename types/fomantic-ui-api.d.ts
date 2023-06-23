@@ -187,9 +187,9 @@ declare namespace FomanticUI {
 
             /**
              * UI state will be applied to this element, defaults to triggering element.
-             * @default this
+             * @default false
              */
-            stateContext: string | JQuery;
+            stateContext: false | JQuery;
 
             /**
              * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
@@ -205,6 +205,8 @@ declare namespace FomanticUI {
 
             /**
              * Whether to serialize closest form and include in request.
+             * Use `true` to convert complex named keys like `a[b][1][c][]` into a nested object
+             * Use `formdata` for formdata web api
              * @default false
              */
             serializeForm: boolean;
@@ -301,7 +303,7 @@ declare namespace FomanticUI {
             /**
              * If set, the onResponse event handler is able to handle an raw Array Object, which is probably returned by the requested source.
              * Even if the datatype is json, it won't be force converted into an object anymore then.
-             * @default false
+             * @default true
              */
             rawResponse: boolean;
 
@@ -409,31 +411,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements.
+             * @default 'API'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'api'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console.
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show 'console.table' output with performance metrics.
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors.
+             * @default false
              */
             verbose: boolean;
 
@@ -482,18 +490,51 @@ declare namespace FomanticUI {
             type RegExpSettings = RegExpSettings.Param;
 
             namespace RegExpSettings {
-                type Param = (Pick<_Impl, 'required'> | Pick<_Impl, 'optional'>) & Partial<Pick<_Impl, keyof _Impl>>;
+                type Param = (
+                    | Pick<_Impl, 'required'>
+                    | Pick<_Impl, 'optional'>
+                    | Pick<_Impl, 'validate'>
+                    | Pick<_Impl, 'key'>
+                    | Pick<_Impl, 'push'>
+                    | Pick<_Impl, 'fixed'>
+                    | Pick<_Impl, 'named'>
+                ) & Partial<Pick<_Impl, keyof _Impl>>;
 
                 interface _Impl {
                     /**
-                     * @default /\{\$*[A-z0-9]+\}/g
+                     * @default /{\$*[\da-z]+}/gi
                      */
                     required: RegExp;
 
                     /**
-                     * @default /\{\/\$*[A-z0-9]+\}/g
+                     * @default /{\/\$*[\da-z]+}/gi
                      */
                     optional: RegExp;
+
+                    /**
+                     * @default /^[_a-z][\w-]*(?:\[[\w-]*])*$/i
+                     */
+                    validate: RegExp;
+
+                    /**
+                     * /[\w-]+|(?=\[])/gi
+                     */
+                    key: RegExp;
+
+                    /**
+                     * @default /^$/
+                     */
+                    push: RegExp;
+
+                    /**
+                     * @default /^\d+$/
+                     */
+                    fixed: RegExp;
+
+                    /**
+                     * @default /^[\w-]+$/i
+                     */
+                    named: RegExp;
                 }
             }
 
@@ -524,10 +565,11 @@ declare namespace FomanticUI {
                     | Pick<_Impl, 'exitConditions'>
                     | Pick<_Impl, 'JSONParse'>
                     | Pick<_Impl, 'legacyParameters'>
+                    | Pick<_Impl, 'method'>
                     | Pick<_Impl, 'missingAction'>
-                    | Pick<_Impl, 'missingSerialize'>
                     | Pick<_Impl, 'missingURL'>
                     | Pick<_Impl, 'noReturnedValue'>
+                    | Pick<_Impl, 'noStorage'>
                     | Pick<_Impl, 'parseError'>
                     | Pick<_Impl, 'requiredParameter'>
                     | Pick<_Impl, 'statusMessage'>
@@ -562,14 +604,14 @@ declare namespace FomanticUI {
                     legacyParameters: string;
 
                     /**
+                     * @default 'The method you called is not defined.'
+                     */
+                    method: string;
+
+                    /**
                      * @default 'API action used but no url was defined.'
                      */
                     missingAction: string;
-
-                    /**
-                     * @default 'Required dependency jquery-serialize-object missing, using basic serialize.'
-                     */
-                    missingSerialize: string;
 
                     /**
                      * @default 'No URL specified for API event.'
@@ -585,6 +627,11 @@ declare namespace FomanticUI {
                      * @default 'There was an error with your request.'
                      */
                     parseError: string;
+
+                    /**
+                     * @default 'Caching responses locally requires session storage.'
+                     */
+                    noStorage: string;
 
                     /**
                      * @default 'Missing a required URL parameter: '

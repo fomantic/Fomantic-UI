@@ -297,31 +297,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Modal'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'modal'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 

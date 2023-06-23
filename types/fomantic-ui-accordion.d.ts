@@ -44,7 +44,31 @@ declare namespace FomanticUI {
     type AccordionSettings = AccordionSettings.Param;
 
     namespace AccordionSettings {
-        type Param = Pick<_Impl, 'exclusive'> & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, 'exclusive'>
+            | Pick<_Impl, 'on'>
+            | Pick<_Impl, 'animateChildren'>
+            | Pick<_Impl, 'closeNested'>
+            | Pick<_Impl, 'collapsible'>
+            | Pick<_Impl, 'duration'>
+            | Pick<_Impl, 'easing'>
+            | Pick<_Impl, 'observeChanges'>
+            | Pick<_Impl, 'onOpening'>
+            | Pick<_Impl, 'onClosing'>
+            | Pick<_Impl, 'onChanging'>
+            | Pick<_Impl, 'onOpen'>
+            | Pick<_Impl, 'onClose'>
+            | Pick<_Impl, 'onChange'>
+            | Pick<_Impl, 'selector'>
+            | Pick<_Impl, 'className'>
+            | Pick<_Impl, 'error'>
+            | Pick<_Impl, 'name'>
+            | Pick<_Impl, 'namespace'>
+            | Pick<_Impl, 'silent'>
+            | Pick<_Impl, 'debug'>
+            | Pick<_Impl, 'verbose'>
+            | Pick<_Impl, 'performance'>
+        ) & Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             // region Accordion Settings
@@ -69,7 +93,7 @@ declare namespace FomanticUI {
 
             /**
              * Close open nested accordion content when an element closes.
-             * @default true
+             * @default false
              */
             closeNested: boolean;
 
@@ -81,16 +105,22 @@ declare namespace FomanticUI {
 
             /**
              * Duration in ms of opening animation.
-             * @default 500
+             * @default 350
              */
             duration: number;
 
             /**
              * Easing of opening animation. EaseInOutQuint is included with accordion, for additional options you must include easing equations.
              * @see {@link http://gsgd.co.uk/sandbox/jquery/easing/}
-             * @default 'easeInOutQuint'
+             * @default 'easeOutQuad'
              */
             easing: string;
+
+            /**
+             * Whether accordion should automatically refresh on DOM insertion
+             * @default true
+             */
+            observeChanges: boolean;
 
             // endregion
 
@@ -147,31 +177,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Accordion'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'accordion'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 
@@ -189,6 +225,7 @@ declare namespace FomanticUI {
                 | Pick<_Impl, 'accordion'>
                 | Pick<_Impl, 'title'>
                 | Pick<_Impl, 'trigger'>
+                | Pick<_Impl, 'ignore'>
                 | Pick<_Impl, 'content'>
             ) &
                 Partial<Pick<_Impl, keyof _Impl>>;
@@ -210,6 +247,11 @@ declare namespace FomanticUI {
                 trigger: string;
 
                 /**
+                 * @default '.ui.dropdown'
+                 */
+                ignore: string;
+
+                /**
                  * @default '.content'
                  */
                 content: string;
@@ -219,7 +261,7 @@ declare namespace FomanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param = (Pick<_Impl, 'active'> | Pick<_Impl, 'animating'>) & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, 'active'> | Pick<_Impl, 'animating'> | Pick<_Impl, 'transition'>) & Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -231,6 +273,11 @@ declare namespace FomanticUI {
                  * @default 'animating'
                  */
                 animating: string;
+
+                /**
+                 * @default 'transition'
+                 */
+                transition: string;
             }
         }
 

@@ -287,31 +287,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Dimmer'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'dimmer'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 
@@ -377,17 +383,12 @@ declare namespace FomanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param = (Pick<_Impl, 'dimmable'> | Pick<_Impl, 'dimmer'> | Pick<_Impl, 'content'>) &
+            type Param = (Pick<_Impl, 'dimmer'> | Pick<_Impl, 'content'>) &
                 Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
-                 * @default '.dimmable'
-                 */
-                dimmable: string;
-
-                /**
-                 * @default '.ui.dimmer'
+                 * @default '> .ui.dimmer'
                  */
                 dimmer: string;
 

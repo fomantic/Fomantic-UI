@@ -144,7 +144,7 @@ declare namespace FomanticUI {
             /**
              * Default setting 'auto' will only autoplay content when a placeholder is specified.
              * Setting to 'true' or 'false' will force autoplay.
-             * @default '#444444'
+             * @default '#444'
              */
             color: string;
 
@@ -173,6 +173,11 @@ declare namespace FomanticUI {
              * Whenever an iframe contents is shown.
              */
             onDisplay(this: JQuery): void;
+
+            /**
+             * Whenever the module is cleared.
+             */
+            onReset(this: JQuery): void;
 
             /**
              * Callback immediately before Embed is removed from DOM.
@@ -216,31 +221,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Embed''
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'embed''
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 
@@ -253,7 +264,7 @@ declare namespace FomanticUI {
             type SelectorSettings = SelectorSettings.Param;
 
             namespace SelectorSettings {
-                type Param = (Pick<_Impl, 'embed'> | Pick<_Impl, 'placeholder'> | Pick<_Impl, 'play'>) &
+                type Param = (Pick<_Impl, 'embed'> | Pick<_Impl, 'placeholder'> | Pick<_Impl, 'icon'>) &
                     Partial<Pick<_Impl, keyof _Impl>>;
 
                 interface _Impl {
@@ -268,9 +279,9 @@ declare namespace FomanticUI {
                     placeholder: string;
 
                     /**
-                     * @default '.play'
+                     * @default '.icon'
                      */
-                    play: string;
+                    icon: string;
                 }
             }
 
@@ -335,18 +346,23 @@ declare namespace FomanticUI {
             type TemplateSettings = TemplateSettings.Param;
 
             namespace TemplateSettings {
-                type Param = (Pick<_Impl, 'iframe'> | Pick<_Impl, 'placeholder'>) & Partial<Pick<_Impl, keyof _Impl>>;
+                type Param = (Pick<_Impl, 'deQuote'> | Pick<_Impl, 'iframe'> | Pick<_Impl, 'placeholder'>) & Partial<Pick<_Impl, keyof _Impl>>;
 
                 interface _Impl {
                     /**
                      * @default function
                      */
-                    iframe: Function;
+                    deQuote(string: string, encode: boolean): string;
 
                     /**
                      * @default function
                      */
-                    placeholder: Function;
+                    iframe(url: string, parameters: any): string;
+
+                    /**
+                     * @default function
+                     */
+                    placeholder(image: string, icon: string): string;
                 }
             }
 

@@ -450,31 +450,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Calendar'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'calendar'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 
@@ -530,6 +536,7 @@ declare namespace FomanticUI {
                 | Pick<_Impl, 'now'>
                 | Pick<_Impl, 'am'>
                 | Pick<_Impl, 'pm'>
+                | Pick<_Impl, 'weekNo'>
             ) &
                 Partial<Pick<_Impl, keyof _Impl>>;
 
@@ -567,7 +574,12 @@ declare namespace FomanticUI {
                 /**
                  * @default 'PM'
                  */
-                pm: boolean;
+                pm: string;
+
+                /**
+                 * @default 'Week'
+                 */
+                weekNo: string;
             }
         }
 
@@ -615,6 +627,7 @@ declare namespace FomanticUI {
                 | Pick<_Impl, 'grid'>
                 | Pick<_Impl, 'column'>
                 | Pick<_Impl, 'table'>
+                | Pick<_Impl, 'inverted'>
                 | Pick<_Impl, 'prev'>
                 | Pick<_Impl, 'next'>
                 | Pick<_Impl, 'prevIcon'>
@@ -629,6 +642,7 @@ declare namespace FomanticUI {
                 | Pick<_Impl, 'focusCell'>
                 | Pick<_Impl, 'todayCell'>
                 | Pick<_Impl, 'today'>
+                | Pick<_Impl, 'disabled'>
             ) &
                 Partial<Pick<_Impl, keyof _Impl>>;
 
@@ -662,6 +676,11 @@ declare namespace FomanticUI {
                  * @default 'ui celled center aligned unstackable table'
                  */
                 table: string;
+
+                /**
+                 * @default 'inverted'
+                 */
+                inverted: string;
 
                 /**
                  * @default 'prev link'
@@ -732,13 +751,18 @@ declare namespace FomanticUI {
                  * @default 'today link'
                  */
                 today: string;
+
+                /**
+                 * @default 'disabled'
+                 */
+                disabled: string;
             }
         }
 
         type RegExpSettings = RegExpSettings.Param;
 
         namespace RegExpSettings {
-            type Param = (Pick<_Impl, 'dateWords'> | Pick<_Impl, 'dateNumbers'>) & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, 'dateWords'> | Pick<_Impl, 'dateNumbers'> | Pick<_Impl, 'token'>) & Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -750,6 +774,11 @@ declare namespace FomanticUI {
                  * @default /[^\d:]+/g
                  */
                 dateNumbers: RegExp;
+
+                /**
+                 * @default /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[ASYa]|"[^"]*"|'[^']*'/g
+                 */
+                token: RegExp;
             }
         }
 
@@ -761,8 +790,20 @@ declare namespace FomanticUI {
                 | Pick<_Impl, 'focusDate'>
                 | Pick<_Impl, 'startDate'>
                 | Pick<_Impl, 'endDate'>
+                | Pick<_Impl, 'minDate'>
+                | Pick<_Impl, 'maxDate'>
                 | Pick<_Impl, 'mode'>
+                | Pick<_Impl, 'type'>
                 | Pick<_Impl, 'monthOffset'>
+                | Pick<_Impl, 'message'>
+                | Pick<_Impl, 'class'>
+                | Pick<_Impl, 'inverted'>
+                | Pick<_Impl, 'variation'>
+                | Pick<_Impl, 'position'>
+                | Pick<_Impl, 'month'>
+                | Pick<_Impl, 'year'>
+                | Pick<_Impl, 'hours'>
+                | Pick<_Impl, 'days'>
             ) &
                 Partial<Pick<_Impl, keyof _Impl>>;
 
@@ -788,14 +829,74 @@ declare namespace FomanticUI {
                 endDate: string;
 
                 /**
+                 * @default 'minDate'
+                 */
+                minDate: string;
+
+                /**
+                 * @default 'maxDate'
+                 */
+                maxDate: string;
+
+                /**
                  * @default 'mode'
                  */
                 mode: string;
 
                 /**
+                 * @default 'type'
+                 */
+                type: string;
+
+                /**
                  * @default 'monthOffset'
                  */
                 monthOffset: string;
+
+                /**
+                 * @default 'message'
+                 */
+                message: string;
+
+                /**
+                 * @default 'class'
+                 */
+                class: string;
+
+                /**
+                 * @default 'inverted'
+                 */
+                inverted: string;
+
+                /**
+                 * @default 'variation'
+                 */
+                variation: string;
+
+                /**
+                 * @default 'position'
+                 */
+                position: string;
+
+                /**
+                 * @default 'month'
+                 */
+                month: string;
+
+                /**
+                 * @default 'year'
+                 */
+                year: string;
+
+                /**
+                 * @default 'hours'
+                 */
+                hours: string;
+
+                /**
+                 * @default 'days'
+                 */
+                days: string;
             }
         }
 

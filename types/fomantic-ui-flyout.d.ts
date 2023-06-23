@@ -74,6 +74,15 @@ declare namespace FomanticUI {
             | Pick<_Impl, 'returnScroll'>
             | Pick<_Impl, 'delaySetup'>
             | Pick<_Impl, 'autoShow'>
+            | Pick<_Impl, 'title'>
+            | Pick<_Impl, 'content'>
+            | Pick<_Impl, 'class'>
+            | Pick<_Impl, 'classTitle'>
+            | Pick<_Impl, 'classContent'>
+            | Pick<_Impl, 'classActions'>
+            | Pick<_Impl, 'closeIcon'>
+            | Pick<_Impl, 'actions'>
+            | Pick<_Impl, 'preserveHTML'>
             | Pick<_Impl, 'onChange'>
             | Pick<_Impl, 'onShow'>
             | Pick<_Impl, 'onHide'>
@@ -175,6 +184,65 @@ declare namespace FomanticUI {
 
             // endregion
 
+            // region Config Template Settings
+
+            /**
+             * Content of the flyout header.
+             * @default ''
+             */
+            title: boolean;
+
+            /**
+             * Content of the flyout content.
+             * @default ''
+             */
+            content: boolean;
+
+            /**
+             * Can hold a string to be added to the flyout class to control its appearance.
+             * @default ''
+             */
+            class: boolean;
+
+            /**
+             * Can hold a string to be added to the title class to control its appearance.
+             * @default ''
+             */
+            classTitle: boolean;
+
+            /**
+             * Can hold a string to be added to the content class to control its appearance.
+             * @default ''
+             */
+            classContent: boolean;
+
+            /**
+             * Can hold a string to be added to the actions class to control its appearance.
+             * @default ''
+             */
+            classActions: boolean;
+
+            /**
+             * Can hold a string to be added to the actions class to control its appearance.
+             * @default false
+             */
+            closeIcon: boolean;
+
+            /**
+             * An array of objects. Each object defines an action with properties `text`, `class`, `icon` and `click`.
+             * @default false
+             */
+            actions: false | object[];
+
+            /**
+             * Whether HTML included in given title, content or actions should be preserved.
+             * Set to `false` in case you work with untrusted 3rd party content.
+             * @default true
+             */
+            preserveHTML: boolean;
+
+            // endregion
+
             // region Callbacks
 
             /**
@@ -244,31 +312,37 @@ declare namespace FomanticUI {
 
             /**
              * Name used in log statements
+             * @default 'Flyout'
              */
             name: string;
 
             /**
              * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+             * @default 'flyout'
              */
             namespace: string;
 
             /**
              * Silences all console output including error messages, regardless of other debug settings.
+             * @default false
              */
             silent: boolean;
 
             /**
              * Debug output to console
+             * @default false
              */
             debug: boolean;
 
             /**
              * Show console.table output with performance metrics
+             * @default true
              */
             performance: boolean;
 
             /**
              * Debug output includes all internal behaviors
+             * @default false
              */
             verbose: boolean;
 
