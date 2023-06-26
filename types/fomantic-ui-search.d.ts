@@ -107,483 +107,389 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined): SearchSettings._Impl[K];
-        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value: SearchSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: SearchSettings): JQuery;
-        (settings?: SearchSettings): JQuery;
+        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SearchSettings, keyof SearchSettings>>;
+        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value: SearchSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
+        (settings?: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/search.html#/settings}
      */
-    type SearchSettings = SearchSettings.Param;
+    interface SearchSettings {
+        // region Search Settings
 
-    namespace SearchSettings {
-        type Param = (
-            | Pick<_Impl, 'apiSettings'>
-            | Pick<_Impl, 'minCharacters'>
-            | Pick<_Impl, 'searchOnFocus'>
-            | Pick<_Impl, 'transition'>
-            | Pick<_Impl, 'duration'>
-            | Pick<_Impl, 'maxResults'>
-            | Pick<_Impl, 'cache'>
-            | Pick<_Impl, 'source'>
-            | Pick<_Impl, 'selectFirstResult'>
-            | Pick<_Impl, 'showNoResults'>
-            | Pick<_Impl, 'fullTextSearch'>
-            | Pick<_Impl, 'fields'>
-            | Pick<_Impl, 'searchFields'>
-            | Pick<_Impl, 'hideDelay'>
-            | Pick<_Impl, 'searchDelay'>
-            | Pick<_Impl, 'easing'>
-            | Pick<_Impl, 'ignoreDiacritics'>
-            | Pick<_Impl, 'onSelect'>
-            | Pick<_Impl, 'onResultsAdd'>
-            | Pick<_Impl, 'onSearchQuery'>
-            | Pick<_Impl, 'onResults'>
-            | Pick<_Impl, 'onResultsOpen'>
-            | Pick<_Impl, 'onResultsClose'>
-            | Pick<_Impl, 'templates'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'regExp'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'metadata'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Settings for API call.
+         * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
+         * @default {}
+         */
+        apiSettings: APISettings;
 
-        interface _Impl {
-            // region Search Settings
+        /**
+         * Minimum characters to query for results.
+         * @default 1
+         */
+        minCharacters: number;
 
-            /**
-             * Settings for API call.
-             * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
-             * @default {}
-             */
-            apiSettings: APISettings;
+        /**
+         * Whether search should show results on focus (must also match min character length).
+         * @default true
+         */
+        searchOnFocus: boolean;
 
-            /**
-             * Minimum characters to query for results.
-             * @default 1
-             */
-            minCharacters: number;
+        /**
+         * Named transition to use when animating menu in and out.
+         * Fade and slide down are available without including ui transitions.
+         * @see {@link https://fomantic-ui.com/modules/transition.html}
+         * @default 'fade'
+         */
+        transition: string;
 
-            /**
-             * Whether search should show results on focus (must also match min character length).
-             * @default true
-             */
-            searchOnFocus: boolean;
+        /**
+         * Duration of animation events.
+         * @default 300
+         */
+        duration: number;
 
-            /**
-             * Named transition to use when animating menu in and out.
-             * Fade and slide down are available without including ui transitions.
-             * @see {@link https://fomantic-ui.com/modules/transition.html}
-             * @default 'fade'
-             */
-            transition: string;
+        /**
+         * Maximum results to display when using local and simple search, maximum category count for category search.
+         * @default 7
+         */
+        maxResults: number;
 
-            /**
-             * Duration of animation events.
-             * @default 300
-             */
-            duration: number;
+        /**
+         * Caches results locally to avoid requerying server.
+         * @default true
+         */
+        cache: boolean;
 
-            /**
-             * Maximum results to display when using local and simple search, maximum category count for category search.
-             * @default 7
-             */
-            maxResults: number;
+        /**
+         * Specify a Javascript object which will be searched locally.
+         * @default false
+         */
+        source: boolean | object;
 
-            /**
-             * Caches results locally to avoid requerying server.
-             * @default true
-             */
-            cache: boolean;
+        /**
+         * Whether the search should automatically select the first search result after searching.
+         * @default false
+         */
+        selectFirstResult: boolean;
 
-            /**
-             * Specify a Javascript object which will be searched locally.
-             * @default false
-             */
-            source: boolean | object;
+        /**
+         * Whether a "no results" message should be shown if no results are found.
+         * @default false
+         */
+        showNoResults: boolean;
 
-            /**
-             * Whether the search should automatically select the first search result after searching.
-             * @default false
-             */
-            selectFirstResult: boolean;
+        /**
+         * Specifying to "true" will use a fuzzy full text search, setting to "exact" will force the exact search to be matched somewhere in the string, setting to false will only match to start of string.
+         * @default 'exact'
+         */
+        fullTextSearch: 'exact' | boolean;
 
-            /**
-             * Whether a "no results" message should be shown if no results are found.
-             * @default false
-             */
-            showNoResults: boolean;
+        /**
+         * List mapping display content to JSON property, either with API or 'source'.
+         * @default {}
+         */
+        fields: object;
 
-            /**
-             * Specifying to "true" will use a fuzzy full text search, setting to "exact" will force the exact search to be matched somewhere in the string, setting to false will only match to start of string.
-             * @default 'exact'
-             */
-            fullTextSearch: 'exact' | boolean;
+        /**
+         * Specify object properties inside local source object which will be searched.
+         * @default ['title', 'description']
+         */
+        searchFields: string[];
 
-            /**
-             * List mapping display content to JSON property, either with API or 'source'.
-             * @default {}
-             */
-            fields: object;
+        /**
+         * Delay before hiding results after search blur.
+         * @default 0
+         */
+        hideDelay: number;
 
-            /**
-             * Specify object properties inside local source object which will be searched.
-             * @default ['title', 'description']
-             */
-            searchFields: string[];
+        /**
+         * Delay before querying results on inputchange.
+         * @default 100
+         */
+        searchDelay: number;
 
-            /**
-             * Delay before hiding results after search blur.
-             * @default 0
-             */
-            hideDelay: number;
+        /**
+         * Easing equation when using fallback Javascript animation.
+         * EaseOutExpo is included with search, for additional options you must include `easing equations`.
+         * @see {@link https://gsgd.co.uk/sandbox/jquery/easing/}
+         * @default 'easeOutExpo'
+         */
+        easing: string;
 
-            /**
-             * Delay before querying results on inputchange.
-             * @default 100
-             */
-            searchDelay: number;
+        /**
+         * When activated, searches will also match results for base diacritic letters.
+         * For example when searching for 'a', it will also match 'á' or 'â' or 'å' and so on...
+         * It will also ignore diacritics for the searchterm, so if searching for 'ó', it will match 'ó', but also 'o', 'ô' or 'õ' and so on...
+         * @default false
+         */
+        ignoreDiacritics: boolean;
 
-            /**
-             * Easing equation when using fallback Javascript animation.
-             * EaseOutExpo is included with search, for additional options you must include `easing equations`.
-             * @see {@link https://gsgd.co.uk/sandbox/jquery/easing/}
-             * @default 'easeOutExpo'
-             */
-            easing: string;
+        // endregion
 
-            /**
-             * When activated, searches will also match results for base diacritic letters.
-             * For example when searching for 'a', it will also match 'á' or 'â' or 'å' and so on...
-             * It will also ignore diacritics for the searchterm, so if searching for 'ó', it will match 'ó', but also 'o', 'ô' or 'õ' and so on...
-             * @default false
-             */
-            ignoreDiacritics: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback on element selection by user.
+         * The first parameter includes the filtered response results for that element.
+         * The function should return 'false' to prevent default action (closing search results and selecting value).
+         */
+        onSelect(this: JQuery, result: object, response: object): boolean;
 
-            // region Callbacks
+        /**
+         * Callback after processing element template to add HTML to results.
+         * Function should return 'false' to prevent default actions.
+         */
+        onResultsAdd(this: JQuery, html: string): boolean;
 
-            /**
-             * Callback on element selection by user.
-             * The first parameter includes the filtered response results for that element.
-             * The function should return 'false' to prevent default action (closing search results and selecting value).
-             */
-            onSelect(this: JQuery, result: object, response: object): boolean;
+        /**
+         * Callback on search query.
+         */
+        onSearchQuery(this: JQuery, query: string): void;
 
-            /**
-             * Callback after processing element template to add HTML to results.
-             * Function should return 'false' to prevent default actions.
-             */
-            onResultsAdd(this: JQuery, html: string): boolean;
+        /**
+         * Callback on server response.
+         */
+        onResults(this: JQuery, response: object): void;
 
-            /**
-             * Callback on search query.
-             */
-            onSearchQuery(this: JQuery, query: string): void;
+        /**
+         * Callback when results are opened.
+         */
+        onResultsOpen(this: JQuery): void;
 
-            /**
-             * Callback on server response.
-             */
-            onResults(this: JQuery, response: object): void;
+        /**
+         * Callback when results are closed.
+         */
+        onResultsClose(this: JQuery): void;
 
-            /**
-             * Callback when results are opened.
-             */
-            onResultsOpen(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback when results are closed.
-             */
-            onResultsClose(this: JQuery): void;
+        // region Template Settings
 
-            // endregion
+        templates: Search.TemplateSettings;
 
-            // region Template Settings
+        // endregion
 
-            templates: Search.TemplateSettings;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Search.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Regular expressions used for matching.
+         */
+        regExp: Search.RegExpSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Search.SelectorSettings;
+        /**
+         * Class names used to determine element state.
+         */
+        className: Search.ClassNameSettings;
 
-            /**
-             * Regular expressions used for matching.
-             */
-            regExp: Search.RegExpSettings;
+        /**
+         * HTML5 metadata attributes used internally.
+         */
+        metadata: Search.MetadataSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Search.ClassNameSettings;
+        // endregion
 
-            /**
-             * HTML5 metadata attributes used internally.
-             */
-            metadata: Search.MetadataSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Search'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'search'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Search.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Search.ErrorSettings;
+    namespace Search {
+        type TemplateSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>>;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface Templates {
+                /**
+                 * @default function(string)
+                 */
+                escape: Function;
 
-        namespace Search {
-            type TemplateSettings = TemplateSettings.Param;
+                /**
+                 * @default function(message, type)
+                 */
+                message: Function;
 
-            namespace TemplateSettings {
-                type Param = (
-                    | Pick<_Impl, 'escape'>
-                    | Pick<_Impl, 'message'>
-                    | Pick<_Impl, 'category'>
-                    | Pick<_Impl, 'standard'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default function(response)
+                 */
+                category: Function;
 
-                interface _Impl {
-                    /**
-                     * @default function(string)
-                     */
-                    escape: Function;
-
-                    /**
-                     * @default function(message, type)
-                     */
-                    message: Function;
-
-                    /**
-                     * @default function(response)
-                     */
-                    category: Function;
-
-                    /**
-                     * @default function(response)
-                     */
-                    standard: Function;
-                }
+                /**
+                 * @default function(response)
+                 */
+                standard: Function;
             }
 
-            type SelectorSettings = SelectorSettings.Param;
+            interface Selectors {
+                /**
+                 * @default '.prompt'
+                 */
+                prompt: string;
 
-            namespace SelectorSettings {
-                type Param = (
-                    | Pick<_Impl, 'prompt'>
-                    | Pick<_Impl, 'searchButton'>
-                    | Pick<_Impl, 'results'>
-                    | Pick<_Impl, 'category'>
-                    | Pick<_Impl, 'result'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default '.search.button'
+                 */
+                searchButton: string;
 
-                interface _Impl {
-                    /**
-                     * @default '.prompt'
-                     */
-                    prompt: string;
+                /**
+                 * @default '.results'
+                 */
+                results: string;
 
-                    /**
-                     * @default '.search.button'
-                     */
-                    searchButton: string;
+                /**
+                 * @default '.category'
+                 */
+                category: string;
 
-                    /**
-                     * @default '.results'
-                     */
-                    results: string;
-
-                    /**
-                     * @default '.category'
-                     */
-                    category: string;
-
-                    /**
-                     * @default '.result'
-                     */
-                    result: string;
-                }
+                /**
+                 * @default '.result'
+                 */
+                result: string;
             }
 
-            type RegExpSettings = RegExpSettings.Param;
+            interface RegExps {
+                /**
+                 * @default /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g
+                 */
+                escape: RegExp;
 
-            namespace RegExpSettings {
-                type Param = (Pick<_Impl, 'escape'> | Pick<_Impl, 'beginsWith'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g
-                     */
-                    escape: RegExp;
-
-                    /**
-                     * @default '(?:\s|^)'
-                     */
-                    beginsWith: RegExp;
-                }
+                /**
+                 * @default '(?:\s|^)'
+                 */
+                beginsWith: RegExp;
             }
 
-            type ClassNameSettings = ClassNameSettings.Param;
+            interface ClassNames {
+                /**
+                 * @default 'active'
+                 */
+                active: string;
 
-            namespace ClassNameSettings {
-                type Param = (
-                    | Pick<_Impl, 'active'>
-                    | Pick<_Impl, 'empty'>
-                    | Pick<_Impl, 'focus'>
-                    | Pick<_Impl, 'loading'>
-                    | Pick<_Impl, 'pressed'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'empty'
+                 */
+                empty: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'active'
-                     */
-                    active: string;
+                /**
+                 * @default 'focus'
+                 */
+                focus: string;
 
-                    /**
-                     * @default 'empty'
-                     */
-                    empty: string;
+                /**
+                 * @default 'loading'
+                 */
+                loading: string;
 
-                    /**
-                     * @default 'focus'
-                     */
-                    focus: string;
-
-                    /**
-                     * @default 'loading'
-                     */
-                    loading: string;
-
-                    /**
-                     * @default 'down'
-                     */
-                    pressed: string;
-                }
+                /**
+                 * @default 'down'
+                 */
+                pressed: string;
             }
 
-            type MetadataSettings = MetadataSettings.Param;
+            interface Metadatas {
+                /**
+                 * @default 'cache'
+                 */
+                cache: string;
 
-            namespace MetadataSettings {
-                type Param = (Pick<_Impl, 'cache'> | Pick<_Impl, 'results'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'cache'
-                     */
-                    cache: string;
-
-                    /**
-                     * @default 'results'
-                     */
-                    results: string;
-                }
+                /**
+                 * @default 'results'
+                 */
+                results: string;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'Cannot search. No source used, and Fomantic API module was not included'
+                 */
+                source: string;
 
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'source'>
-                    | Pick<_Impl, 'noResultsHeader'>
-                    | Pick<_Impl, 'noResults'>
-                    | Pick<_Impl, 'logging'>
-                    | Pick<_Impl, 'noTemplate'>
-                    | Pick<_Impl, 'serverError'>
-                    | Pick<_Impl, 'maxResults'>
-                    | Pick<_Impl, 'method'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'No Results'
+                 */
+                noResultsHeader: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'Cannot search. No source used, and Fomantic API module was not included'
-                     */
-                    source: string;
+                /**
+                 * @default 'Your search returned no results'
+                 */
+                noResults: string;
 
-                    /**
-                     * @default 'No Results'
-                     */
-                    noResultsHeader: string;
+                /**
+                 * @default 'Error in debug logging, exiting.'
+                 */
+                logging: string;
 
-                    /**
-                     * @default 'Your search returned no results'
-                     */
-                    noResults: string;
+                /**
+                 * @default 'A valid template name was not specified.'
+                 */
+                noTemplate: string;
 
-                    /**
-                     * @default 'Error in debug logging, exiting.'
-                     */
-                    logging: string;
+                /**
+                 * @default 'There was an issue with querying the server.'
+                 */
+                serverError: string;
 
-                    /**
-                     * @default 'A valid template name was not specified.'
-                     */
-                    noTemplate: string;
+                /**
+                 * @default 'Results must be an array to use maxResults setting'
+                 */
+                maxResults: string;
 
-                    /**
-                     * @default 'There was an issue with querying the server.'
-                     */
-                    serverError: string;
-
-                    /**
-                     * @default 'Results must be an array to use maxResults setting'
-                     */
-                    maxResults: string;
-
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
-                }
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
             }
         }
     }

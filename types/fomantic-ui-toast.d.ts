@@ -28,377 +28,327 @@ declare namespace FomanticUI {
         (behavior: 'get remainingTime'): number;
 
         (behavior: 'refresh' | 'destroy'): JQuery;
-        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined): ToastSettings._Impl[K];
-        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: ToastSettings): JQuery;
-        (settings?: ToastSettings): JQuery;
+        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ToastSettings, keyof ToastSettings>>;
+        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
+        (settings?: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/toast.html#/settings}
      */
-    type ToastSettings = ToastSettings.Param;
+    interface ToastSettings {
+        // region Toast Settings
 
-    namespace ToastSettings {
-        type Param = (
-            | Pick<_Impl, 'position'>
-            | Pick<_Impl, 'horizontal'>
-            | Pick<_Impl, 'class'>
-            | Pick<_Impl, 'classProgress'>
-            | Pick<_Impl, 'classActions'>
-            | Pick<_Impl, 'classImage'>
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'displayTime'>
-            | Pick<_Impl, 'minDisplayTime'>
-            | Pick<_Impl, 'wordsPerMinute'>
-            | Pick<_Impl, 'showImage'>
-            | Pick<_Impl, 'showIcon'>
-            | Pick<_Impl, 'closeIcon'>
-            | Pick<_Impl, 'closeOnClick'>
-            | Pick<_Impl, 'cloneModule'>
-            | Pick<_Impl, 'showProgress'>
-            | Pick<_Impl, 'progressUp'>
-            | Pick<_Impl, 'pauseOnHover'>
-            | Pick<_Impl, 'compact'>
-            | Pick<_Impl, 'opacity'>
-            | Pick<_Impl, 'newestOnTop'>
-            | Pick<_Impl, 'preserveHTML'>
-            | Pick<_Impl, 'transition'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onClick'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'onRemove'>
-            | Pick<_Impl, 'onApprove'>
-            | Pick<_Impl, 'onDeny'>
-            | Pick<_Impl, 'title'>
-            | Pick<_Impl, 'message'>
-            | Pick<_Impl, 'actions'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'icons'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Sets where the toast can be displayed. Can be 'top right', 'top center', 'top left', 'bottom right', 'bottom center' and 'bottom left'.
+         *
+         * @default 'top right'
+         */
+        position: string;
 
-        interface _Impl {
-            // region Toast Settings
+        /**
+         * If the toasts should stack horizontal instead of vertical.
+         *
+         * @default false
+         */
+        horizontal: boolean;
 
-            /**
-             * Sets where the toast can be displayed. Can be 'top right', 'top center', 'top left', 'bottom right', 'bottom center' and 'bottom left'.
-             *
-             * @default 'top right'
-             */
-            position: string;
+        /**
+         * Define the class of notification. Can be any existing color definition or 'info', 'success', 'warning' and 'error'.
+         * If ui message is used in className.toast option (see below), this option can hold any supported class of the message component.
+         *
+         * @default 'neutral'
+         */
+        class: string;
 
-            /**
-             * If the toasts should stack horizontal instead of vertical.
-             *
-             * @default false
-             */
-            horizontal: boolean;
+        /**
+         * Can hold a string to be added to the progress bar class, for example a separate color
+         *
+         * @default false
+         */
+        classProgress: false | string;
 
-            /**
-             * Define the class of notification. Can be any existing color definition or 'info', 'success', 'warning' and 'error'.
-             * If ui message is used in className.toast option (see below), this option can hold any supported class of the message component.
-             *
-             * @default 'neutral'
-             */
-            class: string;
+        /**
+         * Can hold a string to be added to the actions class to control its appearance.
+         * Usually a combination of 'basic', 'left', 'top', 'bottom', 'vertical' and 'attached'.
+         *
+         * @default false
+         */
+        classActions: false | string;
 
-            /**
-             * Can hold a string to be added to the progress bar class, for example a separate color
-             *
-             * @default false
-             */
-            classProgress: false | string;
+        /**
+         * Can hold a string to be added to the image class. 'mini', 'tiny', 'small' and 'avatar' are supported out of the box.
+         *
+         * @default 'mini'
+         */
+        classImage: string;
 
-            /**
-             * Can hold a string to be added to the actions class to control its appearance.
-             * Usually a combination of 'basic', 'left', 'top', 'bottom', 'vertical' and 'attached'.
-             *
-             * @default false
-             */
-            classActions: false | string;
+        /**
+         * Selector or jquery object specifying the area to attach the toast container to.
+         *
+         * @default 'body'
+         */
+        context: string | JQuery;
 
-            /**
-             * Can hold a string to be added to the image class. 'mini', 'tiny', 'small' and 'avatar' are supported out of the box.
-             *
-             * @default 'mini'
-             */
-            classImage: string;
+        /**
+         * Set the time (in ms) of the toast appearance. Set '0' to disable the automatic dismissal.
+         * Set 'auto' to calculate the time by the given amount of words within the toast.
+         *
+         * @default 3000
+         */
+        displayTime: number | 'auto';
 
-            /**
-             * Selector or jquery object specifying the area to attach the toast container to.
-             *
-             * @default 'body'
-             */
-            context: string | JQuery;
+        /**
+         * Minimum display time in case displayTime is set to 'auto'.
+         *
+         * @default 1000
+         */
+        minDisplayTime: number;
 
-            /**
-             * Set the time (in ms) of the toast appearance. Set '0' to disable the automatic dismissal.
-             * Set 'auto' to calculate the time by the given amount of words within the toast.
-             *
-             * @default 3000
-             */
-            displayTime: number | 'auto';
+        /**
+         * Base to calculate display time in case displayTime is set to 'auto'.
+         *
+         * @default 120
+         */
+        wordsPerMinute: number;
 
-            /**
-             * Minimum display time in case displayTime is set to 'auto'.
-             *
-             * @default 1000
-             */
-            minDisplayTime: number;
+        /**
+         * If an URL to an image is given, that image will be shown to the left of the toast.
+         *
+         * @default false
+         */
+        showImage: false | string;
 
-            /**
-             * Base to calculate display time in case displayTime is set to 'auto'.
-             *
-             * @default 120
-             */
-            wordsPerMinute: number;
+        /**
+         * Define if the toast should display an icon which matches to a given class.
+         * If a string is given, this will be used as icon classname.
+         *
+         * @default true
+         */
+        showIcon: boolean | string;
 
-            /**
-             * If an URL to an image is given, that image will be shown to the left of the toast.
-             *
-             * @default false
-             */
-            showImage: false | string;
+        /**
+         * This will make the toast closable by the top right corner icon instead of clicking anywhere on the toast when set to 'true'.
+         * When set to 'left' the closeIcon is shown to the left instead of right.
+         *
+         * @default false
+         */
+        closeIcon: boolean | 'left';
 
-            /**
-             * Define if the toast should display an icon which matches to a given class.
-             * If a string is given, this will be used as icon classname.
-             *
-             * @default true
-             */
-            showIcon: boolean | string;
+        /**
+         * Set to 'false' to avoid closing the toast when it is clicked.
+         *
+         * @default true
+         */
+        closeOnClick: boolean;
 
-            /**
-             * This will make the toast closable by the top right corner icon instead of clicking anywhere on the toast when set to 'true'.
-             * When set to 'left' the closeIcon is shown to the left instead of right.
-             *
-             * @default false
-             */
-            closeIcon: boolean | 'left';
+        /**
+         * If a given DOM-Node should stay reusable by using a clone of it as toast.
+         * If set to false the original DOM-Node will be detached and removed from the DOM then the toast is closed.
+         *
+         * @default true
+         */
+        cloneModule: boolean;
 
-            /**
-             * Set to 'false' to avoid closing the toast when it is clicked.
-             *
-             * @default true
-             */
-            closeOnClick: boolean;
+        /**
+         * Displays a progress bar on 'top' or 'bottom' increasing until 'displayTime' is reached.
+         * 'false' won't display any progress bar. If 'displayTime' option is '0', this option is ignored.
+         *
+         * @default false
+         */
+        showProgress: boolean | 'top' | 'bottom';
 
-            /**
-             * If a given DOM-Node should stay reusable by using a clone of it as toast.
-             * If set to false the original DOM-Node will be detached and removed from the DOM then the toast is closed.
-             *
-             * @default true
-             */
-            cloneModule: boolean;
+        /**
+         * 'true' Increases the progress bar from 0% to 100%.
+         * 'false' Decreases the progress bar from 100% to 0%.
+         *
+         * @default false
+         */
+        progressUp: boolean;
 
-            /**
-             * Displays a progress bar on 'top' or 'bottom' increasing until 'displayTime' is reached.
-             * 'false' won't display any progress bar. If 'displayTime' option is '0', this option is ignored.
-             *
-             * @default false
-             */
-            showProgress: boolean | 'top' | 'bottom';
+        /**
+         * Set to 'false' if the display timer should not pause when the toast is hovered.
+         *
+         * @default true
+         */
+        pauseOnHover: boolean;
 
-            /**
-             * 'true' Increases the progress bar from 0% to 100%.
-             * 'false' Decreases the progress bar from 100% to 0%.
-             *
-             * @default false
-             */
-            progressUp: boolean;
+        /**
+         * 'true' will display the toast in a fixed width, 'false' displays the toast responsively with dynamic width.
+         *
+         * @default true
+         */
+        compact: boolean;
 
-            /**
-             * Set to 'false' if the display timer should not pause when the toast is hovered.
-             *
-             * @default true
-             */
-            pauseOnHover: boolean;
+        /**
+         * Opacity value of the toast after the show-transition.
+         *
+         * @default 1
+         */
+        opacity: number;
 
-            /**
-             * 'true' will display the toast in a fixed width, 'false' displays the toast responsively with dynamic width.
-             *
-             * @default true
-             */
-            compact: boolean;
+        /**
+         * Define if new toasts should be displayed above the others.
+         *
+         * @default false
+         */
+        newestOnTop: boolean;
 
-            /**
-             * Opacity value of the toast after the show-transition.
-             *
-             * @default 1
-             */
-            opacity: number;
+        /**
+         * Whether HTML included in given title, message or actions should be preserved.
+         * Set to 'false' in case you work with untrusted 3rd party content.
+         *
+         * @default true
+         */
+        preserveHTML: boolean;
 
-            /**
-             * Define if new toasts should be displayed above the others.
-             *
-             * @default false
-             */
-            newestOnTop: boolean;
+        /**
+         * Settings to set the transitions and durations during the show or the hide of a toast.
+         */
+        transition: Toast.TransitionSettings;
 
-            /**
-             * Whether HTML included in given title, message or actions should be preserved.
-             * Set to 'false' in case you work with untrusted 3rd party content.
-             *
-             * @default true
-             */
-            preserveHTML: boolean;
+        // endregion
 
-            /**
-             * Settings to set the transitions and durations during the show or the hide of a toast.
-             */
-            transition: Toast.TransitionSettings;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback before toast is shown. Returning 'false' from this callback will cancel the toast from showing.
+         */
+        onShow(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Callback before toast is shown. Returning false from this callback will cancel the toast from showing..
+         */
+        onVisible(this: JQuery): void;
 
-            /**
-             * Callback before toast is shown. Returning 'false' from this callback will cancel the toast from showing.
-             */
-            onShow(this: JQuery): void;
+        /**
+         * Callback after popup is clicked in
+         */
+        onClick(this: JQuery): void;
 
-            /**
-             * Callback before toast is shown. Returning false from this callback will cancel the toast from showing..
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Callback before toast is hidden. Returning 'false' from this callback will cancel the toast from hiding.
+         */
+        onHide(this: JQuery): void;
 
-            /**
-             * Callback after popup is clicked in
-             */
-            onClick(this: JQuery): void;
+        /**
+         * Callback after toast is hidden.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Callback before toast is hidden. Returning 'false' from this callback will cancel the toast from hiding.
-             */
-            onHide(this: JQuery): void;
+        /**
+         * Callback before toast is destroyed.
+         */
+        onRemove(this: JQuery): void;
 
-            /**
-             * Callback after toast is hidden.
-             */
-            onHidden(this: JQuery): void;
+        /**
+         * Callback when an existing button with class 'positive' or 'ok' or 'approve' is clicked. Return 'false' to avoid closing the toast.
+         */
+        onApprove(this: JQuery): void;
 
-            /**
-             * Callback before toast is destroyed.
-             */
-            onRemove(this: JQuery): void;
+        /**
+         * Callback when an existing button with class 'negative' or 'cancel' or 'deny' is clicked. Return 'false' to avoid closing the toast.
+         */
+        onDeny(this: JQuery): void;
 
-            /**
-             * Callback when an existing button with class 'positive' or 'ok' or 'approve' is clicked. Return 'false' to avoid closing the toast.
-             */
-            onApprove(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback when an existing button with class 'negative' or 'cancel' or 'deny' is clicked. Return 'false' to avoid closing the toast.
-             */
-            onDeny(this: JQuery): void;
+        // region Content Settings
 
-            // endregion
+        /**
+         * A title for the toast. Leave empty to not display it.
+         *
+         * @default ''
+         */
+        title: string;
 
-            // region Content Settings
+        /**
+         * Message to display.
+         *
+         * @default ''
+         */
+        message: string;
 
-            /**
-             * A title for the toast. Leave empty to not display it.
-             *
-             * @default ''
-             */
-            title: string;
+        /**
+         * An array of objects. Each object defines an action with 'properties' 'text', 'class', 'icon' and 'click'.
+         */
+        actions: Toast.ActionsSettings;
 
-            /**
-             * Message to display.
-             *
-             * @default ''
-             */
-            message: string;
+        // endregion
 
-            /**
-             * An array of objects. Each object defines an action with 'properties' 'text', 'class', 'icon' and 'click'.
-             */
-            actions: Toast.ActionsSettings;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'toast'
+         */
+        namespace: string;
 
-            // region DOM Settings
+        /**
+         * DOM Selectors used internally.
+         */
+        selector: Toast.SelectorSettings;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Class names used to attach style to state.
+         */
+        className: Toast.ClassNameSettings;
 
-            /**
-             * DOM Selectors used internally.
-             */
-            selector: Toast.SelectorSettings;
+        /**
+         * Icon names used internally.
+         */
+        icons: Toast.IconSettings;
 
-            /**
-             * Class names used to attach style to state.
-             */
-            className: Toast.ClassNameSettings;
+        // endregion
 
-            /**
-             * Icon names used internally.
-             */
-            icons: Toast.IconSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Toast'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Toast.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
-
-            error: Toast.ErrorSettings;
-
-            // endregion
-        }
+        // endregion
     }
 
     namespace Toast {
-        type TransitionSettings = TransitionSettings.Param;
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
+        type ActionsSettings = Partial<Pick<Settings.Actions, keyof Settings.Actions>>;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type IconSettings = Partial<Pick<Settings.Icons, keyof Settings.Icons>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace TransitionSettings {
-            type Param = (
-                | Pick<_Impl, 'showMethod'>
-                | Pick<_Impl, 'showDuration'>
-                | Pick<_Impl, 'hideMethod'>
-                | Pick<_Impl, 'hideDuration'>
-                | Pick<_Impl, 'closeEasing'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        namespace Settings {
+            interface Transition {
                 /**
                  * @default 'scale'
                  */
@@ -424,15 +374,8 @@ declare namespace FomanticUI {
                  */
                 closeEasing: string;
             }
-        }
 
-        type ActionsSettings = ActionsSettings.Param;
-
-        namespace ActionsSettings {
-            type Param = (Pick<_Impl, 'text'> | Pick<_Impl, 'class'> | Pick<_Impl, 'icon'> | Pick<_Impl, 'click'>) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Actions {
                 /**
                  * @default 'Wait'
                  */
@@ -453,22 +396,8 @@ declare namespace FomanticUI {
                  */
                 click: () => void;
             }
-        }
 
-        type SelectorSettings = SelectorSettings.Param;
-
-        namespace SelectorSettings {
-            type Param = (
-                | Pick<_Impl, 'container'>
-                | Pick<_Impl, 'box'>
-                | Pick<_Impl, 'toast'>
-                | Pick<_Impl, 'input'>
-                | Pick<_Impl, 'approve'>
-                | Pick<_Impl, 'deny'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Selectors {
                 /**
                  * @default '.ui.toast-container'
                  */
@@ -499,24 +428,8 @@ declare namespace FomanticUI {
                  */
                 deny: string;
             }
-        }
 
-        type ClassNameSettings = ClassNameSettings.Param;
-
-        namespace ClassNameSettings {
-            type Param = (
-                | Pick<_Impl, 'container'>
-                | Pick<_Impl, 'box'>
-                | Pick<_Impl, 'progress'>
-                | Pick<_Impl, 'toast'>
-                | Pick<_Impl, 'icon'>
-                | Pick<_Impl, 'visible'>
-                | Pick<_Impl, 'content'>
-                | Pick<_Impl, 'title'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface ClassNames {
                 /**
                  * @default 'toast-container'
                  */
@@ -557,20 +470,8 @@ declare namespace FomanticUI {
                  */
                 title: string;
             }
-        }
 
-        type IconSettings = IconSettings.Param;
-
-        namespace IconSettings {
-            type Param = (
-                | Pick<_Impl, 'info'>
-                | Pick<_Impl, 'success'>
-                | Pick<_Impl, 'warning'>
-                | Pick<_Impl, 'error'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Icons {
                 /**
                  * @default 'info'
                  */
@@ -591,15 +492,8 @@ declare namespace FomanticUI {
                  */
                 error: string;
             }
-        }
 
-        type ErrorSettings = ErrorSettings.Param;
-
-        namespace ErrorSettings {
-            type Param = (Pick<_Impl, 'method'> | Pick<_Impl, 'noElement'> | Pick<_Impl, 'verticalCard'>) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
                  */

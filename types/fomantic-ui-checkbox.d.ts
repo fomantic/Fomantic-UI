@@ -113,187 +113,161 @@ declare namespace FomanticUI {
         (behavior: 'should allow indeterminate'): boolean;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof CheckboxSettings>(behavior: 'setting', name: K, value?: undefined): CheckboxSettings._Impl[K];
-        <K extends keyof CheckboxSettings>(behavior: 'setting', name: K, value: CheckboxSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: CheckboxSettings): JQuery;
-        (settings?: CheckboxSettings): JQuery;
+        <K extends keyof CheckboxSettings>(behavior: 'setting', name: K, value?: undefined): Partial<Pick<CheckboxSettings, keyof CheckboxSettings>>;
+        <K extends keyof CheckboxSettings>(behavior: 'setting', name: K, value: CheckboxSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<CheckboxSettings, keyof CheckboxSettings>>): JQuery;
+        (settings?: Partial<Pick<CheckboxSettings, keyof CheckboxSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/checkbox.html#/settings}
      */
-    type CheckboxSettings = CheckboxSettings.Param;
+    interface CheckboxSettings {
+        // region Checkbox Settings
 
-    namespace CheckboxSettings {
-        type Param = (
-            | Pick<_Impl, 'uncheckable'>
-            | Pick<_Impl, 'fireOnInit'>
-            | Pick<_Impl, 'enableEnterKey'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'onChecked'>
-            | Pick<_Impl, 'onIndeterminate'>
-            | Pick<_Impl, 'onDeterminate'>
-            | Pick<_Impl, 'onUnchecked'>
-            | Pick<_Impl, 'beforeChecked'>
-            | Pick<_Impl, 'beforeIndeterminate'>
-            | Pick<_Impl, 'beforeDeterminate'>
-            | Pick<_Impl, 'beforeUnchecked'>
-            | Pick<_Impl, 'onEnable'>
-            | Pick<_Impl, 'onDisable'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'errors'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Setting to 'true'/'false' will determine whether an input will allow no selection. 'auto' will set disallow this behavior only for radio boxes.
+         * @default 'auto'
+         */
+        uncheckable: 'auto' | boolean;
 
-        interface _Impl {
-            // region Checkbox Settings
+        /**
+         * Whether callbacks for checked status should be fired on init as well as change.
+         * @default false
+         */
+        fireOnInit: boolean;
 
-            /**
-             * Setting to 'true'/'false' will determine whether an input will allow no selection. 'auto' will set disallow this behavior only for radio boxes.
-             * @default 'auto'
-             */
-            uncheckable: 'auto' | boolean;
+        /**
+         * Whether pressing the 'ENTER' Key on a focused checkbox should also toggle it.
+         * @default true
+         */
+        enableEnterKey: boolean;
 
-            /**
-             * Whether callbacks for checked status should be fired on init as well as change.
-             * @default false
-             */
-            fireOnInit: boolean;
+        // endregion
 
-            /**
-             * Whether pressing the 'ENTER' Key on a focused checkbox should also toggle it.
-             * @default true
-             */
-            enableEnterKey: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback after a checkbox is either checked or unchecked.
+         */
+        onChange(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Callback after a checkbox is checked.
+         */
+        onChecked(this: JQuery): void;
 
-            /**
-             * Callback after a checkbox is either checked or unchecked.
-             */
-            onChange(this: JQuery): void;
+        /**
+         * Callback after a checkbox is set to indeterminate.
+         */
+        onIndeterminate(this: JQuery): void;
 
-            /**
-             * Callback after a checkbox is checked.
-             */
-            onChecked(this: JQuery): void;
+        /**
+         * Callback after a checkbox is set to determinate.
+         */
+        onDeterminate(this: JQuery): void;
 
-            /**
-             * Callback after a checkbox is set to indeterminate.
-             */
-            onIndeterminate(this: JQuery): void;
+        /**
+         * Callback after a checkbox is unchecked.
+         */
+        onUnchecked(this: JQuery): void;
 
-            /**
-             * Callback after a checkbox is set to determinate.
-             */
-            onDeterminate(this: JQuery): void;
+        /**
+         * Callback before a checkbox is checked. Can cancel change by returning 'false'.
+         */
+        beforeChecked(this: JQuery): void | false;
 
-            /**
-             * Callback after a checkbox is unchecked.
-             */
-            onUnchecked(this: JQuery): void;
+        /**
+         * Callback before a checkbox is set to indeterminate. Can cancel change by returning 'false'.
+         */
+        beforeIndeterminate(this: JQuery): void | false;
 
-            /**
-             * Callback before a checkbox is checked. Can cancel change by returning 'false'.
-             */
-            beforeChecked(this: JQuery): void | false;
+        /**
+         * Callback before a checkbox is set to determinate. Can cancel change by returning 'false'.
+         */
+        beforeDeterminate(this: JQuery): void | false;
 
-            /**
-             * Callback before a checkbox is set to indeterminate. Can cancel change by returning 'false'.
-             */
-            beforeIndeterminate(this: JQuery): void | false;
+        /**
+         * Callback before a checkbox is unchecked. Can cancel change by returning 'false'.
+         */
+        beforeUnchecked(this: JQuery): void | false;
 
-            /**
-             * Callback before a checkbox is set to determinate. Can cancel change by returning 'false'.
-             */
-            beforeDeterminate(this: JQuery): void | false;
+        /**
+         * Callback after a checkbox is enabled.
+         */
+        onEnable(this: JQuery): void;
 
-            /**
-             * Callback before a checkbox is unchecked. Can cancel change by returning 'false'.
-             */
-            beforeUnchecked(this: JQuery): void | false;
+        /**
+         * Callback after a checkbox is disabled.
+         */
+        onDisable(this: JQuery): void;
 
-            /**
-             * Callback after a checkbox is enabled.
-             */
-            onEnable(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback after a checkbox is disabled.
-             */
-            onDisable(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Selectors used to find parts of a module.
+         */
+        selector: Checkbox.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Class names used to determine element state.
+         */
+        className: Checkbox.ClassNameSettings;
 
-            /**
-             * Selectors used to find parts of a module.
-             */
-            selector: Checkbox.SelectorSettings;
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Checkbox.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Checkbox'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'checkbox'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        errors: Checkbox.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
-
-            errors: Checkbox.ErrorSettings;
-
-            // endregion
-        }
+        // endregion
     }
 
     namespace Checkbox {
-        type SelectorSettings = SelectorSettings.Param;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace SelectorSettings {
-            type Param = (Pick<_Impl, 'checkbox'> | Pick<_Impl, 'label'> | Pick<_Impl, 'input'> | Pick<_Impl, 'link'>) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        namespace Settings {
+            interface Selectors {
                 /**
                  * @default '.ui.checkbox'
                  */
@@ -314,22 +288,8 @@ declare namespace FomanticUI {
                  */
                 link: string;
             }
-        }
 
-        type ClassNameSettings = ClassNameSettings.Param;
-
-        namespace ClassNameSettings {
-            type Param = (
-                | Pick<_Impl, 'checked'>
-                | Pick<_Impl, 'indeterminate'>
-                | Pick<_Impl, 'disabled'>
-                | Pick<_Impl, 'hidden'>
-                | Pick<_Impl, 'radio'>
-                | Pick<_Impl, 'readOnly'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface ClassNames {
                 /**
                  * @default 'checked'
                  */
@@ -360,14 +320,8 @@ declare namespace FomanticUI {
                  */
                 readOnly: string;
             }
-        }
 
-        type ErrorSettings = ErrorSettings.Param;
-
-        namespace ErrorSettings {
-            type Param = Pick<_Impl, 'method'> & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
                  */

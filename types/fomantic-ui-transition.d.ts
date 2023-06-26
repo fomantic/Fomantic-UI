@@ -116,289 +116,239 @@ declare namespace FomanticUI {
          * Destroys instance and removes all events.
          */
         (behavior: 'destroy'): JQuery;
-
-        <K extends keyof TransitionSettings>(
-            behavior: 'setting',
-            name: K,
-            value?: undefined,
-        ): TransitionSettings._Impl[K];
-        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value: TransitionSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: TransitionSettings): JQuery;
-        (settings?: TransitionSettings): JQuery;
+        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
+        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value: TransitionSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;
+        (settings?: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/transition.html#/settings}
      */
-    type TransitionSettings = TransitionSettings.Param;
+    interface TransitionSettings {
+        // region Transition Settings
 
-    namespace TransitionSettings {
-        type Param = (
-            | Pick<_Impl, 'animation'>
-            | Pick<_Impl, 'interval'>
-            | Pick<_Impl, 'reverse'>
-            | Pick<_Impl, 'displayType'>
-            | Pick<_Impl, 'duration'>
-            | Pick<_Impl, 'useFailSafe'>
-            | Pick<_Impl, 'allowRepeats'>
-            | Pick<_Impl, 'queue'>
-            | Pick<_Impl, 'skipInlineHidden'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onBeforeShow'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onBeforeHide'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'onStart'>
-            | Pick<_Impl, 'onComplete'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'errors'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Named animation event to used.
+         * Must be defined in CSS.
+         * @default 'fade'
+         */
+        animation: string;
 
-        interface _Impl {
-            // region Transition Settings
+        /**
+         * Interval in MS between each elements transition.
+         * @default 0
+         */
+        interval: number;
 
-            /**
-             * Named animation event to used.
-             * Must be defined in CSS.
-             * @default 'fade'
-             */
-            animation: string;
+        /**
+         * When an interval is specified, sets order of animations. 'auto' reverses only animations that are hiding.
+         * @default 'auto'
+         */
+        reverse: string | boolean;
 
-            /**
-             * Interval in MS between each elements transition.
-             * @default 0
-             */
-            interval: number;
+        /**
+         * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
+         * @default false
+         */
+        displayType: false | string;
 
-            /**
-             * When an interval is specified, sets order of animations. 'auto' reverses only animations that are hiding.
-             * @default 'auto'
-             */
-            reverse: string | boolean;
+        /**
+         * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
+         * @default '500ms'
+         */
+        duration: string;
 
-            /**
-             * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
-             * @default false
-             */
-            displayType: false | string;
+        /**
+         * If enabled a 'timeout' will be added to ensure 'animationend' callback occurs even if element is hidden.
+         * @default true
+         */
+        useFailSafe: boolean;
 
-            /**
-             * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
-             * @default '500ms'
-             */
-            duration: string;
+        /**
+         * If enabled will allow same animation to be queued while it is already occurring.
+         * @default false
+         */
+        allowRepeats: boolean;
 
-            /**
-             * If enabled a 'timeout' will be added to ensure 'animationend' callback occurs even if element is hidden.
-             * @default true
-             */
-            useFailSafe: boolean;
+        /**
+         * Whether to automatically queue animation if another is occurring.
+         * @default true
+         */
+        queue: boolean;
 
-            /**
-             * If enabled will allow same animation to be queued while it is already occurring.
-             * @default false
-             */
-            allowRepeats: boolean;
+        /**
+         * Whether initially inline hidden objects should be skipped for transition.
+         * Useful, if you do the transition for child objects also, but want to have inline hidden children (defined by style="display:none;") still kept hidden while the parent gets animated.
+         * Accordion uses this.
+         * @default false
+         */
+        skipInlineHidden: boolean;
 
-            /**
-             * Whether to automatically queue animation if another is occurring.
-             * @default true
-             */
-            queue: boolean;
+        // endregion
 
-            /**
-             * Whether initially inline hidden objects should be skipped for transition.
-             * Useful, if you do the transition for child objects also, but want to have inline hidden children (defined by style="display:none;") still kept hidden while the parent gets animated.
-             * Accordion uses this.
-             * @default false
-             */
-            skipInlineHidden: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback on each transition that changes visibility to shown.
+         * Returning 'false' from this callback will cancel the transition from showing.
+         */
+        onShow(this: JQuery): boolean;
 
-            // region Callbacks
+        /**
+         * Callback right before the show transition should start.
+         * The 'showFunction' parameter has to be called inside the callback to trigger the transition show
+         */
+        onBeforeShow(this: JQuery, showFunction: Function): void;
 
-            /**
-             * Callback on each transition that changes visibility to shown.
-             * Returning 'false' from this callback will cancel the transition from showing.
-             */
-            onShow(this: JQuery): boolean;
+        /**
+         * Callback once the show transition has finished.
+         */
+        onVisible(this: JQuery): void;
 
-            /**
-             * Callback right before the show transition should start.
-             * The 'showFunction' parameter has to be called inside the callback to trigger the transition show
-             */
-            onBeforeShow(this: JQuery, showFunction: Function): void;
+        /**
+         * Callback on each transition that changes visibility to hidden.
+         * Returning 'false' from this callback will cancel the transition from hiding.
+         */
+        onHide(this: JQuery): boolean;
 
-            /**
-             * Callback once the show transition has finished.
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Callback right before the hide transition should start.
+         * The 'hideFunction' parameter has to be called inside the callback to trigger the transition hide.
+         */
+        onBeforeHide(this: JQuery, hideFunction: Function): void;
 
-            /**
-             * Callback on each transition that changes visibility to hidden.
-             * Returning 'false' from this callback will cancel the transition from hiding.
-             */
-            onHide(this: JQuery): boolean;
+        /**
+         * Callback once the transition hide has finished.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Callback right before the hide transition should start.
-             * The 'hideFunction' parameter has to be called inside the callback to trigger the transition hide.
-             */
-            onBeforeHide(this: JQuery, hideFunction: Function): void;
+        /**
+         * Callback on animation start, useful for queued animations.
+         */
+        onStart(this: JQuery): void;
 
-            /**
-             * Callback once the transition hide has finished.
-             */
-            onHidden(this: JQuery): void;
+        /**
+         * Callback on each transition complete.
+         */
+        onComplete(this: JQuery): void;
 
-            /**
-             * Callback on animation start, useful for queued animations.
-             */
-            onStart(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback on each transition complete.
-             */
-            onComplete(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Class names used to determine element state.
+         */
+        className: Transition.ClassNameSettings;
 
-            // region DOM Settings
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Transition.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Transition'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'transition'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        errors: Transition.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            errors: Transition.ErrorSettings;
+    namespace Transition {
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface ClassNames {
+                /**
+                 * @default 'animating'
+                 */
+                animating: string;
 
-        namespace Transition {
-            type ClassNameSettings = ClassNameSettings.Param;
+                /**
+                 * @default 'disabled'
+                 */
+                disabled: string;
 
-            namespace ClassNameSettings {
-                type Param = (
-                    | Pick<_Impl, 'animating'>
-                    | Pick<_Impl, 'disabled'>
-                    | Pick<_Impl, 'hidden'>
-                    | Pick<_Impl, 'inward'>
-                    | Pick<_Impl, 'loading'>
-                    | Pick<_Impl, 'looping'>
-                    | Pick<_Impl, 'outward'>
-                    | Pick<_Impl, 'transition'>
-                    | Pick<_Impl, 'visible'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'hidden'
+                 */
+                hidden: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'animating'
-                     */
-                    animating: string;
+                /**
+                 * @default 'in'
+                 */
+                inward: string;
 
-                    /**
-                     * @default 'disabled'
-                     */
-                    disabled: string;
+                /**
+                 * @default 'loading'
+                 */
+                loading: string;
 
-                    /**
-                     * @default 'hidden'
-                     */
-                    hidden: string;
+                /**
+                 * @default 'looping'
+                 */
+                looping: string;
 
-                    /**
-                     * @default 'in'
-                     */
-                    inward: string;
+                /**
+                 * @default 'out'
+                 */
+                outward: string;
 
-                    /**
-                     * @default 'loading'
-                     */
-                    loading: string;
+                /**
+                 * @default 'transition'
+                 */
+                transition: string;
 
-                    /**
-                     * @default 'looping'
-                     */
-                    looping: string;
-
-                    /**
-                     * @default 'out'
-                     */
-                    outward: string;
-
-                    /**
-                     * @default 'transition'
-                     */
-                    transition: string;
-
-                    /**
-                     * @default 'visible'
-                     */
-                    visible: string;
-                }
+                /**
+                 * @default 'visible'
+                 */
+                visible: string;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'You called a rating action that was not defined'
+                 */
+                noAnimation: string;
 
-            namespace ErrorSettings {
-                type Param = (Pick<_Impl, 'noAnimation'> | Pick<_Impl, 'method'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'You called a rating action that was not defined'
-                     */
-                    noAnimation: string;
-
-                    /**
-                     * @default 'The method you called is not defined'
-                     */
-                    method: string;
-                }
+                /**
+                 * @default 'The method you called is not defined'
+                 */
+                method: string;
             }
         }
     }

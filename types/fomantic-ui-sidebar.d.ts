@@ -68,410 +68,334 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value?: undefined): SidebarSettings._Impl[K];
-        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value: SidebarSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: SidebarSettings): JQuery;
-        (settings?: SidebarSettings): JQuery;
+        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SidebarSettings, keyof SidebarSettings>>;
+        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value: SidebarSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<SidebarSettings, keyof SidebarSettings>>): JQuery;
+        (settings?: Partial<Pick<SidebarSettings, keyof SidebarSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/sidebar.html#/settings}
      */
-    type SidebarSettings = SidebarSettings.Param;
+    interface SidebarSettings {
+        // region Sidebar Settings
 
-    namespace SidebarSettings {
-        type Param = (
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'exclusive'>
-            | Pick<_Impl, 'closable'>
-            | Pick<_Impl, 'dimPage'>
-            | Pick<_Impl, 'blurring'>
-            | Pick<_Impl, 'scrollLock'>
-            | Pick<_Impl, 'returnScroll'>
-            | Pick<_Impl, 'delaySetup'>
-            | Pick<_Impl, 'transition'>
-            | Pick<_Impl, 'mobileTransition'>
-            | Pick<_Impl, 'defaultTransition'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'regExp'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Context which sidebar will appear inside.
+         * @default 'body'
+         */
+        context: string | JQuery;
 
-        interface _Impl {
-            // region Sidebar Settings
+        /**
+         * Whether multiple sidebars can be open at once.
+         * @default false
+         */
+        exclusive: boolean;
 
-            /**
-             * Context which sidebar will appear inside.
-             * @default 'body'
-             */
-            context: string | JQuery;
+        /**
+         * Whether sidebar can be closed by clicking on page.
+         * @default true
+         */
+        closable: boolean;
 
-            /**
-             * Whether multiple sidebars can be open at once.
-             * @default false
-             */
-            exclusive: boolean;
+        /**
+         * Whether to dim page contents when sidebar is visible.
+         * @default true
+         */
+        dimPage: boolean;
 
-            /**
-             * Whether sidebar can be closed by clicking on page.
-             * @default true
-             */
-            closable: boolean;
+        /**
+         * Whether dimmer should blur background.
+         * @default false
+         */
+        blurring: boolean;
 
-            /**
-             * Whether to dim page contents when sidebar is visible.
-             * @default true
-             */
-            dimPage: boolean;
+        /**
+         * Whether to lock page scroll when sidebar is visible.
+         * @default false
+         */
+        scrollLock: boolean;
 
-            /**
-             * Whether dimmer should blur background.
-             * @default false
-             */
-            blurring: boolean;
+        /**
+         * Whether to return to original scroll position when sidebar is hidden, automatically occurs with 'transition: scale'.
+         * @default false
+         */
+        returnScroll: boolean;
 
-            /**
-             * Whether to lock page scroll when sidebar is visible.
-             * @default false
-             */
-            scrollLock: boolean;
+        /**
+         * When sidebar is initialized without the proper HTML, using this option will defer creation of DOM to use 'requestAnimationFrame'.
+         * @default false
+         */
+        delaySetup: boolean;
 
-            /**
-             * Whether to return to original scroll position when sidebar is hidden, automatically occurs with 'transition: scale'.
-             * @default false
-             */
-            returnScroll: boolean;
+        // endregion
 
-            /**
-             * When sidebar is initialized without the proper HTML, using this option will defer creation of DOM to use 'requestAnimationFrame'.
-             * @default false
-             */
-            delaySetup: boolean;
+        // region Animation Settings
 
-            // endregion
+        /**
+         * Named transition to use when animating sidebar.
+         * Defaults to 'auto' which selects transition from 'defaultTransition' based on direction.
+         * @default 'auto'
+         */
+        transition: string;
 
-            // region Animation Settings
+        /**
+         * Named transition to use when animating when detecting mobile device.
+         * Defaults to 'auto' which selects transition from 'defaultTransition' based on direction.
+         * @default 'auto'
+         */
+        mobileTransition: string;
 
-            /**
-             * Named transition to use when animating sidebar.
-             * Defaults to 'auto' which selects transition from 'defaultTransition' based on direction.
-             * @default 'auto'
-             */
-            transition: string;
+        /**
+         * Default transitions for each direction and screen size, used with 'transition: auto'.
+         * @default {}
+         */
+        defaultTransition: object;
 
-            /**
-             * Named transition to use when animating when detecting mobile device.
-             * Defaults to 'auto' which selects transition from 'defaultTransition' based on direction.
-             * @default 'auto'
-             */
-            mobileTransition: string;
+        // endregion
 
-            /**
-             * Default transitions for each direction and screen size, used with 'transition: auto'.
-             * @default {}
-             */
-            defaultTransition: object;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Is called when a sidebar has finished animating in.
+         */
+        onVisible(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Is called when a sidebar begins animating in.
+         * Returning 'false' from this callback will cancel the sidebar from showing.
+         */
+        onShow(this: JQuery): boolean;
 
-            /**
-             * Is called when a sidebar has finished animating in.
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Is called when a sidebar begins to hide or show.
+         */
+        onChange(this: JQuery): void;
 
-            /**
-             * Is called when a sidebar begins animating in.
-             * Returning 'false' from this callback will cancel the sidebar from showing.
-             */
-            onShow(this: JQuery): boolean;
+        /**
+         * Is called before a sidebar begins to animate out.
+         * Returning 'false' from this callback will cancel the sidebar from hiding.
+         */
+        onHide(this: JQuery): boolean;
 
-            /**
-             * Is called when a sidebar begins to hide or show.
-             */
-            onChange(this: JQuery): void;
+        /**
+         * Is called after a sidebar has finished animating out.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Is called before a sidebar begins to animate out.
-             * Returning 'false' from this callback will cancel the sidebar from hiding.
-             */
-            onHide(this: JQuery): boolean;
+        // endregion
 
-            /**
-             * Is called after a sidebar has finished animating out.
-             */
-            onHidden(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Sidebar.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Regular expressions used in the module.
+         */
+        regExp: Sidebar.RegExpSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Sidebar.SelectorSettings;
+        /**
+         * Class names used to determine element state.
+         */
+        className: Sidebar.ClassNameSettings;
 
-            /**
-             * Regular expressions used in the module.
-             */
-            regExp: Sidebar.RegExpSettings;
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Sidebar.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Sidebar'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'sidebar'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Sidebar.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Sidebar.ErrorSettings;
+    namespace Sidebar {
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface Selectors {
+                /**
+                 * @default '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.fixed.nag, > .ui.fixed.nag > .close'
+                 */
+                bodyFixed: string;
 
-        namespace Sidebar {
-            type SelectorSettings = SelectorSettings.Param;
+                /**
+                 * @default '.fixed'
+                 */
+                fixed: string;
 
-            namespace SelectorSettings {
-                type Param = (
-                    | Pick<_Impl, 'bodyFixed'>
-                    | Pick<_Impl, 'fixed'>
-                    | Pick<_Impl, 'omitted'>
-                    | Pick<_Impl, 'pusher'>
-                    | Pick<_Impl, 'sidebar'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed'
+                 */
+                omitted: string;
 
-                interface _Impl {
-                    /**
-                     * @default '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.fixed.nag, > .ui.fixed.nag > .close'
-                     */
-                    bodyFixed: string;
+                /**
+                 * @default '.pusher'
+                 */
+                pusher: string;
 
-                    /**
-                     * @default '.fixed'
-                     */
-                    fixed: string;
-
-                    /**
-                     * @default 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed'
-                     */
-                    omitted: string;
-
-                    /**
-                     * @default '.pusher'
-                     */
-                    pusher: string;
-
-                    /**
-                     * @default '.ui.sidebar'
-                     */
-                    sidebar: string;
-                }
+                /**
+                 * @default '.ui.sidebar'
+                 */
+                sidebar: string;
             }
+        
+            interface RegExps {
+                /**
+                 * @default /(iPad|iPhone|iPod)/g
+                 */
+                ios: RegExp;
 
-            type RegExpSettings = RegExpSettings.Param;
+                /**
+                 * @default /(CriOS)/g
+                 */
+                mobileChrome: RegExp;
 
-            namespace RegExpSettings {
-                type Param = (Pick<_Impl, 'ios'> | Pick<_Impl, 'mobileChrome'> | Pick<_Impl, 'mobile'>) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default /(iPad|iPhone|iPod)/g
-                     */
-                    ios: RegExp;
-
-                    /**
-                     * @default /(CriOS)/g
-                     */
-                    mobileChrome: RegExp;
-
-                    /**
-                     * @default /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
-                     */
-                    mobile: RegExp;
-                }
+                /**
+                 * @default /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
+                 */
+                mobile: RegExp;
             }
+        
+            interface ClassNames {
+                /**
+                 * @default 'active'
+                 */
+                active: string;
 
-            type ClassNameSettings = ClassNameSettings.Param;
+                /**
+                 * @default 'animating'
+                 */
+                animating: string;
 
-            namespace ClassNameSettings {
-                type Param = (
-                    | Pick<_Impl, 'active'>
-                    | Pick<_Impl, 'animating'>
-                    | Pick<_Impl, 'blurring'>
-                    | Pick<_Impl, 'closing'>
-                    | Pick<_Impl, 'dimmed'>
-                    | Pick<_Impl, 'ios'>
-                    | Pick<_Impl, 'locked'>
-                    | Pick<_Impl, 'pushable'>
-                    | Pick<_Impl, 'pushed'>
-                    | Pick<_Impl, 'right'>
-                    | Pick<_Impl, 'top'>
-                    | Pick<_Impl, 'left'>
-                    | Pick<_Impl, 'bottom'>
-                    | Pick<_Impl, 'visible'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'blurring'
+                 */
+                blurring: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'active'
-                     */
-                    active: string;
+                /**
+                 * @default 'closing'
+                 */
+                closing: string;
 
-                    /**
-                     * @default 'animating'
-                     */
-                    animating: string;
+                /**
+                 * @default 'dimmed'
+                 */
+                dimmed: string;
 
-                    /**
-                     * @default 'blurring'
-                     */
-                    blurring: string;
+                /**
+                 * @default 'ios'
+                 */
+                ios: string;
 
-                    /**
-                     * @default 'closing'
-                     */
-                    closing: string;
+                /**
+                 * @default 'locked'
+                 */
+                locked: string;
 
-                    /**
-                     * @default 'dimmed'
-                     */
-                    dimmed: string;
+                /**
+                 * @default 'pushable'
+                 */
+                pushable: string;
 
-                    /**
-                     * @default 'ios'
-                     */
-                    ios: string;
+                /**
+                 * @default 'pushed'
+                 */
+                pushed: string;
 
-                    /**
-                     * @default 'locked'
-                     */
-                    locked: string;
+                /**
+                 * @default 'right'
+                 */
+                right: string;
 
-                    /**
-                     * @default 'pushable'
-                     */
-                    pushable: string;
+                /**
+                 * @default 'top'
+                 */
+                top: string;
 
-                    /**
-                     * @default 'pushed'
-                     */
-                    pushed: string;
+                /**
+                 * @default 'left'
+                 */
+                left: string;
 
-                    /**
-                     * @default 'right'
-                     */
-                    right: string;
+                /**
+                 * @default 'bottom'
+                 */
+                bottom: string;
 
-                    /**
-                     * @default 'top'
-                     */
-                    top: string;
-
-                    /**
-                     * @default 'left'
-                     */
-                    left: string;
-
-                    /**
-                     * @default 'bottom'
-                     */
-                    bottom: string;
-
-                    /**
-                     * @default 'visible'
-                     */
-                    visible: string;
-                }
+                /**
+                 * @default 'visible'
+                 */
+                visible: string;
             }
+        
+            interface Errors {
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
 
-            type ErrorSettings = ErrorSettings.Param;
+                /**
+                 * @default 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element'
+                 */
+                pusher: string;
 
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'method'>
-                    | Pick<_Impl, 'pusher'>
-                    | Pick<_Impl, 'movedSidebar'>
-                    | Pick<_Impl, 'overlay'>
-                    | Pick<_Impl, 'notFound'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag'
+                 */
+                movedSidebar: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
+                /**
+                 * @default 'The overlay setting is no longer supported, use animation: overlay'
+                 */
+                overlay: string;
 
-                    /**
-                     * @default 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element'
-                     */
-                    pusher: string;
-
-                    /**
-                     * @default 'Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag'
-                     */
-                    movedSidebar: string;
-
-                    /**
-                     * @default 'The overlay setting is no longer supported, use animation: overlay'
-                     */
-                    overlay: string;
-
-                    /**
-                     * @default 'There were no elements that matched the specified selector'
-                     */
-                    notFound: string;
-                }
+                /**
+                 * @default 'There were no elements that matched the specified selector'
+                 */
+                notFound: string;
             }
         }
     }

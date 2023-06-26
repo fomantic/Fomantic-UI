@@ -113,221 +113,196 @@ declare namespace FomanticUI {
         (behavior: 'set disabled'): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value?: undefined): DimmerSettings._Impl[K];
-        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value: DimmerSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: DimmerSettings): JQuery;
-        (settings?: DimmerSettings): JQuery;
+        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<DimmerSettings, keyof DimmerSettings>>;
+        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value: DimmerSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<DimmerSettings, keyof DimmerSettings>>): JQuery;
+        (settings?: Partial<Pick<DimmerSettings, keyof DimmerSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/dimmer.html#/settings}
      */
-    type DimmerSettings = DimmerSettings.Param;
 
-    namespace DimmerSettings {
-        type Param = (
-            | Pick<_Impl, 'useFlex'>
-            | Pick<_Impl, 'dimmerName'>
-            | Pick<_Impl, 'variation'>
-            | Pick<_Impl, 'closable'>
-            | Pick<_Impl, 'useCSS'>
-            | Pick<_Impl, 'transition'>
-            | Pick<_Impl, 'on'>
-            | Pick<_Impl, 'opacity'>
-            | Pick<_Impl, 'duration'>
-            | Pick<_Impl, 'displayLoader'>
-            | Pick<_Impl, 'loaderText'>
-            | Pick<_Impl, 'loaderVariation'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'template'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+    interface DimmerSettings {
+        // region Dimmer Settings
 
-        interface _Impl {
-            // region Dimmer Settings
+        /**
+         * Whether dimmers should use flex or legacy positioning.
+         * @default true
+         */
+        useFlex: boolean;
 
-            /**
-             * Whether dimmers should use flex or legacy positioning.
-             * @default true
-             */
-            useFlex: boolean;
+        /**
+         * If initializing a dimmer on a 'dimmable' context, you can use 'dimmerName' to distinguish between multiple dimmers in that context.
+         * @default false
+         */
+        dimmerName: string | boolean;
 
-            /**
-             * If initializing a dimmer on a 'dimmable' context, you can use 'dimmerName' to distinguish between multiple dimmers in that context.
-             * @default false
-             */
-            dimmerName: string | boolean;
+        /**
+         * Specify a variation to add when generating dimmer, like 'inverted'.
+         * @default false
+         */
+        variation: string | boolean;
 
-            /**
-             * Specify a variation to add when generating dimmer, like 'inverted'.
-             * @default false
-             */
-            variation: string | boolean;
+        /**
+         * Whether clicking on the dimmer should hide the dimmer (Defaults to 'auto', closable only when 'settings.on' is not 'hover').
+         * @default 'auto'
+         */
+        closable: 'auto' | boolean;
 
-            /**
-             * Whether clicking on the dimmer should hide the dimmer (Defaults to 'auto', closable only when 'settings.on' is not 'hover').
-             * @default 'auto'
-             */
-            closable: 'auto' | boolean;
+        /**
+         * Whether to dim dimmers using CSS transitions.
+         * @default true
+         */
+        useCSS: boolean;
 
-            /**
-             * Whether to dim dimmers using CSS transitions.
-             * @default true
-             */
-            useCSS: boolean;
+        /**
+         * Named transition to use when animating menu in and out. Fade and slide down are available without including ui transitions.
+         * Alternatively you can provide an object to set individual values for hide/show transitions as well as hide/show duration
+         * @default 'fade'
+         */
+        transition: string | Dimmer.TransitionSettings;
 
-            /**
-             * Named transition to use when animating menu in and out. Fade and slide down are available without including ui transitions.
-             * Alternatively you can provide an object to set individual values for hide/show transitions as well as hide/show duration
-             * @default 'fade'
-             */
-            transition: string | Dimmer.TransitionSettings;
+        /**
+         * Can be set to 'hover' or 'click' to show/hide dimmer on dimmable event.
+         * @default false
+         */
+        on: false | 'hover' | 'click';
 
-            /**
-             * Can be set to 'hover' or 'click' to show/hide dimmer on dimmable event.
-             * @default false
-             */
-            on: false | 'hover' | 'click';
+        /**
+         * Override the default opacity of the dimmer.
+         * @default 'auto'
+         */
+        opacity: 'auto' | number;
 
-            /**
-             * Override the default opacity of the dimmer.
-             * @default 'auto'
-             */
-            opacity: 'auto' | number;
+        /**
+         * Animation duration of dimming. If an integer is used, that value will apply to both show and hide animations.
+         * Will be ignored completely when individual hide/show duration values are provided via the 'transition' setting.
+         */
+        duration: number | Dimmer.DurationSettings;
 
-            /**
-             * Animation duration of dimming. If an integer is used, that value will apply to both show and hide animations.
-             * Will be ignored completely when individual hide/show duration values are provided via the 'transition' setting.
-             */
-            duration: number | Dimmer.DurationSettings;
+        /**
+         * Whether a custom loader should be generated inside the dimmer.
+         * @default false
+         */
+        displayLoader: boolean;
 
-            /**
-             * Whether a custom loader should be generated inside the dimmer.
-             * @default false
-             */
-            displayLoader: boolean;
+        /**
+         * Additional css classes to style the loader.
+         * @see {@link https://fomantic-ui.com/elements/loader.html}
+         * @default ''
+         */
+        loaderVariation: string;
 
-            /**
-             * Additional css classes to style the loader.
-             * @see {@link https://fomantic-ui.com/elements/loader.html}
-             * @default ''
-             */
-            loaderVariation: string;
+        /**
+         * If a string is given, it will be shown underneath the loader animation icon.
+         * @default false
+         */
+        loaderText: false | string;
 
-            /**
-             * If a string is given, it will be shown underneath the loader animation icon.
-             * @default false
-             */
-            loaderText: false | string;
+        // endregion
 
-            // endregion
+        // region Callbacks
 
-            // region Callbacks
+        /**
+         * Callback on element show or hide.
+         */
+        onChange(this: JQuery): void;
 
-            /**
-             * Callback on element show or hide.
-             */
-            onChange(this: JQuery): void;
+        /**
+         * Callback on element show.
+         */
+        onShow(this: JQuery): void;
 
-            /**
-             * Callback on element show.
-             */
-            onShow(this: JQuery): void;
+        /**
+         * Callback on element hide.
+         */
+        onHide(this: JQuery): void;
 
-            /**
-             * Callback on element hide.
-             */
-            onHide(this: JQuery): void;
+        /**
+         * Callback after element is visible.
+         */
+        onVisible(this: JQuery): void;
 
-            /**
-             * Callback after element is visible.
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Callback after element is hidden.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Callback after element is hidden.
-             */
-            onHidden(this: JQuery): void;
+        // endregion
 
-            // endregion
+        // region DOM Settings
 
-            // region DOM Settings
+        /**
+         * Selectors used to find parts of a module.
+         */
+        selector: Dimmer.SelectorSettings;
 
-            /**
-             * Selectors used to find parts of a module.
-             */
-            selector: Dimmer.SelectorSettings;
+        /**
+         * Class names used to determine element state.
+         */
+        className: Dimmer.ClassNameSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Dimmer.ClassNameSettings;
+        /**
+         * Templates used to generate dimmer content.
+         */
+        template: Dimmer.TemplateSettings;
 
-            /**
-             * Templates used to generate dimmer content.
-             */
-            template: Dimmer.TemplateSettings;
+        // endregion
 
-            // endregion
+        // region Debug Settings
 
-            // region Debug Settings
+        /**
+         * Name used in log statements
+         * @default 'Dimmer'
+         */
+        name: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'dimmer'
+         */
+        namespace: string;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        error: Dimmer.ErrorSettings;
 
-            error: Dimmer.ErrorSettings;
-
-            // endregion
-        }
+        // endregion
     }
 
     namespace Dimmer {
-        type DurationSettings = DurationSettings.Param;
+        type DurationSettings = Partial<Pick<Settings.Durations, keyof Settings.Durations>>;
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type TemplateSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace DurationSettings {
-            type Param = (Pick<_Impl, 'show'> | Pick<_Impl, 'hide'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        namespace Settings {
+            interface Durations {
                 /**
                  * @default 500
                  */
@@ -338,20 +313,8 @@ declare namespace FomanticUI {
                  */
                 hide: number;
             }
-        }
 
-        type TransitionSettings = TransitionSettings.Param;
-
-        namespace TransitionSettings {
-            type Param = (
-                | Pick<_Impl, 'showMethod'>
-                | Pick<_Impl, 'showDuration'>
-                | Pick<_Impl, 'hideMethod'>
-                | Pick<_Impl, 'hideDuration'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Transition {
                 /**
                  * @default 'fade'
                  */
@@ -372,22 +335,10 @@ declare namespace FomanticUI {
                  */
                 hideDuration: number;
             }
-        }
 
-        type SelectorSettings = SelectorSettings.Param;
-
-        namespace SelectorSettings {
-            type Param = (Pick<_Impl, 'dimmable'> | Pick<_Impl, 'dimmer'> | Pick<_Impl, 'content'>) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Selectors {
                 /**
-                 * @default '.dimmable'
-                 */
-                dimmable: string;
-
-                /**
-                 * @default '.ui.dimmer'
+                 * @default '> .ui.dimmer'
                  */
                 dimmer: string;
 
@@ -396,24 +347,8 @@ declare namespace FomanticUI {
                  */
                 content: string;
             }
-        }
 
-        type ClassNameSettings = ClassNameSettings.Param;
-
-        namespace ClassNameSettings {
-            type Param = (
-                | Pick<_Impl, 'active'>
-                | Pick<_Impl, 'dimmable'>
-                | Pick<_Impl, 'dimmed'>
-                | Pick<_Impl, 'disabled'>
-                | Pick<_Impl, 'pageDimmer'>
-                | Pick<_Impl, 'hide'>
-                | Pick<_Impl, 'show'>
-                | Pick<_Impl, 'transition'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface ClassNames {
                 /**
                  * @default 'active'
                  */
@@ -454,27 +389,15 @@ declare namespace FomanticUI {
                  */
                 transition: string;
             }
-        }
 
-        type TemplateSettings = TemplateSettings.Param;
-
-        namespace TemplateSettings {
-            type Param = Pick<_Impl, 'dimmer'> & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Templates {
                 /**
                  * Used to generate dimmer content.
                  */
                 dimmer: JQuery;
             }
-        }
 
-        type ErrorSettings = ErrorSettings.Param;
-
-        namespace ErrorSettings {
-            type Param = Pick<_Impl, 'method'> & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
                  */

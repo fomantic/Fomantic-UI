@@ -3,258 +3,212 @@ declare namespace FomanticUI {
         settings: StickySettings;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof StickySettings>(behavior: 'setting', name: K, value?: undefined): StickySettings._Impl[K];
-        <K extends keyof StickySettings>(behavior: 'setting', name: K, value: StickySettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: StickySettings): JQuery;
-        (settings?: StickySettings): JQuery;
+        <K extends keyof StickySettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<StickySettings, keyof StickySettings>>;
+        <K extends keyof StickySettings>(behavior: 'setting', name: K, value: StickySettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<StickySettings, keyof StickySettings>>): JQuery;
+        (settings?: Partial<Pick<StickySettings, keyof StickySettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/sticky.html#/settings}
      */
-    type StickySettings = StickySettings.Param;
+    interface StickySettings {
+        // region Sticky Settings
 
-    namespace StickySettings {
-        type Param = (
-            | Pick<_Impl, 'pushing'>
-            | Pick<_Impl, 'setSize'>
-            | Pick<_Impl, 'jitter'>
-            | Pick<_Impl, 'observeChanges'>
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'scrollContext'>
-            | Pick<_Impl, 'offset'>
-            | Pick<_Impl, 'bottomOffset'>
-            | Pick<_Impl, 'onReposition'>
-            | Pick<_Impl, 'onScroll'>
-            | Pick<_Impl, 'onStick'>
-            | Pick<_Impl, 'onUnstick'>
-            | Pick<_Impl, 'onTop'>
-            | Pick<_Impl, 'onBottom'>
-            // Pick<_Impl, 'selector'> |
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Whether element should be "pushed" by the viewport, attaching to the bottom of the screen when scrolling up.
+         * @default false
+         */
+        pushing: boolean;
 
-        interface _Impl {
-            // region Sticky Settings
+        /**
+         * Sets size of fixed content to match its width before fixing to screen dynamically.
+         * This is used because fixed may display block or 100% width content differently than it appears before sticking.
+         * @default true
+         */
+        setSize: boolean;
 
-            /**
-             * Whether element should be "pushed" by the viewport, attaching to the bottom of the screen when scrolling up.
-             * @default false
-             */
-            pushing: boolean;
+        /**
+         * Sticky container height will only be set if the difference between heights of container and context is larger than this jitter value.
+         * @default 5
+         */
+        jitter: number;
 
-            /**
-             * Sets size of fixed content to match its width before fixing to screen dynamically.
-             * This is used because fixed may display block or 100% width content differently than it appears before sticking.
-             * @default true
-             */
-            setSize: boolean;
+        /**
+         * Whether any change in 'context' DOM should automatically refresh cached sticky positions.
+         * @default false
+         */
+        observeChanges: boolean;
 
-            /**
-             * Sticky container height will only be set if the difference between heights of container and context is larger than this jitter value.
-             * @default 5
-             */
-            jitter: number;
+        /**
+         * Context which sticky element should stick to.
+         * @default false
+         */
+        context: boolean | string;
 
-            /**
-             * Whether any change in 'context' DOM should automatically refresh cached sticky positions.
-             * @default false
-             */
-            observeChanges: boolean;
+        /**
+         * Context which sticky should attach 'onscroll' events.
+         * @default window
+         */
+        scrollContext: Window | string;
 
-            /**
-             * Context which sticky element should stick to.
-             * @default false
-             */
-            context: boolean | string;
+        /**
+         * Offset in pixels from the top of the screen when fixing element to viewport.
+         * @default 0
+         */
+        offset: number;
 
-            /**
-             * Context which sticky should attach 'onscroll' events.
-             * @default window
-             */
-            scrollContext: Window | string;
+        /**
+         * Offset in pixels from the bottom of the screen when fixing element to viewport.
+         * @default 0
+         */
+        bottomOffset: number;
 
-            /**
-             * Offset in pixels from the top of the screen when fixing element to viewport.
-             * @default 0
-             */
-            offset: number;
+        // endregion
 
-            /**
-             * Offset in pixels from the bottom of the screen when fixing element to viewport.
-             * @default 0
-             */
-            bottomOffset: number;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback when element is repositioned from layout change.
+         */
+        onReposition(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Callback when 'requestAnimationFrame' fires from scroll handler.
+         */
+        onScroll(this: JQuery): void;
 
-            /**
-             * Callback when element is repositioned from layout change.
-             */
-            onReposition(this: JQuery): void;
+        /**
+         * Callback when element is fixed to page.
+         */
+        onStick(this: JQuery): void;
 
-            /**
-             * Callback when 'requestAnimationFrame' fires from scroll handler.
-             */
-            onScroll(this: JQuery): void;
+        /**
+         * Callback when element is unfixed from page.
+         */
+        onUnstick(this: JQuery): void;
 
-            /**
-             * Callback when element is fixed to page.
-             */
-            onStick(this: JQuery): void;
+        /**
+         * Callback when element is bound to top of parent container.
+         */
+        onTop(this: JQuery): void;
 
-            /**
-             * Callback when element is unfixed from page.
-             */
-            onUnstick(this: JQuery): void;
+        /**
+         * Callback when element is bound to bottom of parent container.
+         */
+        onBottom(this: JQuery): void;
 
-            /**
-             * Callback when element is bound to top of parent container.
-             */
-            onTop(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback when element is bound to bottom of parent container.
-             */
-            onBottom(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Class names used to determine element state.
+         */
+        className: Sticky.ClassNameSettings;
 
-            // region DOM Settings
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Sticky.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Sticky'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'sticky'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Sticky.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Sticky.ErrorSettings;
+    namespace Sticky {
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface ClassNames {
+                /**
+                 * @default 'bound'
+                 */
+                bound: string;
 
-        namespace Sticky {
-            type ClassNameSettings = ClassNameSettings.Param;
+                /**
+                 * @default 'fixed'
+                 */
+                fixed: string;
 
-            namespace ClassNameSettings {
-                type Param = (
-                    | Pick<_Impl, 'bound'>
-                    | Pick<_Impl, 'fixed'>
-                    | Pick<_Impl, 'supported'>
-                    | Pick<_Impl, 'top'>
-                    | Pick<_Impl, 'bottom'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'native'
+                 */
+                supported: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'bound'
-                     */
-                    bound: string;
+                /**
+                 * @default 'top'
+                 */
+                top: string;
 
-                    /**
-                     * @default 'fixed'
-                     */
-                    fixed: string;
-
-                    /**
-                     * @default 'native'
-                     */
-                    supported: string;
-
-                    /**
-                     * @default 'top'
-                     */
-                    top: string;
-
-                    /**
-                     * @default 'bottom'
-                     */
-                    bottom: string;
-                }
+                /**
+                 * @default 'bottom'
+                 */
+                bottom: string;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'Sticky element must be inside a relative container'
+                 */
+                container: string;
 
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'container'>
-                    | Pick<_Impl, 'visible'>
-                    | Pick<_Impl, 'method'>
-                    | Pick<_Impl, 'invalidContext'>
-                    | Pick<_Impl, 'elementSize'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'Element is hidden, you must call refresh after element becomes visible'
+                 */
+                visible: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'Sticky element must be inside a relative container'
-                     */
-                    container: string;
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
 
-                    /**
-                     * @default 'Element is hidden, you must call refresh after element becomes visible'
-                     */
-                    visible: string;
+                /**
+                 * @default 'Context specified does not exist'
+                 */
+                invalidContext: string;
 
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
-
-                    /**
-                     * @default 'Context specified does not exist'
-                     */
-                    invalidContext: string;
-
-                    /**
-                     * @default 'Sticky element is larger than its container, cannot create sticky.'
-                     */
-                    elementSize: string;
-                }
+                /**
+                 * @default 'Sticky element is larger than its container, cannot create sticky.'
+                 */
+                elementSize: string;
             }
         }
     }

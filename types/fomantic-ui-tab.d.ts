@@ -48,379 +48,313 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof TabSettings>(behavior: 'setting', name: K, value?: undefined): TabSettings._Impl[K];
-        <K extends keyof TabSettings>(behavior: 'setting', name: K, value: TabSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: TabSettings): JQuery;
-        (settings?: TabSettings): JQuery;
+        <K extends keyof TabSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<TabSettings, keyof TabSettings>>;
+        <K extends keyof TabSettings>(behavior: 'setting', name: K, value: TabSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<TabSettings, keyof TabSettings>>): JQuery;
+        (settings?: Partial<Pick<TabSettings, keyof TabSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/tab.html#/settings}
      */
-    type TabSettings = TabSettings.Param;
+    interface TabSettings {
+        // region Tab Settings
 
-    namespace TabSettings {
-        type Param = (
-            | Pick<_Impl, 'auto'>
-            | Pick<_Impl, 'deactivate'>
-            | Pick<_Impl, 'history'>
-            | Pick<_Impl, 'ignoreFirstLoad'>
-            | Pick<_Impl, 'evaluateScripts'>
-            | Pick<_Impl, 'autoTabActivation'>
-            | Pick<_Impl, 'alwaysRefresh'>
-            | Pick<_Impl, 'deactivate'>
-            | Pick<_Impl, 'cacheType'>
-            | Pick<_Impl, 'cache'>
-            | Pick<_Impl, 'apiSettings'>
-            | Pick<_Impl, 'historyType'>
-            | Pick<_Impl, 'path'>
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'childrenOnly'>
-            | Pick<_Impl, 'maxDepth'>
-            | Pick<_Impl, 'onFirstLoad'>
-            | Pick<_Impl, 'onLoad'>
-            | Pick<_Impl, 'onRequest'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onBeforeChange'>
-            | Pick<_Impl, 'templates'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'metadata'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Whether tab should load remote content as same url as history.
+         * @default false
+         */
+        auto: boolean;
 
-        interface _Impl {
-            // region Tab Settings
+        /**
+         * When set to 'siblings' will only deactivate elements that are DOM siblings with the activated element.
+         * When set to 'all' the component will deactivate all other elements initialized at the same time.
+         * @default 'siblings'
+         */
+        deactivate: 'siblings' | 'all';
 
-            /**
-             * Whether tab should load remote content as same url as history.
-             * @default false
-             */
-            auto: boolean;
+        /**
+         * Whether to record history events for tab changes.
+         * @default false
+         */
+        history: boolean;
 
-            /**
-             * When set to 'siblings' will only deactivate elements that are DOM siblings with the activated element.
-             * When set to 'all' the component will deactivate all other elements initialized at the same time.
-             * @default 'siblings'
-             */
-            deactivate: 'siblings' | 'all';
+        /**
+         * Do not load content remotely on first tab load.
+         * Useful when open tab is rendered on server.
+         * @default false
+         */
+        ignoreFirstLoad: boolean;
 
-            /**
-             * Whether to record history events for tab changes.
-             * @default false
-             */
-            history: boolean;
+        /**
+         * Whether inline scripts in tab HTML should be parsed on tab load.
+         * Defaults to 'once', parsing only on first load.
+         * Can also be set to 'true' or 'false' to always parse or never parse inline scripts.
+         * @default 'once'
+         */
+        evaluateScripts: 'once' | boolean;
 
-            /**
-             * Do not load content remotely on first tab load.
-             * Useful when open tab is rendered on server.
-             * @default false
-             */
-            ignoreFirstLoad: boolean;
+        /**
+         * When 'true' and no active tab exists, the first available tab will be activated.
+         * When a string is given and no active tab exists, the tab those named path matches the string will be activated.
+         * When 'false' no active tab detection will happen.
+         * @default true
+         */
+        autoTabActivation: boolean | string;
 
-            /**
-             * Whether inline scripts in tab HTML should be parsed on tab load.
-             * Defaults to 'once', parsing only on first load.
-             * Can also be set to 'true' or 'false' to always parse or never parse inline scripts.
-             * @default 'once'
-             */
-            evaluateScripts: 'once' | boolean;
+        /**
+         * Tab should reload content every time it is opened.
+         * @default false
+         */
+        alwaysRefresh: boolean;
 
-            /**
-             * When 'true' and no active tab exists, the first available tab will be activated.
-             * When a string is given and no active tab exists, the tab those named path matches the string will be activated.
-             * When 'false' no active tab detection will happen.
-             * @default true
-             */
-            autoTabActivation: boolean | string;
+        /**
+         * Can be set to either 'response', 'DOM' or 'html'.
+         * Using 'DOM' will cache the a clone of the DOM tree, preserving all events as they existed on render.
+         * 'response' will cache the original response on load, this way callbacks always receive the same content.
+         * Using 'html' will cache the resulting html after all callbacks, making sure any changes to content are preserved.
+         * @default 'response'
+         */
+        cacheType: 'response' | 'DOM' | 'html';
 
-            /**
-             * Tab should reload content every time it is opened.
-             * @default false
-             */
-            alwaysRefresh: boolean;
+        /**
+         * Tab should cache content after loading locally to avoid server trip on second load.
+         * @default true
+         */
+        cache: boolean;
 
-            /**
-             * Can be set to either 'response', 'DOM' or 'html'.
-             * Using 'DOM' will cache the a clone of the DOM tree, preserving all events as they existed on render.
-             * 'response' will cache the original response on load, this way callbacks always receive the same content.
-             * Using 'html' will cache the resulting html after all callbacks, making sure any changes to content are preserved.
-             * @default 'response'
-             */
-            cacheType: 'response' | 'DOM' | 'html';
+        /**
+         * Settings object for '$.api' call.
+         * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
+         * @default false
+         */
+        apiSettings: false | FomanticUI.APISettings;
 
-            /**
-             * Tab should cache content after loading locally to avoid server trip on second load.
-             * @default true
-             */
-            cache: boolean;
+        /**
+         * Can be set to 'hash' or 'state'.
+         * 'hash' will use an in-page link to create history events.
+         * 'state' will use DOM History and load pages from server on refresh.
+         * @see {@link https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history}
+         * @default 'hash'
+         */
+        historyType: 'hash' | 'state';
 
-            /**
-             * Settings object for '$.api' call.
-             * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
-             * @default false
-             */
-            apiSettings: false | FomanticUI.APISettings;
+        /**
+         * When using historyType 'state' you must specify the base URL for all internal links.
+         * @default false
+         */
+        path: boolean;
 
-            /**
-             * Can be set to 'hash' or 'state'.
-             * 'hash' will use an in-page link to create history events.
-             * 'state' will use DOM History and load pages from server on refresh.
-             * @see {@link https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history}
-             * @default 'hash'
-             */
-            historyType: 'hash' | 'state';
+        /**
+         * Tabs are limited to those found inside this context.
+         * @default false
+         */
+        context: false | string;
 
-            /**
-             * When using historyType 'state' you must specify the base URL for all internal links.
-             * @default false
-             */
-            path: boolean;
+        /**
+         * If enabled limits tabs to children of passed context.
+         * @default false
+         */
+        childrenOnly: boolean;
 
-            /**
-             * Tabs are limited to those found inside this context.
-             * @default false
-             */
-            context: false | string;
+        /**
+         * Maximum amount of nested tabs allowed (avoids recursion).
+         * @default 25
+         */
+        maxDepth: boolean;
 
-            /**
-             * If enabled limits tabs to children of passed context.
-             * @default false
-             */
-            childrenOnly: boolean;
+        // endregion
 
-            /**
-             * Maximum amount of nested tabs allowed (avoids recursion).
-             * @default 25
-             */
-            maxDepth: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback only the first time a tab is loaded.
+         */
+        onFirstLoad(this: JQuery, tabPath: string, parameterArray: string, historyEvent: string): void;
 
-            // region Callbacks
+        /**
+         * Callback every time a tab is loaded.
+         */
+        onLoad(this: JQuery, tabPath: string, parameterArray: string, historyEvent: string): void;
 
-            /**
-             * Callback only the first time a tab is loaded.
-             */
-            onFirstLoad(this: JQuery, tabPath: string, parameterArray: string, historyEvent: string): void;
+        /**
+         * Called when a tab begins loading remote content.
+         */
+        onRequest(this: JQuery, tabPath: string): void;
 
-            /**
-             * Callback every time a tab is loaded.
-             */
-            onLoad(this: JQuery, tabPath: string, parameterArray: string, historyEvent: string): void;
+        /**
+         * Called after a tab becomes visible.
+         */
+        onVisible(this: JQuery, tabPath: string): void;
 
-            /**
-             * Called when a tab begins loading remote content.
-             */
-            onRequest(this: JQuery, tabPath: string): void;
+        /**
+         * Called before a tab is about to be changed.
+         * Returning 'false' will cancel the tab change.
+         */
+        onBeforeChange(this: JQuery, tabPath: string): boolean;
 
-            /**
-             * Called after a tab becomes visible.
-             */
-            onVisible(this: JQuery, tabPath: string): void;
+        // endregion
 
-            /**
-             * Called before a tab is about to be changed.
-             * Returning 'false' will cancel the tab change.
-             */
-            onBeforeChange(this: JQuery, tabPath: string): boolean;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Functions used to return content.
+         */
+        templates: Tab.TemplateSettings;
 
-            // region DOM Settings
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Tab.SelectorSettings;
 
-            /**
-             * Functions used to return content.
-             */
-            templates: Tab.TemplateSettings;
+        /**
+         * DOM metadata used by module.
+         */
+        metadata: Tab.MetadataSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Tab.SelectorSettings;
+        /**
+         * Class names used to determine element state.
+         */
+        className: Tab.ClassNameSettings;
 
-            /**
-             * DOM metadata used by module.
-             */
-            metadata: Tab.MetadataSettings;
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Tab.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Tab'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'tab'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Tab.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Tab.ErrorSettings;
+    namespace Tab {
+        type TemplateSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>>;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface Templates {
+                /**
+                 * Returns page title
+                 * @default Function
+                 */
+                determineTitle: Function;
+            }
+        
+            interface Selectors {
+                /**
+                 * @default '.ui.tab'
+                 */
+                tabs: string;
 
-        namespace Tab {
-            type TemplateSettings = TemplateSettings.Param;
+                /**
+                 * @default '.ui:not(.menu)'
+                 */
+                parent: string;
+            }
+        
+            interface Metadatas {
+                /**
+                 * @default 'tab'
+                 */
+                tab: string;
 
-            namespace TemplateSettings {
-                type Param = Pick<_Impl, 'determineTitle'> & Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'loaded'
+                 */
+                loaded: string;
 
-                interface _Impl {
-                    /**
-                     * Returns page title
-                     * @default Function
-                     */
-                    determineTitle: Function;
-                }
+                /**
+                 * @default 'promise'
+                 */
+                promise: string;
             }
 
-            type SelectorSettings = SelectorSettings.Param;
+            interface ClassNames {
+                /**
+                 * @default 'loading'
+                 */
+                loading: string;
 
-            namespace SelectorSettings {
-                type Param = (Pick<_Impl, 'tabs'> | Pick<_Impl, 'parent'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default '.ui.tab'
-                     */
-                    tabs: string;
-
-                    /**
-                     * @default '.ui:not(.menu)'
-                     */
-                    parent: string;
-                }
+                /**
+                 * @default 'active'
+                 */
+                active: string;
             }
+            
+            interface Errors {
+                /**
+                 * @default 'You attempted to load content without API module'
+                 */
+                api: string;
 
-            type MetadataSettings = MetadataSettings.Param;
+                /**
+                 * @default 'The method you called is not defined'
+                 */
+                method: string;
 
-            namespace MetadataSettings {
-                type Param = (Pick<_Impl, 'tab'> | Pick<_Impl, 'loaded'> | Pick<_Impl, 'promise'>) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'Activated tab cannot be found for this context.'
+                 */
+                missingTab: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'tab'
-                     */
-                    tab: string;
+                /**
+                 * @default 'The tab you specified is missing a content url.'
+                 */
+                noContent: string;
 
-                    /**
-                     * @default 'loaded'
-                     */
-                    loaded: string;
+                /**
+                 * @default 'History enabled, but no path was specified'
+                 */
+                path: string;
 
-                    /**
-                     * @default 'promise'
-                     */
-                    promise: string;
-                }
-            }
+                /**
+                 * @default 'Max recursive depth reached'
+                 */
+                recursion: string;
 
-            type ClassNameSettings = ClassNameSettings.Param;
-
-            namespace ClassNameSettings {
-                type Param = (Pick<_Impl, 'loading'> | Pick<_Impl, 'active'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'loading'
-                     */
-                    loading: string;
-
-                    /**
-                     * @default 'active'
-                     */
-                    active: string;
-                }
-            }
-
-            type ErrorSettings = ErrorSettings.Param;
-
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'api'>
-                    | Pick<_Impl, 'method'>
-                    | Pick<_Impl, 'missingTab'>
-                    | Pick<_Impl, 'noContent'>
-                    | Pick<_Impl, 'path'>
-                    | Pick<_Impl, 'recursion'>
-                    | Pick<_Impl, 'state'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'You attempted to load content without API module'
-                     */
-                    api: string;
-
-                    /**
-                     * @default 'The method you called is not defined'
-                     */
-                    method: string;
-
-                    /**
-                     * @default 'Activated tab cannot be found for this context.'
-                     */
-                    missingTab: string;
-
-                    /**
-                     * @default 'The tab you specified is missing a content url.'
-                     */
-                    noContent: string;
-
-                    /**
-                     * @default 'History enabled, but no path was specified'
-                     */
-                    path: string;
-
-                    /**
-                     * @default 'Max recursive depth reached'
-                     */
-                    recursion: string;
-
-                    /**
-                     * @default 'The state library has not been initialized'
-                     */
-                    state: string;
-                }
+                /**
+                 * @default 'The state library has not been initialized'
+                 */
+                state: string;
             }
         }
     }

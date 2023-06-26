@@ -23,296 +23,247 @@ declare namespace FomanticUI {
         (behavior: 'clear'): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof NagSettings>(behavior: 'setting', name: K, value?: undefined): NagSettings._Impl[K];
-        <K extends keyof NagSettings>(behavior: 'setting', name: K, value: NagSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: NagSettings): JQuery;
-        (settings?: NagSettings): JQuery;
+        <K extends keyof NagSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<NagSettings, keyof NagSettings>>;
+        <K extends keyof NagSettings>(behavior: 'setting', name: K, value: NagSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<NagSettings, keyof NagSettings>>): JQuery;
+        (settings?: NagSettings): Partial<Pick<NagSettings, keyof NagSettings>>;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/nag.html#/settings}
      */
-    type NagSettings = NagSettings.Param;
+    interface NagSettings {
+        // region Nag Settings
 
-    namespace NagSettings {
-        type Param = (
-            | Pick<_Impl, 'persist'>
-            | Pick<_Impl, 'displayTime'>
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'detachable'>
-            | Pick<_Impl, 'expires'>
-            | Pick<_Impl, 'domain'>
-            | Pick<_Impl, 'path'>
-            | Pick<_Impl, 'secure'>
-            | Pick<_Impl, 'samesite'>
-            | Pick<_Impl, 'storageMethod'>
-            | Pick<_Impl, 'key'>
-            | Pick<_Impl, 'value'>
-            | Pick<_Impl, 'expirationKey'>
-            | Pick<_Impl, 'animation'>
-            | Pick<_Impl, 'duration'>
-            | Pick<_Impl, 'easing'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * 'true' will show the nag, even if it is already dismissed, but will keep a set expiration date intact.
+         * @default false
+         */
+        persist: boolean;
 
-        interface _Impl {
-            // region Nag Settings
+        /**
+         * Time in milliseconds until nag gets automatically hidden.
+         * Zero requires manually dismissal, otherwise hides on its own.
+         * @default 0
+         */
+        displayTime: number;
 
-            /**
-             * 'true' will show the nag, even if it is already dismissed, but will keep a set expiration date intact.
-             * @default false
-             */
-            persist: boolean;
+        /**
+         * Selector or jquery object specifying the area to attach the nag to.
+         * @default 'body'
+         */
+        context: string | JQuery;
 
-            /**
-             * Time in milliseconds until nag gets automatically hidden.
-             * Zero requires manually dismissal, otherwise hides on its own.
-             * @default 0
-             */
-            displayTime: number;
+        /**
+         * If set to 'true' will re-attach the nag to the given 'context' node.
+         * @default false
+         */
+        detachable: boolean;
 
-            /**
-             * Selector or jquery object specifying the area to attach the nag to.
-             * @default 'body'
-             */
-            context: string | JQuery;
+        /**
+         * Amount of days or a Date Object until expiration of cookie/localstorage.
+         * @default 30
+         */
+        expires: number;
 
-            /**
-             * If set to 'true' will re-attach the nag to the given 'context' node.
-             * @default false
-             */
-            detachable: boolean;
+        /**
+         * cookie option.
+         * @default false
+         */
+        domain: false | string;
 
-            /**
-             * Amount of days or a Date Object until expiration of cookie/localstorage.
-             * @default 30
-             */
-            expires: number;
+        /**
+         * cookie option.
+         * @default '/'
+         */
+        path: string;
 
-            /**
-             * cookie option.
-             * @default false
-             */
-            domain: false | string;
+        /**
+         * cookie option.
+         * @default false
+         */
+        secure: boolean;
 
-            /**
-             * cookie option.
-             * @default '/'
-             */
-            path: string;
+        /**
+         * cookie option.
+         * @default false
+         */
+        samesite: boolean;
 
-            /**
-             * cookie option.
-             * @default false
-             */
-            secure: boolean;
+        /**
+         * Storage to store the expiration date when the nag is dismissed.
+         * Can be either 'cookie', 'localstorage' or 'sessionstorage'.
+         * @default 'cookie'
+         */
+        storageMethod: 'cookie' | 'localstorage' | 'sessionstorage';
 
-            /**
-             * cookie option.
-             * @default false
-             */
-            samesite: boolean;
+        /**
+         * Key to store in dismissed localstorage/cookie.
+         * @default 'nag'
+         */
+        key: string;
 
-            /**
-             * Storage to store the expiration date when the nag is dismissed.
-             * Can be either 'cookie', 'localstorage' or 'sessionstorage'.
-             * @default 'cookie'
-             */
-            storageMethod: 'cookie' | 'localstorage' | 'sessionstorage';
+        /**
+         * Value to store in dismissed localstorage/cookie.
+         * @default 'dismiss'
+         */
+        value: string;
 
-            /**
-             * Key to store in dismissed localstorage/cookie.
-             * @default 'nag'
-             */
-            key: string;
+        /**
+         * Key suffix to support expiration in localstorage.
+         * @default 'ExpirationDate'
+         */
+        expirationKey: string;
 
-            /**
-             * Value to store in dismissed localstorage/cookie.
-             * @default 'dismiss'
-             */
-            value: string;
+        /**
+         * Animation transition style for open/close animation.
+         * Can be either 'slide' or 'fade'.
+         * @default {}
+         */
+        animation: object; // TODO
 
-            /**
-             * Key suffix to support expiration in localstorage.
-             * @default 'ExpirationDate'
-             */
-            expirationKey: string;
+        /**
+         * Duration of open/close animation.
+         * @default 500
+         */
+        duration: number;
 
-            /**
-             * Animation transition style for open/close animation.
-             * Can be either 'slide' or 'fade'.
-             * @default {}
-             */
-            animation: object; // TODO
+        /**
+         * Easing of open/close animation. EaseOutQuad is included with nag.
+         * @see {@link https://gsgd.co.uk/sandbox/jquery/easing/}
+         * @default 'easeOutQuad'
+         */
+        easing: string;
 
-            /**
-             * Duration of open/close animation.
-             * @default 500
-             */
-            duration: number;
+        // endregion
 
-            /**
-             * Easing of open/close animation. EaseOutQuad is included with nag.
-             * @see {@link https://gsgd.co.uk/sandbox/jquery/easing/}
-             * @default 'easeOutQuad'
-             */
-            easing: string;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback before nag is shown.
+         * Returning 'false' from this callback will cancel the nag from showing.
+         */
+        onShow(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Callback after nag is shown.
+         */
+        onVisible(this: JQuery): void;
 
-            /**
-             * Callback before nag is shown.
-             * Returning 'false' from this callback will cancel the nag from showing.
-             */
-            onShow(this: JQuery): void;
+        /**
+         * Callback before nag is hidden.
+         * Returning 'false' from this callback will cancel the nag from hiding.
+         */
+        onHide(this: JQuery): void;
 
-            /**
-             * Callback after nag is shown.
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Callback after nag is hidden.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Callback before nag is hidden.
-             * Returning 'false' from this callback will cancel the nag from hiding.
-             */
-            onHide(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback after nag is hidden.
-             */
-            onHidden(this: JQuery): void;
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Nag.SelectorSettings;
 
-            // endregion
+        /**
+         * Class names used to determine element state.
+         */
+        className: Nag.ClassNameSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Nag.SelectorSettings;
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Nag.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Nag'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'nag'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        error: Nag.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Nag.ErrorSettings;
+    namespace Nag {
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
-
-        namespace Nag {
-            type SelectorSettings = SelectorSettings.Param;
-
-            namespace SelectorSettings {
-                type Param = Pick<_Impl, 'close'> & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default '> .close.icon'
-                     */
-                    close: string;
-                }
+        namespace Settings {
+            interface Selectors {
+                /**
+                 * @default '> .close.icon'
+                 */
+                close: string;
             }
+            
+            interface ClassNames {
+                /**
+                 * @default 'bottom'
+                 */
+                bottom: string;
 
-            type ClassNameSettings = ClassNameSettings.Param;
-
-            namespace ClassNameSettings {
-                type Param = (Pick<_Impl, 'bottom'> | Pick<_Impl, 'fixed'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'bottom'
-                     */
-                    bottom: string;
-
-                    /**
-                     * @default 'fixed'
-                     */
-                    fixed: string;
-                }
+                /**
+                 * @default 'fixed'
+                 */
+                fixed: string;
             }
+        
+            interface Errors {
+                /**
+                 * @default 'Unsupported storage method'
+                 */
+                noStorage: string;
 
-            type ErrorSettings = ErrorSettings.Param;
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
 
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'noStorage'>
-                    | Pick<_Impl, 'method'>
-                    | Pick<_Impl, 'setItem'>
-                    | Pick<_Impl, 'expiresFormat'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'Unexpected error while setting value'
+                 */
+                setItem: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'Unsupported storage method'
-                     */
-                    noStorage: string;
-
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
-
-                    /**
-                     * @default 'Unexpected error while setting value'
-                     */
-                    setItem: string;
-
-                    /**
-                     * @default '"expires" must be a number of days or a Date Object'
-                     */
-                    expiresFormat: string;
-                }
+                /**
+                 * @default '"expires" must be a number of days or a Date Object'
+                 */
+                expiresFormat: string;
             }
         }
     }

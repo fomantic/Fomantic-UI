@@ -57,315 +57,269 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined): EmbedSettings._Impl[K];
-        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value: EmbedSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: EmbedSettings): JQuery;
-        (settings?: EmbedSettings): JQuery;
+        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<EmbedSettings, keyof EmbedSettings>>;
+        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value: EmbedSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;
+        (settings?: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/embed.html#/settings}
      */
-    type EmbedSettings = EmbedSettings.Param;
+    interface EmbedSettings {
+        // region Embed Settings
 
-    namespace EmbedSettings {
-        type Param = (
-            | Pick<_Impl, 'icon'>
-            | Pick<_Impl, 'source'>
-            | Pick<_Impl, 'url'>
-            | Pick<_Impl, 'id'>
-            | Pick<_Impl, 'parameters'>
-            | Pick<_Impl, 'autoplay'>
-            | Pick<_Impl, 'color'>
-            | Pick<_Impl, 'hd'>
-            | Pick<_Impl, 'brandedUI'>
-            | Pick<_Impl, 'onCreate'>
-            | Pick<_Impl, 'onDisplay'>
-            | Pick<_Impl, 'onPlaceholderDisplay'>
-            | Pick<_Impl, 'onEmbed'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'metadata'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'templates'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Specifies an icon to use with placeholder content.
+         * @default false
+         */
+        icon: false | string;
 
-        interface _Impl {
-            // region Embed Settings
+        /**
+         * Specifies a source to use, if no source is provided it will be determined from the domain of a specified url.
+         * @default false
+         */
+        source: false | string;
 
-            /**
-             * Specifies an icon to use with placeholder content.
-             * @default false
-             */
-            icon: false | string;
+        /**
+         * Specifies a url to use for embed.
+         * @default false
+         */
+        url: false | string;
 
-            /**
-             * Specifies a source to use, if no source is provided it will be determined from the domain of a specified url.
-             * @default false
-             */
-            source: false | string;
+        /**
+         * Specifies an id value to replace with the '{id}' value found in templated urls.
+         * @default false
+         */
+        id: false | string;
 
-            /**
-             * Specifies a url to use for embed.
-             * @default false
-             */
-            url: false | string;
+        /**
+         * Specify an object containing key/value pairs to add to the iframes GET parameters.
+         * @default false
+         */
+        parameters: false | object;
 
-            /**
-             * Specifies an id value to replace with the '{id}' value found in templated urls.
-             * @default false
-             */
-            id: false | string;
+        // endregion
 
-            /**
-             * Specify an object containing key/value pairs to add to the iframes GET parameters.
-             * @default false
-             */
-            parameters: false | object;
+        // region Video Settings
 
-            // endregion
+        /**
+         * Default setting 'auto' will only autoplay content when a placeholder is specified.
+         * Setting to 'true' or 'false' will force autoplay.
+         * @default 'auto'
+         */
+        autoplay: 'auto' | boolean;
 
-            // region Video Settings
+        /**
+         * Default setting 'auto' will only autoplay content when a placeholder is specified.
+         * Setting to 'true' or 'false' will force autoplay.
+         * @default '#444'
+         */
+        color: string;
 
-            /**
-             * Default setting 'auto' will only autoplay content when a placeholder is specified.
-             * Setting to 'true' or 'false' will force autoplay.
-             * @default 'auto'
-             */
-            autoplay: 'auto' | boolean;
+        /**
+         * Whether to prefer HD content.
+         * @default true
+         */
+        hd: boolean;
 
-            /**
-             * Default setting 'auto' will only autoplay content when a placeholder is specified.
-             * Setting to 'true' or 'false' will force autoplay.
-             * @default '#444444'
-             */
-            color: string;
+        /**
+         * Whether to show networks branded UI like title cards, or after video calls to action.
+         * @default false
+         */
+        brandedUI: boolean;
 
-            /**
-             * Whether to prefer HD content.
-             * @default true
-             */
-            hd: boolean;
+        // endregion
 
-            /**
-             * Whether to show networks branded UI like title cards, or after video calls to action.
-             * @default false
-             */
-            brandedUI: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback when iframe is generated.
+         */
+        onCreate(this: JQuery, url: string): void;
 
-            // region Callbacks
+        /**
+         * Whenever an iframe contents is shown.
+         */
+        onDisplay(this: JQuery): void;
 
-            /**
-             * Callback when iframe is generated.
-             */
-            onCreate(this: JQuery, url: string): void;
+        /**
+         * Whenever the module is cleared.
+         */
+        onReset(this: JQuery): void;
 
-            /**
-             * Whenever an iframe contents is shown.
-             */
-            onDisplay(this: JQuery): void;
+        /**
+         * Callback immediately before Embed is removed from DOM.
+         */
+        onPlaceholderDisplay(this: JQuery): void;
 
-            /**
-             * Callback immediately before Embed is removed from DOM.
-             */
-            onPlaceholderDisplay(this: JQuery): void;
+        /**
+         * Callback when module parameters are determined.
+         * Allows you to adjust parameters at run time by returning a new parameters object.
+         */
+        onEmbed(this: JQuery, parameters: object): void;
 
-            /**
-             * Callback when module parameters are determined.
-             * Allows you to adjust parameters at run time by returning a new parameters object.
-             */
-            onEmbed(this: JQuery, parameters: object): void;
+        // endregion
 
-            // endregion
+        // region DOM Settings
 
-            // region DOM Settings
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Embed.SelectorSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Embed.SelectorSettings;
+        /**
+         * HTML Data attributes used to store data.
+         */
+        metadata: Embed.MetadataSettings;
 
-            /**
-             * HTML Data attributes used to store data.
-             */
-            metadata: Embed.MetadataSettings;
+        /**
+         * Class names used to determine element state.
+         */
+        className: Embed.ClassNameSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Embed.ClassNameSettings;
+        /**
+         *
+         */
+        templates: Embed.TemplateSettings;
 
-            /**
-             *
-             */
-            templates: Embed.TemplateSettings;
+        // endregion
 
-            // endregion
+        // region Debug Settings
 
-            // region Debug Settings
+        /**
+         * Name used in log statements
+         * @default 'Embed''
+         */
+        name: string;
 
-            /**
-             * Name used in log statements
-             */
-            name: string;
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'embed''
+         */
+        namespace: string;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             */
-            namespace: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             */
-            silent: boolean;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Debug output to console
-             */
-            debug: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             */
-            performance: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Debug output includes all internal behaviors
-             */
-            verbose: boolean;
+        error: Embed.ErrorSettings;
 
-            error: Embed.ErrorSettings;
+        // endregion
+    }
 
-            // endregion
-        }
+    namespace Embed {
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type TemplateSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace Embed {
-            type SelectorSettings = SelectorSettings.Param;
+        namespace Settings {
+            interface Selectors {
+                /**
+                 * @default '.embed'
+                 */
+                embed: string;
 
-            namespace SelectorSettings {
-                type Param = (Pick<_Impl, 'embed'> | Pick<_Impl, 'placeholder'> | Pick<_Impl, 'play'>) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default '.placeholder'
+                 */
+                placeholder: string;
 
-                interface _Impl {
-                    /**
-                     * @default '.embed'
-                     */
-                    embed: string;
-
-                    /**
-                     * @default '.placeholder'
-                     */
-                    placeholder: string;
-
-                    /**
-                     * @default '.play'
-                     */
-                    play: string;
-                }
+                /**
+                 * @default '.icon'
+                 */
+                icon: string;
             }
 
-            type MetadataSettings = MetadataSettings.Param;
+            interface Metadatas {
+                /**
+                 * @default 'id'
+                 */
+                id: string;
 
-            namespace MetadataSettings {
-                type Param = (
-                    | Pick<_Impl, 'id'>
-                    | Pick<_Impl, 'icon'>
-                    | Pick<_Impl, 'placeholder'>
-                    | Pick<_Impl, 'source'>
-                    | Pick<_Impl, 'url'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'icon'
+                 */
+                icon: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'id'
-                     */
-                    id: string;
+                /**
+                 * @default 'placeholder'
+                 */
+                placeholder: string;
 
-                    /**
-                     * @default 'icon'
-                     */
-                    icon: string;
+                /**
+                 * @default 'source'
+                 */
+                source: string;
 
-                    /**
-                     * @default 'placeholder'
-                     */
-                    placeholder: string;
-
-                    /**
-                     * @default 'source'
-                     */
-                    source: string;
-
-                    /**
-                     * @default 'url'
-                     */
-                    url: string;
-                }
+                /**
+                 * @default 'url'
+                 */
+                url: string;
             }
 
-            type ClassNameSettings = ClassNameSettings.Param;
+            interface ClassNames {
+                /**
+                 * @default 'active'
+                 */
+                active: string;
 
-            namespace ClassNameSettings {
-                type Param = (Pick<_Impl, 'active'> | Pick<_Impl, 'embed'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'active'
-                     */
-                    active: string;
-
-                    /**
-                     * @default 'embed'
-                     */
-                    embed: string;
-                }
+                /**
+                 * @default 'embed'
+                 */
+                embed: string;
             }
 
-            type TemplateSettings = TemplateSettings.Param;
+            interface Templates {
+                /**
+                 * @default function
+                 */
+                deQuote(string: string, encode: boolean): string;
 
-            namespace TemplateSettings {
-                type Param = (Pick<_Impl, 'iframe'> | Pick<_Impl, 'placeholder'>) & Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default function
+                 */
+                iframe(url: string, parameters: any): string;
 
-                interface _Impl {
-                    /**
-                     * @default function
-                     */
-                    iframe: Function;
-
-                    /**
-                     * @default function
-                     */
-                    placeholder: Function;
-                }
+                /**
+                 * @default function
+                 */
+                placeholder(image: string, icon: string): string;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'No URL specified'
+                 */
+                noURL: string;
 
-            namespace ErrorSettings {
-                type Param = (Pick<_Impl, 'noURL'> | Pick<_Impl, 'method'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'No URL specified'
-                     */
-                    noURL: string;
-
-                    /**
-                     * @default 'The method you called is not defined'
-                     */
-                    method: string;
-                }
+                /**
+                 * @default 'The method you called is not defined'
+                 */
+                method: string;
             }
         }
     }
