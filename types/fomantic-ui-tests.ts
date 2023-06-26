@@ -1,9 +1,11 @@
-$().accordion(); // $ExpectType JQuery<HTMLElement>
+/// <reference path="index.d.ts" />
 
+$().accordion(); // $ExpectType JQuery<HTMLElement>
+$().api();// $ExpectType JQuery
 $().calendar(); // $ExpectType JQuery<HTMLElement>
 $().checkbox(); // $ExpectType JQuery<HTMLElement>
 $('body').dimmer(); // $ExpectType JQuery<HTMLElement>
-
+$().dropdown(); // $ExpectType JQuery<HTMLElement>
 $().embed(); // $ExpectType JQuery<HTMLElement>
 $().flyout(); // $ExpectType JQuery<HTMLElement>
 $().form(); // $ExpectType JQuery<HTMLElement>
