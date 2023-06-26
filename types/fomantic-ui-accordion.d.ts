@@ -28,209 +28,168 @@ declare namespace FomanticUI {
         (behavior: 'toggle', index: number): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof AccordionSettings>(
-            behavior: 'setting',
-            name: K,
-            value?: undefined,
-        ): AccordionSettings._Impl[K];
-        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value: AccordionSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: AccordionSettings): JQuery;
-        (settings?: AccordionSettings): JQuery;
+        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<AccordionSettings, keyof AccordionSettings>>;
+        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value: AccordionSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;
+        (settings?: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/accordion.html#/settings}
      */
-    type AccordionSettings = AccordionSettings.Param;
+    interface AccordionSettings {
+        // region Accordion Settings
 
-    namespace AccordionSettings {
-        type Param = (
-            | Pick<_Impl, 'exclusive'>
-            | Pick<_Impl, 'on'>
-            | Pick<_Impl, 'animateChildren'>
-            | Pick<_Impl, 'closeNested'>
-            | Pick<_Impl, 'collapsible'>
-            | Pick<_Impl, 'duration'>
-            | Pick<_Impl, 'easing'>
-            | Pick<_Impl, 'observeChanges'>
-            | Pick<_Impl, 'onOpening'>
-            | Pick<_Impl, 'onClosing'>
-            | Pick<_Impl, 'onChanging'>
-            | Pick<_Impl, 'onOpen'>
-            | Pick<_Impl, 'onClose'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'error'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'performance'>
-        ) & Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Only allow one section open at a time.
+         * @default true
+         */
+        exclusive?: boolean | undefined;
 
-        interface _Impl {
-            // region Accordion Settings
+        /**
+         * Event on 'title' that will cause accordion to open.
+         * @default 'click'
+         */
+        on: string;
 
-            /**
-             * Only allow one section open at a time.
-             * @default true
-             */
-            exclusive: boolean;
+        /**
+         * Whether child content opacity should be animated (may cause performance issues with many child elements).
+         * @default true
+         */
+        animateChildren: boolean;
 
-            /**
-             * Event on 'title' that will cause accordion to open.
-             * @default 'click'
-             */
-            on: string;
+        /**
+         * Close open nested accordion content when an element closes.
+         * @default false
+         */
+        closeNested: boolean;
 
-            /**
-             * Whether child content opacity should be animated (may cause performance issues with many child elements).
-             * @default true
-             */
-            animateChildren: boolean;
+        /**
+         * Allow active sections to collapse.
+         * @default true
+         */
+        collapsible: boolean;
 
-            /**
-             * Close open nested accordion content when an element closes.
-             * @default false
-             */
-            closeNested: boolean;
+        /**
+         * Duration in ms of opening animation.
+         * @default 350
+         */
+        duration: number;
 
-            /**
-             * Allow active sections to collapse.
-             * @default true
-             */
-            collapsible: boolean;
+        /**
+         * Easing of opening animation. EaseInOutQuint is included with accordion, for additional options you must include easing equations.
+         * @see {@link http://gsgd.co.uk/sandbox/jquery/easing/}
+         * @default 'easeOutQuad'
+         */
+        easing: string;
 
-            /**
-             * Duration in ms of opening animation.
-             * @default 350
-             */
-            duration: number;
+        /**
+         * Whether accordion should automatically refresh on DOM insertion
+         * @default true
+         */
+        observeChanges: boolean;
 
-            /**
-             * Easing of opening animation. EaseInOutQuint is included with accordion, for additional options you must include easing equations.
-             * @see {@link http://gsgd.co.uk/sandbox/jquery/easing/}
-             * @default 'easeOutQuad'
-             */
-            easing: string;
+        // endregion
 
-            /**
-             * Whether accordion should automatically refresh on DOM insertion
-             * @default true
-             */
-            observeChanges: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Callback before element opens.
+         */
+        onOpening(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Callback after element is open.
+         */
+        onOpen(this: JQuery): void;
 
-            /**
-             * Callback before element opens.
-             */
-            onOpening(this: JQuery): void;
+        /**
+         * Callback before element closes.
+         */
+        onClosing(this: JQuery): void;
 
-            /**
-             * Callback after element is open.
-             */
-            onOpen(this: JQuery): void;
+        /**
+         * Callback after element is closed.
+         */
+        onClose(this: JQuery): void;
 
-            /**
-             * Callback before element closes.
-             */
-            onClosing(this: JQuery): void;
+        /**
+         * Callback before element opens or closes.
+         */
+        onChanging(this: JQuery): void;
 
-            /**
-             * Callback after element is closed.
-             */
-            onClose(this: JQuery): void;
+        /**
+         * Callback before element opens or closes.
+         */
+        onChange(this: JQuery): void;
 
-            /**
-             * Callback before element opens or closes.
-             */
-            onChanging(this: JQuery): void;
+        // endregion
 
-            /**
-             * Callback before element opens or closes.
-             */
-            onChange(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Accordion.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Class names used to determine element state.
+         */
+        className: Accordion.ClassNameSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Accordion.SelectorSettings;
+        // endregion
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Accordion.ClassNameSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Accordion'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'accordion'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             * @default 'Accordion'
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             * @default 'accordion'
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             * @default false
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             * @default false
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             * @default true
-             */
-            performance: boolean;
+        error: Accordion.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             * @default false
-             */
-            verbose: boolean;
-
-            error: Accordion.ErrorSettings;
-
-            // endregion
-        }
+        // endregion
     }
 
     namespace Accordion {
-        type SelectorSettings = SelectorSettings.Param;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace SelectorSettings {
-            type Param = (
-                | Pick<_Impl, 'accordion'>
-                | Pick<_Impl, 'title'>
-                | Pick<_Impl, 'trigger'>
-                | Pick<_Impl, 'ignore'>
-                | Pick<_Impl, 'content'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        namespace Settings {
+            interface Selectors {
                 /**
                  * @default '.accordion'
                  */
@@ -256,14 +215,8 @@ declare namespace FomanticUI {
                  */
                 content: string;
             }
-        }
 
-        type ClassNameSettings = ClassNameSettings.Param;
-
-        namespace ClassNameSettings {
-            type Param = (Pick<_Impl, 'active'> | Pick<_Impl, 'animating'> | Pick<_Impl, 'transition'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface ClassNames {
                 /**
                  * @default 'active'
                  */
@@ -279,14 +232,8 @@ declare namespace FomanticUI {
                  */
                 transition: string;
             }
-        }
 
-        type ErrorSettings = ErrorSettings.Param;
-
-        namespace ErrorSettings {
-            type Param = Pick<_Impl, 'method'> & Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
                  */

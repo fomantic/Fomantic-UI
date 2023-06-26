@@ -49,328 +49,271 @@ declare namespace FomanticUI {
         (behavior: 'get settings'): FlyoutSettings;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value?: undefined): FlyoutSettings._Impl[K];
-        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value: FlyoutSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: FlyoutSettings): JQuery;
-        (settings?: FlyoutSettings): JQuery;
+        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
+        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value: FlyoutSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>): JQuery;
+        (settings?: Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/flyout.html#/settings}
      */
-    type FlyoutSettings = FlyoutSettings.Param;
+    interface FlyoutSettings {
+        // region Accordion Settings
 
-    namespace FlyoutSettings {
-        type Param = (
-            | Pick<_Impl, 'context'>
-            | Pick<_Impl, 'exclusive'>
-            | Pick<_Impl, 'closable'>
-            | Pick<_Impl, 'dimPage'>
-            | Pick<_Impl, 'blurring'>
-            | Pick<_Impl, 'autofocus'>
-            | Pick<_Impl, 'restoreFocus'>
-            | Pick<_Impl, 'keyboardShortcuts'>
-            | Pick<_Impl, 'scrollLock'>
-            | Pick<_Impl, 'returnScroll'>
-            | Pick<_Impl, 'delaySetup'>
-            | Pick<_Impl, 'autoShow'>
-            | Pick<_Impl, 'title'>
-            | Pick<_Impl, 'content'>
-            | Pick<_Impl, 'class'>
-            | Pick<_Impl, 'classTitle'>
-            | Pick<_Impl, 'classContent'>
-            | Pick<_Impl, 'classActions'>
-            | Pick<_Impl, 'closeIcon'>
-            | Pick<_Impl, 'actions'>
-            | Pick<_Impl, 'preserveHTML'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'onShow'>
-            | Pick<_Impl, 'onHide'>
-            | Pick<_Impl, 'onVisible'>
-            | Pick<_Impl, 'onHidden'>
-            | Pick<_Impl, 'onApprove'>
-            | Pick<_Impl, 'onDeny'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'regExp'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * Selector or jquery object specifying the area to dim.
+         * @default 'body'
+         */
+        context: string | JQuery;
 
-        interface _Impl {
-            // region Accordion Settings
+        /**
+         * Opening another flyout will dismiss the one displayed.
+         * Set to 'true' to allow multiple flyout at the same time.
+         * @default false
+         */
+        exclusive: boolean;
 
-            /**
-             * Selector or jquery object specifying the area to dim.
-             * @default 'body'
-             */
-            context: string | JQuery;
+        /**
+         * Setting to 'false' will not allow you to close the flyout by clicking on the dimmer.
+         * @default true
+         */
+        closable: boolean;
 
-            /**
-             * Opening another flyout will dismiss the one displayed.
-             * Set to 'true' to allow multiple flyout at the same time.
-             * @default false
-             */
-            exclusive: boolean;
+        /**
+         * Whether to dim 'context' contents when flyout is visible.
+         * @default true
+         */
+        dimPage: boolean;
 
-            /**
-             * Setting to 'false' will not allow you to close the flyout by clicking on the dimmer.
-             * @default true
-             */
-            closable: boolean;
+        /**
+         * If dimmer should blur background.
+         * @default false
+         */
+        blurring: boolean;
 
-            /**
-             * Whether to dim 'context' contents when flyout is visible.
-             * @default true
-             */
-            dimPage: boolean;
+        /**
+         * When 'true', the first form input inside the flyout will receive focus when shown.
+         * Set this to 'false' to prevent this behavior.
+         * @default true
+         */
+        autofocus: boolean;
 
-            /**
-             * If dimmer should blur background.
-             * @default false
-             */
-            blurring: boolean;
+        /**
+         * When 'false', the last focused element, before the flyout was shown, will not get refocused again when the flyout hides.
+         * This could prevent unwanted scrolling behaviors after closing a flyout.
+         * @default true
+         */
+        keyboardShortcuts: boolean;
 
-            /**
-             * When 'true', the first form input inside the flyout will receive focus when shown.
-             * Set this to 'false' to prevent this behavior.
-             * @default true
-             */
-            autofocus: boolean;
+        /**
+         * Whether to automatically bind keyboard shortcuts.
+         * This will close the flyout when the 'ESC-key' is pressed.
+         * @default true
+         */
+        restoreFocus: boolean;
 
-            /**
-             * When 'false', the last focused element, before the flyout was shown, will not get refocused again when the flyout hides.
-             * This could prevent unwanted scrolling behaviors after closing a flyout.
-             * @default true
-             */
-            keyboardShortcuts: boolean;
+        /**
+         * Whether to lock page scroll when flyout is visible.
+         * @default false
+         */
+        scrollLock: boolean;
 
-            /**
-             * Whether to automatically bind keyboard shortcuts.
-             * This will close the flyout when the 'ESC-key' is pressed.
-             * @default true
-             */
-            restoreFocus: boolean;
+        /**
+         * Whether to return to original scroll position when flyout is hidden.
+         * @default false
+         */
+        returnScroll: boolean;
 
-            /**
-             * Whether to lock page scroll when flyout is visible.
-             * @default false
-             */
-            scrollLock: boolean;
+        /**
+         * When flyout is initialized without the proper HTML, using this option will defer creation of DOM to use 'requestAnimationFrame'.
+         * @default false
+         */
+        delaySetup: boolean;
 
-            /**
-             * Whether to return to original scroll position when flyout is hidden.
-             * @default false
-             */
-            returnScroll: boolean;
+        /**
+         * When 'true', immediately shows the flyout at instantiation time.
+         * @default false
+         */
+        autoShow: boolean;
 
-            /**
-             * When flyout is initialized without the proper HTML, using this option will defer creation of DOM to use 'requestAnimationFrame'.
-             * @default false
-             */
-            delaySetup: boolean;
+        // endregion
 
-            /**
-             * When 'true', immediately shows the flyout at instantiation time.
-             * @default false
-             */
-            autoShow: boolean;
+        // region Config Template Settings
 
-            // endregion
+        /**
+         * Content of the flyout header.
+         * @default ''
+         */
+        title: boolean;
 
-            // region Config Template Settings
+        /**
+         * Content of the flyout content.
+         * @default ''
+         */
+        content: boolean;
 
-            /**
-             * Content of the flyout header.
-             * @default ''
-             */
-            title: boolean;
+        /**
+         * Can hold a string to be added to the flyout class to control its appearance.
+         * @default ''
+         */
+        class: boolean;
 
-            /**
-             * Content of the flyout content.
-             * @default ''
-             */
-            content: boolean;
+        /**
+         * Can hold a string to be added to the title class to control its appearance.
+         * @default ''
+         */
+        classTitle: boolean;
 
-            /**
-             * Can hold a string to be added to the flyout class to control its appearance.
-             * @default ''
-             */
-            class: boolean;
+        /**
+         * Can hold a string to be added to the content class to control its appearance.
+         * @default ''
+         */
+        classContent: boolean;
 
-            /**
-             * Can hold a string to be added to the title class to control its appearance.
-             * @default ''
-             */
-            classTitle: boolean;
+        /**
+         * Can hold a string to be added to the actions class to control its appearance.
+         * @default ''
+         */
+        classActions: boolean;
 
-            /**
-             * Can hold a string to be added to the content class to control its appearance.
-             * @default ''
-             */
-            classContent: boolean;
+        /**
+         * Can hold a string to be added to the actions class to control its appearance.
+         * @default false
+         */
+        closeIcon: boolean;
 
-            /**
-             * Can hold a string to be added to the actions class to control its appearance.
-             * @default ''
-             */
-            classActions: boolean;
+        /**
+         * An array of objects. Each object defines an action with properties `text`, `class`, `icon` and `click`.
+         * @default false
+         */
+        actions: false | object[];
 
-            /**
-             * Can hold a string to be added to the actions class to control its appearance.
-             * @default false
-             */
-            closeIcon: boolean;
+        /**
+         * Whether HTML included in given title, content or actions should be preserved.
+         * Set to `false` in case you work with untrusted 3rd party content.
+         * @default true
+         */
+        preserveHTML: boolean;
 
-            /**
-             * An array of objects. Each object defines an action with properties `text`, `class`, `icon` and `click`.
-             * @default false
-             */
-            actions: false | object[];
+        // endregion
 
-            /**
-             * Whether HTML included in given title, content or actions should be preserved.
-             * Set to `false` in case you work with untrusted 3rd party content.
-             * @default true
-             */
-            preserveHTML: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Is called when a flyout is either shown or hidden.
+         */
+        onChange(this: JQuery): void;
 
-            // region Callbacks
+        /**
+         * Is called when a flyout starts to show.
+         */
+        onShow(this: JQuery): void;
 
-            /**
-             * Is called when a flyout is either shown or hidden.
-             */
-            onChange(this: JQuery): void;
+        /**
+         * Is called after a flyout starts to hide.
+         */
+        onHide(this: JQuery): void;
 
-            /**
-             * Is called when a flyout starts to show.
-             */
-            onShow(this: JQuery): void;
+        /**
+         * Is called after a flyout has finished showing animating.
+         */
+        onVisible(this: JQuery): void;
 
-            /**
-             * Is called after a flyout starts to hide.
-             */
-            onHide(this: JQuery): void;
+        /**
+         * Is called after a flyout has finished hiding animation.
+         */
+        onHidden(this: JQuery): void;
 
-            /**
-             * Is called after a flyout has finished showing animating.
-             */
-            onVisible(this: JQuery): void;
+        /**
+         * Is called after a positive, approve or ok button is pressed.
+         * If the function returns 'false', the flyout will not hide.
+         */
+        onApprove(this: JQuery): void;
 
-            /**
-             * Is called after a flyout has finished hiding animation.
-             */
-            onHidden(this: JQuery): void;
+        /**
+         * Is called after a negative, deny or cancel button is pressed.
+         * If the function 'returns' false, the flyout will not hide.
+         */
+        onDeny(this: JQuery): void;
 
-            /**
-             * Is called after a positive, approve or ok button is pressed.
-             * If the function returns 'false', the flyout will not hide.
-             */
-            onApprove(this: JQuery): void;
+        // endregion
 
-            /**
-             * Is called after a negative, deny or cancel button is pressed.
-             * If the function 'returns' false, the flyout will not hide.
-             */
-            onDeny(this: JQuery): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * DOM Selectors used internally.
+         * Selectors used to find parts of a module.
+         */
+        selector: Flyout.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Class names used to determine element state.
+         */
+        className: Flyout.ClassNameSettings;
 
-            /**
-             * DOM Selectors used internally.
-             * Selectors used to find parts of a module.
-             */
-            selector: Flyout.SelectorSettings;
+        /**
+         *
+         */
+        regExp: Flyout.RegExpSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Flyout.ClassNameSettings;
+        // endregion
 
-            /**
-             *
-             */
-            regExp: Flyout.RegExpSettings;
+        // region Config Template Settings
 
-            // endregion
+        // endregion
 
-            // region Config Template Settings
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Flyout'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'flyout'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             * @default 'Flyout'
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             * @default 'flyout'
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             * @default false
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             * @default false
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             * @default true
-             */
-            performance: boolean;
+        error: Flyout.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             * @default false
-             */
-            verbose: boolean;
-
-            error: Flyout.ErrorSettings;
-
-            // endregion
-        }
+        // endregion
     }
 
     namespace Flyout {
-        type SelectorSettings = SelectorSettings.Param;
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-        namespace SelectorSettings {
-            type Param = (
-                | Pick<_Impl, 'fixed'>
-                | Pick<_Impl, 'omitted'>
-                | Pick<_Impl, 'pusher'>
-                | Pick<_Impl, 'flyout'>
-                | Pick<_Impl, 'header'>
-                | Pick<_Impl, 'content'>
-                | Pick<_Impl, 'actions'>
-                | Pick<_Impl, 'close'>
-                | Pick<_Impl, 'approve'>
-                | Pick<_Impl, 'deny'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        namespace Settings {
+            interface Selectors {
                 /**
                  * @default '.fixed'
                  */
@@ -421,39 +364,8 @@ declare namespace FomanticUI {
                  */
                 deny: string;
             }
-        }
-
-        type ClassNameSettings = ClassNameSettings.Param;
-
-        namespace ClassNameSettings {
-            type Param = (
-                | Pick<_Impl, 'flyout'>
-                | Pick<_Impl, 'close'>
-                | Pick<_Impl, 'header'>
-                | Pick<_Impl, 'content'>
-                | Pick<_Impl, 'actions'>
-                | Pick<_Impl, 'active'>
-                | Pick<_Impl, 'animating'>
-                | Pick<_Impl, 'dimmed'>
-                | Pick<_Impl, 'ios'>
-                | Pick<_Impl, 'pushable'>
-                | Pick<_Impl, 'pushed'>
-                | Pick<_Impl, 'right'>
-                | Pick<_Impl, 'top'>
-                | Pick<_Impl, 'left'>
-                | Pick<_Impl, 'bottom'>
-                | Pick<_Impl, 'visible'>
-                | Pick<_Impl, 'overlay'>
-                | Pick<_Impl, 'fullscreen'>
-                | Pick<_Impl, 'template'>
-                | Pick<_Impl, 'button'>
-                | Pick<_Impl, 'ok'>
-                | Pick<_Impl, 'cancel'>
-                | Pick<_Impl, 'prompt'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            
+            interface ClassNames {
                 /**
                  * @default 'ui flyout'
                  */
@@ -569,15 +481,8 @@ declare namespace FomanticUI {
                  */
                 prompt: string;
             }
-        }
-
-        type RegExpSettings = RegExpSettings.Param;
-
-        namespace RegExpSettings {
-            type Param = (Pick<_Impl, 'ios'> | Pick<_Impl, 'mobileChrome'> | Pick<_Impl, 'mobile'>) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+        
+            interface RegExps {
                 /**
                  * @default /(iPad|iPhone|iPod)/g
                  */
@@ -593,20 +498,8 @@ declare namespace FomanticUI {
                  */
                 mobile: RegExp;
             }
-        }
 
-        type ErrorSettings = ErrorSettings.Param;
-
-        namespace ErrorSettings {
-            type Param = (
-                | Pick<_Impl, 'method'>
-                | Pick<_Impl, 'pusher'>
-                | Pick<_Impl, 'movedFlyout'>
-                | Pick<_Impl, 'notFound'>
-            ) &
-                Partial<Pick<_Impl, keyof _Impl>>;
-
-            interface _Impl {
+            interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
                  */

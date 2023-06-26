@@ -107,547 +107,448 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof APISettings>(behavior: 'setting', name: K, value?: undefined): APISettings._Impl[K];
-        <K extends keyof APISettings>(behavior: 'setting', name: K, value: APISettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: APISettings): JQuery;
-        (settings?: APISettings): JQuery;
+        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<AccordionSettings, keyof AccordionSettings>>;
+        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value: AccordionSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;
+        (settings?: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
      */
-    type APISettings = APISettings.Param;
+    interface APISettings {
+        // region API Settings
 
-    namespace APISettings {
-        type Param = (
-            | Pick<_Impl, 'on'>
-            | Pick<_Impl, 'cache'>
-            | Pick<_Impl, 'stateContext'>
-            | Pick<_Impl, 'encodeParameters'>
-            | Pick<_Impl, 'defaultData'>
-            | Pick<_Impl, 'serializeForm'>
-            | Pick<_Impl, 'throttle'>
-            | Pick<_Impl, 'throttleFirstRequest'>
-            | Pick<_Impl, 'interruptRequests'>
-            | Pick<_Impl, 'loadingDuration'>
-            | Pick<_Impl, 'hideError'>
-            | Pick<_Impl, 'errorDuration'>
-            | Pick<_Impl, 'action'>
-            | Pick<_Impl, 'url'>
-            | Pick<_Impl, 'base'>
-            | Pick<_Impl, 'urlData'>
-            | Pick<_Impl, 'response'>
-            | Pick<_Impl, 'responseAsync'>
-            | Pick<_Impl, 'mockResponse'>
-            | Pick<_Impl, 'mockResponseAsync'>
-            | Pick<_Impl, 'rawResponse'>
-            | Pick<_Impl, 'method'>
-            | Pick<_Impl, 'dataType'>
-            | Pick<_Impl, 'data'>
-            | Pick<_Impl, 'beforeSend'>
-            | Pick<_Impl, 'beforeXHR'>
-            | Pick<_Impl, 'onRequest'>
-            | Pick<_Impl, 'onResponse'>
-            | Pick<_Impl, 'successTest'>
-            | Pick<_Impl, 'onSuccess'>
-            | Pick<_Impl, 'onComplete'>
-            | Pick<_Impl, 'onFailure'>
-            | Pick<_Impl, 'onError'>
-            | Pick<_Impl, 'onAbort'>
-            | Pick<_Impl, 'selector'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'regExp'>
-            | Pick<_Impl, 'metadata'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'errors'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * When API event should occur.
+         * @default 'auto'
+         */
+        on: string;
 
-        interface _Impl {
-            // region API Settings
+        /**
+         * Can be set to 'local' to cache successful returned AJAX responses when using a JSON API.
+         * This helps avoid server roundtrips when API endpoints will return the same results when accessed repeatedly.
+         * Setting to 'false', will add cache busting parameters to the URL.
+         * @default true
+         */
+        cache: boolean | 'local';
 
-            /**
-             * When API event should occur.
-             * @default 'auto'
-             */
-            on: string;
+        /**
+         * UI state will be applied to this element, defaults to triggering element.
+         * @default false
+         */
+        stateContext: false | JQuery;
 
-            /**
-             * Can be set to 'local' to cache successful returned AJAX responses when using a JSON API.
-             * This helps avoid server roundtrips when API endpoints will return the same results when accessed repeatedly.
-             * Setting to 'false', will add cache busting parameters to the URL.
-             * @default true
-             */
-            cache: boolean | 'local';
+        /**
+         * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
+         * @default true
+         */
+        encodeParameters: boolean;
 
-            /**
-             * UI state will be applied to this element, defaults to triggering element.
-             * @default false
-             */
-            stateContext: false | JQuery;
+        /**
+         * Whether to automatically include default data like {value} and {text}.
+         * @default true
+         */
+        defaultData: boolean;
 
-            /**
-             * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
-             * @default true
-             */
-            encodeParameters: boolean;
+        /**
+         * Whether to serialize closest form and include in request.
+         * Use `true` to convert complex named keys like `a[b][1][c][]` into a nested object
+         * Use `formdata` for formdata web api
+         * @default false
+         */
+        serializeForm: boolean;
 
-            /**
-             * Whether to automatically include default data like {value} and {text}.
-             * @default true
-             */
-            defaultData: boolean;
+        /**
+         * How long to wait when a request is made before triggering request, useful for rate limiting 'oninput'.
+         * @default 0
+         */
+        throttle: number;
 
-            /**
-             * Whether to serialize closest form and include in request.
-             * Use `true` to convert complex named keys like `a[b][1][c][]` into a nested object
-             * Use `formdata` for formdata web api
-             * @default false
-             */
-            serializeForm: boolean;
+        /**
+         * When set to false will not delay the first request made, when no others are queued.
+         * @default true
+         */
+        throttleFirstRequest: boolean;
 
-            /**
-             * How long to wait when a request is made before triggering request, useful for rate limiting 'oninput'.
-             * @default 0
-             */
-            throttle: number;
+        /**
+         * Whether an API request can occur while another request is still pending.
+         * @default false
+         */
+        interruptRequests: boolean;
 
-            /**
-             * When set to false will not delay the first request made, when no others are queued.
-             * @default true
-             */
-            throttleFirstRequest: boolean;
+        /**
+         * Minimum duration to show loading indication.
+         * @default 0
+         */
+        loadingDuration: number;
 
-            /**
-             * Whether an API request can occur while another request is still pending.
-             * @default false
-             */
-            interruptRequests: boolean;
+        /**
+         * The default 'auto' will automatically remove error state after error duration, unless the element is a 'form'.
+         * @default 'auto'
+         */
+        hideError: 'auto' | boolean;
 
-            /**
-             * Minimum duration to show loading indication.
-             * @default 0
-             */
-            loadingDuration: number;
+        /**
+         * Setting to 'true', will not remove error. Setting to a duration in milliseconds to show error state after request error.
+         * @default 2000
+         */
+        errorDuration: true | number;
 
-            /**
-             * The default 'auto' will automatically remove error state after error duration, unless the element is a 'form'.
-             * @default 'auto'
-             */
-            hideError: 'auto' | boolean;
+        // endregion
 
-            /**
-             * Setting to 'true', will not remove error. Setting to a duration in milliseconds to show error state after request error.
-             * @default 2000
-             */
-            errorDuration: true | number;
+        // region API Settings
 
-            // endregion
+        /**
+         * Named API action for query, originally specified in '$.fn.settings.api'.
+         * @default false
+         */
+        action: string | false;
 
-            // region API Settings
+        /**
+         * Templated URL for query, will override specified action.
+         * @default false
+         */
+        url: string | false;
 
-            /**
-             * Named API action for query, originally specified in '$.fn.settings.api'.
-             * @default false
-             */
-            action: string | false;
+        /**
+         * base URL to apply to all endpoints. Will be prepended to each given url.
+         * @default ''
+         */
+        base: string;
 
-            /**
-             * Templated URL for query, will override specified action.
-             * @default false
-             */
-            url: string | false;
+        /**
+         * Variables to use for replacement.
+         * @default false
+         */
+        urlData: any;
 
-            /**
-             * base URL to apply to all endpoints. Will be prepended to each given url.
-             * @default ''
-             */
-            base: string;
+        /**
+         * Can be set to a Javascript object which will be returned automatically instead of requesting JSON from server.
+         * @default false
+         */
+        response: any;
 
-            /**
-             * Variables to use for replacement.
-             * @default false
-             */
-            urlData: any;
+        /**
+         * When specified, this function can be used to retrieve content from a server and return it asynchronously instead of a standard AJAX call.
+         * The callback function should return the server response.
+         * @default false
+         */
+        responseAsync: ((settings: APISettings, callback: (response: any) => void) => void) | false;
 
-            /**
-             * Can be set to a Javascript object which will be returned automatically instead of requesting JSON from server.
-             * @default false
-             */
-            response: any;
+        /**
+         * Alias of 'response'.
+         * @default false
+         */
+        mockResponse: any;
 
-            /**
-             * When specified, this function can be used to retrieve content from a server and return it asynchronously instead of a standard AJAX call.
-             * The callback function should return the server response.
-             * @default false
-             */
-            responseAsync: ((settings: APISettings, callback: (response: any) => void) => void) | false;
+        /**
+         * Alias of 'responseAsync'.
+         * @default false
+         */
+        mockResponseAsync: ((settings: APISettings, callback: (response: any) => void) => void) | false;
 
-            /**
-             * Alias of 'response'.
-             * @default false
-             */
-            mockResponse: any;
+        /**
+         * If set, the onResponse event handler is able to handle an raw Array Object, which is probably returned by the requested source.
+         * Even if the datatype is json, it won't be force converted into an object anymore then.
+         * @default true
+         */
+        rawResponse: boolean;
 
-            /**
-             * Alias of 'responseAsync'.
-             * @default false
-             */
-            mockResponseAsync: ((settings: APISettings, callback: (response: any) => void) => void) | false;
+        /**
+         * Method for transmitting request to server.
+         * @default 'get'
+         */
+        method: 'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch';
 
-            /**
-             * If set, the onResponse event handler is able to handle an raw Array Object, which is probably returned by the requested source.
-             * Even if the datatype is json, it won't be force converted into an object anymore then.
-             * @default true
-             */
-            rawResponse: boolean;
+        /**
+         * Expected data type of response.
+         * @default 'json'
+         */
+        dataType: 'xml' | 'json' | 'jsonp' | 'script' | 'html' | 'text';
 
-            /**
-             * Method for transmitting request to server.
-             * @default 'get'
-             */
-            method: 'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch';
+        /**
+         * Expected data type of response.
+         * @default {}
+         */
+        data: any;
 
-            /**
-             * Expected data type of response.
-             * @default 'json'
-             */
-            dataType: 'xml' | 'json' | 'jsonp' | 'script' | 'html' | 'text';
+        // endregion
 
-            /**
-             * Expected data type of response.
-             * @default {}
-             */
-            data: any;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Allows modifying settings before request, or cancelling request.
+         */
+        beforeSend(settings: APISettings): any;
 
-            // region Callbacks
+        /**
+         * Allows modifying XHR object for request.
+         */
+        beforeXHR(xhrObject: JQuery.jqXHR): any;
 
-            /**
-             * Allows modifying settings before request, or cancelling request.
-             */
-            beforeSend(settings: APISettings): any;
+        /**
+         * Callback that occurs when request is made. Receives both the API success promise and the XHR request promise.
+         */
+        onRequest(promise: JQuery.Deferred<any>, xhr: JQuery.jqXHR): void;
 
-            /**
-             * Allows modifying XHR object for request.
-             */
-            beforeXHR(xhrObject: JQuery.jqXHR): any;
+        /**
+         * Allows modifying the server's response before parsed by other callbacks to determine API event success.
+         */
+        onResponse(response: any): void;
 
-            /**
-             * Callback that occurs when request is made. Receives both the API success promise and the XHR request promise.
-             */
-            onRequest(promise: JQuery.Deferred<any>, xhr: JQuery.jqXHR): void;
+        /**
+         * Determines whether completed JSON response should be treated as successful.
+         *
+         * @see {@link http://fomantic-ui.com/behaviors/api.html#determining-json-success}
+         */
+        successTest(response: any): boolean;
 
-            /**
-             * Allows modifying the server's response before parsed by other callbacks to determine API event success.
-             */
-            onResponse(response: any): void;
+        /**
+         * Callback after successful response, JSON response must pass 'successTest'.
+         */
+        onSuccess(response: any, element: JQuery, xhr: JQuery.jqXHR): void;
 
-            /**
-             * Determines whether completed JSON response should be treated as successful.
-             *
-             * @see {@link http://fomantic-ui.com/behaviors/api.html#determining-json-success}
-             */
-            successTest(response: any): boolean;
+        /**
+         * Callback on request complete regardless of conditions.
+         */
+        onComplete(response: any, element: JQuery, xhr: JQuery.jqXHR): void;
 
-            /**
-             * Callback after successful response, JSON response must pass 'successTest'.
-             */
-            onSuccess(response: any, element: JQuery, xhr: JQuery.jqXHR): void;
+        /**
+         * Callback on failed response, or JSON response that fails 'successTest'.
+         */
+        onFailure(response: any, element: JQuery): void;
 
-            /**
-             * Callback on request complete regardless of conditions.
-             */
-            onComplete(response: any, element: JQuery, xhr: JQuery.jqXHR): void;
+        /**
+         * Callback on server error from returned status code, or XHR failure.
+         */
+        onError(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
 
-            /**
-             * Callback on failed response, or JSON response that fails 'successTest'.
-             */
-            onFailure(response: any, element: JQuery): void;
+        /**
+         * Callback on abort caused by user clicking a link or manually cancelling request.
+         */
+        onAbort(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
 
-            /**
-             * Callback on server error from returned status code, or XHR failure.
-             */
-            onError(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
+        // endregion
 
-            /**
-             * Callback on abort caused by user clicking a link or manually cancelling request.
-             */
-            onAbort(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Selectors used to find parts of a module.
+         */
+        selector: API.SelectorSettings;
 
-            // region DOM Settings
+        /**
+         * Class names used to determine element state.
+         */
+        className: API.ClassNameSettings;
 
-            /**
-             * Selectors used to find parts of a module.
-             */
-            selector: API.SelectorSettings;
+        /**
+         * Regular expressions used for template matching.
+         */
+        regExp: API.RegExpSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: API.ClassNameSettings;
+        /**
+         * Metadata used to store XHR and response promise.
+         */
+        metadata: API.MetadataSettings;
 
-            /**
-             * Regular expressions used for template matching.
-             */
-            regExp: API.RegExpSettings;
+        // endregion
 
-            /**
-             * Metadata used to store XHR and response promise.
-             */
-            metadata: API.MetadataSettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements.
+         * @default 'API'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'api'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements.
-             * @default 'API'
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             * @default 'api'
-             */
-            namespace: string;
+        /**
+         * Debug output to console.
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             * @default false
-             */
-            silent: boolean;
+        /**
+         * Show 'console.table' output with performance metrics.
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console.
-             * @default false
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors.
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show 'console.table' output with performance metrics.
-             * @default true
-             */
-            performance: boolean;
+        errors: API.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors.
-             * @default false
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            errors: API.ErrorSettings;
+    namespace API {
+        type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
+        type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface Selectors {
+                /**
+                 * @default '.disabled'
+                 */
+                disabled: string;
 
-        namespace API {
-            type SelectorSettings = SelectorSettings.Param;
-
-            namespace SelectorSettings {
-                type Param = (Pick<_Impl, 'disabled'> | Pick<_Impl, 'form'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default '.disabled'
-                     */
-                    disabled: string;
-
-                    /**
-                     * @default 'form'
-                     */
-                    form: string;
-                }
+                /**
+                 * @default 'form'
+                 */
+                form: string;
             }
 
-            type ClassNameSettings = ClassNameSettings.Param;
+            interface ClassNames {
+                /**
+                 * @default 'loading'
+                 */
+                loading: string;
 
-            namespace ClassNameSettings {
-                type Param = (Pick<_Impl, 'loading'> | Pick<_Impl, 'error'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'loading'
-                     */
-                    loading: string;
-
-                    /**
-                     * @default 'error'
-                     */
-                    error: string;
-                }
+                /**
+                 * @default 'error'
+                 */
+                error: string;
             }
 
-            type RegExpSettings = RegExpSettings.Param;
+            interface RegExps {
+                /**
+                 * @default /{\$*[\da-z]+}/gi
+                 */
+                required: RegExp;
 
-            namespace RegExpSettings {
-                type Param = (
-                    | Pick<_Impl, 'required'>
-                    | Pick<_Impl, 'optional'>
-                    | Pick<_Impl, 'validate'>
-                    | Pick<_Impl, 'key'>
-                    | Pick<_Impl, 'push'>
-                    | Pick<_Impl, 'fixed'>
-                    | Pick<_Impl, 'named'>
-                ) & Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default /{\/\$*[\da-z]+}/gi
+                 */
+                optional: RegExp;
 
-                interface _Impl {
-                    /**
-                     * @default /{\$*[\da-z]+}/gi
-                     */
-                    required: RegExp;
+                /**
+                 * @default /^[_a-z][\w-]*(?:\[[\w-]*])*$/i
+                 */
+                validate: RegExp;
 
-                    /**
-                     * @default /{\/\$*[\da-z]+}/gi
-                     */
-                    optional: RegExp;
+                /**
+                 * /[\w-]+|(?=\[])/gi
+                 */
+                key: RegExp;
 
-                    /**
-                     * @default /^[_a-z][\w-]*(?:\[[\w-]*])*$/i
-                     */
-                    validate: RegExp;
+                /**
+                 * @default /^$/
+                 */
+                push: RegExp;
 
-                    /**
-                     * /[\w-]+|(?=\[])/gi
-                     */
-                    key: RegExp;
+                /**
+                 * @default /^\d+$/
+                 */
+                fixed: RegExp;
 
-                    /**
-                     * @default /^$/
-                     */
-                    push: RegExp;
-
-                    /**
-                     * @default /^\d+$/
-                     */
-                    fixed: RegExp;
-
-                    /**
-                     * @default /^[\w-]+$/i
-                     */
-                    named: RegExp;
-                }
+                /**
+                 * @default /^[\w-]+$/i
+                 */
+                named: RegExp;
             }
 
-            type MetadataSettings = MetadataSettings.Param;
+            interface Metadatas {
+                /**
+                 * @default 'action'
+                 */
+                action: string;
 
-            namespace MetadataSettings {
-                type Param = (Pick<_Impl, 'action'> | Pick<_Impl, 'url'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'action'
-                     */
-                    action: string;
-
-                    /**
-                     * @default 'url'
-                     */
-                    url: string;
-                }
+                /**
+                 * @default 'url'
+                 */
+                url: string;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'The before send function has aborted the request.'
+                 */
+                beforeSend: string;
 
-            namespace ErrorSettings {
-                type Param = (
-                    | Pick<_Impl, 'beforeSend'>
-                    | Pick<_Impl, 'error'>
-                    | Pick<_Impl, 'exitConditions'>
-                    | Pick<_Impl, 'JSONParse'>
-                    | Pick<_Impl, 'legacyParameters'>
-                    | Pick<_Impl, 'method'>
-                    | Pick<_Impl, 'missingAction'>
-                    | Pick<_Impl, 'missingURL'>
-                    | Pick<_Impl, 'noReturnedValue'>
-                    | Pick<_Impl, 'noStorage'>
-                    | Pick<_Impl, 'parseError'>
-                    | Pick<_Impl, 'requiredParameter'>
-                    | Pick<_Impl, 'statusMessage'>
-                    | Pick<_Impl, 'timeout'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'There was an error with your request.'
+                 */
+                error: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'The before send function has aborted the request.'
-                     */
-                    beforeSend: string;
+                /**
+                 * @default 'API Request Aborted. Exit conditions met.'
+                 */
+                exitConditions: string;
 
-                    /**
-                     * @default 'There was an error with your request.'
-                     */
-                    error: string;
+                /**
+                 * @default 'JSON could not be parsed during error handling.'
+                 */
+                JSONParse: string;
 
-                    /**
-                     * @default 'API Request Aborted. Exit conditions met.'
-                     */
-                    exitConditions: string;
+                /**
+                 * @default 'You are using legacy API success callback names.'
+                 */
+                legacyParameters: string;
 
-                    /**
-                     * @default 'JSON could not be parsed during error handling.'
-                     */
-                    JSONParse: string;
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
 
-                    /**
-                     * @default 'You are using legacy API success callback names.'
-                     */
-                    legacyParameters: string;
+                /**
+                 * @default 'API action used but no url was defined.'
+                 */
+                missingAction: string;
 
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
+                /**
+                 * @default 'No URL specified for API event.'
+                 */
+                missingURL: string;
 
-                    /**
-                     * @default 'API action used but no url was defined.'
-                     */
-                    missingAction: string;
+                /**
+                 * @default 'The beforeSend callback must return a settings object, beforeSend ignored.'
+                 */
+                noReturnedValue: string;
 
-                    /**
-                     * @default 'No URL specified for API event.'
-                     */
-                    missingURL: string;
+                /**
+                 * @default 'There was an error with your request.'
+                 */
+                parseError: string;
 
-                    /**
-                     * @default 'The beforeSend callback must return a settings object, beforeSend ignored.'
-                     */
-                    noReturnedValue: string;
+                /**
+                 * @default 'Caching responses locally requires session storage.'
+                 */
+                noStorage: string;
 
-                    /**
-                     * @default 'There was an error with your request.'
-                     */
-                    parseError: string;
+                /**
+                 * @default 'Missing a required URL parameter: '
+                 */
+                requiredParameter: string;
 
-                    /**
-                     * @default 'Caching responses locally requires session storage.'
-                     */
-                    noStorage: string;
+                /**
+                 * @default 'Server gave an error: '
+                 */
+                statusMessage: string;
 
-                    /**
-                     * @default 'Missing a required URL parameter: '
-                     */
-                    requiredParameter: string;
-
-                    /**
-                     * @default 'Server gave an error: '
-                     */
-                    statusMessage: string;
-
-                    /**
-                     * @default 'Your request timed out.'
-                     */
-                    timeout: string;
-                }
+                /**
+                 * @default 'Your request timed out.'
+                 */
+                timeout: string;
             }
         }
     }

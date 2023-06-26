@@ -35,350 +35,281 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined): SliderSettings._Impl[K];
-        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value: SliderSettings._Impl[K]): JQuery;
-        (behavior: 'setting', value: SliderSettings): JQuery;
-        (settings?: SliderSettings): JQuery;
+        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SliderSettings, keyof SliderSettings>>;
+        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value: SliderSettings[K]): JQuery;
+        (behavior: 'setting', value: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;
+        (settings?: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;
     }
 
     /**
      * @see {@link https://fomantic-ui.com/modules/slider.html#/settings}
      */
-    type SliderSettings = SliderSettings.Param;
+    interface SliderSettings {
+        // region Slider Settings
 
-    namespace SliderSettings {
-        type Param = (
-            | Pick<_Impl, 'min'>
-            | Pick<_Impl, 'max'>
-            | Pick<_Impl, 'step'>
-            | Pick<_Impl, 'start'>
-            | Pick<_Impl, 'end'>
-            | Pick<_Impl, 'labelType'>
-            | Pick<_Impl, 'interpretLabel'>
-            | Pick<_Impl, 'showLabelTicks'>
-            | Pick<_Impl, 'smooth'>
-            | Pick<_Impl, 'autoAdjustLabels'>
-            | Pick<_Impl, 'labelDistance'>
-            | Pick<_Impl, 'decimalPlaces'>
-            | Pick<_Impl, 'pageMultiplier'>
-            | Pick<_Impl, 'preventCrossover'>
-            | Pick<_Impl, 'onChange'>
-            | Pick<_Impl, 'onMove'>
-            | Pick<_Impl, 'className'>
-            | Pick<_Impl, 'metadata'>
-            | Pick<_Impl, 'keys'>
-            | Pick<_Impl, 'name'>
-            | Pick<_Impl, 'namespace'>
-            | Pick<_Impl, 'silent'>
-            | Pick<_Impl, 'debug'>
-            | Pick<_Impl, 'performance'>
-            | Pick<_Impl, 'verbose'>
-            | Pick<_Impl, 'error'>
-        ) &
-            Partial<Pick<_Impl, keyof _Impl>>;
+        /**
+         * The lowest value the slider can be.
+         * @default 0
+         */
+        min: number;
 
-        interface _Impl {
-            // region Slider Settings
+        /**
+         * The max value the slider can be.
+         * @default 20
+         */
+        max: number;
 
-            /**
-             * The lowest value the slider can be.
-             * @default 0
-             */
-            min: number;
+        /**
+         * The slider step.
+         * Set to '0' to disable step.
+         * @default 1
+         */
+        step: number;
 
-            /**
-             * The max value the slider can be.
-             * @default 20
-             */
-            max: number;
+        /**
+         * The value the slider will start at.
+         * @default 0
+         */
+        start: number;
 
-            /**
-             * The slider step.
-             * Set to '0' to disable step.
-             * @default 1
-             */
-            step: number;
+        /**
+         * The second value to set in case of a range slider.
+         * @default 20
+         */
+        end: number;
 
-            /**
-             * The value the slider will start at.
-             * @default 0
-             */
-            start: number;
+        /**
+         * The type of label to display for a labeled slider.
+         * Can be 'number' or 'letter'.
+         * @default 'number'
+         */
+        labelType: 'number' | 'letter';
 
-            /**
-             * The second value to set in case of a range slider.
-             * @default 20
-             */
-            end: number;
+        /**
+         * You can specify a function here which consumes the current label value as parameter and should return a custom label text according to the given value.
+         * @default false
+         */
+        interpretLabel: false | Function;
 
-            /**
-             * The type of label to display for a labeled slider.
-             * Can be 'number' or 'letter'.
-             * @default 'number'
-             */
-            labelType: 'number' | 'letter';
+        /**
+         * Show ticks on a labeled slider.
+         * @default false
+         */
+        showLabelTicks: boolean;
 
-            /**
-             * You can specify a function here which consumes the current label value as parameter and should return a custom label text according to the given value.
-             * @default false
-             */
-            interpretLabel: false | Function;
+        /**
+         * Define smoothness when the slider is moving.
+         * @default false
+         */
+        smooth: boolean;
 
-            /**
-             * Show ticks on a labeled slider.
-             * @default false
-             */
-            showLabelTicks: boolean;
+        /**
+         * Whether labels should auto adjust on window resize.
+         * @default true
+         */
+        autoAdjustLabels: boolean;
 
-            /**
-             * Define smoothness when the slider is moving.
-             * @default false
-             */
-            smooth: boolean;
+        /**
+         * The distance between labels.
+         * @default 100
+         */
+        labelDistance: number;
 
-            /**
-             * Whether labels should auto adjust on window resize.
-             * @default true
-             */
-            autoAdjustLabels: boolean;
+        /**
+         * Number of decimals to use with an unstepped slider.
+         * @default 2
+         */
+        decimalPlaces: number;
 
-            /**
-             * The distance between labels.
-             * @default 100
-             */
-            labelDistance: number;
+        /**
+         * Page up/down multiplier.
+         * Define how many more times the steps to take on page up/down press.
+         * @default 2
+         */
+        pageMultiplier: number;
 
-            /**
-             * Number of decimals to use with an unstepped slider.
-             * @default 2
-             */
-            decimalPlaces: number;
+        /**
+         * Prevents the lower thumb to crossover the thumb handle.
+         * @default true
+         */
+        preventCrossover: boolean;
 
-            /**
-             * Page up/down multiplier.
-             * Define how many more times the steps to take on page up/down press.
-             * @default 2
-             */
-            pageMultiplier: number;
+        // endregion
 
-            /**
-             * Prevents the lower thumb to crossover the thumb handle.
-             * @default true
-             */
-            preventCrossover: boolean;
+        // region Callbacks
 
-            // endregion
+        /**
+         * Is called when the slider value is changed.
+         */
+        onChange(this: JQuery, value: number, thumbVal: number, secondThumbVal: number): void;
 
-            // region Callbacks
+        /**
+         * Is called when the slider is moving.
+         */
+        onMove(this: JQuery, value: number, thumbVal: number, secondThumbVal: number): void;
 
-            /**
-             * Is called when the slider value is changed.
-             */
-            onChange(this: JQuery, value: number, thumbVal: number, secondThumbVal: number): void;
+        // endregion
 
-            /**
-             * Is called when the slider is moving.
-             */
-            onMove(this: JQuery, value: number, thumbVal: number, secondThumbVal: number): void;
+        // region DOM Settings
 
-            // endregion
+        /**
+         * Class names used to determine element state.
+         */
+        className: Slider.ClassNameSettings;
 
-            // region DOM Settings
+        /**
+         * DOM metadata used by module.
+         */
+        metadata: Slider.MetadataSettings;
 
-            /**
-             * Class names used to determine element state.
-             */
-            className: Slider.ClassNameSettings;
+        /**
+         * Keys used by module.
+         */
+        keys: Slider.KeySettings;
 
-            /**
-             * DOM metadata used by module.
-             */
-            metadata: Slider.MetadataSettings;
+        // endregion
 
-            /**
-             * Keys used by module.
-             */
-            keys: Slider.KeySettings;
+        // region Debug Settings
 
-            // endregion
+        /**
+         * Name used in log statements
+         * @default 'Slider'
+         */
+        name: string;
 
-            // region Debug Settings
+        /**
+         * Event namespace. Makes sure module teardown does not effect other events attached to an element.
+         * @default 'slider'
+         */
+        namespace: string;
 
-            /**
-             * Name used in log statements
-             * @default 'Slider'
-             */
-            name: string;
+        /**
+         * Silences all console output including error messages, regardless of other debug settings.
+         * @default false
+         */
+        silent: boolean;
 
-            /**
-             * Event namespace. Makes sure module teardown does not effect other events attached to an element.
-             * @default 'slider'
-             */
-            namespace: string;
+        /**
+         * Debug output to console
+         * @default false
+         */
+        debug: boolean;
 
-            /**
-             * Silences all console output including error messages, regardless of other debug settings.
-             * @default false
-             */
-            silent: boolean;
+        /**
+         * Show console.table output with performance metrics
+         * @default true
+         */
+        performance: boolean;
 
-            /**
-             * Debug output to console
-             * @default false
-             */
-            debug: boolean;
+        /**
+         * Debug output includes all internal behaviors
+         * @default false
+         */
+        verbose: boolean;
 
-            /**
-             * Show console.table output with performance metrics
-             * @default true
-             */
-            performance: boolean;
+        error: Slider.ErrorSettings;
 
-            /**
-             * Debug output includes all internal behaviors
-             * @default false
-             */
-            verbose: boolean;
+        // endregion
+    }
 
-            error: Slider.ErrorSettings;
+    namespace Slider {
+        type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
+        type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type KeySettings = Partial<Pick<Settings.Keys, keyof Settings.Keys>>;
+        type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
-            // endregion
-        }
+        namespace Settings {
+            interface ClassNames {
+                /**
+                 * @default 'reversed'
+                 */
+                reversed: string;
 
-        namespace Slider {
-            type ClassNameSettings = ClassNameSettings.Param;
+                /**
+                 * @default 'disabled'
+                 */
+                disabled: string;
 
-            namespace ClassNameSettings {
-                type Param = (
-                    | Pick<_Impl, 'reversed'>
-                    | Pick<_Impl, 'disabled'>
-                    | Pick<_Impl, 'labeled'>
-                    | Pick<_Impl, 'ticked'>
-                    | Pick<_Impl, 'vertical'>
-                    | Pick<_Impl, 'range'>
-                    | Pick<_Impl, 'smooth'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 'labeled'
+                 */
+                labeled: string;
 
-                interface _Impl {
-                    /**
-                     * @default 'reversed'
-                     */
-                    reversed: string;
+                /**
+                 * @default 'ticked'
+                 */
+                ticked: string;
 
-                    /**
-                     * @default 'disabled'
-                     */
-                    disabled: string;
+                /**
+                 * @default 'vertical'
+                 */
+                vertical: string;
 
-                    /**
-                     * @default 'labeled'
-                     */
-                    labeled: string;
+                /**
+                 * @default 'range'
+                 */
+                range: string;
 
-                    /**
-                     * @default 'ticked'
-                     */
-                    ticked: string;
-
-                    /**
-                     * @default 'vertical'
-                     */
-                    vertical: string;
-
-                    /**
-                     * @default 'range'
-                     */
-                    range: string;
-
-                    /**
-                     * @default 'smooth'
-                     */
-                    smooth: string;
-                }
+                /**
+                 * @default 'smooth'
+                 */
+                smooth: string;
             }
 
-            type MetadataSettings = MetadataSettings.Param;
+            interface Metadatas {
+                /**
+                 * @default 'thumbVal'
+                 */
+                thumbVal: string;
 
-            namespace MetadataSettings {
-                type Param = (Pick<_Impl, 'thumbVal'> | Pick<_Impl, 'secondThumbVal'>) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'thumbVal'
-                     */
-                    thumbVal: string;
-
-                    /**
-                     * @default 'secondThumbVal'
-                     */
-                    secondThumbVal: string;
-                }
+                /**
+                 * @default 'secondThumbVal'
+                 */
+                secondThumbVal: string;
             }
 
-            type KeySettings = KeySettings.Param;
+            interface Keys {
+                /**
+                 * @default 33
+                 */
+                pageUp: number;
 
-            namespace KeySettings {
-                type Param = (
-                    | Pick<_Impl, 'pageUp'>
-                    | Pick<_Impl, 'pageDown'>
-                    | Pick<_Impl, 'leftArrow'>
-                    | Pick<_Impl, 'upArrow'>
-                    | Pick<_Impl, 'rightArrow'>
-                    | Pick<_Impl, 'downArrow'>
-                ) &
-                    Partial<Pick<_Impl, keyof _Impl>>;
+                /**
+                 * @default 34
+                 */
+                pageDown: number;
 
-                interface _Impl {
-                    /**
-                     * @default 33
-                     */
-                    pageUp: number;
+                /**
+                 * @default 37
+                 */
+                leftArrow: number;
 
-                    /**
-                     * @default 34
-                     */
-                    pageDown: number;
+                /**
+                 * @default 38
+                 */
+                upArrow: number;
 
-                    /**
-                     * @default 37
-                     */
-                    leftArrow: number;
+                /**
+                 * @default 39
+                 */
+                rightArrow: number;
 
-                    /**
-                     * @default 38
-                     */
-                    upArrow: number;
-
-                    /**
-                     * @default 39
-                     */
-                    rightArrow: number;
-
-                    /**
-                     * @default 40
-                     */
-                    downArrow: number;
-                }
+                /**
+                 * @default 40
+                 */
+                downArrow: number;
             }
 
-            type ErrorSettings = ErrorSettings.Param;
+            interface Errors {
+                /**
+                 * @default 'The method you called is not defined.'
+                 */
+                method: string;
 
-            namespace ErrorSettings {
-                type Param = (Pick<_Impl, 'method'> | Pick<_Impl, 'notrange'>) & Partial<Pick<_Impl, keyof _Impl>>;
-
-                interface _Impl {
-                    /**
-                     * @default 'The method you called is not defined.'
-                     */
-                    method: string;
-
-                    /**
-                     * @default 'This slider is not a range slider.'
-                     */
-                    notrange: string;
-                }
+                /**
+                 * @default 'This slider is not a range slider.'
+                 */
+                notrange: string;
             }
         }
     }
