@@ -265,7 +265,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default false
          */
-        apiSettings: false | APISettings;
+        apiSettings: false | APISettings | JQueryAjaxSettings;
 
         /**
          * Whether dropdown should select new option when using keyboard shortcuts.
