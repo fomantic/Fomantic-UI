@@ -128,7 +128,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default false
          */
-        apiSettings: false | FomanticUI.APISettings;
+        apiSettings: false | FomanticUI.APISettings | JQueryAjaxSettings;
 
         /**
          * Can be set to 'hash' or 'state'.

@@ -124,7 +124,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default {}
          */
-        apiSettings: APISettings;
+        apiSettings: APISettings | JQueryAjaxSettings;
 
         /**
          * Minimum characters to query for results.
