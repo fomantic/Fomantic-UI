@@ -1226,7 +1226,7 @@
 @lightBlueDown: if(iscolor(@lightBlue), darken(@lightBlue, 10), @lightBlue);
 @lightVioletDown: if(iscolor(@lightViolet), darken(@lightViolet, 10), @lightViolet);
 @lightPurpleDown: if(iscolor(@lightPurple), darken(@lightPurple, 10), @lightPurple);
-@lightPinkDown: if(iscolor(@linkColor@lightPink), darken(@lightPink, 10), @lightPink);
+@lightPinkDown: if(iscolor(@lightPink), darken(@lightPink, 10), @lightPink);
 @lightBrownDown: if(iscolor(@lightBrown), darken(@lightBrown, 10), @lightBrown);
 @lightGreyDown: if(iscolor(@lightGrey), darken(@lightGrey, 10), @lightGrey);
 @lightBlackDown: if(iscolor(@fullBlack), darken(@fullBlack, 10), @fullBlack);
@@ -1344,7 +1344,7 @@
 @oliveTertiaryColorHover: if(iscolor(@oliveHover), desaturate(@oliveHover, 20%), @oliveHover);
 @oliveTertiaryColorFocus: if(iscolor(@oliveFocus), desaturate(@oliveFocus, 20%), @oliveFocus);
 @oliveTertiaryColorActive: if(iscolor(@oliveActive), saturate(@oliveActive, 20%), @oliveActive);
-@greenTertiaryColor: if(iscolor(@green), saturate(@green, 20%),@green);
+@greenTertiaryColor: if(iscolor(@green), saturate(@green, 20%), @green);
 @greenTertiaryColorHover: if(iscolor(@greenHover), desaturate(@greenHover, 20%), @greenHover);
 @greenTertiaryColorFocus: if(iscolor(@greenFocus), desaturate(@greenFocus, 20%), @greenFocus);
 @greenTertiaryColorActive: if(iscolor(@greenActive), saturate(@greenActive, 20%), @greenActive);
