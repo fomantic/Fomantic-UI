@@ -107,7 +107,7 @@
 
 @linkColor: #009fda;
 @linkUnderline: none;
-@linkHoverColor: lighten(@linkColor, 5);
+@linkHoverColor: if(iscolor(@linkColor), lighten(@linkColor, 5), @linkColor);
 @linkHoverUnderline: @linkUnderline;
 
 /* -------------------
