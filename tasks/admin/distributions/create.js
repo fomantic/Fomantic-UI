@@ -10,11 +10,10 @@
 */
 
 const
-    gulp            = require('gulp'),
-
     // node dependencies
     fs              = require('fs'),
     path            = require('path'),
+    gulp            = require('gulp'),
     mergeStream     = require('merge-stream'),
 
     // admin dependencies

@@ -13,14 +13,13 @@
 */
 
 const
-    gulp           = require('gulp'),
-
     // node dependencies
     console        = require('better-console'),
     extend         = require('extend'),
     fs             = require('fs'),
     mkdirp         = require('mkdirp'),
     path           = require('path'),
+    gulp           = require('gulp'),
 
     // gulp dependencies
     chmod          = require('gulp-chmod'),

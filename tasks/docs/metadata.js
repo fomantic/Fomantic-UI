@@ -4,8 +4,8 @@
 
 const
     // node dependencies
-    console      = require('better-console'),
     fs           = require('fs'),
+    console      = require('better-console'),
     YAML         = require('yamljs')
 ;
 
