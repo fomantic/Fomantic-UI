@@ -3,10 +3,9 @@
  *******************************/
 
 const
-    gulp       = require('gulp'),
-
     // node dependencies
     console    = require('better-console'),
+    gulp       = require('gulp'),
 
     // user config
     config     = require('./config/user'),

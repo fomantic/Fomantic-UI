@@ -14,9 +14,9 @@
 
 const
     // node dependencies
-    del       = require('del'),
     fs        = require('fs'),
     path      = require('path'),
+    del       = require('del'),
     console   = require('better-console'),
     gulp      = require('gulp'),
     git       = require('gulp-git'),

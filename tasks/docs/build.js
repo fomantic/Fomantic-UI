@@ -5,10 +5,10 @@
 const
     fs          = require('fs'),
     extend      = require('extend'),
-    gulp        = require('gulp'),
 
     // node dependencies
     console     = require('better-console'),
+    gulp        = require('gulp'),
     map         = require('map-stream'),
 
     // gulp dependencies
