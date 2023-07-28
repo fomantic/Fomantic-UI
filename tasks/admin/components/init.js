@@ -14,10 +14,10 @@
 
 const
     // node dependencies
-    console   = require('better-console'),
     del       = require('del'),
     fs        = require('fs'),
     path      = require('path'),
+    console   = require('better-console'),
     gulp      = require('gulp'),
     git       = require('gulp-git'),
     mkdirp    = require('mkdirp'),
