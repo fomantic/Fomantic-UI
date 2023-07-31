@@ -3,12 +3,12 @@
  *******************************/
 
 const
+    fs          = require('fs'),
     extend      = require('extend'),
-    gulp        = require('gulp'),
 
     // node dependencies
     console     = require('better-console'),
-    fs          = require('fs'),
+    gulp        = require('gulp'),
     map         = require('map-stream'),
 
     // gulp dependencies
