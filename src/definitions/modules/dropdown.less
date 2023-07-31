@@ -1181,6 +1181,16 @@ select.ui.dropdown {
     }
 }
 
+& when (@variationDropdownDisabled) or (@variationDropdownReadonly) {
+    .ui.disabled.dropdown,
+    .ui.read-only.dropdown {
+        > .remove.icon,
+        > .label > .delete.icon {
+            display:none;
+        }
+    }
+}
+
 /*******************************
            Variations
 *******************************/
