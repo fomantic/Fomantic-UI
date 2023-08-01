@@ -519,6 +519,7 @@
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 @variationCalendarMultiMonth: true;
+@variationCalendarSizes: @variationAllSizes;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;
