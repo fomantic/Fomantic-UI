@@ -196,6 +196,35 @@
     }
 }
 
+/* --------------------
+        Sizes
+--------------------- */
+
+& when not (@variationCalendarSizes = false) {
+    each(@variationCalendarSizes, {
+        @s: @@value;
+        .ui.@{value}.calendar,
+        .ui.@{value}.calendar .ui.table tr th,
+        .ui.@{value}.calendar .ui.table tr td {
+            font-size: @s;
+        }
+        .ui.@{value}.calendar .ui.table.year,
+        .ui.@{value}.calendar .ui.table.month,
+        .ui.@{value}.calendar .ui.table.minute {
+            min-width: unit(15 * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.day {
+            min-width: unit(18 * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.day.andweek {
+            min-width: unit(22 * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.hour {
+            min-width: unit(20 * @s, em);
+        }
+    });
+}
+
 /*******************************
             States
 *******************************/
