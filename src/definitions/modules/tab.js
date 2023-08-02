@@ -450,7 +450,7 @@
                         module.verbose('Call for tab removal', tabPath);
                         if (settings.onBeforeRemove.call(element, tabPath) === false) {
                             module.debug('onBeforeRemove returned false, cancelling tab removal', $tab);
-                            
+
                             return false;
                         }
                         var
