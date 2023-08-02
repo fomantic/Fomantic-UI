@@ -71,6 +71,7 @@
                 $module         = $(this),
                 $context,
                 $tabs,
+                $close          = $module.find(selector.removeIcon),
 
                 cache           = {},
                 firstLoad       = true,
@@ -96,6 +97,13 @@
                     if (settings.auto) {
                         module.set.auto();
                     }
+
+                    if (module.is.removable() && !module.has.removeIcon()) {
+                        module.verbose('Adding close icon');
+                        $close = $('<i />').addClass('remove icon');
+                        $module.append($close);
+                    }
+
                     module.bind.events();
 
                     if (settings.history && !initializedHistory) {
@@ -142,6 +150,7 @@
                             module.debug('Attaching tab activation events to element', $module);
                             $module
                                 .on('click' + eventNamespace, module.event.click)
+                                .on('click' + eventNamespace, selector.removeIcon, module.event.removeIcon.click)
                             ;
                         }
                     },
@@ -222,6 +231,15 @@
                             event.preventDefault();
                         } else {
                             module.debug('No tab specified');
+                        }
+                    },
+                    removeIcon: {
+                        click: function (event) {
+                            var
+                                tabPath   = $(this).parent().data(metadata.tab)
+                            ;
+                            module.removeTab(tabPath);
+                            event.stopPropagation();
                         }
                     },
                     history: {
@@ -423,6 +441,35 @@
                     });
                 },
 
+                removeTab: function (tabPath) {
+                    var
+                        activeTab = module.determine.activeTab(),
+                        $tab      = module.get.tabElement(tabPath)
+                    ;
+                    if (tabPath == $module.data(metadata.tab)) {
+                        module.verbose('Call for tab removal', tabPath);
+                        if (settings.onBeforeRemove.call(element, tabPath) === false) {
+                            module.debug('onBeforeRemove returned false, cancelling tab removal', $tab);
+                            return false;
+                        }
+                        var
+                            nextTab = $module.nextAll(selector.enabled).length > 0
+                                ? $module.nextAll(selector.enabled).eq(0).data(metadata.tab)
+                                : ($module.prevAll(selector.enabled).length > 0
+                                    ? $module.prevAll(selector.enabled).eq(0).data(metadata.tab)
+                                    : module.get.initialPath())
+                        ;
+                        $tab.removeClass(className.active).remove();
+                        $module.removeClass(className.active).remove();
+                        module.determineTabs();
+                        settings.onRemove.call(element, tabPath);
+                        if (activeTab == tabPath) {
+                            module.debug('No active tab detected, setting tab active', nextTab);
+                            module.changeTab(nextTab);
+                        }
+                    }
+                },
+
                 scrollTo: function ($element) {
                     var
                         scrollOffset = $element && $element.length > 0
@@ -608,6 +655,15 @@
                         return tabName !== undefined
                             ? module.get.tabElement(tabName).length > 0
                             : false;
+                    },
+                    removable: function () {
+                        return $module.hasClass(className.removable) || settings.removable;
+                    },
+                },
+
+                has: {
+                    removeIcon: function () {
+                        return $close.length > 0;
                     },
                 },
 
@@ -916,6 +972,7 @@
         loadOnce: false, // Whether tab data should only be loaded once when using remote content
         cacheType: 'response', // Whether to cache exact response, or to html cache contents after scripts execute
         ignoreFirstLoad: false, // don't load remote content on first load
+        removable: false,
 
         apiSettings: false, // settings for api call
         evaluateScripts: 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
@@ -926,6 +983,8 @@
         onVisible: function (tabPath, parameterArray, historyEvent) {}, // called every time tab visible
         onRequest: function (tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
         onBeforeChange: function (tabPath) {}, // called before a tab is about to be changed. Returning false will cancel the tab change
+        onBeforeRemove: function (tabPath) {}, // called before a tab is about to be removed. Returning false will cancel the tab removal
+        onRemove: function (tabPath) {}, // called when a tab is removed
 
         templates: {
             determineTitle: function (tabArray) {}, // returns page title for path
@@ -954,11 +1013,14 @@
         className: {
             loading: 'loading',
             active: 'active',
+            removable: 'removable',
         },
 
         selector: {
             tabs: '.ui.tab',
             ui: '.ui',
+            enabled: ':not(.disabled)',
+            removeIcon: '> .remove.icon',
         },
 
     };
