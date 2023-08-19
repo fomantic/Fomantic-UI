@@ -160,8 +160,9 @@
 
                         return;
                     }
-                    if (settings.onOpening.call($activeContent) === false ||
-                        settings.onChanging.call($activeContent) === false) {
+                    if (settings.onOpening.call($activeContent) === false
+                        || settings.onChanging.call($activeContent) === false
+                    ) {
                         module.debug('Opening or Changing Callback returned false cancelling open', $activeTitle);
 
                         return;
@@ -231,8 +232,9 @@
                         isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
-                        if (settings.onClosing.call($activeContent) === false ||
-                            settings.onChanging.call($activeContent) === false) {
+                        if (settings.onClosing.call($activeContent) === false
+                            || settings.onChanging.call($activeContent) === false
+                        ) {
                             module.debug('Closing or Changing Callback returned false cancelling close', $activeTitle);
 
                             return;
