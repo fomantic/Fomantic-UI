@@ -292,7 +292,7 @@
 @additionZIndex: @hoveredZIndex + 1;
 
 /* Hovered */
-@hoveredItemBackground: @transparentBlack;
+@hoveredItemBackground: #f2f2f2;
 @hoveredItemColor: @selectedTextColor;
 @hoveredZIndex: @menuZIndex + 2;
 
@@ -311,7 +311,7 @@
 @activeItemColor: @selectedTextColor;
 
 /* Selected */
-@selectedBackground: @subtleTransparentBlack;
+@selectedBackground: #f7f7f7;
 @selectedColor: @selectedTextColor;
 
 /* Clearable */
@@ -382,6 +382,7 @@
 @pointingArrowBackground: @white;
 @pointingArrowZIndex: 2;
 @pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @menuBorderColor;
+@pointingArrowBoxShadowSelection: -@menuBorderWidth -@menuBorderWidth 0 0 @selectionVisibleBorderColor;
 @pointingArrowSize: @relative7px;
 
 @pointingMenuDistance: @mini;
@@ -390,6 +391,7 @@
 /* Pointing Upward */
 @pointingUpwardMenuBorderRadius: @borderRadius;
 @pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @menuBorderColor;
+@pointingUpwardArrowBoxShadowSelection: @menuBorderWidth @menuBorderWidth 0 0 @selectionVisibleBorderColor;
 
 /* Scrollhint */
 @scrollhintWidth: 0.25em;
@@ -416,15 +418,16 @@
 
 @invertedPointingArrowBackground: @black;
 @invertedPointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @invertedMenuBorderColor;
+@invertedPointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @invertedMenuBorderColor;
 
-@invertedHoveredItemBackground: @transparentWhite;
+@invertedHoveredItemBackground: #2d2e2f;
 @invertedHoveredItemColor: @invertedMenuColor;
 
 @invertedActiveItemBackground: transparent;
 @invertedActiveItemColor: @invertedMenuColor;
 @invertedActiveItemBoxShadow: none;
 
-@invertedSelectedBackground: @strongTransparentWhite;
+@invertedSelectedBackground: #3d3e3f;
 @invertedSelectedColor: @invertedMenuColor;
 
 @invertedMenuHeaderColor: @white;
