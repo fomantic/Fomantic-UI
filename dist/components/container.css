@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Container
+ * # Fomantic-UI 2.9.3 - Container
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -161,8 +161,14 @@
   .ui.scrolling.container.short {
     max-height: 11.25em;
   }
+  .ui.scrolling.container.short.resizable {
+    height: 11.25em;
+  }
   .ui.scrolling.container[class*="very short"] {
     max-height: 7.5em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 7.5em;
   }
   .ui.scrolling.container {
     max-height: 15em;
@@ -170,60 +176,115 @@
   .ui.scrolling.container.long {
     max-height: 30em;
   }
+  .ui.scrolling.container.long.resizable {
+    height: 30em;
+  }
   .ui.scrolling.container[class*="very long"] {
     max-height: 45em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 45em;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.scrolling.container.short {
     max-height: 13.5em;
   }
+  .ui.scrolling.container.short.resizable {
+    height: 13.5em;
+  }
   .ui.scrolling.container[class*="very short"] {
     max-height: 9em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 9em;
   }
   .ui.scrolling.container {
     max-height: 18em;
   }
+  .ui.scrolling.container.resizable {
+    height: 18em;
+  }
   .ui.scrolling.container.long {
     max-height: 36em;
   }
+  .ui.scrolling.container.long.resizable {
+    height: 36em;
+  }
   .ui.scrolling.container[class*="very long"] {
     max-height: 54em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 54em;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.scrolling.container.short {
     max-height: 18em;
   }
+  .ui.scrolling.container.short.resizable {
+    height: 18em;
+  }
   .ui.scrolling.container[class*="very short"] {
     max-height: 12em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 12em;
   }
   .ui.scrolling.container {
     max-height: 24em;
   }
+  .ui.scrolling.container.resizable {
+    height: 24em;
+  }
   .ui.scrolling.container.long {
     max-height: 48em;
   }
+  .ui.scrolling.container.long.resizable {
+    height: 48em;
+  }
   .ui.scrolling.container[class*="very long"] {
     max-height: 72em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 72em;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.container.short {
     max-height: 22.5em;
   }
+  .ui.scrolling.container.short.resizable {
+    height: 22.5em;
+  }
   .ui.scrolling.container[class*="very short"] {
     max-height: 15em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 15em;
   }
   .ui.scrolling.container {
     max-height: 30em;
   }
+  .ui.scrolling.container.resizable {
+    height: 30em;
+  }
   .ui.scrolling.container.long {
     max-height: 60em;
+  }
+  .ui.scrolling.container.long.resizable {
+    height: 60em;
   }
   .ui.scrolling.container[class*="very long"] {
     max-height: 90em;
   }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 90em;
+  }
+}
+.ui.resizable.scrolling.container {
+  resize: vertical;
+  max-height: none;
 }
 
 

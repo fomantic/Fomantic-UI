@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Comment
+ * # Fomantic-UI 2.9.3 - Comment
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -263,6 +263,11 @@
 }
 .ui.inverted.threaded.comments .comment > .comments {
   box-shadow: -1px 0 0 #555;
+}
+.ui.disabled.comments,
+.ui.comments .disabled.comment {
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 
