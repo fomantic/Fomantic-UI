@@ -123,7 +123,9 @@
 @googleFontDisplay: "swap";
 
 @googleProtocol: "https://";
-@googleFontRequest: "@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}&display=@{googleFontDisplay}";
+@googleFonts: "@{googleFontName}:@{googleFontSizes}";
+@googleFontRequest: "@{googleFonts}&subset=@{googleSubset}&display=@{googleFontDisplay}";
+@googleFontUrl: "@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}";
 
 @bold: bold;
 @normal: normal;
