@@ -163,15 +163,15 @@
 @invertedMetaLinkColor: @invertedLightTextColor;
 @invertedMetaLinkHoverColor: @invertedTextColor;
 @invertedContentColor: @invertedTextColor;
-@invertedContentLinkColor: lighten(saturate(@linkColor, 30), 25, relative);
+@invertedContentLinkColor: if(iscolor(@linkColor), lighten(saturate(@linkColor, 30), 25, relative), @linkColor);
 @invertedContentLinkHoverColor: @linkColor;
 @invertedExtraColor: @invertedLightTextColor;
 @invertedDescriptionColor: @invertedTextColor;
 @invertedMetaColor: rgba(255, 255, 255, 0.8);
-@invertedLikeColor: lighten(@likeColor, 10);
-@invertedLikeActiveColor: lighten(@likeActiveColor, 10);
-@invertedFavoriteColor: lighten(@favoriteColor, 10);
-@invertedFavoriteActiveColor: lighten(@favoriteActiveColor, 10);
+@invertedLikeColor: if(iscolor(@likeColor), lighten(@likeColor, 10), @likeColor);
+@invertedLikeActiveColor: if(iscolor(@likeActiveColor), lighten(@likeActiveColor, 10), @likeActiveColor);
+@invertedFavoriteColor: if(iscolor(@favoriteColor), lighten(@favoriteColor, 10), @favoriteColor);
+@invertedFavoriteActiveColor: if(iscolor(@favoriteActiveColor), lighten(@favoriteActiveColor, 10), @favoriteActiveColor);
 @invertedDividedBorder: 1px solid @whiteBorderColor;
 
 @miniItemSize: @relativeMini;

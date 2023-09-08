@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Popup
+ * # Fomantic-UI 2.9.3 - Popup
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -79,7 +79,6 @@
   width: 0.71428571em;
   height: 0.71428571em;
   background: #fff;
-  transform: rotate(45deg);
   z-index: 1901;
   box-shadow: 1px 1px 0 0 #bababc;
 }
@@ -107,78 +106,70 @@
   z-index: 1900;
 }
 
-/* Default Position (Top Center) */
-[data-tooltip]:not([data-position])::before {
-  top: auto;
-  right: auto;
-  bottom: 100%;
-  left: 50%;
-  background: #fff;
-  margin-left: -0.07142857rem;
-  margin-bottom: 0.14285714rem;
-}
-[data-tooltip]:not([data-position])::after {
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 100%;
-  margin-bottom: 0.5em;
-}
-
 /* Animation */
 [data-tooltip]::before,
 [data-tooltip]::after {
   pointer-events: none;
-  visibility: hidden;
   opacity: 0;
-  transition: transform 0.1s ease, opacity 0.1s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+[data-tooltip]::after,
+[data-tooltip]:hover::before {
+  transition-delay: 0.04s;
+}
+[data-tooltip]::before,
+[data-tooltip]:hover::after {
+  transition-delay: 0s;
 }
 [data-tooltip]::before {
-  transform: rotate(45deg) scale(0) !important;
+  transform: rotate(45deg) scale(0.8);
   transform-origin: center top;
 }
 [data-tooltip]::after {
   transform-origin: center bottom;
 }
+[data-tooltip][data-variation~="visible"]::before,
+[data-tooltip][data-variation~="visible"]::after,
 [data-tooltip]:hover::before,
 [data-tooltip]:hover::after {
-  visibility: visible;
   pointer-events: auto;
   opacity: 1;
 }
 [data-tooltip]:hover::before {
-  transform: rotate(45deg) scale(1) !important;
+  transform: rotate(45deg) scale(1);
 }
 
 /* Animation Position */
-[data-tooltip]::after,
+[data-tooltip]:not([data-position])::after,
 [data-tooltip][data-position="top center"]::after,
 [data-tooltip][data-position="bottom center"]::after {
-  transform: translateX(-50%) scale(0) !important;
+  transform: translateX(-50%) scale(0.8);
 }
-[data-tooltip]:hover::after,
+[data-tooltip]:not([data-position]):hover::after,
+[data-tooltip][data-position="top center"]:hover::after,
 [data-tooltip][data-position="bottom center"]:hover::after {
-  transform: translateX(-50%) scale(1) !important;
+  transform: translateX(-50%) scale(1);
 }
 [data-tooltip][data-position="left center"]::after,
 [data-tooltip][data-position="right center"]::after {
-  transform: translateY(-50%) scale(0) !important;
+  transform: translateY(-50%) scale(0.8);
 }
 [data-tooltip][data-position="left center"]:hover::after,
 [data-tooltip][data-position="right center"]:hover::after {
-  transform: translateY(-50%) scale(1) !important;
+  transform: translateY(-50%) scale(1);
   -moz-transform: translateY(-50%) scale(1.0001) !important;
 }
 [data-tooltip][data-position="top left"]::after,
 [data-tooltip][data-position="top right"]::after,
 [data-tooltip][data-position="bottom left"]::after,
 [data-tooltip][data-position="bottom right"]::after {
-  transform: scale(0) !important;
+  transform: scale(0.8);
 }
 [data-tooltip][data-position="top left"]:hover::after,
 [data-tooltip][data-position="top right"]:hover::after,
 [data-tooltip][data-position="bottom left"]:hover::after,
 [data-tooltip][data-position="bottom right"]:hover::after {
-  transform: scale(1) !important;
+  transform: scale(1);
 }
 [data-tooltip][data-variation~="fixed"]::after {
   white-space: normal;
@@ -202,11 +193,11 @@
 
 /* Arrow */
 [data-tooltip][data-inverted]::before {
-  box-shadow: none !important;
+  box-shadow: none;
 }
 
 /* Arrow Position */
-[data-tooltip][data-inverted]::before {
+[data-tooltip]:not([data-position])[data-inverted]::before {
   background: #1b1c1d;
 }
 
@@ -225,15 +216,16 @@
   background: #fff;
 }
 
-/* Top Center */
+/* Top Center (default) */
+[data-tooltip]:not([data-position])::after,
 [data-position="top center"][data-tooltip]::after {
   top: auto;
   right: auto;
   left: 50%;
   bottom: 100%;
-  transform: translateX(-50%);
   margin-bottom: 0.5em;
 }
+[data-tooltip]:not([data-position])::before,
 [data-position="top center"][data-tooltip]::before {
   top: auto;
   right: auto;
@@ -288,7 +280,6 @@
   right: auto;
   left: 50%;
   top: 100%;
-  transform: translateX(-50%);
   margin-top: 0.5em;
 }
 [data-position="bottom center"][data-tooltip]::before {
@@ -335,7 +326,6 @@
   right: 100%;
   top: 50%;
   margin-right: 0.5em;
-  transform: translateY(-50%);
 }
 [data-position="left center"][data-tooltip]::before {
   right: 100%;
@@ -351,7 +341,6 @@
   left: 100%;
   top: 50%;
   margin-left: 0.5em;
-  transform: translateY(-50%);
 }
 [data-position="right center"][data-tooltip]::before {
   left: 100%;
@@ -398,6 +387,18 @@
 }
 [data-position="right center"][data-tooltip]::after {
   transform-origin: left center;
+}
+[data-position="top left"][data-tooltip]::after {
+  transform-origin: bottom left;
+}
+[data-position="top right"][data-tooltip]::after {
+  transform-origin: bottom right;
+}
+[data-position="bottom left"][data-tooltip]::after {
+  transform-origin: top left;
+}
+[data-position="bottom right"][data-tooltip]::after {
+  transform-origin: top right;
 }
 
 /* --------------
@@ -700,7 +701,7 @@
 }
 .ui.inverted.popup::before {
   background-color: #1b1c1d;
-  box-shadow: none !important;
+  box-shadow: none;
 }
 .ui.ui.ui.primary.popup::before,
 .ui.primary.popup,

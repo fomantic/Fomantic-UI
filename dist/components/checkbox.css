@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Checkbox
+ * # Fomantic-UI 2.9.3 - Checkbox
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -48,9 +48,11 @@
   cursor: auto;
   position: relative;
   display: block;
-  padding-left: 1.85714em;
   outline: none;
   font-size: 1em;
+}
+.ui.checkbox:not(.invisible) label {
+  padding-left: 1.85714em;
 }
 .ui.checkbox label::before {
   position: absolute;
@@ -119,8 +121,8 @@
   background: #fff;
   border-color: rgba(34, 36, 38, 0.35);
 }
-.ui.checkbox label:hover,
-.ui.checkbox + label:hover {
+.ui.checkbox:not(.invisible) label:hover,
+.ui.checkbox:not(.invisible) + label:hover {
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -134,7 +136,7 @@
 .ui.checkbox label:active::after {
   color: rgba(0, 0, 0, 0.95);
 }
-.ui.checkbox input:active ~ label {
+.ui.checkbox:not(.invisible) input:active ~ label {
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -148,7 +150,7 @@
 .ui.checkbox input:focus ~ label::after {
   color: rgba(0, 0, 0, 0.95);
 }
-.ui.checkbox input:focus ~ label {
+.ui.checkbox:not(.invisible) input:focus ~ label {
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -604,6 +606,48 @@
 }
 .ui.ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
   background-color: #0d71bb;
+}
+
+/* --------------
+         Invisible
+    --------------- */
+.ui.invisible.checkbox:not(.compact) {
+  display: block;
+}
+.ui.invisible.checkbox input {
+  left: -99999px;
+  position: absolute;
+}
+.ui.invisible.checkbox label::before,
+.ui.invisible.checkbox label::after {
+  display: none;
+}
+.ui.invisible.checkbox label {
+  transition: all 0.1s ease;
+}
+.ui.ui.ui.ui.ui.invisible.checkbox input:not(:checked) + label {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+  color: inherit;
+}
+.ui.ui.ui.ui.ui.invisible.checkbox input:not(:checked):not(:hover):focus + label:not(.image) {
+  box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.35) inset;
+}
+.ui.ui.ui.ui.ui.invisible.checkbox input:not(:checked) + label.image,
+.basic.ui.ui.ui.ui.ui.invisible.checkbox input:not(:checked) + label {
+  box-shadow: none;
+}
+.ui.invisible.checkbox input:not(:checked) + label.image {
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+.ui.invisible.checkbox input:not(:checked):not(:hover):focus + label.image {
+  opacity: 0.75;
+}
+.ui.invisible.checkbox input:not(:checked)[disabled] + label.image,
+.disabled.ui.invisible.checkbox input:not(:checked) + label.image {
+  opacity: 0.25;
 }
 
 /* --------------------

@@ -265,24 +265,39 @@
         & when (@variationTableScrollingShort) {
             .ui.scrolling.table.short > tbody {
                 max-height: @scrollingMobileMaxBodyHeight * 0.75;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingMobileMaxBodyHeight * 0.75;
+                }
             }
         }
         & when (@variationTableScrollingVeryShort) {
             .ui.scrolling.table[class*="very short"] > tbody {
                 max-height: @scrollingMobileMaxBodyHeight * 0.5;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingMobileMaxBodyHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.table > tbody {
             max-height: @scrollingMobileMaxBodyHeight;
+            .resizable& when (@variationTableResizable) {
+                height: @scrollingMobileMaxBodyHeight;
+            }
         }
         & when (@variationTableScrollingLong) {
             .ui.scrolling.table.long > tbody {
                 max-height: @scrollingMobileMaxBodyHeight * 2;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingMobileMaxBodyHeight * 2;
+                }
             }
         }
         & when (@variationTableScrollingVeryLong) {
             .ui.scrolling.table[class*="very long"] > tbody {
                 max-height: @scrollingMobileMaxBodyHeight * 3;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingMobileMaxBodyHeight * 3;
+                }
             }
         }
     }
@@ -320,24 +335,39 @@
         & when (@variationTableScrollingShort) {
             .ui.scrolling.table.short > tbody {
                 max-height: @scrollingTabletMaxBodyHeight * 0.75;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingTabletMaxBodyHeight * 0.75;
+                }
             }
         }
         & when (@variationTableScrollingVeryShort) {
             .ui.scrolling.table[class*="very short"] > tbody {
                 max-height: @scrollingTabletMaxBodyHeight * 0.5;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingTabletMaxBodyHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.table > tbody {
             max-height: @scrollingTabletMaxBodyHeight;
+            .resizable& when (@variationTableResizable) {
+                height: @scrollingTabletMaxBodyHeight;
+            }
         }
         & when (@variationTableScrollingLong) {
             .ui.scrolling.table.long > tbody {
                 max-height: @scrollingTabletMaxBodyHeight * 2;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingTabletMaxBodyHeight * 2;
+                }
             }
         }
         & when (@variationTableScrollingVeryLong) {
             .ui.scrolling.table[class*="very long"] > tbody {
                 max-height: @scrollingTabletMaxBodyHeight * 3;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingTabletMaxBodyHeight * 3;
+                }
             }
         }
     }
@@ -345,24 +375,39 @@
         & when (@variationTableScrollingShort) {
             .ui.scrolling.table.short > tbody {
                 max-height: @scrollingComputerMaxBodyHeight * 0.75;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingComputerMaxBodyHeight * 0.75;
+                }
             }
         }
         & when (@variationTableScrollingVeryShort) {
             .ui.scrolling.table[class*="very short"] > tbody {
                 max-height: @scrollingComputerMaxBodyHeight * 0.5;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingComputerMaxBodyHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.table > tbody {
             max-height: @scrollingComputerMaxBodyHeight;
+            .resizable& when (@variationTableResizable) {
+                height: @scrollingComputerMaxBodyHeight;
+            }
         }
         & when (@variationTableScrollingLong) {
             .ui.scrolling.table.long > tbody {
                 max-height: @scrollingComputerMaxBodyHeight * 2;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingComputerMaxBodyHeight * 2;
+                }
             }
         }
         & when (@variationTableScrollingVeryLong) {
             .ui.scrolling.table[class*="very long"] > tbody {
                 max-height: @scrollingComputerMaxBodyHeight * 3;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingComputerMaxBodyHeight * 3;
+                }
             }
         }
     }
@@ -370,24 +415,39 @@
         & when (@variationTableScrollingShort) {
             .ui.scrolling.table.short > tbody {
                 max-height: @scrollingWidescreenMaxBodyHeight * 0.75;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingWidescreenMaxBodyHeight * 0.75;
+                }
             }
         }
         & when (@variationTableScrollingVeryShort) {
             .ui.scrolling.table[class*="very short"] > tbody {
                 max-height: @scrollingWidescreenMaxBodyHeight * 0.5;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingWidescreenMaxBodyHeight * 0.5;
+                }
             }
         }
         .ui.scrolling.table > tbody {
             max-height: @scrollingWidescreenMaxBodyHeight;
+            .resizable& when (@variationTableResizable) {
+                height: @scrollingWidescreenMaxBodyHeight;
+            }
         }
         & when (@variationTableScrollingLong) {
             .ui.scrolling.table.long > tbody {
                 max-height: @scrollingWidescreenMaxBodyHeight * 2;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingWidescreenMaxBodyHeight * 2;
+                }
             }
         }
         & when (@variationTableScrollingVeryLong) {
             .ui.scrolling.table[class*="very long"] > tbody {
                 max-height: @scrollingWidescreenMaxBodyHeight * 3;
+                .resizable& when (@variationTableResizable) {
+                    height: @scrollingWidescreenMaxBodyHeight * 3;
+                }
             }
         }
     }
@@ -487,6 +547,12 @@
 
             /* firefox: first color thumb, second track */
             scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+        }
+    }
+    & when (@variationTableResizable) {
+        .ui.resizable.scrolling.table > tbody {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }

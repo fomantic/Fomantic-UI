@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Menu
+ * # Fomantic-UI 2.9.3 - Menu
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1696,8 +1696,12 @@ Floated Menu / Item
 }
 
 /* -------------------
-      Evenly Sized
--------------------- */
+          Evenly Sized
+    -------------------- */
+.ui[class*="equal width"].menu > .item {
+  flex: 1;
+}
+.ui[class*="equal width"].menu > .item,
 .ui.item.menu,
 .ui.item.menu .item {
   width: 100%;
@@ -1708,9 +1712,11 @@ Floated Menu / Item
   text-align: center;
   justify-content: center;
 }
+.ui.attached[class*="equal width"].menu:not(.tabular),
 .ui.attached.item.menu:not(.tabular) {
   margin: 0 -1px !important;
 }
+.ui[class*="equal width"].menu > .item:last-child::before,
 .ui.item.menu .item:last-child::before {
   display: none;
 }
@@ -2008,14 +2014,14 @@ Floated Menu / Item
 .ui.wrapping.menu .item:first-child::before {
   display: none;
 }
-.ui.wrapping.menu:not(.tabular) .item:last-of-type,
-.ui.wrapping.menu:not(.tabular) .item:last-child {
+.ui.wrapping.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item:last-of-type,
+.ui.wrapping.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item:last-child {
   border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
-.ui.wrapped.menu:not(.tabular) .item:first-child {
+.ui.wrapped.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item:first-child {
   border-bottom-left-radius: 0;
 }
-.ui.wrapped.menu:not(.tabular) .item:last-child {
+.ui.wrapped.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item:last-child {
   border-top-right-radius: 0;
 }
 

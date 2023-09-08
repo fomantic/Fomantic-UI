@@ -675,7 +675,8 @@
                         var
                             step = module.get.step(),
                             min = module.get.min(),
-                            quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
+                            precision = module.get.precision(),
+                            quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
                             remainder = step === 0 ? 0 : (settings.max - min) % step
                         ;
 
@@ -685,7 +686,9 @@
                         return settings.step;
                     },
                     numLabels: function () {
-                        var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
+                        var step = module.get.step(),
+                            precision = module.get.precision(),
+                            value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
                         module.debug('Determined that there should be ' + value + ' labels');
 
                         return value;
@@ -700,7 +703,9 @@
 
                         switch (settings.labelType) {
                             case settings.labelTypes.number: {
-                                return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision) / precision;
+                                var step = module.get.step();
+
+                                return Math.round(((value * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             }
                             case settings.labelTypes.letter: {
                                 return alphabet[value % 26];
@@ -1263,7 +1268,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var

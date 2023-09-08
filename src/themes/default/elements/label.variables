@@ -158,7 +158,7 @@
 @ribbonZIndex: 1;
 
 /* Inverted */
-@invertedBackgroundColor: darken(@backgroundColor, 20);
+@invertedBackgroundColor: if(iscolor(@backgroundColor), darken(@backgroundColor, 20), @backgroundColor);
 @invertedBackground: @black;
 @invertedBoxShadowSize: 2px;
 @invertedBorderSize: 1px;

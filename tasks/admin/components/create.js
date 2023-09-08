@@ -15,11 +15,10 @@
 */
 
 const
-    gulp            = require('gulp'),
-
     // node dependencies
     fs              = require('fs'),
     path            = require('path'),
+    gulp            = require('gulp'),
 
     // admin dependencies
     concatFileNames = require('gulp-concat-filenames'),

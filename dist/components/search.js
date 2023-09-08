@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Search
+ * # Fomantic-UI 2.9.3 - Search
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22,7 +22,6 @@
     $.fn.search = function (parameters) {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -170,7 +169,7 @@
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
-                                module.timer = setTimeout(module.hideResults, settings.hideDelay);
+                                module.timer = setTimeout(function () { module.hideResults(); }, settings.hideDelay);
                             }
                         ;
                         if (pageLostFocus) {
@@ -562,6 +561,7 @@
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
                             module.save.results(cache.results);
+                            settings.onResults.call(element, cache.results, true);
                             module.addResults(cache.html);
                             module.inject.id(cache.results);
                             callback();
@@ -1171,7 +1171,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1184,9 +1184,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }
@@ -1349,7 +1346,7 @@
         onResultsAdd: false,
 
         onSearchQuery: function (query) {},
-        onResults: function (response) {},
+        onResults: function (response, fromCache) {},
 
         onResultsOpen: function () {},
         onResultsClose: function () {},

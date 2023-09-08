@@ -240,6 +240,7 @@ module.exports = {
         config: './semantic.json.example',
         definitions: './src/definitions',
         gulpFile: './gulpfile.js',
+        overridesImport: './src/overrides.less',
         lessImport: './src/semantic.less',
         site: './src/_site',
         tasks: './tasks',
@@ -253,6 +254,7 @@ module.exports = {
     // expected final filenames
     files: {
         config: 'semantic.json',
+        overridesImport: 'src/overrides.less',
         lessImport: 'src/semantic.less',
         site: 'src/site',
         themeConfig: 'src/theme.config',
@@ -263,6 +265,7 @@ module.exports = {
     folders: {
         config: './',
         definitions: 'src/definitions/',
+        overridesImport: 'src/',
         lessImport: 'src/',
         modules: 'node_modules/',
         site: 'src/site/',

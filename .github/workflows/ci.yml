@@ -8,15 +8,15 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
     - name: Install dependencies
-      run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^45 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+      run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^46 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
     - name: Lint JS and LESS files
       run: npm run lint
     - name: Assert LESS files formatting using Prettier
       run: >
-        yarn add -D github:fomantic/prettier#2.8.3-patched
+        yarn add -D github:prettier/prettier#c6e026ea28
         && npx prettier --loglevel warn '!dist' '!test/coverage' '!src/semantic.less' '**/*.{css,less,overrides,variables}' --write
         && git restore package.json yarn.lock
         && git add . -N && git diff --color --exit-code
@@ -28,7 +28,7 @@ jobs:
       matrix:
         node-version: [12, 14, 16, 18, latest]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -47,7 +47,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: github/codeql-action/init@v2
       with:
         languages: 'javascript'

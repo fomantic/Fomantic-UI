@@ -6,8 +6,9 @@
 
 | Version   | Supported          |
 | --------- | ------------------ |
+| 2.9.x     | :white_check_mark: |
 | 2.8.x     | :white_check_mark: |
-| 2.7.x     | :white_check_mark: |
+| 2.7.x     | :lock:             |
 | > 2.x.x   | :lock:             |
 | 1.x.x     | :x:                |
 
