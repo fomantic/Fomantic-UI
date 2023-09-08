@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Dimmer
+ * # Fomantic-UI 2.9.3 - Dimmer
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -195,7 +195,7 @@ body.dimmable > .dimmer {
 .light.light.light.light.light.dimmer {
   background: rgba(0, 0, 0, 0.45);
 }
-.very.light.light.light.light.dimmer {
+.very.very.very.very.light.dimmer {
   background: rgba(0, 0, 0, 0.25);
 }
 
@@ -219,7 +219,7 @@ body.dimmable > .dimmer {
 .light.light.light.light.light.inverted.dimmer {
   background: rgba(255, 255, 255, 0.45);
 }
-.very.light.light.light.light.inverted.dimmer {
+.very.very.very.very.light.inverted.dimmer {
   background: rgba(255, 255, 255, 0.25);
 }
 

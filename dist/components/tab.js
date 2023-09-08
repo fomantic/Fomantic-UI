@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Tab
+ * # Fomantic-UI 2.9.3 - Tab
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -30,14 +30,25 @@
                 ? $(window)
                 : $(this),
             $document      = $(document),
-            moduleSelector  = $allModules.selector || '',
             time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
 
+                return $context;
+            },
             initializedHistory = false,
             returnedValue
         ;
@@ -88,7 +99,7 @@
                     module.bind.events();
 
                     if (settings.history && !initializedHistory) {
-                        module.initializeHistory();
+                        settings.history = module.initializeHistory();
                         initializedHistory = true;
                     }
 
@@ -98,7 +109,7 @@
                         module.debug('No active tab detected, setting tab active', activeTab);
                         module.changeTab(activeTab);
                     }
-                    if (activeTab !== null && settings.history) {
+                    if (activeTab !== null && settings.history && settings.historyType === 'state') {
                         var autoUpdate = $.address.autoUpdate();
                         $.address.autoUpdate(false);
                         $.address.value(activeTab);
@@ -152,7 +163,7 @@
                         $context = $reference.parent();
                         module.verbose('Determined parent element for creating context', $context);
                     } else if (settings.context) {
-                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
+                        $context = contextCheck(settings.context, window);
                         module.verbose('Using selector for tab context', settings.context, $context);
                     } else {
                         $context = $('body');
@@ -191,6 +202,8 @@
                     $.address
                         .bind('change', module.event.history.change)
                     ;
+
+                    return true;
                 },
 
                 event: {
@@ -775,7 +788,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -788,9 +801,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

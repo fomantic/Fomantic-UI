@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Modal
+ * # Fomantic-UI 2.9.3 - Modal
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -410,11 +410,10 @@
   overflow: hidden;
 }
 .scrolling.dimmable > .dimmer {
-  justify-content: flex-start;
+  justify-content: center;
   position: fixed;
 }
 .scrolling.dimmable:not(body) > .dimmer {
-  justify-content: center;
   position: absolute;
 }
 .scrolling.dimmable.dimmed > .dimmer {
@@ -422,8 +421,12 @@
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
 }
+.modals.dimmer .ui.scrolling.modal.fullscreen {
+  top: 0;
+}
 .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
   margin: 2rem auto;
+  top: 1em;
 }
 
 /* Fix for Firefox, Edge, IE11 */
@@ -453,6 +456,10 @@
   overflow: auto;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+}
+.ui.modal > .resizable.scrolling.content {
+  resize: vertical;
+  max-height: none;
 }
 .ui.overlay.fullscreen.modal > .content {
   min-height: calc(100vh - 9.1rem);

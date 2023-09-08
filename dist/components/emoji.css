@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Emoji
+ * # Fomantic-UI 2.9.3 - Emoji
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -377,6 +377,10 @@ em[data-emoji=":laughing:"]::before,
 em[data-emoji="laughing"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f606.svg");
 }
+em[data-emoji=":face_holding_back_tears:"]::before,
+em[data-emoji="face_holding_back_tears"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f979.svg");
+}
 em[data-emoji=":sweat_smile:"]::before,
 em[data-emoji="sweat_smile"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f605.svg");
@@ -388,6 +392,10 @@ em[data-emoji="joy"]::before {
 em[data-emoji=":rofl:"]::before,
 em[data-emoji="rofl"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f923.svg");
+}
+em[data-emoji=":smiling_face_with_tear:"]::before,
+em[data-emoji="smiling_face_with_tear"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f972.svg");
 }
 em[data-emoji=":relaxed:"]::before,
 em[data-emoji="relaxed"]::before {
@@ -416,10 +424,6 @@ em[data-emoji="wink"]::before {
 em[data-emoji=":relieved:"]::before,
 em[data-emoji="relieved"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f60c.svg");
-}
-em[data-emoji=":smiling_face_with_tear:"]::before,
-em[data-emoji="smiling_face_with_tear"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f972.svg");
 }
 em[data-emoji=":heart_eyes:"]::before,
 em[data-emoji="heart_eyes"]::before {
@@ -480,6 +484,10 @@ em[data-emoji="nerd"]::before {
 em[data-emoji=":sunglasses:"]::before,
 em[data-emoji="sunglasses"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f60e.svg");
+}
+em[data-emoji=":disguised_face:"]::before,
+em[data-emoji="disguised_face"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f978.svg");
 }
 em[data-emoji=":star_struck:"]::before,
 em[data-emoji="star_struck"]::before {
@@ -549,10 +557,6 @@ em[data-emoji=":triumph:"]::before,
 em[data-emoji="triumph"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f624.svg");
 }
-em[data-emoji=":face_exhaling:"]::before,
-em[data-emoji="face_exhaling"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f62e-200d-1f4a8.svg");
-}
 em[data-emoji=":angry:"]::before,
 em[data-emoji="angry"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f620.svg");
@@ -573,10 +577,6 @@ em[data-emoji=":flushed:"]::before,
 em[data-emoji="flushed"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f633.svg");
 }
-em[data-emoji=":face_in_clouds:"]::before,
-em[data-emoji="face_in_clouds"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f636-200d-1f32b-fe0f.svg");
-}
 em[data-emoji=":hot_face:"]::before,
 em[data-emoji="hot_face"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f975.svg");
@@ -584,6 +584,10 @@ em[data-emoji="hot_face"]::before {
 em[data-emoji=":cold_face:"]::before,
 em[data-emoji="cold_face"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f976.svg");
+}
+em[data-emoji=":face_in_clouds:"]::before,
+em[data-emoji="face_in_clouds"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f636-200d-1f32b-fe0f.svg");
 }
 em[data-emoji=":scream:"]::before,
 em[data-emoji="scream"]::before {
@@ -613,17 +617,29 @@ em[data-emoji=":thinking:"]::before,
 em[data-emoji="thinking"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f914.svg");
 }
+em[data-emoji=":face_with_peeking_eye:"]::before,
+em[data-emoji="face_with_peeking_eye"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae3.svg");
+}
 em[data-emoji=":face_with_hand_over_mouth:"]::before,
 em[data-emoji="face_with_hand_over_mouth"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f92d.svg");
 }
-em[data-emoji=":yawning_face:"]::before,
-em[data-emoji="yawning_face"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f971.svg");
+em[data-emoji=":face_with_open_eyes_and_hand_over_mouth:"]::before,
+em[data-emoji="face_with_open_eyes_and_hand_over_mouth"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae2.svg");
+}
+em[data-emoji=":saluting_face:"]::before,
+em[data-emoji="saluting_face"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae1.svg");
 }
 em[data-emoji=":shushing_face:"]::before,
 em[data-emoji="shushing_face"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f92b.svg");
+}
+em[data-emoji=":melting_face:"]::before,
+em[data-emoji="melting_face"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae0.svg");
 }
 em[data-emoji=":lying_face:"]::before,
 em[data-emoji="lying_face"]::before {
@@ -633,9 +649,17 @@ em[data-emoji=":no_mouth:"]::before,
 em[data-emoji="no_mouth"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f636.svg");
 }
+em[data-emoji=":dotted_line_face:"]::before,
+em[data-emoji="dotted_line_face"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae5.svg");
+}
 em[data-emoji=":neutral_face:"]::before,
 em[data-emoji="neutral_face"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f610.svg");
+}
+em[data-emoji=":face_with_diagonal_mouth:"]::before,
+em[data-emoji="face_with_diagonal_mouth"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae4.svg");
 }
 em[data-emoji=":expressionless:"]::before,
 em[data-emoji="expressionless"]::before {
@@ -669,6 +693,10 @@ em[data-emoji=":astonished:"]::before,
 em[data-emoji="astonished"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f632.svg");
 }
+em[data-emoji=":yawning_face:"]::before,
+em[data-emoji="yawning_face"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f971.svg");
+}
 em[data-emoji=":sleeping:"]::before,
 em[data-emoji="sleeping"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f634.svg");
@@ -680,6 +708,10 @@ em[data-emoji="drooling_face"]::before {
 em[data-emoji=":sleepy:"]::before,
 em[data-emoji="sleepy"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f62a.svg");
+}
+em[data-emoji=":face_exhaling:"]::before,
+em[data-emoji="face_exhaling"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f62e-200d-1f4a8.svg");
 }
 em[data-emoji=":dizzy_face:"]::before,
 em[data-emoji="dizzy_face"]::before {
@@ -728,10 +760,6 @@ em[data-emoji="money_mouth"]::before {
 em[data-emoji=":cowboy:"]::before,
 em[data-emoji="cowboy"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f920.svg");
-}
-em[data-emoji=":disguised_face:"]::before,
-em[data-emoji="disguised_face"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f978.svg");
 }
 em[data-emoji=":smiling_imp:"]::before,
 em[data-emoji="smiling_imp"]::before {
@@ -816,6 +844,30 @@ em[data-emoji="crying_cat_face"]::before {
 em[data-emoji=":pouting_cat:"]::before,
 em[data-emoji="pouting_cat"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f63e.svg");
+}
+em[data-emoji=":heart_hands:"]::before,
+em[data-emoji="heart_hands"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6.svg");
+}
+em[data-emoji=":heart_hands_tone1:"]::before,
+em[data-emoji="heart_hands_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6-1f3fb.svg");
+}
+em[data-emoji=":heart_hands_tone2:"]::before,
+em[data-emoji="heart_hands_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6-1f3fc.svg");
+}
+em[data-emoji=":heart_hands_tone3:"]::before,
+em[data-emoji="heart_hands_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6-1f3fd.svg");
+}
+em[data-emoji=":heart_hands_tone4:"]::before,
+em[data-emoji="heart_hands_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6-1f3fe.svg");
+}
+em[data-emoji=":heart_hands_tone5:"]::before,
+em[data-emoji="heart_hands_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf6-1f3ff.svg");
 }
 em[data-emoji=":palms_up_together:"]::before,
 em[data-emoji="palms_up_together"]::before {
@@ -916,6 +968,106 @@ em[data-emoji="clap_tone5"]::before {
 em[data-emoji=":handshake:"]::before,
 em[data-emoji="handshake"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d.svg");
+}
+em[data-emoji=":handshake_tone1:"]::before,
+em[data-emoji="handshake_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d-1f3fb.svg");
+}
+em[data-emoji=":handshake_tone1_tone2:"]::before,
+em[data-emoji="handshake_tone1_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fb-200d-1faf2-1f3fc.svg");
+}
+em[data-emoji=":handshake_tone1_tone3:"]::before,
+em[data-emoji="handshake_tone1_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fb-200d-1faf2-1f3fd.svg");
+}
+em[data-emoji=":handshake_tone1_tone4:"]::before,
+em[data-emoji="handshake_tone1_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fb-200d-1faf2-1f3fe.svg");
+}
+em[data-emoji=":handshake_tone1_tone5:"]::before,
+em[data-emoji="handshake_tone1_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fb-200d-1faf2-1f3ff.svg");
+}
+em[data-emoji=":handshake_tone2_tone1:"]::before,
+em[data-emoji="handshake_tone2_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fc-200d-1faf2-1f3fb.svg");
+}
+em[data-emoji=":handshake_tone2:"]::before,
+em[data-emoji="handshake_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d-1f3fc.svg");
+}
+em[data-emoji=":handshake_tone2_tone3:"]::before,
+em[data-emoji="handshake_tone2_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fc-200d-1faf2-1f3fd.svg");
+}
+em[data-emoji=":handshake_tone2_tone4:"]::before,
+em[data-emoji="handshake_tone2_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fc-200d-1faf2-1f3fe.svg");
+}
+em[data-emoji=":handshake_tone2_tone5:"]::before,
+em[data-emoji="handshake_tone2_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fc-200d-1faf2-1f3ff.svg");
+}
+em[data-emoji=":handshake_tone3_tone1:"]::before,
+em[data-emoji="handshake_tone3_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fd-200d-1faf2-1f3fb.svg");
+}
+em[data-emoji=":handshake_tone3_tone2:"]::before,
+em[data-emoji="handshake_tone3_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fd-200d-1faf2-1f3fc.svg");
+}
+em[data-emoji=":handshake_tone3:"]::before,
+em[data-emoji="handshake_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d-1f3fd.svg");
+}
+em[data-emoji=":handshake_tone3_tone4:"]::before,
+em[data-emoji="handshake_tone3_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fd-200d-1faf2-1f3fe.svg");
+}
+em[data-emoji=":handshake_tone3_tone5:"]::before,
+em[data-emoji="handshake_tone3_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fd-200d-1faf2-1f3ff.svg");
+}
+em[data-emoji=":handshake_tone4_tone1:"]::before,
+em[data-emoji="handshake_tone4_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fe-200d-1faf2-1f3fb.svg");
+}
+em[data-emoji=":handshake_tone4_tone2:"]::before,
+em[data-emoji="handshake_tone4_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fe-200d-1faf2-1f3fc.svg");
+}
+em[data-emoji=":handshake_tone4_tone3:"]::before,
+em[data-emoji="handshake_tone4_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fe-200d-1faf2-1f3fd.svg");
+}
+em[data-emoji=":handshake_tone4:"]::before,
+em[data-emoji="handshake_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d-1f3fe.svg");
+}
+em[data-emoji=":handshake_tone4_tone5:"]::before,
+em[data-emoji="handshake_tone4_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fe-200d-1faf2-1f3ff.svg");
+}
+em[data-emoji=":handshake_tone5_tone1:"]::before,
+em[data-emoji="handshake_tone5_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3ff-200d-1faf2-1f3fb.svg");
+}
+em[data-emoji=":handshake_tone5_tone2:"]::before,
+em[data-emoji="handshake_tone5_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3ff-200d-1faf2-1f3fc.svg");
+}
+em[data-emoji=":handshake_tone5_tone3:"]::before,
+em[data-emoji="handshake_tone5_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3ff-200d-1faf2-1f3fd.svg");
+}
+em[data-emoji=":handshake_tone5_tone4:"]::before,
+em[data-emoji="handshake_tone5_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3ff-200d-1faf2-1f3fe.svg");
+}
+em[data-emoji=":handshake_tone5:"]::before,
+em[data-emoji="handshake_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91d-1f3ff.svg");
 }
 em[data-emoji=":thumbsup:"]::before,
 em[data-emoji="thumbsup"]::before {
@@ -1109,6 +1261,30 @@ em[data-emoji=":v_tone5:"]::before,
 em[data-emoji="v_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/270c-1f3ff.svg");
 }
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0.svg");
+}
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed_tone1:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0-1f3fb.svg");
+}
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed_tone2:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0-1f3fc.svg");
+}
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed_tone3:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0-1f3fd.svg");
+}
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed_tone4:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0-1f3fe.svg");
+}
+em[data-emoji=":hand_with_index_finger_and_thumb_crossed_tone5:"]::before,
+em[data-emoji="hand_with_index_finger_and_thumb_crossed_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf0-1f3ff.svg");
+}
 em[data-emoji=":love_you_gesture:"]::before,
 em[data-emoji="love_you_gesture"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f91f.svg");
@@ -1181,6 +1357,30 @@ em[data-emoji=":ok_hand_tone5:"]::before,
 em[data-emoji="ok_hand_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f44c-1f3ff.svg");
 }
+em[data-emoji=":pinched_fingers:"]::before,
+em[data-emoji="pinched_fingers"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c.svg");
+}
+em[data-emoji=":pinched_fingers_tone2:"]::before,
+em[data-emoji="pinched_fingers_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fc.svg");
+}
+em[data-emoji=":pinched_fingers_tone1:"]::before,
+em[data-emoji="pinched_fingers_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fb.svg");
+}
+em[data-emoji=":pinched_fingers_tone3:"]::before,
+em[data-emoji="pinched_fingers_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fd.svg");
+}
+em[data-emoji=":pinched_fingers_tone4:"]::before,
+em[data-emoji="pinched_fingers_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fe.svg");
+}
+em[data-emoji=":pinched_fingers_tone5:"]::before,
+em[data-emoji="pinched_fingers_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3ff.svg");
+}
 em[data-emoji=":pinching_hand:"]::before,
 em[data-emoji="pinching_hand"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90f.svg");
@@ -1205,29 +1405,53 @@ em[data-emoji=":pinching_hand_tone5:"]::before,
 em[data-emoji="pinching_hand_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90f-1f3ff.svg");
 }
-em[data-emoji=":pinched_fingers:"]::before,
-em[data-emoji="pinched_fingers"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c.svg");
+em[data-emoji=":palm_down_hand:"]::before,
+em[data-emoji="palm_down_hand"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3.svg");
 }
-em[data-emoji=":pinched_fingers_tone2:"]::before,
-em[data-emoji="pinched_fingers_tone2"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fc.svg");
+em[data-emoji=":palm_down_hand_tone1:"]::before,
+em[data-emoji="palm_down_hand_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3-1f3fb.svg");
 }
-em[data-emoji=":pinched_fingers_tone1:"]::before,
-em[data-emoji="pinched_fingers_tone1"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fb.svg");
+em[data-emoji=":palm_down_hand_tone2:"]::before,
+em[data-emoji="palm_down_hand_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3-1f3fc.svg");
 }
-em[data-emoji=":pinched_fingers_tone3:"]::before,
-em[data-emoji="pinched_fingers_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fd.svg");
+em[data-emoji=":palm_down_hand_tone3:"]::before,
+em[data-emoji="palm_down_hand_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3-1f3fd.svg");
 }
-em[data-emoji=":pinched_fingers_tone4:"]::before,
-em[data-emoji="pinched_fingers_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3fe.svg");
+em[data-emoji=":palm_down_hand_tone4:"]::before,
+em[data-emoji="palm_down_hand_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3-1f3fe.svg");
 }
-em[data-emoji=":pinched_fingers_tone5:"]::before,
-em[data-emoji="pinched_fingers_tone5"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f90c-1f3ff.svg");
+em[data-emoji=":palm_down_hand_tone5:"]::before,
+em[data-emoji="palm_down_hand_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf3-1f3ff.svg");
+}
+em[data-emoji=":palm_up_hand:"]::before,
+em[data-emoji="palm_up_hand"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4.svg");
+}
+em[data-emoji=":palm_up_hand_tone1:"]::before,
+em[data-emoji="palm_up_hand_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4-1f3fb.svg");
+}
+em[data-emoji=":palm_up_hand_tone2:"]::before,
+em[data-emoji="palm_up_hand_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4-1f3fc.svg");
+}
+em[data-emoji=":palm_up_hand_tone3:"]::before,
+em[data-emoji="palm_up_hand_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4-1f3fd.svg");
+}
+em[data-emoji=":palm_up_hand_tone4:"]::before,
+em[data-emoji="palm_up_hand_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4-1f3fe.svg");
+}
+em[data-emoji=":palm_up_hand_tone5:"]::before,
+em[data-emoji="palm_up_hand_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf4-1f3ff.svg");
 }
 em[data-emoji=":point_left:"]::before,
 em[data-emoji="point_left"]::before {
@@ -1493,6 +1717,54 @@ em[data-emoji=":call_me_tone5:"]::before,
 em[data-emoji="call_me_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f919-1f3ff.svg");
 }
+em[data-emoji=":leftwards_hand:"]::before,
+em[data-emoji="leftwards_hand"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2.svg");
+}
+em[data-emoji=":leftwards_hand_tone1:"]::before,
+em[data-emoji="leftwards_hand_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2-1f3fb.svg");
+}
+em[data-emoji=":leftwards_hand_tone2:"]::before,
+em[data-emoji="leftwards_hand_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2-1f3fc.svg");
+}
+em[data-emoji=":leftwards_hand_tone3:"]::before,
+em[data-emoji="leftwards_hand_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2-1f3fd.svg");
+}
+em[data-emoji=":leftwards_hand_tone4:"]::before,
+em[data-emoji="leftwards_hand_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2-1f3fe.svg");
+}
+em[data-emoji=":leftwards_hand_tone5:"]::before,
+em[data-emoji="leftwards_hand_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf2-1f3ff.svg");
+}
+em[data-emoji=":rightwards_hand:"]::before,
+em[data-emoji="rightwards_hand"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1.svg");
+}
+em[data-emoji=":rightwards_hand_tone1:"]::before,
+em[data-emoji="rightwards_hand_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fb.svg");
+}
+em[data-emoji=":rightwards_hand_tone2:"]::before,
+em[data-emoji="rightwards_hand_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fc.svg");
+}
+em[data-emoji=":rightwards_hand_tone3:"]::before,
+em[data-emoji="rightwards_hand_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fd.svg");
+}
+em[data-emoji=":rightwards_hand_tone4:"]::before,
+em[data-emoji="rightwards_hand_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3fe.svg");
+}
+em[data-emoji=":rightwards_hand_tone5:"]::before,
+em[data-emoji="rightwards_hand_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf1-1f3ff.svg");
+}
 em[data-emoji=":muscle:"]::before,
 em[data-emoji="muscle"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4aa.svg");
@@ -1593,6 +1865,30 @@ em[data-emoji=":pray_tone5:"]::before,
 em[data-emoji="pray_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f64f-1f3ff.svg");
 }
+em[data-emoji=":index_pointing_at_the_viewer:"]::before,
+em[data-emoji="index_pointing_at_the_viewer"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5.svg");
+}
+em[data-emoji=":index_pointing_at_the_viewer_tone1:"]::before,
+em[data-emoji="index_pointing_at_the_viewer_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5-1f3fb.svg");
+}
+em[data-emoji=":index_pointing_at_the_viewer_tone2:"]::before,
+em[data-emoji="index_pointing_at_the_viewer_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5-1f3fc.svg");
+}
+em[data-emoji=":index_pointing_at_the_viewer_tone3:"]::before,
+em[data-emoji="index_pointing_at_the_viewer_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5-1f3fd.svg");
+}
+em[data-emoji=":index_pointing_at_the_viewer_tone4:"]::before,
+em[data-emoji="index_pointing_at_the_viewer_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5-1f3fe.svg");
+}
+em[data-emoji=":index_pointing_at_the_viewer_tone5:"]::before,
+em[data-emoji="index_pointing_at_the_viewer_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faf5-1f3ff.svg");
+}
 em[data-emoji=":foot:"]::before,
 em[data-emoji="foot"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9b6.svg");
@@ -1657,6 +1953,10 @@ em[data-emoji=":lips:"]::before,
 em[data-emoji="lips"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f444.svg");
 }
+em[data-emoji=":biting_lip:"]::before,
+em[data-emoji="biting_lip"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae6.svg");
+}
 em[data-emoji=":tooth:"]::before,
 em[data-emoji="tooth"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9b7.svg");
@@ -1676,10 +1976,6 @@ em[data-emoji="ear_tone1"]::before {
 em[data-emoji=":ear_tone2:"]::before,
 em[data-emoji="ear_tone2"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f442-1f3fc.svg");
-}
-em[data-emoji=":kiss_person_person_tone5_tone4:"]::before,
-em[data-emoji="kiss_person_person_tone5_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d1-1f3ff-200d-2764-fe0f-200d-1f48b-200d-1f9d1-1f3fe.svg");
 }
 em[data-emoji=":ear_tone3:"]::before,
 em[data-emoji="ear_tone3"]::before {
@@ -1753,10 +2049,6 @@ em[data-emoji=":eyes:"]::before,
 em[data-emoji="eyes"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f440.svg");
 }
-em[data-emoji=":brain:"]::before,
-em[data-emoji="brain"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9e0.svg");
-}
 em[data-emoji=":anatomical_heart:"]::before,
 em[data-emoji="anatomical_heart"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac0.svg");
@@ -1765,9 +2057,9 @@ em[data-emoji=":lungs:"]::before,
 em[data-emoji="lungs"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac1.svg");
 }
-em[data-emoji=":bone:"]::before,
-em[data-emoji="bone"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9b4.svg");
+em[data-emoji=":brain:"]::before,
+em[data-emoji="brain"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9e0.svg");
 }
 em[data-emoji=":speaking_head:"]::before,
 em[data-emoji="speaking_head"]::before {
@@ -1809,30 +2101,6 @@ em[data-emoji=":baby_tone5:"]::before,
 em[data-emoji="baby_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f476-1f3ff.svg");
 }
-em[data-emoji=":girl:"]::before,
-em[data-emoji="girl"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467.svg");
-}
-em[data-emoji=":girl_tone1:"]::before,
-em[data-emoji="girl_tone1"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fb.svg");
-}
-em[data-emoji=":girl_tone2:"]::before,
-em[data-emoji="girl_tone2"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fc.svg");
-}
-em[data-emoji=":girl_tone3:"]::before,
-em[data-emoji="girl_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fd.svg");
-}
-em[data-emoji=":girl_tone4:"]::before,
-em[data-emoji="girl_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fe.svg");
-}
-em[data-emoji=":girl_tone5:"]::before,
-em[data-emoji="girl_tone5"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3ff.svg");
-}
 em[data-emoji=":child:"]::before,
 em[data-emoji="child"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d2.svg");
@@ -1856,6 +2124,30 @@ em[data-emoji="child_tone4"]::before {
 em[data-emoji=":child_tone5:"]::before,
 em[data-emoji="child_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d2-1f3ff.svg");
+}
+em[data-emoji=":girl:"]::before,
+em[data-emoji="girl"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467.svg");
+}
+em[data-emoji=":girl_tone1:"]::before,
+em[data-emoji="girl_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fb.svg");
+}
+em[data-emoji=":girl_tone2:"]::before,
+em[data-emoji="girl_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fc.svg");
+}
+em[data-emoji=":girl_tone3:"]::before,
+em[data-emoji="girl_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fd.svg");
+}
+em[data-emoji=":girl_tone4:"]::before,
+em[data-emoji="girl_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3fe.svg");
+}
+em[data-emoji=":girl_tone5:"]::before,
+em[data-emoji="girl_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f467-1f3ff.svg");
 }
 em[data-emoji=":boy:"]::before,
 em[data-emoji="boy"]::before {
@@ -1881,30 +2173,6 @@ em[data-emoji=":boy_tone5:"]::before,
 em[data-emoji="boy_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f466-1f3ff.svg");
 }
-em[data-emoji=":woman:"]::before,
-em[data-emoji="woman"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469.svg");
-}
-em[data-emoji=":woman_tone1:"]::before,
-em[data-emoji="woman_tone1"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fb.svg");
-}
-em[data-emoji=":woman_tone2:"]::before,
-em[data-emoji="woman_tone2"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fc.svg");
-}
-em[data-emoji=":woman_tone3:"]::before,
-em[data-emoji="woman_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fd.svg");
-}
-em[data-emoji=":woman_tone4:"]::before,
-em[data-emoji="woman_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fe.svg");
-}
-em[data-emoji=":woman_tone5:"]::before,
-em[data-emoji="woman_tone5"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3ff.svg");
-}
 em[data-emoji=":adult:"]::before,
 em[data-emoji="adult"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d1.svg");
@@ -1928,6 +2196,30 @@ em[data-emoji="adult_tone4"]::before {
 em[data-emoji=":adult_tone5:"]::before,
 em[data-emoji="adult_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d1-1f3ff.svg");
+}
+em[data-emoji=":woman:"]::before,
+em[data-emoji="woman"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469.svg");
+}
+em[data-emoji=":woman_tone1:"]::before,
+em[data-emoji="woman_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fb.svg");
+}
+em[data-emoji=":woman_tone2:"]::before,
+em[data-emoji="woman_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fc.svg");
+}
+em[data-emoji=":woman_tone3:"]::before,
+em[data-emoji="woman_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fd.svg");
+}
+em[data-emoji=":woman_tone4:"]::before,
+em[data-emoji="woman_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3fe.svg");
+}
+em[data-emoji=":woman_tone5:"]::before,
+em[data-emoji="woman_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f469-1f3ff.svg");
 }
 em[data-emoji=":man:"]::before,
 em[data-emoji="man"]::before {
@@ -2097,30 +2389,6 @@ em[data-emoji=":man_red_haired_tone5:"]::before,
 em[data-emoji="man_red_haired_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-1f3ff-200d-1f9b0.svg");
 }
-em[data-emoji=":blond-haired_woman:"]::before,
-em[data-emoji="blond-haired_woman"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-200d-2640-fe0f.svg");
-}
-em[data-emoji=":blond-haired_woman_tone1:"]::before,
-em[data-emoji="blond-haired_woman_tone1"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fb-200d-2640-fe0f.svg");
-}
-em[data-emoji=":blond-haired_woman_tone2:"]::before,
-em[data-emoji="blond-haired_woman_tone2"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fc-200d-2640-fe0f.svg");
-}
-em[data-emoji=":blond-haired_woman_tone3:"]::before,
-em[data-emoji="blond-haired_woman_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fd-200d-2640-fe0f.svg");
-}
-em[data-emoji=":blond-haired_woman_tone4:"]::before,
-em[data-emoji="blond-haired_woman_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fe-200d-2640-fe0f.svg");
-}
-em[data-emoji=":blond-haired_woman_tone5:"]::before,
-em[data-emoji="blond-haired_woman_tone5"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3ff-200d-2640-fe0f.svg");
-}
 em[data-emoji=":blond_haired_person:"]::before,
 em[data-emoji="blond_haired_person"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471.svg");
@@ -2144,6 +2412,30 @@ em[data-emoji="blond_haired_person_tone4"]::before {
 em[data-emoji=":blond_haired_person_tone5:"]::before,
 em[data-emoji="blond_haired_person_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3ff.svg");
+}
+em[data-emoji=":blond-haired_woman:"]::before,
+em[data-emoji="blond-haired_woman"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-200d-2640-fe0f.svg");
+}
+em[data-emoji=":blond-haired_woman_tone1:"]::before,
+em[data-emoji="blond-haired_woman_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fb-200d-2640-fe0f.svg");
+}
+em[data-emoji=":blond-haired_woman_tone2:"]::before,
+em[data-emoji="blond-haired_woman_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fc-200d-2640-fe0f.svg");
+}
+em[data-emoji=":blond-haired_woman_tone3:"]::before,
+em[data-emoji="blond-haired_woman_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fd-200d-2640-fe0f.svg");
+}
+em[data-emoji=":blond-haired_woman_tone4:"]::before,
+em[data-emoji="blond-haired_woman_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3fe-200d-2640-fe0f.svg");
+}
+em[data-emoji=":blond-haired_woman_tone5:"]::before,
+em[data-emoji="blond-haired_woman_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f471-1f3ff-200d-2640-fe0f.svg");
 }
 em[data-emoji=":blond-haired_man:"]::before,
 em[data-emoji="blond-haired_man"]::before {
@@ -2337,30 +2629,6 @@ em[data-emoji=":bearded_person_tone5:"]::before,
 em[data-emoji="bearded_person_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3ff.svg");
 }
-em[data-emoji=":man_beard:"]::before,
-em[data-emoji="man_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-200d-2642-fe0f.svg");
-}
-em[data-emoji=":man_tone1_beard:"]::before,
-em[data-emoji="man_tone1_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fb-200d-2642-fe0f.svg");
-}
-em[data-emoji=":man_tone2_beard:"]::before,
-em[data-emoji="man_tone2_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fc-200d-2642-fe0f.svg");
-}
-em[data-emoji=":man_tone3_beard:"]::before,
-em[data-emoji="man_tone3_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fd-200d-2642-fe0f.svg");
-}
-em[data-emoji=":man_tone4_beard:"]::before,
-em[data-emoji="man_tone4_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fe-200d-2642-fe0f.svg");
-}
-em[data-emoji=":man_tone5_beard:"]::before,
-em[data-emoji="man_tone5_beard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3ff-200d-2642-fe0f.svg");
-}
 em[data-emoji=":woman_beard:"]::before,
 em[data-emoji="woman_beard"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-200d-2640-fe0f.svg");
@@ -2385,29 +2653,29 @@ em[data-emoji=":woman_tone5_beard:"]::before,
 em[data-emoji="woman_tone5_beard"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3ff-200d-2640-fe0f.svg");
 }
-em[data-emoji=":older_woman:"]::before,
-em[data-emoji="older_woman"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475.svg");
+em[data-emoji=":man_beard:"]::before,
+em[data-emoji="man_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-200d-2642-fe0f.svg");
 }
-em[data-emoji=":older_woman_tone1:"]::before,
-em[data-emoji="older_woman_tone1"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fb.svg");
+em[data-emoji=":man_tone1_beard:"]::before,
+em[data-emoji="man_tone1_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fb-200d-2642-fe0f.svg");
 }
-em[data-emoji=":older_woman_tone2:"]::before,
-em[data-emoji="older_woman_tone2"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fc.svg");
+em[data-emoji=":man_tone2_beard:"]::before,
+em[data-emoji="man_tone2_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fc-200d-2642-fe0f.svg");
 }
-em[data-emoji=":older_woman_tone3:"]::before,
-em[data-emoji="older_woman_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fd.svg");
+em[data-emoji=":man_tone3_beard:"]::before,
+em[data-emoji="man_tone3_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fd-200d-2642-fe0f.svg");
 }
-em[data-emoji=":older_woman_tone4:"]::before,
-em[data-emoji="older_woman_tone4"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fe.svg");
+em[data-emoji=":man_tone4_beard:"]::before,
+em[data-emoji="man_tone4_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3fe-200d-2642-fe0f.svg");
 }
-em[data-emoji=":older_woman_tone5:"]::before,
-em[data-emoji="older_woman_tone5"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3ff.svg");
+em[data-emoji=":man_tone5_beard:"]::before,
+em[data-emoji="man_tone5_beard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d4-1f3ff-200d-2642-fe0f.svg");
 }
 em[data-emoji=":older_adult:"]::before,
 em[data-emoji="older_adult"]::before {
@@ -2432,6 +2700,30 @@ em[data-emoji="older_adult_tone4"]::before {
 em[data-emoji=":older_adult_tone5:"]::before,
 em[data-emoji="older_adult_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d3-1f3ff.svg");
+}
+em[data-emoji=":older_woman:"]::before,
+em[data-emoji="older_woman"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475.svg");
+}
+em[data-emoji=":older_woman_tone1:"]::before,
+em[data-emoji="older_woman_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fb.svg");
+}
+em[data-emoji=":older_woman_tone2:"]::before,
+em[data-emoji="older_woman_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fc.svg");
+}
+em[data-emoji=":older_woman_tone3:"]::before,
+em[data-emoji="older_woman_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fd.svg");
+}
+em[data-emoji=":older_woman_tone4:"]::before,
+em[data-emoji="older_woman_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3fe.svg");
+}
+em[data-emoji=":older_woman_tone5:"]::before,
+em[data-emoji="older_woman_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f475-1f3ff.svg");
 }
 em[data-emoji=":older_man:"]::before,
 em[data-emoji="older_man"]::before {
@@ -4161,6 +4453,30 @@ em[data-emoji=":man_in_tuxedo_tone5:"]::before,
 em[data-emoji="man_in_tuxedo_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f935-1f3ff-200d-2642-fe0f.svg");
 }
+em[data-emoji=":person_with_crown:"]::before,
+em[data-emoji="person_with_crown"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5.svg");
+}
+em[data-emoji=":person_with_crown_tone1:"]::before,
+em[data-emoji="person_with_crown_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5-1f3fb.svg");
+}
+em[data-emoji=":person_with_crown_tone2:"]::before,
+em[data-emoji="person_with_crown_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5-1f3fc.svg");
+}
+em[data-emoji=":person_with_crown_tone3:"]::before,
+em[data-emoji="person_with_crown_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5-1f3fd.svg");
+}
+em[data-emoji=":person_with_crown_tone4:"]::before,
+em[data-emoji="person_with_crown_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5-1f3fe.svg");
+}
+em[data-emoji=":person_with_crown_tone5:"]::before,
+em[data-emoji="person_with_crown_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac5-1f3ff.svg");
+}
 em[data-emoji=":princess:"]::before,
 em[data-emoji="princess"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f478.svg");
@@ -4593,6 +4909,10 @@ em[data-emoji=":man_elf_tone5:"]::before,
 em[data-emoji="man_elf_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9dd-1f3ff-200d-2642-fe0f.svg");
 }
+em[data-emoji=":troll:"]::before,
+em[data-emoji="troll"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9cc.svg");
+}
 em[data-emoji=":vampire:"]::before,
 em[data-emoji="vampire"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9db.svg");
@@ -4857,6 +5177,30 @@ em[data-emoji=":angel_tone5:"]::before,
 em[data-emoji="angel_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f47c-1f3ff.svg");
 }
+em[data-emoji=":pregnant_person:"]::before,
+em[data-emoji="pregnant_person"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4.svg");
+}
+em[data-emoji=":pregnant_person_tone1:"]::before,
+em[data-emoji="pregnant_person_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4-1f3fb.svg");
+}
+em[data-emoji=":pregnant_person_tone2:"]::before,
+em[data-emoji="pregnant_person_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4-1f3fc.svg");
+}
+em[data-emoji=":pregnant_person_tone3:"]::before,
+em[data-emoji="pregnant_person_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4-1f3fd.svg");
+}
+em[data-emoji=":pregnant_person_tone4:"]::before,
+em[data-emoji="pregnant_person_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4-1f3fe.svg");
+}
+em[data-emoji=":pregnant_person_tone5:"]::before,
+em[data-emoji="pregnant_person_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac4-1f3ff.svg");
+}
 em[data-emoji=":pregnant_woman:"]::before,
 em[data-emoji="pregnant_woman"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f930.svg");
@@ -4880,6 +5224,30 @@ em[data-emoji="pregnant_woman_tone4"]::before {
 em[data-emoji=":pregnant_woman_tone5:"]::before,
 em[data-emoji="pregnant_woman_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f930-1f3ff.svg");
+}
+em[data-emoji=":pregnant_man:"]::before,
+em[data-emoji="pregnant_man"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3.svg");
+}
+em[data-emoji=":pregnant_man_tone1:"]::before,
+em[data-emoji="pregnant_man_tone1"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3-1f3fb.svg");
+}
+em[data-emoji=":pregnant_man_tone2:"]::before,
+em[data-emoji="pregnant_man_tone2"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3-1f3fc.svg");
+}
+em[data-emoji=":pregnant_man_tone3:"]::before,
+em[data-emoji="pregnant_man_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3-1f3fd.svg");
+}
+em[data-emoji=":pregnant_man_tone4:"]::before,
+em[data-emoji="pregnant_man_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3-1f3fe.svg");
+}
+em[data-emoji=":pregnant_man_tone5:"]::before,
+em[data-emoji="pregnant_man_tone5"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fac3-1f3ff.svg");
 }
 em[data-emoji=":breast_feeding:"]::before,
 em[data-emoji="breast_feeding"]::before {
@@ -6317,13 +6685,13 @@ em[data-emoji=":man_with_probing_cane_tone1:"]::before,
 em[data-emoji="man_with_probing_cane_tone1"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-1f3fb-200d-1f9af.svg");
 }
-em[data-emoji=":man_with_probing_cane_tone3:"]::before,
-em[data-emoji="man_with_probing_cane_tone3"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-1f3fd-200d-1f9af.svg");
-}
 em[data-emoji=":man_with_probing_cane_tone2:"]::before,
 em[data-emoji="man_with_probing_cane_tone2"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-1f3fc-200d-1f9af.svg");
+}
+em[data-emoji=":man_with_probing_cane_tone3:"]::before,
+em[data-emoji="man_with_probing_cane_tone3"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-1f3fd-200d-1f9af.svg");
 }
 em[data-emoji=":man_with_probing_cane_tone4:"]::before,
 em[data-emoji="man_with_probing_cane_tone4"]::before {
@@ -7477,6 +7845,10 @@ em[data-emoji=":kiss_person_person_tone5_tone3:"]::before,
 em[data-emoji="kiss_person_person_tone5_tone3"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d1-1f3ff-200d-2764-fe0f-200d-1f48b-200d-1f9d1-1f3fd.svg");
 }
+em[data-emoji=":kiss_person_person_tone5_tone4:"]::before,
+em[data-emoji="kiss_person_person_tone5_tone4"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9d1-1f3ff-200d-2764-fe0f-200d-1f48b-200d-1f9d1-1f3fe.svg");
+}
 em[data-emoji=":kiss_tone5:"]::before,
 em[data-emoji="kiss_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f48f-1f3ff.svg");
@@ -7897,6 +8269,10 @@ em[data-emoji=":family_man_girl_girl:"]::before,
 em[data-emoji="family_man_girl_girl"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f468-200d-1f467-200d-1f467.svg");
 }
+em[data-emoji=":knot:"]::before,
+em[data-emoji="knot"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa2.svg");
+}
 em[data-emoji=":yarn:"]::before,
 em[data-emoji="yarn"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9f6.svg");
@@ -7904,6 +8280,10 @@ em[data-emoji="yarn"]::before {
 em[data-emoji=":thread:"]::before,
 em[data-emoji="thread"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9f5.svg");
+}
+em[data-emoji=":sewing_needle:"]::before,
+em[data-emoji="sewing_needle"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa1.svg");
 }
 em[data-emoji=":coat:"]::before,
 em[data-emoji="coat"]::before {
@@ -7961,6 +8341,10 @@ em[data-emoji=":sari:"]::before,
 em[data-emoji="sari"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f97b.svg");
 }
+em[data-emoji=":thong_sandal:"]::before,
+em[data-emoji="thong_sandal"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa74.svg");
+}
 em[data-emoji=":womans_flat_shoe:"]::before,
 em[data-emoji="womans_flat_shoe"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f97f.svg");
@@ -7988,10 +8372,6 @@ em[data-emoji="athletic_shoe"]::before {
 em[data-emoji=":hiking_boot:"]::before,
 em[data-emoji="hiking_boot"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f97e.svg");
-}
-em[data-emoji=":thong_sandal:"]::before,
-em[data-emoji="thong_sandal"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa74.svg");
 }
 em[data-emoji=":socks:"]::before,
 em[data-emoji="socks"]::before {
@@ -8204,10 +8584,6 @@ em[data-emoji="hatched_chick"]::before {
 em[data-emoji=":duck:"]::before,
 em[data-emoji="duck"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f986.svg");
-}
-em[data-emoji=":dodo:"]::before,
-em[data-emoji="dodo"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9a4.svg");
 }
 em[data-emoji=":eagle:"]::before,
 em[data-emoji="eagle"]::before {
@@ -8493,6 +8869,10 @@ em[data-emoji=":black_cat:"]::before,
 em[data-emoji="black_cat"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f408-200d-2b1b.svg");
 }
+em[data-emoji=":feather:"]::before,
+em[data-emoji="feather"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fab6.svg");
+}
 em[data-emoji=":rooster:"]::before,
 em[data-emoji="rooster"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f413.svg");
@@ -8500,6 +8880,10 @@ em[data-emoji="rooster"]::before {
 em[data-emoji=":turkey:"]::before,
 em[data-emoji="turkey"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f983.svg");
+}
+em[data-emoji=":dodo:"]::before,
+em[data-emoji="dodo"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9a4.svg");
 }
 em[data-emoji=":peacock:"]::before,
 em[data-emoji="peacock"]::before {
@@ -8629,9 +9013,13 @@ em[data-emoji=":maple_leaf:"]::before,
 em[data-emoji="maple_leaf"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f341.svg");
 }
-em[data-emoji=":feather:"]::before,
-em[data-emoji="feather"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fab6.svg");
+em[data-emoji=":empty_nest:"]::before,
+em[data-emoji="empty_nest"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fab9.svg");
+}
+em[data-emoji=":nest_with_eggs:"]::before,
+em[data-emoji="nest_with_eggs"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faba.svg");
 }
 em[data-emoji=":mushroom:"]::before,
 em[data-emoji="mushroom"]::before {
@@ -8640,6 +9028,10 @@ em[data-emoji="mushroom"]::before {
 em[data-emoji=":shell:"]::before,
 em[data-emoji="shell"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f41a.svg");
+}
+em[data-emoji=":coral:"]::before,
+em[data-emoji="coral"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fab8.svg");
 }
 em[data-emoji=":rock:"]::before,
 em[data-emoji="rock"]::before {
@@ -8672,6 +9064,10 @@ em[data-emoji="rose"]::before {
 em[data-emoji=":wilted_rose:"]::before,
 em[data-emoji="wilted_rose"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f940.svg");
+}
+em[data-emoji=":lotus:"]::before,
+em[data-emoji="lotus"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fab7.svg");
 }
 em[data-emoji=":hibiscus:"]::before,
 em[data-emoji="hibiscus"]::before {
@@ -8844,6 +9240,10 @@ em[data-emoji="droplet"]::before {
 em[data-emoji=":sweat_drops:"]::before,
 em[data-emoji="sweat_drops"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4a6.svg");
+}
+em[data-emoji=":bubbles:"]::before,
+em[data-emoji="bubbles"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fae7.svg");
 }
 em[data-emoji=":ocean:"]::before,
 em[data-emoji="ocean"]::before {
@@ -9045,6 +9445,10 @@ em[data-emoji=":meat_on_bone:"]::before,
 em[data-emoji="meat_on_bone"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f356.svg");
 }
+em[data-emoji=":bone:"]::before,
+em[data-emoji="bone"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9b4.svg");
+}
 em[data-emoji=":hotdog:"]::before,
 em[data-emoji="hotdog"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f32d.svg");
@@ -9100,6 +9504,10 @@ em[data-emoji="fondue"]::before {
 em[data-emoji=":canned_food:"]::before,
 em[data-emoji="canned_food"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f96b.svg");
+}
+em[data-emoji=":jar:"]::before,
+em[data-emoji="jar"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fad9.svg");
 }
 em[data-emoji=":spaghetti:"]::before,
 em[data-emoji="spaghetti"]::before {
@@ -9233,6 +9641,10 @@ em[data-emoji=":peanuts:"]::before,
 em[data-emoji="peanuts"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f95c.svg");
 }
+em[data-emoji=":beans:"]::before,
+em[data-emoji="beans"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fad8.svg");
+}
 em[data-emoji=":honey_pot:"]::before,
 em[data-emoji="honey_pot"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f36f.svg");
@@ -9241,25 +9653,25 @@ em[data-emoji=":milk:"]::before,
 em[data-emoji="milk"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f95b.svg");
 }
+em[data-emoji=":pouring_liquid:"]::before,
+em[data-emoji="pouring_liquid"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fad7.svg");
+}
 em[data-emoji=":baby_bottle:"]::before,
 em[data-emoji="baby_bottle"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f37c.svg");
-}
-em[data-emoji=":tea:"]::before,
-em[data-emoji="tea"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f375.svg");
 }
 em[data-emoji=":teapot:"]::before,
 em[data-emoji="teapot"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fad6.svg");
 }
+em[data-emoji=":tea:"]::before,
+em[data-emoji="tea"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f375.svg");
+}
 em[data-emoji=":mate:"]::before,
 em[data-emoji="mate"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9c9.svg");
-}
-em[data-emoji=":bubble_tea:"]::before,
-em[data-emoji="bubble_tea"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9cb.svg");
 }
 em[data-emoji=":beverage_box:"]::before,
 em[data-emoji="beverage_box"]::before {
@@ -9268,6 +9680,10 @@ em[data-emoji="beverage_box"]::before {
 em[data-emoji=":cup_with_straw:"]::before,
 em[data-emoji="cup_with_straw"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f964.svg");
+}
+em[data-emoji=":bubble_tea:"]::before,
+em[data-emoji="bubble_tea"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9cb.svg");
 }
 em[data-emoji=":sake:"]::before,
 em[data-emoji="sake"]::before {
@@ -9373,10 +9789,6 @@ em[data-emoji=":flying_disc:"]::before,
 em[data-emoji="flying_disc"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f94f.svg");
 }
-em[data-emoji=":boomerang:"]::before,
-em[data-emoji="boomerang"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa83.svg");
-}
 em[data-emoji=":8ball:"]::before,
 em[data-emoji="8ball"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3b1.svg");
@@ -9409,6 +9821,10 @@ em[data-emoji=":cricket_game:"]::before,
 em[data-emoji="cricket_game"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3cf.svg");
 }
+em[data-emoji=":boomerang:"]::before,
+em[data-emoji="boomerang"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa83.svg");
+}
 em[data-emoji=":goal:"]::before,
 em[data-emoji="goal"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f945.svg");
@@ -9420,6 +9836,10 @@ em[data-emoji="golf"]::before {
 em[data-emoji=":kite:"]::before,
 em[data-emoji="kite"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa81.svg");
+}
+em[data-emoji=":playground_slide:"]::before,
+em[data-emoji="playground_slide"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6dd.svg");
 }
 em[data-emoji=":bow_and_arrow:"]::before,
 em[data-emoji="bow_and_arrow"]::before {
@@ -10641,6 +11061,10 @@ em[data-emoji=":trumpet:"]::before,
 em[data-emoji="trumpet"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3ba.svg");
 }
+em[data-emoji=":accordion:"]::before,
+em[data-emoji="accordion"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa97.svg");
+}
 em[data-emoji=":guitar:"]::before,
 em[data-emoji="guitar"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3b8.svg");
@@ -10652,10 +11076,6 @@ em[data-emoji="banjo"]::before {
 em[data-emoji=":violin:"]::before,
 em[data-emoji="violin"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3bb.svg");
-}
-em[data-emoji=":accordion:"]::before,
-em[data-emoji="accordion"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa97.svg");
 }
 em[data-emoji=":game_die:"]::before,
 em[data-emoji="game_die"]::before {
@@ -10745,6 +11165,10 @@ em[data-emoji=":probing_cane:"]::before,
 em[data-emoji="probing_cane"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9af.svg");
 }
+em[data-emoji=":crutch:"]::before,
+em[data-emoji="crutch"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa7c.svg");
+}
 em[data-emoji=":manual_wheelchair:"]::before,
 em[data-emoji="manual_wheelchair"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9bd.svg");
@@ -10772,6 +11196,10 @@ em[data-emoji="motorcycle"]::before {
 em[data-emoji=":auto_rickshaw:"]::before,
 em[data-emoji="auto_rickshaw"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6fa.svg");
+}
+em[data-emoji=":wheel:"]::before,
+em[data-emoji="wheel"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6de.svg");
 }
 em[data-emoji=":rotating_light:"]::before,
 em[data-emoji="rotating_light"]::before {
@@ -10912,6 +11340,14 @@ em[data-emoji="ferry"]::before {
 em[data-emoji=":ship:"]::before,
 em[data-emoji="ship"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6a2.svg");
+}
+em[data-emoji=":ring_buoy:"]::before,
+em[data-emoji="ring_buoy"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6df.svg");
+}
+em[data-emoji=":hook:"]::before,
+em[data-emoji="hook"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9d.svg");
 }
 em[data-emoji=":fuelpump:"]::before,
 em[data-emoji="fuelpump"]::before {
@@ -11341,6 +11777,10 @@ em[data-emoji=":battery:"]::before,
 em[data-emoji="battery"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f50b.svg");
 }
+em[data-emoji=":low_battery:"]::before,
+em[data-emoji="low_battery"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faab.svg");
+}
 em[data-emoji=":electric_plug:"]::before,
 em[data-emoji="electric_plug"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f50c.svg");
@@ -11401,6 +11841,10 @@ em[data-emoji=":credit_card:"]::before,
 em[data-emoji="credit_card"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4b3.svg");
 }
+em[data-emoji=":identification_card:"]::before,
+em[data-emoji="identification_card"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faaa.svg");
+}
 em[data-emoji=":gem:"]::before,
 em[data-emoji="gem"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f48e.svg");
@@ -11433,9 +11877,17 @@ em[data-emoji=":pick:"]::before,
 em[data-emoji="pick"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/26cf.svg");
 }
+em[data-emoji=":carpentry_saw:"]::before,
+em[data-emoji="carpentry_saw"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9a.svg");
+}
 em[data-emoji=":nut_and_bolt:"]::before,
 em[data-emoji="nut_and_bolt"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f529.svg");
+}
+em[data-emoji=":mouse_trap:"]::before,
+em[data-emoji="mouse_trap"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa4.svg");
 }
 em[data-emoji=":bricks:"]::before,
 em[data-emoji="bricks"]::before {
@@ -11444,14 +11896,6 @@ em[data-emoji="bricks"]::before {
 em[data-emoji=":chains:"]::before,
 em[data-emoji="chains"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/26d3.svg");
-}
-em[data-emoji=":hook:"]::before,
-em[data-emoji="hook"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9d.svg");
-}
-em[data-emoji=":knot:"]::before,
-em[data-emoji="knot"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa2.svg");
 }
 em[data-emoji=":magnet:"]::before,
 em[data-emoji="magnet"]::before {
@@ -11472,10 +11916,6 @@ em[data-emoji="firecracker"]::before {
 em[data-emoji=":axe:"]::before,
 em[data-emoji="axe"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa93.svg");
-}
-em[data-emoji=":carpentry_saw:"]::before,
-em[data-emoji="carpentry_saw"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9a.svg");
 }
 em[data-emoji=":knife:"]::before,
 em[data-emoji="knife"]::before {
@@ -11509,10 +11949,6 @@ em[data-emoji=":amphora:"]::before,
 em[data-emoji="amphora"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3fa.svg");
 }
-em[data-emoji=":magic_wand:"]::before,
-em[data-emoji="magic_wand"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa84.svg");
-}
 em[data-emoji=":crystal_ball:"]::before,
 em[data-emoji="crystal_ball"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f52e.svg");
@@ -11524,6 +11960,10 @@ em[data-emoji="prayer_beads"]::before {
 em[data-emoji=":nazar_amulet:"]::before,
 em[data-emoji="nazar_amulet"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9ff.svg");
+}
+em[data-emoji=":hamsa:"]::before,
+em[data-emoji="hamsa"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faac.svg");
 }
 em[data-emoji=":barber:"]::before,
 em[data-emoji="barber"]::before {
@@ -11541,9 +11981,9 @@ em[data-emoji=":hole:"]::before,
 em[data-emoji="hole"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f573.svg");
 }
-em[data-emoji=":window:"]::before,
-em[data-emoji="window"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9f.svg");
+em[data-emoji=":x_ray:"]::before,
+em[data-emoji="x_ray"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa7b.svg");
 }
 em[data-emoji=":adhesive_bandage:"]::before,
 em[data-emoji="adhesive_bandage"]::before {
@@ -11585,21 +12025,17 @@ em[data-emoji=":thermometer:"]::before,
 em[data-emoji="thermometer"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f321.svg");
 }
-em[data-emoji=":mouse_trap:"]::before,
-em[data-emoji="mouse_trap"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa4.svg");
-}
 em[data-emoji=":broom:"]::before,
 em[data-emoji="broom"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9f9.svg");
 }
+em[data-emoji=":plunger:"]::before,
+em[data-emoji="plunger"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa0.svg");
+}
 em[data-emoji=":basket:"]::before,
 em[data-emoji="basket"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9fa.svg");
-}
-em[data-emoji=":sewing_needle:"]::before,
-em[data-emoji="sewing_needle"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa1.svg");
 }
 em[data-emoji=":roll_of_paper:"]::before,
 em[data-emoji="roll_of_paper"]::before {
@@ -11608,14 +12044,6 @@ em[data-emoji="roll_of_paper"]::before {
 em[data-emoji=":toilet:"]::before,
 em[data-emoji="toilet"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6bd.svg");
-}
-em[data-emoji=":plunger:"]::before,
-em[data-emoji="plunger"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa0.svg");
-}
-em[data-emoji=":bucket:"]::before,
-em[data-emoji="bucket"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa3.svg");
 }
 em[data-emoji=":potable_water:"]::before,
 em[data-emoji="potable_water"]::before {
@@ -11653,13 +12081,13 @@ em[data-emoji=":bath_tone5:"]::before,
 em[data-emoji="bath_tone5"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6c0-1f3ff.svg");
 }
-em[data-emoji=":toothbrush:"]::before,
-em[data-emoji="toothbrush"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa5.svg");
-}
 em[data-emoji=":soap:"]::before,
 em[data-emoji="soap"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9fc.svg");
+}
+em[data-emoji=":toothbrush:"]::before,
+em[data-emoji="toothbrush"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa5.svg");
 }
 em[data-emoji=":razor:"]::before,
 em[data-emoji="razor"]::before {
@@ -11668,6 +12096,10 @@ em[data-emoji="razor"]::before {
 em[data-emoji=":sponge:"]::before,
 em[data-emoji="sponge"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9fd.svg");
+}
+em[data-emoji=":bucket:"]::before,
+em[data-emoji="bucket"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa3.svg");
 }
 em[data-emoji=":squeeze_bottle:"]::before,
 em[data-emoji="squeeze_bottle"]::before {
@@ -11692,10 +12124,6 @@ em[data-emoji="door"]::before {
 em[data-emoji=":chair:"]::before,
 em[data-emoji="chair"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa91.svg");
-}
-em[data-emoji=":mirror:"]::before,
-em[data-emoji="mirror"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9e.svg");
 }
 em[data-emoji=":couch:"]::before,
 em[data-emoji="couch"]::before {
@@ -11733,9 +12161,21 @@ em[data-emoji=":teddy_bear:"]::before,
 em[data-emoji="teddy_bear"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f9f8.svg");
 }
+em[data-emoji=":nesting_dolls:"]::before,
+em[data-emoji="nesting_dolls"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa86.svg");
+}
 em[data-emoji=":frame_photo:"]::before,
 em[data-emoji="frame_photo"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f5bc.svg");
+}
+em[data-emoji=":mirror:"]::before,
+em[data-emoji="mirror"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9e.svg");
+}
+em[data-emoji=":window:"]::before,
+em[data-emoji="window"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa9f.svg");
 }
 em[data-emoji=":shopping_bags:"]::before,
 em[data-emoji="shopping_bags"]::before {
@@ -11761,6 +12201,14 @@ em[data-emoji=":ribbon:"]::before,
 em[data-emoji="ribbon"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f380.svg");
 }
+em[data-emoji=":magic_wand:"]::before,
+em[data-emoji="magic_wand"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa84.svg");
+}
+em[data-emoji=":pinata:"]::before,
+em[data-emoji="pinata"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa85.svg");
+}
 em[data-emoji=":confetti_ball:"]::before,
 em[data-emoji="confetti_ball"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f38a.svg");
@@ -11768,14 +12216,6 @@ em[data-emoji="confetti_ball"]::before {
 em[data-emoji=":tada:"]::before,
 em[data-emoji="tada"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f389.svg");
-}
-em[data-emoji=":piñata:"]::before,
-em[data-emoji="piñata"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa85.svg");
-}
-em[data-emoji=":nesting_dolls:"]::before,
-em[data-emoji="nesting_dolls"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1fa86.svg");
 }
 em[data-emoji=":dolls:"]::before,
 em[data-emoji="dolls"]::before {
@@ -11788,6 +12228,10 @@ em[data-emoji="izakaya_lantern"]::before {
 em[data-emoji=":wind_chime:"]::before,
 em[data-emoji="wind_chime"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f390.svg");
+}
+em[data-emoji=":mirror_ball:"]::before,
+em[data-emoji="mirror_ball"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa9.svg");
 }
 em[data-emoji=":red_envelope:"]::before,
 em[data-emoji="red_envelope"]::before {
@@ -11825,6 +12269,10 @@ em[data-emoji=":label:"]::before,
 em[data-emoji="label"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3f7.svg");
 }
+em[data-emoji=":placard:"]::before,
+em[data-emoji="placard"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa7.svg");
+}
 em[data-emoji=":mailbox_closed:"]::before,
 em[data-emoji="mailbox_closed"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ea.svg");
@@ -11848,10 +12296,6 @@ em[data-emoji="postbox"]::before {
 em[data-emoji=":postal_horn:"]::before,
 em[data-emoji="postal_horn"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f4ef.svg");
-}
-em[data-emoji=":placard:"]::before,
-em[data-emoji="placard"]::before {
-  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1faa7.svg");
 }
 em[data-emoji=":scroll:"]::before,
 em[data-emoji="scroll"]::before {
@@ -12712,6 +13156,10 @@ em[data-emoji="musical_note"]::before {
 em[data-emoji=":notes:"]::before,
 em[data-emoji="notes"]::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f3b6.svg");
+}
+em[data-emoji=":heavy_equals_sign:"]::before,
+em[data-emoji="heavy_equals_sign"]::before {
+  background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f7f0.svg");
 }
 em[data-emoji=":infinity:"]::before,
 em[data-emoji="infinity"]::before {

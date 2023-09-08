@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Sticky
+ * # Fomantic-UI 2.9.3 - Sticky
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -23,7 +23,6 @@
         var
             $allModules    = $(this),
             $document      = $(document),
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -31,6 +30,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue
         ;
 
@@ -49,7 +61,7 @@
 
                 $module               = $(this),
                 $window               = $(window),
-                $scroll               = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
+                $scroll               = contextCheck(settings.scrollContext, window),
                 $container,
                 $context,
 
@@ -127,19 +139,11 @@
                 },
 
                 determineContainer: function () {
-                    if (settings.container) {
-                        $container = [window, document].indexOf(settings.container) < 0 ? $document.find(settings.container) : $(settings.container);
-                    } else {
-                        $container = $module.offsetParent();
-                    }
+                    $container = settings.container ? contextCheck(settings.container, window) : $module.offsetParent();
                 },
 
                 determineContext: function () {
-                    if (settings.context) {
-                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
-                    } else {
-                        $context = $container;
-                    }
+                    $context = settings.context ? contextCheck(settings.context, window) : $container;
                     if ($context.length === 0) {
                         module.error(error.invalidContext, settings.context, $module);
                     }
@@ -742,7 +746,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 0);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 0);
                     },
                     display: function () {
                         var
@@ -755,9 +759,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

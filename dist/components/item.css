@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Item
+ * # Fomantic-UI 2.9.3 - Item
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -514,6 +514,11 @@
 }
 .ui.inverted.divided.items > .item:first-child {
   border-top: none;
+}
+.ui.disabled.items,
+.ui.items > .disabled.item {
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 
