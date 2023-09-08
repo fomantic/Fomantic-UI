@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Dropdown
+ * # Fomantic-UI 2.9.3 - Dropdown
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -24,14 +24,25 @@
             $allModules    = $(this),
             $document      = $(document),
 
-            moduleSelector = $allModules.selector || '',
-
             time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue
         ;
 
@@ -56,7 +67,7 @@
                 moduleNamespace = 'module-' + namespace,
 
                 $module         = $(this),
-                $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+                $context        = contextCheck(settings.context, window),
                 $text           = $module.find(selector.text),
                 $search         = $module.find(selector.search),
                 $sizer          = $module.find(selector.sizer),
@@ -91,7 +102,8 @@
                 selectObserver,
                 menuObserver,
                 classObserver,
-                module
+                module,
+                tempDisableApiCache = false
             ;
 
             module = {
@@ -351,7 +363,7 @@
                             module.verbose('Adding clear icon');
                             $clear = $('<i />')
                                 .addClass('remove icon')
-                                .insertBefore($text)
+                                .insertAfter($icon)
                             ;
                         }
                         if (module.is.search() && !module.has.search()) {
@@ -517,7 +529,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
+                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache() && !module.has.maxSelections()) {
                         module.clearItems();
                     }
                     if (!module.can.show() && module.is.remote()) {
@@ -567,7 +579,10 @@
                             if ($subMenu.length > 0) {
                                 module.verbose('Hiding sub-menu', $subMenu);
                                 $subMenu.each(function () {
-                                    module.animate.hide(false, $(this));
+                                    var $sub = $(this);
+                                    if (!module.is.animating($sub)) {
+                                        module.animate.hide(false, $sub);
+                                    }
                                 });
                             }
                         }
@@ -762,6 +777,8 @@
                         }
                     ;
                     if (settings.useLabels && module.has.maxSelections()) {
+                        module.show();
+
                         return;
                     }
                     if (settings.apiSettings) {
@@ -858,11 +875,12 @@
                     if (!$module.api('get request')) {
                         module.setup.api();
                     }
-                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
+                    apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks, tempDisableApiCache ? { cache: false } : {});
                     $module
                         .api('setting', apiSettings)
                         .api('query')
                     ;
+                    tempDisableApiCache = false;
                 },
 
                 filterItems: function (query) {
@@ -1084,8 +1102,8 @@
                             notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
-                                notFoundTokens.push(value);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
+                                notFoundTokens.push(value.trim());
                             }
                         });
                         event.preventDefault();
@@ -1218,7 +1236,7 @@
                             module.set.filtered();
                         }
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.search, settings.delay.search);
+                        module.timer = setTimeout(function () { module.search(); }, settings.delay.search);
                     },
                     label: {
                         click: function (event) {
@@ -1394,11 +1412,13 @@
                                     if (settings.allowAdditions) {
                                         module.remove.userAddition();
                                     }
-                                    module.remove.filteredItem();
+                                    if (!settings.keepSearchTerm) {
+                                        module.remove.filteredItem();
+                                        module.remove.searchTerm();
+                                    }
                                     if (!module.is.visible() && $target.length > 0) {
                                         module.show();
                                     }
-                                    module.remove.searchTerm();
                                     if (!module.is.focusedOnSearch() && skipRefocus !== true) {
                                         module.focusSearch(true);
                                     }
@@ -1584,7 +1604,9 @@
                                         module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                         module.event.item.click.call($selectedItem, event);
                                         if (module.is.searchSelection()) {
-                                            module.remove.searchTerm();
+                                            if (!settings.keepSearchTerm) {
+                                                module.remove.searchTerm();
+                                            }
                                             if (module.is.multiple()) {
                                                 $search.trigger('focus');
                                             }
@@ -1801,7 +1823,7 @@
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
-                            module.set.selected(value, $(element));
+                            module.set.selected(value, $(element), false, settings.keepSearchTerm);
                             if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                                 module.hideAndClear();
                             }
@@ -2065,7 +2087,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: text,
+                                        text: module.escape.htmlEntities(text, true),
                                         disabled: disabled,
                                     });
                                 }
@@ -2153,7 +2175,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2214,7 +2236,7 @@
                             return false;
                         }
 
-                        return true;
+                        return false;
                     },
                     disabled: function () {
                         $search.attr('tabindex', module.is.disabled() ? -1 : 0);
@@ -2304,7 +2326,7 @@
                                 $.each(values, function (value, name) {
                                     module.set.text(name);
                                 });
-                            } else {
+                            } else if (settings.useLabels) {
                                 $.each(values, function (value, name) {
                                     module.add.label(value, name);
                                 });
@@ -2388,6 +2410,11 @@
                     module.set.value('', null, null, preventChangeTrigger);
                 },
 
+                clearCache: function () {
+                    module.debug('Clearing API cache once');
+                    tempDisableApiCache = true;
+                },
+
                 scrollPage: function (direction, $selectedItem) {
                     var
                         $currentItem  = $selectedItem || module.get.selectedItem(),
@@ -2446,7 +2473,7 @@
                             valueIsSet       = searchValue !== ''
                         ;
                         if (isMultiple && hasSearchValue) {
-                            module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
+                            module.verbose('Adjusting input width', searchWidth);
                             $search.css('width', searchWidth + 'px');
                         }
                         if (hasSearchValue || (isSearchMultiple && valueIsSet)) {
@@ -2745,7 +2772,7 @@
                             return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
-                        if (module.is.multiple()) {
+                        if (module.is.multiple() && !keepSearchTerm) {
                             module.remove.searchWidth();
                         }
                         if (module.is.single()) {
@@ -3438,7 +3465,7 @@
                         return settings.apiSettings && module.can.useAPI();
                     },
                     noApiCache: function () {
-                        return settings.apiSettings && !settings.apiSettings.cache;
+                        return tempDisableApiCache || (settings.apiSettings && !settings.apiSettings.cache);
                     },
                     single: function () {
                         return !module.is.multiple();
@@ -3448,7 +3475,7 @@
                             selectChanged = false
                         ;
                         $.each(mutations, function (index, mutation) {
-                            if ($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
+                            if ($(mutation.target).is('option, optgroup') || $(mutation.addedNodes).is('select') || ($(mutation.target).is('select') && mutation.type !== 'attributes')) {
                                 selectChanged = true;
 
                                 return false;
@@ -3720,12 +3747,12 @@
                     show: function () {
                         module.verbose('Delaying show event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.show, settings.delay.show);
+                        module.timer = setTimeout(function () { module.show(); }, settings.delay.show);
                     },
                     hide: function () {
                         module.verbose('Delaying hide event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.hide, settings.delay.hide);
+                        module.timer = setTimeout(function () { module.hide(); }, settings.delay.hide);
                     },
                 },
 
@@ -3757,7 +3784,7 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string) {
+                    htmlEntities: function (string, forceAmpersand) {
                         var
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
@@ -3773,7 +3800,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
+                            string = string.replace(forceAmpersand ? /&/g : /&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -3851,7 +3878,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -3864,9 +3891,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
@@ -3991,6 +4015,7 @@
         forceSelection: false, // force a choice on blur with search selection
 
         allowAdditions: false, // whether multiple select should allow user added values
+        keepSearchTerm: false, // whether the search value should be kept and menu stays filtered on item selection
         ignoreCase: false, // whether to consider case sensitivity when creating labels
         ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
         hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
@@ -4009,8 +4034,6 @@
         transition: 'auto', // auto transition will slide down or up based on direction
         duration: 200, // duration of transition
         displayType: false, // displayType of transition
-
-        glyphWidth: 1.037, // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
         headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 

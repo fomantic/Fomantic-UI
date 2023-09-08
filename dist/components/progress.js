@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Progress
+ * # Fomantic-UI 2.9.3 - Progress
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22,8 +22,6 @@
     $.fn.progress = function (parameters) {
         var
             $allModules    = $(this),
-
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -793,7 +791,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -806,9 +804,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

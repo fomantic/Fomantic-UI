@@ -13,12 +13,11 @@
 */
 
 const
-    gulp           = require('gulp'),
-
     // node dependencies
-    console        = require('better-console'),
     fs             = require('fs'),
     path           = require('path'),
+    console        = require('better-console'),
+    gulp           = require('gulp'),
     git            = require('gulp-git'),
 
     // admin files

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Form
+ * # Fomantic-UI 2.9.3 - Form
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -494,6 +494,11 @@
 .ui.ui.form .field.error .input {
   color: #9f3a38;
 }
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.error) > label {
+    color: #9f3a38;
+  }
+}
 .ui.form .fields.error .field .ui.label,
 .ui.form .field.error .ui.label {
   background-color: #ecd1d1;
@@ -543,21 +548,7 @@
   border-radius: "";
   box-shadow: none;
 }
-.ui.form .field input:not(:-ms-input-placeholder):invalid {
-  color: #9f3a38;
-  background: #fff6f6;
-  border-color: #e0b4b4;
-  border-radius: "";
-  box-shadow: none;
-}
-.ui.form .field input:not(:placeholder-shown):invalid {
-  color: #9f3a38;
-  background: #fff6f6;
-  border-color: #e0b4b4;
-  border-radius: "";
-  box-shadow: none;
-}
-.ui.form .field input:not(:-ms-input-placeholder):invalid {
+.ui.form:not(.initial) .field input:invalid {
   color: #9f3a38;
   background: #fff6f6;
   border-color: #e0b4b4;
@@ -707,6 +698,11 @@
 .ui.inverted.form .error.field label {
   color: #ecd1d1;
 }
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.error) > label {
+    color: #ecd1d1;
+  }
+}
 
 /* On Form */
 .ui.form.info .info.message:not(:empty) {
@@ -739,6 +735,11 @@
 .ui.ui.form .fields.info .field .input,
 .ui.ui.form .field.info .input {
   color: #276f86;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.info) > label {
+    color: #276f86;
+  }
 }
 .ui.form .fields.info .field .ui.label,
 .ui.form .field.info .ui.label {
@@ -932,6 +933,11 @@
 .ui.inverted.form .info.field label {
   color: #c6e3e9;
 }
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.info) > label {
+    color: #c6e3e9;
+  }
+}
 
 /* On Form */
 .ui.form.success .success.message:not(:empty) {
@@ -964,6 +970,11 @@
 .ui.ui.form .fields.success .field .input,
 .ui.ui.form .field.success .input {
   color: #2c662d;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.success) > label {
+    color: #2c662d;
+  }
 }
 .ui.form .fields.success .field .ui.label,
 .ui.form .field.success .ui.label {
@@ -1157,6 +1168,11 @@
 .ui.inverted.form .success.field label {
   color: #b9d1ad;
 }
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.success) > label {
+    color: #b9d1ad;
+  }
+}
 
 /* On Form */
 .ui.form.warning .warning.message:not(:empty) {
@@ -1189,6 +1205,11 @@
 .ui.ui.form .fields.warning .field .input,
 .ui.ui.form .field.warning .input {
   color: #573a08;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.warning) > label {
+    color: #573a08;
+  }
 }
 .ui.form .fields.warning .field .ui.label,
 .ui.form .field.warning .ui.label {
@@ -1382,6 +1403,11 @@
 .ui.inverted.form .warning.field label {
   color: #d7ccb5;
 }
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.warning) > label {
+    color: #d7ccb5;
+  }
+}
 
 /* --------------------
            Disabled
@@ -1446,28 +1472,35 @@
 /* --------------------
          Required Field
     --------------------- */
-.ui.form .required.fields:not(.grouped) > .field > label::after,
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+.ui.form .required.fields.inline > label::after,
 .ui.form .required.fields.grouped > label::after,
 .ui.form .required.field > label::after,
-.ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
 .ui.form .required.field > .checkbox::after,
 .ui.form label.required::after {
   margin: -0.2em 0 0 0.2em;
   content: "*";
   color: #db2828;
 }
-.ui.form .required.fields:not(.grouped) > .field > label::after,
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+.ui.form .required.fields.inline > label::after,
 .ui.form .required.fields.grouped > label::after,
 .ui.form .required.field > label::after,
 .ui.form label.required::after {
   display: inline-block;
   vertical-align: top;
 }
-.ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
 .ui.form .required.field > .checkbox::after {
   position: absolute;
   top: 0;
   left: 100%;
+}
+.ui.ui.ui.ui.form .fields > label:empty::after,
+.ui.ui.ui.ui.form .field > label:empty::after {
+  content: " ";
+  display: inline-block;
 }
 
 

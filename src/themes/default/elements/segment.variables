@@ -88,6 +88,7 @@
 /* Loading Spinner */
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
+@loadingMinHeight: @loaderSize * 1.5;
 
 /*******************************
             Variations
@@ -151,3 +152,6 @@
         rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
     );
 @tertiaryInvertedColor: @invertedMutedTextColor;
+
+/* Resizable */
+@resizableDirection: vertical;

@@ -3,13 +3,13 @@ const fs = require('fs');
 const path = require('path');
 const childProcess = require('child_process');
 
+const process = require('process');
+
 // npm
 const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
 const actions = require('@actions/core');
 
-// pkg
-const process = require('process');
 const pkg = require('../package.json');
 
 const ghBase = 'https://api.github.com';

@@ -116,32 +116,32 @@
 /* Positive */
 @positiveColor: @positiveTextColor;
 @positiveBoxShadow: @stateMarkerWidth 0 0 @positiveBorderColor inset;
-@positiveBackgroundHover: darken(@positiveBackgroundColor, 3);
-@positiveColorHover: darken(@positiveColor, 3);
+@positiveBackgroundHover: if(iscolor(@positiveBackgroundColor), darken(@positiveBackgroundColor, 3), @positiveBackgroundColor);
+@positiveColorHover: if(iscolor(@positiveColor), darken(@positiveColor, 3), @positiveColor);
 @invertedPositiveColor: @positiveTextColor;
 @invertedPositiveBackgroundColor: @positiveBorderColor;
 
 /* Negative */
 @negativeColor: @negativeTextColor;
 @negativeBoxShadow: @stateMarkerWidth 0 0 @negativeBorderColor inset;
-@negativeBackgroundHover: darken(@negativeBackgroundColor, 3);
-@negativeColorHover: darken(@negativeColor, 3);
+@negativeBackgroundHover: if(iscolor(@negativeBackgroundColor), darken(@negativeBackgroundColor, 3), @negativeBackgroundColor);
+@negativeColorHover: if(iscolor(@negativeColor), darken(@negativeColor, 3), @negativeColor);
 @invertedNegativeColor: @negativeTextColor;
 @invertedNegativeBackgroundColor: @negativeBorderColor;
 
 /* Error */
 @errorColor: @errorTextColor;
 @errorBoxShadow: @stateMarkerWidth 0 0 @errorBorderColor inset;
-@errorBackgroundHover: darken(@errorBackgroundColor, 3);
-@errorColorHover: darken(@errorColor, 3);
+@errorBackgroundHover: if(iscolor(@errorBackgroundColor), darken(@errorBackgroundColor, 3), @errorBackgroundColor);
+@errorColorHover: if(iscolor(@errorColor), darken(@errorColor, 3), @errorColor);
 @invertedErrorColor: @errorTextColor;
 @invertedErrorBackgroundColor: @errorBorderColor;
 
 /* Warning */
 @warningColor: @warningTextColor;
 @warningBoxShadow: @stateMarkerWidth 0 0 @warningBorderColor inset;
-@warningBackgroundHover: darken(@warningBackgroundColor, 3);
-@warningColorHover: darken(@warningColor, 3);
+@warningBackgroundHover: if(iscolor(@warningBackgroundColor), darken(@warningBackgroundColor, 3), @warningBackgroundColor);
+@warningColorHover: if(iscolor(@warningColor), darken(@warningColor, 3), @warningColor);
 @invertedWarningColor: @warningTextColor;
 @invertedWarningBackgroundColor: #eec97e;
 
@@ -294,3 +294,6 @@
 @small: 0.9em;
 @medium: 1em;
 @large: 1.1em;
+
+/* Resizable */
+@resizableDirection: vertical;

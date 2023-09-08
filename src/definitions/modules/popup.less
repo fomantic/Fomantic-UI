@@ -833,8 +833,8 @@
         @color: @value;
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
-        @cl: lighten(@c, @loadingColoredPercent);
-        @ll: darken(@l, @loadingColoredPercent);
+        @cl: if(iscolor(@c), lighten(@c, @loadingColoredPercent), @c);
+        @ll: if(iscolor(@l), darken(@l, @loadingColoredPercent), @l);
 
         & when not (@variationPopupTooltip) {
             .ui.ui.ui.@{color}.popup::before,

@@ -38,9 +38,7 @@
 @borderBoxShadowColor: transparent;
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
-@boxShadow:
-    @borderBoxShadow,
-    @shadowBoxShadow;
+@boxShadow: @borderBoxShadow, @shadowBoxShadow;
 
 /* Icon */
 @iconHeight: auto;
@@ -249,28 +247,28 @@
 @tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
 @tertiaryTextColor: @textColor;
-@tertiaryLineColor: lighten(@tertiaryTextColor, 20%);
+@tertiaryLineColor: if(iscolor(@tertiaryTextColor), lighten(@tertiaryTextColor, 20%), @tertiaryTextColor);
 @tertiaryWithUnderline: false;
 @tertiaryWithOverline: false;
 @tertiaryBackgroundColor: none;
 
 /* Tertiary Hover */
-@tertiaryHoverColor: lighten(fadein(@tertiaryTextColor, 100%), 20%);
-@tertiaryHoverLineColor: lighten(@tertiaryHoverColor, 20%);
+@tertiaryHoverColor: if(iscolor(@tertiaryTextColor), lighten(fadein(@tertiaryTextColor, 100%), 20%), @tertiaryTextColor);
+@tertiaryHoverLineColor: if(iscolor(@tertiaryHoverColor), lighten(@tertiaryHoverColor, 20%), @tertiaryHoverColor);
 @tertiaryHoverWithUnderline: true;
 @tertiaryHoverWithOverline: false;
 @tertiaryHoverBackgroundColor: none;
 
 /* Tertiary Focus */
-@tertiaryFocusColor: lighten(fadein(@tertiaryTextColor, 100%), 20%);
-@tertiaryFocusLineColor: lighten(@tertiaryHoverColor, 20%);
+@tertiaryFocusColor: if(iscolor(@tertiaryTextColor), lighten(fadein(@tertiaryTextColor, 100%), 20%), @tertiaryTextColor);
+@tertiaryFocusLineColor: if(iscolor(@tertiaryHoverColor), lighten(@tertiaryHoverColor, 20%), @tertiaryHoverColor);
 @tertiaryFocusWithUnderline: true;
 @tertiaryFocusWithOverline: false;
 @tertiaryFocusBackgroundColor: none;
 
 /* Tertiary Active */
-@tertiaryActiveColor: lighten(@tertiaryHoverColor, 20%);
-@tertiaryActiveLineColor: lighten(@tertiaryActiveColor, 20%);
+@tertiaryActiveColor: if(iscolor(@tertiaryHoverColor), lighten(@tertiaryHoverColor, 20%), @tertiaryHoverColor);
+@tertiaryActiveLineColor: if(iscolor(@tertiaryActiveColor), lighten(@tertiaryActiveColor, 20%), @tertiaryActiveColor);
 @tertiaryActiveWithUnderline: true;
 @tertiaryActiveWithOverline: false;
 @tertiaryActiveBackgroundColor: none;

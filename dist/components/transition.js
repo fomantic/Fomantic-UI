@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Transition
+ * # Fomantic-UI 2.9.3 - Transition
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22,7 +22,6 @@
     $.fn.transition = function () {
         var
             $allModules     = $(this),
-            moduleSelector  = $allModules.selector || '',
 
             time            = Date.now(),
             performance     = [],
@@ -143,7 +142,7 @@
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
-                    setTimeout(module.animate, delay);
+                    setTimeout(function () { module.animate(); }, delay);
                 },
 
                 animate: function (overrideSettings) {
@@ -850,7 +849,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -863,9 +862,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if ($allModules.length > 1) {
                             title += ' (' + $allModules.length + ')';
                         }

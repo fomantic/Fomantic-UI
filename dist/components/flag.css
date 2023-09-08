@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Flag
+ * # Fomantic-UI 2.9.3 - Flag
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -307,7 +307,8 @@ i.flag.cyprus::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f1e8-1f1fe.svg");
 }
 i.flag.cz::before,
-i.flag.czechia::before {
+i.flag.czechia::before,
+i.flag.czech.republic::before {
   background-image: url("https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f1e8-1f1ff.svg");
 }
 i.flag.dk::before,

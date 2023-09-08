@@ -48,7 +48,7 @@ i.icon {
 }
 
 i.icon::before {
-    background: none !important;
+    background: none;
 }
 
 /*******************************
@@ -322,16 +322,16 @@ i.emphasized.icons:not(.disabled) {
         @c: @colors[@@color][color];
         @l: @colors[@@color][light];
 
-        i.@{color}.icon.icon.icon.icon.icon {
+        i.@{color}.icon.icon.icon.icon.icon.icon {
             color: @c;
         }
         & when (@variationIconInverted) {
-            i.inverted.@{color}.icon.icon.icon.icon.icon {
+            i.inverted.@{color}.icon.icon.icon.icon.icon.icon {
                 color: @l;
             }
             & when (@variationIconBordered) or (@variationIconCircular) {
-                i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
-                i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
+                i.inverted.bordered.@{color}.icon.icon.icon.icon.icon.icon,
+                i.inverted.circular.@{color}.icon.icon.icon.icon.icon.icon,
                 i.inverted.bordered.@{color}.icons,
                 i.inverted.circular.@{color}.icons {
                     background-color: @c;

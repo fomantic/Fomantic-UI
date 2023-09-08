@@ -49,7 +49,7 @@
 @arrowOffset: -(@arrowSize / 2) + @arrowJitter;
 
 @arrowStroke: @borderWidth;
-@arrowColor: darken(@borderColor, 10);
+@arrowColor: if(iscolor(@borderColor), darken(@borderColor, 10), @borderColor);
 
 /* Arrow color by position */
 @arrowTopBackground: @arrowBackground;

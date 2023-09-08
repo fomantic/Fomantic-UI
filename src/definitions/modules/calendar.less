@@ -60,24 +60,24 @@
 .ui.calendar .ui.table.year,
 .ui.calendar .ui.table.month,
 .ui.calendar .ui.table.minute {
-    min-width: 15em;
+    min-width: @widthYearMonthMinute;
 }
 
 .ui.calendar .ui.table.day {
-    min-width: 18em;
+    min-width: @widthDay;
 }
 
 .ui.calendar .ui.table.day.andweek {
-    min-width: 22em;
+    min-width: @widthDayAndWeek;
 }
 
 .ui.calendar .ui.table.hour {
-    min-width: 20em;
+    min-width: @widthHour;
 }
 
 .ui.calendar .ui.table tr th,
 .ui.calendar .ui.table tr td {
-    padding: 0.5em;
+    padding: @cellPadding;
     white-space: nowrap;
 }
 
@@ -100,13 +100,13 @@
 }
 
 .ui.calendar .ui.table.day tr:nth-child(2) th {
-    padding-top: 0.2em;
-    padding-bottom: 0.3em;
+    padding-top: @cellHeaderTopPadding;
+    padding-bottom: @cellHeaderBottomPadding;
 }
 
 .ui.calendar .ui.table tr td {
-    padding-left: 0.1em;
-    padding-right: 0.1em;
+    padding-left: @cellLeftRightPadding;
+    padding-right: @cellLeftRightPadding;
 }
 
 .ui.calendar .ui.table tr .link {
@@ -114,13 +114,13 @@
 }
 
 .ui.calendar .ui.table tr .prev.link {
-    width: 14.28571%;
+    width: @widthPrevNext;
     position: absolute;
     left: 0;
 }
 
 .ui.calendar .ui.table tr .next.link {
-    width: 14.28571%;
+    width: @widthPrevNext;
     position: absolute;
     right: 0;
 }
@@ -194,6 +194,35 @@
             }
         }
     }
+}
+
+/* --------------------
+        Sizes
+--------------------- */
+
+& when not (@variationCalendarSizes = false) {
+    each(@variationCalendarSizes, {
+        @s: @@value;
+        .ui.@{value}.calendar,
+        .ui.@{value}.calendar .ui.table tr th,
+        .ui.@{value}.calendar .ui.table tr td {
+            font-size: @s;
+        }
+        .ui.@{value}.calendar .ui.table.year,
+        .ui.@{value}.calendar .ui.table.month,
+        .ui.@{value}.calendar .ui.table.minute {
+            min-width: unit(@widthYearMonthMinute * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.day {
+            min-width: unit(@widthDay * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.day.andweek {
+            min-width: unit(@widthDayAndWeek * @s, em);
+        }
+        .ui.@{value}.calendar .ui.table.hour {
+            min-width: unit(@widthHour * @s, em);
+        }
+    });
 }
 
 /*******************************

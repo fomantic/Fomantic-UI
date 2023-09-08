@@ -363,7 +363,7 @@
                             module.verbose('Adding clear icon');
                             $clear = $('<i />')
                                 .addClass('remove icon')
-                                .insertBefore($text)
+                                .insertAfter($icon)
                             ;
                         }
                         if (module.is.search() && !module.has.search()) {
@@ -529,7 +529,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
+                    if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache() && !module.has.maxSelections()) {
                         module.clearItems();
                     }
                     if (!module.can.show() && module.is.remote()) {
@@ -579,7 +579,10 @@
                             if ($subMenu.length > 0) {
                                 module.verbose('Hiding sub-menu', $subMenu);
                                 $subMenu.each(function () {
-                                    module.animate.hide(false, $(this));
+                                    var $sub = $(this);
+                                    if (!module.is.animating($sub)) {
+                                        module.animate.hide(false, $sub);
+                                    }
                                 });
                             }
                         }
@@ -774,6 +777,8 @@
                         }
                     ;
                     if (settings.useLabels && module.has.maxSelections()) {
+                        module.show();
+
                         return;
                     }
                     if (settings.apiSettings) {
@@ -1097,8 +1102,8 @@
                             notFoundTokens = []
                         ;
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true) === false) {
-                                notFoundTokens.push(value);
+                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
+                                notFoundTokens.push(value.trim());
                             }
                         });
                         event.preventDefault();
@@ -1231,7 +1236,7 @@
                             module.set.filtered();
                         }
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.search, settings.delay.search);
+                        module.timer = setTimeout(function () { module.search(); }, settings.delay.search);
                     },
                     label: {
                         click: function (event) {
@@ -1407,11 +1412,13 @@
                                     if (settings.allowAdditions) {
                                         module.remove.userAddition();
                                     }
-                                    module.remove.filteredItem();
+                                    if (!settings.keepSearchTerm) {
+                                        module.remove.filteredItem();
+                                        module.remove.searchTerm();
+                                    }
                                     if (!module.is.visible() && $target.length > 0) {
                                         module.show();
                                     }
-                                    module.remove.searchTerm();
                                     if (!module.is.focusedOnSearch() && skipRefocus !== true) {
                                         module.focusSearch(true);
                                     }
@@ -1597,7 +1604,9 @@
                                         module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                         module.event.item.click.call($selectedItem, event);
                                         if (module.is.searchSelection()) {
-                                            module.remove.searchTerm();
+                                            if (!settings.keepSearchTerm) {
+                                                module.remove.searchTerm();
+                                            }
                                             if (module.is.multiple()) {
                                                 $search.trigger('focus');
                                             }
@@ -1814,7 +1823,7 @@
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
-                            module.set.selected(value, $(element));
+                            module.set.selected(value, $(element), false, settings.keepSearchTerm);
                             if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                                 module.hideAndClear();
                             }
@@ -2166,7 +2175,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2227,7 +2236,7 @@
                             return false;
                         }
 
-                        return true;
+                        return false;
                     },
                     disabled: function () {
                         $search.attr('tabindex', module.is.disabled() ? -1 : 0);
@@ -2317,7 +2326,7 @@
                                 $.each(values, function (value, name) {
                                     module.set.text(name);
                                 });
-                            } else {
+                            } else if (settings.useLabels) {
                                 $.each(values, function (value, name) {
                                     module.add.label(value, name);
                                 });
@@ -2464,7 +2473,7 @@
                             valueIsSet       = searchValue !== ''
                         ;
                         if (isMultiple && hasSearchValue) {
-                            module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
+                            module.verbose('Adjusting input width', searchWidth);
                             $search.css('width', searchWidth + 'px');
                         }
                         if (hasSearchValue || (isSearchMultiple && valueIsSet)) {
@@ -2763,7 +2772,7 @@
                             return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
-                        if (module.is.multiple()) {
+                        if (module.is.multiple() && !keepSearchTerm) {
                             module.remove.searchWidth();
                         }
                         if (module.is.single()) {
@@ -3738,12 +3747,12 @@
                     show: function () {
                         module.verbose('Delaying show event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.show, settings.delay.show);
+                        module.timer = setTimeout(function () { module.show(); }, settings.delay.show);
                     },
                     hide: function () {
                         module.verbose('Delaying hide event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(module.hide, settings.delay.hide);
+                        module.timer = setTimeout(function () { module.hide(); }, settings.delay.hide);
                     },
                 },
 
@@ -3869,7 +3878,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -4006,6 +4015,7 @@
         forceSelection: false, // force a choice on blur with search selection
 
         allowAdditions: false, // whether multiple select should allow user added values
+        keepSearchTerm: false, // whether the search value should be kept and menu stays filtered on item selection
         ignoreCase: false, // whether to consider case sensitivity when creating labels
         ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
         hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
@@ -4024,8 +4034,6 @@
         transition: 'auto', // auto transition will slide down or up based on direction
         duration: 200, // duration of transition
         displayType: false, // displayType of transition
-
-        glyphWidth: 1.037, // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
         headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Segment
+ * # Fomantic-UI 2.9.3 - Segment
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -170,6 +170,9 @@
   margin: 3em 0;
   box-shadow: "";
   z-index: auto;
+  background-color: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.piled.segment:first-child {
   margin-top: 0;
@@ -181,7 +184,7 @@
 .ui.piled.segments::before,
 .ui.piled.segment::after,
 .ui.piled.segment::before {
-  background-color: #fff;
+  background-color: inherit;
   visibility: visible;
   content: "";
   display: block;
@@ -189,8 +192,13 @@
   left: 0;
   position: absolute;
   width: 100%;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: inherit;
   box-shadow: "";
+}
+.ui.inverted.piled.segment {
+  background-color: #1b1c1d;
+  border: 1px solid #555;
+  color: rgba(255, 255, 255, 0.9);
 }
 .ui.piled.segments::before,
 .ui.piled.segment::before {
@@ -219,6 +227,12 @@
 }
 .ui.piled.segment[class*="bottom attached"]:last-child {
   margin-bottom: 0;
+}
+@supports selector(:has(.f)) {
+  *:has(> .ui.piled.segment) {
+    z-index: 0;
+    position: relative;
+  }
 }
 
 /* -------------------
@@ -254,12 +268,16 @@
 }
 
 /* Inverted */
+.ui.stacked.inverted.segments,
+.ui.stacked.inverted.segment {
+  border: 1px solid rgba(225, 225, 225, 0.5);
+}
 .ui.stacked.inverted.segments::before,
-.ui.stacked.inverted.segments::after,
 .ui.stacked.inverted.segment::before,
+.ui.stacked.inverted.segments::after,
 .ui.stacked.inverted.segment::after {
   background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(34, 36, 38, 0.35);
+  border-top: 1px solid rgba(225, 225, 225, 0.5);
 }
 
 /* -------------------
@@ -310,9 +328,13 @@
 /* -------------------
            Raised
     -------------------- */
-.ui.raised.raised.segments,
-.ui.raised.raised.segment {
+.ui.ui.raised.segments,
+.ui.ui.raised.segment {
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
+.ui.ui.inverted.raised.segments,
+.ui.ui.inverted.raised.segment {
+  box-shadow: 0 2px 4px 0 rgba(225, 225, 225, 0.1), 0 2px 10px 0 rgba(225, 225, 225, 0.5);
 }
 
 
@@ -395,6 +417,7 @@
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
+.ui.wrapping.horizontal.segments,
 .ui.stackable.horizontal.segments {
   flex-wrap: wrap;
 }
@@ -427,7 +450,7 @@
 .ui.segments > .horizontal.segments:first-child {
   border-top: none;
 }
-.ui.horizontal.segments:not(.stackable) > .segment:first-child {
+.ui.horizontal.segments:not(.stackable):not(.wrapping) > .segment:first-child {
   border-left: none;
 }
 .ui.horizontal.segments > .segment:first-child {
@@ -473,6 +496,7 @@
       -ms-user-select: none;
           user-select: none;
   transition: all 0s linear;
+  min-height: 4.5em;
 }
 .ui.loading.segments::before,
 .ui.loading.segment::before {
@@ -533,96 +557,135 @@
 /* -------------------
        Colors
 -------------------- */
-.ui.red.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.ui.ui.ui.red.segment:not(.inverted) {
   border-top: 2px solid #db2828;
 }
-.ui.inverted.red.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.red.segment {
   background-color: #db2828;
   color: #fff;
 }
-.ui.orange.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.red.segment:not(.piled) {
+  border-color: #db2828;
+}
+.ui.ui.ui.ui.ui.orange.segment:not(.inverted) {
   border-top: 2px solid #f2711c;
 }
-.ui.inverted.orange.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.orange.segment {
   background-color: #f2711c;
   color: #fff;
 }
-.ui.yellow.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.orange.segment:not(.piled) {
+  border-color: #f2711c;
+}
+.ui.ui.ui.ui.ui.yellow.segment:not(.inverted) {
   border-top: 2px solid #fbbd08;
 }
-.ui.inverted.yellow.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.yellow.segment {
   background-color: #fbbd08;
   color: #fff;
 }
-.ui.olive.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.yellow.segment:not(.piled) {
+  border-color: #fbbd08;
+}
+.ui.ui.ui.ui.ui.olive.segment:not(.inverted) {
   border-top: 2px solid #b5cc18;
 }
-.ui.inverted.olive.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.olive.segment {
   background-color: #b5cc18;
   color: #fff;
 }
-.ui.green.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.olive.segment:not(.piled) {
+  border-color: #b5cc18;
+}
+.ui.ui.ui.ui.ui.green.segment:not(.inverted) {
   border-top: 2px solid #21ba45;
 }
-.ui.inverted.green.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.green.segment {
   background-color: #21ba45;
   color: #fff;
 }
-.ui.teal.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.green.segment:not(.piled) {
+  border-color: #21ba45;
+}
+.ui.ui.ui.ui.ui.teal.segment:not(.inverted) {
   border-top: 2px solid #00b5ad;
 }
-.ui.inverted.teal.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.teal.segment {
   background-color: #00b5ad;
   color: #fff;
 }
-.ui.blue.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.teal.segment:not(.piled) {
+  border-color: #00b5ad;
+}
+.ui.ui.ui.ui.ui.blue.segment:not(.inverted) {
   border-top: 2px solid #2185d0;
 }
-.ui.inverted.blue.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.blue.segment {
   background-color: #2185d0;
   color: #fff;
 }
-.ui.violet.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.blue.segment:not(.piled) {
+  border-color: #2185d0;
+}
+.ui.ui.ui.ui.ui.violet.segment:not(.inverted) {
   border-top: 2px solid #6435c9;
 }
-.ui.inverted.violet.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.violet.segment {
   background-color: #6435c9;
   color: #fff;
 }
-.ui.purple.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.violet.segment:not(.piled) {
+  border-color: #6435c9;
+}
+.ui.ui.ui.ui.ui.purple.segment:not(.inverted) {
   border-top: 2px solid #a333c8;
 }
-.ui.inverted.purple.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.purple.segment {
   background-color: #a333c8;
   color: #fff;
 }
-.ui.pink.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.purple.segment:not(.piled) {
+  border-color: #a333c8;
+}
+.ui.ui.ui.ui.ui.pink.segment:not(.inverted) {
   border-top: 2px solid #e03997;
 }
-.ui.inverted.pink.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.pink.segment {
   background-color: #e03997;
   color: #fff;
 }
-.ui.brown.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.pink.segment:not(.piled) {
+  border-color: #e03997;
+}
+.ui.ui.ui.ui.ui.brown.segment:not(.inverted) {
   border-top: 2px solid #a5673f;
 }
-.ui.inverted.brown.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.brown.segment {
   background-color: #a5673f;
   color: #fff;
 }
-.ui.grey.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.brown.segment:not(.piled) {
+  border-color: #a5673f;
+}
+.ui.ui.ui.ui.ui.grey.segment:not(.inverted) {
   border-top: 2px solid #767676;
 }
-.ui.inverted.grey.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.grey.segment {
   background-color: #767676;
   color: #fff;
 }
-.ui.black.segment.segment.segment.segment.segment:not(.inverted) {
+.ui.ui.inverted.grey.segment:not(.piled) {
+  border-color: #767676;
+}
+.ui.ui.ui.ui.ui.black.segment:not(.inverted) {
   border-top: 2px solid #1b1c1d;
 }
-.ui.inverted.black.segment.segment.segment.segment.segment {
+.ui.ui.ui.ui.ui.inverted.black.segment {
   background-color: #1b1c1d;
   color: #fff;
+}
+.ui.ui.inverted.black.segment:not(.piled) {
+  border-color: #1b1c1d;
 }
 
 /* -------------------
@@ -812,69 +875,133 @@
   .ui.scrolling.segment.short {
     max-height: 11.25em;
   }
+  .ui.scrolling.segment.short.resizable {
+    height: 11.25em;
+  }
   .ui.scrolling.segment[class*="very short"] {
     max-height: 7.5em;
+  }
+  .ui.scrolling.segment[class*="very short"].resizable {
+    height: 7.5em;
   }
   .ui.scrolling.segment {
     max-height: 15em;
   }
+  .ui.scrolling.segment.resizable {
+    height: 15em;
+  }
   .ui.scrolling.segment.long {
     max-height: 30em;
   }
+  .ui.scrolling.segment.long.resizable {
+    height: 30em;
+  }
   .ui.scrolling.segment[class*="very long"] {
     max-height: 45em;
+  }
+  .ui.scrolling.segment[class*="very long"].resizable {
+    height: 45em;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.scrolling.segment.short {
     max-height: 13.5em;
   }
+  .ui.scrolling.segment.short.resizable {
+    height: 13.5em;
+  }
   .ui.scrolling.segment[class*="very short"] {
     max-height: 9em;
+  }
+  .ui.scrolling.segment[class*="very short"].resizable {
+    height: 9em;
   }
   .ui.scrolling.segment {
     max-height: 18em;
   }
+  .ui.scrolling.segment.resizable {
+    height: 18em;
+  }
   .ui.scrolling.segment.long {
     max-height: 36em;
   }
+  .ui.scrolling.segment.long.resizable {
+    height: 36em;
+  }
   .ui.scrolling.segment[class*="very long"] {
     max-height: 54em;
+  }
+  .ui.scrolling.segment[class*="very long"].resizable {
+    height: 54em;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.scrolling.segment.short {
     max-height: 18em;
   }
+  .ui.scrolling.segment.short.resizable {
+    height: 18em;
+  }
   .ui.scrolling.segment[class*="very short"] {
     max-height: 12em;
+  }
+  .ui.scrolling.segment[class*="very short"].resizable {
+    height: 12em;
   }
   .ui.scrolling.segment {
     max-height: 24em;
   }
+  .ui.scrolling.segment.resizable {
+    height: 24em;
+  }
   .ui.scrolling.segment.long {
     max-height: 48em;
   }
+  .ui.scrolling.segment.long.resizable {
+    height: 48em;
+  }
   .ui.scrolling.segment[class*="very long"] {
     max-height: 72em;
+  }
+  .ui.scrolling.segment[class*="very long"].resizable {
+    height: 72em;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.segment.short {
     max-height: 22.5em;
   }
+  .ui.scrolling.segment.short.resizable {
+    height: 22.5em;
+  }
   .ui.scrolling.segment[class*="very short"] {
     max-height: 15em;
+  }
+  .ui.scrolling.segment[class*="very short"].resizable {
+    height: 15em;
   }
   .ui.scrolling.segment {
     max-height: 30em;
   }
+  .ui.scrolling.segment.resizable {
+    height: 30em;
+  }
   .ui.scrolling.segment.long {
     max-height: 60em;
+  }
+  .ui.scrolling.segment.long.resizable {
+    height: 60em;
   }
   .ui.scrolling.segment[class*="very long"] {
     max-height: 90em;
   }
+  .ui.scrolling.segment[class*="very long"].resizable {
+    height: 90em;
+  }
+}
+.ui.resizable.scrolling.segment {
+  resize: vertical;
+  max-height: none;
 }
 
 /* -------------------

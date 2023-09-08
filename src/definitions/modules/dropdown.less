@@ -435,19 +435,23 @@ select.ui.dropdown {
     }
 
     /* Selection Menu */
-    .ui.selection.dropdown .menu {
+    .ui.selection.dropdown:not(.unlimited) .menu {
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
-        border-top-width: 0 !important;
+    }
+    .ui.selection.dropdown .menu {
         outline: none;
         margin: 0 -@menuBorderWidth;
         min-width: @menuMinWidth;
         width: @menuMinWidth;
-        border-radius: @selectionMenuBorderRadius;
         box-shadow: @selectionMenuBoxShadow;
         transition: @selectionMenuTransition;
+    }
+    .ui.selection.dropdown:not(.pointing):not(.floating) .menu {
+        border-top-width: 0;
+        border-radius: @selectionMenuBorderRadius;
     }
     .ui.selection.dropdown .menu::after,
     .ui.selection.dropdown .menu::before {
@@ -471,7 +475,7 @@ select.ui.dropdown {
                 max-height: @selectionMobileMaxMenuHeight * 0.5;
             }
         }
-        .ui.selection.dropdown .menu {
+        .ui.selection.dropdown:not(.unlimited) .menu {
             max-height: @selectionMobileMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
@@ -492,7 +496,7 @@ select.ui.dropdown {
                 max-height: @selectionTabletMaxMenuHeight * 0.5;
             }
         }
-        .ui.selection.dropdown .menu {
+        .ui.selection.dropdown:not(.unlimited) .menu {
             max-height: @selectionTabletMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
@@ -513,7 +517,7 @@ select.ui.dropdown {
                 max-height: @selectionComputerMaxMenuHeight * 0.5;
             }
         }
-        .ui.selection.dropdown .menu {
+        .ui.selection.dropdown:not(.unlimited) .menu {
             max-height: @selectionComputerMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
@@ -534,7 +538,7 @@ select.ui.dropdown {
                 max-height: @selectionWidescreenMaxMenuHeight * 0.5;
             }
         }
-        .ui.selection.dropdown .menu {
+        .ui.selection.dropdown:not(.unlimited) .menu {
             max-height: @selectionWidescreenMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
@@ -553,6 +557,12 @@ select.ui.dropdown {
         padding: @selectionItemPadding;
         white-space: normal;
         word-wrap: normal;
+    }
+    & when (@variationDropdownPointing) or (@variationDropdownFloating) {
+        .ui.selection.pointing.dropdown .menu > .item:first-child,
+        .ui.selection.floating.dropdown .menu > .item:first-child {
+            border-top: none;
+        }
     }
 
     /* User Item */
@@ -621,7 +631,7 @@ select.ui.dropdown {
     }
 
     /* Connecting Border */
-    .ui.active.selection.dropdown {
+    .ui.active.selection.dropdown:not(.pointing):not(.floating) {
         border-bottom-left-radius: @selectionVisibleConnectingBorder !important;
         border-bottom-right-radius: @selectionVisibleConnectingBorder !important;
     }
@@ -749,29 +759,29 @@ select.ui.dropdown {
     }
 
     /* Search Menu */
-    .ui.search.dropdown .menu {
+    .ui.search.dropdown:not(.unlimited) .menu {
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
     }
     @media only screen and (max-width: @largestMobileScreen) {
-        .ui.search.dropdown .menu {
+        .ui.search.dropdown:not(.unlimited) .menu {
             max-height: @searchMobileMaxMenuHeight;
         }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
-        .ui.search.dropdown .menu {
+        .ui.search.dropdown:not(.unlimited) .menu {
             max-height: @searchTabletMaxMenuHeight;
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
-        .ui.search.dropdown .menu {
+        .ui.search.dropdown:not(.unlimited) .menu {
             max-height: @searchComputerMaxMenuHeight;
         }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-        .ui.search.dropdown .menu {
+        .ui.search.dropdown:not(.unlimited) .menu {
             max-height: @searchWidescreenMaxMenuHeight;
         }
     }
@@ -1181,6 +1191,16 @@ select.ui.dropdown {
     }
 }
 
+& when (@variationDropdownDisabled) or (@variationDropdownReadonly) {
+    .ui.disabled.dropdown,
+    .ui.read-only.dropdown {
+        > .remove.icon,
+        > .label > .delete.icon {
+            display: none;
+        }
+    }
+}
+
 /*******************************
            Variations
 *******************************/
@@ -1273,9 +1293,9 @@ select.ui.dropdown {
 
     & when (@variationDropdownSelection) {
         /* Selection */
-        .ui.ui.upward.selection.dropdown .menu {
-            border-top-width: @menuBorderWidth !important;
-            border-bottom-width: 0 !important;
+        .ui.ui.upward.selection.dropdown:not(.pointing):not(.floating) .menu {
+            border-top-width: @menuBorderWidth;
+            border-bottom-width: 0;
             box-shadow: @upwardSelectionMenuBoxShadow;
             border-radius: @upwardSelectionMenuBorderRadius;
         }
@@ -1284,21 +1304,23 @@ select.ui.dropdown {
         }
 
         /* Active Upward */
-        .ui.active.upward.selection.dropdown {
+        .ui.active.upward.selection.dropdown:not(.pointing):not(.floating) {
             border-radius: @upwardSelectionVisibleBorderRadius !important;
         }
 
         /* Visible Upward */
         .ui.upward.selection.dropdown.visible {
             box-shadow: @upwardSelectionVisibleBoxShadow;
-            border-radius: @upwardSelectionVisibleBorderRadius !important;
+            &:not(.pointing):not(.floating) {
+                border-radius: @upwardSelectionVisibleBorderRadius !important;
+            }
         }
 
         /* Visible Hover Upward */
         .ui.upward.active.selection.dropdown:hover {
             box-shadow: @upwardSelectionActiveHoverBoxShadow;
         }
-        .ui.upward.active.selection.dropdown:hover .menu {
+        .ui.upward.active.selection.dropdown:hover:not(.pointing):not(.floating) .menu {
             box-shadow: @upwardSelectionActiveHoverMenuBoxShadow;
         }
     }
@@ -1328,8 +1350,8 @@ select.ui.dropdown {
         margin: 0 !important;
         border-top: @menuBorder;
     }
-    .ui.scrolling.dropdown .menu .item.item.item,
-    .ui.dropdown .scrolling.menu > .item.item.item {
+    .ui.ui.ui.scrolling.dropdown .menu .item,
+    .ui.ui.ui.dropdown .scrolling.menu > .item {
         border-top: @scrollingMenuItemBorder;
     }
     .ui.scrolling.dropdown .menu .item:first-child,
@@ -1354,11 +1376,23 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingMobileMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingMobileMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingTabletMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingTabletMaxMenuHeight;
+            }
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
@@ -1366,11 +1400,30 @@ select.ui.dropdown {
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingComputerMaxMenuHeight;
         }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingComputerMaxMenuHeight;
+            }
+        }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
             max-height: @scrollingWidescreenMaxMenuHeight;
+        }
+        & when (@variationDropdownResizable) {
+            .ui.scrolling.resizable.dropdown .menu,
+            .ui.dropdown .scrolling.resizable.menu {
+                height: @scrollingWidescreenMaxMenuHeight;
+            }
+        }
+    }
+    & when (@variationDropdownResizable) {
+        .ui.scrolling.resizable.dropdown .menu,
+        .ui.dropdown .scrolling.resizable.menu {
+            resize: @resizableDirection;
+            max-height: none;
         }
     }
 }
@@ -1582,6 +1635,22 @@ select.ui.dropdown {
         z-index: @pointingArrowZIndex;
     }
 
+    @supports selector(:has(.f)) {
+        .ui.pointing.dropdown:not(.upward) .menu:has(:first-child:hover)::after,
+        .ui.upward.pointing.dropdown .menu:has(:last-child:hover)::after {
+            background: @hoveredItemBackground;
+        }
+        .ui.pointing.dropdown:not(.upward) .menu:has(.selected.item:first-child)::after,
+        .ui.upward.pointing.dropdown .menu:has(.selected.item:last-child)::after {
+            background: @selectedBackground;
+        }
+    }
+
+    & when (@variationDropdownSelection) {
+        .ui.selection.pointing.dropdown > .menu::after {
+            box-shadow: @pointingArrowBoxShadowSelection;
+        }
+    }
     .ui.pointing.dropdown > .menu:not(.hidden)::after {
         top: @pointingArrowOffset;
         left: 50%;
@@ -1727,6 +1796,12 @@ select.ui.dropdown {
         margin: @pointingArrowOffset 0 0;
     }
 
+    & when (@variationDropdownSelection) {
+        .ui.selection.pointing.upward.dropdown .menu::after {
+            box-shadow: @pointingUpwardArrowBoxShadowSelection;
+        }
+    }
+
     /* Right Pointing Upward */
     .ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu {
         top: auto !important;
@@ -1751,6 +1826,19 @@ select.ui.dropdown {
         bottom: 0 !important;
         margin: 0 0 @pointingArrowDistanceFromEdge 0;
         box-shadow: @pointingArrowBoxShadow;
+    }
+}
+
+& when (@variationDropdownPointing) or (@variationDropdownFloating) {
+    .ui.floating.dropdown .menu .item:first-child,
+    .ui.pointing.dropdown .menu .item:first-child {
+        border-top-left-radius: @borderRadius;
+        border-top-right-radius: @borderRadius;
+    }
+    .ui.floating.dropdown .menu .item:last-child,
+    .ui.pointing.dropdown .menu .item:last-child {
+        border-bottom-left-radius: @borderRadius;
+        border-bottom-right-radius: @borderRadius;
     }
 }
 
@@ -1966,6 +2054,21 @@ select.ui.dropdown {
         .ui.inverted.pointing.dropdown > .menu::after {
             background: @invertedPointingArrowBackground;
             box-shadow: @invertedPointingArrowBoxShadow;
+        }
+        & when (@variationDropdownUpward) {
+            .ui.inverted.upward.pointing.dropdown > .menu::after {
+                box-shadow: @invertedPointingUpwardArrowBoxShadow;
+            }
+        }
+        @supports selector(:has(.f)) {
+            .ui.inverted.pointing.dropdown:not(.upward) .menu:has(:first-child:hover)::after,
+            .ui.inverted.upward.pointing.dropdown .menu:has(:last-child:hover)::after {
+                background: @invertedHoveredItemBackground;
+            }
+            .ui.inverted.pointing.dropdown:not(.upward) .menu:has(.selected.item:first-child)::after,
+            .ui.inverted.upward.pointing.dropdown .menu:has(.selected.item:last-child)::after {
+                background: @invertedSelectedBackground;
+            }
         }
     }
 }

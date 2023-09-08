@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Popup
+ * # Fomantic-UI 2.9.3 - Popup
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -26,8 +26,6 @@
             $window        = $(window),
             $body          = $('body'),
 
-            moduleSelector = $allModules.selector || '',
-
             clickEvent      = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click',
@@ -38,6 +36,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
+
+                return $context;
+            },
 
             returnedValue
         ;
@@ -57,12 +68,10 @@
                 moduleNamespace    = 'module-' + namespace,
 
                 $module            = $(this),
-                $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
-                $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
-                $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
-                $target            = settings.target
-                    ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
-                    : $module,
+                $context           = contextCheck(settings.context, window),
+                $scrollContext     = contextCheck(settings.scrollContext, window),
+                $boundary          = contextCheck(settings.boundary, window),
+                $target            = settings.target ? contextCheck(settings.target, window) : $module,
 
                 $popup,
                 $offsetParent,
@@ -185,7 +194,7 @@
                         ;
                         clearTimeout(module.hideTimer);
                         if (!openedWithTouch || (openedWithTouch && settings.addTouchEvents)) {
-                            module.showTimer = setTimeout(module.show, delay);
+                            module.showTimer = setTimeout(function () { module.show(); }, delay);
                         }
                     },
                     end: function () {
@@ -195,7 +204,7 @@
                                 : settings.delay
                         ;
                         clearTimeout(module.showTimer);
-                        module.hideTimer = setTimeout(module.hide, delay);
+                        module.hideTimer = setTimeout(function () { module.hide(); }, delay);
                     },
                     touchstart: function (event) {
                         openedWithTouch = true;
@@ -239,9 +248,11 @@
                 // generates popup html from metadata
                 create: function () {
                     var
+                        targetSibling = $target.next(selector.popup),
+                        contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false,
                         html      = module.get.html(),
                         title     = module.get.title(),
-                        content   = module.get.content()
+                        content   = module.get.content(contentFallback)
                     ;
 
                     if (html || content || title) {
@@ -282,10 +293,10 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length > 0) {
+                    } else if (targetSibling.length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
-                        settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
+                        settings.popup = targetSibling.data(metadata.activator, $module);
                         module.refresh();
                         if (settings.hoverable) {
                             module.bind.popup();
@@ -475,10 +486,10 @@
 
                         return $module.data(metadata.title) || settings.title;
                     },
-                    content: function () {
+                    content: function (fallback) {
                         $module.removeData(metadata.content);
 
-                        return $module.data(metadata.content) || settings.content || $module.attr('title');
+                        return $module.data(metadata.content) || settings.content || fallback;
                     },
                     variation: function () {
                         $module.removeData(metadata.variation);
@@ -1233,7 +1244,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1246,9 +1257,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

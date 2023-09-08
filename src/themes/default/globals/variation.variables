@@ -51,6 +51,7 @@
 @variationContainerFluid: true;
 @variationContainerAligned: true;
 @variationContainerJustified: true;
+@variationContainerResizable: true;
 @variationContainerScrolling: true;
 @variationContainerScrollingShort: true;
 @variationContainerScrollingVeryShort: true;
@@ -127,7 +128,7 @@
 @variationInputDisabled: true;
 @variationInputInverted: true;
 @variationInputStates: @variationAllStates;
-@variationInputInvalid: true;
+@variationInputInvalid: false;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -235,6 +236,7 @@
 @variationSegmentAttached: true;
 @variationSegmentSeamless: true;
 @variationSegmentFitted: true;
+@variationSegmentResizable: true;
 @variationSegmentScrolling: true;
 @variationSegmentScrollingShort: true;
 @variationSegmentScrollingVeryShort: true;
@@ -372,6 +374,7 @@
 @variationTableMarked: true;
 @variationTableEqualWidth: true;
 @variationTableWide: true;
+@variationTableResizable: true;
 @variationTableScrolling: true;
 @variationTableScrollingShort: true;
 @variationTableScrollingVeryShort: true;
@@ -436,6 +439,7 @@
 
 /* Comment */
 @variationCommentInverted: true;
+@variationCommentDisabled: true;
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
 @variationCommentAvatar: true;
@@ -448,16 +452,29 @@
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedDisabled: true;
 @variationFeedMeta: true;
 @variationFeedSummary: true;
 @variationFeedUser: true;
 @variationFeedExtra: true;
 @variationFeedDate: true;
 @variationFeedLike: true;
+@variationFeedLabel: true;
+@variationFeedLabelIcon: true;
+@variationFeedLabelImage: true;
+@variationFeedLabelText: true;
+@variationFeedLabelUiLabel: true;
+@variationFeedConnected: true;
+@variationFeedDivided: true;
+@variationFeedOrdered: true;
+@variationFeedBasic: true;
+@variationFeedRightFloated: true;
 @variationFeedSizes: @variationAllSizes;
+@variationFeedColors: @variationAllColors;
 
 /* Item */
 @variationItemInverted: true;
+@variationItemDisabled: true;
 @variationItemImage: true;
 @variationItemHeader: true;
 @variationItemDescription: true;
@@ -502,11 +519,13 @@
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 @variationCalendarMultiMonth: true;
+@variationCalendarSizes: @variationAllSizes;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
+@variationCheckboxInvisible: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
 @variationCheckboxToggle: true;
@@ -546,6 +565,7 @@
 @variationDropdownLeft: true;
 @variationDropdownUpward: true;
 @variationDropdownSimple: true;
+@variationDropdownResizable: true;
 @variationDropdownScrolling: true;
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
@@ -581,6 +601,7 @@
 @variationModalFullscreen: true;
 @variationModalOverlay: true;
 @variationModalAligned: true;
+@variationModalResizable: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
 @variationModalCloseInside: true;
@@ -646,6 +667,7 @@
 @variationSearchDisabled: true;
 @variationSearchSelection: true;
 @variationSearchCategory: true;
+@variationSearchHorizontalCategory: true;
 @variationSearchLoading: true;
 @variationSearchAligned: true;
 @variationSearchFluid: true;
@@ -653,6 +675,7 @@
 @variationSearchVeryShort: true;
 @variationSearchLong: true;
 @variationSearchVeryLong: true;
+@variationSearchResizable: true;
 @variationSearchScrolling: true;
 @variationSearchSizes: @variationAllSizes;
 

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Flyout
+ * # Fomantic-UI 2.9.3 - Flyout
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -28,15 +28,25 @@
             $head           = $('head'),
             $body           = $('body'),
 
-            moduleSelector  = $allModules.selector || '',
-
             time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
             methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
+            contextCheck    = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $body;
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
 
+                return $context;
+            },
             returnedValue
         ;
 
@@ -57,7 +67,7 @@
                 moduleNamespace      = 'module-' + namespace,
 
                 $module              = $(this),
-                $context             = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                $context             = contextCheck(settings.context, window),
                 $closeIcon           = $module.find(selector.close),
                 $inputs,
                 $focusedElement,
@@ -76,6 +86,7 @@
                 initialBodyMargin    = '',
                 tempBodyMargin       = '',
                 hadScrollbar         = false,
+                windowRefocused      = false,
 
                 elementNamespace,
                 id,
@@ -222,9 +233,6 @@
                         .off(eventNamespace)
                         .removeData(moduleNamespace)
                     ;
-                    if (module.is.ios()) {
-                        module.remove.ios();
-                    }
                     $closeIcon.off(elementNamespace);
                     if ($inputs) {
                         $inputs.off(elementNamespace);
@@ -254,9 +262,13 @@
                         module.setup.heights();
                     },
                     focus: function () {
-                        if (module.is.visible() && settings.autofocus && settings.dimPage) {
+                        windowRefocused = true;
+                    },
+                    click: function (event) {
+                        if (windowRefocused && document.activeElement !== event.target && module.is.visible() && settings.autofocus && settings.dimPage && $(document.activeElement).closest(selector.flyout).length === 0) {
                             requestAnimationFrame(module.set.autofocus);
                         }
+                        windowRefocused = false;
                     },
                     clickaway: function (event) {
                         if (settings.closable) {
@@ -362,6 +374,9 @@
                         ;
                         $window
                             .on('focus' + elementNamespace, module.event.focus)
+                        ;
+                        $context
+                            .on('click' + elementNamespace, module.event.click)
                         ;
                     },
                     clickaway: function () {
@@ -492,11 +507,12 @@
 
                                     return nodes;
                                 },
-                                shouldRefreshInputs = false
+                                shouldRefreshInputs = false,
+                                ignoreAutofocus = true
                             ;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
-                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').length > 0)) {
+                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
@@ -506,6 +522,9 @@
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                     if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                         shouldRefreshInputs = true;
+                                        if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
+                                            ignoreAutofocus = false;
+                                        }
                                     }
                                 }
 
@@ -513,7 +532,7 @@
                             });
 
                             if (shouldRefreshInputs) {
-                                module.refreshInputs();
+                                module.refreshInputs(ignoreAutofocus);
                             }
                         });
                         observer.observe(element, {
@@ -527,7 +546,7 @@
                 },
                 refresh: function () {
                     module.verbose('Refreshing selector cache');
-                    $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                    $context = contextCheck(settings.context, window);
                     module.refreshFlyouts();
                     $pusher = $context.children(selector.pusher);
                     module.clear.cache();
@@ -538,7 +557,7 @@
                     $flyouts = $context.children(selector.flyout);
                 },
 
-                refreshInputs: function () {
+                refreshInputs: function (ignoreAutofocus) {
                     if ($inputs) {
                         $inputs
                             .off('keydown' + elementNamespace)
@@ -550,8 +569,8 @@
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
                     });
-                    if ($inputs.length === 0) {
-                        $inputs = $module;
+                    if ($inputs.filter(':input').length === 0) {
+                        $inputs = $module.add($inputs);
                         $module.attr('tabindex', -1);
                     } else {
                         $module.removeAttr('tabindex');
@@ -562,7 +581,7 @@
                     $inputs.last()
                         .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
                     ;
-                    if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                    if (!ignoreAutofocus && settings.autofocus && $inputs.filter(':focus').length === 0) {
                         module.set.autofocus();
                     }
                 },
@@ -840,20 +859,14 @@
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
                             $rawInputs = $inputs.filter(':input'),
-                            $input     = $autofocus.length > 0
-                                ? $autofocus.first()
+                            $input     = ($autofocus.length > 0
+                                ? $autofocus
                                 : ($rawInputs.length > 0
                                     ? $rawInputs
-                                    : $inputs.filter(':not(i.close)')
-                                ).first()
+                                    : $module)
+                            ).first()
                         ;
-                        // check if only the close icon is remaining
-                        if ($input.length === 0 && $inputs.length > 0) {
-                            $input = $inputs.first();
-                        }
-                        if ($input.length > 0) {
-                            $input.trigger('focus');
-                        }
+                        $input.trigger('focus');
                     },
                     dimmerStyles: function () {
                         if (settings.blurring) {
@@ -872,12 +885,6 @@
                             ;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
-                    },
-
-                    // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
-                    // (This is no longer necessary in latest iOS)
-                    ios: function () {
-                        $html.addClass(className.ios);
                     },
 
                     // container
@@ -927,11 +934,6 @@
                         $document
                             .off('keydown' + eventNamespace)
                         ;
-                    },
-
-                    // ios scroll on html not document
-                    ios: function () {
-                        $html.removeClass(className.ios);
                     },
 
                     // context
@@ -1054,20 +1056,6 @@
                         }
 
                         return module.cache.isIE;
-                    },
-                    ios: function () {
-                        var
-                            userAgent      = navigator.userAgent,
-                            isIOS          = userAgent.match(regExp.ios),
-                            isMobileChrome = userAgent.match(regExp.mobileChrome)
-                        ;
-                        if (isIOS && !isMobileChrome) {
-                            module.verbose('Browser was found to be iOS', userAgent);
-
-                            return true;
-                        }
-
-                        return false;
                     },
                     mobile: function () {
                         var
@@ -1231,7 +1219,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1244,9 +1232,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
@@ -1418,7 +1403,6 @@
             blurring: 'blurring',
             closing: 'closing',
             dimmed: 'dimmed',
-            ios: 'ios',
             locked: 'locked',
             pushable: 'pushable',
             pushed: 'pushed',
@@ -1451,8 +1435,6 @@
         },
 
         regExp: {
-            ios: /(iPad|iPhone|iPod)/g,
-            mobileChrome: /(CriOS)/g,
             mobile: /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g,
         },
 

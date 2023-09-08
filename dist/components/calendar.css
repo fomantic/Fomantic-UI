@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Calendar
+ * # Fomantic-UI 2.9.3 - Calendar
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -98,12 +98,12 @@
   cursor: pointer;
 }
 .ui.calendar .ui.table tr .prev.link {
-  width: 14.28571%;
+  width: 14.28571429%;
   position: absolute;
   left: 0;
 }
 .ui.calendar .ui.table tr .next.link {
-  width: 14.28571%;
+  width: 14.28571429%;
   position: absolute;
   right: 0;
 }
@@ -148,22 +148,159 @@
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.02);
 }
-.ui.calendar.popup > .ui.ui.grid {
+.ui.ui.ui.calendar.popup > .ui.ui.grid {
   margin: -1rem;
 }
-.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) {
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) {
   padding-left: 0;
 }
-.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) > .ui.table {
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) > .ui.table {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) {
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) {
   padding-right: 0;
 }
-.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) > .ui.table {
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) > .ui.table {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+/* --------------------
+        Sizes
+--------------------- */
+.ui.mini.calendar,
+.ui.mini.calendar .ui.table tr th,
+.ui.mini.calendar .ui.table tr td {
+  font-size: 0.78571429rem;
+}
+.ui.mini.calendar .ui.table.year,
+.ui.mini.calendar .ui.table.month,
+.ui.mini.calendar .ui.table.minute {
+  min-width: 11.78571429em;
+}
+.ui.mini.calendar .ui.table.day {
+  min-width: 14.14285714em;
+}
+.ui.mini.calendar .ui.table.day.andweek {
+  min-width: 17.28571429em;
+}
+.ui.mini.calendar .ui.table.hour {
+  min-width: 15.71428571em;
+}
+.ui.tiny.calendar,
+.ui.tiny.calendar .ui.table tr th,
+.ui.tiny.calendar .ui.table tr td {
+  font-size: 0.85714286rem;
+}
+.ui.tiny.calendar .ui.table.year,
+.ui.tiny.calendar .ui.table.month,
+.ui.tiny.calendar .ui.table.minute {
+  min-width: 12.85714286em;
+}
+.ui.tiny.calendar .ui.table.day {
+  min-width: 15.42857143em;
+}
+.ui.tiny.calendar .ui.table.day.andweek {
+  min-width: 18.85714286em;
+}
+.ui.tiny.calendar .ui.table.hour {
+  min-width: 17.14285714em;
+}
+.ui.small.calendar,
+.ui.small.calendar .ui.table tr th,
+.ui.small.calendar .ui.table tr td {
+  font-size: 0.92857143rem;
+}
+.ui.small.calendar .ui.table.year,
+.ui.small.calendar .ui.table.month,
+.ui.small.calendar .ui.table.minute {
+  min-width: 13.92857143em;
+}
+.ui.small.calendar .ui.table.day {
+  min-width: 16.71428571em;
+}
+.ui.small.calendar .ui.table.day.andweek {
+  min-width: 20.42857143em;
+}
+.ui.small.calendar .ui.table.hour {
+  min-width: 18.57142857em;
+}
+.ui.large.calendar,
+.ui.large.calendar .ui.table tr th,
+.ui.large.calendar .ui.table tr td {
+  font-size: 1.14285714rem;
+}
+.ui.large.calendar .ui.table.year,
+.ui.large.calendar .ui.table.month,
+.ui.large.calendar .ui.table.minute {
+  min-width: 17.14285714em;
+}
+.ui.large.calendar .ui.table.day {
+  min-width: 20.57142857em;
+}
+.ui.large.calendar .ui.table.day.andweek {
+  min-width: 25.14285714em;
+}
+.ui.large.calendar .ui.table.hour {
+  min-width: 22.85714286em;
+}
+.ui.big.calendar,
+.ui.big.calendar .ui.table tr th,
+.ui.big.calendar .ui.table tr td {
+  font-size: 1.28571429rem;
+}
+.ui.big.calendar .ui.table.year,
+.ui.big.calendar .ui.table.month,
+.ui.big.calendar .ui.table.minute {
+  min-width: 19.28571429em;
+}
+.ui.big.calendar .ui.table.day {
+  min-width: 23.14285714em;
+}
+.ui.big.calendar .ui.table.day.andweek {
+  min-width: 28.28571429em;
+}
+.ui.big.calendar .ui.table.hour {
+  min-width: 25.71428571em;
+}
+.ui.huge.calendar,
+.ui.huge.calendar .ui.table tr th,
+.ui.huge.calendar .ui.table tr td {
+  font-size: 1.42857143rem;
+}
+.ui.huge.calendar .ui.table.year,
+.ui.huge.calendar .ui.table.month,
+.ui.huge.calendar .ui.table.minute {
+  min-width: 21.42857143em;
+}
+.ui.huge.calendar .ui.table.day {
+  min-width: 25.71428571em;
+}
+.ui.huge.calendar .ui.table.day.andweek {
+  min-width: 31.42857143em;
+}
+.ui.huge.calendar .ui.table.hour {
+  min-width: 28.57142857em;
+}
+.ui.massive.calendar,
+.ui.massive.calendar .ui.table tr th,
+.ui.massive.calendar .ui.table tr td {
+  font-size: 1.71428571rem;
+}
+.ui.massive.calendar .ui.table.year,
+.ui.massive.calendar .ui.table.month,
+.ui.massive.calendar .ui.table.minute {
+  min-width: 25.71428571em;
+}
+.ui.massive.calendar .ui.table.day {
+  min-width: 30.85714286em;
+}
+.ui.massive.calendar .ui.table.day.andweek {
+  min-width: 37.71428571em;
+}
+.ui.massive.calendar .ui.table.hour {
+  min-width: 34.28571429em;
 }
 
 

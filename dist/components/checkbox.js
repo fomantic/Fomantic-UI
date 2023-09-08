@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Checkbox
+ * # Fomantic-UI 2.9.3 - Checkbox
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22,7 +22,6 @@
     $.fn.checkbox = function (parameters) {
         var
             $allModules    = $(this),
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -242,7 +241,9 @@
                             $input.trigger('blur');
                             shortcutPressed = true;
                             event.stopPropagation();
-                        } else if (!event.ctrlKey && module.can.change()) {
+                        } else if (!module.can.change()) {
+                            shortcutPressed = true;
+                        } else if (!event.ctrlKey) {
                             if (key === keyCode.space || (key === keyCode.enter && settings.enableEnterKey)) {
                                 module.verbose('Enter/space key pressed, toggling checkbox');
                                 module.toggle();
@@ -724,7 +725,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -737,9 +738,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
