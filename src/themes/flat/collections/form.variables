@@ -59,10 +59,10 @@
 @inputErrorFocusBoxShadow: @inputErrorPointerSize 0 0 0 @negativeColorHover inset;
 
 /* Placeholder */
-@inputPlaceholderColor: lighten(@inputColor, 55);
-@inputPlaceholderFocusColor: lighten(@inputColor, 35);
-@inputErrorPlaceholderColor: lighten(@formErrorColor, 10);
-@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 5);
+@inputPlaceholderColor: if(iscolor(@inputColor), lighten(@inputColor, 55), @inputColor);
+@inputPlaceholderFocusColor: if(iscolor(@inputColor), lighten(@inputColor, 35), @inputColor);
+@inputErrorPlaceholderColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 10), @formErrorColor);
+@inputErrorPlaceholderFocusColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 5), @formErrorColor);
 
 /* Loading */
 @formLoaderDimmerColor: rgba(255, 255, 255, 0.6);

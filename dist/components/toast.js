@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Toast
+ * # Fomantic-UI 2.9.3 - Toast
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22,7 +22,7 @@
     $.fn.toast = function (parameters) {
         var
             $allModules    = $(this),
-            moduleSelector = $allModules.selector || '',
+            $body          = $('body'),
 
             time           = Date.now(),
             performance    = [],
@@ -30,6 +30,19 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
+            contextCheck   = function (context, win) {
+                var $context;
+                if ([window, document].indexOf(context) >= 0) {
+                    $context = $(context);
+                } else {
+                    $context = $(win.document).find(context);
+                    if ($context.length === 0) {
+                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
+                    }
+                }
+
+                return $context;
+            },
             returnedValue
         ;
         $allModules.each(function () {
@@ -55,9 +68,7 @@
                 $progressBar,
                 $animationObject,
                 $close,
-                $context         = settings.context
-                    ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
-                    : $('body'),
+                $context         = settings.context ? contextCheck(settings.context, window) : $body,
 
                 isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
 
@@ -106,11 +117,11 @@
                     if ($toastBox) {
                         module.debug('Removing toast', $toastBox);
                         module.unbind.events();
+                        settings.onRemove.call($toastBox, element);
                         $toastBox.remove();
                         $toastBox = undefined;
                         $toast = undefined;
                         $animationObject = undefined;
-                        settings.onRemove.call($toastBox, element);
                         $progress = undefined;
                         $progressBar = undefined;
                         $close = undefined;
@@ -691,7 +702,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -704,9 +715,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {

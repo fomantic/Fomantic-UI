@@ -4,9 +4,9 @@
 
 const
     // npm dependencies
-    extend          = require('extend'),
     fs              = require('fs'),
     path            = require('path'),
+    extend          = require('extend'),
     requireDotFile  = require('require-dot-file'),
 
     // semantic.json defaults

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Search
+ * # Fomantic-UI 2.9.3 - Search
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -339,6 +339,15 @@
   transition: background 0.1s ease, border-color 0.1s ease;
   padding: 0.85714286em 1.14285714em;
 }
+.ui.horizontal.category.search > .results .category,
+.ui.horizontal.category.search > .results .category > .name,
+.ui.horizontal.category.search > .results .category > .results {
+  display: block;
+}
+.ui.horizontal.category.search > .results .category > .results {
+  width: 100%;
+  border-left: 0;
+}
 
 
 /*******************************
@@ -363,21 +372,37 @@
   .ui.scrolling.search > .results {
     max-height: 12.17714286em;
   }
+  .resizable.ui.scrolling.search > .results {
+    height: 12.17714286em;
+  }
 }
 @media only screen and (min-width: 768px) {
   .ui.scrolling.search > .results {
     max-height: 18.26571429em;
+  }
+  .resizable.ui.scrolling.search > .results {
+    height: 18.26571429em;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.scrolling.search > .results {
     max-height: 24.35428571em;
   }
+  .resizable.ui.scrolling.search > .results {
+    height: 24.35428571em;
+  }
 }
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.search > .results {
     max-height: 36.53142857em;
   }
+  .resizable.ui.scrolling.search > .results {
+    height: 36.53142857em;
+  }
+}
+.ui.scrolling.resizable.search > .results {
+  resize: vertical;
+  max-height: none;
 }
 @media only screen and (max-width: 767.98px) {
   .ui.search.short > .results {

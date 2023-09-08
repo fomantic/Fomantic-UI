@@ -452,13 +452,25 @@
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedDisabled: true;
 @variationFeedMeta: true;
 @variationFeedSummary: true;
 @variationFeedUser: true;
 @variationFeedExtra: true;
 @variationFeedDate: true;
 @variationFeedLike: true;
+@variationFeedLabel: true;
+@variationFeedLabelIcon: true;
+@variationFeedLabelImage: true;
+@variationFeedLabelText: true;
+@variationFeedLabelUiLabel: true;
+@variationFeedConnected: true;
+@variationFeedDivided: true;
+@variationFeedOrdered: true;
+@variationFeedBasic: true;
+@variationFeedRightFloated: true;
 @variationFeedSizes: @variationAllSizes;
+@variationFeedColors: @variationAllColors;
 
 /* Item */
 @variationItemInverted: true;
@@ -507,6 +519,7 @@
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 @variationCalendarMultiMonth: true;
+@variationCalendarSizes: @variationAllSizes;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;

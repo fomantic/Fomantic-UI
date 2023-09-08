@@ -681,7 +681,7 @@ ol.ui.list ol li,
     .ui.ordered.list,
     .ui.ordered.list .list:not(.icon),
     ol.ui.list ol {
-        counter-reset: ordered;
+        counter-reset: @orderedCountName;
         margin-left: @orderedCountDistance;
         list-style-type: none;
     }

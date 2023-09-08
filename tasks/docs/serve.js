@@ -4,10 +4,10 @@
 
 const
     extend      = require('extend'),
-    gulp        = require('gulp'),
 
     // node dependencies
     console     = require('better-console'),
+    gulp        = require('gulp'),
 
     // gulp dependencies
     print       = require('gulp-print').default,

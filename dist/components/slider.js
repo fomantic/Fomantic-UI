@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Slider
+ * # Fomantic-UI 2.9.3 - Slider
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -24,8 +24,6 @@
             $allModules    = $(this),
             $document      = $(document),
             $window        = $(window),
-
-            moduleSelector = $allModules.selector || '',
 
             time           = Date.now(),
             performance    = [],
@@ -105,9 +103,7 @@
                     module.setup.layout();
                     module.setup.labels();
 
-                    if (!module.is.disabled()) {
-                        module.bind.events();
-                    }
+                    module.bind.events();
 
                     module.read.metadata();
                     module.read.settings();
@@ -139,20 +135,32 @@
                             $module.attr('tabindex', 0);
                         }
                         if ($module.find('.inner').length === 0) {
-                            $module.append("<div class='inner'>"
-                                + "<div class='track'></div>"
-                                + "<div class='track-fill'></div>"
-                                + "<div class='thumb'></div>"
+                            $module.append('<div class="inner">'
+                                + '<div class="track"></div>'
+                                + '<div class="track-fill"></div>'
+                                + '<div class="thumb"></div>'
                                 + '</div>');
                         }
                         precision = module.get.precision();
                         $thumb = $module.find('.thumb:not(.second)');
+                        if (settings.showThumbTooltip) {
+                            $thumb
+                                .attr('data-position', settings.tooltipConfig.position)
+                                .attr('data-variation', settings.tooltipConfig.variation)
+                            ;
+                        }
                         $currThumb = $thumb;
                         if (module.is.range()) {
                             if ($module.find('.thumb.second').length === 0) {
-                                $module.find('.inner').append("<div class='thumb second'></div>");
+                                $module.find('.inner').append('<div class="thumb second"></div>');
                             }
                             $secondThumb = $module.find('.thumb.second');
+                            if (settings.showThumbTooltip) {
+                                $secondThumb
+                                    .attr('data-position', settings.tooltipConfig.position)
+                                    .attr('data-variation', settings.tooltipConfig.variation)
+                                ;
+                            }
                         }
                         $track = $module.find('.track');
                         $trackFill = $module.find('.track-fill');
@@ -206,9 +214,10 @@
                         for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                             var
                                 labelText = module.get.label(i),
-                                $label = labelText !== ''
+                                showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0,
+                                $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
                                     ? (!(i % module.get.gapRatio())
-                                        ? $('<li class="label">' + labelText + '</li>')
+                                        ? $('<li class="label">' + (showLabel ? labelText : '') + '</li>')
                                         : $('<li class="halftick label"></li>'))
                                     : null,
                                 ratio  = i / len
@@ -352,6 +361,18 @@
                             ;
                             $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
                         }
+                        if (module.is.range() && (settings.minRange || settings.maxRange)) {
+                            var currentRangeDiff = module.get.currentRangeDiff(value),
+                                isSecondThumb = $currThumb.hasClass('second')
+                            ;
+                            if ((settings.minRange && currentRangeDiff < settings.minRange)
+                                || (settings.maxRange && currentRangeDiff > settings.maxRange)
+                                || (settings.preventCrossover && !isSecondThumb && value > module.secondThumbVal)
+                                || (settings.preventCrossover && isSecondThumb && value < module.thumbVal)
+                            ) {
+                                return;
+                            }
+                        }
                         if (module.get.step() === 0 || module.is.smooth()) {
                             var
                                 thumbVal = module.thumbVal,
@@ -387,6 +408,17 @@
                             return;
                         }
                         var value = module.determine.valueFromEvent(event);
+                        if (module.is.range() && (settings.minRange || settings.maxRange)) {
+                            if ($currThumb === undefined) {
+                                $currThumb = value <= module.get.currentThumbValue() ? $thumb : $secondThumb;
+                            }
+                            var currentRangeDiff = module.get.currentRangeDiff(value);
+                            if (settings.minRange && currentRangeDiff < settings.minRange) {
+                                value = module.get.edgeValue(value, settings.minRange);
+                            } else if (settings.maxRange && currentRangeDiff > settings.maxRange) {
+                                value = module.get.edgeValue(value, settings.maxRange);
+                            }
+                        }
                         module.set.value(value);
                         module.unbind.slidingEvents();
                         touchIdentifier = undefined;
@@ -403,6 +435,9 @@
                         }
                     },
                     keydown: function (event, first) {
+                        if (module.is.disabled()) {
+                            return;
+                        }
                         if (settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
                             $currThumb = undefined;
                         }
@@ -439,7 +474,7 @@
                         }
                     },
                     activateFocus: function (event) {
-                        if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) !== NO_STEP) {
+                        if (!module.is.disabled() && !module.is.focused() && module.is.hover() && module.determine.keyMovement(event) !== NO_STEP) {
                             event.preventDefault();
                             module.event.keydown(event, true);
                             $module.trigger('focus');
@@ -504,7 +539,13 @@
 
                 is: {
                     range: function () {
-                        return $module.hasClass(settings.className.range);
+                        var isRange = $module.hasClass(className.range);
+                        if (!isRange && (settings.minRange || settings.maxRange)) {
+                            $module.addClass(className.range);
+                            isRange = true;
+                        }
+
+                        return isRange;
                     },
                     hover: function () {
                         return isHover;
@@ -513,23 +554,56 @@
                         return $module.is(':focus');
                     },
                     disabled: function () {
-                        return $module.hasClass(settings.className.disabled);
+                        return $module.hasClass(className.disabled);
                     },
                     labeled: function () {
-                        return $module.hasClass(settings.className.labeled);
+                        var isLabeled = $module.hasClass(className.labeled);
+                        if (!isLabeled && (settings.restrictedLabels.length > 0 || settings.showLabelTicks !== false)) {
+                            $module.addClass(className.labeled);
+                            isLabeled = true;
+                        }
+
+                        return isLabeled;
                     },
                     reversed: function () {
-                        return $module.hasClass(settings.className.reversed);
+                        return $module.hasClass(className.reversed);
                     },
                     vertical: function () {
-                        return $module.hasClass(settings.className.vertical);
+                        return $module.hasClass(className.vertical);
                     },
                     smooth: function () {
-                        return settings.smooth || $module.hasClass(settings.className.smooth);
+                        return settings.smooth || $module.hasClass(className.smooth);
                     },
                 },
 
                 get: {
+                    currentRangeDiff: function (value) {
+                        var currentRangeDiff;
+                        if ($currThumb.hasClass('second')) {
+                            currentRangeDiff = module.thumbVal < value
+                                ? value - module.thumbVal
+                                : module.thumbVal - value;
+                        } else {
+                            currentRangeDiff = module.secondThumbVal > value
+                                ? module.secondThumbVal - value
+                                : value - module.secondThumbVal;
+                        }
+
+                        return currentRangeDiff;
+                    },
+                    edgeValue: function (value, edgeValue) {
+                        if ($currThumb.hasClass('second')) {
+                            value = module.thumbVal < value
+                                ? module.thumbVal + edgeValue
+                                : module.thumbVal - edgeValue;
+                        } else {
+                            value = module.secondThumbVal < value
+                                ? module.secondThumbVal + edgeValue
+                                : module.secondThumbVal - edgeValue;
+                        }
+
+                        return value;
+                    },
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
@@ -600,7 +674,8 @@
                         var
                             step = module.get.step(),
                             min = module.get.min(),
-                            quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
+                            precision = module.get.precision(),
+                            quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
                             remainder = step === 0 ? 0 : (settings.max - min) % step
                         ;
 
@@ -610,7 +685,9 @@
                         return settings.step;
                     },
                     numLabels: function () {
-                        var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
+                        var step = module.get.step(),
+                            precision = module.get.precision(),
+                            value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
                         module.debug('Determined that there should be ' + value + ' labels');
 
                         return value;
@@ -625,7 +702,9 @@
 
                         switch (settings.labelType) {
                             case settings.labelTypes.number: {
-                                return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision) / precision;
+                                var step = module.get.step();
+
+                                return Math.round(((value * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             }
                             case settings.labelTypes.letter: {
                                 return alphabet[value % 26];
@@ -733,13 +812,10 @@
                         return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
                     },
                     thumbPos: function ($element) {
-                        var
-                            pos = module.is.vertical()
-                                ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
-                                : (module.is.reversed() ? $element.css('right') : $element.css('left'))
+                        return module.is.vertical()
+                            ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
+                            : (module.is.reversed() ? $element.css('right') : $element.css('left'))
                         ;
-
-                        return pos;
                     },
                     positionFromValue: function (val) {
                         var
@@ -763,6 +839,7 @@
                             position = Math.round(ratio * trackLength),
                             adjustedPos = step === 0 ? position : Math.round(position / step) * step
                         ;
+                        module.verbose('Determined position: ' + position + ' from ratio: ' + ratio);
 
                         return adjustedPos;
                     },
@@ -986,12 +1063,12 @@
                             }
                             if (!$currThumb.hasClass('second')) {
                                 if (settings.preventCrossover && module.is.range()) {
-                                    newValue = Math.min(module.secondThumbVal, newValue);
+                                    newValue = Math.min(module.secondThumbVal - (settings.minRange || 0), newValue);
                                 }
                                 module.thumbVal = newValue;
                             } else {
                                 if (settings.preventCrossover && module.is.range()) {
-                                    newValue = Math.max(module.thumbVal, newValue);
+                                    newValue = Math.max(module.thumbVal + (settings.minRange || 0), newValue);
                                 }
                                 module.secondThumbVal = newValue;
                             }
@@ -1010,6 +1087,10 @@
                             thumbVal = module.thumbVal || module.get.min(),
                             secondThumbVal = module.secondThumbVal || module.get.min()
                         ;
+                        if (settings.showThumbTooltip) {
+                            var precision = module.get.precision();
+                            $targetThumb.attr('data-tooltip', Math.round(newValue * precision) / precision);
+                        }
                         if (module.is.range()) {
                             if (!$targetThumb.hasClass('second')) {
                                 position = newPos;
@@ -1098,6 +1179,14 @@
                     settings: function () {
                         if (settings.start !== false) {
                             if (module.is.range()) {
+                                var rangeDiff = settings.end - settings.start;
+                                if (rangeDiff < 0
+                                    || (settings.minRange && rangeDiff < settings.minRange)
+                                    || (settings.maxRange && rangeDiff > settings.maxRange)
+                                    || (settings.minRange && settings.maxRange && settings.minRange > settings.maxRange)
+                                ) {
+                                    module.error(error.invalidRanges, settings.start, settings.end, settings.minRange, settings.maxRange);
+                                }
                                 module.debug('Start position set from settings', settings.start, settings.end);
                                 module.set.rangeValue(settings.start, settings.end);
                             } else {
@@ -1178,7 +1267,7 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(module.performance.display, 500);
+                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
                     },
                     display: function () {
                         var
@@ -1191,9 +1280,6 @@
                             totalTime += data['Execution Time'];
                         });
                         title += ' ' + totalTime + 'ms';
-                        if (moduleSelector) {
-                            title += ' \'' + moduleSelector + '\'';
-                        }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
                             if (console.table) {
@@ -1293,6 +1379,7 @@
         error: {
             method: 'The method you called is not defined.',
             notrange: 'This slider is not a range slider',
+            invalidRanges: 'Invalid range settings (start/end/minRange/maxRange)',
         },
 
         metadata: {
@@ -1305,6 +1392,8 @@
         step: 1,
         start: 0,
         end: 20,
+        minRange: false,
+        maxRange: false,
         labelType: 'number',
         showLabelTicks: false,
         smooth: false,
@@ -1339,6 +1428,13 @@
             upArrow: 38,
             rightArrow: 39,
             downArrow: 40,
+        },
+
+        restrictedLabels: [],
+        showThumbTooltip: false,
+        tooltipConfig: {
+            position: 'top center',
+            variation: 'tiny black',
         },
 
         labelTypes: {

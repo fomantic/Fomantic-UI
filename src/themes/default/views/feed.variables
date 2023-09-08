@@ -31,7 +31,7 @@
 @iconLabelSize: 1.5em;
 @iconLabelPadding: 0.25em;
 @iconLabelBackground: none;
-@iconLabelBorderRadius: none;
+@iconLabelBorderRadius: 0;
 @iconLabelBorder: none;
 @iconLabelColor: rgba(0, 0, 0, 0.6);
 
@@ -39,6 +39,16 @@
 @imageLabelWidth: 100%;
 @imageLabelHeight: auto;
 @imageLabelBorderRadius: @circularRadius;
+
+/* Text Label */
+@textLabelTopMargin: 0.5em;
+@uiTextLabelTopMargin: 0.65em;
+@multilineTextLabelTopMargin: 0;
+@uiMultilineTextLabelTopMargin: 0.3em;
+
+/* Ui label */
+@uiLabelTopMargin: 0.4em;
+@uiLabelZIndex: 1;
 
 /* Content w/ Label */
 @labeledContentMargin: 0.5em 0 @relative5px @relativeLarge;
@@ -139,3 +149,47 @@
 /* -------------------
       Variations
 -------------------- */
+
+/* Connected */
+@connectedBorderColor: @borderColor;
+@connectedBorderWidth: 2px;
+@connectedBorder: @connectedBorderWidth solid @connectedBorderColor;
+@connectedBorderLeftOffset: 1.2em;
+@connectedBorderTopOffset: 2.1em;
+@connectedBorderHeight: e(%("calc(100%% - %d)", @iconLabelSize));
+
+/* Divided */
+@dividedBorderColor: @borderColor;
+@dividedBorderWidth: @borderWidth;
+@dividedBorder: @dividedBorderWidth solid @dividedBorderColor;
+
+/* Ordered */
+@orderedCountName: ordered;
+@orderedCountContent: counter(@orderedCountName);
+@orderedTopOffset: 0.6em;
+@orderedBottomMargin: 0.3em;
+@orderedBorderColor: transparent;
+@orderedBorderWidth: 2px;
+@orderedHeight: @labelWidth;
+@orderedBorder: @orderedBorderWidth solid @orderedBorderColor;
+@orderedBorderRadius: 50%;
+@orderedColor: @white;
+@orderedBackground: @orderedBasicBorderColor;
+@orderedBasicBorderColor: #bbbbbb;
+@orderedBasicColor: inherit;
+@orderedBasicBackground: transparent;
+@orderedConnectedBorderTopOffset: 2.7em;
+@orderedConnectedBorderHeight: e(%("calc(100%% - %d)", (@orderedConnectedBorderTopOffset - 0.2em)));
+@orderedConnectedLabeledBorderTopOffset: 4.85em;
+@orderedConnectedLabeledBorderHeight: e(%("calc(100%% - %d)", (@orderedConnectedLabeledBorderTopOffset - 0.2em)));
+
+/* Inverted */
+@invertedBackground: @black;
+@invertedIconLabelColor: @invertedLightTextColor;
+@invertedLikeColor: @invertedLightTextColor;
+@invertedLikeHoverColor: @invertedSelectedTextColor;
+@invertedLikeActiveColor: @invertedLikeColor;
+
+@invertedConnectedBorderColor: @whiteBorderColor;
+@invertedDividedBorderColor: @whiteBorderColor;
+@invertedTextLabelColor: @white;

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Table
+ * # Fomantic-UI 2.9.3 - Table
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -409,17 +409,32 @@
   .ui.scrolling.table.short > tbody {
     max-height: 6.74983929em;
   }
+  .resizable.ui.scrolling.table.short > tbody {
+    height: 6.74983929em;
+  }
   .ui.scrolling.table[class*="very short"] > tbody {
     max-height: 4.49989286em;
+  }
+  .resizable.ui.scrolling.table[class*="very short"] > tbody {
+    height: 4.49989286em;
   }
   .ui.scrolling.table > tbody {
     max-height: 8.99978571em;
   }
+  .resizable.ui.scrolling.table > tbody {
+    height: 8.99978571em;
+  }
   .ui.scrolling.table.long > tbody {
     max-height: 17.99957143em;
   }
+  .resizable.ui.scrolling.table.long > tbody {
+    height: 17.99957143em;
+  }
   .ui.scrolling.table[class*="very long"] > tbody {
     max-height: 26.99935714em;
+  }
+  .resizable.ui.scrolling.table[class*="very long"] > tbody {
+    height: 26.99935714em;
   }
   .ui.overflowing.table.short {
     max-height: 11.24973214em;
@@ -445,51 +460,96 @@
   .ui.scrolling.table.short > tbody {
     max-height: 8.99978571em;
   }
+  .resizable.ui.scrolling.table.short > tbody {
+    height: 8.99978571em;
+  }
   .ui.scrolling.table[class*="very short"] > tbody {
     max-height: 5.99985714em;
+  }
+  .resizable.ui.scrolling.table[class*="very short"] > tbody {
+    height: 5.99985714em;
   }
   .ui.scrolling.table > tbody {
     max-height: 11.99971429em;
   }
+  .resizable.ui.scrolling.table > tbody {
+    height: 11.99971429em;
+  }
   .ui.scrolling.table.long > tbody {
     max-height: 23.99942857em;
   }
+  .resizable.ui.scrolling.table.long > tbody {
+    height: 23.99942857em;
+  }
   .ui.scrolling.table[class*="very long"] > tbody {
     max-height: 35.99914286em;
+  }
+  .resizable.ui.scrolling.table[class*="very long"] > tbody {
+    height: 35.99914286em;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.scrolling.table.short > tbody {
     max-height: 13.49967857em;
   }
+  .resizable.ui.scrolling.table.short > tbody {
+    height: 13.49967857em;
+  }
   .ui.scrolling.table[class*="very short"] > tbody {
     max-height: 8.99978571em;
+  }
+  .resizable.ui.scrolling.table[class*="very short"] > tbody {
+    height: 8.99978571em;
   }
   .ui.scrolling.table > tbody {
     max-height: 17.99957143em;
   }
+  .resizable.ui.scrolling.table > tbody {
+    height: 17.99957143em;
+  }
   .ui.scrolling.table.long > tbody {
     max-height: 35.99914286em;
   }
+  .resizable.ui.scrolling.table.long > tbody {
+    height: 35.99914286em;
+  }
   .ui.scrolling.table[class*="very long"] > tbody {
     max-height: 53.99871429em;
+  }
+  .resizable.ui.scrolling.table[class*="very long"] > tbody {
+    height: 53.99871429em;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.table.short > tbody {
     max-height: 17.99957143em;
   }
+  .resizable.ui.scrolling.table.short > tbody {
+    height: 17.99957143em;
+  }
   .ui.scrolling.table[class*="very short"] > tbody {
     max-height: 11.99971429em;
+  }
+  .resizable.ui.scrolling.table[class*="very short"] > tbody {
+    height: 11.99971429em;
   }
   .ui.scrolling.table > tbody {
     max-height: 23.99942857em;
   }
+  .resizable.ui.scrolling.table > tbody {
+    height: 23.99942857em;
+  }
   .ui.scrolling.table.long > tbody {
     max-height: 47.99885714em;
   }
+  .resizable.ui.scrolling.table.long > tbody {
+    height: 47.99885714em;
+  }
   .ui.scrolling.table[class*="very long"] > tbody {
     max-height: 71.99828571em;
+  }
+  .resizable.ui.scrolling.table[class*="very long"] > tbody {
+    height: 71.99828571em;
   }
 }
 .ui.scrolling.table > thead,
@@ -583,6 +643,10 @@
   
 /* firefox: first color thumb, second track */
   scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+}
+.ui.resizable.scrolling.table > tbody {
+  resize: vertical;
+  max-height: none;
 }
 
 /* --------------

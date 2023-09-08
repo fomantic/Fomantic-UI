@@ -123,7 +123,9 @@
 @googleFontDisplay: "swap";
 
 @googleProtocol: "https://";
-@googleFontRequest: "@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}&display=@{googleFontDisplay}";
+@googleFonts: "@{googleFontName}:@{googleFontSizes}";
+@googleFontRequest: "@{googleFonts}&subset=@{googleSubset}&display=@{googleFontDisplay}";
+@googleFontUrl: "@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}";
 
 @bold: bold;
 @normal: normal;
@@ -189,8 +191,8 @@
 
 /* Input Text Color */
 @inputColor: @textColor;
-@inputPlaceholderColor: lighten(@inputColor, 75);
-@inputPlaceholderFocusColor: lighten(@inputColor, 45);
+@inputPlaceholderColor: if(iscolor(@inputColor), lighten(@inputColor, 75), @inputColor);
+@inputPlaceholderFocusColor: if(iscolor(@inputColor), lighten(@inputColor, 45), @inputColor);
 
 /* Line Height Default For Inputs in Browser (Descenders are 17px at 14px base em) */
 @inputLineHeight: unit((17 / 14), em);
@@ -246,7 +248,7 @@
 
 @linkColor: #4183c4;
 @linkUnderline: none;
-@linkHoverColor: darken(saturate(@linkColor, 20), 15, relative);
+@linkHoverColor: if(iscolor(@linkColor), darken(saturate(@linkColor, 20), 15, relative), @linkColor);
 @linkHoverUnderline: @linkUnderline;
 
 /* -------------------
@@ -394,21 +396,21 @@
 @blackBackground: #f4f4f4;
 
 /* --- Colored Headers --- */
-@primaryHeaderColor: darken(@primaryTextColor, 5);
-@secondaryHeaderColor: darken(@secondaryTextColor, 5);
-@redHeaderColor: darken(@redTextColor, 5);
-@oliveHeaderColor: darken(@oliveTextColor, 5);
-@greenHeaderColor: darken(@greenTextColor, 5);
-@yellowHeaderColor: darken(@yellowTextColor, 5);
-@blueHeaderColor: darken(@blueTextColor, 5);
-@tealHeaderColor: darken(@tealTextColor, 5);
-@pinkHeaderColor: darken(@pinkTextColor, 5);
-@violetHeaderColor: darken(@violetTextColor, 5);
-@purpleHeaderColor: darken(@purpleTextColor, 5);
-@orangeHeaderColor: darken(@orangeTextColor, 5);
-@brownHeaderColor: darken(@brownTextColor, 5);
-@greyHeaderColor: darken(@greyTextColor, 5);
-@blackHeaderColor: darken(@blackTextColor, 5);
+@primaryHeaderColor: if(iscolor(@primaryTextColor), darken(@primaryTextColor, 5), @primaryTextColor);
+@secondaryHeaderColor: if(iscolor(@secondaryTextColor), darken(@secondaryTextColor, 5), @secondaryTextColor);
+@redHeaderColor: if(iscolor(@redTextColor), darken(@redTextColor, 5), @redTextColor);
+@oliveHeaderColor: if(iscolor(@oliveTextColor), darken(@oliveTextColor, 5), @oliveTextColor);
+@greenHeaderColor: if(iscolor(@greenTextColor), darken(@greenTextColor, 5), @greenTextColor);
+@yellowHeaderColor: if(iscolor(@yellowTextColor), darken(@yellowTextColor, 5), @yellowTextColor);
+@blueHeaderColor: if(iscolor(@blueTextColor), darken(@blueTextColor, 5), @blueTextColor);
+@tealHeaderColor: if(iscolor(@tealTextColor), darken(@tealTextColor, 5), @tealTextColor);
+@pinkHeaderColor: if(iscolor(@pinkTextColor), darken(@pinkTextColor, 5), @pinkTextColor);
+@violetHeaderColor: if(iscolor(@violetTextColor), darken(@violetTextColor, 5), @violetTextColor);
+@purpleHeaderColor: if(iscolor(@purpleTextColor), darken(@purpleTextColor, 5), @purpleTextColor);
+@orangeHeaderColor: if(iscolor(@orangeTextColor), darken(@orangeTextColor, 5), @orangeTextColor);
+@brownHeaderColor: if(iscolor(@brownTextColor), darken(@brownTextColor, 5), @brownTextColor);
+@greyHeaderColor: if(iscolor(@greyTextColor), darken(@greyTextColor, 5), @greyTextColor);
+@blackHeaderColor: if(iscolor(@blackTextColor), darken(@blackTextColor, 5), @blackTextColor);
 
 /* --- Colored Text --- */
 @primaryTextColor: @invertedTextColor;
@@ -479,37 +481,37 @@
 @blackBorderColor: @blackTextColor;
 
 /* --- Shadows --- */
-@primaryRibbonShadow: darken(@primaryColor, 10);
-@secondaryRibbonShadow: darken(@secondaryColor, 10);
-@redRibbonShadow: darken(@red, 10);
-@orangeRibbonShadow: darken(@orange, 10);
-@yellowRibbonShadow: darken(@yellow, 10);
-@oliveRibbonShadow: darken(@olive, 10);
-@greenRibbonShadow: darken(@green, 10);
-@tealRibbonShadow: darken(@teal, 10);
-@blueRibbonShadow: darken(@blue, 10);
-@violetRibbonShadow: darken(@violet, 10);
-@purpleRibbonShadow: darken(@purple, 10);
-@pinkRibbonShadow: darken(@pink, 10);
-@brownRibbonShadow: darken(@brown, 10);
-@greyRibbonShadow: darken(@grey, 10);
-@blackRibbonShadow: darken(@black, 10);
+@primaryRibbonShadow: if(iscolor(@primaryColor), darken(@primaryColor, 10), @primaryColor);
+@secondaryRibbonShadow: if(iscolor(@secondaryColor), darken(@secondaryColor, 10), @secondaryColor);
+@redRibbonShadow: if(iscolor(@red), darken(@red, 10), @red);
+@orangeRibbonShadow: if(iscolor(@orange), darken(@orange, 10), @orange);
+@yellowRibbonShadow: if(iscolor(@yellow), darken(@yellow, 10), @yellow);
+@oliveRibbonShadow: if(iscolor(@olive), darken(@olive, 10), @olive);
+@greenRibbonShadow: if(iscolor(@green), darken(@green, 10), @green);
+@tealRibbonShadow: if(iscolor(@teal), darken(@teal, 10), @teal);
+@blueRibbonShadow: if(iscolor(@blue), darken(@blue, 10), @blue);
+@violetRibbonShadow: if(iscolor(@violet), darken(@violet, 10), @violet);
+@purpleRibbonShadow: if(iscolor(@purple), darken(@purple, 10), @purple);
+@pinkRibbonShadow: if(iscolor(@pink), darken(@pink, 10), @pink);
+@brownRibbonShadow: if(iscolor(@brown), darken(@brown, 10), @brown);
+@greyRibbonShadow: if(iscolor(@grey), darken(@grey, 10), @grey);
+@blackRibbonShadow: if(iscolor(@black), darken(@black, 10), @black);
 
-@primaryInvertedRibbonShadow: darken(@lightPrimaryColor, 10);
-@secondaryInvertedRibbonShadow: darken(@lightSecondaryColor, 10);
-@redInvertedRibbonShadow: darken(@lightRed, 10);
-@orangeInvertedRibbonShadow: darken(@lightOrange, 10);
-@yellowInvertedRibbonShadow: darken(@lightYellow, 10);
-@oliveInvertedRibbonShadow: darken(@lightOlive, 10);
-@greenInvertedRibbonShadow: darken(@lightGreen, 10);
-@tealInvertedRibbonShadow: darken(@lightTeal, 10);
-@blueInvertedRibbonShadow: darken(@lightBlue, 10);
-@violetInvertedRibbonShadow: darken(@lightViolet, 10);
-@purpleInvertedRibbonShadow: darken(@lightPurple, 10);
-@pinkInvertedRibbonShadow: darken(@lightPink, 10);
-@brownInvertedRibbonShadow: darken(@lightBrown, 10);
-@greyInvertedRibbonShadow: lighten(@lightGrey, 5);
-@blackInvertedRibbonShadow: lighten(@lightBlack, 5);
+@primaryInvertedRibbonShadow: if(iscolor(@lightPrimaryColor), darken(@lightPrimaryColor, 10), @lightPrimaryColor);
+@secondaryInvertedRibbonShadow: if(iscolor(@lightSecondaryColor), darken(@lightSecondaryColor, 10), @lightSecondaryColor);
+@redInvertedRibbonShadow: if(iscolor(@lightRed), darken(@lightRed, 10), @lightRed);
+@orangeInvertedRibbonShadow: if(iscolor(@lightOrange), darken(@lightOrange, 10), @lightOrange);
+@yellowInvertedRibbonShadow: if(iscolor(@lightYellow), darken(@lightYellow, 10), @lightYellow);
+@oliveInvertedRibbonShadow: if(iscolor(@lightOlive), darken(@lightOlive, 10), @lightOlive);
+@greenInvertedRibbonShadow: if(iscolor(@lightGreen), darken(@lightGreen, 10), @lightGreen);
+@tealInvertedRibbonShadow: if(iscolor(@lightTeal), darken(@lightTeal, 10), @lightTeal);
+@blueInvertedRibbonShadow: if(iscolor(@lightBlue), darken(@lightBlue, 10), @lightBlue);
+@violetInvertedRibbonShadow: if(iscolor(@lightViolet), darken(@lightViolet, 10), @lightViolet);
+@purpleInvertedRibbonShadow: if(iscolor(@lightPurple), darken(@lightPurple, 10), @lightPurple);
+@pinkInvertedRibbonShadow: if(iscolor(@lightPink), darken(@lightPink, 10), @lightPink);
+@brownInvertedRibbonShadow: if(iscolor(@lightBrown), darken(@lightBrown, 10), @lightBrown);
+@greyInvertedRibbonShadow: if(iscolor(@lightGrey), lighten(@lightGrey, 5), @lightGrey);
+@blackInvertedRibbonShadow: if(iscolor(@lightBlack), lighten(@lightBlack, 5), @lightBlack);
 
 @textShadow: none;
 @invertedTextShadow: @textShadow;
@@ -1076,62 +1078,62 @@
     0 2px 10px 0 rgba(34, 36, 38, 0.25);
 
 /* ---  Colors  --- */
-@primaryColorHover: saturate(darken(@primaryColor, 5), 10, relative);
-@secondaryColorHover: saturate(lighten(@secondaryColor, 5), 10, relative);
-@lightPrimaryColorHover: saturate(darken(@lightPrimaryColor, 10), 10, relative);
-@lightSecondaryColorHover: saturate(lighten(@lightSecondaryColor, 10), 10, relative);
+@primaryColorHover: if(iscolor(@primaryColor), saturate(darken(@primaryColor, 5), 10, relative), @primaryColor);
+@secondaryColorHover: if(iscolor(@secondaryColor), saturate(lighten(@secondaryColor, 5), 10, relative), @secondaryColor);
+@lightPrimaryColorHover: if(iscolor(@lightPrimaryColor), saturate(darken(@lightPrimaryColor, 10), 10, relative), @lightPrimaryColor);
+@lightSecondaryColorHover: if(iscolor(@lightSecondaryColor), saturate(lighten(@lightSecondaryColor, 10), 10, relative), @lightSecondaryColor);
 
-@redHover: saturate(darken(@red, 5), 10, relative);
-@orangeHover: saturate(darken(@orange, 5), 10, relative);
-@yellowHover: saturate(darken(@yellow, 5), 10, relative);
-@oliveHover: saturate(darken(@olive, 5), 10, relative);
-@greenHover: saturate(darken(@green, 5), 10, relative);
-@tealHover: saturate(darken(@teal, 5), 10, relative);
-@blueHover: saturate(darken(@blue, 5), 10, relative);
-@violetHover: saturate(darken(@violet, 5), 10, relative);
-@purpleHover: saturate(darken(@purple, 5), 10, relative);
-@pinkHover: saturate(darken(@pink, 5), 10, relative);
-@brownHover: saturate(darken(@brown, 5), 10, relative);
+@redHover: if(iscolor(@red), saturate(darken(@red, 5), 10, relative), @red);
+@orangeHover: if(iscolor(@orange), saturate(darken(@orange, 5), 10, relative), @orange);
+@yellowHover: if(iscolor(@yellow), saturate(darken(@yellow, 5), 10, relative), @yellow);
+@oliveHover: if(iscolor(@olive), saturate(darken(@olive, 5), 10, relative), @olive);
+@greenHover: if(iscolor(@green), saturate(darken(@green, 5), 10, relative), @green);
+@tealHover: if(iscolor(@teal), saturate(darken(@teal, 5), 10, relative), @teal);
+@blueHover: if(iscolor(@blue), saturate(darken(@blue, 5), 10, relative), @blue);
+@violetHover: if(iscolor(@violet), saturate(darken(@violet, 5), 10, relative), @violet);
+@purpleHover: if(iscolor(@purple), saturate(darken(@purple, 5), 10, relative), @purple);
+@pinkHover: if(iscolor(@pink), saturate(darken(@pink, 5), 10, relative), @pink);
+@brownHover: if(iscolor(@brown), saturate(darken(@brown, 5), 10, relative), @brown);
 
-@lightRedHover: saturate(darken(@lightRed, 10), 10, relative);
-@lightOrangeHover: saturate(darken(@lightOrange, 10), 10, relative);
-@lightYellowHover: saturate(darken(@lightYellow, 10), 10, relative);
-@lightOliveHover: saturate(darken(@lightOlive, 10), 10, relative);
-@lightGreenHover: saturate(darken(@lightGreen, 10), 10, relative);
-@lightTealHover: saturate(darken(@lightTeal, 10), 10, relative);
-@lightBlueHover: saturate(darken(@lightBlue, 10), 10, relative);
-@lightVioletHover: saturate(darken(@lightViolet, 10), 10, relative);
-@lightPurpleHover: saturate(darken(@lightPurple, 10), 10, relative);
-@lightPinkHover: saturate(darken(@lightPink, 10), 10, relative);
-@lightBrownHover: saturate(darken(@lightBrown, 10), 10, relative);
-@lightGreyHover: saturate(darken(@lightGrey, 10), 10, relative);
-@lightBlackHover: saturate(darken(@fullBlack, 10), 10, relative);
+@lightRedHover: if(iscolor(@lightRed), saturate(darken(@lightRed, 10), 10, relative), @lightRed);
+@lightOrangeHover: if(iscolor(@lightOrange), saturate(darken(@lightOrange, 10), 10, relative), @lightOrange);
+@lightYellowHover: if(iscolor(@lightYellow), saturate(darken(@lightYellow, 10), 10, relative), @lightYellow);
+@lightOliveHover: if(iscolor(@lightOlive), saturate(darken(@lightOlive, 10), 10, relative), @lightOlive);
+@lightGreenHover: if(iscolor(@lightGreen), saturate(darken(@lightGreen, 10), 10, relative), @lightGreen);
+@lightTealHover: if(iscolor(@lightTeal), saturate(darken(@lightTeal, 10), 10, relative), @lightTeal);
+@lightBlueHover: if(iscolor(@lightBlue), saturate(darken(@lightBlue, 10), 10, relative), @lightBlue);
+@lightVioletHover: if(iscolor(@lightViolet), saturate(darken(@lightViolet, 10), 10, relative), @lightViolet);
+@lightPurpleHover: if(iscolor(@lightPurple), saturate(darken(@lightPurple, 10), 10, relative), @lightPurple);
+@lightPinkHover: if(iscolor(@lightPink), saturate(darken(@lightPink, 10), 10, relative), @lightPink);
+@lightBrownHover: if(iscolor(@lightBrown), saturate(darken(@lightBrown, 10), 10, relative), @lightBrown);
+@lightGreyHover: if(iscolor(@lightGrey), saturate(darken(@lightGrey, 10), 10, relative), @lightGrey);
+@lightBlackHover: if(iscolor(@fullBlack), saturate(darken(@fullBlack, 10), 10, relative), @fullBlack);
 
 /* ---  Emotive  --- */
-@positiveColorHover: saturate(darken(@positiveColor, 5), 10, relative);
-@negativeColorHover: saturate(darken(@negativeColor, 5), 10, relative);
+@positiveColorHover: if(iscolor(@positiveColor), saturate(darken(@positiveColor, 5), 10, relative), @positiveColor);
+@negativeColorHover: if(iscolor(@negativeColor), saturate(darken(@negativeColor, 5), 10, relative), @negativeColor);
 
 /* ---  Brand   --- */
-@facebookHoverColor: saturate(darken(@facebookColor, 5), 10, relative);
-@twitterHoverColor: saturate(darken(@twitterColor, 5), 10, relative);
-@googlePlusHoverColor: saturate(darken(@googlePlusColor, 5), 10, relative);
-@linkedInHoverColor: saturate(darken(@linkedInColor, 5), 10, relative);
-@youtubeHoverColor: saturate(darken(@youtubeColor, 5), 10, relative);
-@instagramHoverColor: saturate(darken(@instagramColor, 5), 10, relative);
-@pinterestHoverColor: saturate(darken(@pinterestColor, 5), 10, relative);
-@vkHoverColor: saturate(darken(@vkColor, 5), 10, relative);
-@telegramHoverColor: saturate(darken(@telegramColor, 5), 10, relative);
-@whatsAppHoverColor: saturate(darken(@whatsAppColor, 5), 10, relative);
+@facebookHoverColor: if(iscolor(@facebookColor), saturate(darken(@facebookColor, 5), 10, relative), @facebookColor);
+@twitterHoverColor: if(iscolor(@twitterColor), saturate(darken(@twitterColor, 5), 10, relative), @twitterColor);
+@googlePlusHoverColor: if(iscolor(@googlePlusColor), saturate(darken(@googlePlusColor, 5), 10, relative), @googlePlusColor);
+@linkedInHoverColor: if(iscolor(@linkedInColor), saturate(darken(@linkedInColor, 5), 10, relative), @linkedInColor);
+@youtubeHoverColor: if(iscolor(@youtubeColor), saturate(darken(@youtubeColor, 5), 10, relative), @youtubeColor);
+@instagramHoverColor: if(iscolor(@instagramColor), saturate(darken(@instagramColor, 5), 10, relative), @instagramColor);
+@pinterestHoverColor: if(iscolor(@pinterestColor), saturate(darken(@pinterestColor, 5), 10, relative), @pinterestColor);
+@vkHoverColor: if(iscolor(@vkColor), saturate(darken(@vkColor, 5), 10, relative), @vkColor);
+@telegramHoverColor: if(iscolor(@telegramColor), saturate(darken(@telegramColor, 5), 10, relative), @telegramColor);
+@whatsAppHoverColor: if(iscolor(@whatsAppColor), saturate(darken(@whatsAppColor, 5), 10, relative), @whatsAppColor);
 
 /* ---  Dark Tones  --- */
-@fullBlackHover: lighten(@fullBlack, 5);
-@blackHover: lighten(@black, 5);
-@greyHover: lighten(@grey, 5);
+@fullBlackHover: if(iscolor(@fullBlack), lighten(@fullBlack, 5), @fullBlack);
+@blackHover: if(iscolor(@black), lighten(@black, 5), @black);
+@greyHover: if(iscolor(@grey), lighten(@grey, 5), @grey);
 
 /* ---  Light Tones  --- */
-@whiteHover: darken(@white, 5);
-@offWhiteHover: darken(@offWhite, 5);
-@darkWhiteHover: darken(@darkWhite, 5);
+@whiteHover: if(iscolor(@white), darken(@white, 5), @white);
+@offWhiteHover: if(iscolor(@offWhite), darken(@offWhite, 5), @offWhite);
+@darkWhiteHover: if(iscolor(@darkWhite), darken(@darkWhite, 5), @darkWhite);
 
 /* -------------------
         Focus
@@ -1139,279 +1141,279 @@
 @focusOutline: none;
 
 /* ---  Colors  --- */
-@primaryColorFocus: saturate(darken(@primaryColor, 8), 20, relative);
-@secondaryColorFocus: saturate(lighten(@secondaryColor, 8), 20, relative);
-@lightPrimaryColorFocus: saturate(darken(@lightPrimaryColor, 8), 20, relative);
-@lightSecondaryColorFocus: saturate(lighten(@lightSecondaryColor, 8), 20, relative);
+@primaryColorFocus: if(iscolor(@primaryColor), saturate(darken(@primaryColor, 8), 20, relative), @primaryColor);
+@secondaryColorFocus: if(iscolor(@secondaryColor), saturate(lighten(@secondaryColor, 8), 20, relative), @secondaryColor);
+@lightPrimaryColorFocus: if(iscolor(@lightPrimaryColor), saturate(darken(@lightPrimaryColor, 8), 20, relative), @lightPrimaryColor);
+@lightSecondaryColorFocus: if(iscolor(@lightSecondaryColor), saturate(lighten(@lightSecondaryColor, 8), 20, relative), @lightSecondaryColor);
 
-@redFocus: saturate(darken(@red, 8), 20, relative);
-@orangeFocus: saturate(darken(@orange, 8), 20, relative);
-@yellowFocus: saturate(darken(@yellow, 8), 20, relative);
-@oliveFocus: saturate(darken(@olive, 8), 20, relative);
-@greenFocus: saturate(darken(@green, 8), 20, relative);
-@tealFocus: saturate(darken(@teal, 8), 20, relative);
-@blueFocus: saturate(darken(@blue, 8), 20, relative);
-@violetFocus: saturate(darken(@violet, 8), 20, relative);
-@purpleFocus: saturate(darken(@purple, 8), 20, relative);
-@pinkFocus: saturate(darken(@pink, 8), 20, relative);
-@brownFocus: saturate(darken(@brown, 8), 20, relative);
+@redFocus: if(iscolor(@red), saturate(darken(@red, 8), 20, relative), @red);
+@orangeFocus: if(iscolor(@orange), saturate(darken(@orange, 8), 20, relative), @orange);
+@yellowFocus: if(iscolor(@yellow), saturate(darken(@yellow, 8), 20, relative), @yellow);
+@oliveFocus: if(iscolor(@olive), saturate(darken(@olive, 8), 20, relative), @olive);
+@greenFocus: if(iscolor(@green), saturate(darken(@green, 8), 20, relative), @green);
+@tealFocus: if(iscolor(@teal), saturate(darken(@teal, 8), 20, relative), @teal);
+@blueFocus: if(iscolor(@blue), saturate(darken(@blue, 8), 20, relative), @blue);
+@violetFocus: if(iscolor(@violet), saturate(darken(@violet, 8), 20, relative), @violet);
+@purpleFocus: if(iscolor(@purple), saturate(darken(@purple, 8), 20, relative), @purple);
+@pinkFocus: if(iscolor(@pink), saturate(darken(@pink, 8), 20, relative), @pink);
+@brownFocus: if(iscolor(@brown), saturate(darken(@brown, 8), 20, relative), @brown);
 
-@lightRedFocus: saturate(darken(@lightRed, 8), 20, relative);
-@lightOrangeFocus: saturate(darken(@lightOrange, 8), 20, relative);
-@lightYellowFocus: saturate(darken(@lightYellow, 8), 20, relative);
-@lightOliveFocus: saturate(darken(@lightOlive, 8), 20, relative);
-@lightGreenFocus: saturate(darken(@lightGreen, 8), 20, relative);
-@lightTealFocus: saturate(darken(@lightTeal, 8), 20, relative);
-@lightBlueFocus: saturate(darken(@lightBlue, 8), 20, relative);
-@lightVioletFocus: saturate(darken(@lightViolet, 8), 20, relative);
-@lightPurpleFocus: saturate(darken(@lightPurple, 8), 20, relative);
-@lightPinkFocus: saturate(darken(@lightPink, 8), 20, relative);
-@lightBrownFocus: saturate(darken(@lightBrown, 8), 20, relative);
-@lightGreyFocus: saturate(darken(@lightGrey, 8), 20, relative);
-@lightBlackFocus: saturate(darken(@fullBlack, 8), 20, relative);
+@lightRedFocus: if(iscolor(@lightRed), saturate(darken(@lightRed, 8), 20, relative), @lightRed);
+@lightOrangeFocus: if(iscolor(@lightOrange), saturate(darken(@lightOrange, 8), 20, relative), @lightOrange);
+@lightYellowFocus: if(iscolor(@lightYellow), saturate(darken(@lightYellow, 8), 20, relative), @lightYellow);
+@lightOliveFocus: if(iscolor(@lightOlive), saturate(darken(@lightOlive, 8), 20, relative), @lightOlive);
+@lightGreenFocus: if(iscolor(@lightGreen), saturate(darken(@lightGreen, 8), 20, relative), @lightGreen);
+@lightTealFocus: if(iscolor(@lightTeal), saturate(darken(@lightTeal, 8), 20, relative), @lightTeal);
+@lightBlueFocus: if(iscolor(@lightBlue), saturate(darken(@lightBlue, 8), 20, relative), @lightBlue);
+@lightVioletFocus: if(iscolor(@lightViolet), saturate(darken(@lightViolet, 8), 20, relative), @lightViolet);
+@lightPurpleFocus: if(iscolor(@lightPurple), saturate(darken(@lightPurple, 8), 20, relative), @lightPurple);
+@lightPinkFocus: if(iscolor(@lightPink), saturate(darken(@lightPink, 8), 20, relative), @lightPink);
+@lightBrownFocus: if(iscolor(@lightBrown), saturate(darken(@lightBrown, 8), 20, relative), @lightBrown);
+@lightGreyFocus: if(iscolor(@lightGrey), saturate(darken(@lightGrey, 8), 20, relative), @lightGrey);
+@lightBlackFocus: if(iscolor(@fullBlack), saturate(darken(@fullBlack, 8), 20, relative), @fullBlack);
 
 /* ---  Emotive  --- */
-@positiveColorFocus: saturate(darken(@positiveColor, 8), 20, relative);
-@negativeColorFocus: saturate(darken(@negativeColor, 8), 20, relative);
+@positiveColorFocus: if(iscolor(@positiveColor), saturate(darken(@positiveColor, 8), 20, relative), @positiveColor);
+@negativeColorFocus: if(iscolor(@negativeColor), saturate(darken(@negativeColor, 8), 20, relative), @negativeColor);
 
 /* ---  Brand   --- */
-@facebookFocusColor: saturate(darken(@facebookColor, 8), 20, relative);
-@twitterFocusColor: saturate(darken(@twitterColor, 8), 20, relative);
-@googlePlusFocusColor: saturate(darken(@googlePlusColor, 8), 20, relative);
-@linkedInFocusColor: saturate(darken(@linkedInColor, 8), 20, relative);
-@youtubeFocusColor: saturate(darken(@youtubeColor, 8), 20, relative);
-@instagramFocusColor: saturate(darken(@instagramColor, 8), 20, relative);
-@pinterestFocusColor: saturate(darken(@pinterestColor, 8), 20, relative);
-@vkFocusColor: saturate(darken(@vkColor, 8), 20, relative);
-@telegramFocusColor: saturate(darken(@telegramColor, 8), 20, relative);
-@whatsAppFocusColor: saturate(darken(@whatsAppColor, 8), 20, relative);
+@facebookFocusColor: if(iscolor(@facebookColor), saturate(darken(@facebookColor, 8), 20, relative), @facebookColor);
+@twitterFocusColor: if(iscolor(@twitterColor), saturate(darken(@twitterColor, 8), 20, relative), @twitterColor);
+@googlePlusFocusColor: if(iscolor(@googlePlusColor), saturate(darken(@googlePlusColor, 8), 20, relative), @googlePlusColor);
+@linkedInFocusColor: if(iscolor(@linkedInColor), saturate(darken(@linkedInColor, 8), 20, relative), @linkedInColor);
+@youtubeFocusColor: if(iscolor(@youtubeColor), saturate(darken(@youtubeColor, 8), 20, relative), @youtubeColor);
+@instagramFocusColor: if(iscolor(@instagramColor), saturate(darken(@instagramColor, 8), 20, relative), @instagramColor);
+@pinterestFocusColor: if(iscolor(@pinterestColor), saturate(darken(@pinterestColor, 8), 20, relative), @pinterestColor);
+@vkFocusColor: if(iscolor(@vkColor), saturate(darken(@vkColor, 8), 20, relative), @vkColor);
+@telegramFocusColor: if(iscolor(@telegramColor), saturate(darken(@telegramColor, 8), 20, relative), @telegramColor);
+@whatsAppFocusColor: if(iscolor(@whatsAppColor), saturate(darken(@whatsAppColor, 8), 20, relative), @whatsAppColor);
 
 /* ---  Dark Tones  --- */
-@fullBlackFocus: lighten(@fullBlack, 8);
-@blackFocus: lighten(@black, 8);
-@greyFocus: lighten(@grey, 8);
+@fullBlackFocus: if(iscolor(@fullBlack), lighten(@fullBlack, 8), @fullBlack);
+@blackFocus: if(iscolor(@black), lighten(@black, 8), @black);
+@greyFocus: if(iscolor(@grey), lighten(@grey, 8), @grey);
 
 /* ---  Light Tones  --- */
-@whiteFocus: darken(@white, 8);
-@offWhiteFocus: darken(@offWhite, 8);
-@darkWhiteFocus: darken(@darkWhite, 8);
+@whiteFocus: if(iscolor(@white), darken(@white, 8), @white);
+@offWhiteFocus: if(iscolor(@offWhite), darken(@offWhite, 8), @offWhite);
+@darkWhiteFocus: if(iscolor(@darkWhite), darken(@darkWhite, 8), @darkWhite);
 
 /* -------------------
     Down (:active)
 -------------------- */
 
 /* ---  Colors  --- */
-@primaryColorDown: darken(@primaryColor, 10);
-@secondaryColorDown: lighten(@secondaryColor, 10);
-@lightPrimaryColorDown: darken(@lightPrimaryColor, 10);
-@lightSecondaryColorDown: lighten(@lightSecondaryColor, 10);
+@primaryColorDown: if(iscolor(@primaryColor), darken(@primaryColor, 10), @primaryColor);
+@secondaryColorDown: if(iscolor(@secondaryColor), lighten(@secondaryColor, 10), @secondaryColor);
+@lightPrimaryColorDown: if(iscolor(@lightPrimaryColor), darken(@lightPrimaryColor, 10), @lightPrimaryColor);
+@lightSecondaryColorDown: if(iscolor(@lightSecondaryColor), lighten(@lightSecondaryColor, 10), @lightSecondaryColor);
 
-@redDown: darken(@red, 10);
-@orangeDown: darken(@orange, 10);
-@yellowDown: darken(@yellow, 10);
-@oliveDown: darken(@olive, 10);
-@greenDown: darken(@green, 10);
-@tealDown: darken(@teal, 10);
-@blueDown: darken(@blue, 10);
-@violetDown: darken(@violet, 10);
-@purpleDown: darken(@purple, 10);
-@pinkDown: darken(@pink, 10);
-@brownDown: darken(@brown, 10);
+@redDown: if(iscolor(@red), darken(@red, 10), @red);
+@orangeDown: if(iscolor(@orange), darken(@orange, 10), @orange);
+@yellowDown: if(iscolor(@yellow), darken(@yellow, 10), @yellow);
+@oliveDown: if(iscolor(@olive), darken(@olive, 10), @olive);
+@greenDown: if(iscolor(@green), darken(@green, 10), @green);
+@tealDown: if(iscolor(@teal), darken(@teal, 10), @teal);
+@blueDown: if(iscolor(@blue), darken(@blue, 10), @blue);
+@violetDown: if(iscolor(@violet), darken(@violet, 10), @violet);
+@purpleDown: if(iscolor(@purple), darken(@purple, 10), @purple);
+@pinkDown: if(iscolor(@pink), darken(@pink, 10), @pink);
+@brownDown: if(iscolor(@brown), darken(@brown, 10), @brown);
 
-@lightRedDown: darken(@lightRed, 10);
-@lightOrangeDown: darken(@lightOrange, 10);
-@lightYellowDown: darken(@lightYellow, 10);
-@lightOliveDown: darken(@lightOlive, 10);
-@lightGreenDown: darken(@lightGreen, 10);
-@lightTealDown: darken(@lightTeal, 10);
-@lightBlueDown: darken(@lightBlue, 10);
-@lightVioletDown: darken(@lightViolet, 10);
-@lightPurpleDown: darken(@lightPurple, 10);
-@lightPinkDown: darken(@lightPink, 10);
-@lightBrownDown: darken(@lightBrown, 10);
-@lightGreyDown: darken(@lightGrey, 10);
-@lightBlackDown: darken(@fullBlack, 10);
+@lightRedDown: if(iscolor(@lightRed), darken(@lightRed, 10), @lightRed);
+@lightOrangeDown: if(iscolor(@lightOrange), darken(@lightOrange, 10), @lightOrange);
+@lightYellowDown: if(iscolor(@lightYellow), darken(@lightYellow, 10), @lightYellow);
+@lightOliveDown: if(iscolor(@lightOlive), darken(@lightOlive, 10), @lightOlive);
+@lightGreenDown: if(iscolor(@lightGreen), darken(@lightGreen, 10), @lightGreen);
+@lightTealDown: if(iscolor(@lightTeal), darken(@lightTeal, 10), @lightTeal);
+@lightBlueDown: if(iscolor(@lightBlue), darken(@lightBlue, 10), @lightBlue);
+@lightVioletDown: if(iscolor(@lightViolet), darken(@lightViolet, 10), @lightViolet);
+@lightPurpleDown: if(iscolor(@lightPurple), darken(@lightPurple, 10), @lightPurple);
+@lightPinkDown: if(iscolor(@lightPink), darken(@lightPink, 10), @lightPink);
+@lightBrownDown: if(iscolor(@lightBrown), darken(@lightBrown, 10), @lightBrown);
+@lightGreyDown: if(iscolor(@lightGrey), darken(@lightGrey, 10), @lightGrey);
+@lightBlackDown: if(iscolor(@fullBlack), darken(@fullBlack, 10), @fullBlack);
 
 /* ---  Emotive  --- */
-@positiveColorDown: darken(@positiveColor, 10);
-@negativeColorDown: darken(@negativeColor, 10);
+@positiveColorDown: if(iscolor(@positiveColor), darken(@positiveColor, 10), @positiveColor);
+@negativeColorDown: if(iscolor(@negativeColor), darken(@negativeColor, 10), @negativeColor);
 
 /* ---  Brand   --- */
-@facebookDownColor: darken(@facebookColor, 10);
-@twitterDownColor: darken(@twitterColor, 10);
-@googlePlusDownColor: darken(@googlePlusColor, 10);
-@linkedInDownColor: darken(@linkedInColor, 10);
-@youtubeDownColor: darken(@youtubeColor, 10);
-@instagramDownColor: darken(@instagramColor, 10);
-@pinterestDownColor: darken(@pinterestColor, 10);
-@vkDownColor: darken(@vkColor, 10);
-@telegramDownColor: darken(@telegramColor, 10);
-@whatsAppDownColor: darken(@whatsAppColor, 10);
+@facebookDownColor: if(iscolor(@facebookColor), darken(@facebookColor, 10), @facebookColor);
+@twitterDownColor: if(iscolor(@twitterColor), darken(@twitterColor, 10), @twitterColor);
+@googlePlusDownColor: if(iscolor(@googlePlusColor), darken(@googlePlusColor, 10), @googlePlusColor);
+@linkedInDownColor: if(iscolor(@linkedInColor), darken(@linkedInColor, 10), @linkedInColor);
+@youtubeDownColor: if(iscolor(@youtubeColor), darken(@youtubeColor, 10), @youtubeColor);
+@instagramDownColor: if(iscolor(@instagramColor), darken(@instagramColor, 10), @instagramColor);
+@pinterestDownColor: if(iscolor(@pinterestColor), darken(@pinterestColor, 10), @pinterestColor);
+@vkDownColor: if(iscolor(@vkColor), darken(@vkColor, 10), @vkColor);
+@telegramDownColor: if(iscolor(@telegramColor), darken(@telegramColor, 10), @telegramColor);
+@whatsAppDownColor: if(iscolor(@whatsAppColor), darken(@whatsAppColor, 10), @whatsAppColor);
 
 /* ---  Dark Tones  --- */
-@fullBlackDown: lighten(@fullBlack, 10);
-@blackDown: lighten(@black, 10);
-@greyDown: lighten(@grey, 10);
+@fullBlackDown: if(iscolor(@fullBlack), lighten(@fullBlack, 10), @fullBlack);
+@blackDown: if(iscolor(@black), lighten(@black, 10), @black);
+@greyDown: if(iscolor(@grey), lighten(@grey, 10), @grey);
 
 /* ---  Light Tones  --- */
-@whiteDown: darken(@white, 10);
-@offWhiteDown: darken(@offWhite, 10);
-@darkWhiteDown: darken(@darkWhite, 10);
+@whiteDown: if(iscolor(@white), darken(@white, 10), @white);
+@offWhiteDown: if(iscolor(@offWhite), darken(@offWhite, 10), @offWhite);
+@darkWhiteDown: if(iscolor(@darkWhite), darken(@darkWhite, 10), @darkWhite);
 
 /* -------------------
         Active
 -------------------- */
 
 /* ---  Colors  --- */
-@primaryColorActive: saturate(darken(@primaryColor, 5), 15, relative);
-@secondaryColorActive: saturate(lighten(@secondaryColor, 5), 15, relative);
-@lightPrimaryColorActive: saturate(darken(@lightPrimaryColor, 5), 15, relative);
-@lightSecondaryColorActive: saturate(lighten(@lightSecondaryColor, 5), 15, relative);
+@primaryColorActive: if(iscolor(@primaryColor), saturate(darken(@primaryColor, 5), 15, relative), @primaryColor);
+@secondaryColorActive: if(iscolor(@secondaryColor), saturate(lighten(@secondaryColor, 5), 15, relative), @secondaryColor);
+@lightPrimaryColorActive: if(iscolor(@lightPrimaryColor), saturate(darken(@lightPrimaryColor, 5), 15, relative), @lightPrimaryColor);
+@lightSecondaryColorActive: if(iscolor(@lightSecondaryColor), saturate(lighten(@lightSecondaryColor, 5), 15, relative), @lightSecondaryColor);
 
-@redActive: saturate(darken(@red, 5), 15, relative);
-@orangeActive: saturate(darken(@orange, 5), 15, relative);
-@yellowActive: saturate(darken(@yellow, 5), 15, relative);
-@oliveActive: saturate(darken(@olive, 5), 15, relative);
-@greenActive: saturate(darken(@green, 5), 15, relative);
-@tealActive: saturate(darken(@teal, 5), 15, relative);
-@blueActive: saturate(darken(@blue, 5), 15, relative);
-@violetActive: saturate(darken(@violet, 5), 15, relative);
-@purpleActive: saturate(darken(@purple, 5), 15, relative);
-@pinkActive: saturate(darken(@pink, 5), 15, relative);
-@brownActive: saturate(darken(@brown, 5), 15, relative);
+@redActive: if(iscolor(@red), saturate(darken(@red, 5), 15, relative), @red);
+@orangeActive: if(iscolor(@orange), saturate(darken(@orange, 5), 15, relative), @orange);
+@yellowActive: if(iscolor(@yellow), saturate(darken(@yellow, 5), 15, relative), @yellow);
+@oliveActive: if(iscolor(@olive), saturate(darken(@olive, 5), 15, relative), @olive);
+@greenActive: if(iscolor(@green), saturate(darken(@green, 5), 15, relative), @green);
+@tealActive: if(iscolor(@teal), saturate(darken(@teal, 5), 15, relative), @teal);
+@blueActive: if(iscolor(@blue), saturate(darken(@blue, 5), 15, relative), @blue);
+@violetActive: if(iscolor(@violet), saturate(darken(@violet, 5), 15, relative), @violet);
+@purpleActive: if(iscolor(@purple), saturate(darken(@purple, 5), 15, relative), @purple);
+@pinkActive: if(iscolor(@pink), saturate(darken(@pink, 5), 15, relative), @pink);
+@brownActive: if(iscolor(@brown), saturate(darken(@brown, 5), 15, relative), @brown);
 
-@lightRedActive: saturate(darken(@lightRed, 5), 15, relative);
-@lightOrangeActive: saturate(darken(@lightOrange, 5), 15, relative);
-@lightYellowActive: saturate(darken(@lightYellow, 5), 15, relative);
-@lightOliveActive: saturate(darken(@lightOlive, 5), 15, relative);
-@lightGreenActive: saturate(darken(@lightGreen, 5), 15, relative);
-@lightTealActive: saturate(darken(@lightTeal, 5), 15, relative);
-@lightBlueActive: saturate(darken(@lightBlue, 5), 15, relative);
-@lightVioletActive: saturate(darken(@lightViolet, 5), 15, relative);
-@lightPurpleActive: saturate(darken(@lightPurple, 5), 15, relative);
-@lightPinkActive: saturate(darken(@lightPink, 5), 15, relative);
-@lightBrownActive: saturate(darken(@lightBrown, 5), 15, relative);
-@lightGreyActive: saturate(darken(@lightGrey, 5), 15, relative);
-@lightBlackActive: saturate(darken(@fullBlack, 5), 15, relative);
+@lightRedActive: if(iscolor(@lightRed), saturate(darken(@lightRed, 5), 15, relative), @lightRed);
+@lightOrangeActive: if(iscolor(@lightOrange), saturate(darken(@lightOrange, 5), 15, relative), @lightOrange);
+@lightYellowActive: if(iscolor(@lightYellow), saturate(darken(@lightYellow, 5), 15, relative), @lightYellow);
+@lightOliveActive: if(iscolor(@lightOlive), saturate(darken(@lightOlive, 5), 15, relative), @lightOlive);
+@lightGreenActive: if(iscolor(@lightGreen), saturate(darken(@lightGreen, 5), 15, relative), @lightGreen);
+@lightTealActive: if(iscolor(@lightTeal), saturate(darken(@lightTeal, 5), 15, relative), @lightTeal);
+@lightBlueActive: if(iscolor(@lightBlue), saturate(darken(@lightBlue, 5), 15, relative), @lightBlue);
+@lightVioletActive: if(iscolor(@lightViolet), saturate(darken(@lightViolet, 5), 15, relative), @lightViolet);
+@lightPurpleActive: if(iscolor(@lightPurple), saturate(darken(@lightPurple, 5), 15, relative), @lightPurple);
+@lightPinkActive: if(iscolor(@lightPink), saturate(darken(@lightPink, 5), 15, relative), @lightPink);
+@lightBrownActive: if(iscolor(@lightBrown), saturate(darken(@lightBrown, 5), 15, relative), @lightBrown);
+@lightGreyActive: if(iscolor(@lightGrey), saturate(darken(@lightGrey, 5), 15, relative), @lightGrey);
+@lightBlackActive: if(iscolor(@fullBlack), saturate(darken(@fullBlack, 5), 15, relative), @fullBlack);
 
 /* ---  Emotive  --- */
-@positiveColorActive: saturate(darken(@positiveColor, 5), 15, relative);
-@negativeColorActive: saturate(darken(@negativeColor, 5), 15, relative);
+@positiveColorActive: if(iscolor(@positiveColor), saturate(darken(@positiveColor, 5), 15, relative), @positiveColor);
+@negativeColorActive: if(iscolor(@negativeColor), saturate(darken(@negativeColor, 5), 15, relative), @negativeColor);
 
 /* ---  Brand   --- */
-@facebookActiveColor: saturate(darken(@facebookColor, 5), 15, relative);
-@twitterActiveColor: saturate(darken(@twitterColor, 5), 15, relative);
-@googlePlusActiveColor: saturate(darken(@googlePlusColor, 5), 15, relative);
-@linkedInActiveColor: saturate(darken(@linkedInColor, 5), 15, relative);
-@youtubeActiveColor: saturate(darken(@youtubeColor, 5), 15, relative);
-@instagramActiveColor: saturate(darken(@instagramColor, 5), 15, relative);
-@pinterestActiveColor: saturate(darken(@pinterestColor, 5), 15, relative);
-@vkActiveColor: saturate(darken(@vkColor, 5), 15, relative);
-@telegramActiveColor: saturate(darken(@telegramColor, 5), 15, relative);
-@whatsAppActiveColor: saturate(darken(@whatsAppColor, 5), 15, relative);
+@facebookActiveColor: if(iscolor(@facebookColor), saturate(darken(@facebookColor, 5), 15, relative), @facebookColor);
+@twitterActiveColor: if(iscolor(@twitterColor), saturate(darken(@twitterColor, 5), 15, relative), @twitterColor);
+@googlePlusActiveColor: if(iscolor(@googlePlusColor), saturate(darken(@googlePlusColor, 5), 15, relative), @googlePlusColor);
+@linkedInActiveColor: if(iscolor(@linkedInColor), saturate(darken(@linkedInColor, 5), 15, relative), @linkedInColor);
+@youtubeActiveColor: if(iscolor(@youtubeColor), saturate(darken(@youtubeColor, 5), 15, relative), @youtubeColor);
+@instagramActiveColor: if(iscolor(@instagramColor), saturate(darken(@instagramColor, 5), 15, relative), @instagramColor);
+@pinterestActiveColor: if(iscolor(@pinterestColor), saturate(darken(@pinterestColor, 5), 15, relative), @pinterestColor);
+@vkActiveColor: if(iscolor(@vkColor), saturate(darken(@vkColor, 5), 15, relative), @vkColor);
+@telegramActiveColor: if(iscolor(@telegramColor), saturate(darken(@telegramColor, 5), 15, relative), @telegramColor);
+@whatsAppActiveColor: if(iscolor(@whatsAppColor), saturate(darken(@whatsAppColor, 5), 15, relative), @whatsAppColor);
 
 /* ---  Dark Tones  --- */
-@fullBlackActive: darken(@fullBlack, 5);
-@blackActive: darken(@black, 5);
-@greyActive: darken(@grey, 5);
+@fullBlackActive: if(iscolor(@fullBlack), darken(@fullBlack, 5), @fullBlack);
+@blackActive: if(iscolor(@black), darken(@black, 5), @black);
+@greyActive: if(iscolor(@grey), darken(@grey, 5), @grey);
 
 /* ---  Light Tones  --- */
-@whiteActive: darken(@white, 5);
-@offWhiteActive: darken(@offWhite, 5);
-@darkWhiteActive: darken(@darkWhite, 5);
+@whiteActive: if(iscolor(@white), darken(@white, 5), @white);
+@offWhiteActive: if(iscolor(@offWhite), darken(@offWhite, 5), @offWhite);
+@darkWhiteActive: if(iscolor(@darkWhite), darken(@darkWhite, 5), @darkWhite);
 
 /* ---  Tertiary  --- */
-@primaryTertiaryColor: saturate(@primaryColor, 20%);
-@primaryTertiaryColorHover: desaturate(@primaryColorHover, 20%);
-@primaryTertiaryColorFocus: desaturate(@primaryColorFocus, 20%);
-@primaryTertiaryColorActive: saturate(@primaryColorActive, 20%);
-@secondaryTertiaryColor: saturate(@secondaryColor, 20%);
-@secondaryTertiaryColorHover: desaturate(@secondaryColorHover, 20%);
-@secondaryTertiaryColorFocus: desaturate(@secondaryColorFocus, 20%);
-@secondaryTertiaryColorActive: saturate(@secondaryColorActive, 20%);
-@redTertiaryColor: saturate(@red, 20%);
-@redTertiaryColorHover: desaturate(@redHover, 20%);
-@redTertiaryColorFocus: desaturate(@redFocus, 20%);
-@redTertiaryColorActive: saturate(@redActive, 20%);
-@orangeTertiaryColor: saturate(@orange, 20%);
-@orangeTertiaryColorHover: desaturate(@orangeHover, 20%);
-@orangeTertiaryColorFocus: desaturate(@orangeFocus, 20%);
-@orangeTertiaryColorActive: saturate(@orangeActive, 20%);
-@yellowTertiaryColor: saturate(@yellow, 20%);
-@yellowTertiaryColorHover: desaturate(@yellowHover, 20%);
-@yellowTertiaryColorFocus: desaturate(@yellowFocus, 20%);
-@yellowTertiaryColorActive: saturate(@yellowActive, 20%);
-@oliveTertiaryColor: saturate(@olive, 20%);
-@oliveTertiaryColorHover: desaturate(@oliveHover, 20%);
-@oliveTertiaryColorFocus: desaturate(@oliveFocus, 20%);
-@oliveTertiaryColorActive: saturate(@oliveActive, 20%);
-@greenTertiaryColor: saturate(@green, 20%);
-@greenTertiaryColorHover: desaturate(@greenHover, 20%);
-@greenTertiaryColorFocus: desaturate(@greenFocus, 20%);
-@greenTertiaryColorActive: saturate(@greenActive, 20%);
-@tealTertiaryColor: saturate(@teal, 20%);
-@tealTertiaryColorHover: desaturate(@tealHover, 20%);
-@tealTertiaryColorFocus: desaturate(@tealFocus, 20%);
-@tealTertiaryColorActive: saturate(@tealActive, 20%);
-@blueTertiaryColor: saturate(@blue, 20%);
-@blueTertiaryColorHover: desaturate(@blueHover, 20%);
-@blueTertiaryColorFocus: desaturate(@blueFocus, 20%);
-@blueTertiaryColorActive: saturate(@blueActive, 20%);
-@violetTertiaryColor: saturate(@violet, 20%);
-@violetTertiaryColorHover: desaturate(@violetHover, 20%);
-@violetTertiaryColorFocus: desaturate(@violetFocus, 20%);
-@violetTertiaryColorActive: saturate(@violetActive, 20%);
-@purpleTertiaryColor: saturate(@purple, 20%);
-@purpleTertiaryColorHover: desaturate(@purpleHover, 20%);
-@purpleTertiaryColorFocus: desaturate(@purpleFocus, 20%);
-@purpleTertiaryColorActive: saturate(@purpleActive, 20%);
-@pinkTertiaryColor: saturate(@pink, 20%);
-@pinkTertiaryColorHover: desaturate(@pinkHover, 20%);
-@pinkTertiaryColorFocus: desaturate(@pinkFocus, 20%);
-@pinkTertiaryColorActive: saturate(@pinkActive, 20%);
-@brownTertiaryColor: saturate(@brown, 20%);
-@brownTertiaryColorHover: desaturate(@brownHover, 20%);
-@brownTertiaryColorFocus: desaturate(@brownFocus, 20%);
-@brownTertiaryColorActive: saturate(@brownActive, 20%);
-@greyTertiaryColor: darken(@grey, 5%);
-@greyTertiaryColorHover: lighten(@greyHover, 5%);
-@greyTertiaryColorFocus: lighten(@greyFocus, 8%);
-@greyTertiaryColorActive: darken(@greyActive, 5%);
-@blackTertiaryColor: lighten(@black, 20%);
-@blackTertiaryColorHover: lighten(@blackHover, 40%);
-@blackTertiaryColorFocus: lighten(@blackFocus, 40%);
-@blackTertiaryColorActive: lighten(@blackActive, 20%);
+@primaryTertiaryColor: if(iscolor(@primaryColor), saturate(@primaryColor, 20%), @primaryColor);
+@primaryTertiaryColorHover: if(iscolor(@primaryColorHover), desaturate(@primaryColorHover, 20%), @primaryColorHover);
+@primaryTertiaryColorFocus: if(iscolor(@primaryColorFocus), desaturate(@primaryColorFocus, 20%), @primaryColorFocus);
+@primaryTertiaryColorActive: if(iscolor(@primaryColorActive), saturate(@primaryColorActive, 20%), @primaryColorActive);
+@secondaryTertiaryColor: if(iscolor(@secondaryColor), saturate(@secondaryColor, 20%), @secondaryColor);
+@secondaryTertiaryColorHover: if(iscolor(@secondaryColorHover), desaturate(@secondaryColorHover, 20%), @secondaryColorHover);
+@secondaryTertiaryColorFocus: if(iscolor(@secondaryColorFocus), desaturate(@secondaryColorFocus, 20%), @secondaryColorFocus);
+@secondaryTertiaryColorActive: if(iscolor(@secondaryColorActive), saturate(@secondaryColorActive, 20%), @secondaryColorActive);
+@redTertiaryColor: if(iscolor(@red), saturate(@red, 20%), @red);
+@redTertiaryColorHover: if(iscolor(@redHover), desaturate(@redHover, 20%), @redHover);
+@redTertiaryColorFocus: if(iscolor(@redFocus), desaturate(@redFocus, 20%), @redFocus);
+@redTertiaryColorActive: if(iscolor(@redActive), saturate(@redActive, 20%), @redActive);
+@orangeTertiaryColor: if(iscolor(@orange), saturate(@orange, 20%), @orange);
+@orangeTertiaryColorHover: if(iscolor(@orangeHover), desaturate(@orangeHover, 20%), @orangeHover);
+@orangeTertiaryColorFocus: if(iscolor(@orangeFocus), desaturate(@orangeFocus, 20%), @orangeFocus);
+@orangeTertiaryColorActive: if(iscolor(@orangeActive), saturate(@orangeActive, 20%), @orangeActive);
+@yellowTertiaryColor: if(iscolor(@yellow), saturate(@yellow, 20%), @yellow);
+@yellowTertiaryColorHover: if(iscolor(@yellowHover), desaturate(@yellowHover, 20%), @yellowHover);
+@yellowTertiaryColorFocus: if(iscolor(@yellowFocus), desaturate(@yellowFocus, 20%), @yellowFocus);
+@yellowTertiaryColorActive: if(iscolor(@yellowActive), saturate(@yellowActive, 20%), @yellowActive);
+@oliveTertiaryColor: if(iscolor(@olive), saturate(@olive, 20%), @olive);
+@oliveTertiaryColorHover: if(iscolor(@oliveHover), desaturate(@oliveHover, 20%), @oliveHover);
+@oliveTertiaryColorFocus: if(iscolor(@oliveFocus), desaturate(@oliveFocus, 20%), @oliveFocus);
+@oliveTertiaryColorActive: if(iscolor(@oliveActive), saturate(@oliveActive, 20%), @oliveActive);
+@greenTertiaryColor: if(iscolor(@green), saturate(@green, 20%), @green);
+@greenTertiaryColorHover: if(iscolor(@greenHover), desaturate(@greenHover, 20%), @greenHover);
+@greenTertiaryColorFocus: if(iscolor(@greenFocus), desaturate(@greenFocus, 20%), @greenFocus);
+@greenTertiaryColorActive: if(iscolor(@greenActive), saturate(@greenActive, 20%), @greenActive);
+@tealTertiaryColor: if(iscolor(@teal), saturate(@teal, 20%), @teal);
+@tealTertiaryColorHover: if(iscolor(@tealHover), desaturate(@tealHover, 20%), @tealHover);
+@tealTertiaryColorFocus: if(iscolor(@tealFocus), desaturate(@tealFocus, 20%), @tealFocus);
+@tealTertiaryColorActive: if(iscolor(@tealActive), saturate(@tealActive, 20%), @tealActive);
+@blueTertiaryColor: if(iscolor(@blue), saturate(@blue, 20%), @blue);
+@blueTertiaryColorHover: if(iscolor(@blueHover), desaturate(@blueHover, 20%), @blueHover);
+@blueTertiaryColorFocus: if(iscolor(@blueFocus), desaturate(@blueFocus, 20%), @blueFocus);
+@blueTertiaryColorActive: if(iscolor(@blueActive), saturate(@blueActive, 20%), @blueActive);
+@violetTertiaryColor: if(iscolor(@violet), saturate(@violet, 20%), @violet);
+@violetTertiaryColorHover: if(iscolor(@violetHover), desaturate(@violetHover, 20%), @violetHover);
+@violetTertiaryColorFocus: if(iscolor(@violetFocus), desaturate(@violetFocus, 20%), @violetFocus);
+@violetTertiaryColorActive: if(iscolor(@violetActive), saturate(@violetActive, 20%), @violetActive);
+@purpleTertiaryColor: if(iscolor(@purple), saturate(@purple, 20%), @purple);
+@purpleTertiaryColorHover: if(iscolor(@purpleHover), desaturate(@purpleHover, 20%), @purpleHover);
+@purpleTertiaryColorFocus: if(iscolor(@purpleFocus), desaturate(@purpleFocus, 20%), @purpleFocus);
+@purpleTertiaryColorActive: if(iscolor(@purpleActive), saturate(@purpleActive, 20%), @purpleActive);
+@pinkTertiaryColor: if(iscolor(@pink), saturate(@pink, 20%), @pink);
+@pinkTertiaryColorHover: if(iscolor(@pinkHover), desaturate(@pinkHover, 20%), @pinkHover);
+@pinkTertiaryColorFocus: if(iscolor(@pinkFocus), desaturate(@pinkFocus, 20%), @pinkFocus);
+@pinkTertiaryColorActive: if(iscolor(@pinkActive), saturate(@pinkActive, 20%), @pinkActive);
+@brownTertiaryColor: if(iscolor(@brown), saturate(@brown, 20%), @brown);
+@brownTertiaryColorHover: if(iscolor(@brownHover), desaturate(@brownHover, 20%), @brownHover);
+@brownTertiaryColorFocus: if(iscolor(@brownFocus), desaturate(@brownFocus, 20%), @brownFocus);
+@brownTertiaryColorActive: if(iscolor(@brownActive), saturate(@brownActive, 20%), @brownActive);
+@greyTertiaryColor: if(iscolor(@grey), darken(@grey, 5%), @grey);
+@greyTertiaryColorHover: if(iscolor(@greyHover), lighten(@greyHover, 5%), @greyHover);
+@greyTertiaryColorFocus: if(iscolor(@greyFocus), lighten(@greyFocus, 8%), @greyFocus);
+@greyTertiaryColorActive: if(iscolor(@greyActive), darken(@greyActive, 5%), @greyActive);
+@blackTertiaryColor: if(iscolor(@black), lighten(@black, 20%), @black);
+@blackTertiaryColorHover: if(iscolor(@blackHover), lighten(@blackHover, 40%), @blackHover);
+@blackTertiaryColorFocus: if(iscolor(@blackFocus), lighten(@blackFocus, 40%), @blackFocus);
+@blackTertiaryColorActive: if(iscolor(@blackActive), lighten(@blackActive, 20%), @blackActive);
 
 /* ---  Bright  --- */
-@primaryBright: screen(@lightPrimaryColor, @blendingBaseColor);
-@secondaryBright: screen(@lightSecondaryColor, @blendingBaseColor);
-@redBright: screen(@lightRed, @blendingBaseColor);
-@orangeBright: screen(@lightOrange, @blendingBaseColor);
-@yellowBright: screen(@lightYellow, @blendingBaseColor);
-@oliveBright: screen(@lightOlive, @blendingBaseColor);
-@greenBright: screen(@lightGreen, @blendingBaseColor);
-@tealBright: screen(@lightTeal, @blendingBaseColor);
-@blueBright: screen(@lightBlue, @blendingBaseColor);
-@violetBright: screen(@lightViolet, @blendingBaseColor);
-@purpleBright: screen(@lightPurple, @blendingBaseColor);
-@pinkBright: screen(@lightPink, @blendingBaseColor);
-@brownBright: screen(@lightBrown, @blendingBaseColor);
+@primaryBright: if(iscolor(@lightPrimaryColor), screen(@lightPrimaryColor, @blendingBaseColor), @lightPrimaryColor);
+@secondaryBright: if(iscolor(@lightSecondaryColor), screen(@lightSecondaryColor, @blendingBaseColor), @lightSecondaryColor);
+@redBright: if(iscolor(@lightRed), screen(@lightRed, @blendingBaseColor), @lightRed);
+@orangeBright: if(iscolor(@lightOrange), screen(@lightOrange, @blendingBaseColor), @lightOrange);
+@yellowBright: if(iscolor(@lightYellow), screen(@lightYellow, @blendingBaseColor), @lightYellow);
+@oliveBright: if(iscolor(@lightOlive), screen(@lightOlive, @blendingBaseColor), @lightOlive);
+@greenBright: if(iscolor(@lightGreen), screen(@lightGreen, @blendingBaseColor), @lightGreen);
+@tealBright: if(iscolor(@lightTeal), screen(@lightTeal, @blendingBaseColor), @lightTeal);
+@blueBright: if(iscolor(@lightBlue), screen(@lightBlue, @blendingBaseColor), @lightBlue);
+@violetBright: if(iscolor(@lightViolet), screen(@lightViolet, @blendingBaseColor), @lightViolet);
+@purpleBright: if(iscolor(@lightPurple), screen(@lightPurple, @blendingBaseColor), @lightPurple);
+@pinkBright: if(iscolor(@lightPink), screen(@lightPink, @blendingBaseColor), @lightPink);
+@brownBright: if(iscolor(@lightBrown), screen(@lightBrown, @blendingBaseColor), @lightBrown);
 @greyBright: @lightGrey;
 @blackBright: @lightBlack;
 
-@primaryBrightHover: screen(@lightPrimaryColorHover, @blendingBaseColor);
-@secondaryBrightHover: screen(@lightSecondaryColorHover, @blendingBaseColor);
-@redBrightHover: screen(@lightRedHover, @blendingBaseColor);
-@orangeBrightHover: screen(@lightOrangeHover, @blendingBaseColor);
-@yellowBrightHover: screen(@lightYellowHover, @blendingBaseColor);
-@oliveBrightHover: screen(@lightOliveHover, @blendingBaseColor);
-@greenBrightHover: screen(@lightGreenHover, @blendingBaseColor);
-@tealBrightHover: screen(@lightTealHover, @blendingBaseColor);
-@blueBrightHover: screen(@lightBlueHover, @blendingBaseColor);
-@violetBrightHover: screen(@lightVioletHover, @blendingBaseColor);
-@purpleBrightHover: screen(@lightPurpleHover, @blendingBaseColor);
-@pinkBrightHover: screen(@lightPinkHover, @blendingBaseColor);
-@brownBrightHover: screen(@lightBrownHover, @blendingBaseColor);
+@primaryBrightHover: if(iscolor(@lightPrimaryColorHover), screen(@lightPrimaryColorHover, @blendingBaseColor), @lightPrimaryColorHover);
+@secondaryBrightHover: if(iscolor(@lightSecondaryColorHover), screen(@lightSecondaryColorHover, @blendingBaseColor), @lightSecondaryColorHover);
+@redBrightHover: if(iscolor(@lightRedHover), screen(@lightRedHover, @blendingBaseColor), @lightRedHover);
+@orangeBrightHover: if(iscolor(@lightOrangeHover), screen(@lightOrangeHover, @blendingBaseColor), @lightOrangeHover);
+@yellowBrightHover: if(iscolor(@lightYellowHover), screen(@lightYellowHover, @blendingBaseColor), @lightYellowHover);
+@oliveBrightHover: if(iscolor(@lightOliveHover), screen(@lightOliveHover, @blendingBaseColor), @lightOliveHover);
+@greenBrightHover: if(iscolor(@lightGreenHover), screen(@lightGreenHover, @blendingBaseColor), @lightGreenHover);
+@tealBrightHover: if(iscolor(@lightTealHover), screen(@lightTealHover, @blendingBaseColor), @lightTealHover);
+@blueBrightHover: if(iscolor(@lightBlueHover), screen(@lightBlueHover, @blendingBaseColor), @lightBlueHover);
+@violetBrightHover: if(iscolor(@lightVioletHover), screen(@lightVioletHover, @blendingBaseColor), @lightVioletHover);
+@purpleBrightHover: if(iscolor(@lightPurpleHover), screen(@lightPurpleHover, @blendingBaseColor), @lightPurpleHover);
+@pinkBrightHover: if(iscolor(@lightPinkHover), screen(@lightPinkHover, @blendingBaseColor), @lightPinkHover);
+@brownBrightHover: if(iscolor(@lightBrownHover), screen(@lightBrownHover, @blendingBaseColor), @lightBrownHover);
 @greyBrightHover: @lightGreyHover;
 @blackBrightHover: @lightBlackHover;
 
@@ -1423,28 +1425,28 @@
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
-@formErrorLabelBackground: darken(@formErrorBorder, -8);
+@formErrorLabelBackground: if(iscolor(@formErrorBorder), darken(@formErrorBorder, -8), @formErrorBorder);
 @transparentFormErrorColor: @formErrorColor;
 @transparentFormErrorBackground: @formErrorBackground;
 
 @formInfoColor: @infoTextColor;
 @formInfoBorder: @infoBorderColor;
 @formInfoBackground: @infoBackgroundColor;
-@formInfoLabelBackground: darken(@formInfoBorder, -8);
+@formInfoLabelBackground: if(iscolor(@formInfoBorder), darken(@formInfoBorder, -8), @formInfoBorder);
 @transparentFormInfoColor: @formInfoColor;
 @transparentFormInfoBackground: @formInfoBackground;
 
 @formSuccessColor: @positiveTextColor;
 @formSuccessBorder: @positiveBorderColor;
 @formSuccessBackground: @positiveBackgroundColor;
-@formSuccessLabelBackground: darken(@formSuccessBorder, -8);
+@formSuccessLabelBackground: if(iscolor(@formSuccessBorder), darken(@formSuccessBorder, -8), @formSuccessBorder);
 @transparentFormSuccessColor: @formSuccessColor;
 @transparentFormSuccessBackground: @formSuccessBackground;
 
 @formWarningColor: @warningTextColor;
 @formWarningBorder: @warningBorderColor;
 @formWarningBackground: @warningBackgroundColor;
-@formWarningLabelBackground: darken(@formWarningBorder, -8);
+@formWarningLabelBackground: if(iscolor(@formWarningBorder), darken(@formWarningBorder, -8), @formWarningBorder);
 @transparentFormWarningColor: @formWarningColor;
 @transparentFormWarningBackground: @formWarningBackground;
 
@@ -1526,14 +1528,14 @@
 @inputWarningFocusBoxShadow: none;
 
 /* Placeholder state */
-@inputErrorPlaceholderColor: lighten(@formErrorColor, 40);
-@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 30);
+@inputErrorPlaceholderColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 40), @formErrorColor);
+@inputErrorPlaceholderFocusColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 30), @formErrorColor);
 
-@inputInfoPlaceholderColor: lighten(@formInfoColor, 40);
-@inputInfoPlaceholderFocusColor: lighten(@formInfoColor, 30);
+@inputInfoPlaceholderColor: if(iscolor(@formInfoColor), lighten(@formInfoColor, 40), @formInfoColor);
+@inputInfoPlaceholderFocusColor: if(iscolor(@formInfoColor), lighten(@formInfoColor, 30), @formInfoColor);
 
-@inputSuccessPlaceholderColor: lighten(@formSuccessColor, 40);
-@inputSuccessPlaceholderFocusColor: lighten(@formSuccessColor, 30);
+@inputSuccessPlaceholderColor: if(iscolor(@formSuccessColor), lighten(@formSuccessColor, 40), @formSuccessColor);
+@inputSuccessPlaceholderFocusColor: if(iscolor(@formSuccessColor), lighten(@formSuccessColor, 30), @formSuccessColor);
 
-@inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
-@inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
+@inputWarningPlaceholderColor: if(iscolor(@formWarningColor), lighten(@formWarningColor, 40), @formWarningColor);
+@inputWarningPlaceholderFocusColor: if(iscolor(@formWarningColor), lighten(@formWarningColor, 30), @formWarningColor);

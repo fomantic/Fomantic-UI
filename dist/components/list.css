@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - List
+ * # Fomantic-UI 2.9.3 - List
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -426,16 +426,16 @@ ol.ui.list ol li,
   color: rgba(0, 0, 0, 0.4);
   transition: 0.1s color ease;
 }
-.ui.link.list.list a.item:hover,
-.ui.link.list.list .item a:not(.ui):hover {
+.ui.ui.link.list a.item:hover,
+.ui.ui.link.list .item a:not(.ui):hover {
   color: rgba(0, 0, 0, 0.8);
 }
-.ui.link.list.list a.item:active,
-.ui.link.list.list .item a:not(.ui):active {
+.ui.ui.link.list a.item:active,
+.ui.ui.link.list .item a:not(.ui):active {
   color: rgba(0, 0, 0, 0.9);
 }
-.ui.link.list.list .active.item,
-.ui.link.list.list .active.item a:not(.ui) {
+.ui.ui.link.list .active.item,
+.ui.ui.link.list .active.item a:not(.ui) {
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -445,16 +445,16 @@ ol.ui.list ol li,
 .ui.inverted.link.list .item a:not(.ui) {
   color: rgba(255, 255, 255, 0.5);
 }
-.ui.inverted.link.list.list a.item:hover,
-.ui.inverted.link.list.list .item a:not(.ui):hover {
+.ui.ui.inverted.link.list a.item:hover,
+.ui.ui.inverted.link.list .item a:not(.ui):hover {
   color: #ffffff;
 }
-.ui.inverted.link.list.list a.item:active,
-.ui.inverted.link.list.list .item a:not(.ui):active {
+.ui.ui.inverted.link.list a.item:active,
+.ui.ui.inverted.link.list .item a:not(.ui):active {
   color: #ffffff;
 }
-.ui.inverted.link.list.list a.active.item,
-.ui.inverted.link.list.list .active.item a:not(.ui) {
+.ui.ui.inverted.link.list a.active.item,
+.ui.ui.inverted.link.list .active.item a:not(.ui) {
   color: #ffffff;
 }
 

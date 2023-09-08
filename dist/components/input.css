@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Input
+ * # Fomantic-UI 2.9.3 - Input
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -104,7 +104,7 @@
 /* --------------------
            Loading
     --------------------- */
-.ui.loading.loading.input > i.icon::before {
+.ui.ui.loading.input > i.icon::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -115,7 +115,7 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.loading.loading.input > i.icon::after {
+.ui.ui.loading.input > i.icon::after {
   position: absolute;
   content: "";
   top: 50%;
@@ -158,24 +158,6 @@
             States
     --------------------- */
 .ui.input.error > input {
-  background-color: #fff6f6;
-  border-color: #e0b4b4;
-  color: #9f3a38;
-  box-shadow: none;
-}
-.ui.input > input:not(:-ms-input-placeholder):invalid {
-  background-color: #fff6f6;
-  border-color: #e0b4b4;
-  color: #9f3a38;
-  box-shadow: none;
-}
-.ui.input > input:not(:placeholder-shown):invalid {
-  background-color: #fff6f6;
-  border-color: #e0b4b4;
-  color: #9f3a38;
-  box-shadow: none;
-}
-.ui.input > input:not(:-ms-input-placeholder):invalid {
   background-color: #fff6f6;
   border-color: #e0b4b4;
   color: #9f3a38;
@@ -854,12 +836,6 @@
 .ui.file.input input[type="file"]::file-selector-button:hover {
   background: #cacbcd;
   color: rgba(0, 0, 0, 0.6);
-}
-.ui.form .field input[type="file"]:required:invalid,
-.ui.file.input input[type="file"]:required:invalid {
-  color: #9f3a38;
-  background: #fff6f6;
-  border-color: #e0b4b4;
 }
 input[type="file"].ui.invisible.file.input,
 .ui.invisible.file.input input[type="file"] {
