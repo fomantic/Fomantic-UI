@@ -51,7 +51,7 @@ declare namespace FomanticUI {
         /**
          * Returns element with matching name, id, or data-validate metadata to identifier.
          */
-        (behavior: 'get field', identifier: string, strict?: boolean | undefined, ignoreMissing?: boolean | undefined): string;
+        (behavior: 'get field', identifier: string, strict?: boolean, ignoreMissing?: boolean): string;
 
         /**
          * Returns value of element with id.
@@ -82,7 +82,7 @@ declare namespace FomanticUI {
         /**
          * Returns whether a field exists.
          */
-        (behavior: 'has field', identifier: string, ignoreMissing?: boolean | undefined): boolean;
+        (behavior: 'has field', identifier: string, ignoreMissing?: boolean): boolean;
 
         /**
          * Manually add errors to form, given an array errors.
