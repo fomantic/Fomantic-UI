@@ -51,7 +51,7 @@ declare namespace FomanticUI {
         /**
          * Returns element with matching name, id, or data-validate metadata to identifier.
          */
-        (behavior: 'get field', identifier: string): string;
+        (behavior: 'get field', identifier: string, strict?: boolean, ignoreMissing?: boolean): string;
 
         /**
          * Returns value of element with id.
@@ -82,7 +82,7 @@ declare namespace FomanticUI {
         /**
          * Returns whether a field exists.
          */
-        (behavior: 'has field', identifier: string): boolean;
+        (behavior: 'has field', identifier: string, ignoreMissing?: boolean): boolean;
 
         /**
          * Manually add errors to form, given an array errors.
@@ -227,7 +227,7 @@ declare namespace FomanticUI {
         errorFocus: boolean | string;
 
         /**
-         * 
+         *
          * @default 0
          */
         errorLimit: number;
@@ -373,7 +373,7 @@ declare namespace FomanticUI {
                  */
                 leavingMessage: string;
             }
-        
+
             interface Prompts {
                 /**
                  * @default '{name} must have a value'
@@ -500,7 +500,7 @@ declare namespace FomanticUI {
                  */
                 maxCount: string;
             }
-        
+
             interface Formatters {
                 date(date: string): string;
                 datetime(date: string): string;
