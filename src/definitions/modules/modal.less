@@ -35,6 +35,9 @@
     user-select: text;
     will-change: top, left, margin, transform, opacity;
     outline: none;
+    &:focus when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 .ui.modal > :first-child:not(.close):not(.dimmer),
@@ -79,6 +82,9 @@
 .ui.modal > .close:hover {
     opacity: 1;
     outline: none;
+}
+.ui.modal > .close:focus when not (@closeFocusOutline = none) {
+    outline: @closeFocusOutline;
 }
 
 /* --------------

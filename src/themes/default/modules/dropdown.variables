@@ -32,6 +32,7 @@
 @menuPadding: 0;
 @menuTop: 100%;
 @menuTextAlign: left;
+@menuFocusOutline: @focusOutline;
 
 @menuBorderWidth: 1px;
 @menuBorderColor: @borderColor;
@@ -202,6 +203,8 @@
 @selectionFocusBorderColor: @focusedFormMutedBorderColor;
 @selectionFocusBoxShadow: none;
 @selectionFocusMenuBoxShadow: @raisedShadow;
+@selectionFocusOutline: @focusOutline;
+@selectionMenuFocusOutline: @focusOutline;
 
 /* Visible */
 @selectionVisibleTextFontWeight: @normal;
@@ -224,6 +227,7 @@
 -------------- */
 
 @searchMinWidth: "";
+@searchFocusOutline: @focusOutline;
 
 /* Search Selection */
 @searchSelectionLineHeight: @inputLineHeight;

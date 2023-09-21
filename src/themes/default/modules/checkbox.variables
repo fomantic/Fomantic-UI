@@ -50,6 +50,8 @@
 @checkboxFocusBorderColor: @focusedFormMutedBorderColor;
 @checkboxFocusCheckColor: @selectedTextColor;
 @labelFocusColor: @selectedTextColor;
+@labelFocusOutline: @focusOutline;
+@inputFocusOutline: @focusOutline;
 
 /* Active */
 @labelActiveColor: @selectedTextColor;

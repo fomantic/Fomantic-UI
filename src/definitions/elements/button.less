@@ -76,6 +76,9 @@
     color: @focusColor;
     background-image: @focusBackgroundImage;
     box-shadow: @focusBoxShadow;
+    & when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 .ui.button:focus .icon {

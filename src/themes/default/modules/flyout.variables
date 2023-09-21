@@ -11,6 +11,9 @@
 @duration: 500ms;
 @easing: @defaultEasing;
 
+/* Focus */
+@closeFocusOutline: @focusOutline;
+
 /* Dimmer */
 @dimmerColor: rgba(0, 0, 0, 0.4);
 @dimmerTransition: all @duration;

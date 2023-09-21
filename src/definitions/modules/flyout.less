@@ -40,6 +40,9 @@
     z-index: @topLayer;
     background: #fff;
     outline: none;
+    &:focus when not (@focusOutline = none) {
+        outline: @focusOutline;
+    }
 }
 
 /* GPU Layers for Child Elements */
@@ -70,6 +73,9 @@
 .ui.flyout > .close:hover {
     opacity: 1;
     outline: none;
+}
+.ui.flyout > .close:focus when not (@closeFocusOutline = none) {
+    outline: @closeFocusOutline;
 }
 
 /* --------------

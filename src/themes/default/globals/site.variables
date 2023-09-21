@@ -1138,6 +1138,7 @@
 /* -------------------
         Focus
 -------------------- */
+@focusOutline: none;
 
 /* ---  Colors  --- */
 @primaryColorFocus: if(iscolor(@primaryColor), saturate(darken(@primaryColor, 8), 20, relative), @primaryColor);
