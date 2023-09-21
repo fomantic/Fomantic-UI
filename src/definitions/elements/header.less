@@ -467,6 +467,11 @@
     .ui.bottom.attached.header {
         border-radius: 0 0 @attachedBorderRadius @attachedBorderRadius;
     }
+    & when (@variationHeaderSeamless) {
+        .ui.seamless.attached.header {
+            border-bottom: none;
+        }
+    }
 
     /* Attached Sizes */
     .ui.attached.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
