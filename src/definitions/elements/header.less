@@ -468,7 +468,7 @@
         border-radius: 0 0 @attachedBorderRadius @attachedBorderRadius;
     }
     & when (@variationHeaderSeamless) {
-        .ui.seamless.attached.header {
+        .ui.seamless.attached:not(.bottom).header {
             border-bottom: none;
         }
     }
