@@ -82,6 +82,7 @@
 @variationHeaderDividing: true;
 @variationHeaderBlock: true;
 @variationHeaderAttached: true;
+@variationHeaderSeamless: true;
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 @variationHeaderColors: @variationAllColors;
