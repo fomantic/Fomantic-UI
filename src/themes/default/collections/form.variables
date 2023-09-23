@@ -60,6 +60,7 @@
 @textAreaBorder: @inputBorder;
 @textAreaFontSize: @inputFontSize;
 @textAreaTransition: @inputTransition;
+@actionTextareaMinHeight: (@inputVerticalPadding * 2) + @inputLineHeight;
 
 /* Checkbox */
 @checkboxVerticalAlign: top;

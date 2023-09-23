@@ -162,6 +162,11 @@
     font-family: @inputFont;
     line-height: @textAreaLineHeight;
     resize: @textAreaResize;
+    min-height: @actionTextareaMinHeight;
+}
+.ui.input > textarea {
+    flex: 1 0 auto;
+    max-width: 100%;
 }
 .ui.form textarea:not([rows]) {
     height: @textAreaHeight;
@@ -291,7 +296,9 @@
 
 /* Auto Input */
 .ui.form .fields .field .ui.input input,
-.ui.form .field .ui.input input {
+.ui.form .fields .field .ui.input textarea,
+.ui.form .field .ui.input input,
+.ui.form .field .ui.input textarea {
     width: auto;
 }
 
