@@ -162,6 +162,11 @@
     font-family: @inputFont;
     line-height: @textAreaLineHeight;
     resize: @textAreaResize;
+    min-height: @actionTextareaMinHeight;
+}
+.ui.input > textarea {
+    flex: 1 1 auto;
+    max-width: 100%;
 }
 .ui.form textarea:not([rows]) {
     height: @textAreaHeight;
@@ -291,8 +296,10 @@
 
 /* Auto Input */
 .ui.form .fields .field .ui.input input,
-.ui.form .field .ui.input input {
-    width: auto;
+.ui.form .fields .field .ui.input textarea,
+.ui.form .field .ui.input input,
+.ui.form .field .ui.input textarea {
+    width: 100%;
 }
 
 & when (@variationFormEqualWidth) or (@variationFormWide) {
@@ -441,7 +448,8 @@
         input[type="text"]:focus,
         input[type="file"]:focus,
         input[type="url"]:focus,
-        input[type="week"]:focus {
+        input[type="week"]:focus,
+        textarea:focus {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
@@ -462,7 +470,8 @@
         input[type="text"],
         input[type="file"],
         input[type="url"],
-        input[type="week"] {
+        input[type="week"],
+        textarea {
             border-bottom-left-radius: 0;
             border-top-left-radius: 0;
         }
