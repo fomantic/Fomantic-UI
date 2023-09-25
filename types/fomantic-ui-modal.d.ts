@@ -5,12 +5,12 @@ declare namespace FomanticUI {
         /**
          * Shows the modal.
          */
-        (behavior: 'show'): JQuery;
+        (behavior: 'show', callback?: Function): JQuery;
 
         /**
          * Hides the modal.
          */
-        (behavior: 'hide'): JQuery;
+        (behavior: 'hide', callback?: Function): JQuery;
 
         /**
          * Toggles the modal.
@@ -193,6 +193,62 @@ declare namespace FomanticUI {
          * @default 10
          */
         scrollbarWidth: number;
+
+        // dynamic content
+
+        /**
+         * Title of dynamicly created modal.
+         * @default ''
+         */
+        title: string;
+
+        /**
+         * HTML content of dynamicly created modal.
+         * @default ''
+         */
+        content: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal.
+         * @default ''
+         */
+        class: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's title.
+         * @default ''
+         */
+        classTitle: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's content.
+         * @default ''
+         */
+        classContent: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's actions.
+         * @default ''
+         */
+        classActions: string;
+
+        /**
+         * Determine if a close icon shoud be displayed on dynamicly created modal.
+         * @default false
+         */
+        closeIcon: boolean;
+
+        /**
+         * 
+         * @default false
+         */
+        actions: any;
+
+        /**
+         * 
+         * @default true
+         */
+        preserveHTML: boolean;
 
         // endregion
 

@@ -84,7 +84,7 @@ declare namespace FomanticUI {
          * This is useful for including a pre-formatted popup.
          * @default false
          */
-        popup: false | string;
+        popup: false | string | JQuery;
 
         /**
          * Whether all other popups should be hidden when this popup is opened.
@@ -277,7 +277,7 @@ declare namespace FomanticUI {
          * Callback before popup is shown.
          * Returning 'false' from this callback will cancel the popup from showing.
          */
-        onShow(this: JQuery): boolean;
+        onShow(this: JQuery): boolean | void;
 
         /**
          * Callback after popup is shown.

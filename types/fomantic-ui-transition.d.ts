@@ -70,7 +70,7 @@ declare namespace FomanticUI {
         /**
          * Modifies element animation duration.
          */
-        (behavior: 'set duration', duration: number): JQuery;
+        (behavior: 'set duration', duration: number | string): JQuery;
 
         /**
          * Saves all class names and styles to cache to be retrieved after animation.
@@ -111,6 +111,52 @@ declare namespace FomanticUI {
          * Returns whether animations are supported.
          */
         (behavior: 'is supported'): boolean;
+
+        (behavior: 'scale'): JQuery;
+
+        (behavior: 'zoom'): JQuery;
+
+        (behavior: 'fade'): JQuery;
+        (behavior: 'fade up'): JQuery;
+        (behavior: 'fade down'): JQuery;
+        (behavior: 'fade left'): JQuery;
+        (behavior: 'fade right'): JQuery;
+
+        (behavior: 'horizontal flip'): JQuery;
+        (behavior: 'vertical flip'): JQuery;
+
+        (behavior: 'drop'): JQuery;
+
+        (behavior: 'fly up'): JQuery;
+        (behavior: 'fly down'): JQuery;
+        (behavior: 'fly left'): JQuery;
+        (behavior: 'fly right'): JQuery;
+
+        (behavior: 'swing up'): JQuery;
+        (behavior: 'swing down'): JQuery;
+        (behavior: 'swing left'): JQuery;
+        (behavior: 'swing right'): JQuery;
+
+        (behavior: 'browse'): JQuery;
+        (behavior: 'browse up'): JQuery;
+        (behavior: 'browse down'): JQuery;
+        (behavior: 'browse left'): JQuery;
+        (behavior: 'browse right'): JQuery;
+
+        (behavior: 'slide up'): JQuery;
+        (behavior: 'slide down'): JQuery;
+        (behavior: 'slide left'): JQuery;
+        (behavior: 'slide right'): JQuery;
+
+        // Static animations
+        (behavior: 'pulsating'): JQuery;
+        (behavior: 'jiggle'): JQuery;
+        (behavior: 'flash'): JQuery;
+        (behavior: 'shake'): JQuery;
+        (behavior: 'pulse'): JQuery;
+        (behavior: 'tada'): JQuery;
+        (behavior: 'bounce'): JQuery;
+        (behavior: 'glow'): JQuery;
 
         /**
          * Destroys instance and removes all events.

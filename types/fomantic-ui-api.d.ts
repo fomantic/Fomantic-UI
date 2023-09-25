@@ -137,7 +137,7 @@ declare namespace FomanticUI {
          * UI state will be applied to this element, defaults to triggering element.
          * @default false
          */
-        stateContext: false | JQuery;
+        stateContext: false | string | JQuery;
 
         /**
          * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
@@ -259,7 +259,7 @@ declare namespace FomanticUI {
          * Method for transmitting request to server.
          * @default 'get'
          */
-        method: 'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch';
+        method: Uppercase<'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch'> | Lowercase<'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch'>;
 
         /**
          * Expected data type of response.
@@ -394,6 +394,8 @@ declare namespace FomanticUI {
         verbose: boolean;
 
         errors: API.ErrorSettings;
+
+        api: {[key: string]: string}
 
         // endregion
     }
