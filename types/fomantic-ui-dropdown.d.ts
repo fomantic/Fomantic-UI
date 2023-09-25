@@ -6,7 +6,7 @@ declare namespace FomanticUI {
          * Recreates dropdown menu from passed values.
          * values should be an object with the following structure: { values: [ {value, text, name} ] }.
          */
-        (behavior: 'setup menu', values: object): void;
+        (behavior: 'setup menu', values: object): JQuery;
 
         /**
          * Changes dropdown to use new values.
@@ -17,7 +17,7 @@ declare namespace FomanticUI {
         /**
          * Refreshes all cached selectors and data
          */
-        (behavior: 'refresh'): void;
+        (behavior: 'refresh'): JQuery;
 
         /**
          * Toggles current visibility of dropdown
@@ -29,20 +29,20 @@ declare namespace FomanticUI {
          * If a function is provided to callback, it's called after the dropdown-menu is shown.
          * Set preventFocus to true if you don't want the dropdown field to focus after the menu is shown
          */
-        (behavior: 'show', callback: Function, preventFocus: boolean): void;
+        (behavior: 'show', callback?: Function, preventFocus?: boolean): void;
 
         /**
          * Hides dropdown.
          * If a function is provided to callback, it's called after the dropdown-menu is hidden.
          * Set preventBlur to true if you don't want the dropdown field to blur after the menu is hidden
          */
-        (behavior: 'hide', callback:Function, preventBlur: boolean): void;
+        (behavior: 'hide', callback?: Function, preventBlur?: boolean): void;
 
         /**
          * Clears dropdown of selection.
          * Set preventChangeTrigger to true to omit the change event (default: false).
          */
-        (behavior: 'clear', preventChangeTrigger: boolean): void;
+        (behavior: 'clear', preventChangeTrigger?: boolean): JQuery;
 
         /**
          * Hides all other dropdowns that is not current dropdown
@@ -53,7 +53,7 @@ declare namespace FomanticUI {
          * Restores dropdown text and value to its value on page load.
          * Set preventChangeTrigger to true to omit the change event (default: false).
          */
-        (behavior: 'restore defaults', preventChangeTrigger: boolean): void;
+        (behavior: 'restore defaults', preventChangeTrigger?: boolean): void;
 
         /**
          * Restores dropdown text to its value on page load
@@ -79,7 +79,7 @@ declare namespace FomanticUI {
          * Sets value as selected.
          * Set preventChangeTrigger to true to omit the change event (default: false).
          */
-        (behavior: 'set selected', value: string, preventChangeTrigger: boolean): void;
+        (behavior: 'set selected', value: string | string[], preventChangeTrigger?: boolean, keepSearchTerm?: boolean): JQuery;
 
         /**
          * Remove value from selected
@@ -87,25 +87,20 @@ declare namespace FomanticUI {
         (behavior: 'remove selected', value: string): void;
 
         /**
-         * Adds a group of values as selected
-         */
-        (behavior: 'set selected', values: string[]): void;
-
-        /**
          * Sets selected values to exactly specified values, removing current selection
          */
-        (behavior: 'set exactly', values: string[]): void;
+        (behavior: 'set exactly', values: string[]): JQuery;
 
         /**
          * Sets dropdown text to a value
          */
-        (behavior: 'text', text: string): void;
+        (behavior: 'set text', text: string): JQuery;
 
         /**
          * Sets dropdown input to value (does not update display state).
          * Set preventChangeTrigger to true to omit the change event (default: false).
          */
-        (behavior: 'set value', value: string, preventChangeTrigger: boolean): void;
+        (behavior: 'set value', value: string, preventChangeTrigger?: boolean): JQuery;
 
         /**
          * Returns current dropdown text
@@ -265,7 +260,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default false
          */
-        apiSettings: false | APISettings | JQueryAjaxSettings;
+        apiSettings: false | Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>;
 
         /**
          * Whether dropdown should select new option when using keyboard shortcuts.
@@ -506,7 +501,7 @@ declare namespace FomanticUI {
          * Is called after a dropdown value changes.
          * Receives the name and value of selection and the active menu element.
          */
-        onChange(value: string, text: string, $choice: JQuery): void;
+        onChange(value?: string, text?: string, $choice?: JQuery): void;
 
         /**
          * Is called after a dropdown selection is added using a multiple select dropdown, only receives the added value.

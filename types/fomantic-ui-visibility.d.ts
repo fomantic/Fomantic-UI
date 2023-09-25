@@ -46,8 +46,8 @@ declare namespace FomanticUI {
         (behavior: 'destroy'): JQuery;
         <K extends keyof VisibilitySettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<VisibilitySettings, keyof VisibilitySettings>>;
         <K extends keyof VisibilitySettings>(behavior: 'setting', name: K, value: VisibilitySettings[K]): JQuery;
-        (behavior: 'setting', value: VisibilitySettings): JQuery;
-        (settings?: VisibilitySettings): JQuery;
+        (behavior: 'setting', value: Partial<Pick<VisibilitySettings, keyof VisibilitySettings>>): JQuery;
+        (settings?: Partial<Pick<VisibilitySettings, keyof VisibilitySettings>>): JQuery;
     }
 
     /**

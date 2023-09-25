@@ -13,6 +13,11 @@ declare namespace FomanticUI {
         (behavior: 'animate continue'): JQuery;
 
         /**
+         * Show the toast
+         */
+        (behavior: 'show'): JQuery;
+
+        /**
          * Closes the toast
          */
         (behavior: 'close'): JQuery;
@@ -273,7 +278,7 @@ declare namespace FomanticUI {
         /**
          * An array of objects. Each object defines an action with 'properties' 'text', 'class', 'icon' and 'click'.
          */
-        actions: Toast.ActionsSettings;
+        actions: Toast.ActionsSettings[];
 
         // endregion
 

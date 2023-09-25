@@ -124,7 +124,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default {}
          */
-        apiSettings: APISettings | JQueryAjaxSettings;
+        apiSettings: Partial<Pick<APISettings, keyof APISettings>> | JQueryAjaxSettings;
 
         /**
          * Minimum characters to query for results.
@@ -237,13 +237,13 @@ declare namespace FomanticUI {
          * The first parameter includes the filtered response results for that element.
          * The function should return 'false' to prevent default action (closing search results and selecting value).
          */
-        onSelect(this: JQuery, result: object, response: object): boolean;
+        onSelect(this: JQuery, result: object, response: object): void | Promise<void> | boolean | Promise<boolean>;
 
         /**
          * Callback after processing element template to add HTML to results.
          * Function should return 'false' to prevent default actions.
          */
-        onResultsAdd(this: JQuery, html: string): boolean;
+        onResultsAdd(this: JQuery, html: string): void | boolean;
 
         /**
          * Callback on search query.

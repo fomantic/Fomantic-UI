@@ -15,7 +15,12 @@ declare namespace FomanticUI {
         /**
          * Adds rule to existing rules for field, also aliased as 'add field'.
          */
-        (behavior: 'add rule', field: string, rules: object[]): void;
+        (behavior: 'add rule', field: string, rules: string | string[] | FormField[]): void;
+
+        /**
+         * Adds field object to existing fields.
+         */
+        (behavior: 'add field', name: string, rules: string | string[] | FormRule[]): void;
 
         /**
          * Adds fields object to existing fields.
@@ -25,12 +30,17 @@ declare namespace FomanticUI {
         /**
          * Removes specific rule from field leaving other rules.
          */
-        (behavior: 'remove rule', field: string, rules: object[]): void;
+        (behavior: 'remove rule', field: string, rules?: object[]): void;
 
         /**
          * Remove all validation for a field.
          */
         (behavior: 'remove field', field: string): void;
+
+        /**
+         * Remove all validation for an array of fields.
+         */
+        (behavior: 'remove fields', field: string[]): void;
 
         /**
          * Returns 'true'/'false' whether a field passes its validation rules.
@@ -41,7 +51,7 @@ declare namespace FomanticUI {
         /**
          * Validates form, updates UI, and calls 'onSuccess' or 'onFailure'.
          */
-        (behavior: 'validate form'): void;
+        (behavior: 'validate form'): boolean;
 
         /**
          * Validates field, updates UI, and calls 'onSuccess' or 'onFailure'.
@@ -62,7 +72,7 @@ declare namespace FomanticUI {
          * Returns object of element values that match array of identifiers.
          * If no IDS are passed will return all fields.
          */
-        (behavior: 'get values', identifiers?: string[]): object;
+        (behavior: 'get values', identifiers?: string[]): Record<string, string>;
 
         /**
          * Sets value of element with id.
@@ -97,22 +107,32 @@ declare namespace FomanticUI {
         /**
          * Adds a custom user prompt for a given element with identifier.
          */
-        (behavior: 'add prompt', identifier: string, errors: object[]): void;
+        (behavior: 'add prompt', identifier: string, errors: string | object[]): void;
 
         /**
          * Empty all fields and remove possible errors.
          */
-        (behavior: 'clear'): void;
+        (behavior: 'clear'): JQuery;
 
         /**
          * Set all fields to their initial value and remove possible errors.
          */
-        (behavior: 'reset'): void;
+        (behavior: 'reset'): JQuery;
 
         /**
          * Set fields actual values as default values.
          */
         (behavior: 'set defaults'): void;
+
+        /**
+         * Returns 'true'/'false' whether a form is dirty.
+         */
+        (behavior: 'is dirty'): boolean;
+
+        /**
+         * Returns 'true'/'false' whether a form is clean.
+         */
+        (behavior: 'is clean'): boolean;
 
         /**
          * Return elements which have been modified since form state was changed to 'dirty'.
@@ -122,7 +142,7 @@ declare namespace FomanticUI {
         /**
          * Set the state of the form to 'clean' and set new values as default.
          */
-        (behavior: 'set as clean'): void;
+        (behavior: 'set as clean'): JQuery;
 
         /**
          * Automatically adds the "empty" rule or automatically checks a checkbox for all fields with classname or attribute 'required'.
@@ -144,11 +164,32 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;
     }
 
+    type FormFields = Record<string, FormField | string[] | string | {}>;
+
+    interface FormRule {
+        type: string;
+        prompt?: string | ((value: string) => void);
+        value?: string | RegExp;
+    }
+
+    interface FormField {
+        identifier?: string;
+        depends?: string;
+        optional?: boolean;
+        rules: FormRule[];
+    }
+
     /**
      * @see {@link https://fomantic-ui.com/behaviors/form.html#/settings}
      */
     interface FormSettings {
         // region Form Settings
+
+        /**
+         * Adds keyboard shortcuts for enter and escape keys to submit form and blur fields respectively.
+         * @default false
+         */
+        fields: false | FormFields;
 
         /**
          * Adds keyboard shortcuts for enter and escape keys to submit form and blur fields respectively.
@@ -248,6 +289,12 @@ declare namespace FomanticUI {
 
         // endregion
 
+        // region Formatters
+
+        rules: Form.RulesSettings;
+
+        // endregion
+
         // region Callbacks
 
         /**
@@ -258,7 +305,7 @@ declare namespace FomanticUI {
         /**
          * Callback on each invalid field.
          */
-        onInvalid(this: JQuery): void;
+        onInvalid(this: JQuery, fieldErrors: string | string[]): void;
 
         /**
          * Callback if a form is all valid.
@@ -351,6 +398,7 @@ declare namespace FomanticUI {
         type TextSettings = Partial<Pick<Settings.Texts, keyof Settings.Texts>>;
         type PromptSettings = Partial<Pick<Settings.Prompts, keyof Settings.Prompts>>;
         type FormatterSettings = Partial<Pick<Settings.Formatters, keyof Settings.Formatters>>;
+        type RulesSettings = Partial<Pick<Settings.Rules, keyof Settings.Rules>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
@@ -375,6 +423,21 @@ declare namespace FomanticUI {
             }
 
             interface Prompts {
+                /**
+                 * @default '{name} must be in a range from {min} to {max}'
+                 */
+                range: string;
+
+                /**
+                 * @default '{name} must have a maximum value of {ruleValue}'
+                 */
+                maxValue: string;
+
+                /**
+                 * @default '{name} must have a minimum value of {ruleValue}'
+                 */
+                minValue: string;
+
                 /**
                  * @default '{name} must have a value'
                  */
@@ -507,6 +570,38 @@ declare namespace FomanticUI {
                 time(date: string): string;
                 month(date: string): string;
                 year(date: string): string;
+            }
+
+            interface Rules {
+                empty(value: unknown): boolean;
+                checked(): boolean;
+                email(value: unknown): boolean;
+                url(value: unknown): boolean;
+                regExp(value: unknown, regExp: RegExp): boolean;
+                minValue(value: unknown, range: string): boolean;
+                maxValue(value: unknown, range: string): boolean;
+                integer(value: unknown, range: string): boolean;
+                range(value: unknown, range: string, regExp: RegExp, testLength: boolean): boolean;
+                decimal(value: unknown, range: string): boolean;
+                number(value: unknown, range: string): boolean;
+                is(value: unknown, text: string): boolean;
+                isExactly(value: unknown, text: string): boolean;
+                not(value: unknown, notValue: unknown): boolean;
+                notExactly(value: unknown, notValue: unknown): boolean;
+                contains(value: unknown, text: string): boolean;
+                containsExactly(value: unknown, text: string): boolean;
+                doesntContain(value: unknown, text: string): boolean;
+                doesntContainExactly(value: unknown, text: string): boolean;
+                minLength(value: unknown, minLength: number): boolean;
+                exactLength(value: unknown, requiredLength: number): boolean;
+                maxLength(value: unknown, maxLength: number): boolean;
+                size(value: unknown, range: string): boolean;
+                match(value: unknown, identifier: string, module: unknown): boolean;
+                different(value: unknown, identifier: string, module: unknown): boolean;
+                creditCard(cardNumber: unknown, cardTypes: string): boolean;
+                minCount(value: unknown, minCount: number): boolean;
+                exactCount(value: unknown, exactCount: number): boolean;
+                maxCount(value: unknown, maxCount: number): boolean;
             }
 
             interface Selectors {
