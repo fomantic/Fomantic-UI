@@ -181,3 +181,7 @@ $.toast({
     closeEasing: 'easeOutBounce'
   }
 });
+
+$().transition("shake", "200ms");
+$().transition("horizontal flip", 500, function() { alert('done!'); });
+$().transition("fade up");

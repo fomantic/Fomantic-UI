@@ -310,12 +310,12 @@ declare namespace FomanticUI {
         /**
          * Callback if a form is all valid.
          */
-        onSuccess(this: JQuery, event: Event, fields: object[]): void;
+        onSuccess(this: JQuery, event: Event, fields: {[key: string]: any}): void;
 
         /**
          * Callback if any form field is invalid.
          */
-        onFailure(this: JQuery, formErrors: object[], fields: object[]): void;
+        onFailure(this: JQuery, formErrors: {[key: string]: any}, fields: {[key: string]: any}): void;
 
         /**
          * Callback if form state is modified to 'dirty'.

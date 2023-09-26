@@ -112,51 +112,33 @@ declare namespace FomanticUI {
          */
         (behavior: 'is supported'): boolean;
 
-        (behavior: 'scale'): JQuery;
+        (behavior: 'scale', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'zoom'): JQuery;
+        (behavior: 'zoom', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'fade'): JQuery;
-        (behavior: 'fade up'): JQuery;
-        (behavior: 'fade down'): JQuery;
-        (behavior: 'fade left'): JQuery;
-        (behavior: 'fade right'): JQuery;
+        (behavior: 'fade' | 'fade up' | 'fade down' | 'fade left' | 'fade right', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'horizontal flip'): JQuery;
-        (behavior: 'vertical flip'): JQuery;
+        (behavior: 'horizontal flip' | 'vertical flip', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'drop'): JQuery;
+        (behavior: 'drop', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'fly up'): JQuery;
-        (behavior: 'fly down'): JQuery;
-        (behavior: 'fly left'): JQuery;
-        (behavior: 'fly right'): JQuery;
+        (behavior: 'fly up' | 'fly down' | 'fly left' | 'fly right', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'swing up'): JQuery;
-        (behavior: 'swing down'): JQuery;
-        (behavior: 'swing left'): JQuery;
-        (behavior: 'swing right'): JQuery;
+        (behavior: 'swing up' | 'swing down' | 'swing left' | 'swing right', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'browse'): JQuery;
-        (behavior: 'browse up'): JQuery;
-        (behavior: 'browse down'): JQuery;
-        (behavior: 'browse left'): JQuery;
-        (behavior: 'browse right'): JQuery;
+        (behavior: 'browse' | 'browse up' | 'browse down' | 'browse left' | 'browse right', duration?: any, onComplete?: () => any): JQuery;
 
-        (behavior: 'slide up'): JQuery;
-        (behavior: 'slide down'): JQuery;
-        (behavior: 'slide left'): JQuery;
-        (behavior: 'slide right'): JQuery;
+        (behavior: 'slide up' | 'slide down' | 'slide left' | 'slide right', duration?: any, onComplete?: () => any): JQuery;
 
         // Static animations
-        (behavior: 'pulsating'): JQuery;
-        (behavior: 'jiggle'): JQuery;
-        (behavior: 'flash'): JQuery;
-        (behavior: 'shake'): JQuery;
-        (behavior: 'pulse'): JQuery;
-        (behavior: 'tada'): JQuery;
-        (behavior: 'bounce'): JQuery;
-        (behavior: 'glow'): JQuery;
+        (behavior: 'pulsating', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'jiggle', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'flash', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'shake', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'pulse', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'tada', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'bounce', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'glow', duration?: any, onComplete?: () => any): JQuery;
 
         /**
          * Destroys instance and removes all events.

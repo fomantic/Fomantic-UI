@@ -143,7 +143,7 @@ declare namespace FomanticUI {
          * UI state will be applied to this element, defaults to triggering element.
          * @default false
          */
-        stateContext: false | string | JQuery;
+        stateContext: false | string | JQuery<any>;
 
         /**
          * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
