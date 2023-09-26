@@ -255,7 +255,7 @@ declare namespace FomanticUI {
          * The first parameter includes the filtered response results for that element.
          * The function should return 'false' to prevent default action (closing search results and selecting value).
          */
-        onSelect(this: JQuery, result: any, response: any): void | Promise<void> | boolean | Promise<boolean>;
+        onSelect(this: JQuery, result: any, response: object): void | Promise<void> | boolean | Promise<boolean>;
 
         /**
          * Callback after processing element template to add HTML to results.

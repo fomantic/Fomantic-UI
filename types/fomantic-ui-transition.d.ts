@@ -70,7 +70,7 @@ declare namespace FomanticUI {
         /**
          * Modifies element animation duration.
          */
-        (behavior: 'set duration', duration: number | string): JQuery;
+        (behavior: 'set duration', duration: number): JQuery;
 
         /**
          * Saves all class names and styles to cache to be retrieved after animation.
@@ -152,7 +152,7 @@ declare namespace FomanticUI {
         (behavior: 'pulsating'): JQuery;
         (behavior: 'jiggle'): JQuery;
         (behavior: 'flash'): JQuery;
-        (behavior: 'shake'): JQuery;
+        (behavior: 'shake', duration?: string | number): JQuery;
         (behavior: 'pulse'): JQuery;
         (behavior: 'tada'): JQuery;
         (behavior: 'bounce'): JQuery;

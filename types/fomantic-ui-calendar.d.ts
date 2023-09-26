@@ -214,7 +214,7 @@ declare namespace FomanticUI {
          *
          * @default null
          */
-        initialDate: Date | string | null | object;
+        initialDate: Date | string | null;
 
         /**
          * Display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day').

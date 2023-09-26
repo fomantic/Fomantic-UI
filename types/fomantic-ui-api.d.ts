@@ -126,6 +126,12 @@ declare namespace FomanticUI {
         on: string;
 
         /**
+         * Object containing all templates endpoints
+         * @default {}
+         */
+        api: {[key: string]: string};
+
+        /**
          * Can be set to 'local' to cache successful returned AJAX responses when using a JSON API.
          * This helps avoid server roundtrips when API endpoints will return the same results when accessed repeatedly.
          * Setting to 'false', will add cache busting parameters to the URL.
@@ -137,7 +143,7 @@ declare namespace FomanticUI {
          * UI state will be applied to this element, defaults to triggering element.
          * @default false
          */
-        stateContext: false | string | JQuery;
+        stateContext: false | string | JQuery<any>;
 
         /**
          * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
@@ -394,8 +400,6 @@ declare namespace FomanticUI {
         verbose: boolean;
 
         errors: API.ErrorSettings;
-
-        api: {[key: string]: string}
 
         // endregion
     }
