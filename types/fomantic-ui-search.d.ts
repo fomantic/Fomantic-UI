@@ -10,7 +10,7 @@ declare namespace FomanticUI {
         /**
          * Displays message in search results with text, using template matching type.
          */
-        (behavior: 'display message', text: string, type: string): JQuery;
+        (behavior: 'display message', text: string, type?: string): JQuery;
 
         /**
          * Cancels current remote search query.

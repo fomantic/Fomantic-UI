@@ -24,11 +24,34 @@ $('body').toast(); // $ExpectType JQuery<HTMLElement>
 $().transition(); // $ExpectType JQuery<HTMLElement>
 $().visibility(); // $ExpectType JQuery<HTMLElement>
 
+/* Define API endpoints once globally */
+$.fn.api.settings.api = {
+  'get followers' : '/followers/{id}?results={count}',
+  'create user'   : '/create',
+  'add user'      : '/add/{id}',
+  'follow user'   : '/follow/{id}',
+  'search'        : '/search/?query={value}'
+};
+
 $().calendar({
   today: true,
   initialDate: null,
   endCalendar: $()
 }); // $ExpectType JQuery<HTMLElement>
+
+$.flyout('alert','hello'); // $ExpectType JQuery<HTMLElement>
+$.flyout('confirm','Are you sure?',function(){}); // $ExpectType JQuery<HTMLElement>
+$.flyout('prompt','Enter Code', function(){}); // $ExpectType JQuery<HTMLElement>
+
+$.fn.flyout.settings.templates.greet = function(username) {
+  return {
+    title: 'Greetings to ' + username + '!',
+    content: ''+ username.toUpperCase() + 'is the best!',
+    closeIcon: true,
+    class: 'inverted',
+    classContent: 'centered'
+  }
+}
 
 $().form({
   fields: {
@@ -98,11 +121,63 @@ $().form({
   }
 }); // $ExpectType JQuery<HTMLElement>
 
-//@ts-ignore
 $.fn.form.settings.rules.date = function(str_date: string) {
   return true;
 };
 
+$.modal('alert', {
+  title: 'Listen to me',
+  content: 'I love Fomantic-UI',
+  handler: function() {
+    $.toast({message:'Great!'});
+  }
+});
+
+$.fn.modal.settings.templates.greet = function(username: string) {
+  // do something according to modals settings and/or given parameters
+  return {
+    title: 'Greetings to ' + username + '!',
+    content: ''+ username.toUpperCase() + 'is the best!',
+    class: 'inverted',
+    classContent: 'centered',
+    dimmerSettings: {
+      variation: 'inverted'
+    }
+  }
+}
+
+$.modal('greet', 'mom');
+
 $().nag({
   persist: true
 }); // $ExpectType JQuery<HTMLElement>
+
+$().search("display message", "Hello, world !"); // $ExpectType JQuery<HTMLElement>
+
+// To change the defaults for all toast at once override the module as follows
+$.fn.toast.settings.progressUp = true;
+$.fn.toast.settings.class = 'info';
+$.fn.toast.settings.showIcon = true;
+$.fn.toast.settings.className.box = 'toast-box';  //removes shadow
+$.fn.toast.settings.className.title = 'header';   // smaller font size
+$.fn.toast.settings.className.icon = 'icon';   // top position again
+$.fn.toast.settings.transition.closeEasing = 'easeOutBounce';
+
+// Or apply the old defaults directly to the toast
+$.toast({
+  title: 'LOOK',
+  message: 'Turned back time to 2.7.0 defaults',
+  showProgress: 'bottom',
+   //make it look like 2.7.0
+  showIcon: true,
+  progressUp: true,
+  class: 'info',
+  className: {
+    box:'toast-box',
+    title:'header',
+    icon: 'icon'
+  },
+  transition: {
+    closeEasing: 'easeOutBounce'
+  }
+});

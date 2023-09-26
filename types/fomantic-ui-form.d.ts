@@ -396,9 +396,9 @@ declare namespace FomanticUI {
 
     namespace Form {
         type TextSettings = Partial<Pick<Settings.Texts, keyof Settings.Texts>>;
-        type PromptSettings = Partial<Pick<Settings.Prompts, keyof Settings.Prompts>>;
+        type PromptSettings = Partial<Pick<Settings.Prompts, keyof Settings.Prompts>> & {[key: string]: string | undefined};
         type FormatterSettings = Partial<Pick<Settings.Formatters, keyof Settings.Formatters>>;
-        type RulesSettings = Partial<Pick<Settings.Rules, keyof Settings.Rules>>;
+        type RulesSettings = Partial<Pick<Settings.Rules, keyof Settings.Rules>> & {[key: string]: (value?: any, identifier?: string, module?: any) => boolean};
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;

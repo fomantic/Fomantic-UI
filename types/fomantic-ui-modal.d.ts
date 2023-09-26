@@ -62,6 +62,11 @@ declare namespace FomanticUI {
          */
         (behavior: 'set active'): JQuery;
 
+        /**
+         * Templates handling
+         */
+        (behavior: keyof Modal.TemplatesSettings, ...args: any): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+
         (behavior: 'destroy'): JQuery;
         <K extends keyof ModalSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ModalSettings, keyof ModalSettings>>;
         <K extends keyof ModalSettings>(behavior: 'setting', name: K, value: ModalSettings[K]): JQuery;
@@ -166,13 +171,13 @@ declare namespace FomanticUI {
         /**
          * Custom settings to extend UI dimmer.
          */
-        dimmerSettings: DimmerSettings;
+        dimmerSettings: Partial<Pick<DimmerSettings, keyof DimmerSettings>>;
 
         /**
          * Custom settings to extend UI dimmer.
          * @default 'scale'
          */
-        transition: string | TransitionSettings;
+        transition: string | Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
 
         /**
          * Duration of animation.
@@ -306,6 +311,8 @@ declare namespace FomanticUI {
 
         // region Config Template Settings
 
+        templates: Modal.TemplatesSettings;
+
         // endregion
 
         // region Debug Settings
@@ -355,6 +362,7 @@ declare namespace FomanticUI {
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
+        type TemplatesSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>> & {[key: string]: (...args: any) => Partial<Pick<ModalSettings, keyof ModalSettings>>};
 
         namespace Settings {
             interface Selectors {
@@ -521,6 +529,12 @@ declare namespace FomanticUI {
                  * @default 'The element you specified could not be found'
                  */
                 notFound: string;
+            }
+
+            interface Templates {
+                alert(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+                confirm(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+                prompt(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
             }
         }
     }
