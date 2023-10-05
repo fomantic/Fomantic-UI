@@ -84,7 +84,7 @@ declare namespace FomanticUI {
          * This is useful for including a pre-formatted popup.
          * @default false
          */
-        popup: false | string;
+        popup: false | string | JQuery;
 
         /**
          * Whether all other popups should be hidden when this popup is opened.
@@ -266,39 +266,39 @@ declare namespace FomanticUI {
         /**
          * Callback on popup element creation, with created popup.
          */
-        onCreate(this: JQuery): void;
+        onCreate(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback immediately before Popup is removed from DOM.
          */
-        onRemove(this: JQuery): void;
+        onRemove(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback before popup is shown.
          * Returning 'false' from this callback will cancel the popup from showing.
          */
-        onShow(this: JQuery): boolean;
+        onShow(this: JQuery, element?: JQuery<HTMLElement>): any;
 
         /**
          * Callback after popup is shown.
          */
-        onVisible(this: JQuery): void;
+        onVisible(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback before popup is hidden.
          * Returning 'false' from this callback will cancel the popup from hiding.
          */
-        onHide(this: JQuery): boolean;
+        onHide(this: JQuery, element?: JQuery<HTMLElement>): any;
 
         /**
          * Callback after popup is hidden.
          */
-        onHidden(this: JQuery): void;
+        onHidden(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback after popup cannot be placed on screen.
          */
-        onUnplaceable(this: JQuery): void;
+        onUnplaceable(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         // endregion
 

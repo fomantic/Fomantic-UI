@@ -10,7 +10,7 @@ declare namespace FomanticUI {
         /**
          * Displays message in search results with text, using template matching type.
          */
-        (behavior: 'display message', text: string, type: string): JQuery;
+        (behavior: 'display message', text: string, type?: string): JQuery;
 
         /**
          * Cancels current remote search query.
@@ -124,7 +124,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default {}
          */
-        apiSettings: APISettings | JQueryAjaxSettings;
+        apiSettings: Partial<Pick<APISettings, keyof APISettings>> | JQueryAjaxSettings;
 
         /**
          * Minimum characters to query for results.
@@ -228,6 +228,24 @@ declare namespace FomanticUI {
          */
         ignoreDiacritics: boolean;
 
+        /**
+         * Template to use (specified in settings.templates)
+         * @default 'standard'
+         */
+        type: 'escape' | 'message' | 'category' | 'standard';
+
+        /**
+         * Field to display in standard results template
+         * @default ''
+         */
+        displayField: string;
+
+        /**
+         * Whether to add events to prompt automatically
+         * @default true
+         */
+        automatic: boolean;
+
         // endregion
 
         // region Callbacks
@@ -237,13 +255,13 @@ declare namespace FomanticUI {
          * The first parameter includes the filtered response results for that element.
          * The function should return 'false' to prevent default action (closing search results and selecting value).
          */
-        onSelect(this: JQuery, result: object, response: object): boolean;
+        onSelect(this: JQuery, result: object, response: object): any;
 
         /**
          * Callback after processing element template to add HTML to results.
          * Function should return 'false' to prevent default actions.
          */
-        onResultsAdd(this: JQuery, html: string): boolean;
+        onResultsAdd(this: JQuery, html: string): void | boolean;
 
         /**
          * Callback on search query.
@@ -352,24 +370,24 @@ declare namespace FomanticUI {
         namespace Settings {
             interface Templates {
                 /**
-                 * @default function(string)
+                 * @default function(string, preserveHTML)
                  */
-                escape: Function;
+                escape: (string: string, preserveHTML?: boolean) => string;
 
                 /**
-                 * @default function(message, type)
+                 * @default function(message, type, header)
                  */
-                message: Function;
+                message: (message: string, type?: string, header?: string) => string;
 
                 /**
-                 * @default function(response)
+                 * @default function(response, fields, preserveHTML)
                  */
-                category: Function;
+                category: (response: unknown, fields: {[key: string]: string}, preserveHTML?: boolean) => string;
 
                 /**
-                 * @default function(response)
+                 * @default function(response, fields, preserveHTML)
                  */
-                standard: Function;
+                standard: (response: unknown, fields: {[key: string]: string}, preserveHTML?: boolean) => string;
             }
 
             interface Selectors {

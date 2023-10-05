@@ -26,7 +26,7 @@ declare namespace FomanticUI {
         <K extends keyof NagSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<NagSettings, keyof NagSettings>>;
         <K extends keyof NagSettings>(behavior: 'setting', name: K, value: NagSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<NagSettings, keyof NagSettings>>): JQuery;
-        (settings?: NagSettings): Partial<Pick<NagSettings, keyof NagSettings>>;
+        (settings?: Partial<Pick<NagSettings, keyof NagSettings>>): JQuery;
     }
 
     /**

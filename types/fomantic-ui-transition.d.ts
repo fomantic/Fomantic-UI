@@ -112,6 +112,34 @@ declare namespace FomanticUI {
          */
         (behavior: 'is supported'): boolean;
 
+        (behavior: 'scale', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'zoom', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'fade' | 'fade up' | 'fade down' | 'fade left' | 'fade right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'horizontal flip' | 'vertical flip', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'drop', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'fly up' | 'fly down' | 'fly left' | 'fly right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'swing up' | 'swing down' | 'swing left' | 'swing right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'browse' | 'browse up' | 'browse down' | 'browse left' | 'browse right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'slide up' | 'slide down' | 'slide left' | 'slide right', duration?: any, onComplete?: () => any): JQuery;
+
+        // Static animations
+        (behavior: 'pulsating', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'jiggle', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'flash', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'shake', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'pulse', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'tada', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'bounce', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'glow', duration?: any, onComplete?: () => any): JQuery;
+
         /**
          * Destroys instance and removes all events.
          */

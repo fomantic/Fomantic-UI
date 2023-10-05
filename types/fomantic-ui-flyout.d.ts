@@ -48,6 +48,11 @@ declare namespace FomanticUI {
          */
         (behavior: 'get settings'): FlyoutSettings;
 
+        /**
+         * Templates handling
+         */
+        (behavior: keyof Flyout.TemplatesSettings, ...args: any): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
+
         (behavior: 'destroy'): JQuery;
         <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
         <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value: FlyoutSettings[K]): JQuery;
@@ -145,43 +150,43 @@ declare namespace FomanticUI {
          * Content of the flyout header.
          * @default ''
          */
-        title: boolean;
+        title: string;
 
         /**
          * Content of the flyout content.
          * @default ''
          */
-        content: boolean;
+        content: string;
 
         /**
          * Can hold a string to be added to the flyout class to control its appearance.
          * @default ''
          */
-        class: boolean;
+        class: string;
 
         /**
          * Can hold a string to be added to the title class to control its appearance.
          * @default ''
          */
-        classTitle: boolean;
+        classTitle: string;
 
         /**
          * Can hold a string to be added to the content class to control its appearance.
          * @default ''
          */
-        classContent: boolean;
+        classContent: string;
 
         /**
          * Can hold a string to be added to the actions class to control its appearance.
          * @default ''
          */
-        classActions: boolean;
+        classActions: string;
 
         /**
          * Can hold a string to be added to the actions class to control its appearance.
          * @default false
          */
-        closeIcon: boolean;
+        closeIcon: boolean | string;
 
         /**
          * An array of objects. Each object defines an action with properties `text`, `class`, `icon` and `click`.
@@ -261,6 +266,8 @@ declare namespace FomanticUI {
 
         // region Config Template Settings
 
+        templates: Flyout.TemplatesSettings;
+
         // endregion
 
         // region Debug Settings
@@ -311,6 +318,7 @@ declare namespace FomanticUI {
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
+        type TemplatesSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>> & {[key: string]: (...args: any) => Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>};
 
         namespace Settings {
             interface Selectors {
@@ -519,6 +527,12 @@ declare namespace FomanticUI {
                  * @default 'There were no elements that matched the specified selector'
                  */
                 notFound: string;
+            }
+
+            interface Templates {
+                alert(): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
+                confirm(): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
+                prompt(): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
             }
         }
     }

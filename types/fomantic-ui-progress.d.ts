@@ -209,6 +209,12 @@ declare namespace FomanticUI {
         precision: number;
 
         /**
+         * Sets current overall percent.
+         * @default false
+         */
+        percent: false | number;
+
+        /**
          * Setting a total value will make each call to increment get closer to this total (i.e. 1/20, 2/20 etc).
          * @default false
          */

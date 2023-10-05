@@ -149,7 +149,7 @@ declare namespace FomanticUI {
          * Tabs are limited to those found inside this context.
          * @default false
          */
-        context: false | string;
+        context: JQuery | string | false;
 
         /**
          * If enabled limits tabs to children of passed context.
