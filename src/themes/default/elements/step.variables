@@ -11,6 +11,7 @@
 @stepsBackground: "";
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
+@railingStepsPadding: @stepMargin;
 
 /* -------------------
       Element
@@ -38,6 +39,16 @@
 @boxShadow: none;
 @border: none;
 @divider: @borderWidth solid @borderColor;
+
+@railingStepBorderWidth: 2px;
+@railingStepHeight: @railingStepBorderWidth;
+@railingStepBorder: @railingStepBorderWidth solid @borderColor;
+@railingStepLastItemMargin: 2.2em;
+@railingStepBackground: @borderColor;
+@railingStepRingBackground: @white;
+@railingStepRingPadding: 1em;
+@railingStepDiscPadding: 0.42564em;
+@railingStepDiscPosition: calc(@railingStepDiscPadding + (@railingStepDiscPadding / 1.4));
 
 /* Icon */
 @iconDistance: 1rem;
@@ -90,6 +101,11 @@
 @verticalActiveArrowDisplay: block;
 @verticalActiveLastArrowDisplay: block;
 
+@verticalRailingStepPadding: 3em;
+@verticalRailingStepContentPadding: 3.5em;
+@verticalRailingStepLinePosition: 1em;
+@verticalRailingStepCirclePosition: calc(@railingStepDiscPadding * 1.7);
+
 /* -------------------
       Variations
 -------------------- */
@@ -100,6 +116,30 @@
 
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
+
+/* Circular */
+@circularStepsMargin: @stepMargin;
+@circularStepsPadding: @stepMargin;
+@circularStepLineMargin: 2.2em;
+@circularStepDisabledItemOpacity: 0.5;
+@circularStepColor: @borderColor;
+@circularStepBorderWidth: 2px;
+@circularStepBorder: @circularStepBorderWidth solid @circularStepColor;
+@circularStepRingSize: 2.2em;
+@circularStepIconSize: 0.95em;
+@circularStepIconDistance: calc((-@circularStepRingSize + @circularStepIconSize) - 0.35em);
+@circularStepCompletedIconLineHeight: 1em;
+@circularStepCompletedIconDistance: calc(-@circularStepRingSize + (calc((@circularStepRingSize / unit(@circularStepBorderWidth)) / unit(@circularStepBorderWidth))));
+
+@verticalCircularStepPadding: 3em;
+@verticalCircularStepContentPadding: 3.5em;
+@verticalCircularStepLineDistance: calc(@circularStepRingSize / unit(@circularStepBorderWidth));
+@verticalCircularStepIconDistance: calc((@circularStepRingSize / (unit(@circularStepRingSize) * unit(@circularStepBorderWidth))) + @circularStepBorderWidth);
+@verticalCircularStepCompletedIconDistance: calc((@circularStepRingSize / (unit(@circularStepRingSize) * unit(@circularStepBorderWidth))) + (@circularStepBorderWidth - (@circularStepBorderWidth / 2)));
+
+@circularStepActiveColor: @completedColor;
+@circularStepCompletedColor: @white;
+@circularStepCompletedBackground: @completedColor;
 
 /* -------------------
        States
@@ -134,3 +174,10 @@
 @invertedActiveHoverBackground: #444;
 @invertedHoverBackground: #3f3f3f;
 @invertedDisabledBackground: #222;
+
+/* Railing Step */
+@railingStepActiveColor: @completedColor;
+@railingStepCompletedColor: @white;
+@railingStepCompletedBackground: @railingStepActiveColor;
+@railingStepCompletedIconHorizontalPosition: calc(@railingStepDiscPadding / 2);
+@railingStepCompletedIconVerticalPosition: calc((@railingStepDiscPadding * -1.5) + (@railingStepDiscPadding * 1.5));
