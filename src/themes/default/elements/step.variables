@@ -11,7 +11,6 @@
 @stepsBackground: "";
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
-@railingStepsPadding: @stepMargin;
 
 /* -------------------
       Element
@@ -39,16 +38,6 @@
 @boxShadow: none;
 @border: none;
 @divider: @borderWidth solid @borderColor;
-
-@railingStepBorderWidth: 2px;
-@railingStepHeight: @railingStepBorderWidth;
-@railingStepBorder: @railingStepBorderWidth solid @borderColor;
-@railingStepLastItemMargin: 2.2em;
-@railingStepBackground: @borderColor;
-@railingStepRingBackground: @white;
-@railingStepRingPadding: 1em;
-@railingStepDiscPadding: 0.42564em;
-@railingStepDiscPosition: calc(@railingStepDiscPadding + (@railingStepDiscPadding / 1.4));
 
 /* Icon */
 @iconDistance: 1rem;
@@ -100,11 +89,6 @@
 
 @verticalActiveArrowDisplay: block;
 @verticalActiveLastArrowDisplay: block;
-
-@verticalRailingStepPadding: 3em;
-@verticalRailingStepContentPadding: 3.5em;
-@verticalRailingStepLinePosition: 1em;
-@verticalRailingStepCirclePosition: calc(@railingStepDiscPadding * 1.7);
 
 /* -------------------
       Variations
@@ -174,10 +158,3 @@
 @invertedActiveHoverBackground: #444;
 @invertedHoverBackground: #3f3f3f;
 @invertedDisabledBackground: #222;
-
-/* Railing Step */
-@railingStepActiveColor: @completedColor;
-@railingStepCompletedColor: @white;
-@railingStepCompletedBackground: @railingStepActiveColor;
-@railingStepCompletedIconHorizontalPosition: calc(@railingStepDiscPadding / 2);
-@railingStepCompletedIconVerticalPosition: calc((@railingStepDiscPadding * -1.5) + (@railingStepDiscPadding * 1.5));
