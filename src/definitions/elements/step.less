@@ -191,10 +191,10 @@
                 align-items: center;
                 flex: 1;
                 position: relative;
-                margin-left: @circularStepLineMargin;
+                margin-left: @circularStepRingSize;
 
                 &::before {
-                    left: -@circularStepLineMargin;
+                    left: -@circularStepRingSize;
                 }
                 &::after {
                     left: @circularStepIconDistance;
@@ -208,7 +208,7 @@
                     background: @circularStepCompletedBackground;
                 }
                 &.completed::after {
-                    left: calc(-1.65em + (@circularStepBorderWidth / 2));
+                    left: @circularStepCompletedIconDistance;
                 }
                 &:last-child {
                     flex: 0;
@@ -263,7 +263,6 @@
                     content: "\e800";
                     font-family: Step;
                     color: @circularStepCompletedColor;
-                    left: @circularStepCompletedIconDistance;
                     height: auto;
                     line-height: @circularStepCompletedIconLineHeight;
                 }
@@ -403,7 +402,7 @@
                         content: "";
                         position: absolute;
                         border-left: @circularStepBorder;
-                        top: @circularStepLineMargin;
+                        top: @circularStepRingSize;
                         bottom: 0;
                         left: @verticalCircularStepLineDistance;
                     }

@@ -104,16 +104,15 @@
 /* Circular */
 @circularStepsMargin: @stepMargin;
 @circularStepsPadding: @stepMargin;
-@circularStepLineMargin: 2.2em;
 @circularStepDisabledItemOpacity: 0.5;
 @circularStepColor: @borderColor;
 @circularStepBorderWidth: 2px;
 @circularStepBorder: @circularStepBorderWidth solid @circularStepColor;
 @circularStepRingSize: 2.2em;
 @circularStepIconSize: 0.95em;
-@circularStepIconDistance: calc((-@circularStepRingSize + @circularStepIconSize) - 0.35em);
+@circularStepIconDistance: calc((-@circularStepRingSize + @circularStepIconSize) - 0.3em);
 @circularStepCompletedIconLineHeight: 1em;
-@circularStepCompletedIconDistance: calc(-@circularStepRingSize + (calc((@circularStepRingSize / unit(@circularStepBorderWidth)) / unit(@circularStepBorderWidth))));
+@circularStepCompletedIconDistance: calc(-@circularStepRingSize + ((@circularStepRingSize / 2) / 2) + (@circularStepBorderWidth / 2));
 
 @verticalCircularStepPadding: 3em;
 @verticalCircularStepContentPadding: 3.5em;
