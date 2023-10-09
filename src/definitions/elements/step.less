@@ -204,12 +204,11 @@
                 &.link ::after {
                     cursor: pointer;
                 }
-                &.active,
                 &.completed {
                     background: @circularStepCompletedBackground;
                 }
                 &.completed::after {
-                    left: calc(-@circularStepLineMargin + (calc((@circularStepLineMargin / 2) / 2)));
+                    left: calc(-1.65em + (@circularStepBorderWidth / 2));
                 }
                 &:last-child {
                     flex: 0;
@@ -410,7 +409,6 @@
                     }
                 }
 
-                &.active .content::before,
                 &.completed .content::before {
                     border-color: @circularStepCompletedBackground;
                 }
@@ -820,12 +818,11 @@
         }
 
         &:not(.vertical) {
-            & .step:not(.active):not(.completed) {
+            & .step:not(.completed) {
                 background: @invertedTextColor;
-
-                &::before {
-                    border-color: @invertedTextColor;
-                }
+            }
+            & .step:not(.active):not(.completed)::before {
+                border-color: @invertedTextColor;
             }
         }
         &:not(.ordered) .step:not(.active):not(.completed)::after {
@@ -834,13 +831,11 @@
 
         & when (@variationStepVertical) {
             &.vertical {
-                & .step:not(.active):not(.completed) {
-                    &::before {
-                        border-color: @invertedTextColor;
-                    }
-                    & .content::before {
-                        background: @invertedTextColor;
-                    }
+                & .step:not(.active):not(.completed)::before {
+                    border-color: @invertedTextColor;
+                }
+                & .step:not(.completed) .content::before {
+                    background: @invertedTextColor;
                 }
             }
         }
@@ -852,7 +847,7 @@
         @variation: @value;
         @color: @colors[@@variation][color];
 
-        .ui.circular.steps .step.@{variation} {
+        .ui.ui.circular.steps .step.@{variation} {
             &::before {
                 border-color: @color;
             }
@@ -860,7 +855,7 @@
                 background: @color;
             }
         }
-        .ui.@{variation}.circular.steps .step, .ui.circular.steps .step.@{variation} {
+        .ui.ui.@{variation}.circular.steps .step, .ui.ui.circular.steps .step.@{variation} {
             &.active::before {
                 border-color: @color;
             }
@@ -872,25 +867,22 @@
                 border-color: @color;
             }
         }
-        .ui.@{variation}.circular.steps:not(.vertical) .step, .ui.circular.steps:not(.vertical) .step.@{variation} {
-            &.active, &.completed {
+        .ui.ui.@{variation}.circular.steps:not(.vertical) .step, .ui.ui.circular.steps:not(.vertical) .step.@{variation} {
+            &.completed {
                 background: @color;
             }
         }
-        .ui.circular.steps:not(.vertical) .step.@{variation} {
+        .ui.ui.circular.steps:not(.vertical) .step.@{variation} {
             background: @color;
         }
 
         & when (@variationStepVertical) {
-            .ui.vertical.circular.steps .step.@{variation} .content::before {
+            .ui.ui.vertical.circular.steps .step.completed.@{variation} .content::before {
                 border-color: @color;
             }
-            .ui.@{variation}.vertical.circular.steps .step, .ui.vertical.circular.steps .step.@{variation} {
+            .ui.ui.@{variation}.vertical.circular.steps .step, .ui.ui.vertical.circular.steps .step.@{variation} {
                 &.active .content .title {
                     color: @color;
-                }
-                &.active .content::before {
-                    border-color: @color;
                 }
                 &.completed .content::before {
                     border-color: @color;
@@ -899,7 +891,7 @@
         }
 
         & when (@variationStepOrdered) {
-            .ui.@{variation}.circular.ordered.steps .step, .ui.circular.ordered.steps .step.@{variation} {
+            .ui.ui.@{variation}.circular.ordered.steps .step, .ui.ui.circular.ordered.steps .step.@{variation} {
                 &::after {
                     background: transparent;
                 }
