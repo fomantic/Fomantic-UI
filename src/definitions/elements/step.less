@@ -200,8 +200,8 @@
                     left: @circularStepIconDistance;
                 }
 
-                &.link ::before,
-                &.link ::after {
+                &.link::before,
+                &.link::after {
                     cursor: pointer;
                 }
                 &.completed {
@@ -236,10 +236,6 @@
                 background: @circularStepColor;
                 height: @circularStepIconSize;
                 width: @circularStepIconSize;
-            }
-            &.link::before,
-            &.link::after {
-                cursor: pointer;
             }
             &.active {
                 &::before {
