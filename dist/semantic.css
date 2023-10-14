@@ -47664,6 +47664,7 @@ span.ui.massive.text {
 .ui.grid {
   display: flex;
   /* flex-flow: row wrap; */
+  flex-direction: row;
   align-items: stretch;
   padding: 0;
 }
