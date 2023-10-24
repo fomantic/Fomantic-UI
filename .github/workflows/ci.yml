@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
     - name: Install dependencies
       run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^46 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
     - name: Lint JS and LESS files
@@ -30,7 +30,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
