@@ -1349,13 +1349,14 @@
                             fieldErrors = [],
                             isDisabled = $field.filter(':not(:disabled)').length === 0,
                             validationMessage = $field[0].validationMessage,
+                            noNativeValidation = $field.filter("[native-validation='false']").length === 1,
                             errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if (validationMessage) {
+                        if (validationMessage && !noNativeValidation) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
