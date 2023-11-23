@@ -552,7 +552,7 @@
                             $field        = module.get.field(field.identifier),
                             value         = $field.val(),
                             prompt        = isFunction(rule.prompt)
-                                ? rule.prompt(value)
+                                ? rule.prompt.call($field[0], value) 
                                 : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
                             requiresValue = prompt.search('{value}') !== -1,
                             requiresName  = prompt.search('{name}') !== -1,
