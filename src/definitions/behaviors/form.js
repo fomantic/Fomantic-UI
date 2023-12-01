@@ -538,6 +538,14 @@
                                     fullFields[name].rules.push({ type: rule });
                                 });
                             }
+
+                            $.each(fullFields[name].rules, function (index, rule) {
+                                var ruleName = module.get.ruleName(rule);
+                                if (ruleName === 'empty') {
+                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name +'" will be removed in a future version. -> Use "notEmpty" rule instead.');
+                                }
+                            });
+
                         });
 
                         return fullFields;
@@ -591,10 +599,10 @@
                     },
                     settings: function () {
                         if ($.isPlainObject(parameters)) {
-                            if (parameters.fields) {
-                                parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
-                            }
                             settings = $.extend(true, {}, $.fn.form.settings, parameters);
+                            if (settings.fields) {
+                                settings.fields = module.get.fieldsFromShorthand(settings.fields);
+                            }
                             validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                             module.verbose('Extending settings', validation, settings);
                         } else {
@@ -1491,6 +1499,12 @@
                         module.error.apply(console, arguments);
                     }
                 },
+                warn: function () {
+                    if (!settings.silent) {
+                        module.warn = Function.prototype.bind.call(console.warn, console, settings.name + ':');
+                        module.warn.apply(console, arguments);
+                    }
+                },
                 performance: {
                     log: function (message) {
                         var
@@ -1605,6 +1619,7 @@
         name: 'Form',
         namespace: 'form',
 
+        silent: false,
         debug: false,
         verbose: false,
         performance: true,
@@ -1806,9 +1821,8 @@
                 return !(value === undefined || value === '' || (Array.isArray(value) && value.length === 0));
             },
 
-            empty: function (value, ancillary, module) {
-                module.debug('Rule "empty" is deprecated and will be removed in a future version. Use the "notEmpty" rule instead.');
-
+            /* Deprecated */
+            empty: function (value) {
                 return $.fn.form.settings.rules.notEmpty(value);
             },
 
