@@ -542,10 +542,9 @@
                             $.each(fullFields[name].rules, function (index, rule) {
                                 var ruleName = module.get.ruleName(rule);
                                 if (ruleName === 'empty') {
-                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name +'" will be removed in a future version. -> Use "notEmpty" rule instead.');
+                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name + '" will be removed in a future version. -> Use "notEmpty" rule instead.');
                                 }
                             });
-
                         });
 
                         return fullFields;
