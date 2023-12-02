@@ -1349,7 +1349,7 @@
                             fieldErrors = [],
                             isDisabled = $field.filter(':not(:disabled)').length === 0,
                             validationMessage = $field[0].validationMessage,
-                            noNativeValidation = $field.filter("[native-validation='false']").length === 1,
+                            noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
                             errorLimit
                         ;
                         if (!field.identifier) {
