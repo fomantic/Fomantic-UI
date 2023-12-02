@@ -658,10 +658,20 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "alvarolm",
+      "name": "Alvaro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2561547?v=4",
+      "profile": "https://twitter.com/alvarofleiva",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs"
 }
