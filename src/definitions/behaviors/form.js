@@ -1349,13 +1349,14 @@
                             fieldErrors = [],
                             isDisabled = $field.filter(':not(:disabled)').length === 0,
                             validationMessage = $field[0].validationMessage,
+                            noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
                             errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if (validationMessage) {
+                        if (validationMessage && !noNativeValidation) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
@@ -1627,6 +1628,7 @@
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
         errorLimit: 0,
+        noNativeValidation: false,
 
         onValid: function () {},
         onInvalid: function () {},
