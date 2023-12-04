@@ -54,7 +54,7 @@ declare namespace FomanticUI {
         (behavior: keyof Flyout.TemplatesSettings, ...args: any): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
+        <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>;
         <K extends keyof FlyoutSettings>(behavior: 'setting', name: K, value: FlyoutSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>): JQuery;
         (settings?: Partial<Pick<FlyoutSettings, keyof FlyoutSettings>>): JQuery;
@@ -372,7 +372,7 @@ declare namespace FomanticUI {
                  */
                 deny: string;
             }
-            
+
             interface ClassNames {
                 /**
                  * @default 'ui flyout'
@@ -489,7 +489,7 @@ declare namespace FomanticUI {
                  */
                 prompt: string;
             }
-        
+
             interface RegExps {
                 /**
                  * @default /(iPad|iPhone|iPod)/g

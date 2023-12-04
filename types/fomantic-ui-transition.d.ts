@@ -144,7 +144,7 @@ declare namespace FomanticUI {
          * Destroys instance and removes all events.
          */
         (behavior: 'destroy'): JQuery;
-        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
+        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
         <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value: TransitionSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;
         (settings?: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;

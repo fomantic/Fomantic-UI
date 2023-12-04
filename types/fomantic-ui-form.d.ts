@@ -158,7 +158,7 @@ declare namespace FomanticUI {
          * Destroys instance and removes all events.
          */
         (behavior: 'destroy'): JQuery;
-        <K extends keyof FormSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<FormSettings, keyof FormSettings>>;
+        <K extends keyof FormSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<FormSettings, keyof FormSettings>>;
         <K extends keyof FormSettings>(behavior: 'setting', name: K, value: FormSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;
         (settings?: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;

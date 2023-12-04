@@ -3,7 +3,7 @@ declare namespace FomanticUI {
         settings: StickySettings;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof StickySettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<StickySettings, keyof StickySettings>>;
+        <K extends keyof StickySettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<StickySettings, keyof StickySettings>>;
         <K extends keyof StickySettings>(behavior: 'setting', name: K, value: StickySettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<StickySettings, keyof StickySettings>>): JQuery;
         (settings?: Partial<Pick<StickySettings, keyof StickySettings>>): JQuery;

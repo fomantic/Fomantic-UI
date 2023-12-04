@@ -68,7 +68,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SidebarSettings, keyof SidebarSettings>>;
+        <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<SidebarSettings, keyof SidebarSettings>>;
         <K extends keyof SidebarSettings>(behavior: 'setting', name: K, value: SidebarSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<SidebarSettings, keyof SidebarSettings>>): JQuery;
         (settings?: Partial<Pick<SidebarSettings, keyof SidebarSettings>>): JQuery;
@@ -281,7 +281,7 @@ declare namespace FomanticUI {
                  */
                 sidebar: string;
             }
-        
+
             interface RegExps {
                 /**
                  * @default /(iPad|iPhone|iPod)/g
@@ -298,7 +298,7 @@ declare namespace FomanticUI {
                  */
                 mobile: RegExp;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'
@@ -370,7 +370,7 @@ declare namespace FomanticUI {
                  */
                 visible: string;
             }
-        
+
             interface Errors {
                 /**
                  * @default 'The method you called is not defined.'
