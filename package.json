@@ -27,8 +27,8 @@
   "scripts": {
     "build": "gulp build",
     "changelog": "auto-changelog -p",
-    "lint": "eslint --ext .js . && stylelint \"**/*.{css,less,overrides,variables}\"",
-    "lint-fix": "eslint --ext .js . --fix && stylelint \"**/*.{css,less,overrides,variables}\" --fix"
+    "lint": "eslint --ext .js,.ts . && stylelint \"**/*.{css,less,overrides,variables}\"",
+    "lint-fix": "eslint --ext .js,.ts . --fix && stylelint \"**/*.{css,less,overrides,variables}\" --fix"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",

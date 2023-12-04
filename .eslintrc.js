@@ -120,4 +120,11 @@ module.exports = {
     globals: {
         jQuery: true,
     },
+    overrides: [{
+        files: ['**/*.ts'],
+        parser: '@typescript-eslint/parser',
+        extends: [
+            'plugin:@typescript-eslint/recommended',
+        ],
+    }],
 };
