@@ -107,6 +107,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
       <td align="center" valign="top" width="25%"><a href="http://www.mathieumitchell.com"><img src="https://avatars.githubusercontent.com/u/234168?v=4?s=60" width="60px;" alt="Mathieu Mitchell"/><br /><sub><b>Mathieu Mitchell</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=mat128" title="Code">💻</a></td>
       <td align="center" valign="top" width="25%"><a href="https://github.com/brian-codes"><img src="https://avatars.githubusercontent.com/u/37519149?v=4?s=60" width="60px;" alt="Brian McCluskey"/><br /><sub><b>Brian McCluskey</b></sub></a><br /><a href="#security-brian-codes" title="Security">🛡️</a></td>
       <td align="center" valign="top" width="25%"><a href="https://twitter.com/alvarofleiva"><img src="https://avatars.githubusercontent.com/u/2561547?v=4?s=60" width="60px;" alt="Alvaro"/><br /><sub><b>Alvaro</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=alvarolm" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/Festiis"><img src="https://avatars.githubusercontent.com/u/44016065?v=4?s=60" width="60px;" alt="Festim Nuredini"/><br /><sub><b>Festim Nuredini</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=Festiis" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
