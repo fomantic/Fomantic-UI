@@ -895,6 +895,7 @@
                         regExpFlags      = (settings.ignoreSearchCase ? 'i' : '') + 'gm',
                         beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
                     ;
+                    module.remove.filteredItem();
                     // avoid loop if we're matching nothing
                     if (module.has.query()) {
                         results = [];
@@ -938,12 +939,33 @@
                         ;
                     }
                     module.debug('Showing only matched items', searchTerm);
-                    module.remove.filteredItem();
                     if (results) {
                         $item
                             .not(results)
                             .addClass(className.filtered)
                         ;
+                        if (settings.highlightMatches && (settings.match === 'both' || settings.match === 'text')) {
+                            var querySplit = query.split(''),
+                                diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
+                                htmlReg = '(?![^<]*>)',
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*)' + htmlReg +'(') + diacriticReg + ')', regExpFlags),
+                                markedReplacer = function(){
+                                    var args = [].slice.call(arguments,1, querySplit.length * 2).map(function(x, i){
+                                        return i & 1 ? x : '<mark>' + x + '</mark>'})
+                                    ;
+                                    return args.join('');
+                                }
+                            ;
+                            $.each(results, function(index, result) {
+                                var $result = $(result),
+                                    markedHTML = module.get.choiceText($result)
+                                ;
+                                if (settings.ignoreDiacritics) {
+                                    markedHTML = markedHTML.normalize('NFD');
+                                }
+                                $result.html(markedHTML.replace(markedRegExp, markedReplacer));
+                            });
+                        }
                     }
 
                     if (!module.has.query()) {
@@ -3080,6 +3102,12 @@
                         $item.removeClass(className.active);
                     },
                     filteredItem: function () {
+                        if (settings.highlightMatches) {
+                            $.each($item, function (index, item) {
+                                var $markItem = $(item);
+                                $markItem.html($markItem.html().replace(/<\/?mark>/g, ''));
+                            });
+                        }
                         if (settings.useLabels && module.has.maxSelections()) {
                             return;
                         }
@@ -4005,6 +4033,7 @@
 
         match: 'both', // what to match against with search selection (both, text, or label)
         fullTextSearch: 'exact', // search anywhere in value (set to 'exact' to require exact matches)
+        highlightMatches: false, // Whether search result should highlight matching strings
         ignoreDiacritics: false, // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
         hideDividers: false, // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
