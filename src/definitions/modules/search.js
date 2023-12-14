@@ -632,7 +632,7 @@
                             exactResults = [],
                             fuzzyResults = [],
                             searchExp    = searchTerm.replace(regExp.escape, '\\$&'),
-                            matchRegExp= new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : ''),
+                            matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : ''),
 
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
