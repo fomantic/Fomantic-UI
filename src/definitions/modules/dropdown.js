@@ -890,9 +890,10 @@
                                 ? query
                                 : module.get.query()
                         ),
-                        results          =  null,
-                        escapedTerm      = module.escape.string(searchTerm),
-                        regExpFlags      = (settings.ignoreSearchCase ? 'i' : '') + 'gm',
+                        results = null,
+                        escapedTerm = module.escape.string(searchTerm),
+                        regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
+                        regExpFlags = regExpIgnore + 'gm',
                         beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
                     ;
                     module.remove.filteredItem();
@@ -948,7 +949,7 @@
                             var querySplit = query.split(''),
                                 diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
                                 htmlReg = '(?![^<]*>)',
-                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*)' + htmlReg +'(') + diacriticReg + ')', regExpFlags),
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*)' + htmlReg +'(') + diacriticReg + ')', regExpIgnore),
                                 markedReplacer = function(){
                                     var args = [].slice.call(arguments,1, querySplit.length * 2).map(function(x, i){
                                         return i & 1 ? x : '<mark>' + x + '</mark>'})
@@ -1001,8 +1002,10 @@
                         termLength  = term.length,
                         queryLength = query.length
                     ;
-                    query = settings.ignoreSearchCase ? query.toLowerCase() : query;
-                    term = settings.ignoreSearchCase ? term.toLowerCase() : term;
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
                     if (queryLength > termLength) {
                         return false;
                     }
