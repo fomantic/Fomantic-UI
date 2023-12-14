@@ -949,7 +949,7 @@
                             var querySplit = query.split(''),
                                 diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
                                 htmlReg = '(?![^<]*>)',
-                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*)' + htmlReg +'(') + diacriticReg + ')', regExpIgnore),
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg +'(') + diacriticReg + ')', regExpIgnore),
                                 markedReplacer = function(){
                                     var args = [].slice.call(arguments,1, querySplit.length * 2).map(function(x, i){
                                         return i & 1 ? x : '<mark>' + x + '</mark>'})
