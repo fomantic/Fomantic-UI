@@ -1096,7 +1096,7 @@
                         }
                         if (settings.highlightMatches) {
                             var results = response[fields.results],
-                                regExpIgnore= settings.ignoreSearchCase ? 'i' : '',
+                                regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
                                 querySplit = module.get.value().split(''),
                                 diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
                                 htmlReg = '(?![^<]*>)',
@@ -1105,6 +1105,7 @@
                                     var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
                                         return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                     });
+
                                     return args.join('');
                                 }
                             ;

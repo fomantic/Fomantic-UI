@@ -954,10 +954,11 @@
                                     var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
                                         return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                     });
+
                                     return args.join('');
                                 }
                             ;
-                            $.each(results, function(index, result) {
+                            $.each(results, function (index, result) {
                                 var $result = $(result),
                                     markedHTML = module.get.choiceText($result)
                                 ;
