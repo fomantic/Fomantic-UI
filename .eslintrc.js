@@ -123,8 +123,13 @@ module.exports = {
     overrides: [{
         files: ['**/*.ts'],
         parser: '@typescript-eslint/parser',
+        parserOptions: {
+            project: ['types/tsconfig.json'],
+        },
+        plugins: ['eslint-plugin-expect-type'],
         extends: [
             'plugin:@typescript-eslint/recommended',
+            'plugin:expect-type/recommended',
         ],
         rules: {
             // https://typescript-eslint.io/rules/no-use-before-define#how-to-use
