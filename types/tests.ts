@@ -2,7 +2,7 @@
 
 $().accordion(); // $ExpectType JQuery<HTMLElement>
 $().api();// $ExpectType JQuery
-$().calendar(); // $ExpectType JQuery<HTMLElement>
+$().calendar(); // $ExpectType JQuery<JQuery>
 $().checkbox(); // $ExpectType JQuery<HTMLElement>
 $('body').dimmer(); // $ExpectType JQuery<HTMLElement>
 $().dropdown(); // $ExpectType JQuery<HTMLElement>
