@@ -113,7 +113,7 @@ declare namespace FomanticUI {
         (behavior: 'set disabled'): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<DimmerSettings, keyof DimmerSettings>>;
+        <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<DimmerSettings, keyof DimmerSettings>>;
         <K extends keyof DimmerSettings>(behavior: 'setting', name: K, value: DimmerSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<DimmerSettings, keyof DimmerSettings>>): JQuery;
         (settings?: Partial<Pick<DimmerSettings, keyof DimmerSettings>>): JQuery;

@@ -23,7 +23,7 @@ declare namespace FomanticUI {
         (behavior: 'clear'): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof NagSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<NagSettings, keyof NagSettings>>;
+        <K extends keyof NagSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<NagSettings, keyof NagSettings>>;
         <K extends keyof NagSettings>(behavior: 'setting', name: K, value: NagSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<NagSettings, keyof NagSettings>>): JQuery;
         (settings?: Partial<Pick<NagSettings, keyof NagSettings>>): JQuery;
@@ -231,7 +231,7 @@ declare namespace FomanticUI {
                  */
                 close: string;
             }
-            
+
             interface ClassNames {
                 /**
                  * @default 'bottom'
@@ -243,7 +243,7 @@ declare namespace FomanticUI {
                  */
                 fixed: string;
             }
-        
+
             interface Errors {
                 /**
                  * @default 'Unsupported storage method'

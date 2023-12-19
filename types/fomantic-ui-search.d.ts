@@ -107,7 +107,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SearchSettings, keyof SearchSettings>>;
+        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<SearchSettings, keyof SearchSettings>>;
         <K extends keyof SearchSettings>(behavior: 'setting', name: K, value: SearchSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
         (settings?: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
