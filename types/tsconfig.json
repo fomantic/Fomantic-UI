@@ -18,6 +18,6 @@
     },
     "files": [
         "index.d.ts",
-        "fomantic-ui-tests.ts"
+        "tests.ts"
     ]
 }
