@@ -57,7 +57,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<EmbedSettings, keyof EmbedSettings>>;
+        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<EmbedSettings, keyof EmbedSettings>>;
         <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value: EmbedSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;
         (settings?: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;

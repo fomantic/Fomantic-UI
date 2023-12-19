@@ -33,7 +33,7 @@ declare namespace FomanticUI {
         (behavior: 'get remainingTime'): number;
 
         (behavior: 'refresh' | 'destroy'): JQuery;
-        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ToastSettings, keyof ToastSettings>>;
+        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ToastSettings, keyof ToastSettings>>;
         <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
         (settings?: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
