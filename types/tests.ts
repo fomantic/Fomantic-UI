@@ -58,7 +58,7 @@ $().form({
         field1: {
             rules: [
                 {
-                    type: 'empty',
+                    type: 'notEmpty',
                 },
             ],
         },
@@ -96,7 +96,7 @@ $().form({
             depends: 'isDoctor',
             rules: [
                 {
-                    type: 'empty',
+                    type: 'notEmpty',
                     prompt: 'Please enter the number of years you have been a doctor',
                 },
             ],
@@ -116,9 +116,9 @@ $().form({
 
 $().form({
     fields: {
-        gender: 'empty',
-        name: 'empty',
-        password: ['minLength[6]', 'empty'],
+        gender: 'notEmpty',
+        name: 'notEmpty',
+        password: ['minLength[6]', 'notEmpty'],
     },
 }); // $ExpectType JQuery<HTMLElement>
 
