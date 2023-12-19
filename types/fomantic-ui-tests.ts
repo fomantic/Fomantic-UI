@@ -40,8 +40,8 @@ $().calendar({
 }); // $ExpectType JQuery<HTMLElement>
 
 $.flyout('alert', 'hello'); // $ExpectType JQuery<HTMLElement>
-$.flyout('confirm', 'Are you sure?', function () {}); // $ExpectType JQuery<HTMLElement>
-$.flyout('prompt', 'Enter Code', function () {}); // $ExpectType JQuery<HTMLElement>
+$.flyout('confirm', 'Are you sure?', function () { /* make eslint happy */ }); // $ExpectType JQuery<HTMLElement>
+$.flyout('prompt', 'Enter Code', function () { /* make eslint happy */ }); // $ExpectType JQuery<HTMLElement>
 
 $.fn.flyout.settings.templates.greet = function (username) {
     return {
@@ -75,7 +75,7 @@ $().form({
                 {
                     type: 'isExactly[cat]',
                     prompt: function (value) {
-                        if (value == 'dog') {
+                        if (value === 'dog') {
                             return 'I told you to put cat, not dog!';
                         }
 
@@ -122,8 +122,8 @@ $().form({
     },
 }); // $ExpectType JQuery<HTMLElement>
 
-$.fn.form.settings.rules.date = function (str_date: string) {
-    return true;
+$.fn.form.settings.rules.date = function (dateStr: string) {
+    return dateStr !== '';
 };
 
 $.modal('alert', {
@@ -184,5 +184,5 @@ $.toast({
 });
 
 $().transition('shake', '200ms');
-$().transition('horizontal flip', 500, function () { alert('done!'); });
+$().transition('horizontal flip', 500, function () { /* make eslint happy */ });
 $().transition('fade up');

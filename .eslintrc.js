@@ -127,18 +127,13 @@ module.exports = {
             'plugin:@typescript-eslint/recommended',
         ],
         rules: {
+            // https://typescript-eslint.io/rules/no-use-before-define#how-to-use
+            'no-use-before-define': 'off',
+
             // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
+            '@typescript-eslint/ban-types': 'off', // 16 eslint errors only, help wanted!
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/triple-slash-reference': 'off',
-
-            // TODO
-            'camelcase': 'off',
-            'no-alert': 'off',
-            'no-use-before-define': 'off',
-            '@internal/eqeqeq': 'off',
-            '@typescript-eslint/ban-types': 'off',
-            '@typescript-eslint/no-empty-function': 'off',
-            '@typescript-eslint/no-unused-vars': 'off',
-        }
+        },
     }],
 };
