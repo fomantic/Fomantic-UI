@@ -68,7 +68,7 @@ declare namespace FomanticUI {
         (behavior: keyof Modal.TemplatesSettings, ...args: any): Partial<Pick<ModalSettings, keyof ModalSettings>>;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof ModalSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+        <K extends keyof ModalSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ModalSettings, keyof ModalSettings>>;
         <K extends keyof ModalSettings>(behavior: 'setting', name: K, value: ModalSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
         (settings?: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
@@ -244,13 +244,13 @@ declare namespace FomanticUI {
         closeIcon: boolean;
 
         /**
-         * 
+         *
          * @default false
          */
         actions: any;
 
         /**
-         * 
+         *
          * @default true
          */
         preserveHTML: boolean;

@@ -35,7 +35,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SliderSettings, keyof SliderSettings>>;
+        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<SliderSettings, keyof SliderSettings>>;
         <K extends keyof SliderSettings>(behavior: 'setting', name: K, value: SliderSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;
         (settings?: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;

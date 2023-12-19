@@ -28,7 +28,7 @@ declare namespace FomanticUI {
         (behavior: 'toggle', index: number): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<AccordionSettings, keyof AccordionSettings>>;
+        <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<AccordionSettings, keyof AccordionSettings>>;
         <K extends keyof AccordionSettings>(behavior: 'setting', name: K, value: AccordionSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;
         (settings?: Partial<Pick<AccordionSettings, keyof AccordionSettings>>): JQuery;

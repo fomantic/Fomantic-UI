@@ -522,7 +522,7 @@ declare namespace FomanticUI {
 
             interface Formatters {
                 /**
-                 * 
+                 *
                  */
                 yearHeader(date: Date, settings?: CalendarSettings): string;
 
@@ -580,14 +580,14 @@ declare namespace FomanticUI {
                  * @default 'YYYY'
                  */
                 year: string;
-                
+
                 /**
-                 * 
+                 *
                  */
                 today(settings: CalendarSettings): string;
 
                 /**
-                 * 
+                 *
                  */
                 cell(cell: string, date: Date, cellOptions: any): any
             }
