@@ -39,6 +39,12 @@ jobs:
       run: yarn
     - name: pre fomantic install & gulp build
       run: yarn gulp install
+    - name: Install dependencies for TS
+      if: matrix.node-version != 12
+      run: yarn add -D typescript @types/jquery
+    - name: tsc build
+      if: matrix.node-version != 12
+      run: tsc --project types/tsconfig.json
   codeql:
     name: CodeQL
     runs-on: ubuntu-latest
