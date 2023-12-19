@@ -1413,7 +1413,9 @@
                                         module.remove.userAddition();
                                     }
                                     if (!settings.keepSearchTerm) {
-                                        module.remove.filteredItem();
+                                        if (module.is.multiple()) {
+                                            module.remove.filteredItem();
+                                        }
                                         module.remove.searchTerm();
                                     }
                                     if (!module.is.visible() && $target.length > 0) {
@@ -2587,7 +2589,7 @@
                             } else {
                                 $combo.text(text);
                             }
-                        } else if (settings.action === 'activate') {
+                        } else if (settings.action === 'activate' || isFunction(settings.action)) {
                             if (text !== module.get.placeholderText() || isNotPlaceholder) {
                                 $text.removeClass(className.placeholder);
                             }
