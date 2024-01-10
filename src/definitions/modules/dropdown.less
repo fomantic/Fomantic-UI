@@ -1635,7 +1635,7 @@ select.ui.dropdown {
         z-index: @pointingArrowZIndex;
     }
 
-    @supports selector(:has(.f)) {
+    @supports selector(:has(.f)) and (not(-moz-appearance: none)) {
         .ui.pointing.dropdown:not(.upward) .menu:has(:first-child:hover)::after,
         .ui.upward.pointing.dropdown .menu:has(:last-child:hover)::after {
             background: @hoveredItemBackground;
@@ -2060,7 +2060,7 @@ select.ui.dropdown {
                 box-shadow: @invertedPointingUpwardArrowBoxShadow;
             }
         }
-        @supports selector(:has(.f)) {
+        @supports selector(:has(.f)) and (not(-moz-appearance: none)) {
             .ui.inverted.pointing.dropdown:not(.upward) .menu:has(:first-child:hover)::after,
             .ui.inverted.upward.pointing.dropdown .menu:has(:last-child:hover)::after {
                 background: @invertedHoveredItemBackground;
