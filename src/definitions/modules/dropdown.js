@@ -2463,7 +2463,7 @@
 
                 update: {
                     direction: function (direction) {
-                        settings.direction = direction
+                        settings.direction = direction;
                     },
                 },
 
