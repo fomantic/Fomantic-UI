@@ -2460,11 +2460,13 @@
                         ;
                     }
                 },
+
                 update: {
                     direction: function (direction) {
                         settings.direction = direction
                     },
                 },
+
                 set: {
                     filtered: function () {
                         var
