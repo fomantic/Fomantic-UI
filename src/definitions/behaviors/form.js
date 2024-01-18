@@ -558,9 +558,10 @@
                             ancillary     = module.get.ancillaryValue(rule),
                             $field        = module.get.field(field.identifier),
                             value         = $field.val(),
-                            prompt        = isFunction(rule.prompt)
-                                ? rule.prompt.call($field[0], value)
-                                : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            promptCheck   = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            prompt        = String(isFunction(promptCheck)
+                                ? promptCheck.call($field[0], value)
+                                : promptCheck),
                             requiresValue = prompt.search('{value}') !== -1,
                             requiresName  = prompt.search('{name}') !== -1,
                             parts,
