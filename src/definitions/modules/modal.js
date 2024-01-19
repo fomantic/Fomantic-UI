@@ -903,7 +903,6 @@
                 },
 
                 cacheSizes: function () {
-                    $module.addClass(className.loading);
                     var
                         scrollHeight = $module.prop('scrollHeight'),
                         modalWidth   = $module.outerWidth(),
@@ -921,7 +920,6 @@
                         });
                         module.cache.topOffset = -(module.cache.height / 2);
                     }
-                    $module.removeClass(className.loading);
                     module.debug('Caching modal and container sizes', module.cache);
                 },
                 helpers: {
@@ -1503,7 +1501,6 @@
             blurring: 'blurring',
             inverted: 'inverted',
             legacy: 'legacy',
-            loading: 'loading',
             scrolling: 'scrolling',
             undetached: 'undetached',
             front: 'front',
