@@ -169,7 +169,9 @@
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
-                                module.timer = setTimeout(function () { module.hideResults(); }, settings.hideDelay);
+                                module.timer = setTimeout(function () {
+                                    module.hideResults();
+                                }, settings.hideDelay);
                             }
                         ;
                         if (pageLostFocus) {
@@ -1171,7 +1173,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

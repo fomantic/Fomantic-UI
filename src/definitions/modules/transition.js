@@ -142,7 +142,9 @@
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
-                    setTimeout(function () { module.animate(); }, delay);
+                    setTimeout(function () {
+                        module.animate();
+                    }, delay);
                 },
 
                 animate: function (overrideSettings) {
@@ -849,7 +851,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
