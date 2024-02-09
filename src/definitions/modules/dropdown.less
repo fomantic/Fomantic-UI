@@ -1860,6 +1860,13 @@ select.ui.dropdown {
     });
 }
 
+& when (@variationDropdownHighlightMatches) {
+    .ui.dropdown .menu > .item mark {
+        background: @highlightMatchesBackground;
+        color: @highlightMatchesColor;
+    }
+}
+
 & when (@variationDropdownInverted) {
     /* --------------
         Inverted
