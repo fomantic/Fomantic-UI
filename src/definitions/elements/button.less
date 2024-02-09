@@ -885,7 +885,7 @@
                 border-top: @basicGroupBorder;
             }
 
-            .ui.basic.vertical.buttons:not(.spaced) .button:first-child {
+            .ui.basic.vertical.buttons:not(.spaced):not(.circular) .button:first-child {
                 border-top: none;
             }
         }
@@ -1095,14 +1095,36 @@
     /* --------------
         Circular
     --------------- */
-
-    .ui.circular.button {
+    .ui.ui.circular.buttons .button,
+    .ui.ui.ui.ui.circular.button {
         border-radius: @circularBorderRadius;
     }
 
     .ui.circular.button > .icon {
         width: @circularIconWidth;
         vertical-align: baseline;
+    }
+
+    .ui.circular.buttons:not(.vertical) .button {
+        margin-right: @circularGroupMargin;
+    }
+
+    & when (@variationButtonVertical) {
+        .ui.vertical.circular.buttons .button {
+            margin-bottom: @circularVerticalGroupMargin;
+        }
+    }
+
+    & when (@variationButtonBasic) {
+        .ui.circular.basic.buttons {
+            border: none;
+            & .button {
+                border: @basicGroupBorder;
+                &.basic {
+                    border: none;
+                }
+            }
+        }
     }
 }
 

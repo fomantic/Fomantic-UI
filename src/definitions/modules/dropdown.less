@@ -1853,8 +1853,8 @@ select.ui.dropdown {
 & when not (@variationDropdownSizes = false) {
     each(@variationDropdownSizes, {
         @s: @@value;
-        .ui.@{value}.dropdown,
-        .ui.@{value}.dropdown .menu > .item {
+        .ui.ui.@{value}.dropdown,
+        .ui.ui.@{value}.dropdown .menu > .item {
             font-size: @s;
         }
     });

@@ -67,7 +67,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<PopupSettings, keyof PopupSettings>>;
+        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<PopupSettings, keyof PopupSettings>>;
         <K extends keyof PopupSettings>(behavior: 'setting', name: K, value: PopupSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
         (settings?: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
@@ -402,7 +402,7 @@ declare namespace FomanticUI {
                  */
                 popup: string;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'activator'
@@ -439,7 +439,7 @@ declare namespace FomanticUI {
                  */
                 variation: string;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'

@@ -210,7 +210,7 @@ declare namespace FomanticUI {
         (behavior: 'get placeholder text'): string;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof DropdownSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<DropdownSettings, keyof DropdownSettings>>;
+        <K extends keyof DropdownSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<DropdownSettings, keyof DropdownSettings>>;
         <K extends keyof DropdownSettings>(behavior: 'setting', name: K, value: DropdownSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<DropdownSettings, keyof DropdownSettings>>): JQuery;
         (settings?: Partial<Pick<DropdownSettings, keyof DropdownSettings>>): JQuery;
@@ -345,7 +345,7 @@ declare namespace FomanticUI {
          *
          * @default 'auto'
          */
-        placeholder: 'auto' | String | false;
+        placeholder: 'auto' | string | false;
 
         /**
          * Whether HTML included in dropdown values should be preserved.
@@ -577,22 +577,22 @@ declare namespace FomanticUI {
         message: Dropdown.MessageSettings;
 
         /**
-         * 
+         *
          */
         regExp: Dropdown.RegExpSettings;
 
         /**
-         * 
+         *
          */
         metadata: Dropdown.MetadataSettings;
 
         /**
-         * 
+         *
          */
         fields: Dropdown.FieldsSettings;
 
         /**
-         * 
+         *
          */
         keys: Dropdown.KeysSettings;
 
@@ -738,7 +738,7 @@ declare namespace FomanticUI {
                  */
                 clearIcon: string;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'
@@ -915,7 +915,7 @@ declare namespace FomanticUI {
                  */
                 actionable: string;
             }
-        
+
             interface Messages {
                 /**
                  * @default 'Add <b>{term}</b>'
@@ -947,9 +947,9 @@ declare namespace FomanticUI {
                 /**
                  * @default '/[-[\]{}()*+?.,\\^$|#\s]/g'
                  */
-                escape: string;  
+                escape: string;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'defaultText'
@@ -959,24 +959,24 @@ declare namespace FomanticUI {
                 /**
                  * @default 'defaultValue'
                  */
-                defaultValue: string;  
+                defaultValue: string;
 
                 /**
                  * @default 'placeholderText'
                  */
-                placeholderText: string;  
+                placeholderText: string;
 
                 /**
                  * @default 'text'
                  */
-                text: string;  
+                text: string;
 
                 /**
                  * @default 'value'
                  */
-                value: string;  
+                value: string;
             }
-       
+
             interface Fields {
                 /**
                  * Grouping for api results
@@ -988,13 +988,13 @@ declare namespace FomanticUI {
                  * Grouping for all dropdown values
                  * @default 'values'
                  */
-                values: string;  
+                values: string;
 
                 /**
                  * Whether value should be disabled
                  * @default 'disabled'
                  */
-                disabled: string;  
+                disabled: string;
 
                 /**
                  * Displayed dropdown text
@@ -1074,7 +1074,7 @@ declare namespace FomanticUI {
                  */
                 actionable: string;
             }
-        
+
             interface Keys {
                 /**
                  * @default 8

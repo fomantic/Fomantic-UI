@@ -1262,7 +1262,9 @@
                             module.set.filtered();
                         }
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.search(); }, settings.delay.search);
+                        module.timer = setTimeout(function () {
+                            module.search();
+                        }, settings.delay.search);
                     },
                     label: {
                         click: function (event) {
@@ -1439,7 +1441,9 @@
                                         module.remove.userAddition();
                                     }
                                     if (!settings.keepSearchTerm) {
-                                        module.remove.filteredItem();
+                                        if (module.is.multiple()) {
+                                            module.remove.filteredItem();
+                                        }
                                         module.remove.searchTerm();
                                     }
                                     if (!module.is.visible() && $target.length > 0) {
@@ -2613,7 +2617,7 @@
                             } else {
                                 $combo.text(text);
                             }
-                        } else if (settings.action === 'activate') {
+                        } else if (settings.action === 'activate' || isFunction(settings.action)) {
                             if (text !== module.get.placeholderText() || isNotPlaceholder) {
                                 $text.removeClass(className.placeholder);
                             }
@@ -3779,12 +3783,16 @@
                     show: function () {
                         module.verbose('Delaying show event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.show(); }, settings.delay.show);
+                        module.timer = setTimeout(function () {
+                            module.show();
+                        }, settings.delay.show);
                     },
                     hide: function () {
                         module.verbose('Delaying hide event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.hide(); }, settings.delay.hide);
+                        module.timer = setTimeout(function () {
+                            module.hide();
+                        }, settings.delay.hide);
                     },
                 },
 
@@ -3909,7 +3917,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
