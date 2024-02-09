@@ -3787,6 +3787,7 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string, forceAmpersand) {
+                        forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
                         var
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
