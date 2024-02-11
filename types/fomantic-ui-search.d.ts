@@ -229,6 +229,18 @@ declare namespace FomanticUI {
         ignoreDiacritics: boolean;
 
         /**
+         * Whether to consider case sensitivity on local searching
+         * @default true
+         */
+        ignoreSearchCase: boolean;
+
+        /**
+         * Whether search result should highlight matching strings
+         * @default false
+         */
+        highlightMatches: boolean;
+
+        /**
          * Template to use (specified in settings.templates)
          * @default 'standard'
          */
