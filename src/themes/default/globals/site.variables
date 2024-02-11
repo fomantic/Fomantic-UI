@@ -1538,3 +1538,6 @@
 
 @inputWarningPlaceholderColor: if(iscolor(@formWarningColor), lighten(@formWarningColor, 40), @formWarningColor);
 @inputWarningPlaceholderFocusColor: if(iscolor(@formWarningColor), lighten(@formWarningColor, 30), @formWarningColor);
+
+@defaultHighlightMatchesBackground: revert;
+@defaultHighlightMatchesColor: revert;
