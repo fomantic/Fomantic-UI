@@ -386,6 +386,12 @@ declare namespace FomanticUI {
         ignoreSearchCase: boolean;
 
         /**
+         * Whether search result should highlight matching strings
+         * @default false
+         */
+        highlightMatches: boolean;
+
+        /**
          * If disabled user additions will appear in the dropdown's menu using a specially formatted selection item formatted by 'templates.addition'.
          * @default true
          */

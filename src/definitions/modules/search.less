@@ -565,13 +565,20 @@
 .ui.search {
     font-size: @relativeMedium;
 }
-& when not (@variationFeedSizes = false) {
-    each(@variationFeedSizes, {
+& when not (@variationSearchSizes = false) {
+    each(@variationSearchSizes, {
         @s: @{value}SearchSize;
         .ui.@{value}.search {
             font-size: @@s;
         }
     });
+}
+
+& when (@variationSearchHighlightMatches) {
+    .ui.search > .results mark {
+        background: @highlightMatchesBackground;
+        color: @highlightMatchesColor;
+    }
 }
 
 /* --------------
