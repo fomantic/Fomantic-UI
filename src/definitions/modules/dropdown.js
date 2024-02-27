@@ -2798,19 +2798,27 @@
                         $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
+                        if (!$selectedItem && value !== undefined) {
+                            return false;
+                        }
+                        if (isMultiple) {
+                            if (!keepSearchTerm) {
+                                module.remove.searchWidth();
+                            }
+                            if (settings.useLabels) {
+                                module.remove.selectedItem();
+                                if (value === undefined) {
+                                    module.remove.labels($module.find(selector.label), true);
+                                }
+                            }
+                        } else {
+                            module.remove.activeItem();
+                            module.remove.selectedItem();
+                        }
                         if (!$selectedItem) {
                             return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
-                        if (module.is.multiple() && !keepSearchTerm) {
-                            module.remove.searchWidth();
-                        }
-                        if (module.is.single()) {
-                            module.remove.activeItem();
-                            module.remove.selectedItem();
-                        } else if (settings.useLabels) {
-                            module.remove.selectedItem();
-                        }
                         // select each item
                         $selectedItem
                             .each(function () {
