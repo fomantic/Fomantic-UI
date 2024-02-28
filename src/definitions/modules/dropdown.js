@@ -793,7 +793,7 @@
                                 }
                                 if (module.is.multiple()) {
                                     $.each(preSelected, function (index, value) {
-                                        $item.filter('[data-value="' + value + '"]')
+                                        $item.filter('[data-' + metadata.value + '="' + value + '"]')
                                             .addClass(className.filtered)
                                         ;
                                     });
@@ -4171,6 +4171,7 @@
             descriptionVertical: 'descriptionVertical', // whether description should be vertical
             value: 'value', // actual dropdown value
             text: 'text', // displayed text when selected
+            data: 'data', // custom data attributes
             type: 'type', // type of dropdown element
             image: 'image', // optional image path
             imageClass: 'imageClass', // optional individual class for image
@@ -4315,9 +4316,21 @@
             $.each(values, function (index, option) {
                 var
                     itemType = option[fields.type] || 'item',
-                    isMenu = itemType.indexOf('menu') !== -1
+                    isMenu = itemType.indexOf('menu') !== -1,
+                    maybeData = '',
+                    dataObject = option[fields.data]
                 ;
-
+                if (dataObject) {
+                    var dataKey,
+                        dataKeyEscaped
+                    ;
+                    for (dataKey in dataObject) {
+                        dataKeyEscaped = String(dataKey).replace(/\W/g, '');
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
+                            maybeData += ' data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '"';
+                        }
+                    }
+                }
                 if (itemType === 'item' || isMenu) {
                     var
                         maybeText = option[fields.text]
@@ -4334,7 +4347,7 @@
                             : '',
                         hasDescription = escape(option[fields.description] || '', preserveHTML) !== ''
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
