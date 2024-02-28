@@ -4309,7 +4309,7 @@
                 var
                     itemType = option[fields.type] || 'item',
                     isMenu = itemType.indexOf('menu') !== -1,
-                    maybeData = ' ',
+                    maybeData = '',
                     dataObject = option[fields.data]
                 ;
                 if (dataObject) {
@@ -4319,7 +4319,7 @@
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
                         if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
-                            maybeData += 'data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '" ';
+                            maybeData += ' data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '"';
                         }
                     }
                 }
