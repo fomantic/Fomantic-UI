@@ -3468,7 +3468,7 @@
                         return $selectedMenu.hasClass(className.leftward);
                     },
                     clearable: function () {
-                        var hasClearableClass =  $module.hasClass(className.clearable);
+                        var hasClearableClass = $module.hasClass(className.clearable);
                         if (!hasClearableClass && settings.clearable) {
                             $module.addClass(className.clearable);
                         }
