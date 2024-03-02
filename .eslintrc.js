@@ -20,6 +20,7 @@ module.exports = {
         '/test/helpers',
     ],
     rules: {
+        'brace-style': ['error', '1tbs'],
         'class-methods-use-this': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
@@ -120,4 +121,20 @@ module.exports = {
     globals: {
         jQuery: true,
     },
+    overrides: [{
+        files: ['**/*.ts'],
+        parser: '@typescript-eslint/parser',
+        extends: [
+            'plugin:@typescript-eslint/recommended',
+        ],
+        rules: {
+            // https://typescript-eslint.io/rules/no-use-before-define#how-to-use
+            'no-use-before-define': 'off',
+
+            // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
+            '@typescript-eslint/ban-types': 'off', // 16 eslint errors only, help wanted!
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off',
+        },
+    }],
 };

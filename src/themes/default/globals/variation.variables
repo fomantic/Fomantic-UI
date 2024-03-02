@@ -82,6 +82,7 @@
 @variationHeaderDividing: true;
 @variationHeaderBlock: true;
 @variationHeaderAttached: true;
+@variationHeaderSeamless: true;
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 @variationHeaderColors: @variationAllColors;
@@ -452,13 +453,25 @@
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedDisabled: true;
 @variationFeedMeta: true;
 @variationFeedSummary: true;
 @variationFeedUser: true;
 @variationFeedExtra: true;
 @variationFeedDate: true;
 @variationFeedLike: true;
+@variationFeedLabel: true;
+@variationFeedLabelIcon: true;
+@variationFeedLabelImage: true;
+@variationFeedLabelText: true;
+@variationFeedLabelUiLabel: true;
+@variationFeedConnected: true;
+@variationFeedDivided: true;
+@variationFeedOrdered: true;
+@variationFeedBasic: true;
+@variationFeedRightFloated: true;
 @variationFeedSizes: @variationAllSizes;
+@variationFeedColors: @variationAllColors;
 
 /* Item */
 @variationItemInverted: true;
@@ -507,6 +520,7 @@
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 @variationCalendarMultiMonth: true;
+@variationCalendarSizes: @variationAllSizes;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;
@@ -559,6 +573,7 @@
 @variationDropdownPointing: true;
 @variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
+@variationDropdownHighlightMatches: false;
 @variationDropdownSizes: @variationAllSizes;
 
 /* Embed */
@@ -664,6 +679,7 @@
 @variationSearchVeryLong: true;
 @variationSearchResizable: true;
 @variationSearchScrolling: true;
+@variationSearchHighlightMatches: false;
 @variationSearchSizes: @variationAllSizes;
 
 /* Shape */

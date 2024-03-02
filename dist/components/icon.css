@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.2 - Icon
+ * # Fomantic-UI 2.9.3 - Icon
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -61,7 +61,7 @@ i.icon {
           backface-visibility: hidden;
 }
 i.icon::before {
-  background: none !important;
+  background: none;
 }
 
 
@@ -284,196 +284,196 @@ i.inverted.icon {
 /* -------------------
        Colors
 -------------------- */
-i.primary.icon.icon.icon.icon.icon {
+i.primary.icon.icon.icon.icon.icon.icon {
   color: #2185d0;
 }
-i.inverted.primary.icon.icon.icon.icon.icon {
+i.inverted.primary.icon.icon.icon.icon.icon.icon {
   color: #54c8ff;
 }
-i.inverted.bordered.primary.icon.icon.icon.icon.icon,
-i.inverted.circular.primary.icon.icon.icon.icon.icon,
+i.inverted.bordered.primary.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.primary.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.primary.icons,
 i.inverted.circular.primary.icons {
   background-color: #2185d0;
   color: #fff;
 }
-i.secondary.icon.icon.icon.icon.icon {
+i.secondary.icon.icon.icon.icon.icon.icon {
   color: #1b1c1d;
 }
-i.inverted.secondary.icon.icon.icon.icon.icon {
+i.inverted.secondary.icon.icon.icon.icon.icon.icon {
   color: #545454;
 }
-i.inverted.bordered.secondary.icon.icon.icon.icon.icon,
-i.inverted.circular.secondary.icon.icon.icon.icon.icon,
+i.inverted.bordered.secondary.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.secondary.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.secondary.icons,
 i.inverted.circular.secondary.icons {
   background-color: #1b1c1d;
   color: #fff;
 }
-i.red.icon.icon.icon.icon.icon {
+i.red.icon.icon.icon.icon.icon.icon {
   color: #db2828;
 }
-i.inverted.red.icon.icon.icon.icon.icon {
+i.inverted.red.icon.icon.icon.icon.icon.icon {
   color: #ff695e;
 }
-i.inverted.bordered.red.icon.icon.icon.icon.icon,
-i.inverted.circular.red.icon.icon.icon.icon.icon,
+i.inverted.bordered.red.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.red.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.red.icons,
 i.inverted.circular.red.icons {
   background-color: #db2828;
   color: #fff;
 }
-i.orange.icon.icon.icon.icon.icon {
+i.orange.icon.icon.icon.icon.icon.icon {
   color: #f2711c;
 }
-i.inverted.orange.icon.icon.icon.icon.icon {
+i.inverted.orange.icon.icon.icon.icon.icon.icon {
   color: #ff851b;
 }
-i.inverted.bordered.orange.icon.icon.icon.icon.icon,
-i.inverted.circular.orange.icon.icon.icon.icon.icon,
+i.inverted.bordered.orange.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.orange.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.orange.icons,
 i.inverted.circular.orange.icons {
   background-color: #f2711c;
   color: #fff;
 }
-i.yellow.icon.icon.icon.icon.icon {
+i.yellow.icon.icon.icon.icon.icon.icon {
   color: #fbbd08;
 }
-i.inverted.yellow.icon.icon.icon.icon.icon {
+i.inverted.yellow.icon.icon.icon.icon.icon.icon {
   color: #ffe21f;
 }
-i.inverted.bordered.yellow.icon.icon.icon.icon.icon,
-i.inverted.circular.yellow.icon.icon.icon.icon.icon,
+i.inverted.bordered.yellow.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.yellow.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.yellow.icons,
 i.inverted.circular.yellow.icons {
   background-color: #fbbd08;
   color: #fff;
 }
-i.olive.icon.icon.icon.icon.icon {
+i.olive.icon.icon.icon.icon.icon.icon {
   color: #b5cc18;
 }
-i.inverted.olive.icon.icon.icon.icon.icon {
+i.inverted.olive.icon.icon.icon.icon.icon.icon {
   color: #d9e778;
 }
-i.inverted.bordered.olive.icon.icon.icon.icon.icon,
-i.inverted.circular.olive.icon.icon.icon.icon.icon,
+i.inverted.bordered.olive.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.olive.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.olive.icons,
 i.inverted.circular.olive.icons {
   background-color: #b5cc18;
   color: #fff;
 }
-i.green.icon.icon.icon.icon.icon {
+i.green.icon.icon.icon.icon.icon.icon {
   color: #21ba45;
 }
-i.inverted.green.icon.icon.icon.icon.icon {
+i.inverted.green.icon.icon.icon.icon.icon.icon {
   color: #2ecc40;
 }
-i.inverted.bordered.green.icon.icon.icon.icon.icon,
-i.inverted.circular.green.icon.icon.icon.icon.icon,
+i.inverted.bordered.green.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.green.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.green.icons,
 i.inverted.circular.green.icons {
   background-color: #21ba45;
   color: #fff;
 }
-i.teal.icon.icon.icon.icon.icon {
+i.teal.icon.icon.icon.icon.icon.icon {
   color: #00b5ad;
 }
-i.inverted.teal.icon.icon.icon.icon.icon {
+i.inverted.teal.icon.icon.icon.icon.icon.icon {
   color: #6dffff;
 }
-i.inverted.bordered.teal.icon.icon.icon.icon.icon,
-i.inverted.circular.teal.icon.icon.icon.icon.icon,
+i.inverted.bordered.teal.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.teal.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.teal.icons,
 i.inverted.circular.teal.icons {
   background-color: #00b5ad;
   color: #fff;
 }
-i.blue.icon.icon.icon.icon.icon {
+i.blue.icon.icon.icon.icon.icon.icon {
   color: #2185d0;
 }
-i.inverted.blue.icon.icon.icon.icon.icon {
+i.inverted.blue.icon.icon.icon.icon.icon.icon {
   color: #54c8ff;
 }
-i.inverted.bordered.blue.icon.icon.icon.icon.icon,
-i.inverted.circular.blue.icon.icon.icon.icon.icon,
+i.inverted.bordered.blue.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.blue.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.blue.icons,
 i.inverted.circular.blue.icons {
   background-color: #2185d0;
   color: #fff;
 }
-i.violet.icon.icon.icon.icon.icon {
+i.violet.icon.icon.icon.icon.icon.icon {
   color: #6435c9;
 }
-i.inverted.violet.icon.icon.icon.icon.icon {
+i.inverted.violet.icon.icon.icon.icon.icon.icon {
   color: #a291fb;
 }
-i.inverted.bordered.violet.icon.icon.icon.icon.icon,
-i.inverted.circular.violet.icon.icon.icon.icon.icon,
+i.inverted.bordered.violet.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.violet.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.violet.icons,
 i.inverted.circular.violet.icons {
   background-color: #6435c9;
   color: #fff;
 }
-i.purple.icon.icon.icon.icon.icon {
+i.purple.icon.icon.icon.icon.icon.icon {
   color: #a333c8;
 }
-i.inverted.purple.icon.icon.icon.icon.icon {
+i.inverted.purple.icon.icon.icon.icon.icon.icon {
   color: #dc73ff;
 }
-i.inverted.bordered.purple.icon.icon.icon.icon.icon,
-i.inverted.circular.purple.icon.icon.icon.icon.icon,
+i.inverted.bordered.purple.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.purple.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.purple.icons,
 i.inverted.circular.purple.icons {
   background-color: #a333c8;
   color: #fff;
 }
-i.pink.icon.icon.icon.icon.icon {
+i.pink.icon.icon.icon.icon.icon.icon {
   color: #e03997;
 }
-i.inverted.pink.icon.icon.icon.icon.icon {
+i.inverted.pink.icon.icon.icon.icon.icon.icon {
   color: #ff8edf;
 }
-i.inverted.bordered.pink.icon.icon.icon.icon.icon,
-i.inverted.circular.pink.icon.icon.icon.icon.icon,
+i.inverted.bordered.pink.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.pink.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.pink.icons,
 i.inverted.circular.pink.icons {
   background-color: #e03997;
   color: #fff;
 }
-i.brown.icon.icon.icon.icon.icon {
+i.brown.icon.icon.icon.icon.icon.icon {
   color: #a5673f;
 }
-i.inverted.brown.icon.icon.icon.icon.icon {
+i.inverted.brown.icon.icon.icon.icon.icon.icon {
   color: #d67c1c;
 }
-i.inverted.bordered.brown.icon.icon.icon.icon.icon,
-i.inverted.circular.brown.icon.icon.icon.icon.icon,
+i.inverted.bordered.brown.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.brown.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.brown.icons,
 i.inverted.circular.brown.icons {
   background-color: #a5673f;
   color: #fff;
 }
-i.grey.icon.icon.icon.icon.icon {
+i.grey.icon.icon.icon.icon.icon.icon {
   color: #767676;
 }
-i.inverted.grey.icon.icon.icon.icon.icon {
+i.inverted.grey.icon.icon.icon.icon.icon.icon {
   color: #dcddde;
 }
-i.inverted.bordered.grey.icon.icon.icon.icon.icon,
-i.inverted.circular.grey.icon.icon.icon.icon.icon,
+i.inverted.bordered.grey.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.grey.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.grey.icons,
 i.inverted.circular.grey.icons {
   background-color: #767676;
   color: #fff;
 }
-i.black.icon.icon.icon.icon.icon {
+i.black.icon.icon.icon.icon.icon.icon {
   color: #1b1c1d;
 }
-i.inverted.black.icon.icon.icon.icon.icon {
+i.inverted.black.icon.icon.icon.icon.icon.icon {
   color: #545454;
 }
-i.inverted.bordered.black.icon.icon.icon.icon.icon,
-i.inverted.circular.black.icon.icon.icon.icon.icon,
+i.inverted.bordered.black.icon.icon.icon.icon.icon.icon,
+i.inverted.circular.black.icon.icon.icon.icon.icon.icon,
 i.inverted.bordered.black.icons,
 i.inverted.circular.black.icons {
   background-color: #1b1c1d;

@@ -58,6 +58,7 @@
                     : $.extend({}, $.fn.api.settings),
 
                 // internal aliases
+                regExp          = settings.regExp,
                 namespace       = settings.namespace,
                 metadata        = settings.metadata,
                 selector        = settings.selector,
@@ -360,8 +361,8 @@
                             optionalVariables
                         ;
                         if (url) {
-                            requiredVariables = url.match(settings.regExp.required);
-                            optionalVariables = url.match(settings.regExp.optional);
+                            requiredVariables = url.match(regExp.required);
+                            optionalVariables = url.match(regExp.optional);
                             urlData = urlData || settings.urlData;
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
@@ -458,7 +459,7 @@
                                 });
                             });
                             $.each(formArray, function (i, el) {
-                                if (!settings.regExp.validate.test(el.name)) {
+                                if (!regExp.validate.test(el.name)) {
                                     return;
                                 }
                                 var
@@ -469,7 +470,7 @@
                                         || (String(floatValue) === el.value
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value)),
-                                    nameKeys = el.name.match(settings.regExp.key) || [],
+                                    nameKeys = el.name.match(regExp.key) || [],
                                     pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
@@ -489,9 +490,9 @@
 
                                     if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
-                                    } else if (settings.regExp.fixed.test(k)) { // foo[n]
+                                    } else if (regExp.fixed.test(k)) { // foo[n]
                                         value = build([], k, value);
-                                    } else if (settings.regExp.named.test(k)) { // foo; foo[bar]
+                                    } else if (regExp.named.test(k)) { // foo; foo[bar]
                                         value = build({}, k, value);
                                     }
                                 }
@@ -646,7 +647,9 @@
                                 module.debug('Adding error state');
                                 module.set.error();
                                 if (module.should.removeError()) {
-                                    setTimeout(function () { module.remove.error(); }, settings.errorDuration);
+                                    setTimeout(function () {
+                                        module.remove.error();
+                                    }, settings.errorDuration);
                                 }
                             }
                             module.debug('API Request failed', errorMessage, xhr);
@@ -970,7 +973,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
