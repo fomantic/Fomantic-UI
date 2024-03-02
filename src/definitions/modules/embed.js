@@ -560,7 +560,9 @@
         source: false,
         url: false,
         id: false,
-
+        placeholder: false,
+        alt: false,
+        
         // standard video settings
         autoplay: 'auto',
         color: '#444',
