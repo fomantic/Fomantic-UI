@@ -666,11 +666,8 @@
                 if (icon) {
                     html += '<i class="' + deQuote(icon) + ' icon"></i>';
                 }
-                if (image && !alt) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + '">';
-                }
-                if (image && alt) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + '" alt="' + deQuote(alt) + '">';
+                if (image) {
+                    html += '<img class="placeholder" src="' + deQuote(image) + (alt ? '" alt="' + deQuote(alt) : '') + '">';
                 }
 
                 return html;
