@@ -148,18 +148,21 @@ a:hover {
     body ::-webkit-scrollbar-thumb:hover {
         background: @thumbHoverBackground;
     }
-    body .ui {
-        & when (@supportIE) {
+    & when (@supportIE) {
+        body .ui {
             /* IE11 */
             scrollbar-face-color: @thumbBackgroundHex;
             scrollbar-shadow-color: @thumbBackgroundHex;
             scrollbar-track-color: @trackBackgroundHex;
             scrollbar-arrow-color: @trackBackgroundHex;
         }
-
-        /* firefox: first color thumb, second track */
-        scrollbar-color: @thumbBackground @trackBackground;
-        scrollbar-width: thin;
+    }
+    @supports (-moz-appearance: none) {
+        body .ui {
+            /* firefox: first color thumb, second track */
+            scrollbar-color: @thumbBackground @trackBackground;
+            scrollbar-width: thin;
+        }
     }
 
     /* Inverted UI */
@@ -175,18 +178,20 @@ a:hover {
     body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
         background: @thumbInvertedHoverBackground;
     }
-
-    body .ui.inverted:not(.dimmer) {
-        & when (@supportIE) {
+    & when (@supportIE) {
+        body .ui.inverted:not(.dimmer) {
             /* IE11 */
             scrollbar-face-color: @thumbInvertedBackgroundHex;
             scrollbar-shadow-color: @thumbInvertedBackgroundHex;
             scrollbar-track-color: @trackInvertedBackgroundHex;
             scrollbar-arrow-color: @trackInvertedBackgroundHex;
         }
-
-        /* firefox: first color thumb, second track */
-        scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+    }
+    @supports (-moz-appearance: none) {
+        body .ui.inverted:not(.dimmer) {
+            /* firefox: first color thumb, second track */
+            scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+        }
     }
 }
 
