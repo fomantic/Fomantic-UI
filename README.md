@@ -69,8 +69,8 @@ Fomantic includes an interactive installer to help setup your project.
 
 | Environment | Install Command                       | Repository                                                       | Third-Party |
 |-------------|---------------------------------------|------------------------------------------------------------------|-------------|
-| CSS Only    | `npm install fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)          |             |
-| LESS        | `npm install fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS)        |             |
+| CSS Only    | `npm install fomantic-ui-css`         | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)   |             |
+| LESS        | `npm install fomantic-ui-less`        | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS) |             |
 | SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS) | ✅          |
 
 ---
@@ -94,20 +94,7 @@ Before creating a pull request be sure to read the [Contributing Guide](CONTRIBU
 
 ## Sponsors
 
-### Infrastructure hosted and powered by [DigitalOcean](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
-[![DigitalOcean](https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PNG/DO_Logo_Horizontal_Blue.png)](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
-
-Sign up now and get $100 in credit for 60 days! [Sign up here!](https://m.do.co/c/bece3e1afb7f)
-
-
-### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
-[![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
-
-
 ### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
 [![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
 
 ---
-
-#### Credit
-Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)
