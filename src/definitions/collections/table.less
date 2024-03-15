@@ -458,11 +458,19 @@
         display: block;
         overflow-y: scroll;
         overscroll-behavior: @overscrollBehavior;
-        scrollbar-width: thin; /* Firefox */
         & > tr {
             display: table;
             table-layout: fixed;
             width: 100%;
+        }
+    }
+    & when (@useCustomScrollbars) {
+        @supports (-moz-appearance: none) {
+            .ui.scrolling.table > thead,
+            .ui.scrolling.table > tfoot,
+            .ui.scrolling.table > tbody {
+                scrollbar-width: thin;
+            }
         }
     }
 
@@ -492,61 +500,68 @@
         background: inherit;
         border-radius: @borderRadius;
     }
-
-    /* Firefox & IE */
-    .ui.scrolling.table > thead,
-    .ui.scrolling.table > tfoot {
-        scrollbar-color: currentColor currentColor;
-        & when (@supportIE) {
-            scrollbar-face-color: currentColor;
-            scrollbar-shadow-color: currentColor;
-            scrollbar-track-color: currentColor;
-            scrollbar-arrow-color: currentColor;
-        }
-    }
-    & when (@supportIE) {
-        /* IE scrollbar color needs hex values */
-        @media all and (-ms-high-contrast: none) {
-            .ui.scrolling.table > thead {
-                color: @headerBackgroundHex;
-            }
+    & when (@useCustomScrollbars) {
+        @supports (-moz-appearance: none) {
+            .ui.scrolling.table > thead,
             .ui.scrolling.table > tfoot {
-                color: @footerBackgroundHex;
-            }
-            & when (@variationTableInverted) {
-                .ui.inverted.scrolling.table > thead {
-                    color: @invertedHeaderBackgroundHex;
-                }
-                .ui.inverted.scrolling.table > tfoot {
-                    color: @invertedFooterBackgroundHex;
-                }
+                scrollbar-color: currentColor currentColor;
             }
         }
-    }
-    & when (@variationTableInverted) {
-        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
-            background: @trackInvertedBackground;
-        }
-        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
-            background: @thumbInvertedBackground;
-        }
-        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
-            background: @thumbInvertedInactiveBackground;
-        }
-        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
-            background: @thumbInvertedHoverBackground;
-        }
-        .ui.inverted.scrolling.table > tbody {
-            & when (@supportIE) {
-                /* IE11 */
-                scrollbar-face-color: @thumbInvertedBackgroundHex;
-                scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-                scrollbar-track-color: @trackInvertedBackgroundHex;
-                scrollbar-arrow-color: @trackInvertedBackgroundHex;
-            }
 
-            /* firefox: first color thumb, second track */
-            scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+        & when (@supportIE) {
+            /* IE scrollbar color needs hex values */
+            @media all and (-ms-high-contrast: none) {
+                .ui.scrolling.table > thead,
+                .ui.scrolling.table > tfoot {
+                    scrollbar-face-color: currentColor;
+                    scrollbar-shadow-color: currentColor;
+                    scrollbar-track-color: currentColor;
+                    scrollbar-arrow-color: currentColor;
+                }
+                .ui.scrolling.table > thead {
+                    color: @headerBackgroundHex;
+                }
+                .ui.scrolling.table > tfoot {
+                    color: @footerBackgroundHex;
+                }
+                & when (@variationTableInverted) {
+                    .ui.inverted.scrolling.table > thead {
+                        color: @invertedHeaderBackgroundHex;
+                    }
+                    .ui.inverted.scrolling.table > tfoot {
+                        color: @invertedFooterBackgroundHex;
+                    }
+                }
+            }
+        }
+        & when (@variationTableInverted) {
+            .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
+                background: @trackInvertedBackground;
+            }
+            .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
+                background: @thumbInvertedBackground;
+            }
+            .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
+                background: @thumbInvertedInactiveBackground;
+            }
+            .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
+                background: @thumbInvertedHoverBackground;
+            }
+            & when (@supportIE) {
+                .ui.inverted.scrolling.table > tbody {
+                    /* IE11 */
+                    scrollbar-face-color: @thumbInvertedBackgroundHex;
+                    scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+                    scrollbar-track-color: @trackInvertedBackgroundHex;
+                    scrollbar-arrow-color: @trackInvertedBackgroundHex;
+                }
+            }
+            @supports (-moz-appearance: none) {
+                .ui.inverted.scrolling.table > tbody {
+                    /* firefox: first color thumb, second track */
+                    scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+                }
+            }
         }
     }
     & when (@variationTableResizable) {
