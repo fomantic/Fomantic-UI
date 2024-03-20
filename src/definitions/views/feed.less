@@ -459,6 +459,18 @@
             color: @invertedLikeActiveColor;
         }
     }
+
+    & when (@varitaionFeedMeta) {
+        .ui.inverted.feed > .event > .content .meta a,
+        .ui.inverted.feed > .event > .content .meta > i.icon {
+            color: @invertedMetadataActionColor;
+        }
+        .ui.inverted.feed > .event > .content .meta a:hover,
+        .ui.inverted.feed > .event > .content .meta a:hover i.icon,
+        .ui.inverted.feed > .event > .content .meta > i.icon:hover {
+            color: @invertedMetadataActionHoverColor;
+        }
+    }
 }
 
 /* --------------
