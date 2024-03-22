@@ -4180,6 +4180,7 @@
             type: 'type', // type of dropdown element
             image: 'image', // optional image path
             imageClass: 'imageClass', // optional individual class for image
+            alt: 'alt', // optional alt text for image
             icon: 'icon', // optional icon name
             iconClass: 'iconClass', // optional individual class for icon (for example to use flag instead)
             class: 'class', // optional individual class for item/header
@@ -4357,7 +4358,7 @@
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + (option[fields.alt] ? '" alt="' + deQuote(option[fields.alt]) : '') + '">';
                     }
                     if (option[fields.icon]) {
                         html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';

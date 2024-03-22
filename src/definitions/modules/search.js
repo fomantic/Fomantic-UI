@@ -1444,6 +1444,7 @@
             categoryResults: 'results', // array of results (category view)
             description: 'description', // result description
             image: 'image', // result image
+            alt: 'alt', // result alt text for image
             price: 'price', // result price
             results: 'results', // array of results (standard)
             title: 'title', // result title
@@ -1531,7 +1532,7 @@
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1584,7 +1585,7 @@
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                 + '</div>';
                         }
                         html += '<div class="content">';
