@@ -191,7 +191,7 @@
 @invertedLikeActiveColor: @invertedLikeColor;
 
 @invertedMetadataActionColor: @invertedLightTextColor;
-@invertedMetadataActionHoverColor: @selectedTextColor;
+@invertedMetadataActionHoverColor: @invertedSelectedTextColor;
 
 @invertedConnectedBorderColor: @whiteBorderColor;
 @invertedDividedBorderColor: @whiteBorderColor;
