@@ -3468,7 +3468,12 @@
                         return $selectedMenu.hasClass(className.leftward);
                     },
                     clearable: function () {
-                        return $module.hasClass(className.clearable) || settings.clearable;
+                        var hasClearableClass = $module.hasClass(className.clearable);
+                        if (!hasClearableClass && settings.clearable) {
+                            $module.addClass(className.clearable);
+                        }
+
+                        return hasClearableClass || settings.clearable;
                     },
                     disabled: function () {
                         return $module.hasClass(className.disabled);
