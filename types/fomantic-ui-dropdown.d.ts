@@ -1051,6 +1051,12 @@ declare namespace FomanticUI {
                 imageClass: string;
 
                 /**
+                 * Optional alt text for image
+                 * @default 'alt'
+                 */
+                alt: string;
+
+                /**
                  * Optional icon name
                  * @default 'icon'
                  */

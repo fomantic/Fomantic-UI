@@ -192,7 +192,7 @@ declare namespace FomanticUI {
          * List mapping display content to JSON property, either with API or 'source'.
          * @default {}
          */
-        fields: object;
+        fields: Search.FieldsSettings;
 
         /**
          * Specify object properties inside local source object which will be searched.
@@ -377,6 +377,7 @@ declare namespace FomanticUI {
         type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type FieldsSettings = Partial<Pick<Settings.Fields, keyof Settings.Fields>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
@@ -478,6 +479,86 @@ declare namespace FomanticUI {
                  * @default 'results'
                  */
                 results: string;
+            }
+
+            interface Fields {
+                /**
+                 * Array of categories (category view)
+                 * @default 'results'
+                 */
+                categories: string;
+
+                /**
+                 * Name of category (category view)
+                 * @default 'name'
+                 */
+                categoryName: string;
+
+                /**
+                 * Array of results (category view)
+                 * @default 'results'
+                 */
+                categoryResults: string;
+
+                /**
+                 * Sesult description
+                 * @default ' description'
+                 */
+                description: string;
+
+                /**
+                 * Result image
+                 * @default 'image'
+                 */
+                image: string;
+
+                /**
+                 * Result alt text for image
+                 * @default 'alt'
+                 */
+                alt: string;
+
+                /**
+                 * Result price
+                 * @default 'price'
+                 */
+                price: string;
+
+                /**
+                 * Array of results (standard)
+                 * @default 'results'
+                 */
+                results: string;
+
+                /**
+                 * Result title
+                 * @default 'title'
+                 */
+                title: string;
+
+                /**
+                 * Result url
+                 * @default 'url'
+                 */
+                url: string;
+
+                /**
+                 * "view more" object name
+                 * @default 'action'
+                 */
+                action: string;
+
+                /**
+                 * "view more" text
+                 * @default 'text'
+                 */
+                actionText: string;
+
+                /**
+                 * "view more" url
+                 * @default 'url'
+                 */
+                actionURL: string;
             }
 
             interface Errors {
