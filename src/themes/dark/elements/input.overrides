@@ -1,0 +1,7 @@
+.ui.transparent.input input {
+  color: @gray-lighter;
+}
+
+.ui.transparent.input .icon {
+  color: @gray-lighter;
+}
