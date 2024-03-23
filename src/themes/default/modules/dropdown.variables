@@ -108,12 +108,13 @@
 
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
-@itemDropdownIconFloat: right;
-@itemDropdownIconMargin: @itemLineHeightOffset 0 0 @itemDropdownIconDistance;
+@itemDropdownIconOrder: 1;
+@itemDropdownIconMargin: @itemLineHeightOffset 0 0 auto;
 
 /* Description */
-@itemDescriptionFloat: right;
-@itemDescriptionMargin: 0 0 0 1em;
+@itemDescriptionOrder: 1;
+@itemDescriptionMargin: 0 0 0 auto;
+@itemDescriptionPadding: 0 0 0 1em;
 @itemDescriptionColor: @lightTextColor;
 
 /* Message */
@@ -323,6 +324,7 @@
 @clearableIconPosition: 2em;
 @clearableIconSelectionPosition: 3em;
 @clearableIconInlinePosition: 2.2em;
+@clearableIconVerticalPosition: 0.86571em;
 
 /* -------------------
       Variations
@@ -356,8 +358,8 @@
 @upwardSelectionActiveHoverMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
 
 /* Flyout Direction */
-@leftMenuDropdownIconFloat: left;
-@leftMenuDropdownIconMargin: @itemLineHeightOffset 0 0 0;
+@leftMenuDropdownIconOrder: 0;
+@leftMenuDropdownIconMargin: @itemLineHeightOffset auto 0 0;
 
 /* Left */
 @leftSubMenuBorderRadius: @borderRadius;
