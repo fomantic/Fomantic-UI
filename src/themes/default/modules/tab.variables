@@ -9,3 +9,11 @@
 
 @loaderDistanceFromTop: 50%;
 @loaderSize: 2.5em;
+
+/* Removable */
+
+@removeIconSize: @relative12px;
+@removeIconPosition: 2em;
+@removeIconOpacity: 0.6;
+@removeIconPadding: 0 0 0 1em;
+@removeIconZIndex: 3;
