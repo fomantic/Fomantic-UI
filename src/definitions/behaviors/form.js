@@ -1350,12 +1350,13 @@
                         var
                             identifier    = field.identifier || fieldName,
                             $field        = module.get.field(identifier),
+                            $fieldGroup = $field.closest($group),
                             $dependsField = field.depends
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
                             fieldErrors = [],
-                            isDisabled = $field.filter(':not(:disabled)').length === 0,
+                            isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled),
                             validationMessage = $field[0].validationMessage,
                             noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
                             errorLimit
@@ -1364,15 +1365,15 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if (validationMessage && !noNativeValidation) {
+                        if (validationMessage && !noNativeValidation && !isDisabled) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
                             if (showErrors) {
-                                $field.closest($group).addClass(className.error);
+                                $fieldGroup.addClass(className.error);
                             }
                         } else if (showErrors) {
-                            $field.closest($group).removeClass(className.error);
+                            $fieldGroup.removeClass(className.error);
                         }
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
