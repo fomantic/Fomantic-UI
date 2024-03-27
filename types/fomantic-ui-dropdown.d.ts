@@ -1033,6 +1033,12 @@ declare namespace FomanticUI {
                 text: string;
 
                 /**
+                 * custom data atttributes
+                 * @default 'data'
+                 */
+                data: string;
+
+                /**
                  * Type of dropdown element
                  * @default 'type'
                  */
@@ -1049,6 +1055,12 @@ declare namespace FomanticUI {
                  * @default 'imageClass'
                  */
                 imageClass: string;
+
+                /**
+                 * Optional alt text for image
+                 * @default 'alt'
+                 */
+                alt: string;
 
                 /**
                  * Optional icon name
