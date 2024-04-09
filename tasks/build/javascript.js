@@ -74,7 +74,7 @@ function pack(type, compress) {
     const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
     let src = globs.components
-        .replace(/[{}]/g,'')
+        .replace(/[{}]/g, '')
         .split(',')
         .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'))
     ;

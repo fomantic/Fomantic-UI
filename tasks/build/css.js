@@ -103,13 +103,14 @@ function pack(type, compress) {
     }
 
     let src = globs.components
-        .replace(/[{}]/g,'')
+        .replace(/[{}]/g, '')
         .split(',')
         .map((c) => {
             let srcSingle = output.uncompressed + '/**/' + c + ignoredGlobs;
             if (c === 'tab' && globs.components.indexOf('table') < 0) {
                 srcSingle = [srcSingle, '!' + output.uncompressed + '/**/table.css'];
             }
+
             return gulp.src(srcSingle);
         })
     ;
