@@ -2677,7 +2677,7 @@
                             module.set.scrollPosition($nextValue);
                             $selectedItem.removeClass(className.selected);
                             $nextValue.addClass(className.selected);
-                            if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                            if (settings.selectOnKeydown && module.is.single() && (!$nextItem || !$nextItem.hasClass(className.actionable))) {
                                 module.set.selectedItem($nextValue);
                             }
                         }
