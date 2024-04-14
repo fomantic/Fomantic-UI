@@ -78,7 +78,7 @@ module.exports = function (callback) {
                 ? 'Updated distribution to version ' + version
                 : 'Updated files from main repo',
 
-            gitOptions      = { cwd: outputDirectory },
+            gitOptions      = { cwd: outputDirectory, encoding: false },
             commitOptions   = { args: commitArgs, cwd: outputDirectory },
             releaseOptions  = { tag_name: version, owner: release.org, repo: repoName },
 
