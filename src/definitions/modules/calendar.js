@@ -102,7 +102,17 @@
 
                 destroy: function () {
                     module.verbose('Destroying previous calendar for', element);
-                    $module.removeData(moduleNamespace);
+                    $module.removeData([
+                        metadata.date,
+                        metadata.focusDate,
+                        metadata.startDate,
+                        metadata.endDate,
+                        metadata.minDate,
+                        metadata.maxDate,
+                        metadata.mode,
+                        metadata.monthOffset,
+                        moduleNamespace,
+                    ]);
                     module.unbind.events();
                     module.disconnect.classObserver();
                 },
