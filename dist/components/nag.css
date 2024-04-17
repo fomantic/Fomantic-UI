@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Nag
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Nag
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -24,14 +24,12 @@
   width: 100%;
   margin: 0;
   padding: 0.75em 1em;
-  background: #777777;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  background: #909090;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   font-size: 1rem;
   text-align: center;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
-  -webkit-transition: 0.2s background ease;
   transition: 0.2s background ease;
 }
 a.ui.nag {
@@ -40,7 +38,7 @@ a.ui.nag {
 .ui.nag > .title {
   display: inline-block;
   margin: 0 0.5em;
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.nag > .close.icon {
   cursor: pointer;
@@ -50,8 +48,7 @@ a.ui.nag {
   right: 1em;
   font-size: 1em;
   margin: -0.5em 0 0;
-  color: #FFFFFF;
-  -webkit-transition: opacity 0.2s ease;
+  color: #fff;
   transition: opacity 0.2s ease;
 }
 .ui.nag:not(.overlay):not(.fixed) {
@@ -66,7 +63,7 @@ a.ui.nag {
 
 /* Hover */
 .ui.nag:hover {
-  background: #777777;
+  background: #909090;
   opacity: 1;
 }
 .ui.nag > .close:hover {
@@ -79,29 +76,25 @@ a.ui.nag {
 *******************************/
 
 
-/*--------------
-       Static
-  ---------------*/
-
+/* --------------
+         Static
+    --------------- */
 .ui.overlay.nags,
 .ui.overlay.nag {
   position: absolute;
-  display: block;
 }
 
-/*--------------
-     Fixed
----------------*/
-
+/* --------------
+         Fixed
+    --------------- */
 .ui.fixed.nags,
 .ui.fixed.nag {
   position: fixed;
 }
 
-/*--------------
-     Bottom
----------------*/
-
+/* --------------
+         Bottom
+    --------------- */
 .ui.bottom.nags,
 .ui.bottom.nag {
   border-radius: 0.28571429rem 0.28571429rem 0 0;
@@ -109,13 +102,12 @@ a.ui.nag {
   bottom: 0;
 }
 
-/*--------------
-     Inverted
----------------*/
-
+/* --------------
+         Inverted
+    --------------- */
 .ui.inverted.nags .nag,
 .ui.inverted.nag {
-  background-color: #F3F4F5;
+  background-color: #f3f4f5;
   color: rgba(0, 0, 0, 0.85);
 }
 .ui.inverted.nags .nag > .close,
@@ -127,10 +119,9 @@ a.ui.nag {
   color: rgba(0, 0, 0, 0.6);
 }
 
-/*-------------------
-        Sizes
---------------------*/
-
+/* -------------------
+            Sizes
+    -------------------- */
 .ui.mini.nag,
 .ui.mini.nags .nag {
   font-size: 0.78571429rem;
@@ -162,109 +153,108 @@ a.ui.nag {
   line-height: 1;
 }
 
-/*--------------
+/* --------------
      Colors
 -------------- */
-
 .ui.primary.nag {
-  background-color: #2185D0;
+  background-color: #2185d0;
 }
 .ui.inverted.primary.nag {
-  background-color: #54C8FF;
+  background-color: #54c8ff;
 }
 .ui.secondary.nag {
-  background-color: #1B1C1D;
+  background-color: #1b1c1d;
 }
 .ui.inverted.secondary.nag {
   background-color: #545454;
 }
 .ui.red.nag {
-  background-color: #DB2828;
+  background-color: #db2828;
 }
 .ui.inverted.red.nag {
-  background-color: #FF695E;
+  background-color: #ff695e;
 }
 .ui.orange.nag {
-  background-color: #F2711C;
+  background-color: #f2711c;
 }
 .ui.inverted.orange.nag {
-  background-color: #FF851B;
+  background-color: #ff851b;
 }
 .ui.yellow.nag {
-  background-color: #FBBD08;
+  background-color: #fbbd08;
 }
 .ui.inverted.yellow.nag {
-  background-color: #FFE21F;
+  background-color: #ffe21f;
 }
 .ui.olive.nag {
-  background-color: #B5CC18;
+  background-color: #b5cc18;
 }
 .ui.inverted.olive.nag {
-  background-color: #D9E778;
+  background-color: #d9e778;
 }
 .ui.green.nag {
-  background-color: #21BA45;
+  background-color: #21ba45;
 }
 .ui.inverted.green.nag {
-  background-color: #2ECC40;
+  background-color: #2ecc40;
 }
 .ui.teal.nag {
-  background-color: #00B5AD;
+  background-color: #00b5ad;
 }
 .ui.inverted.teal.nag {
-  background-color: #6DFFFF;
+  background-color: #6dffff;
 }
 .ui.blue.nag {
-  background-color: #2185D0;
+  background-color: #2185d0;
 }
 .ui.inverted.blue.nag {
-  background-color: #54C8FF;
+  background-color: #54c8ff;
 }
 .ui.violet.nag {
-  background-color: #6435C9;
+  background-color: #6435c9;
 }
 .ui.inverted.violet.nag {
-  background-color: #A291FB;
+  background-color: #a291fb;
 }
 .ui.purple.nag {
-  background-color: #A333C8;
+  background-color: #a333c8;
 }
 .ui.inverted.purple.nag {
-  background-color: #DC73FF;
+  background-color: #dc73ff;
 }
 .ui.pink.nag {
-  background-color: #E03997;
+  background-color: #e03997;
 }
 .ui.inverted.pink.nag {
-  background-color: #FF8EDF;
+  background-color: #ff8edf;
 }
 .ui.brown.nag {
-  background-color: #A5673F;
+  background-color: #a5673f;
 }
 .ui.inverted.brown.nag {
-  background-color: #D67C1C;
+  background-color: #d67c1c;
 }
 .ui.grey.nag {
   background-color: #767676;
 }
 .ui.inverted.grey.nag {
-  background-color: #DCDDDE;
+  background-color: #dcddde;
 }
 .ui.black.nag {
-  background-color: #1B1C1D;
+  background-color: #1b1c1d;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.black.nag {
   background-color: #545454;
 }
 .ui.inverted.black.nag .title {
-  color: #FFFFFF;
+  color: #fff;
 }
 
 
 /*******************************
-           Groups
-*******************************/
+               Groups
+    *******************************/
 
 .ui.nags {
   top: 0;

@@ -21,9 +21,8 @@
 @iconMargin: 0 0.25rem 0 0;
 @iconPadding: 0;
 @iconTransition:
-  transform @defaultDuration @defaultEasing,
-  opacity @defaultDuration @defaultEasing
-;
+    transform @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: baseline;
 @iconTransform: none;
 @iconTransformRight: @menuIconTransform;
@@ -33,37 +32,35 @@
 @childAccordionPadding: 0;
 
 /* Content */
-@contentMargin: '';
+@contentMargin: "";
 @contentPadding: 0.5em 0 1em;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 @menuTitlePadding: 0;
 @menuIconFloat: right;
 @menuIconMargin: @iconMargin;
 @menuIconTransform: rotate(180deg);
 
-
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @activeIconTransform: rotate(90deg);
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Styled */
 @styledWidth: 600px;
 @styledBackground: @white;
 @styledBorderRadius: @defaultBorderRadius;
 @styledBoxShadow:
-  @subtleShadow,
-  0 0 0 1px @borderColor
-;
+    @subtleShadow,
+    0 0 0 1px @borderColor;
 
 /* Content */
 @styledContentMargin: 0;
@@ -81,9 +78,8 @@
 @styledTitleTransition: background-color @defaultDuration @defaultEasing;
 @styledTitleBorder: 1px solid @borderColor;
 @styledTitleTransition:
-  background @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 
 /* Styled Title States */
 @styledTitleHoverBackground: transparent;
@@ -103,9 +99,8 @@
 @invertedStyledBackground: @black;
 @invertedStyledTitleBorder: 1px solid @whiteBorderColor;
 @invertedStyledBoxShadow:
-        @subtleShadow,
-        0 0 0 1px @whiteBorderColor
-;
+    @subtleShadow,
+    0 0 0 1px @whiteBorderColor;
 @invertedStyledTitleHoverBackground: transparent;
 @invertedStyledTitleHoverColor: @invertedTextColor;
 @invertedStyledActiveTitleBackground: transparent;

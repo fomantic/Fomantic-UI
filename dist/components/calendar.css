@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Calendar
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Calendar
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -13,14 +13,16 @@
             Popup
 *******************************/
 
-.ui.calendar .ui.popup {
+.ui.calendar.popup {
   max-width: none;
   padding: 0;
   border: none;
   -webkit-user-select: none;
-     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+.ui.calendar.popup.inverted::before {
+  background: #2b2b2b;
 }
 
 
@@ -28,7 +30,8 @@
             Calendar
 *******************************/
 
-.ui.calendar .calendar:focus {
+.ui.calendar .calendar:focus,
+.ui.calendar.popup:focus {
   outline: 0;
 }
 
@@ -37,11 +40,11 @@
             Grid
 *******************************/
 
-.ui.calendar .ui.popup .ui.grid {
+.ui.calendar.popup .ui.grid {
   display: block;
   white-space: nowrap;
 }
-.ui.calendar .ui.popup .ui.grid > .column {
+.ui.calendar.popup .ui.grid > .column {
   width: auto;
 }
 
@@ -114,41 +117,190 @@
   background: rgba(0, 0, 0, 0.03);
 }
 
-/*--------------
+/* --------------
      States
----------------*/
-
+--------------- */
 .ui.calendar .ui.table tr td.today {
   font-weight: bold;
 }
 .ui.calendar .ui.table tr td.range {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-.ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
-.ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+.ui.calendar:not(.disabled):focus .ui.table tbody tr td.focus,
+.ui.calendar:not(.disabled).popup.active .ui.table tbody tr td.focus {
+  box-shadow: inset 0 0 0 1px #85b7d9;
 }
 .ui.inverted.calendar .ui.table.inverted tr td.range {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.inverted.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+.ui.inverted.calendar:not(.disabled).popup.active .ui.table.inverted tbody tr td.focus {
+  box-shadow: inset 0 0 0 1px #85b7d9;
 }
-.ui.inverted.calendar .ui.inverted.table tr .disabled {
+.ui.inverted.calendar .ui.ui.ui.inverted.table tr .disabled {
   color: rgba(225, 225, 225, 0.3);
 }
 .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.02);
+}
+.ui.ui.ui.calendar.popup > .ui.ui.grid {
+  margin: -1rem;
+}
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) {
+  padding-left: 0;
+}
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) > .ui.table {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) {
+  padding-right: 0;
+}
+.ui.ui.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) > .ui.table {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* --------------------
+        Sizes
+--------------------- */
+.ui.mini.calendar,
+.ui.mini.calendar .ui.table tr th,
+.ui.mini.calendar .ui.table tr td {
+  font-size: 0.78571429rem;
+}
+.ui.mini.calendar .ui.table.year,
+.ui.mini.calendar .ui.table.month,
+.ui.mini.calendar .ui.table.minute {
+  min-width: 11.78571429em;
+}
+.ui.mini.calendar .ui.table.day {
+  min-width: 14.14285714em;
+}
+.ui.mini.calendar .ui.table.day.andweek {
+  min-width: 17.28571429em;
+}
+.ui.mini.calendar .ui.table.hour {
+  min-width: 15.71428571em;
+}
+.ui.tiny.calendar,
+.ui.tiny.calendar .ui.table tr th,
+.ui.tiny.calendar .ui.table tr td {
+  font-size: 0.85714286rem;
+}
+.ui.tiny.calendar .ui.table.year,
+.ui.tiny.calendar .ui.table.month,
+.ui.tiny.calendar .ui.table.minute {
+  min-width: 12.85714286em;
+}
+.ui.tiny.calendar .ui.table.day {
+  min-width: 15.42857143em;
+}
+.ui.tiny.calendar .ui.table.day.andweek {
+  min-width: 18.85714286em;
+}
+.ui.tiny.calendar .ui.table.hour {
+  min-width: 17.14285714em;
+}
+.ui.small.calendar,
+.ui.small.calendar .ui.table tr th,
+.ui.small.calendar .ui.table tr td {
+  font-size: 0.92857143rem;
+}
+.ui.small.calendar .ui.table.year,
+.ui.small.calendar .ui.table.month,
+.ui.small.calendar .ui.table.minute {
+  min-width: 13.92857143em;
+}
+.ui.small.calendar .ui.table.day {
+  min-width: 16.71428571em;
+}
+.ui.small.calendar .ui.table.day.andweek {
+  min-width: 20.42857143em;
+}
+.ui.small.calendar .ui.table.hour {
+  min-width: 18.57142857em;
+}
+.ui.large.calendar,
+.ui.large.calendar .ui.table tr th,
+.ui.large.calendar .ui.table tr td {
+  font-size: 1.14285714rem;
+}
+.ui.large.calendar .ui.table.year,
+.ui.large.calendar .ui.table.month,
+.ui.large.calendar .ui.table.minute {
+  min-width: 17.14285714em;
+}
+.ui.large.calendar .ui.table.day {
+  min-width: 20.57142857em;
+}
+.ui.large.calendar .ui.table.day.andweek {
+  min-width: 25.14285714em;
+}
+.ui.large.calendar .ui.table.hour {
+  min-width: 22.85714286em;
+}
+.ui.big.calendar,
+.ui.big.calendar .ui.table tr th,
+.ui.big.calendar .ui.table tr td {
+  font-size: 1.28571429rem;
+}
+.ui.big.calendar .ui.table.year,
+.ui.big.calendar .ui.table.month,
+.ui.big.calendar .ui.table.minute {
+  min-width: 19.28571429em;
+}
+.ui.big.calendar .ui.table.day {
+  min-width: 23.14285714em;
+}
+.ui.big.calendar .ui.table.day.andweek {
+  min-width: 28.28571429em;
+}
+.ui.big.calendar .ui.table.hour {
+  min-width: 25.71428571em;
+}
+.ui.huge.calendar,
+.ui.huge.calendar .ui.table tr th,
+.ui.huge.calendar .ui.table tr td {
+  font-size: 1.42857143rem;
+}
+.ui.huge.calendar .ui.table.year,
+.ui.huge.calendar .ui.table.month,
+.ui.huge.calendar .ui.table.minute {
+  min-width: 21.42857143em;
+}
+.ui.huge.calendar .ui.table.day {
+  min-width: 25.71428571em;
+}
+.ui.huge.calendar .ui.table.day.andweek {
+  min-width: 31.42857143em;
+}
+.ui.huge.calendar .ui.table.hour {
+  min-width: 28.57142857em;
+}
+.ui.massive.calendar,
+.ui.massive.calendar .ui.table tr th,
+.ui.massive.calendar .ui.table tr td {
+  font-size: 1.71428571rem;
+}
+.ui.massive.calendar .ui.table.year,
+.ui.massive.calendar .ui.table.month,
+.ui.massive.calendar .ui.table.minute {
+  min-width: 25.71428571em;
+}
+.ui.massive.calendar .ui.table.day {
+  min-width: 30.85714286em;
+}
+.ui.massive.calendar .ui.table.day.andweek {
+  min-width: 37.71428571em;
+}
+.ui.massive.calendar .ui.table.hour {
+  min-width: 34.28571429em;
 }
 
 
@@ -157,10 +309,9 @@
 *******************************/
 
 
-/*--------------------
-          Disabled
-  ---------------------*/
-
+/* --------------------
+            Disabled
+    --------------------- */
 .ui.disabled.calendar {
   opacity: 0.45;
 }

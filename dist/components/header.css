@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Header
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Header
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -19,7 +19,7 @@
   border: none;
   margin: calc(2rem - 0.1428571428571429em) 0 1rem;
   padding: 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
@@ -32,10 +32,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
-     Sub Header
-  ---------------*/
-
+/* --------------
+       Sub Header
+    --------------- */
 .ui.header .sub.header {
   display: block;
   font-weight: normal;
@@ -46,10 +45,9 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-/*--------------
+/* --------------
       Icon
----------------*/
-
+--------------- */
 .ui.header > .icons,
 .ui.header > i.icon {
   display: table-cell;
@@ -67,10 +65,9 @@
   margin-right: 0.75rem;
 }
 
-/*-------------------
+/* -------------------
         Image
---------------------*/
-
+-------------------- */
 .ui.header > .image:not(.icon),
 .ui.header > img {
   display: inline-block;
@@ -84,10 +81,9 @@
   margin-right: 0.75rem;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
-
+--------------- */
 .ui.header .content {
   display: inline-block;
   vertical-align: top;
@@ -108,12 +104,11 @@
   vertical-align: middle;
 }
 
-/*--------------
+/* --------------
  Loose Coupling
----------------*/
-
+--------------- */
 .ui.header .ui.label {
-  font-size: '';
+  font-size: "";
   margin-left: 0.5rem;
   vertical-align: middle;
 }
@@ -129,10 +124,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
      Page
----------------*/
-
+--------------- */
 h1.ui.header {
   font-size: 2rem;
 }
@@ -170,10 +164,9 @@ h6.ui.header .sub.header {
   font-size: 0.92857143rem;
 }
 
-/*--------------
+/* --------------
  Content Heading
----------------*/
-
+--------------- */
 .ui.mini.header {
   font-size: 0.85714286em;
 }
@@ -240,30 +233,28 @@ h6.ui.header .sub.header {
   font-size: 1.14285714em;
 }
 
-/*--------------
-     Sub Heading
-  ---------------*/
-
+/* --------------
+       Sub Heading
+    --------------- */
 .ui.sub.header {
   padding: 0;
   margin-bottom: 0.14285714rem;
   font-weight: bold;
   font-size: 0.85714286em;
   text-transform: uppercase;
-  color: '';
+  color: "";
 }
 
-/*-------------------
-          Icon
-  --------------------*/
-
+/* -------------------
+            Icon
+    -------------------- */
 .ui.icon.header {
   display: inline-block;
   text-align: center;
   margin: 2rem 0 1rem;
 }
-.ui.icon.header:after {
-  content: '';
+.ui.icon.header::after {
+  content: "";
   display: block;
   height: 0;
   clear: both;
@@ -272,6 +263,7 @@ h6.ui.header .sub.header {
 .ui.icon.header:first-child {
   margin-top: 0;
 }
+.ui.icon.header > .image.icon,
 .ui.icon.header > .icons,
 .ui.icon.header > i.icon {
   float: none;
@@ -297,6 +289,7 @@ h6.ui.header .sub.header {
 .ui.icon.header > i.square {
   font-size: 2em;
 }
+.ui.block.icon.header > .image.icon,
 .ui.block.icon.header > .icons,
 .ui.block.icon.header > i.icon {
   margin-bottom: 0;
@@ -322,61 +315,55 @@ h6.ui.header .sub.header {
 *******************************/
 
 
-/*-------------------
-        Inverted
-  --------------------*/
-
+/* -------------------
+          Inverted
+    -------------------- */
 .ui.inverted.header {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.inverted.header .sub.header {
   color: rgba(255, 255, 255, 0.8);
 }
 .ui.inverted.attached.header {
-  background: #1B1C1D;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  background: #1b1c1d;
+  box-shadow: none;
   border-color: transparent;
 }
 .ui.inverted.block.header {
-  background: #545454 -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: #545454 -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: #545454 linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border-bottom: none;
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
-
+-------------------- */
 .ui.primary.header {
-  color: #2185D0;
+  color: #2185d0;
 }
 a.ui.primary.header:hover {
   color: #1678c2;
 }
 .ui.primary.dividing.header {
-  border-bottom: 2px solid #2185D0;
+  border-bottom: 2px solid #2185d0;
 }
 .ui.inverted.primary.header.header.header {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 a.ui.inverted.primary.header.header.header:hover {
   color: #21b8ff;
 }
 .ui.inverted.primary.dividing.header {
-  border-bottom: 2px solid #54C8FF;
+  border-bottom: 2px solid #54c8ff;
 }
 .ui.secondary.header {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 a.ui.secondary.header:hover {
   color: #27292a;
 }
 .ui.secondary.dividing.header {
-  border-bottom: 2px solid #1B1C1D;
+  border-bottom: 2px solid #1b1c1d;
 }
 .ui.inverted.secondary.header.header.header {
   color: #545454;
@@ -388,202 +375,202 @@ a.ui.inverted.secondary.header.header.header:hover {
   border-bottom: 2px solid #545454;
 }
 .ui.red.header {
-  color: #DB2828;
+  color: #db2828;
 }
 a.ui.red.header:hover {
   color: #d01919;
 }
 .ui.red.dividing.header {
-  border-bottom: 2px solid #DB2828;
+  border-bottom: 2px solid #db2828;
 }
 .ui.inverted.red.header.header.header {
-  color: #FF695E;
+  color: #ff695e;
 }
 a.ui.inverted.red.header.header.header:hover {
   color: #ff392b;
 }
 .ui.inverted.red.dividing.header {
-  border-bottom: 2px solid #FF695E;
+  border-bottom: 2px solid #ff695e;
 }
 .ui.orange.header {
-  color: #F2711C;
+  color: #f2711c;
 }
 a.ui.orange.header:hover {
   color: #f26202;
 }
 .ui.orange.dividing.header {
-  border-bottom: 2px solid #F2711C;
+  border-bottom: 2px solid #f2711c;
 }
 .ui.inverted.orange.header.header.header {
-  color: #FF851B;
+  color: #ff851b;
 }
 a.ui.inverted.orange.header.header.header:hover {
   color: #e76b00;
 }
 .ui.inverted.orange.dividing.header {
-  border-bottom: 2px solid #FF851B;
+  border-bottom: 2px solid #ff851b;
 }
 .ui.yellow.header {
-  color: #FBBD08;
+  color: #fbbd08;
 }
 a.ui.yellow.header:hover {
   color: #eaae00;
 }
 .ui.yellow.dividing.header {
-  border-bottom: 2px solid #FBBD08;
+  border-bottom: 2px solid #fbbd08;
 }
 .ui.inverted.yellow.header.header.header {
-  color: #FFE21F;
+  color: #ffe21f;
 }
 a.ui.inverted.yellow.header.header.header:hover {
   color: #ebcd00;
 }
 .ui.inverted.yellow.dividing.header {
-  border-bottom: 2px solid #FFE21F;
+  border-bottom: 2px solid #ffe21f;
 }
 .ui.olive.header {
-  color: #B5CC18;
+  color: #b5cc18;
 }
 a.ui.olive.header:hover {
   color: #a7bd0d;
 }
 .ui.olive.dividing.header {
-  border-bottom: 2px solid #B5CC18;
+  border-bottom: 2px solid #b5cc18;
 }
 .ui.inverted.olive.header.header.header {
-  color: #D9E778;
+  color: #d9e778;
 }
 a.ui.inverted.olive.header.header.header:hover {
   color: #d2e745;
 }
 .ui.inverted.olive.dividing.header {
-  border-bottom: 2px solid #D9E778;
+  border-bottom: 2px solid #d9e778;
 }
 .ui.green.header {
-  color: #21BA45;
+  color: #21ba45;
 }
 a.ui.green.header:hover {
   color: #16ab39;
 }
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21BA45;
+  border-bottom: 2px solid #21ba45;
 }
 .ui.inverted.green.header.header.header {
-  color: #2ECC40;
+  color: #2ecc40;
 }
 a.ui.inverted.green.header.header.header:hover {
   color: #1ea92e;
 }
 .ui.inverted.green.dividing.header {
-  border-bottom: 2px solid #2ECC40;
+  border-bottom: 2px solid #2ecc40;
 }
 .ui.teal.header {
-  color: #00B5AD;
+  color: #00b5ad;
 }
 a.ui.teal.header:hover {
   color: #009c95;
 }
 .ui.teal.dividing.header {
-  border-bottom: 2px solid #00B5AD;
+  border-bottom: 2px solid #00b5ad;
 }
 .ui.inverted.teal.header.header.header {
-  color: #6DFFFF;
+  color: #6dffff;
 }
 a.ui.inverted.teal.header.header.header:hover {
   color: #3affff;
 }
 .ui.inverted.teal.dividing.header {
-  border-bottom: 2px solid #6DFFFF;
+  border-bottom: 2px solid #6dffff;
 }
 .ui.blue.header {
-  color: #2185D0;
+  color: #2185d0;
 }
 a.ui.blue.header:hover {
   color: #1678c2;
 }
 .ui.blue.dividing.header {
-  border-bottom: 2px solid #2185D0;
+  border-bottom: 2px solid #2185d0;
 }
 .ui.inverted.blue.header.header.header {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 a.ui.inverted.blue.header.header.header:hover {
   color: #21b8ff;
 }
 .ui.inverted.blue.dividing.header {
-  border-bottom: 2px solid #54C8FF;
+  border-bottom: 2px solid #54c8ff;
 }
 .ui.violet.header {
-  color: #6435C9;
+  color: #6435c9;
 }
 a.ui.violet.header:hover {
   color: #5829bb;
 }
 .ui.violet.dividing.header {
-  border-bottom: 2px solid #6435C9;
+  border-bottom: 2px solid #6435c9;
 }
 .ui.inverted.violet.header.header.header {
-  color: #A291FB;
+  color: #a291fb;
 }
 a.ui.inverted.violet.header.header.header:hover {
   color: #745aff;
 }
 .ui.inverted.violet.dividing.header {
-  border-bottom: 2px solid #A291FB;
+  border-bottom: 2px solid #a291fb;
 }
 .ui.purple.header {
-  color: #A333C8;
+  color: #a333c8;
 }
 a.ui.purple.header:hover {
   color: #9627ba;
 }
 .ui.purple.dividing.header {
-  border-bottom: 2px solid #A333C8;
+  border-bottom: 2px solid #a333c8;
 }
 .ui.inverted.purple.header.header.header {
-  color: #DC73FF;
+  color: #dc73ff;
 }
 a.ui.inverted.purple.header.header.header:hover {
   color: #cf40ff;
 }
 .ui.inverted.purple.dividing.header {
-  border-bottom: 2px solid #DC73FF;
+  border-bottom: 2px solid #dc73ff;
 }
 .ui.pink.header {
-  color: #E03997;
+  color: #e03997;
 }
 a.ui.pink.header:hover {
   color: #e61a8d;
 }
 .ui.pink.dividing.header {
-  border-bottom: 2px solid #E03997;
+  border-bottom: 2px solid #e03997;
 }
 .ui.inverted.pink.header.header.header {
-  color: #FF8EDF;
+  color: #ff8edf;
 }
 a.ui.inverted.pink.header.header.header:hover {
   color: #ff5bd1;
 }
 .ui.inverted.pink.dividing.header {
-  border-bottom: 2px solid #FF8EDF;
+  border-bottom: 2px solid #ff8edf;
 }
 .ui.brown.header {
-  color: #A5673F;
+  color: #a5673f;
 }
 a.ui.brown.header:hover {
   color: #975b33;
 }
 .ui.brown.dividing.header {
-  border-bottom: 2px solid #A5673F;
+  border-bottom: 2px solid #a5673f;
 }
 .ui.inverted.brown.header.header.header {
-  color: #D67C1C;
+  color: #d67c1c;
 }
 a.ui.inverted.brown.header.header.header:hover {
   color: #b0620f;
 }
 .ui.inverted.brown.dividing.header {
-  border-bottom: 2px solid #D67C1C;
+  border-bottom: 2px solid #d67c1c;
 }
 .ui.grey.header {
   color: #767676;
@@ -595,22 +582,22 @@ a.ui.grey.header:hover {
   border-bottom: 2px solid #767676;
 }
 .ui.inverted.grey.header.header.header {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 a.ui.inverted.grey.header.header.header:hover {
   color: #c2c4c5;
 }
 .ui.inverted.grey.dividing.header {
-  border-bottom: 2px solid #DCDDDE;
+  border-bottom: 2px solid #dcddde;
 }
 .ui.black.header {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 a.ui.black.header:hover {
   color: #27292a;
 }
 .ui.black.dividing.header {
-  border-bottom: 2px solid #1B1C1D;
+  border-bottom: 2px solid #1b1c1d;
 }
 .ui.inverted.black.header.header.header {
   color: #545454;
@@ -622,10 +609,9 @@ a.ui.inverted.black.header.header.header:hover {
   border-bottom: 2px solid #545454;
 }
 
-/*-------------------
-         Aligned
-  --------------------*/
-
+/* -------------------
+           Aligned
+    -------------------- */
 .ui.left.aligned.header {
   text-align: left;
 }
@@ -639,16 +625,15 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.justified.header {
   text-align: justify;
 }
-.ui.justified.header:after {
+.ui.justified.header::after {
   display: inline-block;
-  content: '';
+  content: "";
   width: 100%;
 }
 
-/*-------------------
-         Floated
-  --------------------*/
-
+/* -------------------
+           Floated
+    -------------------- */
 .ui.floated.header,
 .ui[class*="left floated"].header {
   float: left;
@@ -661,18 +646,16 @@ a.ui.inverted.black.header.header.header:hover {
   margin-left: 0.5em;
 }
 
-/*-------------------
-         Fitted
-  --------------------*/
-
+/* -------------------
+           Fitted
+    -------------------- */
 .ui.fitted.header {
   padding: 0;
 }
 
-/*-------------------
-        Dividing
-  --------------------*/
-
+/* -------------------
+          Dividing
+    -------------------- */
 .ui.dividing.header {
   padding-bottom: 0.21428571rem;
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
@@ -687,16 +670,14 @@ a.ui.inverted.black.header.header.header:hover {
   border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-/*-------------------
-          Block
-  --------------------*/
-
+/* -------------------
+            Block
+    -------------------- */
 .ui.block.header {
-  background: #F3F4F5;
+  background: #f3f4f5;
   padding: 0.78571429rem 1rem;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: 1px solid #D4D4D5;
+  box-shadow: none;
+  border: 1px solid #d4d4d5;
   border-radius: 0.28571429rem;
 }
 .ui.block.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
@@ -724,21 +705,19 @@ a.ui.inverted.black.header.header.header:hover {
   font-size: 1.71428571rem;
 }
 
-/*-------------------
-         Attached
-  --------------------*/
-
+/* -------------------
+           Attached
+    -------------------- */
 .ui.attached.header {
-  background: #FFFFFF;
+  background: #fff;
   padding: 0.78571429rem 1rem;
-  margin: 0 -1px 0 -1px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: 1px solid #D4D4D5;
+  margin: 0 -1px;
+  box-shadow: none;
+  border: 1px solid #d4d4d5;
   border-radius: 0;
 }
 .ui.attached.block.header {
-  background: #F3F4F5;
+  background: #f3f4f5;
 }
 .ui.attached:not(.top).header {
   border-top: none;
@@ -776,10 +755,9 @@ a.ui.inverted.black.header.header.header:hover {
   font-size: 1.71428571em;
 }
 
-/*-------------------
+/* -------------------
         Sizing
---------------------*/
-
+-------------------- */
 .ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: 1.28571429em;
 }

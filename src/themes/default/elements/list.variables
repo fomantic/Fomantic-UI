@@ -2,9 +2,9 @@
              List
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* List */
 @listStyleType: none;
@@ -29,9 +29,9 @@
 @childItemPadding: @childItemVerticalPadding @childItemHorizontalPadding;
 @childItemLineHeight: inherit;
 
-/*-------------------
+/* -------------------
       Elements
---------------------*/
+-------------------- */
 
 /* Icon */
 @iconDistance: @relative4px;
@@ -72,16 +72,16 @@
 @itemLinkIconHoverColor: @textColor;
 @invertedIconLinkColor: @invertedLightTextColor;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @disabledColor: @disabledTextColor;
 @invertedDisabledColor: @invertedDisabledTextColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Float */
 @floatDistance: 1em;
@@ -106,9 +106,7 @@
 @linkListItemHoverColor: @hoveredTextColor;
 @linkListItemDownColor: @pressedTextColor;
 @linkListItemActiveColor: @selectedTextColor;
-@linkListTransition:
-  @defaultDuration color @defaultEasing
-;
+@linkListTransition: @defaultDuration color @defaultEasing;
 
 /* Inverted Link List */
 @invertedLinkListItemColor: @invertedUnselectedTextColor;
@@ -122,10 +120,9 @@
 @selectionListItemVerticalPadding: 0.5em;
 @selectionListItemHorizontalPadding: 0.5em;
 @selectionListTransition:
-  @defaultDuration color @defaultEasing,
-  @defaultDuration padding-left @defaultEasing,
-  @defaultDuration background-color @defaultEasing
-;
+    @defaultDuration color @defaultEasing,
+    @defaultDuration padding-left @defaultEasing,
+    @defaultDuration background-color @defaultEasing;
 
 /* Selection List States */
 @selectionListBackground: transparent;
@@ -151,10 +148,9 @@
 @animatedDuration: 0.25s;
 @animatedDelay: 0.1s;
 @animatedListTransition:
-  @animatedDuration color @defaultEasing @animatedDelay,
-  @animatedDuration padding-left @defaultEasing @animatedDelay,
-  @animatedDuration background-color @defaultEasing @animatedDelay
-;
+    @animatedDuration color @defaultEasing @animatedDelay,
+    @animatedDuration padding-left @defaultEasing @animatedDelay,
+    @animatedDuration background-color @defaultEasing @animatedDelay;
 @animatedListIndent: 1em;
 
 /* Bulleted */
@@ -162,7 +158,7 @@
 @bulletOffset: -@bulletDistance;
 
 @bulletOpacity: 1;
-@bulletCharacter: '\2022';
+@bulletCharacter: "\2022";
 @bulletColor: inherit;
 @bulletLinkColor: @textColor;
 @bulletVerticalAlign: top;

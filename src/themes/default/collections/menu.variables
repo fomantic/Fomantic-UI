@@ -2,15 +2,15 @@
              Menu
 *******************************/
 
-/*-------------------
+/* -------------------
       Collection
---------------------*/
+-------------------- */
 
 /* Menu */
 @verticalMargin: @medium;
 @horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
-@background: #FFFFFF;
+@background: #fff;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: @normal;
@@ -25,10 +25,9 @@
 @itemHorizontalPadding: @relativeLarge;
 @itemTextTransform: none;
 @itemTransition:
-  background @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
-;
+    background @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 @itemFontWeight: @normal;
 @itemTextColor: @textColor;
 
@@ -49,9 +48,9 @@
 /* Text Item */
 @textLineHeight: 1.3;
 
-/*--------------
+/* --------------
     Elements
----------------*/
+--------------- */
 
 /* Icon */
 @iconFloat: none;
@@ -63,7 +62,7 @@
 @dropdownIconDistance: 1em;
 
 /* Header */
-@headerBackground: '';
+@headerBackground: "";
 @headerWeight: @bold;
 @headerTextTransform: @normal;
 
@@ -83,7 +82,7 @@
 @arrowTransition: background @defaultDuration @defaultEasing;
 @arrowZIndex: 2;
 
-@arrowHoverColor: #F2F2F2;
+@arrowHoverColor: #f2f2f2;
 @arrowActiveColor: @arrowHoverColor;
 @arrowActiveHoverColor: @arrowActiveColor;
 
@@ -91,9 +90,9 @@
 @arrowVerticalActiveColor: @arrowActiveColor;
 @arrowVerticalSubMenuColor: @white;
 
-/*--------------
+/* --------------
     Couplings
----------------*/
+--------------- */
 
 /* Button */
 @buttonSize: @relativeMedium;
@@ -114,7 +113,7 @@
 
 /* Label */
 @labelOffset: -0.15em;
-@labelBackground: #999999;
+@labelBackground: #999;
 @labelTextColor: @white;
 
 @labelTextMargin: 1em;
@@ -128,13 +127,13 @@
 /* Image Label */
 @imageLabelTextDistance: 0.8em;
 @imageLabelVerticalPadding: 0.2833em; /* Calculates as: @verticalLabel (from label.less) - @labelVerticalPadding (from here) */
-@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
 @dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 
-@dropdownBackground: #FFFFFF;
+@dropdownBackground: #fff;
 @dropdownMenuDistance: 0;
 @dropdownMenuBorderRadius: @borderRadius;
 
@@ -160,9 +159,9 @@
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
 
-/*--------------
+/* --------------
      States
----------------*/
+--------------- */
 
 /* Hovered Item */
 @hoverItemBackground: @subtleTransparentBlack;
@@ -171,7 +170,6 @@
 /* Pressed Item */
 @pressedItemBackground: @subtleTransparentBlack;
 @pressedItemTextColor: @hoverItemTextColor;
-
 
 /* Active Item */
 @activeItemBackground: @transparentBlack;
@@ -198,20 +196,18 @@
 @subMenuActiveTextColor: @activeItemTextColor;
 @subMenuActiveFontWeight: @bold;
 
-
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 
 /* Vertical */
 @verticalBoxShadow: @boxShadow;
 @verticalPointerWidth: 2px;
-@verticalBackground: #FFFFFF;
+@verticalBackground: #fff;
 @verticalItemBackground: none;
 @verticalDividerBackground: @dividerBackground;
 
 @verticalActiveBoxShadow: none;
-
 
 /* Secondary */
 @secondaryBackground: none;
@@ -269,7 +265,6 @@
 @secondaryPointingHeaderColor: @darkTextColor;
 @secondaryVerticalPointingItemMargin: 0 -@secondaryPointingBorderWidth 0 0;
 
-
 /* Inverted Secondary */
 @secondaryInvertedColor: @invertedLightTextColor;
 
@@ -287,10 +282,9 @@
 @secondaryPointingInvertedActiveBorderColor: @white;
 @secondaryPointingInvertedActiveColor: @invertedSelectedTextColor;
 
-
 /* Tiered */
-@tieredActiveItemBackground: #FCFCFC;
-@tieredActiveMenuBackground: #FCFCFC;
+@tieredActiveItemBackground: #fcfcfc;
+@tieredActiveMenuBackground: #fcfcfc;
 
 @tieredSubMenuTextTransform: @normal;
 @tieredSubMenuFontWeight: @normal;
@@ -305,12 +299,10 @@
 
 @tieredInvertedSubMenuBackground: rgba(0, 0, 0, 0.2);
 
-
 /* Icon */
 @iconMenuTextAlign: center;
 @iconMenuItemColor: @black;
 @iconMenuInvertedItemColor: @white;
-
 
 /* Tabular */
 @tabularBorderColor: @solidBorderColor;
@@ -335,8 +327,6 @@
 @tabularActiveBoxShadow: none;
 @tabularActiveWeight: @bold;
 
-
-
 /* Pagination */
 @paginationMinWidth: 3em;
 @paginationActiveBackground: @transparentBlack;
@@ -348,13 +338,12 @@
 @labeledIconMinWidth: 6em;
 @labeledIconTextMargin: 0.5rem;
 
-
 /* Text */
 @textMenuItemSpacing: @relative7px;
 @textMenuMargin: @relativeMedium -(@textMenuItemSpacing);
 @textMenuItemColor: @mutedTextColor;
 @textMenuItemFontWeight: @normal;
-@textMenuItemMargin: 0 0;
+@textMenuItemMargin: 0;
 @textMenuItemPadding: @relative5px @textMenuItemSpacing;
 @textMenuItemTransition: opacity @defaultDuration @defaultEasing;
 
@@ -377,10 +366,9 @@
 @textVerticalMenuIconFloat: none;
 @textVerticalMenuIconMargin: @iconMargin;
 
-
-/*--------------
+/* --------------
    Variations
----------------*/
+--------------- */
 
 /* Inverted */
 @invertedBackground: @black;
@@ -409,9 +397,9 @@
 /* Inverted Active */
 @invertedActiveBackground: @invertedArrowActiveColor;
 @invertedActiveColor: @invertedSelectedTextColor;
-@invertedArrowActiveColor: #3D3E3F;
+@invertedArrowActiveColor: #3d3e3f;
 
-/* Inverted Active Hover  */
+/* Inverted Active Hover */
 @invertedActiveHoverBackground: @invertedActiveBackground;
 @invertedActiveHoverColor: @white;
 @invertedArrowActiveHoverColor: @invertedArrowActiveColor;
@@ -440,10 +428,7 @@
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
-@attachedBottomBoxShadow:
-  @boxShadow,
-  @attachedBoxShadow
-;
+@attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Resize large sizes */
 @mini: @11px;
@@ -464,10 +449,9 @@
 @hugeWidth: 22rem;
 @massiveWidth: 25rem;
 
-
-/*-------------------
+/* -------------------
   Inverted dropdowns
---------------------*/
+-------------------- */
 @invertedDropdownBackground: @black;
 @invertedDropdownMenuBoxShadow: none;
 

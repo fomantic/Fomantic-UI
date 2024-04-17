@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Video
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Embed
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -18,14 +18,13 @@
   max-width: 100%;
   height: 0;
   overflow: hidden;
-  background: #DCDDDE;
+  background: #dcddde;
   padding-bottom: 56.25%;
 }
 
-/*-----------------
+/* -----------------
   Embedded Content
-------------------*/
-
+------------------ */
 .ui.embed iframe,
 .ui.embed embed,
 .ui.embed object {
@@ -40,18 +39,16 @@
   overflow: hidden;
 }
 
-/*-----------------
+/* -----------------
       Embed
-------------------*/
-
+------------------ */
 .ui.embed > .embed {
   display: none;
 }
 
-/*--------------
+/* --------------
    Placeholder
----------------*/
-
+--------------- */
 .ui.embed > .placeholder {
   position: absolute;
   cursor: pointer;
@@ -60,13 +57,12 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
+  background: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
 }
 
-/*--------------
+/* --------------
       Icon
----------------*/
-
+--------------- */
 .ui.embed > i.icon {
   cursor: pointer;
   position: absolute;
@@ -76,30 +72,26 @@
   height: 100%;
   z-index: 2;
 }
-.ui.embed > i.icon:after {
+.ui.embed > i.icon::after {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 3;
-  content: '';
-  background: -webkit-radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
+  content: "";
   background: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   opacity: 0.5;
-  -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
-.ui.embed > i.icon:before {
+.ui.embed > i.icon::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-          transform: translateX(-50%) translateY(-50%);
-  color: #FFFFFF;
+  transform: translateX(-50%) translateY(-50%);
+  color: #fff;
   font-size: 6rem;
   text-shadow: 0 2px 10px rgba(34, 36, 38, 0.2);
-  -webkit-transition: opacity 0.5s ease, color 0.5s ease;
   transition: opacity 0.5s ease, color 0.5s ease;
   z-index: 10;
 }
@@ -110,23 +102,20 @@
 *******************************/
 
 
-/*--------------
+/* --------------
      Hover
----------------*/
-
-.ui.embed i.icon:hover:after {
-  background: -webkit-radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
+--------------- */
+.ui.embed i.icon:hover::after {
   background: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   opacity: 1;
 }
-.ui.embed i.icon:hover:before {
-  color: #FFFFFF;
+.ui.embed i.icon:hover::before {
+  color: #fff;
 }
 
-/*--------------
+/* --------------
      Active
----------------*/
-
+--------------- */
 .ui.active.embed > i.icon,
 .ui.active.embed > .placeholder {
   display: none;

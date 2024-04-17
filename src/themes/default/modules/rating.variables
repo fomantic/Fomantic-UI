@@ -10,16 +10,14 @@
 @iconWidth: 1.25em;
 @iconHeight: auto;
 @iconTransition:
-  opacity @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing,
-  text-shadow @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
-;
+    opacity @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing,
+    text-shadow @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing;
 
-
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Standard */
 @inactiveBackground: transparent;
@@ -33,15 +31,15 @@
 
 @shadowWidth: 1px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @interactiveActiveIconOpacity: 1;
 @interactiveSelectedIconOpacity: 1;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 @massive: 2rem;

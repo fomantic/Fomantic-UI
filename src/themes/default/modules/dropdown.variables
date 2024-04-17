@@ -2,34 +2,34 @@
             Dropdown
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
-  width @defaultDuration @defaultEasing
-;
+    box-shadow @defaultDuration @defaultEasing,
+    width @defaultDuration @defaultEasing;
 @borderRadius: @defaultBorderRadius;
 
 @raisedShadow: 0 2px 3px 0 @borderColor;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Icon */
 @dropdownIconSize: @relative12px;
 @dropdownIconMargin: 0 0 0 1em;
 @dropdownIconMinWidth: 1em;
+@dropdownIconMultipleRight: -1.5em;
 
 /* Current Text */
 @textTransition: none;
 
 /* Menu */
-@menuBackground: #FFFFFF;
+@menuBackground: #fff;
 @menuMargin: 0;
-@menuPadding: 0 0;
+@menuPadding: 0;
 @menuTop: 100%;
 @menuTextAlign: left;
 
@@ -124,18 +124,18 @@
 /* Floated Content */
 @floatedDistance: 1em;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-/*------------
+/* ------------
    Selection
---------------*/
+-------------- */
 
 @selectionMinWidth: 14em;
 @selectionVerticalPadding: @inputVerticalPadding;
 @selectionHorizontalPadding: @inputHorizontalPadding;
-@selectionBorderEmWidth:  @relative1px;
+@selectionBorderEmWidth: @relative1px;
 @selectionMinHeight: @inputLineHeight + (@selectionVerticalPadding * 2) - @selectionBorderEmWidth;
 @selectionBackground: @inputBackground;
 @selectionDisplay: inline-block;
@@ -217,13 +217,13 @@
 @selectionActiveHoverMenuBoxShadow: @selectionVisibleMenuBoxShadow;
 
 @selectionVisibleConnectingBorder: 0;
-@selectionVisibleIconOpacity: '';
+@selectionVisibleIconOpacity: "";
 
-/*--------------
+/* --------------
      Search
---------------*/
+-------------- */
 
-@searchMinWidth: '';
+@searchMinWidth: "";
 
 /* Search Selection */
 @searchSelectionLineHeight: @inputLineHeight;
@@ -238,16 +238,15 @@
 @searchWidescreenMaxMenuHeight: @selectionWidescreenMaxMenuHeight;
 
 /* Inline */
-@inlineIconMargin: 0 @relative3px 0 @relative3px;
+@inlineIconMargin: 0 @relative3px;
 @inlineTextColor: inherit;
 @inlineTextFontWeight: @bold;
 @inlineMenuDistance: @relative3px;
 @inlineMenuBorderRadius: @borderRadius;
 
-
-/*--------------
+/* --------------
     Multiple
---------------*/
+-------------- */
 
 /* Split Actual Padding Between Child and Parent (allows for label spacing) */
 @multipleSelectionVerticalPadding: (@searchSelectionVerticalPadding * (1/3));
@@ -262,9 +261,11 @@
 @multipleSelectionChildLineHeight: @relative17px;
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
 
+@multipleSearchMinWidth: 5.05em;
+
 /* Dropdown Icon */
-@multipleSelectionDropdownIconMargin: '';
-@multipleSelectionDropdownIconPadding: '';
+@multipleSelectionDropdownIconMargin: "";
+@multipleSelectionDropdownIconPadding: "";
 
 @multipleSelectionSearchAfterLabelDistance: @relative2px;
 
@@ -280,15 +281,18 @@
 @labelHorizontalPadding: @relativeMini;
 @labelPadding: @labelVerticalPadding @labelHorizontalPadding;
 
-@imageLabelHeight: (1em + @labelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelHeight: (1em + @labelVerticalPadding * 2); /* Logic adopted from label.less */
 @imageLabelImageMargin: -@labelVerticalPadding @labelHorizontalPadding -@labelVerticalPadding -@labelHorizontalPadding;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
+
+/* Addition */
+@additionZIndex: @hoveredZIndex + 1;
 
 /* Hovered */
-@hoveredItemBackground: @transparentBlack;
+@hoveredItemBackground: #f2f2f2;
 @hoveredItemColor: @selectedTextColor;
 @hoveredZIndex: @menuZIndex + 2;
 
@@ -307,7 +311,7 @@
 @activeItemColor: @selectedTextColor;
 
 /* Selected */
-@selectedBackground: @subtleTransparentBlack;
+@selectedBackground: #f7f7f7;
 @selectedColor: @selectedTextColor;
 
 /* Clearable */
@@ -320,9 +324,9 @@
 @clearableIconSelectionPosition: 3em;
 @clearableIconInlinePosition: 2.2em;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Scrolling */
 @scrollingMenuWidth: 100%;
@@ -378,6 +382,7 @@
 @pointingArrowBackground: @white;
 @pointingArrowZIndex: 2;
 @pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @menuBorderColor;
+@pointingArrowBoxShadowSelection: -@menuBorderWidth -@menuBorderWidth 0 0 @selectionVisibleBorderColor;
 @pointingArrowSize: @relative7px;
 
 @pointingMenuDistance: @mini;
@@ -386,6 +391,7 @@
 /* Pointing Upward */
 @pointingUpwardMenuBorderRadius: @borderRadius;
 @pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @menuBorderColor;
+@pointingUpwardArrowBoxShadowSelection: @menuBorderWidth @menuBorderWidth 0 0 @selectionVisibleBorderColor;
 
 /* Scrollhint */
 @scrollhintWidth: 0.25em;
@@ -399,9 +405,9 @@
 @scrollhintStartColor: rgba(0, 0, 0, 0.75);
 @scrollhintEndColor: rgba(0, 0, 0, 0);
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 /* General rules and basic dropdowns */
 @invertedMenuBackground: @black;
@@ -412,15 +418,16 @@
 
 @invertedPointingArrowBackground: @black;
 @invertedPointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @invertedMenuBorderColor;
+@invertedPointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @invertedMenuBorderColor;
 
-@invertedHoveredItemBackground: @transparentWhite;
+@invertedHoveredItemBackground: #2d2e2f;
 @invertedHoveredItemColor: @invertedMenuColor;
 
 @invertedActiveItemBackground: transparent;
 @invertedActiveItemColor: @invertedMenuColor;
 @invertedActiveItemBoxShadow: none;
 
-@invertedSelectedBackground: @strongTransparentWhite;
+@invertedSelectedBackground: #3d3e3f;
 @invertedSelectedColor: @invertedMenuColor;
 
 @invertedMenuHeaderColor: @white;
@@ -470,3 +477,9 @@
 /* Scrollhint */
 @invertedScrollhintStartColor: rgba(255, 255, 255, 0.75);
 @invertedScrollhintEndColor: rgba(255, 255, 255, 0);
+
+/* Resizable */
+@resizableDirection: vertical;
+
+@highlightMatchesBackground: @defaultHighlightMatchesBackground;
+@highlightMatchesColor: @defaultHighlightMatchesColor;

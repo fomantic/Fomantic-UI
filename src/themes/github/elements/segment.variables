@@ -2,13 +2,13 @@
             Standard
 *******************************/
 
-/*-------------------
+/* -------------------
        Segment
---------------------*/
+-------------------- */
 
 @segmentBorderWidth: 1px;
-@border: 1px solid #D8DEE2;
-@boxShadow: 0px 1px 3px rgba(0, 0, 0, 0.075);
+@border: 1px solid #d8dee2;
+@boxShadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 
 @verticalPadding: 20px;
 @horizontalPadding: 20px;
@@ -19,22 +19,21 @@
             Variations
 *******************************/
 
-
 /* Raised */
-@raisedBoxShadow: 0px 1px 3px rgba(0, 0, 0, 0.075);
+@raisedBoxShadow: 0 1px 3px rgba(0, 0, 0, 0.075);
 
 /* Colors */
 @coloredBorderSize: 0.5em;
 
 /* Ordinality */
-@secondaryBackground: #F9F9F9;
+@secondaryBackground: #f9f9f9;
 @secondaryColor: @textColor;
 
-@tertiaryBackground:  #F0F0F0;
+@tertiaryBackground: #f0f0f0;
 @tertiaryColor: @textColor;
 
-@secondaryInvertedBackground: #555555;
+@secondaryInvertedBackground: #555;
 @secondaryInvertedColor: @textColor;
 
-@tertiaryInvertedBackground: #333333;
+@tertiaryInvertedBackground: #333;
 @tertiaryInvertedColor: @textColor;

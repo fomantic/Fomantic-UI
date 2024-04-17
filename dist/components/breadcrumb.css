@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Breadcrumb
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Breadcrumb
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -36,7 +36,7 @@
 .ui.breadcrumb .divider {
   display: inline-block;
   opacity: 0.7;
-  margin: 0 0.21428571rem 0;
+  margin: 0 0.21428571rem;
   font-size: 0.92857143em;
   color: rgba(0, 0, 0, 0.4);
   vertical-align: baseline;
@@ -44,7 +44,7 @@
 
 /* Link */
 .ui.breadcrumb a {
-  color: #4183C4;
+  color: #4183c4;
 }
 .ui.breadcrumb a:hover {
   color: #1e70bf;
@@ -74,10 +74,10 @@
 
 /* Inverted */
 .ui.inverted.breadcrumb {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 .ui.inverted.breadcrumb > .active.section {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.inverted.breadcrumb > .divider {
   color: rgba(255, 255, 255, 0.7);

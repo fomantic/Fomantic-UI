@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Image
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Image
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -60,20 +60,18 @@ img.ui.image {
 *******************************/
 
 
-/*--------------
-       Inline
-  ---------------*/
-
+/* --------------
+         Inline
+    --------------- */
 .ui.inline.image,
 .ui.inline.image svg,
 .ui.inline.image img {
   display: inline-block;
 }
 
-/*------------------
-    Vertical Aligned
-  -------------------*/
-
+/* ------------------
+      Vertical Aligned
+    ------------------- */
 .ui.top.aligned.image,
 .ui.top.aligned.image svg,
 .ui.top.aligned.image img {
@@ -94,24 +92,20 @@ img.ui.image {
 }
 .ui.top.aligned.images .image,
 .ui.images .ui.top.aligned.image {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
 }
 .ui.middle.aligned.images .image,
 .ui.images .ui.middle.aligned.image {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
 }
 .ui.bottom.aligned.images .image,
 .ui.images .ui.bottom.aligned.image {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
 }
 
-/*--------------
-       Rounded
-  ---------------*/
-
+/* --------------
+         Rounded
+    --------------- */
 .ui.rounded.images .image,
 .ui.rounded.image,
 .ui.rounded.images .image > *,
@@ -119,10 +113,9 @@ img.ui.image {
   border-radius: 0.3125em;
 }
 
-/*--------------
-      Bordered
-  ---------------*/
-
+/* --------------
+        Bordered
+    --------------- */
 .ui.bordered.images .image,
 .ui.bordered.images img,
 .ui.bordered.images svg,
@@ -132,10 +125,9 @@ img.ui.bordered.image {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/*--------------
-      Circular
-  ---------------*/
-
+/* --------------
+        Circular
+    --------------- */
 .ui.circular.images,
 .ui.circular.image {
   overflow: hidden;
@@ -147,10 +139,9 @@ img.ui.bordered.image {
   border-radius: 500rem;
 }
 
-/*--------------
-       Fluid
-  ---------------*/
-
+/* --------------
+         Fluid
+    --------------- */
 .ui.fluid.images,
 .ui.fluid.image,
 .ui.fluid.images img,
@@ -162,10 +153,9 @@ img.ui.bordered.image {
   height: auto;
 }
 
-/*--------------
-       Avatar
-  ---------------*/
-
+/* --------------
+         Avatar
+    --------------- */
 .ui.avatar.images .image,
 .ui.avatar.images img,
 .ui.avatar.images svg,
@@ -179,10 +169,9 @@ img.ui.bordered.image {
   border-radius: 500rem;
 }
 
-/*-------------------
-         Spaced
-  --------------------*/
-
+/* -------------------
+           Spaced
+    -------------------- */
 .ui.spaced.image {
   display: inline-block !important;
   margin-left: 0.5em;
@@ -197,10 +186,9 @@ img.ui.bordered.image {
   margin-right: 0.5em;
 }
 
-/*-------------------
-         Floated
-  --------------------*/
-
+/* -------------------
+           Floated
+    -------------------- */
 .ui.floated.image,
 .ui.floated.images {
   float: left;
@@ -224,27 +212,15 @@ img.ui.bordered.image {
   margin-right: auto;
 }
 .ui.centered.images {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
-
+--------------- */
 .ui.medium.images .image,
 .ui.medium.images img,
 .ui.medium.images svg,
@@ -312,12 +288,12 @@ img.ui.bordered.image {
 
 
 /*******************************
-                Groups
-  *******************************/
+                  Groups
+    *******************************/
 
 .ui.images {
   font-size: 0;
-  margin: 0 -0.25rem 0;
+  margin: 0 -0.25rem;
 }
 .ui.images .image,
 .ui.images > img,

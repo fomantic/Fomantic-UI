@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Comment
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Comment
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -14,10 +14,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
     Comments
----------------*/
-
+--------------- */
 .ui.comments {
   margin: 1.5em 0;
   max-width: 650px;
@@ -29,10 +28,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
      Comment
----------------*/
-
+--------------- */
 .ui.comments .comment {
   position: relative;
   background: none;
@@ -47,15 +45,14 @@
   padding-top: 0;
 }
 
-/*--------------------
+/* --------------------
     Nested Comments
----------------------*/
-
+--------------------- */
 .ui.comments .comment > .comments {
   margin: 0 0 0.5em 0.5em;
   padding: 1em 0 1em 1em;
 }
-.ui.comments .comment > .comments:before {
+.ui.comments .comment > .comments::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,10 +63,9 @@
   background: none;
 }
 
-/*--------------
-     Avatar
----------------*/
-
+/* --------------
+         Avatar
+    --------------- */
 .ui.comments .comment .avatar {
   display: block;
   width: 2.5em;
@@ -86,10 +82,9 @@
   border-radius: 0.25rem;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
-
+--------------- */
 .ui.comments .comment > .content {
   display: block;
 }
@@ -99,10 +94,9 @@
   margin-left: 3.5em;
 }
 
-/*--------------
-     Author
----------------*/
-
+/* --------------
+         Author
+    --------------- */
 .ui.comments .comment .author {
   font-size: 1em;
   color: rgba(0, 0, 0, 0.87);
@@ -115,10 +109,9 @@
   color: #1e70bf;
 }
 
-/*--------------
-     Metadata
----------------*/
-
+/* --------------
+         Metadata
+    --------------- */
 .ui.comments .comment .metadata {
   display: inline-block;
   margin-left: 0.5em;
@@ -133,10 +126,9 @@
   margin-right: 0;
 }
 
-/*--------------------
+/* --------------------
      Comment Text
----------------------*/
-
+--------------------- */
 .ui.comments .comment .text {
   margin: 0.25em 0 0.5em;
   font-size: 1em;
@@ -145,10 +137,9 @@
   line-height: 1.3;
 }
 
-/*--------------------
-     User Actions
----------------------*/
-
+/* --------------------
+         User Actions
+    --------------------- */
 .ui.comments .comment .actions {
   font-size: 0.875em;
 }
@@ -166,10 +157,9 @@
   color: rgba(0, 0, 0, 0.8);
 }
 
-/*--------------------
-      Reply Form
----------------------*/
-
+/* --------------------
+          Reply Form
+    --------------------- */
 .ui.comments > .reply.form {
   margin-top: 1em;
 }
@@ -199,40 +189,34 @@
 *******************************/
 
 
-/*--------------------
-          Threaded
-  ---------------------*/
-
+/* --------------------
+            Threaded
+    --------------------- */
 .ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
   padding: 3em 0 2em 2.25em;
-  -webkit-box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
+  box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
 }
 
-/*--------------------
-          Minimal
-  ---------------------*/
-
+/* --------------------
+            Minimal
+    --------------------- */
 .ui.minimal.comments .comment .actions {
   opacity: 0;
   position: absolute;
   top: 0;
   right: 0;
   left: auto;
-  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
+  transition-delay: 0.1s;
 }
 .ui.minimal.comments .comment > .content:hover > .actions {
   opacity: 1;
 }
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
-
+-------------------- */
 .ui.comments {
   font-size: 1rem;
 }
@@ -258,12 +242,11 @@
   font-size: 1.71428571rem;
 }
 
-/*-------------------
-          Inverted
-  --------------------*/
-
+/* -------------------
+            Inverted
+    -------------------- */
 .ui.inverted.comments .comment {
-  background-color: #1B1C1D;
+  background-color: #1b1c1d;
 }
 .ui.inverted.comments .comment .author,
 .ui.inverted.comments .comment .text {
@@ -279,8 +262,12 @@
   color: #ffffff;
 }
 .ui.inverted.threaded.comments .comment > .comments {
-  -webkit-box-shadow: -1px 0 0 #555555;
-          box-shadow: -1px 0 0 #555555;
+  box-shadow: -1px 0 0 #555;
+}
+.ui.disabled.comments,
+.ui.comments .disabled.comment {
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 

@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Form
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Form
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -14,27 +14,24 @@
 *******************************/
 
 
-/*--------------------
+/* --------------------
         Form
----------------------*/
-
+--------------------- */
 .ui.form {
   position: relative;
   max-width: 100%;
 }
 
-/*--------------------
+/* --------------------
         Content
----------------------*/
-
+--------------------- */
 .ui.form > p {
   margin: 1em 0;
 }
 
-/*--------------------
+/* --------------------
         Field
----------------------*/
-
+--------------------- */
 .ui.form .field {
   clear: both;
   margin: 0 0 1em;
@@ -49,28 +46,30 @@
   margin: 0;
 }
 
-/*--------------------
+/* --------------------
         Labels
----------------------*/
-
+--------------------- */
 .ui.form .field > label {
   display: block;
   margin: 0 0 0.28571429rem 0;
-  color: rgba(0, 0, 0, 0.87);
   font-size: 0.92857143em;
   font-weight: bold;
   text-transform: none;
 }
+.ui.form:not(.inverted) .field > label:not(.button) {
+  color: rgba(0, 0, 0, 0.87);
+}
 
-/*--------------------
+/* --------------------
     Standard Inputs
----------------------*/
-
+--------------------- */
 .ui.form textarea,
 .ui.form input:not([type]),
+.ui.form input[type="color"],
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
 .ui.form input[type="email"],
+.ui.form input[type="month"],
 .ui.form input[type="number"],
 .ui.form input[type="password"],
 .ui.form input[type="search"],
@@ -78,7 +77,8 @@
 .ui.form input[type="time"],
 .ui.form input[type="text"],
 .ui.form input[type="file"],
-.ui.form input[type="url"] {
+.ui.form input[type="url"],
+.ui.form input[type="week"] {
   width: 100%;
   vertical-align: top;
 }
@@ -89,9 +89,11 @@
   height: 1.21428571em;
 }
 .ui.form input:not([type]),
+.ui.form input[type="color"],
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
 .ui.form input[type="email"],
+.ui.form input[type="month"],
 .ui.form input[type="number"],
 .ui.form input[type="password"],
 .ui.form input[type="search"],
@@ -99,8 +101,9 @@
 .ui.form input[type="time"],
 .ui.form input[type="text"],
 .ui.form input[type="file"],
-.ui.form input[type="url"] {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+.ui.form input[type="url"],
+.ui.form input[type="week"] {
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   margin: 0;
   outline: none;
   -webkit-appearance: none;
@@ -108,14 +111,22 @@
   line-height: 1.21428571em;
   padding: 0.67857143em 1em;
   font-size: 1em;
-  background: #FFFFFF;
+  background: #fff;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-          box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+  box-shadow: 0 0 0 0 transparent inset;
   transition: color 0.1s ease, border-color 0.1s ease;
+}
+.ui.form input[type="color"] {
+  padding: initial;
+}
+.ui.form input::-webkit-calendar-picker-indicator {
+  padding: 0;
+  opacity: 0.5;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
 }
 
 /* Text Area */
@@ -125,17 +136,15 @@
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   padding: 0.78571429em 1em;
-  background: #FFFFFF;
+  background: #fff;
   border: 1px solid rgba(34, 36, 38, 0.15);
   outline: none;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-          box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+  box-shadow: 0 0 0 0 transparent inset;
   transition: color 0.1s ease, border-color 0.1s ease;
   font-size: 1em;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.2857;
   resize: vertical;
 }
@@ -149,10 +158,9 @@
   vertical-align: top;
 }
 
-/*--------------------
+/* --------------------
     Checkbox margin
----------------------*/
-
+--------------------- */
 .ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
   margin-top: 0.7em;
 }
@@ -175,10 +183,9 @@
   margin-top: 0.7em;
 }
 
-/*--------------------
-        Transparent
-  ---------------------*/
-
+/* --------------------
+          Transparent
+    --------------------- */
 .ui.form .field .transparent.input:not(.icon) input,
 .ui.form .field input.transparent,
 .ui.form .field textarea.transparent {
@@ -188,44 +195,38 @@
 .ui.form .field textarea.transparent {
   border-color: transparent !important;
   background-color: transparent !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
-/*--------------------------
+/* --------------------------
   Input w/ attached Button
----------------------------*/
-
+--------------------------- */
 .ui.form input.attached {
   width: auto;
 }
 
-/*--------------------
+/* --------------------
      Basic Select
----------------------*/
-
+--------------------- */
 .ui.form select {
   display: block;
   height: auto;
   width: 100%;
-  background: #FFFFFF;
+  background: #fff;
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-          box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
   padding: 0.62em 1em;
   color: rgba(0, 0, 0, 0.87);
-  -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   transition: color 0.1s ease, border-color 0.1s ease;
 }
 
-/*--------------------
+/* --------------------
        Dropdown
----------------------*/
-
+--------------------- */
 
 /* Block */
-.ui.form .field > .selection.dropdown {
+.ui.form .field > .selection.dropdown:not(.compact) {
   min-width: auto;
   width: 100%;
 }
@@ -243,10 +244,9 @@
   float: none;
 }
 
-/*--------------------
+/* --------------------
        UI Input
----------------------*/
-
+--------------------- */
 
 /* Block */
 .ui.form .field .ui.input,
@@ -255,7 +255,7 @@
   width: 100%;
 }
 
-/* Inline  */
+/* Inline */
 .ui.form .inline.fields .field:not(.wide) .ui.input,
 .ui.form .inline.field:not(.wide) .ui.input {
   width: auto;
@@ -279,16 +279,13 @@
 .ui.form .three.fields .ui.input input,
 .ui.form .two.fields .ui.input input,
 .ui.form .wide.field .ui.input input {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  flex: 1 0 auto;
   width: 0;
 }
 
-/*--------------------
+/* --------------------
    Types of Messages
----------------------*/
-
+--------------------- */
 .ui.form .error.message,
 .ui.form .error.message:empty {
   display: none;
@@ -311,23 +308,25 @@
   margin-top: 0;
 }
 
-/*--------------------
+/* --------------------
    Validation Prompt
----------------------*/
-
+--------------------- */
 .ui.form .field .prompt.label {
   white-space: normal;
-  background: #FFFFFF !important;
-  border: 1px solid #E0B4B4 !important;
-  color: #9F3A38 !important;
+  background: #fff !important;
+  border: 1px solid #e0b4b4 !important;
+  color: #9f3a38 !important;
+}
+.ui.form .field .prompt.label li::before {
+  color: #9f3a38;
 }
 .ui.form .inline.fields .field .prompt,
 .ui.form .inline.field .prompt {
   vertical-align: top;
   margin: -0.25em 0 -0.5em 0.5em;
 }
-.ui.form .inline.fields .field .prompt:before,
-.ui.form .inline.field .prompt:before {
+.ui.form .inline.fields .field .prompt::before,
+.ui.form .inline.field .prompt::before {
   border-width: 0 0 1px 1px;
   bottom: auto;
   right: auto;
@@ -341,57 +340,59 @@
 *******************************/
 
 
-/*--------------------
+/* --------------------
       Autofilled
----------------------*/
-
+--------------------- */
 .ui.form .field.field input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px #FFFFF0 inset !important;
-          box-shadow: 0 0 0 100px #FFFFF0 inset !important;
-  border-color: #E5DFA1 !important;
+  box-shadow: 0 0 0 100px #fffff0 inset !important;
+  border-color: #e5dfa1 !important;
 }
 
 /* Focus */
 .ui.form .field.field input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 100px #FFFFF0 inset !important;
-          box-shadow: 0 0 0 100px #FFFFF0 inset !important;
-  border-color: #D5C315 !important;
+  box-shadow: 0 0 0 100px #fffff0 inset !important;
+  border-color: #d5c315 !important;
 }
 
-/*--------------------
+/* --------------------
       Placeholder
----------------------*/
-
+--------------------- */
 
 /* browsers require these rules separate */
-.ui.form ::-webkit-input-placeholder {
+.ui.form :-ms-input-placeholder {
+  color: rgba(191, 191, 191, 0.87);
+}
+.ui.form ::-ms-input-placeholder {
+  color: rgba(191, 191, 191, 0.87);
+}
+.ui.form ::placeholder {
   color: rgba(191, 191, 191, 0.87);
 }
 .ui.form :-ms-input-placeholder {
   color: rgba(191, 191, 191, 0.87) !important;
 }
-.ui.form ::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.87);
-  opacity: 1;
+.ui.form :focus:-ms-input-placeholder {
+  color: rgba(115, 115, 115, 0.87);
 }
-.ui.form :focus::-webkit-input-placeholder {
+.ui.form :focus::-ms-input-placeholder {
+  color: rgba(115, 115, 115, 0.87);
+}
+.ui.form :focus::placeholder {
   color: rgba(115, 115, 115, 0.87);
 }
 .ui.form :focus:-ms-input-placeholder {
   color: rgba(115, 115, 115, 0.87) !important;
 }
-.ui.form :focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.87);
-}
 
-/*--------------------
+/* --------------------
         Focus
----------------------*/
-
+--------------------- */
 .ui.form input:not([type]):focus,
+.ui.form input[type="color"]:focus,
 .ui.form input[type="date"]:focus,
 .ui.form input[type="datetime-local"]:focus,
 .ui.form input[type="email"]:focus,
+.ui.form input[type="month"]:focus,
 .ui.form input[type="number"]:focus,
 .ui.form input[type="password"]:focus,
 .ui.form input[type="search"]:focus,
@@ -399,18 +400,20 @@
 .ui.form input[type="time"]:focus,
 .ui.form input[type="text"]:focus,
 .ui.form input[type="file"]:focus,
-.ui.form input[type="url"]:focus {
+.ui.form input[type="url"]:focus,
+.ui.form input[type="week"]:focus {
   color: rgba(0, 0, 0, 0.95);
-  border-color: #85B7D9;
+  border-color: #85b7d9;
   border-radius: 0.28571429rem;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
-          box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
 }
 .ui.form .ui.action.input:not([class*="left action"]) input:not([type]):focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="color"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="date"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="datetime-local"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="email"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="month"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="number"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="password"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="search"]:focus,
@@ -418,14 +421,17 @@
 .ui.form .ui.action.input:not([class*="left action"]) input[type="time"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="text"]:focus,
 .ui.form .ui.action.input:not([class*="left action"]) input[type="file"]:focus,
-.ui.form .ui.action.input:not([class*="left action"]) input[type="url"]:focus {
+.ui.form .ui.action.input:not([class*="left action"]) input[type="url"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="week"]:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 .ui.form .ui[class*="left action"].input input:not([type]),
+.ui.form .ui[class*="left action"].input input[type="color"],
 .ui.form .ui[class*="left action"].input input[type="date"],
 .ui.form .ui[class*="left action"].input input[type="datetime-local"],
 .ui.form .ui[class*="left action"].input input[type="email"],
+.ui.form .ui[class*="left action"].input input[type="month"],
 .ui.form .ui[class*="left action"].input input[type="number"],
 .ui.form .ui[class*="left action"].input input[type="password"],
 .ui.form .ui[class*="left action"].input input[type="search"],
@@ -433,24 +439,28 @@
 .ui.form .ui[class*="left action"].input input[type="time"],
 .ui.form .ui[class*="left action"].input input[type="text"],
 .ui.form .ui[class*="left action"].input input[type="file"],
-.ui.form .ui[class*="left action"].input input[type="url"] {
+.ui.form .ui[class*="left action"].input input[type="url"],
+.ui.form .ui[class*="left action"].input input[type="week"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 .ui.form textarea:focus {
   color: rgba(0, 0, 0, 0.95);
-  border-color: #85B7D9;
+  border-color: #85b7d9;
   border-radius: 0.28571429rem;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
-          box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
 }
 
-/*--------------------
-          States
-  ---------------------*/
+/* Focus */
+.ui.form input:focus::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
 
+/* --------------------
+            States
+    --------------------- */
 
 /* On Form */
 .ui.form.error .error.message:not(:empty) {
@@ -460,8 +470,6 @@
   display: inline-block;
 }
 .ui.form.error .icon.error.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -476,8 +484,6 @@
 }
 .ui.form .fields.error .icon.error.message:not(:empty),
 .ui.form .field.error .icon.error.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .ui.ui.form .fields.error .field label,
@@ -486,7 +492,12 @@
 .ui.ui.form .field.error .ui.label:not(.corner),
 .ui.ui.form .fields.error .field .input,
 .ui.ui.form .field.error .input {
-  color: #9F3A38;
+  color: #9f3a38;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.error) > label {
+    color: #9f3a38;
+  }
 }
 .ui.form .fields.error .field .ui.label,
 .ui.form .field.error .ui.label {
@@ -494,15 +505,17 @@
 }
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
-  border-color: #9F3A38;
-  color: #FFFFFF;
+  border-color: #9f3a38;
+  color: #fff;
 }
 .ui.form .fields.error .field textarea,
 .ui.form .fields.error .field select,
 .ui.form .fields.error .field input:not([type]),
+.ui.form .fields.error .field input[type="color"],
 .ui.form .fields.error .field input[type="date"],
 .ui.form .fields.error .field input[type="datetime-local"],
 .ui.form .fields.error .field input[type="email"],
+.ui.form .fields.error .field input[type="month"],
 .ui.form .fields.error .field input[type="number"],
 .ui.form .fields.error .field input[type="password"],
 .ui.form .fields.error .field input[type="search"],
@@ -511,12 +524,15 @@
 .ui.form .fields.error .field input[type="text"],
 .ui.form .fields.error .field input[type="file"],
 .ui.form .fields.error .field input[type="url"],
+.ui.form .fields.error .field input[type="week"],
 .ui.form .field.error textarea,
 .ui.form .field.error select,
 .ui.form .field.error input:not([type]),
+.ui.form .field.error input[type="color"],
 .ui.form .field.error input[type="date"],
 .ui.form .field.error input[type="datetime-local"],
 .ui.form .field.error input[type="email"],
+.ui.form .field.error input[type="month"],
 .ui.form .field.error input[type="number"],
 .ui.form .field.error input[type="password"],
 .ui.form .field.error input[type="search"],
@@ -524,20 +540,29 @@
 .ui.form .field.error input[type="time"],
 .ui.form .field.error input[type="text"],
 .ui.form .field.error input[type="file"],
-.ui.form .field.error input[type="url"] {
-  color: #9F3A38;
-  background: #FFF6F6;
-  border-color: #E0B4B4;
-  border-radius: '';
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.error input[type="url"],
+.ui.form .field.error input[type="week"] {
+  color: #9f3a38;
+  background: #fff6f6;
+  border-color: #e0b4b4;
+  border-radius: "";
+  box-shadow: none;
+}
+.ui.form:not(.initial) .field input:invalid {
+  color: #9f3a38;
+  background: #fff6f6;
+  border-color: #e0b4b4;
+  border-radius: "";
+  box-shadow: none;
 }
 .ui.form .field.error textarea:focus,
 .ui.form .field.error select:focus,
 .ui.form .field.error input:not([type]):focus,
+.ui.form .field.error input[type="color"]:focus,
 .ui.form .field.error input[type="date"]:focus,
 .ui.form .field.error input[type="datetime-local"]:focus,
 .ui.form .field.error input[type="email"]:focus,
+.ui.form .field.error input[type="month"]:focus,
 .ui.form .field.error input[type="number"]:focus,
 .ui.form .field.error input[type="password"]:focus,
 .ui.form .field.error input[type="search"]:focus,
@@ -545,12 +570,12 @@
 .ui.form .field.error input[type="time"]:focus,
 .ui.form .field.error input[type="text"]:focus,
 .ui.form .field.error input[type="file"]:focus,
-.ui.form .field.error input[type="url"]:focus {
-  background: #FFF6F6;
-  border-color: #E0B4B4;
-  color: #9F3A38;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.error input[type="url"]:focus,
+.ui.form .field.error input[type="week"]:focus {
+  background: #fff6f6;
+  border-color: #e0b4b4;
+  color: #9f3a38;
+  box-shadow: none;
 }
 
 /* Preserve Native Select Stylings */
@@ -559,8 +584,8 @@
 }
 
 /*------------------
-        Input State
-    --------------------*/
+            Input State
+        --------------------*/
 
 
 /* Transparent */
@@ -568,111 +593,115 @@
 .ui.form .field.error .transparent.input textarea,
 .ui.form .field.error input.transparent,
 .ui.form .field.error textarea.transparent {
-  background-color: #FFF6F6 !important;
-  color: #9F3A38 !important;
+  background-color: #fff6f6 !important;
+  color: #9f3a38 !important;
 }
 
 /* Autofilled */
 .ui.form .error.error input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px #FFFAF0 inset !important;
-          box-shadow: 0 0 0 100px #FFFAF0 inset !important;
-  border-color: #E0B4B4 !important;
+  box-shadow: 0 0 0 100px #fffaf0 inset !important;
+  border-color: #e0b4b4 !important;
 }
 
 /* Placeholder */
-.ui.form .error ::-webkit-input-placeholder {
+.ui.form .error :-ms-input-placeholder {
+  color: #e7bdbc;
+}
+.ui.form .error ::-ms-input-placeholder {
+  color: #e7bdbc;
+}
+.ui.form .error ::placeholder {
   color: #e7bdbc;
 }
 .ui.form .error :-ms-input-placeholder {
   color: #e7bdbc !important;
 }
-.ui.form .error ::-moz-placeholder {
-  color: #e7bdbc;
+.ui.form .error :focus:-ms-input-placeholder {
+  color: #da9796;
 }
-.ui.form .error :focus::-webkit-input-placeholder {
+.ui.form .error :focus::-ms-input-placeholder {
+  color: #da9796;
+}
+.ui.form .error :focus::placeholder {
   color: #da9796;
 }
 .ui.form .error :focus:-ms-input-placeholder {
   color: #da9796 !important;
 }
-.ui.form .error :focus::-moz-placeholder {
-  color: #da9796;
-}
 
 /*------------------
-        Dropdown State
-    --------------------*/
+            Dropdown State
+        --------------------*/
 
 .ui.form .fields.error .field .ui.dropdown,
 .ui.form .fields.error .field .ui.dropdown .item,
 .ui.form .field.error .ui.dropdown,
 .ui.form .field.error .ui.dropdown > .text,
 .ui.form .field.error .ui.dropdown .item {
-  background: #FFF6F6;
-  color: #9F3A38;
+  background: #fff6f6;
+  color: #9f3a38;
 }
 .ui.form .fields.error .field .ui.dropdown,
 .ui.form .field.error .ui.dropdown {
-  border-color: #E0B4B4 !important;
+  border-color: #e0b4b4 !important;
 }
 .ui.form .fields.error .field .ui.dropdown:hover,
 .ui.form .field.error .ui.dropdown:hover {
-  border-color: #E0B4B4 !important;
+  border-color: #e0b4b4 !important;
 }
 .ui.form .fields.error .field .ui.dropdown:hover .menu,
 .ui.form .field.error .ui.dropdown:hover .menu {
-  border-color: #E0B4B4;
+  border-color: #e0b4b4;
 }
 .ui.form .fields.error .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.error .ui.multiple.selection.dropdown > .label {
-  background-color: #EACBCB;
-  color: #9F3A38;
+  background-color: #eacbcb;
+  color: #9f3a38;
 }
 
 /* Hover */
 .ui.form .fields.error .field .ui.dropdown .menu .item:hover,
 .ui.form .field.error .ui.dropdown .menu .item:hover {
-  background-color: #FBE7E7;
+  background-color: #fbe7e7;
 }
 
 /* Selected */
 .ui.form .fields.error .field .ui.dropdown .menu .selected.item,
 .ui.form .field.error .ui.dropdown .menu .selected.item {
-  background-color: #FBE7E7;
+  background-color: #fbe7e7;
 }
 
 /* Active */
 .ui.form .fields.error .field .ui.dropdown .menu .active.item,
 .ui.form .field.error .ui.dropdown .menu .active.item {
-  background-color: #FDCFCF !important;
+  background-color: #fdcfcf !important;
 }
 
 /*--------------------
-        Checkbox State
-    ---------------------*/
+            Checkbox State
+        ---------------------*/
 
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) label,
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box {
-  color: #9F3A38;
+.ui.form .field.error .checkbox:not(.toggle):not(.slider) label {
+  color: #9f3a38;
 }
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box:before {
-  background: #FFF6F6;
-  border-color: #E0B4B4;
+.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .field.error .checkbox:not(.toggle):not(.slider) label::before {
+  background: #fff6f6;
+  border-color: #e0b4b4;
 }
-.ui.form .fields.error .field .checkbox label:after,
-.ui.form .field.error .checkbox label:after,
-.ui.form .fields.error .field .checkbox .box:after,
-.ui.form .field.error .checkbox .box:after {
-  color: #9F3A38;
+.ui.form .fields.error .field .checkbox label::after,
+.ui.form .field.error .checkbox label::after {
+  color: #9f3a38;
 }
 .ui.inverted.form .fields.error .field label,
 .ui.inverted.form .error.field label {
   color: #ecd1d1;
+}
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.error) > label {
+    color: #ecd1d1;
+  }
 }
 
 /* On Form */
@@ -683,8 +712,6 @@
   display: inline-block;
 }
 .ui.form.info .icon.info.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -699,8 +726,6 @@
 }
 .ui.form .fields.info .icon.info.message:not(:empty),
 .ui.form .field.info .icon.info.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .ui.ui.form .fields.info .field label,
@@ -709,7 +734,12 @@
 .ui.ui.form .field.info .ui.label:not(.corner),
 .ui.ui.form .fields.info .field .input,
 .ui.ui.form .field.info .input {
-  color: #276F86;
+  color: #276f86;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.info) > label {
+    color: #276f86;
+  }
 }
 .ui.form .fields.info .field .ui.label,
 .ui.form .field.info .ui.label {
@@ -717,15 +747,17 @@
 }
 .ui.form .fields.info .field .corner.label,
 .ui.form .field.info .corner.label {
-  border-color: #276F86;
-  color: #FFFFFF;
+  border-color: #276f86;
+  color: #fff;
 }
 .ui.form .fields.info .field textarea,
 .ui.form .fields.info .field select,
 .ui.form .fields.info .field input:not([type]),
+.ui.form .fields.info .field input[type="color"],
 .ui.form .fields.info .field input[type="date"],
 .ui.form .fields.info .field input[type="datetime-local"],
 .ui.form .fields.info .field input[type="email"],
+.ui.form .fields.info .field input[type="month"],
 .ui.form .fields.info .field input[type="number"],
 .ui.form .fields.info .field input[type="password"],
 .ui.form .fields.info .field input[type="search"],
@@ -734,12 +766,15 @@
 .ui.form .fields.info .field input[type="text"],
 .ui.form .fields.info .field input[type="file"],
 .ui.form .fields.info .field input[type="url"],
+.ui.form .fields.info .field input[type="week"],
 .ui.form .field.info textarea,
 .ui.form .field.info select,
 .ui.form .field.info input:not([type]),
+.ui.form .field.info input[type="color"],
 .ui.form .field.info input[type="date"],
 .ui.form .field.info input[type="datetime-local"],
 .ui.form .field.info input[type="email"],
+.ui.form .field.info input[type="month"],
 .ui.form .field.info input[type="number"],
 .ui.form .field.info input[type="password"],
 .ui.form .field.info input[type="search"],
@@ -747,20 +782,22 @@
 .ui.form .field.info input[type="time"],
 .ui.form .field.info input[type="text"],
 .ui.form .field.info input[type="file"],
-.ui.form .field.info input[type="url"] {
-  color: #276F86;
-  background: #F8FFFF;
-  border-color: #A9D5DE;
-  border-radius: '';
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.info input[type="url"],
+.ui.form .field.info input[type="week"] {
+  color: #276f86;
+  background: #f8ffff;
+  border-color: #a9d5de;
+  border-radius: "";
+  box-shadow: none;
 }
 .ui.form .field.info textarea:focus,
 .ui.form .field.info select:focus,
 .ui.form .field.info input:not([type]):focus,
+.ui.form .field.info input[type="color"]:focus,
 .ui.form .field.info input[type="date"]:focus,
 .ui.form .field.info input[type="datetime-local"]:focus,
 .ui.form .field.info input[type="email"]:focus,
+.ui.form .field.info input[type="month"]:focus,
 .ui.form .field.info input[type="number"]:focus,
 .ui.form .field.info input[type="password"]:focus,
 .ui.form .field.info input[type="search"]:focus,
@@ -768,12 +805,12 @@
 .ui.form .field.info input[type="time"]:focus,
 .ui.form .field.info input[type="text"]:focus,
 .ui.form .field.info input[type="file"]:focus,
-.ui.form .field.info input[type="url"]:focus {
-  background: #F8FFFF;
-  border-color: #A9D5DE;
-  color: #276F86;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.info input[type="url"]:focus,
+.ui.form .field.info input[type="week"]:focus {
+  background: #f8ffff;
+  border-color: #a9d5de;
+  color: #276f86;
+  box-shadow: none;
 }
 
 /* Preserve Native Select Stylings */
@@ -782,8 +819,8 @@
 }
 
 /*------------------
-        Input State
-    --------------------*/
+            Input State
+        --------------------*/
 
 
 /* Transparent */
@@ -791,65 +828,70 @@
 .ui.form .field.info .transparent.input textarea,
 .ui.form .field.info input.transparent,
 .ui.form .field.info textarea.transparent {
-  background-color: #F8FFFF !important;
-  color: #276F86 !important;
+  background-color: #f8ffff !important;
+  color: #276f86 !important;
 }
 
 /* Autofilled */
 .ui.form .info.info input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px #F0FAFF inset !important;
-          box-shadow: 0 0 0 100px #F0FAFF inset !important;
+  box-shadow: 0 0 0 100px #f0faff inset !important;
   border-color: #b3e0e0 !important;
 }
 
 /* Placeholder */
-.ui.form .info ::-webkit-input-placeholder {
+.ui.form .info :-ms-input-placeholder {
+  color: #98cfe1;
+}
+.ui.form .info ::-ms-input-placeholder {
+  color: #98cfe1;
+}
+.ui.form .info ::placeholder {
   color: #98cfe1;
 }
 .ui.form .info :-ms-input-placeholder {
   color: #98cfe1 !important;
 }
-.ui.form .info ::-moz-placeholder {
-  color: #98cfe1;
+.ui.form .info :focus:-ms-input-placeholder {
+  color: #70bdd6;
 }
-.ui.form .info :focus::-webkit-input-placeholder {
+.ui.form .info :focus::-ms-input-placeholder {
+  color: #70bdd6;
+}
+.ui.form .info :focus::placeholder {
   color: #70bdd6;
 }
 .ui.form .info :focus:-ms-input-placeholder {
   color: #70bdd6 !important;
 }
-.ui.form .info :focus::-moz-placeholder {
-  color: #70bdd6;
-}
 
 /*------------------
-        Dropdown State
-    --------------------*/
+            Dropdown State
+        --------------------*/
 
 .ui.form .fields.info .field .ui.dropdown,
 .ui.form .fields.info .field .ui.dropdown .item,
 .ui.form .field.info .ui.dropdown,
 .ui.form .field.info .ui.dropdown > .text,
 .ui.form .field.info .ui.dropdown .item {
-  background: #F8FFFF;
-  color: #276F86;
+  background: #f8ffff;
+  color: #276f86;
 }
 .ui.form .fields.info .field .ui.dropdown,
 .ui.form .field.info .ui.dropdown {
-  border-color: #A9D5DE !important;
+  border-color: #a9d5de !important;
 }
 .ui.form .fields.info .field .ui.dropdown:hover,
 .ui.form .field.info .ui.dropdown:hover {
-  border-color: #A9D5DE !important;
+  border-color: #a9d5de !important;
 }
 .ui.form .fields.info .field .ui.dropdown:hover .menu,
 .ui.form .field.info .ui.dropdown:hover .menu {
-  border-color: #A9D5DE;
+  border-color: #a9d5de;
 }
 .ui.form .fields.info .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.info .ui.multiple.selection.dropdown > .label {
   background-color: #cce3ea;
-  color: #276F86;
+  color: #276f86;
 }
 
 /* Hover */
@@ -871,31 +913,30 @@
 }
 
 /*--------------------
-        Checkbox State
-    ---------------------*/
+            Checkbox State
+        ---------------------*/
 
 .ui.form .fields.info .field .checkbox:not(.toggle):not(.slider) label,
-.ui.form .field.info .checkbox:not(.toggle):not(.slider) label,
-.ui.form .fields.info .field .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .field.info .checkbox:not(.toggle):not(.slider) .box {
-  color: #276F86;
+.ui.form .field.info .checkbox:not(.toggle):not(.slider) label {
+  color: #276f86;
 }
-.ui.form .fields.info .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.info .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.info .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.info .checkbox:not(.toggle):not(.slider) .box:before {
-  background: #F8FFFF;
-  border-color: #A9D5DE;
+.ui.form .fields.info .field .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .field.info .checkbox:not(.toggle):not(.slider) label::before {
+  background: #f8ffff;
+  border-color: #a9d5de;
 }
-.ui.form .fields.info .field .checkbox label:after,
-.ui.form .field.info .checkbox label:after,
-.ui.form .fields.info .field .checkbox .box:after,
-.ui.form .field.info .checkbox .box:after {
-  color: #276F86;
+.ui.form .fields.info .field .checkbox label::after,
+.ui.form .field.info .checkbox label::after {
+  color: #276f86;
 }
 .ui.inverted.form .fields.info .field label,
 .ui.inverted.form .info.field label {
   color: #c6e3e9;
+}
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.info) > label {
+    color: #c6e3e9;
+  }
 }
 
 /* On Form */
@@ -906,8 +947,6 @@
   display: inline-block;
 }
 .ui.form.success .icon.success.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -922,8 +961,6 @@
 }
 .ui.form .fields.success .icon.success.message:not(:empty),
 .ui.form .field.success .icon.success.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .ui.ui.form .fields.success .field label,
@@ -932,7 +969,12 @@
 .ui.ui.form .field.success .ui.label:not(.corner),
 .ui.ui.form .fields.success .field .input,
 .ui.ui.form .field.success .input {
-  color: #2C662D;
+  color: #2c662d;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.success) > label {
+    color: #2c662d;
+  }
 }
 .ui.form .fields.success .field .ui.label,
 .ui.form .field.success .ui.label {
@@ -940,15 +982,17 @@
 }
 .ui.form .fields.success .field .corner.label,
 .ui.form .field.success .corner.label {
-  border-color: #2C662D;
-  color: #FFFFFF;
+  border-color: #2c662d;
+  color: #fff;
 }
 .ui.form .fields.success .field textarea,
 .ui.form .fields.success .field select,
 .ui.form .fields.success .field input:not([type]),
+.ui.form .fields.success .field input[type="color"],
 .ui.form .fields.success .field input[type="date"],
 .ui.form .fields.success .field input[type="datetime-local"],
 .ui.form .fields.success .field input[type="email"],
+.ui.form .fields.success .field input[type="month"],
 .ui.form .fields.success .field input[type="number"],
 .ui.form .fields.success .field input[type="password"],
 .ui.form .fields.success .field input[type="search"],
@@ -957,12 +1001,15 @@
 .ui.form .fields.success .field input[type="text"],
 .ui.form .fields.success .field input[type="file"],
 .ui.form .fields.success .field input[type="url"],
+.ui.form .fields.success .field input[type="week"],
 .ui.form .field.success textarea,
 .ui.form .field.success select,
 .ui.form .field.success input:not([type]),
+.ui.form .field.success input[type="color"],
 .ui.form .field.success input[type="date"],
 .ui.form .field.success input[type="datetime-local"],
 .ui.form .field.success input[type="email"],
+.ui.form .field.success input[type="month"],
 .ui.form .field.success input[type="number"],
 .ui.form .field.success input[type="password"],
 .ui.form .field.success input[type="search"],
@@ -970,20 +1017,22 @@
 .ui.form .field.success input[type="time"],
 .ui.form .field.success input[type="text"],
 .ui.form .field.success input[type="file"],
-.ui.form .field.success input[type="url"] {
-  color: #2C662D;
-  background: #FCFFF5;
-  border-color: #A3C293;
-  border-radius: '';
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.success input[type="url"],
+.ui.form .field.success input[type="week"] {
+  color: #2c662d;
+  background: #fcfff5;
+  border-color: #a3c293;
+  border-radius: "";
+  box-shadow: none;
 }
 .ui.form .field.success textarea:focus,
 .ui.form .field.success select:focus,
 .ui.form .field.success input:not([type]):focus,
+.ui.form .field.success input[type="color"]:focus,
 .ui.form .field.success input[type="date"]:focus,
 .ui.form .field.success input[type="datetime-local"]:focus,
 .ui.form .field.success input[type="email"]:focus,
+.ui.form .field.success input[type="month"]:focus,
 .ui.form .field.success input[type="number"]:focus,
 .ui.form .field.success input[type="password"]:focus,
 .ui.form .field.success input[type="search"]:focus,
@@ -991,12 +1040,12 @@
 .ui.form .field.success input[type="time"]:focus,
 .ui.form .field.success input[type="text"]:focus,
 .ui.form .field.success input[type="file"]:focus,
-.ui.form .field.success input[type="url"]:focus {
-  background: #FCFFF5;
-  border-color: #A3C293;
-  color: #2C662D;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.success input[type="url"]:focus,
+.ui.form .field.success input[type="week"]:focus {
+  background: #fcfff5;
+  border-color: #a3c293;
+  color: #2c662d;
+  box-shadow: none;
 }
 
 /* Preserve Native Select Stylings */
@@ -1005,8 +1054,8 @@
 }
 
 /*------------------
-        Input State
-    --------------------*/
+            Input State
+        --------------------*/
 
 
 /* Transparent */
@@ -1014,65 +1063,70 @@
 .ui.form .field.success .transparent.input textarea,
 .ui.form .field.success input.transparent,
 .ui.form .field.success textarea.transparent {
-  background-color: #FCFFF5 !important;
-  color: #2C662D !important;
+  background-color: #fcfff5 !important;
+  color: #2c662d !important;
 }
 
 /* Autofilled */
 .ui.form .success.success input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px #F0FFF0 inset !important;
-          box-shadow: 0 0 0 100px #F0FFF0 inset !important;
+  box-shadow: 0 0 0 100px #f0fff0 inset !important;
   border-color: #bee0b3 !important;
 }
 
 /* Placeholder */
-.ui.form .success ::-webkit-input-placeholder {
+.ui.form .success :-ms-input-placeholder {
+  color: #8fcf90;
+}
+.ui.form .success ::-ms-input-placeholder {
+  color: #8fcf90;
+}
+.ui.form .success ::placeholder {
   color: #8fcf90;
 }
 .ui.form .success :-ms-input-placeholder {
   color: #8fcf90 !important;
 }
-.ui.form .success ::-moz-placeholder {
-  color: #8fcf90;
+.ui.form .success :focus:-ms-input-placeholder {
+  color: #6cbf6d;
 }
-.ui.form .success :focus::-webkit-input-placeholder {
+.ui.form .success :focus::-ms-input-placeholder {
+  color: #6cbf6d;
+}
+.ui.form .success :focus::placeholder {
   color: #6cbf6d;
 }
 .ui.form .success :focus:-ms-input-placeholder {
   color: #6cbf6d !important;
 }
-.ui.form .success :focus::-moz-placeholder {
-  color: #6cbf6d;
-}
 
 /*------------------
-        Dropdown State
-    --------------------*/
+            Dropdown State
+        --------------------*/
 
 .ui.form .fields.success .field .ui.dropdown,
 .ui.form .fields.success .field .ui.dropdown .item,
 .ui.form .field.success .ui.dropdown,
 .ui.form .field.success .ui.dropdown > .text,
 .ui.form .field.success .ui.dropdown .item {
-  background: #FCFFF5;
-  color: #2C662D;
+  background: #fcfff5;
+  color: #2c662d;
 }
 .ui.form .fields.success .field .ui.dropdown,
 .ui.form .field.success .ui.dropdown {
-  border-color: #A3C293 !important;
+  border-color: #a3c293 !important;
 }
 .ui.form .fields.success .field .ui.dropdown:hover,
 .ui.form .field.success .ui.dropdown:hover {
-  border-color: #A3C293 !important;
+  border-color: #a3c293 !important;
 }
 .ui.form .fields.success .field .ui.dropdown:hover .menu,
 .ui.form .field.success .ui.dropdown:hover .menu {
-  border-color: #A3C293;
+  border-color: #a3c293;
 }
 .ui.form .fields.success .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.success .ui.multiple.selection.dropdown > .label {
   background-color: #cceacc;
-  color: #2C662D;
+  color: #2c662d;
 }
 
 /* Hover */
@@ -1094,31 +1148,30 @@
 }
 
 /*--------------------
-        Checkbox State
-    ---------------------*/
+            Checkbox State
+        ---------------------*/
 
 .ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) label,
-.ui.form .field.success .checkbox:not(.toggle):not(.slider) label,
-.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .field.success .checkbox:not(.toggle):not(.slider) .box {
-  color: #2C662D;
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) label {
+  color: #2c662d;
 }
-.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.success .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.success .checkbox:not(.toggle):not(.slider) .box:before {
-  background: #FCFFF5;
-  border-color: #A3C293;
+.ui.form .fields.success .field .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .field.success .checkbox:not(.toggle):not(.slider) label::before {
+  background: #fcfff5;
+  border-color: #a3c293;
 }
-.ui.form .fields.success .field .checkbox label:after,
-.ui.form .field.success .checkbox label:after,
-.ui.form .fields.success .field .checkbox .box:after,
-.ui.form .field.success .checkbox .box:after {
-  color: #2C662D;
+.ui.form .fields.success .field .checkbox label::after,
+.ui.form .field.success .checkbox label::after {
+  color: #2c662d;
 }
 .ui.inverted.form .fields.success .field label,
 .ui.inverted.form .success.field label {
   color: #b9d1ad;
+}
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.success) > label {
+    color: #b9d1ad;
+  }
 }
 
 /* On Form */
@@ -1129,8 +1182,6 @@
   display: inline-block;
 }
 .ui.form.warning .icon.warning.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -1145,8 +1196,6 @@
 }
 .ui.form .fields.warning .icon.warning.message:not(:empty),
 .ui.form .field.warning .icon.warning.message:not(:empty) {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .ui.ui.form .fields.warning .field label,
@@ -1155,7 +1204,12 @@
 .ui.ui.form .field.warning .ui.label:not(.corner),
 .ui.ui.form .fields.warning .field .input,
 .ui.ui.form .field.warning .input {
-  color: #573A08;
+  color: #573a08;
+}
+@supports selector(:has(.f)) {
+  .ui.form .fields:has(.warning) > label {
+    color: #573a08;
+  }
 }
 .ui.form .fields.warning .field .ui.label,
 .ui.form .field.warning .ui.label {
@@ -1163,15 +1217,17 @@
 }
 .ui.form .fields.warning .field .corner.label,
 .ui.form .field.warning .corner.label {
-  border-color: #573A08;
-  color: #FFFFFF;
+  border-color: #573a08;
+  color: #fff;
 }
 .ui.form .fields.warning .field textarea,
 .ui.form .fields.warning .field select,
 .ui.form .fields.warning .field input:not([type]),
+.ui.form .fields.warning .field input[type="color"],
 .ui.form .fields.warning .field input[type="date"],
 .ui.form .fields.warning .field input[type="datetime-local"],
 .ui.form .fields.warning .field input[type="email"],
+.ui.form .fields.warning .field input[type="month"],
 .ui.form .fields.warning .field input[type="number"],
 .ui.form .fields.warning .field input[type="password"],
 .ui.form .fields.warning .field input[type="search"],
@@ -1180,12 +1236,15 @@
 .ui.form .fields.warning .field input[type="text"],
 .ui.form .fields.warning .field input[type="file"],
 .ui.form .fields.warning .field input[type="url"],
+.ui.form .fields.warning .field input[type="week"],
 .ui.form .field.warning textarea,
 .ui.form .field.warning select,
 .ui.form .field.warning input:not([type]),
+.ui.form .field.warning input[type="color"],
 .ui.form .field.warning input[type="date"],
 .ui.form .field.warning input[type="datetime-local"],
 .ui.form .field.warning input[type="email"],
+.ui.form .field.warning input[type="month"],
 .ui.form .field.warning input[type="number"],
 .ui.form .field.warning input[type="password"],
 .ui.form .field.warning input[type="search"],
@@ -1193,20 +1252,22 @@
 .ui.form .field.warning input[type="time"],
 .ui.form .field.warning input[type="text"],
 .ui.form .field.warning input[type="file"],
-.ui.form .field.warning input[type="url"] {
-  color: #573A08;
-  background: #FFFAF3;
-  border-color: #C9BA9B;
-  border-radius: '';
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.warning input[type="url"],
+.ui.form .field.warning input[type="week"] {
+  color: #573a08;
+  background: #fffaf3;
+  border-color: #c9ba9b;
+  border-radius: "";
+  box-shadow: none;
 }
 .ui.form .field.warning textarea:focus,
 .ui.form .field.warning select:focus,
 .ui.form .field.warning input:not([type]):focus,
+.ui.form .field.warning input[type="color"]:focus,
 .ui.form .field.warning input[type="date"]:focus,
 .ui.form .field.warning input[type="datetime-local"]:focus,
 .ui.form .field.warning input[type="email"]:focus,
+.ui.form .field.warning input[type="month"]:focus,
 .ui.form .field.warning input[type="number"]:focus,
 .ui.form .field.warning input[type="password"]:focus,
 .ui.form .field.warning input[type="search"]:focus,
@@ -1214,12 +1275,12 @@
 .ui.form .field.warning input[type="time"]:focus,
 .ui.form .field.warning input[type="text"]:focus,
 .ui.form .field.warning input[type="file"]:focus,
-.ui.form .field.warning input[type="url"]:focus {
-  background: #FFFAF3;
-  border-color: #C9BA9B;
-  color: #573A08;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.ui.form .field.warning input[type="url"]:focus,
+.ui.form .field.warning input[type="week"]:focus {
+  background: #fffaf3;
+  border-color: #c9ba9b;
+  color: #573a08;
+  box-shadow: none;
 }
 
 /* Preserve Native Select Stylings */
@@ -1228,8 +1289,8 @@
 }
 
 /*------------------
-        Input State
-    --------------------*/
+            Input State
+        --------------------*/
 
 
 /* Transparent */
@@ -1237,65 +1298,70 @@
 .ui.form .field.warning .transparent.input textarea,
 .ui.form .field.warning input.transparent,
 .ui.form .field.warning textarea.transparent {
-  background-color: #FFFAF3 !important;
-  color: #573A08 !important;
+  background-color: #fffaf3 !important;
+  color: #573a08 !important;
 }
 
 /* Autofilled */
 .ui.form .warning.warning input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 100px #FFFFe0 inset !important;
-          box-shadow: 0 0 0 100px #FFFFe0 inset !important;
+  box-shadow: 0 0 0 100px #ffffe0 inset !important;
   border-color: #e0e0b3 !important;
 }
 
 /* Placeholder */
-.ui.form .warning ::-webkit-input-placeholder {
+.ui.form .warning :-ms-input-placeholder {
+  color: #edad3e;
+}
+.ui.form .warning ::-ms-input-placeholder {
+  color: #edad3e;
+}
+.ui.form .warning ::placeholder {
   color: #edad3e;
 }
 .ui.form .warning :-ms-input-placeholder {
   color: #edad3e !important;
 }
-.ui.form .warning ::-moz-placeholder {
-  color: #edad3e;
+.ui.form .warning :focus:-ms-input-placeholder {
+  color: #e39715;
 }
-.ui.form .warning :focus::-webkit-input-placeholder {
+.ui.form .warning :focus::-ms-input-placeholder {
+  color: #e39715;
+}
+.ui.form .warning :focus::placeholder {
   color: #e39715;
 }
 .ui.form .warning :focus:-ms-input-placeholder {
   color: #e39715 !important;
 }
-.ui.form .warning :focus::-moz-placeholder {
-  color: #e39715;
-}
 
 /*------------------
-        Dropdown State
-    --------------------*/
+            Dropdown State
+        --------------------*/
 
 .ui.form .fields.warning .field .ui.dropdown,
 .ui.form .fields.warning .field .ui.dropdown .item,
 .ui.form .field.warning .ui.dropdown,
 .ui.form .field.warning .ui.dropdown > .text,
 .ui.form .field.warning .ui.dropdown .item {
-  background: #FFFAF3;
-  color: #573A08;
+  background: #fffaf3;
+  color: #573a08;
 }
 .ui.form .fields.warning .field .ui.dropdown,
 .ui.form .field.warning .ui.dropdown {
-  border-color: #C9BA9B !important;
+  border-color: #c9ba9b !important;
 }
 .ui.form .fields.warning .field .ui.dropdown:hover,
 .ui.form .field.warning .ui.dropdown:hover {
-  border-color: #C9BA9B !important;
+  border-color: #c9ba9b !important;
 }
 .ui.form .fields.warning .field .ui.dropdown:hover .menu,
 .ui.form .field.warning .ui.dropdown:hover .menu {
-  border-color: #C9BA9B;
+  border-color: #c9ba9b;
 }
 .ui.form .fields.warning .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.warning .ui.multiple.selection.dropdown > .label {
   background-color: #eaeacc;
-  color: #573A08;
+  color: #573a08;
 }
 
 /* Hover */
@@ -1317,37 +1383,35 @@
 }
 
 /*--------------------
-        Checkbox State
-    ---------------------*/
+            Checkbox State
+        ---------------------*/
 
 .ui.form .fields.warning .field .checkbox:not(.toggle):not(.slider) label,
-.ui.form .field.warning .checkbox:not(.toggle):not(.slider) label,
-.ui.form .fields.warning .field .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .field.warning .checkbox:not(.toggle):not(.slider) .box {
-  color: #573A08;
+.ui.form .field.warning .checkbox:not(.toggle):not(.slider) label {
+  color: #573a08;
 }
-.ui.form .fields.warning .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.warning .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.warning .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.warning .checkbox:not(.toggle):not(.slider) .box:before {
-  background: #FFFAF3;
-  border-color: #C9BA9B;
+.ui.form .fields.warning .field .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .field.warning .checkbox:not(.toggle):not(.slider) label::before {
+  background: #fffaf3;
+  border-color: #c9ba9b;
 }
-.ui.form .fields.warning .field .checkbox label:after,
-.ui.form .field.warning .checkbox label:after,
-.ui.form .fields.warning .field .checkbox .box:after,
-.ui.form .field.warning .checkbox .box:after {
-  color: #573A08;
+.ui.form .fields.warning .field .checkbox label::after,
+.ui.form .field.warning .checkbox label::after {
+  color: #573a08;
 }
 .ui.inverted.form .fields.warning .field label,
 .ui.inverted.form .warning.field label {
   color: #d7ccb5;
 }
+@supports selector(:has(.f)) {
+  .ui.inverted.form .fields:has(.warning) > label {
+    color: #d7ccb5;
+  }
+}
 
-/*--------------------
-         Disabled
-  ---------------------*/
-
+/* --------------------
+           Disabled
+    --------------------- */
 .ui.form .disabled.fields .field,
 .ui.form .disabled.field,
 .ui.form .field :disabled {
@@ -1362,18 +1426,17 @@
   opacity: 1;
 }
 
-/*--------------
-      Loading
-  ---------------*/
-
+/* --------------
+        Loading
+    --------------- */
 .ui.loading.form {
   position: relative;
   cursor: default;
   pointer-events: none;
 }
-.ui.loading.form:before {
+.ui.loading.form::before {
   position: absolute;
-  content: '';
+  content: "";
   top: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.8);
@@ -1381,23 +1444,21 @@
   height: 100%;
   z-index: 100;
 }
-.ui.loading.form.segments:before {
+.ui.loading.form.segments::before {
   border-radius: 0.28571429rem;
 }
-.ui.loading.form:after {
+.ui.loading.form::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 50%;
   margin: -1.5em 0 0 -1.5em;
   width: 3em;
   height: 3em;
-  -webkit-animation: loader 0.6s infinite linear;
-          animation: loader 0.6s infinite linear;
+  animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  -webkit-box-shadow: 0 0 0 1px transparent;
-          box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
   visibility: visible;
   z-index: 101;
 }
@@ -1408,32 +1469,38 @@
 *******************************/
 
 
-/*--------------------
-       Required Field
-  ---------------------*/
-
-.ui.form .required.fields:not(.grouped) > .field > label:after,
-.ui.form .required.fields.grouped > label:after,
-.ui.form .required.field > label:after,
-.ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
-.ui.form .required.field > .checkbox:after,
-.ui.form label.required:after {
+/* --------------------
+         Required Field
+    --------------------- */
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+.ui.form .required.fields.inline > label::after,
+.ui.form .required.fields.grouped > label::after,
+.ui.form .required.field > label::after,
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
+.ui.form .required.field > .checkbox::after,
+.ui.form label.required::after {
   margin: -0.2em 0 0 0.2em;
-  content: '*';
-  color: #DB2828;
+  content: "*";
+  color: #db2828;
 }
-.ui.form .required.fields:not(.grouped) > .field > label:after,
-.ui.form .required.fields.grouped > label:after,
-.ui.form .required.field > label:after,
-.ui.form label.required:after {
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+.ui.form .required.fields.inline > label::after,
+.ui.form .required.fields.grouped > label::after,
+.ui.form .required.field > label::after,
+.ui.form label.required::after {
   display: inline-block;
   vertical-align: top;
 }
-.ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
-.ui.form .required.field > .checkbox:after {
+.ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
+.ui.form .required.field > .checkbox::after {
   position: absolute;
   top: 0;
   left: 100%;
+}
+.ui.ui.ui.ui.form .fields > label:empty::after,
+.ui.ui.ui.ui.form .field > label:empty::after {
+  content: " ";
+  display: inline-block;
 }
 
 
@@ -1442,16 +1509,13 @@
 *******************************/
 
 
-/*--------------------
-      Inverted Colors
-  ---------------------*/
-
+/* --------------------
+        Inverted Colors
+    --------------------- */
 .ui.inverted.form label,
 .ui.form .inverted.segment label,
 .ui.form .inverted.segment .ui.checkbox label,
-.ui.form .inverted.segment .ui.checkbox .box,
 .ui.inverted.form .ui.checkbox label,
-.ui.inverted.form .ui.checkbox .box,
 .ui.inverted.form .inline.fields > label,
 .ui.inverted.form .inline.fields .field > label,
 .ui.inverted.form .inline.fields .field > p,
@@ -1460,17 +1524,19 @@
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.loading.form {
-  color: #FFFFFF;
+  color: #fff;
 }
-.ui.inverted.loading.form:before {
+.ui.inverted.loading.form::before {
   background: rgba(0, 0, 0, 0.85);
 }
 
 /* Inverted Field */
 .ui.inverted.form input:not([type]),
+.ui.inverted.form input[type="color"],
 .ui.inverted.form input[type="date"],
 .ui.inverted.form input[type="datetime-local"],
 .ui.inverted.form input[type="email"],
+.ui.inverted.form input[type="month"],
 .ui.inverted.form input[type="number"],
 .ui.inverted.form input[type="password"],
 .ui.inverted.form input[type="search"],
@@ -1478,18 +1544,17 @@
 .ui.inverted.form input[type="time"],
 .ui.inverted.form input[type="text"],
 .ui.inverted.form input[type="file"],
-.ui.inverted.form input[type="url"] {
-  background: #FFFFFF;
+.ui.inverted.form input[type="url"],
+.ui.inverted.form input[type="week"] {
+  background: #fff;
   border-color: rgba(255, 255, 255, 0.1);
   color: rgba(0, 0, 0, 0.87);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
-/*--------------------
-       Field Groups
-  ---------------------*/
-
+/* --------------------
+         Field Groups
+    --------------------- */
 
 /* Grouped Vertically */
 .ui.form .grouped.fields {
@@ -1516,33 +1581,24 @@
   margin-bottom: 0.4em;
 }
 
-/*--------------------
+/* --------------------
         Fields
----------------------*/
-
+--------------------- */
 
 /* Split fields */
 .ui.form .fields {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   margin: 0 -0.5em 1em;
 }
 .ui.form .fields > .field {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
+  flex: 0 1 auto;
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 .ui.form .fields > .field:first-child {
   border-left: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 /* Other Combinations */
@@ -1586,8 +1642,7 @@
 /* Swap to full width on mobile */
 @media only screen and (max-width: 767.98px) {
   .ui.form .fields {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     margin-bottom: 0;
   }
   .ui.form:not(.unstackable) .fields:not(.unstackable) > .fields,
@@ -1652,27 +1707,21 @@
   width: 100%;
 }
 
-/*--------------------
+/* --------------------
      Equal Width
----------------------*/
-
+--------------------- */
 .ui[class*="equal width"].form .fields > .field,
 .ui.form [class*="equal width"].fields > .field {
   width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-/*--------------------
-      Inline Fields
-  ---------------------*/
-
+/* --------------------
+        Inline Fields
+    --------------------- */
 .ui.form .inline.fields {
   margin: 0 0 1em;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .ui.form .inline.fields .field {
   margin: 0;
@@ -1698,7 +1747,7 @@
 
 /* Grouped Inline Label */
 .ui.form .inline.fields > label {
-  margin: 0.035714em 1em 0 0;
+  margin: 0.03571em 1em 0 0;
 }
 
 /* Inline Input */
@@ -1734,22 +1783,17 @@
 
 /* Wide */
 .ui.form .inline.fields .wide.field {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .ui.form .inline.fields .wide.field > input,
 .ui.form .inline.fields .wide.field > select {
   width: 100%;
 }
 
-/*--------------------
+/* --------------------
         Sizes
----------------------*/
-
+--------------------- */
 .ui.form,
 .ui.form .field .dropdown,
 .ui.form .field .dropdown .menu > .item {

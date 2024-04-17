@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Feed
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,25 +12,24 @@
             Theme
 *******************************/
 
-@type    : 'view';
-@element : 'feed';
+@type: "view";
+@element: "feed";
 
-@import (multiple) '../../theme.config';
+@import (multiple) "../../theme.config";
 
 /*******************************
          Activity Feed
 *******************************/
 
 .ui.feed {
-  margin: @margin;
+    margin: @margin;
 }
 .ui.feed:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 .ui.feed:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
-
 
 /*******************************
             Content
@@ -38,287 +37,502 @@
 
 /* Event */
 .ui.feed > .event {
-  display: flex;
-  flex-direction: row;
-  width: @eventWidth;
-  padding: @eventPadding;
-  margin: @eventMargin;
-  background: @eventBackground;
-  border-top: @eventDivider;
+    display: flex;
+    flex-direction: row;
+    width: @eventWidth;
+    padding: @eventPadding;
+    margin: @eventMargin;
+    background: @eventBackground;
+    &:not(:first-child) {
+        border-top: @eventDivider;
+    }
 }
-.ui.feed > .event:first-child {
-  border-top: 0;
-  padding-top: 0;
+.ui.feed:not(.connected) > .event:first-child {
+    padding-top: 0;
 }
 .ui.feed > .event:last-child {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
-/* Event Label */
-.ui.feed > .event > .label {
-  display: block;
-  flex: 0 0 auto;
-  width: @labelWidth;
-  height: @labelHeight;
-  align-self: @labelAlignSelf;
-  text-align: @labelTextAlign;
-}
-.ui.feed > .event > .label .icon {
-  opacity: @iconLabelOpacity;
-  font-size: @iconLabelSize;
-  width: @iconLabelWidth;
-  padding: @iconLabelPadding;
-  background: @iconLabelBackground;
-  border: @iconLabelBorder;
-  border-radius: @iconLabelBorderRadius;
-  color: @iconLabelColor;
-}
-.ui.feed > .event > .label img {
-  width: @imageLabelWidth;
-  height: @imageLabelHeight;
-  border-radius: @imageLabelBorderRadius;
-}
-.ui.feed > .event > .label + .content {
-  margin: @labeledContentMargin;
+& when (@variationFeedLabel) {
+    /* Event Label */
+
+    .ui.feed > .event > .label {
+        display: block;
+        flex: 0 0 auto;
+        width: @labelWidth;
+        height: @labelHeight;
+        align-self: @labelAlignSelf;
+        text-align: @labelTextAlign;
+    }
+
+    & when (@variationFeedLabelIcon) {
+        .ui.feed > .event > .label .icon {
+            opacity: @iconLabelOpacity;
+            font-size: @iconLabelSize;
+            width: @iconLabelWidth;
+            padding: @iconLabelPadding;
+            background: @iconLabelBackground;
+            border: @iconLabelBorder;
+            border-radius: @iconLabelBorderRadius;
+            color: @iconLabelColor;
+        }
+    }
+    & when (@variationFeedLabelImage) {
+        .ui.feed > .event > .label img {
+            width: @imageLabelWidth;
+            height: @imageLabelHeight;
+            border-radius: @imageLabelBorderRadius;
+        }
+    }
+    & when (@variationFeedLabelText) {
+        .ui.feed > .event > .label > .text {
+            display: block;
+            text-align: center;
+            margin-top: @textLabelTopMargin;
+            &.ui {
+                margin-top: @uiTextLabelTopMargin;
+            }
+            &.multiline {
+                margin-top: @multilineTextLabelTopMargin;
+                &.ui {
+                    margin-top: @uiMultilineTextLabelTopMargin;
+                }
+            }
+        }
+    }
+    & when (@variationFeedLabelUiLabel) {
+        .ui.feed > .event > .label > .ui.label {
+            margin-top: @uiLabelTopMargin;
+            position: relative;
+            z-index: @uiLabelZIndex;
+        }
+    }
+
+    .ui.feed > .event > .label + .content {
+        margin: @labeledContentMargin;
+    }
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 /* Content */
 .ui.feed > .event > .content {
-  display: block;
-  flex: 1 1 auto;
-  align-self: @contentAlignSelf;
-  text-align: @contentTextAlign;
-  word-wrap: @contentWordWrap;
+    display: block;
+    flex: 1 1 auto;
+    align-self: @contentAlignSelf;
+    text-align: @contentTextAlign;
+    word-wrap: @contentWordWrap;
 }
 .ui.feed > .event:last-child > .content {
-  padding-bottom: @lastLabeledContentPadding;
+    padding-bottom: @lastLabeledContentPadding;
 }
 
 /* Link */
 .ui.feed > .event > .content a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 & when (@variationFeedDate) {
-  /*--------------
-        Date
-  ---------------*/
+    /* --------------
+          Date
+    --------------- */
 
-  .ui.feed > .event > .content .date {
-    margin: @dateMargin;
-    padding: @datePadding;
-    color: @dateColor;
-    font-weight: @dateFontWeight;
-    font-size: @dateFontSize;
-    font-style: @dateFontStyle;
-  }
+    .ui.feed > .event > .content .date {
+        margin: @dateMargin;
+        padding: @datePadding;
+        color: @dateColor;
+        font-weight: @dateFontWeight;
+        font-size: @dateFontSize;
+        font-style: @dateFontStyle;
+    }
 }
 
 & when (@variationFeedSummary) {
-  /*--------------
-       Summary
-  ---------------*/
+    /* --------------
+         Summary
+    --------------- */
 
-  .ui.feed > .event > .content .summary {
-    margin: @summaryMargin;
-    font-size: @summaryFontSize;
-    font-weight: @summaryFontWeight;
-    color: @summaryColor;
-  }
-
-  /* Summary Image */
-  .ui.feed > .event > .content .summary img {
-    display: inline-block;
-    width: @summaryImageWidth;
-    height: @summaryImageHeight;
-    margin: @summaryImageMargin;
-    border-radius: @summaryImageBorderRadius;
-    vertical-align: @summaryImageVerticalAlign;
-  }
-  & when (@variationFeedDate) {
-    /*--------------
-       Inline Date
-    ---------------*/
-
-    /* Date inside Summary */
-    .ui.feed > .event > .content .summary > .date {
-      display: @summaryDateDisplay;
-      float: @summaryDateFloat;
-      font-weight: @summaryDateFontWeight;
-      font-size: @summaryDateFontSize;
-      font-style: @summaryDateFontStyle;
-      margin: @summaryDateMargin;
-      padding: @summaryDatePadding;
-      color: @summaryDateColor;
+    .ui.feed > .event > .content .summary {
+        margin: @summaryMargin;
+        font-size: @summaryFontSize;
+        font-weight: @summaryFontWeight;
+        color: @summaryColor;
     }
-  }
+
+    /* Summary Image */
+    .ui.feed > .event > .content .summary img {
+        display: inline-block;
+        width: @summaryImageWidth;
+        height: @summaryImageHeight;
+        margin: @summaryImageMargin;
+        border-radius: @summaryImageBorderRadius;
+        vertical-align: @summaryImageVerticalAlign;
+    }
+    & when (@variationFeedDate) {
+        /* --------------
+           Inline Date
+        --------------- */
+
+        /* Date inside Summary */
+        .ui.feed > .event > .content .summary > .date {
+            display: @summaryDateDisplay;
+            font-weight: @summaryDateFontWeight;
+            font-size: @summaryDateFontSize;
+            font-style: @summaryDateFontStyle;
+            margin: @summaryDateMargin;
+            padding: @summaryDatePadding;
+            color: @summaryDateColor;
+            &:not(.floated) {
+                float: @summaryDateFloat;
+            }
+        }
+    }
 }
 & when (@variationFeedUser) {
-  /*--------------
-        User
-  ---------------*/
+    /* --------------
+          User
+    --------------- */
 
-  .ui.feed > .event > .content .user {
-    display: inline-block;
-    font-weight: @userFontWeight;
-    margin-right: @userDistance;
-    vertical-align: baseline;
-  }
-  .ui.feed > .event > .content .user img {
-    margin: @userImageMargin;
-    width: @userImageWidth;
-    height: @userImageHeight;
-    vertical-align: @userImageVerticalAlign;
-  }
+    .ui.feed > .event > .content .user {
+        display: inline-block;
+        font-weight: @userFontWeight;
+        margin-right: @userDistance;
+        vertical-align: baseline;
+    }
+    .ui.feed > .event > .content .user img {
+        margin: @userImageMargin;
+        width: @userImageWidth;
+        height: @userImageHeight;
+        vertical-align: @userImageVerticalAlign;
+    }
 }
 
 & when (@variationFeedExtra) {
-  /*--------------
-    Extra Summary
-  ---------------*/
+    /* --------------
+      Extra Summary
+    --------------- */
 
-  .ui.feed > .event > .content .extra {
-    margin: @extraMargin;
-    background: @extraBackground;
-    padding: @extraPadding;
-    color: @extraColor;
-  }
+    .ui.feed > .event > .content .extra {
+        margin: @extraMargin;
+        background: @extraBackground;
+        padding: @extraPadding;
+        color: @extraColor;
+    }
 
-  /* Images */
-  .ui.feed > .event > .content .extra.images img {
-    display: inline-block;
-    margin: @extraImageMargin;
-    width: @extraImageWidth;
-  }
+    /* Images */
+    .ui.feed > .event > .content .extra.images img {
+        display: inline-block;
+        margin: @extraImageMargin;
+        width: @extraImageWidth;
+    }
 
-  /* Text */
-  .ui.feed > .event > .content .extra.text {
-    padding: @extraTextPadding;
-    border-left: @extraTextPointer;
-    font-size: @extraTextFontSize;
-    max-width: @extraTextMaxWidth;
-    line-height: @extraTextLineHeight;
-  }
+    /* Text */
+    .ui.feed > .event > .content .extra.text {
+        padding: @extraTextPadding;
+        border-left: @extraTextPointer;
+        font-size: @extraTextFontSize;
+        max-width: @extraTextMaxWidth;
+        line-height: @extraTextLineHeight;
+    }
 }
 
 & when (@variationFeedMeta) {
-  /*--------------
-        Meta
-  ---------------*/
+    /* --------------
+          Meta
+    --------------- */
 
-  .ui.feed > .event > .content .meta {
-    display: @metadataDisplay;
-    font-size: @metadataFontSize;
-    margin: @metadataMargin;
-    background: @metadataBackground;
-    border: @metadataBorder;
-    border-radius: @metadataBorderRadius;
-    box-shadow: @metadataBoxShadow;
-    padding: @metadataPadding;
-    color: @metadataColor;
-  }
-
-  .ui.feed > .event > .content .meta > * {
-    position: relative;
-    margin-left: @metadataElementSpacing;
-  }
-  .ui.feed > .event > .content .meta > *::after {
-    content: @metadataDivider;
-    color: @metadataDividerColor;
-    top: 0;
-    left: @metadataDividerOffset;
-    opacity: 1;
-    position: absolute;
-    vertical-align: top;
-  }
-
-  & when (@variationFeedLike) {
-    .ui.feed > .event > .content .meta .like {
-      color: @likeColor;
-      transition: @likeTransition;
+    .ui.feed > .event > .content .meta {
+        display: @metadataDisplay;
+        font-size: @metadataFontSize;
+        margin: @metadataMargin;
+        background: @metadataBackground;
+        border: @metadataBorder;
+        border-radius: @metadataBorderRadius;
+        box-shadow: @metadataBoxShadow;
+        padding: @metadataPadding;
+        color: @metadataColor;
     }
-    .ui.feed > .event > .content .meta .like:hover i.icon {
-      color: @likeHoverColor;
-    }
-    .ui.feed > .event > .content .meta .active.like i.icon {
-      color: @likeActiveColor;
-    }
-  }
 
-  /* First element */
-  .ui.feed > .event > .content .meta > :first-child {
-    margin-left: 0;
-  }
-  .ui.feed > .event > .content .meta > :first-child::after {
-    display: none;
-  }
+    .ui.feed > .event > .content .meta > * {
+        position: relative;
+        margin-left: @metadataElementSpacing;
+    }
+    .ui.feed > .event > .content .meta > *::after {
+        content: @metadataDivider;
+        color: @metadataDividerColor;
+        top: 0;
+        left: @metadataDividerOffset;
+        opacity: 1;
+        position: absolute;
+        vertical-align: top;
+    }
 
-  /* Action */
-  .ui.feed > .event > .content .meta a,
-  .ui.feed > .event > .content .meta > i.icon {
-    cursor: @metadataActionCursor;
-    opacity: @metadataActionOpacity;
-    color: @metadataActionColor;
-    transition: @metadataActionTransition;
-  }
-  .ui.feed > .event > .content .meta a:hover,
-  .ui.feed > .event > .content .meta a:hover i.icon,
-  .ui.feed > .event > .content .meta > i.icon:hover {
-    color: @metadataActionHoverColor;
-  }
+    & when (@variationFeedLike) {
+        .ui.feed > .event > .content .meta .like {
+            color: @likeColor;
+            transition: @likeTransition;
+        }
+        .ui.feed > .event > .content .meta .like:hover i.icon {
+            color: @likeHoverColor;
+        }
+        .ui.feed > .event > .content .meta .active.like i.icon {
+            color: @likeActiveColor;
+        }
+    }
+
+    /* First element */
+    .ui.feed > .event > .content .meta > :first-child {
+        margin-left: 0;
+    }
+    .ui.feed > .event > .content .meta > :first-child::after {
+        display: none;
+    }
+
+    /* Action */
+    .ui.feed > .event > .content .meta a,
+    .ui.feed > .event > .content .meta > i.icon {
+        cursor: @metadataActionCursor;
+        opacity: @metadataActionOpacity;
+        color: @metadataActionColor;
+        transition: @metadataActionTransition;
+    }
+    .ui.feed > .event > .content .meta a:hover,
+    .ui.feed > .event > .content .meta a:hover i.icon,
+    .ui.feed > .event > .content .meta > i.icon:hover {
+        color: @metadataActionHoverColor;
+    }
 }
-
-
 
 /*******************************
             Variations
 *******************************/
+& when (@variationFeedRightFloated) {
+    /* rtl:rename */
+    .ui.feed .right.floated {
+        float: right;
+    }
+}
+& when (@variationFeedConnected) {
+    .ui.connected.feed > .event {
+        position: relative;
+        &:not(:last-child)::before {
+            border-left: @connectedBorder;
+            content: "";
+            left: @connectedBorderLeftOffset;
+            position: absolute;
+            top: @connectedBorderTopOffset;
+            height: @connectedBorderHeight;
+        }
+        & > .label when (@variationFeedLabel) {
+            position: relative;
+        }
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.connected.feed > .event {
+            &::before {
+                border-left-color: @invertedConnectedBorderColor;
+            }
+        }
+    }
+}
+
+& when(@variationFeedDivided) {
+    .ui.divided.feed > .event:not(:first-child) {
+        border-top: @dividedBorder;
+    }
+    & when (@variationFeedInverted) {
+        .ui.inverted.divided.feed > .event {
+            border-top-color: @invertedDividedBorderColor;
+        }
+    }
+}
+& when (@variationFeedLabelText) {
+    .ui.ui.feed > .event > .label[data-text]::before {
+        content: attr(data-text);
+    }
+}
+& when (@variationFeedOrdered) or (@variationFeedLabelText) {
+    .ui.feed > .event > .label[data-text]::before,
+    .ui.ordered.feed > .event > .label::before {
+        text-align: center;
+        line-height: 1;
+        height: @orderedHeight;
+        background: @orderedBackground;
+        color: @orderedColor;
+        border-radius: @orderedBorderRadius;
+        padding-top: @orderedTopOffset;
+        position: relative;
+        display: block;
+        margin-bottom: @orderedBottomMargin;
+        border: @orderedBorder;
+    }
+}
+& when (@variationFeedOrdered) {
+    .ui.ordered.feed {
+        counter-reset: @orderedCountName;
+        & > .event > .label::before {
+            counter-increment: @orderedCountName;
+            content: @orderedCountContent;
+        }
+    }
+    & when (@variationFeedBasic) {
+        .ui.ordered.basic.feed > .event > .label::before,
+        .ui.ordered.feed > .event > .basic.label::before {
+            border-color: @orderedBasicBorderColor;
+            color: @orderedBasicColor;
+            background: @orderedBasicBackground;
+        }
+    }
+    & when (@variationFeedConnected) {
+        .ui.ordered.connected.feed > .event::before {
+            top: @orderedConnectedBorderTopOffset;
+            height: @orderedConnectedBorderHeight;
+        }
+
+        /* workaround until all browsers support :has() */
+        .ui.connected.labeled.feed > .event::before,
+        .ui.connected.feed > .labeled.event::before {
+            top: @orderedConnectedLabeledBorderTopOffset;
+            height: @orderedConnectedLabeledBorderHeight;
+        }
+    }
+}
+& when (@variationFeedConnected) and ((@variationFeedOrdered) or (@variationFeedLabelText)) {
+    @supports selector(:has(.f)) {
+        .ui.connected.feed > .event:has(> .label[data-text] > *)::before,
+        .ui.ordered.connected.feed > .event:has(> .label > *)::before {
+            top: @orderedConnectedLabeledBorderTopOffset;
+            height: @orderedConnectedLabeledBorderHeight;
+        }
+    }
+}
 
 .ui.feed {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationFeedSizes = false) {
-  each(@variationFeedSizes, {
-    @s: @@value;
-    .ui.@{value}.feed  {
-      font-size: @s;
-    }
-  })
+    each(@variationFeedSizes, {
+        @s: @@value;
+        .ui.@{value}.feed {
+            font-size: @s;
+        }
+    });
 }
 
 & when (@variationFeedInverted) {
-  /*------------------
-        Inverted
-  -------------------*/
+    /* ------------------
+          Inverted
+    ------------------- */
 
-  .ui.inverted.feed > .event {
-    background: @black;
-  }
-
-  & when (@variationFeedDate) or (@variationFeedLike) {
-    .ui.inverted.feed > .event > .content .date,
-    .ui.inverted.feed > .event > .content .meta .like {
-      color: @invertedLightTextColor;
+    .ui.inverted.feed > .event {
+        background: @black;
+        & > .label i.icon when (@variationFeedLabelIcon) {
+            color: @invertedIconLabelColor;
+        }
+        & > .label .text:not(.ui) when (@variationFeedLabelText) {
+            color: @invertedTextLabelColor;
+        }
     }
-  }
 
-  & when (@variationFeedSummary) or (@variationFeedExtra) {
-    .ui.inverted.feed > .event > .content .summary,
-    .ui.inverted.feed > .event > .content .extra.text {
-      color: @invertedTextColor;
+    & when (@variationFeedDate) or (@variationFeedLike) {
+        .ui.inverted.feed > .event > .content .date,
+        .ui.inverted.feed > .event > .content .meta .like {
+            color: @invertedLikeColor;
+        }
     }
-  }
 
-  & when (@variationFeedLike) {
-    .ui.inverted.feed > .event > .content .meta .like:hover {
-      color: @invertedSelectedTextColor;
+    & when (@variationFeedSummary) or (@variationFeedExtra) {
+        .ui.inverted.feed > .event > .content .summary,
+        .ui.inverted.feed > .event > .content .extra.text {
+            color: @invertedTextColor;
+        }
     }
-  }
+
+    & when (@variationFeedLike) {
+        .ui.inverted.feed > .event > .content .meta .like:hover {
+            color: @invertedLikeHoverColor;
+        }
+        .ui.inverted.feed > .event > .content .meta .active.like i.icon {
+            color: @invertedLikeActiveColor;
+        }
+    }
+
+    /* Action */
+    .ui.inverted.feed > .event > .content .meta a,
+    .ui.inverted.feed > .event > .content .meta > i.icon {
+        color: @invertedMetadataActionColor;
+    }
+    .ui.inverted.feed > .event > .content .meta a:hover,
+    .ui.inverted.feed > .event > .content .meta a:hover i.icon,
+    .ui.inverted.feed > .event > .content .meta > i.icon:hover {
+        color: @invertedMetadataActionHoverColor;
+    }
 }
 
+/* --------------
+     Colors
+--------------- */
+& when not (@variationFeedColors = false) {
+    each(@variationFeedColors, {
+        @color: @value;
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
 
-.loadUIOverrides();
+        & when (@variationFeedOrdered) or (@variationFeedLabelText) {
+            .ui.ui.feed > .event > .@{color}.label::before,
+            .ui.@{color}.feed > .event > .label::before {
+                background: @c;
+            }
+        }
+        & when (@variationFeedConnected) {
+            .ui.@{color}.connected.feed > .event::before,
+            .ui.connected.feed > .@{color}.event::before {
+                border-color: @c;
+            }
+            & when (@variationFeedInverted) {
+                .ui.inverted.@{color}.connected.feed > .event::before,
+                .ui.connected.feed > .inverted.@{color}.event::before {
+                    border-color: @l;
+                }
+            }
+        }
+        & when (@variationFeedBasic) {
+            .ui.ui.feed > .event > .@{color}.basic.label::before,
+            .ui.@{color}.basic.feed > .event > .label::before {
+                color: @c;
+            }
+        }
+        & when (@variationFeedInverted) {
+            .ui.feed > .event > .inverted.@{color}.label::before,
+            .ui.inverted.@{color}.feed > .event > .label::before {
+                background: @l;
+            }
+            & when (@variationFeedBasic) {
+                .ui.feed > .event > .inverted.@{color}.basic.label::before,
+                .ui.inverted.@{color}.basic.feed > .event > .label::before {
+                    color: @l;
+                }
+            }
+        }
+    });
+}
+& when (@variationFeedBasic) {
+    .ui.ui.feed > .event > .basic.label::before,
+    .ui.ui.ui.basic.feed > .event > .label::before {
+        background: @orderedBasicBackground;
+        border-color: currentColor;
+    }
+}
+& when (@variationFeedDisabled) {
+    .ui.disabled.feed,
+    .ui.feed .disabled.event {
+        opacity: @disabledOpacity;
+        pointer-events: @disabledPointerEvents;
+    }
+}
+
+// stylelint-disable no-invalid-position-at-import-rule
+@import (multiple, optional) "../../overrides.less";

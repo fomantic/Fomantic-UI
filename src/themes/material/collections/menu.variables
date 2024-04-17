@@ -2,9 +2,9 @@
              Menu
 *******************************/
 
-@fontFamily: 'Roboto', Arial, sans-serif;
-@boxShadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
-@dividerSize: 0px;
+@fontFamily: "Roboto", Arial, sans-serif;
+@boxShadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+@dividerSize: 0;
 
 @itemVerticalPadding: @relativeLarge;
 @itemHorizontalPadding: @relativeLarge;

@@ -10,10 +10,10 @@
   "commitConvention": "angular",
   "contributors": [
     {
-      "login": "hammy2899",
+      "login": "y0hami",
       "name": "Sean",
       "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
-      "profile": "https://github.com/hammy2899",
+      "profile": "https://github.com/y0hami",
       "contributions": [
         "question",
         "bug",
@@ -80,7 +80,10 @@
         "example",
         "ideas",
         "infra",
-        "review"
+        "review",
+        "a11y",
+        "security",
+        "maintenance"
       ]
     },
     {
@@ -609,10 +612,75 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "mvorisek",
+      "name": "Michael Voříšek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2228672?v=4",
+      "profile": "https://www.mvorisek.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "xamey",
+      "name": "xamey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34269296?v=4",
+      "profile": "https://github.com/xamey",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Inselhopper",
+      "name": "Ingrid Bluoss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5477907?v=4",
+      "profile": "http://www.ingrid-bluoss.de",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
+    },
+    {
+      "login": "mat128",
+      "name": "Mathieu Mitchell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234168?v=4",
+      "profile": "http://www.mathieumitchell.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "brian-codes",
+      "name": "Brian McCluskey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37519149?v=4",
+      "profile": "https://github.com/brian-codes",
+      "contributions": [
+        "security"
+      ]
+    },
+    {
+      "login": "alvarolm",
+      "name": "Alvaro",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2561547?v=4",
+      "profile": "https://twitter.com/alvarofleiva",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Festiis",
+      "name": "Festim Nuredini",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44016065?v=4",
+      "profile": "https://github.com/Festiis",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs"
 }

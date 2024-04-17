@@ -1,35 +1,35 @@
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
 /* Button Variables */
 @textTransform: none;
 @fontWeight: @normal;
-@textColor: #333333;
+@textColor: #333;
 
-@primaryColor: #333333;
+@primaryColor: #333;
 
 @borderRadius: 0.25em;
 
-@backgroundColor: #EEEEEE;
+@backgroundColor: #eee;
 @backgroundImage: none;
 @boxShadow: none;
 
-@hoverBackgroundColor: #DDDDDD;
+@hoverBackgroundColor: #ddd;
 @hoverBackgroundImage: none;
 @hoverBoxShadow: none;
 
-@downBackgroundColor: #D0D0D0;
+@downBackgroundColor: #d0d0d0;
 @downBackgroundImage: none;
 @downBoxShadow: none;
 
-@activeBackgroundColor: #CCCCCC;
+@activeBackgroundColor: #ccc;
 @activeBackgroundImage: none;
 @activeBoxShadow: none;
 
 @verticalBoxShadow: none;
 
-@loadingBackgroundColor: #F0F0F0;
+@loadingBackgroundColor: #f0f0f0;
 
 @labeledIconLeftShadow: none;
 @labeledIconRightShadow: none;

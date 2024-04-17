@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Text
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Text
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * https://github.com/fomantic/Fomantic-UI/blob/master/LICENSE.md
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -17,106 +17,106 @@ span.ui.text {
   line-height: 1;
 }
 span.ui.primary.text {
-  color: #2185D0;
+  color: #2185d0;
 }
 span.ui.inverted.primary.text {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 span.ui.secondary.text {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 span.ui.inverted.secondary.text {
   color: #545454;
 }
 span.ui.red.text {
-  color: #DB2828;
+  color: #db2828;
 }
 span.ui.inverted.red.text {
-  color: #FF695E;
+  color: #ff695e;
 }
 span.ui.orange.text {
-  color: #F2711C;
+  color: #f2711c;
 }
 span.ui.inverted.orange.text {
-  color: #FF851B;
+  color: #ff851b;
 }
 span.ui.yellow.text {
-  color: #FBBD08;
+  color: #fbbd08;
 }
 span.ui.inverted.yellow.text {
-  color: #FFE21F;
+  color: #ffe21f;
 }
 span.ui.olive.text {
-  color: #B5CC18;
+  color: #b5cc18;
 }
 span.ui.inverted.olive.text {
-  color: #D9E778;
+  color: #d9e778;
 }
 span.ui.green.text {
-  color: #21BA45;
+  color: #21ba45;
 }
 span.ui.inverted.green.text {
-  color: #2ECC40;
+  color: #2ecc40;
 }
 span.ui.teal.text {
-  color: #00B5AD;
+  color: #00b5ad;
 }
 span.ui.inverted.teal.text {
-  color: #6DFFFF;
+  color: #6dffff;
 }
 span.ui.blue.text {
-  color: #2185D0;
+  color: #2185d0;
 }
 span.ui.inverted.blue.text {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 span.ui.violet.text {
-  color: #6435C9;
+  color: #6435c9;
 }
 span.ui.inverted.violet.text {
-  color: #A291FB;
+  color: #a291fb;
 }
 span.ui.purple.text {
-  color: #A333C8;
+  color: #a333c8;
 }
 span.ui.inverted.purple.text {
-  color: #DC73FF;
+  color: #dc73ff;
 }
 span.ui.pink.text {
-  color: #E03997;
+  color: #e03997;
 }
 span.ui.inverted.pink.text {
-  color: #FF8EDF;
+  color: #ff8edf;
 }
 span.ui.brown.text {
-  color: #A5673F;
+  color: #a5673f;
 }
 span.ui.inverted.brown.text {
-  color: #D67C1C;
+  color: #d67c1c;
 }
 span.ui.grey.text {
   color: #767676;
 }
 span.ui.inverted.grey.text {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 span.ui.black.text {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 span.ui.inverted.black.text {
   color: #545454;
 }
 span.ui.error.text {
-  color: #DB2828;
+  color: #db2828;
 }
 span.ui.info.text {
-  color: #31CCEC;
+  color: #31ccec;
 }
 span.ui.success.text {
-  color: #21BA45;
+  color: #21ba45;
 }
 span.ui.warning.text {
-  color: #F2C037;
+  color: #f2c037;
 }
 span.ui.disabled.text {
   opacity: 0.45;

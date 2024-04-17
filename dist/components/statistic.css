@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Statistic
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Statistic
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -16,13 +16,8 @@
 
 /* Standalone */
 .ui.statistic {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 1em 0;
   max-width: none;
 }
@@ -44,40 +39,26 @@
 
 /* Grouped */
 .ui.statistics {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 .ui.statistics > .statistic {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 auto;
-          flex: 0 1 auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex: 0 1 auto;
+  flex-direction: column;
   margin: 0 1.5em 1em;
   max-width: none;
 }
 .ui.statistics {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 1em -1.5em -1em;
 }
 
 /* Clearing */
-.ui.statistics:after {
+.ui.statistics::after {
   display: block;
-  content: ' ';
+  content: " ";
   height: 0;
   clear: both;
   overflow: hidden;
@@ -93,28 +74,26 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Value
----------------*/
-
+--------------- */
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 4rem;
   font-weight: normal;
   line-height: 1em;
-  color: #1B1C1D;
+  color: #1b1c1d;
   text-transform: uppercase;
   text-align: center;
 }
 
-/*--------------
+/* --------------
      Label
----------------*/
-
+--------------- */
 .ui.statistics .statistic > .label,
 .ui.statistic > .label {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1em;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.87);
@@ -140,10 +119,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
    Icon Value
----------------*/
-
+--------------- */
 .ui.statistics .statistic > .value > i.icon,
 .ui.statistic > .value > i.icon {
   opacity: 1;
@@ -151,10 +129,9 @@
   margin: 0;
 }
 
-/*--------------
+/* --------------
    Text Value
----------------*/
-
+--------------- */
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
   line-height: 1em;
@@ -167,10 +144,9 @@
   text-align: center;
 }
 
-/*--------------
+/* --------------
    Image Value
----------------*/
-
+--------------- */
 .ui.statistics .statistic > .value img,
 .ui.statistic > .value img {
   max-height: 3rem;
@@ -183,10 +159,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Count
----------------*/
-
+--------------- */
 .ui.ten.statistics {
   margin: 0 0 -1em;
 }
@@ -257,36 +232,25 @@
   min-width: 100%;
   margin: 0 0 1em;
 }
+.ui.fluid.statistic {
+  width: 100%;
+}
 
-/*--------------
-     Horizontal
-  ---------------*/
-
+/* --------------
+       Horizontal
+    --------------- */
 .ui.horizontal.statistic {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 .ui.horizontal.statistics {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 0;
   max-width: none;
 }
 .ui.horizontal.statistics .statistic {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   max-width: none;
   margin: 1em 0;
 }
@@ -310,37 +274,35 @@
   margin: 0 0 0 0.75em;
 }
 
-/*--------------
-      Inverted
-  ---------------*/
-
+/* --------------
+        Inverted
+    --------------- */
 .ui.inverted.statistics .statistic > .value,
 .ui.inverted.statistic .value {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.inverted.statistics .statistic > .label,
 .ui.inverted.statistic .label {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
-
+--------------- */
 .ui.primary.statistics .statistic > .value,
 .ui.statistics .primary.statistic > .value,
 .ui.primary.statistic > .value {
-  color: #2185D0;
+  color: #2185d0;
 }
 .ui.inverted.primary.statistics .statistic > .value,
 .ui.statistics .inverted.primary.statistic > .value,
 .ui.inverted.primary.statistic > .value {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 .ui.secondary.statistics .statistic > .value,
 .ui.statistics .secondary.statistic > .value,
 .ui.secondary.statistic > .value {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 .ui.inverted.secondary.statistics .statistic > .value,
 .ui.statistics .inverted.secondary.statistic > .value,
@@ -350,112 +312,112 @@
 .ui.red.statistics .statistic > .value,
 .ui.statistics .red.statistic > .value,
 .ui.red.statistic > .value {
-  color: #DB2828;
+  color: #db2828;
 }
 .ui.inverted.red.statistics .statistic > .value,
 .ui.statistics .inverted.red.statistic > .value,
 .ui.inverted.red.statistic > .value {
-  color: #FF695E;
+  color: #ff695e;
 }
 .ui.orange.statistics .statistic > .value,
 .ui.statistics .orange.statistic > .value,
 .ui.orange.statistic > .value {
-  color: #F2711C;
+  color: #f2711c;
 }
 .ui.inverted.orange.statistics .statistic > .value,
 .ui.statistics .inverted.orange.statistic > .value,
 .ui.inverted.orange.statistic > .value {
-  color: #FF851B;
+  color: #ff851b;
 }
 .ui.yellow.statistics .statistic > .value,
 .ui.statistics .yellow.statistic > .value,
 .ui.yellow.statistic > .value {
-  color: #FBBD08;
+  color: #fbbd08;
 }
 .ui.inverted.yellow.statistics .statistic > .value,
 .ui.statistics .inverted.yellow.statistic > .value,
 .ui.inverted.yellow.statistic > .value {
-  color: #FFE21F;
+  color: #ffe21f;
 }
 .ui.olive.statistics .statistic > .value,
 .ui.statistics .olive.statistic > .value,
 .ui.olive.statistic > .value {
-  color: #B5CC18;
+  color: #b5cc18;
 }
 .ui.inverted.olive.statistics .statistic > .value,
 .ui.statistics .inverted.olive.statistic > .value,
 .ui.inverted.olive.statistic > .value {
-  color: #D9E778;
+  color: #d9e778;
 }
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21BA45;
+  color: #21ba45;
 }
 .ui.inverted.green.statistics .statistic > .value,
 .ui.statistics .inverted.green.statistic > .value,
 .ui.inverted.green.statistic > .value {
-  color: #2ECC40;
+  color: #2ecc40;
 }
 .ui.teal.statistics .statistic > .value,
 .ui.statistics .teal.statistic > .value,
 .ui.teal.statistic > .value {
-  color: #00B5AD;
+  color: #00b5ad;
 }
 .ui.inverted.teal.statistics .statistic > .value,
 .ui.statistics .inverted.teal.statistic > .value,
 .ui.inverted.teal.statistic > .value {
-  color: #6DFFFF;
+  color: #6dffff;
 }
 .ui.blue.statistics .statistic > .value,
 .ui.statistics .blue.statistic > .value,
 .ui.blue.statistic > .value {
-  color: #2185D0;
+  color: #2185d0;
 }
 .ui.inverted.blue.statistics .statistic > .value,
 .ui.statistics .inverted.blue.statistic > .value,
 .ui.inverted.blue.statistic > .value {
-  color: #54C8FF;
+  color: #54c8ff;
 }
 .ui.violet.statistics .statistic > .value,
 .ui.statistics .violet.statistic > .value,
 .ui.violet.statistic > .value {
-  color: #6435C9;
+  color: #6435c9;
 }
 .ui.inverted.violet.statistics .statistic > .value,
 .ui.statistics .inverted.violet.statistic > .value,
 .ui.inverted.violet.statistic > .value {
-  color: #A291FB;
+  color: #a291fb;
 }
 .ui.purple.statistics .statistic > .value,
 .ui.statistics .purple.statistic > .value,
 .ui.purple.statistic > .value {
-  color: #A333C8;
+  color: #a333c8;
 }
 .ui.inverted.purple.statistics .statistic > .value,
 .ui.statistics .inverted.purple.statistic > .value,
 .ui.inverted.purple.statistic > .value {
-  color: #DC73FF;
+  color: #dc73ff;
 }
 .ui.pink.statistics .statistic > .value,
 .ui.statistics .pink.statistic > .value,
 .ui.pink.statistic > .value {
-  color: #E03997;
+  color: #e03997;
 }
 .ui.inverted.pink.statistics .statistic > .value,
 .ui.statistics .inverted.pink.statistic > .value,
 .ui.inverted.pink.statistic > .value {
-  color: #FF8EDF;
+  color: #ff8edf;
 }
 .ui.brown.statistics .statistic > .value,
 .ui.statistics .brown.statistic > .value,
 .ui.brown.statistic > .value {
-  color: #A5673F;
+  color: #a5673f;
 }
 .ui.inverted.brown.statistics .statistic > .value,
 .ui.statistics .inverted.brown.statistic > .value,
 .ui.inverted.brown.statistic > .value {
-  color: #D67C1C;
+  color: #d67c1c;
 }
 .ui.grey.statistics .statistic > .value,
 .ui.statistics .grey.statistic > .value,
@@ -465,12 +427,12 @@
 .ui.inverted.grey.statistics .statistic > .value,
 .ui.statistics .inverted.grey.statistic > .value,
 .ui.inverted.grey.statistic > .value {
-  color: #DCDDDE;
+  color: #dcddde;
 }
 .ui.black.statistics .statistic > .value,
 .ui.statistics .black.statistic > .value,
 .ui.black.statistic > .value {
-  color: #1B1C1D;
+  color: #1b1c1d;
 }
 .ui.inverted.black.statistics .statistic > .value,
 .ui.statistics .inverted.black.statistic > .value,
@@ -478,10 +440,9 @@
   color: #545454;
 }
 
-/*--------------
-      Floated
-  ---------------*/
-
+/* --------------
+        Floated
+    --------------- */
 .ui[class*="left floated"].statistic {
   float: left;
   margin: 0 2em 1em 0;
@@ -494,10 +455,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
-      Stackable
-  ---------------*/
-
+/* --------------
+        Stackable
+    --------------- */
 @media only screen and (max-width: 767.98px) {
   .ui.stackable.statistics {
     width: auto;
@@ -506,15 +466,14 @@
   }
   .ui.stackable.statistics > .statistic {
     width: 100% !important;
-    margin: 0 0 !important;
+    margin: 0 !important;
     padding: 1rem 1rem !important;
   }
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
-
+--------------- */
 
 /* Medium */
 .ui.statistics .statistic > .value,

@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Search
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Search
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -27,49 +27,41 @@
   line-height: 1.21428571em;
   padding: 0.67857143em 1em;
   font-size: 1em;
-  background: #FFFFFF;
+  background: #fff;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
-  -webkit-box-shadow: 0 0 0 0 transparent inset;
-          box-shadow: 0 0 0 0 transparent inset;
-  -webkit-transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
+  box-shadow: 0 0 0 0 transparent inset;
   transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
-  transition: background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
 }
 .ui.search .prompt {
   border-radius: 500rem;
 }
 
-/*--------------
+/* --------------
      Icon
----------------*/
-
+--------------- */
 .ui.search .prompt ~ .search.icon {
   cursor: pointer;
 }
 
-/*--------------
+/* --------------
     Results
----------------*/
-
+--------------- */
 .ui.search > .results {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  -webkit-transform-origin: center top;
-          transform-origin: center top;
+  transform-origin: center top;
   white-space: normal;
   text-align: left;
   text-transform: none;
-  background: #FFFFFF;
+  background: #fff;
   margin-top: 0.5em;
   width: 18em;
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-  border: 1px solid #D4D4D5;
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  border: 1px solid #d4d4d5;
   z-index: 998;
 }
 .ui.search > .results > :first-child {
@@ -79,10 +71,9 @@
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 
-/*--------------
+/* --------------
     Result
----------------*/
-
+--------------- */
 .ui.search > .results .result {
   cursor: pointer;
   display: block;
@@ -112,16 +103,15 @@
   height: 100%;
 }
 
-/*--------------
+/* --------------
       Info
----------------*/
-
+--------------- */
 .ui.search > .results .result .image + .content {
   margin: 0 6em 0 0;
 }
 .ui.search > .results .result .title {
   margin: -0.14285714em 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   font-size: 1em;
   color: rgba(0, 0, 0, 0.85);
@@ -133,18 +123,17 @@
 }
 .ui.search > .results .result .price {
   float: right;
-  color: #21BA45;
+  color: #21ba45;
 }
 
-/*--------------
+/* --------------
     Message
----------------*/
-
+--------------- */
 .ui.search > .results > .message {
   padding: 1em 1em;
 }
 .ui.search > .results > .message .header {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.87);
@@ -159,7 +148,7 @@
 .ui.search > .results > .action {
   display: block;
   border-top: none;
-  background: #F3F4F5;
+  background: #f3f4f5;
   padding: 0.92857143em 1em;
   color: rgba(0, 0, 0, 0.87);
   font-weight: bold;
@@ -172,23 +161,21 @@
 *******************************/
 
 
-/*--------------------
+/* --------------------
        Focus
----------------------*/
-
+--------------------- */
 .ui.search > .prompt:focus {
   border-color: rgba(34, 36, 38, 0.35);
-  background: #FFFFFF;
+  background: #fff;
   color: rgba(0, 0, 0, 0.95);
 }
 
-/*--------------------
-         Loading
-  ---------------------*/
-
-.ui.loading.search .input > i.icon:before {
+/* --------------------
+           Loading
+    --------------------- */
+.ui.loading.search .input > i.icon::before {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 50%;
   margin: -0.64285714em 0 0 -0.64285714em;
@@ -197,40 +184,36 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.loading.search .input > i.icon:after {
+.ui.loading.search .input > i.icon::after {
   position: absolute;
-  content: '';
+  content: "";
   top: 50%;
   left: 50%;
   margin: -0.64285714em 0 0 -0.64285714em;
   width: 1.28571429em;
   height: 1.28571429em;
-  -webkit-animation: loader 0.6s infinite linear;
-          animation: loader 0.6s infinite linear;
+  animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  -webkit-box-shadow: 0 0 0 1px transparent;
-          box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 
-/*--------------
+/* --------------
       Hover
----------------*/
-
+--------------- */
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
-  background: #F9FAFB;
+  background: #f9fafb;
 }
 .ui.search .action:hover:not(div) {
-  background: #E0E0E0;
+  background: #e0e0e0;
 }
 
-/*--------------
+/* --------------
       Active
----------------*/
-
+--------------- */
 .ui.category.search > .results .category.active {
-  background: #F3F4F5;
+  background: #f3f4f5;
 }
 .ui.category.search > .results .category.active > .name {
   color: rgba(0, 0, 0, 0.87);
@@ -239,9 +222,8 @@
 .ui.category.search > .results .category .result.active {
   position: relative;
   border-left-color: rgba(34, 36, 38, 0.1);
-  background: #F3F4F5;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  background: #f3f4f5;
+  box-shadow: none;
 }
 .ui.search > .results .result.active .title {
   color: rgba(0, 0, 0, 0.85);
@@ -250,10 +232,9 @@
   color: rgba(0, 0, 0, 0.85);
 }
 
-/*--------------------
-          Disabled
-  ----------------------*/
-
+/* --------------------
+            Disabled
+    ---------------------- */
 
 /* Disabled */
 .ui.disabled.search {
@@ -268,10 +249,9 @@
 *******************************/
 
 
-/*--------------
-      Selection
-  ---------------*/
-
+/* --------------
+        Selection
+    --------------- */
 .ui.search.selection .prompt {
   border-radius: 0.28571429rem;
 }
@@ -282,10 +262,9 @@
   position: absolute;
   left: auto;
   opacity: 0;
-  color: '';
+  color: "";
   top: 0;
   right: 0;
-  -webkit-transition: color 0.1s ease, opacity 0.1s ease;
   transition: color 0.1s ease, opacity 0.1s ease;
 }
 .ui.search.selection > .icon.input > .active.remove.icon {
@@ -298,13 +277,12 @@
 }
 .ui.search.selection > .icon.input > .remove.icon:hover {
   opacity: 1;
-  color: #DB2828;
+  color: #db2828;
 }
 
-/*--------------
-      Category
-  ---------------*/
-
+/* --------------
+        Category
+    --------------- */
 .ui.category.search .results {
   width: 28em;
 }
@@ -316,10 +294,8 @@
 /* Category */
 .ui.category.search > .results .category {
   display: table-row;
-  background: #F3F4F5;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  -webkit-transition: background 0.1s ease, border-color 0.1s ease;
+  background: #f3f4f5;
+  box-shadow: none;
   transition: background 0.1s ease, border-color 0.1s ease;
 }
 
@@ -343,7 +319,7 @@
   width: 100px;
   white-space: nowrap;
   background: transparent;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1em;
   padding: 0.4em 1em;
   font-weight: bold;
@@ -354,15 +330,23 @@
 /* Category Result */
 .ui.category.search > .results .category .results {
   display: table-cell;
-  background: #FFFFFF;
+  background: #fff;
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.category.search > .results .category .result {
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  -webkit-transition: background 0.1s ease, border-color 0.1s ease;
   transition: background 0.1s ease, border-color 0.1s ease;
   padding: 0.85714286em 1.14285714em;
+}
+.ui.horizontal.category.search > .results .category,
+.ui.horizontal.category.search > .results .category > .name,
+.ui.horizontal.category.search > .results .category > .results {
+  display: block;
+}
+.ui.horizontal.category.search > .results .category > .results {
+  width: 100%;
+  border-left: 0;
 }
 
 
@@ -371,38 +355,54 @@
 *******************************/
 
 
-/*-------------------
-       Scrolling
-  --------------------*/
-
+/* -------------------
+         Scrolling
+    -------------------- */
 .ui.scrolling.search > .results,
 .ui.search.long > .results,
 .ui.search.short > .results {
   overflow-x: hidden;
   overflow-y: auto;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-overflow-scrolling: touch;
 }
 @media only screen and (max-width: 767.98px) {
   .ui.scrolling.search > .results {
     max-height: 12.17714286em;
+  }
+  .resizable.ui.scrolling.search > .results {
+    height: 12.17714286em;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.scrolling.search > .results {
     max-height: 18.26571429em;
   }
+  .resizable.ui.scrolling.search > .results {
+    height: 18.26571429em;
+  }
 }
 @media only screen and (min-width: 992px) {
   .ui.scrolling.search > .results {
     max-height: 24.35428571em;
+  }
+  .resizable.ui.scrolling.search > .results {
+    height: 24.35428571em;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.scrolling.search > .results {
     max-height: 36.53142857em;
   }
+  .resizable.ui.scrolling.search > .results {
+    height: 36.53142857em;
+  }
+}
+.ui.scrolling.resizable.search > .results {
+  resize: vertical;
+  max-height: none;
 }
 @media only screen and (max-width: 767.98px) {
   .ui.search.short > .results {
@@ -461,10 +461,9 @@
   }
 }
 
-/*-------------------
-       Left / Right
-  --------------------*/
-
+/* -------------------
+         Left / Right
+    -------------------- */
 .ui[class*="left aligned"].search > .results {
   right: auto;
   left: 0;
@@ -474,18 +473,16 @@
   left: auto;
 }
 
-/*--------------
+/* --------------
     Fluid
----------------*/
-
+--------------- */
 .ui.fluid.search .results {
   width: 100%;
 }
 
-/*--------------
+/* --------------
       Sizes
----------------*/
-
+--------------- */
 .ui.search {
   font-size: 1em;
 }
@@ -511,10 +508,9 @@
   font-size: 1.71428571em;
 }
 
-/*--------------
+/* --------------
       Mobile
----------------*/
-
+--------------- */
 @media only screen and (max-width: 767.98px) {
   .ui.search .results {
     max-width: calc(100vw - 2rem);

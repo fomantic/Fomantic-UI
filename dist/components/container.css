@@ -1,10 +1,10 @@
 /*!
- * # Fomantic-UI 2.8.8 - Container
- * http://github.com/fomantic/Fomantic-UI/
+ * # Fomantic-UI 2.9.3 - Container
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -100,10 +100,27 @@
 
 /* Text Container */
 .ui.text.container {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   max-width: 700px;
   line-height: 1.5;
   font-size: 1.14285714rem;
+}
+
+/* Wide Container */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .ui.ui.ui.wide.container {
+    width: 867.6px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+  .ui.ui.ui.wide.container {
+    width: 1119.6px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ui.ui.ui.wide.container {
+    width: 1352.4px;
+  }
 }
 
 /* Fluid */
@@ -127,8 +144,147 @@
 }
 .ui.justified.container {
   text-align: justify;
-  -ms-hyphens: auto;
-      hyphens: auto;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+
+/* --------------
+      Scrolling
+    --------------- */
+.ui.scrolling.container {
+  overflow: auto;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none;
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.scrolling.container.short {
+    max-height: 11.25em;
+  }
+  .ui.scrolling.container.short.resizable {
+    height: 11.25em;
+  }
+  .ui.scrolling.container[class*="very short"] {
+    max-height: 7.5em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 7.5em;
+  }
+  .ui.scrolling.container {
+    max-height: 15em;
+  }
+  .ui.scrolling.container.long {
+    max-height: 30em;
+  }
+  .ui.scrolling.container.long.resizable {
+    height: 30em;
+  }
+  .ui.scrolling.container[class*="very long"] {
+    max-height: 45em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 45em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.scrolling.container.short {
+    max-height: 13.5em;
+  }
+  .ui.scrolling.container.short.resizable {
+    height: 13.5em;
+  }
+  .ui.scrolling.container[class*="very short"] {
+    max-height: 9em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 9em;
+  }
+  .ui.scrolling.container {
+    max-height: 18em;
+  }
+  .ui.scrolling.container.resizable {
+    height: 18em;
+  }
+  .ui.scrolling.container.long {
+    max-height: 36em;
+  }
+  .ui.scrolling.container.long.resizable {
+    height: 36em;
+  }
+  .ui.scrolling.container[class*="very long"] {
+    max-height: 54em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 54em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.scrolling.container.short {
+    max-height: 18em;
+  }
+  .ui.scrolling.container.short.resizable {
+    height: 18em;
+  }
+  .ui.scrolling.container[class*="very short"] {
+    max-height: 12em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 12em;
+  }
+  .ui.scrolling.container {
+    max-height: 24em;
+  }
+  .ui.scrolling.container.resizable {
+    height: 24em;
+  }
+  .ui.scrolling.container.long {
+    max-height: 48em;
+  }
+  .ui.scrolling.container.long.resizable {
+    height: 48em;
+  }
+  .ui.scrolling.container[class*="very long"] {
+    max-height: 72em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 72em;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.scrolling.container.short {
+    max-height: 22.5em;
+  }
+  .ui.scrolling.container.short.resizable {
+    height: 22.5em;
+  }
+  .ui.scrolling.container[class*="very short"] {
+    max-height: 15em;
+  }
+  .ui.scrolling.container[class*="very short"].resizable {
+    height: 15em;
+  }
+  .ui.scrolling.container {
+    max-height: 30em;
+  }
+  .ui.scrolling.container.resizable {
+    height: 30em;
+  }
+  .ui.scrolling.container.long {
+    max-height: 60em;
+  }
+  .ui.scrolling.container.long.resizable {
+    height: 60em;
+  }
+  .ui.scrolling.container[class*="very long"] {
+    max-height: 90em;
+  }
+  .ui.scrolling.container[class*="very long"].resizable {
+    height: 90em;
+  }
+}
+.ui.resizable.scrolling.container {
+  resize: vertical;
+  max-height: none;
 }
 
 
