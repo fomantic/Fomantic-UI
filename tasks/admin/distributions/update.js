@@ -109,7 +109,7 @@ module.exports = function (callback) {
             console.info('Committing ' + distribution + ' files', commitArgs);
             gulp.src('./', gitOptions)
                 .pipe(git.add(gitOptions))
-                .pipe(git.commit(commitMessage, commitOptions), function() {})
+                .pipe(git.commit(commitMessage, commitOptions), function () {})
                 .on('error', function (error) {
                     // canProceed = false; bug in git commit <https://github.com/stevelacy/gulp-git/issues/49>
                 })
