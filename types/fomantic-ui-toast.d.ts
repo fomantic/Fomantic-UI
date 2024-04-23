@@ -126,6 +126,13 @@ declare namespace FomanticUI {
         showImage: false | string;
 
         /**
+         * Alt text for a given showImage.
+         *
+         * @default false
+         */
+        alt: false | string;
+
+        /**
          * Define if the toast should display an icon which matches to a given class.
          * If a string is given, this will be used as icon classname.
          *
