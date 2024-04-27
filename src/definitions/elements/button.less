@@ -1098,8 +1098,10 @@
     .ui.ui.circular.buttons .button,
     .ui.ui.ui.ui.circular.button {
         border-radius: @circularBorderRadius;
+        min-width: @circularMinWidth;
     }
 
+    .ui.circular.buttons .button > .icon,
     .ui.circular.button > .icon {
         width: @circularIconWidth;
         vertical-align: baseline;
