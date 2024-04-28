@@ -393,7 +393,6 @@
 
 /* Circular */
 @circularBorderRadius: 10em;
-@circularMinWidth: 2.5em;
 @circularIconWidth: 1em;
 @circularGroupMargin: 0.25em;
 @circularVerticalGroupMargin: @circularGroupMargin;
