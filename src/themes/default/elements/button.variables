@@ -394,7 +394,7 @@
 /* Circular */
 @circularBorderRadius: 10em;
 @circularIconWidth: 1em;
-@circularIconMinWidth: 2.5em;
+@circularMinWidth: 2.5em;
 @circularGroupMargin: 0.25em;
 @circularVerticalGroupMargin: @circularGroupMargin;
 
