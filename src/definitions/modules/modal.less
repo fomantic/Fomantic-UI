@@ -448,8 +448,10 @@
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
     }
-    .modals.dimmer {
-        scrollbar-gutter: stable;
+    @supports selector(:has(.f)) {
+        .modals.dimmer:has(.scrollable) {
+            scrollbar-gutter: stable;
+        }
     }
     .modals.dimmer .ui.scrolling.modal.fullscreen {
         top: 0;
