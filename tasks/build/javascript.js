@@ -11,7 +11,7 @@ const
     // gulp dependencies
     chmod      = require('gulp-chmod'),
     concat     = require('gulp-concat'),
-    dedupe     = require('gulp-dedupe'),
+    dedupe     = require('@fomantic/gulp-dedupe'),
     flatten    = require('gulp-flatten'),
     gulpif     = require('gulp-if'),
     header     = require('gulp-header'),
