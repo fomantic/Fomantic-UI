@@ -21,7 +21,7 @@ const
     gulp            = require('gulp'),
 
     // admin dependencies
-    concatFileNames = require('gulp-concat-filenames'),
+    concatFileNames = require('@fomantic/gulp-concat-filenames'),
     flatten         = require('gulp-flatten'),
     jsonEditor      = require('gulp-json-editor'),
     plumber         = require('gulp-plumber'),

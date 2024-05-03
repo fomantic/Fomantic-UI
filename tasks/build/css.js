@@ -12,7 +12,7 @@ const
     autoprefixer = require('gulp-autoprefixer'),
     chmod        = require('gulp-chmod'),
     concatCSS    = require('gulp-concat-css'),
-    dedupe       = require('gulp-dedupe'),
+    dedupe       = require('@fomantic/gulp-dedupe'),
     flatten      = require('gulp-flatten'),
     gulpif       = require('gulp-if'),
     header       = require('gulp-header'),
