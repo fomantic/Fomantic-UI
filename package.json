@@ -67,7 +67,7 @@
     "merge-stream": "^2.0.0",
     "mkdirp": "^1.0.4",
     "normalize-path": "^3.0.0",
-    "ordered-read-streams": "^2.0.0",
+    "ordered-read-streams": "^1.0.1",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
     "wrench-sui": "^0.0.3",
