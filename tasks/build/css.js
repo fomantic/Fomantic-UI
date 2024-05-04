@@ -19,6 +19,7 @@ const
     less         = require('gulp-less'),
     minifyCSS    = require('gulp-clean-css'),
     normalize    = require('normalize-path'),
+    ordered      = require('ordered-read-streams'),
     plumber      = require('gulp-plumber'),
     print        = require('gulp-print').default,
     rename       = require('gulp-rename'),
@@ -101,12 +102,20 @@ function pack(type, compress) {
         concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
     }
 
-    let src = output.uncompressed + '/**/' + globs.components + ignoredGlobs;
-    if (globs.components.indexOf('table') < 0 && globs.components.indexOf('tab') > 0) {
-        src = [src, '!' + output.uncompressed + '/**/table.css'];
-    }
+    let src = globs.components
+        .replace(/[{}]/g, '')
+        .split(',')
+        .map((c) => {
+            let srcSingle = output.uncompressed + '/**/' + c + ignoredGlobs;
+            if (c === 'tab' && globs.components.indexOf('table') < 0) {
+                srcSingle = [srcSingle, '!' + output.uncompressed + '/**/table.css'];
+            }
 
-    return gulp.src(src)
+            return gulp.src(srcSingle);
+        })
+    ;
+
+    return ordered(src)
         .pipe(plumber())
         .pipe(dedupe())
         .pipe(replace(assets.uncompressed, assets.packaged))

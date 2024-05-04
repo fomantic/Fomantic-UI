@@ -115,6 +115,8 @@ module.exports = {
     // whether to load admin tasks
     admin: false,
 
+    stripHeaders: false,
+
     header: {},
 
     // globs used for matching file patterns

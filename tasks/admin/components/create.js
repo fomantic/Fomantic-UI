@@ -127,7 +127,7 @@ module.exports = function (callback) {
 
             // copy dist files into output folder adjusting asset paths
             function copyDist() {
-                return gulp.src(release.source + component + '.*')
+                return gulp.src(release.source + component + '.*', { encoding: false })
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(replace(release.paths.source, release.paths.output))
@@ -268,7 +268,7 @@ module.exports = function (callback) {
                         filenames += file.contents;
                     }))
                     .on('end', function () {
-                        gulp.src(manifest.assets)
+                        gulp.src(manifest.assets, { encoding: false })
                             .pipe(concatFileNames('empty.txt', concatSettings))
                             .pipe(tap(function (file) {
                                 filenames += file.contents;

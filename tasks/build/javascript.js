@@ -16,6 +16,7 @@ const
     gulpif     = require('gulp-if'),
     header     = require('gulp-header'),
     normalize  = require('normalize-path'),
+    ordered    = require('ordered-read-streams'),
     plumber    = require('gulp-plumber'),
     print      = require('gulp-print').default,
     rename     = require('gulp-rename'),
@@ -72,7 +73,13 @@ function pack(type, compress) {
     const output         = type === 'docs' ? docsConfig.paths.output : config.paths.output;
     const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
-    return gulp.src(output.uncompressed + '/**/' + globs.components + globs.ignored + '.js')
+    let src = globs.components
+        .replace(/[{}]/g, '')
+        .split(',')
+        .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'))
+    ;
+
+    return ordered(src)
         .pipe(plumber())
         .pipe(dedupe())
         .pipe(replace(assets.uncompressed, assets.packaged))

@@ -136,7 +136,7 @@ module.exports = function (callback) {
                         components,
                         releases
                     ;
-                    themes = gulp.src('dist/themes/default/**/*', { base: 'dist/' })
+                    themes = gulp.src('dist/themes/default/**/*', { base: 'dist/', encoding: false })
                         .pipe(gulp.dest(outputDirectory))
                     ;
                     components = gulp.src('dist/components/*', { base: 'dist/' })
@@ -177,7 +177,7 @@ module.exports = function (callback) {
                     siteTheme = gulp.src('src/_site/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory))
                     ;
-                    themes = gulp.src('src/themes/**/*', { base: 'src/' })
+                    themes = gulp.src('src/themes/**/*', { base: 'src/', encoding: false })
                         .pipe(gulp.dest(outputDirectory))
                     ;
 
