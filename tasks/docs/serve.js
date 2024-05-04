@@ -49,6 +49,7 @@ module.exports = function () {
 
             return gulp.src(path, {
                 base: 'src/',
+                encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.less))
                 .pipe(print(log.created))
@@ -70,6 +71,7 @@ module.exports = function () {
 
             return gulp.src(path, {
                 base: 'examples/',
+                encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.examples))
                 .pipe(print(log.created))
