@@ -3561,12 +3561,12 @@ ora@^5.4.1:
     strip-ansi "^6.0.0"
     wcwidth "^1.0.1"
 
-ordered-read-streams@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/ordered-read-streams/-/ordered-read-streams-2.0.0.tgz#c6a8f025f8f701be533d5d6decdb5d98b63a295d"
-  integrity sha512-YT9wHHV9mB/qadhWnBsC57JKhAMA22/aR+RwZRgcf4K4Q7IIfmSsnYGxgiu9LVZP3wddRAm5pfYkzkmBb+HuwA==
+ordered-read-streams@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/ordered-read-streams/-/ordered-read-streams-1.0.1.tgz#77c0cb37c41525d64166d990ffad7ec6a0e1363e"
+  integrity sha512-Z87aSjx3r5c0ZB7bcJqIgIRX5bxR7A4aSzvIbaxd0oTkWBCOoKfuGHiKj60CHVUgg1Phm5yMZzBdt8XqRs73Mw==
   dependencies:
-    streamx "^2.12.5"
+    readable-stream "^2.0.1"
 
 os-tmpdir@~1.0.2:
   version "1.0.2"
@@ -3880,6 +3880,19 @@ read-pkg@^5.2.0:
     inherits "~2.0.1"
     isarray "0.0.1"
     string_decoder "~0.10.x"
+
+readable-stream@^2.0.1:
+  version "2.3.8"
+  resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz#91125e8042bba1b9887f49345f6277027ce8be9b"
+  integrity sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.3"
+    isarray "~1.0.0"
+    process-nextick-args "~2.0.0"
+    safe-buffer "~5.1.1"
+    string_decoder "~1.1.1"
+    util-deprecate "~1.0.1"
 
 readable-stream@^2.0.2, readable-stream@^2.3.5, readable-stream@~2.3.6:
   version "2.3.7"
