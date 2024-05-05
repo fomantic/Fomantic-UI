@@ -18,7 +18,7 @@ const
     path           = require('path'),
     mkdirp         = require('mkdirp'),
     extend         = require('extend'),
-    console        = require('better-console'),
+    console        = require('@fomantic/better-console'),
     gulp           = require('gulp'),
 
     // gulp dependencies
