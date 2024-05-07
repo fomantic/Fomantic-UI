@@ -49,7 +49,7 @@
     "@fomantic/gulp-dedupe": "^0.0.3",
     "gulp-flatten": "^0.4.0",
     "@fomantic/gulp-git": "^2.11.1",
-    "gulp-header": "^2.0.5",
+    "@fomantic/gulp-header": "^2.1.1",
     "gulp-if": "^3.0.0",
     "gulp-json-editor": "^2.4.3",
     "gulp-less": "^5.0.0",

@@ -15,7 +15,7 @@ const
     dedupe       = require('@fomantic/gulp-dedupe'),
     flatten      = require('gulp-flatten'),
     gulpif       = require('gulp-if'),
-    header       = require('gulp-header'),
+    header       = require('@fomantic/gulp-header'),
     less         = require('gulp-less'),
     minifyCSS    = require('gulp-clean-css'),
     normalize    = require('normalize-path'),

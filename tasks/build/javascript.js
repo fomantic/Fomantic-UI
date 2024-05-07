@@ -14,7 +14,7 @@ const
     dedupe     = require('@fomantic/gulp-dedupe'),
     flatten    = require('gulp-flatten'),
     gulpif     = require('gulp-if'),
-    header     = require('gulp-header'),
+    header     = require('@fomantic/gulp-header'),
     normalize  = require('normalize-path'),
     ordered    = require('ordered-read-streams'),
     plumber    = require('gulp-plumber'),
