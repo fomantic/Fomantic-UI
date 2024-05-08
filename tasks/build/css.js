@@ -11,7 +11,7 @@ const
     // gulp dependencies
     autoprefixer = require('gulp-autoprefixer'),
     chmod        = require('gulp-chmod'),
-    concatCSS    = require('gulp-concat-css'),
+    concatCSS    = require('@fomantic/gulp-concat-css'),
     dedupe       = require('@fomantic/gulp-dedupe'),
     flatten      = require('gulp-flatten'),
     gulpif       = require('gulp-if'),
