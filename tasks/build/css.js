@@ -20,7 +20,7 @@ const
     minifyCSS    = require('gulp-clean-css'),
     normalize    = require('normalize-path'),
     ordered      = require('ordered-read-streams'),
-    plumber      = require('gulp-plumber'),
+    plumber      = require('@fomantic/gulp-plumber'),
     print        = require('gulp-print').default,
     rename       = require('gulp-rename'),
     replace      = require('gulp-replace'),

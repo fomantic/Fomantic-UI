@@ -53,7 +53,7 @@
     "gulp-if": "^3.0.0",
     "gulp-json-editor": "^2.4.3",
     "gulp-less": "^5.0.0",
-    "gulp-plumber": "^1.2.1",
+    "@fomantic/gulp-plumber": "^1.2.2",
     "gulp-print": "^5.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",

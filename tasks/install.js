@@ -25,7 +25,7 @@ const
     chmod          = require('gulp-chmod'),
     del            = require('del'),
     jsonEditor     = require('gulp-json-editor'),
-    plumber        = require('gulp-plumber'),
+    plumber        = require('@fomantic/gulp-plumber'),
     inquirer       = require('inquirer'),
     rename         = require('gulp-rename'),
     replace        = require('gulp-replace'),
