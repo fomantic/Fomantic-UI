@@ -6,21 +6,21 @@ const
     gulp         = require('gulp'),
 
     // node dependencies
-    console      = require('better-console'),
+    console      = require('@fomantic/better-console'),
 
     // gulp dependencies
     autoprefixer = require('gulp-autoprefixer'),
     chmod        = require('gulp-chmod'),
-    concatCSS    = require('gulp-concat-css'),
-    dedupe       = require('gulp-dedupe'),
+    concatCSS    = require('@fomantic/gulp-concat-css'),
+    dedupe       = require('@fomantic/gulp-dedupe'),
     flatten      = require('gulp-flatten'),
     gulpif       = require('gulp-if'),
-    header       = require('gulp-header'),
+    header       = require('@fomantic/gulp-header'),
     less         = require('gulp-less'),
     minifyCSS    = require('gulp-clean-css'),
     normalize    = require('normalize-path'),
     ordered      = require('ordered-read-streams'),
-    plumber      = require('gulp-plumber'),
+    plumber      = require('@fomantic/gulp-plumber'),
     print        = require('gulp-print').default,
     rename       = require('gulp-rename'),
     replace      = require('gulp-replace'),

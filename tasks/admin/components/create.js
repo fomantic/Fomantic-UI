@@ -21,10 +21,10 @@ const
     gulp            = require('gulp'),
 
     // admin dependencies
-    concatFileNames = require('gulp-concat-filenames'),
+    concatFileNames = require('@fomantic/gulp-concat-filenames'),
     flatten         = require('gulp-flatten'),
     jsonEditor      = require('gulp-json-editor'),
-    plumber         = require('gulp-plumber'),
+    plumber         = require('@fomantic/gulp-plumber'),
     rename          = require('gulp-rename'),
     replace         = require('gulp-replace'),
     tap             = require('gulp-tap'),

@@ -7,7 +7,7 @@ const
     extend      = require('extend'),
 
     // node dependencies
-    console     = require('better-console'),
+    console     = require('@fomantic/better-console'),
     gulp        = require('gulp'),
     map         = require('map-stream'),
 
