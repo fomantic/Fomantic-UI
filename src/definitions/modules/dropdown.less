@@ -751,7 +751,7 @@ select.ui.dropdown {
         opacity: @selectionTextUnderlayIconOpacity;
     }
     .ui.active.search.dropdown input.search:focus + .text {
-        color: @selectionTextUnderlayColor !important;
+        color: @selectionTextUnderlayColor;
     }
 
     .ui.search.dropdown.button > span.sizer {
@@ -922,6 +922,9 @@ select.ui.dropdown {
             padding: inherit;
             margin: @multipleSelectionChildMargin;
             line-height: @multipleSelectionChildLineHeight;
+            &.default {
+                z-index: -1;
+            }
         }
 
         .ui.multiple.search.dropdown > .label ~ .text {
@@ -1976,7 +1979,7 @@ select.ui.dropdown {
         opacity: @invertedSelectionTextUnderlayIconOpacity;
     }
     .ui.inverted.active.search.dropdown input.search:focus + .text {
-        color: @invertedSelectionTextUnderlayColor !important;
+        color: @invertedSelectionTextUnderlayColor;
     }
 
     .ui.dropdown .inverted.menu > .message:not(.ui),
