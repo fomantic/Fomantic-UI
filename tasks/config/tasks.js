@@ -1,6 +1,6 @@
 const
     browserslist = require('browserslist'),
-    console = require('better-console'),
+    console = require('@fomantic/better-console'),
     config  = require('./user'),
     release = require('./project/release')
 ;

@@ -16,9 +16,9 @@ const
     // node dependencies
     fs             = require('fs'),
     path           = require('path'),
-    console        = require('better-console'),
+    console        = require('@fomantic/better-console'),
     gulp           = require('gulp'),
-    git            = require('gulp-git'),
+    git            = require('@fomantic/gulp-git'),
 
     // admin files
     release        = require('../../config/admin/release'),

@@ -19,7 +19,7 @@ const
     // admin dependencies
     flatten         = require('gulp-flatten'),
     jsonEditor      = require('gulp-json-editor'),
-    plumber         = require('gulp-plumber'),
+    plumber         = require('@fomantic/gulp-plumber'),
     rename          = require('gulp-rename'),
     replace         = require('gulp-replace'),
 
