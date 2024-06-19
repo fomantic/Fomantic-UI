@@ -849,8 +849,8 @@
     }
 }
 
-.ui.ui.ui.ui.form .fields > label:empty::after,
-.ui.ui.ui.ui.form .field > label:empty::after {
+.ui.ui.ui.ui.form .fields:not(.required) > label:empty::after,
+.ui.ui.ui.ui.form .field:not(.required) > label:empty::after {
     content: " ";
     display: inline-block;
 }
