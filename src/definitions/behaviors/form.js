@@ -1358,7 +1358,6 @@
                                 : false,
                             fieldValid  = true,
                             fieldErrors = [],
-                            newIdentifier = false,
                             isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled),
                             validationMessage = $field[0].validationMessage,
                             noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
@@ -1396,7 +1395,6 @@
                                             var fieldError = module.get.prompt(rule, field);
                                             fieldErrors.push(fieldError);
                                             formErrorsTracker[identifier] = fieldError;
-                                            newIdentifier = true;
                                         }
                                         fieldValid = false;
                                         if (showErrors) {
@@ -1412,7 +1410,7 @@
                                 settings.onValid.call($field);
                             }
                         } else {
-                            if (showErrors && newIdentifier) {
+                            if (showErrors && fieldErrors.length > 0) {
                                 formErrors = formErrors.concat(fieldErrors);
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
