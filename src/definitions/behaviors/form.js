@@ -949,7 +949,7 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup)
+                                    .appendTo($fieldGroup.filter('.error'))
                                 ;
                             }
                             $prompt
@@ -1390,11 +1390,21 @@
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
-                                        // Only add a field error prompt once per unique identifier
-                                        if (!(identifier in formErrorsTracker)) {
-                                            var fieldError = module.get.prompt(rule, field);
+                                        var fieldError = module.get.prompt(rule, field);
+                                        if (!settings.inline) {
+                                            if (
+                                                // Always allow the first error prompt for new field identifiers
+                                                !(identifier in formErrorsTracker) 
+                                                // Also allow multiple error prompts per field identifier but make sure each prompt is unique
+                                                || !(formErrorsTracker[identifier].includes(fieldError))
+                                                // Limit the number of unique error prompts for every field identifier if specified
+                                                && formErrorsTracker[identifier].length < errorLimit
+                                            ) {
+                                                    fieldErrors.push(fieldError);
+                                                    (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
+                                            }
+                                        } else {
                                             fieldErrors.push(fieldError);
-                                            formErrorsTracker[identifier] = fieldError;
                                         }
                                         fieldValid = false;
                                         if (showErrors) {
