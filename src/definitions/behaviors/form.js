@@ -1398,7 +1398,7 @@
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
                                                 || !(formErrorsTracker[identifier].includes(fieldError))
                                                 // Limit the number of unique error prompts for every field identifier if specified
-                                                && formErrorsTracker[identifier].length < errorLimit
+                                                && (!errorLimit || formErrorsTracker[identifier].length < errorLimit)
                                             ) {
                                                     fieldErrors.push(fieldError);
                                                     (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
