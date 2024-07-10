@@ -1394,14 +1394,14 @@
                                         if (!settings.inline) {
                                             if (
                                                 // Always allow the first error prompt for new field identifiers
-                                                !(identifier in formErrorsTracker) 
+                                                (!(identifier in formErrorsTracker)
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
-                                                || !(formErrorsTracker[identifier].includes(fieldError))
+                                                || !formErrorsTracker[identifier].includes(fieldError))
                                                 // Limit the number of unique error prompts for every field identifier if specified
                                                 && (!errorLimit || formErrorsTracker[identifier].length < errorLimit)
                                             ) {
-                                                    fieldErrors.push(fieldError);
-                                                    (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
+                                                fieldErrors.push(fieldError);
+                                                (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
                                             }
                                         } else {
                                             fieldErrors.push(fieldError);
