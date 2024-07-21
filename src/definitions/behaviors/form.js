@@ -949,7 +949,7 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup.filter('.error'))
+                                    .appendTo($fieldGroup.filter('.' + className.error))
                                 ;
                             }
                             $prompt
@@ -1396,7 +1396,7 @@
                                                 // Always allow the first error prompt for new field identifiers
                                                 (!(identifier in formErrorsTracker)
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
-                                                || !formErrorsTracker[identifier].includes(fieldError))
+                                                || !formErrorsTracker[identifier].indexOf(fieldError))
                                                 // Limit the number of unique error prompts for every field identifier if specified
                                                 && (!errorLimit || formErrorsTracker[identifier].length < errorLimit)
                                             ) {
