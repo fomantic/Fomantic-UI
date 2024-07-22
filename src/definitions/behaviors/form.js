@@ -1396,7 +1396,7 @@
                                                 // Always allow the first error prompt for new field identifiers
                                                 (!(identifier in formErrorsTracker)
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
-                                                || !formErrorsTracker[identifier].indexOf(fieldError))
+                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
                                                 // Limit the number of unique error prompts for every field identifier if specified
                                                 && (!errorLimit || formErrorsTracker[identifier].length < errorLimit)
                                             ) {
