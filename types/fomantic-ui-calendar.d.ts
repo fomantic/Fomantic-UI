@@ -336,14 +336,14 @@ declare namespace FomanticUI {
         }
 
         /**
-         * DOM selector where the calendar popup should be attached to. By default (false) the calendar popoup 
+         * DOM selector where the calendar popup should be attached to. By default (false) the calendar popup
          * is attached as direct child of the triggering element.
-         * 
+         *
          * @default false
          */
         context: string | JQuery | false
 
-        // endregion
+        // end region
 
         // region Callbacks
 
