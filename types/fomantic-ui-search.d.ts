@@ -183,10 +183,15 @@ declare namespace FomanticUI {
         showNoResults: boolean;
 
         /**
-         * Specifying to "true" will use a fuzzy full text search, setting to "exact" will force the exact search to be matched somewhere in the string, setting to false will only match to start of string.
+         * Possible values
+         * * `exact` will force the exact search to be matched somewhere in the string.
+         * * `some` Will do the same as exact but supports multiple search values separated by whitespace. At least one word must match. (New in v2.9.1)
+         * * `all` is same as some but all words have to match in all given search fields of each record altogether. (New in v2.9.1)
+         * * `true` will use a fuzzy full text search.
+         * * `false` will only match to start of string.
          * @default 'exact'
          */
-        fullTextSearch: 'exact' | boolean;
+        fullTextSearch: 'exact' | 'some' | 'all' | boolean;
 
         /**
          * List mapping display content to JSON property, either with API or 'source'.
