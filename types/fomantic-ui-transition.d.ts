@@ -227,7 +227,7 @@ declare namespace FomanticUI {
          * Callback right before the show transition should start.
          * The 'showFunction' parameter has to be called inside the callback to trigger the transition show
          */
-        onBeforeShow(this: JQuery, showFunction: Function): void;
+        onBeforeShow(this: JQuery, showFunction: () => void): void;
 
         /**
          * Callback once the show transition has finished.
@@ -244,7 +244,7 @@ declare namespace FomanticUI {
          * Callback right before the hide transition should start.
          * The 'hideFunction' parameter has to be called inside the callback to trigger the transition hide.
          */
-        onBeforeHide(this: JQuery, hideFunction: Function): void;
+        onBeforeHide(this: JQuery, hideFunction: () => void): void;
 
         /**
          * Callback once the transition hide has finished.

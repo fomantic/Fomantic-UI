@@ -276,7 +276,7 @@ declare namespace FomanticUI {
                  * Returns page title
                  * @default Function
                  */
-                determineTitle: Function;
+                determineTitle: (tabPath: string) => string | void;
             }
 
             interface Selectors {
