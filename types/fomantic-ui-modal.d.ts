@@ -5,12 +5,12 @@ declare namespace FomanticUI {
         /**
          * Shows the modal.
          */
-        (behavior: 'show', callback?: Function): JQuery;
+        (behavior: 'show', callback?: () => void): JQuery;
 
         /**
          * Hides the modal.
          */
-        (behavior: 'hide', callback?: Function): JQuery;
+        (behavior: 'hide', callback?: () => void): JQuery;
 
         /**
          * Toggles the modal.
