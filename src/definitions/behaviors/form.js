@@ -38,6 +38,7 @@
                 element     = this,
 
                 formErrors  = [],
+                formErrorsTracker = {},
                 keyHeldDown = false,
 
                 // set at run-time
@@ -948,7 +949,7 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup)
+                                    .appendTo($fieldGroup.filter('.' + className.error))
                                 ;
                             }
                             $prompt
@@ -1285,6 +1286,7 @@
                         $module.removeClass(className.initial);
                         // reset errors
                         formErrors = [];
+                        formErrorsTracker = {};
                         if (module.determine.isValid()) {
                             module.debug('Form has no validation errors, submitting');
                             module.set.success();
@@ -1388,7 +1390,22 @@
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
-                                        fieldErrors.push(module.get.prompt(rule, field));
+                                        var fieldError = module.get.prompt(rule, field);
+                                        if (!settings.inline) {
+                                            if (
+                                                // Always allow the first error prompt for new field identifiers
+                                                (!(identifier in formErrorsTracker)
+                                                // Also allow multiple error prompts per field identifier but make sure each prompt is unique
+                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
+                                                // Limit the number of unique error prompts for every field identifier if specified
+                                                && (!errorLimit || (formErrorsTracker[identifier] || []).length < errorLimit)
+                                            ) {
+                                                fieldErrors.push(fieldError);
+                                                (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
+                                            }
+                                        } else {
+                                            fieldErrors.push(fieldError);
+                                        }
                                         fieldValid = false;
                                         if (showErrors) {
                                             $(invalidFields).closest($group).addClass(className.error);
@@ -1403,7 +1420,7 @@
                                 settings.onValid.call($field);
                             }
                         } else {
-                            if (showErrors) {
+                            if (showErrors && fieldErrors.length > 0) {
                                 formErrors = formErrors.concat(fieldErrors);
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
