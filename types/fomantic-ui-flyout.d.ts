@@ -6,7 +6,7 @@ declare namespace FomanticUI {
          * Attaches flyout action to given selector.
          * Default event if none specified is toggle.
          */
-        (behavior: 'attach events', selector: JQuery, event: Function): JQuery;
+        (behavior: 'attach events', selector: JQuery, event?: string): JQuery;
 
         /**
          * Shows the flyout.

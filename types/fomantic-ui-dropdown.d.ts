@@ -29,14 +29,14 @@ declare namespace FomanticUI {
          * If a function is provided to callback, it's called after the dropdown-menu is shown.
          * Set preventFocus to true if you don't want the dropdown field to focus after the menu is shown
          */
-        (behavior: 'show', callback?: Function, preventFocus?: boolean): void;
+        (behavior: 'show', callback?: () => void, preventFocus?: boolean): void;
 
         /**
          * Hides dropdown.
          * If a function is provided to callback, it's called after the dropdown-menu is hidden.
          * Set preventBlur to true if you don't want the dropdown field to blur after the menu is hidden
          */
-        (behavior: 'hide', callback?: Function, preventBlur?: boolean): void;
+        (behavior: 'hide', callback?: () => void, preventBlur?: boolean): void;
 
         /**
          * Clears dropdown of selection.
@@ -358,7 +358,7 @@ declare namespace FomanticUI {
          * Whether to sort values when creating a dropdown automatically from a select element.
          * @default false
          */
-        sortSelect: boolean | 'natural' | Function;
+        sortSelect: boolean | 'natural' | ((a: any, b: any) => number);
 
         /**
          * Whether search selection will force currently selected choice when element is blurred.

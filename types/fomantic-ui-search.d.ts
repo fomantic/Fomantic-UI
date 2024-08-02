@@ -5,7 +5,7 @@ declare namespace FomanticUI {
         /**
          * Search for value currently set in search input.
          */
-        (behavior: 'query', callback: Function): JQuery;
+        (behavior: 'query', callback?: () => void): JQuery;
 
         /**
          * Displays message in search results with text, using template matching type.
@@ -30,7 +30,7 @@ declare namespace FomanticUI {
         /**
          * Search remote endpoint for specified query and display results.
          */
-        (behavior: 'search remote', query: string, callback: Function): JQuery;
+        (behavior: 'search remote', query: string, callback?: () => void): JQuery;
 
         /**
          * Search object for specified query and return results.
@@ -90,17 +90,17 @@ declare namespace FomanticUI {
         /**
          * Shows results container.
          */
-        (behavior: 'show results', callback: Function): JQuery;
+        (behavior: 'show results', callback?: () => void): JQuery;
 
         /**
          * Hide results container.
          */
-        (behavior: 'hide results', callback: Function): JQuery;
+        (behavior: 'hide results', callback?: () => void): JQuery;
 
         /**
          * Generates results using parser specified by 'settings.template'.
          */
-        (behavior: 'generate results', response: Function): JQuery;
+        (behavior: 'generate results', response: object): JQuery;
 
         /**
          * Removes all events.
