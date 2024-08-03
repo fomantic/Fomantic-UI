@@ -50,7 +50,7 @@ declare namespace FomanticUI {
         /**
          * Enables animation looping.
          */
-        (behavior: 'looping'): JQuery;
+        (behavior: 'set looping'): JQuery;
 
         /**
          * Removes looping state from element.
