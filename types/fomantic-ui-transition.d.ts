@@ -182,16 +182,22 @@ declare namespace FomanticUI {
         displayType: false | string;
 
         /**
-         * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
-         * @default '500ms'
+         * Duration of the CSS transition animation
+         * @default false
          */
-        duration: string;
+        duration: string | number | false;
 
         /**
          * If enabled a 'timeout' will be added to ensure 'animationend' callback occurs even if element is hidden.
          * @default true
          */
         useFailSafe: boolean;
+
+        /**
+         * Delay in ms for fail safe
+         * @default 100
+         */
+        failSafeDelay: number;
 
         /**
          * If enabled will allow same animation to be queued while it is already occurring.

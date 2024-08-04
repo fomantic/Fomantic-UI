@@ -74,6 +74,31 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
     }
 
+    interface ModalTransitionSettings {
+
+        /**
+         * Named animation show event to used.
+         * Must be defined in CSS.
+         */
+        showMethod: string;
+
+        /**
+         * Duration of the CSS show transition animation
+         */
+        showDuration: number;
+
+        /**
+         * Named animation hide event to used.
+         * Must be defined in CSS.
+         */
+        hideMethod: string;
+
+        /**
+         * Duration of the CSS hide transition animation
+         */
+        hideDuration: number;
+    }
+
     /**
      * @see {@link https://fomantic-ui.com/modules/modal.html#/settings}
      */
@@ -177,7 +202,7 @@ declare namespace FomanticUI {
          * Custom settings to extend UI dimmer.
          * @default 'scale'
          */
-        transition: string | Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
+        transition: string | ModalTransitionSettings;
 
         /**
          * Duration of animation.
