@@ -216,6 +216,31 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<DropdownSettings, keyof DropdownSettings>>): JQuery;
     }
 
+    interface DropdownTransitionSettings {
+
+        /**
+         * Named animation show event to used.
+         * Must be defined in CSS.
+         */
+        showMethod: string;
+
+        /**
+         * Duration of the CSS show transition animation
+         */
+        showDuration: number;
+
+        /**
+         * Named animation hide event to used.
+         * Must be defined in CSS.
+         */
+        hideMethod: string;
+
+        /**
+         * Duration of the CSS hide transition animation
+         */
+        hideDuration: number;
+    }
+
     /**
      * @see {@link http://fomantic-ui.com/modules/dropdown.html#/settings}
      */
@@ -453,7 +478,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an 'object' to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'auto'
          */
-        transition: boolean | object;
+        transition: string | DropdownTransitionSettings;
 
         /**
          * Duration of animation events.
@@ -467,13 +492,6 @@ declare namespace FomanticUI {
          * @default false
          */
         displayType: false | string;
-
-        /**
-         * Maximum glyph width, used to calculate search size.
-         * This is usually size of a "W" in your font in 'em'.
-         * @default 1.037
-         */
-        glyphWidth: number;
 
         /**
          * Whether option headers should have an additional divider line underneath when converted from '<select><optgroup>'.

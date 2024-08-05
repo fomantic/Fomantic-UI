@@ -73,6 +73,31 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
     }
 
+    interface PopupTransitionSettings {
+
+        /**
+         * Named animation show event to used.
+         * Must be defined in CSS.
+         */
+        showMethod: string;
+
+        /**
+         * Duration of the CSS show transition animation
+         */
+        showDuration: number;
+
+        /**
+         * Named animation hide event to used.
+         * Must be defined in CSS.
+         */
+        hideMethod: string;
+
+        /**
+         * Duration of the CSS hide transition animation
+         */
+        hideDuration: number;
+    }
+
     /**
      * @see {@link https://fomantic-ui.com/modules/popup.html#/settings}
      */
@@ -189,7 +214,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an object to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'scale'
          */
-        transition: string | object;
+        transition: string | PopupTransitionSettings;
 
         /**
          * Duration of animation events.
