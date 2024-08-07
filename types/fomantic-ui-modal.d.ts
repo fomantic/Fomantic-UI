@@ -74,31 +74,6 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
     }
 
-    interface ModalTransitionSettings {
-
-        /**
-         * Named animation show event to used.
-         * Must be defined in CSS.
-         */
-        showMethod: string;
-
-        /**
-         * Duration of the CSS show transition animation
-         */
-        showDuration: number;
-
-        /**
-         * Named animation hide event to used.
-         * Must be defined in CSS.
-         */
-        hideMethod: string;
-
-        /**
-         * Duration of the CSS hide transition animation
-         */
-        hideDuration: number;
-    }
-
     /**
      * @see {@link https://fomantic-ui.com/modules/modal.html#/settings}
      */
@@ -202,7 +177,7 @@ declare namespace FomanticUI {
          * Custom settings to extend UI dimmer.
          * @default 'scale'
          */
-        transition: string | ModalTransitionSettings;
+        transition: string | Modal.TransitionSettings;
 
         /**
          * Duration of animation.
@@ -384,12 +359,38 @@ declare namespace FomanticUI {
     }
 
     namespace Modal {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
         type TemplatesSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>> & {[key: string]: (...args: any) => Partial<Pick<ModalSettings, keyof ModalSettings>>};
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '> .header'
