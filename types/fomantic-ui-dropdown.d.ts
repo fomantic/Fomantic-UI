@@ -453,7 +453,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an 'object' to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'auto'
          */
-        transition: boolean | object;
+        transition: string | Dropdown.TransitionSettings;
 
         /**
          * Duration of animation events.
@@ -467,13 +467,6 @@ declare namespace FomanticUI {
          * @default false
          */
         displayType: false | string;
-
-        /**
-         * Maximum glyph width, used to calculate search size.
-         * This is usually size of a "W" in your font in 'em'.
-         * @default 1.037
-         */
-        glyphWidth: number;
 
         /**
          * Whether option headers should have an additional divider line underneath when converted from '<select><optgroup>'.
@@ -648,6 +641,7 @@ declare namespace FomanticUI {
     }
 
     namespace Dropdown {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type MessageSettings = Partial<Pick<Settings.Messages, keyof Settings.Messages>>;
@@ -658,6 +652,31 @@ declare namespace FomanticUI {
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '.addition'
