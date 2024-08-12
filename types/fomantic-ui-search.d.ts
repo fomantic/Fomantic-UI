@@ -75,7 +75,7 @@ declare namespace FomanticUI {
         /**
          * Clears value from cache, if no parameter passed clears all cache.
          */
-        (behavior: 'clear cache', query: string): JQuery;
+        (behavior: 'clear cache', query?: string): JQuery;
 
         /**
          * Writes cached results for query.
