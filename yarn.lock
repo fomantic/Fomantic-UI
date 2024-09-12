@@ -783,14 +783,15 @@ async@^3.1.0:
   integrity sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==
 
 auto-changelog@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.4.0.tgz#a2d57d49b70ada7ca2e7c6a20a71572561d19cd9"
-  integrity sha512-vh17hko1c0ItsEcw6m7qPRf3m45u+XK5QyCrrBFViElZ8jnKrPC1roSznrd1fIB/0vR/zawdECCRJtTuqIXaJw==
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.5.0.tgz#c7a3a203a99b54c3c7286b247911966581103c10"
+  integrity sha512-UTnLjT7I9U2U/xkCUH5buDlp8C7g0SGChfib+iDrJkamcj5kaMqNKHNfbKJw1kthJUq8sUo3i3q2S6FzO/l/wA==
   dependencies:
     commander "^7.2.0"
     handlebars "^4.7.7"
+    import-cwd "^3.0.0"
     node-fetch "^2.6.1"
-    parse-github-url "^1.0.2"
+    parse-github-url "^1.0.3"
     semver "^7.3.5"
 
 autoprefixer@^10.2.6:
@@ -2762,6 +2763,13 @@ image-size@~0.5.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=
 
+import-cwd@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-3.0.0.tgz#20845547718015126ea9b3676b7592fb8bd4cf92"
+  integrity sha512-4pnzH16plW+hgvRECbDWpQl3cqtvSofHWh44met7ESfZ8UZOWWddm8hEyDTqREJ9RbYHY8gi8DqmaelApoOGMg==
+  dependencies:
+    import-from "^3.0.0"
+
 import-fresh@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
@@ -2769,6 +2777,13 @@ import-fresh@^3.2.1:
   dependencies:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
+
+import-from@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/import-from/-/import-from-3.0.0.tgz#055cfec38cd5a27d8057ca51376d7d3bf0891966"
+  integrity sha512-CiuXOFFSzkU5x/CR0+z7T91Iht4CXgfCxVOFRhh2Zyhg5wOpWvvDLQUsWl+gcN+QscYBjez8hDCt85O7RLDttQ==
+  dependencies:
+    resolve-from "^5.0.0"
 
 import-lazy@^4.0.0:
   version "4.0.0"
@@ -3935,10 +3950,10 @@ parse-filepath@^1.0.2:
     map-cache "^0.2.0"
     path-root "^0.1.1"
 
-parse-github-url@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.2.tgz#242d3b65cbcdda14bb50439e3242acf6971db395"
-  integrity sha512-kgBf6avCbO3Cn6+RnzRGLkUsv4ZVqv/VfAYkRsyBcgkshNvVBkRn1FEZcW0Jb+npXQWm2vHPnnOqFteZxRRGNw==
+parse-github-url@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.3.tgz#2ab55642c8685b63fbe2a196f5abe4ae9bd68abc"
+  integrity sha512-tfalY5/4SqGaV/GIGzWyHnFjlpTPTNpENR9Ea2lLldSJ8EWXMsvacWucqY3m3I4YPtas15IxTLQVQ5NSYXPrww==
 
 parse-import@^2.0.0:
   version "2.0.0"
