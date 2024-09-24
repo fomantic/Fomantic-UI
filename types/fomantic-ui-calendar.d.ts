@@ -327,7 +327,23 @@ declare namespace FomanticUI {
 
         formatter: Calendar.FormatterSettings;
 
-        // endregion
+        /**
+         * Customizable methods to parse a given date
+         * Has to return a date object
+         */
+        parser: {
+            date: (text: string, settings: CalendarSettings) => Date;
+        }
+
+        /**
+         * DOM selector where the calendar popup should be attached to. By default (false) the calendar popup
+         * is attached as direct child of the triggering element.
+         *
+         * @default false
+         */
+        context: string | JQuery | false
+
+        // end region
 
         // region Callbacks
 

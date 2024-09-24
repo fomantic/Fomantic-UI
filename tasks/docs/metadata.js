@@ -5,7 +5,7 @@
 const
     // node dependencies
     fs           = require('fs'),
-    console      = require('better-console'),
+    console      = require('@fomantic/better-console'),
     YAML         = require('yamljs')
 ;
 

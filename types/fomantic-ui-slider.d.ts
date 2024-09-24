@@ -89,7 +89,7 @@ declare namespace FomanticUI {
          * You can specify a function here which consumes the current label value as parameter and should return a custom label text according to the given value.
          * @default false
          */
-        interpretLabel: false | Function;
+        interpretLabel: false | ((value: any) => string);
 
         /**
          * Show ticks on a labeled slider.

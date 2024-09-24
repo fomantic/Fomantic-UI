@@ -185,7 +185,7 @@
                 set: {
 
                     defaultSide: function () {
-                        $activeSide = $side.filter('.' + settings.className.active);
+                        $activeSide = $side.filter('.' + className.active);
                         $nextSide = $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
@@ -211,7 +211,7 @@
 
                     currentStageSize: function () {
                         var
-                            $activeSide = $side.filter('.' + settings.className.active),
+                            $activeSide = $side.filter('.' + className.active),
                             width       = $activeSide.outerWidth(true),
                             height      = $activeSide.outerHeight(true)
                         ;
@@ -227,7 +227,7 @@
                         var
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
-                            $activeSide = $side.filter('.' + settings.className.active),
+                            $activeSide = $side.filter('.' + className.active),
                             $nextSide   = nextIndex
                                 ? $side.eq(nextIndex)
                                 : ($activeSide.next(selector.side).length > 0
@@ -623,7 +623,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

@@ -29,14 +29,14 @@ declare namespace FomanticUI {
          * If a function is provided to callback, it's called after the dropdown-menu is shown.
          * Set preventFocus to true if you don't want the dropdown field to focus after the menu is shown
          */
-        (behavior: 'show', callback?: Function, preventFocus?: boolean): void;
+        (behavior: 'show', callback?: () => void, preventFocus?: boolean): void;
 
         /**
          * Hides dropdown.
          * If a function is provided to callback, it's called after the dropdown-menu is hidden.
          * Set preventBlur to true if you don't want the dropdown field to blur after the menu is hidden
          */
-        (behavior: 'hide', callback?: Function, preventBlur?: boolean): void;
+        (behavior: 'hide', callback?: () => void, preventBlur?: boolean): void;
 
         /**
          * Clears dropdown of selection.
@@ -358,7 +358,7 @@ declare namespace FomanticUI {
          * Whether to sort values when creating a dropdown automatically from a select element.
          * @default false
          */
-        sortSelect: boolean | 'natural' | Function;
+        sortSelect: boolean | 'natural' | ((a: any, b: any) => number);
 
         /**
          * Whether search selection will force currently selected choice when element is blurred.
@@ -384,6 +384,12 @@ declare namespace FomanticUI {
          * @default true
          */
         ignoreSearchCase: boolean;
+
+        /**
+         * Whether search result should highlight matching strings
+         * @default false
+         */
+        highlightMatches: boolean;
 
         /**
          * If disabled user additions will appear in the dropdown's menu using a specially formatted selection item formatted by 'templates.addition'.
@@ -447,7 +453,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an 'object' to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'auto'
          */
-        transition: boolean | object;
+        transition: string | Dropdown.TransitionSettings;
 
         /**
          * Duration of animation events.
@@ -461,13 +467,6 @@ declare namespace FomanticUI {
          * @default false
          */
         displayType: false | string;
-
-        /**
-         * Maximum glyph width, used to calculate search size.
-         * This is usually size of a "W" in your font in 'em'.
-         * @default 1.037
-         */
-        glyphWidth: number;
 
         /**
          * Whether option headers should have an additional divider line underneath when converted from '<select><optgroup>'.
@@ -642,6 +641,7 @@ declare namespace FomanticUI {
     }
 
     namespace Dropdown {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type MessageSettings = Partial<Pick<Settings.Messages, keyof Settings.Messages>>;
@@ -652,6 +652,31 @@ declare namespace FomanticUI {
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '.addition'
@@ -1027,6 +1052,12 @@ declare namespace FomanticUI {
                 text: string;
 
                 /**
+                 * custom data atttributes
+                 * @default 'data'
+                 */
+                data: string;
+
+                /**
                  * Type of dropdown element
                  * @default 'type'
                  */
@@ -1043,6 +1074,12 @@ declare namespace FomanticUI {
                  * @default 'imageClass'
                  */
                 imageClass: string;
+
+                /**
+                 * Optional alt text for image
+                 * @default 'alt'
+                 */
+                alt: string;
 
                 /**
                  * Optional icon name

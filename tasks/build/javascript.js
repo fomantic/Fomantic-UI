@@ -6,17 +6,18 @@ const
     gulp       = require('gulp'),
 
     // node dependencies
-    console    = require('better-console'),
+    console    = require('@fomantic/better-console'),
 
     // gulp dependencies
     chmod      = require('gulp-chmod'),
     concat     = require('gulp-concat'),
-    dedupe     = require('gulp-dedupe'),
+    dedupe     = require('@fomantic/gulp-dedupe'),
     flatten    = require('gulp-flatten'),
     gulpif     = require('gulp-if'),
-    header     = require('gulp-header'),
+    header     = require('@fomantic/gulp-header'),
     normalize  = require('normalize-path'),
-    plumber    = require('gulp-plumber'),
+    ordered    = require('ordered-read-streams'),
+    plumber    = require('@fomantic/gulp-plumber'),
     print      = require('gulp-print').default,
     rename     = require('gulp-rename'),
     replace    = require('gulp-replace'),
@@ -72,7 +73,13 @@ function pack(type, compress) {
     const output         = type === 'docs' ? docsConfig.paths.output : config.paths.output;
     const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
-    return gulp.src(output.uncompressed + '/**/' + globs.components + globs.ignored + '.js')
+    let src = globs.components
+        .replace(/[{}]/g, '')
+        .split(',')
+        .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'))
+    ;
+
+    return ordered(src)
         .pipe(plumber())
         .pipe(dedupe())
         .pipe(replace(assets.uncompressed, assets.packaged))

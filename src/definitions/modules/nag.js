@@ -88,7 +88,9 @@
                     }
 
                     if (settings.displayTime > 0) {
-                        setTimeout(function () { module.hide(); }, settings.displayTime);
+                        setTimeout(function () {
+                            module.hide();
+                        }, settings.displayTime);
                     }
                     module.show();
                 },
@@ -144,8 +146,10 @@
                         module.debug('Dismissing nag', settings.storageMethod, settings.key, settings.value, settings.expires);
                         module.storage.set(settings.key, settings.value);
                     }
-                    event.stopImmediatePropagation();
-                    event.preventDefault();
+                    if (event) {
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
+                    }
                 },
 
                 should: {
@@ -377,7 +381,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

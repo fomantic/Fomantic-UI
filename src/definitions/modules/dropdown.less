@@ -468,10 +468,10 @@ select.ui.dropdown {
 
     @media only screen and (max-width: @largestMobileScreen) {
         & when (@variationDropdownShort) {
-            .ui.selection.dropdown.short .menu {
+            .ui.ui.selection.dropdown.short .menu {
                 max-height: @selectionMobileMaxMenuHeight * 0.75;
             }
-            .ui.selection.dropdown[class*="very short"] .menu {
+            .ui.ui.selection.dropdown[class*="very short"] .menu {
                 max-height: @selectionMobileMaxMenuHeight * 0.5;
             }
         }
@@ -479,20 +479,20 @@ select.ui.dropdown {
             max-height: @selectionMobileMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
-            .ui.selection.dropdown.long .menu {
+            .ui.ui.selection.dropdown.long .menu {
                 max-height: @selectionMobileMaxMenuHeight * 2;
             }
-            .ui.selection.dropdown[class*="very long"] .menu {
+            .ui.ui.selection.dropdown[class*="very long"] .menu {
                 max-height: @selectionMobileMaxMenuHeight * 3;
             }
         }
     }
     @media only screen and (min-width: @tabletBreakpoint) {
         & when (@variationDropdownShort) {
-            .ui.selection.dropdown.short .menu {
+            .ui.ui.selection.dropdown.short .menu {
                 max-height: @selectionTabletMaxMenuHeight * 0.75;
             }
-            .ui.selection.dropdown[class*="very short"] .menu {
+            .ui.ui.selection.dropdown[class*="very short"] .menu {
                 max-height: @selectionTabletMaxMenuHeight * 0.5;
             }
         }
@@ -500,20 +500,20 @@ select.ui.dropdown {
             max-height: @selectionTabletMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
-            .ui.selection.dropdown.long .menu {
+            .ui.ui.selection.dropdown.long .menu {
                 max-height: @selectionTabletMaxMenuHeight * 2;
             }
-            .ui.selection.dropdown[class*="very long"] .menu {
+            .ui.ui.selection.dropdown[class*="very long"] .menu {
                 max-height: @selectionTabletMaxMenuHeight * 3;
             }
         }
     }
     @media only screen and (min-width: @computerBreakpoint) {
         & when (@variationDropdownShort) {
-            .ui.selection.dropdown.short .menu {
+            .ui.ui.selection.dropdown.short .menu {
                 max-height: @selectionComputerMaxMenuHeight * 0.75;
             }
-            .ui.selection.dropdown[class*="very short"] .menu {
+            .ui.ui.selection.dropdown[class*="very short"] .menu {
                 max-height: @selectionComputerMaxMenuHeight * 0.5;
             }
         }
@@ -521,20 +521,20 @@ select.ui.dropdown {
             max-height: @selectionComputerMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
-            .ui.selection.dropdown.long .menu {
+            .ui.ui.selection.dropdown.long .menu {
                 max-height: @selectionComputerMaxMenuHeight * 2;
             }
-            .ui.selection.dropdown[class*="very long"] .menu {
+            .ui.ui.selection.dropdown[class*="very long"] .menu {
                 max-height: @selectionComputerMaxMenuHeight * 3;
             }
         }
     }
     @media only screen and (min-width: @widescreenMonitorBreakpoint) {
         & when (@variationDropdownShort) {
-            .ui.selection.dropdown.short .menu {
+            .ui.ui.selection.dropdown.short .menu {
                 max-height: @selectionWidescreenMaxMenuHeight * 0.75;
             }
-            .ui.selection.dropdown[class*="very short"] .menu {
+            .ui.ui.selection.dropdown[class*="very short"] .menu {
                 max-height: @selectionWidescreenMaxMenuHeight * 0.5;
             }
         }
@@ -542,10 +542,10 @@ select.ui.dropdown {
             max-height: @selectionWidescreenMaxMenuHeight;
         }
         & when (@variationDropdownLong) {
-            .ui.selection.dropdown.long .menu {
+            .ui.ui.selection.dropdown.long .menu {
                 max-height: @selectionWidescreenMaxMenuHeight * 2;
             }
-            .ui.selection.dropdown[class*="very long"] .menu {
+            .ui.ui.selection.dropdown[class*="very long"] .menu {
                 max-height: @selectionWidescreenMaxMenuHeight * 3;
             }
         }
@@ -751,7 +751,7 @@ select.ui.dropdown {
         opacity: @selectionTextUnderlayIconOpacity;
     }
     .ui.active.search.dropdown input.search:focus + .text {
-        color: @selectionTextUnderlayColor !important;
+        color: @selectionTextUnderlayColor;
     }
 
     .ui.search.dropdown.button > span.sizer {
@@ -811,14 +811,14 @@ select.ui.dropdown {
         }
     }
 
-    .ui.clearable.dropdown .text,
-    .ui.clearable.dropdown a:last-of-type {
+    .ui.clearable.dropdown .text:not(.default),
+    .ui.clearable.dropdown:not(.search) > .ui.label:last-of-type {
         margin-right: @clearableTextMargin;
     }
 
     .ui.dropdown select.noselection ~ .remove.icon,
     .ui.dropdown input[value=""] ~ .remove.icon,
-    .ui.dropdown input:not([value]) ~ .remove.icon,
+    .ui.dropdown input:not([value]):not(.search) ~ .remove.icon,
     .ui.dropdown.loading > .remove.icon {
         display: none;
     }
@@ -922,6 +922,9 @@ select.ui.dropdown {
             padding: inherit;
             margin: @multipleSelectionChildMargin;
             line-height: @multipleSelectionChildLineHeight;
+            &.default {
+                z-index: -1;
+            }
         }
 
         .ui.multiple.search.dropdown > .label ~ .text {
@@ -1860,6 +1863,13 @@ select.ui.dropdown {
     });
 }
 
+& when (@variationDropdownHighlightMatches) {
+    .ui.dropdown .menu > .item mark {
+        background: @highlightMatchesBackground;
+        color: @highlightMatchesColor;
+    }
+}
+
 & when (@variationDropdownInverted) {
     /* --------------
         Inverted
@@ -1969,7 +1979,7 @@ select.ui.dropdown {
         opacity: @invertedSelectionTextUnderlayIconOpacity;
     }
     .ui.inverted.active.search.dropdown input.search:focus + .text {
-        color: @invertedSelectionTextUnderlayColor !important;
+        color: @invertedSelectionTextUnderlayColor;
     }
 
     .ui.dropdown .inverted.menu > .message:not(.ui),
@@ -2035,18 +2045,22 @@ select.ui.dropdown {
         .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
             background: @thumbInvertedHoverBackground;
         }
-        .ui.dropdown .inverted.menu,
-        .ui.inverted.dropdown .menu {
-            & when (@supportIE) {
+        & when (@supportIE) {
+            .ui.dropdown .inverted.menu,
+            .ui.inverted.dropdown .menu {
                 /* IE11 */
                 scrollbar-face-color: @thumbInvertedBackgroundHex;
                 scrollbar-shadow-color: @thumbInvertedBackgroundHex;
                 scrollbar-track-color: @trackInvertedBackgroundHex;
                 scrollbar-arrow-color: @trackInvertedBackgroundHex;
             }
-
-            /* firefox: first color thumb, second track */
-            scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+        }
+        @supports (-moz-appearance: none) {
+            .ui.dropdown .inverted.menu,
+            .ui.inverted.dropdown .menu {
+                /* firefox: first color thumb, second track */
+                scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+            }
         }
     }
     & when (@variationDropdownPointing) {

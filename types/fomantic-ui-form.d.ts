@@ -164,7 +164,7 @@ declare namespace FomanticUI {
         (settings?: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;
     }
 
-    type FormFields = Record<string, FormField | string[] | string | {}>;
+    type FormFields = Record<string, FormField | string[] | string | object>;
 
     interface FormRule {
         type: string;
