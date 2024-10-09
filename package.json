@@ -51,7 +51,7 @@
     "@fomantic/gulp-git": "^2.11.1",
     "@fomantic/gulp-header": "^2.1.1",
     "gulp-if": "^3.0.0",
-    "gulp-json-editor": "^2.4.3",
+    "gulp-json-editor": "^2.6.0",
     "gulp-less": "^5.0.0",
     "@fomantic/gulp-plumber": "^1.2.2",
     "gulp-print": "^5.0.0",
