@@ -80,11 +80,13 @@
 
 /* Menu */
 .ui.accordion.menu .item .title {
-    display: block;
+    display: flex;
+    flex: 0 0 100%;
+    justify-content: space-between;
     padding: @menuTitlePadding;
 }
 .ui.accordion.menu .item .title > .dropdown.icon {
-    float: @menuIconFloat;
+    order: 2;
     margin: @menuIconMargin;
     transform: @menuIconTransform;
 }
