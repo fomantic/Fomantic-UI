@@ -765,14 +765,12 @@
                                 gapCounter = 1
                             ;
 
-                            // While the distance between two labels is too short,
-                            // we divide the number of labels at each iteration
-                            // and apply only if the modulo of the operation is an odd number.
+                            // While the distance between two labels is too short for text at every label,
+                            // we find out if we use only ticks with no text (gapRatio > 1)
+                            // and apply text at any other tick (gapRatio = 2), any third tick (gapRatio = 3) and so on
                             if (trackLength > 0) {
                                 while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
-                                    if (!(numLabels % gapCounter)) {
-                                        gapRatio = gapCounter;
-                                    }
+                                    gapRatio = gapCounter;
                                     gapCounter += 1;
                                 }
                             }
