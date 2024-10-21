@@ -14,6 +14,7 @@
 @trackHeight: 0.4em;
 @trackPositionTop: (@height / 2) - (@trackHeight / 2);
 @background: #ccc;
+@invertedBackground: #333;
 @trackBorderRadius: 4px;
 @trackColor: @transparentBlack;
 
@@ -52,6 +53,10 @@
       Variations
 -------------------- */
 
+/* Highlight */
+@highlightOpacity: 0.6;
+@highlightTransition: all 0.2s @defaultEasing;
+
 /* Vertical */
 @verticalPadding: 0.5em 1em;
 
@@ -60,6 +65,7 @@
 @labelWidth: 1px;
 @labelColor: @background;
 @labelPadding: 0.2em 0;
+@invertedLabelColor: @invertedBackground;
 
 /* Hover */
 @hoverVarOpacity: 0;

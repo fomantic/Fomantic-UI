@@ -204,10 +204,12 @@
 
     .ui.labeled.slider > .labels .label {
         display: inline-flex;
-        padding: @labelPadding;
         position: absolute;
         transform: translate(-50%, -100%);
         white-space: nowrap;
+        &:not(.ui) {
+            padding: @labelPadding;
+        }
     }
 
     .ui.bottom.aligned.labeled.slider > .labels .label {
@@ -230,6 +232,11 @@
         }
         .ui.labeled.ticked.slider > .labels .halftick.label::after {
             height: (@labelHeight / 2);
+        }
+        & when (@variationSliderInverted) {
+            .ui.inverted.labeled.ticked.slider > .labels .label::after {
+                background: @invertedLabelColor;
+            }
         }
     }
 
@@ -296,6 +303,26 @@
         background-color: @transparentWhite;
     }
 }
+& when (@variationSliderHighlight) {
+    .ui.labeled.slider > .active.labels .label {
+        transition: @highlightTransition;
+    }
+    & when (@variationSliderTicked) {
+        .ui.labeled.ticked.slider > .active.labels .label::after {
+            background: @trackFillColor;
+        }
+        & when (@variationSliderInverted) {
+            .ui.inverted.labeled.ticked.slider > .active.labels .label::after {
+                background: @invertedTrackFillColor;
+            }
+        }
+    }
+
+    .ui.labeled.ticked.slider > .active.labels .active.label::after,
+    .ui.labeled.slider > .active.labels .label:not(.active) {
+        opacity: @highlightOpacity;
+    }
+}
 
 /* --------------
      Colors
@@ -335,6 +362,16 @@
                 .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
                 .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
                     background-color: @lh;
+                }
+            }
+        }
+        & when (@variationSliderHighlight) and (@variationSliderTicked) {
+            .ui.@{color}.labeled.ticked.slider > .active.labels .active.label::after {
+                background-color: @c;
+            }
+            & when (@variationSliderInverted) {
+                .ui.@{color}.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+                    background-color: @l;
                 }
             }
         }

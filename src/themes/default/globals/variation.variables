@@ -713,6 +713,7 @@
 @variationSliderTicked: true;
 @variationSliderVertical: true;
 @variationSliderBasic: true;
+@variationSliderHighlight: true;
 @variationSliderSizes: small, large, big;
 @variationSliderColors: @variationAllColors;
 
