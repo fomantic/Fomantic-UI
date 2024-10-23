@@ -232,6 +232,14 @@
                 top: auto;
                 bottom: 100%;
             }
+            & when (@variationSliderUiLabel) {
+                .ui.labeled.slider.bottom.aligned .labels .ui.label {
+                    margin-bottom: -@uiLabelMargin;
+                }
+                .ui.labeled.ticked.slider.bottom.aligned .labels .ui.label::after {
+                    margin-bottom: @uiLabelMargin;
+                }
+            }
         }
         .ui.labeled.ticked.slider > .labels .halftick.label::after {
             height: (@labelHeight / 2);
@@ -240,6 +248,17 @@
             .ui.inverted.labeled.ticked.slider > .labels .label::after {
                 background: @invertedLabelColor;
             }
+        }
+    }
+    & when (@variationSliderUiLabel) {
+        .ui.labeled.slider:not(.vertical):not(.bottom) .labels .ui.label {
+            margin-top: -@uiLabelMargin;
+        }
+        .ui.labeled.ticked.slider:not(.vertical):not(.bottom) .labels .ui.label::after {
+            margin-top: @uiLabelMargin;
+        }
+        .ui.labeled.ticked.slider:not(.vertical) > .labels .ui.label::after {
+            height: @uiLabelTickHeight;
         }
     }
 
@@ -279,6 +298,11 @@
                 transform: translate(-100%, 50%);
             }
         }
+        & when (@variationSliderUiLabel) {
+            .ui.labeled.ticked.vertical.slider:not(.right) > .labels .ui.label::after {
+                margin-left: @verticalUiLabelMargin;
+            }
+        }
         & when (@variationSliderRightAligned) {
             .ui.labeled.vertical.right.aligned.slider > .labels {
                 transform: translateX(50%);
@@ -299,6 +323,11 @@
             & when (@variationSliderReversed) {
                 .ui.labeled.vertical.reversed.right.aligned.slider > .labels .label {
                     transform: translate(100%, 50%);
+                }
+            }
+            & when (@variationSliderUiLabel) {
+                .ui.labeled.ticked.vertical.right.aligned.slider > .labels .ui.label::after {
+                    margin-right: @verticalUiLabelMargin;
                 }
             }
         }

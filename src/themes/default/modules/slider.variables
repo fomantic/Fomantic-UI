@@ -60,6 +60,7 @@
 /* Vertical */
 @verticalPadding: 0.5em 1em;
 @verticalTickDistance: 0.6em;
+@verticalUiLabelMargin: 0.3em;
 
 /* Labeled */
 @labelHeight: @height;
@@ -67,6 +68,8 @@
 @labelColor: @background;
 @labelPadding: 0.2em 0;
 @invertedLabelColor: @invertedBackground;
+@uiLabelMargin: 0.5em;
+@uiLabelTickHeight: 2em;
 
 /* Hover */
 @hoverVarOpacity: 0;
