@@ -498,7 +498,7 @@
                 },
 
                 clear: {
-                    cache: function() {
+                    cache: function () {
                         module.cache = {};
                     },
                 },
@@ -552,12 +552,13 @@
                 },
 
                 is: {
-                    prime: function(n) {
+                    prime: function (n) {
                         if (module.cache['prime' + n] === undefined) {
                             var p = true;
                             for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
                                 if (n % i === 0) {
                                     p = false;
+
                                     break;
                                 }
                             }
@@ -733,20 +734,20 @@
                             module.debug('Determined that there should be ' + value + ' labels');
                             module.cache.numLabels = value;
                         }
+
                         return module.cache.numLabels;
                     },
                     labelType: function () {
                         return settings.labelType;
                     },
                     label: function (value, stepValue) {
-
                         if (isFunction(interpretLabel)) {
                             return interpretLabel(value, stepValue, module);
                         }
 
                         switch (settings.labelType) {
                             case settings.labelTypes.number: {
-                                  return stepValue;
+                                return stepValue;
                             }
                             case settings.labelTypes.letter: {
                                 if (value < 0 || module.get.precision() > 1) {
@@ -821,7 +822,7 @@
                         if (settings.autoAdjustLabels) {
                             var
                                 numLabels = module.get.numLabels(),
-                                primePlus = module.is.prime(numLabels) | 0,
+                                primePlus = module.is.prime(numLabels) ? 1 : 0,
                                 trackLength = module.get.trackLength(),
                                 gapCounter = 1
                             ;
@@ -1038,9 +1039,9 @@
                 },
 
                 set: {
-                    active: function(thumbVal, secondThumbVal) {
+                    active: function (thumbVal, secondThumbVal) {
                         if (settings.highlightRange) {
-                            if(secondThumbVal < thumbVal) {
+                            if (secondThumbVal < thumbVal) {
                                 var tempVal = secondThumbVal;
                                 secondThumbVal = thumbVal;
                                 thumbVal = tempVal;
