@@ -714,6 +714,8 @@
 @variationSliderVertical: true;
 @variationSliderBasic: true;
 @variationSliderHighlight: true;
+@variationSliderBottomAligned: true;
+@variationSliderRightAligned: true;
 @variationSliderSizes: small, large, big;
 @variationSliderColors: @variationAllColors;
 

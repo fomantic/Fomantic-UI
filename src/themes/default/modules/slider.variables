@@ -59,6 +59,7 @@
 
 /* Vertical */
 @verticalPadding: 0.5em 1em;
+@verticalTickDistance: 0.6em;
 
 /* Labeled */
 @labelHeight: @height;

@@ -211,10 +211,11 @@
             padding: @labelPadding;
         }
     }
-
-    .ui.bottom.aligned.labeled.slider > .labels .label {
-        bottom: 0;
-        transform: translate(-50%, 100%);
+    & when (@variationSliderBottomAligned) {
+        .ui.bottom.aligned.labeled.slider > .labels .label {
+            bottom: 0;
+            transform: translate(-50%, 100%);
+        }
     }
     & when (@variationSliderTicked) {
         .ui.labeled.ticked.slider > .labels .label::after {
@@ -226,9 +227,11 @@
             top: 100%;
             left: 50%;
         }
-        .ui.bottom.aligned.labeled.ticked.slider > .labels .label::after {
-            top: auto;
-            bottom: 100%;
+        & when (@variationSliderBottomAligned) {
+            .ui.bottom.aligned.labeled.ticked.slider > .labels .label::after {
+                top: auto;
+                bottom: 100%;
+            }
         }
         .ui.labeled.ticked.slider > .labels .halftick.label::after {
             height: (@labelHeight / 2);
@@ -266,11 +269,37 @@
             width: (@labelHeight / 2);
             height: @labelWidth;
         }
+        .ui.labeled.vertical.slider:not(.right) > .labels .halftick.label::after {
+            margin-left: @verticalTickDistance;
+        }
 
         & when (@variationSliderReversed) {
             /* Vertical Reversed Labels */
             .ui.labeled.vertical.reversed.slider > .labels .label {
                 transform: translate(-100%, 50%);
+            }
+        }
+        & when (@variationSliderRightAligned) {
+            .ui.labeled.vertical.right.aligned.slider > .labels {
+                transform: translateX(50%);
+                left: e(%("calc(100%% + %d)", @verticalTickDistance));
+            }
+            .ui.labeled.vertical.right.aligned.slider > .labels .label {
+                transform: translate(100%, -50%);
+                right: 100%;
+            }
+
+            .ui.labeled.vertical.right.aligned.slider > .labels .label::after {
+                right: 100%;
+                left: auto;
+            }
+            .ui.labeled.vertical.right.aligned.slider > .labels .halftick.label::after {
+                margin-right: @verticalTickDistance;
+            }
+            & when (@variationSliderReversed) {
+                .ui.labeled.vertical.reversed.right.aligned.slider > .labels .label {
+                    transform: translate(100%, 50%);
+                }
             }
         }
     }
@@ -308,11 +337,11 @@
         transition: @highlightTransition;
     }
     & when (@variationSliderTicked) {
-        .ui.labeled.ticked.slider > .active.labels .label::after {
+        .ui.labeled.ticked.slider > .active.labels .active.label::after {
             background: @trackFillColor;
         }
         & when (@variationSliderInverted) {
-            .ui.inverted.labeled.ticked.slider > .active.labels .label::after {
+            .ui.inverted.labeled.ticked.slider > .active.labels .active.label::after {
                 background: @invertedTrackFillColor;
             }
         }
