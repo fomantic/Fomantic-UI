@@ -216,15 +216,17 @@
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
                         }
                         var step = module.get.step(),
-                            precision = module.get.precision()
+                            precision = module.get.precision(),
+                            len = module.get.numLabels(),
+                            ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4)
                         ;
-                        for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
+                        for (var i = 0; i <= len; i++) {
                             var
                                 stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision,
                                 labelText = module.get.label(i, stepValue),
                                 showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0,
                                 $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
-                                    ? (!(i % module.get.gapRatio()) || i === len
+                                    ? ((!(i % module.get.gapRatio()) && i < ignoreLabels) || i === len
                                         ? $('<li/>', { class: className.label, 'data-value': stepValue, html: showLabel ? labelText : '' })
                                         : $('<li/>', { class: 'halftick label', 'data-value': stepValue }))
                                     : null,
@@ -832,7 +834,7 @@
                             // and apply only if the modulo of the operation is an odd number.
                             if (trackLength > 0) {
                                 while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
-                                    if (!((numLabels + primePlus) % gapCounter)) {
+                                    if (!((numLabels + primePlus) % gapCounter) || settings.autoAdjustLabels === 'fixed') {
                                         gapRatio = gapCounter;
                                     }
                                     gapCounter += 1;
