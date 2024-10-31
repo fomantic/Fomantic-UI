@@ -32,8 +32,6 @@
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
-            alphabet       = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-
             SINGLE_STEP     = 1,
             BIG_STEP        = 2,
             NO_STEP         = 0,
@@ -82,7 +80,6 @@
                 position,
                 secondPos,
                 offset,
-                precision,
                 gapRatio = 1,
                 previousValue,
 
@@ -125,6 +122,7 @@
                     clearInterval(instance.interval);
                     module.unbind.events();
                     module.unbind.slidingEvents();
+                    delete module.cache;
                     $module.removeData(moduleNamespace);
                     instance = undefined;
                 },
@@ -141,7 +139,7 @@
                                 + '<div class="thumb"></div>'
                                 + '</div>');
                         }
-                        precision = module.get.precision();
+                        module.clear.cache();
                         $thumb = $module.find('.thumb:not(.second)');
                         if (settings.showThumbTooltip) {
                             $thumb
@@ -175,8 +173,14 @@
                                 module.setup.autoLabel();
                             }
 
+                            if (settings.highlightRange) {
+                                $labels.addClass(className.active);
+                            }
+
                             if (settings.showLabelTicks) {
                                 $module.addClass(className.ticked);
+                            } else if ($module.hasClass(className.ticked)) {
+                                settings.showLabelTicks = 'always';
                             }
                         }
                     },
@@ -211,14 +215,20 @@
                         } else {
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
                         }
-                        for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
+                        var step = module.get.step(),
+                            precision = module.get.precision(),
+                            len = module.get.numLabels(),
+                            ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4)
+                        ;
+                        for (var i = 0; i <= len; i++) {
                             var
-                                labelText = module.get.label(i),
+                                stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision,
+                                labelText = module.get.label(i, stepValue),
                                 showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0,
                                 $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
-                                    ? (!(i % module.get.gapRatio())
-                                        ? $('<li class="label">' + (showLabel ? labelText : '') + '</li>')
-                                        : $('<li class="halftick label"></li>'))
+                                    ? ((!(i % module.get.gapRatio()) && i < ignoreLabels) || i === len
+                                        ? $('<li/>', { class: className.label, 'data-value': stepValue, html: showLabel ? labelText : '' })
+                                        : $('<li/>', { class: 'halftick label', 'data-value': stepValue }))
                                     : null,
                                 ratio  = i / len
                             ;
@@ -489,6 +499,12 @@
                     },
                 },
 
+                clear: {
+                    cache: function () {
+                        module.cache = {};
+                    },
+                },
+
                 resync: function () {
                     module.verbose('Resyncing thumb position based on value');
                     if (module.is.range()) {
@@ -538,6 +554,25 @@
                 },
 
                 is: {
+                    prime: function (n) {
+                        if (module.cache['prime' + n] === undefined) {
+                            var p = true;
+                            for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
+                                if (n % i === 0) {
+                                    p = false;
+
+                                    break;
+                                }
+                            }
+                            if (p) {
+                                p = n > 1;
+                            }
+
+                            module.cache['prime' + n] = p;
+                        }
+
+                        return module.cache['prime' + n];
+                    },
                     range: function () {
                         var isRange = $module.hasClass(className.range);
                         if (!isRange && (settings.minRange || settings.maxRange)) {
@@ -652,62 +687,87 @@
                         return margin || '0px';
                     },
                     precision: function () {
-                        var
-                            decimalPlaces,
-                            step = module.get.step()
-                        ;
-                        if (step !== 0) {
-                            var split = String(step).split('.');
-                            decimalPlaces = split.length === 2 ? split[1].length : 0;
-                        } else {
-                            decimalPlaces = settings.decimalPlaces;
+                        if (module.cache.precision === undefined) {
+                            var
+                                decimalPlaces,
+                                step = module.get.step()
+                            ;
+                            if (step !== 0) {
+                                var split = String(step).split('.');
+                                decimalPlaces = split.length === 2 ? split[1].length : 0;
+                            } else {
+                                decimalPlaces = settings.decimalPlaces;
+                            }
+                            var precision = Math.pow(10, decimalPlaces);
+                            module.debug('Precision determined', precision);
+                            module.cache.precision = precision;
                         }
-                        var precision = Math.pow(10, decimalPlaces);
-                        module.debug('Precision determined', precision);
 
-                        return precision;
+                        return module.cache.precision;
                     },
                     min: function () {
                         return settings.min;
                     },
                     max: function () {
-                        var
-                            step = module.get.step(),
-                            min = module.get.min(),
-                            precision = module.get.precision(),
-                            quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
-                            remainder = step === 0 ? 0 : (settings.max - min) % step
-                        ;
+                        if (module.cache.max === undefined) {
+                            var
+                                step = module.get.step(),
+                                min = module.get.min(),
+                                precision = module.get.precision(),
+                                quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
+                                remainder = step === 0 ? 0 : (settings.max - min) % step
+                            ;
+                            if (remainder > 0) {
+                                module.debug('Max value not divisible by given step. Increasing max value.', settings.max, step);
+                            }
+                            module.cache.max = remainder === 0 ? settings.max : min + quotient * step;
+                        }
 
-                        return remainder === 0 ? settings.max : min + quotient * step;
+                        return module.cache.max;
                     },
                     step: function () {
                         return settings.step;
                     },
                     numLabels: function () {
-                        var step = module.get.step(),
-                            precision = module.get.precision(),
-                            value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
-                        module.debug('Determined that there should be ' + value + ' labels');
+                        if (module.cache.numLabels === undefined) {
+                            var step = module.get.step(),
+                                precision = module.get.precision(),
+                                value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
+                            module.debug('Determined that there should be ' + value + ' labels');
+                            module.cache.numLabels = value;
+                        }
 
-                        return value;
+                        return module.cache.numLabels;
                     },
                     labelType: function () {
                         return settings.labelType;
                     },
-                    label: function (value) {
-                        if (interpretLabel) {
-                            return interpretLabel(value);
+                    label: function (value, stepValue) {
+                        if (isFunction(interpretLabel)) {
+                            return interpretLabel(value, stepValue, module);
                         }
 
                         switch (settings.labelType) {
                             case settings.labelTypes.number: {
-                                var step = module.get.step();
-
-                                return Math.round(((value * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
+                                return stepValue;
                             }
                             case settings.labelTypes.letter: {
-                                return alphabet[value % 26];
+                                if (value < 0 || module.get.precision() > 1) {
+                                    module.error(error.invalidLetterNumber, value);
+
+                                    return value;
+                                }
+                                var letterLabel = '',
+                                    letters = Array.isArray(settings.letters) ? settings.letters : String(settings.letters).split(''),
+                                    lettersLen = letters.length
+                                ;
+
+                                while (stepValue >= 0) {
+                                    letterLabel = letters[stepValue % lettersLen] + letterLabel;
+                                    stepValue = Math.floor(stepValue / lettersLen) - 1;
+                                }
+
+                                return letterLabel;
                             }
                             default: {
                                 return value;
@@ -716,6 +776,9 @@
                     },
                     value: function () {
                         return value;
+                    },
+                    settings: function () {
+                        return settings;
                     },
                     currentThumbValue: function () {
                         return $currThumb !== undefined && $currThumb.hasClass('second') ? module.secondThumbVal : module.thumbVal;
@@ -761,6 +824,7 @@
                         if (settings.autoAdjustLabels) {
                             var
                                 numLabels = module.get.numLabels(),
+                                primePlus = module.is.prime(numLabels) ? 1 : 0,
                                 trackLength = module.get.trackLength(),
                                 gapCounter = 1
                             ;
@@ -770,7 +834,7 @@
                             // and apply only if the modulo of the operation is an odd number.
                             if (trackLength > 0) {
                                 while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
-                                    if (!(numLabels % gapCounter)) {
+                                    if (!((numLabels + primePlus) % gapCounter) || settings.autoAdjustLabels === 'fixed') {
                                         gapRatio = gapCounter;
                                     }
                                     gapCounter += 1;
@@ -908,6 +972,7 @@
                     },
                     value: function (position) {
                         var
+                            precision = module.get.precision(),
                             startPos = module.is.reversed() ? module.get.trackEndPos() : module.get.trackStartPos(),
                             endPos = module.is.reversed() ? module.get.trackStartPos() : module.get.trackEndPos(),
                             ratio = (position - startPos) / (endPos - startPos),
@@ -976,6 +1041,30 @@
                 },
 
                 set: {
+                    active: function (thumbVal, secondThumbVal) {
+                        if (settings.highlightRange) {
+                            if (secondThumbVal < thumbVal) {
+                                var tempVal = secondThumbVal;
+                                secondThumbVal = thumbVal;
+                                thumbVal = tempVal;
+                            }
+                            var $children = $labels.find('.label');
+                            $children.each(function (index) {
+                                var
+                                    $child = $(this),
+                                    attrValue = $child.attr('data-value')
+                                ;
+                                if (attrValue) {
+                                    attrValue = parseInt(attrValue, 10);
+                                    if (attrValue >= thumbVal && attrValue <= secondThumbVal) {
+                                        $child.addClass(className.active);
+                                    } else {
+                                        $child.removeClass(className.active);
+                                    }
+                                }
+                            });
+                        }
+                    },
                     value: function (newValue, fireChange) {
                         fireChange = fireChange !== false;
                         var toReset = previousValue === undefined;
@@ -1103,6 +1192,7 @@
                             position = newPos;
                             thumbVal = newValue;
                         }
+                        module.set.active(thumbVal, secondThumbVal);
                         var
                             trackPosValue,
                             thumbPosValue,
@@ -1210,6 +1300,7 @@
                     } else {
                         return settings[name];
                     }
+                    module.clear.cache();
                 },
                 internal: function (name, value) {
                     if ($.isPlainObject(name)) {
@@ -1382,6 +1473,7 @@
             method: 'The method you called is not defined.',
             notrange: 'This slider is not a range slider',
             invalidRanges: 'Invalid range settings (start/end/minRange/maxRange)',
+            invalidLetterNumber: 'Negative values or decimal places for labelType: "letter" are not supported',
         },
 
         metadata: {
@@ -1404,6 +1496,7 @@
         preventCrossover: true,
         fireOnInit: false,
         interpretLabel: false,
+        letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 
         // the decimal place to round to if step is undefined
         decimalPlaces: 2,
@@ -1421,6 +1514,8 @@
             vertical: 'vertical',
             range: 'range',
             smooth: 'smooth',
+            label: 'label',
+            active: 'active',
         },
 
         keys: {
@@ -1433,6 +1528,7 @@
         },
 
         restrictedLabels: [],
+        highlightRange: false,
         showThumbTooltip: false,
         tooltipConfig: {
             position: 'top center',
