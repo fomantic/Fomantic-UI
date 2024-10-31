@@ -481,6 +481,12 @@ declare namespace FomanticUI {
         collapseOnActionable: boolean;
 
         /**
+         * Whether the dropdown should collapse upon clicking the clearable icon.
+         * @default false
+         */
+        collapseOnClearable: boolean;
+
+        /**
          * Allows customization of multi-select labels.
          * @default true
          */
