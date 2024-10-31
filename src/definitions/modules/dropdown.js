@@ -1230,7 +1230,9 @@
                             if (module.is.searchSelection()) {
                                 module.remove.searchTerm();
                             }
-                            module.hide();
+                            if (settings.collapseOnClearable) {
+                                module.hide();
+                            }
                             event.stopPropagation();
                         },
                     },
@@ -4096,6 +4098,7 @@
         headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 
         collapseOnActionable: true, // whether the dropdown should collapse upon selection of an actionable item
+        collapseOnClearable: false, // whether the dropdown should collapse upon clicking the clearable icon
 
         // label settings on multi-select
         label: {
