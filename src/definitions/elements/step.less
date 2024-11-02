@@ -166,7 +166,7 @@
             Types
 *******************************/
 
-& when (@variationCircularSteps) {
+& when (@variationStepCircular) {
     .ui.circular.steps {
         border: 0;
         border-radius: 0;
@@ -290,7 +290,7 @@
         margin-right: @iconDistance;
     }
 
-    & when (@variationCircularSteps) {
+    & when (@variationStepCircular) {
         .ui.circular.ordered.steps .step {
             &::before {
                 line-height: calc(@circularStepRingSize - @circularStepBorderWidth);
@@ -367,7 +367,7 @@
     }
 
     /* Circular Step */
-    & when (@variationCircularSteps) {
+    & when (@variationStepCircular) {
         .ui.circular.vertical.steps {
             display: inline-flex;
             flex-flow: column wrap;
@@ -556,13 +556,15 @@
     .ui.steps:not(.circular) .disabled.step::after {
         background: @disabledBackground;
     }
-    .ui.circular.steps .disabled.step {
-        cursor: auto;
-        opacity: @circularStepDisabledItemOpacity;
-
-        &::before,
-        &::after {
+    & when (@variationStepCircular) {
+        .ui.circular.steps .disabled.step {
             cursor: auto;
+            opacity: @circularStepDisabledItemOpacity;
+
+            &::before,
+            &::after {
+                cursor: auto;
+            }
         }
     }
 }
@@ -728,15 +730,15 @@
 & when not (@variationStepSizes = false) {
     each(@variationStepSizes, {
         @s: @@value;
-
         .ui.@{value}.steps .step,
         .ui.@{value}.step {
             font-size: @s;
         }
-
-        .ui.@{value}.circular.steps:not(.vertical) {
-            margin: @s 0;
-            padding: @s 0;
+        & when (@variationStepCircular) {
+            .ui.@{value}.circular.steps:not(.vertical) {
+                margin: @s 0;
+                padding: @s 0;
+            }
         }
     });
 }
@@ -805,39 +807,40 @@
         background: @invertedActiveHoverBackground;
         color: @invertedPressedTextColor;
     }
-
-    /* Circular Step */
-    .ui.inverted.circular.steps {
-        & .step .content {
-            color: @invertedTextColor;
-        }
-
-        &:not(.vertical) {
-            & .step:not(.completed) {
-                background: @invertedTextColor;
+    & when (@variationStepCircular) {
+        /* Circular Step */
+        .ui.inverted.circular.steps {
+            & .step .content {
+                color: @invertedTextColor;
             }
-            & .step:not(.active):not(.completed)::before {
-                border-color: @invertedTextColor;
-            }
-        }
-        &:not(.ordered) .step:not(.active):not(.completed)::after {
-            background: @invertedTextColor;
-        }
 
-        & when (@variationStepVertical) {
-            &.vertical {
+            &:not(.vertical) {
+                & .step:not(.completed) {
+                    background: @invertedTextColor;
+                }
                 & .step:not(.active):not(.completed)::before {
                     border-color: @invertedTextColor;
                 }
-                & .step:not(.completed) .content::before {
-                    background: @invertedTextColor;
+            }
+            &:not(.ordered) .step:not(.active):not(.completed)::after {
+                background: @invertedTextColor;
+            }
+
+            & when (@variationStepVertical) {
+                &.vertical {
+                    & .step:not(.active):not(.completed)::before {
+                        border-color: @invertedTextColor;
+                    }
+                    & .step:not(.completed) .content::before {
+                        background: @invertedTextColor;
+                    }
                 }
             }
         }
     }
 }
 
-& when not (@variationStepColors = false) {
+& when (@variationStepCircular) and not (@variationStepColors = false) {
     each(@variationStepColors, {
         @variation: @value;
         @color: @colors[@@variation][color];
