@@ -114,6 +114,16 @@
 @circularStepCompletedIconLineHeight: 1em;
 @circularStepCompletedIconDistance: calc(-@circularStepRingSize + ((@circularStepRingSize / 2) / 2) + (@circularStepBorderWidth / 2));
 
+@circularStepContentMarginTop: -1.5em;
+@circularStepContentCenterAlignedMarginTop: -0.65em;
+@circularStepContentBottomAlignedMarginTop: 0.5em;
+@circularStepContentHorizontalPadding: 0.5em;
+@circularStepContentPadding: 0 @circularStepContentHorizontalPadding;
+@circularStepContentCenterAlignedMarginLeft: -@circularStepContentHorizontalPadding;
+@circularStepContentDescriptionDistance: 0.5em;
+@circularStepContentCenterAlignedBackground: @white;
+@invertedCircularStepContentCenterAlignedBackground: @black;
+
 @verticalCircularStepPadding: 3em;
 @verticalCircularStepContentPadding: 3.5em;
 @verticalCircularStepLineDistance: calc(@circularStepRingSize / unit(@circularStepBorderWidth));

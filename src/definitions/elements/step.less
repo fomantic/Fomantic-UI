@@ -213,6 +213,24 @@
                 &:last-child {
                     flex: 0;
                 }
+                & .content {
+                    margin-top: @circularStepContentMarginTop;
+                    padding: @circularStepContentPadding;
+                    &.center.aligned  {
+                        margin-top: @circularStepContentCenterAlignedMarginTop;
+                        & .title {
+                            padding: @circularStepContentPadding;
+                            margin-left: @circularStepContentCenterAlignedMarginLeft;
+                            background: @circularStepContentCenterAlignedBackground;
+                        }
+                    }
+                    &.bottom.aligned  {
+                        margin-top: @circularStepContentBottomAlignedMarginTop;
+                    }
+                    &:not(.aligned) .title + .description {
+                        margin-top: @circularStepContentDescriptionDistance;
+                    }
+                }
             }
         }
 
@@ -263,6 +281,14 @@
                     line-height: @circularStepCompletedIconLineHeight;
                 }
             }
+        }
+    }
+    @supports selector(:has(.f)) {
+        .ui.circular.steps:not(.vertical) .step:last-child:has(.content) {
+            flex: 1;
+        }
+        .ui.circular.steps:not(.vertical) .step:last-child:has(.center.aligned.content) {
+            background: none;
         }
     }
 }
@@ -820,6 +846,9 @@
                 }
                 & .step:not(.active):not(.completed)::before {
                     border-color: @invertedTextColor;
+                }
+                & .step .center.aligned.content .title {
+                    background: @invertedCircularStepContentCenterAlignedBackground;
                 }
             }
             &:not(.ordered) .step:not(.active):not(.completed)::after {
