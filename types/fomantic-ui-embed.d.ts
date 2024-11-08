@@ -57,7 +57,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<EmbedSettings, keyof EmbedSettings>>;
+        <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<EmbedSettings, keyof EmbedSettings>>;
         <K extends keyof EmbedSettings>(behavior: 'setting', name: K, value: EmbedSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;
         (settings?: Partial<Pick<EmbedSettings, keyof EmbedSettings>>): JQuery;
@@ -92,6 +92,18 @@ declare namespace FomanticUI {
          * @default false
          */
         id: false | string;
+
+        /**
+         * Specifies a path for a placeholder image.
+         * @default false
+         */
+        placeholder: false | string;
+
+        /**
+         * Specifies an alt text for a given placeholder image.
+         * @default false
+         */
+        alt: false | string;
 
         /**
          * Specify an object containing key/value pairs to add to the iframes GET parameters.
@@ -271,6 +283,11 @@ declare namespace FomanticUI {
                 placeholder: string;
 
                 /**
+                 * @default 'alt'
+                 */
+                alt: string;
+
+                /**
                  * @default 'source'
                  */
                 source: string;
@@ -307,7 +324,7 @@ declare namespace FomanticUI {
                 /**
                  * @default function
                  */
-                placeholder(image: string, icon: string): string;
+                placeholder(image: string, icon: string, alt: string | false | undefined): string;
             }
 
             interface Errors {

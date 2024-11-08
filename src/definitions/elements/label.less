@@ -184,6 +184,7 @@ a.ui.label {
              Types
 *******************************/
 & when (@variationLabelImage) {
+    .ui.image.labels .label,
     .ui.image.label {
         width: auto;
         margin-top: 0;
@@ -198,6 +199,10 @@ a.ui.label {
         &.attached:not(.basic) when (@variationLabelAttached) {
             padding: @imageLabelPadding;
         }
+    }
+    .ui.labels .image.label,
+    .ui.image.labels .label {
+        margin-bottom: @groupVerticalMargin;
     }
 
     .ui.image.label img {

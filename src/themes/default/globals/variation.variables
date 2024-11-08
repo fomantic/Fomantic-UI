@@ -575,6 +575,7 @@
 @variationDropdownPointing: true;
 @variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
+@variationDropdownHighlightMatches: false;
 @variationDropdownSizes: @variationAllSizes;
 
 /* Embed */
@@ -644,6 +645,7 @@
 /* Progress */
 @variationProgressInverted: true;
 @variationProgressDisabled: true;
+@variationProgressBasic: true;
 @variationProgressIndicating: true;
 @variationProgressIndeterminate: true;
 @variationProgressSliding: true;
@@ -680,6 +682,7 @@
 @variationSearchVeryLong: true;
 @variationSearchResizable: true;
 @variationSearchScrolling: true;
+@variationSearchHighlightMatches: false;
 @variationSearchSizes: @variationAllSizes;
 
 /* Shape */
@@ -712,6 +715,10 @@
 @variationSliderTicked: true;
 @variationSliderVertical: true;
 @variationSliderBasic: true;
+@variationSliderHighlight: true;
+@variationSliderBottomAligned: true;
+@variationSliderRightAligned: true;
+@variationSliderUiLabel: true;
 @variationSliderSizes: small, large, big;
 @variationSliderColors: @variationAllColors;
 

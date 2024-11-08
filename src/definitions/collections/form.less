@@ -653,6 +653,7 @@
         }
 
         /* Placeholder */
+        .ui.form .@{state} .ui.dropdown > .default.text,
         .ui.form .@{state} ::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
@@ -660,6 +661,7 @@
             color: @formStates[@@state][inputPlaceholderColor] !important;
         }
 
+        .ui.form .@{state} .ui.dropdown > input:focus ~ .default.text,
         .ui.form .@{state} :focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
         }
@@ -847,10 +849,14 @@
     }
 }
 
-.ui.ui.ui.ui.form .fields > label:empty::after,
-.ui.ui.ui.ui.form .field > label:empty::after {
+.ui.ui.ui.ui.form .fields:not(.required) > label:empty::after,
+.ui.ui.ui.ui.form .fields:not(.grouped):not(.inline) > .field:not(.required) > label:empty::after {
     content: " ";
     display: inline-block;
+}
+
+.ui.ui.ui.ui.form .inline.fields .field:not(.required) > label:empty {
+    display: none;
 }
 
 /*******************************
@@ -866,6 +872,7 @@
     .ui.form .inverted.segment label,
     .ui.form .inverted.segment .ui.checkbox label,
     .ui.inverted.form .ui.checkbox label,
+    .ui.inverted.form .grouped.fields > label,
     .ui.inverted.form .inline.fields > label,
     .ui.inverted.form .inline.fields .field > label,
     .ui.inverted.form .inline.fields .field > p,

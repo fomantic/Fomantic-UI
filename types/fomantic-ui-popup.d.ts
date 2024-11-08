@@ -67,7 +67,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<PopupSettings, keyof PopupSettings>>;
+        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<PopupSettings, keyof PopupSettings>>;
         <K extends keyof PopupSettings>(behavior: 'setting', name: K, value: PopupSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
         (settings?: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
@@ -189,7 +189,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an object to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'scale'
          */
-        transition: string | object;
+        transition: string | Popup.TransitionSettings;
 
         /**
          * Duration of animation events.
@@ -390,19 +390,45 @@ declare namespace FomanticUI {
     }
 
     namespace Popup {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '.ui.popup'
                  */
                 popup: string;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'activator'
@@ -439,7 +465,7 @@ declare namespace FomanticUI {
                  */
                 variation: string;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'

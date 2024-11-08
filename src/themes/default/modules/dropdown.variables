@@ -480,3 +480,6 @@
 
 /* Resizable */
 @resizableDirection: vertical;
+
+@highlightMatchesBackground: @defaultHighlightMatchesBackground;
+@highlightMatchesColor: @defaultHighlightMatchesColor;

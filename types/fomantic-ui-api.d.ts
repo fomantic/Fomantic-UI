@@ -107,7 +107,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof APISettings | JQueryAjaxSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>;
+        <K extends keyof APISettings | JQueryAjaxSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>;
         <K extends keyof APISettings>(behavior: 'setting', name: K, value: APISettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>): JQuery;
         (settings?: Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>): JQuery;

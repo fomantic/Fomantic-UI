@@ -102,7 +102,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof ShapeSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ShapeSettings, keyof ShapeSettings>>;
+        <K extends keyof ShapeSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ShapeSettings, keyof ShapeSettings>>;
         <K extends keyof ShapeSettings>(behavior: 'setting', name: K, value: ShapeSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ShapeSettings, keyof ShapeSettings>>): JQuery;
         (settings?: Partial<Pick<ShapeSettings, keyof ShapeSettings>>): JQuery;
@@ -257,7 +257,7 @@ declare namespace FomanticUI {
                  */
                 active: string;
             }
-        
+
             interface Errors {
                 /**
                  * @default 'You tried to switch to a side that does not exist.'

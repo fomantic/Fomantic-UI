@@ -16,9 +16,9 @@ const
     // node dependencies
     fs             = require('fs'),
     path           = require('path'),
-    console        = require('better-console'),
+    console        = require('@fomantic/better-console'),
     gulp           = require('gulp'),
-    git            = require('gulp-git'),
+    git            = require('@fomantic/gulp-git'),
 
     // admin files
     release        = require('../../config/admin/release'),
@@ -113,7 +113,7 @@ module.exports = function (callback) {
             console.info('Committing ' + component + ' files', commitArgs);
             gulp.src('./', gitOptions)
                 .pipe(git.add(gitOptions))
-                .pipe(git.commit(commitMessage, commitOptions))
+                .pipe(git.commit(commitMessage, commitOptions), function () {})
                 .on('error', function (error) {
                     // canProceed = false; bug in git commit <https://github.com/stevelacy/gulp-git/issues/49>
                 })

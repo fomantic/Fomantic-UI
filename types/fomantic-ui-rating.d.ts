@@ -28,7 +28,7 @@ declare namespace FomanticUI {
         (behavior: 'clear rating'): JQuery;
 
         (behavior: 'destroy'): JQuery;
-        <K extends keyof RatingSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<RatingSettings, keyof RatingSettings>>;
+        <K extends keyof RatingSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<RatingSettings, keyof RatingSettings>>;
         <K extends keyof RatingSettings>(behavior: 'setting', name: K, value: RatingSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<RatingSettings, keyof RatingSettings>>): JQuery;
         (settings?: Partial<Pick<RatingSettings, keyof RatingSettings>>): JQuery;

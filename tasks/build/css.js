@@ -6,20 +6,21 @@ const
     gulp         = require('gulp'),
 
     // node dependencies
-    console      = require('better-console'),
+    console      = require('@fomantic/better-console'),
 
     // gulp dependencies
     autoprefixer = require('gulp-autoprefixer'),
     chmod        = require('gulp-chmod'),
-    concatCSS    = require('gulp-concat-css'),
-    dedupe       = require('gulp-dedupe'),
+    concatCSS    = require('@fomantic/gulp-concat-css'),
+    dedupe       = require('@fomantic/gulp-dedupe'),
     flatten      = require('gulp-flatten'),
     gulpif       = require('gulp-if'),
-    header       = require('gulp-header'),
+    header       = require('@fomantic/gulp-header'),
     less         = require('gulp-less'),
     minifyCSS    = require('gulp-clean-css'),
     normalize    = require('normalize-path'),
-    plumber      = require('gulp-plumber'),
+    ordered      = require('ordered-read-streams'),
+    plumber      = require('@fomantic/gulp-plumber'),
     print        = require('gulp-print').default,
     rename       = require('gulp-rename'),
     replace      = require('gulp-replace'),
@@ -101,12 +102,20 @@ function pack(type, compress) {
         concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
     }
 
-    let src = output.uncompressed + '/**/' + globs.components + ignoredGlobs;
-    if (globs.components.indexOf('table') < 0 && globs.components.indexOf('tab') > 0) {
-        src = [src, '!' + output.uncompressed + '/**/table.css'];
-    }
+    let src = globs.components
+        .replace(/[{}]/g, '')
+        .split(',')
+        .map((c) => {
+            let srcSingle = output.uncompressed + '/**/' + c + ignoredGlobs;
+            if (c === 'tab' && globs.components.indexOf('table') < 0) {
+                srcSingle = [srcSingle, '!' + output.uncompressed + '/**/table.css'];
+            }
 
-    return gulp.src(src)
+            return gulp.src(srcSingle);
+        })
+    ;
+
+    return ordered(src)
         .pipe(plumber())
         .pipe(dedupe())
         .pipe(replace(assets.uncompressed, assets.packaged))
