@@ -873,15 +873,16 @@
         .ui.ui.circular.steps:not(.vertical) .step.@{variation} {
             background: @color;
         }
-
+        .ui.ui.@{variation}.circular.steps .step, .ui.ui.ui.circular.steps .step.@{variation} {
+            &.active .content .title {
+                color: @color;
+            }
+        }
         & when (@variationStepVertical) {
             .ui.ui.vertical.circular.steps .step.completed.@{variation} .content::before {
                 border-color: @color;
             }
             .ui.ui.@{variation}.vertical.circular.steps .step, .ui.ui.vertical.circular.steps .step.@{variation} {
-                &.active .content .title {
-                    color: @color;
-                }
                 &.completed .content::before {
                     border-color: @color;
                 }
