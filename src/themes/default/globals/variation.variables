@@ -257,6 +257,7 @@
 @variationStepEqualWidth: true;
 @variationStepSizes: @variationAllSizes;
 @variationStepCircular: true;
+@variationStepUnstackable: true;
 @variationStepColors: @variationAllColors;
 
 /* Text */
