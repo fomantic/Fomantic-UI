@@ -186,6 +186,7 @@
 @variationLoaderIndeterminate: true;
 @variationLoaderText: true;
 @variationLoaderInline: true;
+@variationLoaderDouble: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
 @variationLoaderColors: @variationAllColors;

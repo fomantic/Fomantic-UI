@@ -17,6 +17,9 @@
 
 @import (multiple) "../../theme.config";
 
+@notElastic: if(@variationLoaderElastic, e(":not(.elastic)"));
+@notDouble: if(@variationLoaderDouble, e(":not(.double)"));
+
 /*******************************
             Loader
 *******************************/
@@ -97,7 +100,7 @@
 .ui.dimmer > .ui.loader {
     color: @invertedLoaderTextColor;
 }
-.ui.dimmer > .ui.loader:not(.elastic)::before {
+.ui.dimmer > .ui.loader@{notElastic}::before {
     border-color: @invertedLoaderFillColor;
 }
 
@@ -105,7 +108,7 @@
 .ui.inverted.dimmer > .ui.loader {
     color: @loaderTextColor;
 }
-.ui.inverted.dimmer > .ui.loader:not(.elastic)::before {
+.ui.inverted.dimmer > .ui.loader@{notElastic}::before {
     border-color: @loaderFillColor;
 }
 
@@ -246,8 +249,10 @@
 .ui.elastic.basic.loading.button::after {
     color: @loaderLineColor;
 }
-.ui.ui.ui.ui.double.loading.button::after {
-    border-bottom-color: currentColor;
+& when (@variationLoaderDouble) {
+    .ui.ui.ui.ui.double.loading.button::after {
+        border-bottom-color: currentColor;
+    }
 }
 
 & when (@variationLoaderInline) {
@@ -285,10 +290,10 @@
     border-left-color: transparent;
     border-right-color: transparent;
 }
-.ui.ui.ui.ui.ui.ui.ui.loading:not(.double)::after,
-.ui.ui.ui.ui.ui.ui.ui.loading:not(.double) .input > i.icon::after,
-.ui.ui.ui.ui.ui.ui.ui.loading:not(.double) > i.icon::after,
-.ui.ui.ui.ui.ui.ui.loader:not(.double)::after {
+.ui.ui.ui.ui.ui.ui.ui.loading@{notDouble}::after,
+.ui.ui.ui.ui.ui.ui.ui.loading@{notDouble} .input > i.icon::after,
+.ui.ui.ui.ui.ui.ui.ui.loading@{notDouble} > i.icon::after,
+.ui.ui.ui.ui.ui.ui.loader@{notDouble}::after {
     border-bottom-color: transparent;
 }
 .ui.ui.ui.ui.ui.ui.loading.card::after,
@@ -298,10 +303,10 @@
     border-left-color: @loaderFillColor;
     border-right-color: @loaderFillColor;
 }
-.ui.ui.ui.ui.ui.ui.loading.card:not(.double)::after,
-.ui.ui.ui.ui.ui.ui.loading.segments:not(.double)::after,
-.ui.ui.ui.ui.ui.ui.loading.segment:not(.double)::after,
-.ui.ui.ui.ui.ui.ui.loading.form:not(.double)::after {
+.ui.ui.ui.ui.ui.ui.loading.card@{notDouble}::after,
+.ui.ui.ui.ui.ui.ui.loading.segments@{notDouble}::after,
+.ui.ui.ui.ui.ui.ui.loading.segment@{notDouble}::after,
+.ui.ui.ui.ui.ui.ui.loading.form@{notDouble}::after {
     border-bottom-color: @loaderFillColor;
 }
 
