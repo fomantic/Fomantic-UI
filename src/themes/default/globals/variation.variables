@@ -300,6 +300,7 @@
 @variationGridPadded: true;
 @variationGridFloated: true;
 @variationGridDivided: true;
+@variationGridHorizontal: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
 @variationGridAttached: true;
