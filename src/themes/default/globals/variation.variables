@@ -287,6 +287,7 @@
 @variationFormGrouped: true;
 @variationFormEqualWidth: true;
 @variationFormWide: true;
+@variationFormUnstackable: true;
 @variationFormSizes: @variationAllSizes;
 
 /* Grid */
