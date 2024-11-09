@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notCenteredAligned: if(@variationHeaderAligned, e(":not(.centered):not(.aligned)"));
+
 /*******************************
             Header
 *******************************/
@@ -111,8 +113,8 @@
 }
 
 /* After Icon */
-.ui.header:not(.icon):not(.centered):not(.aligned) > .icons + .content,
-.ui.header:not(.icon):not(.centered):not(.aligned) > i.icon + .content {
+.ui.header:not(.icon)@{notCenteredAligned} > .icons + .content,
+.ui.header:not(.icon)@{notCenteredAligned} > i.icon + .content {
     padding-left: @iconMargin;
     display: table-cell;
     vertical-align: @contentIconAlignment;
