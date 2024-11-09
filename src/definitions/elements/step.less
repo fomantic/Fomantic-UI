@@ -21,9 +21,9 @@
 
 @import (multiple) "../../theme.config";
 
-@notCircular: if(@variationStepCircular, e("@{notCircular}"));
-@notVertical: if(@variationStepVertical, e("@{notVertical}"));
-@notUnstackable: if(@variationStepUnstackable, e("@{notUnstackable}"));
+@notCircular: if(@variationStepCircular, e(":not(.circular)"));
+@notVertical: if(@variationStepVertical, e(":not(.vertical)"));
+@notUnstackable: if(@variationStepUnstackable, e(":not(.unstackable)"));
 
 /*******************************
             Plural
