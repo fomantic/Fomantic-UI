@@ -396,6 +396,9 @@
 @variationTableOverflowingVeryShort: true;
 @variationTableOverflowingLong: true;
 @variationTableOverflowingVeryLong: true;
+@variationTableRowSpanned: true;
+@variationTableFullWidth: true;
+@variationTableUnstackable: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 
