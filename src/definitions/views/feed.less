@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notConnected: if(@variationFeedConnected, e(":not(.connected)"));
+
 /*******************************
          Activity Feed
 *******************************/
@@ -47,7 +49,7 @@
         border-top: @eventDivider;
     }
 }
-.ui.feed:not(.connected) > .event:first-child {
+.ui.feed@{notConnected} > .event:first-child {
     padding-top: 0;
 }
 .ui.feed > .event:last-child {
