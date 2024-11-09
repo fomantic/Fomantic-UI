@@ -17,6 +17,9 @@
 
 @import (multiple) "../../theme.config";
 
+@notHorizontal: if(@variationDividerHorizontal, e(":not(.horizontal)"));
+@notVertical: if(@variationDividerVertical, e(":not(.vertical)"));
+
 /*******************************
             Divider
 *******************************/
@@ -37,7 +40,7 @@
       Basic
 --------------- */
 
-.ui.divider:not(.vertical):not(.horizontal) {
+.ui.divider@{notVertical}@{notHorizontal} {
     border-top: @shadowWidth @borderStyle @shadowColor;
     border-bottom: @highlightWidth @borderStyle @highlightColor;
 }
