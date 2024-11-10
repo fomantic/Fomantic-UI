@@ -17,6 +17,13 @@
 
 @import (multiple) "../../theme.config";
 
+@notFullscreen: if(@variationModalFullscreen, e(":not(.fullscreen)"));
+@notInside: if(@variationModalCloseInside, e(":not(.inside)"));
+@notAligned: if(@variationModalAligned, e(":not(.aligned)"));
+
+@notFluid: if(@variationButtonFluid, e(":not(.fluid)"));
+
+
 /*******************************
              Modal
 *******************************/
@@ -172,7 +179,7 @@
         border-top: @actionBorder;
         text-align: @actionAlign;
     }
-    .ui.modal .actions > .button:not(.fluid) {
+    .ui.modal .actions > .button@{notFluid} {
         margin-left: @buttonDistance;
     }
     .ui.ui.modal > .basic.actions,
@@ -182,7 +189,7 @@
     & when (@variationModalLeftActions) {
         .ui.modal > .left.actions {
             text-align: left;
-            & > .button:not(.fluid) {
+            & > .button@{notFluid} {
                 margin-left: @buttonLeftDistance;
                 margin-right: @buttonLeftDistance;
             }
@@ -194,7 +201,7 @@
     .ui.modal > .centered,
     .ui.modal > .center.aligned {
         text-align: center;
-        &.actions > .button:not(.fluid) when (@variationModalActions) {
+        &.actions > .button@{notFluid} when (@variationModalActions) {
             margin-left: @buttonCenteredDistance;
             margin-right: @buttonCenteredDistance;
         }
@@ -207,41 +214,41 @@
 
 /* Modal Width */
 @media only screen and (max-width: @largestMobileScreen) {
-    .ui.modal:not(.fullscreen) {
+    .ui.modal@{notFullscreen} {
         width: @mobileWidth;
         margin: @mobileMargin;
     }
 }
 @media only screen and (min-width: @tabletBreakpoint) {
-    .ui.modal:not(.fullscreen) {
+    .ui.modal@{notFullscreen} {
         width: @tabletWidth;
         margin: @tabletMargin;
     }
 }
 @media only screen and (min-width: @computerBreakpoint) {
-    .ui.modal:not(.fullscreen) {
+    .ui.modal@{notFullscreen} {
         width: @computerWidth;
         margin: @computerMargin;
-        & > .active.dimmer + .close:not(.inside) {
+        & > .active.dimmer + .close@{notInside} {
             pointer-events: none;
             opacity: @closeOpacityDimmed;
         }
     }
-    .ui.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside) {
+    .ui.dimmer > .ui.modal@{notFullscreen} > .close@{notInside} {
         text-shadow: @closeShadow;
     }
-    .ui.inverted.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside) {
+    .ui.inverted.dimmer > .ui.modal@{notFullscreen} > .close@{notInside} {
         text-shadow: @invertedCloseShadow;
     }
 }
 @media only screen and (min-width: @largeMonitorBreakpoint) {
-    .ui.modal:not(.fullscreen) {
+    .ui.modal@{notFullscreen} {
         width: @largeMonitorWidth;
         margin: @largeMonitorMargin;
     }
 }
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-    .ui.modal:not(.fullscreen) {
+    .ui.modal@{notFullscreen} {
         width: @widescreenMonitorWidth;
         margin: @widescreenMonitorMargin;
     }
@@ -370,14 +377,14 @@
     .ui.legacy.legacy.page.dimmer > .ui.modal {
         left: 50% !important;
     }
-    .ui.legacy.legacy.modal:not(.aligned),
-    .ui.legacy.legacy.page.dimmer > .ui.modal:not(.aligned) {
+    .ui.legacy.legacy.modal@{notAligned},
+    .ui.legacy.legacy.page.dimmer > .ui.modal@{notAligned} {
         top: 50%;
     }
-    .ui.legacy.legacy.page.dimmer > .ui.scrolling.modal:not(.aligned),
-    .ui.page.dimmer > .ui.scrolling.legacy.legacy.modal:not(.aligned),
-    .ui.top.aligned.legacy.legacy.page.dimmer > .ui.modal:not(.aligned),
-    .ui.top.aligned.dimmer > .ui.legacy.legacy.modal:not(.aligned) {
+    .ui.legacy.legacy.page.dimmer > .ui.scrolling.modal@{notAligned},
+    .ui.page.dimmer > .ui.scrolling.legacy.legacy.modal@{notAligned},
+    .ui.top.aligned.legacy.legacy.page.dimmer > .ui.modal@{notAligned},
+    .ui.top.aligned.dimmer > .ui.legacy.legacy.modal@{notAligned} {
         top: auto;
     }
     & when (@variationModalOverlay) {
@@ -450,7 +457,7 @@
     .modals.dimmer .ui.scrolling.modal.fullscreen {
         top: 0;
     }
-    .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
+    .modals.dimmer .ui.scrolling.modal@{notFullscreen} {
         margin: @scrollingMargin auto;
         top: @scrollingTop;
     }
@@ -470,7 +477,7 @@
     .scrolling.undetached.dimmable.dimmed > .dimmer {
         overflow: hidden;
     }
-    .scrolling.undetached.dimmable .ui.scrolling.modal:not(.fullscreen) {
+    .scrolling.undetached.dimmable .ui.scrolling.modal@{notFullscreen} {
         position: absolute;
         left: 50%;
     }
