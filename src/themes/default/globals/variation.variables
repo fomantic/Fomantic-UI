@@ -582,6 +582,7 @@
 @variationDropdownPointing: true;
 @variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
+@variationDropdownUnlimited: true;
 @variationDropdownHighlightMatches: false;
 @variationDropdownSizes: @variationAllSizes;
 
