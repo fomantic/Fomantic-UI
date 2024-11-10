@@ -757,7 +757,8 @@
 @variationToastVertical: true;
 @variationToastAttached: true;
 @variationToastCompact: true;
-@variationToastCentered: true;
+@variationToastBasic: true;
+@variationToastUnclickable: true;
 @variationToastColors: @variationAllColors;
 
 /* Transition */
