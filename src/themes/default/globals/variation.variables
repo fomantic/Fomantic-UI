@@ -607,6 +607,7 @@
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
 @variationFlyoutScrolling: true;
+@variationFlyoutClose: true;
 
 /* Modal */
 @variationModalInverted: true;
@@ -617,6 +618,7 @@
 @variationModalResizable: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
+@variationModalClose: true;
 @variationModalCloseInside: true;
 @variationModalCentered: true;
 @variationModalActions: true;

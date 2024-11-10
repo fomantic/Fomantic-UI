@@ -50,30 +50,31 @@
 .ui.flyout > * {
     backface-visibility: hidden;
 }
+& when (@variationFlyoutClose) {
+    /* --------------
+       Close
+    --------------- */
 
-/* --------------
-   Close
---------------- */
-.ui.flyout > .close {
-    cursor: pointer;
-    position: absolute;
-    top: @closeTop;
-    right: @closeRight;
-    z-index: 1;
-    opacity: @closeOpacity;
-    font-size: @closeSize;
-    color: @closeColor;
-    width: @closeHitbox;
-    height: @closeHitbox;
-    padding: @closePadding;
-    margin: @closeMargin;
-    text-align: right;
-}
-
-.ui.flyout > .close:focus,
-.ui.flyout > .close:hover {
-    opacity: 1;
-    outline: none;
+    .ui.flyout > .close {
+        cursor: pointer;
+        position: absolute;
+        top: @closeTop;
+        right: @closeRight;
+        z-index: 1;
+        opacity: @closeOpacity;
+        font-size: @closeSize;
+        color: @closeColor;
+        width: @closeHitbox;
+        height: @closeHitbox;
+        padding: @closePadding;
+        margin: @closeMargin;
+        text-align: right;
+    }
+    .ui.flyout > .close:focus,
+    .ui.flyout > .close:hover {
+        opacity: 1;
+        outline: none;
+    }
 }
 
 /* --------------
@@ -406,9 +407,10 @@ body.pushable > .pusher {
     .ui.flyout.inverted {
         background: @invertedBackground;
     }
-
-    .ui.flyout.inverted > .close {
-        color: @invertedCloseColor;
+    & when (@variationFlyoutClose) {
+        .ui.flyout.inverted > .close {
+            color: @invertedCloseColor;
+        }
     }
 
     .ui.flyout.inverted > .header,
