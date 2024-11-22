@@ -126,7 +126,8 @@
                             module.set.initialLoad();
                             module.change.values(settings.values);
                             module.remove.initialLoad();
-                        } else if (module.get.placeholderText() !== '') {
+                        }
+                        if (module.get.placeholderText() !== '') {
                             module.set.placeholderText();
                         }
 
