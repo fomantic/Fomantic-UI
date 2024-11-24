@@ -473,7 +473,7 @@
                                 validationRules = module.get.validation($field) || {},
                                 identifier = module.get.identifier(validationRules, $field)
                             ;
-                            if (settings.on === 'change' || (!$module.hasClass(className.initial) && settings.revalidate)) {
+                            if (settings.on === 'change' || $field.prop('type') === 'hidden' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function () {
                                     module.debug('Revalidating field', $field, validationRules);
