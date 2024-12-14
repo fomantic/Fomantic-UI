@@ -126,6 +126,7 @@
                             .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                             .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
                             .on('click' + eventNamespace, selector.result, module.event.result.click)
+                            .on('click' + eventNamespace, selector.remove, module.event.remove.click)
                         ;
                     },
                 },
@@ -199,6 +200,11 @@
                         } else {
                             module.debug('Input blurred without user action, closing results');
                             callback();
+                        }
+                    },
+                    remove: {
+                        click: function() {
+                            module.clear.value();
                         }
                     },
                     result: {
@@ -837,6 +843,10 @@
                             $module.data(metadata.cache, cache);
                         }
                     },
+                    value: function () {
+                        module.set.value('');
+                        module.hideResults();
+                    },
                 },
 
                 read: {
@@ -1456,6 +1466,7 @@
 
         selector: {
             prompt: '.prompt',
+            remove: '> .icon.input > .remove.icon',
             searchButton: '.search.button',
             results: '.results',
             message: '.results > .message',

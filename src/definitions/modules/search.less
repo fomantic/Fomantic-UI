@@ -271,37 +271,38 @@
            Types
 *******************************/
 
-& when (@variationSearchSelection) {
+& when (@variationSearchClear) {
     /* --------------
-        Selection
+        Clear Icon
     --------------- */
 
-    .ui.search.selection .prompt {
-        border-radius: @selectionPromptBorderRadius;
-    }
-
-    /* Remove input */
-    .ui.search.selection > .icon.input > .remove.icon {
-        pointer-events: none;
-        position: absolute;
-        left: auto;
-        opacity: 0;
-        color: @selectionCloseIconColor;
-        top: @selectionCloseTop;
-        right: @selectionCloseRight;
-        transition: @selectionCloseTransition;
-    }
-    .ui.search.selection > .icon.input > .active.remove.icon {
+    .ui.search > .icon.input > .remove.icon {
+        pointer-events: all;
+        transition: @clearableIconTransition;
         cursor: pointer;
-        opacity: @selectionCloseIconOpacity;
-        pointer-events: auto;
+        opacity: @clearableIconOpacity;
     }
-    .ui.search.selection > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
-        right: @selectionCloseIconInputRight;
+    .ui.search > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
+        right: @clearableIconInputRight;
     }
-    .ui.search.selection > .icon.input > .remove.icon:hover {
-        opacity: @selectionCloseIconHoverOpacity;
-        color: @selectionCloseIconHoverColor;
+    .ui.search > .icon.input > .remove.icon:hover {
+        opacity: @clearableIconHoverOpacity;
+    }
+    .ui.search input[type="search"]::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        cursor: pointer;
+        transition: @clearableIconTransition;
+        opacity: @clearableIconOpacity;
+        /*
+         * Times icon taken from Font Awesome Free 5.15.4 by @fontawesome [https://fontawesome.com]
+         * License - https://fontawesome.com/license/free
+        */
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 352 512'%3E%3Cpath d='M242.7 256l100.1-100.1c12.3-12.3 12.3-32.2 0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5 0L176 189.3 75.9 89.2c-12.3-12.3-32.2-12.3-44.5 0L9.2 111.5c-12.3 12.3-12.3 32.2 0 44.5L109.3 256 9.2 356.1c-12.3 12.3-12.3 32.2 0 44.5l22.2 22.2c12.3 12.3 32.2 12.3 44.5 0L176 322.7l100.1 100.1c12.3 12.3 32.2 12.3 44.5 0l22.2-22.2c12.3-12.3 12.3-32.2 0-44.5L242.7 256z'/%3E%3C/svg%3E") no-repeat;
+        height: @clearableIconHeight;
+        width: @clearableIconWidth;
+        &:hover {
+            opacity: @clearableIconHoverOpacity;
+        }
     }
 }
 
