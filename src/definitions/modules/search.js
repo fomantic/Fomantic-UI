@@ -205,6 +205,7 @@
                     remove: {
                         click: function () {
                             module.clear.value();
+                            $prompt.trigger('focus');
                         },
                     },
                     result: {
@@ -845,7 +846,6 @@
                     },
                     value: function () {
                         module.set.value('');
-                        module.hideResults();
                     },
                 },
 
