@@ -16,7 +16,7 @@ jobs:
       run: npm run lint
     - name: Assert LESS files formatting using Prettier
       run: >
-        yarn add -D github:prettier/prettier#c6e026ea28
+        yarn add -D prettier@3
         && npx prettier --loglevel warn '!dist' '!test/coverage' '!src/semantic.less' '**/*.{css,less,overrides,variables}' --write
         && git restore package.json yarn.lock
         && git add . -N && git diff --color --exit-code
