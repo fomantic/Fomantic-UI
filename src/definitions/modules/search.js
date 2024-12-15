@@ -203,9 +203,9 @@
                         }
                     },
                     remove: {
-                        click: function() {
+                        click: function () {
                             module.clear.value();
-                        }
+                        },
                     },
                     result: {
                         mousedown: function () {
