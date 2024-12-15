@@ -127,8 +127,7 @@
 *******************************/
 
 /* Clearable */
-@clearableIconTransition:
-    opacity @defaultDuration @defaultEasing;
+@clearableIconTransition: opacity @defaultDuration @defaultEasing;
 @clearableIconOpacity: 0.6;
 @clearableIconHoverOpacity: 1;
 @clearableIconWidth: 1em;
