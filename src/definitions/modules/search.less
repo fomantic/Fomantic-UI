@@ -281,12 +281,12 @@
         transition: @clearableIconTransition;
         cursor: pointer;
         opacity: @clearableIconOpacity;
+        &:hover {
+            opacity: @clearableIconHoverOpacity;
+        }
     }
     .ui.search > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
         right: @clearableIconInputRight;
-    }
-    .ui.search > .icon.input > .remove.icon:hover {
-        opacity: @clearableIconHoverOpacity;
     }
     .ui.search input[type="search"]::-webkit-search-cancel-button {
         -webkit-appearance: none;
