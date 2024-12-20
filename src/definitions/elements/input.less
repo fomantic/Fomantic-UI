@@ -17,6 +17,14 @@
 
 @import (multiple) "../../theme.config";
 
+@notCorner: if(@variationInputCorner, e(":not(.corner)"));
+@notAction: if(@variationInputAction, e(":not(.action)"));
+@notDisabled: if(@variationInputDisabled, e(":not(.disabled)"));
+
+@notBasic: if(@variationButtonBasic, e(":not(.basic)"));
+@notTertiary: if(@variationButtonTertiary, e(":not(.tertiary)"));
+@notLink: if(@variationIconLink, e(":not(.link)"));
+
 /*******************************
            Standard
 *******************************/
@@ -83,12 +91,12 @@
     --------------------- */
 
     .ui.disabled.input,
-    .ui.input:not(.disabled) input[disabled] {
+    .ui.input@{notDisabled} input[disabled] {
         opacity: @disabledOpacity;
     }
 
     .ui.disabled.input > input,
-    .ui.input:not(.disabled) input[disabled] {
+    .ui.input@{notDisabled} input[disabled] {
         pointer-events: @disabledPointerEvents;
     }
 }
@@ -275,11 +283,11 @@
         border-radius: 0 @borderRadius @borderRadius 0;
         transition: @iconTransition;
     }
-    .ui.icon.input > i.icon:not(.link) {
+    .ui.icon.input > i.icon@{notLink} {
         pointer-events: none;
     }
-    .ui.ui.ui.ui.icon.input:not(.corner) > textarea,
-    .ui.ui.ui.ui.icon.input:not(.corner) > input {
+    .ui.ui.ui.ui.icon.input@{notCorner} > textarea,
+    .ui.ui.ui.ui.icon.input@{notCorner} > input {
         padding-right: @iconMargin;
     }
 
@@ -314,8 +322,8 @@
     .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > input {
         padding-left: @iconMargin;
     }
-    .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > textarea,
-    .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > input {
+    .ui.ui.ui.ui[class*="left icon"]@{notCorner}.input > textarea,
+    .ui.ui.ui.ui[class*="left icon"]@{notCorner}.input > input {
         padding-right: @horizontalPadding;
     }
 
@@ -338,7 +346,7 @@
         margin: 0;
         font-size: @relativeMedium;
     }
-    .ui.labeled.input > .label:not(.corner) {
+    .ui.labeled.input > .label@{notCorner} {
         padding-top: @verticalPadding;
         padding-bottom: @verticalPadding;
     }
@@ -639,7 +647,7 @@
     }
 
     .ui.form .field > input[type="file"],
-    .ui.file.input:not(.action) input[type="file"] {
+    .ui.file.input@{notAction} input[type="file"] {
         padding: 0;
     }
 
@@ -720,8 +728,8 @@
         position: absolute;
     }
 
-    input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary),
-    .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary) {
+    input[type="file"].ui.file.input:focus + label.ui.button@{notBasic}@{notTertiary},
+    .ui.file.input input[type="file"]:focus + label.ui.button@{notBasic}@{notTertiary} {
         background: @fileButtonBackgroundHover;
         color: @hoveredTextColor;
         &.inverted {
@@ -736,8 +744,8 @@
             @h: @colors[@@color][hover];
             @lh: @colors[@@color][lightHover];
 
-            input[type="file"].ui.file.input:focus + label.ui.@{color}.button:not(.basic):not(.tertiary),
-            .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
+            input[type="file"].ui.file.input:focus + label.ui.@{color}.button@{notBasic}@{notTertiary},
+            .ui.file.input input[type="file"]:focus + label.ui.@{color}.button@{notBasic}@{notTertiary} {
                 background-color: @h;
                 color: @white;
                 &.inverted when (@variationButtonInverted) {

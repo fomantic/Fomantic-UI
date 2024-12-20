@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notFluid: if(@variationContainerFluid, e(":not(.fluid)"));
+
 /*******************************
             Container
 *******************************/
@@ -29,7 +31,7 @@
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
-    .ui.ui.ui.container:not(.fluid) {
+    .ui.ui.ui.container@{notFluid} {
         width: @mobileWidth;
         margin-left: @mobileGutter;
         margin-right: @mobileGutter;
@@ -53,7 +55,7 @@
 
 /* Tablet */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-    .ui.ui.ui.container:not(.fluid) {
+    .ui.ui.ui.container@{notFluid} {
         width: @tabletWidth;
         margin-left: @tabletGutter;
         margin-right: @tabletGutter;
@@ -77,7 +79,7 @@
 
 /* Small Monitor */
 @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-    .ui.ui.ui.container:not(.fluid) {
+    .ui.ui.ui.container@{notFluid} {
         width: @computerWidth;
         margin-left: @computerGutter;
         margin-right: @computerGutter;
@@ -101,7 +103,7 @@
 
 /* Large Monitor */
 @media only screen and (min-width: @largeMonitorBreakpoint) {
-    .ui.ui.ui.container:not(.fluid) {
+    .ui.ui.ui.container@{notFluid} {
         width: @largeMonitorWidth;
         margin-left: @largeMonitorGutter;
         margin-right: @largeMonitorGutter;

@@ -17,6 +17,17 @@
 
 @import (multiple) "../../theme.config";
 
+@notSecondary: if(@variationMenuSecondary, e(":not(.secondary)"));
+@notText: if(@variationMenuText, e(":not(.text)"));
+@notTabular: if(@variationMenuTabular, e(":not(.tabular)"));
+@notVertical: if(@variationMenuVertical, e(":not(.vertical)"));
+@notBorderless: if(@variationMenuBorderless, e(":not(.borderless)"));
+@notFluid: if(@variationMenuFluid, e(":not(.fluid)"));
+@notWrapping: if(@variationMenuWrapping, e(":not(.wrapping)"));
+
+@notUpward: if(@variationDropdownUpward, e(":not(.upward)"));
+@notFloating: if(@variationLabelFloating, e(":not(.floating)"));
+
 /*******************************
             Standard
 *******************************/
@@ -60,7 +71,7 @@
     margin: 0;
 }
 
-.ui.menu:not(.vertical) > .menu {
+.ui.menu@{notVertical} > .menu {
     display: flex;
 }
 
@@ -68,7 +79,7 @@
       Item
 --------------- */
 
-.ui.menu:not(.vertical) .item {
+.ui.menu@{notVertical} .item {
     display: flex;
     align-items: center;
 }
@@ -135,7 +146,7 @@
      Button
 --------------- */
 
-.ui.menu:not(.vertical) .item > .button {
+.ui.menu@{notVertical} .item > .button {
     position: relative;
     top: @buttonOffset;
     margin: @buttonMargin;
@@ -162,7 +173,7 @@
 .ui.menu .item > .input {
     width: 100%;
 }
-.ui.menu:not(.vertical) .item > .input {
+.ui.menu@{notVertical} .item > .input {
     position: relative;
     top: @inputOffset;
     margin: @inputVerticalMargin 0;
@@ -298,7 +309,7 @@
     .ui.vertical.menu .dropdown.item.upward .menu {
         bottom: 0;
     }
-    .ui.vertical.menu .dropdown.item:not(.upward) .menu {
+    .ui.vertical.menu .dropdown.item@{notUpward} .menu {
         top: 0;
     }
     .ui.vertical.menu .active.dropdown.item {
@@ -319,7 +330,7 @@
      Labels
 --------------- */
 
-.ui.menu .item > .label:not(.floating) {
+.ui.menu .item > .label@{notFloating} {
     margin-left: @labelTextMargin;
     padding: @labelVerticalPadding @labelHorizontalPadding;
 }
@@ -401,11 +412,11 @@
     }
 }
 @media only screen and (min-width: @tabletBreakpoint) {
-    .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
+    .ui.menu@{notSecondary}@{notText}@{notTabular}@{notBorderless} > .container > .item:not(.right)@{notBorderless}:first-child {
         border-left: @dividerSize solid @dividerBackground;
     }
-    .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.item:not(.borderless):last-child,
-    .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.menu > .item:not(.borderless):last-child {
+    .ui.menu@{notSecondary}@{notText}@{notTabular}@{notBorderless} > .container > .right.item@{notBorderless}:last-child,
+    .ui.menu@{notSecondary}@{notText}@{notTabular}@{notBorderless} > .container > .right.menu > .item@{notBorderless}:last-child {
         border-right: @dividerSize solid @dividerBackground;
     }
 }
@@ -482,27 +493,27 @@ Floated Menu / Item
 ------------------- */
 
 /* Left Floated */
-.ui.menu:not(.vertical) .left.item,
-.ui.menu:not(.vertical) .left.menu {
+.ui.menu@{notVertical} .left.item,
+.ui.menu@{notVertical} .left.menu {
     display: flex;
     margin-right: auto !important;
 }
 
 /* Right Floated */
-.ui.menu:not(.vertical) .right.item,
-.ui.menu:not(.vertical) .right.menu {
+.ui.menu@{notVertical} .right.item,
+.ui.menu@{notVertical} .right.menu {
     display: flex;
     margin-left: auto !important;
 }
 
-.ui.menu:not(.vertical) :not(.dropdown) > .left.menu,
-.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+.ui.menu@{notVertical} :not(.dropdown) > .left.menu,
+.ui.menu@{notVertical} :not(.dropdown) > .right.menu {
     display: inherit;
 }
 
 /* Center */
-.ui.menu:not(.vertical) .center.item,
-.ui.menu:not(.vertical) .center.menu {
+.ui.menu@{notVertical} .center.item,
+.ui.menu@{notVertical} .center.menu {
     display: flex;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -795,7 +806,7 @@ Floated Menu / Item
     .ui.compact.menu .item:last-child {
         border-radius: 0 @borderRadius @borderRadius 0;
     }
-    .ui.pagination.menu:not(.wrapping) .item:last-child::before {
+    .ui.pagination.menu@{notWrapping} .item:last-child::before {
         display: none;
     }
 
@@ -972,7 +983,7 @@ Floated Menu / Item
             border-bottom-width: 0;
         }
 
-        .ui.secondary.pointing.menu .item > .label:not(.floating) {
+        .ui.secondary.pointing.menu .item > .label@{notFloating} {
             margin-top: -@labelVerticalPadding;
             margin-bottom: -@labelVerticalPadding;
         }
@@ -1489,8 +1500,8 @@ Floated Menu / Item
 }
 
 & when (@variationMenuCentered) {
-    .ui.center.aligned.menu:not(.fluid),
-    .ui.centered.menu:not(.fluid) {
+    .ui.center.aligned.menu@{notFluid},
+    .ui.centered.menu@{notFluid} {
         display: inline-flex;
         transform: translateX(-50%);
         margin-left: 50%;
@@ -1596,7 +1607,7 @@ Floated Menu / Item
             display: inline-block;
         }
     }
-    .ui.compact.menu:not(.secondary) .item:last-child {
+    .ui.compact.menu@{notSecondary} .item:last-child {
         border-radius: 0 @borderRadius @borderRadius 0;
     }
     .ui.compact.menu .item:last-child::before {
@@ -1643,8 +1654,8 @@ Floated Menu / Item
         text-align: center;
         justify-content: center;
     }
-    .ui.attached[class*="equal width"].menu:not(.tabular),
-    .ui.attached.item.menu:not(.tabular) {
+    .ui.attached[class*="equal width"].menu@{notTabular},
+    .ui.attached.item.menu@{notTabular} {
         margin: 0 @attachedHorizontalOffset !important;
     }
 
@@ -1904,7 +1915,7 @@ Floated Menu / Item
     }
 
     /* Tabular Attached */
-    .ui.attached.menu:not(.tabular):not(.text) {
+    .ui.attached.menu@{notTabular}@{notText} {
         border: @attachedBorder;
     }
     & when (@variationMenuInverted) {
@@ -1936,7 +1947,7 @@ Floated Menu / Item
         & .item:first-child::before {
             display: none;
         }
-        &:not(.secondary):not(.text):not(.tabular):not(.borderless) .item {
+        &@{notSecondary}@{notText}@{notTabular}@{notBorderless} .item {
             &:last-of-type,
             &:last-child {
                 border-right: @dividerSize solid @dividerBackground;
@@ -1944,7 +1955,7 @@ Floated Menu / Item
         }
     }
     & when (@variationMenuWrapped) {
-        .ui.wrapped.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) .item {
+        .ui.wrapped.menu@{notSecondary}@{notText}@{notTabular}@{notBorderless} .item {
             &:first-child {
                 border-bottom-left-radius: 0;
             }

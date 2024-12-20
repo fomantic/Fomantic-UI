@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notPadded: if(@variationGridPadded, e(":not(.padded)"));
+
 /*******************************
             Popup
 *******************************/
@@ -696,7 +698,7 @@
 *******************************/
 
 /* Immediate Nested Grid */
-.ui.ui.ui.popup > .ui.grid:not(.padded) {
+.ui.ui.ui.popup > .ui.grid@{notPadded} {
     width: @nestedGridWidth;
     margin: @nestedGridMargin;
 }
