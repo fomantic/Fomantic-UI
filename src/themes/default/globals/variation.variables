@@ -186,6 +186,7 @@
 @variationLoaderIndeterminate: true;
 @variationLoaderText: true;
 @variationLoaderInline: true;
+@variationLoaderDouble: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
 @variationLoaderColors: @variationAllColors;
@@ -257,6 +258,7 @@
 @variationStepEqualWidth: true;
 @variationStepSizes: @variationAllSizes;
 @variationStepCircular: true;
+@variationStepUnstackable: true;
 @variationStepColors: @variationAllColors;
 
 /* Text */
@@ -286,6 +288,7 @@
 @variationFormGrouped: true;
 @variationFormEqualWidth: true;
 @variationFormWide: true;
+@variationFormUnstackable: true;
 @variationFormSizes: @variationAllSizes;
 
 /* Grid */
@@ -298,6 +301,7 @@
 @variationGridPadded: true;
 @variationGridFloated: true;
 @variationGridDivided: true;
+@variationGridHorizontal: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
 @variationGridAttached: true;
@@ -393,6 +397,9 @@
 @variationTableOverflowingVeryShort: true;
 @variationTableOverflowingLong: true;
 @variationTableOverflowingVeryLong: true;
+@variationTableRowSpanned: true;
+@variationTableFullWidth: true;
+@variationTableUnstackable: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 
@@ -529,6 +536,7 @@
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
 @variationCheckboxInvisible: true;
+@variationCheckboxCompact: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
 @variationCheckboxToggle: true;
@@ -575,6 +583,7 @@
 @variationDropdownPointing: true;
 @variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
+@variationDropdownUnlimited: true;
 @variationDropdownHighlightMatches: false;
 @variationDropdownSizes: @variationAllSizes;
 
@@ -598,6 +607,7 @@
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
 @variationFlyoutScrolling: true;
+@variationFlyoutClose: true;
 
 /* Modal */
 @variationModalInverted: true;
@@ -608,6 +618,7 @@
 @variationModalResizable: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
+@variationModalClose: true;
 @variationModalCloseInside: true;
 @variationModalCentered: true;
 @variationModalActions: true;
@@ -749,7 +760,8 @@
 @variationToastVertical: true;
 @variationToastAttached: true;
 @variationToastCompact: true;
-@variationToastCentered: true;
+@variationToastBasic: true;
+@variationToastUnclickable: true;
 @variationToastColors: @variationAllColors;
 
 /* Transition */

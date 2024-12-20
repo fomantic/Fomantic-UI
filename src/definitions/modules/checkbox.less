@@ -17,6 +17,12 @@
 
 @import (multiple) "../../theme.config";
 
+@notToggle: if(@variationCheckboxToggle, e(":not(.toggle)"));
+@notSlider: if(@variationCheckboxSlider, e(":not(.slider)"));
+@notRadio: if(@variationCheckboxRadio, e(":not(.radio)"));
+@notInvisible: if(@variationCheckboxInvisible, e(":not(.invisible)"));
+@notCompact: if(@variationCheckboxCompact, e(":not(.compact)"));
+
 /*******************************
            Checkbox
 *******************************/
@@ -60,7 +66,7 @@
     font-size: @labelFontSize;
 }
 
-.ui.checkbox:not(.invisible) label {
+.ui.checkbox@{notInvisible} label {
     padding-left: @labelDistance;
 }
 
@@ -133,8 +139,8 @@
     background: @checkboxHoverBackground;
     border-color: @checkboxHoverBorderColor;
 }
-.ui.checkbox:not(.invisible) label:hover,
-.ui.checkbox:not(.invisible) + label:hover {
+.ui.checkbox@{notInvisible} label:hover,
+.ui.checkbox@{notInvisible} + label:hover {
     color: @labelHoverColor;
 }
 
@@ -149,7 +155,7 @@
 .ui.checkbox label:active::after {
     color: @checkboxPressedColor;
 }
-.ui.checkbox:not(.invisible) input:active ~ label {
+.ui.checkbox@{notInvisible} input:active ~ label {
     color: @labelPressedColor;
 }
 
@@ -164,7 +170,7 @@
 .ui.checkbox input:focus ~ label::after {
     color: @checkboxFocusCheckColor;
 }
-.ui.checkbox:not(.invisible) input:focus ~ label {
+.ui.checkbox@{notInvisible} input:focus ~ label {
     color: @labelFocusColor;
 }
 
@@ -726,7 +732,7 @@
         & when (@@raw > 1) {
             .ui.@{value}.form .checkbox,
             .ui.@{value}.checkbox {
-                &:not(.slider):not(.toggle):not(.radio) {
+                &@{notSlider}@{notToggle}@{notRadio} {
                     &
                     label::after,
                     label::before {
