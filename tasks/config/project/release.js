@@ -7,7 +7,9 @@ const requireDotFile = require('require-dot-file');
 let
     config,
     npmPackage,
-    version
+    version,
+    revision,
+    versionInFileName
 ;
 
 /*******************************
@@ -30,6 +32,21 @@ try {
 version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
     ? npmPackage.version
     : config.version;
+
+// looks for revision in config.
+revision = config.revision === undefined ? '' : config.revision;
+
+includeVersionInFileName = config.includeVersionInFileName === undefined ? false : config.includeVersionInFileName;
+
+versionInFileName = '';
+
+if (includeVersionInFileName) {
+	versionInFileName = '-' + version;
+	if (revision != '') {
+		versionInFileName += '-' + revision;
+	}
+}
+
 
 /*******************************
              Export
@@ -54,5 +71,6 @@ module.exports = {
         + ' */\n',
 
     version: version,
+    versionInFileName: versionInFileName,
 
 };
