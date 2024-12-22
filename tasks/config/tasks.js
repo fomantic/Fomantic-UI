@@ -44,8 +44,8 @@ module.exports = {
         concatenatedJS: 'semantic' + release.versionInFileName + '.js',
         concatenatedMinifiedCSS: 'semantic' + release.versionInFileName + '.min.css',
         concatenatedMinifiedJS: 'semantic' + release.versionInFileName + '.min.js',
-        concatenatedRTLCSS: 'semantic.rtl' + release.versionInFileName + '.css',
-        concatenatedMinifiedRTLCSS: 'semantic.rtl' + release.versionInFileName + '.min.css',
+        concatenatedRTLCSS: 'semantic' + release.versionInFileName + '.rtl.css',
+        concatenatedMinifiedRTLCSS: 'semantic' + release.versionInFileName + '.rtl.min.css',
     },
 
     regExp: {
