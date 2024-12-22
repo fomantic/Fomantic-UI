@@ -9,7 +9,8 @@ let
     npmPackage,
     version,
     revision,
-    versionInFileName
+    versionInFileName,
+    includeVersionInFileName
 ;
 
 /*******************************
@@ -29,7 +30,7 @@ try {
 }
 
 // looks for version in config or package.json (whichever is available)
-version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
+version = npmPackage && npmPackage.version != undefined && npmPackage.name === 'fomantic-ui'
     ? npmPackage.version
     : config.version;
 
@@ -41,12 +42,11 @@ includeVersionInFileName = config.includeVersionInFileName === undefined ? false
 versionInFileName = '';
 
 if (includeVersionInFileName) {
-	versionInFileName = '-' + version;
-	if (revision != '') {
-		versionInFileName += '-' + revision;
-	}
+    versionInFileName = '-' + version;
+    if (revision != '') {
+        versionInFileName += '-' + revision;
+    }
 }
-
 
 /*******************************
              Export
