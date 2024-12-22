@@ -681,7 +681,7 @@
 
 /* Search */
 @variationSearchDisabled: true;
-@variationSearchSelection: true;
+@variationSearchClear: true;
 @variationSearchCategory: true;
 @variationSearchHorizontalCategory: true;
 @variationSearchLoading: true;
