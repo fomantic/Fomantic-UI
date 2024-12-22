@@ -40,12 +40,12 @@ module.exports = {
     },
 
     filenames: {
-        concatenatedCSS: 'semantic' + release.versionInFileName + '.css',
-        concatenatedJS: 'semantic' + release.versionInFileName + '.js',
-        concatenatedMinifiedCSS: 'semantic' + release.versionInFileName + '.min.css',
-        concatenatedMinifiedJS: 'semantic' + release.versionInFileName + '.min.js',
-        concatenatedRTLCSS: 'semantic' + release.versionInFileName + '.rtl.css',
-        concatenatedMinifiedRTLCSS: 'semantic' + release.versionInFileName + '.rtl.min.css',
+        concatenatedCSS: config.fileName + release.versionInFileName + '.css',
+        concatenatedJS: config.fileName + release.versionInFileName + '.js',
+        concatenatedMinifiedCSS: config.fileName + release.versionInFileName + '.min.css',
+        concatenatedMinifiedJS: config.fileName + release.versionInFileName + '.min.js',
+        concatenatedRTLCSS: config.fileName + release.versionInFileName + '.rtl.css',
+        concatenatedMinifiedRTLCSS: config.fileName + release.versionInFileName + '.rtl.min.css',
     },
 
     regExp: {
