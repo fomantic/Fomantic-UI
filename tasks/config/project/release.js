@@ -43,7 +43,7 @@ versionInFileName = '';
 
 if (includeVersionInFileName) {
     versionInFileName = '-' + version;
-    if (revision != '') {
+    if (revision !== '') {
         versionInFileName += '-' + revision;
     }
 }
