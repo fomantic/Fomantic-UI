@@ -1571,7 +1571,6 @@
                                 html += result[fields.url]
                                     ? '</a>'
                                     : '</div>';
-
                             });
                             html += '</div>';
                             html += ''
