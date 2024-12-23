@@ -802,28 +802,32 @@
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
                     },
-                    date: function (format = "") {
+                    date: function (format = '') {
                         if (!module.helper.sanitiseDate($module.data(metadata.date))) {
                             return null;
                         }
-                        else if (format == "") {
+
+                        if (format === '') {
                             return module.helper.sanitiseDate($module.data(metadata.date));
                         }
+
                         return module.helper.dateFormat(format, $module.data(metadata.date));
                     },
                     inputDate: function () {
                         return $input.val();
                     },
-                    focusDate: function (format = "") {
+                    focusDate: function (format = '') {
                         if (!module.helper.sanitiseDate($module.data(metadata.focusDate))) {
                             return null;
                         }
-                        else if (format == "") {
+
+                        if (format === '') {
                             return module.helper.sanitiseDate($module.data(metadata.focusDate));
                         }
+
                         return module.helper.dateFormat(format, $module.data(metadata.focusDate));
                     },
-                    startDate: function (format = "") {
+                    startDate: function (format = '') {
                         var startModule = module.get.calendarModule(settings.startCalendar);
 
                         if (startModule) {
@@ -833,12 +837,14 @@
                         if (!module.helper.sanitiseDate($module.data(metadata.startDate))) {
                             return null;
                         }
-                        else if (format == "") {
+
+                        if (format === '') {
                             return module.helper.sanitiseDate($module.data(metadata.startDate));
                         }
+
                         return module.helper.dateFormat(format, $module.data(metadata.startDate));
                     },
-                    endDate: function (format = "") {
+                    endDate: function (format = '') {
                         var endModule = module.get.calendarModule(settings.endCalendar);
 
                         if (endModule) {
@@ -848,9 +854,11 @@
                         if (!module.helper.sanitiseDate($module.data(metadata.endDate))) {
                             return null;
                         }
-                        else if (format == "") {
+
+                        if (format === '') {
                             return module.helper.sanitiseDate($module.data(metadata.endDate));
                         }
+
                         return module.helper.dateFormat(format, $module.data(metadata.endDate));
                     },
                     minDate: function () {
