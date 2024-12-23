@@ -1537,21 +1537,17 @@
                             // each item inside category
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
-                                if (result[fields.url]) {
-                                    html  += '<a href="' + result[fields.url].replace(/"/g, '') + '" ';
-                                } else {
-                                    html += '<div ';
-                                }
+                                html += result[fields.url]
+                                    ? '<a href="' + result[fields.url].replace(/"/g, '') + '" '
+                                    : html += '<div ';
 
-                                if (result[fields.id] !== undefined) {
-                                    html += ' id="' + result[fields.id] + '" ';
-                                }
+                                html += result[fields.id] !== undefined
+                                    ? ' id="' + result[fields.id] + '" '
+                                    : '';
 
-                                if (result[fields.classes] !== undefined) {
-                                    html += ' class="result ' + result[fields.classes] + '">';
-                                } else {
-                                    html += ' class="result">';
-                                }
+                                html += result[fields.classes] !== undefined
+                                    ? ' class="result ' + result[fields.classes] + '">'
+                                    : ' class="result">';
 
                                 if (result[fields.image] !== undefined) {
                                     html += ''
@@ -1572,11 +1568,9 @@
                                 html += ''
                                     + '</div>';
 
-                                if (result[fields.url]) {
-                                    html  += '</a>';
-                                } else {
-                                    html += '</div>';
-                                }
+                                html += result[fields.url]
+                                    ? '</a>'
+                                    : '</div>';
 
                             });
                             html += '</div>';
@@ -1609,21 +1603,17 @@
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {
-			if (result[fields.url]) {
-			    html  += '<a href="' + result[fields.url].replace(/"/g, '') + '" ';
-			} else {
-			    html += '<div ';
-			}
+                        html += result[fields.url]
+                            ? '<a href="' + result[fields.url].replace(/"/g, '') + '" '
+                            : '<div ';
 
-			if (result[fields.id] !== undefined) {
-			    html += ' id="' + result[fields.id] + '" ';
-			}
+                        html += result[fields.id] !== undefined
+                            ? ' id="' + result[fields.id] + '" '
+                            : '';
 
-			if (result[fields.classes] !== undefined) {
-			    html += ' class="result ' + result[fields.classes] + '">';
-			} else {
-			    html += ' class="result">';
-			}
+                        html += result[fields.classes] !== undefined
+                            ? ' class="result ' + result[fields.classes] + '">'
+                            : ' class="result">';
 
                         if (result[fields.image] !== undefined) {
                             html += ''
@@ -1644,11 +1634,9 @@
                         html += ''
                             + '</div>';
 
-			if (result[fields.url]) {
-			    html  += '</a>';
-			} else {
-			    html += '</div>';
-			}
+                        html += result[fields.url]
+                            ? '</a>'
+                            : '</div>';
                     });
                     if (response[fields.action]) {
                         html += fields.actionURL === false
