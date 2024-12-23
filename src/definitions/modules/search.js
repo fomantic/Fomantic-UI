@@ -220,9 +220,7 @@
                             var
                                 $result = $(this),
                                 $title  = $result.find(selector.title).eq(0),
-                                $link   = $result.is('a[href]')
-                                    ? $result
-                                    : $result.find('a[href]').eq(0),
+                                $link   = $result.is('a[href]') ? $result : $(),
                                 href    = $link.attr('href') || false,
                                 target  = $link.attr('target') || false,
                                 // title is used for result lookup
@@ -1459,6 +1457,8 @@
             results: 'results', // array of results (standard)
             title: 'title', // result title
             url: 'url', // result url
+            id: 'id', // HTML 'id' attribute
+            classes: 'classes', // Classes specific to each result to add to the HTML 'class' attribute.
             action: 'action', // "view more" object name
             actionText: 'text', // "view more" text
             actionURL: 'url', // "view more" url
@@ -1537,9 +1537,22 @@
                             // each item inside category
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
-                                html += result[fields.url]
-                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
-                                    : '<a class="result">';
+                                if (result[fields.url]) {
+                                    html  += '<a href="' + result[fields.url].replace(/"/g, '') + '" ';
+                                } else {
+                                    html += '<div ';
+                                }
+
+                                if (result[fields.id] !== undefined) {
+                                    html += ' id="' + result[fields.id] + '" ';
+                                }
+
+                                if (result[fields.classes] !== undefined) {
+                                    html += ' class="result ' + result[fields.classes] + '">';
+                                } else {
+                                    html += ' class="result">';
+                                }
+
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
@@ -1558,7 +1571,13 @@
                                 }
                                 html += ''
                                     + '</div>';
-                                html += '</a>';
+
+                                if (result[fields.url]) {
+                                    html  += '</a>';
+                                } else {
+                                    html += '</div>';
+                                }
+
                             });
                             html += '</div>';
                             html += ''
@@ -1590,9 +1609,22 @@
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {
-                        html += result[fields.url]
-                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
-                            : '<a class="result">';
+			if (result[fields.url]) {
+			    html  += '<a href="' + result[fields.url].replace(/"/g, '') + '" ';
+			} else {
+			    html += '<div ';
+			}
+
+			if (result[fields.id] !== undefined) {
+			    html += ' id="' + result[fields.id] + '" ';
+			}
+
+			if (result[fields.classes] !== undefined) {
+			    html += ' class="result ' + result[fields.classes] + '">';
+			} else {
+			    html += ' class="result">';
+			}
+
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
@@ -1611,7 +1643,12 @@
                         }
                         html += ''
                             + '</div>';
-                        html += '</a>';
+
+			if (result[fields.url]) {
+			    html  += '</a>';
+			} else {
+			    html += '</div>';
+			}
                     });
                     if (response[fields.action]) {
                         html += fields.actionURL === false
