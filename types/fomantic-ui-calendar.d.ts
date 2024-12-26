@@ -30,7 +30,7 @@ declare namespace FomanticUI {
         /**
          * Get the selected date
          */
-        (behavior: 'get date'): Date | string;
+        (behavior: 'get date', format?: string): Date | string;
 
         /**
          * Set the selected date.
@@ -52,7 +52,7 @@ declare namespace FomanticUI {
         /**
          * Get the start date for range selection
          */
-        (behavior: 'get startDate'): Date | string;
+        (behavior: 'get startDate', format?: string): Date | string;
 
         /**
          * Set the start date for range selection
@@ -62,7 +62,7 @@ declare namespace FomanticUI {
         /**
          * Get the end date for range selection
          */
-        (behavior: 'get endDate'): Date | string;
+        (behavior: 'get endDate', format?: string): Date | string;
 
         /**
          * Set the end date for range selection
@@ -72,7 +72,7 @@ declare namespace FomanticUI {
         /**
          * Get the currently focused date
          */
-        (behavior: 'get focusDate'): Date | string;
+        (behavior: 'get focusDate', format?: string): Date | string;
 
         /**
          * Set the currently focused date
