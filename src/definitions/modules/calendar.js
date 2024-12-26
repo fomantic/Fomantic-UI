@@ -802,64 +802,32 @@
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
                     },
-                    date: function (format = '') {
-                        if (!module.helper.sanitiseDate($module.data(metadata.date))) {
-                            return null;
-                        }
-
-                        if (format === '') {
-                            return module.helper.sanitiseDate($module.data(metadata.date));
-                        }
-
-                        return module.helper.dateFormat(format, $module.data(metadata.date));
+                    date: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.date));
                     },
                     inputDate: function () {
                         return $input.val();
                     },
-                    focusDate: function (format = '') {
-                        if (!module.helper.sanitiseDate($module.data(metadata.focusDate))) {
-                            return null;
-                        }
-
-                        if (format === '') {
-                            return module.helper.sanitiseDate($module.data(metadata.focusDate));
-                        }
-
-                        return module.helper.dateFormat(format, $module.data(metadata.focusDate));
+                    focusDate: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.focusDate));
                     },
-                    startDate: function (format = '') {
+                    startDate: function (format) {
                         var startModule = module.get.calendarModule(settings.startCalendar);
 
                         if (startModule) {
                             return startModule.get.date(format);
                         }
 
-                        if (!module.helper.sanitiseDate($module.data(metadata.startDate))) {
-                            return null;
-                        }
-
-                        if (format === '') {
-                            return module.helper.sanitiseDate($module.data(metadata.startDate));
-                        }
-
-                        return module.helper.dateFormat(format, $module.data(metadata.startDate));
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.startDate));
                     },
-                    endDate: function (format = '') {
+                    endDate: function (format) {
                         var endModule = module.get.calendarModule(settings.endCalendar);
 
                         if (endModule) {
                             return endModule.get.date(format);
                         }
 
-                        if (!module.helper.sanitiseDate($module.data(metadata.endDate))) {
-                            return null;
-                        }
-
-                        if (format === '') {
-                            return module.helper.sanitiseDate($module.data(metadata.endDate));
-                        }
-
-                        return module.helper.dateFormat(format, $module.data(metadata.endDate));
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.endDate));
                     },
                     minDate: function () {
                         return $module.data(metadata.minDate) || null;
@@ -1174,6 +1142,13 @@
 
                             return match.slice(1, -1);
                         });
+                    },
+                    dateObjectOrFormatted: function (format, date) {
+                        format = format || '';
+                        var date = module.helper.sanitiseDate($module.data(metadata.date)) || null;
+                        if (!date) return null;
+                        if (format === '') return date;
+                        return module.helper.dateFormat(format, date);
                     },
                     isDisabled: function (date, mode) {
                         return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
