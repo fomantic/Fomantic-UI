@@ -16,7 +16,7 @@
     },
     "clean"        : "dist/"
   },
-  "fileName"     : "semantic",
+  "fileName"   : "semantic",
   "permission" : false,
   "autoInstall": false,
   "rtl": false
