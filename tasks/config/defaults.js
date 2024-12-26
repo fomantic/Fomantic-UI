@@ -125,4 +125,6 @@ module.exports = {
         ignoredRTL: '!(*.min|*.map)',
     },
 
+    fileName: 'semantic',
+
 };
