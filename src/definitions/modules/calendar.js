@@ -1145,7 +1145,7 @@
                     },
                     dateObjectOrFormatted: function (format, date) {
                         format = format || '';
-                        date = module.helper.sanitiseDate($module.data(metadata.date)) || null;
+                        date = module.helper.sanitiseDate(date) || null;
 
                         if (!date) {
                             return null;
