@@ -1145,9 +1145,16 @@
                     },
                     dateObjectOrFormatted: function (format, date) {
                         format = format || '';
-                        var date = module.helper.sanitiseDate($module.data(metadata.date)) || null;
-                        if (!date) return null;
-                        if (format === '') return date;
+                        date = module.helper.sanitiseDate($module.data(metadata.date)) || null;
+
+                        if (!date) {
+                            return null;
+                        }
+
+                        if (format === '') {
+                            return date;
+                        }
+
                         return module.helper.dateFormat(format, date);
                     },
                     isDisabled: function (date, mode) {
