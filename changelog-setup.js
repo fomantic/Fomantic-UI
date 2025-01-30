@@ -6,7 +6,7 @@ module.exports = function (Handlebars) {
             exclude,
             message,
             subject,
-            heading
+            heading,
         } = options.hash;
 
         if (!context || context.length === 0 || !heading) {
@@ -24,16 +24,19 @@ module.exports = function (Handlebars) {
                 }
                 if (message) {
                     const pattern = new RegExp(message, 'm');
+
                     return pattern.test(commit.message);
                 }
                 if (subject) {
                     const pattern = new RegExp(subject);
+
                     return pattern.test(commit.subject);
                 }
+
                 return true;
             })
-            .map(item => options.fn(item))
-            .join('')
+            .map((item) => options.fn(item))
+            .join('');
 
         if (!list) {
             return '';
@@ -42,11 +45,10 @@ module.exports = function (Handlebars) {
         return `${heading}\n\n`;
     })
 
-    Handlebars.registerHelper("noprefix", function(text) {
+    Handlebars.registerHelper('noprefix', function (text) {
         var result = text.replace(/^(fix|feat|build)\(.*\): */,'');
         return new Handlebars.SafeString(result);
     });
-
 
     Handlebars.registerHelper('commit-list-heading-only', (context, options) => {
         const { exclude, message, subject, heading } = options.hash;
@@ -106,7 +108,9 @@ module.exports = function (Handlebars) {
 
         // build\(deps.*\): bump (.*) from.*to (.*)
 
-        if (!context || !context.subject) return '';
+        if (!context || !context.subject) {
+            return '';
+        }
         let subjectDetails = context.subject.match(/build\(deps.*\): bump (.*) from.*to (.*)/),
             depPackage = subjectDetails[1],
             depVersion = subjectDetails[2],
