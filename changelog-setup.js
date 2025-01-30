@@ -2,17 +2,22 @@ const semver = require('semver'); // eslint-disable-line import/no-extraneous-de
 
 module.exports = function (Handlebars) {
     Handlebars.registerHelper('commit-list-heading-only', (context, options) => {
-        const { exclude, message, subject, heading } = options.hash;
+        const {
+            exclude,
+            message,
+            subject,
+            heading
+        } = options.hash;
 
         if (!context || context.length === 0 || !heading) {
             return '';
         }
 
         const list = context
-            .filter(item => {
+            .filter((item) => {
                 const commit = item.commit || item;
                 if (exclude) {
-                    const pattern = new RegExp(exclude, 'm')
+                    const pattern = new RegExp(exclude, 'm');
                     if (pattern.test(commit.message)) {
                         return false;
                     }
@@ -57,15 +62,18 @@ module.exports = function (Handlebars) {
                 if (exclude) {
                     const pattern = new RegExp(exclude, 'm')
                     if (pattern.test(commit.message)) {
+
                         return false;
                     }
                 }
                 if (message) {
                     const pattern = new RegExp(message, 'm');
+
                     return pattern.test(commit.message);
                 }
                 if (subject) {
                     const pattern = new RegExp(subject);
+
                     return pattern.test(commit.subject);
                 }
                 return true;
@@ -81,7 +89,7 @@ module.exports = function (Handlebars) {
                     changelogDeps[depPackage] = existingVersion;
                     returnValue = depPackage + ' to ' + depPackage;
                 }
-            })*/
+            }) */
             .map(item => options.fn(item))
             .join('')
         ;
@@ -96,7 +104,7 @@ module.exports = function (Handlebars) {
 
         return `${heading}\n\n${list}`;
 
-        //build\(deps.*\): bump (.*) from.*to (.*)
+        // build\(deps.*\): bump (.*) from.*to (.*)
 
         if (!context || !context.subject) return '';
         let subjectDetails = context.subject.match(/build\(deps.*\): bump (.*) from.*to (.*)/),
@@ -109,6 +117,7 @@ module.exports = function (Handlebars) {
             changelogDeps[depPackage] = existingVersion;
             returnValue = depPackage + ' to ' + depPackage;
         }
+
         return returnValue;
     })
 };
