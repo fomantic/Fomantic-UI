@@ -43,10 +43,10 @@ module.exports = function (Handlebars) {
         }
 
         return `${heading}\n\n`;
-    })
+    });
 
     Handlebars.registerHelper('noprefix', function (text) {
-        var result = text.replace(/^(fix|feat|build)\(.*\): */,'');
+        var result = text.replace(/^(fix|feat|build)\(.*\): */, '');
         return new Handlebars.SafeString(result);
     });
 
@@ -62,9 +62,8 @@ module.exports = function (Handlebars) {
             .filter(item => {
                 const commit = item.commit || item;
                 if (exclude) {
-                    const pattern = new RegExp(exclude, 'm')
+                    const pattern = new RegExp(exclude, 'm');
                     if (pattern.test(commit.message)) {
-
                         return false;
                     }
                 }
@@ -78,6 +77,7 @@ module.exports = function (Handlebars) {
 
                     return pattern.test(commit.subject);
                 }
+
                 return true;
             }) /*
             .map(item => {
@@ -92,7 +92,7 @@ module.exports = function (Handlebars) {
                     returnValue = depPackage + ' to ' + depPackage;
                 }
             }) */
-            .map(item => options.fn(item))
+            .map((item) => options.fn(item))
             .join('')
         ;
 
