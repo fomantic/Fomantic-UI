@@ -471,9 +471,6 @@
                                 encodeParameters: false,
                                 on: 'now',
                                 cache: settings.alwaysRefresh,
-                                headers: {
-                                    'X-Remote': true,
-                                },
                                 onSuccess: function (response) {
                                     if (settings.cacheType === 'response') {
                                         module.cache.add(fullTabPath, response);
