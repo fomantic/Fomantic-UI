@@ -624,7 +624,7 @@ select.ui.dropdown {
         box-shadow: @selectionFocusMenuBoxShadow;
     }
     @supports selector(:has(.f)) {
-        .ui.ui.selection.dropdown:has( > input:focus) {
+        .ui.ui.selection.dropdown:has(> input:focus) {
             border-color: @selectionFocusBorderColor;
             box-shadow: none;
             & > i.icon {
@@ -635,7 +635,6 @@ select.ui.dropdown {
     .ui.ui.selection.dropdown:focus > i.icon {
         opacity: @selectionIconFocusOpacity;
     }
-
 
     /* Visible */
     .ui.selection.visible.dropdown > .text:not(.default) {
