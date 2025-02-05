@@ -623,6 +623,19 @@ select.ui.dropdown {
         border-color: @selectionFocusBorderColor;
         box-shadow: @selectionFocusMenuBoxShadow;
     }
+    @supports selector(:has(.f)) {
+        .ui.ui.selection.dropdown:has( > input:focus) {
+            border-color: @selectionFocusBorderColor;
+            box-shadow: none;
+            & > i.icon {
+                opacity: @selectionIconFocusOpacity;
+            }
+        }
+    }
+    .ui.ui.selection.dropdown:focus > i.icon {
+        opacity: @selectionIconFocusOpacity;
+    }
+
 
     /* Visible */
     .ui.selection.visible.dropdown > .text:not(.default) {

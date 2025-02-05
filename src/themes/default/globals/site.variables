@@ -1510,21 +1510,25 @@
 @inputErrorFocusColor: @negativeTextColor;
 @inputErrorFocusBorder: @negativeBorderColor;
 @inputErrorFocusBoxShadow: none;
+@inputErrorHoverBorder: @negativeBorderColor;
 
 @inputInfoFocusBackground: @infoBackgroundColor;
 @inputInfoFocusColor: @infoTextColor;
 @inputInfoFocusBorder: @infoBorderColor;
 @inputInfoFocusBoxShadow: none;
+@inputInfoHoverBorder: @infoBorderColor;
 
 @inputSuccessFocusBackground: @positiveBackgroundColor;
 @inputSuccessFocusColor: @positiveTextColor;
 @inputSuccessFocusBorder: @positiveBorderColor;
 @inputSuccessFocusBoxShadow: none;
+@inputSuccessHoverBorder: @positiveBorderColor;
 
 @inputWarningFocusBackground: @warningBackgroundColor;
 @inputWarningFocusColor: @warningTextColor;
 @inputWarningFocusBorder: @warningBorderColor;
 @inputWarningFocusBoxShadow: none;
+@inputWarningHoverBorder: @warningBorderColor;
 
 /* Placeholder state */
 @inputErrorPlaceholderColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 40), @formErrorColor);

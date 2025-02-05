@@ -113,6 +113,13 @@
     box-shadow: @downBoxShadow;
 }
 
+.ui.form .field > textarea:hover:not(:focus),
+.ui.input > textarea:hover:not(:focus),
+.ui.form .field > input:hover:not(:focus),
+.ui.input > input:hover:not(:focus) {
+    border-color: @selectedBorderColor;
+}
+
 & when (@variationInputLoading) {
     /* --------------------
            Loading
