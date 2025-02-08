@@ -466,7 +466,7 @@ select.ui.dropdown {
         box-shadow: @selectionMenuBoxShadow;
         transition: @selectionMenuTransition;
     }
-    .ui.selection.dropdown@{notPointing}@{notFloating} .menu {
+    .ui.selection.dropdown@{notPointing}@{notFloating} > .menu {
         border-top-width: 0;
         border-radius: @selectionMenuBorderRadius;
     }
@@ -1313,7 +1313,7 @@ select.ui.dropdown {
 
     & when (@variationDropdownSelection) {
         /* Selection */
-        .ui.ui.upward.selection.dropdown@{notPointing}@{notFloating} .menu {
+        .ui.ui.upward.selection.dropdown@{notPointing}@{notFloating} > .menu {
             border-top-width: @menuBorderWidth;
             border-bottom-width: 0;
             box-shadow: @upwardSelectionMenuBoxShadow;
