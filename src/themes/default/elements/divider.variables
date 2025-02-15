@@ -40,7 +40,6 @@
 
 @verticalDividerMargin: 1rem;
 @verticalDividerHeight: e(%("calc(100%% - %d)", @verticalDividerMargin));
-@verticalDividerPadding: 1em;
 
 /* Inverted */
 @invertedTextColor: @white;
