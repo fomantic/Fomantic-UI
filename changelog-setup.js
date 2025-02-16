@@ -13,7 +13,6 @@ const issueLinks = function (item) {
     return item;
 };
 
-
 module.exports = function (Handlebars) {
     Handlebars.registerHelper('commit-list-enhanced', (context, options) => {
         const {
@@ -75,7 +74,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^(fix|feat|build|docs|chore)(\(.*\))*: */, '');
+        let result = text.replace(/^[a-zA-Z]+(\(.*\))*: */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -105,10 +104,11 @@ module.exports = function (Handlebars) {
 
         changelogDeps = {};
         const
-            depsRegex = /build\(deps.*\): bump (.*) from (\d+\.\d.+\.\d+) to (\d+\.\d.+\.\d+)/,
+            depsRegex = /build\(deps.*\): bump (.*) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
+
                     return true;
                 }
 

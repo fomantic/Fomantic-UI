@@ -192,7 +192,7 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#commit-list-enhanced commits heading='## Build Fixes' subject='fix\(build\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### CI Fixes' subject='fix\(ci\)'}}
+  {{#commit-list-enhanced commits heading='### CI Fixes' subject='fix\((ci|lint)\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
   {{#commit-list-enhanced commits heading='### Misc Fixes' subject='^[fF]ix ' exclude='(types|deps)'}}
@@ -294,13 +294,13 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#commit-list-enhanced commits heading='### Loader' subject='feat\(loader'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Menu' subject='feat\(menu'}}
+  {{#commit-list-enhanced commits heading='### Menu' subject='^(feat\()*[Mm]enu[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
   {{#commit-list-enhanced commits heading='### Message' subject='feat\(message'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Modal' subject='feat\(modal'}}
+  {{#commit-list-enhanced commits heading='### Modal' subject='^(feat\()*[Mm]odal[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
   {{#commit-list-enhanced commits heading='### Nag' subject='feat\(nag'}}
@@ -363,20 +363,20 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#commit-list-enhanced commits heading='### Toast' subject='feat\(toast'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Transition' subject='feat\(transition'}}
+  {{#commit-list-enhanced commits heading='### Transition' subject='^(feat\()*[Tt]ransition[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Visibility' subject='feat\(visibility'}}
+  {{#commit-list-enhanced commits heading='### Visibility' subject='^(feat\()*[Vv]isibility[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
 
   {{#commit-list-enhanced commits heading='### Build Features' subject='feat\(build\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### CI Features' subject='feat\(ci\)'}}
+  {{#commit-list-enhanced commits heading='### CI Features' subject='feat\((ci|lint)\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)| dist )'}}
+  {{#commit-list-enhanced commits heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)|build | dist$| dist |[Rr]elease|[Rr]ebuild| changelog|^[a-zA-Z]+:)'}}
     - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
   {{#commit-list-enhanced commits heading='## Types' subject='\(types\)'}}
@@ -388,8 +388,9 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#commit-list-enhanced commits heading='## Chore Changes' subject='chore[()]' exclude='(contributor| dist|[( ]release)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-enhanced}}
+
   {{#commit-list-dependencies commits heading='## Dependency Changes' subject='\(dep'}}
-    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
   {{/commit-list-dependencies}}
   {{#commit-list-enhanced commits heading='## Docs' subject='docs[():]' exclude='contributor'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
