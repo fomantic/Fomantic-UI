@@ -1,6 +1,17 @@
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
+const issueLinks = function(item) {
+    if (typeof loopVersion !== 'string') {
+        return item;
+    }
+    let repository = semver.gte(loopVersion,'2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
+    item.subject = item.subject.replace(/#(\d+)/,'[`#$1`](https://github.com/' + repository + '/issues/$1)');
 
-let changelogDeps  = {};
+    return item;
+};
+
+let changelogDeps  = {},
+    loopVersion = ''
+;
 
 module.exports = function (Handlebars) {
     Handlebars.registerHelper('commit-list-enhanced', (context, options) => {
@@ -14,6 +25,8 @@ module.exports = function (Handlebars) {
         if (!context || context.length === 0 || !heading) {
             return '';
         }
+
+        loopVersion = options.data.root.releases[options.data.index].tag;
 
         let list = context
             .filter((item) => {
@@ -37,6 +50,7 @@ module.exports = function (Handlebars) {
 
                 return true;
             })
+            .map(issueLinks)
             .map((item) => options.fn(item));
 
         if (list.length === 0) {
@@ -60,9 +74,18 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^(fix|feat|build)\(.*\): */, '');
+        let result = text.replace(/^(fix|feat|build|docs|chore)(\(.*\))*: */, '');
 
         return new Handlebars.SafeString(result);
+    });
+
+    Handlebars.registerHelper('contributorlink', (text) => {
+        if (!(typeof text === 'string')) {
+            return '';
+        }
+        let result = text.replace(/add (.*) as a contributor/,'[`$1`](https://github.com/$1)');
+
+        return Handlebars.helpers.noprefix(result);
     });
 
     Handlebars.registerHelper('commit-list-dependencies', (context, options) => {
@@ -70,12 +93,14 @@ module.exports = function (Handlebars) {
             exclude,
             message,
             subject,
-            heading
+            heading,
         } = options.hash;
 
         if (!context || context.length === 0 || !heading) {
             return '';
         }
+
+        loopVersion = options.data.root.releases[options.data.index].tag;
 
         changelogDeps = {};
         const
@@ -83,7 +108,7 @@ module.exports = function (Handlebars) {
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
-                    return false;
+                    return true;
                 }
 
                 let depPackage = subjectDetails[1],
@@ -93,7 +118,7 @@ module.exports = function (Handlebars) {
                 if (!changelogDeps[depPackage]) {
                     changelogDeps[depPackage] = {
                         from: '999.999.999',
-                        to: '0.0.0'
+                        to: '0.0.0',
                     };
                 }
                 if (semver.lt(depVersionFrom, changelogDeps[depPackage].from)) {
@@ -108,43 +133,48 @@ module.exports = function (Handlebars) {
                 return false;
             },
             list = context
-            .filter(item => {
-                const commit = item.commit || item;
-                if (exclude) {
-                    const pattern = new RegExp(exclude, 'm');
-                    if (pattern.test(commit.message)) {
-                        return false;
+                .filter(item => {
+                    const commit = item.commit || item;
+                    if (exclude) {
+                        const pattern = new RegExp(exclude, 'm');
+                        if (pattern.test(commit.message)) {
+                            return false;
+                        }
                     }
-                }
-                if (message) {
-                    const pattern = new RegExp(message, 'm');
+                    if (message) {
+                        const pattern = new RegExp(message, 'm');
 
-                    return pattern.test(commit.message);
-                }
-                if (subject) {
-                    const pattern = new RegExp(subject);
+                        return pattern.test(commit.message);
+                    }
+                    if (subject) {
+                        const pattern = new RegExp(subject);
 
-                    return pattern.test(commit.subject);
-                }
+                        return pattern.test(commit.subject);
+                    }
 
-                return true;
-            })
-            .filter(detectVersionRange)
-            // second round as the previous list came unordered from git
-            .filter(detectVersionRange)
-            // adjust from version to create the whole range in one line (linked to the latest commit)
-            .map(item => {
-                let subjectDetails = item.subject.match(depsRegex),
-                    depPackage = subjectDetails[1],
-                    depVersionFrom = subjectDetails[2]
-                ;
-                item.subject = item.subject.replace(depVersionFrom, changelogDeps[depPackage].from);
+                    return true;
+                })
+                .filter(detectVersionRange)
+                // second round as the previous list came unordered from git
+                .filter(detectVersionRange)
+                // adjust from version to create the whole range in one line (linked to the latest commit)
+                .map((item) => {
+                    let subjectDetails = item.subject.match(depsRegex);
+                    if (!subjectDetails) {
+                        return item;
+                    }
+                    let
+                        depPackage = subjectDetails[1],
+                        depVersionFrom = subjectDetails[2]
+                    ;
+                    item.subject = item.subject.replace(depVersionFrom, changelogDeps[depPackage].from);
 
-                return item;
-            })
-            .map((item) => options.fn(item))
-            .join('');
-
+                    return item;
+                })
+                .map(issueLinks)
+                .map((item) => options.fn(item))
+                .join('')
+        ;
         if (!list) {
             return '';
         }
@@ -154,5 +184,5 @@ module.exports = function (Handlebars) {
         }
 
         return `${heading}\n\n${list}\n`;
-    })
+    });
 };
