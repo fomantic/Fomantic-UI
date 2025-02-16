@@ -1,17 +1,18 @@
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
-const issueLinks = function(item) {
-    if (typeof loopVersion !== 'string') {
-        return item;
-    }
-    let repository = semver.gte(loopVersion,'2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
-    item.subject = item.subject.replace(/#(\d+)/,'[`#$1`](https://github.com/' + repository + '/issues/$1)');
-
-    return item;
-};
 
 let changelogDeps  = {},
     loopVersion = ''
 ;
+const issueLinks = function (item) {
+    if (typeof loopVersion !== 'string') {
+        return item;
+    }
+    let repository = semver.gte(loopVersion, '2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
+    item.subject = item.subject.replace(/#(\d+)/, '[`#$1`](https://github.com/' + repository + '/issues/$1)');
+
+    return item;
+};
+
 
 module.exports = function (Handlebars) {
     Handlebars.registerHelper('commit-list-enhanced', (context, options) => {
@@ -83,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/add (.*) as a contributor/,'[`$1`](https://github.com/$1)');
+        let result = text.replace(/add (.*) as a contributor/, '[`$1`](https://github.com/$1)');
 
         return Handlebars.helpers.noprefix(result);
     });
@@ -133,7 +134,7 @@ module.exports = function (Handlebars) {
                 return false;
             },
             list = context
-                .filter(item => {
+                .filter((item) => {
                     const commit = item.commit || item;
                     if (exclude) {
                         const pattern = new RegExp(exclude, 'm');
