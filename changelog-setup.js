@@ -67,7 +67,7 @@ module.exports = function (Handlebars) {
             return '';
         }
 
-        list = list.filter((item) => item.trim() !== '').join('');
+        list = list.filter((item) => item.trim() !== '').sort().join('');
 
         let returnString = '';
         if (heading) {
@@ -84,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^[A-Za-z]+(\(.*\))*: */, '');
+        let result = text.replace(/^[A-Za-z]+(\([A-Za-z\-_, ]*\))*: */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -93,7 +93,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/add (.*) as a contributor/, '[`$1`](https://github.com/$1)');
+        let result = text.replace(/add ([A-Za-z0-9\-]+) as a contributor/, '[`$1`](https://github.com/$1)');
 
         return Handlebars.helpers.noprefix(result);
     });
@@ -114,7 +114,7 @@ module.exports = function (Handlebars) {
 
         changelogDeps = {};
         const
-            depsRegex = /build\(deps.*\): bump (.*) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
+            depsRegex = /build\(deps[A-Za-z\-]*\): bump ([A-Za-z\-\/@]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
@@ -183,6 +183,7 @@ module.exports = function (Handlebars) {
                 })
                 .map(issueLinks)
                 .map((item) => options.fn(item))
+                .sort()
                 .join('')
         ;
         if (!list) {
