@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. Dates are d
 {{/unless}}
 
 {{#each releases}}
+
   {{#if href}}
     #{{#unless major}}#{{/unless}} [{{title}}]({{href}})
   {{else}}
@@ -21,72 +22,55 @@ All notable changes to this project will be documented in this file. Dates are d
     {{summary}}
   {{/if}}
 
-    {{#commit-list-heading-only commits heading='## Fixes' subject='^[fF]ix[( ]'}}
-
-    {{/commit-list-heading-only}}
-    {{#commit-list commits subject='^[fF]ix ]'}}
-        - {{subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Accordion' subject='fix\(accordion\)'}}
-        - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Chore' subject='fix\(chore\)'}}
-        - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Build' subject='fix\(build\)'}}
-        - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### CI' subject='fix\ci\)'}}
-        - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Dropdown' subject='fix\(dropdown\)'}}
-      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-
-  {{#commit-list-heading-only commits heading='## Changes' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
-
-  {{/commit-list-heading-only}}
-  {{#commit-list commits subject='^([aA]dd|[uUpdate])'}}
+  {{#commit-list-enhanced commits heading='## Fixes' subject='^[fF]ix[( ]'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits subject='^[fF]ix ]'}}
       - {{subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list}}
-
-    {{#commit-list commits heading='### Accordion' subject='feat\(accordion\)'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Accordion' subject='fix\(accordion\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Chore' subject='feat\(chore\)'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Chore' subject='fix\(chore\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### Build' subject='feat\(build\)'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Build' subject='fix\(build\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='### CI' subject='feat\ci\)'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### CI' subject='fix\ci\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Dropdown' subject='fix\(dropdown\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
 
-    {{#commit-list commits heading='### Dropdown' subject='feat\(dropdown\)'}}
-      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-
-    {{#commit-list commits heading='## Misc' exclude='^(feat|[fF]ix|build|[aA]dd|[uU]pdate)'}}
-      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list commits heading='## Types' subject='\(types\)'}}
-      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list}}
-
-    {{#commit-list-dependencies commits heading='## Dependency Changes' subject='^build\(dep'}}
+  {{#commit-list-enhanced commits heading='## Changes' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits subject='^([aA]dd|[uUpdate])'}}
       - {{subject}} [`{{shorthash}}`]({{href}})
-    {{/commit-list-dependencies}}
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Accordion' subject='feat\(accordion\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Chore' subject='feat\(chore\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Build' subject='feat\(build\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### CI' subject='feat\ci\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='### Dropdown' subject='feat\(dropdown\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='## Misc' exclude='^(feat|[fF]ix|build|[aA]dd|[uU]pdate)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-enhanced commits heading='## Types' subject='\(types\)'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-enhanced}}
+  {{#commit-list-dependencies commits heading='## Dependency Changes' subject='^build\(dep'}}
+    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+  {{/commit-list-dependencies}}
 
 {{/each}}
