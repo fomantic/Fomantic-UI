@@ -84,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^[A-Za-z]+(\([ ,A-Z_a-z\-]*\))*: */, '');
+        let result = text.replace(/^[A-Za-z]+(\([ ,A-Z_a-z-]*\))*: */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -93,7 +93,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/add ([\dA-Za-z\-]+) as a contributor/, '[`$1`](https://github.com/$1)');
+        let result = text.replace(/add ([\dA-Za-z-]+) as a contributor/, '[`$1`](https://github.com/$1)');
 
         return Handlebars.helpers.noprefix(result);
     });
@@ -114,7 +114,7 @@ module.exports = function (Handlebars) {
 
         changelogDeps = {};
         const
-            depsRegex = /build\(deps[A-Za-z\-]*\): bump ([/@A-Za-z\-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
+            depsRegex = /build\(deps[A-Za-z-]*\): bump ([/@A-Za-z-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
