@@ -1,7 +1,8 @@
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
 
 let changelogDeps  = {},
-    loopVersion = ''
+    loopVersion = '',
+    uniqueCommits = []
 ;
 const issueLinks = function (item) {
     if (typeof loopVersion !== 'string') {
@@ -27,6 +28,7 @@ module.exports = function (Handlebars) {
         }
 
         loopVersion = options.data.root.releases[options.data.index].tag;
+        uniqueCommits = [];
 
         let list = context
             .filter((item) => {
@@ -47,6 +49,14 @@ module.exports = function (Handlebars) {
 
                     return pattern.test(commit.subject);
                 }
+
+                return true;
+            })
+            .filter((item) => {
+                if (uniqueCommits.includes(item.subject)) {
+                    return false;
+                }
+                uniqueCommits.push(item.subject);
 
                 return true;
             })
@@ -74,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^[a-zA-Z]+(\(.*\))*: */, '');
+        let result = text.replace(/^[A-Za-z]+(\(.*\))*: */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -108,7 +118,6 @@ module.exports = function (Handlebars) {
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
-
                     return true;
                 }
 
