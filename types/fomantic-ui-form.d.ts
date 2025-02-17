@@ -145,7 +145,7 @@ declare namespace FomanticUI {
         (behavior: 'set as clean'): JQuery;
 
         /**
-         * Automatically adds the "empty" rule or automatically checks a checkbox for all fields with classname or attribute 'required'.
+         * Automatically adds the "notEmpty" rule or automatically checks a checkbox for all fields with classname or attribute 'required'.
          */
         (behavior: 'set auto check'): void;
 
@@ -158,13 +158,13 @@ declare namespace FomanticUI {
          * Destroys instance and removes all events.
          */
         (behavior: 'destroy'): JQuery;
-        <K extends keyof FormSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<FormSettings, keyof FormSettings>>;
+        <K extends keyof FormSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<FormSettings, keyof FormSettings>>;
         <K extends keyof FormSettings>(behavior: 'setting', name: K, value: FormSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;
         (settings?: Partial<Pick<FormSettings, keyof FormSettings>>): JQuery;
     }
 
-    type FormFields = Record<string, FormField | string[] | string | {}>;
+    type FormFields = Record<string, FormField | string[] | string | object>;
 
     interface FormRule {
         type: string;
@@ -256,7 +256,7 @@ declare namespace FomanticUI {
         preventLeaving: boolean;
 
         /**
-         * Whether fields with classname or attribute 'required' should automatically add the "empty" rule or automatically checks checkbox fields.
+         * Whether fields with classname or attribute 'required' should automatically add the "notEmpty" rule or automatically checks checkbox fields.
          * @default false
          */
         autoCheckRequired: boolean;
@@ -272,6 +272,12 @@ declare namespace FomanticUI {
          * @default 0
          */
         errorLimit: number;
+
+        /**
+         *
+         * @default false
+         */
+        noNativeValidation: boolean;
 
         // endregion
 
@@ -440,8 +446,14 @@ declare namespace FomanticUI {
 
                 /**
                  * @default '{name} must have a value'
+                 * @deprecated Use notEmpty instead
                  */
                 empty: string;
+
+                /**
+                 * @default '{name} must have a value'
+                 */
+                notEmpty: string;
 
                 /**
                  * @default '{name} must be checked'
@@ -574,6 +586,7 @@ declare namespace FomanticUI {
 
             interface Rules {
                 empty(value: unknown): boolean;
+                notEmpty(value: unknown): boolean;
                 checked(): boolean;
                 email(value: unknown): boolean;
                 url(value: unknown): boolean;

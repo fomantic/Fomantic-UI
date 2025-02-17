@@ -17,6 +17,10 @@
 
 @import (multiple) "../../theme.config";
 
+@notFullscreen: if(@variationFlyoutFullscreen, e(":not(.fullscreen)"));
+
+@notFluid: if(@variationButtonFluid, e(":not(.fluid)"));
+
 /*******************************
              Flyout
 *******************************/
@@ -46,30 +50,31 @@
 .ui.flyout > * {
     backface-visibility: hidden;
 }
+& when (@variationFlyoutClose) {
+    /* --------------
+       Close
+    --------------- */
 
-/* --------------
-   Close
---------------- */
-.ui.flyout > .close {
-    cursor: pointer;
-    position: absolute;
-    top: @closeTop;
-    right: @closeRight;
-    z-index: 1;
-    opacity: @closeOpacity;
-    font-size: @closeSize;
-    color: @closeColor;
-    width: @closeHitbox;
-    height: @closeHitbox;
-    padding: @closePadding;
-    margin: @closeMargin;
-    text-align: right;
-}
-
-.ui.flyout > .close:focus,
-.ui.flyout > .close:hover {
-    opacity: 1;
-    outline: none;
+    .ui.flyout > .close {
+        cursor: pointer;
+        position: absolute;
+        top: @closeTop;
+        right: @closeRight;
+        z-index: 1;
+        opacity: @closeOpacity;
+        font-size: @closeSize;
+        color: @closeColor;
+        width: @closeHitbox;
+        height: @closeHitbox;
+        padding: @closePadding;
+        margin: @closeMargin;
+        text-align: right;
+    }
+    .ui.flyout > .close:focus,
+    .ui.flyout > .close:hover {
+        opacity: 1;
+        outline: none;
+    }
 }
 
 /* --------------
@@ -134,7 +139,7 @@
         border-top: @actionBorder;
         text-align: @actionAlign;
     }
-    .ui.flyout .actions > .button:not(.fluid) {
+    .ui.flyout .actions > .button@{notFluid} {
         margin-left: @buttonDistance;
     }
     & when (@variationFlyoutBasic) {
@@ -145,7 +150,7 @@
     & when (@variationFlyoutLeftActions) {
         .ui.flyout > .left.actions {
             text-align: left;
-            & > .button:not(.fluid) {
+            & > .button@{notFluid} {
                 margin-left: @buttonLeftDistance;
                 margin-right: @buttonLeftDistance;
             }
@@ -156,7 +161,7 @@
     .ui.flyout > .centered,
     .ui.flyout > .center.aligned {
         text-align: center;
-        &.actions > .button:not(.fluid) when (@variationFlyoutActions) {
+        &.actions > .button@{notFluid} when (@variationFlyoutActions) {
             margin-left: @buttonCenteredDistance;
             margin-right: @buttonCenteredDistance;
         }
@@ -402,9 +407,10 @@ body.pushable > .pusher {
     .ui.flyout.inverted {
         background: @invertedBackground;
     }
-
-    .ui.flyout.inverted > .close {
-        color: @invertedCloseColor;
+    & when (@variationFlyoutClose) {
+        .ui.flyout.inverted > .close {
+            color: @invertedCloseColor;
+        }
     }
 
     .ui.flyout.inverted > .header,
@@ -525,67 +531,67 @@ body.pushable > .pusher {
     & when (@variationFlyoutColumnWidth) {
         /* Sizing Combinations */
 
-        .ui[class*="one wide"].flyout:not(.fullscreen) {
+        .ui[class*="one wide"].flyout@{notFullscreen} {
             width: @oneWide;
         }
 
-        .ui[class*="two wide"].flyout:not(.fullscreen) {
+        .ui[class*="two wide"].flyout@{notFullscreen} {
             width: @twoWide;
         }
 
-        .ui[class*="three wide"].flyout:not(.fullscreen) {
+        .ui[class*="three wide"].flyout@{notFullscreen} {
             width: @threeWide;
         }
 
-        .ui[class*="four wide"].flyout:not(.fullscreen) {
+        .ui[class*="four wide"].flyout@{notFullscreen} {
             width: @fourWide;
         }
 
-        .ui[class*="five wide"].flyout:not(.fullscreen) {
+        .ui[class*="five wide"].flyout@{notFullscreen} {
             width: @fiveWide;
         }
 
-        .ui[class*="six wide"].flyout:not(.fullscreen) {
+        .ui[class*="six wide"].flyout@{notFullscreen} {
             width: @sixWide;
         }
 
-        .ui[class*="seven wide"].flyout:not(.fullscreen) {
+        .ui[class*="seven wide"].flyout@{notFullscreen} {
             width: @sevenWide;
         }
 
-        .ui[class*="eight wide"].flyout:not(.fullscreen) {
+        .ui[class*="eight wide"].flyout@{notFullscreen} {
             width: @eightWide;
         }
 
-        .ui[class*="nine wide"].flyout:not(.fullscreen) {
+        .ui[class*="nine wide"].flyout@{notFullscreen} {
             width: @nineWide;
         }
 
-        .ui[class*="ten wide"].flyout:not(.fullscreen) {
+        .ui[class*="ten wide"].flyout@{notFullscreen} {
             width: @tenWide;
         }
 
-        .ui[class*="eleven wide"].flyout:not(.fullscreen) {
+        .ui[class*="eleven wide"].flyout@{notFullscreen} {
             width: @elevenWide;
         }
 
-        .ui[class*="twelve wide"].flyout:not(.fullscreen) {
+        .ui[class*="twelve wide"].flyout@{notFullscreen} {
             width: @twelveWide;
         }
 
-        .ui[class*="thirteen wide"].flyout:not(.fullscreen) {
+        .ui[class*="thirteen wide"].flyout@{notFullscreen} {
             width: @thirteenWide;
         }
 
-        .ui[class*="fourteen wide"].flyout:not(.fullscreen) {
+        .ui[class*="fourteen wide"].flyout@{notFullscreen} {
             width: @fourteenWide;
         }
 
-        .ui[class*="fifteen wide"].flyout:not(.fullscreen) {
+        .ui[class*="fifteen wide"].flyout@{notFullscreen} {
             width: @fifteenWide;
         }
 
-        .ui[class*="sixteen wide"].flyout:not(.fullscreen) {
+        .ui[class*="sixteen wide"].flyout@{notFullscreen} {
             width: @sixteenWide;
         }
     }

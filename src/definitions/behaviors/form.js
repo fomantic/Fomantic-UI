@@ -38,6 +38,7 @@
                 element     = this,
 
                 formErrors  = [],
+                formErrorsTracker = {},
                 keyHeldDown = false,
 
                 // set at run-time
@@ -538,6 +539,13 @@
                                     fullFields[name].rules.push({ type: rule });
                                 });
                             }
+
+                            $.each(fullFields[name].rules, function (index, rule) {
+                                var ruleName = module.get.ruleName(rule);
+                                if (ruleName === 'empty') {
+                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name + '" will be removed in a future version. -> Use "notEmpty" rule instead.');
+                                }
+                            });
                         });
 
                         return fullFields;
@@ -551,9 +559,10 @@
                             ancillary     = module.get.ancillaryValue(rule),
                             $field        = module.get.field(field.identifier),
                             value         = $field.val(),
-                            prompt        = isFunction(rule.prompt)
-                                ? rule.prompt(value)
-                                : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            promptCheck   = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            prompt        = String(isFunction(promptCheck)
+                                ? promptCheck.call($field[0], value)
+                                : promptCheck),
                             requiresValue = prompt.search('{value}') !== -1,
                             requiresName  = prompt.search('{name}') !== -1,
                             parts,
@@ -591,10 +600,10 @@
                     },
                     settings: function () {
                         if ($.isPlainObject(parameters)) {
-                            if (parameters.fields) {
-                                parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
-                            }
                             settings = $.extend(true, {}, $.fn.form.settings, parameters);
+                            if (settings.fields) {
+                                settings.fields = module.get.fieldsFromShorthand(settings.fields);
+                            }
                             validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                             module.verbose('Extending settings', validation, settings);
                         } else {
@@ -711,7 +720,7 @@
                             var
                                 $field       = $(field),
                                 $calendar    = $field.closest(selector.uiCalendar),
-                                name         = $field.prop('name'),
+                                name         = $field.prop('name') || $field.prop('id'),
                                 value        = $field.val(),
                                 isCheckbox   = $field.is(selector.checkbox),
                                 isRadio      = $field.is(selector.radio),
@@ -940,7 +949,7 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup)
+                                    .appendTo($fieldGroup.filter('.' + className.error))
                                 ;
                             }
                             $prompt
@@ -1237,20 +1246,20 @@
                                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
                                 isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                 validation = module.get.validation($el),
-                                hasEmptyRule = validation
+                                hasNotEmptyRule = validation
                                     ? $.grep(validation.rules, function (rule) {
-                                        return rule.type === 'empty';
-                                    }) !== 0
+                                        return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
+                                    }).length > 0
                                     : false,
                                 identifier = module.get.identifier(validation, $el)
                             ;
-                            if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
+                            if (isRequired && !isDisabled && !hasNotEmptyRule && identifier !== undefined) {
                                 if (isCheckbox) {
                                     module.verbose("Adding 'checked' rule on field", identifier);
                                     module.add.rule(identifier, 'checked');
                                 } else {
-                                    module.verbose("Adding 'empty' rule on field", identifier);
-                                    module.add.rule(identifier, 'empty');
+                                    module.verbose("Adding 'notEmpty' rule on field", identifier);
+                                    module.add.rule(identifier, 'notEmpty');
                                 }
                             }
                         });
@@ -1277,6 +1286,7 @@
                         $module.removeClass(className.initial);
                         // reset errors
                         formErrors = [];
+                        formErrorsTracker = {};
                         if (module.determine.isValid()) {
                             module.debug('Form has no validation errors, submitting');
                             module.set.success();
@@ -1342,28 +1352,30 @@
                         var
                             identifier    = field.identifier || fieldName,
                             $field        = module.get.field(identifier),
+                            $fieldGroup = $field.closest($group),
                             $dependsField = field.depends
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
                             fieldErrors = [],
-                            isDisabled = $field.filter(':not(:disabled)').length === 0,
+                            isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled),
                             validationMessage = $field[0].validationMessage,
+                            noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
                             errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if (validationMessage) {
+                        if (validationMessage && !noNativeValidation && !isDisabled) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
                             if (showErrors) {
-                                $field.closest($group).addClass(className.error);
+                                $fieldGroup.addClass(className.error);
                             }
                         } else if (showErrors) {
-                            $field.closest($group).removeClass(className.error);
+                            $fieldGroup.removeClass(className.error);
                         }
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
@@ -1378,7 +1390,22 @@
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
-                                        fieldErrors.push(module.get.prompt(rule, field));
+                                        var fieldError = module.get.prompt(rule, field);
+                                        if (!settings.inline) {
+                                            if (
+                                                // Always allow the first error prompt for new field identifiers
+                                                (!(identifier in formErrorsTracker)
+                                                // Also allow multiple error prompts per field identifier but make sure each prompt is unique
+                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
+                                                // Limit the number of unique error prompts for every field identifier if specified
+                                                && (!errorLimit || (formErrorsTracker[identifier] || []).length < errorLimit)
+                                            ) {
+                                                fieldErrors.push(fieldError);
+                                                (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
+                                            }
+                                        } else {
+                                            fieldErrors.push(fieldError);
+                                        }
                                         fieldValid = false;
                                         if (showErrors) {
                                             $(invalidFields).closest($group).addClass(className.error);
@@ -1393,7 +1420,7 @@
                                 settings.onValid.call($field);
                             }
                         } else {
-                            if (showErrors) {
+                            if (showErrors && fieldErrors.length > 0) {
                                 formErrors = formErrors.concat(fieldErrors);
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
@@ -1491,6 +1518,12 @@
                         module.error.apply(console, arguments);
                     }
                 },
+                warn: function () {
+                    if (!settings.silent) {
+                        module.warn = Function.prototype.bind.call(console.warn, console, settings.name + ':');
+                        module.warn.apply(console, arguments);
+                    }
+                },
                 performance: {
                     log: function (message) {
                         var
@@ -1511,7 +1544,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -1605,6 +1640,7 @@
         name: 'Form',
         namespace: 'form',
 
+        silent: false,
         debug: false,
         verbose: false,
         performance: true,
@@ -1627,6 +1663,7 @@
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
         errorLimit: 0,
+        noNativeValidation: false,
 
         onValid: function () {},
         onInvalid: function () {},
@@ -1669,6 +1706,7 @@
             maxValue: '{name} must have a maximum value of {ruleValue}',
             minValue: '{name} must have a minimum value of {ruleValue}',
             empty: '{name} must have a value',
+            notEmpty: '{name} must have a value',
             checked: '{name} must be checked',
             email: '{name} must be a valid e-mail',
             url: '{name} must be a valid url',
@@ -1801,8 +1839,13 @@
         rules: {
 
             // is not empty or blank string
-            empty: function (value) {
+            notEmpty: function (value) {
                 return !(value === undefined || value === '' || (Array.isArray(value) && value.length === 0));
+            },
+
+            /* Deprecated */
+            empty: function (value) {
+                return $.fn.form.settings.rules.notEmpty(value);
             },
 
             // checkbox checked

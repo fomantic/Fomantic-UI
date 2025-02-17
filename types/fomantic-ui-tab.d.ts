@@ -48,7 +48,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof TabSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<TabSettings, keyof TabSettings>>;
+        <K extends keyof TabSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<TabSettings, keyof TabSettings>>;
         <K extends keyof TabSettings>(behavior: 'setting', name: K, value: TabSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<TabSettings, keyof TabSettings>>): JQuery;
         (settings?: Partial<Pick<TabSettings, keyof TabSettings>>): JQuery;
@@ -276,9 +276,9 @@ declare namespace FomanticUI {
                  * Returns page title
                  * @default Function
                  */
-                determineTitle: Function;
+                determineTitle: (tabPath: string) => string | void;
             }
-        
+
             interface Selectors {
                 /**
                  * @default '.ui.tab'
@@ -290,7 +290,7 @@ declare namespace FomanticUI {
                  */
                 parent: string;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'tab'
@@ -319,7 +319,7 @@ declare namespace FomanticUI {
                  */
                 active: string;
             }
-            
+
             interface Errors {
                 /**
                  * @default 'You attempted to load content without API module'

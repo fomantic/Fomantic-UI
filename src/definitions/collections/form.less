@@ -17,6 +17,19 @@
 
 @import (multiple) "../../theme.config";
 
+@notInline: if(@variationFormInline, e(":not(.inline)"));
+@notInverted: if(@variationFormInverted, e(":not(.inverted)"));
+@notWide: if(@variationFormWide, e(":not(.wide)"));
+@notGrouped: if(@variationFormGrouped, e(":not(.grouped)"));
+@notRequired: if(@variationFormRequired, e(":not(.required)"));
+@notUnstackable: if(@variationFormUnstackable, e(":not(.unstackable)"));
+
+@notToggle: if(@variationCheckboxToggle, e(":not(.toggle)"));
+@notSlider: if(@variationCheckboxSlider, e(":not(.slider)"));
+@notCompact: if(@variationDropdownCompact, e(":not(.compact)"));
+@notIcon: if(@variationInputIcon, e(":not(.icon)"));
+@notCorner: if(@variationLabelCorner, e(":not(.corner)"));
+
 /*******************************
             Elements
 *******************************/
@@ -69,7 +82,7 @@
     font-weight: @labelFontWeight;
     text-transform: @labelTextTransform;
 }
-.ui.form:not(.inverted) .field > label:not(.button) {
+.ui.form@{notInverted} .field > label:not(.button) {
     color: @labelColor;
 }
 
@@ -183,16 +196,16 @@
     Checkbox margin
 --------------------- */
 
-.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
+.ui.form .fields@{notGrouped}@{notInline} .field:not(:only-child) label + .ui.ui.checkbox {
     margin-top: @checkboxLabelFieldTopMargin;
 }
-.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
+.ui.form .fields@{notGrouped}@{notInline} .field:not(:only-child) .ui.checkbox {
     margin-top: @inputLineHeight + @checkboxFieldTopMargin;
 }
-.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.toggle.checkbox {
+.ui.form .fields@{notGrouped}@{notInline} .field:not(:only-child) .ui.toggle.checkbox {
     margin-top: @inputLineHeight + @checkboxToggleFieldTopMargin;
 }
-.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.slider.checkbox {
+.ui.form .fields@{notGrouped}@{notInline} .field:not(:only-child) .ui.slider.checkbox {
     margin-top: @inputLineHeight + @checkboxSliderFieldTopMargin;
 }
 .ui.ui.form .field .fields .field:not(:only-child) .ui.checkbox {
@@ -210,7 +223,7 @@
           Transparent
     --------------------- */
 
-    .ui.form .field .transparent.input:not(.icon) input,
+    .ui.form .field .transparent.input@{notIcon} input,
     .ui.form .field input.transparent,
     .ui.form .field textarea.transparent {
         padding: @transparentPadding;
@@ -254,7 +267,7 @@
 --------------------- */
 
 /* Block */
-.ui.form .field > .selection.dropdown:not(.compact) {
+.ui.form .field > .selection.dropdown@{notCompact} {
     min-width: auto;
     width: 100%;
 }
@@ -287,8 +300,8 @@
 
 & when (@variationFormInline) {
     /* Inline */
-    .ui.form .inline.fields .field:not(.wide) .ui.input,
-    .ui.form .inline.field:not(.wide) .ui.input {
+    .ui.form .inline.fields .field@{notWide} .ui.input,
+    .ui.form .inline.field@{notWide} .ui.input {
         width: auto;
         vertical-align: middle;
     }
@@ -528,9 +541,9 @@
         }
 
         .ui.ui.form .fields.@{state} .field label,
-        .ui.ui.form .fields.@{state} .field .ui.label:not(.corner),
+        .ui.ui.form .fields.@{state} .field .ui.label@{notCorner},
         .ui.ui.form .field.@{state} label,
-        .ui.ui.form .field.@{state} .ui.label:not(.corner),
+        .ui.ui.form .field.@{state} .ui.label@{notCorner},
         .ui.ui.form .fields.@{state} .field .input,
         .ui.ui.form .field.@{state} .input {
             color: @c;
@@ -653,6 +666,7 @@
         }
 
         /* Placeholder */
+        .ui.form .@{state} .ui.dropdown > .default.text,
         .ui.form .@{state} ::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
@@ -660,6 +674,7 @@
             color: @formStates[@@state][inputPlaceholderColor] !important;
         }
 
+        .ui.form .@{state} .ui.dropdown > input:focus ~ .default.text,
         .ui.form .@{state} :focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
         }
@@ -718,12 +733,12 @@
         /*--------------------
             Checkbox State
         ---------------------*/
-        .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label,
-        .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label {
+        .ui.form .fields.@{state} .field .checkbox@{notToggle}@{notSlider} label,
+        .ui.form .field.@{state} .checkbox@{notToggle}@{notSlider} label {
             color: @c;
         }
-        .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label::before,
-        .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label::before {
+        .ui.form .fields.@{state} .field .checkbox@{notToggle}@{notSlider} label::before,
+        .ui.form .field.@{state} .checkbox@{notToggle}@{notSlider} label::before {
             background: @bg;
             border-color: @bdc;
         }
@@ -818,11 +833,11 @@
          Required Field
     --------------------- */
 
-    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields@{notGrouped}@{notInline} > .field > label::after,
     .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
-    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
+    .ui.form .required.fields@{notGrouped}@{notInline} > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after,
     .ui.form label.required::after {
         margin: @requiredMargin;
@@ -830,7 +845,7 @@
         color: @requiredColor;
     }
 
-    .ui.form .required.fields:not(.grouped):not(.inline) > .field > label::after,
+    .ui.form .required.fields@{notGrouped}@{notInline} > .field > label::after,
     .ui.form .required.fields.inline > label::after,
     .ui.form .required.fields.grouped > label::after,
     .ui.form .required.field > label::after,
@@ -839,7 +854,7 @@
         vertical-align: top;
     }
 
-    .ui.form .required.fields:not(.grouped):not(.inline) > .field > .checkbox::after,
+    .ui.form .required.fields@{notGrouped}@{notInline} > .field > .checkbox::after,
     .ui.form .required.field > .checkbox::after {
         position: absolute;
         top: 0;
@@ -847,10 +862,14 @@
     }
 }
 
-.ui.ui.ui.ui.form .fields > label:empty::after,
-.ui.ui.ui.ui.form .field > label:empty::after {
+.ui.ui.ui.ui.form .fields@{notRequired} > label:empty::after,
+.ui.ui.ui.ui.form .fields@{notGrouped}@{notInline} > .field@{notRequired} > label:empty::after {
     content: " ";
     display: inline-block;
+}
+
+.ui.ui.ui.ui.form .inline.fields .field@{notRequired} > label:empty {
+    display: none;
 }
 
 /*******************************
@@ -866,6 +885,7 @@
     .ui.form .inverted.segment label,
     .ui.form .inverted.segment .ui.checkbox label,
     .ui.inverted.form .ui.checkbox label,
+    .ui.inverted.form .grouped.fields > label,
     .ui.inverted.form .inline.fields > label,
     .ui.inverted.form .inline.fields .field > label,
     .ui.inverted.form .inline.fields .field > p,
@@ -1005,8 +1025,8 @@
         margin-bottom: 0;
     }
 
-    .ui.form:not(.unstackable) .fields:not(.unstackable) > .fields,
-    .ui.form:not(.unstackable) .fields:not(.unstackable) > .field {
+    .ui.form@{notUnstackable} .fields@{notUnstackable} > .fields,
+    .ui.form@{notUnstackable} .fields@{notUnstackable} > .field {
         width: @oneColumn;
         margin: 0 0 @rowDistance;
     }

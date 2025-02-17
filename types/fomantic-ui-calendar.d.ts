@@ -30,7 +30,7 @@ declare namespace FomanticUI {
         /**
          * Get the selected date
          */
-        (behavior: 'get date'): Date | string;
+        (behavior: 'get date', format?: string): Date | string;
 
         /**
          * Set the selected date.
@@ -52,7 +52,7 @@ declare namespace FomanticUI {
         /**
          * Get the start date for range selection
          */
-        (behavior: 'get startDate'): Date | string;
+        (behavior: 'get startDate', format?: string): Date | string;
 
         /**
          * Set the start date for range selection
@@ -62,7 +62,7 @@ declare namespace FomanticUI {
         /**
          * Get the end date for range selection
          */
-        (behavior: 'get endDate'): Date | string;
+        (behavior: 'get endDate', format?: string): Date | string;
 
         /**
          * Set the end date for range selection
@@ -72,7 +72,7 @@ declare namespace FomanticUI {
         /**
          * Get the currently focused date
          */
-        (behavior: 'get focusDate'): Date | string;
+        (behavior: 'get focusDate', format?: string): Date | string;
 
         /**
          * Set the currently focused date
@@ -327,7 +327,23 @@ declare namespace FomanticUI {
 
         formatter: Calendar.FormatterSettings;
 
-        // endregion
+        /**
+         * Customizable methods to parse a given date
+         * Has to return a date object
+         */
+        parser: {
+            date: (text: string, settings: CalendarSettings) => Date;
+        }
+
+        /**
+         * DOM selector where the calendar popup should be attached to. By default (false) the calendar popup
+         * is attached as direct child of the triggering element.
+         *
+         * @default false
+         */
+        context: string | JQuery | false
+
+        // end region
 
         // region Callbacks
 
@@ -522,7 +538,7 @@ declare namespace FomanticUI {
 
             interface Formatters {
                 /**
-                 * 
+                 *
                  */
                 yearHeader(date: Date, settings?: CalendarSettings): string;
 
@@ -580,14 +596,14 @@ declare namespace FomanticUI {
                  * @default 'YYYY'
                  */
                 year: string;
-                
+
                 /**
-                 * 
+                 *
                  */
                 today(settings: CalendarSettings): string;
 
                 /**
-                 * 
+                 *
                  */
                 cell(cell: string, date: Date, cellOptions: any): any
             }

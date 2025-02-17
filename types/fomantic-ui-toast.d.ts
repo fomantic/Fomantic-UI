@@ -33,7 +33,7 @@ declare namespace FomanticUI {
         (behavior: 'get remainingTime'): number;
 
         (behavior: 'refresh' | 'destroy'): JQuery;
-        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ToastSettings, keyof ToastSettings>>;
+        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ToastSettings, keyof ToastSettings>>;
         <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
         (settings?: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
@@ -124,6 +124,13 @@ declare namespace FomanticUI {
          * @default false
          */
         showImage: false | string;
+
+        /**
+         * Alt text for a given showImage.
+         *
+         * @default false
+         */
+        alt: false | string;
 
         /**
          * Define if the toast should display an icon which matches to a given class.

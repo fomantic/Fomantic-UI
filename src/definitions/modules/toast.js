@@ -183,6 +183,7 @@
                                 $toast.append($('<img>', {
                                     class: className.image + ' ' + settings.classImage,
                                     src: settings.showImage,
+                                    alt: settings.alt || '',
                                 }));
                             }
                             if (settings.title !== '') {
@@ -228,7 +229,7 @@
                                 $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
                             }
                             if (settings.showImage) {
-                                $toast.find(selector.image).attr('src', settings.showImage);
+                                $toast.find(selector.image).attr('src', settings.showImage).attr('alt', settings.alt || '');
                             }
                             if (settings.title !== '') {
                                 $toast.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML));
@@ -702,7 +703,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -839,6 +842,7 @@
         actions: false,
         preserveHTML: true,
         showImage: false,
+        alt: false,
 
         // transition settings
         transition: {

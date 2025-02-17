@@ -102,7 +102,17 @@
 
                 destroy: function () {
                     module.verbose('Destroying previous calendar for', element);
-                    $module.removeData(moduleNamespace);
+                    $module.removeData([
+                        metadata.date,
+                        metadata.focusDate,
+                        metadata.startDate,
+                        metadata.endDate,
+                        metadata.minDate,
+                        metadata.maxDate,
+                        metadata.mode,
+                        metadata.monthOffset,
+                        moduleNamespace,
+                    ]);
                     module.unbind.events();
                     module.disconnect.classObserver();
                 },
@@ -792,24 +802,32 @@
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
                     },
-                    date: function () {
-                        return module.helper.sanitiseDate($module.data(metadata.date)) || null;
+                    date: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.date));
                     },
                     inputDate: function () {
                         return $input.val();
                     },
-                    focusDate: function () {
-                        return $module.data(metadata.focusDate) || null;
+                    focusDate: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.focusDate));
                     },
-                    startDate: function () {
+                    startDate: function (format) {
                         var startModule = module.get.calendarModule(settings.startCalendar);
 
-                        return (startModule ? startModule.get.date() : $module.data(metadata.startDate)) || null;
+                        if (startModule) {
+                            return startModule.get.date(format);
+                        }
+
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.startDate));
                     },
-                    endDate: function () {
+                    endDate: function (format) {
                         var endModule = module.get.calendarModule(settings.endCalendar);
 
-                        return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
+                        if (endModule) {
+                            return endModule.get.date(format);
+                        }
+
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.endDate));
                     },
                     minDate: function () {
                         return $module.data(metadata.minDate) || null;
@@ -1124,6 +1142,20 @@
 
                             return match.slice(1, -1);
                         });
+                    },
+                    dateObjectOrFormatted: function (format, date) {
+                        format = format || '';
+                        date = module.helper.sanitiseDate(date) || null;
+
+                        if (!date) {
+                            return null;
+                        }
+
+                        if (format === '') {
+                            return date;
+                        }
+
+                        return module.helper.dateFormat(format, date);
                     },
                     isDisabled: function (date, mode) {
                         return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
@@ -1479,7 +1511,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -1687,7 +1721,8 @@
                 text = settings.monthFirst || !/^\d{1,2}[./-]/.test(text) ? text : text.replace(/[./-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
                 var textDate = new Date(text);
                 var numberOnly = text.match(/^\d+$/) !== null;
-                if (!numberOnly && !isNaN(textDate.getDate())) {
+                var isShortYear = text.match(/^(?:\d{1,2}[./-]){2}\d{1,2}$/) !== null;
+                if (!isShortYear && !numberOnly && !isNaN(textDate.getDate())) {
                     return textDate;
                 }
                 text = text.toLowerCase();

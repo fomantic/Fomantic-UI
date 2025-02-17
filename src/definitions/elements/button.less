@@ -17,6 +17,18 @@
 
 @import (multiple) "../../theme.config";
 
+@notIcon: if(@variationButtonIcon, e(":not(.icon)"));
+@notAnimated: if(@variationButtonAnimated, e(":not(.animated)"));
+@notLabeled: if(@variationButtonLabeled, e(":not(.labeled)"));
+@notCompact: if(@variationButtonCompact, e(":not(.compact)"));
+@notSpaced: if(@variationButtonSpaced, e(":not(.spaced)"));
+@notCircular: if(@variationButtonCircular, e(":not(.circular)"));
+@notVertical: if(@variationButtonVertical, e(":not(.vertical)"));
+@notInverted: if(@variationButtonInverted, e(":not(.inverted)"));
+@notBasic: if(@variationButtonBasic, e(":not(.basic)"));
+@notAttached: if(@variationButtonAttached, e(":not(.attached)"));
+@notWrapping: if(@variationButtonWrapping, e(":not(.wrapping)"));
+
 /*******************************
             Button
 *******************************/
@@ -166,10 +178,10 @@
         }
     }
     & when (@variationButtonBasic) {
-        .ui.basic.loading.button:not(.inverted)::before {
+        .ui.basic.loading.button@{notInverted}::before {
             border-color: @loaderFillColor;
         }
-        .ui.basic.loading.button:not(.inverted)::after {
+        .ui.basic.loading.button@{notInverted}::after {
             border-color: @loaderLineColor;
         }
     }
@@ -179,7 +191,7 @@
           Disabled
     -------------------- */
 
-    .ui.buttons .disabled.button:not(.basic),
+    .ui.buttons .disabled.button@{notBasic},
     .ui.disabled.button,
     .ui.button:disabled,
     .ui.disabled.button:hover,
@@ -377,7 +389,7 @@
         Labeled Button
     -------------------- */
 
-    .ui.labeled.button:not(.icon) {
+    .ui.labeled.button@{notIcon} {
         display: inline-flex;
         flex-direction: row;
         background: none;
@@ -621,15 +633,15 @@
     color: @iconColor;
 }
 
-.ui.button:not(.icon) > .icon:not(.button):not(.dropdown),
-.ui.button:not(.icon) > .icons:not(.button):not(.dropdown) {
+.ui.button@{notIcon} > .icon:not(.button):not(.dropdown),
+.ui.button@{notIcon} > .icons:not(.button):not(.dropdown) {
     margin: @iconMargin;
     vertical-align: @iconVerticalAlign;
 }
-.ui.button:not(.icon) > .icons:not(.button):not(.dropdown) > .icon {
+.ui.button@{notIcon} > .icons:not(.button):not(.dropdown) > .icon {
     vertical-align: @iconVerticalAlign;
 }
-.ui.button:not(.icon) > .right.icon:not(.button):not(.dropdown) {
+.ui.button@{notIcon} > .right.icon:not(.button):not(.dropdown) {
     margin: @rightIconMargin;
 }
 
@@ -737,7 +749,7 @@
     --------------- */
 
     .ui.icon.buttons .button,
-    .ui.icon.button:not(.animated):not(.compact):not(.labeled) {
+    .ui.icon.button@{notAnimated}@{notCompact}@{notLabeled} {
         padding: @verticalPadding @verticalPadding (@verticalPadding + @shadowOffset);
     }
     .ui.animated.icon.button > .content > .icon,
@@ -873,7 +885,7 @@
 
     & when (@variationButtonGroups) {
         /* Basic Group */
-        .ui.basic.buttons:not(.inverted) .button:not(.basic) {
+        .ui.basic.buttons@{notInverted} .button@{notBasic} {
             border-right: @basicGroupBorder;
             box-shadow: none;
         }
@@ -885,7 +897,7 @@
                 border-top: @basicGroupBorder;
             }
 
-            .ui.basic.vertical.buttons:not(.spaced) .button:first-child {
+            .ui.basic.vertical.buttons@{notSpaced}@{notCircular} .button:first-child {
                 border-top: none;
             }
         }
@@ -1095,14 +1107,38 @@
     /* --------------
         Circular
     --------------- */
-
-    .ui.circular.button {
+    .ui.ui.circular.buttons .button,
+    .ui.ui.ui.ui.circular.button {
         border-radius: @circularBorderRadius;
+        min-width: @circularMinWidth;
     }
 
+    .ui.circular.buttons .button > .icon,
     .ui.circular.button > .icon {
         width: @circularIconWidth;
         vertical-align: baseline;
+    }
+
+    .ui.circular.buttons@{notVertical}@{notSpaced} .button {
+        margin-right: @circularGroupMargin;
+    }
+
+    & when (@variationButtonVertical) {
+        .ui.vertical.circular.buttons .button {
+            margin-bottom: @circularVerticalGroupMargin;
+        }
+    }
+
+    & when (@variationButtonBasic) {
+        .ui.circular.basic.buttons {
+            border: none;
+            & .button {
+                border: @basicGroupBorder;
+                &.basic {
+                    border: none;
+                }
+            }
+        }
     }
 }
 
@@ -1803,7 +1839,7 @@
                 box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorDown inset;
                 color: @@_backgroundColorDown;
             }
-            .ui.buttons:not(.vertical) > .basic.@{consequence}.button:not(:first-child) {
+            .ui.buttons@{notVertical} > .basic.@{consequence}.button:not(:first-child) {
                 margin-left: -@basicColoredBorderSize;
             }
         }
@@ -1823,7 +1859,7 @@
         margin: @verticalMargin @horizontalMargin 0 0;
     }
 
-    .ui.buttons:not(.basic):not(.inverted) {
+    .ui.buttons@{notBasic}@{notInverted} {
         box-shadow: @groupBoxShadow;
     }
 
@@ -1843,7 +1879,7 @@
         margin: @groupButtonOffset;
     }
 
-    .ui.buttons:not(.basic):not(.inverted) > .button:not(.basic):not(.inverted) {
+    .ui.buttons@{notBasic}@{notInverted} > .button@{notBasic}@{notInverted} {
         box-shadow: @groupButtonBoxShadow;
     }
 
@@ -1871,7 +1907,7 @@
             width: 100%;
             margin: @verticalGroupOffset;
             border-radius: 0;
-            &:not(.basic) {
+            &@{notBasic} {
                 box-shadow: @verticalBoxShadow;
             }
         }
@@ -1919,7 +1955,7 @@
         }
     }
     & when (@variationButtonWrapped) {
-        .ui.wrapped.buttons:not(.spaced) {
+        .ui.wrapped.buttons@{notSpaced} {
             border-top-right-radius: 0;
             & .button {
                 &:first-child {
@@ -1967,7 +2003,7 @@
                 }
             }
             & when (@variationButtonWrapping) {
-                .ui.spaced.basic.wrapping.buttons .button:not(.basic) {
+                .ui.spaced.basic.wrapping.buttons .button@{notBasic} {
                     border-top: @basicGroupBorder;
                     border-right: @basicGroupBorder;
                     &:first-child {
@@ -1985,22 +2021,22 @@
     }
 
     & when (@variationButtonBasic) {
-        .ui.basic.buttons:not(.vertical).inverted .button,
-        .ui.basic.buttons:not(.vertical) .basic.button {
+        .ui.basic.buttons@{notVertical}.inverted .button,
+        .ui.basic.buttons@{notVertical} .basic.button {
             margin-left: -@basicColoredBorderSize;
             border-right: none;
         }
-        .ui.basic.buttons:not(.vertical):not(.spaced):not(.inverted) .basic.button {
+        .ui.basic.buttons@{notVertical}@{notSpaced}@{notInverted} .basic.button {
             margin-top: -@basicColoredBorderSize;
             border-bottom: none;
         }
         & when (@variationButtonAttached) or (@variationButtonInverted) {
-            .ui.inverted.basic.buttons:not(.spaced) .button,
-            .ui.attached.basic.buttons:not(.wrapping):not(.inverted) .basic.button {
+            .ui.inverted.basic.buttons@{notSpaced} .button,
+            .ui.attached.basic.buttons@{notWrapping}@{notInverted} .basic.button {
                 margin-bottom: @attachedOffset;
             }
         }
-        .ui.basic.buttons:not(.vertical):not(.attached):not(.spaced):not(.wrapping):not(.inverted) .basic.button {
+        .ui.basic.buttons@{notVertical}@{notAttached}@{notSpaced}@{notWrapping}@{notInverted} .basic.button {
             margin-bottom: -@basicColoredBorderSize;
         }
     }

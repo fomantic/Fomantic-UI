@@ -126,6 +126,7 @@
                             .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                             .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
                             .on('click' + eventNamespace, selector.result, module.event.result.click)
+                            .on('click' + eventNamespace, selector.remove, module.event.remove.click)
                         ;
                     },
                 },
@@ -135,7 +136,10 @@
                         // this makes sure $.extend does not add specified search fields to default fields
                         // this is the only setting which should not extend defaults
                         if (parameters && parameters.searchFields !== undefined) {
-                            settings.searchFields = parameters.searchFields;
+                            settings.searchFields = Array.isArray(parameters.searchFields)
+                                ? parameters.searchFields
+                                : [parameters.searchFields]
+                            ;
                         }
                     },
                 },
@@ -169,7 +173,9 @@
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
-                                module.timer = setTimeout(function () { module.hideResults(); }, settings.hideDelay);
+                                module.timer = setTimeout(function () {
+                                    module.hideResults();
+                                }, settings.hideDelay);
                             }
                         ;
                         if (pageLostFocus) {
@@ -195,6 +201,12 @@
                             module.debug('Input blurred without user action, closing results');
                             callback();
                         }
+                    },
+                    remove: {
+                        click: function () {
+                            module.clear.value();
+                            $prompt.trigger('focus');
+                        },
                     },
                     result: {
                         mousedown: function () {
@@ -629,7 +641,7 @@
                             exactResults = [],
                             fuzzyResults = [],
                             searchExp    = searchTerm.replace(regExp.escape, '\\$&'),
-                            matchRegExp  = new RegExp(regExp.beginsWith + searchExp, 'i'),
+                            matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : ''),
 
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
@@ -665,13 +677,14 @@
                             var concatenatedContent = [];
                             $.each(searchFields, function (index, field) {
                                 var
-                                    fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
+                                    fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
                                 ;
                                 if (fieldExists) {
                                     var text;
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
+                                    text = $('<div/>', { html: text }).text().trim();
                                     if (settings.fullTextSearch === 'all') {
                                         concatenatedContent.push(text);
                                         if (index < lastSearchFieldIndex) {
@@ -702,8 +715,10 @@
                     },
                 },
                 exactSearch: function (query, term) {
-                    query = query.toLowerCase();
-                    term = term.toLowerCase();
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
 
                     return term.indexOf(query) > -1;
                 },
@@ -730,8 +745,10 @@
                     if (typeof query !== 'string') {
                         return false;
                     }
-                    query = query.toLowerCase();
-                    term = term.toLowerCase();
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
                     if (queryLength > termLength) {
                         return false;
                     }
@@ -826,6 +843,9 @@
                             delete cache[value];
                             $module.data(metadata.cache, cache);
                         }
+                    },
+                    value: function () {
+                        module.set.value('');
                     },
                 },
 
@@ -1086,6 +1106,39 @@
                                 response[fields.results] = response[fields.results].slice(0, settings.maxResults);
                             }
                         }
+                        if (settings.highlightMatches) {
+                            var results = response[fields.results],
+                                regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
+                                querySplit = module.get.value().split(''),
+                                diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
+                                htmlReg = '(?![^<]*>)',
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore),
+                                markedReplacer = function () {
+                                    var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                                        return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
+                                    });
+
+                                    return args.join('');
+                                }
+                            ;
+                            $.each(results, function (label, content) {
+                                $.each(settings.searchFields, function (index, field) {
+                                    var
+                                        fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
+                                    ;
+                                    if (fieldExists) {
+                                        var markedHTML = typeof content[field] === 'string'
+                                            ? content[field]
+                                            : content[field].toString();
+                                        if (settings.ignoreDiacritics) {
+                                            markedHTML = markedHTML.normalize('NFD');
+                                        }
+                                        markedHTML = markedHTML.replace(/<\/?mark>/g, '');
+                                        response[fields.results][label][field] = markedHTML.replace(markedRegExp, markedReplacer);
+                                    }
+                                });
+                            });
+                        }
                         if (isFunction(template)) {
                             html = template(response, fields, settings.preserveHTML);
                         } else {
@@ -1171,7 +1224,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -1312,8 +1367,14 @@
         // search anywhere in value (set to 'exact' to require exact matches
         fullTextSearch: 'exact',
 
+        // Whether search result should highlight matching strings
+        highlightMatches: false,
+
         // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
         ignoreDiacritics: false,
+
+        // whether to consider case sensitivity on local searching
+        ignoreSearchCase: true,
 
         // whether to add events to prompt automatically
         automatic: true,
@@ -1393,6 +1454,7 @@
             categoryResults: 'results', // array of results (category view)
             description: 'description', // result description
             image: 'image', // result image
+            alt: 'alt', // result alt text for image
             price: 'price', // result price
             results: 'results', // array of results (standard)
             title: 'title', // result title
@@ -1404,6 +1466,7 @@
 
         selector: {
             prompt: '.prompt',
+            remove: '> .icon.input > .remove.icon',
             searchButton: '.search.button',
             results: '.results',
             message: '.results > .message',
@@ -1432,8 +1495,9 @@
                     };
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                    return string.replace(badChars, escapedChar);
+                    string = string.replace(badChars, escapedChar);
+                    // FUI controlled HTML is still allowed
+                    string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
                 }
 
                 return string;
@@ -1479,7 +1543,7 @@
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1532,7 +1596,7 @@
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                 + '</div>';
                         }
                         html += '<div class="content">';

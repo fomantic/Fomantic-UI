@@ -1,6 +1,6 @@
 const
     browserslist = require('browserslist'),
-    console = require('better-console'),
+    console = require('@fomantic/better-console'),
     config  = require('./user'),
     release = require('./project/release')
 ;
@@ -40,12 +40,12 @@ module.exports = {
     },
 
     filenames: {
-        concatenatedCSS: 'semantic.css',
-        concatenatedJS: 'semantic.js',
-        concatenatedMinifiedCSS: 'semantic.min.css',
-        concatenatedMinifiedJS: 'semantic.min.js',
-        concatenatedRTLCSS: 'semantic.rtl.css',
-        concatenatedMinifiedRTLCSS: 'semantic.rtl.min.css',
+        concatenatedCSS: config.fileName + release.versionInFileName + '.css',
+        concatenatedJS: config.fileName + release.versionInFileName + '.js',
+        concatenatedMinifiedCSS: config.fileName + release.versionInFileName + '.min.css',
+        concatenatedMinifiedJS: config.fileName + release.versionInFileName + '.min.js',
+        concatenatedRTLCSS: config.fileName + release.versionInFileName + '.rtl.css',
+        concatenatedMinifiedRTLCSS: config.fileName + release.versionInFileName + '.rtl.min.css',
     },
 
     regExp: {

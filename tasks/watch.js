@@ -4,7 +4,7 @@
 
 const
     // node dependencies
-    console    = require('better-console'),
+    console    = require('@fomantic/better-console'),
     gulp       = require('gulp'),
 
     // user config

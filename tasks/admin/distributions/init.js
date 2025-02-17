@@ -17,9 +17,9 @@ const
     fs        = require('fs'),
     path      = require('path'),
     del       = require('del'),
-    console   = require('better-console'),
+    console   = require('@fomantic/better-console'),
     gulp      = require('gulp'),
-    git       = require('gulp-git'),
+    git       = require('@fomantic/gulp-git'),
     mkdirp    = require('mkdirp'),
 
     // admin files
