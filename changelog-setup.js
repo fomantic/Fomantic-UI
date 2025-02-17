@@ -84,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^[A-Za-z]+(\([ ,A-Z_a-z-]*\))*: */, '');
+        let result = text.replace(/^\w+(\([^()]+\))?: */, '');
 
         return new Handlebars.SafeString(result);
     });
