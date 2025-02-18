@@ -9,7 +9,7 @@ const issueLinks = function (item) {
         return item;
     }
     let repository = semver.gte(loopVersion, '2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
-    item.subject = item.subject.replace(/#(\d+)/, '[`#$1`](https://github.com/' + repository + '/issues/$1)');
+    item.subject = item.subject.replace(/#(\d+)([, ]|$)/, '[`#$1`](https://github.com/' + repository + '/issues/$1) ');
 
     return item;
 };
@@ -84,7 +84,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^\w+(\([^()]+\))?: */, '');
+        let result = text.replace(/^(\w+(\([^()]+\))?:|\[[\w ]+]) */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -114,7 +114,7 @@ module.exports = function (Handlebars) {
 
         changelogDeps = {};
         const
-            depsRegex = /build\(deps[A-Za-z-]*\): bump ([/@A-Za-z-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
+            depsRegex = /(?:build\(deps[A-Za-z-]*\):|\[Snyk]) (?:\[?[Ss]ecurity]? )?(?:bump|upgrade) ([/@\w.-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/,
             detectVersionRange = function (item) {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
