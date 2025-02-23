@@ -1,0 +1,4 @@
+@focusBorderColor: #fff;
+@placeholderColor: @gray-light;
+@focusColor: black;
+@boder: transparent;

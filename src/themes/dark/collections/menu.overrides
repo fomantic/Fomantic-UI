@@ -1,0 +1,30 @@
+.ui.menu.primary {
+  .active.item {
+    color: @success !important;
+  }
+}
+
+.ui.menu.inverted {
+  background-color: @success !important;
+  .item:focus,
+  .item:hover,
+  .active.item {
+    color: @primary !important;
+  }
+}
+
+.ui.pagination.menu {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.ui.tabular.menu {
+  border-color: lighten(@gray-dark, 5%);
+}
+
+.ui.tabular.menu { 
+  .active.item {
+    border-color:lighten(@gray-dark, 5%);
+  }
+}
