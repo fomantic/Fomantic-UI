@@ -40,7 +40,6 @@
 -------------------- */
 
 @menuTitlePadding: 0;
-@menuIconFloat: right;
 @menuIconMargin: @iconMargin;
 @menuIconTransform: rotate(180deg);
 

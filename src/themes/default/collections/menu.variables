@@ -58,7 +58,6 @@
 @iconOpacity: 0.9;
 
 /* Dropdown Icon */
-@dropdownIconFloat: right;
 @dropdownIconDistance: 1em;
 
 /* Header */
@@ -67,8 +66,8 @@
 @headerTextTransform: @normal;
 
 /* Vertical Icon */
-@verticalIconFloat: right;
-@verticalIconMargin: 0 0 0 0.5em;
+@verticalIconOrder: 2;
+@verticalIconMargin: 0 0 0 auto;
 
 /* Vertical Header */
 @verticalHeaderMargin: 0 0 0.5em;
@@ -158,6 +157,7 @@
 @secondaryDropdownMenuDistance: @relative5px;
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
+@dropdownUpwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 
 /* --------------
      States
