@@ -3706,6 +3706,7 @@
                             ? callback
                             : function () {};
                         module.verbose('Doing menu show animation', $currentMenu);
+                        $currentMenu.removeClass(className.hidden);
                         module.set.direction($subMenu);
                         transition = settings.transition.showMethod || module.get.transition($subMenu);
                         if (module.is.selection()) {
