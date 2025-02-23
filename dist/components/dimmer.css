@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Dimmer
+ * # Fomantic-UI 2.9.4 - Dimmer
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -75,9 +75,13 @@
   scrollbar-shadow-color: #656565;
   scrollbar-track-color: #323232;
   scrollbar-arrow-color: #323232;
-  
+}
+@supports (-moz-appearance: none) {
+  .ui.dimmer:not(.inverted) {
+    
 /* firefox: first color thumb, second track */
-  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+    scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+  }
 }
 
 

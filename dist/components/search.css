@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Search
+ * # Fomantic-UI 2.9.4 - Search
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -250,34 +250,45 @@
 
 
 /* --------------
-        Selection
+        Clear Icon
     --------------- */
-.ui.search.selection .prompt {
-  border-radius: 0.28571429rem;
-}
-
-/* Remove input */
-.ui.search.selection > .icon.input > .remove.icon {
-  pointer-events: none;
-  position: absolute;
-  left: auto;
-  opacity: 0;
-  color: "";
-  top: 0;
-  right: 0;
-  transition: color 0.1s ease, opacity 0.1s ease;
-}
-.ui.search.selection > .icon.input > .active.remove.icon {
+.ui.search > .icon.input > .remove.icon {
+  pointer-events: all;
+  transition: opacity 0.1s ease;
   cursor: pointer;
-  opacity: 0.8;
-  pointer-events: auto;
+  opacity: 0.6;
 }
-.ui.search.selection > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
+.ui.search > .icon.input > .remove.icon:hover {
+  opacity: 1;
+}
+.ui.search > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
   right: 1.85714em;
 }
-.ui.search.selection > .icon.input > .remove.icon:hover {
+.ui.search input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  -webkit-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
+  opacity: 0.6;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 352 512'%3E%3Cpath d='M242.7 256l100.1-100.1c12.3-12.3 12.3-32.2 0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5 0L176 189.3 75.9 89.2c-12.3-12.3-32.2-12.3-44.5 0L9.2 111.5c-12.3 12.3-12.3 32.2 0 44.5L109.3 256 9.2 356.1c-12.3 12.3-12.3 32.2 0 44.5l22.2 22.2c12.3 12.3 32.2 12.3 44.5 0L176 322.7l100.1 100.1c12.3 12.3 32.2 12.3 44.5 0l22.2-22.2c12.3-12.3 12.3-32.2 0-44.5L242.7 256z'/%3E%3C/svg%3E") no-repeat;
+  height: 1em;
+  width: 1em;
+}
+.ui.search input[type="search"]::-webkit-search-cancel-button:hover {
   opacity: 1;
-  color: #db2828;
+}
+.ui.loading.search input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+.ui.search > .icon.input > input:-ms-input-placeholder ~ .remove.icon {
+  display: none;
+}
+.ui.search > .icon.input > input:placeholder-shown ~ .remove.icon,
+.ui.search.loading > .icon.input > .remove.icon {
+  display: none;
+}
+.ui.search > .icon.input > input:-ms-input-placeholder ~ .remove.icon {
+  display: none;
 }
 
 /* --------------

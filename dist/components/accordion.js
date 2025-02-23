@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Accordion
+ * # Fomantic-UI 2.9.4 - Accordion
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -438,7 +438,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

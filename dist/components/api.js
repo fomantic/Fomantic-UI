@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - API
+ * # Fomantic-UI 2.9.4 - API
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -647,7 +647,9 @@
                                 module.debug('Adding error state');
                                 module.set.error();
                                 if (module.should.removeError()) {
-                                    setTimeout(function () { module.remove.error(); }, settings.errorDuration);
+                                    setTimeout(function () {
+                                        module.remove.error();
+                                    }, settings.errorDuration);
                                 }
                             }
                             module.debug('API Request failed', errorMessage, xhr);
@@ -971,7 +973,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

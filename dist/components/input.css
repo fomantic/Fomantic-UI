@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Input
+ * # Fomantic-UI 2.9.4 - Input
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -27,7 +27,7 @@
 .ui.input > input {
   margin: 0;
   max-width: 100%;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: left;
@@ -99,6 +99,12 @@
   background: #fafafa;
   color: rgba(0, 0, 0, 0.87);
   box-shadow: none;
+}
+.ui.form .field > textarea:hover:not(:focus),
+.ui.input > textarea:hover:not(:focus),
+.ui.form .field > input:hover:not(:focus),
+.ui.input > input:hover:not(:focus) {
+  border-color: rgba(34, 36, 38, 0.35);
 }
 
 /* --------------------
@@ -593,7 +599,11 @@
 .ui.form .field.error > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.error:not([class*="left action"]) > input + .ui.button,
-.ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label,
+.ui.form .field.error > .ui.action.input:not([class*="left action"]) > textarea + .ui.button,
+.ui.form .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > textarea + .ui.label,
+.ui.action.input.error:not([class*="left action"]) > textarea + .ui.button,
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > textarea + .ui.label {
   border-right: 1px solid #e0b4b4;
 }
 .ui.form .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
@@ -616,7 +626,11 @@
 .ui.form .field.info > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.info:not([class*="left action"]) > input + .ui.button,
-.ui.right.labeled.input.info:not([class*="corner labeled"]) > input + .ui.label {
+.ui.right.labeled.input.info:not([class*="corner labeled"]) > input + .ui.label,
+.ui.form .field.info > .ui.action.input:not([class*="left action"]) > textarea + .ui.button,
+.ui.form .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > textarea + .ui.label,
+.ui.action.input.info:not([class*="left action"]) > textarea + .ui.button,
+.ui.right.labeled.input.info:not([class*="corner labeled"]) > textarea + .ui.label {
   border-right: 1px solid #a9d5de;
 }
 .ui.form .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
@@ -639,7 +653,11 @@
 .ui.form .field.success > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.success:not([class*="left action"]) > input + .ui.button,
-.ui.right.labeled.input.success:not([class*="corner labeled"]) > input + .ui.label {
+.ui.right.labeled.input.success:not([class*="corner labeled"]) > input + .ui.label,
+.ui.form .field.success > .ui.action.input:not([class*="left action"]) > textarea + .ui.button,
+.ui.form .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > textarea + .ui.label,
+.ui.action.input.success:not([class*="left action"]) > textarea + .ui.button,
+.ui.right.labeled.input.success:not([class*="corner labeled"]) > textarea + .ui.label {
   border-right: 1px solid #a3c293;
 }
 .ui.form .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
@@ -662,7 +680,11 @@
 .ui.form .field.warning > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.warning:not([class*="left action"]) > input + .ui.button,
-.ui.right.labeled.input.warning:not([class*="corner labeled"]) > input + .ui.label {
+.ui.right.labeled.input.warning:not([class*="corner labeled"]) > input + .ui.label,
+.ui.form .field.warning > .ui.action.input:not([class*="left action"]) > textarea + .ui.button,
+.ui.form .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > textarea + .ui.label,
+.ui.action.input.warning:not([class*="left action"]) > textarea + .ui.button,
+.ui.right.labeled.input.warning:not([class*="corner labeled"]) > textarea + .ui.label {
   border-right: 1px solid #c9ba9b;
 }
 .ui.form .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
@@ -687,14 +709,16 @@
 }
 
 /* Input when ui Left */
-.ui[class*="left action"].input > input {
+.ui[class*="left action"].input > input,
+.ui[class*="left action"].input > textarea {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left-color: transparent;
 }
 
 /* Input when ui Right */
-.ui.action.input:not([class*="left action"]) > input {
+.ui.action.input:not([class*="left action"]) > input,
+.ui.action.input:not([class*="left action"]) > textarea {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right-color: transparent;
@@ -718,10 +742,12 @@
 }
 
 /* Input Focus */
-.ui.action.input:not([class*="left action"]) > input:focus {
+.ui.action.input:not([class*="left action"]) > input:focus,
+.ui.action.input:not([class*="left action"]) > textarea:focus {
   border-right-color: #85b7d9;
 }
-.ui.ui[class*="left action"].input > input:focus {
+.ui.ui[class*="left action"].input > input:focus,
+.ui.ui[class*="left action"].input > textarea:focus {
   border-left-color: #85b7d9;
 }
 

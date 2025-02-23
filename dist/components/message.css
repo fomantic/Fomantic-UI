@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Message
+ * # Fomantic-UI 2.9.4 - Message
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -182,6 +182,7 @@
     --------------- */
 .ui.compact.message {
   display: inline-block;
+  max-width: 100%;
 }
 .ui.compact.icon.message {
   display: inline-flex;

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Menu
+ * # Fomantic-UI 2.9.4 - Menu
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -262,7 +262,6 @@
   
 /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
   min-width: 0;
-  min-width: -webkit-max-content;
   min-width: max-content;
   margin: 0 0 0 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);

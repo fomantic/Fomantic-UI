@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Slider
+ * # Fomantic-UI 2.9.4 - Slider
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -161,10 +161,12 @@
 }
 .ui.labeled.slider > .labels .label {
   display: inline-flex;
-  padding: 0.2em 0;
   position: absolute;
   transform: translate(-50%, -100%);
   white-space: nowrap;
+}
+.ui.labeled.slider > .labels .label:not(.ui) {
+  padding: 0.2em 0;
 }
 .ui.bottom.aligned.labeled.slider > .labels .label {
   bottom: 0;
@@ -183,8 +185,26 @@
   top: auto;
   bottom: 100%;
 }
+.ui.labeled.slider.bottom.aligned .labels .ui.label {
+  margin-bottom: -0.5em;
+}
+.ui.labeled.ticked.slider.bottom.aligned .labels .ui.label::after {
+  margin-bottom: 0.5em;
+}
 .ui.labeled.ticked.slider > .labels .halftick.label::after {
   height: 0.75em;
+}
+.ui.inverted.labeled.ticked.slider > .labels .label::after {
+  background: #333;
+}
+.ui.labeled.slider:not(.vertical):not(.bottom) .labels .ui.label {
+  margin-top: -0.5em;
+}
+.ui.labeled.ticked.slider:not(.vertical):not(.bottom) .labels .ui.label::after {
+  margin-top: 0.5em;
+}
+.ui.labeled.ticked.slider:not(.vertical) > .labels .ui.label::after {
+  height: 2em;
 }
 
 /* Vertical Labels */
@@ -209,10 +229,37 @@
   width: 0.75em;
   height: 1px;
 }
+.ui.labeled.vertical.slider:not(.right) > .labels .halftick.label::after {
+  margin-left: 0.6em;
+}
 
 /* Vertical Reversed Labels */
 .ui.labeled.vertical.reversed.slider > .labels .label {
   transform: translate(-100%, 50%);
+}
+.ui.labeled.ticked.vertical.slider:not(.right) > .labels .ui.label::after {
+  margin-left: 0.3em;
+}
+.ui.labeled.vertical.right.aligned.slider > .labels {
+  transform: translateX(50%);
+  left: calc(100% + 0.6em);
+}
+.ui.labeled.vertical.right.aligned.slider > .labels .label {
+  transform: translate(100%, -50%);
+  right: 100%;
+}
+.ui.labeled.vertical.right.aligned.slider > .labels .label::after {
+  right: 100%;
+  left: auto;
+}
+.ui.labeled.vertical.right.aligned.slider > .labels .halftick.label::after {
+  margin-right: 0.6em;
+}
+.ui.labeled.vertical.reversed.right.aligned.slider > .labels .label {
+  transform: translate(100%, 50%);
+}
+.ui.labeled.ticked.vertical.right.aligned.slider > .labels .ui.label::after {
+  margin-right: 0.3em;
 }
 
 /* --------------
@@ -235,6 +282,19 @@
 }
 .ui.inverted.slider .inner .track {
   background-color: rgba(255, 255, 255, 0.08);
+}
+.ui.labeled.slider > .active.labels .label {
+  transition: all 0.2s ease;
+}
+.ui.labeled.ticked.slider > .active.labels .active.label::after {
+  background: #1b1c1d;
+}
+.ui.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background: #545454;
+}
+.ui.labeled.ticked.slider > .active.labels .active.label::after,
+.ui.labeled.slider > .active.labels .label:not(.active) {
+  opacity: 0.6;
 }
 
 /* --------------
@@ -266,6 +326,12 @@
 .ui.primary.inverted.slider.basic:focus .inner .thumb {
   background-color: #21b8ff;
 }
+.ui.primary.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #2185d0;
+}
+.ui.primary.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #54c8ff;
+}
 
 /* Standard */
 .ui.secondary.slider .inner .track-fill {
@@ -291,6 +357,12 @@
 .ui.secondary.inverted.slider.basic .inner .thumb:hover,
 .ui.secondary.inverted.slider.basic:focus .inner .thumb {
   background-color: #6e6e6e;
+}
+.ui.secondary.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #1b1c1d;
+}
+.ui.secondary.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #545454;
 }
 
 /* Standard */
@@ -318,6 +390,12 @@
 .ui.red.inverted.slider.basic:focus .inner .thumb {
   background-color: #ff392b;
 }
+.ui.red.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #db2828;
+}
+.ui.red.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #ff695e;
+}
 
 /* Standard */
 .ui.orange.slider .inner .track-fill {
@@ -343,6 +421,12 @@
 .ui.orange.inverted.slider.basic .inner .thumb:hover,
 .ui.orange.inverted.slider.basic:focus .inner .thumb {
   background-color: #e76b00;
+}
+.ui.orange.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #f2711c;
+}
+.ui.orange.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #ff851b;
 }
 
 /* Standard */
@@ -370,6 +454,12 @@
 .ui.yellow.inverted.slider.basic:focus .inner .thumb {
   background-color: #ebcd00;
 }
+.ui.yellow.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #fbbd08;
+}
+.ui.yellow.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #ffe21f;
+}
 
 /* Standard */
 .ui.olive.slider .inner .track-fill {
@@ -395,6 +485,12 @@
 .ui.olive.inverted.slider.basic .inner .thumb:hover,
 .ui.olive.inverted.slider.basic:focus .inner .thumb {
   background-color: #d2e745;
+}
+.ui.olive.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #b5cc18;
+}
+.ui.olive.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #d9e778;
 }
 
 /* Standard */
@@ -422,6 +518,12 @@
 .ui.green.inverted.slider.basic:focus .inner .thumb {
   background-color: #1ea92e;
 }
+.ui.green.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #21ba45;
+}
+.ui.green.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #2ecc40;
+}
 
 /* Standard */
 .ui.teal.slider .inner .track-fill {
@@ -447,6 +549,12 @@
 .ui.teal.inverted.slider.basic .inner .thumb:hover,
 .ui.teal.inverted.slider.basic:focus .inner .thumb {
   background-color: #3affff;
+}
+.ui.teal.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #00b5ad;
+}
+.ui.teal.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #6dffff;
 }
 
 /* Standard */
@@ -474,6 +582,12 @@
 .ui.blue.inverted.slider.basic:focus .inner .thumb {
   background-color: #21b8ff;
 }
+.ui.blue.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #2185d0;
+}
+.ui.blue.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #54c8ff;
+}
 
 /* Standard */
 .ui.violet.slider .inner .track-fill {
@@ -499,6 +613,12 @@
 .ui.violet.inverted.slider.basic .inner .thumb:hover,
 .ui.violet.inverted.slider.basic:focus .inner .thumb {
   background-color: #745aff;
+}
+.ui.violet.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #6435c9;
+}
+.ui.violet.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #a291fb;
 }
 
 /* Standard */
@@ -526,6 +646,12 @@
 .ui.purple.inverted.slider.basic:focus .inner .thumb {
   background-color: #cf40ff;
 }
+.ui.purple.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #a333c8;
+}
+.ui.purple.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #dc73ff;
+}
 
 /* Standard */
 .ui.pink.slider .inner .track-fill {
@@ -551,6 +677,12 @@
 .ui.pink.inverted.slider.basic .inner .thumb:hover,
 .ui.pink.inverted.slider.basic:focus .inner .thumb {
   background-color: #ff5bd1;
+}
+.ui.pink.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #e03997;
+}
+.ui.pink.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #ff8edf;
 }
 
 /* Standard */
@@ -578,6 +710,12 @@
 .ui.brown.inverted.slider.basic:focus .inner .thumb {
   background-color: #b0620f;
 }
+.ui.brown.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #a5673f;
+}
+.ui.brown.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #d67c1c;
+}
 
 /* Standard */
 .ui.grey.slider .inner .track-fill {
@@ -604,6 +742,12 @@
 .ui.grey.inverted.slider.basic:focus .inner .thumb {
   background-color: #c2c4c5;
 }
+.ui.grey.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #767676;
+}
+.ui.grey.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #dcddde;
+}
 
 /* Standard */
 .ui.black.slider .inner .track-fill {
@@ -629,6 +773,12 @@
 .ui.black.inverted.slider.basic .inner .thumb:hover,
 .ui.black.inverted.slider.basic:focus .inner .thumb {
   background-color: #000000;
+}
+.ui.black.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #1b1c1d;
+}
+.ui.black.inverted.labeled.ticked.slider > .active.labels .active.label::after {
+  background-color: #545454;
 }
 
 /* --------------

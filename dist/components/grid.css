@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Grid
+ * # Fomantic-UI 2.9.4 - Grid
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1706,10 +1706,10 @@
   .ui.stackable.celled.grid > .column:not(.row):first-child {
     border-top: none !important;
   }
-  .ui.inverted.stackable.celled.grid > .column:not(.row),
-  .ui.inverted.stackable.divided.grid > .column:not(.row),
-  .ui.inverted.stackable.celled.grid > .row > .column,
-  .ui.inverted.stackable.divided.grid > .row > .column {
+  .ui.ui.inverted.stackable.celled.grid > .column:not(.row),
+  .ui.ui.inverted.stackable.divided.grid > .column:not(.row),
+  .ui.ui.inverted.stackable.celled.grid > .row > .column,
+  .ui.ui.inverted.stackable.divided.grid > .row > .column {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   .ui.stackable.celled.grid > .column:not(.row),
