@@ -237,6 +237,7 @@
         }
     }
     & when (@variationModalClose) {
+        .undetached.dimmable.dimmed > .ui.modal@{notFullscreen} > .close@{notInside},
         .ui.dimmer > .ui.modal@{notFullscreen} > .close@{notInside} {
             text-shadow: @closeShadow;
         }
@@ -469,6 +470,11 @@
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
     }
+    @supports selector(:has(.f)) {
+        .modals.dimmer:has(.scrollable) {
+            scrollbar-gutter: stable;
+        }
+    }
     .modals.dimmer .ui.scrolling.modal.fullscreen {
         top: 0;
     }
@@ -477,11 +483,16 @@
         top: @scrollingTop;
     }
 
-    /* Fix for Firefox, Edge, IE11 */
-    .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
+    .modals.dimmer .ui.modal:not([class*="overlay fullscreen"])::after {
         content: "\00A0";
         position: absolute;
+        height: 0;
+    }
+    .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
         height: @scrollingMargin;
+    }
+    .dimmable.dimmed > .modals.dimmer {
+        overflow: auto;
     }
 
     /* Undetached Scrolling */
