@@ -640,6 +640,11 @@
             box-shadow: @formStates[@@state][inputFocusBoxShadow];
         }
 
+        .ui.form .field.@{state} > textarea:hover:not(:focus),
+        .ui.form .field.@{state} > input:hover:not(:focus) {
+            border-color: @formStates[@@state][inputHoverBorderColor];
+        }
+
         /* Preserve Native Select Stylings */
         .ui.form .field.@{state} select {
             -webkit-appearance: menulist-button;

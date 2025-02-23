@@ -27,6 +27,7 @@
 @notButton: if(@variationDropdownButton, e(":not(.button)"));
 @notSimple: if(@variationDropdownSimple, e(":not(.simple)"));
 @notUpward: if(@variationDropdownUpward, e(":not(.upward)"));
+@notInverted: if(@variationDropdownInverted, e(":not(.inverted)"));
 
 @notTransparent: if(@variationInputTransparent, e(":not(.transparent)"));
 @notVertical: if(@variationMenuVertical, e(":not(.vertical)"));
@@ -622,6 +623,18 @@ select.ui.dropdown {
     .ui.selection.dropdown:focus .menu {
         border-color: @selectionFocusBorderColor;
         box-shadow: @selectionFocusMenuBoxShadow;
+    }
+    @supports selector(:has(.f)) {
+        .ui.ui.selection.dropdown@{notInverted}:has(> input:focus) {
+            border-color: @selectionFocusBorderColor;
+            box-shadow: none;
+            & > i.icon {
+                opacity: @selectionIconFocusOpacity;
+            }
+        }
+    }
+    .ui.ui.selection.dropdown:focus > i.icon {
+        opacity: @selectionIconFocusOpacity;
     }
 
     /* Visible */
