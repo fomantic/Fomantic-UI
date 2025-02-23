@@ -977,20 +977,28 @@
                     minDate: function (date) {
                         date = module.helper.sanitiseDate(date);
                         if (settings.maxDate !== null && settings.maxDate <= date) {
-                            module.verbose('Unable to set minDate variable bigger that maxDate variable', date, settings.maxDate);
-                        } else {
-                            module.setting('minDate', date);
-                            module.set.dataKeyValue(metadata.minDate, date);
+                            if (!settings.autoAdjustDateEdges) {
+                                module.error('Unable to set minDate variable bigger than maxDate variable', date, settings.maxDate);
+
+                                return;
+                            }
+                            module.set.maxDate(date);
                         }
+                        module.setting('minDate', date);
+                        module.set.dataKeyValue(metadata.minDate, date);
                     },
                     maxDate: function (date) {
                         date = module.helper.sanitiseDate(date);
                         if (settings.minDate !== null && settings.minDate >= date) {
-                            module.verbose('Unable to set maxDate variable lower that minDate variable', date, settings.minDate);
-                        } else {
-                            module.setting('maxDate', date);
-                            module.set.dataKeyValue(metadata.maxDate, date);
+                            if (!settings.autoAdjustDateEdges) {
+                                module.error('Unable to set maxDate variable lower than minDate variable', date, settings.minDate);
+
+                                return;
+                            }
+                            module.set.minDate(date);
                         }
+                        module.setting('maxDate', date);
+                        module.set.dataKeyValue(metadata.maxDate, date);
                     },
                     monthOffset: function (monthOffset, refreshCalendar) {
                         var multiMonth = Math.max(settings.multiMonth, 1);
@@ -1636,6 +1644,7 @@
         startMode: false, // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
         minDate: null, // minimum date/time that can be selected, dates/times before are disabled
         maxDate: null, // maximum date/time that can be selected, dates/times after are disabled
+        autoAdjustDateEdges: false, // automatically sets min or maxdate to the same as the opposite if maxdate < mindate or mindate > maxdate
         disableYear: false, // disable year selection mode
         disableMonth: false, // disable month selection mode
         disableMinute: false, // disable minute selection mode
