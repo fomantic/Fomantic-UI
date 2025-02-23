@@ -1934,6 +1934,84 @@ Floated Menu / Item
             margin-right: 0;
             width: 100%;
         }
+
+        .ui.top.attached.tabular.scroll {
+            display: flex;
+            position: relative;
+            overflow-x: auto;
+            overflow-y: hidden;
+            overscroll-behavior: contain;
+        }
+
+        .ui.top.attached.tabular.scroll::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            background: transparent;
+        }
+
+        .ui.top.attached.tabular.menu > .item.active {
+            border-bottom: 1px solid #fff;
+        }
+
+        .ui.top.attached.tabular.menu {
+            overflow: visible;
+            width: 100%;
+            min-width: fit-content !important;
+        }
+
+        .ui.bottom.attached.tab.segment {
+            border-top: none !important;
+        }
+
+        .ui.top.attached.tab.segment {
+            border-bottom: none !important;
+        }
+
+        .ui.bottom.attached.tabular.menu {
+            overflow: visible;
+            width: 100% !important;
+            min-width: fit-content !important;
+        }
+
+        .ui.attached.tabular.shadow-hider {
+            border: black 1px;
+            margin-right: 1rem;
+            position: absolute;
+            height: 100%;
+            width: 1em;
+            background-color: white;
+            z-index: 2;
+        }
+
+        .ui.attached.tabular.top.shadow-hider-start {
+            border-bottom: 1px solid #d4d4d5 !important;
+        }
+
+        .ui.attached.tabular.shadow-hider-end {
+            height: 100%;
+            position: sticky;
+            margin-left: -1rem;
+            flex: 0 0 1rem;
+            left: calc(100% - 2rem);
+        }
+
+        .ui.attached.tabular.shadow {
+            position: sticky;
+            z-index: 1;
+            flex: 0 0 1rem;
+        }
+
+        .ui.attached.tabular.shadow-start {
+            left: 0;
+            background-image: linear-gradient(90deg, #0004, transparent);
+        }
+
+        .ui.attached.tabular.shadow-end {
+            right: 0;
+            background-image: linear-gradient(90deg, transparent, #0004);
+            width: 1rem;
+            left: calc(100% - 2.1rem);
+        }
     }
 }
 
