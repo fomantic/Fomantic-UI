@@ -24,6 +24,7 @@ The official community fork of the popular Semantic-UI framework.
 [![Dependabot Status](https://badgen.net/github/dependabot/fomantic/Fomantic-UI/?icon=dependabot)](https://github.com/features/security)
 [![Known Build Dependency Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7496/badge)](https://bestpractices.coreinfrastructure.org/projects/7496)
+[![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20Fomantic%20UI%20Guru-006BFF)](https://gurubase.io/g/fomantic-ui)
 
 ---
 
