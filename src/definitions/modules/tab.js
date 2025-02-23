@@ -475,11 +475,14 @@
                                     'X-Remote': true,
                                 },
                                 onSuccess: function (response) {
+                                    let $navigation = module.get.navElement(tabPath);
+                                    let isNavigationActive = $navigation.hasClass(className.active);
+
                                     if (settings.cacheType === 'response') {
                                         module.cache.add(fullTabPath, response);
                                     }
                                     module.update.content(tabPath, response);
-                                    if (tabPath == activeTabPath) {
+                                    if (isNavigationActive && tabPath == activeTabPath) {
                                         module.debug('Content loaded', tabPath);
                                         module.activate.tab(tabPath);
                                     } else {
