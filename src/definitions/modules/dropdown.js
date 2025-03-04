@@ -1620,7 +1620,7 @@
                                     module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                     module.event.item.click.call($selectedItem, event);
                                 }
-                                if (module.is.searchSelection()) {
+                                if (module.is.searchSelection() && !settings.keepSearchTerm) {
                                     module.remove.searchTerm();
                                 }
                                 if (module.is.multiple()) {

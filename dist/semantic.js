@@ -1,15 +1,15 @@
 /*
- * # Fomantic UI - 2.9.3
+ * # Fomantic UI - 2.9.4
  * https://github.com/fomantic/Fomantic-UI
  * https://fomantic-ui.com/
  *
- * Copyright 2023 Contributors
+ * Copyright 2025 Contributors
  * Released under the MIT license
  * https://opensource.org/licenses/MIT
  *
  */
 /*!
- * # Fomantic-UI 2.9.3 - Site
+ * # Fomantic-UI 2.9.4 - Site
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -302,7 +302,9 @@
                         });
                     }
                     clearTimeout(module.performance.timer);
-                    module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                    module.performance.timer = setTimeout(function () {
+                        module.performance.display();
+                    }, 500);
                 },
                 display: function () {
                     var
@@ -463,7 +465,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Form Validation
+ * # Fomantic-UI 2.9.4 - Form Validation
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -502,6 +504,7 @@
                 element     = this,
 
                 formErrors  = [],
+                formErrorsTracker = {},
                 keyHeldDown = false,
 
                 // set at run-time
@@ -1002,6 +1005,13 @@
                                     fullFields[name].rules.push({ type: rule });
                                 });
                             }
+
+                            $.each(fullFields[name].rules, function (index, rule) {
+                                var ruleName = module.get.ruleName(rule);
+                                if (ruleName === 'empty') {
+                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name + '" will be removed in a future version. -> Use "notEmpty" rule instead.');
+                                }
+                            });
                         });
 
                         return fullFields;
@@ -1015,9 +1025,10 @@
                             ancillary     = module.get.ancillaryValue(rule),
                             $field        = module.get.field(field.identifier),
                             value         = $field.val(),
-                            prompt        = isFunction(rule.prompt)
-                                ? rule.prompt(value)
-                                : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            promptCheck   = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
+                            prompt        = String(isFunction(promptCheck)
+                                ? promptCheck.call($field[0], value)
+                                : promptCheck),
                             requiresValue = prompt.search('{value}') !== -1,
                             requiresName  = prompt.search('{name}') !== -1,
                             parts,
@@ -1055,10 +1066,10 @@
                     },
                     settings: function () {
                         if ($.isPlainObject(parameters)) {
-                            if (parameters.fields) {
-                                parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
-                            }
                             settings = $.extend(true, {}, $.fn.form.settings, parameters);
+                            if (settings.fields) {
+                                settings.fields = module.get.fieldsFromShorthand(settings.fields);
+                            }
                             validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                             module.verbose('Extending settings', validation, settings);
                         } else {
@@ -1083,7 +1094,7 @@
                         // refresh selector cache
                         (instance || module).refresh();
                     },
-                    field: function (identifier, strict) {
+                    field: function (identifier, strict, ignoreMissing) {
                         module.verbose('Finding field with identifier', identifier);
                         identifier = module.escape.string(identifier);
                         var t;
@@ -1103,7 +1114,9 @@
                         if (t.length > 0) {
                             return t;
                         }
-                        module.error(error.noField.replace('{identifier}', identifier));
+                        if (!ignoreMissing) {
+                            module.error(error.noField.replace('{identifier}', identifier));
+                        }
 
                         return strict ? $() : $('<input/>');
                     },
@@ -1173,7 +1186,7 @@
                             var
                                 $field       = $(field),
                                 $calendar    = $field.closest(selector.uiCalendar),
-                                name         = $field.prop('name'),
+                                name         = $field.prop('name') || $field.prop('id'),
                                 value        = $field.val(),
                                 isCheckbox   = $field.is(selector.checkbox),
                                 isRadio      = $field.is(selector.radio),
@@ -1281,10 +1294,10 @@
 
                 has: {
 
-                    field: function (identifier) {
+                    field: function (identifier, ignoreMissing) {
                         module.verbose('Checking for existence of a field with identifier', identifier);
 
-                        return module.get.field(identifier, true).length > 0;
+                        return module.get.field(identifier, true, ignoreMissing).length > 0;
                     },
 
                 },
@@ -1402,7 +1415,7 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup)
+                                    .appendTo($fieldGroup.filter('.' + className.error))
                                 ;
                             }
                             $prompt
@@ -1484,7 +1497,7 @@
                         }
                         if (rule === undefined) {
                             module.debug('Removed all rules');
-                            if (module.has.field(field)) {
+                            if (module.has.field(field, true)) {
                                 validation[field].rules = [];
                             } else {
                                 delete validation[field];
@@ -1685,7 +1698,7 @@
                         module.debug('Enabling auto check on required fields');
                         if (validation) {
                             $.each(validation, function (fieldName) {
-                                if (!module.has.field(fieldName)) {
+                                if (!module.has.field(fieldName, true)) {
                                     module.verbose('Field not found, removing from validation', fieldName);
                                     module.remove.field(fieldName);
                                 }
@@ -1699,20 +1712,20 @@
                                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
                                 isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                 validation = module.get.validation($el),
-                                hasEmptyRule = validation
+                                hasNotEmptyRule = validation
                                     ? $.grep(validation.rules, function (rule) {
-                                        return rule.type === 'empty';
-                                    }) !== 0
+                                        return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
+                                    }).length > 0
                                     : false,
                                 identifier = module.get.identifier(validation, $el)
                             ;
-                            if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
+                            if (isRequired && !isDisabled && !hasNotEmptyRule && identifier !== undefined) {
                                 if (isCheckbox) {
                                     module.verbose("Adding 'checked' rule on field", identifier);
                                     module.add.rule(identifier, 'checked');
                                 } else {
-                                    module.verbose("Adding 'empty' rule on field", identifier);
-                                    module.add.rule(identifier, 'empty');
+                                    module.verbose("Adding 'notEmpty' rule on field", identifier);
+                                    module.add.rule(identifier, 'notEmpty');
                                 }
                             }
                         });
@@ -1739,6 +1752,7 @@
                         $module.removeClass(className.initial);
                         // reset errors
                         formErrors = [];
+                        formErrorsTracker = {};
                         if (module.determine.isValid()) {
                             module.debug('Form has no validation errors, submitting');
                             module.set.success();
@@ -1804,28 +1818,30 @@
                         var
                             identifier    = field.identifier || fieldName,
                             $field        = module.get.field(identifier),
+                            $fieldGroup = $field.closest($group),
                             $dependsField = field.depends
                                 ? module.get.field(field.depends)
                                 : false,
                             fieldValid  = true,
                             fieldErrors = [],
-                            isDisabled = $field.filter(':not(:disabled)').length === 0,
+                            isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled),
                             validationMessage = $field[0].validationMessage,
+                            noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
                             errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        if (validationMessage) {
+                        if (validationMessage && !noNativeValidation && !isDisabled) {
                             module.debug('Field is natively invalid', identifier);
                             fieldErrors.push(validationMessage);
                             fieldValid = false;
                             if (showErrors) {
-                                $field.closest($group).addClass(className.error);
+                                $fieldGroup.addClass(className.error);
                             }
                         } else if (showErrors) {
-                            $field.closest($group).removeClass(className.error);
+                            $fieldGroup.removeClass(className.error);
                         }
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
@@ -1840,7 +1856,22 @@
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
                                     if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
-                                        fieldErrors.push(module.get.prompt(rule, field));
+                                        var fieldError = module.get.prompt(rule, field);
+                                        if (!settings.inline) {
+                                            if (
+                                                // Always allow the first error prompt for new field identifiers
+                                                (!(identifier in formErrorsTracker)
+                                                // Also allow multiple error prompts per field identifier but make sure each prompt is unique
+                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
+                                                // Limit the number of unique error prompts for every field identifier if specified
+                                                && (!errorLimit || (formErrorsTracker[identifier] || []).length < errorLimit)
+                                            ) {
+                                                fieldErrors.push(fieldError);
+                                                (formErrorsTracker[identifier] = formErrorsTracker[identifier] || []).push(fieldError);
+                                            }
+                                        } else {
+                                            fieldErrors.push(fieldError);
+                                        }
                                         fieldValid = false;
                                         if (showErrors) {
                                             $(invalidFields).closest($group).addClass(className.error);
@@ -1855,7 +1886,7 @@
                                 settings.onValid.call($field);
                             }
                         } else {
-                            if (showErrors) {
+                            if (showErrors && fieldErrors.length > 0) {
                                 formErrors = formErrors.concat(fieldErrors);
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
@@ -1953,6 +1984,12 @@
                         module.error.apply(console, arguments);
                     }
                 },
+                warn: function () {
+                    if (!settings.silent) {
+                        module.warn = Function.prototype.bind.call(console.warn, console, settings.name + ':');
+                        module.warn.apply(console, arguments);
+                    }
+                },
                 performance: {
                     log: function (message) {
                         var
@@ -1973,7 +2010,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -2067,6 +2106,7 @@
         name: 'Form',
         namespace: 'form',
 
+        silent: false,
         debug: false,
         verbose: false,
         performance: true,
@@ -2089,6 +2129,7 @@
         errorFocus: true,
         dateHandling: 'date', // 'date', 'input', 'formatter'
         errorLimit: 0,
+        noNativeValidation: false,
 
         onValid: function () {},
         onInvalid: function () {},
@@ -2131,6 +2172,7 @@
             maxValue: '{name} must have a maximum value of {ruleValue}',
             minValue: '{name} must have a minimum value of {ruleValue}',
             empty: '{name} must have a value',
+            notEmpty: '{name} must have a value',
             checked: '{name} must be checked',
             email: '{name} must be a valid e-mail',
             url: '{name} must be a valid url',
@@ -2263,8 +2305,13 @@
         rules: {
 
             // is not empty or blank string
-            empty: function (value) {
+            notEmpty: function (value) {
                 return !(value === undefined || value === '' || (Array.isArray(value) && value.length === 0));
+            },
+
+            /* Deprecated */
+            empty: function (value) {
+                return $.fn.form.settings.rules.notEmpty(value);
             },
 
             // checkbox checked
@@ -2618,7 +2665,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Accordion
+ * # Fomantic-UI 2.9.4 - Accordion
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -3057,7 +3104,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -3212,7 +3261,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Calendar
+ * # Fomantic-UI 2.9.4 - Calendar
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -3315,7 +3364,17 @@
 
                 destroy: function () {
                     module.verbose('Destroying previous calendar for', element);
-                    $module.removeData(moduleNamespace);
+                    $module.removeData([
+                        metadata.date,
+                        metadata.focusDate,
+                        metadata.startDate,
+                        metadata.endDate,
+                        metadata.minDate,
+                        metadata.maxDate,
+                        metadata.mode,
+                        metadata.monthOffset,
+                        moduleNamespace,
+                    ]);
                     module.unbind.events();
                     module.disconnect.classObserver();
                 },
@@ -4005,24 +4064,32 @@
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
                     },
-                    date: function () {
-                        return module.helper.sanitiseDate($module.data(metadata.date)) || null;
+                    date: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.date));
                     },
                     inputDate: function () {
                         return $input.val();
                     },
-                    focusDate: function () {
-                        return $module.data(metadata.focusDate) || null;
+                    focusDate: function (format) {
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.focusDate));
                     },
-                    startDate: function () {
+                    startDate: function (format) {
                         var startModule = module.get.calendarModule(settings.startCalendar);
 
-                        return (startModule ? startModule.get.date() : $module.data(metadata.startDate)) || null;
+                        if (startModule) {
+                            return startModule.get.date(format);
+                        }
+
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.startDate));
                     },
-                    endDate: function () {
+                    endDate: function (format) {
                         var endModule = module.get.calendarModule(settings.endCalendar);
 
-                        return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
+                        if (endModule) {
+                            return endModule.get.date(format);
+                        }
+
+                        return module.helper.dateObjectOrFormatted(format, $module.data(metadata.endDate));
                     },
                     minDate: function () {
                         return $module.data(metadata.minDate) || null;
@@ -4337,6 +4404,20 @@
 
                             return match.slice(1, -1);
                         });
+                    },
+                    dateObjectOrFormatted: function (format, date) {
+                        format = format || '';
+                        date = module.helper.sanitiseDate(date) || null;
+
+                        if (!date) {
+                            return null;
+                        }
+
+                        if (format === '') {
+                            return date;
+                        }
+
+                        return module.helper.dateFormat(format, date);
                     },
                     isDisabled: function (date, mode) {
                         return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
@@ -4692,7 +4773,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -4900,7 +4983,8 @@
                 text = settings.monthFirst || !/^\d{1,2}[./-]/.test(text) ? text : text.replace(/[./-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
                 var textDate = new Date(text);
                 var numberOnly = text.match(/^\d+$/) !== null;
-                if (!numberOnly && !isNaN(textDate.getDate())) {
+                var isShortYear = text.match(/^(?:\d{1,2}[./-]){2}\d{1,2}$/) !== null;
+                if (!isShortYear && !numberOnly && !isNaN(textDate.getDate())) {
                     return textDate;
                 }
                 text = text.toLowerCase();
@@ -5223,7 +5307,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Checkbox
+ * # Fomantic-UI 2.9.4 - Checkbox
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -5434,7 +5518,7 @@
                         ;
 
                         var
-                            r = module.get.radios(),
+                            r = module.get.radios().not(selector.disabled),
                             rIndex = r.index($module),
                             rLen = r.length,
                             checkIndex = false
@@ -5452,7 +5536,10 @@
 
                                 return false;
                             }
-                            if (settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0]) === false) {
+                            var nextOption = $(r[checkIndex]),
+                                nextInput = nextOption.children(selector.input),
+                                disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
+                            if (disallowOption || settings.beforeChecked.apply(nextInput[0]) === false) {
                                 module.verbose('Next option should not allow check, cancelling key navigation');
 
                                 return false;
@@ -5949,7 +6036,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -6097,6 +6186,7 @@
 
         selector: {
             checkbox: '.ui.checkbox',
+            disabled: '.disabled, :has(input[disabled])',
             label: 'label',
             input: 'input[type="checkbox"], input[type="radio"]',
             link: 'a[href]',
@@ -6106,7 +6196,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Dimmer
+ * # Fomantic-UI 2.9.4 - Dimmer
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -6635,7 +6725,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -6837,7 +6929,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Dropdown
+ * # Fomantic-UI 2.9.4 - Dropdown
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -6964,6 +7056,9 @@
                             module.set.initialLoad();
                             module.change.values(settings.values);
                             module.remove.initialLoad();
+                        }
+                        if (module.get.placeholderText() !== '') {
+                            module.set.placeholderText();
                         }
 
                         module.refreshData();
@@ -7631,7 +7726,7 @@
                                 }
                                 if (module.is.multiple()) {
                                     $.each(preSelected, function (index, value) {
-                                        $item.filter('[data-value="' + value + '"]')
+                                        $item.filter('[data-' + metadata.value + '="' + value + '"]')
                                             .addClass(className.filtered)
                                         ;
                                     });
@@ -7728,11 +7823,13 @@
                                 ? query
                                 : module.get.query()
                         ),
-                        results          =  null,
-                        escapedTerm      = module.escape.string(searchTerm),
-                        regExpFlags      = (settings.ignoreSearchCase ? 'i' : '') + 'gm',
+                        results = null,
+                        escapedTerm = module.escape.string(searchTerm),
+                        regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
+                        regExpFlags = regExpIgnore + 'gm',
                         beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
                     ;
+                    module.remove.filteredItem();
                     // avoid loop if we're matching nothing
                     if (module.has.query()) {
                         results = [];
@@ -7776,12 +7873,34 @@
                         ;
                     }
                     module.debug('Showing only matched items', searchTerm);
-                    module.remove.filteredItem();
                     if (results) {
                         $item
                             .not(results)
                             .addClass(className.filtered)
                         ;
+                        if (settings.highlightMatches && (settings.match === 'both' || settings.match === 'text')) {
+                            var querySplit = query.split(''),
+                                diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
+                                htmlReg = '(?![^<]*>)',
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore),
+                                markedReplacer = function () {
+                                    var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                                        return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
+                                    });
+
+                                    return args.join('');
+                                }
+                            ;
+                            $.each(results, function (index, result) {
+                                var $result = $(result),
+                                    markedHTML = module.get.choiceText($result, true)
+                                ;
+                                if (settings.ignoreDiacritics) {
+                                    markedHTML = markedHTML.normalize('NFD');
+                                }
+                                $result.html(markedHTML.replace(markedRegExp, markedReplacer));
+                            });
+                        }
                     }
 
                     if (!module.has.query()) {
@@ -7817,8 +7936,10 @@
                         termLength  = term.length,
                         queryLength = query.length
                     ;
-                    query = settings.ignoreSearchCase ? query.toLowerCase() : query;
-                    term = settings.ignoreSearchCase ? term.toLowerCase() : term;
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
                     if (queryLength > termLength) {
                         return false;
                     }
@@ -8025,7 +8146,7 @@
                                 if (!itemActivated && !pageLostFocus) {
                                     if (settings.forceSelection) {
                                         module.forceSelection();
-                                    } else if (!settings.allowAdditions) {
+                                    } else if (!settings.allowAdditions && !settings.keepSearchTerm && !module.has.menuSearch()) {
                                         module.remove.searchTerm();
                                     }
                                     module.hide();
@@ -8040,7 +8161,9 @@
                             if (module.is.searchSelection()) {
                                 module.remove.searchTerm();
                             }
-                            module.hide();
+                            if (settings.collapseOnClearable) {
+                                module.hide();
+                            }
                             event.stopPropagation();
                         },
                     },
@@ -8074,7 +8197,9 @@
                             module.set.filtered();
                         }
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.search(); }, settings.delay.search);
+                        module.timer = setTimeout(function () {
+                            module.search();
+                        }, settings.delay.search);
                     },
                     label: {
                         click: function (event) {
@@ -8251,7 +8376,9 @@
                                         module.remove.userAddition();
                                     }
                                     if (!settings.keepSearchTerm) {
-                                        module.remove.filteredItem();
+                                        if (module.is.multiple()) {
+                                            module.remove.filteredItem();
+                                        }
                                         module.remove.searchTerm();
                                     }
                                     if (!module.is.visible() && $target.length > 0) {
@@ -8423,7 +8550,7 @@
                                     module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                     module.event.item.click.call($selectedItem, event);
                                 }
-                                if (module.is.searchSelection()) {
+                                if (module.is.searchSelection() && !settings.keepSearchTerm) {
                                     module.remove.searchTerm();
                                 }
                                 if (module.is.multiple()) {
@@ -9425,7 +9552,7 @@
                             } else {
                                 $combo.text(text);
                             }
-                        } else if (settings.action === 'activate') {
+                        } else if (settings.action === 'activate' || isFunction(settings.action)) {
                             if (text !== module.get.placeholderText() || isNotPlaceholder) {
                                 $text.removeClass(className.placeholder);
                             }
@@ -9485,7 +9612,7 @@
                             module.set.scrollPosition($nextValue);
                             $selectedItem.removeClass(className.selected);
                             $nextValue.addClass(className.selected);
-                            if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                            if (settings.selectOnKeydown && module.is.single() && (!$nextItem || !$nextItem.hasClass(className.actionable))) {
                                 module.set.selectedItem($nextValue);
                             }
                         }
@@ -9606,19 +9733,27 @@
                         $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
+                        if (!$selectedItem && value !== undefined) {
+                            return false;
+                        }
+                        if (isMultiple) {
+                            if (!keepSearchTerm) {
+                                module.remove.searchWidth();
+                            }
+                            if (settings.useLabels) {
+                                module.remove.selectedItem();
+                                if (value === undefined) {
+                                    module.remove.labels($module.find(selector.label), true);
+                                }
+                            }
+                        } else {
+                            module.remove.activeItem();
+                            module.remove.selectedItem();
+                        }
                         if (!$selectedItem) {
                             return false;
                         }
                         module.debug('Setting selected menu item to', $selectedItem);
-                        if (module.is.multiple() && !keepSearchTerm) {
-                            module.remove.searchWidth();
-                        }
-                        if (module.is.single()) {
-                            module.remove.activeItem();
-                            module.remove.selectedItem();
-                        } else if (settings.useLabels) {
-                            module.remove.selectedItem();
-                        }
                         // select each item
                         $selectedItem
                             .each(function () {
@@ -9644,8 +9779,8 @@
                                             module.save.remoteData(selectedText, selectedValue);
                                         }
                                         if (settings.useLabels) {
-                                            module.add.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                                             module.add.label(selectedValue, selectedText, shouldAnimate);
+                                            module.add.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                                             module.set.activeItem($selected);
                                             module.filterActive();
                                             module.select.nextAvailable($selectedItem);
@@ -9918,6 +10053,12 @@
                         $item.removeClass(className.active);
                     },
                     filteredItem: function () {
+                        if (settings.highlightMatches) {
+                            $.each($item, function (index, item) {
+                                var $markItem = $(item);
+                                $markItem.html($markItem.html().replace(/<\/?mark>/g, ''));
+                            });
+                        }
                         if (settings.useLabels && module.has.maxSelections()) {
                             return;
                         }
@@ -10262,7 +10403,12 @@
                         return $selectedMenu.hasClass(className.leftward);
                     },
                     clearable: function () {
-                        return $module.hasClass(className.clearable) || settings.clearable;
+                        var hasClearableClass = $module.hasClass(className.clearable);
+                        if (!hasClearableClass && settings.clearable) {
+                            $module.addClass(className.clearable);
+                        }
+
+                        return hasClearableClass || settings.clearable;
                     },
                     disabled: function () {
                         return $module.hasClass(className.disabled);
@@ -10585,12 +10731,16 @@
                     show: function () {
                         module.verbose('Delaying show event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.show(); }, settings.delay.show);
+                        module.timer = setTimeout(function () {
+                            module.show();
+                        }, settings.delay.show);
                     },
                     hide: function () {
                         module.verbose('Delaying hide event to ensure user intent');
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { module.hide(); }, settings.delay.hide);
+                        module.timer = setTimeout(function () {
+                            module.hide();
+                        }, settings.delay.hide);
                     },
                 },
 
@@ -10623,6 +10773,7 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string, forceAmpersand) {
+                        forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
                         var
                             badChars     = /["'<>`]/g,
                             shouldEscape = /["&'<>`]/,
@@ -10639,8 +10790,7 @@
                         ;
                         if (shouldEscape.test(string)) {
                             string = string.replace(forceAmpersand ? /&/g : /&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                            return string.replace(badChars, escapedChar);
+                            string = string.replace(badChars, escapedChar);
                         }
 
                         return string;
@@ -10716,7 +10866,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -10843,6 +10995,7 @@
 
         match: 'both', // what to match against with search selection (both, text, or label)
         fullTextSearch: 'exact', // search anywhere in value (set to 'exact' to require exact matches)
+        highlightMatches: false, // Whether search result should highlight matching strings
         ignoreDiacritics: false, // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
         hideDividers: false, // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
@@ -10876,6 +11029,7 @@
         headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 
         collapseOnActionable: true, // whether the dropdown should collapse upon selection of an actionable item
+        collapseOnClearable: false, // whether the dropdown should collapse upon clicking the clearable icon
 
         // label settings on multi-select
         label: {
@@ -10958,9 +11112,11 @@
             descriptionVertical: 'descriptionVertical', // whether description should be vertical
             value: 'value', // actual dropdown value
             text: 'text', // displayed text when selected
+            data: 'data', // custom data attributes
             type: 'type', // type of dropdown element
             image: 'image', // optional image path
             imageClass: 'imageClass', // optional individual class for image
+            alt: 'alt', // optional alt text for image
             icon: 'icon', // optional icon name
             iconClass: 'iconClass', // optional individual class for icon (for example to use flag instead)
             class: 'class', // optional individual class for item/header
@@ -11067,8 +11223,7 @@
             ;
             if (shouldEscape.test(string)) {
                 string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                return string.replace(badChars, escapedChar);
+                string = string.replace(badChars, escapedChar);
             }
 
             return string;
@@ -11103,9 +11258,21 @@
             $.each(values, function (index, option) {
                 var
                     itemType = option[fields.type] || 'item',
-                    isMenu = itemType.indexOf('menu') !== -1
+                    isMenu = itemType.indexOf('menu') !== -1,
+                    maybeData = '',
+                    dataObject = option[fields.data]
                 ;
-
+                if (dataObject) {
+                    var dataKey,
+                        dataKeyEscaped
+                    ;
+                    for (dataKey in dataObject) {
+                        dataKeyEscaped = String(dataKey).replace(/\W/g, '');
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
+                            maybeData += ' data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '"';
+                        }
+                    }
+                }
                 if (itemType === 'item' || isMenu) {
                     var
                         maybeText = option[fields.text]
@@ -11122,12 +11289,12 @@
                             : '',
                         hasDescription = escape(option[fields.description] || '', preserveHTML) !== ''
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + (option[fields.alt] ? '" alt="' + deQuote(option[fields.alt]) : '') + '">';
                     }
                     if (option[fields.icon]) {
                         html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
@@ -11195,7 +11362,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Embed
+ * # Fomantic-UI 2.9.4 - Embed
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -11315,11 +11482,12 @@
 
                 createPlaceholder: function (placeholder) {
                     var
-                        icon  = module.get.icon()
+                        icon  = module.get.icon(),
+                        alt   = module.get.alt()
                     ;
                     placeholder = placeholder || module.get.placeholder();
-                    $module.html(templates.placeholder(placeholder, icon));
-                    module.debug('Creating placeholder for embed', placeholder, icon);
+                    $module.html(templates.placeholder(placeholder, icon, alt));
+                    module.debug('Creating placeholder for embed', placeholder, icon, alt);
                 },
 
                 createEmbed: function (url) {
@@ -11398,6 +11566,9 @@
                     },
                     placeholder: function () {
                         return settings.placeholder || $module.data(metadata.placeholder);
+                    },
+                    alt: function () {
+                        return settings.alt || $module.data(metadata.alt);
                     },
                     icon: function () {
                         return settings.icon || ($module.data(metadata.icon) !== undefined
@@ -11484,6 +11655,7 @@
                             .removeData(metadata.id)
                             .removeData(metadata.icon)
                             .removeData(metadata.placeholder)
+                            .removeData(metadata.alt)
                             .removeData(metadata.source)
                             .removeData(metadata.url)
                         ;
@@ -11636,7 +11808,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -11751,6 +11925,8 @@
         source: false,
         url: false,
         id: false,
+        placeholder: false,
+        alt: false,
 
         // standard video settings
         autoplay: 'auto',
@@ -11773,6 +11949,7 @@
             id: 'id',
             icon: 'icon',
             placeholder: 'placeholder',
+            alt: 'alt',
             source: 'source',
             url: 'url',
         },
@@ -11848,7 +12025,7 @@
                     + ' width="100%" height="100%"'
                     + ' msallowFullScreen allowFullScreen></iframe>';
             },
-            placeholder: function (image, icon) {
+            placeholder: function (image, icon, alt) {
                 var
                     html = '',
                     deQuote = $.fn.embed.settings.templates.deQuote
@@ -11857,7 +12034,7 @@
                     html += '<i class="' + deQuote(icon) + ' icon"></i>';
                 }
                 if (image) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + '">';
+                    html += '<img class="placeholder" src="' + deQuote(image) + (alt ? '" alt="' + deQuote(alt) : '') + '">';
                 }
 
                 return html;
@@ -11874,7 +12051,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Flyout
+ * # Fomantic-UI 2.9.4 - Flyout
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -13094,7 +13271,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -13424,7 +13603,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Modal
+ * # Fomantic-UI 2.9.4 - Modal
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -13952,7 +14131,9 @@
                     },
                     debounce: function (method, delay) {
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { method(); }, delay);
+                        module.timer = setTimeout(function () {
+                            method();
+                        }, delay);
                     },
                     keyboard: function (event) {
                         var
@@ -14698,7 +14879,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -15058,7 +15241,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Nag
+ * # Fomantic-UI 2.9.4 - Nag
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -15147,7 +15330,9 @@
                     }
 
                     if (settings.displayTime > 0) {
-                        setTimeout(function () { module.hide(); }, settings.displayTime);
+                        setTimeout(function () {
+                            module.hide();
+                        }, settings.displayTime);
                     }
                     module.show();
                 },
@@ -15203,8 +15388,10 @@
                         module.debug('Dismissing nag', settings.storageMethod, settings.key, settings.value, settings.expires);
                         module.storage.set(settings.key, settings.value);
                     }
-                    event.stopImmediatePropagation();
-                    event.preventDefault();
+                    if (event) {
+                        event.stopImmediatePropagation();
+                        event.preventDefault();
+                    }
                 },
 
                 should: {
@@ -15436,7 +15623,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -15619,7 +15808,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Popup
+ * # Fomantic-UI 2.9.4 - Popup
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -15814,7 +16003,9 @@
                         ;
                         clearTimeout(module.hideTimer);
                         if (!openedWithTouch || (openedWithTouch && settings.addTouchEvents)) {
-                            module.showTimer = setTimeout(function () { module.show(); }, delay);
+                            module.showTimer = setTimeout(function () {
+                                module.show();
+                            }, delay);
                         }
                     },
                     end: function () {
@@ -15824,7 +16015,9 @@
                                 : settings.delay
                         ;
                         clearTimeout(module.showTimer);
-                        module.hideTimer = setTimeout(function () { module.hide(); }, delay);
+                        module.hideTimer = setTimeout(function () {
+                            module.hide();
+                        }, delay);
                     },
                     touchstart: function (event) {
                         openedWithTouch = true;
@@ -16864,7 +17057,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -17175,7 +17370,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Progress
+ * # Fomantic-UI 2.9.4 - Progress
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -17967,7 +18162,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -18153,7 +18350,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Slider
+ * # Fomantic-UI 2.9.4 - Slider
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -18185,8 +18382,6 @@
             query          = arguments[0],
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
-
-            alphabet       = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
 
             SINGLE_STEP     = 1,
             BIG_STEP        = 2,
@@ -18236,7 +18431,6 @@
                 position,
                 secondPos,
                 offset,
-                precision,
                 gapRatio = 1,
                 previousValue,
 
@@ -18279,6 +18473,7 @@
                     clearInterval(instance.interval);
                     module.unbind.events();
                     module.unbind.slidingEvents();
+                    delete module.cache;
                     $module.removeData(moduleNamespace);
                     instance = undefined;
                 },
@@ -18295,7 +18490,7 @@
                                 + '<div class="thumb"></div>'
                                 + '</div>');
                         }
-                        precision = module.get.precision();
+                        module.clear.cache();
                         $thumb = $module.find('.thumb:not(.second)');
                         if (settings.showThumbTooltip) {
                             $thumb
@@ -18329,8 +18524,14 @@
                                 module.setup.autoLabel();
                             }
 
+                            if (settings.highlightRange) {
+                                $labels.addClass(className.active);
+                            }
+
                             if (settings.showLabelTicks) {
                                 $module.addClass(className.ticked);
+                            } else if ($module.hasClass(className.ticked)) {
+                                settings.showLabelTicks = 'always';
                             }
                         }
                     },
@@ -18365,14 +18566,20 @@
                         } else {
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
                         }
-                        for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
+                        var step = module.get.step(),
+                            precision = module.get.precision(),
+                            len = module.get.numLabels(),
+                            ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4)
+                        ;
+                        for (var i = 0; i <= len; i++) {
                             var
-                                labelText = module.get.label(i),
+                                stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision,
+                                labelText = module.get.label(i, stepValue),
                                 showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0,
                                 $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
-                                    ? (!(i % module.get.gapRatio())
-                                        ? $('<li class="label">' + (showLabel ? labelText : '') + '</li>')
-                                        : $('<li class="halftick label"></li>'))
+                                    ? ((!(i % module.get.gapRatio()) && i < ignoreLabels) || i === len
+                                        ? $('<li/>', { class: className.label, 'data-value': stepValue, html: showLabel ? labelText : '' })
+                                        : $('<li/>', { class: 'halftick label', 'data-value': stepValue }))
                                     : null,
                                 ratio  = i / len
                             ;
@@ -18637,19 +18844,25 @@
                     resize: function (_event) {
                         // To avoid a useless performance cost, we only call the label refresh when its necessary
                         if (gapRatio !== module.get.gapRatio()) {
-                            module.setup.labels();
+                            module.resync();
                             gapRatio = module.get.gapRatio();
                         }
                     },
                 },
 
+                clear: {
+                    cache: function () {
+                        module.cache = {};
+                    },
+                },
+
                 resync: function () {
                     module.verbose('Resyncing thumb position based on value');
+                    module.setup.labels();
                     if (module.is.range()) {
                         module.update.position(module.secondThumbVal, $secondThumb);
                     }
                     module.update.position(module.thumbVal, $thumb);
-                    module.setup.labels();
                 },
                 takeStep: function (multiplier) {
                     if (!multiplier) {
@@ -18692,6 +18905,25 @@
                 },
 
                 is: {
+                    prime: function (n) {
+                        if (module.cache['prime' + n] === undefined) {
+                            var p = true;
+                            for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
+                                if (n % i === 0) {
+                                    p = false;
+
+                                    break;
+                                }
+                            }
+                            if (p) {
+                                p = n > 1;
+                            }
+
+                            module.cache['prime' + n] = p;
+                        }
+
+                        return module.cache['prime' + n];
+                    },
                     range: function () {
                         var isRange = $module.hasClass(className.range);
                         if (!isRange && (settings.minRange || settings.maxRange)) {
@@ -18806,62 +19038,87 @@
                         return margin || '0px';
                     },
                     precision: function () {
-                        var
-                            decimalPlaces,
-                            step = module.get.step()
-                        ;
-                        if (step !== 0) {
-                            var split = String(step).split('.');
-                            decimalPlaces = split.length === 2 ? split[1].length : 0;
-                        } else {
-                            decimalPlaces = settings.decimalPlaces;
+                        if (module.cache.precision === undefined) {
+                            var
+                                decimalPlaces,
+                                step = module.get.step()
+                            ;
+                            if (step !== 0) {
+                                var split = String(step).split('.');
+                                decimalPlaces = split.length === 2 ? split[1].length : 0;
+                            } else {
+                                decimalPlaces = settings.decimalPlaces;
+                            }
+                            var precision = Math.pow(10, decimalPlaces);
+                            module.debug('Precision determined', precision);
+                            module.cache.precision = precision;
                         }
-                        var precision = Math.pow(10, decimalPlaces);
-                        module.debug('Precision determined', precision);
 
-                        return precision;
+                        return module.cache.precision;
                     },
                     min: function () {
                         return settings.min;
                     },
                     max: function () {
-                        var
-                            step = module.get.step(),
-                            min = module.get.min(),
-                            precision = module.get.precision(),
-                            quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
-                            remainder = step === 0 ? 0 : (settings.max - min) % step
-                        ;
+                        if (module.cache.max === undefined) {
+                            var
+                                step = module.get.step(),
+                                min = module.get.min(),
+                                precision = module.get.precision(),
+                                quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision),
+                                remainder = step === 0 ? 0 : (settings.max - min) % step
+                            ;
+                            if (remainder > 0) {
+                                module.debug('Max value not divisible by given step. Increasing max value.', settings.max, step);
+                            }
+                            module.cache.max = remainder === 0 ? settings.max : min + quotient * step;
+                        }
 
-                        return remainder === 0 ? settings.max : min + quotient * step;
+                        return module.cache.max;
                     },
                     step: function () {
                         return settings.step;
                     },
                     numLabels: function () {
-                        var step = module.get.step(),
-                            precision = module.get.precision(),
-                            value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
-                        module.debug('Determined that there should be ' + value + ' labels');
+                        if (module.cache.numLabels === undefined) {
+                            var step = module.get.step(),
+                                precision = module.get.precision(),
+                                value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
+                            module.debug('Determined that there should be ' + value + ' labels');
+                            module.cache.numLabels = value;
+                        }
 
-                        return value;
+                        return module.cache.numLabels;
                     },
                     labelType: function () {
                         return settings.labelType;
                     },
-                    label: function (value) {
-                        if (interpretLabel) {
-                            return interpretLabel(value);
+                    label: function (value, stepValue) {
+                        if (isFunction(interpretLabel)) {
+                            return interpretLabel(value, stepValue, module);
                         }
 
                         switch (settings.labelType) {
                             case settings.labelTypes.number: {
-                                var step = module.get.step();
-
-                                return Math.round(((value * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
+                                return stepValue;
                             }
                             case settings.labelTypes.letter: {
-                                return alphabet[value % 26];
+                                if (value < 0 || module.get.precision() > 1) {
+                                    module.error(error.invalidLetterNumber, value);
+
+                                    return value;
+                                }
+                                var letterLabel = '',
+                                    letters = Array.isArray(settings.letters) ? settings.letters : String(settings.letters).split(''),
+                                    lettersLen = letters.length
+                                ;
+
+                                while (stepValue >= 0) {
+                                    letterLabel = letters[stepValue % lettersLen] + letterLabel;
+                                    stepValue = Math.floor(stepValue / lettersLen) - 1;
+                                }
+
+                                return letterLabel;
                             }
                             default: {
                                 return value;
@@ -18870,6 +19127,9 @@
                     },
                     value: function () {
                         return value;
+                    },
+                    settings: function () {
+                        return settings;
                     },
                     currentThumbValue: function () {
                         return $currThumb !== undefined && $currThumb.hasClass('second') ? module.secondThumbVal : module.thumbVal;
@@ -18915,6 +19175,7 @@
                         if (settings.autoAdjustLabels) {
                             var
                                 numLabels = module.get.numLabels(),
+                                primePlus = module.is.prime(numLabels) ? 1 : 0,
                                 trackLength = module.get.trackLength(),
                                 gapCounter = 1
                             ;
@@ -18924,7 +19185,7 @@
                             // and apply only if the modulo of the operation is an odd number.
                             if (trackLength > 0) {
                                 while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
-                                    if (!(numLabels % gapCounter)) {
+                                    if (!((numLabels + primePlus) % gapCounter) || settings.autoAdjustLabels === 'fixed') {
                                         gapRatio = gapCounter;
                                     }
                                     gapCounter += 1;
@@ -19062,6 +19323,7 @@
                     },
                     value: function (position) {
                         var
+                            precision = module.get.precision(),
                             startPos = module.is.reversed() ? module.get.trackEndPos() : module.get.trackStartPos(),
                             endPos = module.is.reversed() ? module.get.trackStartPos() : module.get.trackEndPos(),
                             ratio = (position - startPos) / (endPos - startPos),
@@ -19130,6 +19392,30 @@
                 },
 
                 set: {
+                    active: function (thumbVal, secondThumbVal) {
+                        if (settings.highlightRange) {
+                            if (secondThumbVal < thumbVal) {
+                                var tempVal = secondThumbVal;
+                                secondThumbVal = thumbVal;
+                                thumbVal = tempVal;
+                            }
+                            var $children = $labels.find('.label');
+                            $children.each(function (index) {
+                                var
+                                    $child = $(this),
+                                    attrValue = $child.attr('data-value')
+                                ;
+                                if (attrValue) {
+                                    attrValue = parseInt(attrValue, 10);
+                                    if (attrValue >= thumbVal && attrValue <= secondThumbVal) {
+                                        $child.addClass(className.active);
+                                    } else {
+                                        $child.removeClass(className.active);
+                                    }
+                                }
+                            });
+                        }
+                    },
                     value: function (newValue, fireChange) {
                         fireChange = fireChange !== false;
                         var toReset = previousValue === undefined;
@@ -19257,6 +19543,7 @@
                             position = newPos;
                             thumbVal = newValue;
                         }
+                        module.set.active(thumbVal, secondThumbVal);
                         var
                             trackPosValue,
                             thumbPosValue,
@@ -19364,6 +19651,7 @@
                     } else {
                         return settings[name];
                     }
+                    module.clear.cache();
                 },
                 internal: function (name, value) {
                     if ($.isPlainObject(name)) {
@@ -19421,7 +19709,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -19534,6 +19824,7 @@
             method: 'The method you called is not defined.',
             notrange: 'This slider is not a range slider',
             invalidRanges: 'Invalid range settings (start/end/minRange/maxRange)',
+            invalidLetterNumber: 'Negative values or decimal places for labelType: "letter" are not supported',
         },
 
         metadata: {
@@ -19556,6 +19847,7 @@
         preventCrossover: true,
         fireOnInit: false,
         interpretLabel: false,
+        letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 
         // the decimal place to round to if step is undefined
         decimalPlaces: 2,
@@ -19573,6 +19865,8 @@
             vertical: 'vertical',
             range: 'range',
             smooth: 'smooth',
+            label: 'label',
+            active: 'active',
         },
 
         keys: {
@@ -19585,6 +19879,7 @@
         },
 
         restrictedLabels: [],
+        highlightRange: false,
         showThumbTooltip: false,
         tooltipConfig: {
             position: 'top center',
@@ -19602,7 +19897,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Rating
+ * # Fomantic-UI 2.9.4 - Rating
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -19971,7 +20266,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -20141,7 +20438,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Search
+ * # Fomantic-UI 2.9.4 - Search
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -20268,6 +20565,7 @@
                             .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                             .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
                             .on('click' + eventNamespace, selector.result, module.event.result.click)
+                            .on('click' + eventNamespace, selector.remove, module.event.remove.click)
                         ;
                     },
                 },
@@ -20277,7 +20575,10 @@
                         // this makes sure $.extend does not add specified search fields to default fields
                         // this is the only setting which should not extend defaults
                         if (parameters && parameters.searchFields !== undefined) {
-                            settings.searchFields = parameters.searchFields;
+                            settings.searchFields = Array.isArray(parameters.searchFields)
+                                ? parameters.searchFields
+                                : [parameters.searchFields]
+                            ;
                         }
                     },
                 },
@@ -20311,7 +20612,9 @@
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
-                                module.timer = setTimeout(function () { module.hideResults(); }, settings.hideDelay);
+                                module.timer = setTimeout(function () {
+                                    module.hideResults();
+                                }, settings.hideDelay);
                             }
                         ;
                         if (pageLostFocus) {
@@ -20337,6 +20640,12 @@
                             module.debug('Input blurred without user action, closing results');
                             callback();
                         }
+                    },
+                    remove: {
+                        click: function () {
+                            module.clear.value();
+                            $prompt.trigger('focus');
+                        },
                     },
                     result: {
                         mousedown: function () {
@@ -20771,7 +21080,7 @@
                             exactResults = [],
                             fuzzyResults = [],
                             searchExp    = searchTerm.replace(regExp.escape, '\\$&'),
-                            matchRegExp  = new RegExp(regExp.beginsWith + searchExp, 'i'),
+                            matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : ''),
 
                             // avoid duplicates when pushing results
                             addResult = function (array, result) {
@@ -20807,13 +21116,14 @@
                             var concatenatedContent = [];
                             $.each(searchFields, function (index, field) {
                                 var
-                                    fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
+                                    fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
                                 ;
                                 if (fieldExists) {
                                     var text;
                                     text = typeof content[field] === 'string'
                                         ? module.remove.diacritics(content[field])
                                         : content[field].toString();
+                                    text = $('<div/>', { html: text }).text().trim();
                                     if (settings.fullTextSearch === 'all') {
                                         concatenatedContent.push(text);
                                         if (index < lastSearchFieldIndex) {
@@ -20844,8 +21154,10 @@
                     },
                 },
                 exactSearch: function (query, term) {
-                    query = query.toLowerCase();
-                    term = term.toLowerCase();
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
 
                     return term.indexOf(query) > -1;
                 },
@@ -20872,8 +21184,10 @@
                     if (typeof query !== 'string') {
                         return false;
                     }
-                    query = query.toLowerCase();
-                    term = term.toLowerCase();
+                    if (settings.ignoreSearchCase) {
+                        query = query.toLowerCase();
+                        term = term.toLowerCase();
+                    }
                     if (queryLength > termLength) {
                         return false;
                     }
@@ -20968,6 +21282,9 @@
                             delete cache[value];
                             $module.data(metadata.cache, cache);
                         }
+                    },
+                    value: function () {
+                        module.set.value('');
                     },
                 },
 
@@ -21228,6 +21545,39 @@
                                 response[fields.results] = response[fields.results].slice(0, settings.maxResults);
                             }
                         }
+                        if (settings.highlightMatches) {
+                            var results = response[fields.results],
+                                regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
+                                querySplit = module.get.value().split(''),
+                                diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
+                                htmlReg = '(?![^<]*>)',
+                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore),
+                                markedReplacer = function () {
+                                    var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                                        return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
+                                    });
+
+                                    return args.join('');
+                                }
+                            ;
+                            $.each(results, function (label, content) {
+                                $.each(settings.searchFields, function (index, field) {
+                                    var
+                                        fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
+                                    ;
+                                    if (fieldExists) {
+                                        var markedHTML = typeof content[field] === 'string'
+                                            ? content[field]
+                                            : content[field].toString();
+                                        if (settings.ignoreDiacritics) {
+                                            markedHTML = markedHTML.normalize('NFD');
+                                        }
+                                        markedHTML = markedHTML.replace(/<\/?mark>/g, '');
+                                        response[fields.results][label][field] = markedHTML.replace(markedRegExp, markedReplacer);
+                                    }
+                                });
+                            });
+                        }
                         if (isFunction(template)) {
                             html = template(response, fields, settings.preserveHTML);
                         } else {
@@ -21313,7 +21663,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -21454,8 +21806,14 @@
         // search anywhere in value (set to 'exact' to require exact matches
         fullTextSearch: 'exact',
 
+        // Whether search result should highlight matching strings
+        highlightMatches: false,
+
         // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
         ignoreDiacritics: false,
+
+        // whether to consider case sensitivity on local searching
+        ignoreSearchCase: true,
 
         // whether to add events to prompt automatically
         automatic: true,
@@ -21535,6 +21893,7 @@
             categoryResults: 'results', // array of results (category view)
             description: 'description', // result description
             image: 'image', // result image
+            alt: 'alt', // result alt text for image
             price: 'price', // result price
             results: 'results', // array of results (standard)
             title: 'title', // result title
@@ -21546,6 +21905,7 @@
 
         selector: {
             prompt: '.prompt',
+            remove: '> .icon.input > .remove.icon',
             searchButton: '.search.button',
             results: '.results',
             message: '.results > .message',
@@ -21574,8 +21934,9 @@
                     };
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                    return string.replace(badChars, escapedChar);
+                    string = string.replace(badChars, escapedChar);
+                    // FUI controlled HTML is still allowed
+                    string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
                 }
 
                 return string;
@@ -21621,7 +21982,7 @@
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -21674,7 +22035,7 @@
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
+                                + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
                                 + '</div>';
                         }
                         html += '<div class="content">';
@@ -21719,7 +22080,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Shape
+ * # Fomantic-UI 2.9.4 - Shape
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -21905,7 +22266,7 @@
                 set: {
 
                     defaultSide: function () {
-                        $activeSide = $side.filter('.' + settings.className.active);
+                        $activeSide = $side.filter('.' + className.active);
                         $nextSide = $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
@@ -21931,7 +22292,7 @@
 
                     currentStageSize: function () {
                         var
-                            $activeSide = $side.filter('.' + settings.className.active),
+                            $activeSide = $side.filter('.' + className.active),
                             width       = $activeSide.outerWidth(true),
                             height      = $activeSide.outerHeight(true)
                         ;
@@ -21947,7 +22308,7 @@
                         var
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
-                            $activeSide = $side.filter('.' + settings.className.active),
+                            $activeSide = $side.filter('.' + className.active),
                             $nextSide   = nextIndex
                                 ? $side.eq(nextIndex)
                                 : ($activeSide.next(selector.side).length > 0
@@ -22343,7 +22704,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -22515,7 +22878,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Sidebar
+ * # Fomantic-UI 2.9.4 - Sidebar
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -23387,7 +23750,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -23568,7 +23933,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Sticky
+ * # Fomantic-UI 2.9.4 - Sticky
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -24315,7 +24680,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 0);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 0);
                     },
                     display: function () {
                         var
@@ -24484,7 +24851,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Tab
+ * # Fomantic-UI 2.9.4 - Tab
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -25273,7 +25640,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -25450,7 +25819,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Toast
+ * # Fomantic-UI 2.9.4 - Toast
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -25634,6 +26003,7 @@
                                 $toast.append($('<img>', {
                                     class: className.image + ' ' + settings.classImage,
                                     src: settings.showImage,
+                                    alt: settings.alt || '',
                                 }));
                             }
                             if (settings.title !== '') {
@@ -25679,7 +26049,7 @@
                                 $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
                             }
                             if (settings.showImage) {
-                                $toast.find(selector.image).attr('src', settings.showImage);
+                                $toast.find(selector.image).attr('src', settings.showImage).attr('alt', settings.alt || '');
                             }
                             if (settings.title !== '') {
                                 $toast.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML));
@@ -26153,7 +26523,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -26290,6 +26662,7 @@
         actions: false,
         preserveHTML: true,
         showImage: false,
+        alt: false,
 
         // transition settings
         transition: {
@@ -26411,7 +26784,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Transition
+ * # Fomantic-UI 2.9.4 - Transition
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -26554,7 +26927,9 @@
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
-                    setTimeout(function () { module.animate(); }, delay);
+                    setTimeout(function () {
+                        module.animate();
+                    }, delay);
                 },
 
                 animate: function (overrideSettings) {
@@ -27261,7 +27636,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -27442,7 +27819,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - API
+ * # Fomantic-UI 2.9.4 - API
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -28090,7 +28467,9 @@
                                 module.debug('Adding error state');
                                 module.set.error();
                                 if (module.should.removeError()) {
-                                    setTimeout(function () { module.remove.error(); }, settings.errorDuration);
+                                    setTimeout(function () {
+                                        module.remove.error();
+                                    }, settings.errorDuration);
                                 }
                             }
                             module.debug('API Request failed', errorMessage, xhr);
@@ -28414,7 +28793,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -28664,7 +29045,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - State
+ * # Fomantic-UI 2.9.4 - State
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -29147,7 +29528,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var
@@ -29360,7 +29743,7 @@
 })(jQuery, window, document);
 
 /*!
- * # Fomantic-UI 2.9.3 - Visibility
+ * # Fomantic-UI 2.9.4 - Visibility
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -30449,7 +30832,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

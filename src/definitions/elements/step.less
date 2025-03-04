@@ -204,10 +204,6 @@
                     left: @circularStepIconDistance;
                 }
 
-                &.link::before,
-                &.link::after {
-                    cursor: pointer;
-                }
                 &.completed {
                     background: @circularStepCompletedBackground;
                 }
@@ -235,6 +231,15 @@
                         margin-top: @circularStepContentDescriptionDistance;
                     }
                 }
+            }
+
+            & a.step::before,
+            & a.step::after,
+            & a.step .content,
+            & .step.link .content,
+            & .step.link::before,
+            & .step.link::after {
+                cursor: pointer;
             }
         }
 
@@ -590,6 +595,7 @@
         .ui.circular.steps .disabled.step {
             cursor: auto;
             opacity: @circularStepDisabledItemOpacity;
+            pointer-events: none;
 
             &::before,
             &::after {
