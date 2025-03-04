@@ -26,6 +26,24 @@
 }
 
 /*******************************
+              Types
+*******************************/
+
+/* --------------------
+       Closable
+--------------------- */
+
+& when (@variationTabRemove) {
+    .ui.menu .item > .remove.icon {
+        cursor: pointer;
+        font-size: @removeIconSize;
+        padding: @removeIconPadding;
+        opacity: @removeIconOpacity;
+        z-index: @removeIconZIndex;
+    }
+}
+
+/*******************************
              States
 *******************************/
 

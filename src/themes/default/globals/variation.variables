@@ -735,6 +735,7 @@
 
 /* Tab */
 @variationTabLoading: true;
+@variationTabRemove: true;
 
 /* Toast */
 @variationToastInverted: true;
