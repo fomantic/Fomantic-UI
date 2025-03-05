@@ -464,7 +464,7 @@
                             $firstModules = $allModules.slice(0, elementIndex),
                             $lastModules  = $allModules.slice(elementIndex + 1)
                         ;
-                        // adjust all modules to use correct reference
+                        // adjust all modules to use the correct reference
                         $allModules = $firstModules.add($module).add($lastModules);
                     },
                 },
@@ -1171,7 +1171,7 @@
                     },
                     mousedown: function () {
                         if (module.is.searchSelection(true)) {
-                            // prevent menu hiding on immediate re-focus
+                            // prevent the menu hiding on immediate re-focus
                             willRefocus = true;
                         } else {
                             // prevents focus callback from occurring on mousedown
@@ -1180,7 +1180,7 @@
                     },
                     mouseup: function () {
                         if (module.is.searchSelection(true)) {
-                            // prevent menu hiding on immediate re-focus
+                            // prevent the menu hiding on immediate re-focus
                             willRefocus = false;
                         } else {
                             activated = false;
@@ -1468,7 +1468,7 @@
                     },
 
                     document: {
-                        // label selection should occur even when element has no focus
+                        // label selection should occur even when the element has no focus
                         keydown: function (event) {
                             var
                                 pressedKey    = event.which,
@@ -1614,7 +1614,7 @@
                                 $nextItem,
                                 isSubMenuItem
                             ;
-                            // allow selection with menu closed
+                            // allow selection with the menu closed
                             if (isAdditionWithoutMenu) {
                                 if (selectedIsSelectable && settings.hideAdditions) {
                                     module.verbose('Selecting item from keyboard shortcut', $selectedItem);
@@ -1630,7 +1630,7 @@
 
                             // visible menu keyboard shortcuts
                             if (module.is.visible()) {
-                                // enter (select or open sub-menu)
+                                // enter (select or open submenu)
                                 if (pressedKey === keys.enter || delimiterPressed) {
                                     if (pressedKey === keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
                                         module.verbose('Pressed enter on unselectable category, opening sub menu');
@@ -1669,7 +1669,7 @@
                                         }
                                     }
 
-                                    // right arrow (show sub-menu)
+                                    // right arrow (show submenu)
                                     if (pressedKey === keys.rightArrow) {
                                         if (hasSubMenu) {
                                             module.verbose('Right key pressed, opening sub-menu');
@@ -1992,7 +1992,7 @@
                             isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === ''
                         ;
 
-                        // prevents placeholder element from being selected when multiple
+                        // prevents the placeholder element from being selected when multiple
                         return value === undefined || isEmptyMultiselect
                             ? ''
                             : value;
@@ -2336,7 +2336,7 @@
                         }
                     },
                     values: function () {
-                        // prevents callbacks from occurring on initial load
+                        // prevents callbacks from occurring on the initial load
                         module.set.initialLoad();
                         if (settings.apiSettings && settings.saveRemoteData && module.get.remoteValues()) {
                             module.restore.remoteValues();
@@ -2657,7 +2657,7 @@
                             $nextValue            = false,
                             $nextItem
                         ;
-                        // check next of same letter
+                        // check next of the same letter
                         if (alreadySelectedLetter) {
                             $nextItem = $selectedItem.nextAll($item).eq(0);
                             if (module.has.firstLetter($nextItem, letter)) {
@@ -2676,7 +2676,7 @@
                                 })
                             ;
                         }
-                        // set next value
+                        // set the next value
                         if ($nextValue) {
                             module.verbose('Scrolling to next value with letter', letter);
                             module.set.scrollPosition($nextValue);
@@ -2693,7 +2693,7 @@
                             if (!$menu) {
                                 module.remove.upward();
                             } else if (module.is.upward($menu)) {
-                                // we need make sure when make assertion openDownward for $menu, $menu does not have upward class
+                                // we need to make sure when make assertion openDownward for $menu, $menu does not have upward class
                                 module.remove.upward($menu);
                             }
 
@@ -4066,33 +4066,33 @@
         match: 'both', // what to match against with search selection (both, text, or label)
         fullTextSearch: 'exact', // search anywhere in value (set to 'exact' to require exact matches)
         highlightMatches: false, // Whether search result should highlight matching strings
-        ignoreDiacritics: false, // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
+        ignoreDiacritics: false, // match results also if they contain diacritics of the same base character (for example, searching for "a" will also match "á" or "â" or "à", etc...)
         hideDividers: false, // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
-        placeholder: 'auto', // whether to convert blank <select> values to placeholder text
-        preserveHTML: true, // preserve html when selecting value
+        placeholder: 'auto', // whether to convert blank <select> values to the placeholder text
+        preserveHTML: true, // preserve HTML when selecting value
         sortSelect: false, // sort selection on init
 
         forceSelection: false, // force a choice on blur with search selection
 
         allowAdditions: false, // whether multiple select should allow user added values
-        keepSearchTerm: false, // whether the search value should be kept and menu stays filtered on item selection
+        keepSearchTerm: false, // whether the search value should be kept, and the menu stays filtered on item selection
         ignoreCase: false, // whether to consider case sensitivity when creating labels
         ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
-        hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
+        hideAdditions: true, // whether to hide a special message prompting a user, they can enter a value
 
-        maxSelections: false, // When set to a number limits the number of selections to this count
+        maxSelections: false, // When set to a number, limits the number of selections to this count
         useLabels: true, // whether multiple select should filter currently active selections from choices
-        delimiter: ',', // when multiselect uses normal <input> the values will be delimited with this character
+        delimiter: ',', // when multiselect uses normal <input >, the values will be delimited with this character
 
-        showOnFocus: false, // show menu on focus
+        showOnFocus: false, // show the menu on focus
         allowReselection: false, // whether current value should trigger callbacks when reselected
-        allowTab: true, // add tabindex to element
-        allowCategorySelection: false, // allow elements with sub-menus to be selected
+        allowTab: true, // add tabindex to the element
+        allowCategorySelection: false, // allow elements with submenus to be selected
 
         fireOnInit: false, // Whether callbacks should fire when initializing dropdown values
 
-        transition: 'auto', // auto transition will slide down or up based on direction
+        transition: 'auto', // auto transition will slide down or up based on the direction
         duration: 200, // duration of transition
         displayType: false, // displayType of transition
 
@@ -4172,23 +4172,23 @@
             value: 'value',
         },
 
-        // property names for remote query
+        // property names for the remote query
         fields: {
             remoteValues: 'results', // grouping for api results
             values: 'values', // grouping for all dropdown values
             disabled: 'disabled', // whether value should be disabled
-            name: 'name', // displayed dropdown text
+            name: 'name', // the displayed dropdown text
             description: 'description', // displayed dropdown description
             descriptionVertical: 'descriptionVertical', // whether description should be vertical
             value: 'value', // actual dropdown value
-            text: 'text', // displayed text when selected
+            text: 'text', // the displayed text when selected
             data: 'data', // custom data attributes
             type: 'type', // type of dropdown element
             image: 'image', // optional image path
             imageClass: 'imageClass', // optional individual class for image
             alt: 'alt', // optional alt text for image
             icon: 'icon', // optional icon name
-            iconClass: 'iconClass', // optional individual class for icon (for example to use flag instead)
+            iconClass: 'iconClass', // optional individual class for icon (for example, to use a flag instead)
             class: 'class', // optional individual class for item/header
             divider: 'divider', // optional divider append for group headers
             actionable: 'actionable', // optional actionable item
@@ -4423,7 +4423,7 @@
             return message;
         },
 
-        // generates user addition to selection menu
+        // generates user addition to the selection menu
         addition: function (choice) {
             return choice;
         },

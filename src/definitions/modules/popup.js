@@ -170,7 +170,7 @@
                     if (documentObserver) {
                         documentObserver.disconnect();
                     }
-                    // remove element only if was created dynamically
+                    // remove the element only if was created dynamically
                     if ($popup && !settings.preserve) {
                         module.removePopup();
                     }
@@ -557,7 +557,7 @@
                             },
                         };
 
-                        // if popup offset context is not same as target, then adjust calculations
+                        // if popup offset context is different from target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
                             var
                                 popupOffset        = $popupOffsetParent.offset()
@@ -818,7 +818,7 @@
                             module.debug('RTL: Popup position updated', position);
                         }
 
-                        // if last attempt use specified last resort position
+                        // if last attempt, use specified last resort position
                         if (searchDepth === settings.maxSearchDepth && typeof settings.lastResort === 'string') {
                             position = settings.lastResort;
                         }
@@ -1362,7 +1362,7 @@
         // whether it should use dom mutation observers
         observeChanges: true,
 
-        // callback only when element added to dom
+        // callback only when the element was added to dom
         onCreate: function () {},
 
         // callback before element removed from dom
@@ -1407,7 +1407,7 @@
         // element which popup should be relative to
         target: false,
 
-        // jq selector or element that should be used as popup
+        // jQuery selector or element that should be used as a popup
         popup: false,
 
         // popup should remain inline next to activator
@@ -1422,7 +1422,7 @@
         // explicitly set content
         content: false,
 
-        // explicitly set html
+        // explicitly set HTML
         html: false,
 
         // explicitly set title
@@ -1465,7 +1465,7 @@
         duration: 200,
         transition: 'scale',
 
-        // distance away from activating element in px
+        // distance away from the activating element in px
         distanceAway: 0,
 
         // number of pixels an element is allowed to be "offstage" for a position to be chosen (allows for rounding)

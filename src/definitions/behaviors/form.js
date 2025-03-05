@@ -377,10 +377,10 @@
                         if (currentValue === undefined || currentValue === null) {
                             currentValue = '';
                         } else if (Array.isArray(currentValue)) {
-                            // multiple select values are returned as arrays which are never equal, so do string conversion first
+                            // multiple select values are returned as arrays which are never equal, so do the string conversion first
                             currentValue = currentValue.toString();
                         }
-                        // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison
+                        // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks, so we need a case-insensitive comparison
                         var boolRegex = /^(true|false)$/i;
                         var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
                         if (isBoolValue) {
@@ -494,7 +494,7 @@
                                 event.returnValue = settings.text.leavingMessage;
                             }
 
-                            // For olders...
+                            // For older...
                             return settings.text.leavingMessage;
                         }
                     },
@@ -1315,7 +1315,7 @@
                                 if (typeof settings.errorFocus === 'string') {
                                     $focusElement = $(document).find(settings.errorFocus);
                                     hasTabIndex = $focusElement.is('[tabindex]');
-                                    // to be able to focus/scroll into non input elements we need a tabindex
+                                    // to be able to focus/scroll into non-input elements, we need a tabindex
                                     if (!hasTabIndex) {
                                         $focusElement.attr('tabindex', -1);
                                     }
@@ -1858,7 +1858,7 @@
                 return $.fn.form.settings.regExp.email.test(value);
             },
 
-            // value is most likely url
+            // value is most likely the url
             url: function (value) {
                 return $.fn.form.settings.regExp.url.test(value);
             },
@@ -1934,7 +1934,7 @@
                 );
             },
 
-            // is valid number (with decimal)
+            // is it a valid number (with decimal)
             decimal: function (value, range) {
                 return $.fn.form.settings.rules.range(value, range, 'decimal');
             },
@@ -1944,7 +1944,7 @@
                 return $.fn.form.settings.rules.range(value, range, 'number');
             },
 
-            // is value (case insensitive)
+            // is value (case-insensitive)
             is: function (value, text) {
                 text = typeof text === 'string'
                     ? text.toLowerCase()
@@ -1961,7 +1961,7 @@
                 return value == text;
             },
 
-            // value is not another value (case insensitive)
+            // value is not another value (case-insensitive)
             not: function (value, notValue) {
                 value = typeof value === 'string'
                     ? value.toLowerCase()
@@ -1973,7 +1973,7 @@
                 return value != notValue;
             },
 
-            // value is not another value (case sensitive)
+            // value is not another value (case-sensitive)
             notExactly: function (value, notValue) {
                 return value != notValue;
             },
@@ -2038,7 +2038,7 @@
                     : false;
             },
 
-            // different than another field
+            // different from another field
             different: function (value, identifier, module) {
                 var matchingValue = module.get.value(identifier, true);
 

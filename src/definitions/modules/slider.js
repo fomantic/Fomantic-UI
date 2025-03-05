@@ -271,7 +271,7 @@
                             isHover = false;
                         });
                         // All touch events are invoked on the element where the touch *started*. Thus, we can bind them all
-                        // on the thumb(s) and don't need to worry about interference with other components, i.e. no dynamic binding
+                        // on the thumb(s) and don't need to worry about interference with other components, i.e., no dynamic binding
                         // and unbinding required.
                         $module.find('.thumb')
                             .on('touchstart' + eventNamespace, module.event.touchDown)
@@ -281,7 +281,7 @@
                         ;
                     },
                     slidingEvents: function () {
-                        // these don't need the identifier because we only ever want one of them to be registered with document
+                        // these don't need the identifier because we only ever want one of them to be registered with the document
                         module.verbose('Binding page wide events while handle is being draged');
                         $document.on('mousemove' + eventNamespace, module.event.move);
                         $document.on('mouseup' + eventNamespace, module.event.up);
@@ -506,7 +506,7 @@
                 },
 
                 resync: function () {
-                    module.verbose('Resyncing thumb position based on value');
+                    module.verbose('Re-syncing thumb position based on value');
                     module.setup.labels();
                     if (module.is.range()) {
                         module.update.position(module.secondThumbVal, $secondThumb);
@@ -985,7 +985,7 @@
                         if (value !== difference) {
                             module.verbose('Rounding value to closest step: ' + difference);
                         }
-                        // Use precision to avoid ugly Javascript floating point rounding issues
+                        // Use precision to avoid ugly JavaScript floating point rounding issues
                         // (like 35 * .01 = 0.35000000000000003)
                         module.verbose('Cutting off additional decimal places');
 

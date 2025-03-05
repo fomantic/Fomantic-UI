@@ -190,7 +190,7 @@
 
                 create: {
                     flyout: function () {
-                        module.verbose('Programmaticaly create flyout', $context);
+                        module.verbose('Programmatically create flyout', $context);
                         $module = $('<div/>', { class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage });
                         if (settings.closeIcon) {
                             $closeIcon = $('<i/>', {
@@ -516,7 +516,7 @@
                                         shouldRefreshInputs = true;
                                     }
                                 } else {
-                                    // mutationobserver only provides the parent nodes
+                                    // mutationobserver only provides the parent nodes,
                                     // so let's collect all childs as well to find nested inputs
                                     var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');

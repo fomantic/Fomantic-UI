@@ -389,7 +389,7 @@
                         if (module.othersActive()) {
                             module.debug('Other sidebars currently visible');
                             if (settings.exclusive) {
-                                // if not overlay queue animation after hide
+                                // if not overlay, queue animation after hide
                                 if (settings.transition !== 'overlay') {
                                     module.hideOthers(module.show);
 

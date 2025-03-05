@@ -134,7 +134,7 @@
                 determine: {
                     searchFields: function () {
                         // this makes sure $.extend does not add specified search fields to default fields
-                        // this is the only setting which should not extend defaults
+                        // this is the only setting that should not extend defaults
                         if (parameters && parameters.searchFields !== undefined) {
                             settings.searchFields = Array.isArray(parameters.searchFields)
                                 ? parameters.searchFields
@@ -660,7 +660,7 @@
                             ? searchFields
                             : settings.searchFields;
 
-                        // search fields should be array to loop correctly
+                        // search fields should be an array to loop correctly
                         if (!Array.isArray(searchFields)) {
                             searchFields = [searchFields];
                         }
@@ -938,7 +938,7 @@
                     id: function (results) {
                         module.debug('Injecting unique ids into results');
                         var
-                            // since results may be object, we must use counters
+                            // since results may be an object, we must use counters
                             categoryIndex = 0,
                             resultIndex   = 0
                         ;
@@ -1342,7 +1342,7 @@
         // minimum characters required to search
         minCharacters: 1,
 
-        // whether to select first result after searching automatically
+        // whether to select the first result after searching automatically
         selectFirstResult: false,
 
         // API config
@@ -1370,7 +1370,7 @@
         // Whether search result should highlight matching strings
         highlightMatches: false,
 
-        // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
+        // match results also if they contain diacritics of the same base character (for example, searching for "a" will also match "á" or "â" or "à", etc...)
         ignoreDiacritics: false,
 
         // whether to consider case sensitivity on local searching
@@ -1379,7 +1379,7 @@
         // whether to add events to prompt automatically
         automatic: true,
 
-        // delay before hiding menu after blur
+        // delay before hiding the menu after blur
         hideDelay: 0,
 
         // delay before searching
