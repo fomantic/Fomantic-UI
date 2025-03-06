@@ -70,7 +70,7 @@
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
     "wrench-sui": "^0.0.3",
-    "yamljs": "^0.3.0"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@internal/eslint-plugin": "file:.eslint",

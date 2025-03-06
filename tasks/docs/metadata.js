@@ -5,7 +5,8 @@
 const
     // node dependencies
     console      = require('@fomantic/better-console'),
-    YAML         = require('yamljs')
+    path = require('path'),
+    YAML         = require('js-yaml')
 ;
 
 let data = {};
@@ -53,7 +54,7 @@ function parser(file, callback) {
             text     = String(file.contents.toString('utf8')),
             lines    = text.split('\n'),
             filename = file.path.slice(0, -4),
-            key      = 'server/documents',
+            key      = 'server' + path.sep + 'documents',
             position = filename.indexOf(key)
         ;
 
@@ -65,7 +66,7 @@ function parser(file, callback) {
             return callback(null, file);
         }
 
-        filename = filename.slice(position + key.length + 1, filename.length);
+        filename = filename.slice(position + key.length + 1, filename.length).replaceAll(path.win32.sep, path.posix.sep);
 
         let
             lineCount = lines.length,
@@ -103,16 +104,13 @@ function parser(file, callback) {
         }
 
         // Parse yaml.
-        meta = YAML.parse(yaml.join('\n'));
+        meta = YAML.load(yaml.join('\n'));
         if (meta && meta.type && meta.title && inArray(meta.type, categories)) {
             meta.category = meta.type;
             meta.filename = filename;
             meta.url = '/' + filename;
             // Primary key will be filepath
-            data[meta.element] = meta;
-        } else {
-            // skip
-            // console.log(meta);
+            data[meta.element.toLowerCase()] = meta;
         }
     } catch (error) {
         console.log(error, file.path);

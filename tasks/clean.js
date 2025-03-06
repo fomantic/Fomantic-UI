@@ -8,6 +8,7 @@ const
 ;
 
 // cleans distribution files
-module.exports = function () {
-    return fs.removeSync(config.paths.clean);
+module.exports = function (callback) {
+    fs.removeSync(config.paths.clean);
+    callback();
 };
