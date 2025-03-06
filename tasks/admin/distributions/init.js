@@ -17,12 +17,10 @@ const
     fs        = require('fs-extra'),
     path      = require('path'),
     console   = require('@fomantic/better-console'),
-    gulp      = require('gulp'),
     git       = require('@fomantic/gulp-git'),
 
     // admin files
     release   = require('../../config/admin/release'),
-    project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
     oAuth     = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
@@ -31,8 +29,6 @@ const
 ;
 
 module.exports = function (callback) {
-    const github = require('../../config/admin/github'); // eslint-disable-line global-require
-
     let
         index = -1,
         total = release.distributions.length,
@@ -66,7 +62,6 @@ module.exports = function (callback) {
             pullOptions        = { args: '-q', cwd: outputDirectory, quiet: true },
             resetOptions       = { args: '-q --hard', cwd: outputDirectory, quiet: true },
             gitURL             = 'git@github.com:' + release.org + '/' + repoName + '.git',
-            repoURL            = 'https://github.com/' + release.org + '/' + repoName + '/',
             localRepoSetup     = fs.pathExistsSync(path.join(outputDirectory, '.git'))
         ;
 
@@ -100,17 +95,6 @@ module.exports = function (callback) {
             });
         }
 
-        function createRepo() {
-            console.info('Creating GitHub repo ' + repoURL);
-            github.repos.createFromOrg({
-                org: release.org,
-                name: repoName,
-                homepage: release.homepage,
-            }, function () {
-                setupRepo();
-            });
-        }
-
         function addRemote() {
             console.info('Adding remote origin as ' + gitURL);
             git.addRemote('origin', gitURL, gitOptions, function () {
@@ -120,14 +104,14 @@ module.exports = function (callback) {
 
         function pullFiles() {
             console.info('Pulling ' + component + ' files');
-            git.pull('origin', 'master', pullOptions, function (error) {
+            git.pull('origin', 'master', pullOptions, function () {
                 resetFiles();
             });
         }
 
         function resetFiles() {
             console.info('Resetting files to head');
-            git.reset('HEAD', resetOptions, function (error) {
+            git.reset('HEAD', resetOptions, function () {
                 nextRepo();
             });
         }
@@ -145,7 +129,6 @@ module.exports = function (callback) {
             pullFiles();
         } else {
             setupRepo();
-            // createRepo() only use to create remote repo (easier to do manually)
         }
     };
 

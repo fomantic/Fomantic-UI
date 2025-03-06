@@ -14,7 +14,7 @@ const
 
 let
     // Final config object
-    gulpConfig = {},
+    gulpConfig,
 
     // semantic.json settings
     userConfig
