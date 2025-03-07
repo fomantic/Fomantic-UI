@@ -46,7 +46,7 @@ module.exports = {
     regExp: {
 
         comments: {
-            // remove all component headers in concatenated file
+            // remove all component headers in the concatenated file
             header: {
                 in: /\/\*!(?:(?!\/\*).)*# Fomantic-UI \d+\.\d+\.(?:(?!\/\*).)*MIT license(?:(?!\/\*).)*\*\/\n?/gs,
                 out: '',
@@ -58,7 +58,7 @@ module.exports = {
                 out: '$1',
             },
 
-            // add version to first comment
+            // add the version to the first comment
             license: {
                 in: /(^\/\*[\S\s]+)(# Fomantic-UI )([\S\s]+?\*\/)/,
                 out: '$1$2' + release.version + ' $3',
@@ -84,11 +84,6 @@ module.exports = {
     },
 
     settings: {
-
-        /* Remove Files in Clean */
-        del: {
-            silent: true,
-        },
 
         concatCSS: {
             rebaseUrls: false,

@@ -46,7 +46,7 @@
 -------------------- */
 
 /* Disabled */
-@disabledOpactiy: 0.5;
+@disabledOpacity: 0.5;
 @disabledTrackFillColor: @background;
 
 /* -------------------

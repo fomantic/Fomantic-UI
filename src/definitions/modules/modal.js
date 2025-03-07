@@ -284,7 +284,7 @@
                                     }
                                 } else {
                                     shouldRefresh = true;
-                                    // mutationobserver only provides the parent nodes
+                                    // mutationobserver only provides the parent nodes,
                                     // so let's collect all childs as well to find nested inputs
                                     var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
@@ -1419,7 +1419,7 @@
         classActions: '',
         closeIcon: false,
         actions: false,
-        preserveHTML: true,
+        preserveHTML: false,
 
         fields: {
             class: 'class',

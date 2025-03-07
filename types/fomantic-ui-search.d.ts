@@ -263,6 +263,12 @@ declare namespace FomanticUI {
          */
         automatic: boolean;
 
+        /**
+         * Whether to preserve possible HTML of resultset values
+         * @default false
+         */
+        preserveHTML: boolean;
+
         // endregion
 
         // region Callbacks

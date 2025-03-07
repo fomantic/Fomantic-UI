@@ -45,7 +45,7 @@ const
 ;
 
 /**
- * Builds the css
+ * Builds the CSS
  * @param src
  * @param type
  * @param compress
@@ -88,7 +88,7 @@ function build(src, type, compress, config, opts) {
 
 /**
  * Packages the css files in dist
- * @param {string} type - type of the css processing (none, rtl, docs)
+ * @param {string} type - type of the CSS processing (none, rtl, docs)
  * @param {boolean} compress - should the output be compressed
  */
 function pack(type, compress) {
@@ -273,7 +273,7 @@ module.exports.watch = function (type, config) {
                 lessPath = path;
             }
 
-            // Add file to internal changed files array
+            // Add the file to the internal changed files array
             if (!files.includes(lessPath)) {
                 files.push(lessPath);
             }
@@ -284,12 +284,12 @@ module.exports.watch = function (type, config) {
                 const buildFiles = [...files];
                 // Call method
                 gulp.series((callback) => method(buildFiles, callback))();
-                // Reset internal changed files array
+                // Reset the internal changed files array
                 files = [];
             }, 1000);
         })
     ;
 };
 
-// Expose build css method
+// Expose build CSS method
 module.exports.buildCSS = buildCSS;

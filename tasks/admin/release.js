@@ -16,9 +16,9 @@ const gulp = require('gulp');
 module.exports = function (callback) {
     gulp.series(
         // 'build', // build Fomantic
-        'init distributions', // sync with current github version
+        'init distributions', // sync with the current GitHub version
         'create distributions', // update each repo with changes from master repo
-        'init components', // sync with current github version
+        'init components', // sync with the current GitHub version
         'create components' // update each repo
     )(callback);
 };

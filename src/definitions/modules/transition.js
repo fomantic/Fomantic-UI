@@ -588,7 +588,7 @@
                         if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
                             var currentDisplay = $module.css('display');
                             if (currentDisplay === '' || currentDisplay === 'none') {
-                                // create fake element to determine display state
+                                // create a fake element to determine display state
                                 module.can.transition(true);
                             } else {
                                 module.save.displayType(currentDisplay);
@@ -967,7 +967,7 @@
         // event namespace
         namespace: 'transition',
 
-        // delay between animations in group
+        // delay between animations in a group
         interval: 0,
 
         // whether group animations should be reversed
@@ -990,13 +990,13 @@
         // whether timeout should be used to ensure callback fires in cases animationend does not
         useFailSafe: true,
 
-        // delay in ms for fail safe
+        // delay in ms for fail-safe
         failSafeDelay: 100,
 
         // whether EXACT animation can occur twice in a row
         allowRepeats: false,
 
-        // Override final display type on visible
+        // Override the final display type on visible
         displayType: false,
 
         // animation duration

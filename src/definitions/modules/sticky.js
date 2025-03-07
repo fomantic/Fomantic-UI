@@ -871,10 +871,10 @@
         // Offset to adjust scroll when attached to bottom of screen
         bottomOffset: 0,
 
-        // will only set container height if difference between context and container is larger than this number
+        // will only set container height if the difference between context and container is larger than this number
         jitter: 5,
 
-        // set width of sticky element when it is fixed to page (used to make sure 100% width is maintained if no fixed size set)
+        // set width of the sticky element when it is fixed to page (used to make sure 100% width is maintained if no fixed size set)
         setSize: true,
 
         // Whether to automatically observe changes with Mutation Observers
@@ -886,10 +886,10 @@
         // Called on each scroll
         onScroll: function () {},
 
-        // Called when element is stuck to viewport
+        // Called when the element is stuck to viewport
         onStick: function () {},
 
-        // Called when element is unstuck from viewport
+        // Called when the element is unstuck from viewport
         onUnstick: function () {},
 
         // Called when element reaches top of context
