@@ -1814,15 +1814,15 @@ select.ui.dropdown {
     }
 
     /* Upward pointing */
-    .ui.pointing.upward.dropdown .menu,
-    .ui.top.pointing.upward.dropdown .menu {
+    .ui.pointing.upward.dropdown > .menu,
+    .ui.top.pointing.upward.dropdown > .menu {
         top: auto !important;
         bottom: 100% !important;
         margin: 0 0 @pointingMenuDistance;
         border-radius: @pointingUpwardMenuBorderRadius;
     }
-    .ui.pointing.upward.dropdown .menu::after,
-    .ui.top.pointing.upward.dropdown .menu::after {
+    .ui.pointing.upward.dropdown > .menu::after,
+    .ui.top.pointing.upward.dropdown > .menu::after {
         top: 100% !important;
         bottom: auto !important;
         box-shadow: @pointingUpwardArrowBoxShadow;

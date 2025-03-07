@@ -27,7 +27,7 @@ const
     assets      = require('../build/assets')
 ;
 
-module.exports = function () {
+module.exports = function (callback) {
     // use a different config
     const config = extend(true, {}, configDocs);
     configSetup.addDerivedValues(config);
@@ -96,4 +96,6 @@ module.exports = function () {
     --------------- */
 
     assets.watch('docs', config);
+
+    callback();
 };

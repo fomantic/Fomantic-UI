@@ -99,6 +99,6 @@ Before creating a pull request be sure to read the [Contributing Guide](CONTRIBU
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
 ### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
-[![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport?from=Fomantic-UI)
 
 ---

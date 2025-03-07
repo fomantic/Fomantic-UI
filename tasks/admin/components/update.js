@@ -8,7 +8,7 @@
 
   * Commits changes from create repo
   * Pushes changes to GitHub
-  * Tag new releases if version changed in main repo
+  * Tag new releases if the version changed in main repo
 
 */
 
@@ -40,7 +40,6 @@ module.exports = function (callback) {
         index = -1,
         total = release.components.length,
         timer,
-        stream,
         stepRepo
     ;
 
@@ -50,7 +49,7 @@ module.exports = function (callback) {
         return;
     }
 
-    // Do Git commands synchronously per component, to avoid issues
+    // Do the Git commands synchronously per component, to avoid issues
     stepRepo = function () {
         index += 1;
         if (index >= total) {
@@ -64,9 +63,6 @@ module.exports = function (callback) {
             outputDirectory      = path.resolve(path.join(release.outputRoot, component)),
             capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
             repoName             = release.componentRepoRoot + capitalizedComponent,
-
-            gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git',
-            repoURL              = 'https://github.com/' + release.org + '/' + repoName + '/',
 
             commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
                 ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
@@ -114,10 +110,10 @@ module.exports = function (callback) {
             gulp.src('./', gitOptions)
                 .pipe(git.add(gitOptions))
                 .pipe(git.commit(commitMessage, commitOptions), function () {})
-                .on('error', function (error) {
+                .on('error', function () {
                     // canProceed = false; bug in git commit <https://github.com/stevelacy/gulp-git/issues/49>
                 })
-                .on('finish', function (callback) {
+                .on('finish', function () {
                     if (canProceed) {
                         pushFiles();
                     } else {
@@ -131,7 +127,7 @@ module.exports = function (callback) {
         // push changes to remote
         function pushFiles() {
             console.info('Pushing files for ' + component);
-            git.push('origin', 'master', { args: '', cwd: outputDirectory }, function (error) {
+            git.push('origin', 'master', { args: '', cwd: outputDirectory }, function () {
                 console.info('Push completed successfully');
                 getSHA();
             });
@@ -152,10 +148,10 @@ module.exports = function (callback) {
             }
             github.repos.createRelease(releaseOptions, function () {
                 nextRepo();
-            });
+            }).then();
         }
 
-        // Steps to next repository
+        // Steps to the next repository
         function nextRepo() {
             console.log('Sleeping for 1 second...');
             // avoid rate throttling

@@ -3,12 +3,12 @@
 *******************************/
 
 const
-    del    = require('del'),
-    config = require('./config/user'),
-    tasks  = require('./config/tasks')
+    fs    = require('fs-extra'),
+    config = require('./config/user')
 ;
 
 // cleans distribution files
-module.exports = function () {
-    return del([config.paths.clean], tasks.settings.del);
+module.exports = function (callback) {
+    fs.removeSync(config.paths.clean);
+    callback();
 };
