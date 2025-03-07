@@ -350,7 +350,7 @@ declare namespace FomanticUI {
         /**
          * Whether HTML included in dropdown values should be preserved.
          * Allows icons to show up in selected value.
-         * @default true
+         * @default false
          */
         preserveHTML: boolean;
 
