@@ -320,7 +320,7 @@
                         pushStateAvailable = window.history && window.history.pushState,
                         shouldIgnoreLoad   = pushStateAvailable && settings.ignoreFirstLoad && firstLoad,
                         remoteContent      = settings.auto || $.isPlainObject(settings.apiSettings),
-                        // only add default path if not remote content
+                        // only add the default path if not remote content
                         pathArray = remoteContent && !shouldIgnoreLoad
                             ? module.utilities.pathToArray(tabPath)
                             : module.get.defaultPathArray(tabPath)
@@ -392,7 +392,7 @@
                             $anchor = $('#' + tabPath + ', a[name="' + tabPath + '"]');
                             currentPath = $anchor.closest('[data-tab]').data(metadata.tab);
                             $tab = module.get.tabElement(currentPath);
-                            // if anchor exists use parent tab
+                            // if anchor exists, use parent tab
                             if ($anchor && $anchor.length > 0 && currentPath) {
                                 module.debug('Anchor link used, opening parent tab', $tab, $anchor);
                                 if (settings.onBeforeChange.call(element, currentPath) === false) {
@@ -471,9 +471,6 @@
                                 encodeParameters: false,
                                 on: 'now',
                                 cache: settings.alwaysRefresh,
-                                headers: {
-                                    'X-Remote': true,
-                                },
                                 onSuccess: function (response) {
                                     if (settings.cacheType === 'response') {
                                         module.cache.add(fullTabPath, response);
@@ -618,7 +615,7 @@
                     path: function () {
                         return $.address.value();
                     },
-                    // adds default tabs to tab path
+                    // adds default tabs to the tab path
                     defaultPathArray: function (tabPath) {
                         return module.utilities.pathToArray(module.get.defaultPath(tabPath));
                     },
@@ -902,7 +899,7 @@
         verbose: false,
         performance: true,
 
-        auto: false, // uses pjax style endpoints fetching content from same url with remote-content headers
+        auto: false, // uses pjax style endpoints fetching content from the same url with remote-content headers
         history: false, // use browser history
         historyType: 'hash', // #/ or html5 state
         path: false, // base path of url
@@ -916,21 +913,21 @@
         alwaysRefresh: false, // load tab content new every tab click
         cache: true, // cache the content requests to pull locally
         loadOnce: false, // Whether tab data should only be loaded once when using remote content
-        cacheType: 'response', // Whether to cache exact response, or to html cache contents after scripts execute
-        ignoreFirstLoad: false, // don't load remote content on first load
+        cacheType: 'response', // Whether to cache exact response, or to HTML cache contents after scripts execute
+        ignoreFirstLoad: false, // don't load remote content on the first load
 
         apiSettings: false, // settings for api call
         evaluateScripts: 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
-        autoTabActivation: true, // whether a non existing active tab will auto activate the first available tab
+        autoTabActivation: true, // whether a non-existing active tab will auto activate the first available tab
 
         onFirstLoad: function (tabPath, parameterArray, historyEvent) {}, // called first time loaded
         onLoad: function (tabPath, parameterArray, historyEvent) {}, // called on every load
         onVisible: function (tabPath, parameterArray, historyEvent) {}, // called every time tab visible
-        onRequest: function (tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
+        onRequest: function (tabPath, parameterArray, historyEvent) {}, // called every time a tab beings loading remote content
         onBeforeChange: function (tabPath) {}, // called before a tab is about to be changed. Returning false will cancel the tab change
 
         templates: {
-            determineTitle: function (tabArray) {}, // returns page title for path
+            determineTitle: function (tabArray) {}, // returns page title for the path
         },
 
         error: {

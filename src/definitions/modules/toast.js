@@ -826,8 +826,8 @@
 
         title: '',
         message: '',
-        displayTime: 3000, // set to zero to require manually dismissal, otherwise hides on its own
-        minDisplayTime: 1000, // minimum displaytime in case displayTime is set to 'auto'
+        displayTime: 3000, // set to zero to require manual dismissal, otherwise hides on its own
+        minDisplayTime: 1000, // minimum display time in case displayTime is set to 'auto'
         wordsPerMinute: 120,
         showIcon: false,
         newestOnTop: false,
@@ -840,7 +840,7 @@
         closeOnClick: true,
         cloneModule: true,
         actions: false,
-        preserveHTML: true,
+        preserveHTML: false,
         showImage: false,
         alt: false,
 
@@ -850,7 +850,7 @@
             showDuration: 500,
             hideMethod: 'scale',
             hideDuration: 500,
-            closeEasing: 'easeOutCubic', // Set to empty string to stack the closed toast area immediately (old behaviour)
+            closeEasing: 'easeOutCubic', // Set to empty string to stack the closed toast area immediately (old behavior)
             closeDuration: 500,
         },
 

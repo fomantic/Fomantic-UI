@@ -197,7 +197,7 @@ declare namespace FomanticUI {
         /**
          * Whether HTML included in given title, content or actions should be preserved.
          * Set to `false` in case you work with untrusted 3rd party content.
-         * @default true
+         * @default false
          */
         preserveHTML: boolean;
 

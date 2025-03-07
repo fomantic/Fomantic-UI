@@ -284,7 +284,7 @@
                                     }
                                 } else {
                                     shouldRefresh = true;
-                                    // mutationobserver only provides the parent nodes
+                                    // mutationobserver only provides the parent nodes,
                                     // so let's collect all childs as well to find nested inputs
                                     var $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible'),
                                         $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
@@ -960,18 +960,16 @@
                 can: {
                     leftBodyScrollbar: function () {
                         if (module.cache.leftBodyScrollbar === undefined) {
-                            module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
+                            module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari());
                         }
 
                         return module.cache.leftBodyScrollbar;
                     },
                     useFlex: function () {
                         if (settings.useFlex === 'auto') {
-                            return settings.detachable && !module.is.ie();
+                            return settings.detachable;
                         }
-                        if (settings.useFlex && module.is.ie()) {
-                            module.debug('useFlex true is not supported in IE');
-                        } else if (settings.useFlex && !settings.detachable) {
+                        if (settings.useFlex && !settings.detachable) {
                             module.debug('useFlex true in combination with detachable false is not supported');
                         }
 
@@ -1005,26 +1003,11 @@
                     active: function () {
                         return $module.hasClass(className.active);
                     },
-                    ie: function () {
-                        if (module.cache.isIE === undefined) {
-                            var
-                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
-                                isIE = 'ActiveXObject' in window
-                            ;
-                            module.cache.isIE = isIE11 || isIE;
-                        }
-
-                        return module.cache.isIE;
-                    },
                     animating: function () {
                         return $module.transition('is animating');
                     },
                     scrolling: function () {
                         return $dimmable.hasClass(className.scrolling);
-                    },
-                    modernBrowser: function () {
-                        // appName for IE11 reports 'Netscape' can no longer use
-                        return !(window.ActiveXObject || 'ActiveXObject' in window);
                     },
                     rtl: function () {
                         if (module.cache.isRTL === undefined) {
@@ -1039,13 +1022,6 @@
                         }
 
                         return module.cache.isSafari;
-                    },
-                    edge: function () {
-                        if (module.cache.isEdge === undefined) {
-                            module.cache.isEdge = !!window.setImmediate && !module.is.ie();
-                        }
-
-                        return module.cache.isEdge;
                     },
                     firefox: function () {
                         if (module.cache.isFirefox === undefined) {
@@ -1443,7 +1419,7 @@
         classActions: '',
         closeIcon: false,
         actions: false,
-        preserveHTML: true,
+        preserveHTML: false,
 
         fields: {
             class: 'class',

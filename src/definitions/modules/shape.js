@@ -767,7 +767,7 @@
         onBeforeChange: function () {},
         onChange: function () {},
 
-        // allow animation to same side
+        // allow animation to the same side
         allowRepeats: false,
 
         // animation duration

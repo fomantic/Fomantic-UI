@@ -3,7 +3,6 @@
 *******************************/
 
 const
-    fs             = require('fs'),
     path           = require('path'),
     requireDotFile = require('require-dot-file'),
     defaults       = require('../defaults'),
@@ -126,7 +125,7 @@ module.exports = {
                 return walk(nextDirectory);
             }
         ;
-        // start walk from current directory if none specified
+        // start walk from the current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
 
         return walk(directory);
@@ -191,7 +190,7 @@ module.exports = {
             json.base = path.normalize(answers.semanticRoot);
         }
 
-        // record version number to avoid re-installing on same version
+        // record version number to avoid re-installing on the same version
         json.version = release.version;
 
         // add dist folder paths
@@ -753,7 +752,7 @@ module.exports = {
         /* Copy Install Folders */
         wrench: {
 
-            // overwrite existing files update & install (default theme / definition)
+            // overwrite existing files update and install (default theme / definition)
             overwrite: {
                 forceDelete: true,
                 excludeHiddenUnix: true,

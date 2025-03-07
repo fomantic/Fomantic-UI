@@ -169,7 +169,7 @@
                     }
                 },
 
-                // clears embed
+                // clear embed
                 reset: function () {
                     module.debug('Clearing embed and showing placeholder');
                     module.remove.data();

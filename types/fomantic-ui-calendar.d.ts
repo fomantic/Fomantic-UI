@@ -141,7 +141,7 @@ declare namespace FomanticUI {
         /**
          * Month before day when parsing/converting date from/to text.
          *
-         * @default true
+         * @default false
          */
         monthFirst: boolean;
 

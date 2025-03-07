@@ -7,42 +7,32 @@
  This task pulls the latest version of distribution from GitHub
 
   * Creates new repo if doesn't exist (locally & GitHub)
-  * Adds remote it doesn't exists
+  * Adds remote it doesn't exist
   * Pulls latest changes from repo
 
 */
 
 const
     // node dependencies
-    fs        = require('fs'),
+    fs        = require('fs-extra'),
     path      = require('path'),
-    del       = require('del'),
     console   = require('@fomantic/better-console'),
-    gulp      = require('gulp'),
     git       = require('@fomantic/gulp-git'),
-    mkdirp    = require('mkdirp'),
 
     // admin files
     release   = require('../../config/admin/release'),
-    project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
-    oAuth     = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+    oAuth     = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
         ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
-        : false,
-
-    // shorthand
-    version = project.version
+        : false
 ;
 
 module.exports = function (callback) {
-    const github = require('../../config/admin/github'); // eslint-disable-line global-require
-
     let
         index = -1,
         total = release.distributions.length,
         timer,
-        stream,
         stepRepo
     ;
 
@@ -72,21 +62,18 @@ module.exports = function (callback) {
             pullOptions        = { args: '-q', cwd: outputDirectory, quiet: true },
             resetOptions       = { args: '-q --hard', cwd: outputDirectory, quiet: true },
             gitURL             = 'git@github.com:' + release.org + '/' + repoName + '.git',
-            repoURL            = 'https://github.com/' + release.org + '/' + repoName + '/',
-            localRepoSetup     = fs.existsSync(path.join(outputDirectory, '.git'))
+            localRepoSetup     = fs.pathExistsSync(path.join(outputDirectory, '.git'))
         ;
 
         console.log('Processing repository: ' + outputDirectory);
 
-        // create folder if doesn't exist
-        if (!fs.existsSync(outputDirectory)) {
-            mkdirp.sync(outputDirectory);
-        }
+        // create folder if it doesn't exist
+        fs.ensureDirSync(outputDirectory);
 
         // clean folder
         if (release.outputRoot.startsWith('../repos')) {
             console.info('Cleaning dir', outputDirectory);
-            del.sync([outputDirectory + '**/*'], { silent: true, force: true });
+            fs.removeSync(outputDirectory);
         }
 
         // set-up local repo
@@ -108,17 +95,6 @@ module.exports = function (callback) {
             });
         }
 
-        function createRepo() {
-            console.info('Creating GitHub repo ' + repoURL);
-            github.repos.createFromOrg({
-                org: release.org,
-                name: repoName,
-                homepage: release.homepage,
-            }, function () {
-                setupRepo();
-            });
-        }
-
         function addRemote() {
             console.info('Adding remote origin as ' + gitURL);
             git.addRemote('origin', gitURL, gitOptions, function () {
@@ -128,14 +104,14 @@ module.exports = function (callback) {
 
         function pullFiles() {
             console.info('Pulling ' + component + ' files');
-            git.pull('origin', 'master', pullOptions, function (error) {
+            git.pull('origin', 'master', pullOptions, function () {
                 resetFiles();
             });
         }
 
         function resetFiles() {
             console.info('Resetting files to head');
-            git.reset('HEAD', resetOptions, function (error) {
+            git.reset('HEAD', resetOptions, function () {
                 nextRepo();
             });
         }
@@ -153,7 +129,6 @@ module.exports = function (callback) {
             pullFiles();
         } else {
             setupRepo();
-            // createRepo() only use to create remote repo (easier to do manually)
         }
     };
 

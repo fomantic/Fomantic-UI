@@ -296,11 +296,6 @@
     }
     .ui.vertical.menu .dropdown.item .menu {
         left: 100%;
-        & when (@supportIE) {
-            /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
-            min-width: 0;
-        }
-
         min-width: max-content;
         margin: 0 0 0 @dropdownMenuDistance;
         box-shadow: @dropdownVerticalMenuBoxShadow;
@@ -1598,12 +1593,6 @@ Floated Menu / Item
     }
     & when (@variationMenuVertical) {
         .ui.compact.vertical.menu {
-            & when (@supportIE) {
-                /* IE hack to make dropdown icons appear inline */
-                // stylelint-disable-next-line value-no-vendor-prefix
-                display: -ms-inline-flexbox !important;
-            }
-
             display: inline-block;
         }
     }

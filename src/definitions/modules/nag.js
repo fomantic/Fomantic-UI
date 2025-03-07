@@ -495,7 +495,7 @@
         // allows cookie to be overridden
         persist: false,
 
-        // set to zero to require manually dismissal, otherwise hides on its own
+        // set to zero to require manual dismissal, otherwise hides on its own
         displayTime: 0,
 
         animation: {
