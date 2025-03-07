@@ -9,21 +9,18 @@
 
    * (NPM) Install - Will ask for where to put fomantic (outside pm folder)
    * (NPM) Upgrade - Will look for fomantic install, copy over files and update if new version
-   * Standard installer runs asking for paths to site files etc
+   * Standard installer runs asking for paths to site files etc.
 */
 
 const
     // node dependencies
-    fs             = require('fs'),
+    fs             = require('fs-extra'),
     path           = require('path'),
-    mkdirp         = require('mkdirp'),
     extend         = require('extend'),
     console        = require('@fomantic/better-console'),
     gulp           = require('gulp'),
 
     // gulp dependencies
-    chmod          = require('gulp-chmod'),
-    del            = require('del'),
     jsonEditor     = require('gulp-json-editor'),
     plumber        = require('@fomantic/gulp-plumber'),
     inquirer       = require('inquirer'),
@@ -34,9 +31,6 @@ const
 
     // install config
     install        = require('./config/project/install'),
-
-    // user config
-    config         = require('./config/user'),
 
     // release config (name/title/etc)
     release        = require('./config/project/release'),
@@ -76,7 +70,7 @@ module.exports = function (callback) {
         return;
     }
 
-    if (!fs.existsSync(source.site)) {
+    if (!fs.pathExistsSync(source.site)) {
         console.log('Missing _site folder. \u001B[92mgulp install\u001B[0m must run inside \u001B[92mnode_modules' + path.sep + 'fomantic-ui\u001B[0m');
         console.error('Aborting.');
         callback();
@@ -105,7 +99,7 @@ module.exports = function (callback) {
         ;
 
         // duck-type if there is a project installed
-        if (fs.existsSync(updatePaths.definition)) {
+        if (fs.pathExistsSync(updatePaths.definition)) {
             // perform update if new version
             if (currentConfig.version !== release.version) {
                 console.log('Updating Fomantic UI from ' + currentConfig.version + ' to ' + release.version);
@@ -179,7 +173,7 @@ module.exports = function (callback) {
             .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
             .replace('{root}', manager.root)
         ;
-        // set default path to detected PM root
+        // set default path to the detected PM root
         rootQuestions[0].default = manager.root;
         rootQuestions[1].default = manager.root;
 
@@ -253,7 +247,7 @@ module.exports = function (callback) {
 
         // Check if PM install
         if (manager && (answers.useRoot || answers.customRoot)) {
-            // Set root to custom root path if set
+            // Set root to the custom root path if set
             if (answers.customRoot) {
                 if (answers.customRoot === '') {
                     console.log('Unable to proceed, invalid project root');
@@ -290,10 +284,10 @@ module.exports = function (callback) {
 
             // create project folders
             try {
-                mkdirp.sync(installFolder);
-                mkdirp.sync(installPaths.definition);
-                mkdirp.sync(installPaths.theme);
-                mkdirp.sync(installPaths.tasks);
+                fs.mkdirpSync(installFolder);
+                fs.mkdirpSync(installPaths.definition);
+                fs.mkdirpSync(installPaths.theme);
+                fs.mkdirpSync(installPaths.tasks);
             } catch (error) {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
@@ -338,7 +332,7 @@ module.exports = function (callback) {
         --------------- */
 
         // Copy _site templates folder to destination
-        if (fs.existsSync(installPaths.site)) {
+        if (fs.pathExistsSync(installPaths.site)) {
             console.info('Site folder exists, merging files (no overwrite)', installPaths.site);
         } else {
             console.info('Creating site theme folder', installPaths.site);
@@ -360,7 +354,7 @@ module.exports = function (callback) {
             // rewrite site variable in theme.less
             console.info('Adjusting @siteFolder to:', pathToSite + '/');
 
-            if (fs.existsSync(installPaths.themeConfig)) {
+            if (fs.pathExistsSync(installPaths.themeConfig)) {
                 console.info('Modifying src/theme.config (LESS config)', installPaths.themeConfig);
 
                 return gulp.src(installPaths.themeConfig)
@@ -390,7 +384,7 @@ module.exports = function (callback) {
             ;
 
             // adjust variables in theme.less
-            if (fs.existsSync(installPaths.config)) {
+            if (fs.pathExistsSync(installPaths.config)) {
                 console.info('Extending config file (semantic.json)', installPaths.config);
 
                 return gulp.src(installPaths.config)
@@ -431,7 +425,7 @@ module.exports = function (callback) {
                 inquirer.prompt(questions.cleanup)
                     .then((answers) => {
                         if (answers.cleanup === 'yes') {
-                            del(install.setupFiles);
+                            install.setupFiles.forEach((file) => fs.removeSync(file));
                         }
                         if (answers.build === 'yes') {
                             gulp.series('build')(callback);

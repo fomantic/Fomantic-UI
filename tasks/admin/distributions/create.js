@@ -24,18 +24,15 @@ const
     replace         = require('gulp-replace'),
 
     // config
-    config          = require('../../config/user'),
     release         = require('../../config/admin/release'),
     project         = require('../../config/project/release'),
 
     // shorthand
-    version         = project.version,
-    output          = config.paths.output
+    version         = project.version
 ;
 
 module.exports = function (callback) {
     let
-        stream,
         index,
         tasks = []
     ;
@@ -51,18 +48,11 @@ module.exports = function (callback) {
                 distLowerCase   = distribution.toLowerCase(),
                 outputDirectory = path.join(release.outputRoot, distLowerCase),
                 packageFile     = path.join(outputDirectory, release.files.npm),
-                repoName        = release.distRepoRoot + distribution,
                 regExp          = {
                     match: {
                         files: '{files}',
                         version: '{version}',
                     },
-                },
-                task = {
-                    all: distribution + ' copying files',
-                    repo: distribution + ' create repo',
-                    meteor: distribution + ' create meteor package.js',
-                    package: distribution + ' create package.json',
                 },
                 gatherFiles,
                 createList

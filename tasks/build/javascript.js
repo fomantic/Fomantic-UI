@@ -41,7 +41,7 @@ const
 ;
 
 /**
- * Concat and uglify the Javascript files
+ * Concat and uglify the JavaScript files
  * @param {string|array} src - source files
  * @param type
  * @param config
@@ -65,7 +65,7 @@ function build(src, type, config) {
 }
 
 /**
- * Packages the Javascript files in dist
+ * Packages the JavaScript files in dist
  * @param {string} type - type of the js processing (none, rtl, docs)
  * @param {boolean} compress - should the output be compressed
  */
@@ -151,7 +151,7 @@ module.exports.watch = function (type, config) {
                 clearTimeout(timeout);
             }
 
-            // Add file to internal changed files array
+            // Add the file to the internal changed files array
             if (!files.includes(path)) {
                 files.push(path);
             }

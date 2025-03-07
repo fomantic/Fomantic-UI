@@ -24,7 +24,7 @@ module.exports = {
                     currentPath   = path.normalize(path.join(directory, file))
                 ;
                 if (fs.existsSync(currentPath)) {
-                    // found file
+                    // found the file
                     configPath = path.normalize(directory);
                 } else {
                     // reached file system root, let's stop
@@ -37,7 +37,7 @@ module.exports = {
             }
         ;
 
-        // start walk from outside require-dot-files directory
+        // start the walk from outside require-dot-files directory
         file = file || defaults.files.config;
         directory = directory || path.join(__dirname, path.sep, '..');
         walk(directory);
@@ -81,7 +81,7 @@ module.exports = {
              CSS URLs
         --------------- */
 
-        // determine asset paths in css by finding relative path between themes and output
+        // determine asset paths in CSS by finding relative path between themes and output
         // force forward slashes
 
         config.paths.assets = {
@@ -99,7 +99,7 @@ module.exports = {
             config.hasPermissions = true;
             config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
         } else {
-            // pass blank object to avoid causing errors
+            // pass a blank object to avoid causing errors
             config.permission = {};
             config.hasPermissions = false;
             config.parsedPermissions = {};
@@ -113,7 +113,7 @@ module.exports = {
             config.globs = {};
         }
 
-        // remove duplicates from component array
+        // remove duplicates from the component array
         if (Array.isArray(config.components)) {
             config.components = config.components.filter(function (component, index) {
                 return config.components.indexOf(component) === index;
@@ -128,7 +128,7 @@ module.exports = {
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
-        // takes component object and creates file glob matching selected components
+        // takes the component object and creates file glob matching selected components
         config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
         // components that should be built, but excluded from main .css/.js files
