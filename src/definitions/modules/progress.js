@@ -69,13 +69,13 @@
                     /**
        * Derive precision for multiple progress with total and values.
        *
-       * This helper dervices a precision that is sufficiently large to show minimum value of multiple progress.
+       * This helper dervices a precision that is large enough to show the minimum value of multiple progress.
        *
        * Example1
        * - total: 1122
        * - values: [325, 111, 74, 612]
        * - min ratio: 74/1122 = 0.0659...
-       * - required precision:  100
+       * - required precision: 100
        *
        * Example2
        * - total: 10541
@@ -323,7 +323,7 @@
                             : value;
                     },
 
-                    // gets current displayed percentage (if animating values this is the intermediary value)
+                    // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
                         var
                             $bar           = $($bars[index]),
@@ -487,10 +487,10 @@
                         var isMultipleValues = percents.length > 1 && hasTotal;
                         var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
                         if (isMultipleValues && sumTotal > module.total) {
-                            // Sum values instead of pecents to avoid precision issues when summing floats
+                            // Sum values instead of percents to avoid precision issues when summing floats
                             module.error(error.sumExceedsTotal, sumTotal, module.total);
                         } else if (!isMultipleValues && totalPercent > 100) {
-                            // Sum before rounding since sum of rounded may have error though sum of actual is fine
+                            // Sum before rounding, since sum of rounded may have error though sum of actual is fine
                             module.error(error.tooHigh, totalPercent);
                         } else if (totalPercent < 0) {
                             module.error(error.tooLow, totalPercent);
@@ -922,7 +922,7 @@
         total: false,
         value: false,
 
-        // delay in ms for fail safe animation callback
+        // delay in ms for fail-safe animation callback
         failSafeDelay: 100,
 
         onLabelUpdate: function (state, text, value, total) {

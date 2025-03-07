@@ -19,7 +19,7 @@ const
 ;
 
 /*
-  This are tasks to be run by project maintainers
+  These are tasks to be run by project maintainers
   - Creating Component Repos
   - Syncing with GitHub via APIs
   - Modifying package files

@@ -149,7 +149,7 @@
                                 $container = $('<div/>', { id: module.popupId }).addClass(className.popup).appendTo($document.find(settings.context));
                             } else {
                                 // prepend the popup element to the activator's parent so that it has less chance of messing with
-                                // the styling (eg input action button needs to be the last child to have correct border radius)
+                                // the styling (e.g., input action button needs to be the last child to have the correct border radius)
                                 var
                                     $activatorParent = $activator.parent(),
                                     domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
@@ -631,7 +631,7 @@
                         }
                         var parent = target.parent();
                         if (parent.data(metadata.date) || parent.data(metadata.focusDate) || parent.data(metadata.mode)) {
-                            // clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
+                            // clicked on a child element, switch to parent (used when clicking directly on the prev/next <i> icon element)
                             target = parent;
                         }
                         var date = target.data(metadata.date);
@@ -1623,12 +1623,12 @@
 
         context: false,
 
-        type: 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
+        type: 'datetime', // picker type. can be 'datetime', 'date', 'time', 'month', or 'year'
         firstDayOfWeek: 0, // day for first day column (0 = Sunday)
         constantHeight: true, // add rows to shorter months to keep day calendar height consistent (6 rows)
         today: false, // show a 'today/now' button at the bottom of the calendar
         closable: true, // close the popup after selecting a date/time
-        monthFirst: true, // month before day when parsing date from text
+        monthFirst: false, // month before day when parsing date from a text
         touchReadonly: true, // set input to readonly on touch devices
         inline: false, // create the calendar inline instead of inside a popup
         on: null, // when to show the popup (defaults to 'focus' for input, 'click' for others)
@@ -1645,7 +1645,7 @@
         multiMonth: 1, // show multiple months when in 'day' mode
         monthOffset: 0, // position current month by offset when multimonth > 1
         minTimeGap: 5,
-        showWeekNumbers: false, // show Number of Week at the very first column of a dayView
+        showWeekNumbers: false, // show Number of Weeks at the very first column of a dayView
         disabledHours: [], // specific hour(s) which won't be selectable and contain additional information.
         disabledDates: [], // specific day(s) which won't be selectable and contain additional information.
         disabledDaysOfWeek: [], // day(s) which won't be selectable(s) (0 = Sunday)
@@ -1940,7 +1940,7 @@
 
                 var date = new Date(year, month - 1, day, hour, minute);
                 if (date.getMonth() !== month - 1 || date.getFullYear() !== year) {
-                    // month or year don't match up, switch to last day of the month
+                    // month or year don't match up, switch to the last day of the month
                     date = new Date(year, month, 0, hour, minute);
                 }
 

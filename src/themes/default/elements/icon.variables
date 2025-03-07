@@ -45,7 +45,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -55,7 +55,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @outline: {
         font-family: @outlineFontName;
-        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{outlineFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -65,7 +65,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @brand: {
         font-family: @brandFontName;
-        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{brandFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;

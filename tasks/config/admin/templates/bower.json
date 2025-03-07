@@ -4,11 +4,8 @@
   "homepage"    : "https://www.fomantic-ui.com",
   "author": {
     "name" : "Jack Lukic",
-    "web"  : "http://www.jacklukic.com"
+    "web"  : "https://www.jacklukic.com"
   },
-  "ignore": [
-    "./index.js"
-  ],
   "keywords": [
     "fomantic",
     "semantic",
@@ -20,6 +17,7 @@
     "https://github.com/fomantic/Fomantic-UI/blob/master/LICENSE.md"
   ],
   "ignore": [
+    "./index.js",
     "docs",
     "node",
     "server",

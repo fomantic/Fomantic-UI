@@ -3,7 +3,7 @@
 * Watch - Compile only changed files from source
 * Build - Build all files from source
 * Version - Output version number
-* Install - Run Installer to Set-up Paths
+* Install - Run Installer to Set up Paths
 
 ## How to use
 

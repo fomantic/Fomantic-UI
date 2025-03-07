@@ -7,7 +7,7 @@
 
   * copy component files from release
   * create commonjs files as index.js for NPM release
-  * create release notes that filter only items related to component
+  * create release notes that filter only items related to the component
   * custom package.json file from template
   * create bower.json from template
   * create README from template
@@ -41,7 +41,6 @@ const
 
 module.exports = function (callback) {
     let
-        stream,
         index,
         tasks = []
     ;
@@ -61,7 +60,6 @@ module.exports = function (callback) {
                 packageName          = release.packageRoot + component,
                 repoName             = release.componentRepoRoot + capitalizedComponent,
                 gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git',
-                repoURL              = 'https://github.com/' + release.org + '/' + repoName + '/',
                 concatSettings = {
                     newline: '',
                     root: outputDirectory,
@@ -106,17 +104,6 @@ module.exports = function (callback) {
                         settingsReference: '_module.exports.settings',
                         jQuery: 'require("jquery")',
                     },
-                },
-                task = {
-                    all: component + ' creating',
-                    repo: component + ' create repo',
-                    bower: component + ' create bower.json',
-                    readme: component + ' create README',
-                    npm: component + ' create NPM Module',
-                    notes: component + ' create release notes',
-                    composer: component + ' create composer.json',
-                    package: component + ' create package.json',
-                    meteor: component + ' create meteor package.js',
                 },
                 // paths to includable assets
                 manifest = {

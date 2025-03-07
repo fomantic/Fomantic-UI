@@ -77,15 +77,6 @@
     .ui.dimmer@{notInverted}::-webkit-scrollbar-thumb:hover {
         background: @thumbInvertedHoverBackground;
     }
-    & when (@supportIE) {
-        .ui.dimmer@{notInverted} {
-            /* IE11 */
-            scrollbar-face-color: @thumbInvertedBackgroundHex;
-            scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-            scrollbar-track-color: @trackInvertedBackgroundHex;
-            scrollbar-arrow-color: @trackInvertedBackgroundHex;
-        }
-    }
     @supports (-moz-appearance: none) {
         .ui.dimmer@{notInverted} {
             /* firefox: first color thumb, second track */

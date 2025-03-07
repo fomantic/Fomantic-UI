@@ -251,7 +251,7 @@ declare namespace FomanticUI {
 
         /**
          *
-         * @default true
+         * @default false
          */
         preserveHTML: boolean;
 

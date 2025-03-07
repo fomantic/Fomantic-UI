@@ -58,11 +58,8 @@ Fomantic includes an interactive installer to help setup your project.
 
 * Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
 * Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
-* IE 11[^2]
-* Microsoft Edge 12-44[^2]
 
 [^1]: Fomantic-UI should basically still work in iOS Safari 9+, Android 6+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
-[^2]: Fomantic-UI should basically still work in IE11 / old Edge, but, starting from v2.9.0, we won't support them anymore in terms of dedicated bugfixes.
 
 ---
 
@@ -99,6 +96,6 @@ Before creating a pull request be sure to read the [Contributing Guide](CONTRIBU
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
 ### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
-[![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport?from=Fomantic-UI)
 
 ---

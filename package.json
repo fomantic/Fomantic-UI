@@ -42,8 +42,8 @@
     "@octokit/core": "^6.1.4",
     "@octokit/rest": "^21.1.1",
     "browserslist": "^4.21.4",
-    "del": "^6.1.1",
     "extend": "^3.0.2",
+    "fs-extra": "^11.3.0",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-chmod": "^3.0.0",
@@ -65,13 +65,12 @@
     "less": "^3.12.0 || ^4.0.0",
     "map-stream": "^0.1.0",
     "merge-stream": "^2.0.0",
-    "mkdirp": "^1.0.4",
     "normalize-path": "^3.0.0",
     "ordered-read-streams": "^1.0.1",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
     "wrench-sui": "^0.0.3",
-    "yamljs": "^0.3.0"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@internal/eslint-plugin": "file:.eslint",

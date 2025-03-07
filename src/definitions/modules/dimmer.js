@@ -643,7 +643,7 @@
         verbose: false,
         performance: true,
 
-        // whether should use flex layout
+        // whether flex layout should be used
         useFlex: true,
 
         // name to distinguish between multiple dimmers in context
@@ -655,10 +655,10 @@
         // whether to bind close events
         closable: 'auto',
 
-        // whether to use css animations
+        // whether to use CSS animations
         useCSS: true,
 
-        // css animation to use
+        // CSS animation to use
         transition: 'fade',
 
         // event to bind to
