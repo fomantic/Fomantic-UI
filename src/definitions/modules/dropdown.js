@@ -3841,14 +3841,13 @@
                     htmlEntities: function (string, forceAmpersand) {
                         forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
                         var
-                            badChars     = /["'<>`]/g,
-                            shouldEscape = /["&'<>`]/,
+                            badChars     = /["'<>]/g,
+                            shouldEscape = /["&'<>]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
                                 '"': '&quot;',
                                 "'": '&apos;',
-                                '`': '&#x60;',
                             },
                             escapedChar  = function (chr) {
                                 return escape[chr];
@@ -4274,14 +4273,13 @@
                 return string;
             }
             var
-                badChars     = /["'<>`]/g,
-                shouldEscape = /["&'<>`]/,
+                badChars     = /["'<>]/g,
+                shouldEscape = /["&'<>]/,
                 escape       = {
                     '<': '&lt;',
                     '>': '&gt;',
                     '"': '&quot;',
                     "'": '&apos;',
-                    '`': '&#x60;',
                 },
                 escapedChar  = function (chr) {
                     return escape[chr];
