@@ -114,11 +114,6 @@
                     if (module.is.alreadySetup()) {
                         module.setup.reference();
                     } else {
-                        if (settings.ignoreDiacritics && !String.prototype.normalize) {
-                            settings.ignoreDiacritics = false;
-                            module.error(error.noNormalize, element);
-                        }
-
                         module.create.id();
                         module.setup.layout();
 
@@ -4152,7 +4147,6 @@
             noAPI: 'The API module is required to load resources remotely',
             noStorage: 'Saving remote data requires session storage',
             noElement: 'This module requires ui {element}',
-            noNormalize: '"ignoreDiacritics" setting will be ignored. Browser does not support String().normalize(). You may consider including <https://cdn.jsdelivr.net/npm/unorm@1.4.1/lib/unorm.min.js> as a polyfill.',
         },
 
         regExp: {
