@@ -198,8 +198,7 @@
                                         .replace(/[()]/g, escape)
                                     ;
                                     value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent)
-                                    ;
+                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
                                     var cookieOptions = '';
                                     for (var option in options) {

@@ -74,8 +74,7 @@ function pack(type, compress) {
     let src = globs.components
         .replace(/[{}]/g, '')
         .split(',')
-        .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'))
-    ;
+        .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'));
 
     return ordered(src)
         .pipe(plumber())
