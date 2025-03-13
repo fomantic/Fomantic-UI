@@ -416,7 +416,7 @@
                                 .attr('class', $input.attr('class'))
                                 .addClass(className.selection)
                                 .addClass(className.dropdown)
-                                .html(templates.dropdown(selectValues, fields, settings.preserveHTML, settings.className))
+                                .html(templates.dropdown(selectValues, settings))
                                 .insertBefore($input)
                             ;
                             if ($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -446,7 +446,7 @@
                         module.refresh();
                     },
                     menu: function (values) {
-                        $menu.html(templates.menu(values, fields, settings.preserveHTML, settings.className));
+                        $menu.html(templates.menu(values, settings));
                         $item = $menu.find(selector.item);
                         $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
                     },
@@ -1110,10 +1110,10 @@
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
                                 var
-                                    value = settings.templates.deQuote(item[fields.value]),
+                                    value = settings.templates.escape(item[fields.value]),
                                     name = settings.templates.escape(
                                         item[fields.name] || '',
-                                        settings.preserveHTML
+                                        settings
                                     )
                                 ;
                                 $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
@@ -2902,7 +2902,7 @@
                         $label = $('<a />')
                             .addClass(className.label)
                             .attr('data-' + metadata.value, escapedValue)
-                            .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className))
+                            .html(templates.label(escapedValue, text, settings))
                         ;
                         $label = settings.onLabelCreate.call($label, escapedValue, text);
 
@@ -3841,14 +3841,13 @@
                     htmlEntities: function (string, forceAmpersand) {
                         forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
                         var
-                            badChars     = /["'<>`]/g,
-                            shouldEscape = /["&'<>`]/,
+                            badChars     = /["'<>]/g,
+                            shouldEscape = /["&'<>]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
                                 '"': '&quot;',
-                                "'": '&#x27;',
-                                '`': '&#x60;',
+                                "'": '&apos;',
                             },
                             escapedChar  = function (chr) {
                                 return escape[chr];
@@ -4266,22 +4265,18 @@
 
     /* Templates */
     $.fn.dropdown.settings.templates = {
-        deQuote: function (string, encode) {
-            return String(string).replace(/"/g, encode ? '&quot;' : '');
-        },
-        escape: function (string, preserveHTML) {
-            if (preserveHTML) {
+        escape: function (string, settings) {
+            if (settings !== undefined && settings.preserveHTML) {
                 return string;
             }
             var
-                badChars     = /["'<>`]/g,
-                shouldEscape = /["&'<>`]/,
+                badChars     = /["'<>]/g,
+                shouldEscape = /["&'<>]/,
                 escape       = {
                     '<': '&lt;',
                     '>': '&gt;',
                     '"': '&quot;',
-                    "'": '&#x27;',
-                    '`': '&#x60;',
+                    "'": '&apos;',
                 },
                 escapedChar  = function (chr) {
                     return escape[chr];
@@ -4295,31 +4290,32 @@
             return string;
         },
         // generates dropdown from select values
-        dropdown: function (select, fields, preserveHTML, className) {
+        dropdown: function (select, settings) {
             var
                 placeholder = select.placeholder || false,
-                html        = '',
-                escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote
+                html = '',
+                className = settings.className,
+                escape = settings.templates.escape
             ;
             html += '<i class="dropdown icon"></i>';
             html += placeholder
-                ? '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>'
+                ? '<div class="default text">' + escape(placeholder, settings) + '</div>'
                 : '<div class="text"></div>';
-            html += '<div class="' + deQuote(className.menu) + '">';
-            html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
+            html += '<div class="' + escape(className.menu) + '">';
+            html += settings.templates.menu(select, settings);
             html += '</div>';
 
             return html;
         },
 
         // generates just menu from select
-        menu: function (response, fields, preserveHTML, className) {
+        menu: function (response, settings) {
             var
+                fields = settings.fields,
                 values = response[fields.values] || [],
-                html   = '',
-                escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote
+                html = '',
+                className = settings.className,
+                escape = settings.templates.escape
             ;
             $.each(values, function (index, option) {
                 var
@@ -4335,14 +4331,14 @@
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
                         if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
-                            maybeData += ' data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '"';
+                            maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
                         }
                     }
                 }
                 if (itemType === 'item' || isMenu) {
                     var
                         maybeText = option[fields.text]
-                            ? ' data-text="' + deQuote(option[fields.text], true) + '"'
+                            ? ' data-text="' + escape(option[fields.text]) + '"'
                             : '',
                         maybeActionable = option[fields.actionable]
                             ? className.actionable + ' '
@@ -4353,30 +4349,30 @@
                         maybeDescriptionVertical = option[fields.descriptionVertical]
                             ? className.descriptionVertical + ' '
                             : '',
-                        hasDescription = escape(option[fields.description] || '', preserveHTML) !== ''
+                        hasDescription = escape(option[fields.description] || '', settings) !== ''
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + maybeData + '>';
+                    html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + (option[fields.alt] ? '" alt="' + deQuote(option[fields.alt]) : '') + '">';
+                        html += '<img class="' + escape(option[fields.imageClass] || className.image) + '" src="' + escape(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + escape(option[fields.alt]) + '"' : '') + '>';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
+                        html += '<i class="' + escape(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                     }
                     if (hasDescription) {
-                        html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
-                        html += !isMenu ? '<span class="' + deQuote(className.text) + '">' : '';
+                        html += '<span class="' + escape(className.description) + '">' + escape(option[fields.description] || '', settings) + '</span>';
+                        html += !isMenu ? '<span class="' + escape(className.text) + '">' : '';
                     }
                     if (isMenu) {
-                        html += '<span class="' + deQuote(className.text) + '">';
+                        html += '<span class="' + escape(className.text) + '">';
                     }
-                    html += escape(option[fields.name] || '', preserveHTML);
+                    html += escape(option[fields.name] || '', settings);
                     if (isMenu) {
                         html += '</span>';
-                        html += '<div class="' + deQuote(itemType) + '">';
-                        html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
+                        html += '<div class="' + escape(itemType) + '">';
+                        html += settings.templates.menu(option, settings);
                         html += '</div>';
                     } else if (hasDescription) {
                         html += '</span>';
@@ -4384,19 +4380,19 @@
                     html += '</div>';
                 } else if (itemType === 'header') {
                     var
-                        groupName = escape(option[fields.name] || '', preserveHTML),
-                        groupIcon = deQuote(option[fields.icon] || className.groupIcon)
+                        groupName = option[fields.name] || '',
+                        groupIcon = option[fields.icon] || className.groupIcon
                     ;
                     if (groupName !== '' || groupIcon !== '') {
-                        html += '<div class="' + deQuote(option[fields.class] || className.header) + '">';
+                        html += '<div class="' + escape(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
-                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
+                            html += '<i class="' + escape(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                         }
-                        html += groupName;
+                        html += escape(groupName, settings);
                         html += '</div>';
                     }
                     if (option[fields.divider]) {
-                        html += '<div class="' + deQuote(className.divider) + '"></div>';
+                        html += '<div class="' + escape(className.divider) + '"></div>';
                     }
                 }
             });
@@ -4405,13 +4401,13 @@
         },
 
         // generates label for multiselect
-        label: function (value, text, preserveHTML, className) {
+        label: function (value, text, settings) {
             var
-                escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote
+                className = settings.className,
+                escape = settings.templates.escape
             ;
 
-            return escape(text, preserveHTML) + '<i class="' + deQuote(className.delete) + ' icon"></i>';
+            return escape(text, settings) + '<i class="' + escape(className.delete) + ' icon"></i>';
         },
 
         // generates messages like "No results"

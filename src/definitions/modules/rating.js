@@ -518,17 +518,35 @@
         },
 
         templates: {
-            deQuote: function (string, encode) {
-                return String(string).replace(/"/g, encode ? '&quot;' : '');
+            escape: function (string) {
+                var
+                    badChars     = /["'<>]/g,
+                    shouldEscape = /["&'<>]/,
+                    escape       = {
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&apos;',
+                    },
+                    escapedChar  = function (chr) {
+                        return escape[chr];
+                    }
+                ;
+                if (shouldEscape.test(string)) {
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
+                    string = string.replace(badChars, escapedChar);
+                }
+
+                return string;
             },
             icon: function (maxRating, iconClass) {
                 var
                     icon = 1,
                     html = '',
-                    deQuote = $.fn.rating.settings.templates.deQuote
+                    escape = $.fn.rating.settings.templates.escape
                 ;
                 while (icon <= maxRating) {
-                    html += '<i class="' + deQuote(iconClass) + ' icon"></i>';
+                    html += '<i class="' + escape(iconClass) + ' icon"></i>';
                     icon++;
                 }
 

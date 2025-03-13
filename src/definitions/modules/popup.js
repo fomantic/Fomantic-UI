@@ -1516,14 +1516,13 @@
         templates: {
             escape: function (string) {
                 var
-                    badChars     = /["'<>`]/g,
-                    shouldEscape = /["&'<>`]/,
+                    badChars     = /["'<>]/g,
+                    shouldEscape = /["&'<>]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
                         '"': '&quot;',
-                        "'": '&#x27;',
-                        '`': '&#x60;',
+                        "'": '&apos;',
                     },
                     escapedChar  = function (chr) {
                         return escape[chr];
@@ -1531,8 +1530,7 @@
                 ;
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                    return string.replace(badChars, escapedChar);
+                    string = string.replace(badChars, escapedChar);
                 }
 
                 return string;
