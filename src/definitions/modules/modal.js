@@ -126,10 +126,10 @@
                         settings.actions.forEach(function (el) {
                             var
                                 icon = el[fields.icon]
-                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                     : '',
                                 text = module.helpers.escape(el[fields.text] || '', settings),
-                                cls = module.helpers.deQuote(el[fields.class] || ''),
+                                cls = module.helpers.escape(el[fields.class] || ''),
                                 click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
                                     : function () {}
@@ -927,9 +927,6 @@
                     module.debug('Caching modal and container sizes', module.cache);
                 },
                 helpers: {
-                    deQuote: function (string) {
-                        return String(string).replace(/"/g, '');
-                    },
                     escape: function (string, settings) {
                         if (settings !== undefined && settings.preserveHTML) {
                             return string;
@@ -1588,7 +1585,7 @@
                 }
             ;
             if (input.length === 0) {
-                args.content += '<p><div class="' + this.helpers.deQuote(settings.className.prompt) + '"><input placeholder="' + this.helpers.deQuote(args.placeholder || '') + '" type="text" value="' + this.helpers.deQuote(args.defaultValue || '') + '"></div></p>';
+                args.content += '<p><div class="' + this.helpers.escape(settings.className.prompt) + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }
 
             return {

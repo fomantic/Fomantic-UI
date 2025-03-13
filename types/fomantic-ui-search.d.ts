@@ -396,7 +396,7 @@ declare namespace FomanticUI {
                 /**
                  * @default function(string, settings)
                  */
-                escape: (string: string, settings: SearchSettings) => string;
+                escape: (string: string, settings?: SearchSettings) => string;
 
                 /**
                  * @default function(message, type, header)

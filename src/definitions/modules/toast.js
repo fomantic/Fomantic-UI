@@ -260,10 +260,10 @@
                                 var
                                     icon = el[fields.icon]
                                         ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
-                                            + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                            + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                         : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings),
-                                    cls = module.helpers.deQuote(el[fields.class] || ''),
+                                    cls = module.helpers.escape(el[fields.class] || ''),
                                     click = el[fields.click] && isFunction(el[fields.click])
                                         ? el[fields.click]
                                         : function () {}
@@ -591,9 +591,6 @@
                         });
 
                         return result;
-                    },
-                    deQuote: function (string) {
-                        return String(string).replace(/"/g, '');
                     },
                     escape: function (string, settings) {
                         if (settings !== undefined && settings.preserveHTML) {

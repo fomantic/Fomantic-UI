@@ -1110,7 +1110,7 @@
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
                                 var
-                                    value = settings.templates.deQuote(item[fields.value]),
+                                    value = settings.templates.escape(item[fields.value]),
                                     name = settings.templates.escape(
                                         item[fields.name] || '',
                                         settings
@@ -4265,9 +4265,6 @@
 
     /* Templates */
     $.fn.dropdown.settings.templates = {
-        deQuote: function (string, encode) {
-            return String(string).replace(/"/g, encode ? '&quot;' : '');
-        },
         escape: function (string, settings) {
             if (settings !== undefined && settings.preserveHTML) {
                 return string;
@@ -4298,14 +4295,13 @@
                 placeholder = select.placeholder || false,
                 html = '',
                 className = settings.className,
-                escape = settings.templates.escape,
-                deQuote = settings.templates.deQuote
+                escape = settings.templates.escape
             ;
             html += '<i class="dropdown icon"></i>';
             html += placeholder
                 ? '<div class="default text">' + escape(placeholder, settings) + '</div>'
                 : '<div class="text"></div>';
-            html += '<div class="' + deQuote(className.menu) + '">';
+            html += '<div class="' + escape(className.menu) + '">';
             html += settings.templates.menu(select, settings);
             html += '</div>';
 
@@ -4319,8 +4315,7 @@
                 values = response[fields.values] || [],
                 html = '',
                 className = settings.className,
-                escape = settings.templates.escape,
-                deQuote = settings.templates.deQuote
+                escape = settings.templates.escape
             ;
             $.each(values, function (index, option) {
                 var
@@ -4336,14 +4331,14 @@
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
                         if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
-                            maybeData += ' data-' + dataKeyEscaped + '="' + deQuote(String(dataObject[dataKey])) + '"';
+                            maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
                         }
                     }
                 }
                 if (itemType === 'item' || isMenu) {
                     var
                         maybeText = option[fields.text]
-                            ? ' data-text="' + deQuote(option[fields.text], true) + '"'
+                            ? ' data-text="' + escape(option[fields.text]) + '"'
                             : '',
                         maybeActionable = option[fields.actionable]
                             ? className.actionable + ' '
@@ -4356,27 +4351,27 @@
                             : '',
                         hasDescription = escape(option[fields.description] || '', settings) !== ''
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + maybeData + '>';
+                    html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + deQuote(option[fields.alt]) + '"' : '') + '>';
+                        html += '<img class="' + escape(option[fields.imageClass] || className.image) + '" src="' + escape(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + escape(option[fields.alt]) + '"' : '') + '>';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
+                        html += '<i class="' + escape(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                     }
                     if (hasDescription) {
-                        html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', settings) + '</span>';
-                        html += !isMenu ? '<span class="' + deQuote(className.text) + '">' : '';
+                        html += '<span class="' + escape(className.description) + '">' + escape(option[fields.description] || '', settings) + '</span>';
+                        html += !isMenu ? '<span class="' + escape(className.text) + '">' : '';
                     }
                     if (isMenu) {
-                        html += '<span class="' + deQuote(className.text) + '">';
+                        html += '<span class="' + escape(className.text) + '">';
                     }
                     html += escape(option[fields.name] || '', settings);
                     if (isMenu) {
                         html += '</span>';
-                        html += '<div class="' + deQuote(itemType) + '">';
+                        html += '<div class="' + escape(itemType) + '">';
                         html += settings.templates.menu(option, settings);
                         html += '</div>';
                     } else if (hasDescription) {
@@ -4385,19 +4380,19 @@
                     html += '</div>';
                 } else if (itemType === 'header') {
                     var
-                        groupName = escape(option[fields.name] || '', settings),
-                        groupIcon = deQuote(option[fields.icon] || className.groupIcon)
+                        groupName = option[fields.name] || '',
+                        groupIcon = option[fields.icon] || className.groupIcon
                     ;
                     if (groupName !== '' || groupIcon !== '') {
-                        html += '<div class="' + deQuote(option[fields.class] || className.header) + '">';
+                        html += '<div class="' + escape(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
-                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
+                            html += '<i class="' + escape(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                         }
-                        html += groupName;
+                        html += escape(groupName, settings);
                         html += '</div>';
                     }
                     if (option[fields.divider]) {
-                        html += '<div class="' + deQuote(className.divider) + '"></div>';
+                        html += '<div class="' + escape(className.divider) + '"></div>';
                     }
                 }
             });
@@ -4409,11 +4404,10 @@
         label: function (value, text, settings) {
             var
                 className = settings.className,
-                escape = settings.templates.escape,
-                deQuote = settings.templates.deQuote
+                escape = settings.templates.escape
             ;
 
-            return escape(text, settings) + '<i class="' + deQuote(className.delete) + ' icon"></i>';
+            return escape(text, settings) + '<i class="' + escape(className.delete) + ' icon"></i>';
         },
 
         // generates messages like "No results"
