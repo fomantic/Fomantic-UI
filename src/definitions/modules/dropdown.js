@@ -3250,8 +3250,7 @@
                         var values   = module.get.values(true);
                         var hasValue = Array.isArray(values)
                             ? values && ($.inArray(value, values) !== -1)
-                            : values == value
-                        ;
+                            : values == value;
 
                         return !!hasValue;
                     },
@@ -3395,16 +3394,14 @@
                     verticallyScrollableContext: function () {
                         var overflowY = $context[0] !== window
                             ? $context.css('overflow-y')
-                            : false
-                        ;
+                            : false;
 
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var overflowX = $context[0] !== window
                             ? $context.css('overflow-X')
-                            : false
-                        ;
+                            : false;
 
                         return overflowX === 'auto' || overflowX === 'scroll';
                     },

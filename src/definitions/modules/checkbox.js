@@ -197,8 +197,7 @@
                             up: 38,
                             right: 39,
                             down: 40,
-                        }
-                        ;
+                        };
 
                         var r = module.get.radios().not(selector.disabled);
                         var rIndex = r.index($module);

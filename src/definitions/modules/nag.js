@@ -73,8 +73,7 @@
                     storage = module.get.storage();
                     $module
                         .on('click' + eventNamespace, selector.close, module.dismiss)
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
 
                     if (settings.detachable && $module.parent()[0] !== $context[0]) {
                         $module

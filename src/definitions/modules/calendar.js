@@ -320,8 +320,7 @@
                                     ? new Date(year + 1, 0, 1)
                                     : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                         ? new Date(year, month + 1, 1)
-                                        : new Date(year, month, day + 1)))
-                            ;
+                                        : new Date(year, month, day + 1)));
 
                             var tempMode = mode;
                             if (isDay && settings.showWeekNumbers) {
@@ -1113,8 +1112,7 @@
                             S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
                             w: w,
                             ww: ('0' + w).slice(-2),
-                        }
-                        ;
+                        };
 
                         return format.replace(settings.regExp.token, function (match) {
                             if (match in tokens) {

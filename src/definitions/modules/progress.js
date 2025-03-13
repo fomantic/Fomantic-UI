@@ -321,8 +321,7 @@
                         var minDisplay     = parseInt($bar.css('min-width'), 10);
                         var displayPercent = barWidth > minDisplay
                             ? (barWidth / totalWidth) * 100
-                            : module.percent
-                        ;
+                            : module.percent;
 
                         return settings.precision > 0
                             ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)

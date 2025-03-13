@@ -117,8 +117,7 @@ module.exports = function (callback) {
                         .pipe(gulp.dest(outputDirectory))
                     ;
                     releases = gulp.src('dist/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
 
                     return mergeStream(themes, components, releases);
                 });
@@ -150,8 +149,7 @@ module.exports = function (callback) {
                         .pipe(gulp.dest(outputDirectory))
                     ;
                     themes = gulp.src('src/themes/**/*', { base: 'src/', encoding: false })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
 
                     return mergeStream(definitions, overridesImport, lessImport, themeImport, themeConfig, siteTheme, themes);
                 });

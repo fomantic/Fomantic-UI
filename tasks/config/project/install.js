@@ -156,8 +156,7 @@ module.exports = {
                 source: {},
                 output: {},
             },
-        }
-        ;
+        };
 
         // add components
         if (answers.components) {

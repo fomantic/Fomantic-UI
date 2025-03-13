@@ -194,8 +194,7 @@
                         }
                     }
                     $.address
-                        .bind('change', module.event.history.change)
-                    ;
+                        .bind('change', module.event.history.change);
 
                     return true;
                 },

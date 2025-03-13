@@ -421,16 +421,14 @@
                     verticallyScrollableContext: function () {
                         var overflowY = $context[0] !== window
                             ? $context.css('overflow-y')
-                            : false
-                        ;
+                            : false;
 
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var overflowX = $context[0] !== window
                             ? $context.css('overflow-x')
-                            : false
-                        ;
+                            : false;
 
                         return overflowX === 'auto' || overflowX === 'scroll';
                     },

@@ -161,8 +161,7 @@
                         $element.addClass(settings.dimmerName);
                     }
                     $element
-                        .appendTo($dimmable)
-                    ;
+                        .appendTo($dimmable);
 
                     return $element;
                 },

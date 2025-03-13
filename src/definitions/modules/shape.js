@@ -337,8 +337,7 @@
                         down: function () {
                             var translate = {
                                 z: $activeSide.outerHeight(true) / 2,
-                            }
-                            ;
+                            };
 
                             return {
                                 transform: 'translateY(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateX(90deg)',
@@ -357,8 +356,7 @@
                         right: function () {
                             var translate = {
                                 z: $activeSide.outerWidth(true) / 2,
-                            }
-                            ;
+                            };
 
                             return {
                                 transform: 'translateX(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateY(-90deg)',
@@ -368,8 +366,7 @@
                         over: function () {
                             var translate = {
                                 x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                            }
-                            ;
+                            };
 
                             return {
                                 transform: 'translateX(' + translate.x + 'px) rotateY(180deg)',
@@ -379,8 +376,7 @@
                         back: function () {
                             var translate = {
                                 x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                            }
-                            ;
+                            };
 
                             return {
                                 transform: 'translateX(' + translate.x + 'px) rotateY(-180deg)',

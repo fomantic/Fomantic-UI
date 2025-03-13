@@ -24,8 +24,7 @@ const release   = require('../../config/admin/release');
 // oAuth configuration for GitHub
 const oAuth     = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
     ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
-    : false
-;
+    : false;
 
 module.exports = function (callback) {
     let index = -1;

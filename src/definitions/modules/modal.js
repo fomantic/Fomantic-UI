@@ -1488,8 +1488,7 @@
             };
             var denyFn = function () {
                 args.handler(false);
-            }
-            ;
+            };
 
             return {
                 title: args.title,

@@ -454,8 +454,7 @@
                             ? 'input'
                             : (prompt !== undefined && prompt.onpropertychange !== undefined
                                 ? 'propertychange'
-                                : 'keyup')
-                        ;
+                                : 'keyup');
 
                         return inputEvent;
                     },

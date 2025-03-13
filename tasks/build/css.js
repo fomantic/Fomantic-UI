@@ -110,8 +110,7 @@ function pack(type, compress) {
             }
 
             return gulp.src(srcSingle);
-        })
-    ;
+        });
 
     return ordered(src)
         .pipe(plumber())
@@ -231,8 +230,7 @@ module.exports.watch = function (type, config) {
             files = [];
 
             return gulp.series(method)();
-        })
-    ;
+        });
 
     // Watch any less / overrides / variables files
     gulp.watch([

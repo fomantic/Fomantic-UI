@@ -659,8 +659,7 @@
                         mockedXHR = $.Deferred()
                             .always(module.event.xhr.complete)
                             .done(module.event.xhr.done)
-                            .fail(module.event.xhr.fail)
-                        ;
+                            .fail(module.event.xhr.fail);
 
                         if (responder) {
                             if (isFunction(responder)) {

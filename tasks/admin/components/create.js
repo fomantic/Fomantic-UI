@@ -102,8 +102,7 @@ module.exports = function (callback) {
             let manifest = {
                 assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                 component: outputDirectory + '/' + component + '+(.js|.css)',
-            }
-            ;
+            };
 
             // copy dist files into output folder adjusting asset paths
             function copyDist() {

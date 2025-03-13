@@ -89,8 +89,7 @@ module.exports = function (callback) {
             site: path.join(currentConfig.paths.source.site),
             theme: path.join(currentConfig.paths.source.themes),
             defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
-        }
-        ;
+        };
 
         // duck-type if there is a project installed
         if (fs.pathExistsSync(updatePaths.definition)) {
@@ -111,8 +110,7 @@ module.exports = function (callback) {
                 console.info('Updating gulpfile.js');
                 gulp.src(source.userGulpFile)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updateFolder))
-                ;
+                    .pipe(gulp.dest(updateFolder));
 
                 // copy theme import
                 console.info('Updating theme import file');
@@ -137,8 +135,7 @@ module.exports = function (callback) {
                     .pipe(jsonEditor({
                         version: release.version,
                     }))
-                    .pipe(gulp.dest(manager.root))
-                ;
+                    .pipe(gulp.dest(manager.root));
 
                 console.info('Update complete! Run "\u001B[92mgulp build\u001B[0m" to rebuild dist/ files.');
 
@@ -231,8 +228,7 @@ module.exports = function (callback) {
             site: answers.site || folders.site,
             themeConfig: files.themeConfig,
             themeConfigFolder: folders.themeConfig,
-        }
-        ;
+        };
 
         /* --------------
            NPM Install
@@ -309,8 +305,7 @@ module.exports = function (callback) {
             ;
             gulp.src(source.lessImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.lessImport))
-            ;
+                .pipe(gulp.dest(installPaths.lessImport));
 
             // create gulp file
             console.info('Creating gulpfile.js');

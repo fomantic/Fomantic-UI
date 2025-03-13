@@ -225,8 +225,7 @@
                         }
                         module.verbose('Overriding default display to show element', displayType);
                         $module
-                            .attr('style', overrideStyle)
-                        ;
+                            .attr('style', overrideStyle);
 
                         return true;
                     },
@@ -497,8 +496,7 @@
                         var animationClass = animation || settings.animation;
                         var directionClass = module.can.transition() && !module.has.direction()
                             ? module.get.direction() + ' '
-                            : ''
-                        ;
+                            : '';
 
                         return className.animating + ' '
                             + className.transition + ' '
