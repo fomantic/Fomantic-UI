@@ -1544,7 +1544,7 @@
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
+                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1598,7 +1598,7 @@
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + (result[fields.alt] ? '" alt="' + result[fields.alt].replace(/"/g, '') : '') + '">'
+                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
                                 + '</div>';
                         }
                         html += '<div class="content">';

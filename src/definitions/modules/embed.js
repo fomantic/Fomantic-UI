@@ -671,7 +671,7 @@
                     html += '<i class="' + deQuote(icon) + ' icon"></i>';
                 }
                 if (image) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + (alt ? '" alt="' + deQuote(alt) : '') + '">';
+                    html += '<img class="placeholder" src="' + deQuote(image) + '"' + (alt ? ' alt="' + deQuote(alt) + '"' : '') + '>';
                 }
 
                 return html;

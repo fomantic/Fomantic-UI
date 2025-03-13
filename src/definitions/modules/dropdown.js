@@ -4363,7 +4363,7 @@
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + (option[fields.alt] ? '" alt="' + deQuote(option[fields.alt]) : '') + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + deQuote(option[fields.alt]) + '"' : '') + '>';
                     }
                     if (option[fields.icon]) {
                         html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
