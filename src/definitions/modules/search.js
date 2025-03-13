@@ -275,8 +275,8 @@
                     }
                 },
                 handleKeyboard: function (event) {
-                    var // force selector refresh
-                        $result         = $module.find(selector.result);
+                    // force selector refresh
+                    var $result         = $module.find(selector.result);
                     var $category       = $module.find(selector.category);
                     var $activeResult   = $result.filter('.' + className.active);
                     var currentIndex    = $result.index($activeResult);
@@ -908,8 +908,8 @@
                     },
                     id: function (results) {
                         module.debug('Injecting unique ids into results');
-                        var // since results may be an object, we must use counters
-                            categoryIndex = 0;
+                        // since results may be an object, we must use counters
+                        var categoryIndex = 0;
                         var resultIndex   = 0
                         ;
                         if (settings.type === 'category') {

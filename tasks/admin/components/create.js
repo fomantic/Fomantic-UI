@@ -14,8 +14,8 @@
   * create meteor.js file
 */
 
-const // node dependencies
-    fs              = require('fs');
+// node dependencies
+const fs              = require('fs');
 const path            = require('path');
 const gulp            = require('gulp');
 

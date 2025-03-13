@@ -89,8 +89,8 @@ module.exports = {
 
     // checks if files are in a PM directory
     getPackageManager: function (directory) {
-        let // returns last matching result (avoid sub-module detection)
-            walk = function (directory) {
+        // returns last matching result (avoid sub-module detection)
+        let walk = function (directory) {
                 let pathArray     = directory.split(path.sep);
                 let folder        = pathArray[pathArray.length - 1];
                 let nextDirectory = path.join(directory, path.sep, '..')

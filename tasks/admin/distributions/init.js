@@ -12,8 +12,8 @@
 
 */
 
-const // node dependencies
-    fs        = require('fs-extra');
+// node dependencies
+const fs        = require('fs-extra');
 const path      = require('path');
 const console   = require('@fomantic/better-console');
 const git       = require('@fomantic/gulp-git');

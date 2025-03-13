@@ -2,8 +2,8 @@
  *        Check Install
  *******************************/
 
-const // node dependencies
-    console = require('@fomantic/better-console');
+// node dependencies
+const console = require('@fomantic/better-console');
 const isSetup = require('./config/project/install').isSetup;
 
 const install = require('./install');

@@ -12,8 +12,8 @@
    * Standard installer runs asking for paths to site files etc.
 */
 
-const // node dependencies
-    fs             = require('fs-extra');
+// node dependencies
+const fs             = require('fs-extra');
 const path           = require('path');
 const extend         = require('extend');
 const console        = require('@fomantic/better-console');
@@ -339,9 +339,9 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create theme.config', function () {
-            let // determine path to site theme folder from theme config
-                // force CSS path variable to use forward slashes for paths
-                pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            // determine path to site theme folder from theme config
+            // force CSS path variable to use forward slashes for paths
+            let pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
             let siteVariable = "@siteFolder: '" + pathToSite + "/';"
             ;
 

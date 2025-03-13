@@ -14,8 +14,8 @@ const process = require('child_process');
 // config
 const release = require('../config/admin/release');
 
-let // register components and distributions
-    repos   = release.distributions.concat(release.components);
+// register components and distributions
+let repos   = release.distributions.concat(release.components);
 let total   = repos.length;
 let index   = -1;
 

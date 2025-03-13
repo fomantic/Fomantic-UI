@@ -24,8 +24,8 @@
         : globalThis;
 
     $.fn.tab = function (parameters) {
-        var // use window context if none specified
-            $allModules     = isFunction(this)
+        // use window context if none specified
+        var $allModules     = isFunction(this)
                 ? $(window)
                 : $(this);
         var $document      = $(document);

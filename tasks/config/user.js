@@ -2,8 +2,8 @@
              Set-up
 *******************************/
 
-const // npm dependencies
-    extend          = require('extend');
+// npm dependencies
+const extend          = require('extend');
 const requireDotFile  = require('require-dot-file');
 
 // semantic.json defaults
@@ -11,8 +11,8 @@ const defaults        = require('./defaults');
 const config          = require('./project/config')
 ;
 
-let // Final config object
-    gulpConfig;
+// Final config object
+let gulpConfig;
 
 // semantic.json settings
 let userConfig

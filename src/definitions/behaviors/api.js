@@ -24,8 +24,8 @@
         : globalThis;
 
     $.fn.api = function (parameters) {
-        var // use window context if none specified
-            $allModules     = isFunction(this)
+        // use window context if none specified
+        var $allModules     = isFunction(this)
                 ? $(window)
                 : $(this);
         var time           = Date.now();
@@ -362,8 +362,8 @@
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    var // allow legacy {$var} style
-                                        variable = templatedString.indexOf('$') !== -1
+                                    // allow legacy {$var} style
+                                    var variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(2, -1)
                                             : templatedString.slice(1, -1);
                                     var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -392,8 +392,8 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    var // allow legacy {/$var} style
-                                        variable = templatedString.indexOf('$') !== -1
+                                    // allow legacy {/$var} style
+                                    var variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(3, -1)
                                             : templatedString.slice(2, -1);
                                     var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -606,8 +606,8 @@
                             settings.onComplete.call(context, response, $module, xhr);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var // pull response from xhr if available
-                                response     = module.get.responseFromXHR(xhr);
+                            // pull response from xhr if available
+                            var response     = module.get.responseFromXHR(xhr);
                             var errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                             ;
                             if (status === 'aborted') {
@@ -656,8 +656,8 @@
                     },
 
                     mockedXHR: function () {
-                        var // xhr does not simulate these properties of xhr but must return them
-                            textStatus     = false;
+                        // xhr does not simulate these properties of xhr but must return them
+                        var textStatus     = false;
                         var status         = false;
                         var httpMessage    = false;
                         var responder      = settings.mockResponse || settings.response;

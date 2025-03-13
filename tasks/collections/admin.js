@@ -2,8 +2,8 @@
  *    Admin Task Collection
  *******************************/
 
-const // less/css distributions
-    initComponents      = require('../admin/components/init');
+// less/css distributions
+const initComponents      = require('../admin/components/init');
 const createComponents    = require('../admin/components/create');
 const updateComponents    = require('../admin/components/update');
 
