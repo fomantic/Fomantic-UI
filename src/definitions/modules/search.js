@@ -1477,7 +1477,7 @@
 
         templates: {
             escape: function (string, settings) {
-                if (settings.preserveHTML) {
+                if (settings !== undefined && settings.preserveHTML) {
                     return string;
                 }
                 var
@@ -1491,7 +1491,8 @@
                     },
                     escapedChar  = function (chr) {
                         return escape[chr];
-                    };
+                    }
+                ;
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
                     string = string.replace(badChars, escapedChar);

@@ -117,10 +117,10 @@
                     }
                     $module.addClass(settings.class);
                     if (settings.title !== '') {
-                        $module.find(selector.header).html(module.helpers.escape(settings.title)).addClass(settings.classTitle);
+                        $module.find(selector.header).html(module.helpers.escape(settings.title, settings)).addClass(settings.classTitle);
                     }
                     if (settings.content !== '') {
-                        $module.find(selector.content).html(module.helpers.escape(settings.content)).addClass(settings.classContent);
+                        $module.find(selector.content).html(module.helpers.escape(settings.content, settings)).addClass(settings.classContent);
                     }
                     if (module.has.configActions()) {
                         var $actions = $module.find(selector.actions).addClass(settings.classActions);
@@ -134,7 +134,7 @@
                                 icon = el[fields.icon]
                                     ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
                                     : '',
-                                text = module.helpers.escape(el[fields.text] || ''),
+                                text = module.helpers.escape(el[fields.text] || '', settings),
                                 cls = module.helpers.deQuote(el[fields.class] || ''),
                                 click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
@@ -1082,8 +1082,8 @@
                     deQuote: function (string) {
                         return String(string).replace(/"/g, '');
                     },
-                    escape: function (string) {
-                        if (settings.preserveHTML) {
+                    escape: function (string, settings) {
+                        if (settings !== undefined && settings.preserveHTML) {
                             return string;
                         }
                         var
@@ -1101,8 +1101,7 @@
                         ;
                         if (shouldEscape.test(string)) {
                             string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                            return string.replace(badChars, escapedChar);
+                            string = string.replace(badChars, escapedChar);
                         }
 
                         return string;

@@ -4269,7 +4269,7 @@
             return String(string).replace(/"/g, encode ? '&quot;' : '');
         },
         escape: function (string, settings) {
-            if (settings.preserveHTML) {
+            if (settings !== undefined && settings.preserveHTML) {
                 return string;
             }
             var
