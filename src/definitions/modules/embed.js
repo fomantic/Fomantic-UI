@@ -645,33 +645,51 @@
         },
 
         templates: {
-            deQuote: function (string, encode) {
-                return String(string).replace(/"/g, encode ? '&quot;' : '');
+            escape: function (string) {
+                var
+                    badChars     = /["'<>]/g,
+                    shouldEscape = /["&'<>]/,
+                    escape       = {
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&apos;',
+                    },
+                    escapedChar  = function (chr) {
+                        return escape[chr];
+                    }
+                ;
+                if (shouldEscape.test(string)) {
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
+                    string = string.replace(badChars, escapedChar);
+                }
+
+                return string;
             },
             iframe: function (url, parameters) {
                 var
                     src = url,
-                    deQuote = $.fn.embed.settings.templates.deQuote
+                    escape = $.fn.embed.settings.templates.escape
                 ;
                 if (parameters) {
                     src += '?' + parameters;
                 }
 
                 return ''
-                    + '<iframe src="' + deQuote(src) + '"'
+                    + '<iframe src="' + escape(src) + '"'
                     + ' width="100%" height="100%"'
                     + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon, alt) {
                 var
                     html = '',
-                    deQuote = $.fn.embed.settings.templates.deQuote
+                    escape = $.fn.embed.settings.templates.escape
                 ;
                 if (icon) {
-                    html += '<i class="' + deQuote(icon) + ' icon"></i>';
+                    html += '<i class="' + escape(icon) + ' icon"></i>';
                 }
                 if (image) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + (alt ? '" alt="' + deQuote(alt) : '') + '">';
+                    html += '<img class="placeholder" src="' + escape(image) + '"' + (alt ? ' alt="' + escape(alt) + '"' : '') + '>';
                 }
 
                 return html;

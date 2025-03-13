@@ -255,7 +255,6 @@ module.exports = {
         config: 'semantic.json',
         overridesImport: 'src/overrides.less',
         lessImport: 'src/semantic.less',
-        site: 'src/site',
         themeConfig: 'src/theme.config',
         themeImport: 'src/theme.less',
     },
@@ -750,20 +749,18 @@ module.exports = {
         },
 
         /* Copy Install Folders */
-        wrench: {
+        copy: {
 
             // overwrite existing files update and install (default theme / definition)
             overwrite: {
-                forceDelete: true,
-                excludeHiddenUnix: true,
-                preserveFiles: false,
+                overwrite: true,
+                preserveTimestamps: true,
             },
 
             // only create files that don't exist (site theme update)
             merge: {
-                forceDelete: false,
-                excludeHiddenUnix: true,
-                preserveFiles: true,
+                overwrite: false,
+                preserveTimestamps: true,
             },
 
         },

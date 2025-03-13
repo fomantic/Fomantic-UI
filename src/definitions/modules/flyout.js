@@ -117,10 +117,10 @@
                     }
                     $module.addClass(settings.class);
                     if (settings.title !== '') {
-                        $module.find(selector.header).html(module.helpers.escape(settings.title)).addClass(settings.classTitle);
+                        $module.find(selector.header).html(module.helpers.escape(settings.title, settings)).addClass(settings.classTitle);
                     }
                     if (settings.content !== '') {
-                        $module.find(selector.content).html(module.helpers.escape(settings.content)).addClass(settings.classContent);
+                        $module.find(selector.content).html(module.helpers.escape(settings.content, settings)).addClass(settings.classContent);
                     }
                     if (module.has.configActions()) {
                         var $actions = $module.find(selector.actions).addClass(settings.classActions);
@@ -132,10 +132,10 @@
                         settings.actions.forEach(function (el) {
                             var
                                 icon = el[fields.icon]
-                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                     : '',
-                                text = module.helpers.escape(el[fields.text] || ''),
-                                cls = module.helpers.deQuote(el[fields.class] || ''),
+                                text = module.helpers.escape(el[fields.text] || '', settings),
+                                cls = module.helpers.escape(el[fields.class] || ''),
                                 click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
                                     : function () {}
@@ -1079,22 +1079,18 @@
                 },
 
                 helpers: {
-                    deQuote: function (string) {
-                        return String(string).replace(/"/g, '');
-                    },
-                    escape: function (string) {
-                        if (settings.preserveHTML) {
+                    escape: function (string, settings) {
+                        if (settings !== undefined && settings.preserveHTML) {
                             return string;
                         }
                         var
-                            badChars     = /["'<>`]/g,
-                            shouldEscape = /["&'<>`]/,
+                            badChars     = /["'<>]/g,
+                            shouldEscape = /["&'<>]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
                                 '"': '&quot;',
-                                "'": '&#x27;',
-                                '`': '&#x60;',
+                                "'": '&apos;',
                             },
                             escapedChar  = function (chr) {
                                 return escape[chr];
@@ -1102,8 +1098,7 @@
                         ;
                         if (shouldEscape.test(string)) {
                             string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                            return string.replace(badChars, escapedChar);
+                            string = string.replace(badChars, escapedChar);
                         }
 
                         return string;
@@ -1482,7 +1477,7 @@
                 input    = $($.parseHTML(args.content)).filter('.ui.input')
             ;
             if (input.length === 0) {
-                args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.deQuote(args.placeholder || '') + '" type="text" value="' + this.helpers.deQuote(args.defaultValue || '') + '"></div></p>';
+                args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }
 
             return {

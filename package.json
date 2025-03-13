@@ -69,7 +69,6 @@
     "ordered-read-streams": "^1.0.1",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
-    "wrench-sui": "^0.0.3",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {

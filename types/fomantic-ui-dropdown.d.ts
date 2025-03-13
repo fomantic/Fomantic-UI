@@ -667,14 +667,9 @@ declare namespace FomanticUI {
         namespace Settings {
             interface Templates {
                 /**
-                 * @default function(string, encode)
-                 */
-                deQuote: (string: string, encode?: boolean) => string;
-
-                /**
                  * @default function(string, settings)
                  */
-                escape: (string: string, settings: DropdownSettings) => string;
+                escape: (string: string, settings?: DropdownSettings) => string;
 
                 /**
                  * generates dropdown from select values

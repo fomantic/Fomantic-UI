@@ -192,7 +192,7 @@
                                 $content.append($('<div/>', {
                                     class: className.title,
                                     id: titleId,
-                                    html: module.helpers.escape(settings.title),
+                                    html: module.helpers.escape(settings.title, settings),
                                 }));
                             }
                             var descId = '_' + module.get.id() + 'desc';
@@ -200,7 +200,7 @@
                             $content.append($('<div/>', {
                                 class: className.message,
                                 id: descId,
-                                html: module.helpers.escape(settings.message),
+                                html: module.helpers.escape(settings.message, settings),
                             }));
 
                             $toast
@@ -232,10 +232,10 @@
                                 $toast.find(selector.image).attr('src', settings.showImage).attr('alt', settings.alt || '');
                             }
                             if (settings.title !== '') {
-                                $toast.find(selector.title).html(module.helpers.escape(settings.title));
+                                $toast.find(selector.title).html(module.helpers.escape(settings.title, settings));
                             }
                             if (settings.message !== '') {
-                                $toast.find(selector.message).html(module.helpers.escape(settings.message));
+                                $toast.find(selector.message).html(module.helpers.escape(settings.message, settings));
                             }
                         }
                         if ($toast.hasClass(className.compact)) {
@@ -260,10 +260,10 @@
                                 var
                                     icon = el[fields.icon]
                                         ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
-                                            + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                            + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                         : '',
-                                    text = module.helpers.escape(el[fields.text] || ''),
-                                    cls = module.helpers.deQuote(el[fields.class] || ''),
+                                    text = module.helpers.escape(el[fields.text] || '', settings),
+                                    cls = module.helpers.escape(el[fields.class] || ''),
                                     click = el[fields.click] && isFunction(el[fields.click])
                                         ? el[fields.click]
                                         : function () {}
@@ -592,22 +592,18 @@
 
                         return result;
                     },
-                    deQuote: function (string) {
-                        return String(string).replace(/"/g, '');
-                    },
-                    escape: function (string) {
-                        if (settings.preserveHTML) {
+                    escape: function (string, settings) {
+                        if (settings !== undefined && settings.preserveHTML) {
                             return string;
                         }
                         var
-                            badChars     = /["'<>`]/g,
-                            shouldEscape = /["&'<>`]/,
+                            badChars     = /["'<>]/g,
+                            shouldEscape = /["&'<>]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
                                 '"': '&quot;',
-                                "'": '&#x27;',
-                                '`': '&#x60;',
+                                "'": '&apos;',
                             },
                             escapedChar  = function (chr) {
                                 return escape[chr];
@@ -615,8 +611,7 @@
                         ;
                         if (shouldEscape.test(string)) {
                             string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-
-                            return string.replace(badChars, escapedChar);
+                            string = string.replace(badChars, escapedChar);
                         }
 
                         return string;
