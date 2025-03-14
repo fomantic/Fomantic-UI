@@ -622,7 +622,8 @@ select.ui.dropdown {
         }
 
         .ui.ui.selection.dropdown {
-            &:focus, &:has(> input:focus) {
+            &:focus,
+            &:has(> input:focus) {
                 & > i.icon:not(.remove) {
                     opacity: @selectionIconFocusOpacity;
                 }
