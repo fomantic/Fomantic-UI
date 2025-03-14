@@ -1083,19 +1083,17 @@
                         if (settings !== undefined && settings.preserveHTML) {
                             return string;
                         }
-                        var
-                            badChars     = /["'<>]/g,
-                            shouldEscape = /["&'<>]/,
-                            escape       = {
-                                '<': '&lt;',
-                                '>': '&gt;',
-                                '"': '&quot;',
-                                "'": '&apos;',
-                            },
-                            escapedChar  = function (chr) {
-                                return escape[chr];
-                            }
-                        ;
+                        const badChars = /["'<>]/g;
+                        const shouldEscape = /["&'<>]/;
+                        const escape = {
+                            '<': '&lt;',
+                            '>': '&gt;',
+                            '"': '&quot;',
+                            "'": '&apos;',
+                        };
+                        const escapedChar = function (chr) {
+                            return escape[chr];
+                        };
                         if (shouldEscape.test(string)) {
                             string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
                             string = string.replace(badChars, escapedChar);
