@@ -620,11 +620,12 @@ select.ui.dropdown {
                 opacity: @selectionIconFocusOpacity;
             }
         }
-    }
-    .ui.ui.selection.dropdown {
-        &:focus, &:has(> input:focus) {
-            & > i.icon:not(.remove) {
-                opacity: @selectionIconFocusOpacity;
+
+        .ui.ui.selection.dropdown {
+            &:focus, &:has(> input:focus) {
+                & > i.icon:not(.remove) {
+                    opacity: @selectionIconFocusOpacity;
+                }
             }
         }
     }
