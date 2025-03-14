@@ -160,9 +160,14 @@
 
                         return;
                     }
+                    if (settings.onOpening.call($activeContent) === false
+                        || settings.onChanging.call($activeContent) === false
+                    ) {
+                        module.debug('Opening or Changing Callback returned false cancelling open', $activeTitle);
+
+                        return;
+                    }
                     module.debug('Opening accordion content', $activeTitle);
-                    settings.onOpening.call($activeContent);
-                    settings.onChanging.call($activeContent);
                     if (settings.exclusive) {
                         module.closeOthers.call($activeTitle);
                     }
@@ -202,7 +207,7 @@
                     }
                     $activeContent
                         .slideDown(settings.duration, settings.easing, function () {
-                            $activeContent
+                            $(this)
                                 .removeClass(className.animating)
                                 .addClass(className.active)
                             ;
@@ -227,52 +232,61 @@
                         isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
-                        module.debug('Closing accordion content', $activeContent);
-                        settings.onClosing.call($activeContent);
-                        settings.onChanging.call($activeContent);
-                        $activeTitle
-                            .removeClass(className.active)
-                        ;
-                        $activeContent
-                            .stop(true, true)
-                            .addClass(className.animating)
-                        ;
-                        if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined) {
-                                $activeContent
-                                    .children()
-                                    .transition({
-                                        animation: 'fade out',
-                                        queue: false,
-                                        useFailSafe: true,
-                                        debug: settings.debug,
-                                        verbose: settings.verbose,
-                                        silent: settings.silent,
-                                        duration: settings.duration,
-                                        skipInlineHidden: true,
-                                    })
-                                ;
-                            } else {
-                                $activeContent
-                                    .children()
-                                    .stop(true, true)
-                                    .animate({
-                                        opacity: 0,
-                                    }, settings.duration, module.resetOpacity);
-                            }
+                        if (settings.onClosing.call($activeContent) === false
+                            || settings.onChanging.call($activeContent) === false
+                        ) {
+                            module.debug('Closing or Changing Callback returned false cancelling close', $activeTitle);
+
+                            return;
                         }
-                        $activeContent
-                            .slideUp(settings.duration, settings.easing, function () {
-                                $activeContent
-                                    .removeClass(className.animating)
-                                    .removeClass(className.active)
-                                ;
-                                module.reset.display.call(this);
-                                settings.onClose.call(this);
-                                settings.onChange.call(this);
-                            })
-                        ;
+                        module.debug('Closing accordion content', $activeContent);
+                        module.forceClose($activeTitle, $activeContent);
                     }
+                },
+
+                forceClose: function ($activeTitle, $activeContent) {
+                    $activeTitle
+                        .removeClass(className.active)
+                    ;
+                    $activeContent
+                        .stop(true, true)
+                        .addClass(className.animating)
+                    ;
+                    if (settings.animateChildren) {
+                        if ($.fn.transition !== undefined) {
+                            $activeContent
+                                .children()
+                                .transition({
+                                    animation: 'fade out',
+                                    queue: false,
+                                    useFailSafe: true,
+                                    debug: settings.debug,
+                                    verbose: settings.verbose,
+                                    silent: settings.silent,
+                                    duration: settings.duration,
+                                    skipInlineHidden: true,
+                                })
+                            ;
+                        } else {
+                            $activeContent
+                                .children()
+                                .stop(true, true)
+                                .animate({
+                                    opacity: 0,
+                                }, settings.duration, module.resetOpacity);
+                        }
+                    }
+                    $activeContent
+                        .slideUp(settings.duration, settings.easing, function () {
+                            $(this)
+                                .removeClass(className.animating)
+                                .removeClass(className.active)
+                            ;
+                            module.reset.display.call(this);
+                            settings.onClose.call(this);
+                            settings.onChange.call(this);
+                        })
+                    ;
                 },
 
                 closeOthers: function (index) {
@@ -288,53 +302,15 @@
                         $nestedTitles,
                         $openContents
                     ;
-                    if (settings.closeNested) {
-                        $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
-                        $openContents = $openTitles.next($content);
-                    } else {
-                        $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
+                    $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
+                    if (!settings.closeNested) {
                         $nestedTitles = $activeAccordion.find(activeContent).find(activeSelector).not($parentTitles);
                         $openTitles = $openTitles.not($nestedTitles);
-                        $openContents = $openTitles.next($content);
                     }
+                    $openContents = $openTitles.next($content);
                     if ($openTitles.length > 0) {
                         module.debug('Exclusive enabled, closing other content', $openTitles);
-                        $openTitles
-                            .removeClass(className.active)
-                        ;
-                        $openContents
-                            .removeClass(className.animating)
-                            .stop(true, true)
-                        ;
-                        if (settings.animateChildren) {
-                            if ($.fn.transition !== undefined) {
-                                $openContents
-                                    .children()
-                                    .transition({
-                                        animation: 'fade out',
-                                        useFailSafe: true,
-                                        debug: settings.debug,
-                                        verbose: settings.verbose,
-                                        silent: settings.silent,
-                                        duration: settings.duration,
-                                        skipInlineHidden: true,
-                                    })
-                                ;
-                            } else {
-                                $openContents
-                                    .children()
-                                    .stop(true, true)
-                                    .animate({
-                                        opacity: 0,
-                                    }, settings.duration, module.resetOpacity);
-                            }
-                        }
-                        $openContents
-                            .slideUp(settings.duration, settings.easing, function () {
-                                $(this).removeClass(className.active);
-                                module.reset.display.call(this);
-                            })
-                        ;
+                        module.forceClose($openTitles, $openContents);
                     }
                 },
 
