@@ -36,8 +36,7 @@ const banner     = tasks.banner;
 const filenames  = tasks.filenames;
 const comments   = tasks.regExp.comments;
 const log        = tasks.log;
-const settings   = tasks.settings
-;
+const settings   = tasks.settings;
 
 /**
  * Concat and uglify the JavaScript files
@@ -132,8 +131,7 @@ module.exports = function (callback) {
 
 // We keep the changed files in an array to call build with all of them at the same time
 let timeout;
-let files = []
-;
+let files = [];
 
 module.exports.watch = function (type, config) {
     gulp

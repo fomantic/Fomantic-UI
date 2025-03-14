@@ -29,8 +29,7 @@
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
 
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
@@ -55,8 +54,7 @@
 
             var element         = this;
             var instance        = $module.data(moduleNamespace);
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -105,8 +103,7 @@
                 },
 
                 create: function () {
-                    var placeholder = module.get.placeholder()
-                    ;
+                    var placeholder = module.get.placeholder();
                     if (placeholder) {
                         module.createPlaceholder();
                     } else {
@@ -116,8 +113,7 @@
 
                 createPlaceholder: function (placeholder) {
                     var icon  = module.get.icon();
-                    var alt   = module.get.alt()
-                    ;
+                    var alt   = module.get.alt();
                     placeholder = placeholder || module.get.placeholder();
                     $module.html(templates.placeholder(placeholder, icon, alt));
                     module.debug('Creating placeholder for embed', placeholder, icon, alt);
@@ -234,8 +230,7 @@
                         }
                     },
                     source: function (url) {
-                        var matchedSource = false
-                        ;
+                        var matchedSource = false;
                         url = url || module.get.url();
                         if (url) {
                             $.each(sources, function (name, source) {
@@ -250,8 +245,7 @@
                         return matchedSource;
                     },
                     icon: function () {
-                        var source = module.get.source()
-                        ;
+                        var source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].icon
@@ -260,8 +254,7 @@
                     url: function () {
                         var id     = settings.id || $module.data(metadata.id);
                         var source = settings.source || $module.data(metadata.source);
-                        var url
-                        ;
+                        var url;
                         url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
@@ -301,8 +294,7 @@
                 encode: {
                     parameters: function (parameters) {
                         var urlString = [];
-                        var index
-                        ;
+                        var index;
                         for (index in parameters) {
                             urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
                         }
@@ -316,8 +308,7 @@
                         module.debug('Generating embed html');
                         var source = module.get.source();
                         var html;
-                        var parameters
-                        ;
+                        var parameters;
                         url = module.get.url(url);
                         if (url) {
                             parameters = module.generate.parameters(source);
@@ -419,8 +410,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -440,8 +430,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -469,8 +458,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -646,8 +634,7 @@
             },
             iframe: function (url, parameters) {
                 var src = url;
-                var escape = $.fn.embed.settings.templates.escape
-                ;
+                var escape = $.fn.embed.settings.templates.escape;
                 if (parameters) {
                     src += '?' + parameters;
                 }
@@ -659,8 +646,7 @@
             },
             placeholder: function (image, icon, alt) {
                 var html = '';
-                var escape = $.fn.embed.settings.templates.escape
-                ;
+                var escape = $.fn.embed.settings.templates.escape;
                 if (icon) {
                     html += '<i class="' + escape(icon) + ' icon"></i>';
                 }

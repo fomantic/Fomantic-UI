@@ -29,8 +29,7 @@
         var methodInvoked  = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
 
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
@@ -55,8 +54,7 @@
             var instance        = $module.data(moduleNamespace);
 
             var animating = false;
-            var module
-            ;
+            var module;
             module = {
                 helper: {
                     sum: function (nums) {
@@ -203,8 +201,7 @@
 
                 increment: function (incrementValue) {
                     var startValue;
-                    var newValue
-                    ;
+                    var newValue;
                     if (module.has.total()) {
                         startValue = module.get.value();
                         incrementValue = incrementValue || 1;
@@ -220,8 +217,7 @@
                 decrement: function (decrementValue) {
                     var total     = module.get.total();
                     var startValue;
-                    var newValue
-                    ;
+                    var newValue;
                     if (total) {
                         startValue = module.get.value();
                         decrementValue = decrementValue || 1;
@@ -526,8 +522,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            var isInDOM = $.contains(document.documentElement, element)
-                            ;
+                            var isInDOM = $.contains(document.documentElement, element);
                             if (!isInDOM) {
                                 clearInterval(module.interval);
                                 animating = false;
@@ -676,8 +671,7 @@
 
                 update: {
                     toNextValue: function () {
-                        var nextValue = module.nextValue
-                        ;
+                        var nextValue = module.nextValue;
                         if (nextValue) {
                             module.debug('Update interval complete using last updated value', nextValue);
                             module.update.progress(nextValue);
@@ -690,8 +684,7 @@
                             module.set.value(values);
                         }
                         var percentCompletes = module.helper.forceArray(values).map(function (value) {
-                            var percentComplete
-                            ;
+                            var percentComplete;
                             value = module.get.numericValue(value);
                             if (value === false) {
                                 module.error(error.nonNumeric, value);
@@ -764,8 +757,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -785,8 +777,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -811,8 +802,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

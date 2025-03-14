@@ -40,8 +40,7 @@ const banner       = tasks.banner;
 const filenames    = tasks.filenames;
 const comments     = tasks.regExp.comments;
 const log          = tasks.log;
-const settings     = tasks.settings
-;
+const settings     = tasks.settings;
 
 /**
  * Builds the CSS
@@ -208,8 +207,7 @@ module.exports = rtlAndNormal;
 
 // We keep the changed files in an array to call build with all of them at the same time
 let timeout;
-let files = []
-;
+let files = [];
 
 /**
  * Watch changes in CSS files and call the correct build pipe

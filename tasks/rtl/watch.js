@@ -3,8 +3,7 @@
  *******************************/
 
 const gulp = require('gulp');
-const watch = require('../watch')
-;
+const watch = require('../watch');
 
 // RTL watch is now handled by the default watch process
 module.exports = function (callback) {

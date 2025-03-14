@@ -4,8 +4,7 @@
 
 // docs tasks
 const install = require('../install');
-const checkInstall = require('../check-install')
-;
+const checkInstall = require('../check-install');
 
 /*
   Lets you serve files to a local documentation instance

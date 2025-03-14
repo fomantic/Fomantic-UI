@@ -44,8 +44,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings    = $.isPlainObject(parameters)
@@ -92,8 +91,7 @@
             var id;
             var observer;
             var observeAttributes = false;
-            var module
-            ;
+            var module;
             module = {
 
                 initialize: function () {
@@ -208,8 +206,7 @@
                             debug: settings.debug,
                             dimmerName: 'modals',
                         };
-                        var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
-                        ;
+                        var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
                         if ($.fn.dimmer === undefined) {
                             module.error(error.dimmer);
 
@@ -271,8 +268,7 @@
                             };
                             var shouldRefresh = false;
                             var shouldRefreshInputs = false;
-                            var ignoreAutofocus = true
-                            ;
+                            var ignoreAutofocus = true;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
                                     if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
@@ -355,8 +351,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $toggle = $(selector)
-                    ;
+                    var $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -446,24 +441,21 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var keyCode   = event.which
-                        ;
+                        var keyCode   = event.which;
                         if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
                             module.hide();
                         }
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            var keyCode = event.which
-                            ;
+                            var keyCode = event.which;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
                                 $inputs.last().trigger('focus');
                                 event.preventDefault();
                             }
                         },
                         last: function (event) {
-                            var keyCode = event.which
-                            ;
+                            var keyCode = event.which;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
                                 $inputs.first().trigger('focus');
                                 event.preventDefault();
@@ -472,8 +464,7 @@
                     },
                     mousedown: function (event) {
                         var $target   = $(event.target);
-                        var isRtl = module.is.rtl()
-                        ;
+                        var isRtl = module.is.rtl();
                         initialMouseDownInModal = $target.closest(selector.modal).length > 0;
                         if (initialMouseDownInModal) {
                             module.verbose('Mouse down event registered inside the modal');
@@ -501,8 +492,7 @@
                         }
                         var $target   = $(event.target);
                         var isInModal = $target.closest(selector.modal).length > 0;
-                        var isInDOM   = $.contains(document.documentElement, event.target)
-                        ;
+                        var isInDOM   = $.contains(document.documentElement, event.target);
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
                             module.debug('Dimmer clicked, hiding all modals');
                             if (settings.allowMultiple) {
@@ -522,8 +512,7 @@
                         }, delay);
                     },
                     keyboard: function (event) {
-                        var keyCode   = event.which
-                        ;
+                        var keyCode   = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding modal');
@@ -655,8 +644,7 @@
                 },
 
                 hideModal: function (callback, keepDimmed, hideOthersToo) {
-                    var $previousModal = $otherModals.filter('.' + className.active).last()
-                    ;
+                    var $previousModal = $otherModals.filter('.' + className.active).last();
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -746,8 +734,7 @@
                 },
 
                 hideAll: function (callback) {
-                    var $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
-                    ;
+                    var $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating);
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -769,8 +756,7 @@
                 },
 
                 hideOthers: function (callback) {
-                    var $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
-                    ;
+                    var $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating);
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -803,8 +789,7 @@
                 save: {
                     focus: function () {
                         var $activeElement = $(document.activeElement);
-                        var inCurrentModal = $activeElement.closest($module).length > 0
-                        ;
+                        var inCurrentModal = $activeElement.closest($module).length > 0;
                         if (!inCurrentModal) {
                             $focusedElement = $(document.activeElement).trigger('blur');
                         }
@@ -812,8 +797,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
-                        ;
+                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                     },
                 },
@@ -829,8 +813,7 @@
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -891,8 +874,7 @@
                     $module.addClass(className.loading);
                     var scrollHeight = $module.prop('scrollHeight');
                     var modalWidth   = $module.outerWidth();
-                    var modalHeight  = $module.outerHeight()
-                    ;
+                    var modalHeight  = $module.outerHeight();
                     if (module.cache.pageHeight === undefined || modalHeight !== 0) {
                         $.extend(module.cache, {
                             pageHeight: $document.outerHeight(),
@@ -951,8 +933,7 @@
                         var scrollHeight   = module.cache.scrollHeight;
                         var height         = module.cache.height;
                         var paddingHeight  = settings.padding;
-                        var startPosition  = verticalCenter + topOffset
-                        ;
+                        var startPosition  = verticalCenter + topOffset;
 
                         return scrollHeight > height
                             ? startPosition + scrollHeight + paddingHeight < contextHeight
@@ -1026,8 +1007,7 @@
                         }
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -1060,8 +1040,7 @@
                                 hide: settings.transition.hideDuration || settings.duration,
                             },
                         };
-                        var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
-                        ;
+                        var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
                         if (settings.inverted) {
                             dimmerSettings.variation = dimmerSettings.variation !== undefined
                                 ? dimmerSettings.variation + ' inverted'
@@ -1200,8 +1179,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1221,8 +1199,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1247,8 +1224,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -1491,8 +1467,7 @@
         alert: function () {
             var settings = this.get.settings();
             var args     = settings.templates.getArguments(arguments);
-            var approveFn = args.handler
-            ;
+            var approveFn = args.handler;
 
             return {
                 title: args.title,
@@ -1539,8 +1514,7 @@
             var input    = $($.parseHTML(args.content)).filter('.ui.input');
             var approveFn = function () {
                 var settings = $this.get.settings();
-                var inputField = $this.get.element().find(settings.selector.prompt)[0]
-                    ;
+                var inputField = $this.get.element().find(settings.selector.prompt)[0];
                 args.handler($(inputField).val());
             };
             var denyFn = function () {

@@ -46,8 +46,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings             = $.isPlainObject(parameters)
@@ -92,8 +91,7 @@
             var observeAttributes = false;
             var currentScroll;
 
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -242,8 +240,7 @@
 
                 event: {
                     keyboard: function (event) {
-                        var keyCode   = event.which
-                        ;
+                        var keyCode   = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding flyout');
@@ -269,8 +266,7 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            var clickedContext  = $context.is(event.target)
-                            ;
+                            var clickedContext  = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -285,24 +281,21 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var keyCode   = event.which
-                        ;
+                        var keyCode   = event.which;
                         if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
                             module.hide();
                         }
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            var keyCode = event.which
-                            ;
+                            var keyCode = event.which;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
                                 $inputs.last().trigger('focus');
                                 event.preventDefault();
                             }
                         },
                         last: function (event) {
-                            var keyCode = event.which
-                            ;
+                            var keyCode = event.which;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
                                 $inputs.first().trigger('focus');
                                 event.preventDefault();
@@ -425,8 +418,7 @@
                             top: height,
                             bottom: -height,
                         };
-                        var style
-                        ;
+                        var style;
 
                         if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
@@ -477,8 +469,7 @@
                                 return nodes;
                             };
                             var shouldRefreshInputs = false;
-                            var ignoreAutofocus = true
-                            ;
+                            var ignoreAutofocus = true;
                             mutations.every(function (mutation) {
                                 if (mutation.type === 'attributes') {
                                     if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
@@ -593,8 +584,7 @@
                         var $header = $module.children(selector.header);
                         var $content = $module.children(selector.content);
                         var $actions = $module.children(selector.actions);
-                        var newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0)
-                        ;
+                        var newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0);
                         if (newContentHeight > 0) {
                             $content.css('min-height', String(newContentHeight) + 'px');
                         }
@@ -602,8 +592,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $toggle = $(selector)
-                    ;
+                    var $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -692,8 +681,7 @@
                 hideOthers: function (callback) {
                     var $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
                     var flyoutCount   = $otherFlyouts.length;
-                    var callbackCount  = 0
-                    ;
+                    var callbackCount  = 0;
                     callback = callback || function () {};
                     $otherFlyouts
                         .flyout('hide', function () {
@@ -717,8 +705,7 @@
                 pushPage: function (callback) {
                     var animate;
                     var dim;
-                    var transitionEnd
-                    ;
+                    var transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -753,8 +740,7 @@
 
                 pullPage: function (callback) {
                     var animate;
-                    var transitionEnd
-                    ;
+                    var transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -843,8 +829,7 @@
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -966,8 +951,7 @@
                 save: {
                     focus: function () {
                         var $activeElement = $(document.activeElement);
-                        var inCurrentFlyout = $activeElement.closest($module).length > 0
-                        ;
+                        var inCurrentFlyout = $activeElement.closest($module).length > 0;
                         if (!inCurrentFlyout) {
                             $focusedElement = $(document.activeElement).trigger('blur');
                         }
@@ -975,8 +959,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
-                        ;
+                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                     },
                 },
@@ -1001,8 +984,7 @@
                     },
                     mobile: function () {
                         var userAgent    = navigator.userAgent;
-                        var isMobile     = userAgent.match(regExp.mobile)
-                        ;
+                        var isMobile     = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -1051,8 +1033,7 @@
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -1130,8 +1111,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1151,8 +1131,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1177,8 +1156,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = element || context;
                     if (typeof query === 'string' && object !== undefined) {
@@ -1400,8 +1378,7 @@
         },
         alert: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments)
-            ;
+            var args     = settings.templates.getArguments(arguments);
 
             return {
                 title: args.title,
@@ -1415,8 +1392,7 @@
         },
         confirm: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments)
-            ;
+            var args     = settings.templates.getArguments(arguments);
 
             return {
                 title: args.title,
@@ -1440,8 +1416,7 @@
             var $this    = this;
             var settings = this.get.settings();
             var args     = settings.templates.getArguments(arguments);
-            var input    = $($.parseHTML(args.content)).filter('.ui.input')
-            ;
+            var input    = $($.parseHTML(args.content)).filter('.ui.input');
             if (input.length === 0) {
                 args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }
@@ -1454,8 +1429,7 @@
                     class: settings.className.ok,
                     click: function () {
                         var settings = $this.get.settings();
-                        var inputField = $this.get.element().find(settings.selector.prompt)[0]
-                        ;
+                        var inputField = $this.get.element().find(settings.selector.prompt)[0];
                         args.handler($(inputField).val());
                     },
                 }, {

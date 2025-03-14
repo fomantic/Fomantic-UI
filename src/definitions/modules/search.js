@@ -28,8 +28,7 @@
         var query           = arguments[0];
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.search.settings, parameters)
@@ -59,8 +58,7 @@
             var disabledBubbled  = false;
             var resultsDismissed = false;
 
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -226,8 +224,7 @@
                                 ? $title.text()
                                 : false;
                             var results = module.get.results();
-                            var result  = $result.data(metadata.result) || module.get.result(value, results)
-                            ;
+                            var result  = $result.data(metadata.result) || module.get.result(value, results);
                             var oldValue = module.get.value();
                             if (isFunction(settings.onSelect)) {
                                 if (settings.onSelect.call(element, result, results) === false) {
@@ -257,8 +254,7 @@
                     var elTop;
                     var elBottom;
                     var resultsScrollTop;
-                    var resultsHeight
-                    ;
+                    var resultsHeight;
                     if ($el.length === 0) {
                         return;
                     }
@@ -291,8 +287,7 @@
                         upArrow: 38,
                         downArrow: 40,
                     };
-                    var newIndex
-                    ;
+                    var newIndex;
                     // search shortcuts
                     if (keyCode === keys.escape) {
                         if (!module.is.visible()) {
@@ -431,8 +426,7 @@
                             return;
                         }
                         var $target = $(event.target);
-                        var isInDOM = $.contains(document.documentElement, event.target)
-                        ;
+                        var isInDOM = $.contains(document.documentElement, event.target);
 
                         return isInDOM && $target.closest(selector.message).length > 0;
                     },
@@ -472,8 +466,7 @@
                         return $module.data(metadata.results);
                     },
                     result: function (value, results) {
-                        var result       = false
-                        ;
+                        var result       = false;
                         value = value !== undefined
                             ? value
                             : module.get.value();
@@ -551,8 +544,7 @@
                         ? callback
                         : function () {};
                     var searchTerm = module.get.value();
-                    var cache = module.read.cache(searchTerm)
-                    ;
+                    var cache = module.read.cache(searchTerm);
                     callback = callback || function () {};
                     if (module.has.minimumCharacters()) {
                         if (cache) {
@@ -583,8 +575,7 @@
                 search: {
                     local: function (searchTerm) {
                         var results = module.search.object(searchTerm, settings.source);
-                        var searchHTML
-                        ;
+                        var searchHTML;
                         module.set.loading();
                         module.save.results(results);
                         module.debug('Returned full local search results', results);
@@ -630,8 +621,7 @@
                         var addResult = function (array, result) {
                             var notResult      = $.inArray(result, results) === -1;
                             var notFuzzyResult = $.inArray(result, fuzzyResults) === -1;
-                            var notExactResults = $.inArray(result, exactResults) === -1
-                                ;
+                            var notExactResults = $.inArray(result, exactResults) === -1;
                             if (notResult && notFuzzyResult && notExactResults) {
                                 array.push(result);
                             }
@@ -658,8 +648,7 @@
                         $.each(source, function (label, content) {
                             var concatenatedContent = [];
                             $.each(searchFields, function (index, field) {
-                                var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
-                                ;
+                                var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
                                 if (fieldExists) {
                                     var text;
                                     text = typeof content[field] === 'string'
@@ -707,8 +696,7 @@
                     var allWords = query.split(/\s+/);
                     var w;
                     var wL = allWords.length;
-                    var found = false
-                    ;
+                    var found = false;
                     for (w = 0; w < wL; w++) {
                         found = module.exactSearch(allWords[w], term);
                         if ((!found && matchAll) || (found && !matchAll)) {
@@ -720,8 +708,7 @@
                 },
                 fuzzySearch: function (query, term) {
                     var termLength  = term.length;
-                    var queryLength = query.length
-                    ;
+                    var queryLength = query.length;
                     if (typeof query !== 'string') {
                         return false;
                     }
@@ -737,8 +724,7 @@
                     }
                     for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var continueSearch = false;
-                        var queryCharacter = query.charCodeAt(characterIndex)
-                        ;
+                        var queryCharacter = query.charCodeAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
@@ -762,8 +748,7 @@
                             o[fields.results] = response;
                             response = o;
                         }
-                        var searchHTML = module.generateResults(response)
-                        ;
+                        var searchHTML = module.generateResults(response);
                         module.verbose('Parsing server response', response);
                         if (response !== undefined) {
                             if (searchTerm !== undefined && response[fields.results] !== undefined) {
@@ -790,8 +775,7 @@
                 has: {
                     minimumCharacters: function () {
                         var searchTerm    = module.get.value();
-                        var numCharacters = searchTerm.length
-                        ;
+                        var numCharacters = searchTerm.length;
 
                         return numCharacters >= settings.minCharacters;
                     },
@@ -799,8 +783,7 @@
                         if ($results.length === 0) {
                             return false;
                         }
-                        var html = $results.html()
-                        ;
+                        var html = $results.html();
 
                         return html !== '';
                     },
@@ -808,8 +791,7 @@
 
                 clear: {
                     cache: function (value) {
-                        var cache = $module.data(metadata.cache)
-                        ;
+                        var cache = $module.data(metadata.cache);
                         if (!value) {
                             module.debug('Clearing cache', value);
                             $module.removeData(metadata.cache);
@@ -826,8 +808,7 @@
 
                 read: {
                     cache: function (name) {
-                        var cache = $module.data(metadata.cache)
-                        ;
+                        var cache = $module.data(metadata.cache);
                         if (settings.cache) {
                             module.verbose('Checking cache for generated html for query', name);
 
@@ -842,8 +823,7 @@
 
                 create: {
                     categoryResults: function (results) {
-                        var categoryResults = {}
-                        ;
+                        var categoryResults = {};
                         $.each(results, function (index, result) {
                             if (!result.category) {
                                 return;
@@ -864,8 +844,7 @@
                     id: function (resultIndex, categoryIndex) {
                         var resultID      = resultIndex + 1; // not zero indexed
                         var letterID;
-                        var id
-                        ;
+                        var id;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
                             letterID = String.fromCharCode(97 + categoryIndex);
@@ -910,8 +889,7 @@
                         module.debug('Injecting unique ids into results');
                         // since results may be an object, we must use counters
                         var categoryIndex = 0;
-                        var resultIndex   = 0
-                        ;
+                        var resultIndex   = 0;
                         if (settings.type === 'category') {
                             // iterate through each category result
                             $.each(results, function (index, category) {
@@ -1062,8 +1040,7 @@
                     var template       = settings.templates[settings.type];
                     var isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
                     var isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
-                    var html           = ''
-                    ;
+                    var html           = '';
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
                             if (isProperObject) {
@@ -1091,8 +1068,7 @@
                             ;
                             $.each(results, function (label, content) {
                                 $.each(settings.searchFields, function (index, field) {
-                                    var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
-                                    ;
+                                    var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
                                     if (fieldExists) {
                                         var markedHTML = typeof content[field] === 'string'
                                             ? content[field]
@@ -1175,8 +1151,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1196,8 +1171,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1225,8 +1199,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -1461,8 +1434,7 @@
                 return string;
             },
             message: function (message, type, header) {
-                var html = ''
-                ;
+                var html = '';
                 if (message !== undefined && type !== undefined) {
                     html += ''
                         + '<div class="message ' + type + '">';
@@ -1479,8 +1451,7 @@
             category: function (response, settings) {
                 var html = '';
                 var fields = settings.fields;
-                var escape = settings.templates.escape
-                ;
+                var escape = settings.templates.escape;
                 if (response[fields.categoryResults] !== undefined) {
                     // each category
                     $.each(response[fields.categoryResults], function (index, category) {
@@ -1542,8 +1513,7 @@
             standard: function (response, settings) {
                 var html = '';
                 var fields = settings.fields;
-                var escape = settings.templates.escape
-                ;
+                var escape = settings.templates.escape;
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {

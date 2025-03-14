@@ -42,8 +42,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.nag.settings, parameters)
@@ -63,8 +62,7 @@
             var element         = this;
             var instance        = $module.data(moduleNamespace);
             var storage;
-            var module
-            ;
+            var module;
             module = {
 
                 initialize: function () {
@@ -219,8 +217,7 @@
                                     var cookies = document.cookie.split('; ');
                                     for (var i = 0, il = cookies.length; i < il; i++) {
                                         var parts    = cookies[i].split('=');
-                                        var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
-                                        ;
+                                        var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                         if (key === foundKey) {
                                             return parts[1] || '';
                                         }
@@ -235,8 +232,7 @@
                         module.error(error.noStorage);
                     },
                     storageOptions: function () {
-                        var options = {}
-                        ;
+                        var options = {};
                         if (settings.expires) {
                             options.expires = module.get.expirationDate(settings.expires);
                         }
@@ -263,8 +259,7 @@
 
                 storage: {
                     set: function (key, value) {
-                        var options = module.get.storageOptions()
-                        ;
+                        var options = module.get.storageOptions();
                         if (storage === window.localStorage && options.expires) {
                             module.debug('Storing expiration value in localStorage', key, options.expires);
                             storage.setItem(key + settings.expirationKey, options.expires);
@@ -277,8 +272,7 @@
                         }
                     },
                     get: function (key) {
-                        var storedValue
-                        ;
+                        var storedValue;
                         storedValue = storage.getItem(key);
                         if (storage === window.localStorage) {
                             var expiration = storage.getItem(key + settings.expirationKey);
@@ -295,8 +289,7 @@
                         return storedValue;
                     },
                     remove: function (key) {
-                        var options = module.get.storageOptions()
-                        ;
+                        var options = module.get.storageOptions();
                         options.expires = module.get.expirationDate(-1);
                         if (storage === window.localStorage) {
                             storage.removeItem(key + settings.expirationKey);
@@ -358,8 +351,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -379,8 +371,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -405,8 +396,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

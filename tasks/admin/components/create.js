@@ -35,17 +35,14 @@ const project         = require('../../config/project/release');
 
 // shorthand
 const version         = project.version;
-const output          = config.paths.output
-;
+const output          = config.paths.output;
 
 module.exports = function (callback) {
     let index;
-    let tasks = []
-    ;
+    let tasks = [];
 
     for (index in release.components) {
-        let component = release.components[index]
-    ;
+        let component = release.components[index];
 
         // streams... designed to save time and make coding fun...
         (function (component) {
@@ -241,8 +238,7 @@ module.exports = function (callback) {
 
             // Creates meteor package.js
             function createMeteorPackage() {
-                let filenames = ''
-                ;
+                let filenames = '';
 
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))

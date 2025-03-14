@@ -41,8 +41,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.state.settings, parameters)
@@ -64,8 +63,7 @@
             var element         = this;
             var instance        = $module.data(moduleNamespace);
 
-            var module
-            ;
+            var module;
             module = {
 
                 initialize: function () {
@@ -201,8 +199,7 @@
                 toggle: {
                     state: function () {
                         var apiRequest;
-                        var requestCancelled
-                        ;
+                        var requestCancelled;
                         if (module.allows('active') && module.is.enabled()) {
                             module.refresh();
                             if ($.fn.api !== undefined) {
@@ -369,8 +366,7 @@
                     // on mouseout sets text to previous value
                     text: function () {
                         var activeText   = text.active || $module.data(metadata.storedText);
-                        var inactiveText = text.inactive || $module.data(metadata.storedText)
-                        ;
+                        var inactiveText = text.inactive || $module.data(metadata.storedText);
                         if (module.is.textEnabled()) {
                             if (module.is.active() && activeText) {
                                 module.verbose('Resetting active text', activeText);
@@ -459,8 +455,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -480,8 +475,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -506,8 +500,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

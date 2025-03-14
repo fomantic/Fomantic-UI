@@ -15,8 +15,7 @@ const config    = require('../config/user');
 const tasks     = require('../config/tasks');
 const install   = require('../config/project/install');
 
-const log       = tasks.log
-;
+const log       = tasks.log;
 
 function build(src, config) {
     return gulp.src(src, { base: config.paths.source.themes, encoding: false })

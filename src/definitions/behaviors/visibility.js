@@ -44,8 +44,7 @@
         var returnedValue;
 
         var moduleCount    = $allModules.length;
-        var loadedCount    = 0
-        ;
+        var loadedCount    = 0;
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
@@ -74,8 +73,7 @@
 
             var contextObserver;
             var observer;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -286,8 +284,7 @@
                         };
                     },
                     image: function () {
-                        var src = $module.data(metadata.src)
-                        ;
+                        var src = $module.data(metadata.src);
                         if (src) {
                             module.verbose('Lazy loading image', src);
                             settings.once = true;
@@ -405,14 +402,12 @@
 
                 is: {
                     onScreen: function () {
-                        var calculations   = module.get.elementCalculations()
-                        ;
+                        var calculations   = module.get.elementCalculations();
 
                         return calculations.onScreen;
                     },
                     offScreen: function () {
-                        var calculations   = module.get.elementCalculations()
-                        ;
+                        var calculations   = module.get.elementCalculations();
 
                         return calculations.offScreen;
                     },
@@ -504,8 +499,7 @@
                 },
 
                 passed: function (amount, newCallback) {
-                    var calculations   = module.get.elementCalculations()
-                    ;
+                    var calculations   = module.get.elementCalculations();
                     // assign callback
                     if (amount && newCallback) {
                         settings.onPassed[amount] = newCallback;
@@ -525,8 +519,7 @@
                 onScreen: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onOnScreen;
-                    var callbackName = 'onScreen'
-                    ;
+                    var callbackName = 'onScreen';
                     if (newCallback) {
                         module.debug('Adding callback for onScreen', newCallback);
                         settings.onOnScreen = newCallback;
@@ -544,8 +537,7 @@
                 offScreen: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onOffScreen;
-                    var callbackName = 'offScreen'
-                    ;
+                    var callbackName = 'offScreen';
                     if (newCallback) {
                         module.debug('Adding callback for offScreen', newCallback);
                         settings.onOffScreen = newCallback;
@@ -563,8 +555,7 @@
                 passing: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onPassing;
-                    var callbackName = 'passing'
-                    ;
+                    var callbackName = 'passing';
                     if (newCallback) {
                         module.debug('Adding callback for passing', newCallback);
                         settings.onPassing = newCallback;
@@ -582,8 +573,7 @@
                 topVisible: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onTopVisible;
-                    var callbackName = 'topVisible'
-                    ;
+                    var callbackName = 'topVisible';
                     if (newCallback) {
                         module.debug('Adding callback for top visible', newCallback);
                         settings.onTopVisible = newCallback;
@@ -601,8 +591,7 @@
                 bottomVisible: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onBottomVisible;
-                    var callbackName = 'bottomVisible'
-                    ;
+                    var callbackName = 'bottomVisible';
                     if (newCallback) {
                         module.debug('Adding callback for bottom visible', newCallback);
                         settings.onBottomVisible = newCallback;
@@ -620,8 +609,7 @@
                 topPassed: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onTopPassed;
-                    var callbackName = 'topPassed'
-                    ;
+                    var callbackName = 'topPassed';
                     if (newCallback) {
                         module.debug('Adding callback for top passed', newCallback);
                         settings.onTopPassed = newCallback;
@@ -639,8 +627,7 @@
                 bottomPassed: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onBottomPassed;
-                    var callbackName = 'bottomPassed'
-                    ;
+                    var callbackName = 'bottomPassed';
                     if (newCallback) {
                         module.debug('Adding callback for bottom passed', newCallback);
                         settings.onBottomPassed = newCallback;
@@ -658,8 +645,7 @@
                 passingReverse: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onPassingReverse;
-                    var callbackName = 'passingReverse'
-                    ;
+                    var callbackName = 'passingReverse';
                     if (newCallback) {
                         module.debug('Adding callback for passing reverse', newCallback);
                         settings.onPassingReverse = newCallback;
@@ -679,8 +665,7 @@
                 topVisibleReverse: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onTopVisibleReverse;
-                    var callbackName = 'topVisibleReverse'
-                    ;
+                    var callbackName = 'topVisibleReverse';
                     if (newCallback) {
                         module.debug('Adding callback for top visible reverse', newCallback);
                         settings.onTopVisibleReverse = newCallback;
@@ -700,8 +685,7 @@
                 bottomVisibleReverse: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onBottomVisibleReverse;
-                    var callbackName = 'bottomVisibleReverse'
-                    ;
+                    var callbackName = 'bottomVisibleReverse';
                     if (newCallback) {
                         module.debug('Adding callback for bottom visible reverse', newCallback);
                         settings.onBottomVisibleReverse = newCallback;
@@ -721,8 +705,7 @@
                 topPassedReverse: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onTopPassedReverse;
-                    var callbackName = 'topPassedReverse'
-                    ;
+                    var callbackName = 'topPassedReverse';
                     if (newCallback) {
                         module.debug('Adding callback for top passed reverse', newCallback);
                         settings.onTopPassedReverse = newCallback;
@@ -742,8 +725,7 @@
                 bottomPassedReverse: function (newCallback) {
                     var calculations = module.get.elementCalculations();
                     var callback     = newCallback || settings.onBottomPassedReverse;
-                    var callbackName = 'bottomPassedReverse'
-                    ;
+                    var callbackName = 'bottomPassedReverse';
                     if (newCallback) {
                         module.debug('Adding callback for bottom passed reverse', newCallback);
                         settings.onBottomPassedReverse = newCallback;
@@ -762,8 +744,7 @@
 
                 execute: function (callback, callbackName) {
                     var calculations = module.get.elementCalculations();
-                    var screen       = module.get.screenCalculations()
-                    ;
+                    var screen       = module.get.screenCalculations();
                     callback = callback || false;
                     if (callback) {
                         if (settings.continuous) {
@@ -799,8 +780,7 @@
                     },
                     occurred: function (callback) {
                         if (callback) {
-                            var occurred = module.cache.occurred
-                            ;
+                            var occurred = module.cache.occurred;
                             if (occurred[callback] !== undefined && occurred[callback] === true) {
                                 module.debug('Callback can now be called again', callback);
                                 module.cache.occurred[callback] = false;
@@ -833,8 +813,7 @@
                     direction: function () {
                         var scroll     = module.get.scroll();
                         var lastScroll = module.get.lastScroll();
-                        var direction
-                        ;
+                        var direction;
                         if (scroll > lastScroll && lastScroll) {
                             direction = 'down';
                         } else if (scroll < lastScroll && lastScroll) {
@@ -848,8 +827,7 @@
                     },
                     elementPosition: function () {
                         var element = module.cache.element;
-                        var screen  = module.get.screenSize()
-                        ;
+                        var screen  = module.get.screenSize();
                         module.verbose('Saving element position');
                         // (quicker than $.extend)
                         element.fits = element.height < screen.height;
@@ -870,8 +848,7 @@
                     },
                     elementCalculations: function () {
                         var screen     = module.get.screenCalculations();
-                        var element    = module.get.elementPosition()
-                        ;
+                        var element    = module.get.elementPosition();
                         // offset
                         if (settings.includeMargin) {
                             element.margin = {};
@@ -908,8 +885,7 @@
                         return element;
                     },
                     screenCalculations: function () {
-                        var scroll = module.get.scroll()
-                        ;
+                        var scroll = module.get.scroll();
                         module.save.direction();
                         module.cache.screen.top = scroll;
                         module.cache.screen.bottom = scroll + module.cache.screen.height;
@@ -930,8 +906,7 @@
 
                 get: {
                     pixelsPassed: function (amount) {
-                        var element = module.get.elementCalculations()
-                        ;
+                        var element = module.get.elementCalculations();
                         if (amount.search('%') > -1) {
                             return element.height * (parseInt(amount, 10) / 100);
                         }
@@ -1044,8 +1019,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1065,8 +1039,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1091,8 +1064,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

@@ -3,8 +3,7 @@
  *******************************/
 
 const clean = require('../clean');
-const version = require('../version')
-;
+const version = require('../version');
 
 /*
   Lets you serve files to a local documentation instance

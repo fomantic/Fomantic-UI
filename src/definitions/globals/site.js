@@ -42,8 +42,7 @@
         var instance        = $module.data(moduleNamespace);
 
         var module;
-        var returnedValue
-        ;
+        var returnedValue;
         module = {
 
             initialize: function () {
@@ -77,8 +76,7 @@
 
             enabled: {
                 modules: function (modules) {
-                    var enabledModules = []
-                    ;
+                    var enabledModules = [];
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (module.moduleExists(name)) {
@@ -92,8 +90,7 @@
 
             disabled: {
                 modules: function (modules) {
-                    var disabledModules = []
-                    ;
+                    var disabledModules = [];
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (!module.moduleExists(name)) {
@@ -119,8 +116,7 @@
                         var namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
                             : true;
-                        var $existingModules
-                        ;
+                        var $existingModules;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', setting, value, name);
                             $.fn[name].settings[setting] = value;
@@ -142,8 +138,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var $existingModules
-                        ;
+                        var $existingModules;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
                             $.extend(true, $.fn[name].settings, newSettings);
@@ -271,8 +266,7 @@
                 log: function (message) {
                     var currentTime;
                     var executionTime;
-                    var previousTime
-                    ;
+                    var previousTime;
                     if (settings.performance) {
                         currentTime = Date.now();
                         previousTime = time || currentTime;
@@ -292,8 +286,7 @@
                 },
                 display: function () {
                     var title = settings.name + ':';
-                    var totalTime = 0
-                    ;
+                    var totalTime = 0;
                     time = false;
                     clearTimeout(module.performance.timer);
                     $.each(performance, function (index, data) {
@@ -318,8 +311,7 @@
                 var object = instance;
                 var maxDepth;
                 var found;
-                var response
-                ;
+                var response;
                 passedArguments = passedArguments || queryArguments;
                 context = context || element;
                 if (typeof query === 'string' && object !== undefined) {

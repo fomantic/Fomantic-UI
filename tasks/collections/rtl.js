@@ -3,8 +3,7 @@
  *******************************/
 
 const buildRTL = require('../rtl/build');
-const watchRTL = require('../rtl/watch')
-;
+const watchRTL = require('../rtl/watch');
 
 module.exports = function (gulp) {
     gulp.task('watch-rtl', watchRTL);

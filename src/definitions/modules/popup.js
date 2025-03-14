@@ -49,8 +49,7 @@
             return $context;
         };
 
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.popup.settings, parameters)
@@ -84,8 +83,7 @@
             var documentObserver;
             var elementNamespace;
             var id;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -232,8 +230,7 @@
                     hideGracefully: function (event) {
                         var $target = $(event.target);
                         var isInDOM = $.contains(document.documentElement, event.target);
-                        var inPopup = $target.closest(selector.popup).length > 0
-                        ;
+                        var inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
                             module.debug('Click occurred outside popup hiding popup');
@@ -250,8 +247,7 @@
                     var contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
                     var html      = module.get.html();
                     var title     = module.get.title();
-                    var content   = module.get.content(contentFallback)
-                    ;
+                    var content   = module.get.content(contentFallback);
 
                     if (html || content || title) {
                         module.debug('Creating pop-up html');
@@ -515,8 +511,7 @@
                         var scroll = isWindowEl
                             ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                             : { top: 0, left: 0 };
-                        var screen
-                        ;
+                        var screen;
                         calculations = {
                             // element which is launching popup
                             target: {
@@ -552,8 +547,7 @@
 
                         // if popup offset context is different from target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
-                            var popupOffset        = $popupOffsetParent.offset()
-                            ;
+                            var popupOffset        = $popupOffsetParent.offset();
                             calculations.target.top -= popupOffset.top;
                             calculations.target.left -= popupOffset.left;
                             calculations.parent.width = $popupOffsetParent.outerWidth();
@@ -617,8 +611,7 @@
                     distanceFromBoundary: function (offset, calculations) {
                         var distanceFromBoundary = {};
                         var popup;
-                        var boundary
-                        ;
+                        var boundary;
                         calculations = calculations || module.get.calculations();
 
                         // shorthand
@@ -642,13 +635,11 @@
                             ? $element[0]
                             : $target[0];
                         var parentNode = element.parentNode;
-                        var $node    = $(parentNode)
-                        ;
+                        var $node    = $(parentNode);
                         if (parentNode) {
                             var is2D     = $node.css('transform') === 'none';
                             var isStatic = $node.css('position') === 'static';
-                            var isBody   = $node.is('body')
-                            ;
+                            var isBody   = $node.is('body');
                             while (parentNode && !isBody && isStatic && is2D) {
                                 parentNode = parentNode.parentNode;
                                 $node = $(parentNode);
@@ -702,8 +693,7 @@
                         var adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom';
                         var oppositeTried = false;
                         var adjacentTried = false;
-                        var nextPosition  = false
-                        ;
+                        var nextPosition  = false;
                         if (!triedPositions) {
                             module.verbose('All available positions available');
                             triedPositions = module.get.positions();
@@ -748,8 +738,7 @@
                         var parent;
                         var positioning;
                         var popupOffset;
-                        var distanceFromBoundary
-                        ;
+                        var distanceFromBoundary;
 
                         calculations = calculations || module.get.calculations();
                         position = position || $module.data(metadata.position) || settings.position;
@@ -1116,8 +1105,7 @@
                         return settings.closable;
                     },
                     offstage: function (distanceFromBoundary, position) {
-                        var offstage = []
-                        ;
+                        var offstage = [];
                         // return boundaries that have been surpassed
                         $.each(distanceFromBoundary, function (direction, distance) {
                             if (distance < -settings.jitter) {
@@ -1218,8 +1206,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1239,8 +1226,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1265,8 +1251,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -1511,8 +1496,7 @@
             },
             popup: function (text) {
                 var html   = '';
-                var escape = $.fn.popup.settings.templates.escape
-                ;
+                var escape = $.fn.popup.settings.templates.escape;
                 if (text !== undefined) {
                     if (text.title) {
                         text.title = escape(text.title);

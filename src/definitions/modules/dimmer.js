@@ -29,8 +29,7 @@
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
 
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
@@ -55,8 +54,7 @@
 
             var element   = this;
             var instance  = $module.data(moduleNamespace);
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -149,8 +147,7 @@
                 },
 
                 addContent: function (element) {
-                    var $content = $(element)
-                    ;
+                    var $content = $(element);
                     module.debug('Add content to dimmer', $content);
                     if ($content.parent()[0] !== $dimmer[0]) {
                         $content.detach().appendTo($dimmer);
@@ -158,8 +155,7 @@
                 },
 
                 create: function () {
-                    var $element = $(settings.template.dimmer(settings))
-                    ;
+                    var $element = $(settings.template.dimmer(settings));
                     if (settings.dimmerName) {
                         module.debug('Creating named dimmer', settings.dimmerName);
                         $element.addClass(settings.dimmerName);
@@ -392,8 +388,7 @@
                     opacity: function (opacity) {
                         var color      = $dimmer.css('background-color');
                         var colorArray = color.split(',');
-                        var isRGB      = colorArray && colorArray.length >= 3
-                        ;
+                        var isRGB      = colorArray && colorArray.length >= 3;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
                             colorArray[2] = colorArray[2].replace(')', '');
@@ -507,8 +502,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -528,8 +522,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -557,8 +550,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -701,8 +693,7 @@
         template: {
             dimmer: function (settings) {
                 var d = $('<div/>').addClass('ui dimmer');
-                var l
-                ;
+                var l;
                 if (settings.displayLoader) {
                     l = $('<div/>')
                         .addClass(settings.className.loader)

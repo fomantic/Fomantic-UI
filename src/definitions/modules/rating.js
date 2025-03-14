@@ -28,8 +28,7 @@
         var query           = arguments[0];
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.rating.settings, parameters)
@@ -52,8 +51,7 @@
             var $icon           = $module.find(selector.icon);
 
             var initialLoad;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -99,8 +97,7 @@
                     layout: function () {
                         var maxRating = module.get.maxRating();
                         var icon      = module.get.icon();
-                        var html      = $.fn.rating.settings.templates.icon(maxRating, icon)
-                        ;
+                        var html      = $.fn.rating.settings.templates.icon(maxRating, icon);
                         module.debug('Generating icon html dynamically');
                         $module
                             .html(html)
@@ -111,8 +108,7 @@
 
                 event: {
                     mouseenter: function () {
-                        var $activeIcon = $(this)
-                        ;
+                        var $activeIcon = $(this);
                         $activeIcon
                             .nextAll()
                             .removeClass(className.selected)
@@ -231,8 +227,7 @@
                         return settings.maxRating;
                     },
                     rating: function () {
-                        var currentRating = $icon.filter('.' + className.active).length
-                        ;
+                        var currentRating = $icon.filter('.' + className.active).length;
                         module.verbose('Current rating retrieved', currentRating);
 
                         return currentRating;
@@ -250,8 +245,7 @@
                         var $partialActiveIcon = rating <= 1
                             ? $activeIcon
                             : $activeIcon.next();
-                        var filledPercentage = (rating % 1) * 100
-                        ;
+                        var filledPercentage = (rating % 1) * 100;
                         $module
                             .removeClass(className.selected)
                         ;
@@ -345,8 +339,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -366,8 +359,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -395,8 +387,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -523,8 +514,7 @@
             icon: function (maxRating, iconClass) {
                 var icon = 1;
                 var html = '';
-                var escape = $.fn.rating.settings.templates.escape
-                ;
+                var escape = $.fn.rating.settings.templates.escape;
                 while (icon <= maxRating) {
                     html += '<i class="' + escape(iconClass) + ' icon"></i>';
                     icon++;

@@ -19,8 +19,7 @@ let repos   = release.distributions.concat(release.components);
 let total   = repos.length;
 let index   = -1;
 
-let stepRepo
-;
+let stepRepo;
 
 module.exports = function (callback) {
     console.log('Registering repos with package managers');
@@ -37,8 +36,7 @@ module.exports = function (callback) {
         let outputDirectory = release.outputRoot + repo + '/';
         let exec            = process.exec;
         let execSettings    = { cwd: outputDirectory };
-        let updateNPM       = 'npm publish;meteor publish;'
-        ;
+        let updateNPM       = 'npm publish;meteor publish;';
 
         /* Register with NPM */
         exec(updateNPM, execSettings, function (err, stdout, stderr) {

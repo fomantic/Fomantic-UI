@@ -2,8 +2,7 @@ const semver = require('semver'); // eslint-disable-line import/no-extraneous-de
 
 let changelogDeps  = {};
 let loopVersion = '';
-let uniqueCommits = []
-;
+let uniqueCommits = [];
 const issueLinks = function (item) {
     if (typeof loopVersion !== 'string') {
         return item;
@@ -122,8 +121,7 @@ module.exports = function (Handlebars) {
 
             let depPackage = subjectDetails[1];
             let depVersionFrom = subjectDetails[2];
-            let depVersionTo = subjectDetails[3]
-                ;
+            let depVersionTo = subjectDetails[3];
             if (!changelogDeps[depPackage]) {
                 changelogDeps[depPackage] = {
                     from: '999.999.999',
@@ -173,8 +171,7 @@ module.exports = function (Handlebars) {
                     return item;
                 }
                 let depPackage = subjectDetails[1];
-                let depVersionFrom = subjectDetails[2]
-                    ;
+                let depVersionFrom = subjectDetails[2];
                 item.subject = item.subject.replace(depVersionFrom, changelogDeps[depPackage].from);
 
                 return item;

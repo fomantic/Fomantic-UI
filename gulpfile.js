@@ -8,8 +8,7 @@ const gulp   = require('gulp');
 const config = require('./tasks/config/user');
 
 const admin = require('./tasks/collections/admin');
-const rtl = require('./tasks/collections/rtl')
-;
+const rtl = require('./tasks/collections/rtl');
 
 /*******************************
  *            Tasks

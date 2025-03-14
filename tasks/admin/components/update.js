@@ -29,8 +29,7 @@ const oAuth          = fs.existsSync(path.join(__dirname, '/../../config/admin/o
     : false;
 
 // shorthand
-const version = project.version
-;
+const version = project.version;
 
 module.exports = function (callback) {
     const github = require('../../config/admin/github'); // eslint-disable-line global-require
@@ -38,8 +37,7 @@ module.exports = function (callback) {
     let index = -1;
     let total = release.components.length;
     let timer;
-    let stepRepo
-    ;
+    let stepRepo;
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -85,8 +83,7 @@ module.exports = function (callback) {
         let versionOptions =  { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
 
         let localRepoSetup  = fs.existsSync(path.join(outputDirectory, '.git'));
-        let canProceed      = true
-        ;
+        let canProceed      = true;
 
         console.info('Processing repository:' + outputDirectory);
 

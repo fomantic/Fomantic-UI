@@ -81,8 +81,7 @@
             var tempBodyMargin = '';
             var hadScrollbar = false;
 
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -137,8 +136,7 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            var clickedContext  = $context.is(event.target)
-                            ;
+                            var clickedContext  = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -222,8 +220,7 @@
                             top: height,
                             bottom: -height,
                         };
-                        var style
-                        ;
+                        var style;
 
                         if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
@@ -311,8 +308,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $toggle = $(selector)
-                    ;
+                    var $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -338,8 +334,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
-                        ;
+                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                     },
                 },
@@ -412,8 +407,7 @@
                 hideOthers: function (callback) {
                     var $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
                     var sidebarCount   = $otherSidebars.length;
-                    var callbackCount  = 0
-                    ;
+                    var callbackCount  = 0;
                     callback = callback || function () {};
                     $otherSidebars
                         .sidebar('hide', function () {
@@ -441,8 +435,7 @@
                         : $pusher;
                     var animate;
                     var dim;
-                    var transitionEnd
-                    ;
+                    var transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -485,8 +478,7 @@
                         ? $module
                         : $pusher;
                     var animate;
-                    var transitionEnd
-                    ;
+                    var transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -548,8 +540,7 @@
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -647,8 +638,7 @@
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -669,8 +659,7 @@
                     },
                     transition: function () {
                         var direction = module.get.direction();
-                        var transition
-                        ;
+                        var transition;
                         transition = module.is.mobile()
                             ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
@@ -708,8 +697,7 @@
                     },
                     mobile: function () {
                         var userAgent    = navigator.userAgent;
-                        var isMobile     = userAgent.match(regExp.mobile)
-                        ;
+                        var isMobile     = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -801,8 +789,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -822,8 +809,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -848,8 +834,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

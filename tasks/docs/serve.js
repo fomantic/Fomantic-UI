@@ -23,8 +23,7 @@ const log         = tasks.log;
 
 const css         = require('../build/css');
 const js          = require('../build/javascript');
-const assets      = require('../build/assets')
-;
+const assets      = require('../build/assets');
 
 module.exports = function (callback) {
     // use a different config

@@ -29,8 +29,7 @@
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
 
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings       = $.isPlainObject(parameters)
@@ -60,8 +59,7 @@
             // standard module
             var element       = this;
             var instance      = $module.data(moduleNamespace);
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -97,8 +95,7 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     var shape          = $sides[0] || document.createElement('div');
-                    var fakeAssignment = shape.offsetWidth
-                    ;
+                    var fakeAssignment = shape.offsetWidth;
                 },
 
                 animate: function (propertyObject, callback) {
@@ -209,8 +206,7 @@
                     currentStageSize: function () {
                         var $activeSide = $side.filter('.' + className.active);
                         var width       = $activeSide.outerWidth(true);
-                        var height      = $activeSide.outerHeight(true)
-                        ;
+                        var height      = $activeSide.outerHeight(true);
                         $module
                             .css({
                                 width: width,
@@ -289,8 +285,7 @@
 
                             return;
                         }
-                        var transform = module.get.transform[type]()
-                        ;
+                        var transform = module.get.transform[type]();
                         if (!module.is.animating()) {
                             module.debug('Flipping ' + type, $nextSide);
                             module.set.stageSize();
@@ -332,8 +327,7 @@
                     transform: {
                         up: function () {
                             var translateZ = $activeSide.outerHeight(true) / 2;
-                            var translateY = $nextSide.outerHeight(true) - translateZ
-                            ;
+                            var translateY = $nextSide.outerHeight(true) - translateZ;
 
                             return {
                                 transform: 'translateY(' + translateY + 'px) translateZ(-' + translateZ + 'px) rotateX(-90deg)',
@@ -353,8 +347,7 @@
 
                         left: function () {
                             var translateZ = $activeSide.outerWidth(true) / 2;
-                            var translateX = $nextSide.outerWidth(true) - translateZ
-                            ;
+                            var translateX = $nextSide.outerWidth(true) - translateZ;
 
                             return {
                                 transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)',
@@ -590,8 +583,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -611,8 +603,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -640,8 +631,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

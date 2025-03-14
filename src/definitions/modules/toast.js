@@ -42,8 +42,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.toast.settings, parameters)
@@ -74,8 +73,7 @@
             var instance         = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
             var id;
-            var module
-            ;
+            var module;
             module = {
 
                 initialize: function () {
@@ -579,8 +577,7 @@
                 helpers: {
                     toClass: function (selector) {
                         var classes = selector.trim().split(/\s+/);
-                        var result = ''
-                        ;
+                        var result = '';
 
                         classes.forEach(function (element) {
                             result += '.' + element;
@@ -670,8 +667,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -691,8 +687,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -717,8 +712,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -917,8 +911,7 @@
     $.extend($.easing, {
         easeOutBounce: function (x) {
             var n1 = 7.5625;
-            var d1 = 2.75
-            ;
+            var d1 = 2.75;
             if (x < 1 / d1) {
                 return n1 * x * x;
             }

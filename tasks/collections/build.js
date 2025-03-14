@@ -8,8 +8,7 @@ const watch = require('../watch');
 const build = require('../build');
 const buildJS = require('../build/javascript');
 const buildCSS = require('../build/css');
-const buildAssets = require('../build/assets')
-;
+const buildAssets = require('../build/assets');
 
 module.exports = function (gulp) {
     gulp.task('watch', watch);

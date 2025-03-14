@@ -47,8 +47,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
@@ -86,8 +85,7 @@
             var element         = this;
             var context         = $context[0];
             var instance        = $module.data(moduleNamespace);
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -117,8 +115,7 @@
 
                 bind: {
                     events: function () {
-                        var triggerEvent = module.get.event()
-                        ;
+                        var triggerEvent = module.get.event();
                         if (triggerEvent) {
                             module.verbose('Attaching API events to element', triggerEvent);
                             $module
@@ -147,8 +144,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        var response
-                        ;
+                        var response;
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 
@@ -353,8 +349,7 @@
                 add: {
                     urlData: function (url, urlData) {
                         var requiredVariables;
-                        var optionalVariables
-                        ;
+                        var optionalVariables;
                         if (url) {
                             requiredVariables = url.match(regExp.required);
                             optionalVariables = url.match(regExp.optional);
@@ -424,8 +419,7 @@
                     formData: function (data) {
                         var formData = {};
                         var hasOtherData;
-                        var useFormDataApi = settings.serializeForm === 'formdata'
-                        ;
+                        var useFormDataApi = settings.serializeForm === 'formdata';
                         data = data || originalData || settings.data;
                         hasOtherData = $.isPlainObject(data);
 
@@ -461,8 +455,7 @@
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value));
                                 var nameKeys = el.name.match(regExp.key) || [];
-                                var pushKey = el.name.replace(/\[]$/, '')
-                                ;
+                                var pushKey = el.name.replace(/\[]$/, '');
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
                                     pushValues[pushKey] = value;
@@ -564,8 +557,7 @@
                         fail: function (xhr, status, httpMessage) {
                             var context     = this;
                             var elapsedTime = Date.now() - requestStartTime;
-                            var timeLeft    = settings.loadingDuration - elapsedTime
-                            ;
+                            var timeLeft    = settings.loadingDuration - elapsedTime;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
@@ -592,8 +584,7 @@
                         },
                         complete: function (firstParameter, secondParameter) {
                             var xhr;
-                            var response
-                            ;
+                            var response;
                             // have to guess callback parameters based on request success
                             if (module.was.successful()) {
                                 response = firstParameter;
@@ -608,8 +599,7 @@
                         fail: function (xhr, status, httpMessage) {
                             // pull response from xhr if available
                             var response     = module.get.responseFromXHR(xhr);
-                            var errorMessage = module.get.errorFromRequest(response, status, httpMessage)
-                            ;
+                            var errorMessage = module.get.errorFromRequest(response, status, httpMessage);
                             if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                 settings.onAbort.call(context, status, $module, xhr);
@@ -664,8 +654,7 @@
                         var asyncResponder = settings.mockResponseAsync || settings.responseAsync;
                         var asyncCallback;
                         var response;
-                        var mockedXHR
-                        ;
+                        var mockedXHR;
 
                         mockedXHR = $.Deferred()
                             .always(module.event.xhr.complete)
@@ -701,8 +690,7 @@
                     },
 
                     xhr: function () {
-                        var xhr
-                        ;
+                        var xhr;
                         // ajax request promise
                         xhr = $.ajax(ajaxSettings)
                             .always(module.event.xhr.always)
@@ -763,8 +751,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        var runSettings
-                        ;
+                        var runSettings;
                         runSettings = settings.beforeSend.call($module, settings);
                         if (runSettings) {
                             if (runSettings.success !== undefined) {
@@ -797,8 +784,7 @@
                     urlEncodedValue: function (value) {
                         var decodedValue   = window.decodeURIComponent(value);
                         var encodedValue   = window.encodeURIComponent(value);
-                        var alreadyEncoded = decodedValue !== value
-                        ;
+                        var alreadyEncoded = decodedValue !== value;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
 
@@ -809,8 +795,7 @@
                         return encodedValue;
                     },
                     defaultData: function () {
-                        var data = {}
-                        ;
+                        var data = {};
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();
@@ -870,8 +855,7 @@
                 },
 
                 abort: function () {
-                    var xhr = module.get.xhr()
-                    ;
+                    var xhr = module.get.xhr();
                     if (xhr && xhr.state() !== 'resolved') {
                         module.debug('Cancelling API request');
                         xhr.abort();
@@ -937,8 +921,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -958,8 +941,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -984,8 +966,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

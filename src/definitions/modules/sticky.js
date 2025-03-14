@@ -42,8 +42,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings              = $.isPlainObject(parameters)
@@ -69,8 +68,7 @@
 
             var documentObserver;
             var observer;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -226,8 +224,7 @@
 
                 supports: {
                     sticky: function () {
-                        var $element = $('<div/>')
-                        ;
+                        var $element = $('<div/>');
                         $element.addClass(className.supported);
 
                         return $element.css('position').match('sticky');
@@ -299,8 +296,7 @@
 
                 get: {
                     direction: function (scroll) {
-                        var direction = 'down'
-                        ;
+                        var direction = 'down';
                         scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
                             direction = 'up';
@@ -332,8 +328,7 @@
                         var delta          = module.get.scrollChange(scroll);
                         var maxScroll      = element.height - scrollContext.height + settings.offset;
                         var elementScroll  = module.get.currentElementScroll();
-                        var possibleScroll = elementScroll + delta
-                        ;
+                        var possibleScroll = elementScroll + delta;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
                         } else if (possibleScroll > maxScroll) {
@@ -371,8 +366,7 @@
                         ;
                     },
                     containerSize: function () {
-                        var tagName = $container[0].tagName
-                        ;
+                        var tagName = $container[0].tagName;
                         if (tagName === 'HTML' || tagName === 'body') {
                             module.determineContainer();
                         } else {
@@ -396,8 +390,7 @@
                         }
                     },
                     minimumSize: function () {
-                        var element   = module.cache.element
-                        ;
+                        var element   = module.cache.element;
                         $container
                             .css('min-height', element.height)
                         ;
@@ -473,8 +466,7 @@
 
                     // shorthand
                     var doesntFit      = !fits;
-                    var elementVisible = element.height !== 0
-                    ;
+                    var elementVisible = element.height !== 0;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
                             if (scroll.top >= context.bottom) {
@@ -721,8 +713,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -742,8 +733,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -768,8 +758,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

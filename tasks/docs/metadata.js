@@ -5,8 +5,7 @@
 // node dependencies
 const console      = require('@fomantic/better-console');
 const path = require('path');
-const YAML         = require('js-yaml')
-;
+const YAML         = require('js-yaml');
 
 let data = {};
 
@@ -53,8 +52,7 @@ function parser(file, callback) {
         let lines    = text.split('\n');
         let filename = file.path.slice(0, -4);
         let key      = 'server' + path.sep + 'documents';
-        let position = filename.indexOf(key)
-        ;
+        let position = filename.indexOf(key);
 
         // exit conditions
         if (!lines) {
@@ -79,8 +77,7 @@ function parser(file, callback) {
         ];
         let index;
         let meta;
-        let line
-        ;
+        let line;
 
         for (index = 0; index < lineCount; index++) {
             line = lines[index];

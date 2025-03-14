@@ -30,8 +30,7 @@ const buildCSS    = require('../build/css').buildCSS;
 const buildAssets = require('../build/assets').buildAssets;
 
 // shorthand
-const log         = tasks.log
-;
+const log         = tasks.log;
 
 module.exports = function (callback) {
     // use a different config

@@ -29,8 +29,7 @@
         var methodInvoked   = typeof query === 'string';
         var queryArguments  = [].slice.call(arguments, 1);
 
-        var returnedValue
-        ;
+        var returnedValue;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.accordion.settings, parameters)
@@ -51,8 +50,7 @@
             var element  = this;
             var instance = $module.data(moduleNamespace);
             var observer;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -126,8 +124,7 @@
                     var isAnimating = $activeContent.hasClass(className.animating);
                     var isActive    = $activeContent.hasClass(className.active);
                     var isOpen      = isActive && !isAnimating;
-                    var isOpening   = !isActive && isAnimating
-                    ;
+                    var isOpening   = !isActive && isAnimating;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
                         if (settings.collapsible) {
@@ -149,8 +146,7 @@
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating = $activeContent.hasClass(className.animating);
                     var isActive    = $activeContent.hasClass(className.active);
-                    var isOpen      = isActive || isAnimating
-                    ;
+                    var isOpen      = isActive || isAnimating;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
 
@@ -219,8 +215,7 @@
                     var isAnimating    = $activeContent.hasClass(className.animating);
                     var isActive       = $activeContent.hasClass(className.active);
                     var isOpening      = !isActive && isAnimating;
-                    var isClosing      = isActive && isAnimating
-                    ;
+                    var isClosing      = isActive && isAnimating;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
                         settings.onClosing.call($activeContent);
@@ -280,8 +275,7 @@
                     var activeContent    = selector.content + '.' + className.active + ':visible';
                     var $openTitles;
                     var $nestedTitles;
-                    var $openContents
-                    ;
+                    var $openContents;
                     if (settings.closeNested) {
                         $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
                         $openContents = $openTitles.next($content);
@@ -416,8 +410,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -437,8 +430,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -463,8 +455,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

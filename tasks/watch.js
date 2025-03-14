@@ -13,8 +13,7 @@ const install    = require('./config/project/install');
 
 const css        = require('./build/css');
 const js         = require('./build/javascript');
-const assets     = require('./build/assets')
-;
+const assets     = require('./build/assets');
 
 // export task
 module.exports = function (callback) {

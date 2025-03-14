@@ -37,8 +37,7 @@
             20: { row: 3, column: 1 },
             30: { row: 2, column: 1 },
         };
-        var numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
-        ;
+        var numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
 
         $allModules.each(function () {
             var settings = $.isPlainObject(parameters)
@@ -71,8 +70,7 @@
             var focusDateUsedForRange = false;
             var selectionComplete = false;
             var classObserver;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -149,8 +147,7 @@
                                 // prepend the popup element to the activator's parent so that it has less chance of messing with
                                 // the styling (e.g., input action button needs to be the last child to have the correct border radius)
                                 var $activatorParent = $activator.parent();
-                                var domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
-                                ;
+                                var domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo';
                                 $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
                             }
                         }
@@ -231,8 +228,7 @@
 
                 trigger: {
                     change: function () {
-                        var inputElement = $input[0]
-                        ;
+                        var inputElement = $input[0];
                         if (inputElement) {
                             var events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
@@ -250,15 +246,13 @@
                         var p;
                         var row;
                         var cell;
-                        var pageGrid
-                        ;
+                        var pageGrid;
 
                         var mode = module.get.mode();
                         var today = new Date();
                         var date = module.get.date();
                         var focusDate = module.get.focusDate();
-                        var display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today)
-                        ;
+                        var display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today);
 
                         if (!focusDate) {
                             focusDate = display;
@@ -270,8 +264,7 @@
                         var isDay = mode === 'day';
                         var isHour = mode === 'hour';
                         var isMinute = mode === 'minute';
-                        var isTimeOnly = settings.type === 'time'
-                        ;
+                        var isTimeOnly = settings.type === 'time';
 
                         var multiMonth = Math.max(settings.multiMonth, 1);
                         var monthOffset = !isDay ? 0 : module.get.monthOffset();
@@ -280,8 +273,7 @@
                         var hour = display.getHours();
                         var day = display.getDate();
                         var startMonth = display.getMonth() + monthOffset;
-                        var year = display.getFullYear()
-                        ;
+                        var year = display.getFullYear();
 
                         var columns = isDay
                             ? (settings.showWeekNumbers ? 8 : 7)
@@ -785,8 +777,7 @@
                         var ms7d = 7 * ms1d;
                         var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d; // an absolute day number
                         var AWN = Math.floor(DC3 / 7); // an absolute week number
-                        var Wyr = new Date(AWN * ms7d).getUTCFullYear()
-                        ;
+                        var Wyr = new Date(AWN * ms7d).getUTCFullYear();
 
                         return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
                     },
@@ -1485,8 +1476,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1506,8 +1496,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1532,8 +1521,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -1716,25 +1704,21 @@
 
                 var i;
                 var j;
-                var k
-                ;
+                var k;
                 var minute = -1;
                 var hour = -1;
                 var day = -1;
                 var month = -1;
-                var year = -1
-                ;
+                var year = -1;
                 var isAm;
 
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
 
                 var words = text.split(settings.regExp.dateWords);
-                var word
-                ;
+                var word;
                 var numbers = text.split(settings.regExp.dateNumbers);
-                var number
-                ;
+                var number;
 
                 var parts;
                 var monthString;

@@ -14,8 +14,7 @@ const updateDistributions = require('../admin/distributions/update');
 
 const release             = require('../admin/release');
 const publish             = require('../admin/publish');
-const register            = require('../admin/register')
-;
+const register            = require('../admin/register');
 
 /*
   These are tasks to be run by project maintainers

@@ -3,8 +3,7 @@
 *******************************/
 
 const fs    = require('fs-extra');
-const config = require('./config/user')
-;
+const config = require('./config/user');
 
 // cleans distribution files
 module.exports = function (callback) {

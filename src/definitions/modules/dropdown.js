@@ -42,8 +42,7 @@
 
             return $context;
         };
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function (elementIndex) {
             var settings          = $.isPlainObject(parameters)
@@ -101,8 +100,7 @@
             var menuObserver;
             var classObserver;
             var module;
-            var tempDisableApiCache = false
-            ;
+            var tempDisableApiCache = false;
 
             module = {
 
@@ -230,8 +228,7 @@
                     userChoice: function (values) {
                         var $userChoices;
                         var $userChoice;
-                        var html
-                        ;
+                        var html;
                         values = values || module.get.userValues();
                         if (!values) {
                             return false;
@@ -262,8 +259,7 @@
                         return $userChoices;
                     },
                     userLabels: function (value) {
-                        var userValues = module.get.userValues()
-                        ;
+                        var userValues = module.get.userValues();
                         if (userValues) {
                             module.debug('Adding user labels', userValues);
                             $.each(userValues, function (index, value) {
@@ -315,8 +311,7 @@
                         $selected = $selected.eq(0);
                         var $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0);
                         var $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0);
-                        var hasNext        = $nextAvailable.length > 0
-                        ;
+                        var hasNext        = $nextAvailable.length > 0;
                         if (hasNext) {
                             module.verbose('Moving selection to', $nextAvailable);
                             $nextAvailable.addClass(className.selected);
@@ -360,8 +355,7 @@
                         }
                         if (module.is.search() && !module.has.search()) {
                             module.verbose('Adding search input');
-                            var labelNode = $module.prev('label')
-                            ;
+                            var labelNode = $module.prev('label');
                             $search = $('<input />')
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
@@ -382,8 +376,7 @@
                         }
                     },
                     select: function () {
-                        var selectValues  = module.get.selectValues()
-                        ;
+                        var selectValues  = module.get.selectValues();
                         module.debug('Dropdown initialized on a select', selectValues);
                         if ($module.is('select')) {
                             $input = $module;
@@ -448,8 +441,7 @@
                     },
                     returnedObject: function () {
                         var $firstModules = $allModules.slice(0, elementIndex);
-                        var $lastModules  = $allModules.slice(elementIndex + 1)
-                        ;
+                        var $lastModules  = $allModules.slice(elementIndex + 1);
                         // adjust all modules to use the correct reference
                         $allModules = $firstModules.add($module).add($lastModules);
                     },
@@ -599,8 +591,7 @@
                 },
 
                 hideSubMenus: function () {
-                    var $subMenus = $menu.children(selector.item).find(selector.menu)
-                    ;
+                    var $subMenus = $menu.children(selector.item).find(selector.menu);
                     module.verbose('Hiding sub menus', $subMenus);
                     $subMenus.transition('hide');
                 },
@@ -829,8 +820,7 @@
                             }
                         },
                         onSuccess: function (response, $module, xhr) {
-                            var values          = response[fields.remoteValues]
-                                ;
+                            var values          = response[fields.remoteValues];
                             if (!Array.isArray(values)) {
                                 values = [];
                             }
@@ -878,8 +868,7 @@
                     var escapedTerm = module.escape.string(searchTerm);
                     var regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
                     var regExpFlags = regExpIgnore + 'gm';
-                    var beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
-                    ;
+                    var beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags);
                     module.remove.filteredItem();
                     // avoid loop if we're matching nothing
                     if (module.has.query()) {
@@ -890,8 +879,7 @@
                             .each(function () {
                                 var $choice = $(this);
                                 var text;
-                                var value
-                                ;
+                                var value;
                                 if ($choice.hasClass(className.unfilterable)) {
                                     results.push(this);
 
@@ -943,8 +931,7 @@
                             ;
                             $.each(results, function (index, result) {
                                 var $result = $(result);
-                                var markedHTML = module.get.choiceText($result, true)
-                                ;
+                                var markedHTML = module.get.choiceText($result, true);
                                 if (settings.ignoreDiacritics) {
                                     markedHTML = markedHTML.normalize('NFD');
                                 }
@@ -983,8 +970,7 @@
 
                 fuzzySearch: function (query, term) {
                     var termLength  = term.length;
-                    var queryLength = query.length
-                    ;
+                    var queryLength = query.length;
                     if (settings.ignoreSearchCase) {
                         query = query.toLowerCase();
                         term = term.toLowerCase();
@@ -997,8 +983,7 @@
                     }
                     for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var continueSearch = false;
-                        var queryCharacter = query.charCodeAt(characterIndex)
-                        ;
+                        var queryCharacter = query.charCodeAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
@@ -1052,8 +1037,7 @@
                     var $selectedItem      = $currentlySelected.length > 0
                         ? $currentlySelected
                         : $activeItem;
-                    var hasSelected = $selectedItem.length > 0
-                    ;
+                    var hasSelected = $selectedItem.length > 0;
                     if (settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                         module.debug('Forcing partial selection to selected item', $selectedItem);
                         module.event.item.click.call($selectedItem, {}, true);
@@ -1103,8 +1087,7 @@
                     paste: function (event) {
                         var pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text');
                         var tokens = pasteValue.split(settings.delimiter);
-                        var notFoundTokens = []
-                        ;
+                        var notFoundTokens = [];
                         tokens.forEach(function (value) {
                             if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
                                 notFoundTokens.push(value.trim());
@@ -1117,8 +1100,7 @@
                             var endPos = searchEl.selectionEnd;
                             var orgText = searchEl.value;
                             var pasteText = notFoundTokens.join(settings.delimiter);
-                            var newEndPos = startPos + pasteText.length
-                            ;
+                            var newEndPos = startPos + pasteText.length;
                             $search.val(orgText.slice(0, startPos) + pasteText + orgText.slice(endPos));
                             searchEl.selectionStart = newEndPos;
                             searchEl.selectionEnd = newEndPos;
@@ -1162,8 +1144,7 @@
                         }
                     },
                     click: function (event) {
-                        var $target = $(event.target)
-                        ;
+                        var $target = $(event.target);
                         // focus search
                         if ($target.is($module)) {
                             if (!module.is.focusedOnSearch()) {
@@ -1271,8 +1252,7 @@
                     },
                     remove: {
                         click: function (event) {
-                            var $label = $(this).parent()
-                            ;
+                            var $label = $(this).parent();
                             if ($label.hasClass(className.active)) {
                                 // remove all selected labels
                                 module.remove.activeLabels();
@@ -1341,8 +1321,7 @@
                                 : $(false);
                             var $changedNodes  = $addedNode.add($removedNode);
                             var isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0;
-                            var isMessage      = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0
-                            ;
+                            var isMessage      = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0;
                             if (isUserAddition || isMessage) {
                                 module.debug('Updating item selector cache');
                                 module.refreshItems();
@@ -1365,8 +1344,7 @@
                             var $subMenu       = $item.children(selector.menu);
                             var $otherMenus    = $item.siblings(selector.item).children(selector.menu);
                             var hasSubMenu     = $subMenu.length > 0;
-                            var isBubbledEvent = $subMenu.find($target).length > 0
-                            ;
+                            var isBubbledEvent = $subMenu.find($target).length > 0;
                             if (!isBubbledEvent && hasSubMenu) {
                                 clearTimeout(module.itemTimer);
                                 module.itemTimer = setTimeout(function () {
@@ -1380,8 +1358,7 @@
                             }
                         },
                         mouseleave: function (event) {
-                            var $subMenu = $(this).find(selector.menu)
-                            ;
+                            var $subMenu = $(this).find(selector.menu);
                             if ($subMenu.length > 0) {
                                 clearTimeout(module.itemTimer);
                                 module.itemTimer = setTimeout(function () {
@@ -1401,8 +1378,7 @@
                             var text           = module.get.choiceText($choice);
                             var value          = module.get.choiceValue($choice, text);
                             var hasSubMenu     = $subMenu.length > 0;
-                            var isBubbledEvent = $subMenu.find($target).length > 0
-                            ;
+                            var isBubbledEvent = $subMenu.find($target).length > 0;
                             if (document.activeElement.tagName.toLowerCase() !== 'input') {
                                 $(document.activeElement).trigger('blur');
                             }
@@ -1437,8 +1413,7 @@
                         // label selection should occur even when the element has no focus
                         keydown: function (event) {
                             var pressedKey    = event.which;
-                            var isShortcutKey = module.is.inObject(pressedKey, keys)
-                            ;
+                            var isShortcutKey = module.is.inObject(pressedKey, keys);
                             if (isShortcutKey) {
                                 var $label            = $module.find(selector.label);
                                 var $activeLabel      = $label.filter('.' + className.active);
@@ -1453,8 +1428,7 @@
                                 var isFocusedOnSearch = module.is.focusedOnSearch();
                                 var isFocused         = module.is.focused();
                                 var caretAtStart      = isFocusedOnSearch && module.get.caretPosition(false) === 0;
-                                var isSelectedSearch  = caretAtStart && module.get.caretPosition(true) !== 0
-                                ;
+                                var isSelectedSearch  = caretAtStart && module.get.caretPosition(true) !== 0;
                                 if (isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                                     return;
                                 }
@@ -1554,8 +1528,7 @@
 
                     keydown: function (event) {
                         var pressedKey    = event.which;
-                        var isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter
-                        ;
+                        var isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter;
                         if (isShortcutKey) {
                             var $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0);
                             var $activeItem        = $menu.children('.' + className.active).eq(0);
@@ -1574,8 +1547,7 @@
                             var delimiterPressed      = event.key === settings.delimiter && module.is.multiple();
                             var isAdditionWithoutMenu = settings.allowAdditions && (pressedKey === keys.enter || delimiterPressed);
                             var $nextItem;
-                            var isSubMenuItem
-                            ;
+                            var isSubMenuItem;
                             // allow selection with the menu closed
                             if (isAdditionWithoutMenu) {
                                 if (selectedIsSelectable && settings.hideAdditions) {
@@ -1741,8 +1713,7 @@
 
                 trigger: {
                     change: function () {
-                        var inputElement = $input[0]
-                        ;
+                        var inputElement = $input[0];
                         if (inputElement) {
                             var events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
@@ -1770,8 +1741,7 @@
                     eventInModule: function (event, callback) {
                         var $target    = $(event.target);
                         var inDocument = $target.closest(document.documentElement).length > 0;
-                        var inModule   = $target.closest($module).length > 0
-                        ;
+                        var inModule   = $target.closest($module).length > 0;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -1791,8 +1761,7 @@
                         var $label       = $target.closest(selector.siblingLabel);
                         var inVisibleDOM = document.body.contains(event.target);
                         var notOnLabel   = $module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels);
-                        var notInMenu    = $target.closest($menu).length === 0
-                        ;
+                        var notInMenu    = $target.closest($menu).length === 0;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -1886,8 +1855,7 @@
                     },
                     selectionCount: function () {
                         var values = module.get.values();
-                        var count
-                        ;
+                        var count;
                         count = module.is.multiple()
                             ? (Array.isArray(values) ? values.length : 0)
                             : (module.get.value() !== '' ? 1 : 0);
@@ -1900,8 +1868,7 @@
                             : settings.transition;
                     },
                     userValues: function () {
-                        var values = module.get.values(true)
-                        ;
+                        var values = module.get.values(true);
                         if (!values) {
                             return false;
                         }
@@ -1921,8 +1888,7 @@
                     caretPosition: function (returnEndPos) {
                         var input = $search[0];
                         var range;
-                        var rangeLength
-                        ;
+                        var rangeLength;
                         if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
                         }
@@ -1945,8 +1911,7 @@
                         var value = $input.length > 0
                             ? $input.val()
                             : $module.data(metadata.value);
-                        var isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === ''
-                        ;
+                        var isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === '';
 
                         // prevents the placeholder element from being selected when multiple
                         return value === undefined || isEmptyMultiselect
@@ -1954,8 +1919,7 @@
                             : value;
                     },
                     values: function (raw) {
-                        var value = module.get.value()
-                        ;
+                        var value = module.get.value();
                         if (value === '') {
                             return '';
                         }
@@ -1970,15 +1934,13 @@
                     },
                     remoteValues: function () {
                         var values = module.get.values();
-                        var remoteValues = false
-                        ;
+                        var remoteValues = false;
                         if (values) {
                             if (typeof values === 'string') {
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
-                                var name = module.read.remoteData(value)
-                                ;
+                                var name = module.read.remoteData(value);
                                 module.verbose('Restoring value from session data', name, value);
                                 if (name) {
                                     if (!remoteValues) {
@@ -2027,8 +1989,7 @@
                                 : String(choiceText));
                     },
                     inputEvent: function () {
-                        var input = $search[0]
-                        ;
+                        var input = $search[0];
                         if (input) {
                             return input.oninput !== undefined
                                 ? 'input'
@@ -2042,8 +2003,7 @@
                     selectValues: function () {
                         var select = {};
                         var oldGroup = [];
-                        var values = []
-                        ;
+                        var values = [];
                         $module
                             .find('option')
                             .each(function () {
@@ -2056,8 +2016,7 @@
                                 var text     = $option.data(metadata.text) !== undefined
                                     ? $option.data(metadata.text)
                                     : name;
-                                var group = $option.parent('optgroup')
-                                ;
+                                var group = $option.parent('optgroup');
                                 if (settings.placeholder === 'auto' && value === '') {
                                     select.placeholder = name;
                                 } else {
@@ -2107,8 +2066,7 @@
                         return $item.filter('.' + className.active);
                     },
                     selectedItem: function () {
-                        var $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
-                        ;
+                        var $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected);
 
                         return $selectedItem.length > 0
                             ? $selectedItem
@@ -2117,8 +2075,7 @@
                     itemWithAdditions: function (value) {
                         var $items       = module.get.item(value);
                         var $userItems   = module.create.userChoice(value);
-                        var hasUserItems = $userItems && $userItems.length > 0
-                        ;
+                        var hasUserItems = $userItems && $userItems.length > 0;
                         if (hasUserItems) {
                             $items = $items.length > 0
                                 ? $items.add($userItems)
@@ -2130,8 +2087,7 @@
                     item: function (value, strict) {
                         var $selectedItem = false;
                         var shouldSearch;
-                        var isMultiple
-                        ;
+                        var isMultiple;
                         value = value !== undefined
                             ? value
                             : (module.get.values() !== undefined
@@ -2149,8 +2105,7 @@
                                 .each(function () {
                                     var $choice       = $(this);
                                     var optionText    = module.get.choiceText($choice);
-                                    var optionValue   = module.get.choiceValue($choice, optionText)
-                                    ;
+                                    var optionValue   = module.get.choiceValue($choice, optionText);
                                     // safe early exit
                                     if (optionValue === null || optionValue === undefined) {
                                         return;
@@ -2232,8 +2187,7 @@
                     },
                     defaultText: function () {
                         var defaultText     = module.get.defaultText();
-                        var placeholderText = module.get.placeholderText
-                        ;
+                        var placeholderText = module.get.placeholderText;
                         if (defaultText === placeholderText) {
                             module.debug('Restoring default placeholder text', defaultText);
                             module.set.placeholderText(defaultText);
@@ -2246,8 +2200,7 @@
                         module.set.placeholderText();
                     },
                     defaultValue: function () {
-                        var defaultValue = module.get.defaultValue()
-                        ;
+                        var defaultValue = module.get.defaultValue();
                         if (defaultValue !== undefined) {
                             module.debug('Restoring default value', defaultValue);
                             if (defaultValue !== '') {
@@ -2296,8 +2249,7 @@
                         module.remove.initialLoad();
                     },
                     remoteValues: function () {
-                        var values = module.get.remoteValues()
-                        ;
+                        var values = module.get.remoteValues();
                         module.debug('Recreating selected from session data', values);
                         if (values) {
                             if (module.is.single()) {
@@ -2315,8 +2267,7 @@
 
                 read: {
                     remoteData: function (value) {
-                        var name
-                        ;
+                        var name;
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 
@@ -2337,20 +2288,17 @@
                         module.save.defaultValue();
                     },
                     defaultValue: function () {
-                        var value = module.get.value()
-                        ;
+                        var value = module.get.value();
                         module.verbose('Saving default value as', value);
                         $module.data(metadata.defaultValue, value);
                     },
                     defaultText: function () {
-                        var text = module.get.text()
-                        ;
+                        var text = module.get.text();
                         module.verbose('Saving default text as', text);
                         $module.data(metadata.defaultText, text);
                     },
                     placeholderText: function () {
-                        var text
-                        ;
+                        var text;
                         if (settings.placeholder !== false && $text.hasClass(className.placeholder)) {
                             text = module.get.text();
                             module.verbose('Saving placeholder text as', text);
@@ -2402,8 +2350,7 @@
                     var $selectableItem = $item.not(selector.unselectable);
                     var isWithinRange;
                     var $nextSelectedItem;
-                    var elementIndex
-                    ;
+                    var elementIndex;
                     elementIndex = direction === 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
@@ -2442,8 +2389,7 @@
                             : '';
                         var hasSearchValue   = typeof searchValue === 'string' && searchValue.length > 0;
                         var searchWidth      = module.get.searchWidth();
-                        var valueIsSet       = searchValue !== ''
-                        ;
+                        var valueIsSet       = searchValue !== '';
                         if (isMultiple && hasSearchValue) {
                             module.verbose('Adjusting input width', searchWidth);
                             $search.css('width', searchWidth + 'px');
@@ -2503,8 +2449,7 @@
                         }
                     },
                     partialSearch: function (text) {
-                        var length = module.get.query().length
-                        ;
+                        var length = module.get.query().length;
                         $search.val(text.slice(0, length));
                     },
                     scrollPosition: function ($item, forceScroll) {
@@ -2517,8 +2462,7 @@
                         var menuScroll;
                         var menuHeight;
                         var abovePage;
-                        var belowPage
-                        ;
+                        var belowPage;
 
                         $item = $item || module.get.selectedItem();
                         $menu = $item.closest(selector.menu);
@@ -2575,8 +2519,7 @@
                     selectedItem: function ($item) {
                         var value      = module.get.choiceValue($item);
                         var searchText = module.get.choiceText($item, false);
-                        var text       = module.get.choiceText($item)
-                        ;
+                        var text       = module.get.choiceText($item);
                         module.debug('Setting user selection to item', $item);
                         module.remove.activeItem();
                         module.set.partialSearch(searchText);
@@ -2588,8 +2531,7 @@
                         var $selectedItem         = $item.filter('.' + className.selected);
                         var alreadySelectedLetter = $selectedItem.length > 0 && module.has.firstLetter($selectedItem, letter);
                         var $nextValue            = false;
-                        var $nextItem
-                        ;
+                        var $nextItem;
                         // check next of the same letter
                         if (alreadySelectedLetter) {
                             $nextItem = $selectedItem.nextAll($item).eq(0);
@@ -2729,8 +2671,7 @@
                             preventChangeTrigger = $selectedItem;
                             $selectedItem = undefined;
                         }
-                        var isMultiple = module.is.multiple()
-                        ;
+                        var isMultiple = module.is.multiple();
                         $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
@@ -2766,8 +2707,7 @@
                                 var isActive       = $selected.hasClass(className.active);
                                 var isActionable   = $selected.hasClass(className.actionable);
                                 var isUserValue    = $selected.hasClass(className.addition);
-                                var shouldAnimate  = isMultiple && $selectedItem && $selectedItem.length === 1
-                                ;
+                                var shouldAnimate  = isMultiple && $selectedItem && $selectedItem.length === 1;
                                 if (isActionable) {
                                     if ((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
                                         module.save.remoteData(selectedText, selectedValue);
@@ -2824,8 +2764,7 @@
                             ? $search
                             : $text;
                         var escapedValue = module.escape.value(value);
-                        var $label
-                        ;
+                        var $label;
                         if (settings.ignoreCase) {
                             escapedValue = escapedValue.toLowerCase();
                         }
@@ -2866,8 +2805,7 @@
                     },
                     message: function (message) {
                         var $message = $menu.children(selector.message);
-                        var html     = settings.templates.message(module.add.variables(message))
-                        ;
+                        var html     = settings.templates.message(module.add.variables(message));
                         if ($message.length > 0) {
                             $message
                                 .html(html)
@@ -2883,8 +2821,7 @@
                     optionValue: function (value) {
                         var escapedValue = module.escape.value(value);
                         var $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]');
-                        var hasOption    = $option.length > 0
-                        ;
+                        var hasOption    = $option.length > 0;
                         if (hasOption) {
                             return;
                         }
@@ -2908,8 +2845,7 @@
                         var $existingItem     = module.get.item(value);
                         var alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0;
                         var hasUserSuggestion = $addition.length > 0;
-                        var html
-                        ;
+                        var html;
                         if (settings.useLabels && module.has.maxSelections()) {
                             return;
                         }
@@ -2953,8 +2889,7 @@
                         var hasCount    = message.search('{count}') !== -1;
                         var hasMaxCount = message.search('{maxCount}') !== -1;
                         var hasTerm     = message.search('{term}') !== -1;
-                        var query
-                        ;
+                        var query;
                         module.verbose('Adding templated variables to message', message);
                         if (hasCount) {
                             message = message.replace('{count}', module.get.selectionCount());
@@ -2976,8 +2911,7 @@
                             addedText = undefined;
                         }
                         var currentValue = module.get.values(true);
-                        var newValue
-                        ;
+                        var newValue;
                         if (module.has.value(addedValue)) {
                             module.debug('Value already selected');
 
@@ -3069,8 +3003,7 @@
                     optionValue: function (value) {
                         var escapedValue = module.escape.value(value);
                         var $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]');
-                        var hasOption    = $option.length > 0
-                        ;
+                        var hasOption    = $option.length > 0;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
                         }
@@ -3107,8 +3040,7 @@
                             .each(function () {
                                 var $selected     = $(this);
                                 var selectedText  = module.get.choiceText($selected);
-                                var selectedValue = module.get.choiceValue($selected, selectedText)
-                                ;
+                                var selectedValue = module.get.choiceValue($selected, selectedText);
                                 if (module.is.multiple()) {
                                     if (settings.useLabels) {
                                         module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
@@ -3139,8 +3071,7 @@
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
                         var values = module.get.values(true);
-                        var newValue
-                        ;
+                        var newValue;
                         if (module.has.selectInput()) {
                             module.verbose('Input is <select> removing selected option', removedValue);
                             newValue = module.remove.arrayValue(removedValue, values);
@@ -3172,8 +3103,7 @@
                     label: function (value, shouldAnimate) {
                         var escapedValue  = module.escape.value(value);
                         var $labels       = $module.find(selector.label);
-                        var $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]')
-                        ;
+                        var $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]');
                         module.verbose('Removing label', $removedLabel);
                         $removedLabel.remove();
                     },
@@ -3192,8 +3122,7 @@
                                 var stringValue = value !== undefined
                                     ? String(value)
                                     : value;
-                                var isUserValue = module.is.userValue(stringValue)
-                                ;
+                                var isUserValue = module.is.userValue(stringValue);
                                 if (settings.onLabelRemove.call($label, value) === false) {
                                     module.debug('Label remove callback cancelled removal');
 
@@ -3264,8 +3193,7 @@
                     },
                     firstLetter: function ($item, letter) {
                         var text;
-                        var firstLetter
-                        ;
+                        var firstLetter;
                         if (!$item || $item.length === 0 || typeof letter !== 'string') {
                             return false;
                         }
@@ -3292,8 +3220,7 @@
                     },
                     label: function (value) {
                         var escapedValue = module.escape.value(value);
-                        var $labels      = $module.find(selector.label)
-                        ;
+                        var $labels      = $module.find(selector.label);
                         if (settings.ignoreCase) {
                             escapedValue = escapedValue.toLowerCase();
                         }
@@ -3304,8 +3231,7 @@
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
                     },
                     allResultsFiltered: function () {
-                        var $normalResults = $item.not(selector.addition)
-                        ;
+                        var $normalResults = $item.not(selector.addition);
 
                         return $normalResults.filter(selector.unselectable).length === $normalResults.length;
                     },
@@ -3331,8 +3257,7 @@
                     },
                     valueIgnoringCase: function (value) {
                         var values   = module.get.values(true);
-                        var hasValue = false
-                        ;
+                        var hasValue = false;
                         if (!Array.isArray(values)) {
                             values = [values];
                         }
@@ -3410,8 +3335,7 @@
                         return initialLoad;
                     },
                     inObject: function (needle, object) {
-                        var found = false
-                        ;
+                        var found = false;
                         $.each(object, function (index, property) {
                             if (property == needle) {
                                 found = true;
@@ -3435,8 +3359,7 @@
                         return !module.is.multiple();
                     },
                     selectMutation: function (mutations) {
-                        var selectChanged = false
-                        ;
+                        var selectChanged = false;
                         $.each(mutations, function (index, mutation) {
                             if ($(mutation.target).is('option, optgroup') || $(mutation.addedNodes).is('select') || ($(mutation.target).is('select') && mutation.type !== 'attributes')) {
                                 selectChanged = true;
@@ -3499,8 +3422,7 @@
                         var $currentMenu    = $subMenu || $menu;
                         var canOpenDownward;
                         var onScreen;
-                        var calculations
-                        ;
+                        var calculations;
                         $currentMenu
                             .addClass(className.loading)
                         ;
@@ -3545,8 +3467,7 @@
                         var $currentMenu     = $subMenu || $menu;
                         var canOpenRightward = true;
                         var isOffscreenRight = false;
-                        var calculations
-                        ;
+                        var calculations;
                         $currentMenu
                             .addClass(className.loading)
                         ;
@@ -3604,8 +3525,7 @@
                                 module.hideOthers();
                                 module.set.active();
                             };
-                        var transition
-                        ;
+                        var transition;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -3649,8 +3569,7 @@
                                 module.unbind.intent();
                                 module.remove.active();
                             };
-                        var transition = settings.transition.hideMethod || module.get.transition($subMenu)
-                        ;
+                        var transition = settings.transition.hideMethod || module.get.transition($subMenu);
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -3723,8 +3642,7 @@
                         var stringValue    = typeof value === 'string';
                         var isUnparsable   = !stringValue && !multipleValues;
                         var hasQuotes      = stringValue && value.search(regExp.quote) !== -1;
-                        var values         = []
-                        ;
+                        var values         = [];
                         if (isUnparsable || !hasQuotes) {
                             return value;
                         }
@@ -3815,8 +3733,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -3836,8 +3753,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -3862,8 +3778,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -4182,8 +4097,7 @@
             var placeholder = select.placeholder || false;
             var html = '';
             var className = settings.className;
-            var escape = settings.templates.escape
-            ;
+            var escape = settings.templates.escape;
             html += '<i class="dropdown icon"></i>';
             html += placeholder
                 ? '<div class="default text">' + escape(placeholder, settings) + '</div>'
@@ -4201,18 +4115,15 @@
             var values = response[fields.values] || [];
             var html = '';
             var className = settings.className;
-            var escape = settings.templates.escape
-            ;
+            var escape = settings.templates.escape;
             $.each(values, function (index, option) {
                 var itemType = option[fields.type] || 'item';
                 var isMenu = itemType.indexOf('menu') !== -1;
                 var maybeData = '';
-                var dataObject = option[fields.data]
-                ;
+                var dataObject = option[fields.data];
                 if (dataObject) {
                     var dataKey;
-                    var dataKeyEscaped
-                    ;
+                    var dataKeyEscaped;
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
                         if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
@@ -4233,8 +4144,7 @@
                     var maybeDescriptionVertical = option[fields.descriptionVertical]
                         ? className.descriptionVertical + ' '
                         : '';
-                    var hasDescription = escape(option[fields.description] || '', settings) !== ''
-                    ;
+                    var hasDescription = escape(option[fields.description] || '', settings) !== '';
                     html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
@@ -4264,8 +4174,7 @@
                     html += '</div>';
                 } else if (itemType === 'header') {
                     var groupName = option[fields.name] || '';
-                    var groupIcon = option[fields.icon] || className.groupIcon
-                    ;
+                    var groupIcon = option[fields.icon] || className.groupIcon;
                     if (groupName !== '' || groupIcon !== '') {
                         html += '<div class="' + escape(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
@@ -4286,8 +4195,7 @@
         // generates label for multiselect
         label: function (value, text, settings) {
             var className = settings.className;
-            var escape = settings.templates.escape
-            ;
+            var escape = settings.templates.escape;
 
             return escape(text, settings) + '<i class="' + escape(className.delete) + ' icon"></i>';
         },

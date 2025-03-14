@@ -9,8 +9,7 @@ let npmPackage;
 let version;
 let revision;
 let versionInFileName;
-let includeVersionInFileName
-;
+let includeVersionInFileName;
 
 /*******************************
          Derived Values

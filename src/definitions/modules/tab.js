@@ -49,8 +49,7 @@
             return $context;
         };
         var initializedHistory = false;
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
@@ -80,8 +79,7 @@
             var parameterArray;
             var module;
 
-            var historyEvent
-            ;
+            var historyEvent;
 
             module = {
 
@@ -146,8 +144,7 @@
                 },
 
                 determineTabs: function () {
-                    var $reference
-                    ;
+                    var $reference;
 
                     // determine tab context
                     if (settings.context === 'parent') {
@@ -205,8 +202,7 @@
 
                 event: {
                     click: function (event) {
-                        var tabPath = $(this).data(metadata.tab)
-                        ;
+                        var tabPath = $(this).data(metadata.tab);
                         if (tabPath !== undefined) {
                             if (settings.history) {
                                 module.verbose('Updating page state', event);
@@ -223,8 +219,7 @@
                     history: {
                         change: function (event) {
                             var tabPath   = event.pathNames.join('/') || module.get.initialPath();
-                            var pageTitle = settings.templates.determineTitle(tabPath) || false
-                            ;
+                            var pageTitle = settings.templates.determineTitle(tabPath) || false;
                             module.performance.display();
                             module.debug('History change event', tabPath, event);
                             historyEvent = event;
@@ -289,8 +284,7 @@
                     },
                     loading: function (tabPath) {
                         var $tab      = module.get.tabElement(tabPath);
-                        var isLoading = $tab.hasClass(className.loading)
-                        ;
+                        var isLoading = $tab.hasClass(className.loading);
                         if (!isLoading) {
                             module.verbose('Setting loading state for', $tab);
                             $tab
@@ -329,8 +323,7 @@
                         var $anchor;
                         var nextPathArray;
                         var nextPath;
-                        var isLastTab
-                        ;
+                        var isLastTab;
                         module.verbose('Looking for tab', tab);
                         if (isTab) {
                             module.verbose('Tab was found', tab);
@@ -428,8 +421,7 @@
                 update: {
                     content: function (tabPath, html, evaluateScripts) {
                         var $tab = module.get.tabElement(tabPath);
-                        var tab  = $tab[0]
-                        ;
+                        var tab  = $tab[0];
                         evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
@@ -477,8 +469,7 @@
                                     module.cache.add(fullTabPath, true);
                                 } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && $tab.children().length > 0) {
                                     setTimeout(function () {
-                                        var $clone = $tab.children().clone(true)
-                                            ;
+                                        var $clone = $tab.children().clone(true);
                                         $clone = $clone.not('script');
                                         module.cache.add(fullTabPath, $clone);
                                     }, 0);
@@ -493,8 +484,7 @@
                         var request         = $tab.api('get request') || false;
                         var existingRequest = request && request.state() === 'pending';
                         var requestSettings;
-                        var cachedContent
-                        ;
+                        var cachedContent;
 
                         fullTabPath = fullTabPath || tabPath;
                         cachedContent = module.cache.read(fullTabPath);
@@ -534,8 +524,7 @@
                         var $deactiveTabs = settings.deactivate === 'siblings'
                             ? $tab.siblings($tabs)
                             : $tabs.not($tab);
-                        var isActive      = $tab.hasClass(className.active)
-                        ;
+                        var isActive      = $tab.hasClass(className.active);
                         module.verbose('Showing tab content for', $tab);
                         if (!isActive) {
                             $tab
@@ -554,8 +543,7 @@
                         var $deactiveNavigation = settings.deactivate === 'siblings'
                             ? $navigation.siblings($allModules)
                             : $allModules.not($navigation);
-                        var isActive    = $navigation.hasClass(className.active)
-                        ;
+                        var isActive    = $navigation.hasClass(className.active);
                         module.verbose('Activating tab navigation for', $navigation, tabPath);
                         if (!isActive) {
                             $navigation
@@ -606,8 +594,7 @@
                     },
                     defaultPath: function (tabPath) {
                         var $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0);
-                        var defaultTab  = $defaultNav.data(metadata.tab) || false
-                        ;
+                        var defaultTab  = $defaultNav.data(metadata.tab) || false;
                         if (defaultTab) {
                             module.debug('Found default tab', defaultTab);
                             if (recursionDepth < settings.maxDepth) {
@@ -632,8 +619,7 @@
                         var $fullPathTab;
                         var $simplePathTab;
                         var tabPathArray;
-                        var lastTab
-                        ;
+                        var lastTab;
                         tabPath = tabPath || activeTabPath;
                         tabPathArray = module.utilities.pathToArray(tabPath);
                         lastTab = module.utilities.last(tabPathArray);
@@ -658,8 +644,7 @@
 
                             if ($tab.hasClass(className.active)) {
                                 var tabPath = $(this).data(metadata.tab);
-                                var $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]')
-                                ;
+                                var $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
 
                                 if ($anchor.hasClass(className.active)) {
                                     activeTab = tabPath;
@@ -751,8 +736,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -772,8 +756,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -798,8 +781,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

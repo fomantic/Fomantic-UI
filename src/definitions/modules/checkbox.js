@@ -28,8 +28,7 @@
         var query          = arguments[0];
         var methodInvoked  = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var returnedValue
-        ;
+        var returnedValue;
 
         $allModules.each(function () {
             var settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters);
@@ -53,8 +52,7 @@
 
             var observer;
             var element         = this;
-            var module
-            ;
+            var module;
 
             module = {
 
@@ -146,8 +144,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $element = $(selector)
-                    ;
+                    var $element = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -175,8 +172,7 @@
                         }
                     },
                     click: function (event) {
-                        var $target = $(event.target)
-                        ;
+                        var $target = $(event.target);
                         if ($target.is(selector.input)) {
                             module.verbose('Using default check action on initialized checkbox');
 
@@ -207,8 +203,7 @@
                         var r = module.get.radios().not(selector.disabled);
                         var rIndex = r.index($module);
                         var rLen = r.length;
-                        var checkIndex = false
-                        ;
+                        var checkIndex = false;
 
                         if (key === keyCode.left || key === keyCode.up) {
                             checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
@@ -345,8 +340,7 @@
 
                 get: {
                     radios: function () {
-                        var name = module.get.name()
-                        ;
+                        var name = module.get.name();
 
                         return $('input[name="' + name + '"]').closest(selector.checkbox);
                     },
@@ -573,8 +567,7 @@
 
                 trigger: {
                     change: function () {
-                        var inputElement = $input[0]
-                        ;
+                        var inputElement = $input[0];
                         if (inputElement) {
                             var events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
@@ -624,8 +617,7 @@
                 },
 
                 uncheckOthers: function () {
-                    var $radios = module.get.otherRadios()
-                    ;
+                    var $radios = module.get.otherRadios();
                     module.debug('Unchecking other radios', $radios);
                     $radios.removeClass(className.checked);
                 },
@@ -699,8 +691,7 @@
                     log: function (message) {
                         var currentTime;
                         var executionTime;
-                        var previousTime
-                        ;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -720,8 +711,7 @@
                     },
                     display: function () {
                         var title = settings.name + ':';
-                        var totalTime = 0
-                        ;
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -746,8 +736,7 @@
                     var object = instance;
                     var maxDepth;
                     var found;
-                    var response
-                    ;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {

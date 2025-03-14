@@ -27,17 +27,14 @@ const release         = require('../../config/admin/release');
 const project         = require('../../config/project/release');
 
 // shorthand
-const version         = project.version
-;
+const version         = project.version;
 
 module.exports = function (callback) {
     let index;
-    let tasks = []
-    ;
+    let tasks = [];
 
     for (index in release.distributions) {
-        let distribution = release.distributions[index]
-    ;
+        let distribution = release.distributions[index];
 
         // streams... designed to save time and make coding fun...
         (function (distribution) {
@@ -51,8 +48,7 @@ module.exports = function (callback) {
                 },
             };
             let gatherFiles;
-            let createList
-            ;
+            let createList;
 
             // get files for meteor
             gatherFiles = function (dir) {
@@ -68,13 +64,11 @@ module.exports = function (callback) {
                     'bower.json',
                     '.gitignore',
                 ];
-                let files = []
-                ;
+                let files = [];
                 list.forEach(function (file) {
                     let isOmitted = omitted.indexOf(file) > -1;
                     let filePath  = path.join(dir, file);
-                    let stat      = fs.statSync(filePath)
-                    ;
+                    let stat      = fs.statSync(filePath);
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
@@ -100,8 +94,7 @@ module.exports = function (callback) {
 
             tasks.push(function () {
                 let files     = gatherFiles(outputDirectory);
-                let filenames = createList(files)
-                ;
+                let filenames = createList(files);
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())
                     .pipe(flatten())
@@ -116,8 +109,7 @@ module.exports = function (callback) {
                 tasks.push(function () {
                     let themes;
                     let components;
-                    let releases
-                    ;
+                    let releases;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/', encoding: false })
                         .pipe(gulp.dest(outputDirectory))
                     ;
@@ -138,8 +130,7 @@ module.exports = function (callback) {
                     let themeImport;
                     let themeConfig;
                     let siteTheme;
-                    let themes
-                    ;
+                    let themes;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory))
                     ;
