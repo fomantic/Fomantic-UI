@@ -3835,23 +3835,19 @@
                     },
                     htmlEntities: function (string, forceAmpersand) {
                         forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
-                        const badChars = /["'<>]/g;
-                        const shouldEscape = /["&'<>]/;
+
+                        const badChars = forceAmpersand
+                            ? /["&'<>]/g
+                            : /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
                         const escape = {
+                            '"': '&quot;',
+                            '&': '&amp;',
+                            "'": '&apos;',
                             '<': '&lt;',
                             '>': '&gt;',
-                            '"': '&quot;',
-                            "'": '&apos;',
                         };
-                        const escapedChar = function (chr) {
-                            return escape[chr];
-                        };
-                        if (shouldEscape.test(string)) {
-                            string = string.replace(forceAmpersand ? /&/g : /&(?![\d#a-z]{1,12};)/gi, '&amp;');
-                            string = string.replace(badChars, escapedChar);
-                        }
 
-                        return string;
+                        return string.replace(badChars, (chr) => escape[chr]);
                     },
                 },
 
@@ -4261,23 +4257,17 @@
             if (settings !== undefined && settings.preserveHTML) {
                 return string;
             }
-            const badChars = /["'<>]/g;
-            const shouldEscape = /["&'<>]/;
+
+            const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
             const escape = {
+                '"': '&quot;',
+                '&': '&amp;',
+                "'": '&apos;',
                 '<': '&lt;',
                 '>': '&gt;',
-                '"': '&quot;',
-                "'": '&apos;',
             };
-            const escapedChar = function (chr) {
-                return escape[chr];
-            };
-            if (shouldEscape.test(string)) {
-                string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-                string = string.replace(badChars, escapedChar);
-            }
 
-            return string;
+            return string.replace(badChars, (chr) => escape[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {

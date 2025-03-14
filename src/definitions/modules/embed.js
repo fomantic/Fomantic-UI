@@ -646,23 +646,16 @@
 
         templates: {
             escape: function (string) {
-                const badChars = /["'<>]/g;
-                const shouldEscape = /["&'<>]/;
-                const escape  = {
+                const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+                const escape = {
+                    '"': '&quot;',
+                    '&': '&amp;',
+                    "'": '&apos;',
                     '<': '&lt;',
                     '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&apos;',
                 };
-                const escapedChar = function (chr) {
-                    return escape[chr];
-                };
-                if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-                    string = string.replace(badChars, escapedChar);
-                }
 
-                return string;
+                return string.replace(badChars, (chr) => escape[chr]);
             },
             iframe: function (url, parameters) {
                 var

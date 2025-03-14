@@ -1475,23 +1475,20 @@
                 if (settings !== undefined && settings.preserveHTML) {
                     return string;
                 }
-                const badChars = /["'<>]/g;
-                const shouldEscape = /["&'<>]/;
+
+                const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
                 const escape = {
+                    '"': '&quot;',
+                    '&': '&amp;',
+                    "'": '&apos;',
                     '<': '&lt;',
                     '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&apos;',
                 };
-                const escapedChar = function (chr) {
-                    return escape[chr];
-                };
-                if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
-                    string = string.replace(badChars, escapedChar);
-                    // FUI controlled HTML is still allowed
-                    string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
-                }
+
+                string = string.replace(badChars, (chr) => escape[chr]);
+
+                // FUI controlled HTML is still allowed
+                string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
 
                 return string;
             },
