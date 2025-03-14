@@ -1757,6 +1757,7 @@
                                 }
                                 // down arrow (open menu)
                                 if (pressedKey === keys.downArrow && !module.is.visible()) {
+                                    focused = true;
                                     module.verbose('Down key pressed, showing dropdown');
                                     module.show();
                                     event.preventDefault();
