@@ -695,8 +695,8 @@
                     },
                     values: function (fields, strict) {
                         var $fields = Array.isArray(fields) && fields.length > 0
-                                ? module.get.fields(fields, strict)
-                                : $field;
+                            ? module.get.fields(fields, strict)
+                            : $field;
                         var values = {}
                         ;
                         $fields.each(function (index, field) {
@@ -866,8 +866,8 @@
                             };
                         }
                         var newValidation = {
-                                rules: [],
-                            }
+                            rules: [],
+                        }
                         ;
                         if (module.is.shorthandRules(rules)) {
                             rules = Array.isArray(rules)
@@ -1002,8 +1002,8 @@
                     },
                     rule: function (field, rule) {
                         var rules = Array.isArray(rule)
-                                ? rule
-                                : [rule]
+                            ? rule
+                            : [rule]
                         ;
                         if (validation[field] === undefined || !Array.isArray(validation[field].rules)) {
                             return;
@@ -1027,8 +1027,8 @@
                     },
                     field: function (field) {
                         var fields = Array.isArray(field)
-                                ? field
-                                : [field]
+                            ? field
+                            : [field]
                         ;
                         $.each(fields, function (index, field) {
                             module.remove.rule(field);
@@ -2007,47 +2007,47 @@
 
             creditCard: function (cardNumber, cardTypes) {
                 var cards = {
-                        visa: {
-                            pattern: /^4/,
-                            length: [16],
-                        },
-                        amex: {
-                            pattern: /^3[47]/,
-                            length: [15],
-                        },
-                        mastercard: {
-                            pattern: /^5[1-5]/,
-                            length: [16],
-                        },
-                        discover: {
-                            pattern: /^(6011|622(12[6-9]|1[3-9]\d|[2-8]\d{2}|9[01]\d|92[0-5]|64[4-9])|65)/,
-                            length: [16],
-                        },
-                        unionPay: {
-                            pattern: /^(62|88)/,
-                            length: [16, 17, 18, 19],
-                        },
-                        jcb: {
-                            pattern: /^35(2[89]|[3-8]\d)/,
-                            length: [16],
-                        },
-                        maestro: {
-                            pattern: /^(5018|5020|5038|6304|6759|676[1-3])/,
-                            length: [12, 13, 14, 15, 16, 17, 18, 19],
-                        },
-                        dinersClub: {
-                            pattern: /^(30[0-5]|^36)/,
-                            length: [14],
-                        },
-                        laser: {
-                            pattern: /^(6304|670[69]|6771)/,
-                            length: [16, 17, 18, 19],
-                        },
-                        visaElectron: {
-                            pattern: /^(4026|417500|4508|4844|491(3|7))/,
-                            length: [16],
-                        },
-                    };
+                    visa: {
+                        pattern: /^4/,
+                        length: [16],
+                    },
+                    amex: {
+                        pattern: /^3[47]/,
+                        length: [15],
+                    },
+                    mastercard: {
+                        pattern: /^5[1-5]/,
+                        length: [16],
+                    },
+                    discover: {
+                        pattern: /^(6011|622(12[6-9]|1[3-9]\d|[2-8]\d{2}|9[01]\d|92[0-5]|64[4-9])|65)/,
+                        length: [16],
+                    },
+                    unionPay: {
+                        pattern: /^(62|88)/,
+                        length: [16, 17, 18, 19],
+                    },
+                    jcb: {
+                        pattern: /^35(2[89]|[3-8]\d)/,
+                        length: [16],
+                    },
+                    maestro: {
+                        pattern: /^(5018|5020|5038|6304|6759|676[1-3])/,
+                        length: [12, 13, 14, 15, 16, 17, 18, 19],
+                    },
+                    dinersClub: {
+                        pattern: /^(30[0-5]|^36)/,
+                        length: [14],
+                    },
+                    laser: {
+                        pattern: /^(6304|670[69]|6771)/,
+                        length: [16, 17, 18, 19],
+                    },
+                    visaElectron: {
+                        pattern: /^(4026|417500|4508|4844|491(3|7))/,
+                        length: [16],
+                    },
+                };
                 var valid         = {};
                 var validCard     = false;
                 var requiredTypes = typeof cardTypes === 'string'

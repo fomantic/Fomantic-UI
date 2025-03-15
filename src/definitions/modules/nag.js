@@ -46,8 +46,8 @@
         ;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.nag.settings, parameters)
-                    : $.extend({}, $.fn.nag.settings);
+                ? $.extend(true, {}, $.fn.nag.settings, parameters)
+                : $.extend({}, $.fn.nag.settings);
 
             var selector        = settings.selector;
             var error           = settings.error;

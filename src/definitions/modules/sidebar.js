@@ -50,8 +50,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
-                    : $.extend({}, $.fn.sidebar.settings);
+                ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
+                : $.extend({}, $.fn.sidebar.settings);
 
             var selector        = settings.selector;
             var className       = settings.className;

@@ -45,8 +45,8 @@
         ;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.state.settings, parameters)
-                    : $.extend({}, $.fn.state.settings);
+                ? $.extend(true, {}, $.fn.state.settings, parameters)
+                : $.extend({}, $.fn.state.settings);
 
             var error           = settings.error;
             var metadata        = settings.metadata;
@@ -112,8 +112,8 @@
                 add: {
                     defaults: function () {
                         var userStates = parameters && $.isPlainObject(parameters.states)
-                                ? parameters.states
-                                : {}
+                            ? parameters.states
+                            : {}
                         ;
                         $.each(settings.defaults, function (type, typeStates) {
                             if (module.is[type] !== undefined && module.is[type]()) {

@@ -26,8 +26,8 @@
     $.fn.api = function (parameters) {
         // use window context if none specified
         var $allModules     = isFunction(this)
-                ? $(window)
-                : $(this);
+            ? $(window)
+            : $(this);
         var time           = Date.now();
         var performance    = [];
 
@@ -52,8 +52,8 @@
 
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.api.settings, parameters)
-                    : $.extend({}, $.fn.api.settings);
+                ? $.extend(true, {}, $.fn.api.settings, parameters)
+                : $.extend({}, $.fn.api.settings);
 
             // internal aliases
             var regExp          = settings.regExp;
@@ -364,8 +364,8 @@
                                 $.each(requiredVariables, function (index, templatedString) {
                                     // allow legacy {$var} style
                                     var variable = templatedString.indexOf('$') !== -1
-                                            ? templatedString.slice(2, -1)
-                                            : templatedString.slice(1, -1);
+                                        ? templatedString.slice(2, -1)
+                                        : templatedString.slice(1, -1);
                                     var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -394,8 +394,8 @@
                                 $.each(optionalVariables, function (index, templatedString) {
                                     // allow legacy {/$var} style
                                     var variable = templatedString.indexOf('$') !== -1
-                                            ? templatedString.slice(3, -1)
-                                            : templatedString.slice(2, -1);
+                                        ? templatedString.slice(3, -1)
+                                        : templatedString.slice(2, -1);
                                     var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined

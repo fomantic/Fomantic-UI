@@ -117,8 +117,8 @@
                         : true;
                     $.each(modules, function (index, name) {
                         var namespace = module.moduleExists(name)
-                                ? $.fn[name].settings.namespace || false
-                                : true;
+                            ? $.fn[name].settings.namespace || false
+                            : true;
                         var $existingModules
                         ;
                         if (module.moduleExists(name)) {

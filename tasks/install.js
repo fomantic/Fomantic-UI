@@ -228,12 +228,12 @@ module.exports = function (callback) {
         --------------- */
 
         let installPaths = {
-                config: files.config,
-                configFolder: folders.config,
-                site: answers.site || folders.site,
-                themeConfig: files.themeConfig,
-                themeConfigFolder: folders.themeConfig,
-            }
+            config: files.config,
+            configFolder: folders.config,
+            site: answers.site || folders.site,
+            themeConfig: files.themeConfig,
+            themeConfigFolder: folders.themeConfig,
+        }
         ;
 
         /* --------------

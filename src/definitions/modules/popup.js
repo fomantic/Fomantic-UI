@@ -53,8 +53,8 @@
         ;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.popup.settings, parameters)
-                    : $.extend({}, $.fn.popup.settings);
+                ? $.extend(true, {}, $.fn.popup.settings, parameters)
+                : $.extend({}, $.fn.popup.settings);
 
             var selector           = settings.selector;
             var className          = settings.className;
@@ -186,8 +186,8 @@
                 event: {
                     start: function (event) {
                         var delay = $.isPlainObject(settings.delay)
-                                ? settings.delay.show
-                                : settings.delay
+                            ? settings.delay.show
+                            : settings.delay
                         ;
                         clearTimeout(module.hideTimer);
                         if (!openedWithTouch || (openedWithTouch && settings.addTouchEvents)) {
@@ -198,8 +198,8 @@
                     },
                     end: function () {
                         var delay = $.isPlainObject(settings.delay)
-                                ? settings.delay.hide
-                                : settings.delay
+                            ? settings.delay.hide
+                            : settings.delay
                         ;
                         clearTimeout(module.showTimer);
                         module.hideTimer = setTimeout(function () {
@@ -639,8 +639,8 @@
                     },
                     offsetParent: function ($element) {
                         var element = $element !== undefined
-                                ? $element[0]
-                                : $target[0];
+                            ? $element[0]
+                            : $target[0];
                         var parentNode = element.parentNode;
                         var $node    = $(parentNode)
                         ;

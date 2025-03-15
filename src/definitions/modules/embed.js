@@ -34,8 +34,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.embed.settings, parameters)
-                    : $.extend({}, $.fn.embed.settings);
+                ? $.extend(true, {}, $.fn.embed.settings, parameters)
+                : $.extend({}, $.fn.embed.settings);
 
             var selector        = settings.selector;
             var className       = settings.className;
@@ -330,8 +330,8 @@
                     },
                     parameters: function (source, extraParameters) {
                         var parameters = sources[source] && sources[source].parameters !== undefined
-                                ? sources[source].parameters(settings)
-                                : {}
+                            ? sources[source].parameters(settings)
+                            : {}
                         ;
                         extraParameters = extraParameters || settings.parameters;
                         if (extraParameters) {

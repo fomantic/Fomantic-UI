@@ -33,8 +33,8 @@
         ;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.accordion.settings, parameters)
-                    : $.extend({}, $.fn.accordion.settings);
+                ? $.extend(true, {}, $.fn.accordion.settings, parameters)
+                : $.extend({}, $.fn.accordion.settings);
 
             var className       = settings.className;
             var namespace       = settings.namespace;
@@ -118,10 +118,10 @@
 
                 toggle: function (query) {
                     var $activeTitle = query !== undefined
-                            ? (typeof query === 'number'
-                                ? $title.eq(query)
-                                : $(query).closest(selector.title))
-                            : $(this).closest(selector.title);
+                        ? (typeof query === 'number'
+                            ? $title.eq(query)
+                            : $(query).closest(selector.title))
+                        : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating = $activeContent.hasClass(className.animating);
                     var isActive    = $activeContent.hasClass(className.active);
@@ -142,10 +142,10 @@
 
                 open: function (query) {
                     var $activeTitle = query !== undefined
-                            ? (typeof query === 'number'
-                                ? $title.eq(query)
-                                : $(query).closest(selector.title))
-                            : $(this).closest(selector.title);
+                        ? (typeof query === 'number'
+                            ? $title.eq(query)
+                            : $(query).closest(selector.title))
+                        : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating = $activeContent.hasClass(className.animating);
                     var isActive    = $activeContent.hasClass(className.active);
@@ -211,10 +211,10 @@
 
                 close: function (query) {
                     var $activeTitle = query !== undefined
-                            ? (typeof query === 'number'
-                                ? $title.eq(query)
-                                : $(query).closest(selector.title))
-                            : $(this).closest(selector.title);
+                        ? (typeof query === 'number'
+                            ? $title.eq(query)
+                            : $(query).closest(selector.title))
+                        : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating    = $activeContent.hasClass(className.animating);
                     var isActive       = $activeContent.hasClass(className.active);
@@ -272,8 +272,8 @@
 
                 closeOthers: function (index) {
                     var $activeTitle = index !== undefined
-                            ? $title.eq(index)
-                            : $(this).closest(selector.title);
+                        ? $title.eq(index)
+                        : $(this).closest(selector.title);
                     var $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title);
                     var $activeAccordion = $activeTitle.closest(selector.accordion);
                     var activeSelector   = selector.title + '.' + className.active + ':visible';

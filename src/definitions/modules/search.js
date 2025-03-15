@@ -32,8 +32,8 @@
         ;
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.search.settings, parameters)
-                    : $.extend({}, $.fn.search.settings);
+                ? $.extend(true, {}, $.fn.search.settings, parameters)
+                : $.extend({}, $.fn.search.settings);
 
             var className        = settings.className;
             var metadata         = settings.metadata;
@@ -362,14 +362,14 @@
                 setup: {
                     api: function (searchTerm, callback) {
                         var apiSettings = {
-                                debug: settings.debug,
-                                on: false,
-                                cache: settings.cache,
-                                action: 'search',
-                                urlData: {
-                                    query: searchTerm,
-                                },
-                            };
+                            debug: settings.debug,
+                            on: false,
+                            cache: settings.cache,
+                            action: 'search',
+                            urlData: {
+                                query: searchTerm,
+                            },
+                        };
                         var apiCallbacks = {
                             onSuccess: function (response, $module, xhr) {
                                 module.parse.response.call(element, response, searchTerm);
@@ -892,14 +892,14 @@
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
                         var $selectedResult = categoryIndex !== undefined
-                                ? $results
-                                    .children().eq(categoryIndex)
-                                    .children(selector.results)
-                                    .first()
-                                    .children(selector.result)
-                                    .eq(resultIndex)
-                                : $results
-                                    .children(selector.result).eq(resultIndex)
+                            ? $results
+                                .children().eq(categoryIndex)
+                                .children(selector.results)
+                                .first()
+                                .children(selector.result)
+                                .eq(resultIndex)
+                            : $results
+                                .children(selector.result).eq(resultIndex)
                         ;
                         module.verbose('Injecting results metadata', $selectedResult);
                         $selectedResult
@@ -952,8 +952,8 @@
                 write: {
                     cache: function (name, value) {
                         var cache = $module.data(metadata.cache) !== undefined
-                                ? $module.data(metadata.cache)
-                                : {}
+                            ? $module.data(metadata.cache)
+                            : {}
                         ;
                         if (settings.cache) {
                             module.verbose('Writing generated html to cache', name, value);

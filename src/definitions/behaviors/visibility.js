@@ -49,8 +49,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.visibility.settings, parameters)
-                    : $.extend({}, $.fn.visibility.settings);
+                ? $.extend(true, {}, $.fn.visibility.settings, parameters)
+                : $.extend({}, $.fn.visibility.settings);
 
             var className       = settings.className;
             var namespace       = settings.namespace;
@@ -425,16 +425,16 @@
                     },
                     verticallyScrollableContext: function () {
                         var overflowY = $context[0] !== window
-                                ? $context.css('overflow-y')
-                                : false
+                            ? $context.css('overflow-y')
+                            : false
                         ;
 
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var overflowX = $context[0] !== window
-                                ? $context.css('overflow-x')
-                                : false
+                            ? $context.css('overflow-x')
+                            : false
                         ;
 
                         return overflowX === 'auto' || overflowX === 'scroll';

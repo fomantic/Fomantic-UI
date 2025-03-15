@@ -47,8 +47,8 @@
 
         $allModules.each(function (elementIndex) {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
-                    : $.extend({}, $.fn.dropdown.settings);
+                ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
+                : $.extend({}, $.fn.dropdown.settings);
 
             var className       = settings.className;
             var message         = settings.message;
@@ -330,13 +330,13 @@
                 setup: {
                     api: function () {
                         var apiSettings = {
-                                debug: settings.debug,
-                                urlData: {
-                                    value: module.get.value(),
-                                    query: module.get.query(),
-                                },
-                                on: false,
-                            }
+                            debug: settings.debug,
+                            urlData: {
+                                value: module.get.value(),
+                                query: module.get.query(),
+                            },
+                            on: false,
+                        }
                         ;
                         module.verbose('First request, initializing API');
                         $module
@@ -725,8 +725,8 @@
 
                 filter: function (query) {
                     var searchTerm = query !== undefined
-                            ? query
-                            : module.get.query();
+                        ? query
+                        : module.get.query();
                     var afterFiltered = function () {
                         if (module.is.multiple()) {
                             module.filterActive();
@@ -802,13 +802,13 @@
                         callbackParameters = [callbackParameters];
                     }
                     var apiSettings = {
-                            errorDuration: false,
-                            cache: 'local',
-                            throttle: settings.throttle,
-                            urlData: {
-                                query: query,
-                            },
-                        };
+                        errorDuration: false,
+                        cache: 'local',
+                        throttle: settings.throttle,
+                        urlData: {
+                            query: query,
+                        },
+                    };
                     var apiCallbacks = {
                         onError: function (errorMessage, $module, xhr) {
                             module.add.message(message.serverError);
@@ -870,10 +870,10 @@
 
                 filterItems: function (query) {
                     var searchTerm = module.remove.diacritics(
-                            query !== undefined
-                                ? query
-                                : module.get.query()
-                        );
+                        query !== undefined
+                            ? query
+                            : module.get.query()
+                    );
                     var results = null;
                     var escapedTerm = module.escape.string(searchTerm);
                     var regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
@@ -1286,8 +1286,8 @@
                     test: {
                         toggle: function (event) {
                             var toggleBehavior = module.is.multiple()
-                                    ? module.show
-                                    : module.toggle
+                                ? module.show
+                                : module.toggle
                             ;
                             if (module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                                 return;
@@ -1943,8 +1943,8 @@
                     },
                     value: function () {
                         var value = $input.length > 0
-                                ? $input.val()
-                                : $module.data(metadata.value);
+                            ? $input.val()
+                            : $module.data(metadata.value);
                         var isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === ''
                         ;
 
@@ -2821,8 +2821,8 @@
                 add: {
                     label: function (value, text, shouldAnimate) {
                         var $next  = module.is.searchSelection()
-                                ? $search
-                                : $text;
+                            ? $search
+                            : $text;
                         var escapedValue = module.escape.value(value);
                         var $label
                         ;
@@ -3471,16 +3471,16 @@
                     },
                     verticallyScrollableContext: function () {
                         var overflowY = $context[0] !== window
-                                ? $context.css('overflow-y')
-                                : false
+                            ? $context.css('overflow-y')
+                            : false
                         ;
 
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var overflowX = $context[0] !== window
-                                ? $context.css('overflow-X')
-                                : false
+                            ? $context.css('overflow-X')
+                            : false
                         ;
 
                         return overflowX === 'auto' || overflowX === 'scroll';
@@ -4222,8 +4222,8 @@
                 }
                 if (itemType === 'item' || isMenu) {
                     var maybeText = option[fields.text]
-                            ? ' data-text="' + escape(option[fields.text]) + '"'
-                            : '';
+                        ? ' data-text="' + escape(option[fields.text]) + '"'
+                        : '';
                     var maybeActionable = option[fields.actionable]
                         ? className.actionable + ' '
                         : '';

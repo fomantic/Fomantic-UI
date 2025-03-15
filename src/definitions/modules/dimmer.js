@@ -34,8 +34,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
-                    : $.extend({}, $.fn.dimmer.settings);
+                ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
+                : $.extend({}, $.fn.dimmer.settings);
 
             var selector        = settings.selector;
             var namespace       = settings.namespace;

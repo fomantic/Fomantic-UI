@@ -42,8 +42,8 @@
 
         $allModules.each(function () {
             var settings = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.calendar.settings, parameters)
-                    : $.extend({}, $.fn.calendar.settings);
+                ? $.extend(true, {}, $.fn.calendar.settings, parameters)
+                : $.extend({}, $.fn.calendar.settings);
 
             var className = settings.className;
             var namespace = settings.namespace;

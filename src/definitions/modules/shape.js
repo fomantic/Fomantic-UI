@@ -34,8 +34,8 @@
 
         $allModules.each(function () {
             var settings       = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.shape.settings, parameters)
-                    : $.extend({}, $.fn.shape.settings);
+                ? $.extend(true, {}, $.fn.shape.settings, parameters)
+                : $.extend({}, $.fn.shape.settings);
 
             // internal aliases
             var namespace     = settings.namespace;
@@ -342,8 +342,8 @@
 
                         down: function () {
                             var translate = {
-                                    z: $activeSide.outerHeight(true) / 2,
-                                }
+                                z: $activeSide.outerHeight(true) / 2,
+                            }
                             ;
 
                             return {
@@ -363,8 +363,8 @@
 
                         right: function () {
                             var translate = {
-                                    z: $activeSide.outerWidth(true) / 2,
-                                }
+                                z: $activeSide.outerWidth(true) / 2,
+                            }
                             ;
 
                             return {
@@ -374,8 +374,8 @@
 
                         over: function () {
                             var translate = {
-                                    x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                                }
+                                x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
+                            }
                             ;
 
                             return {
@@ -385,8 +385,8 @@
 
                         back: function () {
                             var translate = {
-                                    x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                                }
+                                x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
+                            }
                             ;
 
                             return {
@@ -407,12 +407,12 @@
 
                     above: function () {
                         var box = {
-                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
-                                depth: {
-                                    active: $nextSide.outerHeight(true) / 2,
-                                    next: $activeSide.outerHeight(true) / 2,
-                                },
-                            }
+                            origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
+                            depth: {
+                                active: $nextSide.outerHeight(true) / 2,
+                                next: $activeSide.outerHeight(true) / 2,
+                            },
+                        }
                         ;
                         module.verbose('Setting the initial animation position as above', $nextSide, box);
                         $activeSide
@@ -431,12 +431,12 @@
 
                     below: function () {
                         var box = {
-                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
-                                depth: {
-                                    active: $nextSide.outerHeight(true) / 2,
-                                    next: $activeSide.outerHeight(true) / 2,
-                                },
-                            }
+                            origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
+                            depth: {
+                                active: $nextSide.outerHeight(true) / 2,
+                                next: $activeSide.outerHeight(true) / 2,
+                            },
+                        }
                         ;
                         module.verbose('Setting the initial animation position as below', $nextSide, box);
                         $activeSide
@@ -455,9 +455,9 @@
 
                     left: function () {
                         var height = {
-                                active: $activeSide.outerWidth(true),
-                                next: $nextSide.outerWidth(true),
-                            };
+                            active: $activeSide.outerWidth(true),
+                            next: $nextSide.outerWidth(true),
+                        };
                         var box = {
                             origin: (height.active - height.next) / 2,
                             depth: {
@@ -483,9 +483,9 @@
 
                     right: function () {
                         var height = {
-                                active: $activeSide.outerWidth(true),
-                                next: $nextSide.outerWidth(true),
-                            };
+                            active: $activeSide.outerWidth(true),
+                            next: $nextSide.outerWidth(true),
+                        };
                         var box = {
                             origin: (height.active - height.next) / 2,
                             depth: {
@@ -511,9 +511,9 @@
 
                     behind: function () {
                         var height = {
-                                active: $activeSide.outerWidth(true),
-                                next: $nextSide.outerWidth(true),
-                            };
+                            active: $activeSide.outerWidth(true),
+                            next: $nextSide.outerWidth(true),
+                        };
                         var box = {
                             origin: (height.active - height.next) / 2,
                             depth: {

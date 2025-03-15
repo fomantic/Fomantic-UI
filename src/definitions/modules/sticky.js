@@ -47,8 +47,8 @@
 
         $allModules.each(function () {
             var settings              = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.sticky.settings, parameters)
-                    : $.extend({}, $.fn.sticky.settings);
+                ? $.extend(true, {}, $.fn.sticky.settings, parameters)
+                : $.extend({}, $.fn.sticky.settings);
 
             var className             = settings.className;
             var namespace             = settings.namespace;
@@ -243,8 +243,8 @@
                     },
                     positions: function () {
                         var scrollContext = {
-                                height: $scroll.height(),
-                            };
+                            height: $scroll.height(),
+                        };
                         var element = {
                             margin: {
                                 top: parseInt($module.css('margin-top'), 10),

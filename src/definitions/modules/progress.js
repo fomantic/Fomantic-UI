@@ -34,8 +34,8 @@
 
         $allModules.each(function () {
             var settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.progress.settings, parameters)
-                    : $.extend({}, $.fn.progress.settings);
+                ? $.extend(true, {}, $.fn.progress.settings, parameters)
+                : $.extend({}, $.fn.progress.settings);
 
             var className       = settings.className;
             var metadata        = settings.metadata;
@@ -150,10 +150,10 @@
                 read: {
                     metadata: function () {
                         var data = {
-                                percent: module.helper.forceArray($module.data(metadata.percent)),
-                                total: $module.data(metadata.total),
-                                value: module.helper.forceArray($module.data(metadata.value)),
-                            }
+                            percent: module.helper.forceArray($module.data(metadata.percent)),
+                            total: $module.data(metadata.total),
+                            value: module.helper.forceArray($module.data(metadata.value)),
+                        }
                         ;
                         if (data.total !== undefined) {
                             module.debug('Total value set from metadata', data.total);
@@ -516,11 +516,11 @@
                     },
                     labelInterval: function () {
                         var animationCallback = function () {
-                                module.verbose('Bar finished animating, removing continuous label updates');
-                                clearInterval(module.interval);
-                                animating = false;
-                                module.set.labels();
-                            }
+                            module.verbose('Bar finished animating, removing continuous label updates');
+                            clearInterval(module.interval);
+                            animating = false;
+                            module.set.labels();
+                        }
                         ;
                         clearInterval(module.interval);
                         module.bind.transitionEnd(animationCallback);

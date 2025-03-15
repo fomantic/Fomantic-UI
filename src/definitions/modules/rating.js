@@ -32,8 +32,8 @@
         ;
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.rating.settings, parameters)
-                    : $.extend({}, $.fn.rating.settings);
+                ? $.extend(true, {}, $.fn.rating.settings, parameters)
+                : $.extend({}, $.fn.rating.settings);
 
             var namespace       = settings.namespace;
             var className       = settings.className;
@@ -242,10 +242,10 @@
                 set: {
                     rating: function (rating) {
                         var ratingIndex = Math.floor(
-                                rating - 1 >= 0
-                                    ? rating - 1
-                                    : 0
-                            );
+                            rating - 1 >= 0
+                                ? rating - 1
+                                : 0
+                        );
                         var $activeIcon = $icon.eq(ratingIndex);
                         var $partialActiveIcon = rating <= 1
                             ? $activeIcon

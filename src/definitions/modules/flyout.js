@@ -51,8 +51,8 @@
 
         $allModules.each(function () {
             var settings             = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.flyout.settings, parameters)
-                    : $.extend({}, $.fn.flyout.settings);
+                ? $.extend(true, {}, $.fn.flyout.settings, parameters)
+                : $.extend({}, $.fn.flyout.settings);
 
             var selector             = settings.selector;
             var className            = settings.className;
@@ -129,8 +129,8 @@
                         }
                         settings.actions.forEach(function (el) {
                             var icon = el[fields.icon]
-                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
-                                    : '';
+                                ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
+                                : '';
                             var text = module.helpers.escape(el[fields.text] || '', settings);
                             var cls = module.helpers.escape(el[fields.class] || '');
                             var click = el[fields.click] && isFunction(el[fields.click])

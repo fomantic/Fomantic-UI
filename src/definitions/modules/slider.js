@@ -46,8 +46,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.slider.settings, parameters)
-                    : $.extend({}, $.fn.slider.settings);
+                ? $.extend(true, {}, $.fn.slider.settings, parameters)
+                : $.extend({}, $.fn.slider.settings);
 
             var className       = settings.className;
             var metadata        = settings.metadata;
@@ -1218,9 +1218,9 @@
                 read: {
                     metadata: function () {
                         var data = {
-                                thumbVal: $module.data(metadata.thumbVal),
-                                secondThumbVal: $module.data(metadata.secondThumbVal),
-                            }
+                            thumbVal: $module.data(metadata.thumbVal),
+                            secondThumbVal: $module.data(metadata.secondThumbVal),
+                        }
                         ;
                         if (data.thumbVal) {
                             if (module.is.range() && data.secondThumbVal) {

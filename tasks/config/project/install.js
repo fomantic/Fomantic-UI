@@ -91,35 +91,35 @@ module.exports = {
     getPackageManager: function (directory) {
         // returns last matching result (avoid sub-module detection)
         let walk = function (directory) {
-                let pathArray     = directory.split(path.sep);
-                let folder        = pathArray[pathArray.length - 1];
-                let nextDirectory = path.join(directory, path.sep, '..')
+            let pathArray     = directory.split(path.sep);
+            let folder        = pathArray[pathArray.length - 1];
+            let nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if (folder === 'bower_components') {
-                    return {
-                        name: 'Bower',
-                        root: nextDirectory,
-                    };
-                }
-                if (folder === 'node_modules') {
-                    return {
-                        name: 'NPM',
-                        root: nextDirectory,
-                    };
-                }
-                if (folder === 'composer') {
-                    return {
-                        name: 'Composer',
-                        root: nextDirectory,
-                    };
-                }
-                if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return false;
-                }
-
-                // recurse downward
-                return walk(nextDirectory);
+            if (folder === 'bower_components') {
+                return {
+                    name: 'Bower',
+                    root: nextDirectory,
+                };
             }
+            if (folder === 'node_modules') {
+                return {
+                    name: 'NPM',
+                    root: nextDirectory,
+                };
+            }
+            if (folder === 'composer') {
+                return {
+                    name: 'Composer',
+                    root: nextDirectory,
+                };
+            }
+            if (path.resolve(directory) === path.resolve(nextDirectory)) {
+                return false;
+            }
+
+            // recurse downward
+            return walk(nextDirectory);
+        }
         ;
         // start walk from the current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
@@ -156,11 +156,11 @@ module.exports = {
 
     createJSON: function (answers) {
         let json = {
-                paths: {
-                    source: {},
-                    output: {},
-                },
-            }
+            paths: {
+                source: {},
+                output: {},
+            },
+        }
         ;
 
         // add components

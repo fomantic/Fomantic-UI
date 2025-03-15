@@ -49,8 +49,8 @@
 
         $allModules.each(function () {
             var settings    = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.modal.settings, parameters)
-                    : $.extend({}, $.fn.modal.settings);
+                ? $.extend(true, {}, $.fn.modal.settings, parameters)
+                : $.extend({}, $.fn.modal.settings);
 
             var selector        = settings.selector;
             var className       = settings.className;
@@ -123,8 +123,8 @@
                         }
                         settings.actions.forEach(function (el) {
                             var icon = el[fields.icon]
-                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
-                                    : '';
+                                ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
+                                : '';
                             var text = module.helpers.escape(el[fields.text] || '', settings);
                             var cls = module.helpers.escape(el[fields.class] || '');
                             var click = el[fields.click] && isFunction(el[fields.click])
@@ -205,9 +205,9 @@
                     },
                     dimmer: function () {
                         var defaultSettings = {
-                                debug: settings.debug,
-                                dimmerName: 'modals',
-                            };
+                            debug: settings.debug,
+                            dimmerName: 'modals',
+                        };
                         var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
                         ;
                         if ($.fn.dimmer === undefined) {
@@ -1051,15 +1051,15 @@
                             return;
                         }
                         var defaultSettings = {
-                                debug: settings.debug,
-                                dimmerName: 'modals',
-                                closable: 'auto',
-                                useFlex: module.can.useFlex(),
-                                duration: {
-                                    show: settings.transition.showDuration || settings.duration,
-                                    hide: settings.transition.hideDuration || settings.duration,
-                                },
-                            };
+                            debug: settings.debug,
+                            dimmerName: 'modals',
+                            closable: 'auto',
+                            useFlex: module.can.useFlex(),
+                            duration: {
+                                show: settings.transition.showDuration || settings.duration,
+                                hide: settings.transition.hideDuration || settings.duration,
+                            },
+                        };
                         var dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
                         ;
                         if (settings.inverted) {

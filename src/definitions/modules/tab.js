@@ -26,8 +26,8 @@
     $.fn.tab = function (parameters) {
         // use window context if none specified
         var $allModules     = isFunction(this)
-                ? $(window)
-                : $(this);
+            ? $(window)
+            : $(this);
         var $document      = $(document);
         var time            = Date.now();
         var performance     = [];
@@ -54,8 +54,8 @@
 
         $allModules.each(function () {
             var settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.tab.settings, parameters)
-                    : $.extend({}, $.fn.tab.settings);
+                ? $.extend(true, {}, $.fn.tab.settings, parameters)
+                : $.extend({}, $.fn.tab.settings);
 
             var className       = settings.className;
             var metadata        = settings.metadata;
@@ -275,8 +275,8 @@
                 set: {
                     auto: function () {
                         var url = typeof settings.path === 'string'
-                                ? settings.path.replace(/\/$/, '') + '/{$tab}'
-                                : '/{$tab}'
+                            ? settings.path.replace(/\/$/, '') + '/{$tab}'
+                            : '/{$tab}'
                         ;
                         module.verbose('Setting up automatic tab retrieval from server', url);
                         if ($.isPlainObject(settings.apiSettings)) {
@@ -416,8 +416,8 @@
 
                 scrollTo: function ($element) {
                     var scrollOffset = $element && $element.length > 0
-                            ? $element.offset().top
-                            : false
+                        ? $element.offset().top
+                        : false
                     ;
                     if (scrollOffset !== false) {
                         module.debug('Forcing scroll to an in-page link in a hidden tab', scrollOffset, $element);

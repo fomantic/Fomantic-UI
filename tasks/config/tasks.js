@@ -102,8 +102,8 @@ module.exports = {
             less: {
                 errorHandler: function (error) {
                     let regExp = {
-                            variable: /@(\S.*?)\s/,
-                        };
+                        variable: /@(\S.*?)\s/,
+                    };
                     let element
                     ;
                     if (error && error.filename && /theme.less/.test(error.filename)) {
