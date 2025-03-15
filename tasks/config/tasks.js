@@ -1,5 +1,4 @@
-const
-    browserslist = require('browserslist');
+const browserslist = require('browserslist');
 const console = require('@fomantic/better-console');
 const config = require('./user');
 const release = require('./project/release');
