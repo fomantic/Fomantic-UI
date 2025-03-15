@@ -20,23 +20,23 @@
         : globalThis;
 
     $.fn.popup = function (parameters) {
-        var $allModules = $(this);
-        var $document = $(document);
-        var $window = $(window);
-        var $body = $('body');
+        let $allModules = $(this);
+        let $document = $(document);
+        let $window = $(window);
+        let $body = $('body');
 
-        var clickEvent = 'ontouchstart' in document.documentElement
+        let clickEvent = 'ontouchstart' in document.documentElement
             ? 'touchstart'
             : 'click';
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
             } else {
@@ -49,41 +49,41 @@
             return $context;
         };
 
-        var returnedValue;
+        let returnedValue;
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.popup.settings, parameters)
                 : $.extend({}, $.fn.popup.settings);
 
-            var selector = settings.selector;
-            var className = settings.className;
-            var error = settings.error;
-            var metadata = settings.metadata;
-            var namespace = settings.namespace;
+            let selector = settings.selector;
+            let className = settings.className;
+            let error = settings.error;
+            let metadata = settings.metadata;
+            let namespace = settings.namespace;
 
-            var eventNamespace = '.' + settings.namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + settings.namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-            var $module = $(this);
-            var $context = contextCheck(settings.context, window);
-            var $scrollContext = contextCheck(settings.scrollContext, window);
-            var $boundary = contextCheck(settings.boundary, window);
+            let $module = $(this);
+            let $context = contextCheck(settings.context, window);
+            let $scrollContext = contextCheck(settings.scrollContext, window);
+            let $boundary = contextCheck(settings.boundary, window);
             var $target = settings.target ? contextCheck(settings.target, window) : $module;
 
-            var $popup;
-            var $offsetParent;
+            let $popup;
+            let $offsetParent;
 
-            var searchDepth = 0;
-            var triedPositions = false;
-            var openedWithTouch = false;
+            let searchDepth = 0;
+            let triedPositions = false;
+            let openedWithTouch = false;
 
             var element = this;
-            var instance = $module.data(moduleNamespace);
+            let instance = $module.data(moduleNamespace);
 
-            var documentObserver;
-            var elementNamespace;
-            var id;
-            var module;
+            let documentObserver;
+            let elementNamespace;
+            let id;
+            let module;
 
             module = {
 
@@ -180,7 +180,7 @@
 
                 event: {
                     start: function (event) {
-                        var delay = $.isPlainObject(settings.delay)
+                        let delay = $.isPlainObject(settings.delay)
                             ? settings.delay.show
                             : settings.delay;
                         clearTimeout(module.hideTimer);
@@ -191,7 +191,7 @@
                         }
                     },
                     end: function () {
-                        var delay = $.isPlainObject(settings.delay)
+                        let delay = $.isPlainObject(settings.delay)
                             ? settings.delay.hide
                             : settings.delay;
                         clearTimeout(module.showTimer);
@@ -224,8 +224,8 @@
                     },
                     hideGracefully: function (event) {
                         var $target = $(event.target);
-                        var isInDOM = $.contains(document.documentElement, event.target);
-                        var inPopup = $target.closest(selector.popup).length > 0;
+                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
                             module.debug('Click occurred outside popup hiding popup');
@@ -238,11 +238,11 @@
 
                 // generates popup html from metadata
                 create: function () {
-                    var targetSibling = $target.next(selector.popup);
-                    var contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
-                    var html = module.get.html();
-                    var title = module.get.title();
-                    var content = module.get.content(contentFallback);
+                    let targetSibling = $target.next(selector.popup);
+                    let contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
+                    let html = module.get.html();
+                    let title = module.get.title();
+                    let content = module.get.content(contentFallback);
 
                     if (html || content || title) {
                         module.debug('Creating pop-up html');
@@ -485,21 +485,21 @@
                         return $popup.offset();
                     },
                     calculations: function () {
-                        var $popupOffsetParent = module.get.offsetParent($popup);
-                        var targetElement = $target[0];
-                        var isWindowEl = $boundary[0] === window;
-                        var targetOffset = $target.offset();
-                        var parentOffset = settings.inline || (settings.popup && settings.movePopup)
+                        let $popupOffsetParent = module.get.offsetParent($popup);
+                        let targetElement = $target[0];
+                        let isWindowEl = $boundary[0] === window;
+                        let targetOffset = $target.offset();
+                        let parentOffset = settings.inline || (settings.popup && settings.movePopup)
                             ? $target.offsetParent().offset()
                             : { top: 0, left: 0 };
-                        var screenPosition = isWindowEl
+                        let screenPosition = isWindowEl
                             ? { top: 0, left: 0 }
                             : $boundary.offset();
-                        var calculations = {};
-                        var scroll = isWindowEl
+                        let calculations = {};
+                        let scroll = isWindowEl
                             ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                             : { top: 0, left: 0 };
-                        var screen;
+                        let screen;
                         calculations = {
                             // element which is launching popup
                             target: {
@@ -535,7 +535,7 @@
 
                         // if popup offset context is different from target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
-                            var popupOffset = $popupOffsetParent.offset();
+                            let popupOffset = $popupOffsetParent.offset();
                             calculations.target.top -= popupOffset.top;
                             calculations.target.left -= popupOffset.left;
                             calculations.parent.width = $popupOffsetParent.outerWidth();
@@ -597,9 +597,9 @@
                         return false;
                     },
                     distanceFromBoundary: function (offset, calculations) {
-                        var distanceFromBoundary = {};
-                        var popup;
-                        var boundary;
+                        let distanceFromBoundary = {};
+                        let popup;
+                        let boundary;
                         calculations = calculations || module.get.calculations();
 
                         // shorthand
@@ -622,12 +622,12 @@
                         var element = $element !== undefined
                             ? $element[0]
                             : $target[0];
-                        var parentNode = element.parentNode;
-                        var $node = $(parentNode);
+                        let parentNode = element.parentNode;
+                        let $node = $(parentNode);
                         if (parentNode) {
-                            var is2D = $node.css('transform') === 'none';
-                            var isStatic = $node.css('position') === 'static';
-                            var isBody = $node.is('body');
+                            let is2D = $node.css('transform') === 'none';
+                            let isStatic = $node.css('position') === 'static';
+                            let isBody = $node.is('body');
                             while (parentNode && !isBody && isStatic && is2D) {
                                 parentNode = parentNode.parentNode;
                                 $node = $(parentNode);
@@ -654,21 +654,21 @@
                         };
                     },
                     nextPosition: function (position) {
-                        var positions = position.split(' ');
-                        var verticalPosition = positions[0];
-                        var horizontalPosition = positions[1];
-                        var opposite = {
+                        let positions = position.split(' ');
+                        let verticalPosition = positions[0];
+                        let horizontalPosition = positions[1];
+                        let opposite = {
                             top: 'bottom',
                             bottom: 'top',
                             left: 'right',
                             right: 'left',
                         };
-                        var adjacent = {
+                        let adjacent = {
                             left: 'center',
                             center: 'right',
                             right: 'left',
                         };
-                        var backup = {
+                        let backup = {
                             'top left': 'top center',
                             'top center': 'top right',
                             'top right': 'right center',
@@ -678,10 +678,10 @@
                             'bottom left': 'left center',
                             'left center': 'top left',
                         };
-                        var adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom';
-                        var oppositeTried = false;
-                        var adjacentTried = false;
-                        var nextPosition = false;
+                        let adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom';
+                        let oppositeTried = false;
+                        let adjacentTried = false;
+                        let nextPosition = false;
                         if (!triedPositions) {
                             module.verbose('All available positions available');
                             triedPositions = module.get.positions();
@@ -719,14 +719,14 @@
 
                             return;
                         }
-                        var offset;
-                        var distanceAway;
-                        var target;
-                        var popup;
-                        var parent;
-                        var positioning;
-                        var popupOffset;
-                        var distanceFromBoundary;
+                        let offset;
+                        let distanceAway;
+                        let target;
+                        let popup;
+                        let parent;
+                        let positioning;
+                        let popupOffset;
+                        let distanceFromBoundary;
 
                         calculations = calculations || module.get.calculations();
                         position = position || $module.data(metadata.position) || settings.position;
@@ -1081,7 +1081,7 @@
                         return settings.closable;
                     },
                     offstage: function (distanceFromBoundary, position) {
-                        var offstage = [];
+                        let offstage = [];
                         // return boundaries that have been surpassed
                         $.each(distanceFromBoundary, function (direction, distance) {
                             if (distance < -settings.jitter) {
@@ -1179,9 +1179,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -1200,8 +1200,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -1223,17 +1223,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1469,8 +1469,8 @@
                 return string.replace(badChars, (chr) => escape[chr]);
             },
             popup: function (text) {
-                var html = '';
-                var escape = $.fn.popup.settings.templates.escape;
+                let html = '';
+                let escape = $.fn.popup.settings.templates.escape;
                 if (text !== undefined) {
                     if (text.title) {
                         text.title = escape(text.title);

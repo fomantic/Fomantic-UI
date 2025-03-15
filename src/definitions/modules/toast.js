@@ -20,17 +20,17 @@
         : globalThis;
 
     $.fn.toast = function (parameters) {
-        var $allModules = $(this);
-        var $body = $('body');
+        let $allModules = $(this);
+        let $body = $('body');
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
             } else {
@@ -42,38 +42,38 @@
 
             return $context;
         };
-        var returnedValue;
+        let returnedValue;
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.toast.settings, parameters)
                 : $.extend({}, $.fn.toast.settings);
 
-            var className = settings.className;
-            var selector = settings.selector;
-            var error = settings.error;
-            var namespace = settings.namespace;
-            var fields = settings.fields;
+            let className = settings.className;
+            let selector = settings.selector;
+            let error = settings.error;
+            let namespace = settings.namespace;
+            let fields = settings.fields;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = namespace + '-module';
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = namespace + '-module';
 
-            var $module = $(this);
-            var $toastBox;
-            var $toast;
-            var $actions;
-            var $progress;
-            var $progressBar;
-            var $animationObject;
-            var $close;
-            var $context = settings.context ? contextCheck(settings.context, window) : $body;
+            let $module = $(this);
+            let $toastBox;
+            let $toast;
+            let $actions;
+            let $progress;
+            let $progressBar;
+            let $animationObject;
+            let $close;
+            let $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-            var isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
+            let isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
 
-            var element = this;
-            var instance = isToastComponent ? $module.data(moduleNamespace) : undefined;
+            let element = this;
+            let instance = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
-            var id;
-            var module;
+            let id;
+            let module;
             module = {
 
                 initialize: function () {
@@ -164,11 +164,11 @@
                     },
                     toast: function () {
                         $toastBox = $('<div/>', { class: className.box });
-                        var iconClass = module.get.iconClass();
+                        let iconClass = module.get.iconClass();
                         if (!isToastComponent) {
                             module.verbose('Creating toast');
                             $toast = $('<div/>', { role: 'alert' });
-                            var $content = $('<div/>', { class: className.content });
+                            let $content = $('<div/>', { class: className.content });
                             if (iconClass !== '') {
                                 $toast.append($('<i/>', { class: iconClass + ' ' + className.icon }));
                             }
@@ -181,7 +181,7 @@
                                 }));
                             }
                             if (settings.title !== '') {
-                                var titleId = '_' + module.get.id() + 'title';
+                                let titleId = '_' + module.get.id() + 'title';
                                 $toast.attr('aria-labelledby', titleId);
                                 $content.append($('<div/>', {
                                     class: className.title,
@@ -189,7 +189,7 @@
                                     html: module.helpers.escape(settings.title, settings),
                                 }));
                             }
-                            var descId = '_' + module.get.id() + 'desc';
+                            let descId = '_' + module.get.id() + 'desc';
                             $toast.attr('aria-describedby', descId);
                             $content.append($('<div/>', {
                                 class: className.message,
@@ -250,13 +250,13 @@
                                 }
                             }
                             settings.actions.forEach(function (el) {
-                                var icon = el[fields.icon]
+                                let icon = el[fields.icon]
                                     ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                     : '';
-                                var text = module.helpers.escape(el[fields.text] || '', settings);
-                                var cls = module.helpers.escape(el[fields.class] || '');
-                                var click = el[fields.click] && isFunction(el[fields.click])
+                                let text = module.helpers.escape(el[fields.text] || '', settings);
+                                let cls = module.helpers.escape(el[fields.class] || '');
+                                let click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
                                     : function () {};
                                 $actions.append($('<button/>', {
@@ -265,7 +265,7 @@
                                     class: className.button + ' ' + cls,
                                     on: {
                                         click: function () {
-                                            var $button = $(this);
+                                            let $button = $(this);
                                             if ($button.is(selector.approve) || $button.is(selector.deny) || click.call(element, $module) === false) {
                                                 return;
                                             }
@@ -320,7 +320,7 @@
                             element = $toast[0];
                         }
                         if (settings.displayTime > 0) {
-                            var progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
+                            let progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
                             if (settings.showProgress) {
                                 $progress = $('<div/>', {
                                     class: className.progress + ' ' + (settings.classProgress || settings.class),
@@ -567,8 +567,8 @@
 
                 helpers: {
                     toClass: function (selector) {
-                        var classes = selector.trim().split(/\s+/);
-                        var result = '';
+                        let classes = selector.trim().split(/\s+/);
+                        let result = '';
 
                         classes.forEach(function (element) {
                             result += '.' + element;
@@ -656,9 +656,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -677,8 +677,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -700,17 +700,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -900,8 +900,8 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            var n1 = 7.5625;
-            var d1 = 2.75;
+            let n1 = 7.5625;
+            let d1 = 2.75;
             if (x < 1 / d1) {
                 return n1 * x * x;
             }

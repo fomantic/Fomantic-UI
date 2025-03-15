@@ -25,17 +25,17 @@
 
     $.fn.api = function (parameters) {
         // use window context if none specified
-        var $allModules = isFunction(this)
+        let $allModules = isFunction(this)
             ? $(window)
             : $(this);
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
             } else {
@@ -47,45 +47,45 @@
 
             return $context;
         };
-        var returnedValue;
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.api.settings, parameters)
                 : $.extend({}, $.fn.api.settings);
 
             // internal aliases
-            var regExp = settings.regExp;
-            var namespace = settings.namespace;
-            var metadata = settings.metadata;
-            var selector = settings.selector;
-            var error = settings.error;
-            var className = settings.className;
+            let regExp = settings.regExp;
+            let namespace = settings.namespace;
+            let metadata = settings.metadata;
+            let selector = settings.selector;
+            let error = settings.error;
+            let className = settings.className;
 
             // define namespaces for modules
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
             // element that creates request
-            var $module = $(this);
-            var $form = $module.closest(selector.form);
+            let $module = $(this);
+            let $form = $module.closest(selector.form);
 
             // context used for state
-            var $context = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
+            let $context = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
 
             // request details
-            var ajaxSettings;
-            var requestSettings;
-            var url;
+            let ajaxSettings;
+            let requestSettings;
+            let url;
             var data;
-            var requestStartTime;
-            var originalData;
+            let requestStartTime;
+            let originalData;
 
             // standard module
-            var element = this;
+            let element = this;
             var context = $context[0];
-            var instance = $module.data(moduleNamespace);
-            var module;
+            let instance = $module.data(moduleNamespace);
+            let module;
 
             module = {
 
@@ -113,7 +113,7 @@
 
                 bind: {
                     events: function () {
-                        var triggerEvent = module.get.event();
+                        let triggerEvent = module.get.event();
                         if (triggerEvent) {
                             module.verbose('Attaching API events to element', triggerEvent);
                             $module
@@ -141,7 +141,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        var response;
+                        let response;
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 
@@ -345,8 +345,8 @@
 
                 add: {
                     urlData: function (url, urlData) {
-                        var requiredVariables;
-                        var optionalVariables;
+                        let requiredVariables;
+                        let optionalVariables;
                         if (url) {
                             requiredVariables = url.match(regExp.required);
                             optionalVariables = url.match(regExp.optional);
@@ -355,10 +355,10 @@
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
                                     // allow legacy {$var} style
-                                    var variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.indexOf('$') !== -1
                                         ? templatedString.slice(2, -1)
                                         : templatedString.slice(1, -1);
-                                    var value = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                    let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
                                             ? $module.data(variable)
@@ -384,10 +384,10 @@
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
                                     // allow legacy {/$var} style
-                                    var variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.indexOf('$') !== -1
                                         ? templatedString.slice(3, -1)
                                         : templatedString.slice(2, -1);
-                                    var value = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                    let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
                                             ? $module.data(variable)
@@ -412,9 +412,9 @@
                         return url;
                     },
                     formData: function (data) {
-                        var formData = {};
-                        var hasOtherData;
-                        var useFormDataApi = settings.serializeForm === 'formdata';
+                        let formData = {};
+                        let hasOtherData;
+                        let useFormDataApi = settings.serializeForm === 'formdata';
                         data = data || originalData || settings.data;
                         hasOtherData = $.isPlainObject(data);
 
@@ -423,10 +423,10 @@
                             settings.processData = settings.processData !== undefined ? settings.processData : false;
                             settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
-                            var formArray = $form.serializeArray();
-                            var pushes = {};
-                            var pushValues = {};
-                            var build = function (base, key, value) {
+                            let formArray = $form.serializeArray();
+                            let pushes = {};
+                            let pushValues = {};
+                            let build = function (base, key, value) {
                                 base[key] = value;
 
                                 return base;
@@ -441,15 +441,15 @@
                                 if (!regExp.validate.test(el.name)) {
                                     return;
                                 }
-                                var isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
-                                var floatValue = parseFloat(el.value);
-                                var value = (isCheckbox && el.value === 'on')
+                                let isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
+                                let floatValue = parseFloat(el.value);
+                                let value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
                                         || (String(floatValue) === el.value
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value));
-                                var nameKeys = el.name.match(regExp.key) || [];
-                                var pushKey = el.name.replace(/\[]$/, '');
+                                let nameKeys = el.name.match(regExp.key) || [];
+                                let pushKey = el.name.replace(/\[]$/, '');
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
                                     pushValues[pushKey] = value;
@@ -463,7 +463,7 @@
                                 }
 
                                 while (nameKeys.length > 0) {
-                                    var k = nameKeys.pop();
+                                    let k = nameKeys.pop();
 
                                     if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
@@ -522,9 +522,9 @@
                         },
                         done: function (response, textStatus, xhr) {
                             var context = this;
-                            var elapsedTime = Date.now() - requestStartTime;
-                            var timeLeft = settings.loadingDuration - elapsedTime;
-                            var translatedResponse = isFunction(settings.onResponse)
+                            let elapsedTime = Date.now() - requestStartTime;
+                            let timeLeft = settings.loadingDuration - elapsedTime;
+                            let translatedResponse = isFunction(settings.onResponse)
                                 ? (module.is.expectingJSON() && !settings.rawResponse
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                                     : settings.onResponse.call(context, response))
@@ -549,8 +549,8 @@
                         },
                         fail: function (xhr, status, httpMessage) {
                             var context = this;
-                            var elapsedTime = Date.now() - requestStartTime;
-                            var timeLeft = settings.loadingDuration - elapsedTime;
+                            let elapsedTime = Date.now() - requestStartTime;
+                            let timeLeft = settings.loadingDuration - elapsedTime;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
@@ -576,8 +576,8 @@
                             settings.onSuccess.call(context, response, $module, xhr);
                         },
                         complete: function (firstParameter, secondParameter) {
-                            var xhr;
-                            var response;
+                            let xhr;
+                            let response;
                             // have to guess callback parameters based on request success
                             if (module.was.successful()) {
                                 response = firstParameter;
@@ -591,8 +591,8 @@
                         },
                         fail: function (xhr, status, httpMessage) {
                             // pull response from xhr if available
-                            var response = module.get.responseFromXHR(xhr);
-                            var errorMessage = module.get.errorFromRequest(response, status, httpMessage);
+                            let response = module.get.responseFromXHR(xhr);
+                            let errorMessage = module.get.errorFromRequest(response, status, httpMessage);
                             if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                 settings.onAbort.call(context, status, $module, xhr);
@@ -639,14 +639,14 @@
 
                     mockedXHR: function () {
                         // xhr does not simulate these properties of xhr but must return them
-                        var textStatus = false;
-                        var status = false;
-                        var httpMessage = false;
-                        var responder = settings.mockResponse || settings.response;
-                        var asyncResponder = settings.mockResponseAsync || settings.responseAsync;
-                        var asyncCallback;
-                        var response;
-                        var mockedXHR;
+                        let textStatus = false;
+                        let status = false;
+                        let httpMessage = false;
+                        let responder = settings.mockResponse || settings.response;
+                        let asyncResponder = settings.mockResponseAsync || settings.responseAsync;
+                        let asyncCallback;
+                        let response;
+                        let mockedXHR;
 
                         mockedXHR = $.Deferred()
                             .always(module.event.xhr.complete)
@@ -681,7 +681,7 @@
                     },
 
                     xhr: function () {
-                        var xhr;
+                        let xhr;
                         // ajax request promise
                         xhr = $.ajax(ajaxSettings)
                             .always(module.event.xhr.always)
@@ -741,7 +741,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        var runSettings;
+                        let runSettings;
                         runSettings = settings.beforeSend.call($module, settings);
                         if (runSettings) {
                             if (runSettings.success !== undefined) {
@@ -772,9 +772,9 @@
                             : $.extend(true, {}, settings);
                     },
                     urlEncodedValue: function (value) {
-                        var decodedValue = window.decodeURIComponent(value);
-                        var encodedValue = window.encodeURIComponent(value);
-                        var alreadyEncoded = decodedValue !== value;
+                        let decodedValue = window.decodeURIComponent(value);
+                        let encodedValue = window.encodeURIComponent(value);
+                        let alreadyEncoded = decodedValue !== value;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
 
@@ -845,7 +845,7 @@
                 },
 
                 abort: function () {
-                    var xhr = module.get.xhr();
+                    let xhr = module.get.xhr();
                     if (xhr && xhr.state() !== 'resolved') {
                         module.debug('Cancelling API request');
                         xhr.abort();
@@ -909,9 +909,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -930,8 +930,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -953,17 +953,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

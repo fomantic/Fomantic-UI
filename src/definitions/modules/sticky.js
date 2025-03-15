@@ -20,17 +20,17 @@
         : globalThis;
 
     $.fn.sticky = function (parameters) {
-        var $allModules = $(this);
-        var $document = $(document);
+        let $allModules = $(this);
+        let $document = $(document);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
             } else {
@@ -42,33 +42,33 @@
 
             return $context;
         };
-        var returnedValue;
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                 : $.extend({}, $.fn.sticky.settings);
 
-            var className = settings.className;
-            var namespace = settings.namespace;
-            var error = settings.error;
+            let className = settings.className;
+            let namespace = settings.namespace;
+            let error = settings.error;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-            var $module = $(this);
-            var $window = $(window);
-            var $scroll = contextCheck(settings.scrollContext, window);
-            var $container;
-            var $context;
+            let $module = $(this);
+            let $window = $(window);
+            let $scroll = contextCheck(settings.scrollContext, window);
+            let $container;
+            let $context;
 
-            var instance = $module.data(moduleNamespace);
+            let instance = $module.data(moduleNamespace);
 
             var element = this;
 
-            var documentObserver;
-            var observer;
-            var module;
+            let documentObserver;
+            let observer;
+            let module;
 
             module = {
 
@@ -219,7 +219,7 @@
 
                 supports: {
                     sticky: function () {
-                        var $element = $('<div/>');
+                        let $element = $('<div/>');
                         $element.addClass(className.supported);
 
                         return $element.css('position').match('sticky');
@@ -234,7 +234,7 @@
                         module.elementScroll = scroll;
                     },
                     positions: function () {
-                        var scrollContext = {
+                        let scrollContext = {
                             height: $scroll.height(),
                         };
                         var element = {
@@ -246,7 +246,7 @@
                             width: $module.outerWidth(),
                             height: $module.outerHeight(),
                         };
-                        var context = {
+                        let context = {
                             offset: $context.offset(),
                             height: $context.outerHeight(),
                         };
@@ -290,7 +290,7 @@
 
                 get: {
                     direction: function (scroll) {
-                        var direction = 'down';
+                        let direction = 'down';
                         scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
                             direction = 'up';
@@ -318,11 +318,11 @@
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
                         var element = module.cache.element;
-                        var scrollContext = module.cache.scrollContext;
-                        var delta = module.get.scrollChange(scroll);
-                        var maxScroll = element.height - scrollContext.height + settings.offset;
-                        var elementScroll = module.get.currentElementScroll();
-                        var possibleScroll = elementScroll + delta;
+                        let scrollContext = module.cache.scrollContext;
+                        let delta = module.get.scrollChange(scroll);
+                        let maxScroll = element.height - scrollContext.height + settings.offset;
+                        let elementScroll = module.get.currentElementScroll();
+                        let possibleScroll = elementScroll + delta;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
                         } else if (possibleScroll > maxScroll) {
@@ -358,11 +358,11 @@
                             .css('margin-top', settings.offset);
                     },
                     containerSize: function () {
-                        var tagName = $container[0].tagName;
+                        let tagName = $container[0].tagName;
                         if (tagName === 'HTML' || tagName === 'body') {
                             module.determineContainer();
                         } else {
-                            var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
+                            let tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
                             if (tallestHeight - $container.outerHeight() > settings.jitter) {
                                 module.debug('Context is taller than container. Specifying exact height for container', module.cache.context.height);
                                 $container.css({
@@ -435,27 +435,27 @@
                 },
 
                 stick: function (scrollPosition) {
-                    var cachedPosition = scrollPosition || $scroll.scrollTop();
-                    var cache = module.cache;
-                    var fits = cache.fits;
-                    var sameHeight = cache.sameHeight;
+                    let cachedPosition = scrollPosition || $scroll.scrollTop();
+                    let cache = module.cache;
+                    let fits = cache.fits;
+                    let sameHeight = cache.sameHeight;
                     var element = cache.element;
-                    var scrollContext = cache.scrollContext;
-                    var context = cache.context;
-                    var offset = module.is.bottom() && settings.pushing
+                    let scrollContext = cache.scrollContext;
+                    let context = cache.context;
+                    let offset = module.is.bottom() && settings.pushing
                         ? settings.bottomOffset
                         : settings.offset;
-                    var scroll = {
+                    let scroll = {
                         top: cachedPosition + offset,
                         bottom: cachedPosition + offset + scrollContext.height,
                     };
-                    var elementScroll = fits
+                    let elementScroll = fits
                         ? 0
                         : module.get.elementScroll(scroll.top);
 
                     // shorthand
-                    var doesntFit = !fits;
-                    var elementVisible = element.height !== 0;
+                    let doesntFit = !fits;
+                    let elementVisible = element.height !== 0;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
                             if (scroll.top >= context.bottom) {
@@ -692,9 +692,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -713,8 +713,8 @@
                         }, 0);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -736,17 +736,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

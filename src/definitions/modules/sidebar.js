@@ -20,21 +20,21 @@
         : globalThis;
 
     $.fn.sidebar = function (parameters) {
-        var $allModules = $(this);
-        var $window = $(window);
-        var $document = $(document);
-        var $body = $('body');
-        var $html = $('html');
-        var $head = $('head');
+        let $allModules = $(this);
+        let $window = $(window);
+        let $document = $(document);
+        let $body = $('body');
+        let $html = $('html');
+        let $head = $('head');
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $body;
             } else {
@@ -46,42 +46,42 @@
 
             return $context;
         };
-        var returnedValue;
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
                 : $.extend({}, $.fn.sidebar.settings);
 
-            var selector = settings.selector;
-            var className = settings.className;
-            var namespace = settings.namespace;
-            var regExp = settings.regExp;
-            var error = settings.error;
+            let selector = settings.selector;
+            let className = settings.className;
+            let namespace = settings.namespace;
+            let regExp = settings.regExp;
+            let error = settings.error;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-            var $module = $(this);
-            var $context = contextCheck(settings.context, window);
-            var isBody = $context[0] === $body[0];
+            let $module = $(this);
+            let $context = contextCheck(settings.context, window);
+            let isBody = $context[0] === $body[0];
 
-            var $sidebars = $module.children(selector.sidebar);
-            var $fixed = $context.children(selector.fixed);
-            var $pusher = $context.children(selector.pusher);
-            var $style;
+            let $sidebars = $module.children(selector.sidebar);
+            let $fixed = $context.children(selector.fixed);
+            let $pusher = $context.children(selector.pusher);
+            let $style;
 
-            var element = this;
-            var instance = $module.data(moduleNamespace);
+            let element = this;
+            let instance = $module.data(moduleNamespace);
 
-            var elementNamespace;
-            var id;
-            var currentScroll;
-            var initialBodyMargin = '';
-            var tempBodyMargin = '';
-            var hadScrollbar = false;
+            let elementNamespace;
+            let id;
+            let currentScroll;
+            let initialBodyMargin = '';
+            let tempBodyMargin = '';
+            let hadScrollbar = false;
 
-            var module;
+            let module;
 
             module = {
 
@@ -133,8 +133,8 @@
                 event: {
                     clickaway: function (event) {
                         if (settings.closable) {
-                            var clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            var clickedContext = $context.is(event.target);
+                            let clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
+                            let clickedContext = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -205,17 +205,17 @@
 
                 add: {
                     inlineCSS: function () {
-                        var width = module.cache.width || $module.outerWidth();
-                        var height = module.cache.height || $module.outerHeight();
-                        var isRTL = module.is.rtl();
-                        var direction = module.get.direction();
-                        var distance = {
+                        let width = module.cache.width || $module.outerWidth();
+                        let height = module.cache.height || $module.outerHeight();
+                        let isRTL = module.is.rtl();
+                        let direction = module.get.direction();
+                        let distance = {
                             left: width,
                             right: -width,
                             top: height,
                             bottom: -height,
                         };
-                        var style;
+                        let style;
 
                         if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
@@ -264,7 +264,7 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
-                    var ignored = element.offsetHeight;
+                    let ignored = element.offsetHeight;
                     element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
@@ -301,7 +301,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $toggle = $(selector);
+                    let $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -325,8 +325,8 @@
                 save: {
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                        let bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                     },
                 },
@@ -397,9 +397,9 @@
                 },
 
                 hideOthers: function (callback) {
-                    var $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
-                    var sidebarCount = $otherSidebars.length;
-                    var callbackCount = 0;
+                    let $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
+                    let sidebarCount = $otherSidebars.length;
+                    let callbackCount = 0;
                     callback = callback || function () {};
                     $otherSidebars
                         .sidebar('hide', function () {
@@ -420,13 +420,13 @@
                 },
 
                 pushPage: function (callback) {
-                    var transition = module.get.transition();
-                    var $transition = transition === 'overlay' || module.othersActive()
+                    let transition = module.get.transition();
+                    let $transition = transition === 'overlay' || module.othersActive()
                         ? $module
                         : $pusher;
-                    var animate;
-                    var dim;
-                    var transitionEnd;
+                    let animate;
+                    let dim;
+                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -464,12 +464,12 @@
                 },
 
                 pullPage: function (callback) {
-                    var transition = module.get.transition();
-                    var $transition = transition === 'overlay' || module.othersActive()
+                    let transition = module.get.transition();
+                    let $transition = transition === 'overlay' || module.othersActive()
                         ? $module
                         : $pusher;
-                    var animate;
-                    var transitionEnd;
+                    let animate;
+                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -527,11 +527,11 @@
 
                 set: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            let el = $(this);
+                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -625,11 +625,11 @@
                 },
                 restore: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var el = $(this);
-                            var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            let el = $(this);
+                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -649,8 +649,8 @@
                         return className.left;
                     },
                     transition: function () {
-                        var direction = module.get.direction();
-                        var transition;
+                        let direction = module.get.direction();
+                        let transition;
                         transition = module.is.mobile()
                             ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
@@ -687,8 +687,8 @@
                         return !(self === top);
                     },
                     mobile: function () {
-                        var userAgent = navigator.userAgent;
-                        var isMobile = userAgent.match(regExp.mobile);
+                        let userAgent = navigator.userAgent;
+                        let isMobile = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -778,9 +778,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -799,8 +799,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -822,17 +822,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
