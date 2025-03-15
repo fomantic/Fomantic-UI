@@ -101,8 +101,7 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.match.version, version))
                     .pipe(replace(regExp.match.files, filenames))
                     .pipe(rename(release.files.meteor))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             });
 
             if (distribution === 'CSS') {
@@ -111,11 +110,9 @@ module.exports = function (callback) {
                     let components;
                     let releases;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/', encoding: false })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     components = gulp.src('dist/components/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     releases = gulp.src('dist/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
 
@@ -131,23 +128,17 @@ module.exports = function (callback) {
                     let siteTheme;
                     let themes;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     overridesImport = gulp.src('src/overrides.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     lessImport = gulp.src('src/semantic.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themeImport = gulp.src('src/theme.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themeConfig = gulp.src('src/theme.config.example', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     siteTheme = gulp.src('src/_site/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themes = gulp.src('src/themes/**/*', { base: 'src/', encoding: false })
                         .pipe(gulp.dest(outputDirectory));
 
@@ -166,8 +157,7 @@ module.exports = function (callback) {
 
                         return pkg;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             });
         })(distribution);
     }

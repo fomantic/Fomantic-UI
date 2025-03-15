@@ -50,8 +50,7 @@ module.exports = function (callback) {
                 encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.less))
-                .pipe(print(log.created))
-            ;
+                .pipe(print(log.created));
         });
 
     /* --------------
@@ -71,8 +70,7 @@ module.exports = function (callback) {
                 encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.examples))
-                .pipe(print(log.created))
-            ;
+                .pipe(print(log.created));
         });
 
     /* --------------

@@ -93,5 +93,4 @@ getNightlyVersion()
             JSON.stringify(pkg, null, 2)
         );
     })
-    .then(() => console.log(`Done (${pkg.version})`))
-;
+    .then(() => console.log(`Done (${pkg.version})`));

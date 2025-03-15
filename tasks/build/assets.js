@@ -21,8 +21,7 @@ function build(src, config) {
     return gulp.src(src, { base: config.paths.source.themes, encoding: false })
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.themes))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 function buildAssets(src, config, callback) {
@@ -57,8 +56,7 @@ module.exports.watch = function (type, config) {
             console.log('Change in assets detected');
 
             return gulp.series((callback) => buildAssets(path, config, callback))();
-        })
-    ;
+        });
 };
 
 module.exports.buildAssets = buildAssets;

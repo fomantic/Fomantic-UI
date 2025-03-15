@@ -57,8 +57,7 @@ module.exports = function (callback) {
             .on('end', function () {
                 fs.mkdirSync(output.metadata, { recursive: true });
                 fs.writeFileSync(output.metadata + '/metadata.json', JSON.stringify(metadata.result, null, 2));
-            })
-        ;
+            });
     }
 
     /* --------------
@@ -71,8 +70,7 @@ module.exports = function (callback) {
 
         return gulp.src('examples/**/*.*', { encoding: false })
             .pipe(gulp.dest(output.examples))
-            .pipe(print(log.created))
-        ;
+            .pipe(print(log.created));
     }
 
     /* --------------
@@ -85,8 +83,7 @@ module.exports = function (callback) {
 
         return gulp.src('src/**/*.*', { encoding: false })
             .pipe(gulp.dest(output.less))
-            .pipe(print(log.created))
-        ;
+            .pipe(print(log.created));
     }
 
     /* --------------

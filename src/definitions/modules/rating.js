@@ -77,16 +77,14 @@
                     module.verbose('Instantiating module', settings);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous instance', instance);
                     module.remove.events();
                     $module
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -100,8 +98,7 @@
                         var html = $.fn.rating.settings.templates.icon(maxRating, icon);
                         module.debug('Generating icon html dynamically');
                         $module
-                            .html(html)
-                        ;
+                            .html(html);
                         module.refresh();
                     },
                 },
@@ -111,24 +108,19 @@
                         var $activeIcon = $(this);
                         $activeIcon
                             .nextAll()
-                            .removeClass(className.selected)
-                        ;
+                            .removeClass(className.selected);
                         $module
-                            .addClass(className.selected)
-                        ;
+                            .addClass(className.selected);
                         $activeIcon
                             .addClass(className.selected)
                             .prevAll()
-                            .addClass(className.selected)
-                        ;
+                            .addClass(className.selected);
                     },
                     mouseleave: function () {
                         $module
-                            .removeClass(className.selected)
-                        ;
+                            .removeClass(className.selected);
                         $icon
-                            .removeClass(className.selected)
-                        ;
+                            .removeClass(className.selected);
                     },
                     click: function () {
                         var $activeIcon = $(this);
@@ -136,8 +128,7 @@
                         var rating = $icon.index($activeIcon) + 1;
                         var canClear = settings.clearable === 'auto'
                             ? $icon.length === 1
-                            : settings.clearable
-                        ;
+                            : settings.clearable;
                         if (canClear && currentRating === rating) {
                             module.clearRating();
                         } else {
@@ -157,8 +148,7 @@
                         $module
                             .on('mouseenter' + eventNamespace, selector.icon, module.event.mouseenter)
                             .on('mouseleave' + eventNamespace, selector.icon, module.event.mouseleave)
-                            .on('click' + eventNamespace, selector.icon, module.event.click)
-                        ;
+                            .on('click' + eventNamespace, selector.icon, module.event.click);
                     },
                 },
 
@@ -166,8 +156,7 @@
                     events: function () {
                         module.verbose('Removing events');
                         $module
-                            .off(eventNamespace)
-                        ;
+                            .off(eventNamespace);
                     },
                     initialLoad: function () {
                         initialLoad = false;
@@ -178,16 +167,14 @@
                     module.debug('Setting rating to interactive mode');
                     module.bind.events();
                     $module
-                        .removeClass(className.disabled)
-                    ;
+                        .removeClass(className.disabled);
                 },
 
                 disable: function () {
                     module.debug('Setting rating to read-only mode');
                     module.remove.events();
                     $module
-                        .addClass(className.disabled)
-                    ;
+                        .addClass(className.disabled);
                 },
 
                 is: {
@@ -247,33 +234,27 @@
                             : $activeIcon.next();
                         var filledPercentage = (rating % 1) * 100;
                         $module
-                            .removeClass(className.selected)
-                        ;
+                            .removeClass(className.selected);
                         $icon
                             .removeClass(className.selected)
                             .removeClass(className.active)
-                            .removeClass(className.partiallyActive)
-                        ;
+                            .removeClass(className.partiallyActive);
                         if (rating > 0) {
                             module.verbose('Setting current rating to', rating);
                             $activeIcon
                                 .prevAll()
                                 .addBack()
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             if ($activeIcon.next() && rating % 1 !== 0) {
                                 $partialActiveIcon
                                     .addClass(className.partiallyActive)
-                                    .addClass(className.active)
-                                ;
+                                    .addClass(className.active);
                                 $partialActiveIcon
-                                    .css(cssVars.filledCustomPropName, filledPercentage + '%')
-                                ;
+                                    .css(cssVars.filledCustomPropName, filledPercentage + '%');
                                 if ($partialActiveIcon.css('backgroundColor') === 'transparent') {
                                     $partialActiveIcon
                                         .removeClass(className.partiallyActive)
-                                        .removeClass(className.active)
-                                    ;
+                                        .removeClass(className.active);
                                 }
                             }
                         }
@@ -396,8 +377,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

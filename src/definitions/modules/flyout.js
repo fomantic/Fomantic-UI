@@ -133,8 +133,7 @@
                             var cls = module.helpers.escape(el[fields.class] || '');
                             var click = el[fields.click] && isFunction(el[fields.click])
                                 ? el[fields.click]
-                                : function () {}
-                            ;
+                                : function () {};
                             $actions.append($('<button/>', {
                                 html: icon + text,
                                 'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
@@ -179,8 +178,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 create: {
@@ -226,8 +224,7 @@
                     module.verbose('Destroying previous module for', $module);
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                     $closeIcon.off(elementNamespace);
                     if ($inputs) {
                         $inputs.off(elementNamespace);
@@ -352,24 +349,19 @@
                         $module
                             .on('click' + eventNamespace, selector.close, module.event.close)
                             .on('click' + eventNamespace, selector.approve, module.event.approve)
-                            .on('click' + eventNamespace, selector.deny, module.event.deny)
-                        ;
+                            .on('click' + eventNamespace, selector.deny, module.event.deny);
                         $closeIcon
-                            .on('keyup' + elementNamespace, module.event.closeKeyUp)
-                        ;
+                            .on('keyup' + elementNamespace, module.event.closeKeyUp);
                         $window
-                            .on('focus' + elementNamespace, module.event.focus)
-                        ;
+                            .on('focus' + elementNamespace, module.event.focus);
                         $context
-                            .on('click' + elementNamespace, module.event.click)
-                        ;
+                            .on('click' + elementNamespace, module.event.click);
                     },
                     clickaway: function () {
                         module.verbose('Adding clickaway events to context', $context);
                         $context
                             .on('click' + elementNamespace, module.event.clickaway)
-                            .on('touchend' + elementNamespace, module.event.clickaway)
-                        ;
+                            .on('touchend' + elementNamespace, module.event.clickaway);
                     },
                     scrollLock: function () {
                         if (settings.scrollLock) {
@@ -383,11 +375,9 @@
                         }
                         module.verbose('Adding events to contain flyout scroll');
                         $document
-                            .on('touchmove' + elementNamespace, module.event.touch)
-                        ;
+                            .on('touchmove' + elementNamespace, module.event.touch);
                         $module
-                            .on('scroll' + eventNamespace, module.event.containScroll)
-                        ;
+                            .on('scroll' + eventNamespace, module.event.containScroll);
                     },
                 },
                 unbind: {
@@ -445,15 +435,13 @@
 
                         style += '</style>';
                         $style = $(style)
-                            .appendTo($head)
-                        ;
+                            .appendTo($head);
                         module.debug('Adding sizing css to head', $style);
                     },
                     keyboardShortcuts: function () {
                         module.verbose('Adding keyboard shortcuts');
                         $document
-                            .on('keydown' + eventNamespace, module.event.keyboard)
-                        ;
+                            .on('keydown' + eventNamespace, module.event.keyboard);
                     },
                 },
                 observeChanges: function () {
@@ -520,8 +508,7 @@
                 refreshInputs: function (ignoreAutofocus) {
                     if ($inputs) {
                         $inputs
-                            .off('keydown' + elementNamespace)
-                        ;
+                            .off('keydown' + elementNamespace);
                     }
                     if (!settings.dimPage) {
                         return;
@@ -536,11 +523,9 @@
                         $module.removeAttr('tabindex');
                     }
                     $inputs.first()
-                        .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
-                    ;
+                        .on('keydown' + elementNamespace, module.event.inputKeyDown.first);
                     $inputs.last()
-                        .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
-                    ;
+                        .on('keydown' + elementNamespace, module.event.inputKeyDown.last);
                     if (!ignoreAutofocus && settings.autofocus && $inputs.filter(':focus').length === 0) {
                         module.set.autofocus();
                     }
@@ -562,8 +547,7 @@
                                 .children()
                                 .not(selector.omitted)
                                 .not($flyouts)
-                                .wrapAll($pusher)
-                            ;
+                                .wrapAll($pusher);
                             module.refresh();
                         }
                         if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -599,8 +583,7 @@
                     if ($toggle.length > 0) {
                         module.debug('Attaching flyout events to element', selector, event);
                         $toggle
-                            .on('click' + eventNamespace, event)
-                        ;
+                            .on('click' + eventNamespace, event);
                     } else {
                         module.error(error.notFound, selector);
                     }
@@ -689,8 +672,7 @@
                             if (callbackCount === flyoutCount) {
                                 callback();
                             }
-                        })
-                    ;
+                        });
                 },
 
                 toggle: function () {
@@ -813,8 +795,7 @@
                             : ($rawInputs.length > 0
                                 ? $rawInputs
                                 : $module)
-                        ).first()
-                        ;
+                        ).first();
                         $input.trigger('focus');
                     },
                     dimmerStyles: function () {
@@ -879,8 +860,7 @@
                     keyboardShortcuts: function () {
                         module.verbose('Removing keyboard shortcuts');
                         $document
-                            .off('keydown' + eventNamespace)
-                        ;
+                            .off('keydown' + eventNamespace);
                     },
 
                     // context
@@ -1165,8 +1145,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

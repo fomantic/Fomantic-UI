@@ -80,8 +80,7 @@ function build(src, type, compress, config, opts) {
         .pipe(gulpif(fileExtension, rename(fileExtension)))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 /**
@@ -122,8 +121,7 @@ function pack(type, compress) {
         .pipe(gulpif(compress, minifyCSS(settings.concatMinify)))
         .pipe(header(banner, settings.header))
         .pipe(gulp.dest(output.packaged))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 function buildCSS(src, type, config, opts, callback) {
@@ -281,8 +279,7 @@ module.exports.watch = function (type, config) {
                 // Reset the internal changed files array
                 files = [];
             }, 1000);
-        })
-    ;
+        });
 };
 
 // Expose build CSS method

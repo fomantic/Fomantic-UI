@@ -70,8 +70,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
@@ -79,8 +78,7 @@
                     module.reset();
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 refresh: function () {
@@ -96,8 +94,7 @@
                             module.debug('Adding placeholder events');
                             $module
                                 .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
-                                .on('click' + eventNamespace, selector.icon, module.createAndShow)
-                            ;
+                                .on('click' + eventNamespace, selector.icon, module.createAndShow);
                         }
                     },
                 },
@@ -125,16 +122,14 @@
                     $embed = $('<div/>')
                         .addClass(className.embed)
                         .html(module.generate.embed(url))
-                        .appendTo($module)
-                    ;
+                        .appendTo($module);
                     settings.onCreate.call(element, url);
                     module.debug('Creating embed object', $embed);
                 },
 
                 changeEmbed: function (url) {
                     $embed
-                        .html(module.generate.embed(url))
-                    ;
+                        .html(module.generate.embed(url));
                 },
 
                 createAndShow: function () {
@@ -147,8 +142,7 @@
                     module.debug('Changing video to ', source, id, url);
                     $module
                         .data(metadata.source, source)
-                        .data(metadata.id, id)
-                    ;
+                        .data(metadata.id, id);
                     if (url) {
                         $module.data(metadata.url, url);
                     } else {
@@ -280,8 +274,7 @@
                             .removeData(metadata.placeholder)
                             .removeData(metadata.alt)
                             .removeData(metadata.source)
-                            .removeData(metadata.url)
-                        ;
+                            .removeData(metadata.url);
                     },
                     active: function () {
                         $module.removeClass(className.active);
@@ -322,8 +315,7 @@
                     parameters: function (source, extraParameters) {
                         var parameters = sources[source] && sources[source].parameters !== undefined
                             ? sources[source].parameters(settings)
-                            : {}
-                        ;
+                            : {};
                         extraParameters = extraParameters || settings.parameters;
                         if (extraParameters) {
                             parameters = $.extend({}, parameters, extraParameters);
@@ -467,8 +459,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

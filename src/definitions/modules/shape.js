@@ -73,16 +73,14 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous module for', element);
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 refresh: function () {
@@ -111,20 +109,16 @@
                     settings.onBeforeChange.call($nextSide[0]);
                     module.verbose('Starting CSS animation');
                     $module
-                        .addClass(className.animating)
-                    ;
+                        .addClass(className.animating);
                     $sides
                         .css(propertyObject)
-                        .one('transitionend', callback)
-                    ;
+                        .one('transitionend', callback);
                     module.set.duration(settings.duration);
                     requestAnimationFrame(function () {
                         $module
-                            .addClass(className.animating)
-                        ;
+                            .addClass(className.animating);
                         $activeSide
-                            .addClass(className.hidden)
-                        ;
+                            .addClass(className.hidden);
                     });
                 },
 
@@ -136,8 +130,7 @@
                             setTimeout(function () {
                                 $module.shape(method);
                             }, 0);
-                        })
-                    ;
+                        });
                 },
 
                 reset: function () {
@@ -150,18 +143,15 @@
                     // removeAttr style does not consistently work in safari
                     $sides
                         .attr('style', '')
-                        .removeAttr('style')
-                    ;
+                        .removeAttr('style');
                     $side
                         .attr('style', '')
                         .removeAttr('style')
-                        .removeClass(className.hidden)
-                    ;
+                        .removeClass(className.hidden);
                     $nextSide
                         .removeClass(className.animating)
                         .attr('style', '')
-                        .removeAttr('style')
-                    ;
+                        .removeAttr('style');
                 },
 
                 is: {
@@ -198,8 +188,7 @@
                             $sides.add($side)
                                 .css({
                                     'transition-duration': duration,
-                                })
-                            ;
+                                });
                         }
                     },
 
@@ -211,8 +200,7 @@
                             .css({
                                 width: width,
                                 height: height,
-                            })
-                        ;
+                            });
                     },
 
                     stageSize: function () {
@@ -233,8 +221,7 @@
                             ? $nextSide.outerHeight(true)
                             : (settings.height === 'initial'
                                 ? $module.height()
-                                : settings.height)
-                        ;
+                                : settings.height);
                         $activeSide.removeClass(className.active);
                         $nextSide.addClass(className.active);
                         $clone.insertAfter($module);
@@ -263,11 +250,9 @@
                     active: function () {
                         module.verbose('Setting new side to active', $nextSide);
                         $side
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                         $nextSide
-                            .addClass(className.active)
-                        ;
+                            .addClass(className.active);
                         settings.onChange.call($nextSide[0]);
                         module.set.defaultSide();
                     },
@@ -401,21 +386,18 @@
                                 active: $nextSide.outerHeight(true) / 2,
                                 next: $activeSide.outerHeight(true) / 2,
                             },
-                        }
-                        ;
+                        };
                         module.verbose('Setting the initial animation position as above', $nextSide, box);
                         $activeSide
                             .css({
                                 transform: 'rotateX(0deg)',
-                            })
-                        ;
+                            });
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 top: box.origin + 'px',
                                 transform: 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
-                            })
-                        ;
+                            });
                     },
 
                     below: function () {
@@ -425,21 +407,18 @@
                                 active: $nextSide.outerHeight(true) / 2,
                                 next: $activeSide.outerHeight(true) / 2,
                             },
-                        }
-                        ;
+                        };
                         module.verbose('Setting the initial animation position as below', $nextSide, box);
                         $activeSide
                             .css({
                                 transform: 'rotateX(0deg)',
-                            })
-                        ;
+                            });
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 top: box.origin + 'px',
                                 transform: 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
-                            })
-                        ;
+                            });
                     },
 
                     left: function () {
@@ -453,21 +432,18 @@
                                 active: height.next / 2,
                                 next: height.active / 2,
                             },
-                        }
-                        ;
+                        };
                         module.verbose('Setting the initial animation position as left', $nextSide, box);
                         $activeSide
                             .css({
                                 transform: 'rotateY(0deg)',
-                            })
-                        ;
+                            });
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 left: box.origin + 'px',
                                 transform: 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
-                            })
-                        ;
+                            });
                     },
 
                     right: function () {
@@ -481,21 +457,18 @@
                                 active: height.next / 2,
                                 next: height.active / 2,
                             },
-                        }
-                        ;
+                        };
                         module.verbose('Setting the initial animation position as right', $nextSide, box);
                         $activeSide
                             .css({
                                 transform: 'rotateY(0deg)',
-                            })
-                        ;
+                            });
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 left: box.origin + 'px',
                                 transform: 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
-                            })
-                        ;
+                            });
                     },
 
                     behind: function () {
@@ -509,21 +482,18 @@
                                 active: height.next / 2,
                                 next: height.active / 2,
                             },
-                        }
-                        ;
+                        };
                         module.verbose('Setting the initial animation position as behind', $nextSide, box);
                         $activeSide
                             .css({
                                 transform: 'rotateY(0deg)',
-                            })
-                        ;
+                            });
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 left: box.origin + 'px',
                                 transform: 'rotateY(-180deg)',
-                            })
-                        ;
+                            });
                     },
                 },
                 setting: function (name, value) {
@@ -636,8 +606,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

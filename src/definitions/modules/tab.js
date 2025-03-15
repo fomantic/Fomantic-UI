@@ -119,16 +119,14 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
                     module.debug('Destroying tabs', $module);
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 bind: {
@@ -137,8 +135,7 @@
                         if (!isWindow(element)) {
                             module.debug('Attaching tab activation events to element', $module);
                             $module
-                                .on('click' + eventNamespace, module.event.click)
-                            ;
+                                .on('click' + eventNamespace, module.event.click);
                         }
                     },
                 },
@@ -184,8 +181,7 @@
                         if (settings.path !== false) {
                             $.address
                                 .history(true)
-                                .state(settings.path)
-                            ;
+                                .state(settings.path);
                             $(window).trigger('popstate');
                         } else {
                             module.error(error.path);
@@ -270,8 +266,7 @@
                     auto: function () {
                         var url = typeof settings.path === 'string'
                             ? settings.path.replace(/\/$/, '') + '/{$tab}'
-                            : '/{$tab}'
-                        ;
+                            : '/{$tab}';
                         module.verbose('Setting up automatic tab retrieval from server', url);
                         if ($.isPlainObject(settings.apiSettings)) {
                             settings.apiSettings.url = url;
@@ -289,8 +284,7 @@
                             $tab
                                 .addClass(className.loading)
                                 .siblings($tabs)
-                                .removeClass(className.active + ' ' + className.loading)
-                            ;
+                                .removeClass(className.active + ' ' + className.loading);
                             if ($tab.length > 0) {
                                 settings.onRequest.call($tab[0], tabPath);
                             }
@@ -308,8 +302,7 @@
                     // only add the default path if not remote content
                     var pathArray = remoteContent && !shouldIgnoreLoad
                         ? module.utilities.pathToArray(tabPath)
-                        : module.get.defaultPathArray(tabPath)
-                    ;
+                        : module.get.defaultPathArray(tabPath);
                     tabPath = module.utilities.arrayToPath(pathArray);
                     $.each(pathArray, function (index, tab) {
                         var currentPathArray = pathArray.slice(0, index + 1);
@@ -409,8 +402,7 @@
                 scrollTo: function ($element) {
                     var scrollOffset = $element && $element.length > 0
                         ? $element.offset().top
-                        : false
-                    ;
+                        : false;
                     if (scrollOffset !== false) {
                         module.debug('Forcing scroll to an in-page link in a hidden tab', scrollOffset, $element);
                         $document.scrollTop(scrollOffset);
@@ -427,8 +419,7 @@
                         if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
-                                .append($(html).clone(true))
-                            ;
+                                .append($(html).clone(true));
                         } else {
                             if (evaluateScripts) {
                                 module.debug('Updating HTML and evaluating inline scripts', tabPath, html);
@@ -527,11 +518,9 @@
                         module.verbose('Showing tab content for', $tab);
                         if (!isActive) {
                             $tab
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             $deactiveTabs
-                                .removeClass(className.active + ' ' + className.loading)
-                            ;
+                                .removeClass(className.active + ' ' + className.loading);
                             if ($tab.length > 0) {
                                 settings.onVisible.call($tab[0], tabPath);
                             }
@@ -546,11 +535,9 @@
                         module.verbose('Activating tab navigation for', $navigation, tabPath);
                         if (!isActive) {
                             $navigation
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             $deactiveNavigation
-                                .removeClass(className.active + ' ' + className.loading)
-                            ;
+                                .removeClass(className.active + ' ' + className.loading);
                         }
                     },
                 },
@@ -562,13 +549,11 @@
                     },
                     navigation: function () {
                         $allModules
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                     },
                     tabs: function () {
                         $tabs
-                            .removeClass(className.active + ' ' + className.loading)
-                        ;
+                            .removeClass(className.active + ' ' + className.loading);
                     },
                 },
 
@@ -789,8 +774,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

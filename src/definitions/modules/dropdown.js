@@ -138,8 +138,7 @@
                     module.verbose('Storing instance of dropdown', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
@@ -150,14 +149,11 @@
                     $menu.removeClass(className.visible).addClass(className.hidden);
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                     $menu
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                     $document
-                        .off(elementNamespace)
-                    ;
+                        .off(elementNamespace);
                     module.disconnect.menuObserver();
                     module.disconnect.selectObserver();
                     module.disconnect.classObserver();
@@ -244,8 +240,7 @@
                                     .attr('data-' + metadata.value, value)
                                     .attr('data-' + metadata.text, value)
                                     .addClass(className.addition)
-                                    .addClass(className.item)
-                                ;
+                                    .addClass(className.item);
                                 if (settings.hideAdditions) {
                                     $userChoice.addClass(className.hidden);
                                 }
@@ -271,14 +266,12 @@
                     menu: function () {
                         $menu = $('<div />')
                             .addClass(className.menu)
-                            .appendTo($module)
-                        ;
+                            .appendTo($module);
                     },
                     sizer: function () {
                         $sizer = $('<span />')
                             .addClass(className.sizer)
-                            .insertAfter($search)
-                        ;
+                            .insertAfter($search);
                     },
                 },
 
@@ -304,8 +297,7 @@
                             .not(selector.unselectable)
                             .not(selector.addition + selector.hidden)
                             .eq(0)
-                            .addClass(className.selected)
-                        ;
+                            .addClass(className.selected);
                     },
                     nextAvailable: function ($selected) {
                         $selected = $selected.eq(0);
@@ -331,12 +323,10 @@
                                 query: module.get.query(),
                             },
                             on: false,
-                        }
-                        ;
+                        };
                         module.verbose('First request, initializing API');
                         $module
-                            .api(apiSettings)
-                        ;
+                            .api(apiSettings);
                     },
                     layout: function () {
                         if ($module.is('select')) {
@@ -350,16 +340,14 @@
                             module.verbose('Adding clear icon');
                             $clear = $('<i />')
                                 .addClass('remove icon')
-                                .insertAfter($icon)
-                            ;
+                                .insertAfter($icon);
                         }
                         if (module.is.search() && !module.has.search()) {
                             module.verbose('Adding search input');
                             var labelNode = $module.prev('label');
                             $search = $('<input />')
                                 .addClass(className.search)
-                                .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
-                            ;
+                                .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
                             if (labelNode.length > 0) {
                                 if (!labelNode.attr('id')) {
                                     labelNode.attr('id', '_' + module.get.id() + '_formLabel');
@@ -397,8 +385,7 @@
                                 .addClass(className.selection)
                                 .addClass(className.dropdown)
                                 .html(templates.dropdown(selectValues, settings))
-                                .insertBefore($input)
-                            ;
+                                .insertBefore($input);
                             if ($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
                                 module.error(error.missingMultiple);
                                 $input.prop('multiple', true);
@@ -420,8 +407,7 @@
                                 .prop('required', false)
                                 .removeAttr('class')
                                 .detach()
-                                .prependTo($module)
-                            ;
+                                .prependTo($module);
                         }
                         module.refresh();
                     },
@@ -475,21 +461,18 @@
                     module.verbose('Refreshing cached metadata');
                     $item
                         .removeData(metadata.text)
-                        .removeData(metadata.value)
-                    ;
+                        .removeData(metadata.value);
                 },
 
                 clearData: function () {
                     module.verbose('Clearing metadata');
                     $item
                         .removeData(metadata.text)
-                        .removeData(metadata.value)
-                    ;
+                        .removeData(metadata.value);
                     $module
                         .removeData(metadata.defaultText)
                         .removeData(metadata.defaultValue)
-                        .removeData(metadata.placeholderText)
-                    ;
+                        .removeData(metadata.placeholderText);
                 },
 
                 clearItems: function () {
@@ -579,8 +562,7 @@
                     $allModules
                         .not($module)
                         .has(selector.menu + '.' + className.visible)
-                        .dropdown('hide')
-                    ;
+                        .dropdown('hide');
                 },
 
                 hideMenu: function () {
@@ -605,28 +587,23 @@
                     keyboardEvents: function () {
                         module.verbose('Binding keyboard events');
                         $module
-                            .on('keydown' + eventNamespace, module.event.keydown)
-                        ;
+                            .on('keydown' + eventNamespace, module.event.keydown);
                         if (module.has.search()) {
                             $module
-                                .on(module.get.inputEvent() + eventNamespace, selector.search, module.event.input)
-                            ;
+                                .on(module.get.inputEvent() + eventNamespace, selector.search, module.event.input);
                         }
                         if (module.is.multiple()) {
                             $document
-                                .on('keydown' + elementNamespace, module.event.document.keydown)
-                            ;
+                                .on('keydown' + elementNamespace, module.event.document.keydown);
                         }
                     },
                     inputEvents: function () {
                         module.verbose('Binding input change events');
                         $module
-                            .on('change' + eventNamespace, selector.input, module.event.change)
-                        ;
+                            .on('change' + eventNamespace, selector.input, module.event.change);
                         if (module.is.multiple() && module.is.searchSelection()) {
                             $module
-                                .on('paste' + eventNamespace, selector.search, module.event.paste)
-                            ;
+                                .on('paste' + eventNamespace, selector.search, module.event.paste);
                         }
                     },
                     mouseEvents: function () {
@@ -634,8 +611,7 @@
                         if (module.is.multiple()) {
                             $module
                                 .on('click' + eventNamespace, selector.label, module.event.label.click)
-                                .on('click' + eventNamespace, selector.remove, module.event.remove.click)
-                            ;
+                                .on('click' + eventNamespace, selector.remove, module.event.remove.click);
                         }
                         if (module.is.searchSelection()) {
                             $module
@@ -648,60 +624,50 @@
                                 .on('focus' + eventNamespace, selector.search, module.event.search.focus)
                                 .on('click' + eventNamespace, selector.search, module.event.search.focus)
                                 .on('blur' + eventNamespace, selector.search, module.event.search.blur)
-                                .on('click' + eventNamespace, selector.text, module.event.text.focus)
-                            ;
+                                .on('click' + eventNamespace, selector.text, module.event.text.focus);
                             if (module.is.multiple()) {
                                 $module
                                     .on('click' + eventNamespace, module.event.click)
-                                    .on('click' + eventNamespace, module.event.search.focus)
-                                ;
+                                    .on('click' + eventNamespace, module.event.search.focus);
                             }
                         } else {
                             if (settings.on === 'click') {
                                 $module
                                     .on('click' + eventNamespace, selector.icon, module.event.icon.click)
-                                    .on('click' + eventNamespace, module.event.test.toggle)
-                                ;
+                                    .on('click' + eventNamespace, module.event.test.toggle);
                             } else if (settings.on === 'hover') {
                                 $module
                                     .on('mouseenter' + eventNamespace, module.delay.show)
                                     .on('mouseleave' + eventNamespace, module.delay.hide)
                                     .on('touchstart' + eventNamespace, module.event.test.toggle)
-                                    .on('touchstart' + eventNamespace, selector.icon, module.event.icon.click)
-                                ;
+                                    .on('touchstart' + eventNamespace, selector.icon, module.event.icon.click);
                             } else {
                                 $module
-                                    .on(settings.on + eventNamespace, module.toggle)
-                                ;
+                                    .on(settings.on + eventNamespace, module.toggle);
                             }
                             $module
                                 .on('mousedown' + eventNamespace, module.event.mousedown)
                                 .on('mouseup' + eventNamespace, module.event.mouseup)
                                 .on('focus' + eventNamespace, module.event.focus)
-                                .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
-                            ;
+                                .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click);
                             if (module.has.menuSearch()) {
                                 $module
-                                    .on('blur' + eventNamespace, selector.search, module.event.search.blur)
-                                ;
+                                    .on('blur' + eventNamespace, selector.search, module.event.search.blur);
                             } else {
                                 $module
-                                    .on('blur' + eventNamespace, module.event.blur)
-                                ;
+                                    .on('blur' + eventNamespace, module.event.blur);
                             }
                         }
                         $menu
                             .on('mouseenter' + eventNamespace, selector.item, module.event.item.mouseenter)
                             .on('touchstart' + eventNamespace, selector.item, module.event.item.mouseenter)
                             .on('mouseleave' + eventNamespace, selector.item, module.event.item.mouseleave)
-                            .on('click' + eventNamespace, selector.item, module.event.item.click)
-                        ;
+                            .on('click' + eventNamespace, selector.item, module.event.item.click);
                     },
                     intent: function () {
                         module.verbose('Binding hide intent event to document');
                         $document
-                            .on('click' + elementNamespace, module.event.test.hide)
-                        ;
+                            .on('click' + elementNamespace, module.event.test.hide);
                     },
                 },
 
@@ -709,8 +675,7 @@
                     intent: function () {
                         module.verbose('Removing hide intent event from document');
                         $document
-                            .off('click' + elementNamespace)
-                        ;
+                            .off('click' + elementNamespace);
                     },
                 },
 
@@ -752,8 +717,7 @@
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                             module.show();
                         }
-                    }
-                    ;
+                    };
                     if (settings.useLabels && module.has.maxSelections()) {
                         module.show();
 
@@ -772,8 +736,7 @@
                                 if (module.is.multiple()) {
                                     $.each(preSelected, function (index, value) {
                                         $item.filter('[data-' + metadata.value + '="' + value + '"]')
-                                            .addClass(className.filtered)
-                                        ;
+                                            .addClass(className.filtered);
                                     });
                                 }
                                 module.focusSearch(true);
@@ -845,16 +808,14 @@
                                 settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                             }
                         },
-                    }
-                    ;
+                    };
                     if (!$module.api('get request')) {
                         module.setup.api();
                     }
                     apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks, tempDisableApiCache ? { cache: false } : {});
                     $module
                         .api('setting', apiSettings)
-                        .api('query')
-                    ;
+                        .api('query');
                     tempDisableApiCache = false;
                 },
 
@@ -907,15 +868,13 @@
                                         return true;
                                     }
                                 }
-                            })
-                        ;
+                            });
                     }
                     module.debug('Showing only matched items', searchTerm);
                     if (results) {
                         $item
                             .not(results)
-                            .addClass(className.filtered)
-                        ;
+                            .addClass(className.filtered);
                         if (settings.highlightMatches && (settings.match === 'both' || settings.match === 'text')) {
                             var querySplit = query.split('');
                             var diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
@@ -927,8 +886,7 @@
                                 });
 
                                 return args.join('');
-                            }
-                            ;
+                            };
                             $.each(results, function (index, result) {
                                 var $result = $(result);
                                 var markedHTML = module.get.choiceText($result, true);
@@ -942,12 +900,10 @@
 
                     if (!module.has.query()) {
                         $divider
-                            .removeClass(className.hidden)
-                        ;
+                            .removeClass(className.hidden);
                     } else if (settings.hideDividers === true) {
                         $divider
-                            .addClass(className.hidden)
-                        ;
+                            .addClass(className.hidden);
                     } else if (settings.hideDividers === 'empty') {
                         $divider
                             .removeClass(className.hidden)
@@ -963,8 +919,7 @@
                                     // Hide divider if no items are found
                                     .length === 0;
                             })
-                            .addClass(className.hidden)
-                        ;
+                            .addClass(className.hidden);
                     }
                 },
 
@@ -1008,8 +963,7 @@
                 filterActive: function () {
                     if (settings.useLabels) {
                         $item.filter('.' + className.active)
-                            .addClass(className.filtered)
-                        ;
+                            .addClass(className.filtered);
                     }
                 },
 
@@ -1074,8 +1028,7 @@
                                 var name = settings.templates.escape(
                                     item[fields.name] || '',
                                     settings
-                                )
-                                ;
+                                );
                                 $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
                             });
                             module.observe.select();
@@ -1235,8 +1188,7 @@
                             var $prevActive = $label.prevAll('.' + className.active);
                             var $range = $nextActive.length > 0
                                 ? $label.nextUntil($nextActive).add($activeLabels).add($label)
-                                : $label.prevUntil($prevActive).add($activeLabels).add($label)
-                            ;
+                                : $label.prevUntil($prevActive).add($activeLabels).add($label);
                             if (event.shiftKey) {
                                 $activeLabels.removeClass(className.active);
                                 $range.addClass(className.active);
@@ -1267,8 +1219,7 @@
                         toggle: function (event) {
                             var toggleBehavior = module.is.multiple()
                                 ? module.show
-                                : module.toggle
-                            ;
+                                : module.toggle;
                             if (module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                                 return;
                             }
@@ -1451,8 +1402,7 @@
                                             } else {
                                                 $activeLabel.prev(selector.siblingLabel)
                                                     .addClass(className.active)
-                                                    .end()
-                                                ;
+                                                    .end();
                                             }
                                             event.preventDefault();
                                         }
@@ -1593,12 +1543,10 @@
                                             module.verbose('Left key pressed, closing sub-menu');
                                             module.animate.hide(false, $parentMenu);
                                             $selectedItem
-                                                .removeClass(className.selected)
-                                            ;
+                                                .removeClass(className.selected);
                                             $parentMenu
                                                 .closest(selector.item)
-                                                .addClass(className.selected)
-                                            ;
+                                                .addClass(className.selected);
                                             event.preventDefault();
                                         }
                                     }
@@ -1609,12 +1557,10 @@
                                             module.verbose('Right key pressed, opening sub-menu');
                                             module.animate.show(false, $subMenu);
                                             $selectedItem
-                                                .removeClass(className.selected)
-                                            ;
+                                                .removeClass(className.selected);
                                             $subMenu
                                                 .find(selector.item).eq(0)
-                                                .addClass(className.selected)
-                                            ;
+                                                .addClass(className.selected);
                                             event.preventDefault();
                                         }
                                     }
@@ -1634,11 +1580,9 @@
 
                                     module.verbose('Up key pressed, changing active item');
                                     $selectedItem
-                                        .removeClass(className.selected)
-                                    ;
+                                        .removeClass(className.selected);
                                     $nextItem
-                                        .addClass(className.selected)
-                                    ;
+                                        .addClass(className.selected);
                                     module.set.scrollPosition($nextItem);
                                     if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                         module.set.selectedItem($nextItem);
@@ -1661,11 +1605,9 @@
 
                                     module.verbose('Down key pressed, changing active item');
                                     $item
-                                        .removeClass(className.selected)
-                                    ;
+                                        .removeClass(className.selected);
                                     $nextItem
-                                        .addClass(className.selected)
-                                    ;
+                                        .addClass(className.selected);
                                     module.set.scrollPosition($nextItem);
                                     if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                         module.set.selectedItem($nextItem);
@@ -2035,8 +1977,7 @@
                                         disabled: disabled,
                                     });
                                 }
-                            })
-                        ;
+                            });
                         if (settings.placeholder && settings.placeholder !== 'auto') {
                             module.debug('Setting placeholder value to', settings.placeholder);
                             select.placeholder = settings.placeholder;
@@ -2135,8 +2076,7 @@
                                             return true;
                                         }
                                     }
-                                })
-                            ;
+                                });
                         }
 
                         return $selectedItem;
@@ -2365,17 +2305,14 @@
                     if ($nextSelectedItem.length > 0) {
                         module.debug('Scrolling page', direction, $nextSelectedItem);
                         $currentItem
-                            .removeClass(className.selected)
-                        ;
+                            .removeClass(className.selected);
                         $nextSelectedItem
-                            .addClass(className.selected)
-                        ;
+                            .addClass(className.selected);
                         if (settings.selectOnKeydown && module.is.single() && !$nextSelectedItem.hasClass(className.actionable)) {
                             module.set.selectedItem($nextSelectedItem);
                         }
                         $menu
-                            .scrollTop(newScroll)
-                        ;
+                            .scrollTop(newScroll);
                     }
                 },
 
@@ -2418,21 +2355,17 @@
                         if (module.is.searchSelection()) {
                             module.debug('Added tabindex to searchable dropdown');
                             $search
-                                .val('')
-                            ;
+                                .val('');
                             module.check.disabled();
                             $menu
-                                .attr('tabindex', -1)
-                            ;
+                                .attr('tabindex', -1);
                         } else {
                             module.debug('Added tabindex to dropdown');
                             if ($module.attr('tabindex') === undefined) {
                                 $module
-                                    .attr('tabindex', $input.attr('tabindex') || 0)
-                                ;
+                                    .attr('tabindex', $input.attr('tabindex') || 0);
                                 $menu
-                                    .attr('tabindex', -1)
-                                ;
+                                    .attr('tabindex', -1);
                             }
                         }
                         $input.removeAttr('tabindex');
@@ -2507,8 +2440,7 @@
                             }
                             module.debug('Changing text', text, $text);
                             $text
-                                .removeClass(className.filtered)
-                            ;
+                                .removeClass(className.filtered);
                             if (settings.preserveHTML) {
                                 $text.html(text);
                             } else {
@@ -2548,8 +2480,7 @@
 
                                         return false;
                                     }
-                                })
-                            ;
+                                });
                         }
                         // set the next value
                         if ($nextValue) {
@@ -2608,8 +2539,7 @@
                         var currentValue = module.get.values();
                         var stringValue = value !== undefined
                             ? String(value)
-                            : value
-                        ;
+                            : value;
                         if (hasInput) {
                             if (!settings.allowReselection && stringValue == currentValue) {
                                 module.verbose('Skipping value update already same value', value, currentValue);
@@ -2625,8 +2555,7 @@
                             module.debug('Updating input value', escapedValue, currentValue);
                             internalChange = true;
                             $input
-                                .val(escapedValue)
-                            ;
+                                .val(escapedValue);
                             if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.debug('Input native change event ignored on initial load');
                             } else if (preventChangeTrigger !== true) {
@@ -2647,8 +2576,7 @@
                     },
                     active: function () {
                         $module
-                            .addClass(className.active)
-                        ;
+                            .addClass(className.active);
                     },
                     multiple: function () {
                         $module.addClass(className.multiple);
@@ -2743,11 +2671,9 @@
                                     module.set.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                                     $selected
                                         .addClass(className.active)
-                                        .addClass(className.selected)
-                                    ;
+                                        .addClass(className.selected);
                                 }
-                            })
-                        ;
+                            });
                         if (!keepSearchTerm) {
                             module.remove.searchTerm();
                         }
@@ -2771,8 +2697,7 @@
                         $label = $('<a />')
                             .addClass(className.label)
                             .attr('data-' + metadata.value, escapedValue)
-                            .html(templates.label(escapedValue, text, settings))
-                        ;
+                            .html(templates.label(escapedValue, text, settings));
                         $label = settings.onLabelCreate.call($label, escapedValue, text);
 
                         if (module.has.label(value)) {
@@ -2794,13 +2719,11 @@
                                     verbose: settings.verbose,
                                     silent: settings.silent,
                                     duration: settings.label.duration,
-                                })
-                            ;
+                                });
                         } else {
                             module.debug('Adding selection label', $label);
                             $label
-                                .insertBefore($next)
-                            ;
+                                .insertBefore($next);
                         }
                     },
                     message: function (message) {
@@ -2808,14 +2731,12 @@
                         var html = settings.templates.message(module.add.variables(message));
                         if ($message.length > 0) {
                             $message
-                                .html(html)
-                            ;
+                                .html(html);
                         } else {
                             $('<div/>')
                                 .html(html)
                                 .addClass(className.message)
-                                .appendTo($menu)
-                            ;
+                                .appendTo($menu);
                         }
                     },
                     optionValue: function (value) {
@@ -2835,8 +2756,7 @@
                             .prop('value', escapedValue)
                             .addClass(className.addition)
                             .text(value)
-                            .appendTo($input)
-                        ;
+                            .appendTo($input);
                         module.verbose('Adding user addition as an <option>', value);
                         module.observe.select();
                     },
@@ -2860,28 +2780,24 @@
                                 .data(metadata.text, value)
                                 .attr('data-' + metadata.value, value)
                                 .attr('data-' + metadata.text, value)
-                                .removeClass(className.filtered)
-                            ;
+                                .removeClass(className.filtered);
                             if (!settings.hideAdditions) {
                                 html = settings.templates.addition(module.add.variables(message.addResult, value));
                                 $addition
-                                    .html(html)
-                                ;
+                                    .html(html);
                             }
                             module.verbose('Replacing user suggestion with new value', $addition);
                         } else {
                             $addition = module.create.userChoice(value);
                             $addition
-                                .prependTo($menu)
-                            ;
+                                .prependTo($menu);
                             module.verbose('Adding item choice to menu corresponding with user choice addition', $addition);
                         }
                         if (!settings.hideAdditions || module.is.allFiltered()) {
                             $addition
                                 .addClass(className.selected)
                                 .siblings()
-                                .removeClass(className.selected)
-                            ;
+                                .removeClass(className.selected);
                         }
                         module.refreshItems();
                     },
@@ -3058,13 +2974,11 @@
                                 }
                                 $selected
                                     .removeClass(className.filtered)
-                                    .removeClass(className.active)
-                                ;
+                                    .removeClass(className.active);
                                 if (settings.useLabels) {
                                     $selected.removeClass(className.selected);
                                 }
-                            })
-                        ;
+                            });
                     },
                     selectedItem: function () {
                         $item.removeClass(className.selected);
@@ -3136,26 +3050,21 @@
                                     // selected will also remove label
                                     module.remove.selected(stringValue, false, preventChangeTrigger);
                                 }
-                            })
-                        ;
+                            });
                     },
                     tabbable: function () {
                         if (module.is.searchSelection()) {
                             module.debug('Searchable dropdown initialized');
                             $search
-                                .removeAttr('tabindex')
-                            ;
+                                .removeAttr('tabindex');
                             $menu
-                                .removeAttr('tabindex')
-                            ;
+                                .removeAttr('tabindex');
                         } else {
                             module.debug('Simple selection dropdown initialized');
                             $module
-                                .removeAttr('tabindex')
-                            ;
+                                .removeAttr('tabindex');
                             $menu
-                                .removeAttr('tabindex')
-                            ;
+                                .removeAttr('tabindex');
                         }
                     },
                     diacritics: function (text) {
@@ -3421,8 +3330,7 @@
                         var onScreen;
                         var calculations;
                         $currentMenu
-                            .addClass(className.loading)
-                        ;
+                            .addClass(className.loading);
                         calculations = {
                             context: {
                                 offset: $context[0] === window
@@ -3466,8 +3374,7 @@
                         var isOffscreenRight = false;
                         var calculations;
                         $currentMenu
-                            .addClass(className.loading)
-                        ;
+                            .addClass(className.loading);
                         calculations = {
                             context: {
                                 offset: $context[0] === window
@@ -3553,8 +3460,7 @@
                                         onComplete: function () {
                                             callback.call(element);
                                         },
-                                    })
-                                ;
+                                    });
                             }
                         }
                     },
@@ -3593,8 +3499,7 @@
                                         onComplete: function () {
                                             callback.call(element);
                                         },
-                                    })
-                                ;
+                                    });
                             } else {
                                 module.error(error.transition);
                             }
@@ -3784,8 +3689,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

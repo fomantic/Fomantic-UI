@@ -53,8 +53,7 @@
                 module.verbose('Storing instance of site', module);
                 instance = module;
                 $module
-                    .data(moduleNamespace, module)
-                ;
+                    .data(moduleNamespace, module);
             },
 
             normalize: function () {
@@ -214,8 +213,7 @@
             destroy: function () {
                 module.verbose('Destroying previous site for', $module);
                 $module
-                    .removeData(moduleNamespace)
-                ;
+                    .removeData(moduleNamespace);
             },
 
             cache: {},
@@ -320,8 +318,7 @@
                     $.each(query, function (depth, value) {
                         var camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                            : query
-                        ;
+                            : query;
                         if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                             object = object[camelCaseValue];
                         } else if (object[camelCaseValue] !== undefined) {

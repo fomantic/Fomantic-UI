@@ -110,8 +110,7 @@
                 instantiate: function () {
                     module.debug('Storing instance', module);
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                     instance = module;
                 },
 
@@ -125,20 +124,17 @@
                     }
                     $window
                         .off('load' + eventNamespace, module.event.load)
-                        .off('resize' + eventNamespace, module.event.resize)
-                    ;
+                        .off('resize' + eventNamespace, module.event.resize);
                     $context
                         .off('scroll' + eventNamespace, module.event.scroll)
-                        .off('scrollchange' + eventNamespace, module.event.scrollchange)
-                    ;
+                        .off('scrollchange' + eventNamespace, module.event.scrollchange);
                     if (settings.type === 'fixed') {
                         module.resetFixed();
                         module.remove.placeholder();
                     }
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 observeChanges: function () {
@@ -162,8 +158,7 @@
                         module.verbose('Binding visibility events to scroll and resize');
                         if (settings.refreshOnLoad) {
                             $window
-                                .on('load' + eventNamespace, module.event.load)
-                            ;
+                                .on('load' + eventNamespace, module.event.load);
                         }
                         $window
                             .on('resize' + eventNamespace, module.event.resize)
@@ -172,8 +167,7 @@
                         $context
                             .off('scroll' + eventNamespace)
                             .on('scroll' + eventNamespace, module.event.scroll)
-                            .on('scrollchange' + eventNamespace, module.event.scrollchange)
-                        ;
+                            .on('scrollchange' + eventNamespace, module.event.scrollchange);
                     },
                 },
 
@@ -241,8 +235,7 @@
                                 callback();
                             }
                         }
-                    }
-                    ;
+                    };
                     while (imagesLength--) {
                         cacheImage = document.createElement('img');
                         cacheImage.addEventListener('load', handleLoad);
@@ -341,8 +334,7 @@
                             .clone(false)
                             .css('display', 'none')
                             .addClass(className.placeholder)
-                            .insertAfter($module)
-                        ;
+                            .insertAfter($module);
                     },
                 },
 
@@ -351,8 +343,7 @@
                         module.verbose('Showing placeholder');
                         $placeholder
                             .css('display', 'block')
-                            .css('visibility', 'hidden')
-                        ;
+                            .css('visibility', 'hidden');
                     },
                 },
                 hide: {
@@ -360,8 +351,7 @@
                         module.verbose('Hiding placeholder');
                         $placeholder
                             .css('display', 'none')
-                            .css('visibility', '')
-                        ;
+                            .css('visibility', '');
                     },
                 },
 
@@ -375,14 +365,12 @@
                                 top: settings.offset + 'px',
                                 left: 'auto',
                                 zIndex: settings.zIndex,
-                            })
-                        ;
+                            });
                         settings.onFixed.call(element);
                     },
                     image: function (src, callback) {
                         $module
-                            .attr('src', src)
-                        ;
+                            .attr('src', src);
                         if (settings.transition) {
                             if ($.fn.transition !== undefined) {
                                 if ($module.hasClass(className.visible)) {
@@ -766,8 +754,7 @@
                                 top: '',
                                 left: '',
                                 zIndex: '',
-                            })
-                        ;
+                            });
                         settings.onUnfixed.call(element);
                     },
                     placeholder: function () {
@@ -1071,8 +1058,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

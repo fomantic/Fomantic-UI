@@ -86,8 +86,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
@@ -95,8 +94,7 @@
                     module.unbind.events();
                     module.remove.variation();
                     $dimmable
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 bind: {
@@ -104,12 +102,10 @@
                         if (settings.on === 'hover') {
                             $dimmable
                                 .on('mouseenter' + eventNamespace, module.show)
-                                .on('mouseleave' + eventNamespace, module.hide)
-                            ;
+                                .on('mouseleave' + eventNamespace, module.hide);
                         } else if (settings.on === 'click') {
                             $dimmable
-                                .on(clickEvent + eventNamespace, module.toggle)
-                            ;
+                                .on(clickEvent + eventNamespace, module.toggle);
                         }
                         if (module.is.page()) {
                             module.debug('Setting as a page dimmer', $dimmable);
@@ -119,8 +115,7 @@
                         if (module.is.closable()) {
                             module.verbose('Adding dimmer close event', $dimmer);
                             $dimmable
-                                .on(clickEvent + eventNamespace, selector.dimmer, module.event.click)
-                            ;
+                                .on(clickEvent + eventNamespace, selector.dimmer, module.event.click);
                         }
                     },
                 },
@@ -128,11 +123,9 @@
                 unbind: {
                     events: function () {
                         $module
-                            .removeData(moduleNamespace)
-                        ;
+                            .removeData(moduleNamespace);
                         $dimmable
-                            .off(eventNamespace)
-                        ;
+                            .off(eventNamespace);
                     },
                 },
 
@@ -250,8 +243,7 @@
                                         settings.onVisible.call($dimmer);
                                         callback();
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             module.verbose('Showing dimmer animation with javascript');
                             module.set.dimmed();
@@ -270,8 +262,7 @@
                                     module.set.active();
                                     settings.onVisible.call($dimmer);
                                     callback();
-                                })
-                            ;
+                                });
                         }
                     },
                     hide: function (callback) {
@@ -299,8 +290,7 @@
                                         settings.onHidden.call($dimmer);
                                         callback();
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             module.verbose('Hiding dimmer with javascript');
                             $dimmer
@@ -311,8 +301,7 @@
                                     $dimmer.removeAttr('style');
                                     settings.onHidden.call($dimmer);
                                     callback();
-                                })
-                            ;
+                                });
                         }
                     },
                 },
@@ -428,8 +417,7 @@
                 remove: {
                     active: function () {
                         $dimmer
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                     },
                     legacy: function () {
                         $dimmer.removeClass(className.legacy);
@@ -558,8 +546,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
@@ -696,8 +683,7 @@
                 if (settings.displayLoader) {
                     l = $('<div/>')
                         .addClass(settings.className.loader)
-                        .addClass(settings.loaderVariation)
-                    ;
+                        .addClass(settings.loaderVariation);
                     if (settings.loaderText) {
                         l.text(settings.loaderText);
                         l.addClass('text');

@@ -105,8 +105,7 @@
                     module.verbose('Storing instance of toast');
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
@@ -123,8 +122,7 @@
                         $close = undefined;
                     }
                     $module
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 show: function (callback) {
@@ -201,8 +199,7 @@
 
                             $toast
                                 .addClass(settings.class + ' ' + className.toast)
-                                .append($content)
-                            ;
+                                .append($content);
                             $toast.css('opacity', String(settings.opacity));
                             if (settings.closeIcon) {
                                 $close = $('<i/>', {
@@ -261,8 +258,7 @@
                                 var cls = module.helpers.escape(el[fields.class] || '');
                                 var click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
-                                    : function () {}
-                                ;
+                                    : function () {};
                                 $actions.append($('<button/>', {
                                     html: icon + text,
                                     'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
@@ -340,8 +336,7 @@
                                 $progressBar = $('<div/>', { class: 'bar ' + (settings.progressUp ? 'up ' : 'down ') + progressingClass });
                                 $progress
                                     .addClass(settings.showProgress)
-                                    .append($progressBar)
-                                ;
+                                    .append($progressBar);
                                 if ($progress.hasClass(className.top)) {
                                     $toastBox.prepend($progress);
                                 } else {
@@ -380,8 +375,7 @@
                         }
                         $toastBox
                             .on('click' + eventNamespace, selector.approve, module.event.approve)
-                            .on('click' + eventNamespace, selector.deny, module.event.deny)
-                        ;
+                            .on('click' + eventNamespace, selector.deny, module.event.deny);
                     },
                 },
 
@@ -396,8 +390,7 @@
                             $animationObject.off('animationend' + eventNamespace);
                         }
                         $toastBox
-                            .off('click' + eventNamespace)
-                        ;
+                            .off('click' + eventNamespace);
                     },
                 },
 
@@ -418,8 +411,7 @@
                                         callback.call($toastBox, element);
                                         settings.onVisible.call($toastBox, element);
                                     },
-                                })
-                            ;
+                                });
                         }
                     },
                     close: function (callback) {
@@ -456,8 +448,7 @@
                                         settings.onHidden.call($toastBox, element);
                                         module.destroy();
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             module.error(error.noTransition);
                         }
@@ -721,8 +712,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

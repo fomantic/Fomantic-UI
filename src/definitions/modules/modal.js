@@ -127,8 +127,7 @@
                             var cls = module.helpers.escape(el[fields.class] || '');
                             var click = el[fields.click] && isFunction(el[fields.click])
                                 ? el[fields.click]
-                                : function () {}
-                            ;
+                                : function () {};
                             $actions.append($('<button/>', {
                                 html: icon + text,
                                 'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
@@ -169,8 +168,7 @@
                     module.verbose('Storing instance of modal');
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 create: {
@@ -242,8 +240,7 @@
                     module.verbose('Destroying previous modal');
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                     $window.off(elementEventNamespace);
                     $context.off(elementEventNamespace);
                     $dimmer.off(elementEventNamespace);
@@ -327,8 +324,7 @@
                 refreshInputs: function (ignoreAutofocus) {
                     if ($inputs) {
                         $inputs
-                            .off('keydown' + elementEventNamespace)
-                        ;
+                            .off('keydown' + elementEventNamespace);
                     }
                     $inputs = $module.find('a[href], [tabindex], :input:enabled').filter(':visible').filter(function () {
                         return $(this).closest('.disabled').length === 0;
@@ -340,11 +336,9 @@
                         $module.removeAttr('tabindex');
                     }
                     $inputs.first()
-                        .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
-                    ;
+                        .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first);
                     $inputs.last()
-                        .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
-                    ;
+                        .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last);
                     if (!ignoreAutofocus && settings.autofocus && $inputs.filter(':focus').length === 0) {
                         module.set.autofocus();
                     }
@@ -359,8 +353,7 @@
                         module.debug('Attaching modal events to element', selector, event);
                         $toggle
                             .off(eventNamespace)
-                            .on('click' + eventNamespace, event)
-                        ;
+                            .on('click' + eventNamespace, event);
                     } else {
                         module.error(error.notFound, selector);
                     }
@@ -372,18 +365,14 @@
                         $module
                             .on('click' + eventNamespace, selector.close, module.event.close)
                             .on('click' + eventNamespace, selector.approve, module.event.approve)
-                            .on('click' + eventNamespace, selector.deny, module.event.deny)
-                        ;
+                            .on('click' + eventNamespace, selector.deny, module.event.deny);
                         $closeIcon
-                            .on('keyup' + elementEventNamespace, module.event.closeKeyUp)
-                        ;
+                            .on('keyup' + elementEventNamespace, module.event.closeKeyUp);
                         $window
                             .on('resize' + elementEventNamespace, module.event.resize)
-                            .on('focus' + elementEventNamespace, module.event.focus)
-                        ;
+                            .on('focus' + elementEventNamespace, module.event.focus);
                         $context
-                            .on('click' + elementEventNamespace, module.event.click)
-                        ;
+                            .on('click' + elementEventNamespace, module.event.click);
                     },
                     scrollLock: function () {
                         // touch events default to passive, due to changes in chrome to optimize mobile perf
@@ -632,8 +621,7 @@
                                             requestAnimationFrame(module.set.observeAttributes);
                                             callback();
                                         },
-                                    })
-                                ;
+                                    });
                             } else {
                                 module.error(error.noTransition);
                             }
@@ -695,8 +683,7 @@
                                         module.restore.focus();
                                         callback();
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             module.error(error.noTransition);
                         }
@@ -763,8 +750,7 @@
                     if ($visibleModals.length > 0) {
                         module.debug('Hiding other modals', $otherModals);
                         $visibleModals
-                            .modal('hide modal', callback, true)
-                        ;
+                            .modal('hide modal', callback, true);
                     }
                 },
 
@@ -781,8 +767,7 @@
                     keyboardShortcuts: function () {
                         module.verbose('Adding keyboard shortcuts');
                         $document
-                            .on('keydown' + eventNamespace, module.event.keyboard)
-                        ;
+                            .on('keydown' + eventNamespace, module.event.keyboard);
                     },
                 },
 
@@ -829,15 +814,12 @@
                     clickaway: function () {
                         if (!settings.detachable) {
                             $module
-                                .off('mousedown' + elementEventNamespace)
-                            ;
+                                .off('mousedown' + elementEventNamespace);
                         }
                         $dimmer
-                            .off('mousedown' + elementEventNamespace)
-                        ;
+                            .off('mousedown' + elementEventNamespace);
                         $dimmer
-                            .off('mouseup' + elementEventNamespace)
-                        ;
+                            .off('mouseup' + elementEventNamespace);
                     },
                     dimmerStyles: function () {
                         $dimmer.removeClass(className.inverted);
@@ -852,15 +834,13 @@
                     screenHeight: function () {
                         module.debug('Removing page height');
                         $context
-                            .css('height', '')
-                        ;
+                            .css('height', '');
                         module.remove.bodyStyle();
                     },
                     keyboardShortcuts: function () {
                         module.verbose('Removing keyboard shortcuts');
                         $document
-                            .off('keydown' + eventNamespace)
-                        ;
+                            .off('keydown' + eventNamespace);
                     },
                     scrolling: function () {
                         if (!keepScrollingClass) {
@@ -996,8 +976,7 @@
                             : ($rawInputs.length > 0
                                 ? $rawInputs
                                 : $module)
-                        ).first()
-                        ;
+                        ).first();
                         $input.trigger('focus');
                     },
                     bodyMargin: function () {
@@ -1014,15 +993,12 @@
                     clickaway: function () {
                         if (!settings.detachable) {
                             $module
-                                .on('mousedown' + elementEventNamespace, module.event.mousedown)
-                            ;
+                                .on('mousedown' + elementEventNamespace, module.event.mousedown);
                         }
                         $dimmer
-                            .on('mousedown' + elementEventNamespace, module.event.mousedown)
-                        ;
+                            .on('mousedown' + elementEventNamespace, module.event.mousedown);
                         $dimmer
-                            .on('mouseup' + elementEventNamespace, module.event.mouseup)
-                        ;
+                            .on('mouseup' + elementEventNamespace, module.event.mouseup);
                     },
                     dimmerSettings: function () {
                         if ($.fn.dimmer === undefined) {
@@ -1071,8 +1047,7 @@
                                             ? $document.scrollTop() + settings.padding
                                             : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding)),
                                     marginLeft: -(module.cache.width / 2),
-                                })
-                            ;
+                                });
                         } else {
                             $module
                                 .css({
@@ -1080,8 +1055,7 @@
                                         ? -(module.cache.height / 2)
                                         : settings.padding / 2,
                                     marginLeft: -(module.cache.width / 2),
-                                })
-                            ;
+                                });
                         }
                         module.verbose('Setting modal offset for legacy mode');
                     },
@@ -1091,8 +1065,7 @@
                         } else if (!$module.hasClass('bottom')) {
                             module.debug('Modal is taller than page content, resizing page height');
                             $context
-                                .css('height', module.cache.height + (settings.padding * 2) + 'px')
-                            ;
+                                .css('height', module.cache.height + (settings.padding * 2) + 'px');
                         }
                     },
                     active: function () {
@@ -1518,8 +1491,7 @@
             };
             var denyFn = function () {
                 args.handler(null);
-            }
-            ;
+            };
             if (input.length === 0) {
                 args.content += '<p><div class="' + this.helpers.escape(settings.className.prompt) + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }

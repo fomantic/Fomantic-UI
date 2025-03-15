@@ -114,8 +114,7 @@ module.exports = function (callback) {
                         console.info('Nothing new to commit');
                         nextRepo();
                     }
-                })
-            ;
+                });
         }
 
         // push changes to remote

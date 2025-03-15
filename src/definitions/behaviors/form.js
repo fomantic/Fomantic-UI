@@ -99,16 +99,14 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous module', instance);
                     module.removeEvents();
                     $module
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -158,8 +156,7 @@
                         .on('blur' + eventNamespace, selector.field, module.event.field.blur)
                         .on('click' + eventNamespace, selector.submit, module.submit)
                         .on('click' + eventNamespace, selector.reset, module.reset)
-                        .on('click' + eventNamespace, selector.clear, module.clear)
-                    ;
+                        .on('click' + eventNamespace, selector.clear, module.clear);
                     $field.on('invalid' + eventNamespace, module.event.field.invalid);
                     if (settings.keyboardShortcuts) {
                         $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
@@ -412,13 +409,11 @@
                             var keyCode = {
                                 enter: 13,
                                 escape: 27,
-                            }
-                            ;
+                            };
                             if (key === keyCode.escape) {
                                 module.verbose('Escape key pressed blurring field');
                                 $field[0]
-                                    .blur()
-                                ;
+                                    .blur();
                             }
                             if (!event.ctrlKey && key === keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                 if (!keyHeldDown) {
@@ -692,8 +687,7 @@
                             var isCalendar = $calendar.length > 0 && module.can.useElement('calendar');
                             var isChecked = isCheckbox
                                 ? $field.is(':checked')
-                                : false
-                            ;
+                                : false;
                             if (name) {
                                 if (isMultiple) {
                                     name = name.replace('[]', '');
@@ -849,8 +843,7 @@
                         }
                         var newValidation = {
                             rules: [],
-                        }
-                        ;
+                        };
                         if (module.is.shorthandRules(rules)) {
                             rules = Array.isArray(rules)
                                 ? rules
@@ -889,8 +882,7 @@
                         module.verbose('Adding field error state', identifier);
                         if (!internal) {
                             $fieldGroup
-                                .addClass(className.error)
-                            ;
+                                .addClass(className.error);
                         }
                         if (settings.inline) {
                             if (promptExists) {
@@ -910,12 +902,10 @@
                                     $prompt.css('display', 'none');
                                 }
                                 $prompt
-                                    .appendTo($fieldGroup.filter('.' + className.error))
-                                ;
+                                    .appendTo($fieldGroup.filter('.' + className.error));
                             }
                             $prompt
-                                .html(settings.templates.prompt(errors))
-                            ;
+                                .html(settings.templates.prompt(errors));
                             if (!promptExists) {
                                 if (canTransition) {
                                     module.verbose('Displaying error with css transition', settings.transition);
@@ -923,8 +913,7 @@
                                 } else {
                                     module.verbose('Displaying error with fallback javascript animation');
                                     $prompt
-                                        .fadeIn(settings.duration)
-                                    ;
+                                        .fadeIn(settings.duration);
                                 }
                             }
                         } else {
@@ -962,8 +951,7 @@
                         }
                         if (customErrors.length > 0) {
                             $message
-                                .html(settings.templates.error(customErrors))
-                            ;
+                                .html(settings.templates.error(customErrors));
                         }
                     },
                 },
@@ -983,8 +971,7 @@
                     rule: function (field, rule) {
                         var rules = Array.isArray(rule)
                             ? rule
-                            : [rule]
-                        ;
+                            : [rule];
                         if (validation[field] === undefined || !Array.isArray(validation[field].rules)) {
                             return;
                         }
@@ -1008,8 +995,7 @@
                     field: function (field) {
                         var fields = Array.isArray(field)
                             ? field
-                            : [field]
-                        ;
+                            : [field];
                         $.each(fields, function (index, field) {
                             module.remove.rule(field);
                         });
@@ -1033,8 +1019,7 @@
                         var $fieldGroup = $field.closest($group);
                         var $prompt = $fieldGroup.children(selector.prompt);
                         $fieldGroup
-                            .removeClass(className.error)
-                        ;
+                            .removeClass(className.error);
                         if (settings.inline && $prompt.is(':visible')) {
                             module.verbose('Removing prompt for field', identifier);
                             if (settings.transition && module.can.useElement('transition')) {
@@ -1045,8 +1030,7 @@
                                 $prompt
                                     .fadeOut(settings.duration, function () {
                                         $prompt.remove();
-                                    })
-                                ;
+                                    });
                             }
                         }
                     },
@@ -1056,8 +1040,7 @@
                     success: function () {
                         $module
                             .removeClass(className.error)
-                            .addClass(className.success)
-                        ;
+                            .addClass(className.success);
                     },
                     defaults: function () {
                         $field.each(function (index, el) {
@@ -1069,8 +1052,7 @@
                             var isCalendar = $calendar.length > 0 && module.can.useElement('calendar');
                             var value = isCheckbox
                                 ? $el.is(':checked')
-                                : $el.val()
-                            ;
+                                : $el.val();
                             if (isDropdown) {
                                 if ($parent.is(selector.uiDropdown)) {
                                     $parent.dropdown('save defaults');
@@ -1087,8 +1069,7 @@
                     error: function () {
                         $module
                             .removeClass(className.success)
-                            .addClass(className.error)
-                        ;
+                            .addClass(className.error);
                     },
                     value: function (field, value) {
                         var fields = {};
@@ -1127,8 +1108,7 @@
                                     module.verbose('Selecting radio value', value, $field);
                                     $field.filter('[value="' + value + '"]')
                                         .parent(selector.uiCheckbox)
-                                        .checkbox('check')
-                                    ;
+                                        .checkbox('check');
                                 } else if (isCheckbox) {
                                     module.verbose('Setting checkbox value', value, $element);
                                     if (value === true || value === 1 || value === 'on') {
@@ -1395,8 +1375,7 @@
                                     : String(value + ''));
 
                             return ruleFunction.call(field, value, ancillary, module);
-                        }
-                        ;
+                        };
                         if (!isFunction(ruleFunction)) {
                             module.error(error.noRule, ruleName);
 

@@ -101,16 +101,14 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous module for', element);
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 bind: {
@@ -119,8 +117,7 @@
                         if (triggerEvent) {
                             module.verbose('Attaching API events to element', triggerEvent);
                             $module
-                                .on(triggerEvent + eventNamespace, module.event.trigger)
-                            ;
+                                .on(triggerEvent + eventNamespace, module.event.trigger);
                         } else if (settings.on === 'now') {
                             module.debug('Querying API endpoint immediately');
                             module.query();
@@ -534,8 +531,7 @@
                                 ? (module.is.expectingJSON() && !settings.rawResponse
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                                     : settings.onResponse.call(context, response))
-                                : false
-                            ;
+                                : false;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
@@ -641,8 +637,7 @@
                         return $.Deferred()
                             .always(module.event.request.complete)
                             .done(module.event.request.done)
-                            .fail(module.event.request.fail)
-                        ;
+                            .fail(module.event.request.fail);
                     },
 
                     mockedXHR: function () {
@@ -694,8 +689,7 @@
                         xhr = $.ajax(ajaxSettings)
                             .always(module.event.xhr.always)
                             .done(module.event.xhr.done)
-                            .fail(module.event.xhr.fail)
-                        ;
+                            .fail(module.event.xhr.fail);
                         module.verbose('Created server request', xhr, ajaxSettings);
 
                         return xhr;
@@ -974,8 +968,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

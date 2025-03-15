@@ -66,16 +66,14 @@
                 instantiate: function () {
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
                     module.debug('Destroying previous instance', $module);
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -101,8 +99,7 @@
                     events: function () {
                         module.debug('Binding delegated events');
                         $module
-                            .on(settings.on + eventNamespace, selector.trigger, module.event.click)
-                        ;
+                            .on(settings.on + eventNamespace, selector.trigger, module.event.click);
                     },
                 },
 
@@ -159,12 +156,10 @@
                         module.closeOthers.call($activeTitle);
                     }
                     $activeTitle
-                        .addClass(className.active)
-                    ;
+                        .addClass(className.active);
                     $activeContent
                         .stop(true, true)
-                        .addClass(className.animating)
-                    ;
+                        .addClass(className.animating);
                     if (settings.animateChildren) {
                         if ($.fn.transition !== undefined) {
                             $activeContent
@@ -181,8 +176,7 @@
                                     onComplete: function () {
                                         $activeContent.children().removeClass(className.transition);
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             $activeContent
                                 .children()
@@ -196,13 +190,11 @@
                         .slideDown(settings.duration, settings.easing, function () {
                             $activeContent
                                 .removeClass(className.animating)
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             module.reset.display.call(this);
                             settings.onOpen.call(this);
                             settings.onChange.call(this);
-                        })
-                    ;
+                        });
                 },
 
                 close: function (query) {
@@ -221,12 +213,10 @@
                         settings.onClosing.call($activeContent);
                         settings.onChanging.call($activeContent);
                         $activeTitle
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                         $activeContent
                             .stop(true, true)
-                            .addClass(className.animating)
-                        ;
+                            .addClass(className.animating);
                         if (settings.animateChildren) {
                             if ($.fn.transition !== undefined) {
                                 $activeContent
@@ -240,8 +230,7 @@
                                         silent: settings.silent,
                                         duration: settings.duration,
                                         skipInlineHidden: true,
-                                    })
-                                ;
+                                    });
                             } else {
                                 $activeContent
                                     .children()
@@ -255,13 +244,11 @@
                             .slideUp(settings.duration, settings.easing, function () {
                                 $activeContent
                                     .removeClass(className.animating)
-                                    .removeClass(className.active)
-                                ;
+                                    .removeClass(className.active);
                                 module.reset.display.call(this);
                                 settings.onClose.call(this);
                                 settings.onChange.call(this);
-                            })
-                        ;
+                            });
                     }
                 },
 
@@ -288,12 +275,10 @@
                     if ($openTitles.length > 0) {
                         module.debug('Exclusive enabled, closing other content', $openTitles);
                         $openTitles
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                         $openContents
                             .removeClass(className.animating)
-                            .stop(true, true)
-                        ;
+                            .stop(true, true);
                         if (settings.animateChildren) {
                             if ($.fn.transition !== undefined) {
                                 $openContents
@@ -306,8 +291,7 @@
                                         silent: settings.silent,
                                         duration: settings.duration,
                                         skipInlineHidden: true,
-                                    })
-                                ;
+                                    });
                             } else {
                                 $openContents
                                     .children()
@@ -321,8 +305,7 @@
                             .slideUp(settings.duration, settings.easing, function () {
                                 $(this).removeClass(className.active);
                                 module.reset.display.call(this);
-                            })
-                        ;
+                            });
                     }
                 },
 
@@ -335,8 +318,7 @@
                         if ($element.attr('style') === '') {
                             $element
                                 .attr('style', '')
-                                .removeAttr('style')
-                            ;
+                                .removeAttr('style');
                         }
                     },
 
@@ -347,8 +329,7 @@
                         if ($element.attr('style') === '') {
                             $element
                                 .attr('style', '')
-                                .removeAttr('style')
-                            ;
+                                .removeAttr('style');
                         }
                     },
 

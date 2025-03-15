@@ -75,15 +75,13 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
                 destroy: function () {
                     module.verbose('Destroying instance');
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -105,11 +103,9 @@
                         module.verbose('Binding events to search');
                         if (settings.automatic) {
                             $module
-                                .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input)
-                            ;
+                                .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input);
                             $prompt
-                                .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
-                            ;
+                                .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
                         }
                         $module
                             // prompt
@@ -122,8 +118,7 @@
                             .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                             .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
                             .on('click' + eventNamespace, selector.result, module.event.result.click)
-                            .on('click' + eventNamespace, selector.remove, module.event.remove.click)
-                        ;
+                            .on('click' + eventNamespace, selector.remove, module.event.remove.click);
                     },
                 },
 
@@ -134,8 +129,7 @@
                         if (parameters && parameters.searchFields !== undefined) {
                             settings.searchFields = Array.isArray(parameters.searchFields)
                                 ? parameters.searchFields
-                                : [parameters.searchFields]
-                            ;
+                                : [parameters.searchFields];
                         }
                     },
                 },
@@ -171,8 +165,7 @@
                             module.timer = setTimeout(function () {
                                 module.hideResults();
                             }, settings.hideDelay);
-                        }
-                        ;
+                        };
                         if (pageLostFocus) {
                             return;
                         }
@@ -190,8 +183,7 @@
                                     if (!module.is.animating() && !module.is.hidden()) {
                                         callback();
                                     }
-                                })
-                            ;
+                                });
                         } else {
                             module.debug('Input blurred without user action, closing results');
                             callback();
@@ -314,15 +306,13 @@
                                 ? currentIndex
                                 : currentIndex - 1;
                             $category
-                                .removeClass(className.active)
-                            ;
+                                .removeClass(className.active);
                             $result
                                 .removeClass(className.active)
                                 .eq(newIndex)
                                 .addClass(className.active)
                                 .closest($category)
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
                         } else if (keyCode === keys.downArrow) {
@@ -331,15 +321,13 @@
                                 ? currentIndex
                                 : currentIndex + 1;
                             $category
-                                .removeClass(className.active)
-                            ;
+                                .removeClass(className.active);
                             $result
                                 .removeClass(className.active)
                                 .eq(newIndex)
                                 .addClass(className.active)
                                 .closest($category)
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
                         }
@@ -391,8 +379,7 @@
                                     settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
                                 }
                             },
-                        }
-                        ;
+                        };
                         $.extend(true, apiSettings, settings.apiSettings, apiCallbacks);
                         module.verbose('Setting up API request', apiSettings);
                         $module.api(apiSettings);
@@ -509,8 +496,7 @@
                     value: function (value) {
                         module.verbose('Setting search input value', value);
                         $prompt
-                            .val(value)
-                        ;
+                            .val(value);
                     },
                     type: function (type) {
                         type = type || settings.type;
@@ -605,8 +591,7 @@
                         }
                         module.setup.api(searchTerm, callback);
                         $module
-                            .api('query')
-                        ;
+                            .api('query');
                     },
                     object: function (searchTerm, source, searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
@@ -624,8 +609,7 @@
                             if (notResult && notFuzzyResult && notExactResults) {
                                 array.push(result);
                             }
-                        }
-                        ;
+                        };
                         source = source || settings.source;
                         searchFields = searchFields !== undefined
                             ? searchFields
@@ -860,8 +844,7 @@
                         if ($results.length === 0) {
                             $results = $('<div />')
                                 .addClass(className.results)
-                                .appendTo($module)
-                            ;
+                                .appendTo($module);
                         }
                     },
                 },
@@ -877,12 +860,10 @@
                                 .children(selector.result)
                                 .eq(resultIndex)
                             : $results
-                                .children(selector.result).eq(resultIndex)
-                        ;
+                                .children(selector.result).eq(resultIndex);
                         module.verbose('Injecting results metadata', $selectedResult);
                         $selectedResult
-                            .data(metadata.result, result)
-                        ;
+                            .data(metadata.result, result);
                     },
                     id: function (results) {
                         module.debug('Injecting unique ids into results');
@@ -930,14 +911,12 @@
                     cache: function (name, value) {
                         var cache = $module.data(metadata.cache) !== undefined
                             ? $module.data(metadata.cache)
-                            : {}
-                        ;
+                            : {};
                         if (settings.cache) {
                             module.verbose('Writing generated html to cache', name, value);
                             cache[name] = value;
                             $module
-                                .data(metadata.cache, cache)
-                            ;
+                                .data(metadata.cache, cache);
                         }
                     },
                 },
@@ -952,8 +931,7 @@
                     }
                     if (html) {
                         $results
-                            .html(html)
-                        ;
+                            .html(html);
                         module.refreshResults();
                         if (settings.selectFirstResult) {
                             module.select.firstResult();
@@ -991,14 +969,12 @@
                                         callback();
                                     },
                                     queue: true,
-                                })
-                            ;
+                                });
                         } else {
                             module.debug('Showing results with javascript');
                             $results
                                 .stop()
-                                .fadeIn(settings.duration, settings.easing)
-                            ;
+                                .fadeIn(settings.duration, settings.easing);
                         }
                         settings.onResultsOpen.call($results);
                     }
@@ -1021,14 +997,12 @@
                                         callback();
                                     },
                                     queue: true,
-                                })
-                            ;
+                                });
                         } else {
                             module.debug('Hiding results with javascript');
                             $results
                                 .stop()
-                                .fadeOut(settings.duration, settings.easing)
-                            ;
+                                .fadeOut(settings.duration, settings.easing);
                         }
                         settings.onResultsClose.call($results);
                     }
@@ -1063,8 +1037,7 @@
                                 });
 
                                 return args.join('');
-                            }
-                            ;
+                            };
                             $.each(results, function (label, content) {
                                 $.each(settings.searchFields, function (index, field) {
                                     var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
@@ -1207,8 +1180,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

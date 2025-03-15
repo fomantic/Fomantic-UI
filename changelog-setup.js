@@ -179,8 +179,7 @@ module.exports = function (Handlebars) {
             .map(issueLinks)
             .map((item) => options.fn(item))
             .sort()
-            .join('')
-        ;
+            .join('');
         if (!list) {
             return '';
         }

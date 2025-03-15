@@ -109,8 +109,7 @@
                     module.verbose('Storing instance of slider', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
@@ -140,8 +139,7 @@
                         if (settings.showThumbTooltip) {
                             $thumb
                                 .attr('data-position', settings.tooltipConfig.position)
-                                .attr('data-variation', settings.tooltipConfig.variation)
-                            ;
+                                .attr('data-variation', settings.tooltipConfig.variation);
                         }
                         $currThumb = $thumb;
                         if (module.is.range()) {
@@ -152,8 +150,7 @@
                             if (settings.showThumbTooltip) {
                                 $secondThumb
                                     .attr('data-position', settings.tooltipConfig.position)
-                                    .attr('data-variation', settings.tooltipConfig.variation)
-                                ;
+                                    .attr('data-variation', settings.tooltipConfig.variation);
                             }
                         }
                         $track = $module.find('.track');
@@ -266,8 +263,7 @@
                             .on('touchstart' + eventNamespace, module.event.touchDown)
                             .on('touchmove' + eventNamespace, module.event.move)
                             .on('touchend' + eventNamespace, module.event.up)
-                            .on('touchcancel' + eventNamespace, module.event.touchCancel)
-                        ;
+                            .on('touchcancel' + eventNamespace, module.event.touchCancel);
                     },
                     slidingEvents: function () {
                         // these don't need the identifier because we only ever want one of them to be registered with the document
@@ -290,8 +286,7 @@
                             .off('touchstart' + eventNamespace)
                             .off('touchmove' + eventNamespace)
                             .off('touchend' + eventNamespace)
-                            .off('touchcancel' + eventNamespace)
-                        ;
+                            .off('touchcancel' + eventNamespace);
                         $module.off('keydown' + eventNamespace);
                         $module.off('focusout' + eventNamespace);
                         $document.off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
@@ -841,8 +836,7 @@
                     thumbPos: function ($element) {
                         return module.is.vertical()
                             ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
-                            : (module.is.reversed() ? $element.css('right') : $element.css('left'))
-                        ;
+                            : (module.is.reversed() ? $element.css('right') : $element.css('left'));
                     },
                     positionFromValue: function (val) {
                         var min = module.get.min();
@@ -952,8 +946,7 @@
                             : keys.leftArrow;
                         var rightArrow = !module.is.vertical()
                             ? (module.is.reversed() ? keys.leftArrow : keys.rightArrow)
-                            : keys.rightArrow
-                        ;
+                            : keys.rightArrow;
                         if (key === downArrow || key === leftArrow) {
                             return SINGLE_BACKSTEP;
                         }
@@ -1166,8 +1159,7 @@
                             : (module.is.reversed() ? 'right' : 'left');
                         var startMarginMod = module.is.reversed() && !module.is.vertical()
                             ? ' - '
-                            : ' + '
-                        ;
+                            : ' + ';
                         var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
                         $label.css(posDir, 'calc(' + position + startMarginMod + startMargin + ')');
                     },
@@ -1187,8 +1179,7 @@
                         var data = {
                             thumbVal: $module.data(metadata.thumbVal),
                             secondThumbVal: $module.data(metadata.secondThumbVal),
-                        }
-                        ;
+                        };
                         if (data.thumbVal) {
                             if (module.is.range() && data.secondThumbVal) {
                                 module.debug('Current value set from metadata', data.thumbVal, data.secondThumbVal);
@@ -1330,8 +1321,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

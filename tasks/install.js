@@ -116,13 +116,11 @@ module.exports = function (callback) {
                 console.info('Updating theme import file');
                 gulp.src(source.themeImport)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updatePaths.themeImport))
-                ;
+                    .pipe(gulp.dest(updatePaths.themeImport));
                 console.info('Updating overrides import file');
                 gulp.src(source.overridesImport)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updatePaths.overridesImport))
-                ;
+                    .pipe(gulp.dest(updatePaths.overridesImport));
                 console.info('Adding new site theme files...');
                 fs.copySync(source.site, updatePaths.site, settings.copy.merge);
 
@@ -194,8 +192,7 @@ module.exports = function (callback) {
                 .then((setupAnswers) => {
                     // hoist
                     answers = setupAnswers;
-                })
-            ;
+                });
         }
     });
 
@@ -297,12 +294,10 @@ module.exports = function (callback) {
             console.info('Adding theme files');
             gulp.src(source.themeImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.themeImport))
-            ;
+                .pipe(gulp.dest(installPaths.themeImport));
             gulp.src(source.overridesImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.overridesImport))
-            ;
+                .pipe(gulp.dest(installPaths.overridesImport));
             gulp.src(source.lessImport)
                 .pipe(plumber())
                 .pipe(gulp.dest(installPaths.lessImport));
@@ -311,8 +306,7 @@ module.exports = function (callback) {
             console.info('Creating gulpfile.js');
             gulp.src(source.userGulpFile)
                 .pipe(plumber())
-                .pipe(gulp.dest(installFolder))
-            ;
+                .pipe(gulp.dest(installFolder));
         }
 
         /* --------------
@@ -346,8 +340,7 @@ module.exports = function (callback) {
                 return gulp.src(installPaths.themeConfig)
                     .pipe(plumber())
                     .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder))
-                ;
+                    .pipe(gulp.dest(installPaths.themeConfigFolder));
             }
 
             console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
@@ -356,8 +349,7 @@ module.exports = function (callback) {
                 .pipe(plumber())
                 .pipe(rename({ extname: '' }))
                 .pipe(replace(regExp.siteVariable, siteVariable))
-                .pipe(gulp.dest(installPaths.themeConfigFolder))
-            ;
+                .pipe(gulp.dest(installPaths.themeConfigFolder));
         });
 
         /* --------------
@@ -375,8 +367,7 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(rename(settings.rename.json)) // preserve file extension
                     .pipe(jsonEditor(jsonConfig))
-                    .pipe(gulp.dest(installPaths.configFolder))
-                ;
+                    .pipe(gulp.dest(installPaths.configFolder));
             }
 
             console.info('Creating config file (semantic.json)', installPaths.config);
@@ -385,8 +376,7 @@ module.exports = function (callback) {
                 .pipe(plumber())
                 .pipe(rename({ extname: '' })) // remove .template from ext
                 .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
-                .pipe(gulp.dest(installPaths.configFolder))
-            ;
+                .pipe(gulp.dest(installPaths.configFolder));
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);
@@ -416,8 +406,7 @@ module.exports = function (callback) {
                         } else {
                             callback();
                         }
-                    })
-                ;
+                    });
             }
         }
     });

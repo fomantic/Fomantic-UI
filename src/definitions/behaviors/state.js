@@ -78,8 +78,7 @@
                     $context
                         .on('mouseenter' + eventNamespace, module.change.text)
                         .on('mouseleave' + eventNamespace, module.reset.text)
-                        .on('click' + eventNamespace, module.toggle.state)
-                    ;
+                        .on('click' + eventNamespace, module.toggle.state);
                     module.instantiate();
                 },
 
@@ -87,19 +86,16 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous module', instance);
                     $context
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                     $module
                         .removeData(metadata.storedText)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -111,8 +107,7 @@
                     defaults: function () {
                         var userStates = parameters && $.isPlainObject(parameters.states)
                             ? parameters.states
-                            : {}
-                        ;
+                            : {};
                         $.each(settings.defaults, function (type, typeStates) {
                             if (module.is[type] !== undefined && module.is[type]()) {
                                 module.verbose('Adding default states', type, element);
@@ -250,8 +245,7 @@
                                     };
                                 }
                                 module.change.state();
-                            })
-                        ;
+                            });
                     }
                 },
 
@@ -303,8 +297,7 @@
                     if (settings.activateTest.call(element)) {
                         module.debug('Setting state to active');
                         $module
-                            .addClass(className.active)
-                        ;
+                            .addClass(className.active);
                         module.update.text(text.active);
                         settings.onActivate.call(element);
                     }
@@ -314,8 +307,7 @@
                     if (settings.deactivateTest.call(element)) {
                         module.debug('Setting state to inactive');
                         $module
-                            .removeClass(className.active)
-                        ;
+                            .removeClass(className.active);
                         module.update.text(text.inactive);
                         settings.onDeactivate.call(element);
                     }
@@ -326,13 +318,11 @@
                     if (module.is.active()) {
                         $allModules
                             .not($module)
-                            .state('activate')
-                        ;
+                            .state('activate');
                     } else {
                         $allModules
                             .not($module)
-                            .state('deactivate')
-                        ;
+                            .state('deactivate');
                     }
                 },
 
@@ -388,13 +378,11 @@
                                 $module
                                     .data(metadata.storedText, text)
                                     .find(settings.selector.text)
-                                    .text(text)
-                                ;
+                                    .text(text);
                             } else {
                                 $module
                                     .data(metadata.storedText, text)
-                                    .html(text)
-                                ;
+                                    .html(text);
                             }
                         } else {
                             module.debug('Text is already set, ignoring update', text);
@@ -509,8 +497,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

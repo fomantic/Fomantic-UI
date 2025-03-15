@@ -120,8 +120,7 @@
                     module.verbose('Storing instance of progress', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
                 destroy: function () {
                     module.verbose('Destroying previous progress for', $module);
@@ -151,8 +150,7 @@
                             percent: module.helper.forceArray($module.data(metadata.percent)),
                             total: $module.data(metadata.total),
                             value: module.helper.forceArray($module.data(metadata.value)),
-                        }
-                        ;
+                        };
                         if (data.total !== undefined) {
                             module.debug('Total value set from metadata', data.total);
                             module.set.total(data.total);
@@ -190,8 +188,7 @@
                             .one('transitionend' + eventNamespace, function (event) {
                                 clearTimeout(module.failSafeTimer);
                                 callback.call(this, event);
-                            })
-                        ;
+                            });
                         module.failSafeTimer = setTimeout(function () {
                             $bars.triggerHandler('transitionend');
                         }, settings.duration + settings.failSafeDelay);
@@ -255,16 +252,14 @@
                             : module.get.percent(index);
                         var left = total !== false
                             ? Math.max(0, total - value)
-                            : 100 - percent
-                        ;
+                            : 100 - percent;
                         templateText = templateText || '';
                         templateText = templateText
                             .replace('{value}', value)
                             .replace('{total}', total || 0)
                             .replace('{left}', left)
                             .replace('{percent}', percent)
-                            .replace('{bar}', settings.text.bars[index] || '')
-                        ;
+                            .replace('{bar}', settings.text.bars[index] || '');
                         module.verbose('Adding variables to progress bar text', templateText);
 
                         return templateText;
@@ -445,8 +440,7 @@
                             });
                         });
                         $module
-                            .attr('data-percent', percents)
-                        ;
+                            .attr('data-percent', percents);
                     },
                     duration: function (duration) {
                         duration = duration || settings.duration;
@@ -457,8 +451,7 @@
                         $bars
                             .css({
                                 'transition-duration': duration,
-                            })
-                        ;
+                            });
                     },
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {
@@ -493,8 +486,7 @@
                             var roundedPercents = percents.map(function (percent) {
                                 return autoPrecision > 0
                                     ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
-                                    : Math.round(percent)
-                                ;
+                                    : Math.round(percent);
                             });
                             module.percent = roundedPercents;
                             if (hasTotal) {
@@ -515,8 +507,7 @@
                             clearInterval(module.interval);
                             animating = false;
                             module.set.labels();
-                        }
-                        ;
+                        };
                         clearInterval(module.interval);
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
@@ -810,8 +801,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
