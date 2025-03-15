@@ -161,8 +161,7 @@
                                 .on('load' + eventNamespace, module.event.load);
                         }
                         $window
-                            .on('resize' + eventNamespace, module.event.resize)
-                        ;
+                            .on('resize' + eventNamespace, module.event.resize);
                         // pub/sub pattern
                         $context
                             .off('scroll' + eventNamespace)

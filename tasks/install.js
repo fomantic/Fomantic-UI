@@ -160,8 +160,7 @@ module.exports = function (callback) {
     if (manager.name === 'NPM') {
         rootQuestions[0].message = rootQuestions[0].message
             .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
-            .replace('{root}', manager.root)
-        ;
+            .replace('{root}', manager.root);
         // set default path to the detected PM root
         rootQuestions[0].default = manager.root;
         rootQuestions[1].default = manager.root;

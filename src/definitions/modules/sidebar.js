@@ -123,8 +123,7 @@
                     module.verbose('Destroying previous module for', $module);
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                     // bound by uuid
                     $context.off(elementNamespace);
                     $window.off(elementNamespace);

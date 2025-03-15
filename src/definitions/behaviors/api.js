@@ -364,8 +364,7 @@
                                             ? $module.data(variable)
                                             : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
                                                 ? $context.data(variable)
-                                                : urlData[variable]))
-                                    ;
+                                                : urlData[variable]));
                                     // remove value
                                     if (value === undefined) {
                                         module.error(error.requiredParameter, variable, url);
@@ -394,8 +393,7 @@
                                             ? $module.data(variable)
                                             : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
                                                 ? $context.data(variable)
-                                                : urlData[variable]))
-                                    ;
+                                                : urlData[variable]));
                                     // optional replacement
                                     if (value !== undefined) {
                                         module.verbose('Optional variable Found', variable, value);
@@ -432,8 +430,7 @@
                                 base[key] = value;
 
                                 return base;
-                            }
-                            ;
+                            };
                             // add files
                             $.each($('input[type="file"]', $form), function (i, tag) {
                                 $.each($(tag)[0].files, function (j, file) {

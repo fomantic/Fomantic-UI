@@ -138,8 +138,7 @@
                     $module
                         .removeClass(className.animating)
                         .attr('style', '')
-                        .removeAttr('style')
-                    ;
+                        .removeAttr('style');
                     // removeAttr style does not consistently work in safari
                     $sides
                         .attr('style', '')

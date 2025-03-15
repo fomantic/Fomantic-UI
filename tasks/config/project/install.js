@@ -116,8 +116,7 @@ module.exports = {
 
             // recurse downward
             return walk(nextDirectory);
-        }
-        ;
+        };
         // start walk from the current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
 
@@ -142,8 +141,7 @@ module.exports = {
 
             // recurse downward
             return walk(nextDirectory);
-        }
-        ;
+        };
         // start walk from current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
 
