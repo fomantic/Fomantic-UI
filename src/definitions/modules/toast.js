@@ -20,64 +20,60 @@
         : globalThis;
 
     $.fn.toast = function (parameters) {
-        var
-            $allModules    = $(this),
-            $body          = $('body'),
+        var $allModules = $(this);
+        var $body = $('body');
 
-            time           = Date.now(),
-            performance    = [],
+        var time = Date.now();
+        var performance = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
-                    }
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : $body;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
-        ;
+            return $context;
+        };
+        var returnedValue;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.toast.settings, parameters)
-                    : $.extend({}, $.fn.toast.settings),
+            var settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.toast.settings, parameters)
+                : $.extend({}, $.fn.toast.settings);
 
-                className        = settings.className,
-                selector         = settings.selector,
-                error            = settings.error,
-                namespace        = settings.namespace,
-                fields           = settings.fields,
+            var className = settings.className;
+            var selector = settings.selector;
+            var error = settings.error;
+            var namespace = settings.namespace;
+            var fields = settings.fields;
 
-                eventNamespace   = '.' + namespace,
-                moduleNamespace  = namespace + '-module',
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-                $module          = $(this),
-                $toastBox,
-                $toast,
-                $actions,
-                $progress,
-                $progressBar,
-                $animationObject,
-                $close,
-                $context         = settings.context ? contextCheck(settings.context, window) : $body,
+            var $module = $(this);
+            var $toastBox;
+            var $toast;
+            var $actions;
+            var $progress;
+            var $progressBar;
+            var $animationObject;
+            var $close;
+            var $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-                isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
+            var isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
 
-                element          = this,
-                instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
+            var element = this;
+            var instance = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
-                id,
-                module
-            ;
+            var id;
+            var module;
             module = {
 
                 initialize: function () {
@@ -109,8 +105,7 @@
                     module.verbose('Storing instance of toast');
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
@@ -127,8 +122,7 @@
                         $close = undefined;
                     }
                     $module
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 show: function (callback) {
@@ -205,8 +199,7 @@
 
                             $toast
                                 .addClass(settings.class + ' ' + className.toast)
-                                .append($content)
-                            ;
+                                .append($content);
                             $toast.css('opacity', String(settings.opacity));
                             if (settings.closeIcon) {
                                 $close = $('<i/>', {
@@ -257,17 +250,15 @@
                                 }
                             }
                             settings.actions.forEach(function (el) {
-                                var
-                                    icon = el[fields.icon]
-                                        ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
+                                var icon = el[fields.icon]
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
-                                        : '',
-                                    text = module.helpers.escape(el[fields.text] || '', settings),
-                                    cls = module.helpers.escape(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click])
-                                        ? el[fields.click]
-                                        : function () {}
-                                ;
+                                    : '';
+                                var text = module.helpers.escape(el[fields.text] || '', settings);
+                                var cls = module.helpers.escape(el[fields.class] || '');
+                                var click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {};
                                 $actions.append($('<button/>', {
                                     html: icon + text,
                                     'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
@@ -345,8 +336,7 @@
                                 $progressBar = $('<div/>', { class: 'bar ' + (settings.progressUp ? 'up ' : 'down ') + progressingClass });
                                 $progress
                                     .addClass(settings.showProgress)
-                                    .append($progressBar)
-                                ;
+                                    .append($progressBar);
                                 if ($progress.hasClass(className.top)) {
                                     $toastBox.prepend($progress);
                                 } else {
@@ -385,8 +375,7 @@
                         }
                         $toastBox
                             .on('click' + eventNamespace, selector.approve, module.event.approve)
-                            .on('click' + eventNamespace, selector.deny, module.event.deny)
-                        ;
+                            .on('click' + eventNamespace, selector.deny, module.event.deny);
                     },
                 },
 
@@ -401,8 +390,7 @@
                             $animationObject.off('animationend' + eventNamespace);
                         }
                         $toastBox
-                            .off('click' + eventNamespace)
-                        ;
+                            .off('click' + eventNamespace);
                     },
                 },
 
@@ -423,8 +411,7 @@
                                         callback.call($toastBox, element);
                                         settings.onVisible.call($toastBox, element);
                                     },
-                                })
-                            ;
+                                });
                         }
                     },
                     close: function (callback) {
@@ -461,8 +448,7 @@
                                         settings.onHidden.call($toastBox, element);
                                         module.destroy();
                                     },
-                                })
-                            ;
+                                });
                         } else {
                             module.error(error.noTransition);
                         }
@@ -581,10 +567,8 @@
 
                 helpers: {
                     toClass: function (selector) {
-                        var
-                            classes = selector.trim().split(/\s+/),
-                            result = ''
-                        ;
+                        var classes = selector.trim().split(/\s+/);
+                        var result = '';
 
                         classes.forEach(function (element) {
                             result += '.' + element;
@@ -672,11 +656,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        var currentTime;
+                        var executionTime;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -695,10 +677,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        var title = settings.name + ':';
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -720,12 +700,10 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    var object = instance;
+                    var maxDepth;
+                    var found;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -734,8 +712,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
@@ -923,10 +900,8 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            var
-                n1 = 7.5625,
-                d1 = 2.75
-            ;
+            var n1 = 7.5625;
+            var d1 = 2.75;
             if (x < 1 / d1) {
                 return n1 * x * x;
             }

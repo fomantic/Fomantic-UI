@@ -2,12 +2,10 @@
             Set-up
 *******************************/
 
-const
-    fs       = require('fs'),
-    path     = require('path'),
+const fs = require('node:fs');
+const path = require('node:path');
 
-    defaults = require('../defaults')
-;
+const defaults = require('../defaults');
 
 /*******************************
             Exports
@@ -16,26 +14,22 @@ const
 module.exports = {
 
     getPath: function (file, directory) {
-        let
-            configPath,
-            walk = function (directory) {
-                let
-                    nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
-                    currentPath   = path.normalize(path.join(directory, file))
-                ;
-                if (fs.existsSync(currentPath)) {
-                    // found the file
-                    configPath = path.normalize(directory);
-                } else {
-                    // reached file system root, let's stop
-                    if (nextDirectory === directory) {
-                        return;
-                    }
-                    // otherwise recurse
-                    walk(nextDirectory, file);
+        let configPath;
+        let walk = function (directory) {
+            let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            let currentPath = path.normalize(path.join(directory, file));
+            if (fs.existsSync(currentPath)) {
+                // found the file
+                configPath = path.normalize(directory);
+            } else {
+                // reached file system root, let's stop
+                if (nextDirectory === directory) {
+                    return;
                 }
+                // otherwise recurse
+                walk(nextDirectory, file);
             }
-        ;
+        };
 
         // start the walk from outside require-dot-files directory
         file = file || defaults.files.config;
@@ -51,12 +45,10 @@ module.exports = {
             File Paths
         --------------- */
 
-        let
-            configPath = this.getPath(),
-            sourcePaths = {},
-            outputPaths = {},
-            folder
-        ;
+        let configPath = this.getPath();
+        let sourcePaths = {};
+        let outputPaths = {};
+        let folder;
 
         // resolve paths (config location + base + path)
         for (folder in config.paths.source) {
@@ -123,7 +115,7 @@ module.exports = {
         const components = Array.isArray(config.components) && config.components.length > 0
             ? config.components
             : defaults.components;
-        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
+        const individuals = Array.isArray(config.individuals) && config.individuals.length > 0
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));

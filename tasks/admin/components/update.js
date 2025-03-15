@@ -12,36 +12,32 @@
 
 */
 
-const
-    // node dependencies
-    fs             = require('fs'),
-    path           = require('path'),
-    console        = require('@fomantic/better-console'),
-    gulp           = require('gulp'),
-    git            = require('@fomantic/gulp-git'),
+// node dependencies
+const fs = require('node:fs');
+const path = require('node:path');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
+const git = require('@fomantic/gulp-git');
 
-    // admin files
-    release        = require('../../config/admin/release'),
-    project        = require('../../config/project/release'),
+// admin files
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
-    // oAuth configuration for GitHub
-    oAuth          = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
-        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
-        : false,
+// oAuth configuration for GitHub
+const oAuth = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+    ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
+    : false;
 
-    // shorthand
-    version = project.version
-;
+// shorthand
+const version = project.version;
 
 module.exports = function (callback) {
     const github = require('../../config/admin/github'); // eslint-disable-line global-require
 
-    let
-        index = -1,
-        total = release.components.length,
-        timer,
-        stepRepo
-    ;
+    let index = -1;
+    let total = release.components.length;
+    let timer;
+    let stepRepo;
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -58,38 +54,36 @@ module.exports = function (callback) {
             return;
         }
 
-        let
-            component            = release.components[index],
-            outputDirectory      = path.resolve(path.join(release.outputRoot, component)),
-            capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
-            repoName             = release.componentRepoRoot + capitalizedComponent,
+        let component = release.components[index];
+        let outputDirectory = path.resolve(path.join(release.outputRoot, component));
+        let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+        let repoName = release.componentRepoRoot + capitalizedComponent;
 
-            commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
-                ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
-                : '',
+        let commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
+            ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
+            : '';
 
-            componentPackage = fs.existsSync(outputDirectory + 'package.json')
-                ? require(outputDirectory + 'package.json') // eslint-disable-line global-require, import/no-dynamic-require
-                : false,
+        let componentPackage = fs.existsSync(outputDirectory + 'package.json')
+            ? require(outputDirectory + 'package.json') // eslint-disable-line global-require, import/no-dynamic-require
+            : false;
 
-            isNewVersion  = version && componentPackage.version !== version,
+        let isNewVersion = version && componentPackage.version !== version;
 
-            commitMessage = isNewVersion
-                ? 'Updated component to version ' + version
-                : 'Updated files from main repo',
+        let commitMessage = isNewVersion
+            ? 'Updated component to version ' + version
+            : 'Updated files from main repo';
 
-            gitOptions      = { cwd: outputDirectory },
-            commitOptions   = { args: commitArgs, cwd: outputDirectory },
-            releaseOptions  = { tag_name: version, owner: release.org, repo: repoName },
+        let gitOptions = { cwd: outputDirectory };
+        let commitOptions = { args: commitArgs, cwd: outputDirectory };
+        let releaseOptions = { tag_name: version, owner: release.org, repo: repoName };
 
-            fileModeOptions = { args: 'config core.fileMode false', cwd: outputDirectory },
-            usernameOptions = { args: 'config user.name "' + oAuth.name + '"', cwd: outputDirectory },
-            emailOptions    = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory },
-            versionOptions =  { args: 'rev-parse --verify HEAD', cwd: outputDirectory },
+        let fileModeOptions = { args: 'config core.fileMode false', cwd: outputDirectory };
+        let usernameOptions = { args: 'config user.name "' + oAuth.name + '"', cwd: outputDirectory };
+        let emailOptions = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory };
+        let versionOptions = { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
 
-            localRepoSetup  = fs.existsSync(path.join(outputDirectory, '.git')),
-            canProceed      = true
-        ;
+        let localRepoSetup = fs.existsSync(path.join(outputDirectory, '.git'));
+        let canProceed = true;
 
         console.info('Processing repository:' + outputDirectory);
 
@@ -120,8 +114,7 @@ module.exports = function (callback) {
                         console.info('Nothing new to commit');
                         nextRepo();
                     }
-                })
-            ;
+                });
         }
 
         // push changes to remote

@@ -1,9 +1,7 @@
-const
-    browserslist = require('browserslist'),
-    console = require('@fomantic/better-console'),
-    config  = require('./user'),
-    release = require('./project/release')
-;
+const browserslist = require('browserslist');
+const console = require('@fomantic/better-console');
+const config = require('./user');
+const release = require('./project/release');
 
 let defaultBrowsers = browserslist(browserslist.defaults);
 let userBrowsers = browserslist();
@@ -101,12 +99,10 @@ module.exports = {
         plumber: {
             less: {
                 errorHandler: function (error) {
-                    let
-                        regExp = {
-                            variable: /@(\S.*?)\s/,
-                        },
-                        element
-                    ;
+                    let regExp = {
+                        variable: /@(\S.*?)\s/,
+                    };
+                    let element;
                     if (error && error.filename && /theme.less/.test(error.filename)) {
                         if (error.line === 9) {
                             element = regExp.variable.exec(error.message)[1];

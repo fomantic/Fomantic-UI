@@ -20,59 +20,55 @@
         : globalThis;
 
     $.fn.sticky = function (parameters) {
-        var
-            $allModules    = $(this),
-            $document      = $(document),
+        var $allModules = $(this);
+        var $document = $(document);
 
-            time           = Date.now(),
-            performance    = [],
+        var time = Date.now();
+        var performance = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
-                    }
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : window;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
-        ;
+            return $context;
+        };
+        var returnedValue;
 
         $allModules.each(function () {
-            var
-                settings              = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.sticky.settings, parameters)
-                    : $.extend({}, $.fn.sticky.settings),
+            var settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.sticky.settings, parameters)
+                : $.extend({}, $.fn.sticky.settings);
 
-                className             = settings.className,
-                namespace             = settings.namespace,
-                error                 = settings.error,
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var error = settings.error;
 
-                eventNamespace        = '.' + namespace,
-                moduleNamespace       = 'module-' + namespace,
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module               = $(this),
-                $window               = $(window),
-                $scroll               = contextCheck(settings.scrollContext, window),
-                $container,
-                $context,
+            var $module = $(this);
+            var $window = $(window);
+            var $scroll = contextCheck(settings.scrollContext, window);
+            var $container;
+            var $context;
 
-                instance              = $module.data(moduleNamespace),
+            var instance = $module.data(moduleNamespace);
 
-                element         = this,
+            var element = this;
 
-                documentObserver,
-                observer,
-                module
-            ;
+            var documentObserver;
+            var observer;
+            var module;
 
             module = {
 
@@ -95,8 +91,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
@@ -110,11 +105,9 @@
                     }
                     $window
                         .off('load' + eventNamespace, module.event.load)
-                        .off('resize' + eventNamespace, module.event.resize)
-                    ;
+                        .off('resize' + eventNamespace, module.event.resize);
                     $scroll
-                        .off('scrollchange' + eventNamespace, module.event.scrollchange)
-                    ;
+                        .off('scrollchange' + eventNamespace, module.event.scrollchange);
                     $module.removeData(moduleNamespace);
                 },
 
@@ -163,14 +156,12 @@
                     events: function () {
                         $window
                             .on('load' + eventNamespace, module.event.load)
-                            .on('resize' + eventNamespace, module.event.resize)
-                        ;
+                            .on('resize' + eventNamespace, module.event.resize);
                         // pub/sub pattern
                         $scroll
                             .off('scroll' + eventNamespace)
                             .on('scroll' + eventNamespace, module.event.scroll)
-                            .on('scrollchange' + eventNamespace, module.event.scrollchange)
-                        ;
+                            .on('scrollchange' + eventNamespace, module.event.scrollchange);
                     },
                 },
 
@@ -228,9 +219,7 @@
 
                 supports: {
                     sticky: function () {
-                        var
-                            $element = $('<div/>')
-                        ;
+                        var $element = $('<div/>');
                         $element.addClass(className.supported);
 
                         return $element.css('position').match('sticky');
@@ -245,24 +234,22 @@
                         module.elementScroll = scroll;
                     },
                     positions: function () {
-                        var
-                            scrollContext = {
-                                height: $scroll.height(),
+                        var scrollContext = {
+                            height: $scroll.height(),
+                        };
+                        var element = {
+                            margin: {
+                                top: parseInt($module.css('margin-top'), 10),
+                                bottom: parseInt($module.css('margin-bottom'), 10),
                             },
-                            element = {
-                                margin: {
-                                    top: parseInt($module.css('margin-top'), 10),
-                                    bottom: parseInt($module.css('margin-bottom'), 10),
-                                },
-                                offset: $module.offset(),
-                                width: $module.outerWidth(),
-                                height: $module.outerHeight(),
-                            },
-                            context = {
-                                offset: $context.offset(),
-                                height: $context.outerHeight(),
-                            }
-                        ;
+                            offset: $module.offset(),
+                            width: $module.outerWidth(),
+                            height: $module.outerHeight(),
+                        };
+                        var context = {
+                            offset: $context.offset(),
+                            height: $context.outerHeight(),
+                        };
                         if (!module.is.standardScroll()) {
                             module.debug('Non-standard scroll. Removing scroll offset from element offset');
 
@@ -303,9 +290,7 @@
 
                 get: {
                     direction: function (scroll) {
-                        var
-                            direction = 'down'
-                        ;
+                        var direction = 'down';
                         scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
                             direction = 'up';
@@ -332,14 +317,12 @@
 
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
-                        var
-                            element        = module.cache.element,
-                            scrollContext  = module.cache.scrollContext,
-                            delta          = module.get.scrollChange(scroll),
-                            maxScroll      = element.height - scrollContext.height + settings.offset,
-                            elementScroll  = module.get.currentElementScroll(),
-                            possibleScroll = elementScroll + delta
-                        ;
+                        var element = module.cache.element;
+                        var scrollContext = module.cache.scrollContext;
+                        var delta = module.get.scrollChange(scroll);
+                        var maxScroll = element.height - scrollContext.height + settings.offset;
+                        var elementScroll = module.get.currentElementScroll();
+                        var possibleScroll = elementScroll + delta;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
                         } else if (possibleScroll > maxScroll) {
@@ -361,8 +344,7 @@
                     },
                     minimumSize: function () {
                         $container
-                            .css('min-height', '')
-                        ;
+                            .css('min-height', '');
                     },
                     offset: function () {
                         $module.css('margin-top', '');
@@ -373,13 +355,10 @@
                     offset: function () {
                         module.verbose('Setting offset on element', settings.offset);
                         $module
-                            .css('margin-top', settings.offset)
-                        ;
+                            .css('margin-top', settings.offset);
                     },
                     containerSize: function () {
-                        var
-                            tagName = $container[0].tagName
-                        ;
+                        var tagName = $container[0].tagName;
                         if (tagName === 'HTML' || tagName === 'body') {
                             module.determineContainer();
                         } else {
@@ -403,12 +382,9 @@
                         }
                     },
                     minimumSize: function () {
-                        var
-                            element   = module.cache.element
-                        ;
+                        var element = module.cache.element;
                         $container
-                            .css('min-height', element.height)
-                        ;
+                            .css('min-height', element.height);
                     },
                     scroll: function (scroll) {
                         module.debug('Setting scroll on element', scroll);
@@ -418,14 +394,12 @@
                         if (module.is.top()) {
                             $module
                                 .css('bottom', '')
-                                .css('top', -scroll + 'px')
-                            ;
+                                .css('top', -scroll + 'px');
                         }
                         if (module.is.bottom()) {
                             $module
                                 .css('top', '')
-                                .css('bottom', scroll + 'px')
-                            ;
+                                .css('bottom', scroll + 'px');
                         }
                     },
                     size: function () {
@@ -461,29 +435,27 @@
                 },
 
                 stick: function (scrollPosition) {
-                    var
-                        cachedPosition = scrollPosition || $scroll.scrollTop(),
-                        cache          = module.cache,
-                        fits           = cache.fits,
-                        sameHeight     = cache.sameHeight,
-                        element        = cache.element,
-                        scrollContext  = cache.scrollContext,
-                        context        = cache.context,
-                        offset         = module.is.bottom() && settings.pushing
-                            ? settings.bottomOffset
-                            : settings.offset,
-                        scroll         = {
-                            top: cachedPosition + offset,
-                            bottom: cachedPosition + offset + scrollContext.height,
-                        },
-                        elementScroll  = fits
-                            ? 0
-                            : module.get.elementScroll(scroll.top),
+                    var cachedPosition = scrollPosition || $scroll.scrollTop();
+                    var cache = module.cache;
+                    var fits = cache.fits;
+                    var sameHeight = cache.sameHeight;
+                    var element = cache.element;
+                    var scrollContext = cache.scrollContext;
+                    var context = cache.context;
+                    var offset = module.is.bottom() && settings.pushing
+                        ? settings.bottomOffset
+                        : settings.offset;
+                    var scroll = {
+                        top: cachedPosition + offset,
+                        bottom: cachedPosition + offset + scrollContext.height,
+                    };
+                    var elementScroll = fits
+                        ? 0
+                        : module.get.elementScroll(scroll.top);
 
-                        // shorthand
-                        doesntFit      = !fits,
-                        elementVisible = element.height !== 0
-                    ;
+                    // shorthand
+                    var doesntFit = !fits;
+                    var elementVisible = element.height !== 0;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
                             if (scroll.top >= context.bottom) {
@@ -560,8 +532,7 @@
                         .removeClass(className.fixed)
                         .removeClass(className.bottom)
                         .addClass(className.bound)
-                        .addClass(className.top)
-                    ;
+                        .addClass(className.top);
                     settings.onTop.call(element);
                     settings.onUnstick.call(element);
                 },
@@ -579,8 +550,7 @@
                         .removeClass(className.fixed)
                         .removeClass(className.top)
                         .addClass(className.bound)
-                        .addClass(className.bottom)
-                    ;
+                        .addClass(className.bottom);
                     settings.onBottom.call(element);
                     settings.onUnstick.call(element);
                 },
@@ -607,8 +577,7 @@
                         .removeClass(className.bound)
                         .removeClass(className.bottom)
                         .addClass(className.fixed)
-                        .addClass(className.top)
-                    ;
+                        .addClass(className.top);
                     settings.onStick.call(element);
                 },
 
@@ -628,8 +597,7 @@
                         .removeClass(className.bound)
                         .removeClass(className.top)
                         .addClass(className.fixed)
-                        .addClass(className.bottom)
-                    ;
+                        .addClass(className.bottom);
                     settings.onStick.call(element);
                 },
 
@@ -640,8 +608,7 @@
                         $module
                             .removeClass(className.bound)
                             .removeClass(className.top)
-                            .removeClass(className.bottom)
-                        ;
+                            .removeClass(className.bottom);
                     }
                 },
 
@@ -653,8 +620,7 @@
                         $module
                             .removeClass(className.fixed)
                             .removeClass(className.top)
-                            .removeClass(className.bottom)
-                        ;
+                            .removeClass(className.bottom);
                         settings.onUnstick.call(element);
                     }
                 },
@@ -673,13 +639,11 @@
                         .css({
                             width: '',
                             height: '',
-                        })
-                    ;
+                        });
                     $container
                         .css({
                             height: '',
-                        })
-                    ;
+                        });
                 },
 
                 setting: function (name, value) {
@@ -728,11 +692,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        var currentTime;
+                        var executionTime;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -751,10 +713,8 @@
                         }, 0);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        var title = settings.name + ':';
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -776,12 +736,10 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    var object = instance;
+                    var maxDepth;
+                    var found;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -790,8 +748,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

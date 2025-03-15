@@ -14,103 +14,95 @@
   * create meteor.js file
 */
 
-const
-    // node dependencies
-    fs              = require('fs'),
-    path            = require('path'),
-    gulp            = require('gulp'),
+// node dependencies
+const fs = require('node:fs');
+const path = require('node:path');
+const gulp = require('gulp');
 
-    // admin dependencies
-    concatFileNames = require('@fomantic/gulp-concat-filenames'),
-    flatten         = require('gulp-flatten'),
-    jsonEditor      = require('gulp-json-editor'),
-    plumber         = require('@fomantic/gulp-plumber'),
-    rename          = require('gulp-rename'),
-    replace         = require('gulp-replace'),
-    tap             = require('gulp-tap'),
+// admin dependencies
+const concatFileNames = require('@fomantic/gulp-concat-filenames');
+const flatten = require('gulp-flatten');
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const tap = require('gulp-tap');
 
-    // config
-    config          = require('../../config/user'),
-    release         = require('../../config/admin/release'),
-    project         = require('../../config/project/release'),
+// config
+const config = require('../../config/user');
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
-    // shorthand
-    version         = project.version,
-    output          = config.paths.output
-;
+// shorthand
+const version = project.version;
+const output = config.paths.output;
 
 module.exports = function (callback) {
-    let
-        index,
-        tasks = []
-    ;
+    let index;
+    let tasks = [];
 
     for (index in release.components) {
-        let
-            component = release.components[index]
-    ;
+        let component = release.components[index];
 
         // streams... designed to save time and make coding fun...
         (function (component) {
-            let
-                outputDirectory      = path.join(release.outputRoot, component),
-                isJavascript         = fs.existsSync(output.compressed + component + '.js'),
-                isCSS                = fs.existsSync(output.compressed + component + '.css'),
-                capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
-                packageName          = release.packageRoot + component,
-                repoName             = release.componentRepoRoot + capitalizedComponent,
-                gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git',
-                concatSettings = {
-                    newline: '',
-                    root: outputDirectory,
-                    prepend: "    '",
-                    append: "',",
+            let outputDirectory = path.join(release.outputRoot, component);
+            let isJavascript = fs.existsSync(output.compressed + component + '.js');
+            let isCSS = fs.existsSync(output.compressed + component + '.css');
+            let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+            let packageName = release.packageRoot + component;
+            let repoName = release.componentRepoRoot + capitalizedComponent;
+            let gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
+            let concatSettings = {
+                newline: '',
+                root: outputDirectory,
+                prepend: "    '",
+                append: "',",
+            };
+            let regExp = {
+                match: {
+                    // templated values
+                    name: '{component}',
+                    titleName: '{Component}',
+                    version: '{version}',
+                    files: '{files}',
+                    // release notes
+                    spacedVersions: /(###.*\n)\n+(?=###)/gm,
+                    spacedLists: /(^- .*\n)\n+(?=^-)/gm,
+                    trim: /^\s+|\s+$/g,
+                    unrelatedNotes: new RegExp('^((?!(^.*(' + component + ').*$|###.*)).)*$', 'gmi'),
+                    whitespace: /\n\s*\n\s*\n/gm,
+                    // npm
+                    componentExport: /(.*)\$\.fn\.\w+\s*=\s*function\(([^)]*)\)\s*{/g,
+                    componentReference: '$.fn.' + component,
+                    settingsExport: /\$\.fn\.\w+\.settings\s*=/g,
+                    settingsReference: /\$\.fn\.\w+\.settings/g,
+                    trailingComma: /,(?=[^,]*$)/,
+                    jQuery: /jQuery/g,
                 },
-                regExp               = {
-                    match: {
-                        // templated values
-                        name: '{component}',
-                        titleName: '{Component}',
-                        version: '{version}',
-                        files: '{files}',
-                        // release notes
-                        spacedVersions: /(###.*\n)\n+(?=###)/gm,
-                        spacedLists: /(^- .*\n)\n+(?=^-)/gm,
-                        trim: /^\s+|\s+$/g,
-                        unrelatedNotes: new RegExp('^((?!(^.*(' + component + ').*$|###.*)).)*$', 'gmi'),
-                        whitespace: /\n\s*\n\s*\n/gm,
-                        // npm
-                        componentExport: /(.*)\$\.fn\.\w+\s*=\s*function\(([^)]*)\)\s*{/g,
-                        componentReference: '$.fn.' + component,
-                        settingsExport: /\$\.fn\.\w+\.settings\s*=/g,
-                        settingsReference: /\$\.fn\.\w+\.settings/g,
-                        trailingComma: /,(?=[^,]*$)/,
-                        jQuery: /jQuery/g,
-                    },
-                    replace: {
-                        // readme
-                        name: component,
-                        titleName: capitalizedComponent,
-                        // release notes
-                        spacedVersions: '',
-                        spacedLists: '$1',
-                        trim: '',
-                        unrelatedNotes: '',
-                        whitespace: '\n\n',
-                        // npm
-                        componentExport: 'var _module = module;\n$1module.exports = function($2) {',
-                        componentReference: '_module.exports',
-                        settingsExport: 'module.exports.settings =',
-                        settingsReference: '_module.exports.settings',
-                        jQuery: 'require("jquery")',
-                    },
+                replace: {
+                    // readme
+                    name: component,
+                    titleName: capitalizedComponent,
+                    // release notes
+                    spacedVersions: '',
+                    spacedLists: '$1',
+                    trim: '',
+                    unrelatedNotes: '',
+                    whitespace: '\n\n',
+                    // npm
+                    componentExport: 'var _module = module;\n$1module.exports = function($2) {',
+                    componentReference: '_module.exports',
+                    settingsExport: 'module.exports.settings =',
+                    settingsReference: '_module.exports.settings',
+                    jQuery: 'require("jquery")',
                 },
-                // paths to includable assets
-                manifest = {
-                    assets: outputDirectory + '/assets/**/' + component + '?(s).*',
-                    component: outputDirectory + '/' + component + '+(.js|.css)',
-                }
-            ;
+            };
+            // paths to includable assets
+            let manifest = {
+                assets: outputDirectory + '/assets/**/' + component + '?(s).*',
+                component: outputDirectory + '/' + component + '+(.js|.css)',
+            };
 
             // copy dist files into output folder adjusting asset paths
             function copyDist() {
@@ -118,8 +110,7 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(replace(release.paths.source, release.paths.output))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // create npm module
@@ -133,8 +124,7 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.match.settingsReference, regExp.replace.settingsReference))
                     .pipe(replace(regExp.match.jQuery, regExp.replace.jQuery))
                     .pipe(rename('index.js'))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // create readme
@@ -144,8 +134,7 @@ module.exports = function (callback) {
                     .pipe(flatten())
                     .pipe(replace(regExp.match.name, regExp.replace.name))
                     .pipe(replace(regExp.match.titleName, regExp.replace.titleName))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // extend bower.json
@@ -171,8 +160,7 @@ module.exports = function (callback) {
 
                         return bower;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // extend package.json
@@ -200,8 +188,7 @@ module.exports = function (callback) {
 
                         return npm;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // extend composer.json
@@ -224,8 +211,7 @@ module.exports = function (callback) {
 
                         return composer;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // create release notes
@@ -239,15 +225,12 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.match.spacedVersions, regExp.replace.spacedVersions))
                     .pipe(replace(regExp.match.spacedLists, regExp.replace.spacedLists))
                     .pipe(replace(regExp.match.trim, regExp.replace.trim))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             }
 
             // Creates meteor package.js
             function createMeteorPackage() {
-                let
-                    filenames = ''
-                ;
+                let filenames = '';
 
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))
@@ -271,12 +254,9 @@ module.exports = function (callback) {
                                     .pipe(replace(regExp.match.version, version))
                                     .pipe(replace(regExp.match.files, filenames))
                                     .pipe(rename(release.files.meteor))
-                                    .pipe(gulp.dest(outputDirectory))
-                                ;
-                            })
-                        ;
-                    })
-                ;
+                                    .pipe(gulp.dest(outputDirectory));
+                            });
+                    });
             }
 
             tasks.push(gulp.series(

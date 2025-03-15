@@ -20,53 +20,49 @@
         : globalThis;
 
     $.fn.nag = function (parameters) {
-        var
-            $allModules    = $(this),
-            $body          = $('body'),
+        var $allModules = $(this);
+        var $body = $('body');
 
-            time           = Date.now(),
-            performance    = [],
+        var time = Date.now();
+        var performance = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
-                    }
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : $body;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
-        ;
+            return $context;
+        };
+        var returnedValue;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.nag.settings, parameters)
-                    : $.extend({}, $.fn.nag.settings),
+            var settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.nag.settings, parameters)
+                : $.extend({}, $.fn.nag.settings);
 
-                selector        = settings.selector,
-                error           = settings.error,
-                namespace       = settings.namespace,
+            var selector = settings.selector;
+            var error = settings.error;
+            var namespace = settings.namespace;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = namespace + '-module',
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-                $module         = $(this),
+            var $module = $(this);
 
-                $context        = settings.context ? contextCheck(settings.context, window) : $body,
+            var $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
-                storage,
-                module
-            ;
+            var element = this;
+            var instance = $module.data(moduleNamespace);
+            var storage;
+            var module;
             module = {
 
                 initialize: function () {
@@ -77,14 +73,12 @@
                     storage = module.get.storage();
                     $module
                         .on('click' + eventNamespace, selector.close, module.dismiss)
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
 
                     if (settings.detachable && $module.parent()[0] !== $context[0]) {
                         $module
                             .detach()
-                            .prependTo($context)
-                        ;
+                            .prependTo($context);
                     }
 
                     if (settings.displayTime > 0) {
@@ -99,8 +93,7 @@
                     module.verbose('Destroying instance');
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 show: function () {
@@ -113,12 +106,10 @@
                         module.debug('Showing nag', settings.animation.show);
                         if (settings.animation.show === 'fade') {
                             $module
-                                .fadeIn(settings.duration, settings.easing, settings.onVisible)
-                            ;
+                                .fadeIn(settings.duration, settings.easing, settings.onVisible);
                         } else {
                             $module
-                                .slideDown(settings.duration, settings.easing, settings.onVisible)
-                            ;
+                                .slideDown(settings.duration, settings.easing, settings.onVisible);
                         }
                     }
                 },
@@ -132,12 +123,10 @@
                     module.debug('Hiding nag', settings.animation.hide);
                     if (settings.animation.hide === 'fade') {
                         $module
-                            .fadeOut(settings.duration, settings.easing, settings.onHidden)
-                        ;
+                            .fadeOut(settings.duration, settings.easing, settings.onHidden);
                     } else {
                         $module
-                            .slideUp(settings.duration, settings.easing, settings.onHidden)
-                        ;
+                            .slideUp(settings.duration, settings.easing, settings.onHidden);
                     }
                 },
 
@@ -200,11 +189,9 @@
                                     // RFC6265 compliant encoding
                                     key = encodeURIComponent(key)
                                         .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-                                        .replace(/[()]/g, escape)
-                                    ;
+                                        .replace(/[()]/g, escape);
                                     value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent)
-                                    ;
+                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
                                     var cookieOptions = '';
                                     for (var option in options) {
@@ -220,10 +207,8 @@
                                 getItem: function (key) {
                                     var cookies = document.cookie.split('; ');
                                     for (var i = 0, il = cookies.length; i < il; i++) {
-                                        var
-                                            parts    = cookies[i].split('='),
-                                            foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
-                                        ;
+                                        var parts = cookies[i].split('=');
+                                        var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                         if (key === foundKey) {
                                             return parts[1] || '';
                                         }
@@ -238,9 +223,7 @@
                         module.error(error.noStorage);
                     },
                     storageOptions: function () {
-                        var
-                            options = {}
-                        ;
+                        var options = {};
                         if (settings.expires) {
                             options.expires = module.get.expirationDate(settings.expires);
                         }
@@ -267,9 +250,7 @@
 
                 storage: {
                     set: function (key, value) {
-                        var
-                            options = module.get.storageOptions()
-                        ;
+                        var options = module.get.storageOptions();
                         if (storage === window.localStorage && options.expires) {
                             module.debug('Storing expiration value in localStorage', key, options.expires);
                             storage.setItem(key + settings.expirationKey, options.expires);
@@ -282,9 +263,7 @@
                         }
                     },
                     get: function (key) {
-                        var
-                            storedValue
-                        ;
+                        var storedValue;
                         storedValue = storage.getItem(key);
                         if (storage === window.localStorage) {
                             var expiration = storage.getItem(key + settings.expirationKey);
@@ -301,9 +280,7 @@
                         return storedValue;
                     },
                     remove: function (key) {
-                        var
-                            options = module.get.storageOptions()
-                        ;
+                        var options = module.get.storageOptions();
                         options.expires = module.get.expirationDate(-1);
                         if (storage === window.localStorage) {
                             storage.removeItem(key + settings.expirationKey);
@@ -363,11 +340,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        var currentTime;
+                        var executionTime;
+                        var previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -386,10 +361,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        var title = settings.name + ':';
+                        var totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -411,12 +384,10 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    var object = instance;
+                    var maxDepth;
+                    var found;
+                    var response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
@@ -425,8 +396,7 @@
                         $.each(query, function (depth, value) {
                             var camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
