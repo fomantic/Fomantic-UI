@@ -1,4 +1,5 @@
 node_modules/
+/dist/
 test/coverage/
 coverage/
 src/**/site/
