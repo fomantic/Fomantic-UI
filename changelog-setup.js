@@ -162,9 +162,9 @@ module.exports = function (Handlebars) {
                 return true;
             })
             .filter(detectVersionRange)
-        // second round as the previous list came unordered from git
+            // second round as the previous list came unordered from git
             .filter(detectVersionRange)
-        // adjust from version to create the whole range in one line (linked to the latest commit)
+            // adjust from version to create the whole range in one line (linked to the latest commit)
             .map((item) => {
                 let subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {

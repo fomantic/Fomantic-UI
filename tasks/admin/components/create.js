@@ -98,7 +98,7 @@ module.exports = function (callback) {
                     jQuery: 'require("jquery")',
                 },
             };
-                // paths to includable assets
+            // paths to includable assets
             let manifest = {
                 assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                 component: outputDirectory + '/' + component + '+(.js|.css)',
