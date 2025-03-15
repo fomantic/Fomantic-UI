@@ -20,42 +20,42 @@
         : globalThis;
 
     $.fn.search = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
         var returnedValue;
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.search.settings, parameters)
                 : $.extend({}, $.fn.search.settings);
 
-            var className        = settings.className;
-            var metadata         = settings.metadata;
-            var regExp           = settings.regExp;
-            var fields           = settings.fields;
-            var selector         = settings.selector;
-            var error            = settings.error;
-            var namespace        = settings.namespace;
+            var className = settings.className;
+            var metadata = settings.metadata;
+            var regExp = settings.regExp;
+            var fields = settings.fields;
+            var selector = settings.selector;
+            var error = settings.error;
+            var namespace = settings.namespace;
 
-            var eventNamespace   = '.' + namespace;
-            var moduleNamespace  = namespace + '-module';
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-            var $module          = $(this);
-            var $prompt          = $module.find(selector.prompt);
-            var $searchButton    = $module.find(selector.searchButton);
-            var $results         = $module.find(selector.results);
-            var $result          = $module.find(selector.result);
-            var $category        = $module.find(selector.category);
+            var $module = $(this);
+            var $prompt = $module.find(selector.prompt);
+            var $searchButton = $module.find(selector.searchButton);
+            var $results = $module.find(selector.results);
+            var $result = $module.find(selector.result);
+            var $category = $module.find(selector.category);
 
-            var element          = this;
-            var instance         = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
 
-            var disabledBubbled  = false;
+            var disabledBubbled = false;
             var resultsDismissed = false;
 
             var module;
@@ -165,7 +165,7 @@
                     },
                     blur: function (event) {
                         var pageLostFocus = document.activeElement === this;
-                        var callback      = function () {
+                        var callback = function () {
                             module.cancel.query();
                             module.remove.focus();
                             module.timer = setTimeout(function () {
@@ -213,18 +213,18 @@
                         click: function (event) {
                             module.debug('Search result selected');
                             var $result = $(this);
-                            var $title  = $result.find(selector.title).eq(0);
-                            var $link   = $result.is('a[href]')
+                            var $title = $result.find(selector.title).eq(0);
+                            var $link = $result.is('a[href]')
                                 ? $result
                                 : $result.find('a[href]').eq(0);
-                            var href    = $link.attr('href') || false;
-                            var target  = $link.attr('target') || false;
+                            var href = $link.attr('href') || false;
+                            var target = $link.attr('target') || false;
                             // title is used for result lookup
-                            var value   = $title.length > 0
+                            var value = $title.length > 0
                                 ? $title.text()
                                 : false;
                             var results = module.get.results();
-                            var result  = $result.data(metadata.result) || module.get.result(value, results);
+                            var result = $result.data(metadata.result) || module.get.result(value, results);
                             var oldValue = module.get.value();
                             if (isFunction(settings.onSelect)) {
                                 if (settings.onSelect.call(element, result, results) === false) {
@@ -272,15 +272,15 @@
                 },
                 handleKeyboard: function (event) {
                     // force selector refresh
-                    var $result         = $module.find(selector.result);
-                    var $category       = $module.find(selector.category);
-                    var $activeResult   = $result.filter('.' + className.active);
-                    var currentIndex    = $result.index($activeResult);
-                    var resultSize      = $result.length;
+                    var $result = $module.find(selector.result);
+                    var $category = $module.find(selector.category);
+                    var $activeResult = $result.filter('.' + className.active);
+                    var currentIndex = $result.index($activeResult);
+                    var resultSize = $result.length;
                     var hasActiveResult = $activeResult.length > 0;
 
-                    var keyCode         = event.which;
-                    var keys            = {
+                    var keyCode = event.which;
+                    var keys = {
                         backspace: 8,
                         enter: 13,
                         escape: 27,
@@ -450,7 +450,7 @@
                     },
                     inputEvent: function () {
                         var prompt = $prompt[0];
-                        var inputEvent   = prompt !== undefined && prompt.oninput !== undefined
+                        var inputEvent = prompt !== undefined && prompt.oninput !== undefined
                             ? 'input'
                             : (prompt !== undefined && prompt.onpropertychange !== undefined
                                 ? 'propertychange'
@@ -465,7 +465,7 @@
                         return $module.data(metadata.results);
                     },
                     result: function (value, results) {
-                        var result       = false;
+                        var result = false;
                         value = value !== undefined
                             ? value
                             : module.get.value();
@@ -610,15 +610,15 @@
                     },
                     object: function (searchTerm, source, searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
-                        var results      = [];
+                        var results = [];
                         var exactResults = [];
                         var fuzzyResults = [];
-                        var searchExp    = searchTerm.replace(regExp.escape, '\\$&');
+                        var searchExp = searchTerm.replace(regExp.escape, '\\$&');
                         var matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : '');
 
                         // avoid duplicates when pushing results
                         var addResult = function (array, result) {
-                            var notResult      = $.inArray(result, results) === -1;
+                            var notResult = $.inArray(result, results) === -1;
                             var notFuzzyResult = $.inArray(result, fuzzyResults) === -1;
                             var notExactResults = $.inArray(result, exactResults) === -1;
                             if (notResult && notFuzzyResult && notExactResults) {
@@ -706,7 +706,7 @@
                     return found;
                 },
                 fuzzySearch: function (query, term) {
-                    var termLength  = term.length;
+                    var termLength = term.length;
                     var queryLength = query.length;
                     if (typeof query !== 'string') {
                         return false;
@@ -773,7 +773,7 @@
 
                 has: {
                     minimumCharacters: function () {
-                        var searchTerm    = module.get.value();
+                        var searchTerm = module.get.value();
                         var numCharacters = searchTerm.length;
 
                         return numCharacters >= settings.minCharacters;
@@ -841,7 +841,7 @@
                         return categoryResults;
                     },
                     id: function (resultIndex, categoryIndex) {
-                        var resultID      = resultIndex + 1; // not zero indexed
+                        var resultID = resultIndex + 1; // not zero indexed
                         var letterID;
                         var id;
                         if (categoryIndex !== undefined) {
@@ -888,7 +888,7 @@
                         module.debug('Injecting unique ids into results');
                         // since results may be an object, we must use counters
                         var categoryIndex = 0;
-                        var resultIndex   = 0;
+                        var resultIndex = 0;
                         if (settings.type === 'category') {
                             // iterate through each category result
                             $.each(results, function (index, category) {
@@ -1036,10 +1036,10 @@
 
                 generateResults: function (response) {
                     module.debug('Generating html from response', response);
-                    var template       = settings.templates[settings.type];
+                    var template = settings.templates[settings.type];
                     var isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
-                    var isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
-                    var html           = '';
+                    var isProperArray = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
+                    var html = '';
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
                             if (isProperObject) {

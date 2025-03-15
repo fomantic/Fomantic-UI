@@ -3,17 +3,17 @@
  *******************************/
 
 // node dependencies
-const console    = require('@fomantic/better-console');
+const console = require('@fomantic/better-console');
 
 // user config
-const config     = require('./config/user');
+const config = require('./config/user');
 
 // task config
-const install    = require('./config/project/install');
+const install = require('./config/project/install');
 
-const css        = require('./build/css');
-const js         = require('./build/javascript');
-const assets     = require('./build/assets');
+const css = require('./build/css');
+const js = require('./build/javascript');
+const assets = require('./build/assets');
 
 // export task
 module.exports = function (callback) {

@@ -3,9 +3,9 @@
 *******************************/
 
 // node dependencies
-const console      = require('@fomantic/better-console');
+const console = require('@fomantic/better-console');
 const path = require('path');
-const YAML         = require('js-yaml');
+const YAML = require('js-yaml');
 
 let data = {};
 
@@ -48,10 +48,10 @@ function parser(file, callback) {
 
     try {
         /** @type {string} */
-        let text     = String(file.contents.toString('utf8'));
-        let lines    = text.split('\n');
+        let text = String(file.contents.toString('utf8'));
+        let lines = text.split('\n');
         let filename = file.path.slice(0, -4);
-        let key      = 'server' + path.sep + 'documents';
+        let key = 'server' + path.sep + 'documents';
         let position = filename.indexOf(key);
 
         // exit conditions
@@ -65,8 +65,8 @@ function parser(file, callback) {
         filename = filename.slice(position + key.length + 1, filename.length).replaceAll(path.win32.sep, path.posix.sep);
 
         let lineCount = lines.length;
-        let active    = false;
-        let yaml      = [];
+        let active = false;
+        let yaml = [];
         let categories = [
             'UI Element',
             'UI Global',

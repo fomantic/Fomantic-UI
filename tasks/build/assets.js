@@ -2,20 +2,20 @@
  Build Task
  *******************************/
 
-const gulp      = require('gulp');
+const gulp = require('gulp');
 
 // gulp dependencies
-const chmod     = require('gulp-chmod');
-const gulpif    = require('gulp-if');
+const chmod = require('gulp-chmod');
+const gulpif = require('gulp-if');
 const normalize = require('normalize-path');
-const print     = require('gulp-print').default;
+const print = require('gulp-print').default;
 
 // config
-const config    = require('../config/user');
-const tasks     = require('../config/tasks');
-const install   = require('../config/project/install');
+const config = require('../config/user');
+const tasks = require('../config/tasks');
+const install = require('../config/project/install');
 
-const log       = tasks.log;
+const log = tasks.log;
 
 function build(src, config) {
     return gulp.src(src, { base: config.paths.source.themes, encoding: false })
@@ -40,7 +40,7 @@ function buildAssets(src, config, callback) {
     }
 
     // copy assets
-    let assets         = () => build(src, config);
+    let assets = () => build(src, config);
     assets.displayName = 'Building Assets';
 
     gulp.series(assets)(callback);

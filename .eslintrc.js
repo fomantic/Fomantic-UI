@@ -43,12 +43,6 @@ module.exports = {
         'no-console': 'off',
         'no-continue': 'off',
         'no-lonely-if': 'off',
-        'no-multi-spaces': ['error', {
-            exceptions: {
-                Property: true,
-                VariableDeclarator: true,
-            },
-        }],
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',

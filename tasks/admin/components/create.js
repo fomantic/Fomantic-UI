@@ -15,27 +15,27 @@
 */
 
 // node dependencies
-const fs              = require('fs');
-const path            = require('path');
-const gulp            = require('gulp');
+const fs = require('fs');
+const path = require('path');
+const gulp = require('gulp');
 
 // admin dependencies
 const concatFileNames = require('@fomantic/gulp-concat-filenames');
-const flatten         = require('gulp-flatten');
-const jsonEditor      = require('gulp-json-editor');
-const plumber         = require('@fomantic/gulp-plumber');
-const rename          = require('gulp-rename');
-const replace         = require('gulp-replace');
-const tap             = require('gulp-tap');
+const flatten = require('gulp-flatten');
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const tap = require('gulp-tap');
 
 // config
-const config          = require('../../config/user');
-const release         = require('../../config/admin/release');
-const project         = require('../../config/project/release');
+const config = require('../../config/user');
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
 // shorthand
-const version         = project.version;
-const output          = config.paths.output;
+const version = project.version;
+const output = config.paths.output;
 
 module.exports = function (callback) {
     let index;
@@ -46,20 +46,20 @@ module.exports = function (callback) {
 
         // streams... designed to save time and make coding fun...
         (function (component) {
-            let outputDirectory      = path.join(release.outputRoot, component);
-            let isJavascript         = fs.existsSync(output.compressed + component + '.js');
-            let isCSS                = fs.existsSync(output.compressed + component + '.css');
+            let outputDirectory = path.join(release.outputRoot, component);
+            let isJavascript = fs.existsSync(output.compressed + component + '.js');
+            let isCSS = fs.existsSync(output.compressed + component + '.css');
             let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-            let packageName          = release.packageRoot + component;
-            let repoName             = release.componentRepoRoot + capitalizedComponent;
-            let gitURL               = 'https://github.com/' + release.org + '/' + repoName + '.git';
+            let packageName = release.packageRoot + component;
+            let repoName = release.componentRepoRoot + capitalizedComponent;
+            let gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
             let concatSettings = {
                 newline: '',
                 root: outputDirectory,
                 prepend: "    '",
                 append: "',",
             };
-            let regExp               = {
+            let regExp = {
                 match: {
                     // templated values
                     name: '{component}',

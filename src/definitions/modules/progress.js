@@ -20,38 +20,38 @@
         : globalThis;
 
     $.fn.progress = function (parameters) {
-        var $allModules    = $(this);
+        var $allModules = $(this);
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
 
         var returnedValue;
 
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.progress.settings, parameters)
                 : $.extend({}, $.fn.progress.settings);
 
-            var className       = settings.className;
-            var metadata        = settings.metadata;
-            var namespace       = settings.namespace;
-            var selector        = settings.selector;
-            var error           = settings.error;
+            var className = settings.className;
+            var metadata = settings.metadata;
+            var namespace = settings.namespace;
+            var selector = settings.selector;
+            var error = settings.error;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module         = $(this);
-            var $bars           = $(this).find(selector.bar);
-            var $progresses     = $(this).find(selector.progress);
-            var $label          = $(this).find(selector.label);
+            var $module = $(this);
+            var $bars = $(this).find(selector.bar);
+            var $progresses = $(this).find(selector.progress);
+            var $label = $(this).find(selector.label);
 
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
 
             var animating = false;
             var module;
@@ -215,7 +215,7 @@
                     module.set.progress(newValue);
                 },
                 decrement: function (decrementValue) {
-                    var total     = module.get.total();
+                    var total = module.get.total();
                     var startValue;
                     var newValue;
                     if (total) {
@@ -248,8 +248,8 @@
                             index = 0;
                         }
 
-                        var value   = module.get.value(index);
-                        var total   = module.get.total();
+                        var value = module.get.value(index);
+                        var total = module.get.total();
                         var percent = animating
                             ? module.get.displayPercent(index)
                             : module.get.percent(index);
@@ -315,10 +315,10 @@
 
                     // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
-                        var $bar           = $($bars[index]);
-                        var barWidth       = $bar.width();
-                        var totalWidth     = $module.width();
-                        var minDisplay     = parseInt($bar.css('min-width'), 10);
+                        var $bar = $($bars[index]);
+                        var barWidth = $bar.width();
+                        var totalWidth = $module.width();
+                        var minDisplay = parseInt($bar.css('min-width'), 10);
                         var displayPercent = barWidth > minDisplay
                             ? (barWidth / totalWidth) * 100
                             : module.percent;

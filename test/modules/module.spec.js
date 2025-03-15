@@ -1,11 +1,11 @@
 function moduleTests(ui) {
-    let module    = ui.module;
-    let element   = ui.element;
+    let module = ui.module;
+    let element = ui.element;
     let singleton = ui.singleton;
-    let name      = $.fn[module].settings.name;
+    let name = $.fn[module].settings.name;
 
     let testValue = 'Test';
-    let fixtures  = jasmine.getFixtures(); // eslint-disable-line jest/no-jasmine-globals
+    let fixtures = jasmine.getFixtures(); // eslint-disable-line jest/no-jasmine-globals
 
     let originalSettings;
     let $modules;
@@ -136,7 +136,7 @@ function moduleTests(ui) {
                 $modules[module]('setting', 'name', testValue);
 
                 let retrievedValue = $oneModule[module]('setting', 'name');
-                let clonedSetting  = $clone[module]('setting', 'name');
+                let clonedSetting = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(testValue);
@@ -154,7 +154,7 @@ function moduleTests(ui) {
                 $oneModule[module]('setting', 'name', testValue);
 
                 let retrievedValue = $oneModule[module]('setting', 'name');
-                let clonedSetting  = $clone[module]('setting', 'name');
+                let clonedSetting = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);
@@ -168,7 +168,7 @@ function moduleTests(ui) {
                 });
 
                 let retrievedValue = $oneModule[module]('setting', 'name');
-                let clonedSetting  = $clone[module]('setting', 'name');
+                let clonedSetting = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);

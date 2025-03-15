@@ -20,46 +20,46 @@
         : globalThis;
 
     $.fn.slider = function (parameters) {
-        var $allModules    = $(this);
-        var $document      = $(document);
-        var $window        = $(window);
+        var $allModules = $(this);
+        var $document = $(document);
+        var $window = $(window);
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
 
-        var SINGLE_STEP     = 1;
-        var BIG_STEP        = 2;
-        var NO_STEP         = 0;
+        var SINGLE_STEP = 1;
+        var BIG_STEP = 2;
+        var NO_STEP = 0;
         var SINGLE_BACKSTEP = -1;
-        var BIG_BACKSTEP    = -2;
+        var BIG_BACKSTEP = -2;
 
         // Used to manage document bound events.
         // Use this so that we can distinguish between which document events are bound to which range.
-        var currentRange    = 0;
+        var currentRange = 0;
 
         var returnedValue;
 
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.slider.settings, parameters)
                 : $.extend({}, $.fn.slider.settings);
 
-            var className       = settings.className;
-            var metadata        = settings.metadata;
-            var namespace       = settings.namespace;
-            var error           = settings.error;
-            var keys            = settings.keys;
-            var interpretLabel  = settings.interpretLabel;
+            var className = settings.className;
+            var metadata = settings.metadata;
+            var namespace = settings.namespace;
+            var error = settings.error;
+            var keys = settings.keys;
+            var interpretLabel = settings.interpretLabel;
 
-            var isHover         = false;
-            var eventNamespace  = '.' + namespace;
+            var isHover = false;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module         = $(this);
+            var $module = $(this);
             var $currThumb;
             var touchIdentifier;
             var $thumb;
@@ -68,8 +68,8 @@
             var $trackFill;
             var $labels;
 
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
 
             var documentEventID;
 
@@ -181,10 +181,10 @@
                         }
                     },
                     customLabel: function () {
-                        var $children   = $labels.find('.label');
+                        var $children = $labels.find('.label');
                         var numChildren = $children.length;
-                        var min         = module.get.min();
-                        var max         = module.get.max();
+                        var min = module.get.min();
+                        var max = module.get.max();
                         var ratio;
                         $children.each(function (index) {
                             var $child = $(this);
@@ -212,7 +212,7 @@
                         var len = module.get.numLabels();
                         var ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4);
                         for (var i = 0; i <= len; i++) {
-                            var stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
+                            var stepValue = Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             var labelText = module.get.label(i, stepValue);
                             var showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0;
                             var $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
@@ -220,7 +220,7 @@
                                     ? $('<li/>', { class: className.label, 'data-value': stepValue, html: showLabel ? labelText : '' })
                                     : $('<li/>', { class: 'halftick label', 'data-value': stepValue }))
                                 : null;
-                            var ratio  = i / len;
+                            var ratio = i / len;
                             if ($label) {
                                 module.update.labelPosition(ratio, $label);
                                 $labels.append($label);
@@ -1160,7 +1160,7 @@
                     },
                     labelPosition: function (ratio, $label) {
                         var startMargin = module.get.trackStartMargin();
-                        var endMargin   = module.get.trackEndMargin();
+                        var endMargin = module.get.trackEndMargin();
                         var posDir = module.is.vertical()
                             ? (module.is.reversed() ? 'bottom' : 'top')
                             : (module.is.reversed() ? 'right' : 'left');

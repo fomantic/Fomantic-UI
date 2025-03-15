@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.nag = function (parameters) {
-        var $allModules    = $(this);
-        var $body          = $('body');
+        var $allModules = $(this);
+        var $body = $('body');
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -44,23 +44,23 @@
         };
         var returnedValue;
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.nag.settings, parameters)
                 : $.extend({}, $.fn.nag.settings);
 
-            var selector        = settings.selector;
-            var error           = settings.error;
-            var namespace       = settings.namespace;
+            var selector = settings.selector;
+            var error = settings.error;
+            var namespace = settings.namespace;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = namespace + '-module';
 
-            var $module         = $(this);
+            var $module = $(this);
 
-            var $context        = settings.context ? contextCheck(settings.context, window) : $body;
+            var $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
             var storage;
             var module;
             module = {
@@ -214,7 +214,7 @@
                                 getItem: function (key) {
                                     var cookies = document.cookie.split('; ');
                                     for (var i = 0, il = cookies.length; i < il; i++) {
-                                        var parts    = cookies[i].split('=');
+                                        var parts = cookies[i].split('=');
                                         var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                         if (key === foundKey) {
                                             return parts[1] || '';

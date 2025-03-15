@@ -2,10 +2,10 @@
             Set-up
 *******************************/
 
-const path           = require('path');
+const path = require('path');
 const requireDotFile = require('require-dot-file');
-const defaults       = require('../defaults');
-const release        = require('./release');
+const defaults = require('../defaults');
+const release = require('./release');
 
 /*******************************
           When to Ask
@@ -89,8 +89,8 @@ module.exports = {
     getPackageManager: function (directory) {
         // returns last matching result (avoid sub-module detection)
         let walk = function (directory) {
-            let pathArray     = directory.split(path.sep);
-            let folder        = pathArray[pathArray.length - 1];
+            let pathArray = directory.split(path.sep);
+            let folder = pathArray[pathArray.length - 1];
             let nextDirectory = path.join(directory, path.sep, '..');
             if (folder === 'bower_components') {
                 return {
@@ -128,8 +128,8 @@ module.exports = {
     isSubModule: function (directory) {
         let moduleFolders = 0;
         let walk = function (directory) {
-            let pathArray     = directory.split(path.sep);
-            let folder        = pathArray[pathArray.length - 2];
+            let pathArray = directory.split(path.sep);
+            let folder = pathArray[pathArray.length - 2];
             let nextDirectory = path.join(directory, path.sep, '..');
             if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
                 moduleFolders++;

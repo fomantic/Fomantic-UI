@@ -2,35 +2,35 @@
  Build Docs
  *******************************/
 
-const fs          = require('fs');
-const extend      = require('extend');
+const fs = require('fs');
+const extend = require('extend');
 
 // node dependencies
-const console     = require('@fomantic/better-console');
-const gulp        = require('gulp');
-const map         = require('map-stream');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
+const map = require('map-stream');
 
 // gulp dependencies
-const print       = require('gulp-print').default;
+const print = require('gulp-print').default;
 
 // user config
-const configDocs      = require('../config/docs');
+const configDocs = require('../config/docs');
 
 // install config
-const tasks       = require('../config/tasks');
+const tasks = require('../config/tasks');
 const configSetup = require('../config/project/config');
-const install     = require('../config/project/install');
+const install = require('../config/project/install');
 
 // metadata parsing
-const metadata    = require('./metadata');
+const metadata = require('./metadata');
 
 // build methods
-const buildJS     = require('../build/javascript').buildJS;
-const buildCSS    = require('../build/css').buildCSS;
+const buildJS = require('../build/javascript').buildJS;
+const buildCSS = require('../build/css').buildCSS;
 const buildAssets = require('../build/assets').buildAssets;
 
 // shorthand
-const log         = tasks.log;
+const log = tasks.log;
 
 module.exports = function (callback) {
     // use a different config
@@ -38,7 +38,7 @@ module.exports = function (callback) {
     configSetup.addDerivedValues(config);
 
     // shorthand
-    const globs  = config.globs;
+    const globs = config.globs;
     const output = config.paths.output;
 
     /* --------------

@@ -20,15 +20,15 @@
         : globalThis;
 
     $.fn.state = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
-        var contextCheck    = function (context, win) {
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -43,25 +43,25 @@
         };
         var returnedValue;
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.state.settings, parameters)
                 : $.extend({}, $.fn.state.settings);
 
-            var error           = settings.error;
-            var metadata        = settings.metadata;
-            var className       = settings.className;
-            var namespace       = settings.namespace;
-            var states          = settings.states;
-            var text            = settings.text;
+            var error = settings.error;
+            var metadata = settings.metadata;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var states = settings.states;
+            var text = settings.text;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = namespace + '-module';
 
-            var $module         = $(this);
-            var $context        = settings.context ? contextCheck(settings.context, window) : $module;
+            var $module = $(this);
+            var $context = settings.context ? contextCheck(settings.context, window) : $module;
 
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
 
             var module;
             module = {
@@ -365,7 +365,7 @@
                 reset: {
                     // on mouseout sets text to previous value
                     text: function () {
-                        var activeText   = text.active || $module.data(metadata.storedText);
+                        var activeText = text.active || $module.data(metadata.storedText);
                         var inactiveText = text.inactive || $module.data(metadata.storedText);
                         if (module.is.textEnabled()) {
                             if (module.is.active() && activeText) {

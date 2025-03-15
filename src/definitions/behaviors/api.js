@@ -25,16 +25,16 @@
 
     $.fn.api = function (parameters) {
         // use window context if none specified
-        var $allModules     = isFunction(this)
+        var $allModules = isFunction(this)
             ? $(window)
             : $(this);
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -50,28 +50,28 @@
         var returnedValue;
 
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.api.settings, parameters)
                 : $.extend({}, $.fn.api.settings);
 
             // internal aliases
-            var regExp          = settings.regExp;
-            var namespace       = settings.namespace;
-            var metadata        = settings.metadata;
-            var selector        = settings.selector;
-            var error           = settings.error;
-            var className       = settings.className;
+            var regExp = settings.regExp;
+            var namespace = settings.namespace;
+            var metadata = settings.metadata;
+            var selector = settings.selector;
+            var error = settings.error;
+            var className = settings.className;
 
             // define namespaces for modules
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
             // element that creates request
-            var $module         = $(this);
-            var $form           = $module.closest(selector.form);
+            var $module = $(this);
+            var $form = $module.closest(selector.form);
 
             // context used for state
-            var $context        = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
+            var $context = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
 
             // request details
             var ajaxSettings;
@@ -82,9 +82,9 @@
             var originalData;
 
             // standard module
-            var element         = this;
-            var context         = $context[0];
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var context = $context[0];
+            var instance = $module.data(moduleNamespace);
             var module;
 
             module = {
@@ -361,7 +361,7 @@
                                     var variable = templatedString.indexOf('$') !== -1
                                         ? templatedString.slice(2, -1)
                                         : templatedString.slice(1, -1);
-                                    var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                    var value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
                                             ? $module.data(variable)
@@ -391,7 +391,7 @@
                                     var variable = templatedString.indexOf('$') !== -1
                                         ? templatedString.slice(3, -1)
                                         : templatedString.slice(2, -1);
-                                    var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                    var value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
                                             ? $module.data(variable)
@@ -527,9 +527,9 @@
                             // nothing special
                         },
                         done: function (response, textStatus, xhr) {
-                            var context            = this;
-                            var elapsedTime        = Date.now() - requestStartTime;
-                            var timeLeft           = settings.loadingDuration - elapsedTime;
+                            var context = this;
+                            var elapsedTime = Date.now() - requestStartTime;
+                            var timeLeft = settings.loadingDuration - elapsedTime;
                             var translatedResponse = isFunction(settings.onResponse)
                                 ? (module.is.expectingJSON() && !settings.rawResponse
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
@@ -555,9 +555,9 @@
                             }, timeLeft);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var context     = this;
+                            var context = this;
                             var elapsedTime = Date.now() - requestStartTime;
-                            var timeLeft    = settings.loadingDuration - elapsedTime;
+                            var timeLeft = settings.loadingDuration - elapsedTime;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
@@ -598,7 +598,7 @@
                         },
                         fail: function (xhr, status, httpMessage) {
                             // pull response from xhr if available
-                            var response     = module.get.responseFromXHR(xhr);
+                            var response = module.get.responseFromXHR(xhr);
                             var errorMessage = module.get.errorFromRequest(response, status, httpMessage);
                             if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
@@ -647,10 +647,10 @@
 
                     mockedXHR: function () {
                         // xhr does not simulate these properties of xhr but must return them
-                        var textStatus     = false;
-                        var status         = false;
-                        var httpMessage    = false;
-                        var responder      = settings.mockResponse || settings.response;
+                        var textStatus = false;
+                        var status = false;
+                        var httpMessage = false;
+                        var responder = settings.mockResponse || settings.response;
                         var asyncResponder = settings.mockResponseAsync || settings.responseAsync;
                         var asyncCallback;
                         var response;
@@ -781,8 +781,8 @@
                             : $.extend(true, {}, settings);
                     },
                     urlEncodedValue: function (value) {
-                        var decodedValue   = window.decodeURIComponent(value);
-                        var encodedValue   = window.encodeURIComponent(value);
+                        var decodedValue = window.decodeURIComponent(value);
+                        var encodedValue = window.encodeURIComponent(value);
                         var alreadyEncoded = decodedValue !== value;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);

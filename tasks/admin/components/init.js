@@ -13,16 +13,16 @@
 */
 
 // node dependencies
-const fs        = require('fs-extra');
-const path      = require('path');
-const console   = require('@fomantic/better-console');
-const git       = require('@fomantic/gulp-git');
+const fs = require('fs-extra');
+const path = require('path');
+const console = require('@fomantic/better-console');
+const git = require('@fomantic/gulp-git');
 
 // admin files
-const release   = require('../../config/admin/release');
+const release = require('../../config/admin/release');
 
 // oAuth configuration for GitHub
-const oAuth     = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+const oAuth = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
     ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
     : false;
 
@@ -48,17 +48,17 @@ module.exports = function (callback) {
             return;
         }
 
-        let component            = release.components[index];
-        let outputDirectory      = path.resolve(release.outputRoot + component);
+        let component = release.components[index];
+        let outputDirectory = path.resolve(release.outputRoot + component);
         let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-        let repoName             = release.componentRepoRoot + capitalizedComponent;
+        let repoName = release.componentRepoRoot + capitalizedComponent;
 
-        let gitOptions           = { cwd: outputDirectory };
-        let pullOptions          = { args: '-q', cwd: outputDirectory, quiet: true };
-        let resetOptions         = { args: '-q --hard', cwd: outputDirectory, quiet: true };
+        let gitOptions = { cwd: outputDirectory };
+        let pullOptions = { args: '-q', cwd: outputDirectory, quiet: true };
+        let resetOptions = { args: '-q --hard', cwd: outputDirectory, quiet: true };
 
-        let gitURL               = 'git@github.com:' + release.org + '/' + repoName + '.git';
-        let localRepoSetup       = fs.pathExistsSync(path.join(outputDirectory, '.git'));
+        let gitURL = 'git@github.com:' + release.org + '/' + repoName + '.git';
+        let localRepoSetup = fs.pathExistsSync(path.join(outputDirectory, '.git'));
 
         console.log('Processing repository: ' + outputDirectory);
 

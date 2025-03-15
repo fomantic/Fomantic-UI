@@ -25,17 +25,17 @@
 
     $.fn.tab = function (parameters) {
         // use window context if none specified
-        var $allModules     = isFunction(this)
+        var $allModules = isFunction(this)
             ? $(window)
             : $(this);
-        var $document      = $(document);
-        var time            = Date.now();
-        var performance     = [];
+        var $document = $(document);
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -52,28 +52,28 @@
         var returnedValue;
 
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.tab.settings, parameters)
                 : $.extend({}, $.fn.tab.settings);
 
-            var className       = settings.className;
-            var metadata        = settings.metadata;
-            var selector        = settings.selector;
-            var error           = settings.error;
-            var regExp          = settings.regExp;
+            var className = settings.className;
+            var metadata = settings.metadata;
+            var selector = settings.selector;
+            var error = settings.error;
+            var regExp = settings.regExp;
 
-            var eventNamespace  = '.' + settings.namespace;
+            var eventNamespace = '.' + settings.namespace;
             var moduleNamespace = 'module-' + settings.namespace;
 
-            var $module         = $(this);
+            var $module = $(this);
             var $context;
             var $tabs;
 
-            var cache           = {};
-            var firstLoad       = true;
-            var recursionDepth  = 0;
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var cache = {};
+            var firstLoad = true;
+            var recursionDepth = 0;
+            var element = this;
+            var instance = $module.data(moduleNamespace);
 
             var activeTabPath;
             var parameterArray;
@@ -217,7 +217,7 @@
                     },
                     history: {
                         change: function (event) {
-                            var tabPath   = event.pathNames.join('/') || module.get.initialPath();
+                            var tabPath = event.pathNames.join('/') || module.get.initialPath();
                             var pageTitle = settings.templates.determineTitle(tabPath) || false;
                             module.performance.display();
                             module.debug('History change event', tabPath, event);
@@ -282,7 +282,7 @@
                         }
                     },
                     loading: function (tabPath) {
-                        var $tab      = module.get.tabElement(tabPath);
+                        var $tab = module.get.tabElement(tabPath);
                         var isLoading = $tab.hasClass(className.loading);
                         if (!isLoading) {
                             module.verbose('Setting loading state for', $tab);
@@ -303,8 +303,8 @@
 
                 changeTab: function (tabPath) {
                     var pushStateAvailable = window.history && window.history.pushState;
-                    var shouldIgnoreLoad   = pushStateAvailable && settings.ignoreFirstLoad && firstLoad;
-                    var remoteContent      = settings.auto || $.isPlainObject(settings.apiSettings);
+                    var shouldIgnoreLoad = pushStateAvailable && settings.ignoreFirstLoad && firstLoad;
+                    var remoteContent = settings.auto || $.isPlainObject(settings.apiSettings);
                     // only add the default path if not remote content
                     var pathArray = remoteContent && !shouldIgnoreLoad
                         ? module.utilities.pathToArray(tabPath)
@@ -312,13 +312,13 @@
                     ;
                     tabPath = module.utilities.arrayToPath(pathArray);
                     $.each(pathArray, function (index, tab) {
-                        var currentPathArray   = pathArray.slice(0, index + 1);
-                        var currentPath        = module.utilities.arrayToPath(currentPathArray);
+                        var currentPathArray = pathArray.slice(0, index + 1);
+                        var currentPath = module.utilities.arrayToPath(currentPathArray);
 
-                        var isTab              = module.is.tab(currentPath);
-                        var isLastIndex        = index + 1 === pathArray.length;
+                        var isTab = module.is.tab(currentPath);
+                        var isLastIndex = index + 1 === pathArray.length;
 
-                        var $tab               = module.get.tabElement(currentPath);
+                        var $tab = module.get.tabElement(currentPath);
                         var $anchor;
                         var nextPathArray;
                         var nextPath;
@@ -420,7 +420,7 @@
                 update: {
                     content: function (tabPath, html, evaluateScripts) {
                         var $tab = module.get.tabElement(tabPath);
-                        var tab  = $tab[0];
+                        var tab = $tab[0];
                         evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
@@ -444,7 +444,7 @@
                 fetch: {
 
                     content: function (tabPath, fullTabPath) {
-                        var $tab        = module.get.tabElement(tabPath);
+                        var $tab = module.get.tabElement(tabPath);
                         var apiSettings = {
                             dataType: 'html',
                             encodeParameters: false,
@@ -480,7 +480,7 @@
                                 tab: fullTabPath,
                             },
                         };
-                        var request         = $tab.api('get request') || false;
+                        var request = $tab.api('get request') || false;
                         var existingRequest = request && request.state() === 'pending';
                         var requestSettings;
                         var cachedContent;
@@ -519,11 +519,11 @@
                         module.activate.navigation(tabPath);
                     },
                     tab: function (tabPath) {
-                        var $tab          = module.get.tabElement(tabPath);
+                        var $tab = module.get.tabElement(tabPath);
                         var $deactiveTabs = settings.deactivate === 'siblings'
                             ? $tab.siblings($tabs)
                             : $tabs.not($tab);
-                        var isActive      = $tab.hasClass(className.active);
+                        var isActive = $tab.hasClass(className.active);
                         module.verbose('Showing tab content for', $tab);
                         if (!isActive) {
                             $tab
@@ -538,11 +538,11 @@
                         }
                     },
                     navigation: function (tabPath) {
-                        var $navigation         = module.get.navElement(tabPath);
+                        var $navigation = module.get.navElement(tabPath);
                         var $deactiveNavigation = settings.deactivate === 'siblings'
                             ? $navigation.siblings($allModules)
                             : $allModules.not($navigation);
-                        var isActive    = $navigation.hasClass(className.active);
+                        var isActive = $navigation.hasClass(className.active);
                         module.verbose('Activating tab navigation for', $navigation, tabPath);
                         if (!isActive) {
                             $navigation
@@ -593,7 +593,7 @@
                     },
                     defaultPath: function (tabPath) {
                         var $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0);
-                        var defaultTab  = $defaultNav.data(metadata.tab) || false;
+                        var defaultTab = $defaultNav.data(metadata.tab) || false;
                         if (defaultTab) {
                             module.debug('Found default tab', defaultTab);
                             if (recursionDepth < settings.maxDepth) {

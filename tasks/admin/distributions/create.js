@@ -10,24 +10,24 @@
 */
 
 // node dependencies
-const fs              = require('fs');
-const path            = require('path');
-const gulp            = require('gulp');
-const mergeStream     = require('merge-stream');
+const fs = require('fs');
+const path = require('path');
+const gulp = require('gulp');
+const mergeStream = require('merge-stream');
 
 // admin dependencies
-const flatten         = require('gulp-flatten');
-const jsonEditor      = require('gulp-json-editor');
-const plumber         = require('@fomantic/gulp-plumber');
-const rename          = require('gulp-rename');
-const replace         = require('gulp-replace');
+const flatten = require('gulp-flatten');
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
 
 // config
-const release         = require('../../config/admin/release');
-const project         = require('../../config/project/release');
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
 // shorthand
-const version         = project.version;
+const version = project.version;
 
 module.exports = function (callback) {
     let index;
@@ -38,10 +38,10 @@ module.exports = function (callback) {
 
         // streams... designed to save time and make coding fun...
         (function (distribution) {
-            let distLowerCase   = distribution.toLowerCase();
+            let distLowerCase = distribution.toLowerCase();
             let outputDirectory = path.join(release.outputRoot, distLowerCase);
-            let packageFile     = path.join(outputDirectory, release.files.npm);
-            let regExp          = {
+            let packageFile = path.join(outputDirectory, release.files.npm);
+            let regExp = {
                 match: {
                     files: '{files}',
                     version: '{version}',
@@ -53,7 +53,7 @@ module.exports = function (callback) {
             // get files for meteor
             gatherFiles = function (dir) {
                 dir = dir || path.resolve('.');
-                let list  = fs.readdirSync(dir);
+                let list = fs.readdirSync(dir);
                 let omitted = [
                     '.git',
                     'node_modules',
@@ -67,8 +67,8 @@ module.exports = function (callback) {
                 let files = [];
                 list.forEach(function (file) {
                     let isOmitted = omitted.indexOf(file) > -1;
-                    let filePath  = path.join(dir, file);
-                    let stat      = fs.statSync(filePath);
+                    let filePath = path.join(dir, file);
+                    let stat = fs.statSync(filePath);
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
@@ -93,7 +93,7 @@ module.exports = function (callback) {
             };
 
             tasks.push(function () {
-                let files     = gatherFiles(outputDirectory);
+                let files = gatherFiles(outputDirectory);
                 let filenames = createList(files);
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())

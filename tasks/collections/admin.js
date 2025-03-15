@@ -3,18 +3,18 @@
  *******************************/
 
 // less/css distributions
-const initComponents      = require('../admin/components/init');
-const createComponents    = require('../admin/components/create');
-const updateComponents    = require('../admin/components/update');
+const initComponents = require('../admin/components/init');
+const createComponents = require('../admin/components/create');
+const updateComponents = require('../admin/components/update');
 
 // single component releases
-const initDistributions   = require('../admin/distributions/init');
+const initDistributions = require('../admin/distributions/init');
 const createDistributions = require('../admin/distributions/create');
 const updateDistributions = require('../admin/distributions/update');
 
-const release             = require('../admin/release');
-const publish             = require('../admin/publish');
-const register            = require('../admin/register');
+const release = require('../admin/release');
+const publish = require('../admin/publish');
+const register = require('../admin/register');
 
 /*
   These are tasks to be run by project maintainers

@@ -13,18 +13,18 @@
 */
 
 // node dependencies
-const fs             = require('fs');
-const path           = require('path');
-const console        = require('@fomantic/better-console');
-const gulp           = require('gulp');
-const git            = require('@fomantic/gulp-git');
+const fs = require('fs');
+const path = require('path');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
+const git = require('@fomantic/gulp-git');
 
 // admin files
-const release        = require('../../config/admin/release');
-const project        = require('../../config/project/release');
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
 // oAuth configuration for GitHub
-const oAuth          = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
+const oAuth = fs.existsSync(path.join(__dirname, '/../../config/admin/oauth.js'))
     ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
     : false;
 
@@ -54,9 +54,9 @@ module.exports = function (callback) {
             return;
         }
 
-        let distribution         = release.distributions[index];
-        let outputDirectory      = path.resolve(path.join(release.outputRoot, distribution.toLowerCase()));
-        let repoName             = release.distRepoRoot + distribution;
+        let distribution = release.distributions[index];
+        let outputDirectory = path.resolve(path.join(release.outputRoot, distribution.toLowerCase()));
+        let repoName = release.distRepoRoot + distribution;
 
         let commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
             ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
@@ -66,23 +66,23 @@ module.exports = function (callback) {
             ? require(outputDirectory + 'package.json') // eslint-disable-line global-require, import/no-dynamic-require
             : false;
 
-        let isNewVersion  = version && distributionPackage.version !== version;
+        let isNewVersion = version && distributionPackage.version !== version;
 
         let commitMessage = isNewVersion
             ? 'Updated distribution to version ' + version
             : 'Updated files from main repo';
 
-        let gitOptions      = { cwd: outputDirectory, encoding: false };
-        let commitOptions   = { args: commitArgs, cwd: outputDirectory };
-        let releaseOptions  = { tag_name: version, owner: release.org, repo: repoName };
+        let gitOptions = { cwd: outputDirectory, encoding: false };
+        let commitOptions = { args: commitArgs, cwd: outputDirectory };
+        let releaseOptions = { tag_name: version, owner: release.org, repo: repoName };
 
         let fileModeOptions = { args: 'config core.fileMode false', cwd: outputDirectory };
         let usernameOptions = { args: 'config user.name "' + oAuth.name + '"', cwd: outputDirectory };
-        let emailOptions    = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory };
-        let versionOptions =  { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
+        let emailOptions = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory };
+        let versionOptions = { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
 
-        let localRepoSetup  = fs.existsSync(path.join(outputDirectory, '.git'));
-        let canProceed      = true;
+        let localRepoSetup = fs.existsSync(path.join(outputDirectory, '.git'));
+        let canProceed = true;
 
         console.info('Processing repository:' + outputDirectory);
 

@@ -1,6 +1,6 @@
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
 
-let changelogDeps  = {};
+let changelogDeps = {};
 let loopVersion = '';
 let uniqueCommits = [];
 const issueLinks = function (item) {

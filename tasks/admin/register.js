@@ -15,9 +15,9 @@ const process = require('child_process');
 const release = require('../config/admin/release');
 
 // register components and distributions
-let repos   = release.distributions.concat(release.components);
-let total   = repos.length;
-let index   = -1;
+let repos = release.distributions.concat(release.components);
+let total = repos.length;
+let index = -1;
 
 let stepRepo;
 
@@ -32,11 +32,11 @@ module.exports = function (callback) {
 
             return;
         }
-        let repo            = repos[index].toLowerCase();
+        let repo = repos[index].toLowerCase();
         let outputDirectory = release.outputRoot + repo + '/';
-        let exec            = process.exec;
-        let execSettings    = { cwd: outputDirectory };
-        let updateNPM       = 'npm publish;meteor publish;';
+        let exec = process.exec;
+        let execSettings = { cwd: outputDirectory };
+        let updateNPM = 'npm publish;meteor publish;';
 
         /* Register with NPM */
         exec(updateNPM, execSettings, function (err, stdout, stderr) {

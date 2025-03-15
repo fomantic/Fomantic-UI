@@ -20,40 +20,40 @@
         : globalThis;
 
     $.fn.embed = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
         var returnedValue;
 
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.embed.settings, parameters)
                 : $.extend({}, $.fn.embed.settings);
 
-            var selector        = settings.selector;
-            var className       = settings.className;
-            var sources         = settings.sources;
-            var error           = settings.error;
-            var metadata        = settings.metadata;
-            var namespace       = settings.namespace;
-            var templates       = settings.templates;
+            var selector = settings.selector;
+            var className = settings.className;
+            var sources = settings.sources;
+            var error = settings.error;
+            var metadata = settings.metadata;
+            var namespace = settings.namespace;
+            var templates = settings.templates;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module         = $(this);
-            var $placeholder    = $module.find(selector.placeholder);
-            var $icon           = $module.find(selector.icon);
-            var $embed          = $module.find(selector.embed);
+            var $module = $(this);
+            var $placeholder = $module.find(selector.placeholder);
+            var $icon = $module.find(selector.icon);
+            var $embed = $module.find(selector.embed);
 
-            var element         = this;
-            var instance        = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
             var module;
 
             module = {
@@ -112,8 +112,8 @@
                 },
 
                 createPlaceholder: function (placeholder) {
-                    var icon  = module.get.icon();
-                    var alt   = module.get.alt();
+                    var icon = module.get.icon();
+                    var alt = module.get.alt();
                     placeholder = placeholder || module.get.placeholder();
                     $module.html(templates.placeholder(placeholder, icon, alt));
                     module.debug('Creating placeholder for embed', placeholder, icon, alt);
@@ -252,7 +252,7 @@
                             : false;
                     },
                     url: function () {
-                        var id     = settings.id || $module.data(metadata.id);
+                        var id = settings.id || $module.data(metadata.id);
                         var source = settings.source || $module.data(metadata.source);
                         var url;
                         url = sources[source] !== undefined

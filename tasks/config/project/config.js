@@ -2,8 +2,8 @@
             Set-up
 *******************************/
 
-const fs       = require('fs');
-const path     = require('path');
+const fs = require('fs');
+const path = require('path');
 
 const defaults = require('../defaults');
 
@@ -17,7 +17,7 @@ module.exports = {
         let configPath;
         let walk = function (directory) {
             let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
-            let currentPath   = path.normalize(path.join(directory, file));
+            let currentPath = path.normalize(path.join(directory, file));
             if (fs.existsSync(currentPath)) {
                 // found the file
                 configPath = path.normalize(directory);
@@ -115,7 +115,7 @@ module.exports = {
         const components = Array.isArray(config.components) && config.components.length > 0
             ? config.components
             : defaults.components;
-        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
+        const individuals = Array.isArray(config.individuals) && config.individuals.length > 0
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));

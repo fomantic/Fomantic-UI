@@ -20,26 +20,26 @@
         : globalThis;
 
     $.fn.site = function (parameters) {
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
 
-        var settings        = $.isPlainObject(parameters)
+        var settings = $.isPlainObject(parameters)
             ? $.extend(true, {}, $.site.settings, parameters)
             : $.extend({}, $.site.settings);
 
-        var namespace       = settings.namespace;
-        var error           = settings.error;
+        var namespace = settings.namespace;
+        var error = settings.error;
 
         var moduleNamespace = 'module-' + namespace;
 
-        var $document       = $(document);
-        var $module         = $document;
-        var element         = this;
-        var instance        = $module.data(moduleNamespace);
+        var $document = $(document);
+        var $module = $document;
+        var element = this;
+        var instance = $module.data(moduleNamespace);
 
         var module;
         var returnedValue;

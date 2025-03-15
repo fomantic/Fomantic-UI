@@ -20,20 +20,20 @@
         : globalThis;
 
     $.fn.transition = function () {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
         var moduleArguments = arguments;
-        var query           = moduleArguments[0];
-        var queryArguments  = [].slice.call(arguments, 1);
-        var methodInvoked   = typeof query === 'string';
+        var query = moduleArguments[0];
+        var queryArguments = [].slice.call(arguments, 1);
+        var methodInvoked = typeof query === 'string';
 
         var returnedValue;
         $allModules.each(function (index) {
-            var $module  = $(this);
-            var element  = this;
+            var $module = $(this);
+            var element = this;
 
             // set at run time
             var settings;
@@ -212,11 +212,11 @@
 
                 force: {
                     visible: function () {
-                        var style          = $module.attr('style');
-                        var userStyle      = module.get.userStyle(style);
-                        var displayType    = module.get.displayType();
-                        var overrideStyle  = userStyle + 'display: ' + displayType + ' !important;';
-                        var inlineDisplay  = $module[0].style.display;
+                        var style = $module.attr('style');
+                        var userStyle = module.get.userStyle(style);
+                        var displayType = module.get.displayType();
+                        var overrideStyle = userStyle + 'display: ' + displayType + ' !important;';
+                        var inlineDisplay = $module[0].style.display;
                         var mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
                         if (mustStayHidden) {
                             module.remove.transition();
@@ -230,9 +230,9 @@
                         return true;
                     },
                     hidden: function () {
-                        var style          = $module.attr('style');
+                        var style = $module.attr('style');
                         var currentDisplay = $module.css('display');
-                        var emptyStyle     = style === undefined || style === '';
+                        var emptyStyle = style === undefined || style === '';
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
                             $module
@@ -582,9 +582,9 @@
 
                 can: {
                     transition: function (forced) {
-                        var animation         = settings.animation;
-                        var transitionExists  = module.get.transitionExists(animation);
-                        var displayType       = module.get.displayType(false);
+                        var animation = settings.animation;
+                        var transitionExists = module.get.transitionExists(animation);
+                        var displayType = module.get.displayType(false);
                         var elementClass;
                         var tagName;
                         var $clone;

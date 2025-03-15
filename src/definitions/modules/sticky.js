@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.sticky = function (parameters) {
-        var $allModules    = $(this);
-        var $document      = $(document);
+        var $allModules = $(this);
+        var $document = $(document);
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -45,26 +45,26 @@
         var returnedValue;
 
         $allModules.each(function () {
-            var settings              = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                 : $.extend({}, $.fn.sticky.settings);
 
-            var className             = settings.className;
-            var namespace             = settings.namespace;
-            var error                 = settings.error;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var error = settings.error;
 
-            var eventNamespace        = '.' + namespace;
-            var moduleNamespace       = 'module-' + namespace;
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-            var $module               = $(this);
-            var $window               = $(window);
-            var $scroll               = contextCheck(settings.scrollContext, window);
+            var $module = $(this);
+            var $window = $(window);
+            var $scroll = contextCheck(settings.scrollContext, window);
             var $container;
             var $context;
 
-            var instance              = $module.data(moduleNamespace);
+            var instance = $module.data(moduleNamespace);
 
-            var element         = this;
+            var element = this;
 
             var documentObserver;
             var observer;
@@ -323,11 +323,11 @@
 
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
-                        var element        = module.cache.element;
-                        var scrollContext  = module.cache.scrollContext;
-                        var delta          = module.get.scrollChange(scroll);
-                        var maxScroll      = element.height - scrollContext.height + settings.offset;
-                        var elementScroll  = module.get.currentElementScroll();
+                        var element = module.cache.element;
+                        var scrollContext = module.cache.scrollContext;
+                        var delta = module.get.scrollChange(scroll);
+                        var maxScroll = element.height - scrollContext.height + settings.offset;
+                        var elementScroll = module.get.currentElementScroll();
                         var possibleScroll = elementScroll + delta;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
@@ -390,7 +390,7 @@
                         }
                     },
                     minimumSize: function () {
-                        var element   = module.cache.element;
+                        var element = module.cache.element;
                         $container
                             .css('min-height', element.height)
                         ;
@@ -447,25 +447,25 @@
 
                 stick: function (scrollPosition) {
                     var cachedPosition = scrollPosition || $scroll.scrollTop();
-                    var cache          = module.cache;
-                    var fits           = cache.fits;
-                    var sameHeight     = cache.sameHeight;
-                    var element        = cache.element;
-                    var scrollContext  = cache.scrollContext;
-                    var context        = cache.context;
-                    var offset         = module.is.bottom() && settings.pushing
+                    var cache = module.cache;
+                    var fits = cache.fits;
+                    var sameHeight = cache.sameHeight;
+                    var element = cache.element;
+                    var scrollContext = cache.scrollContext;
+                    var context = cache.context;
+                    var offset = module.is.bottom() && settings.pushing
                         ? settings.bottomOffset
                         : settings.offset;
-                    var scroll         = {
+                    var scroll = {
                         top: cachedPosition + offset,
                         bottom: cachedPosition + offset + scrollContext.height,
                     };
-                    var elementScroll  = fits
+                    var elementScroll = fits
                         ? 0
                         : module.get.elementScroll(scroll.top);
 
                     // shorthand
-                    var doesntFit      = !fits;
+                    var doesntFit = !fits;
                     var elementVisible = element.height !== 0;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {

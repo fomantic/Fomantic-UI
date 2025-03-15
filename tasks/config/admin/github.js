@@ -5,12 +5,12 @@
   Logs into GitHub using OAuth
 */
 
-const fs          = require('fs');
-const path        = require('path');
-const GithubAPI   = require('@octokit/rest');
+const fs = require('fs');
+const path = require('path');
+const GithubAPI = require('@octokit/rest');
 
 // stores oauth info for GitHub API
-const oAuth       = fs.existsSync(path.join(__dirname, './oauth.js'))
+const oAuth = fs.existsSync(path.join(__dirname, './oauth.js'))
     ? require('./oauth.js') // eslint-disable-line import/extensions
     : false;
 

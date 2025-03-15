@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.toast = function (parameters) {
-        var $allModules    = $(this);
-        var $body          = $('body');
+        var $allModules = $(this);
+        var $body = $('body');
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
@@ -44,20 +44,20 @@
         };
         var returnedValue;
         $allModules.each(function () {
-            var settings          = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.toast.settings, parameters)
                 : $.extend({}, $.fn.toast.settings);
 
-            var className        = settings.className;
-            var selector         = settings.selector;
-            var error            = settings.error;
-            var namespace        = settings.namespace;
-            var fields           = settings.fields;
+            var className = settings.className;
+            var selector = settings.selector;
+            var error = settings.error;
+            var namespace = settings.namespace;
+            var fields = settings.fields;
 
-            var eventNamespace   = '.' + namespace;
-            var moduleNamespace  = namespace + '-module';
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-            var $module          = $(this);
+            var $module = $(this);
             var $toastBox;
             var $toast;
             var $actions;
@@ -65,12 +65,12 @@
             var $progressBar;
             var $animationObject;
             var $close;
-            var $context         = settings.context ? contextCheck(settings.context, window) : $body;
+            var $context = settings.context ? contextCheck(settings.context, window) : $body;
 
             var isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
 
-            var element          = this;
-            var instance         = isToastComponent ? $module.data(moduleNamespace) : undefined;
+            var element = this;
+            var instance = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
             var id;
             var module;

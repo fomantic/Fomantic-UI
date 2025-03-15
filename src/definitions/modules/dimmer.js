@@ -20,31 +20,31 @@
         : globalThis;
 
     $.fn.dimmer = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
         var returnedValue;
 
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                 : $.extend({}, $.fn.dimmer.settings);
 
-            var selector        = settings.selector;
-            var namespace       = settings.namespace;
-            var className       = settings.className;
-            var error           = settings.error;
+            var selector = settings.selector;
+            var namespace = settings.namespace;
+            var className = settings.className;
+            var error = settings.error;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var clickEvent      = 'ontouchstart' in document.documentElement
+            var clickEvent = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click';
 
@@ -52,8 +52,8 @@
             var $dimmer;
             var $dimmable;
 
-            var element   = this;
-            var instance  = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
             var module;
 
             module = {
@@ -385,9 +385,9 @@
 
                 set: {
                     opacity: function (opacity) {
-                        var color      = $dimmer.css('background-color');
+                        var color = $dimmer.css('background-color');
                         var colorArray = color.split(',');
-                        var isRGB      = colorArray && colorArray.length >= 3;
+                        var isRGB = colorArray && colorArray.length >= 3;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
                             colorArray[2] = colorArray[2].replace(')', '');

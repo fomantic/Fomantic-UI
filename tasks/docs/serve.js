@@ -2,28 +2,28 @@
  Serve Docs
  *******************************/
 
-const extend      = require('extend');
+const extend = require('extend');
 
 // node dependencies
-const console     = require('@fomantic/better-console');
-const gulp        = require('gulp');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
 
 // gulp dependencies
-const print       = require('gulp-print').default;
+const print = require('gulp-print').default;
 
 // user config
-const configDocs      = require('../config/docs');
+const configDocs = require('../config/docs');
 
 // task config
-const tasks       = require('../config/tasks');
+const tasks = require('../config/tasks');
 const configSetup = require('../config/project/config');
 
 // shorthand
-const log         = tasks.log;
+const log = tasks.log;
 
-const css         = require('../build/css');
-const js          = require('../build/javascript');
-const assets      = require('../build/assets');
+const css = require('../build/css');
+const js = require('../build/javascript');
+const assets = require('../build/assets');
 
 module.exports = function (callback) {
     // use a different config

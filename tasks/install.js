@@ -13,38 +13,38 @@
 */
 
 // node dependencies
-const fs             = require('fs-extra');
-const path           = require('path');
-const extend         = require('extend');
-const console        = require('@fomantic/better-console');
-const gulp           = require('gulp');
+const fs = require('fs-extra');
+const path = require('path');
+const extend = require('extend');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
 
 // gulp dependencies
-const jsonEditor     = require('gulp-json-editor');
-const plumber        = require('@fomantic/gulp-plumber');
-const inquirer       = require('inquirer');
-const rename         = require('gulp-rename');
-const replace        = require('gulp-replace');
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const inquirer = require('inquirer');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
 const requireDotFile = require('require-dot-file');
 
 // install config
-const install        = require('./config/project/install');
+const install = require('./config/project/install');
 
 // release config (name/title/etc)
-const release        = require('./config/project/release');
+const release = require('./config/project/release');
 
 // shorthand
-const questions      = install.questions;
-const files          = install.files;
-const folders        = install.folders;
-const regExp         = install.regExp;
-const settings       = install.settings;
-const source         = install.source;
+const questions = install.questions;
+const files = install.files;
+const folders = install.folders;
+const regExp = install.regExp;
+const settings = install.settings;
+const source = install.source;
 
 // Export install task
 module.exports = function (callback) {
     let currentConfig = requireDotFile('semantic.json', process.cwd());
-    let manager       = install.getPackageManager();
+    let manager = install.getPackageManager();
     let rootQuestions = questions.root;
     let installFolder = false;
     let answers;
@@ -80,7 +80,7 @@ module.exports = function (callback) {
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
         let updateFolder = path.join(manager.root, currentConfig.base);
-        let updatePaths  = {
+        let updatePaths = {
             config: path.join(manager.root, files.config),
             tasks: path.join(updateFolder, folders.tasks),
             overridesImport: path.join(updateFolder, folders.overridesImport),
@@ -334,7 +334,7 @@ module.exports = function (callback) {
         gulp.task('create theme.config', function () {
             // determine path to site theme folder from theme config
             // force CSS path variable to use forward slashes for paths
-            let pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
             let siteVariable = "@siteFolder: '" + pathToSite + "/';";
 
             // rewrite site variable in theme.less

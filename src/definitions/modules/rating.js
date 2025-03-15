@@ -20,35 +20,35 @@
         : globalThis;
 
     $.fn.rating = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
         var returnedValue;
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.rating.settings, parameters)
                 : $.extend({}, $.fn.rating.settings);
 
-            var namespace       = settings.namespace;
-            var className       = settings.className;
-            var error           = settings.error;
-            var metadata        = settings.metadata;
-            var selector        = settings.selector;
-            var cssVars         = settings.cssVars;
+            var namespace = settings.namespace;
+            var className = settings.className;
+            var error = settings.error;
+            var metadata = settings.metadata;
+            var selector = settings.selector;
+            var cssVars = settings.cssVars;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var element         = this;
-            var instance        = $(this).data(moduleNamespace);
+            var element = this;
+            var instance = $(this).data(moduleNamespace);
 
-            var $module         = $(this);
-            var $icon           = $module.find(selector.icon);
+            var $module = $(this);
+            var $icon = $module.find(selector.icon);
 
             var initialLoad;
             var module;
@@ -96,8 +96,8 @@
                 setup: {
                     layout: function () {
                         var maxRating = module.get.maxRating();
-                        var icon      = module.get.icon();
-                        var html      = $.fn.rating.settings.templates.icon(maxRating, icon);
+                        var icon = module.get.icon();
+                        var html = $.fn.rating.settings.templates.icon(maxRating, icon);
                         module.debug('Generating icon html dynamically');
                         $module
                             .html(html)
@@ -131,10 +131,10 @@
                         ;
                     },
                     click: function () {
-                        var $activeIcon   = $(this);
+                        var $activeIcon = $(this);
                         var currentRating = module.get.rating();
-                        var rating        = $icon.index($activeIcon) + 1;
-                        var canClear      = settings.clearable === 'auto'
+                        var rating = $icon.index($activeIcon) + 1;
+                        var canClear = settings.clearable === 'auto'
                             ? $icon.length === 1
                             : settings.clearable
                         ;

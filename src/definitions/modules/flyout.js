@@ -20,20 +20,20 @@
         : globalThis;
 
     $.fn.flyout = function (parameters) {
-        var $allModules     = $(this);
-        var $window         = $(window);
-        var $document       = $(document);
-        var $html           = $('html');
-        var $head           = $('head');
-        var $body           = $('body');
+        var $allModules = $(this);
+        var $window = $(window);
+        var $document = $(document);
+        var $html = $('html');
+        var $head = $('head');
+        var $body = $('body');
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
-        var contextCheck    = function (context, win) {
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $body;
@@ -49,41 +49,41 @@
         var returnedValue;
 
         $allModules.each(function () {
-            var settings             = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.flyout.settings, parameters)
                 : $.extend({}, $.fn.flyout.settings);
 
-            var selector             = settings.selector;
-            var className            = settings.className;
-            var namespace            = settings.namespace;
-            var fields               = settings.fields;
-            var regExp               = settings.regExp;
-            var error                = settings.error;
+            var selector = settings.selector;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var fields = settings.fields;
+            var regExp = settings.regExp;
+            var error = settings.error;
 
-            var eventNamespace       = '.' + namespace;
-            var moduleNamespace      = 'module-' + namespace;
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-            var $module              = $(this);
-            var $context             = contextCheck(settings.context, window);
-            var $closeIcon           = $module.find(selector.close);
+            var $module = $(this);
+            var $context = contextCheck(settings.context, window);
+            var $closeIcon = $module.find(selector.close);
             var $inputs;
             var $focusedElement;
 
-            var $flyouts             = $module.children(selector.flyout);
-            var $pusher              = $context.children(selector.pusher);
+            var $flyouts = $module.children(selector.flyout);
+            var $pusher = $context.children(selector.pusher);
             var $style;
 
-            var isFlyoutComponent    = $module.hasClass('flyout');
+            var isFlyoutComponent = $module.hasClass('flyout');
 
-            var element              = this;
-            var instance             = isFlyoutComponent ? $module.data(moduleNamespace) : undefined;
+            var element = this;
+            var instance = isFlyoutComponent ? $module.data(moduleNamespace) : undefined;
 
             var ignoreRepeatedEvents = false;
-            var isBody               = $context[0] === $body[0];
-            var initialBodyMargin    = '';
-            var tempBodyMargin       = '';
-            var hadScrollbar         = false;
-            var windowRefocused      = false;
+            var isBody = $context[0] === $body[0];
+            var initialBodyMargin = '';
+            var tempBodyMargin = '';
+            var hadScrollbar = false;
+            var windowRefocused = false;
 
             var elementNamespace;
             var id;
@@ -240,7 +240,7 @@
 
                 event: {
                     keyboard: function (event) {
-                        var keyCode   = event.which;
+                        var keyCode = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding flyout');
@@ -266,7 +266,7 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            var clickedContext  = $context.is(event.target);
+                            var clickedContext = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -281,7 +281,7 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var keyCode   = event.which;
+                        var keyCode = event.which;
                         if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
                             module.hide();
                         }
@@ -408,11 +408,11 @@
 
                 add: {
                     inlineCSS: function () {
-                        var width     = module.cache.width || $module.outerWidth();
-                        var height    = module.cache.height || $module.outerHeight();
-                        var isRTL     = module.is.rtl();
+                        var width = module.cache.width || $module.outerWidth();
+                        var height = module.cache.height || $module.outerHeight();
+                        var isRTL = module.is.rtl();
                         var direction = module.get.direction();
-                        var distance  = {
+                        var distance = {
                             left: width,
                             right: -width,
                             top: height,
@@ -680,8 +680,8 @@
 
                 hideOthers: function (callback) {
                     var $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
-                    var flyoutCount   = $otherFlyouts.length;
-                    var callbackCount  = 0;
+                    var flyoutCount = $otherFlyouts.length;
+                    var callbackCount = 0;
                     callback = callback || function () {};
                     $otherFlyouts
                         .flyout('hide', function () {
@@ -808,7 +808,7 @@
                     autofocus: function () {
                         var $autofocus = $inputs.filter('[autofocus]');
                         var $rawInputs = $inputs.filter(':input');
-                        var $input     = ($autofocus.length > 0
+                        var $input = ($autofocus.length > 0
                             ? $autofocus
                             : ($rawInputs.length > 0
                                 ? $rawInputs
@@ -983,8 +983,8 @@
                         return !(self === top);
                     },
                     mobile: function () {
-                        var userAgent    = navigator.userAgent;
-                        var isMobile     = userAgent.match(regExp.mobile);
+                        var userAgent = navigator.userAgent;
+                        var isMobile = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -1378,7 +1378,7 @@
         },
         alert: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
+            var args = settings.templates.getArguments(arguments);
 
             return {
                 title: args.title,
@@ -1392,7 +1392,7 @@
         },
         confirm: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
+            var args = settings.templates.getArguments(arguments);
 
             return {
                 title: args.title,
@@ -1413,10 +1413,10 @@
             };
         },
         prompt: function () {
-            var $this    = this;
+            var $this = this;
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
-            var input    = $($.parseHTML(args.content)).filter('.ui.input');
+            var args = settings.templates.getArguments(arguments);
+            var input = $($.parseHTML(args.content)).filter('.ui.input');
             if (input.length === 0) {
                 args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }

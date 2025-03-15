@@ -20,18 +20,18 @@
         : globalThis;
 
     $.fn.modal = function (parameters) {
-        var $allModules    = $(this);
-        var $window        = $(window);
-        var $document      = $(document);
-        var $body          = $('body');
+        var $allModules = $(this);
+        var $window = $(window);
+        var $document = $(document);
+        var $body = $('body');
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck   = function (context, win) {
+        var contextCheck = function (context, win) {
             var $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $body;
@@ -47,23 +47,23 @@
         var returnedValue;
 
         $allModules.each(function () {
-            var settings    = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.modal.settings, parameters)
                 : $.extend({}, $.fn.modal.settings);
 
-            var selector        = settings.selector;
-            var className       = settings.className;
-            var namespace       = settings.namespace;
-            var fields          = settings.fields;
-            var error           = settings.error;
+            var selector = settings.selector;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var fields = settings.fields;
+            var error = settings.error;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module         = $(this);
-            var $context        = contextCheck(settings.context, window);
-            var isBody          = $context[0] === $body[0];
-            var $closeIcon      = $module.find(selector.closeIcon);
+            var $module = $(this);
+            var $context = contextCheck(settings.context, window);
+            var isBody = $context[0] === $body[0];
+            var $closeIcon = $module.find(selector.closeIcon);
             var $inputs;
 
             var $allModals;
@@ -74,8 +74,8 @@
 
             var isModalComponent = $module.hasClass('modal');
 
-            var element         = this;
-            var instance        = isModalComponent ? $module.data(moduleNamespace) : undefined;
+            var element = this;
+            var instance = isModalComponent ? $module.data(moduleNamespace) : undefined;
 
             var ignoreRepeatedEvents = false;
 
@@ -441,7 +441,7 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var keyCode   = event.which;
+                        var keyCode = event.which;
                         if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
                             module.hide();
                         }
@@ -463,7 +463,7 @@
                         },
                     },
                     mousedown: function (event) {
-                        var $target   = $(event.target);
+                        var $target = $(event.target);
                         var isRtl = module.is.rtl();
                         initialMouseDownInModal = $target.closest(selector.modal).length > 0;
                         if (initialMouseDownInModal) {
@@ -490,9 +490,9 @@
 
                             return;
                         }
-                        var $target   = $(event.target);
+                        var $target = $(event.target);
                         var isInModal = $target.closest(selector.modal).length > 0;
-                        var isInDOM   = $.contains(document.documentElement, event.target);
+                        var isInDOM = $.contains(document.documentElement, event.target);
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
                             module.debug('Dimmer clicked, hiding all modals');
                             if (settings.allowMultiple) {
@@ -512,7 +512,7 @@
                         }, delay);
                     },
                     keyboard: function (event) {
-                        var keyCode   = event.which;
+                        var keyCode = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding modal');
@@ -873,8 +873,8 @@
                 cacheSizes: function () {
                     $module.addClass(className.loading);
                     var scrollHeight = $module.prop('scrollHeight');
-                    var modalWidth   = $module.outerWidth();
-                    var modalHeight  = $module.outerHeight();
+                    var modalWidth = $module.outerWidth();
+                    var modalHeight = $module.outerHeight();
                     if (module.cache.pageHeight === undefined || modalHeight !== 0) {
                         $.extend(module.cache, {
                             pageHeight: $document.outerHeight(),
@@ -927,13 +927,13 @@
                         return settings.useFlex;
                     },
                     fit: function () {
-                        var contextHeight  = module.cache.contextHeight;
+                        var contextHeight = module.cache.contextHeight;
                         var verticalCenter = module.cache.contextHeight / 2;
-                        var topOffset      = module.cache.topOffset;
-                        var scrollHeight   = module.cache.scrollHeight;
-                        var height         = module.cache.height;
-                        var paddingHeight  = settings.padding;
-                        var startPosition  = verticalCenter + topOffset;
+                        var topOffset = module.cache.topOffset;
+                        var scrollHeight = module.cache.scrollHeight;
+                        var height = module.cache.height;
+                        var paddingHeight = settings.padding;
+                        var startPosition = verticalCenter + topOffset;
 
                         return scrollHeight > height
                             ? startPosition + scrollHeight + paddingHeight < contextHeight
@@ -991,7 +991,7 @@
                     autofocus: function () {
                         var $autofocus = $inputs.filter('[autofocus]');
                         var $rawInputs = $inputs.filter(':input');
-                        var $input     = ($autofocus.length > 0
+                        var $input = ($autofocus.length > 0
                             ? $autofocus
                             : ($rawInputs.length > 0
                                 ? $rawInputs
@@ -1466,7 +1466,7 @@
         },
         alert: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
+            var args = settings.templates.getArguments(arguments);
             var approveFn = args.handler;
 
             return {
@@ -1482,7 +1482,7 @@
         },
         confirm: function () {
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
+            var args = settings.templates.getArguments(arguments);
             var approveFn = function () {
                 args.handler(true);
             };
@@ -1507,10 +1507,10 @@
             };
         },
         prompt: function () {
-            var $this    = this;
+            var $this = this;
             var settings = this.get.settings();
-            var args     = settings.templates.getArguments(arguments);
-            var input    = $($.parseHTML(args.content)).filter('.ui.input');
+            var args = settings.templates.getArguments(arguments);
+            var input = $($.parseHTML(args.content)).filter('.ui.input');
             var approveFn = function () {
                 var settings = $this.get.settings();
                 var inputField = $this.get.element().find(settings.selector.prompt)[0];

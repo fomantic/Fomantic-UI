@@ -20,36 +20,36 @@
         : globalThis;
 
     $.fn.shape = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
         var returnedValue;
 
         $allModules.each(function () {
-            var settings       = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.shape.settings, parameters)
                 : $.extend({}, $.fn.shape.settings);
 
             // internal aliases
-            var namespace     = settings.namespace;
-            var selector      = settings.selector;
-            var error         = settings.error;
-            var className     = settings.className;
+            var namespace = settings.namespace;
+            var selector = settings.selector;
+            var error = settings.error;
+            var className = settings.className;
 
             // define namespaces for modules
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
             // selector cache
-            var $module       = $(this);
-            var $sides        = $module.find('>' + selector.sides);
-            var $side         = $sides.find('>' + selector.side);
+            var $module = $(this);
+            var $sides = $module.find('>' + selector.sides);
+            var $side = $sides.find('>' + selector.side);
 
             // private variables
             var nextIndex = false;
@@ -57,8 +57,8 @@
             var $nextSide;
 
             // standard module
-            var element       = this;
-            var instance      = $module.data(moduleNamespace);
+            var element = this;
+            var instance = $module.data(moduleNamespace);
             var module;
 
             module = {
@@ -94,7 +94,7 @@
 
                 repaint: function () {
                     module.verbose('Forcing repaint event');
-                    var shape          = $sides[0] || document.createElement('div');
+                    var shape = $sides[0] || document.createElement('div');
                     var fakeAssignment = shape.offsetWidth;
                 },
 
@@ -205,8 +205,8 @@
 
                     currentStageSize: function () {
                         var $activeSide = $side.filter('.' + className.active);
-                        var width       = $activeSide.outerWidth(true);
-                        var height      = $activeSide.outerHeight(true);
+                        var width = $activeSide.outerWidth(true);
+                        var height = $activeSide.outerHeight(true);
                         $module
                             .css({
                                 width: width,
@@ -216,20 +216,20 @@
                     },
 
                     stageSize: function () {
-                        var $clone      = $module.clone().addClass(className.loading);
-                        var $side       = $clone.find('>' + selector.sides + '>' + selector.side);
+                        var $clone = $module.clone().addClass(className.loading);
+                        var $side = $clone.find('>' + selector.sides + '>' + selector.side);
                         var $activeSide = $side.filter('.' + className.active);
-                        var $nextSide   = nextIndex
+                        var $nextSide = nextIndex
                             ? $side.eq(nextIndex)
                             : ($activeSide.next(selector.side).length > 0
                                 ? $activeSide.next(selector.side)
                                 : $side.first());
-                        var newWidth    = settings.width === 'next'
+                        var newWidth = settings.width === 'next'
                             ? $nextSide.outerWidth(true)
                             : (settings.width === 'initial'
                                 ? $module.width()
                                 : settings.width);
-                        var newHeight    = settings.height === 'next'
+                        var newHeight = settings.height === 'next'
                             ? $nextSide.outerHeight(true)
                             : (settings.height === 'initial'
                                 ? $module.height()

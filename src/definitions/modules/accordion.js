@@ -20,34 +20,34 @@
         : globalThis;
 
     $.fn.accordion = function (parameters) {
-        var $allModules     = $(this);
+        var $allModules = $(this);
 
-        var time            = Date.now();
-        var performance     = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query           = arguments[0];
-        var methodInvoked   = typeof query === 'string';
-        var queryArguments  = [].slice.call(arguments, 1);
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
         var returnedValue;
         $allModules.each(function () {
-            var settings        = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                 : $.extend({}, $.fn.accordion.settings);
 
-            var className       = settings.className;
-            var namespace       = settings.namespace;
-            var selector        = settings.selector;
-            var error           = settings.error;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var selector = settings.selector;
+            var error = settings.error;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module  = $(this);
-            var $title   = $module.find(selector.title);
+            var $module = $(this);
+            var $title = $module.find(selector.title);
             var $content = $module.find(selector.content);
 
-            var element  = this;
+            var element = this;
             var instance = $module.data(moduleNamespace);
             var observer;
             var module;
@@ -122,9 +122,9 @@
                         : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating = $activeContent.hasClass(className.animating);
-                    var isActive    = $activeContent.hasClass(className.active);
-                    var isOpen      = isActive && !isAnimating;
-                    var isOpening   = !isActive && isAnimating;
+                    var isActive = $activeContent.hasClass(className.active);
+                    var isOpen = isActive && !isAnimating;
+                    var isOpening = !isActive && isAnimating;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
                         if (settings.collapsible) {
@@ -145,8 +145,8 @@
                         : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
                     var isAnimating = $activeContent.hasClass(className.animating);
-                    var isActive    = $activeContent.hasClass(className.active);
-                    var isOpen      = isActive || isAnimating;
+                    var isActive = $activeContent.hasClass(className.active);
+                    var isOpen = isActive || isAnimating;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
 
@@ -212,10 +212,10 @@
                             : $(query).closest(selector.title))
                         : $(this).closest(selector.title);
                     var $activeContent = $activeTitle.next($content);
-                    var isAnimating    = $activeContent.hasClass(className.animating);
-                    var isActive       = $activeContent.hasClass(className.active);
-                    var isOpening      = !isActive && isAnimating;
-                    var isClosing      = isActive && isAnimating;
+                    var isAnimating = $activeContent.hasClass(className.animating);
+                    var isActive = $activeContent.hasClass(className.active);
+                    var isOpening = !isActive && isAnimating;
+                    var isClosing = isActive && isAnimating;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
                         settings.onClosing.call($activeContent);
@@ -269,10 +269,10 @@
                     var $activeTitle = index !== undefined
                         ? $title.eq(index)
                         : $(this).closest(selector.title);
-                    var $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title);
+                    var $parentTitles = $activeTitle.parents(selector.content).prev(selector.title);
                     var $activeAccordion = $activeTitle.closest(selector.accordion);
-                    var activeSelector   = selector.title + '.' + className.active + ':visible';
-                    var activeContent    = selector.content + '.' + className.active + ':visible';
+                    var activeSelector = selector.title + '.' + className.active + ':visible';
+                    var activeContent = selector.content + '.' + className.active + ':visible';
                     var $openTitles;
                     var $nestedTitles;
                     var $openContents;

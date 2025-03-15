@@ -3,10 +3,10 @@
  *******************************/
 
 // dependencies
-const gulp     = require('gulp');
+const gulp = require('gulp');
 
 // config
-const install  = require('./config/project/install');
+const install = require('./config/project/install');
 
 module.exports = function (callback) {
     console.info('Building Fomantic');

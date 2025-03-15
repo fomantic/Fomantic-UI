@@ -7,7 +7,7 @@ const console = require('@fomantic/better-console');
 const isSetup = require('./config/project/install').isSetup;
 
 const install = require('./install');
-const watch   = require('./watch');
+const watch = require('./watch');
 
 // export task
 module.exports = function (callback) {

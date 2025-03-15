@@ -1,7 +1,7 @@
 const
     browserslist = require('browserslist');
 const console = require('@fomantic/better-console');
-const config  = require('./user');
+const config = require('./user');
 const release = require('./project/release');
 
 let defaultBrowsers = browserslist(browserslist.defaults);

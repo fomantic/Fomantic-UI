@@ -20,38 +20,38 @@
         : globalThis;
 
     $.fn.checkbox = function (parameters) {
-        var $allModules    = $(this);
+        var $allModules = $(this);
 
-        var time           = Date.now();
-        var performance    = [];
+        var time = Date.now();
+        var performance = [];
 
-        var query          = arguments[0];
-        var methodInvoked  = typeof query === 'string';
+        var query = arguments[0];
+        var methodInvoked = typeof query === 'string';
         var queryArguments = [].slice.call(arguments, 1);
         var returnedValue;
 
         $allModules.each(function () {
-            var settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters);
+            var settings = $.extend(true, {}, $.fn.checkbox.settings, parameters);
 
-            var className       = settings.className;
-            var namespace       = settings.namespace;
-            var selector        = settings.selector;
-            var error           = settings.error;
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var selector = settings.selector;
+            var error = settings.error;
 
-            var eventNamespace  = '.' + namespace;
+            var eventNamespace = '.' + namespace;
             var moduleNamespace = 'module-' + namespace;
 
-            var $module         = $(this);
-            var $label          = $(this).children(selector.label);
-            var $input          = $(this).children(selector.input);
-            var input           = $input[0];
+            var $module = $(this);
+            var $label = $(this).children(selector.label);
+            var $input = $(this).children(selector.input);
+            var input = $input[0];
 
-            var initialLoad     = false;
+            var initialLoad = false;
             var shortcutPressed = false;
-            var instance        = $module.data(moduleNamespace);
+            var instance = $module.data(moduleNamespace);
 
             var observer;
-            var element         = this;
+            var element = this;
             var module;
 
             module = {
@@ -188,7 +188,7 @@
                         event.preventDefault();
                     },
                     keydown: function (event) {
-                        var key     = event.which;
+                        var key = event.which;
                         var keyCode = {
                             enter: 13,
                             space: 32,
