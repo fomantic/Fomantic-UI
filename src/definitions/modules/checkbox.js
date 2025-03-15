@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.checkbox = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
 
         var time           = Date.now();
         var performance    = [];
@@ -33,8 +32,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters);
+            var settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters);
 
             var className       = settings.className;
             var namespace       = settings.namespace;
@@ -148,8 +146,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
-                        $element = $(selector)
+                    var $element = $(selector)
                     ;
                     event = isFunction(module[event])
                         ? module[event]
@@ -178,8 +175,7 @@
                         }
                     },
                     click: function (event) {
-                        var
-                            $target = $(event.target)
+                        var $target = $(event.target)
                         ;
                         if ($target.is(selector.input)) {
                             module.verbose('Using default check action on initialized checkbox');
@@ -196,8 +192,7 @@
                         event.preventDefault();
                     },
                     keydown: function (event) {
-                        var
-                            key     = event.which;
+                        var key     = event.which;
                         var keyCode = {
                             enter: 13,
                             space: 32,
@@ -209,8 +204,7 @@
                         }
                         ;
 
-                        var
-                            r = module.get.radios().not(selector.disabled);
+                        var r = module.get.radios().not(selector.disabled);
                         var rIndex = r.index($module);
                         var rLen = r.length;
                         var checkIndex = false
@@ -351,8 +345,7 @@
 
                 get: {
                     radios: function () {
-                        var
-                            name = module.get.name()
+                        var name = module.get.name()
                         ;
 
                         return $('input[name="' + name + '"]').closest(selector.checkbox);
@@ -580,8 +573,7 @@
 
                 trigger: {
                     change: function () {
-                        var
-                            inputElement = $input[0]
+                        var inputElement = $input[0]
                         ;
                         if (inputElement) {
                             var events = document.createEvent('HTMLEvents');
@@ -632,8 +624,7 @@
                 },
 
                 uncheckOthers: function () {
-                    var
-                        $radios = module.get.otherRadios()
+                    var $radios = module.get.otherRadios()
                     ;
                     module.debug('Unchecking other radios', $radios);
                     $radios.removeClass(className.checked);
@@ -706,8 +697,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -729,8 +719,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -754,8 +743,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

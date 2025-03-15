@@ -12,8 +12,7 @@
 
 */
 
-const
-    // node dependencies
+const // node dependencies
     fs             = require('fs');
 const path           = require('path');
 const console        = require('@fomantic/better-console');
@@ -36,8 +35,7 @@ const version = project.version
 module.exports = function (callback) {
     const github = require('../../config/admin/github'); // eslint-disable-line global-require
 
-    let
-        index = -1;
+    let index = -1;
     let total = release.components.length;
     let timer;
     let stepRepo
@@ -58,8 +56,7 @@ module.exports = function (callback) {
             return;
         }
 
-        let
-            component            = release.components[index];
+        let component            = release.components[index];
         let outputDirectory      = path.resolve(path.join(release.outputRoot, component));
         let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
         let repoName             = release.componentRepoRoot + capitalizedComponent;

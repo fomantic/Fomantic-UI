@@ -2,8 +2,7 @@
  *          Watch Task
  *******************************/
 
-const
-    gulp = require('gulp');
+const gulp = require('gulp');
 const watch = require('../watch')
 ;
 

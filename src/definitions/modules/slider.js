@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.slider = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $document      = $(document);
         var $window        = $(window);
 
@@ -46,8 +45,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.slider.settings, parameters)
                     : $.extend({}, $.fn.slider.settings);
 
@@ -185,16 +183,14 @@
                         }
                     },
                     customLabel: function () {
-                        var
-                            $children   = $labels.find('.label');
+                        var $children   = $labels.find('.label');
                         var numChildren = $children.length;
                         var min         = module.get.min();
                         var max         = module.get.max();
                         var ratio
                         ;
                         $children.each(function (index) {
-                            var
-                                $child = $(this);
+                            var $child = $(this);
                             var attrValue = $child.attr('data-value')
                             ;
                             if (attrValue) {
@@ -221,8 +217,7 @@
                         var ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4)
                         ;
                         for (var i = 0; i <= len; i++) {
-                            var
-                                stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
+                            var stepValue =  Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             var labelText = module.get.label(i, stepValue);
                             var showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0;
                             var $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
@@ -318,8 +313,7 @@
                     down: function (event) {
                         event.preventDefault();
                         if (module.is.range()) {
-                            var
-                                eventPos = module.determine.eventPos(event);
+                            var eventPos = module.determine.eventPos(event);
                             var newPos = module.determine.pos(eventPos)
                             ;
                             // Special handling if range mode and both thumbs have the same value
@@ -365,8 +359,7 @@
                         }
                         var value = module.determine.valueFromEvent(event);
                         if (event.type === 'mousemove' && $currThumb === undefined) {
-                            var
-                                eventPos = module.determine.eventPos(event);
+                            var eventPos = module.determine.eventPos(event);
                             var newPos = module.determine.pos(eventPos)
                             ;
                             $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
@@ -384,8 +377,7 @@
                             }
                         }
                         if (module.get.step() === 0 || module.is.smooth()) {
-                            var
-                                thumbVal = module.thumbVal;
+                            var thumbVal = module.thumbVal;
                             var secondThumbVal = module.secondThumbVal;
                             var thumbSmoothVal = module.determine.smoothValueFromEvent(event)
                             ;
@@ -517,16 +509,14 @@
                     if (!multiplier) {
                         multiplier = 1;
                     }
-                    var
-                        step = module.get.step();
+                    var step = module.get.step();
                     var currValue = module.get.currentThumbValue()
                     ;
                     module.verbose('Taking a step');
                     if (step > 0) {
                         module.set.value(currValue + step * multiplier);
                     } else if (step === 0) {
-                        var
-                            precision = module.get.precision();
+                        var precision = module.get.precision();
                         var newValue = currValue + (multiplier / precision)
                         ;
                         module.set.value(Math.round(newValue * precision) / precision);
@@ -537,16 +527,14 @@
                     if (!multiplier) {
                         multiplier = 1;
                     }
-                    var
-                        step = module.get.step();
+                    var step = module.get.step();
                     var currValue = module.get.currentThumbValue()
                     ;
                     module.verbose('Going back a step');
                     if (step > 0) {
                         module.set.value(currValue - step * multiplier);
                     } else if (step === 0) {
-                        var
-                            precision = module.get.precision();
+                        var precision = module.get.precision();
                         var newValue = currValue - (multiplier / precision)
                         ;
                         module.set.value(Math.round(newValue * precision) / precision);
@@ -688,8 +676,7 @@
                     },
                     precision: function () {
                         if (module.cache.precision === undefined) {
-                            var
-                                decimalPlaces;
+                            var decimalPlaces;
                             var step = module.get.step()
                             ;
                             if (step !== 0) {
@@ -710,8 +697,7 @@
                     },
                     max: function () {
                         if (module.cache.max === undefined) {
-                            var
-                                step = module.get.step();
+                            var step = module.get.step();
                             var min = module.get.min();
                             var precision = module.get.precision();
                             var quotient = step === 0 ? 0 : Math.floor(Math.round(((settings.max - min) / step) * precision) / precision);
@@ -822,8 +808,7 @@
                         var gapRatio = 1;
 
                         if (settings.autoAdjustLabels) {
-                            var
-                                numLabels = module.get.numLabels();
+                            var numLabels = module.get.numLabels();
                             var primePlus = module.is.prime(numLabels) ? 1 : 0;
                             var trackLength = module.get.trackLength();
                             var gapCounter = 1
@@ -853,8 +838,7 @@
                             : pagePos - module.get.trackOffset() - module.get.trackStartPos();
                     },
                     closestThumb: function (eventPos) {
-                        var
-                            thumbPos = parseFloat(module.determine.thumbPos($thumb));
+                        var thumbPos = parseFloat(module.determine.thumbPos($thumb));
                         var thumbDelta = Math.abs(eventPos - thumbPos);
                         var secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb));
                         var secondThumbDelta = Math.abs(eventPos - secondThumbPos)
@@ -866,8 +850,7 @@
                         return thumbDelta <= secondThumbDelta ? $thumb : $secondThumb;
                     },
                     closestThumbPos: function (eventPos) {
-                        var
-                            thumbPos = parseFloat(module.determine.thumbPos($thumb));
+                        var thumbPos = parseFloat(module.determine.thumbPos($thumb));
                         var thumbDelta = Math.abs(eventPos - thumbPos);
                         var secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb));
                         var secondThumbDelta = Math.abs(eventPos - secondThumbPos)
@@ -882,8 +865,7 @@
                         ;
                     },
                     positionFromValue: function (val) {
-                        var
-                            min = module.get.min();
+                        var min = module.get.min();
                         var max = module.get.max();
                         var value = val > max
                             ? max
@@ -897,8 +879,7 @@
                         return position;
                     },
                     positionFromRatio: function (ratio) {
-                        var
-                            trackLength = module.get.trackLength();
+                        var trackLength = module.get.trackLength();
                         var step = module.get.step();
                         var position = Math.round(ratio * trackLength);
                         var adjustedPos = step === 0 ? position : Math.round(position / step) * step
@@ -908,8 +889,7 @@
                         return adjustedPos;
                     },
                     valueFromEvent: function (event) {
-                        var
-                            eventPos = module.determine.eventPos(event);
+                        var eventPos = module.determine.eventPos(event);
                         var newPos = module.determine.pos(eventPos);
                         var value
                         ;
@@ -924,8 +904,7 @@
                         return value;
                     },
                     smoothValueFromEvent: function (event) {
-                        var
-                            min = module.get.min();
+                        var min = module.get.min();
                         var max = module.get.max();
                         var trackLength = module.get.trackLength();
                         var eventPos = module.determine.eventPos(event);
@@ -946,8 +925,7 @@
                     },
                     eventPos: function (event) {
                         if (event.type === 'touchmove' || event.type === 'touchend') {
-                            var
-                                touchEvent = event.touches ? event : event.originalEvent;
+                            var touchEvent = event.touches ? event : event.originalEvent;
                             var touch = touchEvent.changedTouches[0]; // fall back to first touch if correct touch not found
                             for (var i = 0; i < touchEvent.touches.length; i++) {
                                 if (touchEvent.touches[i].identifier === touchIdentifier) {
@@ -956,23 +934,20 @@
                                     break;
                                 }
                             }
-                            var
-                                touchY = touch.pageY;
+                            var touchY = touch.pageY;
                             var touchX = touch.pageX
                             ;
 
                             return module.is.vertical() ? touchY : touchX;
                         }
-                        var
-                            clickY = event.pageY || event.originalEvent.pageY;
+                        var clickY = event.pageY || event.originalEvent.pageY;
                         var clickX = event.pageX || event.originalEvent.pageX
                         ;
 
                         return module.is.vertical() ? clickY : clickX;
                     },
                     value: function (position) {
-                        var
-                            precision = module.get.precision();
+                        var precision = module.get.precision();
                         var startPos = module.is.reversed() ? module.get.trackEndPos() : module.get.trackStartPos();
                         var endPos = module.is.reversed() ? module.get.trackStartPos() : module.get.trackEndPos();
                         var ratio = (position - startPos) / (endPos - startPos);
@@ -992,8 +967,7 @@
                         return Math.round((difference + module.get.min()) * precision) / precision;
                     },
                     keyMovement: function (event) {
-                        var
-                            key = event.which;
+                        var key = event.which;
                         var downArrow = module.is.vertical()
                             ? (module.is.reversed() ? keys.downArrow : keys.upArrow)
                             : keys.downArrow;
@@ -1025,8 +999,7 @@
                 },
 
                 handleNewValuePosition: function (val) {
-                    var
-                        min = module.get.min();
+                    var min = module.get.min();
                     var max = module.get.max();
                     var newPos
                     ;
@@ -1050,8 +1023,7 @@
                             }
                             var $children = $labels.find('.label');
                             $children.each(function (index) {
-                                var
-                                    $child = $(this);
+                                var $child = $(this);
                                 var attrValue = $child.attr('data-value')
                                 ;
                                 if (attrValue) {
@@ -1084,8 +1056,7 @@
                     rangeValue: function (first, second, fireChange) {
                         fireChange = fireChange !== false;
                         if (module.is.range()) {
-                            var
-                                min = module.get.min();
+                            var min = module.get.min();
                             var max = module.get.max();
                             var toReset = previousValue === undefined
                             ;
@@ -1134,8 +1105,7 @@
 
                 update: {
                     value: function (newValue, callback) {
-                        var
-                            min = module.get.min();
+                        var min = module.get.min();
                         var max = module.get.max()
                         ;
                         if (newValue <= min) {
@@ -1170,8 +1140,7 @@
                         }
                     },
                     position: function (newValue, $element) {
-                        var
-                            newPos = module.handleNewValuePosition(newValue);
+                        var newPos = module.handleNewValuePosition(newValue);
                         var $targetThumb = $element || $currThumb;
                         var thumbVal = module.thumbVal || module.get.min();
                         var secondThumbVal = module.secondThumbVal || module.get.min()
@@ -1193,8 +1162,7 @@
                             thumbVal = newValue;
                         }
                         module.set.active(thumbVal, secondThumbVal);
-                        var
-                            trackPosValue;
+                        var trackPosValue;
                         var thumbPosValue;
                         var min = module.get.min();
                         var max = module.get.max();
@@ -1224,8 +1192,7 @@
                         module.debug('Setting slider position to ' + newPos);
                     },
                     labelPosition: function (ratio, $label) {
-                        var
-                            startMargin = module.get.trackStartMargin();
+                        var startMargin = module.get.trackStartMargin();
                         var endMargin   = module.get.trackEndMargin();
                         var posDir = module.is.vertical()
                             ? (module.is.reversed() ? 'bottom' : 'top')
@@ -1250,8 +1217,7 @@
 
                 read: {
                     metadata: function () {
-                        var
-                            data = {
+                        var data = {
                                 thumbVal: $module.data(metadata.thumbVal),
                                 secondThumbVal: $module.data(metadata.secondThumbVal),
                             }
@@ -1340,8 +1306,7 @@
 
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -1363,8 +1328,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1389,8 +1353,7 @@
                 },
 
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

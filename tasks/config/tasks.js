@@ -101,8 +101,7 @@ module.exports = {
         plumber: {
             less: {
                 errorHandler: function (error) {
-                    let
-                        regExp = {
+                    let regExp = {
                             variable: /@(\S.*?)\s/,
                         };
                     let element

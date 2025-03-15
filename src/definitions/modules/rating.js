@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.rating = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -32,8 +31,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.rating.settings, parameters)
                     : $.extend({}, $.fn.rating.settings);
 
@@ -99,8 +97,7 @@
 
                 setup: {
                     layout: function () {
-                        var
-                            maxRating = module.get.maxRating();
+                        var maxRating = module.get.maxRating();
                         var icon      = module.get.icon();
                         var html      = $.fn.rating.settings.templates.icon(maxRating, icon)
                         ;
@@ -114,8 +111,7 @@
 
                 event: {
                     mouseenter: function () {
-                        var
-                            $activeIcon = $(this)
+                        var $activeIcon = $(this)
                         ;
                         $activeIcon
                             .nextAll()
@@ -139,8 +135,7 @@
                         ;
                     },
                     click: function () {
-                        var
-                            $activeIcon   = $(this);
+                        var $activeIcon   = $(this);
                         var currentRating = module.get.rating();
                         var rating        = $icon.index($activeIcon) + 1;
                         var canClear      = settings.clearable === 'auto'
@@ -236,8 +231,7 @@
                         return settings.maxRating;
                     },
                     rating: function () {
-                        var
-                            currentRating = $icon.filter('.' + className.active).length
+                        var currentRating = $icon.filter('.' + className.active).length
                         ;
                         module.verbose('Current rating retrieved', currentRating);
 
@@ -247,8 +241,7 @@
 
                 set: {
                     rating: function (rating) {
-                        var
-                            ratingIndex = Math.floor(
+                        var ratingIndex = Math.floor(
                                 rating - 1 >= 0
                                     ? rating - 1
                                     : 0
@@ -350,8 +343,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -373,8 +365,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -401,8 +392,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -531,8 +521,7 @@
                 return string.replace(badChars, (chr) => escape[chr]);
             },
             icon: function (maxRating, iconClass) {
-                var
-                    icon = 1;
+                var icon = 1;
                 var html = '';
                 var escape = $.fn.rating.settings.templates.escape
                 ;

@@ -2,8 +2,7 @@
             Set-up
 *******************************/
 
-const
-    path           = require('path');
+const path           = require('path');
 const requireDotFile = require('require-dot-file');
 const defaults       = require('../defaults');
 const release        = require('./release')
@@ -82,8 +81,7 @@ module.exports = {
 
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function () {
-        let
-            config = when.hasConfig()
+        let config = when.hasConfig()
         ;
 
         return config.autoInstall;
@@ -91,11 +89,9 @@ module.exports = {
 
     // checks if files are in a PM directory
     getPackageManager: function (directory) {
-        let
-            // returns last matching result (avoid sub-module detection)
+        let // returns last matching result (avoid sub-module detection)
             walk = function (directory) {
-                let
-                    pathArray     = directory.split(path.sep);
+                let pathArray     = directory.split(path.sep);
                 let folder        = pathArray[pathArray.length - 1];
                 let nextDirectory = path.join(directory, path.sep, '..')
                 ;
@@ -133,11 +129,9 @@ module.exports = {
 
     // checks if files is PMed submodule
     isSubModule: function (directory) {
-        let
-            moduleFolders = 0;
+        let moduleFolders = 0;
         let walk = function (directory) {
-            let
-                pathArray     = directory.split(path.sep);
+            let pathArray     = directory.split(path.sep);
             let folder        = pathArray[pathArray.length - 2];
             let nextDirectory = path.join(directory, path.sep, '..')
                 ;
@@ -161,8 +155,7 @@ module.exports = {
     },
 
     createJSON: function (answers) {
-        let
-            json = {
+        let json = {
                 paths: {
                     source: {},
                     output: {},

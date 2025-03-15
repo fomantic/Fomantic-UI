@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.site = function (parameters) {
-        var
-            time           = Date.now();
+        var time           = Date.now();
         var performance    = [];
 
         var query          = arguments[0];
@@ -78,8 +77,7 @@
 
             enabled: {
                 modules: function (modules) {
-                    var
-                        enabledModules = []
+                    var enabledModules = []
                     ;
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
@@ -94,8 +92,7 @@
 
             disabled: {
                 modules: function (modules) {
-                    var
-                        disabledModules = []
+                    var disabledModules = []
                     ;
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
@@ -119,8 +116,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
-                            namespace = module.moduleExists(name)
+                        var namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
                                 : true;
                         var $existingModules
@@ -146,8 +142,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
-                            $existingModules
+                        var $existingModules
                         ;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
@@ -274,8 +269,7 @@
             },
             performance: {
                 log: function (message) {
-                    var
-                        currentTime;
+                    var currentTime;
                     var executionTime;
                     var previousTime
                     ;
@@ -297,8 +291,7 @@
                     }, 500);
                 },
                 display: function () {
-                    var
-                        title = settings.name + ':';
+                    var title = settings.name + ':';
                     var totalTime = 0
                     ;
                     time = false;
@@ -322,8 +315,7 @@
                 },
             },
             invoke: function (query, passedArguments, context) {
-                var
-                    object = instance;
+                var object = instance;
                 var maxDepth;
                 var found;
                 var response

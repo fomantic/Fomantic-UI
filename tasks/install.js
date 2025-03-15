@@ -12,8 +12,7 @@
    * Standard installer runs asking for paths to site files etc.
 */
 
-const
-    // node dependencies
+const // node dependencies
     fs             = require('fs-extra');
 const path           = require('path');
 const extend         = require('extend');
@@ -45,8 +44,7 @@ const source         = install.source
 
 // Export install task
 module.exports = function (callback) {
-    let
-        currentConfig = requireDotFile('semantic.json', process.cwd());
+    let currentConfig = requireDotFile('semantic.json', process.cwd());
     let manager       = install.getPackageManager();
     let rootQuestions = questions.root;
     let installFolder = false;
@@ -83,8 +81,7 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        let
-            updateFolder = path.join(manager.root, currentConfig.base);
+        let updateFolder = path.join(manager.root, currentConfig.base);
         let updatePaths  = {
             config: path.join(manager.root, files.config),
             tasks: path.join(updateFolder, folders.tasks),
@@ -230,8 +227,7 @@ module.exports = function (callback) {
              Paths
         --------------- */
 
-        let
-            installPaths = {
+        let installPaths = {
                 config: files.config,
                 configFolder: folders.config,
                 site: answers.site || folders.site,
@@ -343,8 +339,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create theme.config', function () {
-            let
-                // determine path to site theme folder from theme config
+            let // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
             let siteVariable = "@siteFolder: '" + pathToSite + "/';"
@@ -378,8 +373,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            let
-                jsonConfig = install.createJSON(answers)
+            let jsonConfig = install.createJSON(answers)
             ;
 
             // adjust variables in theme.less

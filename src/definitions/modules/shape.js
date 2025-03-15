@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.shape = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -34,8 +33,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings       = $.isPlainObject(parameters)
+            var settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
                     : $.extend({}, $.fn.shape.settings);
 
@@ -98,8 +96,7 @@
 
                 repaint: function () {
                     module.verbose('Forcing repaint event');
-                    var
-                        shape          = $sides[0] || document.createElement('div');
+                    var shape          = $sides[0] || document.createElement('div');
                     var fakeAssignment = shape.offsetWidth
                     ;
                 },
@@ -210,8 +207,7 @@
                     },
 
                     currentStageSize: function () {
-                        var
-                            $activeSide = $side.filter('.' + className.active);
+                        var $activeSide = $side.filter('.' + className.active);
                         var width       = $activeSide.outerWidth(true);
                         var height      = $activeSide.outerHeight(true)
                         ;
@@ -224,8 +220,7 @@
                     },
 
                     stageSize: function () {
-                        var
-                            $clone      = $module.clone().addClass(className.loading);
+                        var $clone      = $module.clone().addClass(className.loading);
                         var $side       = $clone.find('>' + selector.sides + '>' + selector.side);
                         var $activeSide = $side.filter('.' + className.active);
                         var $nextSide   = nextIndex
@@ -294,8 +289,7 @@
 
                             return;
                         }
-                        var
-                            transform = module.get.transform[type]()
+                        var transform = module.get.transform[type]()
                         ;
                         if (!module.is.animating()) {
                             module.debug('Flipping ' + type, $nextSide);
@@ -337,8 +331,7 @@
 
                     transform: {
                         up: function () {
-                            var
-                                translateZ = $activeSide.outerHeight(true) / 2;
+                            var translateZ = $activeSide.outerHeight(true) / 2;
                             var translateY = $nextSide.outerHeight(true) - translateZ
                             ;
 
@@ -348,8 +341,7 @@
                         },
 
                         down: function () {
-                            var
-                                translate = {
+                            var translate = {
                                     z: $activeSide.outerHeight(true) / 2,
                                 }
                             ;
@@ -360,8 +352,7 @@
                         },
 
                         left: function () {
-                            var
-                                translateZ = $activeSide.outerWidth(true) / 2;
+                            var translateZ = $activeSide.outerWidth(true) / 2;
                             var translateX = $nextSide.outerWidth(true) - translateZ
                             ;
 
@@ -371,8 +362,7 @@
                         },
 
                         right: function () {
-                            var
-                                translate = {
+                            var translate = {
                                     z: $activeSide.outerWidth(true) / 2,
                                 }
                             ;
@@ -383,8 +373,7 @@
                         },
 
                         over: function () {
-                            var
-                                translate = {
+                            var translate = {
                                     x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                 }
                             ;
@@ -395,8 +384,7 @@
                         },
 
                         back: function () {
-                            var
-                                translate = {
+                            var translate = {
                                     x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                 }
                             ;
@@ -418,8 +406,7 @@
                 stage: {
 
                     above: function () {
-                        var
-                            box = {
+                        var box = {
                                 origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
                                     active: $nextSide.outerHeight(true) / 2,
@@ -443,8 +430,7 @@
                     },
 
                     below: function () {
-                        var
-                            box = {
+                        var box = {
                                 origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
                                     active: $nextSide.outerHeight(true) / 2,
@@ -468,8 +454,7 @@
                     },
 
                     left: function () {
-                        var
-                            height = {
+                        var height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
                             };
@@ -497,8 +482,7 @@
                     },
 
                     right: function () {
-                        var
-                            height = {
+                        var height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
                             };
@@ -526,8 +510,7 @@
                     },
 
                     behind: function () {
-                        var
-                            height = {
+                        var height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
                             };
@@ -605,8 +588,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -628,8 +610,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -656,8 +637,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

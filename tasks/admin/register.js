@@ -14,8 +14,7 @@ const process = require('child_process');
 // config
 const release = require('../config/admin/release');
 
-let
-    // register components and distributions
+let // register components and distributions
     repos   = release.distributions.concat(release.components);
 let total   = repos.length;
 let index   = -1;
@@ -34,8 +33,7 @@ module.exports = function (callback) {
 
             return;
         }
-        let
-            repo            = repos[index].toLowerCase();
+        let repo            = repos[index].toLowerCase();
         let outputDirectory = release.outputRoot + repo + '/';
         let exec            = process.exec;
         let execSettings    = { cwd: outputDirectory };

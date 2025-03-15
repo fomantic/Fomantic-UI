@@ -1,6 +1,5 @@
 function moduleTests(ui) {
-    let
-        module    = ui.module;
+    let module    = ui.module;
     let element   = ui.element;
     let singleton = ui.singleton;
     let name      = $.fn[module].settings.name;

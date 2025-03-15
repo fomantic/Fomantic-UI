@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.state = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -45,8 +44,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.state.settings, parameters)
                     : $.extend({}, $.fn.state.settings);
 
@@ -113,8 +111,7 @@
 
                 add: {
                     defaults: function () {
-                        var
-                            userStates = parameters && $.isPlainObject(parameters.states)
+                        var userStates = parameters && $.isPlainObject(parameters.states)
                                 ? parameters.states
                                 : {}
                         ;
@@ -203,8 +200,7 @@
 
                 toggle: {
                     state: function () {
-                        var
-                            apiRequest;
+                        var apiRequest;
                         var requestCancelled
                         ;
                         if (module.allows('active') && module.is.enabled()) {
@@ -356,8 +352,7 @@
 
                 flash: {
                     text: function (text, duration, callback) {
-                        var
-                            previousText = module.get.text();
+                        var previousText = module.get.text();
                         module.debug('Flashing text message', text, duration);
                         text = text || settings.text.flash;
                         duration = duration || settings.flashDuration;
@@ -373,8 +368,7 @@
                 reset: {
                     // on mouseout sets text to previous value
                     text: function () {
-                        var
-                            activeText   = text.active || $module.data(metadata.storedText);
+                        var activeText   = text.active || $module.data(metadata.storedText);
                         var inactiveText = text.inactive || $module.data(metadata.storedText)
                         ;
                         if (module.is.textEnabled()) {
@@ -391,8 +385,7 @@
 
                 update: {
                     text: function (text) {
-                        var
-                            currentText = module.get.text();
+                        var currentText = module.get.text();
                         if (text && text !== currentText) {
                             module.debug('Updating text', text);
                             if (settings.selector.text) {
@@ -464,8 +457,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -487,8 +479,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -512,8 +503,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

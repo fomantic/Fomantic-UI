@@ -2,8 +2,7 @@
  Build Task
  *******************************/
 
-const
-    gulp      = require('gulp');
+const gulp      = require('gulp');
 
 // gulp dependencies
 const chmod     = require('gulp-chmod');

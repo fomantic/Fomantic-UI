@@ -12,8 +12,7 @@
 
 */
 
-const
-    // node dependencies
+const // node dependencies
     fs        = require('fs-extra');
 const path      = require('path');
 const console   = require('@fomantic/better-console');
@@ -29,8 +28,7 @@ const oAuth     = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oa
 ;
 
 module.exports = function (callback) {
-    let
-        index = -1;
+    let index = -1;
     let total = release.distributions.length;
     let timer;
     let stepRepo
@@ -52,8 +50,7 @@ module.exports = function (callback) {
             return;
         }
 
-        let
-            component          = release.distributions[index];
+        let component          = release.distributions[index];
         let lowerCaseComponent = component.toLowerCase();
         let outputDirectory    = path.resolve(release.outputRoot + lowerCaseComponent);
         let repoName           = release.distRepoRoot + component;

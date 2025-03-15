@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.transition = function () {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -34,8 +33,7 @@
         var returnedValue
         ;
         $allModules.each(function (index) {
-            var
-                $module  = $(this);
+            var $module  = $(this);
             var element  = this;
 
             // set at run time
@@ -105,8 +103,7 @@
 
                 forceRepaint: function () {
                     module.verbose('Forcing element repaint');
-                    var
-                        $parentElement = $module.parent();
+                    var $parentElement = $module.parent();
                     var $nextElement = $module.next()
                     ;
                     if ($nextElement.length === 0) {
@@ -118,14 +115,12 @@
 
                 repaint: function () {
                     module.verbose('Repainting element');
-                    var
-                        fakeAssignment = element.offsetWidth
+                    var fakeAssignment = element.offsetWidth
                     ;
                 },
 
                 delay: function (interval) {
-                    var
-                        direction = module.get.animationDirection();
+                    var direction = module.get.animationDirection();
                     var shouldReverse;
                     var delay
                     ;
@@ -222,8 +217,7 @@
 
                 force: {
                     visible: function () {
-                        var
-                            style          = $module.attr('style');
+                        var style          = $module.attr('style');
                         var userStyle      = module.get.userStyle(style);
                         var displayType    = module.get.displayType();
                         var overrideStyle  = userStyle + 'display: ' + displayType + ' !important;';
@@ -243,8 +237,7 @@
                         return true;
                     },
                     hidden: function () {
-                        var
-                            style          = $module.attr('style');
+                        var style          = $module.attr('style');
                         var currentDisplay = $module.css('display');
                         var emptyStyle     = style === undefined || style === ''
                         ;
@@ -263,8 +256,7 @@
 
                 has: {
                     direction: function (animation) {
-                        var
-                            hasDirection = false
+                        var hasDirection = false
                         ;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
@@ -279,8 +271,7 @@
                         return hasDirection;
                     },
                     inlineDisplay: function () {
-                        var
-                            style = $module.attr('style') || ''
+                        var style = $module.attr('style') || ''
                         ;
 
                         return Array.isArray(style.match(/display.*?;/, ''));
@@ -398,8 +389,7 @@
 
                 restore: {
                     conditions: function () {
-                        var
-                            animation = module.get.currentAnimation()
+                        var animation = module.get.currentAnimation()
                         ;
                         if (animation) {
                             $module
@@ -413,8 +403,7 @@
 
                 add: {
                     failSafe: function () {
-                        var
-                            duration = module.get.duration()
+                        var duration = module.get.duration()
                         ;
                         module.timer = setTimeout(function () {
                             $module.triggerHandler('animationend');
@@ -516,8 +505,7 @@
                         });
                     },
                     animationClass: function (animation) {
-                        var
-                            animationClass = animation || settings.animation;
+                        var animationClass = animation || settings.animation;
                         var directionClass = module.can.transition() && !module.has.direction()
                             ? module.get.direction() + ' '
                             : ''
@@ -544,8 +532,7 @@
                             : className.outward;
                     },
                     animationDirection: function (animation) {
-                        var
-                            direction
+                        var direction
                         ;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
@@ -609,8 +596,7 @@
 
                 can: {
                     transition: function (forced) {
-                        var
-                            animation         = settings.animation;
+                        var animation         = settings.animation;
                         var transitionExists  = module.get.transitionExists(animation);
                         var displayType       = module.get.displayType(false);
                         var elementClass;
@@ -833,8 +819,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -856,8 +841,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -885,8 +869,7 @@
                 },
                 // modified for transition to return invoke success
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

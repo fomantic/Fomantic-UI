@@ -24,8 +24,7 @@
         : globalThis;
 
     $.fn.api = function (parameters) {
-        var
-            // use window context if none specified
+        var // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
                 : $(this);
@@ -52,8 +51,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.api.settings, parameters)
                     : $.extend({}, $.fn.api.settings);
 
@@ -119,8 +117,7 @@
 
                 bind: {
                     events: function () {
-                        var
-                            triggerEvent = module.get.event()
+                        var triggerEvent = module.get.event()
                         ;
                         if (triggerEvent) {
                             module.verbose('Attaching API events to element', triggerEvent);
@@ -150,8 +147,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        var
-                            response
+                        var response
                         ;
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
@@ -356,8 +352,7 @@
 
                 add: {
                     urlData: function (url, urlData) {
-                        var
-                            requiredVariables;
+                        var requiredVariables;
                         var optionalVariables
                         ;
                         if (url) {
@@ -367,8 +362,7 @@
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    var
-                                        // allow legacy {$var} style
+                                    var // allow legacy {$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(2, -1)
                                             : templatedString.slice(1, -1);
@@ -398,8 +392,7 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    var
-                                        // allow legacy {/$var} style
+                                    var // allow legacy {/$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(3, -1)
                                             : templatedString.slice(2, -1);
@@ -429,8 +422,7 @@
                         return url;
                     },
                     formData: function (data) {
-                        var
-                            formData = {};
+                        var formData = {};
                         var hasOtherData;
                         var useFormDataApi = settings.serializeForm === 'formdata'
                         ;
@@ -442,8 +434,7 @@
                             settings.processData = settings.processData !== undefined ? settings.processData : false;
                             settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
-                            var
-                                formArray = $form.serializeArray();
+                            var formArray = $form.serializeArray();
                             var pushes = {};
                             var pushValues = {};
                             var build = function (base, key, value) {
@@ -462,8 +453,7 @@
                                 if (!regExp.validate.test(el.name)) {
                                     return;
                                 }
-                                var
-                                    isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
+                                var isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
                                 var floatValue = parseFloat(el.value);
                                 var value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
@@ -544,8 +534,7 @@
                             // nothing special
                         },
                         done: function (response, textStatus, xhr) {
-                            var
-                                context            = this;
+                            var context            = this;
                             var elapsedTime        = Date.now() - requestStartTime;
                             var timeLeft           = settings.loadingDuration - elapsedTime;
                             var translatedResponse = isFunction(settings.onResponse)
@@ -573,8 +562,7 @@
                             }, timeLeft);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var
-                                context     = this;
+                            var context     = this;
                             var elapsedTime = Date.now() - requestStartTime;
                             var timeLeft    = settings.loadingDuration - elapsedTime
                             ;
@@ -603,8 +591,7 @@
                             settings.onSuccess.call(context, response, $module, xhr);
                         },
                         complete: function (firstParameter, secondParameter) {
-                            var
-                                xhr;
+                            var xhr;
                             var response
                             ;
                             // have to guess callback parameters based on request success
@@ -619,8 +606,7 @@
                             settings.onComplete.call(context, response, $module, xhr);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var
-                                // pull response from xhr if available
+                            var // pull response from xhr if available
                                 response     = module.get.responseFromXHR(xhr);
                             var errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                             ;
@@ -670,8 +656,7 @@
                     },
 
                     mockedXHR: function () {
-                        var
-                            // xhr does not simulate these properties of xhr but must return them
+                        var // xhr does not simulate these properties of xhr but must return them
                             textStatus     = false;
                         var status         = false;
                         var httpMessage    = false;
@@ -716,8 +701,7 @@
                     },
 
                     xhr: function () {
-                        var
-                            xhr
+                        var xhr
                         ;
                         // ajax request promise
                         xhr = $.ajax(ajaxSettings)
@@ -779,8 +763,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        var
-                            runSettings
+                        var runSettings
                         ;
                         runSettings = settings.beforeSend.call($module, settings);
                         if (runSettings) {
@@ -812,8 +795,7 @@
                             : $.extend(true, {}, settings);
                     },
                     urlEncodedValue: function (value) {
-                        var
-                            decodedValue   = window.decodeURIComponent(value);
+                        var decodedValue   = window.decodeURIComponent(value);
                         var encodedValue   = window.encodeURIComponent(value);
                         var alreadyEncoded = decodedValue !== value
                         ;
@@ -827,8 +809,7 @@
                         return encodedValue;
                     },
                     defaultData: function () {
-                        var
-                            data = {}
+                        var data = {}
                         ;
                         if (!isWindow(element)) {
                             if (module.is.input()) {
@@ -889,8 +870,7 @@
                 },
 
                 abort: function () {
-                    var
-                        xhr = module.get.xhr()
+                    var xhr = module.get.xhr()
                     ;
                     if (xhr && xhr.state() !== 'resolved') {
                         module.debug('Cancelling API request');
@@ -955,8 +935,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -978,8 +957,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1003,8 +981,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

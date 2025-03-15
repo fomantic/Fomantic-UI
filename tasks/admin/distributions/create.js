@@ -9,8 +9,7 @@
   * update package.json file
 */
 
-const
-    // node dependencies
+const // node dependencies
     fs              = require('fs');
 const path            = require('path');
 const gulp            = require('gulp');
@@ -32,20 +31,17 @@ const version         = project.version
 ;
 
 module.exports = function (callback) {
-    let
-        index;
+    let index;
     let tasks = []
     ;
 
     for (index in release.distributions) {
-        let
-            distribution = release.distributions[index]
+        let distribution = release.distributions[index]
     ;
 
         // streams... designed to save time and make coding fun...
         (function (distribution) {
-            let
-                distLowerCase   = distribution.toLowerCase();
+            let distLowerCase   = distribution.toLowerCase();
             let outputDirectory = path.join(release.outputRoot, distLowerCase);
             let packageFile     = path.join(outputDirectory, release.files.npm);
             let regExp          = {
@@ -61,8 +57,7 @@ module.exports = function (callback) {
             // get files for meteor
             gatherFiles = function (dir) {
                 dir = dir || path.resolve('.');
-                let
-                    list  = fs.readdirSync(dir);
+                let list  = fs.readdirSync(dir);
                 let omitted = [
                     '.git',
                     'node_modules',
@@ -76,8 +71,7 @@ module.exports = function (callback) {
                 let files = []
                 ;
                 list.forEach(function (file) {
-                    let
-                        isOmitted = omitted.indexOf(file) > -1;
+                    let isOmitted = omitted.indexOf(file) > -1;
                     let filePath  = path.join(dir, file);
                     let stat      = fs.statSync(filePath)
                     ;
@@ -105,8 +99,7 @@ module.exports = function (callback) {
             };
 
             tasks.push(function () {
-                let
-                    files     = gatherFiles(outputDirectory);
+                let files     = gatherFiles(outputDirectory);
                 let filenames = createList(files)
                 ;
                 gulp.src(release.templates.meteor[distLowerCase])
@@ -121,8 +114,7 @@ module.exports = function (callback) {
 
             if (distribution === 'CSS') {
                 tasks.push(function () {
-                    let
-                        themes;
+                    let themes;
                     let components;
                     let releases
                     ;
@@ -140,8 +132,7 @@ module.exports = function (callback) {
                 });
             } else if (distribution === 'LESS') {
                 tasks.push(function () {
-                    let
-                        definitions;
+                    let definitions;
                     let overridesImport;
                     let lessImport;
                     let themeImport;

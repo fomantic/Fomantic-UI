@@ -2,8 +2,7 @@
  Build Task
  *******************************/
 
-const
-    gulp       = require('gulp');
+const gulp       = require('gulp');
 
 // node dependencies
 const console    = require('@fomantic/better-console');
@@ -132,8 +131,7 @@ module.exports = function (callback) {
 };
 
 // We keep the changed files in an array to call build with all of them at the same time
-let
-    timeout;
+let timeout;
 let files = []
 ;
 

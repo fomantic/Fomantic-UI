@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.flyout = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
         var $window         = $(window);
         var $document       = $(document);
         var $html           = $('html');
@@ -51,8 +50,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings             = $.isPlainObject(parameters)
+            var settings             = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.flyout.settings, parameters)
                     : $.extend({}, $.fn.flyout.settings);
 
@@ -130,8 +128,7 @@
                             $actions.empty();
                         }
                         settings.actions.forEach(function (el) {
-                            var
-                                icon = el[fields.icon]
+                            var icon = el[fields.icon]
                                     ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                     : '';
                             var text = module.helpers.escape(el[fields.text] || '', settings);
@@ -245,8 +242,7 @@
 
                 event: {
                     keyboard: function (event) {
-                        var
-                            keyCode   = event.which
+                        var keyCode   = event.which
                         ;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
@@ -272,8 +268,7 @@
                     },
                     clickaway: function (event) {
                         if (settings.closable) {
-                            var
-                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
+                            var clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
                             var clickedContext  = $context.is(event.target)
                             ;
                             if (clickedInPusher) {
@@ -290,8 +285,7 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        var
-                            keyCode   = event.which
+                        var keyCode   = event.which
                         ;
                         if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
                             module.hide();
@@ -299,8 +293,7 @@
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            var
-                                keyCode = event.which
+                            var keyCode = event.which
                             ;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
                                 $inputs.last().trigger('focus');
@@ -308,8 +301,7 @@
                             }
                         },
                         last: function (event) {
-                            var
-                                keyCode = event.which
+                            var keyCode = event.which
                             ;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
                                 $inputs.first().trigger('focus');
@@ -423,8 +415,7 @@
 
                 add: {
                     inlineCSS: function () {
-                        var
-                            width     = module.cache.width || $module.outerWidth();
+                        var width     = module.cache.width || $module.outerWidth();
                         var height    = module.cache.height || $module.outerHeight();
                         var isRTL     = module.is.rtl();
                         var direction = module.get.direction();
@@ -599,8 +590,7 @@
                     },
                     heights: function () {
                         module.debug('Setting up heights', $module);
-                        var
-                            $header = $module.children(selector.header);
+                        var $header = $module.children(selector.header);
                         var $content = $module.children(selector.content);
                         var $actions = $module.children(selector.actions);
                         var newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0)
@@ -612,8 +602,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
-                        $toggle = $(selector)
+                    var $toggle = $(selector)
                     ;
                     event = isFunction(module[event])
                         ? module[event]
@@ -701,8 +690,7 @@
                 },
 
                 hideOthers: function (callback) {
-                    var
-                        $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
+                    var $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
                     var flyoutCount   = $otherFlyouts.length;
                     var callbackCount  = 0
                     ;
@@ -727,8 +715,7 @@
                 },
 
                 pushPage: function (callback) {
-                    var
-                        animate;
+                    var animate;
                     var dim;
                     var transitionEnd
                     ;
@@ -765,8 +752,7 @@
                 },
 
                 pullPage: function (callback) {
-                    var
-                        animate;
+                    var animate;
                     var transitionEnd
                     ;
                     callback = isFunction(callback)
@@ -834,8 +820,7 @@
                         observeAttributes = state !== false;
                     },
                     autofocus: function () {
-                        var
-                            $autofocus = $inputs.filter('[autofocus]');
+                        var $autofocus = $inputs.filter('[autofocus]');
                         var $rawInputs = $inputs.filter(':input');
                         var $input     = ($autofocus.length > 0
                             ? $autofocus
@@ -857,8 +842,7 @@
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
-                                el = $(this);
+                            var el = $(this);
                             var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
@@ -981,8 +965,7 @@
 
                 save: {
                     focus: function () {
-                        var
-                            $activeElement = $(document.activeElement);
+                        var $activeElement = $(document.activeElement);
                         var inCurrentFlyout = $activeElement.closest($module).length > 0
                         ;
                         if (!inCurrentFlyout) {
@@ -991,8 +974,7 @@
                     },
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        var
-                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
                         var bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
@@ -1018,8 +1000,7 @@
                         return !(self === top);
                     },
                     mobile: function () {
-                        var
-                            userAgent    = navigator.userAgent;
+                        var userAgent    = navigator.userAgent;
                         var isMobile     = userAgent.match(regExp.mobile)
                         ;
                         if (isMobile) {
@@ -1069,8 +1050,7 @@
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
-                                el = $(this);
+                            var el = $(this);
                             var attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                             ;
                             el.css(attribute, '');
@@ -1148,8 +1128,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -1171,8 +1150,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1196,8 +1174,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -1422,8 +1399,7 @@
             };
         },
         alert: function () {
-            var
-                settings = this.get.settings();
+            var settings = this.get.settings();
             var args     = settings.templates.getArguments(arguments)
             ;
 
@@ -1438,8 +1414,7 @@
             };
         },
         confirm: function () {
-            var
-                settings = this.get.settings();
+            var settings = this.get.settings();
             var args     = settings.templates.getArguments(arguments)
             ;
 
@@ -1462,8 +1437,7 @@
             };
         },
         prompt: function () {
-            var
-                $this    = this;
+            var $this    = this;
             var settings = this.get.settings();
             var args     = settings.templates.getArguments(arguments);
             var input    = $($.parseHTML(args.content)).filter('.ui.input')
@@ -1479,8 +1453,7 @@
                     text: settings.text.ok,
                     class: settings.className.ok,
                     click: function () {
-                        var
-                            settings = $this.get.settings();
+                        var settings = $this.get.settings();
                         var inputField = $this.get.element().find(settings.selector.prompt)[0]
                         ;
                         args.handler($(inputField).val());

@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.toast = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $body          = $('body');
 
         var time           = Date.now();
@@ -46,8 +45,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.toast.settings, parameters)
                     : $.extend({}, $.fn.toast.settings);
 
@@ -257,8 +255,7 @@
                                 }
                             }
                             settings.actions.forEach(function (el) {
-                                var
-                                    icon = el[fields.icon]
+                                var icon = el[fields.icon]
                                         ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                         : '';
@@ -581,8 +578,7 @@
 
                 helpers: {
                     toClass: function (selector) {
-                        var
-                            classes = selector.trim().split(/\s+/);
+                        var classes = selector.trim().split(/\s+/);
                         var result = ''
                         ;
 
@@ -672,8 +668,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -695,8 +690,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -720,8 +714,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -923,8 +916,7 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            var
-                n1 = 7.5625;
+            var n1 = 7.5625;
             var d1 = 2.75
             ;
             if (x < 1 / d1) {

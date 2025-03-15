@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.embed = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -34,8 +33,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.embed.settings, parameters)
                     : $.extend({}, $.fn.embed.settings);
 
@@ -107,8 +105,7 @@
                 },
 
                 create: function () {
-                    var
-                        placeholder = module.get.placeholder()
+                    var placeholder = module.get.placeholder()
                     ;
                     if (placeholder) {
                         module.createPlaceholder();
@@ -118,8 +115,7 @@
                 },
 
                 createPlaceholder: function (placeholder) {
-                    var
-                        icon  = module.get.icon();
+                    var icon  = module.get.icon();
                     var alt   = module.get.alt()
                     ;
                     placeholder = placeholder || module.get.placeholder();
@@ -238,8 +234,7 @@
                         }
                     },
                     source: function (url) {
-                        var
-                            matchedSource = false
+                        var matchedSource = false
                         ;
                         url = url || module.get.url();
                         if (url) {
@@ -255,8 +250,7 @@
                         return matchedSource;
                     },
                     icon: function () {
-                        var
-                            source = module.get.source()
+                        var source = module.get.source()
                         ;
 
                         return sources[source] !== undefined
@@ -264,8 +258,7 @@
                             : false;
                     },
                     url: function () {
-                        var
-                            id     = settings.id || $module.data(metadata.id);
+                        var id     = settings.id || $module.data(metadata.id);
                         var source = settings.source || $module.data(metadata.source);
                         var url
                         ;
@@ -307,8 +300,7 @@
 
                 encode: {
                     parameters: function (parameters) {
-                        var
-                            urlString = [];
+                        var urlString = [];
                         var index
                         ;
                         for (index in parameters) {
@@ -322,8 +314,7 @@
                 generate: {
                     embed: function (url) {
                         module.debug('Generating embed html');
-                        var
-                            source = module.get.source();
+                        var source = module.get.source();
                         var html;
                         var parameters
                         ;
@@ -338,8 +329,7 @@
                         return html;
                     },
                     parameters: function (source, extraParameters) {
-                        var
-                            parameters = sources[source] && sources[source].parameters !== undefined
+                        var parameters = sources[source] && sources[source].parameters !== undefined
                                 ? sources[source].parameters(settings)
                                 : {}
                         ;
@@ -427,8 +417,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -450,8 +439,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -478,8 +466,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -658,8 +645,7 @@
                 return string.replace(badChars, (chr) => escape[chr]);
             },
             iframe: function (url, parameters) {
-                var
-                    src = url;
+                var src = url;
                 var escape = $.fn.embed.settings.templates.escape
                 ;
                 if (parameters) {
@@ -672,8 +658,7 @@
                     + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon, alt) {
-                var
-                    html = '';
+                var html = '';
                 var escape = $.fn.embed.settings.templates.escape
                 ;
                 if (icon) {

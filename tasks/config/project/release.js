@@ -4,8 +4,7 @@
 
 const requireDotFile = require('require-dot-file');
 
-let
-    config;
+let config;
 let npmPackage;
 let version;
 let revision;

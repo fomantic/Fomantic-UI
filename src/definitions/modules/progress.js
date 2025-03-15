@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.progress = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
 
         var time           = Date.now();
         var performance    = [];
@@ -34,8 +33,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.progress.settings, parameters)
                     : $.extend({}, $.fn.progress.settings);
 
@@ -151,8 +149,7 @@
 
                 read: {
                     metadata: function () {
-                        var
-                            data = {
+                        var data = {
                                 percent: module.helper.forceArray($module.data(metadata.percent)),
                                 total: $module.data(metadata.total),
                                 value: module.helper.forceArray($module.data(metadata.value)),
@@ -205,8 +202,7 @@
                 },
 
                 increment: function (incrementValue) {
-                    var
-                        startValue;
+                    var startValue;
                     var newValue
                     ;
                     if (module.has.total()) {
@@ -222,8 +218,7 @@
                     module.set.progress(newValue);
                 },
                 decrement: function (decrementValue) {
-                    var
-                        total     = module.get.total();
+                    var total     = module.get.total();
                     var startValue;
                     var newValue
                     ;
@@ -257,8 +252,7 @@
                             index = 0;
                         }
 
-                        var
-                            value   = module.get.value(index);
+                        var value   = module.get.value(index);
                         var total   = module.get.total();
                         var percent = animating
                             ? module.get.displayPercent(index)
@@ -325,8 +319,7 @@
 
                     // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
-                        var
-                            $bar           = $($bars[index]);
+                        var $bar           = $($bars[index]);
                         var barWidth       = $bar.width();
                         var totalWidth     = $module.width();
                         var minDisplay     = parseInt($bar.css('min-width'), 10);
@@ -522,8 +515,7 @@
                         settings.onChange.call(element, percents, module.value, module.total);
                     },
                     labelInterval: function () {
-                        var
-                            animationCallback = function () {
+                        var animationCallback = function () {
                                 module.verbose('Bar finished animating, removing continuous label updates');
                                 clearInterval(module.interval);
                                 animating = false;
@@ -534,8 +526,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            var
-                                isInDOM = $.contains(document.documentElement, element)
+                            var isInDOM = $.contains(document.documentElement, element)
                             ;
                             if (!isInDOM) {
                                 clearInterval(module.interval);
@@ -685,8 +676,7 @@
 
                 update: {
                     toNextValue: function () {
-                        var
-                            nextValue = module.nextValue
+                        var nextValue = module.nextValue
                         ;
                         if (nextValue) {
                             module.debug('Update interval complete using last updated value', nextValue);
@@ -700,8 +690,7 @@
                             module.set.value(values);
                         }
                         var percentCompletes = module.helper.forceArray(values).map(function (value) {
-                            var
-                                percentComplete
+                            var percentComplete
                             ;
                             value = module.get.numericValue(value);
                             if (value === false) {
@@ -773,8 +762,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -796,8 +784,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -821,8 +808,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

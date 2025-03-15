@@ -2,8 +2,7 @@
  *          Watch Task
  *******************************/
 
-const
-    // node dependencies
+const // node dependencies
     console    = require('@fomantic/better-console');
 
 // user config

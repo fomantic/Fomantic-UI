@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.popup = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $document      = $(document);
         var $window        = $(window);
         var $body          = $('body');
@@ -53,8 +52,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.popup.settings, parameters)
                     : $.extend({}, $.fn.popup.settings);
 
@@ -187,8 +185,7 @@
 
                 event: {
                     start: function (event) {
-                        var
-                            delay = $.isPlainObject(settings.delay)
+                        var delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.show
                                 : settings.delay
                         ;
@@ -200,8 +197,7 @@
                         }
                     },
                     end: function () {
-                        var
-                            delay = $.isPlainObject(settings.delay)
+                        var delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.hide
                                 : settings.delay
                         ;
@@ -234,8 +230,7 @@
                         });
                     },
                     hideGracefully: function (event) {
-                        var
-                            $target = $(event.target);
+                        var $target = $(event.target);
                         var isInDOM = $.contains(document.documentElement, event.target);
                         var inPopup = $target.closest(selector.popup).length > 0
                         ;
@@ -251,8 +246,7 @@
 
                 // generates popup html from metadata
                 create: function () {
-                    var
-                        targetSibling = $target.next(selector.popup);
+                    var targetSibling = $target.next(selector.popup);
                     var contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
                     var html      = module.get.html();
                     var title     = module.get.title();
@@ -507,8 +501,7 @@
                         return $popup.offset();
                     },
                     calculations: function () {
-                        var
-                            $popupOffsetParent = module.get.offsetParent($popup);
+                        var $popupOffsetParent = module.get.offsetParent($popup);
                         var targetElement      = $target[0];
                         var isWindowEl         = $boundary[0] === window;
                         var targetOffset       = $target.offset();
@@ -559,8 +552,7 @@
 
                         // if popup offset context is different from target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
-                            var
-                                popupOffset        = $popupOffsetParent.offset()
+                            var popupOffset        = $popupOffsetParent.offset()
                             ;
                             calculations.target.top -= popupOffset.top;
                             calculations.target.left -= popupOffset.left;
@@ -623,8 +615,7 @@
                         return false;
                     },
                     distanceFromBoundary: function (offset, calculations) {
-                        var
-                            distanceFromBoundary = {};
+                        var distanceFromBoundary = {};
                         var popup;
                         var boundary
                         ;
@@ -647,16 +638,14 @@
                         return distanceFromBoundary;
                     },
                     offsetParent: function ($element) {
-                        var
-                            element = $element !== undefined
+                        var element = $element !== undefined
                                 ? $element[0]
                                 : $target[0];
                         var parentNode = element.parentNode;
                         var $node    = $(parentNode)
                         ;
                         if (parentNode) {
-                            var
-                                is2D     = $node.css('transform') === 'none';
+                            var is2D     = $node.css('transform') === 'none';
                             var isStatic = $node.css('position') === 'static';
                             var isBody   = $node.is('body')
                             ;
@@ -686,8 +675,7 @@
                         };
                     },
                     nextPosition: function (position) {
-                        var
-                            positions          = position.split(' ');
+                        var positions          = position.split(' ');
                         var verticalPosition   = positions[0];
                         var horizontalPosition = positions[1];
                         var opposite = {
@@ -753,8 +741,7 @@
 
                             return;
                         }
-                        var
-                            offset;
+                        var offset;
                         var distanceAway;
                         var target;
                         var popup;
@@ -1129,8 +1116,7 @@
                         return settings.closable;
                     },
                     offstage: function (distanceFromBoundary, position) {
-                        var
-                            offstage = []
+                        var offstage = []
                         ;
                         // return boundaries that have been surpassed
                         $.each(distanceFromBoundary, function (direction, distance) {
@@ -1230,8 +1216,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -1253,8 +1238,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1278,8 +1262,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -1527,8 +1510,7 @@
                 return string.replace(badChars, (chr) => escape[chr]);
             },
             popup: function (text) {
-                var
-                    html   = '';
+                var html   = '';
                 var escape = $.fn.popup.settings.templates.escape
                 ;
                 if (text !== undefined) {

@@ -2,8 +2,7 @@
  Serve Docs
  *******************************/
 
-const
-    extend      = require('extend');
+const extend      = require('extend');
 
 // node dependencies
 const console     = require('@fomantic/better-console');

@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.nag = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $body          = $('body');
 
         var time           = Date.now();
@@ -46,8 +45,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
                     : $.extend({}, $.fn.nag.settings);
 
@@ -220,8 +218,7 @@
                                 getItem: function (key) {
                                     var cookies = document.cookie.split('; ');
                                     for (var i = 0, il = cookies.length; i < il; i++) {
-                                        var
-                                            parts    = cookies[i].split('=');
+                                        var parts    = cookies[i].split('=');
                                         var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
                                         ;
                                         if (key === foundKey) {
@@ -238,8 +235,7 @@
                         module.error(error.noStorage);
                     },
                     storageOptions: function () {
-                        var
-                            options = {}
+                        var options = {}
                         ;
                         if (settings.expires) {
                             options.expires = module.get.expirationDate(settings.expires);
@@ -267,8 +263,7 @@
 
                 storage: {
                     set: function (key, value) {
-                        var
-                            options = module.get.storageOptions()
+                        var options = module.get.storageOptions()
                         ;
                         if (storage === window.localStorage && options.expires) {
                             module.debug('Storing expiration value in localStorage', key, options.expires);
@@ -282,8 +277,7 @@
                         }
                     },
                     get: function (key) {
-                        var
-                            storedValue
+                        var storedValue
                         ;
                         storedValue = storage.getItem(key);
                         if (storage === window.localStorage) {
@@ -301,8 +295,7 @@
                         return storedValue;
                     },
                     remove: function (key) {
-                        var
-                            options = module.get.storageOptions()
+                        var options = module.get.storageOptions()
                         ;
                         options.expires = module.get.expirationDate(-1);
                         if (storage === window.localStorage) {
@@ -363,8 +356,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -386,8 +378,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -411,8 +402,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

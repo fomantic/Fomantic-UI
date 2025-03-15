@@ -2,8 +2,7 @@
  *         Build Task
  *******************************/
 
-const
-    gulp = require('gulp');
+const gulp = require('gulp');
 const build = require('../build')
 ;
 

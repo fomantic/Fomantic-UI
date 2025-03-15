@@ -2,8 +2,7 @@
  Build Docs
  *******************************/
 
-const
-    fs          = require('fs');
+const fs          = require('fs');
 const extend      = require('extend');
 
 // node dependencies

@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.search = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -32,8 +31,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
+            var settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.search.settings, parameters)
                     : $.extend({}, $.fn.search.settings);
 
@@ -168,8 +166,7 @@
                         }
                     },
                     blur: function (event) {
-                        var
-                            pageLostFocus = document.activeElement === this;
+                        var pageLostFocus = document.activeElement === this;
                         var callback      = function () {
                             module.cancel.query();
                             module.remove.focus();
@@ -217,8 +214,7 @@
                         },
                         click: function (event) {
                             module.debug('Search result selected');
-                            var
-                                $result = $(this);
+                            var $result = $(this);
                             var $title  = $result.find(selector.title).eq(0);
                             var $link   = $result.is('a[href]')
                                 ? $result
@@ -258,8 +254,7 @@
                     },
                 },
                 ensureVisible: function ($el) {
-                    var
-                        elTop;
+                    var elTop;
                     var elBottom;
                     var resultsScrollTop;
                     var resultsHeight
@@ -280,8 +275,7 @@
                     }
                 },
                 handleKeyboard: function (event) {
-                    var
-                        // force selector refresh
+                    var // force selector refresh
                         $result         = $module.find(selector.result);
                     var $category       = $module.find(selector.category);
                     var $activeResult   = $result.filter('.' + className.active);
@@ -367,8 +361,7 @@
 
                 setup: {
                     api: function (searchTerm, callback) {
-                        var
-                            apiSettings = {
+                        var apiSettings = {
                                 debug: settings.debug,
                                 on: false,
                                 cache: settings.cache,
@@ -437,8 +430,7 @@
                         if (!event.target) {
                             return;
                         }
-                        var
-                            $target = $(event.target);
+                        var $target = $(event.target);
                         var isInDOM = $.contains(document.documentElement, event.target)
                         ;
 
@@ -463,8 +455,7 @@
                         }
                     },
                     inputEvent: function () {
-                        var
-                            prompt = $prompt[0];
+                        var prompt = $prompt[0];
                         var inputEvent   = prompt !== undefined && prompt.oninput !== undefined
                             ? 'input'
                             : (prompt !== undefined && prompt.onpropertychange !== undefined
@@ -481,8 +472,7 @@
                         return $module.data(metadata.results);
                     },
                     result: function (value, results) {
-                        var
-                            result       = false
+                        var result       = false
                         ;
                         value = value !== undefined
                             ? value
@@ -560,8 +550,7 @@
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    var
-                        searchTerm = module.get.value();
+                    var searchTerm = module.get.value();
                     var cache = module.read.cache(searchTerm)
                     ;
                     callback = callback || function () {};
@@ -593,8 +582,7 @@
 
                 search: {
                     local: function (searchTerm) {
-                        var
-                            results = module.search.object(searchTerm, settings.source);
+                        var results = module.search.object(searchTerm, settings.source);
                         var searchHTML
                         ;
                         module.set.loading();
@@ -632,8 +620,7 @@
                     },
                     object: function (searchTerm, source, searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
-                        var
-                            results      = [];
+                        var results      = [];
                         var exactResults = [];
                         var fuzzyResults = [];
                         var searchExp    = searchTerm.replace(regExp.escape, '\\$&');
@@ -641,8 +628,7 @@
 
                         // avoid duplicates when pushing results
                         var addResult = function (array, result) {
-                            var
-                                notResult      = $.inArray(result, results) === -1;
+                            var notResult      = $.inArray(result, results) === -1;
                             var notFuzzyResult = $.inArray(result, fuzzyResults) === -1;
                             var notExactResults = $.inArray(result, exactResults) === -1
                                 ;
@@ -672,8 +658,7 @@
                         $.each(source, function (label, content) {
                             var concatenatedContent = [];
                             $.each(searchFields, function (index, field) {
-                                var
-                                    fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
+                                var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
                                 ;
                                 if (fieldExists) {
                                     var text;
@@ -734,8 +719,7 @@
                     return found;
                 },
                 fuzzySearch: function (query, term) {
-                    var
-                        termLength  = term.length;
+                    var termLength  = term.length;
                     var queryLength = query.length
                     ;
                     if (typeof query !== 'string') {
@@ -752,8 +736,7 @@
                         return query === term;
                     }
                     for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
-                        var
-                            continueSearch = false;
+                        var continueSearch = false;
                         var queryCharacter = query.charCodeAt(characterIndex)
                         ;
                         while (nextCharacterIndex < termLength) {
@@ -779,8 +762,7 @@
                             o[fields.results] = response;
                             response = o;
                         }
-                        var
-                            searchHTML = module.generateResults(response)
+                        var searchHTML = module.generateResults(response)
                         ;
                         module.verbose('Parsing server response', response);
                         if (response !== undefined) {
@@ -807,8 +789,7 @@
 
                 has: {
                     minimumCharacters: function () {
-                        var
-                            searchTerm    = module.get.value();
+                        var searchTerm    = module.get.value();
                         var numCharacters = searchTerm.length
                         ;
 
@@ -818,8 +799,7 @@
                         if ($results.length === 0) {
                             return false;
                         }
-                        var
-                            html = $results.html()
+                        var html = $results.html()
                         ;
 
                         return html !== '';
@@ -828,8 +808,7 @@
 
                 clear: {
                     cache: function (value) {
-                        var
-                            cache = $module.data(metadata.cache)
+                        var cache = $module.data(metadata.cache)
                         ;
                         if (!value) {
                             module.debug('Clearing cache', value);
@@ -847,8 +826,7 @@
 
                 read: {
                     cache: function (name) {
-                        var
-                            cache = $module.data(metadata.cache)
+                        var cache = $module.data(metadata.cache)
                         ;
                         if (settings.cache) {
                             module.verbose('Checking cache for generated html for query', name);
@@ -864,8 +842,7 @@
 
                 create: {
                     categoryResults: function (results) {
-                        var
-                            categoryResults = {}
+                        var categoryResults = {}
                         ;
                         $.each(results, function (index, result) {
                             if (!result.category) {
@@ -885,8 +862,7 @@
                         return categoryResults;
                     },
                     id: function (resultIndex, categoryIndex) {
-                        var
-                            resultID      = resultIndex + 1; // not zero indexed
+                        var resultID      = resultIndex + 1; // not zero indexed
                         var letterID;
                         var id
                         ;
@@ -915,8 +891,7 @@
                 inject: {
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
-                        var
-                            $selectedResult = categoryIndex !== undefined
+                        var $selectedResult = categoryIndex !== undefined
                                 ? $results
                                     .children().eq(categoryIndex)
                                     .children(selector.results)
@@ -933,8 +908,7 @@
                     },
                     id: function (results) {
                         module.debug('Injecting unique ids into results');
-                        var
-                            // since results may be an object, we must use counters
+                        var // since results may be an object, we must use counters
                             categoryIndex = 0;
                         var resultIndex   = 0
                         ;
@@ -977,8 +951,7 @@
 
                 write: {
                     cache: function (name, value) {
-                        var
-                            cache = $module.data(metadata.cache) !== undefined
+                        var cache = $module.data(metadata.cache) !== undefined
                                 ? $module.data(metadata.cache)
                                 : {}
                         ;
@@ -1086,8 +1059,7 @@
 
                 generateResults: function (response) {
                     module.debug('Generating html from response', response);
-                    var
-                        template       = settings.templates[settings.type];
+                    var template       = settings.templates[settings.type];
                     var isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
                     var isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
                     var html           = ''
@@ -1119,8 +1091,7 @@
                             ;
                             $.each(results, function (label, content) {
                                 $.each(settings.searchFields, function (index, field) {
-                                    var
-                                        fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
+                                    var fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number'
                                     ;
                                     if (fieldExists) {
                                         var markedHTML = typeof content[field] === 'string'
@@ -1202,8 +1173,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -1225,8 +1195,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1253,8 +1222,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -1493,8 +1461,7 @@
                 return string;
             },
             message: function (message, type, header) {
-                var
-                    html = ''
+                var html = ''
                 ;
                 if (message !== undefined && type !== undefined) {
                     html += ''
@@ -1510,8 +1477,7 @@
                 return html;
             },
             category: function (response, settings) {
-                var
-                    html = '';
+                var html = '';
                 var fields = settings.fields;
                 var escape = settings.templates.escape
                 ;
@@ -1574,8 +1540,7 @@
                 return false;
             },
             standard: function (response, settings) {
-                var
-                    html = '';
+                var html = '';
                 var fields = settings.fields;
                 var escape = settings.templates.escape
                 ;

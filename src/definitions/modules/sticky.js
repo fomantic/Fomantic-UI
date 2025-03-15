@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.sticky = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $document      = $(document);
 
         var time           = Date.now();
@@ -47,8 +46,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings              = $.isPlainObject(parameters)
+            var settings              = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                     : $.extend({}, $.fn.sticky.settings);
 
@@ -228,8 +226,7 @@
 
                 supports: {
                     sticky: function () {
-                        var
-                            $element = $('<div/>')
+                        var $element = $('<div/>')
                         ;
                         $element.addClass(className.supported);
 
@@ -245,8 +242,7 @@
                         module.elementScroll = scroll;
                     },
                     positions: function () {
-                        var
-                            scrollContext = {
+                        var scrollContext = {
                                 height: $scroll.height(),
                             };
                         var element = {
@@ -303,8 +299,7 @@
 
                 get: {
                     direction: function (scroll) {
-                        var
-                            direction = 'down'
+                        var direction = 'down'
                         ;
                         scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
@@ -332,8 +327,7 @@
 
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
-                        var
-                            element        = module.cache.element;
+                        var element        = module.cache.element;
                         var scrollContext  = module.cache.scrollContext;
                         var delta          = module.get.scrollChange(scroll);
                         var maxScroll      = element.height - scrollContext.height + settings.offset;
@@ -377,8 +371,7 @@
                         ;
                     },
                     containerSize: function () {
-                        var
-                            tagName = $container[0].tagName
+                        var tagName = $container[0].tagName
                         ;
                         if (tagName === 'HTML' || tagName === 'body') {
                             module.determineContainer();
@@ -403,8 +396,7 @@
                         }
                     },
                     minimumSize: function () {
-                        var
-                            element   = module.cache.element
+                        var element   = module.cache.element
                         ;
                         $container
                             .css('min-height', element.height)
@@ -461,8 +453,7 @@
                 },
 
                 stick: function (scrollPosition) {
-                    var
-                        cachedPosition = scrollPosition || $scroll.scrollTop();
+                    var cachedPosition = scrollPosition || $scroll.scrollTop();
                     var cache          = module.cache;
                     var fits           = cache.fits;
                     var sameHeight     = cache.sameHeight;
@@ -728,8 +719,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -751,8 +741,7 @@
                         }, 0);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -776,8 +765,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

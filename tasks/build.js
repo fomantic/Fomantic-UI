@@ -2,8 +2,7 @@
  *         Build Task
  *******************************/
 
-const
-    // dependencies
+const // dependencies
     gulp     = require('gulp');
 
 // config

@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.calendar = function (parameters) {
-        var
-            $allModules    = $(this);
+        var $allModules    = $(this);
         var $document      = $(document);
 
         var time           = Date.now();
@@ -42,8 +41,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings = $.isPlainObject(parameters)
+            var settings = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.calendar.settings, parameters)
                     : $.extend({}, $.fn.calendar.settings);
 
@@ -150,8 +148,7 @@
                             } else {
                                 // prepend the popup element to the activator's parent so that it has less chance of messing with
                                 // the styling (e.g., input action button needs to be the last child to have the correct border radius)
-                                var
-                                    $activatorParent = $activator.parent();
+                                var $activatorParent = $activator.parent();
                                 var domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
                                 ;
                                 $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
@@ -234,8 +231,7 @@
 
                 trigger: {
                     change: function () {
-                        var
-                            inputElement = $input[0]
+                        var inputElement = $input[0]
                         ;
                         if (inputElement) {
                             var events = document.createEvent('HTMLEvents');
@@ -248,8 +244,7 @@
 
                 create: {
                     calendar: function () {
-                        var
-                            i;
+                        var i;
                         var r;
                         var c;
                         var p;
@@ -258,8 +253,7 @@
                         var pageGrid
                         ;
 
-                        var
-                            mode = module.get.mode();
+                        var mode = module.get.mode();
                         var today = new Date();
                         var date = module.get.date();
                         var focusDate = module.get.focusDate();
@@ -271,8 +265,7 @@
                             module.set.focusDate(focusDate, false, false);
                         }
 
-                        var
-                            isYear = mode === 'year';
+                        var isYear = mode === 'year';
                         var isMonth = mode === 'month';
                         var isDay = mode === 'day';
                         var isHour = mode === 'hour';
@@ -283,8 +276,7 @@
                         var multiMonth = Math.max(settings.multiMonth, 1);
                         var monthOffset = !isDay ? 0 : module.get.monthOffset();
 
-                        var
-                            minute = display.getMinutes();
+                        var minute = display.getMinutes();
                         var hour = display.getHours();
                         var day = display.getDate();
                         var startMonth = display.getMonth() + monthOffset;
@@ -317,8 +309,7 @@
                                 rows = Math.ceil(requiredCells / 7);
                             }
 
-                            var
-                                yearChange = isYear ? 10 : (isMonth ? 1 : 0);
+                            var yearChange = isYear ? 10 : (isMonth ? 1 : 0);
                             var monthChange = isDay ? 1 : 0;
                             var dayChange = isHour || isMinute ? 1 : 0;
                             var prevNextDay = isHour || isMinute ? day : 1;
@@ -1094,8 +1085,7 @@
                             return format.call(module, date, settings);
                         }
 
-                        var
-                            D = date.getDate();
+                        var D = date.getDate();
                         var M = date.getMonth();
                         var Y = date.getFullYear();
                         var d = date.getDay();
@@ -1493,8 +1483,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -1516,8 +1505,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -1541,8 +1529,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -1727,13 +1714,11 @@
                 }
                 text = text.toLowerCase();
 
-                var
-                    i;
+                var i;
                 var j;
                 var k
                 ;
-                var
-                    minute = -1;
+                var minute = -1;
                 var hour = -1;
                 var day = -1;
                 var month = -1;
@@ -1744,12 +1729,10 @@
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
 
-                var
-                    words = text.split(settings.regExp.dateWords);
+                var words = text.split(settings.regExp.dateWords);
                 var word
                 ;
-                var
-                    numbers = text.split(settings.regExp.dateNumbers);
+                var numbers = text.split(settings.regExp.dateNumbers);
                 var number
                 ;
 

@@ -2,8 +2,7 @@
             Set-up
 *******************************/
 
-const
-    fs       = require('fs');
+const fs       = require('fs');
 const path     = require('path');
 
 const defaults = require('../defaults')
@@ -16,11 +15,9 @@ const defaults = require('../defaults')
 module.exports = {
 
     getPath: function (file, directory) {
-        let
-            configPath;
+        let configPath;
         let walk = function (directory) {
-            let
-                nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
             let currentPath   = path.normalize(path.join(directory, file))
                 ;
             if (fs.existsSync(currentPath)) {
@@ -51,8 +48,7 @@ module.exports = {
             File Paths
         --------------- */
 
-        let
-            configPath = this.getPath();
+        let configPath = this.getPath();
         let sourcePaths = {};
         let outputPaths = {};
         let folder

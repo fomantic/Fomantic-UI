@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.accordion = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -33,8 +32,7 @@
         var returnedValue
         ;
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                     : $.extend({}, $.fn.accordion.settings);
 
@@ -119,8 +117,7 @@
                 },
 
                 toggle: function (query) {
-                    var
-                        $activeTitle = query !== undefined
+                    var $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -144,8 +141,7 @@
                 },
 
                 open: function (query) {
-                    var
-                        $activeTitle = query !== undefined
+                    var $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -214,8 +210,7 @@
                 },
 
                 close: function (query) {
-                    var
-                        $activeTitle = query !== undefined
+                    var $activeTitle = query !== undefined
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -276,8 +271,7 @@
                 },
 
                 closeOthers: function (index) {
-                    var
-                        $activeTitle = index !== undefined
+                    var $activeTitle = index !== undefined
                             ? $title.eq(index)
                             : $(this).closest(selector.title);
                     var $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title);
@@ -420,8 +414,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -443,8 +436,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -468,8 +460,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response

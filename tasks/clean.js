@@ -2,8 +2,7 @@
           Clean Task
 *******************************/
 
-const
-    fs    = require('fs-extra');
+const fs    = require('fs-extra');
 const config = require('./config/user')
 ;
 

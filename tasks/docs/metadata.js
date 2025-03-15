@@ -2,8 +2,7 @@
            Summarize Docs
 *******************************/
 
-const
-    // node dependencies
+const // node dependencies
     console      = require('@fomantic/better-console');
 const path = require('path');
 const YAML         = require('js-yaml')
@@ -49,8 +48,7 @@ function parser(file, callback) {
     }
 
     try {
-        let
-            /** @type {string} */
+        let /** @type {string} */
             text     = String(file.contents.toString('utf8'));
         let lines    = text.split('\n');
         let filename = file.path.slice(0, -4);
@@ -68,8 +66,7 @@ function parser(file, callback) {
 
         filename = filename.slice(position + key.length + 1, filename.length).replaceAll(path.win32.sep, path.posix.sep);
 
-        let
-            lineCount = lines.length;
+        let lineCount = lines.length;
         let active    = false;
         let yaml      = [];
         let categories = [

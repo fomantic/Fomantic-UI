@@ -20,8 +20,7 @@
         : globalThis;
 
     $.fn.dimmer = function (parameters) {
-        var
-            $allModules     = $(this);
+        var $allModules     = $(this);
 
         var time            = Date.now();
         var performance     = [];
@@ -34,8 +33,7 @@
         ;
 
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
+            var settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                     : $.extend({}, $.fn.dimmer.settings);
 
@@ -151,8 +149,7 @@
                 },
 
                 addContent: function (element) {
-                    var
-                        $content = $(element)
+                    var $content = $(element)
                     ;
                     module.debug('Add content to dimmer', $content);
                     if ($content.parent()[0] !== $dimmer[0]) {
@@ -161,8 +158,7 @@
                 },
 
                 create: function () {
-                    var
-                        $element = $(settings.template.dimmer(settings))
+                    var $element = $(settings.template.dimmer(settings))
                     ;
                     if (settings.dimmerName) {
                         module.debug('Creating named dimmer', settings.dimmerName);
@@ -394,8 +390,7 @@
 
                 set: {
                     opacity: function (opacity) {
-                        var
-                            color      = $dimmer.css('background-color');
+                        var color      = $dimmer.css('background-color');
                         var colorArray = color.split(',');
                         var isRGB      = colorArray && colorArray.length >= 3
                         ;
@@ -510,8 +505,7 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime;
+                        var currentTime;
                         var executionTime;
                         var previousTime
                         ;
@@ -533,8 +527,7 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':';
+                        var title = settings.name + ':';
                         var totalTime = 0
                         ;
                         time = false;
@@ -561,8 +554,7 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance;
+                    var object = instance;
                     var maxDepth;
                     var found;
                     var response
@@ -708,8 +700,7 @@
 
         template: {
             dimmer: function (settings) {
-                var
-                    d = $('<div/>').addClass('ui dimmer');
+                var d = $('<div/>').addClass('ui dimmer');
                 var l
                 ;
                 if (settings.displayLoader) {

@@ -113,8 +113,7 @@ module.exports = function (Handlebars) {
         loopVersion = options.data.root.releases[options.data.index].tag;
 
         changelogDeps = {};
-        const
-            depsRegex = /(?:build\(deps[A-Za-z-]*\):|\[Snyk]) (?:\[?[Ss]ecurity]? )?(?:bump|upgrade) ([\w./@-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/;
+        const depsRegex = /(?:build\(deps[A-Za-z-]*\):|\[Snyk]) (?:\[?[Ss]ecurity]? )?(?:bump|upgrade) ([\w./@-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/;
         const detectVersionRange = function (item) {
             let subjectDetails = item.subject.match(depsRegex);
             if (!subjectDetails) {
@@ -173,8 +172,7 @@ module.exports = function (Handlebars) {
                 if (!subjectDetails) {
                     return item;
                 }
-                let
-                    depPackage = subjectDetails[1];
+                let depPackage = subjectDetails[1];
                 let depVersionFrom = subjectDetails[2]
                     ;
                 item.subject = item.subject.replace(depVersionFrom, changelogDeps[depPackage].from);
