@@ -28,67 +28,67 @@
             // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
-                : $(this),
-            time           = Date.now(),
-            performance    = [],
+                : $(this);
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
-                    }
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck   = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : window;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
+            return $context;
+        };
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.api.settings, parameters)
-                    : $.extend({}, $.fn.api.settings),
+                    : $.extend({}, $.fn.api.settings);
 
-                // internal aliases
-                regExp          = settings.regExp,
-                namespace       = settings.namespace,
-                metadata        = settings.metadata,
-                selector        = settings.selector,
-                error           = settings.error,
-                className       = settings.className,
+            // internal aliases
+            var regExp          = settings.regExp;
+            var namespace       = settings.namespace;
+            var metadata        = settings.metadata;
+            var selector        = settings.selector;
+            var error           = settings.error;
+            var className       = settings.className;
 
-                // define namespaces for modules
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            // define namespaces for modules
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                // element that creates request
-                $module         = $(this),
-                $form           = $module.closest(selector.form),
+            // element that creates request
+            var $module         = $(this);
+            var $form           = $module.closest(selector.form);
 
-                // context used for state
-                $context        = settings.stateContext ? contextCheck(settings.stateContext, window) : $module,
+            // context used for state
+            var $context        = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
 
-                // request details
-                ajaxSettings,
-                requestSettings,
-                url,
-                data,
-                requestStartTime,
-                originalData,
+            // request details
+            var ajaxSettings;
+            var requestSettings;
+            var url;
+            var data;
+            var requestStartTime;
+            var originalData;
 
-                // standard module
-                element         = this,
-                context         = $context[0],
-                instance        = $module.data(moduleNamespace),
-                module
+            // standard module
+            var element         = this;
+            var context         = $context[0];
+            var instance        = $module.data(moduleNamespace);
+            var module
             ;
 
             module = {
@@ -357,8 +357,8 @@
                 add: {
                     urlData: function (url, urlData) {
                         var
-                            requiredVariables,
-                            optionalVariables
+                            requiredVariables;
+                        var optionalVariables
                         ;
                         if (url) {
                             requiredVariables = url.match(regExp.required);
@@ -371,14 +371,14 @@
                                         // allow legacy {$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(2, -1)
-                                            : templatedString.slice(1, -1),
-                                        value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
-                                            ? urlData[variable]
-                                            : ($module.data(variable) !== undefined
-                                                ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
-                                                    ? $context.data(variable)
-                                                    : urlData[variable]))
+                                            : templatedString.slice(1, -1);
+                                    var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                        ? urlData[variable]
+                                        : ($module.data(variable) !== undefined
+                                            ? $module.data(variable)
+                                            : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
+                                                ? $context.data(variable)
+                                                : urlData[variable]))
                                     ;
                                     // remove value
                                     if (value === undefined) {
@@ -402,14 +402,14 @@
                                         // allow legacy {/$var} style
                                         variable = templatedString.indexOf('$') !== -1
                                             ? templatedString.slice(3, -1)
-                                            : templatedString.slice(2, -1),
-                                        value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
-                                            ? urlData[variable]
-                                            : ($module.data(variable) !== undefined
-                                                ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
-                                                    ? $context.data(variable)
-                                                    : urlData[variable]))
+                                            : templatedString.slice(2, -1);
+                                    var value   = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                        ? urlData[variable]
+                                        : ($module.data(variable) !== undefined
+                                            ? $module.data(variable)
+                                            : ($context.data(variable) !== undefined // eslint-disable-line unicorn/no-nested-ternary
+                                                ? $context.data(variable)
+                                                : urlData[variable]))
                                     ;
                                     // optional replacement
                                     if (value !== undefined) {
@@ -430,9 +430,9 @@
                     },
                     formData: function (data) {
                         var
-                            formData = {},
-                            hasOtherData,
-                            useFormDataApi = settings.serializeForm === 'formdata'
+                            formData = {};
+                        var hasOtherData;
+                        var useFormDataApi = settings.serializeForm === 'formdata'
                         ;
                         data = data || originalData || settings.data;
                         hasOtherData = $.isPlainObject(data);
@@ -443,14 +443,14 @@
                             settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
                             var
-                                formArray = $form.serializeArray(),
-                                pushes = {},
-                                pushValues = {},
-                                build = function (base, key, value) {
-                                    base[key] = value;
+                                formArray = $form.serializeArray();
+                            var pushes = {};
+                            var pushValues = {};
+                            var build = function (base, key, value) {
+                                base[key] = value;
 
-                                    return base;
-                                }
+                                return base;
+                            }
                             ;
                             // add files
                             $.each($('input[type="file"]', $form), function (i, tag) {
@@ -463,15 +463,15 @@
                                     return;
                                 }
                                 var
-                                    isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
-                                    floatValue = parseFloat(el.value),
-                                    value = (isCheckbox && el.value === 'on')
+                                    isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
+                                var floatValue = parseFloat(el.value);
+                                var value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
                                         || (String(floatValue) === el.value
                                             ? floatValue
-                                            : (el.value === 'false' ? false : el.value)),
-                                    nameKeys = el.name.match(regExp.key) || [],
-                                    pushKey = el.name.replace(/\[]$/, '')
+                                            : (el.value === 'false' ? false : el.value));
+                                var nameKeys = el.name.match(regExp.key) || [];
+                                var pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
@@ -545,14 +545,14 @@
                         },
                         done: function (response, textStatus, xhr) {
                             var
-                                context            = this,
-                                elapsedTime        = Date.now() - requestStartTime,
-                                timeLeft           = settings.loadingDuration - elapsedTime,
-                                translatedResponse = isFunction(settings.onResponse)
-                                    ? (module.is.expectingJSON() && !settings.rawResponse
-                                        ? settings.onResponse.call(context, $.extend(true, {}, response))
-                                        : settings.onResponse.call(context, response))
-                                    : false
+                                context            = this;
+                            var elapsedTime        = Date.now() - requestStartTime;
+                            var timeLeft           = settings.loadingDuration - elapsedTime;
+                            var translatedResponse = isFunction(settings.onResponse)
+                                ? (module.is.expectingJSON() && !settings.rawResponse
+                                    ? settings.onResponse.call(context, $.extend(true, {}, response))
+                                    : settings.onResponse.call(context, response))
+                                : false
                             ;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
@@ -574,9 +574,9 @@
                         },
                         fail: function (xhr, status, httpMessage) {
                             var
-                                context     = this,
-                                elapsedTime = Date.now() - requestStartTime,
-                                timeLeft    = settings.loadingDuration - elapsedTime
+                                context     = this;
+                            var elapsedTime = Date.now() - requestStartTime;
+                            var timeLeft    = settings.loadingDuration - elapsedTime
                             ;
                             timeLeft = timeLeft > 0
                                 ? timeLeft
@@ -604,8 +604,8 @@
                         },
                         complete: function (firstParameter, secondParameter) {
                             var
-                                xhr,
-                                response
+                                xhr;
+                            var response
                             ;
                             // have to guess callback parameters based on request success
                             if (module.was.successful()) {
@@ -621,8 +621,8 @@
                         fail: function (xhr, status, httpMessage) {
                             var
                                 // pull response from xhr if available
-                                response     = module.get.responseFromXHR(xhr),
-                                errorMessage = module.get.errorFromRequest(response, status, httpMessage)
+                                response     = module.get.responseFromXHR(xhr);
+                            var errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                             ;
                             if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
@@ -672,14 +672,14 @@
                     mockedXHR: function () {
                         var
                             // xhr does not simulate these properties of xhr but must return them
-                            textStatus     = false,
-                            status         = false,
-                            httpMessage    = false,
-                            responder      = settings.mockResponse || settings.response,
-                            asyncResponder = settings.mockResponseAsync || settings.responseAsync,
-                            asyncCallback,
-                            response,
-                            mockedXHR
+                            textStatus     = false;
+                        var status         = false;
+                        var httpMessage    = false;
+                        var responder      = settings.mockResponse || settings.response;
+                        var asyncResponder = settings.mockResponseAsync || settings.responseAsync;
+                        var asyncCallback;
+                        var response;
+                        var mockedXHR
                         ;
 
                         mockedXHR = $.Deferred()
@@ -813,9 +813,9 @@
                     },
                     urlEncodedValue: function (value) {
                         var
-                            decodedValue   = window.decodeURIComponent(value),
-                            encodedValue   = window.encodeURIComponent(value),
-                            alreadyEncoded = decodedValue !== value
+                            decodedValue   = window.decodeURIComponent(value);
+                        var encodedValue   = window.encodeURIComponent(value);
+                        var alreadyEncoded = decodedValue !== value
                         ;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
@@ -956,9 +956,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -979,8 +979,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -1004,10 +1004,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

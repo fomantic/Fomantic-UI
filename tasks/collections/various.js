@@ -3,8 +3,8 @@
  *******************************/
 
 const
-    clean = require('../clean'),
-    version = require('../version')
+    clean = require('../clean');
+const version = require('../version')
 ;
 
 /*

@@ -21,59 +21,59 @@
 
     $.fn.calendar = function (parameters) {
         var
-            $allModules    = $(this),
-            $document      = $(document),
+            $allModules    = $(this);
+        var $document      = $(document);
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            returnedValue,
-            timeGapTable = {
-                5: { row: 4, column: 3 },
-                10: { row: 3, column: 2 },
-                15: { row: 2, column: 2 },
-                20: { row: 3, column: 1 },
-                30: { row: 2, column: 1 },
-            },
-            numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var returnedValue;
+        var timeGapTable = {
+            5: { row: 4, column: 3 },
+            10: { row: 3, column: 2 },
+            15: { row: 2, column: 2 },
+            20: { row: 3, column: 1 },
+            30: { row: 2, column: 1 },
+        };
+        var numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
         ;
 
         $allModules.each(function () {
             var
                 settings = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.calendar.settings, parameters)
-                    : $.extend({}, $.fn.calendar.settings),
+                    : $.extend({}, $.fn.calendar.settings);
 
-                className = settings.className,
-                namespace = settings.namespace,
-                selector = settings.selector,
-                formatter = settings.formatter,
-                parser = settings.parser,
-                metadata = settings.metadata,
-                timeGap = timeGapTable[settings.minTimeGap],
-                error = settings.error,
+            var className = settings.className;
+            var namespace = settings.namespace;
+            var selector = settings.selector;
+            var formatter = settings.formatter;
+            var parser = settings.parser;
+            var metadata = settings.metadata;
+            var timeGap = timeGapTable[settings.minTimeGap];
+            var error = settings.error;
 
-                eventNamespace = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module = $(this),
-                $input = $module.find(selector.input),
-                $activator = $module.find(selector.activator),
+            var $module = $(this);
+            var $input = $module.find(selector.input);
+            var $activator = $module.find(selector.activator);
 
-                element = this,
-                instance = $module.data(moduleNamespace),
-                $container = instance && instance.popupId ? $document.find('#' + instance.popupId) : $module.find(selector.popup),
+            var element = this;
+            var instance = $module.data(moduleNamespace);
+            var $container = instance && instance.popupId ? $document.find('#' + instance.popupId) : $module.find(selector.popup);
 
-                isTouch,
-                isTouchDown = false,
-                isInverted = $module.hasClass(className.inverted),
-                focusDateUsedForRange = false,
-                selectionComplete = false,
-                classObserver,
-                module
+            var isTouch;
+            var isTouchDown = false;
+            var isInverted = $module.hasClass(className.inverted);
+            var focusDateUsedForRange = false;
+            var selectionComplete = false;
+            var classObserver;
+            var module
             ;
 
             module = {
@@ -151,8 +151,8 @@
                                 // prepend the popup element to the activator's parent so that it has less chance of messing with
                                 // the styling (e.g., input action button needs to be the last child to have the correct border radius)
                                 var
-                                    $activatorParent = $activator.parent(),
-                                    domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
+                                    $activatorParent = $activator.parent();
+                                var domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
                                 ;
                                 $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
                             }
@@ -249,21 +249,21 @@
                 create: {
                     calendar: function () {
                         var
-                            i,
-                            r,
-                            c,
-                            p,
-                            row,
-                            cell,
-                            pageGrid
+                            i;
+                        var r;
+                        var c;
+                        var p;
+                        var row;
+                        var cell;
+                        var pageGrid
                         ;
 
                         var
-                            mode = module.get.mode(),
-                            today = new Date(),
-                            date = module.get.date(),
-                            focusDate = module.get.focusDate(),
-                            display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today)
+                            mode = module.get.mode();
+                        var today = new Date();
+                        var date = module.get.date();
+                        var focusDate = module.get.focusDate();
+                        var display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today)
                         ;
 
                         if (!focusDate) {
@@ -272,23 +272,23 @@
                         }
 
                         var
-                            isYear = mode === 'year',
-                            isMonth = mode === 'month',
-                            isDay = mode === 'day',
-                            isHour = mode === 'hour',
-                            isMinute = mode === 'minute',
-                            isTimeOnly = settings.type === 'time'
+                            isYear = mode === 'year';
+                        var isMonth = mode === 'month';
+                        var isDay = mode === 'day';
+                        var isHour = mode === 'hour';
+                        var isMinute = mode === 'minute';
+                        var isTimeOnly = settings.type === 'time'
                         ;
 
                         var multiMonth = Math.max(settings.multiMonth, 1);
                         var monthOffset = !isDay ? 0 : module.get.monthOffset();
 
                         var
-                            minute = display.getMinutes(),
-                            hour = display.getHours(),
-                            day = display.getDate(),
-                            startMonth = display.getMonth() + monthOffset,
-                            year = display.getFullYear()
+                            minute = display.getMinutes();
+                        var hour = display.getHours();
+                        var day = display.getDate();
+                        var startMonth = display.getMonth() + monthOffset;
+                        var year = display.getFullYear()
                         ;
 
                         var columns = isDay
@@ -318,26 +318,26 @@
                             }
 
                             var
-                                yearChange = isYear ? 10 : (isMonth ? 1 : 0),
-                                monthChange = isDay ? 1 : 0,
-                                dayChange = isHour || isMinute ? 1 : 0,
-                                prevNextDay = isHour || isMinute ? day : 1,
-                                prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour),
-                                nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
-                                prevLast = isYear
-                                    ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
-                                    : (isMonth
-                                        ? new Date(year, 0, 0)
-                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
-                                            ? new Date(year, month, 0)
-                                            : new Date(year, month, day, -1))),
-                                nextFirst = isYear
-                                    ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
-                                    : (isMonth
-                                        ? new Date(year + 1, 0, 1)
-                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
-                                            ? new Date(year, month + 1, 1)
-                                            : new Date(year, month, day + 1)))
+                                yearChange = isYear ? 10 : (isMonth ? 1 : 0);
+                            var monthChange = isDay ? 1 : 0;
+                            var dayChange = isHour || isMinute ? 1 : 0;
+                            var prevNextDay = isHour || isMinute ? day : 1;
+                            var prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour);
+                            var nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour);
+                            var prevLast = isYear
+                                ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
+                                : (isMonth
+                                    ? new Date(year, 0, 0)
+                                    : (isDay // eslint-disable-line unicorn/no-nested-ternary
+                                        ? new Date(year, month, 0)
+                                        : new Date(year, month, day, -1)));
+                            var nextFirst = isYear
+                                ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
+                                : (isMonth
+                                    ? new Date(year + 1, 0, 1)
+                                    : (isDay // eslint-disable-line unicorn/no-nested-ternary
+                                        ? new Date(year, month + 1, 1)
+                                        : new Date(year, month, day + 1)))
                             ;
 
                             var tempMode = mode;
@@ -790,11 +790,11 @@
                 get: {
                     weekOfYear: function (weekYear, weekMonth, weekDay) {
                         // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
-                        var ms1d = 24 * 3600 * 1000,
-                            ms7d = 7 * ms1d,
-                            DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an absolute day number
-                            AWN = Math.floor(DC3 / 7), // an absolute week number
-                            Wyr = new Date(AWN * ms7d).getUTCFullYear()
+                        var ms1d = 24 * 3600 * 1000;
+                        var ms7d = 7 * ms1d;
+                        var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d; // an absolute day number
+                        var AWN = Math.floor(DC3 / 7); // an absolute week number
+                        var Wyr = new Date(AWN * ms7d).getUTCFullYear()
                         ;
 
                         return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
@@ -1095,44 +1095,44 @@
                         }
 
                         var
-                            D = date.getDate(),
-                            M = date.getMonth(),
-                            Y = date.getFullYear(),
-                            d = date.getDay(),
-                            H = date.getHours(),
-                            m = date.getMinutes(),
-                            s = date.getSeconds(),
-                            w = module.get.weekOfYear(Y, M, D + 1 - settings.firstDayOfWeek),
-                            h = H % 12 || 12,
-                            a = H < 12 ? settings.text.am.toLowerCase() : settings.text.pm.toLowerCase(),
-                            tokens = {
-                                D: D,
-                                DD: ('0' + D).slice(-2),
-                                M: M + 1,
-                                MM: ('0' + (M + 1)).slice(-2),
-                                MMM: settings.text.monthsShort[M],
-                                MMMM: settings.text.months[M],
-                                Y: Y,
-                                YY: String(Y).slice(2),
-                                YYYY: Y,
-                                d: d,
-                                dd: settings.text.dayNamesShort[d].slice(0, 2),
-                                ddd: settings.text.dayNamesShort[d],
-                                dddd: settings.text.dayNames[d],
-                                h: h,
-                                hh: ('0' + h).slice(-2),
-                                H: H,
-                                HH: ('0' + H).slice(-2),
-                                m: m,
-                                mm: ('0' + m).slice(-2),
-                                s: s,
-                                ss: ('0' + s).slice(-2),
-                                a: a,
-                                A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
-                                w: w,
-                                ww: ('0' + w).slice(-2),
-                            }
+                            D = date.getDate();
+                        var M = date.getMonth();
+                        var Y = date.getFullYear();
+                        var d = date.getDay();
+                        var H = date.getHours();
+                        var m = date.getMinutes();
+                        var s = date.getSeconds();
+                        var w = module.get.weekOfYear(Y, M, D + 1 - settings.firstDayOfWeek);
+                        var h = H % 12 || 12;
+                        var a = H < 12 ? settings.text.am.toLowerCase() : settings.text.pm.toLowerCase();
+                        var tokens = {
+                            D: D,
+                            DD: ('0' + D).slice(-2),
+                            M: M + 1,
+                            MM: ('0' + (M + 1)).slice(-2),
+                            MMM: settings.text.monthsShort[M],
+                            MMMM: settings.text.months[M],
+                            Y: Y,
+                            YY: String(Y).slice(2),
+                            YYYY: Y,
+                            d: d,
+                            dd: settings.text.dayNamesShort[d].slice(0, 2),
+                            ddd: settings.text.dayNamesShort[d],
+                            dddd: settings.text.dayNames[d],
+                            h: h,
+                            hh: ('0' + h).slice(-2),
+                            H: H,
+                            HH: ('0' + H).slice(-2),
+                            m: m,
+                            mm: ('0' + m).slice(-2),
+                            s: s,
+                            ss: ('0' + s).slice(-2),
+                            a: a,
+                            A: a.toUpperCase(),
+                            S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
+                            w: w,
+                            ww: ('0' + w).slice(-2),
+                        }
                         ;
 
                         return format.replace(settings.regExp.token, function (match) {
@@ -1494,9 +1494,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -1517,8 +1517,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -1542,10 +1542,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -1728,16 +1728,16 @@
                 text = text.toLowerCase();
 
                 var
-                    i,
-                    j,
-                    k
+                    i;
+                var j;
+                var k
                 ;
                 var
-                    minute = -1,
-                    hour = -1,
-                    day = -1,
-                    month = -1,
-                    year = -1
+                    minute = -1;
+                var hour = -1;
+                var day = -1;
+                var month = -1;
+                var year = -1
                 ;
                 var isAm;
 
@@ -1745,12 +1745,12 @@
                 var isDateOnly = settings.type.indexOf('time') < 0;
 
                 var
-                    words = text.split(settings.regExp.dateWords),
-                    word
+                    words = text.split(settings.regExp.dateWords);
+                var word
                 ;
                 var
-                    numbers = text.split(settings.regExp.dateNumbers),
-                    number
+                    numbers = text.split(settings.regExp.dateNumbers);
+                var number
                 ;
 
                 var parts;

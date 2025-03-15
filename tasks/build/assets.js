@@ -3,20 +3,20 @@
  *******************************/
 
 const
-    gulp      = require('gulp'),
+    gulp      = require('gulp');
 
-    // gulp dependencies
-    chmod     = require('gulp-chmod'),
-    gulpif    = require('gulp-if'),
-    normalize = require('normalize-path'),
-    print     = require('gulp-print').default,
+// gulp dependencies
+const chmod     = require('gulp-chmod');
+const gulpif    = require('gulp-if');
+const normalize = require('normalize-path');
+const print     = require('gulp-print').default;
 
-    // config
-    config    = require('../config/user'),
-    tasks     = require('../config/tasks'),
-    install   = require('../config/project/install'),
+// config
+const config    = require('../config/user');
+const tasks     = require('../config/tasks');
+const install   = require('../config/project/install');
 
-    log       = tasks.log
+const log       = tasks.log
 ;
 
 function build(src, config) {

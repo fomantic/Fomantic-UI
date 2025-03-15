@@ -21,41 +21,41 @@
 
     $.fn.checkbox = function (parameters) {
         var
-            $allModules    = $(this),
+            $allModules    = $(this);
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            returnedValue
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
-                settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters),
+                settings        = $.extend(true, {}, $.fn.checkbox.settings, parameters);
 
-                className       = settings.className,
-                namespace       = settings.namespace,
-                selector        = settings.selector,
-                error           = settings.error,
+            var className       = settings.className;
+            var namespace       = settings.namespace;
+            var selector        = settings.selector;
+            var error           = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $label          = $(this).children(selector.label),
-                $input          = $(this).children(selector.input),
-                input           = $input[0],
+            var $module         = $(this);
+            var $label          = $(this).children(selector.label);
+            var $input          = $(this).children(selector.input);
+            var input           = $input[0];
 
-                initialLoad     = false,
-                shortcutPressed = false,
-                instance        = $module.data(moduleNamespace),
+            var initialLoad     = false;
+            var shortcutPressed = false;
+            var instance        = $module.data(moduleNamespace);
 
-                observer,
-                element         = this,
-                module
+            var observer;
+            var element         = this;
+            var module
             ;
 
             module = {
@@ -197,23 +197,23 @@
                     },
                     keydown: function (event) {
                         var
-                            key     = event.which,
-                            keyCode = {
-                                enter: 13,
-                                space: 32,
-                                escape: 27,
-                                left: 37,
-                                up: 38,
-                                right: 39,
-                                down: 40,
-                            }
+                            key     = event.which;
+                        var keyCode = {
+                            enter: 13,
+                            space: 32,
+                            escape: 27,
+                            left: 37,
+                            up: 38,
+                            right: 39,
+                            down: 40,
+                        }
                         ;
 
                         var
-                            r = module.get.radios().not(selector.disabled),
-                            rIndex = r.index($module),
-                            rLen = r.length,
-                            checkIndex = false
+                            r = module.get.radios().not(selector.disabled);
+                        var rIndex = r.index($module);
+                        var rLen = r.length;
+                        var checkIndex = false
                         ;
 
                         if (key === keyCode.left || key === keyCode.up) {
@@ -228,9 +228,9 @@
 
                                 return false;
                             }
-                            var nextOption = $(r[checkIndex]),
-                                nextInput = nextOption.children(selector.input),
-                                disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
+                            var nextOption = $(r[checkIndex]);
+                            var nextInput = nextOption.children(selector.input);
+                            var disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
                             if (disallowOption || settings.beforeChecked.apply(nextInput[0]) === false) {
                                 module.verbose('Next option should not allow check, cancelling key navigation');
 
@@ -707,9 +707,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -730,8 +730,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -755,10 +755,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

@@ -21,47 +21,47 @@
 
     $.fn.search = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
-            returnedValue
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
+        var returnedValue
         ;
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.search.settings, parameters)
-                    : $.extend({}, $.fn.search.settings),
+                    : $.extend({}, $.fn.search.settings);
 
-                className        = settings.className,
-                metadata         = settings.metadata,
-                regExp           = settings.regExp,
-                fields           = settings.fields,
-                selector         = settings.selector,
-                error            = settings.error,
-                namespace        = settings.namespace,
+            var className        = settings.className;
+            var metadata         = settings.metadata;
+            var regExp           = settings.regExp;
+            var fields           = settings.fields;
+            var selector         = settings.selector;
+            var error            = settings.error;
+            var namespace        = settings.namespace;
 
-                eventNamespace   = '.' + namespace,
-                moduleNamespace  = namespace + '-module',
+            var eventNamespace   = '.' + namespace;
+            var moduleNamespace  = namespace + '-module';
 
-                $module          = $(this),
-                $prompt          = $module.find(selector.prompt),
-                $searchButton    = $module.find(selector.searchButton),
-                $results         = $module.find(selector.results),
-                $result          = $module.find(selector.result),
-                $category        = $module.find(selector.category),
+            var $module          = $(this);
+            var $prompt          = $module.find(selector.prompt);
+            var $searchButton    = $module.find(selector.searchButton);
+            var $results         = $module.find(selector.results);
+            var $result          = $module.find(selector.result);
+            var $category        = $module.find(selector.category);
 
-                element          = this,
-                instance         = $module.data(moduleNamespace),
+            var element          = this;
+            var instance         = $module.data(moduleNamespace);
 
-                disabledBubbled  = false,
-                resultsDismissed = false,
+            var disabledBubbled  = false;
+            var resultsDismissed = false;
 
-                module
+            var module
             ;
 
             module = {
@@ -169,14 +169,14 @@
                     },
                     blur: function (event) {
                         var
-                            pageLostFocus = document.activeElement === this,
-                            callback      = function () {
-                                module.cancel.query();
-                                module.remove.focus();
-                                module.timer = setTimeout(function () {
-                                    module.hideResults();
-                                }, settings.hideDelay);
-                            }
+                            pageLostFocus = document.activeElement === this;
+                        var callback      = function () {
+                            module.cancel.query();
+                            module.remove.focus();
+                            module.timer = setTimeout(function () {
+                                module.hideResults();
+                            }, settings.hideDelay);
+                        }
                         ;
                         if (pageLostFocus) {
                             return;
@@ -218,19 +218,19 @@
                         click: function (event) {
                             module.debug('Search result selected');
                             var
-                                $result = $(this),
-                                $title  = $result.find(selector.title).eq(0),
-                                $link   = $result.is('a[href]')
-                                    ? $result
-                                    : $result.find('a[href]').eq(0),
-                                href    = $link.attr('href') || false,
-                                target  = $link.attr('target') || false,
-                                // title is used for result lookup
-                                value   = $title.length > 0
-                                    ? $title.text()
-                                    : false,
-                                results = module.get.results(),
-                                result  = $result.data(metadata.result) || module.get.result(value, results)
+                                $result = $(this);
+                            var $title  = $result.find(selector.title).eq(0);
+                            var $link   = $result.is('a[href]')
+                                ? $result
+                                : $result.find('a[href]').eq(0);
+                            var href    = $link.attr('href') || false;
+                            var target  = $link.attr('target') || false;
+                            // title is used for result lookup
+                            var value   = $title.length > 0
+                                ? $title.text()
+                                : false;
+                            var results = module.get.results();
+                            var result  = $result.data(metadata.result) || module.get.result(value, results)
                             ;
                             var oldValue = module.get.value();
                             if (isFunction(settings.onSelect)) {
@@ -259,10 +259,10 @@
                 },
                 ensureVisible: function ($el) {
                     var
-                        elTop,
-                        elBottom,
-                        resultsScrollTop,
-                        resultsHeight
+                        elTop;
+                    var elBottom;
+                    var resultsScrollTop;
+                    var resultsHeight
                     ;
                     if ($el.length === 0) {
                         return;
@@ -282,22 +282,22 @@
                 handleKeyboard: function (event) {
                     var
                         // force selector refresh
-                        $result         = $module.find(selector.result),
-                        $category       = $module.find(selector.category),
-                        $activeResult   = $result.filter('.' + className.active),
-                        currentIndex    = $result.index($activeResult),
-                        resultSize      = $result.length,
-                        hasActiveResult = $activeResult.length > 0,
+                        $result         = $module.find(selector.result);
+                    var $category       = $module.find(selector.category);
+                    var $activeResult   = $result.filter('.' + className.active);
+                    var currentIndex    = $result.index($activeResult);
+                    var resultSize      = $result.length;
+                    var hasActiveResult = $activeResult.length > 0;
 
-                        keyCode         = event.which,
-                        keys            = {
-                            backspace: 8,
-                            enter: 13,
-                            escape: 27,
-                            upArrow: 38,
-                            downArrow: 40,
-                        },
-                        newIndex
+                    var keyCode         = event.which;
+                    var keys            = {
+                        backspace: 8,
+                        enter: 13,
+                        escape: 27,
+                        upArrow: 38,
+                        downArrow: 40,
+                    };
+                    var newIndex
                     ;
                     // search shortcuts
                     if (keyCode === keys.escape) {
@@ -376,34 +376,34 @@
                                 urlData: {
                                     query: searchTerm,
                                 },
+                            };
+                        var apiCallbacks = {
+                            onSuccess: function (response, $module, xhr) {
+                                module.parse.response.call(element, response, searchTerm);
+                                callback();
+                                if (settings.apiSettings && typeof settings.apiSettings.onSuccess === 'function') {
+                                    settings.apiSettings.onSuccess.call(this, response, $module, xhr);
+                                }
                             },
-                            apiCallbacks = {
-                                onSuccess: function (response, $module, xhr) {
-                                    module.parse.response.call(element, response, searchTerm);
-                                    callback();
-                                    if (settings.apiSettings && typeof settings.apiSettings.onSuccess === 'function') {
-                                        settings.apiSettings.onSuccess.call(this, response, $module, xhr);
-                                    }
-                                },
-                                onFailure: function (response, $module, xhr) {
-                                    module.displayMessage(error.serverError);
-                                    callback();
-                                    if (settings.apiSettings && typeof settings.apiSettings.onFailure === 'function') {
-                                        settings.apiSettings.onFailure.call(this, response, $module, xhr);
-                                    }
-                                },
-                                onAbort: function (status, $module, xhr) {
-                                    if (settings.apiSettings && typeof settings.apiSettings.onAbort === 'function') {
-                                        settings.apiSettings.onAbort.call(this, status, $module, xhr);
-                                    }
-                                },
-                                onError: function (errorMessage, $module, xhr) {
-                                    module.error();
-                                    if (settings.apiSettings && typeof settings.apiSettings.onError === 'function') {
-                                        settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
-                                    }
-                                },
-                            }
+                            onFailure: function (response, $module, xhr) {
+                                module.displayMessage(error.serverError);
+                                callback();
+                                if (settings.apiSettings && typeof settings.apiSettings.onFailure === 'function') {
+                                    settings.apiSettings.onFailure.call(this, response, $module, xhr);
+                                }
+                            },
+                            onAbort: function (status, $module, xhr) {
+                                if (settings.apiSettings && typeof settings.apiSettings.onAbort === 'function') {
+                                    settings.apiSettings.onAbort.call(this, status, $module, xhr);
+                                }
+                            },
+                            onError: function (errorMessage, $module, xhr) {
+                                module.error();
+                                if (settings.apiSettings && typeof settings.apiSettings.onError === 'function') {
+                                    settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
+                                }
+                            },
+                        }
                         ;
                         $.extend(true, apiSettings, settings.apiSettings, apiCallbacks);
                         module.verbose('Setting up API request', apiSettings);
@@ -438,8 +438,8 @@
                             return;
                         }
                         var
-                            $target = $(event.target),
-                            isInDOM = $.contains(document.documentElement, event.target)
+                            $target = $(event.target);
+                        var isInDOM = $.contains(document.documentElement, event.target)
                         ;
 
                         return isInDOM && $target.closest(selector.message).length > 0;
@@ -464,12 +464,12 @@
                     },
                     inputEvent: function () {
                         var
-                            prompt = $prompt[0],
-                            inputEvent   = prompt !== undefined && prompt.oninput !== undefined
-                                ? 'input'
-                                : (prompt !== undefined && prompt.onpropertychange !== undefined
-                                    ? 'propertychange'
-                                    : 'keyup')
+                            prompt = $prompt[0];
+                        var inputEvent   = prompt !== undefined && prompt.oninput !== undefined
+                            ? 'input'
+                            : (prompt !== undefined && prompt.onpropertychange !== undefined
+                                ? 'propertychange'
+                                : 'keyup')
                         ;
 
                         return inputEvent;
@@ -561,8 +561,8 @@
                         ? callback
                         : function () {};
                     var
-                        searchTerm = module.get.value(),
-                        cache = module.read.cache(searchTerm)
+                        searchTerm = module.get.value();
+                    var cache = module.read.cache(searchTerm)
                     ;
                     callback = callback || function () {};
                     if (module.has.minimumCharacters()) {
@@ -594,8 +594,8 @@
                 search: {
                     local: function (searchTerm) {
                         var
-                            results = module.search.object(searchTerm, settings.source),
-                            searchHTML
+                            results = module.search.object(searchTerm, settings.source);
+                        var searchHTML
                         ;
                         module.set.loading();
                         module.save.results(results);
@@ -633,23 +633,23 @@
                     object: function (searchTerm, source, searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
                         var
-                            results      = [],
-                            exactResults = [],
-                            fuzzyResults = [],
-                            searchExp    = searchTerm.replace(regExp.escape, '\\$&'),
-                            matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : ''),
+                            results      = [];
+                        var exactResults = [];
+                        var fuzzyResults = [];
+                        var searchExp    = searchTerm.replace(regExp.escape, '\\$&');
+                        var matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : '');
 
-                            // avoid duplicates when pushing results
-                            addResult = function (array, result) {
-                                var
-                                    notResult      = $.inArray(result, results) === -1,
-                                    notFuzzyResult = $.inArray(result, fuzzyResults) === -1,
-                                    notExactResults = $.inArray(result, exactResults) === -1
+                        // avoid duplicates when pushing results
+                        var addResult = function (array, result) {
+                            var
+                                notResult      = $.inArray(result, results) === -1;
+                            var notFuzzyResult = $.inArray(result, fuzzyResults) === -1;
+                            var notExactResults = $.inArray(result, exactResults) === -1
                                 ;
-                                if (notResult && notFuzzyResult && notExactResults) {
-                                    array.push(result);
-                                }
+                            if (notResult && notFuzzyResult && notExactResults) {
+                                array.push(result);
                             }
+                        }
                         ;
                         source = source || settings.source;
                         searchFields = searchFields !== undefined
@@ -719,10 +719,10 @@
                     return term.indexOf(query) > -1;
                 },
                 wordSearch: function (query, term, matchAll) {
-                    var allWords = query.split(/\s+/),
-                        w,
-                        wL = allWords.length,
-                        found = false
+                    var allWords = query.split(/\s+/);
+                    var w;
+                    var wL = allWords.length;
+                    var found = false
                     ;
                     for (w = 0; w < wL; w++) {
                         found = module.exactSearch(allWords[w], term);
@@ -735,8 +735,8 @@
                 },
                 fuzzySearch: function (query, term) {
                     var
-                        termLength  = term.length,
-                        queryLength = query.length
+                        termLength  = term.length;
+                    var queryLength = query.length
                     ;
                     if (typeof query !== 'string') {
                         return false;
@@ -753,8 +753,8 @@
                     }
                     for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var
-                            continueSearch = false,
-                            queryCharacter = query.charCodeAt(characterIndex)
+                            continueSearch = false;
+                        var queryCharacter = query.charCodeAt(characterIndex)
                         ;
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
@@ -808,8 +808,8 @@
                 has: {
                     minimumCharacters: function () {
                         var
-                            searchTerm    = module.get.value(),
-                            numCharacters = searchTerm.length
+                            searchTerm    = module.get.value();
+                        var numCharacters = searchTerm.length
                         ;
 
                         return numCharacters >= settings.minCharacters;
@@ -886,9 +886,9 @@
                     },
                     id: function (resultIndex, categoryIndex) {
                         var
-                            resultID      = resultIndex + 1, // not zero indexed
-                            letterID,
-                            id
+                            resultID      = resultIndex + 1; // not zero indexed
+                        var letterID;
+                        var id
                         ;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
@@ -935,8 +935,8 @@
                         module.debug('Injecting unique ids into results');
                         var
                             // since results may be an object, we must use counters
-                            categoryIndex = 0,
-                            resultIndex   = 0
+                            categoryIndex = 0;
+                        var resultIndex   = 0
                         ;
                         if (settings.type === 'category') {
                             // iterate through each category result
@@ -1087,10 +1087,10 @@
                 generateResults: function (response) {
                     module.debug('Generating html from response', response);
                     var
-                        template       = settings.templates[settings.type],
-                        isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]),
-                        isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0,
-                        html           = ''
+                        template       = settings.templates[settings.type];
+                    var isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
+                    var isProperArray  = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
+                    var html           = ''
                     ;
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
@@ -1103,19 +1103,19 @@
                             }
                         }
                         if (settings.highlightMatches) {
-                            var results = response[fields.results],
-                                regExpIgnore = settings.ignoreSearchCase ? 'i' : '',
-                                querySplit = module.get.value().split(''),
-                                diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '',
-                                htmlReg = '(?![^<]*>)',
-                                markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore),
-                                markedReplacer = function () {
-                                    var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
-                                        return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
-                                    });
+                            var results = response[fields.results];
+                            var regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
+                            var querySplit = module.get.value().split('');
+                            var diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
+                            var htmlReg = '(?![^<]*>)';
+                            var markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
+                            var markedReplacer = function () {
+                                var args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                                    return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
+                                });
 
-                                    return args.join('');
-                                }
+                                return args.join('');
+                            }
                             ;
                             $.each(results, function (label, content) {
                                 $.each(settings.searchFields, function (index, field) {
@@ -1203,9 +1203,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -1226,8 +1226,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -1254,10 +1254,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -1511,9 +1511,9 @@
             },
             category: function (response, settings) {
                 var
-                    html = '',
-                    fields = settings.fields,
-                    escape = settings.templates.escape
+                    html = '';
+                var fields = settings.fields;
+                var escape = settings.templates.escape
                 ;
                 if (response[fields.categoryResults] !== undefined) {
                     // each category
@@ -1575,9 +1575,9 @@
             },
             standard: function (response, settings) {
                 var
-                    html = '',
-                    fields = settings.fields,
-                    escape = settings.templates.escape
+                    html = '';
+                var fields = settings.fields;
+                var escape = settings.templates.escape
                 ;
                 if (response[fields.results] !== undefined) {
                     // each result

@@ -16,11 +16,11 @@ const release = require('../config/admin/release');
 
 let
     // register components and distributions
-    repos   = release.distributions.concat(release.components),
-    total   = repos.length,
-    index   = -1,
+    repos   = release.distributions.concat(release.components);
+let total   = repos.length;
+let index   = -1;
 
-    stepRepo
+let stepRepo
 ;
 
 module.exports = function (callback) {
@@ -35,11 +35,11 @@ module.exports = function (callback) {
             return;
         }
         let
-            repo            = repos[index].toLowerCase(),
-            outputDirectory = release.outputRoot + repo + '/',
-            exec            = process.exec,
-            execSettings    = { cwd: outputDirectory },
-            updateNPM       = 'npm publish;meteor publish;'
+            repo            = repos[index].toLowerCase();
+        let outputDirectory = release.outputRoot + repo + '/';
+        let exec            = process.exec;
+        let execSettings    = { cwd: outputDirectory };
+        let updateNPM       = 'npm publish;meteor publish;'
         ;
 
         /* Register with NPM */

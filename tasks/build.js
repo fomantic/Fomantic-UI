@@ -4,10 +4,10 @@
 
 const
     // dependencies
-    gulp     = require('gulp'),
+    gulp     = require('gulp');
 
-    // config
-    install  = require('./config/project/install')
+// config
+const install  = require('./config/project/install')
 ;
 
 module.exports = function (callback) {

@@ -21,52 +21,52 @@
 
     $.fn.state = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
-            contextCheck    = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
-                    }
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
+        var contextCheck    = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : window;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
+            return $context;
+        };
+        var returnedValue
         ;
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.state.settings, parameters)
-                    : $.extend({}, $.fn.state.settings),
+                    : $.extend({}, $.fn.state.settings);
 
-                error           = settings.error,
-                metadata        = settings.metadata,
-                className       = settings.className,
-                namespace       = settings.namespace,
-                states          = settings.states,
-                text            = settings.text,
+            var error           = settings.error;
+            var metadata        = settings.metadata;
+            var className       = settings.className;
+            var namespace       = settings.namespace;
+            var states          = settings.states;
+            var text            = settings.text;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = namespace + '-module',
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-                $module         = $(this),
-                $context        = settings.context ? contextCheck(settings.context, window) : $module,
+            var $module         = $(this);
+            var $context        = settings.context ? contextCheck(settings.context, window) : $module;
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
+            var element         = this;
+            var instance        = $module.data(moduleNamespace);
 
-                module
+            var module
             ;
             module = {
 
@@ -204,8 +204,8 @@
                 toggle: {
                     state: function () {
                         var
-                            apiRequest,
-                            requestCancelled
+                            apiRequest;
+                        var requestCancelled
                         ;
                         if (module.allows('active') && module.is.enabled()) {
                             module.refresh();
@@ -374,8 +374,8 @@
                     // on mouseout sets text to previous value
                     text: function () {
                         var
-                            activeText   = text.active || $module.data(metadata.storedText),
-                            inactiveText = text.inactive || $module.data(metadata.storedText)
+                            activeText   = text.active || $module.data(metadata.storedText);
+                        var inactiveText = text.inactive || $module.data(metadata.storedText)
                         ;
                         if (module.is.textEnabled()) {
                             if (module.is.active() && activeText) {
@@ -465,9 +465,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -488,8 +488,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -513,10 +513,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

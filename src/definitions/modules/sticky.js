@@ -21,57 +21,57 @@
 
     $.fn.sticky = function (parameters) {
         var
-            $allModules    = $(this),
-            $document      = $(document),
+            $allModules    = $(this);
+        var $document      = $(document);
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : window;
-                    }
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck   = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : window;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
+            return $context;
+        };
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings              = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sticky.settings, parameters)
-                    : $.extend({}, $.fn.sticky.settings),
+                    : $.extend({}, $.fn.sticky.settings);
 
-                className             = settings.className,
-                namespace             = settings.namespace,
-                error                 = settings.error,
+            var className             = settings.className;
+            var namespace             = settings.namespace;
+            var error                 = settings.error;
 
-                eventNamespace        = '.' + namespace,
-                moduleNamespace       = 'module-' + namespace,
+            var eventNamespace        = '.' + namespace;
+            var moduleNamespace       = 'module-' + namespace;
 
-                $module               = $(this),
-                $window               = $(window),
-                $scroll               = contextCheck(settings.scrollContext, window),
-                $container,
-                $context,
+            var $module               = $(this);
+            var $window               = $(window);
+            var $scroll               = contextCheck(settings.scrollContext, window);
+            var $container;
+            var $context;
 
-                instance              = $module.data(moduleNamespace),
+            var instance              = $module.data(moduleNamespace);
 
-                element         = this,
+            var element         = this;
 
-                documentObserver,
-                observer,
-                module
+            var documentObserver;
+            var observer;
+            var module
             ;
 
             module = {
@@ -248,20 +248,20 @@
                         var
                             scrollContext = {
                                 height: $scroll.height(),
+                            };
+                        var element = {
+                            margin: {
+                                top: parseInt($module.css('margin-top'), 10),
+                                bottom: parseInt($module.css('margin-bottom'), 10),
                             },
-                            element = {
-                                margin: {
-                                    top: parseInt($module.css('margin-top'), 10),
-                                    bottom: parseInt($module.css('margin-bottom'), 10),
-                                },
-                                offset: $module.offset(),
-                                width: $module.outerWidth(),
-                                height: $module.outerHeight(),
-                            },
-                            context = {
-                                offset: $context.offset(),
-                                height: $context.outerHeight(),
-                            }
+                            offset: $module.offset(),
+                            width: $module.outerWidth(),
+                            height: $module.outerHeight(),
+                        };
+                        var context = {
+                            offset: $context.offset(),
+                            height: $context.outerHeight(),
+                        }
                         ;
                         if (!module.is.standardScroll()) {
                             module.debug('Non-standard scroll. Removing scroll offset from element offset');
@@ -333,12 +333,12 @@
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
                         var
-                            element        = module.cache.element,
-                            scrollContext  = module.cache.scrollContext,
-                            delta          = module.get.scrollChange(scroll),
-                            maxScroll      = element.height - scrollContext.height + settings.offset,
-                            elementScroll  = module.get.currentElementScroll(),
-                            possibleScroll = elementScroll + delta
+                            element        = module.cache.element;
+                        var scrollContext  = module.cache.scrollContext;
+                        var delta          = module.get.scrollChange(scroll);
+                        var maxScroll      = element.height - scrollContext.height + settings.offset;
+                        var elementScroll  = module.get.currentElementScroll();
+                        var possibleScroll = elementScroll + delta
                         ;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
@@ -462,27 +462,27 @@
 
                 stick: function (scrollPosition) {
                     var
-                        cachedPosition = scrollPosition || $scroll.scrollTop(),
-                        cache          = module.cache,
-                        fits           = cache.fits,
-                        sameHeight     = cache.sameHeight,
-                        element        = cache.element,
-                        scrollContext  = cache.scrollContext,
-                        context        = cache.context,
-                        offset         = module.is.bottom() && settings.pushing
-                            ? settings.bottomOffset
-                            : settings.offset,
-                        scroll         = {
-                            top: cachedPosition + offset,
-                            bottom: cachedPosition + offset + scrollContext.height,
-                        },
-                        elementScroll  = fits
-                            ? 0
-                            : module.get.elementScroll(scroll.top),
+                        cachedPosition = scrollPosition || $scroll.scrollTop();
+                    var cache          = module.cache;
+                    var fits           = cache.fits;
+                    var sameHeight     = cache.sameHeight;
+                    var element        = cache.element;
+                    var scrollContext  = cache.scrollContext;
+                    var context        = cache.context;
+                    var offset         = module.is.bottom() && settings.pushing
+                        ? settings.bottomOffset
+                        : settings.offset;
+                    var scroll         = {
+                        top: cachedPosition + offset,
+                        bottom: cachedPosition + offset + scrollContext.height,
+                    };
+                    var elementScroll  = fits
+                        ? 0
+                        : module.get.elementScroll(scroll.top);
 
-                        // shorthand
-                        doesntFit      = !fits,
-                        elementVisible = element.height !== 0
+                    // shorthand
+                    var doesntFit      = !fits;
+                    var elementVisible = element.height !== 0
                     ;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
@@ -729,9 +729,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -752,8 +752,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -777,10 +777,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

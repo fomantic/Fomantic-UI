@@ -11,30 +11,30 @@
 
 const
     // node dependencies
-    fs              = require('fs'),
-    path            = require('path'),
-    gulp            = require('gulp'),
-    mergeStream     = require('merge-stream'),
+    fs              = require('fs');
+const path            = require('path');
+const gulp            = require('gulp');
+const mergeStream     = require('merge-stream');
 
-    // admin dependencies
-    flatten         = require('gulp-flatten'),
-    jsonEditor      = require('gulp-json-editor'),
-    plumber         = require('@fomantic/gulp-plumber'),
-    rename          = require('gulp-rename'),
-    replace         = require('gulp-replace'),
+// admin dependencies
+const flatten         = require('gulp-flatten');
+const jsonEditor      = require('gulp-json-editor');
+const plumber         = require('@fomantic/gulp-plumber');
+const rename          = require('gulp-rename');
+const replace         = require('gulp-replace');
 
-    // config
-    release         = require('../../config/admin/release'),
-    project         = require('../../config/project/release'),
+// config
+const release         = require('../../config/admin/release');
+const project         = require('../../config/project/release');
 
-    // shorthand
-    version         = project.version
+// shorthand
+const version         = project.version
 ;
 
 module.exports = function (callback) {
     let
-        index,
-        tasks = []
+        index;
+    let tasks = []
     ;
 
     for (index in release.distributions) {
@@ -45,41 +45,41 @@ module.exports = function (callback) {
         // streams... designed to save time and make coding fun...
         (function (distribution) {
             let
-                distLowerCase   = distribution.toLowerCase(),
-                outputDirectory = path.join(release.outputRoot, distLowerCase),
-                packageFile     = path.join(outputDirectory, release.files.npm),
-                regExp          = {
-                    match: {
-                        files: '{files}',
-                        version: '{version}',
-                    },
+                distLowerCase   = distribution.toLowerCase();
+            let outputDirectory = path.join(release.outputRoot, distLowerCase);
+            let packageFile     = path.join(outputDirectory, release.files.npm);
+            let regExp          = {
+                match: {
+                    files: '{files}',
+                    version: '{version}',
                 },
-                gatherFiles,
-                createList
+            };
+            let gatherFiles;
+            let createList
             ;
 
             // get files for meteor
             gatherFiles = function (dir) {
                 dir = dir || path.resolve('.');
                 let
-                    list  = fs.readdirSync(dir),
-                    omitted = [
-                        '.git',
-                        'node_modules',
-                        'package.js',
-                        'LICENSE',
-                        'README.md',
-                        'package.json',
-                        'bower.json',
-                        '.gitignore',
-                    ],
-                    files = []
+                    list  = fs.readdirSync(dir);
+                let omitted = [
+                    '.git',
+                    'node_modules',
+                    'package.js',
+                    'LICENSE',
+                    'README.md',
+                    'package.json',
+                    'bower.json',
+                    '.gitignore',
+                ];
+                let files = []
                 ;
                 list.forEach(function (file) {
                     let
-                        isOmitted = omitted.indexOf(file) > -1,
-                        filePath  = path.join(dir, file),
-                        stat      = fs.statSync(filePath)
+                        isOmitted = omitted.indexOf(file) > -1;
+                    let filePath  = path.join(dir, file);
+                    let stat      = fs.statSync(filePath)
                     ;
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
@@ -106,8 +106,8 @@ module.exports = function (callback) {
 
             tasks.push(function () {
                 let
-                    files     = gatherFiles(outputDirectory),
-                    filenames = createList(files)
+                    files     = gatherFiles(outputDirectory);
+                let filenames = createList(files)
                 ;
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())
@@ -122,9 +122,9 @@ module.exports = function (callback) {
             if (distribution === 'CSS') {
                 tasks.push(function () {
                     let
-                        themes,
-                        components,
-                        releases
+                        themes;
+                    let components;
+                    let releases
                     ;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/', encoding: false })
                         .pipe(gulp.dest(outputDirectory))
@@ -141,13 +141,13 @@ module.exports = function (callback) {
             } else if (distribution === 'LESS') {
                 tasks.push(function () {
                     let
-                        definitions,
-                        overridesImport,
-                        lessImport,
-                        themeImport,
-                        themeConfig,
-                        siteTheme,
-                        themes
+                        definitions;
+                    let overridesImport;
+                    let lessImport;
+                    let themeImport;
+                    let themeConfig;
+                    let siteTheme;
+                    let themes
                     ;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory))

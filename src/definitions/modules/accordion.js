@@ -21,39 +21,39 @@
 
     $.fn.accordion = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
 
-            returnedValue
+        var returnedValue
         ;
         $allModules.each(function () {
             var
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.accordion.settings, parameters)
-                    : $.extend({}, $.fn.accordion.settings),
+                    : $.extend({}, $.fn.accordion.settings);
 
-                className       = settings.className,
-                namespace       = settings.namespace,
-                selector        = settings.selector,
-                error           = settings.error,
+            var className       = settings.className;
+            var namespace       = settings.namespace;
+            var selector        = settings.selector;
+            var error           = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module  = $(this),
-                $title   = $module.find(selector.title),
-                $content = $module.find(selector.content),
+            var $module  = $(this);
+            var $title   = $module.find(selector.title);
+            var $content = $module.find(selector.content);
 
-                element  = this,
-                instance = $module.data(moduleNamespace),
-                observer,
-                module
+            var element  = this;
+            var instance = $module.data(moduleNamespace);
+            var observer;
+            var module
             ;
 
             module = {
@@ -124,12 +124,12 @@
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
-                            : $(this).closest(selector.title),
-                        $activeContent = $activeTitle.next($content),
-                        isAnimating = $activeContent.hasClass(className.animating),
-                        isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = isActive && !isAnimating,
-                        isOpening   = !isActive && isAnimating
+                            : $(this).closest(selector.title);
+                    var $activeContent = $activeTitle.next($content);
+                    var isAnimating = $activeContent.hasClass(className.animating);
+                    var isActive    = $activeContent.hasClass(className.active);
+                    var isOpen      = isActive && !isAnimating;
+                    var isOpening   = !isActive && isAnimating
                     ;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
@@ -149,11 +149,11 @@
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
-                            : $(this).closest(selector.title),
-                        $activeContent = $activeTitle.next($content),
-                        isAnimating = $activeContent.hasClass(className.animating),
-                        isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = isActive || isAnimating
+                            : $(this).closest(selector.title);
+                    var $activeContent = $activeTitle.next($content);
+                    var isAnimating = $activeContent.hasClass(className.animating);
+                    var isActive    = $activeContent.hasClass(className.active);
+                    var isOpen      = isActive || isAnimating
                     ;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
@@ -219,12 +219,12 @@
                             ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
-                            : $(this).closest(selector.title),
-                        $activeContent = $activeTitle.next($content),
-                        isAnimating    = $activeContent.hasClass(className.animating),
-                        isActive       = $activeContent.hasClass(className.active),
-                        isOpening      = !isActive && isAnimating,
-                        isClosing      = isActive && isAnimating
+                            : $(this).closest(selector.title);
+                    var $activeContent = $activeTitle.next($content);
+                    var isAnimating    = $activeContent.hasClass(className.animating);
+                    var isActive       = $activeContent.hasClass(className.active);
+                    var isOpening      = !isActive && isAnimating;
+                    var isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
@@ -279,14 +279,14 @@
                     var
                         $activeTitle = index !== undefined
                             ? $title.eq(index)
-                            : $(this).closest(selector.title),
-                        $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title),
-                        $activeAccordion = $activeTitle.closest(selector.accordion),
-                        activeSelector   = selector.title + '.' + className.active + ':visible',
-                        activeContent    = selector.content + '.' + className.active + ':visible',
-                        $openTitles,
-                        $nestedTitles,
-                        $openContents
+                            : $(this).closest(selector.title);
+                    var $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title);
+                    var $activeAccordion = $activeTitle.closest(selector.accordion);
+                    var activeSelector   = selector.title + '.' + className.active + ':visible';
+                    var activeContent    = selector.content + '.' + className.active + ':visible';
+                    var $openTitles;
+                    var $nestedTitles;
+                    var $openContents
                     ;
                     if (settings.closeNested) {
                         $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
@@ -421,9 +421,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -444,8 +444,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -469,10 +469,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

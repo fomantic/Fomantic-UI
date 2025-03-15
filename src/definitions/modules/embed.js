@@ -21,43 +21,43 @@
 
     $.fn.embed = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
 
-            returnedValue
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.embed.settings, parameters)
-                    : $.extend({}, $.fn.embed.settings),
+                    : $.extend({}, $.fn.embed.settings);
 
-                selector        = settings.selector,
-                className       = settings.className,
-                sources         = settings.sources,
-                error           = settings.error,
-                metadata        = settings.metadata,
-                namespace       = settings.namespace,
-                templates       = settings.templates,
+            var selector        = settings.selector;
+            var className       = settings.className;
+            var sources         = settings.sources;
+            var error           = settings.error;
+            var metadata        = settings.metadata;
+            var namespace       = settings.namespace;
+            var templates       = settings.templates;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $placeholder    = $module.find(selector.placeholder),
-                $icon           = $module.find(selector.icon),
-                $embed          = $module.find(selector.embed),
+            var $module         = $(this);
+            var $placeholder    = $module.find(selector.placeholder);
+            var $icon           = $module.find(selector.icon);
+            var $embed          = $module.find(selector.embed);
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
-                module
+            var element         = this;
+            var instance        = $module.data(moduleNamespace);
+            var module
             ;
 
             module = {
@@ -119,8 +119,8 @@
 
                 createPlaceholder: function (placeholder) {
                     var
-                        icon  = module.get.icon(),
-                        alt   = module.get.alt()
+                        icon  = module.get.icon();
+                    var alt   = module.get.alt()
                     ;
                     placeholder = placeholder || module.get.placeholder();
                     $module.html(templates.placeholder(placeholder, icon, alt));
@@ -265,9 +265,9 @@
                     },
                     url: function () {
                         var
-                            id     = settings.id || $module.data(metadata.id),
-                            source = settings.source || $module.data(metadata.source),
-                            url
+                            id     = settings.id || $module.data(metadata.id);
+                        var source = settings.source || $module.data(metadata.source);
+                        var url
                         ;
                         url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
@@ -308,8 +308,8 @@
                 encode: {
                     parameters: function (parameters) {
                         var
-                            urlString = [],
-                            index
+                            urlString = [];
+                        var index
                         ;
                         for (index in parameters) {
                             urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
@@ -323,9 +323,9 @@
                     embed: function (url) {
                         module.debug('Generating embed html');
                         var
-                            source = module.get.source(),
-                            html,
-                            parameters
+                            source = module.get.source();
+                        var html;
+                        var parameters
                         ;
                         url = module.get.url(url);
                         if (url) {
@@ -428,9 +428,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -451,8 +451,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -479,10 +479,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -659,8 +659,8 @@
             },
             iframe: function (url, parameters) {
                 var
-                    src = url,
-                    escape = $.fn.embed.settings.templates.escape
+                    src = url;
+                var escape = $.fn.embed.settings.templates.escape
                 ;
                 if (parameters) {
                     src += '?' + parameters;
@@ -673,8 +673,8 @@
             },
             placeholder: function (image, icon, alt) {
                 var
-                    html = '',
-                    escape = $.fn.embed.settings.templates.escape
+                    html = '';
+                var escape = $.fn.embed.settings.templates.escape
                 ;
                 if (icon) {
                     html += '<i class="' + escape(icon) + ' icon"></i>';

@@ -21,43 +21,43 @@
 
     $.fn.progress = function (parameters) {
         var
-            $allModules    = $(this),
+            $allModules    = $(this);
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
-            returnedValue
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.progress.settings, parameters)
-                    : $.extend({}, $.fn.progress.settings),
+                    : $.extend({}, $.fn.progress.settings);
 
-                className       = settings.className,
-                metadata        = settings.metadata,
-                namespace       = settings.namespace,
-                selector        = settings.selector,
-                error           = settings.error,
+            var className       = settings.className;
+            var metadata        = settings.metadata;
+            var namespace       = settings.namespace;
+            var selector        = settings.selector;
+            var error           = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $bars           = $(this).find(selector.bar),
-                $progresses     = $(this).find(selector.progress),
-                $label          = $(this).find(selector.label),
+            var $module         = $(this);
+            var $bars           = $(this).find(selector.bar);
+            var $progresses     = $(this).find(selector.progress);
+            var $label          = $(this).find(selector.label);
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
+            var element         = this;
+            var instance        = $module.data(moduleNamespace);
 
-                animating = false,
-                module
+            var animating = false;
+            var module
             ;
             module = {
                 helper: {
@@ -206,8 +206,8 @@
 
                 increment: function (incrementValue) {
                     var
-                        startValue,
-                        newValue
+                        startValue;
+                    var newValue
                     ;
                     if (module.has.total()) {
                         startValue = module.get.value();
@@ -223,9 +223,9 @@
                 },
                 decrement: function (decrementValue) {
                     var
-                        total     = module.get.total(),
-                        startValue,
-                        newValue
+                        total     = module.get.total();
+                    var startValue;
+                    var newValue
                     ;
                     if (total) {
                         startValue = module.get.value();
@@ -258,14 +258,14 @@
                         }
 
                         var
-                            value   = module.get.value(index),
-                            total   = module.get.total(),
-                            percent = animating
-                                ? module.get.displayPercent(index)
-                                : module.get.percent(index),
-                            left = total !== false
-                                ? Math.max(0, total - value)
-                                : 100 - percent
+                            value   = module.get.value(index);
+                        var total   = module.get.total();
+                        var percent = animating
+                            ? module.get.displayPercent(index)
+                            : module.get.percent(index);
+                        var left = total !== false
+                            ? Math.max(0, total - value)
+                            : 100 - percent
                         ;
                         templateText = templateText || '';
                         templateText = templateText
@@ -326,13 +326,13 @@
                     // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
                         var
-                            $bar           = $($bars[index]),
-                            barWidth       = $bar.width(),
-                            totalWidth     = $module.width(),
-                            minDisplay     = parseInt($bar.css('min-width'), 10),
-                            displayPercent = barWidth > minDisplay
-                                ? (barWidth / totalWidth) * 100
-                                : module.percent
+                            $bar           = $($bars[index]);
+                        var barWidth       = $bar.width();
+                        var totalWidth     = $module.width();
+                        var minDisplay     = parseInt($bar.css('min-width'), 10);
+                        var displayPercent = barWidth > minDisplay
+                            ? (barWidth / totalWidth) * 100
+                            : module.percent
                         ;
 
                         return settings.precision > 0
@@ -774,9 +774,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -797,8 +797,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -822,10 +822,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

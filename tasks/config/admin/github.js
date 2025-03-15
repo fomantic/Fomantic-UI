@@ -6,14 +6,14 @@
 */
 
 const
-    fs          = require('fs'),
-    path        = require('path'),
-    GithubAPI   = require('@octokit/rest'),
+    fs          = require('fs');
+const path        = require('path');
+const GithubAPI   = require('@octokit/rest');
 
-    // stores oauth info for GitHub API
-    oAuth       = fs.existsSync(path.join(__dirname, './oauth.js'))
-        ? require('./oauth.js') // eslint-disable-line import/extensions
-        : false
+// stores oauth info for GitHub API
+const oAuth       = fs.existsSync(path.join(__dirname, './oauth.js'))
+    ? require('./oauth.js') // eslint-disable-line import/extensions
+    : false
 ;
 
 if (!oAuth) {

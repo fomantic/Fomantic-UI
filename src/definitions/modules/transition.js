@@ -21,34 +21,34 @@
 
     $.fn.transition = function () {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            moduleArguments = arguments,
-            query           = moduleArguments[0],
-            queryArguments  = [].slice.call(arguments, 1),
-            methodInvoked   = typeof query === 'string',
+        var moduleArguments = arguments;
+        var query           = moduleArguments[0];
+        var queryArguments  = [].slice.call(arguments, 1);
+        var methodInvoked   = typeof query === 'string';
 
-            returnedValue
+        var returnedValue
         ;
         $allModules.each(function (index) {
             var
-                $module  = $(this),
-                element  = this,
+                $module  = $(this);
+            var element  = this;
 
-                // set at run time
-                settings,
-                instance,
+            // set at run time
+            var settings;
+            var instance;
 
-                error,
-                className,
-                metadata,
+            var error;
+            var className;
+            var metadata;
 
-                moduleNamespace,
-                eventNamespace,
-                module
+            var moduleNamespace;
+            var eventNamespace;
+            var module
             ;
 
             module = {
@@ -106,8 +106,8 @@
                 forceRepaint: function () {
                     module.verbose('Forcing element repaint');
                     var
-                        $parentElement = $module.parent(),
-                        $nextElement = $module.next()
+                        $parentElement = $module.parent();
+                    var $nextElement = $module.next()
                     ;
                     if ($nextElement.length === 0) {
                         $module.detach().appendTo($parentElement);
@@ -125,9 +125,9 @@
 
                 delay: function (interval) {
                     var
-                        direction = module.get.animationDirection(),
-                        shouldReverse,
-                        delay
+                        direction = module.get.animationDirection();
+                    var shouldReverse;
+                    var delay
                     ;
                     if (!direction) {
                         direction = module.can.transition()
@@ -223,12 +223,12 @@
                 force: {
                     visible: function () {
                         var
-                            style          = $module.attr('style'),
-                            userStyle      = module.get.userStyle(style),
-                            displayType    = module.get.displayType(),
-                            overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
-                            inlineDisplay  = $module[0].style.display,
-                            mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
+                            style          = $module.attr('style');
+                        var userStyle      = module.get.userStyle(style);
+                        var displayType    = module.get.displayType();
+                        var overrideStyle  = userStyle + 'display: ' + displayType + ' !important;';
+                        var inlineDisplay  = $module[0].style.display;
+                        var mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
                         ;
                         if (mustStayHidden) {
                             module.remove.transition();
@@ -244,9 +244,9 @@
                     },
                     hidden: function () {
                         var
-                            style          = $module.attr('style'),
-                            currentDisplay = $module.css('display'),
-                            emptyStyle     = style === undefined || style === ''
+                            style          = $module.attr('style');
+                        var currentDisplay = $module.css('display');
+                        var emptyStyle     = style === undefined || style === ''
                         ;
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
@@ -517,10 +517,10 @@
                     },
                     animationClass: function (animation) {
                         var
-                            animationClass = animation || settings.animation,
-                            directionClass = module.can.transition() && !module.has.direction()
-                                ? module.get.direction() + ' '
-                                : ''
+                            animationClass = animation || settings.animation;
+                        var directionClass = module.can.transition() && !module.has.direction()
+                            ? module.get.direction() + ' '
+                            : ''
                         ;
 
                         return className.animating + ' '
@@ -610,15 +610,15 @@
                 can: {
                     transition: function (forced) {
                         var
-                            animation         = settings.animation,
-                            transitionExists  = module.get.transitionExists(animation),
-                            displayType       = module.get.displayType(false),
-                            elementClass,
-                            tagName,
-                            $clone,
-                            currentAnimation,
-                            inAnimation,
-                            directionExists
+                            animation         = settings.animation;
+                        var transitionExists  = module.get.transitionExists(animation);
+                        var displayType       = module.get.displayType(false);
+                        var elementClass;
+                        var tagName;
+                        var $clone;
+                        var currentAnimation;
+                        var inAnimation;
+                        var directionExists
                         ;
                         if (transitionExists === undefined || forced) {
                             module.verbose('Determining whether animation exists');
@@ -834,9 +834,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -857,8 +857,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -886,10 +886,10 @@
                 // modified for transition to return invoke success
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

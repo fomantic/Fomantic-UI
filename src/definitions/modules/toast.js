@@ -21,62 +21,62 @@
 
     $.fn.toast = function (parameters) {
         var
-            $allModules    = $(this),
-            $body          = $('body'),
+            $allModules    = $(this);
+        var $body          = $('body');
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
-                    }
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck   = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : $body;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
+            return $context;
+        };
+        var returnedValue
         ;
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.toast.settings, parameters)
-                    : $.extend({}, $.fn.toast.settings),
+                    : $.extend({}, $.fn.toast.settings);
 
-                className        = settings.className,
-                selector         = settings.selector,
-                error            = settings.error,
-                namespace        = settings.namespace,
-                fields           = settings.fields,
+            var className        = settings.className;
+            var selector         = settings.selector;
+            var error            = settings.error;
+            var namespace        = settings.namespace;
+            var fields           = settings.fields;
 
-                eventNamespace   = '.' + namespace,
-                moduleNamespace  = namespace + '-module',
+            var eventNamespace   = '.' + namespace;
+            var moduleNamespace  = namespace + '-module';
 
-                $module          = $(this),
-                $toastBox,
-                $toast,
-                $actions,
-                $progress,
-                $progressBar,
-                $animationObject,
-                $close,
-                $context         = settings.context ? contextCheck(settings.context, window) : $body,
+            var $module          = $(this);
+            var $toastBox;
+            var $toast;
+            var $actions;
+            var $progress;
+            var $progressBar;
+            var $animationObject;
+            var $close;
+            var $context         = settings.context ? contextCheck(settings.context, window) : $body;
 
-                isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
+            var isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
 
-                element          = this,
-                instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
+            var element          = this;
+            var instance         = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
-                id,
-                module
+            var id;
+            var module
             ;
             module = {
 
@@ -261,12 +261,12 @@
                                     icon = el[fields.icon]
                                         ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
-                                        : '',
-                                    text = module.helpers.escape(el[fields.text] || '', settings),
-                                    cls = module.helpers.escape(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click])
-                                        ? el[fields.click]
-                                        : function () {}
+                                        : '';
+                                var text = module.helpers.escape(el[fields.text] || '', settings);
+                                var cls = module.helpers.escape(el[fields.class] || '');
+                                var click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {}
                                 ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
@@ -582,8 +582,8 @@
                 helpers: {
                     toClass: function (selector) {
                         var
-                            classes = selector.trim().split(/\s+/),
-                            result = ''
+                            classes = selector.trim().split(/\s+/);
+                        var result = ''
                         ;
 
                         classes.forEach(function (element) {
@@ -673,9 +673,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -696,8 +696,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -721,10 +721,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -924,8 +924,8 @@
     $.extend($.easing, {
         easeOutBounce: function (x) {
             var
-                n1 = 7.5625,
-                d1 = 2.75
+                n1 = 7.5625;
+            var d1 = 2.75
             ;
             if (x < 1 / d1) {
                 return n1 * x * x;

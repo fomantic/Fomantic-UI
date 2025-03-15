@@ -3,35 +3,35 @@
  *******************************/
 
 const
-    fs          = require('fs'),
-    extend      = require('extend'),
+    fs          = require('fs');
+const extend      = require('extend');
 
-    // node dependencies
-    console     = require('@fomantic/better-console'),
-    gulp        = require('gulp'),
-    map         = require('map-stream'),
+// node dependencies
+const console     = require('@fomantic/better-console');
+const gulp        = require('gulp');
+const map         = require('map-stream');
 
-    // gulp dependencies
-    print       = require('gulp-print').default,
+// gulp dependencies
+const print       = require('gulp-print').default;
 
-    // user config
-    configDocs      = require('../config/docs'),
+// user config
+const configDocs      = require('../config/docs');
 
-    // install config
-    tasks       = require('../config/tasks'),
-    configSetup = require('../config/project/config'),
-    install     = require('../config/project/install'),
+// install config
+const tasks       = require('../config/tasks');
+const configSetup = require('../config/project/config');
+const install     = require('../config/project/install');
 
-    // metadata parsing
-    metadata    = require('./metadata'),
+// metadata parsing
+const metadata    = require('./metadata');
 
-    // build methods
-    buildJS     = require('../build/javascript').buildJS,
-    buildCSS    = require('../build/css').buildCSS,
-    buildAssets = require('../build/assets').buildAssets,
+// build methods
+const buildJS     = require('../build/javascript').buildJS;
+const buildCSS    = require('../build/css').buildCSS;
+const buildAssets = require('../build/assets').buildAssets;
 
-    // shorthand
-    log         = tasks.log
+// shorthand
+const log         = tasks.log
 ;
 
 module.exports = function (callback) {

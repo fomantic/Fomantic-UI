@@ -3,8 +3,8 @@
  *******************************/
 
 const
-    buildRTL = require('../rtl/build'),
-    watchRTL = require('../rtl/watch')
+    buildRTL = require('../rtl/build');
+const watchRTL = require('../rtl/watch')
 ;
 
 module.exports = function (gulp) {

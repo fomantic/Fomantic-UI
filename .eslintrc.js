@@ -93,7 +93,6 @@ module.exports = {
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
         'no-var': 'off', // https://github.com/fomantic/Fomantic-UI/pull/2584
-        'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
         'prefer-rest-params': 'off',

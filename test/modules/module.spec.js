@@ -1,18 +1,18 @@
 function moduleTests(ui) {
     let
-        module    = ui.module,
-        element   = ui.element,
-        singleton = ui.singleton,
-        name      = $.fn[module].settings.name,
+        module    = ui.module;
+    let element   = ui.element;
+    let singleton = ui.singleton;
+    let name      = $.fn[module].settings.name;
 
-        testValue = 'Test',
-        fixtures  = jasmine.getFixtures(), // eslint-disable-line jest/no-jasmine-globals
+    let testValue = 'Test';
+    let fixtures  = jasmine.getFixtures(); // eslint-disable-line jest/no-jasmine-globals
 
-        originalSettings,
-        $modules,
-        $oneModule,
-        $module,
-        $clone
+    let originalSettings;
+    let $modules;
+    let $oneModule;
+    let $module;
+    let $clone
     ;
 
     // set fixture path

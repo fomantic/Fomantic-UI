@@ -21,56 +21,56 @@
 
     $.fn.form = function (parameters) {
         var
-            $allModules      = $(this),
-            $window        = $(window),
+            $allModules      = $(this);
+        var $window        = $(window);
 
-            time             = Date.now(),
-            performance      = [],
+        var time             = Date.now();
+        var performance      = [];
 
-            query            = arguments[0],
-            methodInvoked    = typeof query === 'string',
-            queryArguments   = [].slice.call(arguments, 1),
-            returnedValue
+        var query            = arguments[0];
+        var methodInvoked    = typeof query === 'string';
+        var queryArguments   = [].slice.call(arguments, 1);
+        var returnedValue
         ;
         $allModules.each(function () {
             var
-                $module     = $(this),
-                element     = this,
+                $module     = $(this);
+            var element     = this;
 
-                formErrors  = [],
-                formErrorsTracker = {},
-                keyHeldDown = false,
+            var formErrors  = [];
+            var formErrorsTracker = {};
+            var keyHeldDown = false;
 
-                // set at run-time
-                $field,
-                $group,
-                $message,
-                $prompt,
-                $submit,
-                $clear,
-                $reset,
+            // set at run-time
+            var $field;
+            var $group;
+            var $message;
+            var $prompt;
+            var $submit;
+            var $clear;
+            var $reset;
 
-                settings,
-                validation,
+            var settings;
+            var validation;
 
-                metadata,
-                selector,
-                className,
-                regExp,
-                error,
+            var metadata;
+            var selector;
+            var className;
+            var regExp;
+            var error;
 
-                namespace,
-                moduleNamespace,
-                eventNamespace,
-                attachEventsSelector,
-                attachEventsAction,
+            var namespace;
+            var moduleNamespace;
+            var eventNamespace;
+            var attachEventsSelector;
+            var attachEventsAction;
 
-                submitting = false,
-                dirty = false,
-                history = ['clean', 'clean'],
+            var submitting = false;
+            var dirty = false;
+            var history = ['clean', 'clean'];
 
-                instance,
-                module
+            var instance;
+            var module
             ;
 
             module = {
@@ -170,9 +170,9 @@
                     }
                     $field.each(function (index, el) {
                         var
-                            $input     = $(el),
-                            type       = $input.prop('type'),
-                            inputEvent = module.get.changeEvent(type, $input)
+                            $input     = $(el);
+                        var type       = $input.prop('type');
+                        var inputEvent = module.get.changeEvent(type, $input)
                         ;
                         $input.on(inputEvent + eventNamespace, module.event.field.change);
                     });
@@ -205,16 +205,16 @@
                 clear: function () {
                     $field.each(function (index, el) {
                         var
-                            $field       = $(el),
-                            $element     = $field.parent(),
-                            $fieldGroup  = $field.closest($group),
-                            $prompt      = $fieldGroup.find(selector.prompt),
-                            $calendar    = $field.closest(selector.uiCalendar),
-                            defaultValue = $field.data(metadata.defaultValue) || '',
-                            isCheckbox   = $field.is(selector.checkbox),
-                            isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                            isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
-                            isErrored    = $fieldGroup.hasClass(className.error)
+                            $field       = $(el);
+                        var $element     = $field.parent();
+                        var $fieldGroup  = $field.closest($group);
+                        var $prompt      = $fieldGroup.find(selector.prompt);
+                        var $calendar    = $field.closest(selector.uiCalendar);
+                        var defaultValue = $field.data(metadata.defaultValue) || '';
+                        var isCheckbox   = $field.is(selector.checkbox);
+                        var isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown');
+                        var isCalendar   = $calendar.length > 0 && module.can.useElement('calendar');
+                        var isErrored    = $fieldGroup.hasClass(className.error)
                         ;
                         if (isErrored) {
                             module.verbose('Resetting error on field', $fieldGroup);
@@ -239,17 +239,17 @@
                 reset: function () {
                     $field.each(function (index, el) {
                         var
-                            $field       = $(el),
-                            $element     = $field.parent(),
-                            $fieldGroup  = $field.closest($group),
-                            $calendar    = $field.closest(selector.uiCalendar),
-                            $prompt      = $fieldGroup.find(selector.prompt),
-                            defaultValue = $field.data(metadata.defaultValue),
-                            isCheckbox   = $field.is(selector.checkbox),
-                            isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                            isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
-                            isFile       = $field.is(selector.file),
-                            isErrored    = $fieldGroup.hasClass(className.error)
+                            $field       = $(el);
+                        var $element     = $field.parent();
+                        var $fieldGroup  = $field.closest($group);
+                        var $calendar    = $field.closest(selector.uiCalendar);
+                        var $prompt      = $fieldGroup.find(selector.prompt);
+                        var defaultValue = $field.data(metadata.defaultValue);
+                        var isCheckbox   = $field.is(selector.checkbox);
+                        var isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown');
+                        var isCalendar   = $calendar.length > 0 && module.can.useElement('calendar');
+                        var isFile       = $field.is(selector.file);
+                        var isErrored    = $fieldGroup.hasClass(className.error)
                         ;
                         if (defaultValue === undefined) {
                             return;
@@ -281,9 +281,9 @@
                             allValid = true
                         ;
                         $field.each(function (index, el) {
-                            var $el = $(el),
-                                validation = module.get.validation($el) || {},
-                                identifier = module.get.identifier(validation, $el)
+                            var $el = $(el);
+                            var validation = module.get.validation($el) || {};
+                            var identifier = module.get.identifier(validation, $el)
                             ;
                             if (!module.validate.field(validation, identifier, true)) {
                                 allValid = false;
@@ -297,9 +297,9 @@
 
                         $field.each(function (index, el) {
                             var
-                                $el = $(el),
-                                isCheckbox = $el.filter(selector.checkbox).length > 0,
-                                isDirty
+                                $el = $(el);
+                            var isCheckbox = $el.filter(selector.checkbox).length > 0;
+                            var isDirty
                             ;
 
                             isDirty = isCheckbox
@@ -422,15 +422,15 @@
                     field: {
                         keydown: function (event) {
                             var
-                                $field       = $(this),
-                                key          = event.which,
-                                isInput      = $field.is(selector.input),
-                                isCheckbox   = $field.is(selector.checkbox),
-                                isInDropdown = $field.closest(selector.uiDropdown).length > 0,
-                                keyCode      = {
-                                    enter: 13,
-                                    escape: 27,
-                                }
+                                $field       = $(this);
+                            var key          = event.which;
+                            var isInput      = $field.is(selector.input);
+                            var isCheckbox   = $field.is(selector.checkbox);
+                            var isInDropdown = $field.closest(selector.uiDropdown).length > 0;
+                            var keyCode      = {
+                                enter: 13,
+                                escape: 27,
+                            }
                             ;
                             if (key === keyCode.escape) {
                                 module.verbose('Escape key pressed blurring field');
@@ -455,9 +455,9 @@
                         },
                         blur: function (event) {
                             var
-                                $field          = $(this),
-                                validationRules = module.get.validation($field) || {},
-                                identifier      = module.get.identifier(validationRules, $field)
+                                $field          = $(this);
+                            var validationRules = module.get.validation($field) || {};
+                            var identifier      = module.get.identifier(validationRules, $field)
                             ;
                             if (settings.on === 'blur' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 module.debug('Revalidating field', $field, validationRules);
@@ -469,9 +469,9 @@
                         },
                         change: function (event) {
                             var
-                                $field      = $(this),
-                                validationRules = module.get.validation($field) || {},
-                                identifier = module.get.identifier(validationRules, $field)
+                                $field      = $(this);
+                            var validationRules = module.get.validation($field) || {};
+                            var identifier = module.get.identifier(validationRules, $field)
                             ;
                             if (settings.on === 'change' || (!$module.hasClass(className.initial) && settings.revalidate)) {
                                 clearTimeout(module.timer);
@@ -555,18 +555,18 @@
                     },
                     prompt: function (rule, field) {
                         var
-                            ruleName      = module.get.ruleName(rule),
-                            ancillary     = module.get.ancillaryValue(rule),
-                            $field        = module.get.field(field.identifier),
-                            value         = $field.val(),
-                            promptCheck   = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
-                            prompt        = String(isFunction(promptCheck)
-                                ? promptCheck.call($field[0], value)
-                                : promptCheck),
-                            requiresValue = prompt.search('{value}') !== -1,
-                            requiresName  = prompt.search('{name}') !== -1,
-                            parts,
-                            suffixPrompt
+                            ruleName      = module.get.ruleName(rule);
+                        var ancillary     = module.get.ancillaryValue(rule);
+                        var $field        = module.get.field(field.identifier);
+                        var value         = $field.val();
+                        var promptCheck   = rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule;
+                        var prompt        = String(isFunction(promptCheck)
+                            ? promptCheck.call($field[0], value)
+                            : promptCheck);
+                        var requiresValue = prompt.search('{value}') !== -1;
+                        var requiresName  = prompt.search('{name}') !== -1;
+                        var parts;
+                        var suffixPrompt
                         ;
                         if (ancillary && ['integer', 'decimal', 'number', 'size'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
                             parts = ancillary.split('..', 2);
@@ -666,9 +666,9 @@
                     },
                     fieldLabel: function (identifier, useIdAsFallback) {
                         var $field = typeof identifier === 'string'
-                                ? module.get.field(identifier)
-                                : identifier,
-                            $label = $field.closest(selector.group).find('label:not(:empty)').eq(0)
+                            ? module.get.field(identifier)
+                            : identifier;
+                        var $label = $field.closest(selector.group).find('label:not(:empty)').eq(0)
                         ;
 
                         return $label.length === 1
@@ -677,8 +677,8 @@
                     },
                     validation: function ($field) {
                         var
-                            fieldValidation,
-                            identifier
+                            fieldValidation;
+                        var identifier
                         ;
                         if (!validation) {
                             return false;
@@ -699,9 +699,9 @@
                     },
                     value: function (field, strict) {
                         var
-                            fields = [],
-                            results,
-                            resultKeys
+                            fields = [];
+                        var results;
+                        var resultKeys
                         ;
                         fields.push(field);
                         results = module.get.values.call(element, fields, strict);
@@ -713,22 +713,22 @@
                         var
                             $fields = Array.isArray(fields) && fields.length > 0
                                 ? module.get.fields(fields, strict)
-                                : $field,
-                            values = {}
+                                : $field;
+                        var values = {}
                         ;
                         $fields.each(function (index, field) {
                             var
-                                $field       = $(field),
-                                $calendar    = $field.closest(selector.uiCalendar),
-                                name         = $field.prop('name') || $field.prop('id'),
-                                value        = $field.val(),
-                                isCheckbox   = $field.is(selector.checkbox),
-                                isRadio      = $field.is(selector.radio),
-                                isMultiple   = name.indexOf('[]') !== -1,
-                                isCalendar   = $calendar.length > 0 && module.can.useElement('calendar'),
-                                isChecked    = isCheckbox
-                                    ? $field.is(':checked')
-                                    : false
+                                $field       = $(field);
+                            var $calendar    = $field.closest(selector.uiCalendar);
+                            var name         = $field.prop('name') || $field.prop('id');
+                            var value        = $field.val();
+                            var isCheckbox   = $field.is(selector.checkbox);
+                            var isRadio      = $field.is(selector.radio);
+                            var isMultiple   = name.indexOf('[]') !== -1;
+                            var isCalendar   = $calendar.length > 0 && module.can.useElement('calendar');
+                            var isChecked    = isCheckbox
+                                ? $field.is(':checked')
+                                : false
                             ;
                             if (name) {
                                 if (isMultiple) {
@@ -919,11 +919,11 @@
                             return;
                         }
                         var
-                            $field       = module.get.field(identifier),
-                            $fieldGroup  = $field.closest($group),
-                            $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = $prompt.length > 0,
-                            canTransition = settings.transition && module.can.useElement('transition')
+                            $field       = module.get.field(identifier);
+                        var $fieldGroup  = $field.closest($group);
+                        var $prompt      = $fieldGroup.children(selector.prompt);
+                        var promptExists = $prompt.length > 0;
+                        var canTransition = settings.transition && module.can.useElement('transition')
                         ;
                         module.verbose('Adding field error state', identifier);
                         if (!internal) {
@@ -977,8 +977,8 @@
                         }
                         module.debug('Adding form error messages', errors);
                         module.set.error();
-                        var customErrors = [],
-                            tempErrors
+                        var customErrors = [];
+                        var tempErrors
                         ;
                         if ($.isPlainObject(errors)) {
                             $.each(Object.keys(errors), function (i, id) {
@@ -1072,9 +1072,9 @@
                     },
                     prompt: function (identifier) {
                         var
-                            $field      = module.get.field(identifier),
-                            $fieldGroup = $field.closest($group),
-                            $prompt     = $fieldGroup.children(selector.prompt)
+                            $field      = module.get.field(identifier);
+                        var $fieldGroup = $field.closest($group);
+                        var $prompt     = $fieldGroup.children(selector.prompt)
                         ;
                         $fieldGroup
                             .removeClass(className.error)
@@ -1106,15 +1106,15 @@
                     defaults: function () {
                         $field.each(function (index, el) {
                             var
-                                $el        = $(el),
-                                $parent    = $el.parent(),
-                                isCheckbox = $el.filter(selector.checkbox).length > 0,
-                                isDropdown = ($parent.is(selector.uiDropdown) || $el.is(selector.uiDropdown)) && module.can.useElement('dropdown'),
-                                $calendar  = $el.closest(selector.uiCalendar),
-                                isCalendar = $calendar.length > 0 && module.can.useElement('calendar'),
-                                value      = isCheckbox
-                                    ? $el.is(':checked')
-                                    : $el.val()
+                                $el        = $(el);
+                            var $parent    = $el.parent();
+                            var isCheckbox = $el.filter(selector.checkbox).length > 0;
+                            var isDropdown = ($parent.is(selector.uiDropdown) || $el.is(selector.uiDropdown)) && module.can.useElement('dropdown');
+                            var $calendar  = $el.closest(selector.uiCalendar);
+                            var isCalendar = $calendar.length > 0 && module.can.useElement('calendar');
+                            var value      = isCheckbox
+                                ? $el.is(':checked')
+                                : $el.val()
                             ;
                             if (isDropdown) {
                                 if ($parent.is(selector.uiDropdown)) {
@@ -1149,17 +1149,17 @@
                         }
                         $.each(fields, function (key, value) {
                             var
-                                $field      = module.get.field(key),
-                                $element    = $field.parent(),
-                                $calendar   = $field.closest(selector.uiCalendar),
-                                isFile      = $field.is(selector.file),
-                                isMultiple  = Array.isArray(value),
-                                isCheckbox  = $element.is(selector.uiCheckbox) && module.can.useElement('checkbox'),
-                                isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
-                                isRadio     = $field.is(selector.radio) && isCheckbox,
-                                isCalendar  = $calendar.length > 0 && module.can.useElement('calendar'),
-                                fieldExists = $field.length > 0,
-                                $multipleField
+                                $field      = module.get.field(key);
+                            var $element    = $field.parent();
+                            var $calendar   = $field.closest(selector.uiCalendar);
+                            var isFile      = $field.is(selector.file);
+                            var isMultiple  = Array.isArray(value);
+                            var isCheckbox  = $element.is(selector.uiCheckbox) && module.can.useElement('checkbox');
+                            var isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown');
+                            var isRadio     = $field.is(selector.radio) && isCheckbox;
+                            var isCalendar  = $calendar.length > 0 && module.can.useElement('calendar');
+                            var fieldExists = $field.length > 0;
+                            var $multipleField
                             ;
                             if (fieldExists) {
                                 if (isMultiple && isCheckbox) {
@@ -1240,18 +1240,18 @@
                         }
                         $field.each(function (_index, el) {
                             var
-                                $el        = $(el),
-                                $elGroup   = $el.closest($group),
-                                isCheckbox = $el.filter(selector.checkbox).length > 0,
-                                isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
-                                isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
-                                validation = module.get.validation($el),
-                                hasNotEmptyRule = validation
-                                    ? $.grep(validation.rules, function (rule) {
-                                        return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
-                                    }).length > 0
-                                    : false,
-                                identifier = module.get.identifier(validation, $el)
+                                $el        = $(el);
+                            var $elGroup   = $el.closest($group);
+                            var isCheckbox = $el.filter(selector.checkbox).length > 0;
+                            var isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required);
+                            var isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled);
+                            var validation = module.get.validation($el);
+                            var hasNotEmptyRule = validation
+                                ? $.grep(validation.rules, function (rule) {
+                                    return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
+                                }).length > 0
+                                : false;
+                            var identifier = module.get.identifier(validation, $el)
                             ;
                             if (isRequired && !isDisabled && !hasNotEmptyRule && identifier !== undefined) {
                                 if (isCheckbox) {
@@ -1309,8 +1309,8 @@
                             }
                             if (settings.errorFocus && ignoreCallbacks !== true) {
                                 var
-                                    $focusElement,
-                                    hasTabIndex = true
+                                    $focusElement;
+                                var hasTabIndex = true
                                 ;
                                 if (typeof settings.errorFocus === 'string') {
                                     $focusElement = $(document).find(settings.errorFocus);
@@ -1350,18 +1350,18 @@
                             return true;
                         }
                         var
-                            identifier    = field.identifier || fieldName,
-                            $field        = module.get.field(identifier),
-                            $fieldGroup = $field.closest($group),
-                            $dependsField = field.depends
-                                ? module.get.field(field.depends)
-                                : false,
-                            fieldValid  = true,
-                            fieldErrors = [],
-                            isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled),
-                            validationMessage = $field[0].validationMessage,
-                            noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0,
-                            errorLimit
+                            identifier    = field.identifier || fieldName;
+                        var $field        = module.get.field(identifier);
+                        var $fieldGroup = $field.closest($group);
+                        var $dependsField = field.depends
+                            ? module.get.field(field.depends)
+                            : false;
+                        var fieldValid  = true;
+                        var fieldErrors = [];
+                        var isDisabled = $field.filter(':not(:disabled)').length === 0 || $fieldGroup.hasClass(className.disabled) || $fieldGroup.parent().hasClass(className.disabled);
+                        var validationMessage = $field[0].validationMessage;
+                        var noNativeValidation = field.noNativeValidation || settings.noNativeValidation || $field.filter('[formnovalidate],[novalidate]').length > 0 || $module.filter('[novalidate]').length > 0;
+                        var errorLimit
                         ;
                         if (!field.identifier) {
                             module.debug('Using field name as identifier', identifier);
@@ -1435,23 +1435,23 @@
                     // takes validation rule and returns whether field passes rule
                     rule: function (field, rule, internal) {
                         var
-                            $field       = module.get.field(field.identifier),
-                            ancillary    = module.get.ancillaryValue(rule),
-                            ruleName     = module.get.ruleName(rule),
-                            ruleFunction = settings.rules[ruleName],
-                            invalidFields = [],
-                            isCheckbox = $field.is(selector.checkbox),
-                            isValid = function (field) {
-                                var value = isCheckbox ? $(field).filter(':checked').val() : $(field).val();
-                                // cast to string avoiding encoding special values
-                                value = value === undefined || value === '' || value === null
-                                    ? ''
-                                    : ((settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim
-                                        ? String(value + '').trim()
-                                        : String(value + ''));
+                            $field       = module.get.field(field.identifier);
+                        var ancillary    = module.get.ancillaryValue(rule);
+                        var ruleName     = module.get.ruleName(rule);
+                        var ruleFunction = settings.rules[ruleName];
+                        var invalidFields = [];
+                        var isCheckbox = $field.is(selector.checkbox);
+                        var isValid = function (field) {
+                            var value = isCheckbox ? $(field).filter(':checked').val() : $(field).val();
+                            // cast to string avoiding encoding special values
+                            value = value === undefined || value === '' || value === null
+                                ? ''
+                                : ((settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim
+                                    ? String(value + '').trim()
+                                    : String(value + ''));
 
-                                return ruleFunction.call(field, value, ancillary, module);
-                            }
+                            return ruleFunction.call(field, value, ancillary, module);
+                        }
                         ;
                         if (!isFunction(ruleFunction)) {
                             module.error(error.noRule, ruleName);
@@ -1527,9 +1527,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -1550,8 +1550,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -1578,10 +1578,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -1864,8 +1864,8 @@
                     return value.match(regExp);
                 }
                 var
-                    regExpParts = regExp.match($.fn.form.settings.regExp.flags),
-                    flags
+                    regExpParts = regExp.match($.fn.form.settings.regExp.flags);
+                var flags
                 ;
                 // regular expression specified as /baz/gi (flags)
                 if (regExpParts) {
@@ -1897,9 +1897,9 @@
                     regExp = $.fn.form.settings.regExp.integer;
                 }
                 var
-                    min,
-                    max,
-                    parts
+                    min;
+                var max;
+                var parts
                 ;
                 if (!range || ['', '..'].indexOf(range) !== -1) {
 
@@ -2085,14 +2085,14 @@
                             pattern: /^(4026|417500|4508|4844|491(3|7))/,
                             length: [16],
                         },
-                    },
-                    valid         = {},
-                    validCard     = false,
-                    requiredTypes = typeof cardTypes === 'string'
-                        ? cardTypes.split(',')
-                        : false,
-                    unionPay,
-                    validation
+                    };
+                var valid         = {};
+                var validCard     = false;
+                var requiredTypes = typeof cardTypes === 'string'
+                    ? cardTypes.split(',')
+                    : false;
+                var unionPay;
+                var validation
                 ;
 
                 if (typeof cardNumber !== 'string' || cardNumber.length === 0) {
@@ -2134,13 +2134,13 @@
 
                 // verify luhn, adapted from  <https://gist.github.com/2134376>
                 var
-                    length        = cardNumber.length,
-                    multiple      = 0,
-                    producedValue = [
-                        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-                        [0, 2, 4, 6, 8, 1, 3, 5, 7, 9],
-                    ],
-                    sum           = 0
+                    length        = cardNumber.length;
+                var multiple      = 0;
+                var producedValue = [
+                    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    [0, 2, 4, 6, 8, 1, 3, 5, 7, 9],
+                ];
+                var sum           = 0
                 ;
                 while (length--) {
                     sum += producedValue[multiple][parseInt(cardNumber.charAt(length), 10)];

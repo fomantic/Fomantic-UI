@@ -3,10 +3,10 @@
 *******************************/
 
 const
-    path           = require('path'),
-    requireDotFile = require('require-dot-file'),
-    defaults       = require('../defaults'),
-    release        = require('./release')
+    path           = require('path');
+const requireDotFile = require('require-dot-file');
+const defaults       = require('../defaults');
+const release        = require('./release')
 ;
 
 /*******************************
@@ -95,9 +95,9 @@ module.exports = {
             // returns last matching result (avoid sub-module detection)
             walk = function (directory) {
                 let
-                    pathArray     = directory.split(path.sep),
-                    folder        = pathArray[pathArray.length - 1],
-                    nextDirectory = path.join(directory, path.sep, '..')
+                    pathArray     = directory.split(path.sep);
+                let folder        = pathArray[pathArray.length - 1];
+                let nextDirectory = path.join(directory, path.sep, '..')
                 ;
                 if (folder === 'bower_components') {
                     return {
@@ -134,25 +134,25 @@ module.exports = {
     // checks if files is PMed submodule
     isSubModule: function (directory) {
         let
-            moduleFolders = 0,
-            walk = function (directory) {
-                let
-                    pathArray     = directory.split(path.sep),
-                    folder        = pathArray[pathArray.length - 2],
-                    nextDirectory = path.join(directory, path.sep, '..')
+            moduleFolders = 0;
+        let walk = function (directory) {
+            let
+                pathArray     = directory.split(path.sep);
+            let folder        = pathArray[pathArray.length - 2];
+            let nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
-                    moduleFolders++;
-                } else if (folder === '.pnpm') {
-                    moduleFolders--;
-                }
-                if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return moduleFolders > 1;
-                }
-
-                // recurse downward
-                return walk(nextDirectory);
+            if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
+                moduleFolders++;
+            } else if (folder === '.pnpm') {
+                moduleFolders--;
             }
+            if (path.resolve(directory) === path.resolve(nextDirectory)) {
+                return moduleFolders > 1;
+            }
+
+            // recurse downward
+            return walk(nextDirectory);
+        }
         ;
         // start walk from current directory if none specified
         directory = directory || path.join(__dirname, path.sep);

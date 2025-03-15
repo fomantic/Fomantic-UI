@@ -21,48 +21,48 @@
 
     $.fn.shape = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
 
-            returnedValue
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
-                    : $.extend({}, $.fn.shape.settings),
+                    : $.extend({}, $.fn.shape.settings);
 
-                // internal aliases
-                namespace     = settings.namespace,
-                selector      = settings.selector,
-                error         = settings.error,
-                className     = settings.className,
+            // internal aliases
+            var namespace     = settings.namespace;
+            var selector      = settings.selector;
+            var error         = settings.error;
+            var className     = settings.className;
 
-                // define namespaces for modules
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            // define namespaces for modules
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                // selector cache
-                $module       = $(this),
-                $sides        = $module.find('>' + selector.sides),
-                $side         = $sides.find('>' + selector.side),
+            // selector cache
+            var $module       = $(this);
+            var $sides        = $module.find('>' + selector.sides);
+            var $side         = $sides.find('>' + selector.side);
 
-                // private variables
-                nextIndex = false,
-                $activeSide,
-                $nextSide,
+            // private variables
+            var nextIndex = false;
+            var $activeSide;
+            var $nextSide;
 
-                // standard module
-                element       = this,
-                instance      = $module.data(moduleNamespace),
-                module
+            // standard module
+            var element       = this;
+            var instance      = $module.data(moduleNamespace);
+            var module
             ;
 
             module = {
@@ -99,8 +99,8 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     var
-                        shape          = $sides[0] || document.createElement('div'),
-                        fakeAssignment = shape.offsetWidth
+                        shape          = $sides[0] || document.createElement('div');
+                    var fakeAssignment = shape.offsetWidth
                     ;
                 },
 
@@ -211,9 +211,9 @@
 
                     currentStageSize: function () {
                         var
-                            $activeSide = $side.filter('.' + className.active),
-                            width       = $activeSide.outerWidth(true),
-                            height      = $activeSide.outerHeight(true)
+                            $activeSide = $side.filter('.' + className.active);
+                        var width       = $activeSide.outerWidth(true);
+                        var height      = $activeSide.outerHeight(true)
                         ;
                         $module
                             .css({
@@ -225,24 +225,24 @@
 
                     stageSize: function () {
                         var
-                            $clone      = $module.clone().addClass(className.loading),
-                            $side       = $clone.find('>' + selector.sides + '>' + selector.side),
-                            $activeSide = $side.filter('.' + className.active),
-                            $nextSide   = nextIndex
-                                ? $side.eq(nextIndex)
-                                : ($activeSide.next(selector.side).length > 0
-                                    ? $activeSide.next(selector.side)
-                                    : $side.first()),
-                            newWidth    = settings.width === 'next'
-                                ? $nextSide.outerWidth(true)
-                                : (settings.width === 'initial'
-                                    ? $module.width()
-                                    : settings.width),
-                            newHeight    = settings.height === 'next'
-                                ? $nextSide.outerHeight(true)
-                                : (settings.height === 'initial'
-                                    ? $module.height()
-                                    : settings.height)
+                            $clone      = $module.clone().addClass(className.loading);
+                        var $side       = $clone.find('>' + selector.sides + '>' + selector.side);
+                        var $activeSide = $side.filter('.' + className.active);
+                        var $nextSide   = nextIndex
+                            ? $side.eq(nextIndex)
+                            : ($activeSide.next(selector.side).length > 0
+                                ? $activeSide.next(selector.side)
+                                : $side.first());
+                        var newWidth    = settings.width === 'next'
+                            ? $nextSide.outerWidth(true)
+                            : (settings.width === 'initial'
+                                ? $module.width()
+                                : settings.width);
+                        var newHeight    = settings.height === 'next'
+                            ? $nextSide.outerHeight(true)
+                            : (settings.height === 'initial'
+                                ? $module.height()
+                                : settings.height)
                         ;
                         $activeSide.removeClass(className.active);
                         $nextSide.addClass(className.active);
@@ -338,8 +338,8 @@
                     transform: {
                         up: function () {
                             var
-                                translateZ = $activeSide.outerHeight(true) / 2,
-                                translateY = $nextSide.outerHeight(true) - translateZ
+                                translateZ = $activeSide.outerHeight(true) / 2;
+                            var translateY = $nextSide.outerHeight(true) - translateZ
                             ;
 
                             return {
@@ -361,8 +361,8 @@
 
                         left: function () {
                             var
-                                translateZ = $activeSide.outerWidth(true) / 2,
-                                translateX = $nextSide.outerWidth(true) - translateZ
+                                translateZ = $activeSide.outerWidth(true) / 2;
+                            var translateX = $nextSide.outerWidth(true) - translateZ
                             ;
 
                             return {
@@ -472,14 +472,14 @@
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
+                            };
+                        var box = {
+                            origin: (height.active - height.next) / 2,
+                            depth: {
+                                active: height.next / 2,
+                                next: height.active / 2,
                             },
-                            box = {
-                                origin: (height.active - height.next) / 2,
-                                depth: {
-                                    active: height.next / 2,
-                                    next: height.active / 2,
-                                },
-                            }
+                        }
                         ;
                         module.verbose('Setting the initial animation position as left', $nextSide, box);
                         $activeSide
@@ -501,14 +501,14 @@
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
+                            };
+                        var box = {
+                            origin: (height.active - height.next) / 2,
+                            depth: {
+                                active: height.next / 2,
+                                next: height.active / 2,
                             },
-                            box = {
-                                origin: (height.active - height.next) / 2,
-                                depth: {
-                                    active: height.next / 2,
-                                    next: height.active / 2,
-                                },
-                            }
+                        }
                         ;
                         module.verbose('Setting the initial animation position as right', $nextSide, box);
                         $activeSide
@@ -530,14 +530,14 @@
                             height = {
                                 active: $activeSide.outerWidth(true),
                                 next: $nextSide.outerWidth(true),
+                            };
+                        var box = {
+                            origin: (height.active - height.next) / 2,
+                            depth: {
+                                active: height.next / 2,
+                                next: height.active / 2,
                             },
-                            box = {
-                                origin: (height.active - height.next) / 2,
-                                depth: {
-                                    active: height.next / 2,
-                                    next: height.active / 2,
-                                },
-                            }
+                        }
                         ;
                         module.verbose('Setting the initial animation position as behind', $nextSide, box);
                         $activeSide
@@ -606,9 +606,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -629,8 +629,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -657,10 +657,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

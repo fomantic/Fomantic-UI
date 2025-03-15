@@ -3,8 +3,8 @@
  *******************************/
 
 const
-    gulp = require('gulp'),
-    build = require('../build')
+    gulp = require('gulp');
+const build = require('../build')
 ;
 
 // RTL builds are now handled by the default build process

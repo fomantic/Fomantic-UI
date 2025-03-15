@@ -21,51 +21,51 @@
 
     $.fn.nag = function (parameters) {
         var
-            $allModules    = $(this),
-            $body          = $('body'),
+            $allModules    = $(this);
+        var $body          = $('body');
 
-            time           = Date.now(),
-            performance    = [],
+        var time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
-            contextCheck   = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $(context);
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
-                    }
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
+        var contextCheck   = function (context, win) {
+            var $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $(context);
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : $body;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue
+            return $context;
+        };
+        var returnedValue
         ;
         $allModules.each(function () {
             var
                 settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
-                    : $.extend({}, $.fn.nag.settings),
+                    : $.extend({}, $.fn.nag.settings);
 
-                selector        = settings.selector,
-                error           = settings.error,
-                namespace       = settings.namespace,
+            var selector        = settings.selector;
+            var error           = settings.error;
+            var namespace       = settings.namespace;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = namespace + '-module',
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = namespace + '-module';
 
-                $module         = $(this),
+            var $module         = $(this);
 
-                $context        = settings.context ? contextCheck(settings.context, window) : $body,
+            var $context        = settings.context ? contextCheck(settings.context, window) : $body;
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
-                storage,
-                module
+            var element         = this;
+            var instance        = $module.data(moduleNamespace);
+            var storage;
+            var module
             ;
             module = {
 
@@ -221,8 +221,8 @@
                                     var cookies = document.cookie.split('; ');
                                     for (var i = 0, il = cookies.length; i < il; i++) {
                                         var
-                                            parts    = cookies[i].split('='),
-                                            foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
+                                            parts    = cookies[i].split('=');
+                                        var foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
                                         ;
                                         if (key === foundKey) {
                                             return parts[1] || '';
@@ -364,9 +364,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -387,8 +387,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -412,10 +412,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;

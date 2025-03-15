@@ -4,8 +4,8 @@
 
 // docs tasks
 const
-    install = require('../install'),
-    checkInstall = require('../check-install')
+    install = require('../install');
+const checkInstall = require('../check-install')
 ;
 
 /*

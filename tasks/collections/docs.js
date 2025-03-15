@@ -4,8 +4,8 @@
 
 // docs tasks
 const
-    buildDocs = require('../docs/build'),
-    serveDocs = require('../docs/serve')
+    buildDocs = require('../docs/build');
+const serveDocs = require('../docs/serve')
 ;
 
 /*

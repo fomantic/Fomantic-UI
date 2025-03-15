@@ -3,10 +3,10 @@
 *******************************/
 
 const
-    fs       = require('fs'),
-    path     = require('path'),
+    fs       = require('fs');
+const path     = require('path');
 
-    defaults = require('../defaults')
+const defaults = require('../defaults')
 ;
 
 /*******************************
@@ -17,24 +17,24 @@ module.exports = {
 
     getPath: function (file, directory) {
         let
-            configPath,
-            walk = function (directory) {
-                let
-                    nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
-                    currentPath   = path.normalize(path.join(directory, file))
+            configPath;
+        let walk = function (directory) {
+            let
+                nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            let currentPath   = path.normalize(path.join(directory, file))
                 ;
-                if (fs.existsSync(currentPath)) {
-                    // found the file
-                    configPath = path.normalize(directory);
-                } else {
-                    // reached file system root, let's stop
-                    if (nextDirectory === directory) {
-                        return;
-                    }
-                    // otherwise recurse
-                    walk(nextDirectory, file);
+            if (fs.existsSync(currentPath)) {
+                // found the file
+                configPath = path.normalize(directory);
+            } else {
+                // reached file system root, let's stop
+                if (nextDirectory === directory) {
+                    return;
                 }
+                // otherwise recurse
+                walk(nextDirectory, file);
             }
+        }
         ;
 
         // start the walk from outside require-dot-files directory
@@ -52,10 +52,10 @@ module.exports = {
         --------------- */
 
         let
-            configPath = this.getPath(),
-            sourcePaths = {},
-            outputPaths = {},
-            folder
+            configPath = this.getPath();
+        let sourcePaths = {};
+        let outputPaths = {};
+        let folder
         ;
 
         // resolve paths (config location + base + path)

@@ -4,11 +4,11 @@
 
 const
     // node dependencies
-    console = require('@fomantic/better-console'),
-    isSetup = require('./config/project/install').isSetup,
+    console = require('@fomantic/better-console');
+const isSetup = require('./config/project/install').isSetup;
 
-    install = require('./install'),
-    watch   = require('./watch')
+const install = require('./install');
+const watch   = require('./watch')
 ;
 
 // export task

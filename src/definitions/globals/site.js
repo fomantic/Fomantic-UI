@@ -21,29 +21,29 @@
 
     $.fn.site = function (parameters) {
         var
-            time           = Date.now(),
-            performance    = [],
+            time           = Date.now();
+        var performance    = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
+        var query          = arguments[0];
+        var methodInvoked  = typeof query === 'string';
+        var queryArguments = [].slice.call(arguments, 1);
 
-            settings        = $.isPlainObject(parameters)
-                ? $.extend(true, {}, $.site.settings, parameters)
-                : $.extend({}, $.site.settings),
+        var settings        = $.isPlainObject(parameters)
+            ? $.extend(true, {}, $.site.settings, parameters)
+            : $.extend({}, $.site.settings);
 
-            namespace       = settings.namespace,
-            error           = settings.error,
+        var namespace       = settings.namespace;
+        var error           = settings.error;
 
-            moduleNamespace = 'module-' + namespace,
+        var moduleNamespace = 'module-' + namespace;
 
-            $document       = $(document),
-            $module         = $document,
-            element         = this,
-            instance        = $module.data(moduleNamespace),
+        var $document       = $(document);
+        var $module         = $document;
+        var element         = this;
+        var instance        = $module.data(moduleNamespace);
 
-            module,
-            returnedValue
+        var module;
+        var returnedValue
         ;
         module = {
 
@@ -122,8 +122,8 @@
                         var
                             namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
-                                : true,
-                            $existingModules
+                                : true;
+                        var $existingModules
                         ;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', setting, value, name);
@@ -275,9 +275,9 @@
             performance: {
                 log: function (message) {
                     var
-                        currentTime,
-                        executionTime,
-                        previousTime
+                        currentTime;
+                    var executionTime;
+                    var previousTime
                     ;
                     if (settings.performance) {
                         currentTime = Date.now();
@@ -298,8 +298,8 @@
                 },
                 display: function () {
                     var
-                        title = settings.name + ':',
-                        totalTime = 0
+                        title = settings.name + ':';
+                    var totalTime = 0
                     ;
                     time = false;
                     clearTimeout(module.performance.timer);
@@ -323,10 +323,10 @@
             },
             invoke: function (query, passedArguments, context) {
                 var
-                    object = instance,
-                    maxDepth,
-                    found,
-                    response
+                    object = instance;
+                var maxDepth;
+                var found;
+                var response
                 ;
                 passedArguments = passedArguments || queryArguments;
                 context = context || element;

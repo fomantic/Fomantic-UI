@@ -3,28 +3,28 @@
  *******************************/
 
 const
-    extend      = require('extend'),
+    extend      = require('extend');
 
-    // node dependencies
-    console     = require('@fomantic/better-console'),
-    gulp        = require('gulp'),
+// node dependencies
+const console     = require('@fomantic/better-console');
+const gulp        = require('gulp');
 
-    // gulp dependencies
-    print       = require('gulp-print').default,
+// gulp dependencies
+const print       = require('gulp-print').default;
 
-    // user config
-    configDocs      = require('../config/docs'),
+// user config
+const configDocs      = require('../config/docs');
 
-    // task config
-    tasks       = require('../config/tasks'),
-    configSetup = require('../config/project/config'),
+// task config
+const tasks       = require('../config/tasks');
+const configSetup = require('../config/project/config');
 
-    // shorthand
-    log         = tasks.log,
+// shorthand
+const log         = tasks.log;
 
-    css         = require('../build/css'),
-    js          = require('../build/javascript'),
-    assets      = require('../build/assets')
+const css         = require('../build/css');
+const js          = require('../build/javascript');
+const assets      = require('../build/assets')
 ;
 
 module.exports = function (callback) {

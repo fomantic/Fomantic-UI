@@ -21,43 +21,43 @@
 
     $.fn.dimmer = function (parameters) {
         var
-            $allModules     = $(this),
+            $allModules     = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        var time            = Date.now();
+        var performance     = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
+        var query           = arguments[0];
+        var methodInvoked   = typeof query === 'string';
+        var queryArguments  = [].slice.call(arguments, 1);
 
-            returnedValue
+        var returnedValue
         ;
 
         $allModules.each(function () {
             var
                 settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
-                    : $.extend({}, $.fn.dimmer.settings),
+                    : $.extend({}, $.fn.dimmer.settings);
 
-                selector        = settings.selector,
-                namespace       = settings.namespace,
-                className       = settings.className,
-                error           = settings.error,
+            var selector        = settings.selector;
+            var namespace       = settings.namespace;
+            var className       = settings.className;
+            var error           = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            var eventNamespace  = '.' + namespace;
+            var moduleNamespace = 'module-' + namespace;
 
-                clickEvent      = 'ontouchstart' in document.documentElement
-                    ? 'touchstart'
-                    : 'click',
+            var clickEvent      = 'ontouchstart' in document.documentElement
+                ? 'touchstart'
+                : 'click';
 
-                $module = $(this),
-                $dimmer,
-                $dimmable,
+            var $module = $(this);
+            var $dimmer;
+            var $dimmable;
 
-                element   = this,
-                instance  = $module.data(moduleNamespace),
-                module
+            var element   = this;
+            var instance  = $module.data(moduleNamespace);
+            var module
             ;
 
             module = {
@@ -395,9 +395,9 @@
                 set: {
                     opacity: function (opacity) {
                         var
-                            color      = $dimmer.css('background-color'),
-                            colorArray = color.split(','),
-                            isRGB      = colorArray && colorArray.length >= 3
+                            color      = $dimmer.css('background-color');
+                        var colorArray = color.split(',');
+                        var isRGB      = colorArray && colorArray.length >= 3
                         ;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
@@ -511,9 +511,9 @@
                 performance: {
                     log: function (message) {
                         var
-                            currentTime,
-                            executionTime,
-                            previousTime
+                            currentTime;
+                        var executionTime;
+                        var previousTime
                         ;
                         if (settings.performance) {
                             currentTime = Date.now();
@@ -534,8 +534,8 @@
                     },
                     display: function () {
                         var
-                            title = settings.name + ':',
-                            totalTime = 0
+                            title = settings.name + ':';
+                        var totalTime = 0
                         ;
                         time = false;
                         clearTimeout(module.performance.timer);
@@ -562,10 +562,10 @@
                 },
                 invoke: function (query, passedArguments, context) {
                     var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
+                        object = instance;
+                    var maxDepth;
+                    var found;
+                    var response
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
@@ -709,8 +709,8 @@
         template: {
             dimmer: function (settings) {
                 var
-                    d = $('<div/>').addClass('ui dimmer'),
-                    l
+                    d = $('<div/>').addClass('ui dimmer');
+                var l
                 ;
                 if (settings.displayLoader) {
                     l = $('<div/>')

@@ -3,41 +3,41 @@
  *******************************/
 
 const
-    gulp       = require('gulp'),
+    gulp       = require('gulp');
 
-    // node dependencies
-    console    = require('@fomantic/better-console'),
+// node dependencies
+const console    = require('@fomantic/better-console');
 
-    // gulp dependencies
-    chmod      = require('gulp-chmod'),
-    concat     = require('gulp-concat'),
-    dedupe     = require('@fomantic/gulp-dedupe'),
-    flatten    = require('gulp-flatten'),
-    gulpif     = require('gulp-if'),
-    header     = require('@fomantic/gulp-header'),
-    normalize  = require('normalize-path'),
-    ordered    = require('ordered-read-streams'),
-    plumber    = require('@fomantic/gulp-plumber'),
-    print      = require('gulp-print').default,
-    rename     = require('gulp-rename'),
-    replace    = require('gulp-replace'),
-    uglify     = require('gulp-uglify'),
+// gulp dependencies
+const chmod      = require('gulp-chmod');
+const concat     = require('gulp-concat');
+const dedupe     = require('@fomantic/gulp-dedupe');
+const flatten    = require('gulp-flatten');
+const gulpif     = require('gulp-if');
+const header     = require('@fomantic/gulp-header');
+const normalize  = require('normalize-path');
+const ordered    = require('ordered-read-streams');
+const plumber    = require('@fomantic/gulp-plumber');
+const print      = require('gulp-print').default;
+const rename     = require('gulp-rename');
+const replace    = require('gulp-replace');
+const uglify     = require('gulp-uglify');
 
-    // config
-    config     = require('../config/user'),
-    docsConfig = require('../config/docs'),
-    tasks      = require('../config/tasks'),
-    install    = require('../config/project/install'),
+// config
+const config     = require('../config/user');
+const docsConfig = require('../config/docs');
+const tasks      = require('../config/tasks');
+const install    = require('../config/project/install');
 
-    // shorthand
-    globs      = config.globs,
-    assets     = config.paths.assets,
+// shorthand
+const globs      = config.globs;
+const assets     = config.paths.assets;
 
-    banner     = tasks.banner,
-    filenames  = tasks.filenames,
-    comments   = tasks.regExp.comments,
-    log        = tasks.log,
-    settings   = tasks.settings
+const banner     = tasks.banner;
+const filenames  = tasks.filenames;
+const comments   = tasks.regExp.comments;
+const log        = tasks.log;
+const settings   = tasks.settings
 ;
 
 /**
@@ -133,8 +133,8 @@ module.exports = function (callback) {
 
 // We keep the changed files in an array to call build with all of them at the same time
 let
-    timeout,
-    files = []
+    timeout;
+let files = []
 ;
 
 module.exports.watch = function (type, config) {

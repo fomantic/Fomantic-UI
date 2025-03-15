@@ -5,12 +5,12 @@
 const requireDotFile = require('require-dot-file');
 
 let
-    config,
-    npmPackage,
-    version,
-    revision,
-    versionInFileName,
-    includeVersionInFileName
+    config;
+let npmPackage;
+let version;
+let revision;
+let versionInFileName;
+let includeVersionInFileName
 ;
 
 /*******************************

@@ -14,43 +14,43 @@
 
 const
     // node dependencies
-    fs             = require('fs-extra'),
-    path           = require('path'),
-    extend         = require('extend'),
-    console        = require('@fomantic/better-console'),
-    gulp           = require('gulp'),
+    fs             = require('fs-extra');
+const path           = require('path');
+const extend         = require('extend');
+const console        = require('@fomantic/better-console');
+const gulp           = require('gulp');
 
-    // gulp dependencies
-    jsonEditor     = require('gulp-json-editor'),
-    plumber        = require('@fomantic/gulp-plumber'),
-    inquirer       = require('inquirer'),
-    rename         = require('gulp-rename'),
-    replace        = require('gulp-replace'),
-    requireDotFile = require('require-dot-file'),
+// gulp dependencies
+const jsonEditor     = require('gulp-json-editor');
+const plumber        = require('@fomantic/gulp-plumber');
+const inquirer       = require('inquirer');
+const rename         = require('gulp-rename');
+const replace        = require('gulp-replace');
+const requireDotFile = require('require-dot-file');
 
-    // install config
-    install        = require('./config/project/install'),
+// install config
+const install        = require('./config/project/install');
 
-    // release config (name/title/etc)
-    release        = require('./config/project/release'),
+// release config (name/title/etc)
+const release        = require('./config/project/release');
 
-    // shorthand
-    questions      = install.questions,
-    files          = install.files,
-    folders        = install.folders,
-    regExp         = install.regExp,
-    settings       = install.settings,
-    source         = install.source
+// shorthand
+const questions      = install.questions;
+const files          = install.files;
+const folders        = install.folders;
+const regExp         = install.regExp;
+const settings       = install.settings;
+const source         = install.source
 ;
 
 // Export install task
 module.exports = function (callback) {
     let
-        currentConfig = requireDotFile('semantic.json', process.cwd()),
-        manager       = install.getPackageManager(),
-        rootQuestions = questions.root,
-        installFolder = false,
-        answers
+        currentConfig = requireDotFile('semantic.json', process.cwd());
+    let manager       = install.getPackageManager();
+    let rootQuestions = questions.root;
+    let installFolder = false;
+    let answers
     ;
 
     console.clear();
@@ -84,17 +84,17 @@ module.exports = function (callback) {
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
         let
-            updateFolder = path.join(manager.root, currentConfig.base),
-            updatePaths  = {
-                config: path.join(manager.root, files.config),
-                tasks: path.join(updateFolder, folders.tasks),
-                overridesImport: path.join(updateFolder, folders.overridesImport),
-                themeImport: path.join(updateFolder, folders.themeImport),
-                definition: path.join(currentConfig.paths.source.definitions),
-                site: path.join(currentConfig.paths.source.site),
-                theme: path.join(currentConfig.paths.source.themes),
-                defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
-            }
+            updateFolder = path.join(manager.root, currentConfig.base);
+        let updatePaths  = {
+            config: path.join(manager.root, files.config),
+            tasks: path.join(updateFolder, folders.tasks),
+            overridesImport: path.join(updateFolder, folders.overridesImport),
+            themeImport: path.join(updateFolder, folders.themeImport),
+            definition: path.join(currentConfig.paths.source.definitions),
+            site: path.join(currentConfig.paths.source.site),
+            theme: path.join(currentConfig.paths.source.themes),
+            defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
+        }
         ;
 
         // duck-type if there is a project installed
@@ -346,8 +346,8 @@ module.exports = function (callback) {
             let
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
-                pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder: '" + pathToSite + "/';"
+                pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            let siteVariable = "@siteFolder: '" + pathToSite + "/';"
             ;
 
             // rewrite site variable in theme.less
