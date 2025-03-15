@@ -1971,7 +1971,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: module.escape.htmlEntities(text, true),
+                                        text: module.escape.htmlEntities(text),
                                         disabled: disabled,
                                     });
                                 }
@@ -3562,12 +3562,8 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string, forceAmpersand) {
-                        forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
-
-                        const badChars = forceAmpersand
-                            ? /["&'<>]/g
-                            : /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+                    htmlEntities: function (string) {
+                        const badChars = /["&'<>]/g;
                         const escape = {
                             '"': '&quot;',
                             '&': '&amp;',
@@ -3980,7 +3976,7 @@
                 return string;
             }
 
-            const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+            const badChars = /["&'<>]/g;
             const escape = {
                 '"': '&quot;',
                 '&': '&amp;',
