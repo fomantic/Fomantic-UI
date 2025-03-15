@@ -4,7 +4,7 @@
 
 // node dependencies
 const console = require('@fomantic/better-console');
-const path = require('path');
+const path = require('node:path');
 const YAML = require('js-yaml');
 
 let data = {};

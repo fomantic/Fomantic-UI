@@ -9,7 +9,7 @@
 */
 
 // node dependencies
-const process = require('child_process');
+const process = require('node:child_process');
 
 // config
 const release = require('../config/admin/release');

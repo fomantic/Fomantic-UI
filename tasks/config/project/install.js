@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-const path = require('path');
+const path = require('node:path');
 const requireDotFile = require('require-dot-file');
 const defaults = require('../defaults');
 const release = require('./release');

@@ -1,9 +1,9 @@
 // node
-const fs = require('fs');
-const path = require('path');
-const childProcess = require('child_process');
+const fs = require('node:fs');
+const path = require('node:path');
+const childProcess = require('node:child_process');
 
-const process = require('process');
+const process = require('node:process');
 
 // npm
 const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies

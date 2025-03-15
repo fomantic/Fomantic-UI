@@ -13,8 +13,8 @@
 */
 
 // node dependencies
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const console = require('@fomantic/better-console');
 const gulp = require('gulp');
 const git = require('@fomantic/gulp-git');

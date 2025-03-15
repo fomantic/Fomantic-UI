@@ -5,8 +5,8 @@
   Logs into GitHub using OAuth
 */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 const GithubAPI = require('@octokit/rest');
 
 // stores oauth info for GitHub API
