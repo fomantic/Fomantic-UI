@@ -194,7 +194,7 @@
                                         .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
                                     let cookieOptions = '';
-                                    for (var option in options) {
+                                    for (let option in options) {
                                         if (Object.prototype.hasOwnProperty.call(options, option)) {
                                             cookieOptions += '; ' + option;
                                             if (typeof options[option] === 'string') {
@@ -206,7 +206,7 @@
                                 },
                                 getItem: function (key) {
                                     let cookies = document.cookie.split('; ');
-                                    for (var i = 0, il = cookies.length; i < il; i++) {
+                                    for (let i = 0, il = cookies.length; i < il; i++) {
                                         let parts = cookies[i].split('=');
                                         let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                         if (key === foundKey) {

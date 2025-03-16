@@ -208,7 +208,7 @@
                         let precision = module.get.precision();
                         let len = module.get.numLabels();
                         let ignoreLabels = len - (settings.autoAdjustLabels !== 'fixed' ? 0 : module.get.max().toString().length + 4);
-                        for (var i = 0; i <= len; i++) {
+                        for (let i = 0; i <= len; i++) {
                             let stepValue = Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             let labelText = module.get.label(i, stepValue);
                             let showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0;
@@ -526,7 +526,7 @@
                     prime: function (n) {
                         if (module.cache['prime' + n] === undefined) {
                             let p = true;
-                            for (var i = 2, s = Math.sqrt(n); i <= s; i++) {
+                            for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
                                 if (n % i === 0) {
                                     p = false;
 
@@ -897,7 +897,7 @@
                         if (event.type === 'touchmove' || event.type === 'touchend') {
                             let touchEvent = event.touches ? event : event.originalEvent;
                             let touch = touchEvent.changedTouches[0]; // fall back to first touch if correct touch not found
-                            for (var i = 0; i < touchEvent.touches.length; i++) {
+                            for (let i = 0; i < touchEvent.touches.length; i++) {
                                 if (touchEvent.touches[i].identifier === touchIdentifier) {
                                     touch = touchEvent.touches[i];
 

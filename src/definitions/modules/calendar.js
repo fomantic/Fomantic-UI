@@ -1238,7 +1238,7 @@
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
                             let d;
-                            for (var i = 0; i < dates.length; i++) {
+                            for (let i = 0; i < dates.length; i++) {
                                 d = dates[i];
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
@@ -1306,7 +1306,7 @@
                                     }
                                 }
                             };
-                            for (var i = 0; i < hours.length; i++) {
+                            for (let i = 0; i < hours.length; i++) {
                                 d = hours[i];
                                 if (typeof d === 'number' && date.getHours() === d) {
                                     return null;

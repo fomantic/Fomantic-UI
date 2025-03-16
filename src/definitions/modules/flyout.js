@@ -449,7 +449,7 @@
                         observer = new MutationObserver(function (mutations) {
                             let collectNodes = function (parent) {
                                 let nodes = [];
-                                for (var c = 0, cl = parent.length; c < cl; c++) {
+                                for (let c = 0, cl = parent.length; c < cl; c++) {
                                     Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
                                     nodes.push(parent[c]);
                                 }

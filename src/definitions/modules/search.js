@@ -705,7 +705,7 @@
                     if (queryLength === termLength) {
                         return query === term;
                     }
-                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                    for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
                         let queryCharacter = query.charCodeAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
