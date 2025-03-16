@@ -86,7 +86,6 @@ module.exports = {
         'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
-        'no-var': 'off', // fixed in https://github.com/fomantic/Fomantic-UI/pull/2584 expect shadowed variables
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
         'prefer-rest-params': 'off',
