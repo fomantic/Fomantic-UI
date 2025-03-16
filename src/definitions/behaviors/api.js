@@ -77,13 +77,13 @@
             let ajaxSettings;
             let requestSettings;
             let url;
-            var data;
+            let data;
             let requestStartTime;
             let originalData;
 
             // standard module
             let element = this;
-            var context = $context[0];
+            let context = $context[0];
             let instance = $module.data(moduleNamespace);
             let module;
 
@@ -521,7 +521,7 @@
                             // nothing special
                         },
                         done: function (response, textStatus, xhr) {
-                            var context = this;
+                            let context = this;
                             let elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
                             let translatedResponse = isFunction(settings.onResponse)
@@ -548,7 +548,7 @@
                             }, timeLeft);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            var context = this;
+                            let context = this;
                             let elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
                             timeLeft = timeLeft > 0
@@ -785,7 +785,7 @@
                         return encodedValue;
                     },
                     defaultData: function () {
-                        var data = {};
+                        let data = {};
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();

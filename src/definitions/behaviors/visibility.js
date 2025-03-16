@@ -68,7 +68,7 @@
 
             let instance = $module.data(moduleNamespace);
 
-            var element = this;
+            let element = this;
             let disabled = false;
 
             let contextObserver;
@@ -810,7 +810,7 @@
                         return module.cache.direction;
                     },
                     elementPosition: function () {
-                        var element = module.cache.element;
+                        let element = module.cache.element;
                         let screen = module.get.screenSize();
                         module.verbose('Saving element position');
                         // (quicker than $.extend)
@@ -832,7 +832,7 @@
                     },
                     elementCalculations: function () {
                         let screen = module.get.screenCalculations();
-                        var element = module.get.elementPosition();
+                        let element = module.get.elementPosition();
                         // offset
                         if (settings.includeMargin) {
                             element.margin = {};
@@ -890,7 +890,7 @@
 
                 get: {
                     pixelsPassed: function (amount) {
-                        var element = module.get.elementCalculations();
+                        let element = module.get.elementCalculations();
                         if (amount.search('%') > -1) {
                             return element.height * (parseInt(amount, 10) / 100);
                         }

@@ -49,12 +49,12 @@
             // selector cache
             let $module = $(this);
             let $sides = $module.find('>' + selector.sides);
-            var $side = $sides.find('>' + selector.side);
+            let $side = $sides.find('>' + selector.side);
 
             // private variables
             let nextIndex = false;
-            var $activeSide;
-            var $nextSide;
+            let $activeSide;
+            let $nextSide;
 
             // standard module
             let element = this;
@@ -192,7 +192,7 @@
                     },
 
                     currentStageSize: function () {
-                        var $activeSide = $side.filter('.' + className.active);
+                        let $activeSide = $side.filter('.' + className.active);
                         let width = $activeSide.outerWidth(true);
                         let height = $activeSide.outerHeight(true);
                         $module
@@ -204,9 +204,9 @@
 
                     stageSize: function () {
                         let $clone = $module.clone().addClass(className.loading);
-                        var $side = $clone.find('>' + selector.sides + '>' + selector.side);
-                        var $activeSide = $side.filter('.' + className.active);
-                        var $nextSide = nextIndex
+                        let $side = $clone.find('>' + selector.sides + '>' + selector.side);
+                        let $activeSide = $side.filter('.' + className.active);
+                        let $nextSide = nextIndex
                             ? $side.eq(nextIndex)
                             : ($activeSide.next(selector.side).length > 0
                                 ? $activeSide.next(selector.side)

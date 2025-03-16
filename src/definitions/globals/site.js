@@ -31,7 +31,7 @@
             ? $.extend(true, {}, $.site.settings, parameters)
             : $.extend({}, $.site.settings);
 
-        var namespace = settings.namespace;
+        let namespace = settings.namespace;
         let error = settings.error;
 
         let moduleNamespace = 'module-' + namespace;
@@ -112,7 +112,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var namespace = module.moduleExists(name)
+                        let namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
                             : true;
                         let $existingModules;

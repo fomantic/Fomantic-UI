@@ -64,7 +64,7 @@
 
             let instance = $module.data(moduleNamespace);
 
-            var element = this;
+            let element = this;
 
             let documentObserver;
             let observer;
@@ -237,7 +237,7 @@
                         let scrollContext = {
                             height: $scroll.height(),
                         };
-                        var element = {
+                        let element = {
                             margin: {
                                 top: parseInt($module.css('margin-top'), 10),
                                 bottom: parseInt($module.css('margin-bottom'), 10),
@@ -317,7 +317,7 @@
 
                     elementScroll: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
-                        var element = module.cache.element;
+                        let element = module.cache.element;
                         let scrollContext = module.cache.scrollContext;
                         let delta = module.get.scrollChange(scroll);
                         let maxScroll = element.height - scrollContext.height + settings.offset;
@@ -382,7 +382,7 @@
                         }
                     },
                     minimumSize: function () {
-                        var element = module.cache.element;
+                        let element = module.cache.element;
                         $container
                             .css('min-height', element.height);
                     },
@@ -439,7 +439,7 @@
                     let cache = module.cache;
                     let fits = cache.fits;
                     let sameHeight = cache.sameHeight;
-                    var element = cache.element;
+                    let element = cache.element;
                     let scrollContext = cache.scrollContext;
                     let context = cache.context;
                     let offset = module.is.bottom() && settings.pushing

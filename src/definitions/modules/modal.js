@@ -1481,11 +1481,11 @@
         },
         prompt: function () {
             let $this = this;
-            var settings = this.get.settings();
+            let settings = this.get.settings();
             let args = settings.templates.getArguments(arguments);
             let input = $($.parseHTML(args.content)).filter('.ui.input');
             let approveFn = function () {
-                var settings = $this.get.settings();
+                let settings = $this.get.settings();
                 let inputField = $this.get.element().find(settings.selector.prompt)[0];
                 args.handler($(inputField).val());
             };

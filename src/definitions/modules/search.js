@@ -49,8 +49,8 @@
             let $prompt = $module.find(selector.prompt);
             let $searchButton = $module.find(selector.searchButton);
             let $results = $module.find(selector.results);
-            var $result = $module.find(selector.result);
-            var $category = $module.find(selector.category);
+            let $result = $module.find(selector.result);
+            let $category = $module.find(selector.category);
 
             let element = this;
             let instance = $module.data(moduleNamespace);
@@ -204,7 +204,7 @@
                         },
                         click: function (event) {
                             module.debug('Search result selected');
-                            var $result = $(this);
+                            let $result = $(this);
                             let $title = $result.find(selector.title).eq(0);
                             let $link = $result.is('a[href]')
                                 ? $result
@@ -264,8 +264,8 @@
                 },
                 handleKeyboard: function (event) {
                     // force selector refresh
-                    var $result = $module.find(selector.result);
-                    var $category = $module.find(selector.category);
+                    let $result = $module.find(selector.result);
+                    let $category = $module.find(selector.category);
                     let $activeResult = $result.filter('.' + className.active);
                     let currentIndex = $result.index($activeResult);
                     let resultSize = $result.length;

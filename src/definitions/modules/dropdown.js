@@ -26,7 +26,7 @@
         let time = Date.now();
         let performance = [];
 
-        var query = arguments[0];
+        let query = arguments[0];
         let methodInvoked = typeof query === 'string';
         let queryArguments = [].slice.call(arguments, 1);
         let contextCheck = function (context, win) {
@@ -76,8 +76,8 @@
                 ? $module.prev().find(selector.text)
                 : $module.prev();
 
-            var $menu = $module.children(selector.menu);
-            var $item = $menu.find(selector.item);
+            let $menu = $module.children(selector.menu);
+            let $item = $menu.find(selector.item);
             let $divider = settings.hideDividers
                 ? $item.parent().children(selector.divider)
                 : $();
@@ -1291,7 +1291,7 @@
                     item: {
                         mouseenter: function (event) {
                             let $target = $(event.target);
-                            var $item = $(this);
+                            let $item = $(this);
                             let $subMenu = $item.children(selector.menu);
                             let $otherMenus = $item.siblings(selector.item).children(selector.menu);
                             let hasSubMenu = $subMenu.length > 0;
@@ -2279,7 +2279,7 @@
 
                 scrollPage: function (direction, $selectedItem) {
                     let $currentItem = $selectedItem || module.get.selectedItem();
-                    var $menu = $currentItem.closest(selector.menu);
+                    let $menu = $currentItem.closest(selector.menu);
                     let menuHeight = $menu.outerHeight();
                     let currentScroll = $menu.scrollTop();
                     let itemHeight = $item.eq(0).outerHeight();
@@ -2387,7 +2387,7 @@
                     },
                     scrollPosition: function ($item, forceScroll) {
                         let edgeTolerance = 5;
-                        var $menu;
+                        let $menu;
                         let hasActive;
                         let offset;
                         let itemOffset;
@@ -2805,7 +2805,7 @@
                         let hasCount = message.search('{count}') !== -1;
                         let hasMaxCount = message.search('{maxCount}') !== -1;
                         let hasTerm = message.search('{term}') !== -1;
-                        var query;
+                        let query;
                         module.verbose('Adding templated variables to message', message);
                         if (hasCount) {
                             message = message.replace('{count}', module.get.selectionCount());

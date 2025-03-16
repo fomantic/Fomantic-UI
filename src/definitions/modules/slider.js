@@ -73,11 +73,11 @@
 
             let documentEventID;
 
-            var value;
-            var position;
+            let value;
+            let position;
             let secondPos;
             let offset;
-            var gapRatio = 1;
+            let gapRatio = 1;
             let previousValue;
 
             let initialPosition;
@@ -345,7 +345,7 @@
                             // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
                             return;
                         }
-                        var value = module.determine.valueFromEvent(event);
+                        let value = module.determine.valueFromEvent(event);
                         if (event.type === 'mousemove' && $currThumb === undefined) {
                             let eventPos = module.determine.eventPos(event);
                             let newPos = module.determine.pos(eventPos);
@@ -394,7 +394,7 @@
                             // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
                             return;
                         }
-                        var value = module.determine.valueFromEvent(event);
+                        let value = module.determine.valueFromEvent(event);
                         if (module.is.range() && (settings.minRange || settings.maxRange)) {
                             if ($currThumb === undefined) {
                                 $currThumb = value <= module.get.currentThumbValue() ? $thumb : $secondThumb;
@@ -697,7 +697,7 @@
                         if (module.cache.numLabels === undefined) {
                             let step = module.get.step();
                             let precision = module.get.precision();
-                            var value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
+                            let value = Math.round(((module.get.max() - module.get.min()) / (step === 0 ? 1 : step)) * precision) / precision;
                             module.debug('Determined that there should be ' + value + ' labels');
                             module.cache.numLabels = value;
                         }
@@ -783,7 +783,7 @@
                         }
                     },
                     gapRatio: function () {
-                        var gapRatio = 1;
+                        let gapRatio = 1;
 
                         if (settings.autoAdjustLabels) {
                             let numLabels = module.get.numLabels();
@@ -841,12 +841,12 @@
                     positionFromValue: function (val) {
                         let min = module.get.min();
                         let max = module.get.max();
-                        var value = val > max
+                        let value = val > max
                             ? max
                             : (val < min ? min : val);
                         let trackLength = module.get.trackLength();
                         let ratio = (value - min) / (max - min);
-                        var position = Math.round(ratio * trackLength);
+                        let position = Math.round(ratio * trackLength);
                         module.verbose('Determined position: ' + position + ' from value: ' + value);
 
                         return position;
@@ -854,7 +854,7 @@
                     positionFromRatio: function (ratio) {
                         let trackLength = module.get.trackLength();
                         let step = module.get.step();
-                        var position = Math.round(ratio * trackLength);
+                        let position = Math.round(ratio * trackLength);
                         let adjustedPos = step === 0 ? position : Math.round(position / step) * step;
                         module.verbose('Determined position: ' + position + ' from ratio: ' + ratio);
 
@@ -863,7 +863,7 @@
                     valueFromEvent: function (event) {
                         let eventPos = module.determine.eventPos(event);
                         let newPos = module.determine.pos(eventPos);
-                        var value;
+                        let value;
                         if (eventPos < module.get.trackOffset()) {
                             value = module.is.reversed() ? module.get.max() : module.get.min();
                         } else if (eventPos > module.get.trackOffset() + module.get.trackLength()) {
@@ -881,7 +881,7 @@
                         let eventPos = module.determine.eventPos(event);
                         let newPos = eventPos - module.get.trackOffset();
                         let ratio;
-                        var value;
+                        let value;
                         newPos = newPos < 0
                             ? 0
                             : (newPos > trackLength ? trackLength : newPos);
@@ -921,7 +921,7 @@
                         let ratio = (position - startPos) / (endPos - startPos);
                         let range = module.get.max() - module.get.min();
                         let step = module.get.step();
-                        var value = ratio * range;
+                        let value = ratio * range;
                         let difference = step === 0 ? value : Math.round(value / step) * step;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
                         if (value !== difference) {
@@ -1160,7 +1160,7 @@
                         let startMarginMod = module.is.reversed() && !module.is.vertical()
                             ? ' - '
                             : ' + ';
-                        var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
+                        let position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
                         $label.css(posDir, 'calc(' + position + startMarginMod + startMargin + ')');
                     },
                 },

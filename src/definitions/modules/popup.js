@@ -68,7 +68,7 @@
             let $context = contextCheck(settings.context, window);
             let $scrollContext = contextCheck(settings.scrollContext, window);
             let $boundary = contextCheck(settings.boundary, window);
-            var $target = settings.target ? contextCheck(settings.target, window) : $module;
+            let $target = settings.target ? contextCheck(settings.target, window) : $module;
 
             let $popup;
             let $offsetParent;
@@ -77,7 +77,7 @@
             let triedPositions = false;
             let openedWithTouch = false;
 
-            var element = this;
+            let element = this;
             let instance = $module.data(moduleNamespace);
 
             let documentObserver;
@@ -223,7 +223,7 @@
                         });
                     },
                     hideGracefully: function (event) {
-                        var $target = $(event.target);
+                        let $target = $(event.target);
                         let isInDOM = $.contains(document.documentElement, event.target);
                         let inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
@@ -619,7 +619,7 @@
                         return distanceFromBoundary;
                     },
                     offsetParent: function ($element) {
-                        var element = $element !== undefined
+                        let element = $element !== undefined
                             ? $element[0]
                             : $target[0];
                         let parentNode = element.parentNode;
