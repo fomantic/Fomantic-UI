@@ -356,7 +356,7 @@
                             settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                         } else if (tabPath.search('/') === -1 && tabPath !== '') {
                             // look for in page anchor
-                            $anchor = $('#' + tabPath + ', a[name="' + CSS.escape(tabPath) + '"]');
+                            $anchor = $('#' + CSS.escape(tabPath) + ', a[name="' + CSS.escape(tabPath) + '"]');
                             currentPath = $anchor.closest('[data-tab]').data(metadata.tab);
                             $tab = module.get.tabElement(currentPath);
                             // if anchor exists, use parent tab
