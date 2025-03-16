@@ -627,6 +627,9 @@ select.ui.dropdown {
                 & > i.icon:not(.remove) {
                     opacity: @selectionIconFocusOpacity;
                 }
+                & > i.icon.remove:not(:hover) {
+                    opacity: calc(@actionIconFocusOpacity);
+                }
             }
         }
     }

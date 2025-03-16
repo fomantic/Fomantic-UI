@@ -220,6 +220,7 @@
 @selectionVisibleIconOpacity: "";
 
 @selectionIconFocusOpacity: 1;
+@actionIconFocusOpacity: (@selectionIconFocusOpacity * 68) / 100;
 
 /* --------------
      Search
