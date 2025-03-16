@@ -20,32 +20,32 @@
         : globalThis;
 
     $.fn.transition = function () {
-        var $allModules = $(this);
+        let $allModules = $(this);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var moduleArguments = arguments;
-        var query = moduleArguments[0];
-        var queryArguments = [].slice.call(arguments, 1);
-        var methodInvoked = typeof query === 'string';
+        let moduleArguments = arguments;
+        let query = moduleArguments[0];
+        let queryArguments = [].slice.call(arguments, 1);
+        let methodInvoked = typeof query === 'string';
 
-        var returnedValue;
+        let returnedValue;
         $allModules.each(function (index) {
-            var $module = $(this);
-            var element = this;
+            let $module = $(this);
+            let element = this;
 
             // set at run time
-            var settings;
-            var instance;
+            let settings;
+            let instance;
 
-            var error;
-            var className;
-            var metadata;
+            let error;
+            let className;
+            let metadata;
 
-            var moduleNamespace;
-            var eventNamespace;
-            var module;
+            let moduleNamespace;
+            let eventNamespace;
+            let module;
 
             module = {
 
@@ -99,8 +99,8 @@
 
                 forceRepaint: function () {
                     module.verbose('Forcing element repaint');
-                    var $parentElement = $module.parent();
-                    var $nextElement = $module.next();
+                    let $parentElement = $module.parent();
+                    let $nextElement = $module.next();
                     if ($nextElement.length === 0) {
                         $module.detach().appendTo($parentElement);
                     } else {
@@ -110,13 +110,13 @@
 
                 repaint: function () {
                     module.verbose('Repainting element');
-                    var fakeAssignment = element.offsetWidth;
+                    let fakeAssignment = element.offsetWidth;
                 },
 
                 delay: function (interval) {
-                    var direction = module.get.animationDirection();
-                    var shouldReverse;
-                    var delay;
+                    let direction = module.get.animationDirection();
+                    let shouldReverse;
+                    let delay;
                     if (!direction) {
                         direction = module.can.transition()
                             ? module.get.direction()
@@ -209,12 +209,12 @@
 
                 force: {
                     visible: function () {
-                        var style = $module.attr('style');
-                        var userStyle = module.get.userStyle(style);
-                        var displayType = module.get.displayType();
-                        var overrideStyle = userStyle + 'display: ' + displayType + ' !important;';
-                        var inlineDisplay = $module[0].style.display;
-                        var mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
+                        let style = $module.attr('style');
+                        let userStyle = module.get.userStyle(style);
+                        let displayType = module.get.displayType();
+                        let overrideStyle = userStyle + 'display: ' + displayType + ' !important;';
+                        let inlineDisplay = $module[0].style.display;
+                        let mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
                         if (mustStayHidden) {
                             module.remove.transition();
 
@@ -227,9 +227,9 @@
                         return true;
                     },
                     hidden: function () {
-                        var style = $module.attr('style');
-                        var currentDisplay = $module.css('display');
-                        var emptyStyle = style === undefined || style === '';
+                        let style = $module.attr('style');
+                        let currentDisplay = $module.css('display');
+                        let emptyStyle = style === undefined || style === '';
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
                             $module
@@ -243,7 +243,7 @@
 
                 has: {
                     direction: function (animation) {
-                        var hasDirection = false;
+                        let hasDirection = false;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
@@ -257,7 +257,7 @@
                         return hasDirection;
                     },
                     inlineDisplay: function () {
-                        var style = $module.attr('style') || '';
+                        let style = $module.attr('style') || '';
 
                         return Array.isArray(style.match(/display.*?;/, ''));
                     },
@@ -270,7 +270,7 @@
 
                         // determine exact animation
                         animation = animation || settings.animation;
-                        var animationClass = module.get.animationClass(animation);
+                        let animationClass = module.get.animationClass(animation);
 
                         // save animation class in cache to restore class names
                         module.save.animation(animationClass);
@@ -367,7 +367,7 @@
 
                 restore: {
                     conditions: function () {
-                        var animation = module.get.currentAnimation();
+                        let animation = module.get.currentAnimation();
                         if (animation) {
                             $module
                                 .removeClass(animation);
@@ -379,7 +379,7 @@
 
                 add: {
                     failSafe: function () {
-                        var duration = module.get.duration();
+                        let duration = module.get.duration();
                         module.timer = setTimeout(function () {
                             $module.triggerHandler('animationend');
                         }, duration + settings.failSafeDelay);
@@ -476,8 +476,8 @@
                         });
                     },
                     animationClass: function (animation) {
-                        var animationClass = animation || settings.animation;
-                        var directionClass = module.can.transition() && !module.has.direction()
+                        let animationClass = animation || settings.animation;
+                        let directionClass = module.can.transition() && !module.has.direction()
                             ? module.get.direction() + ' '
                             : '';
 
@@ -502,7 +502,7 @@
                             : className.outward;
                     },
                     animationDirection: function (animation) {
-                        var direction;
+                        let direction;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
@@ -542,7 +542,7 @@
                             return settings.displayType;
                         }
                         if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
-                            var currentDisplay = $module.css('display');
+                            let currentDisplay = $module.css('display');
                             if (currentDisplay === '' || currentDisplay === 'none') {
                                 // create a fake element to determine display state
                                 module.can.transition(true);
@@ -565,15 +565,15 @@
 
                 can: {
                     transition: function (forced) {
-                        var animation = settings.animation;
-                        var transitionExists = module.get.transitionExists(animation);
-                        var displayType = module.get.displayType(false);
-                        var elementClass;
-                        var tagName;
-                        var $clone;
-                        var currentAnimation;
-                        var inAnimation;
-                        var directionExists;
+                        let animation = settings.animation;
+                        let transitionExists = module.get.transitionExists(animation);
+                        let displayType = module.get.displayType(false);
+                        let elementClass;
+                        let tagName;
+                        let $clone;
+                        let currentAnimation;
+                        let inAnimation;
+                        let directionExists;
                         if (transitionExists === undefined || forced) {
                             module.verbose('Determining whether animation exists');
                             elementClass = $module.attr('class');
@@ -784,9 +784,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -805,8 +805,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -832,17 +832,17 @@
                 },
                 // modified for transition to return invoke success
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

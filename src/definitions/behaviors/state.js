@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.state = function (parameters) {
-        var $allModules = $(this);
+        let $allModules = $(this);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var contextCheck = function (context, win) {
-            var $context;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
             if ([window, document].indexOf(context) >= 0) {
                 $context = $(context);
             } else {
@@ -41,29 +41,29 @@
 
             return $context;
         };
-        var returnedValue;
+        let returnedValue;
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.state.settings, parameters)
                 : $.extend({}, $.fn.state.settings);
 
-            var error = settings.error;
-            var metadata = settings.metadata;
-            var className = settings.className;
-            var namespace = settings.namespace;
-            var states = settings.states;
-            var text = settings.text;
+            let error = settings.error;
+            let metadata = settings.metadata;
+            let className = settings.className;
+            let namespace = settings.namespace;
+            let states = settings.states;
+            let text = settings.text;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = namespace + '-module';
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = namespace + '-module';
 
-            var $module = $(this);
-            var $context = settings.context ? contextCheck(settings.context, window) : $module;
+            let $module = $(this);
+            let $context = settings.context ? contextCheck(settings.context, window) : $module;
 
-            var element = this;
-            var instance = $module.data(moduleNamespace);
+            let element = this;
+            let instance = $module.data(moduleNamespace);
 
-            var module;
+            let module;
             module = {
 
                 initialize: function () {
@@ -105,7 +105,7 @@
 
                 add: {
                     defaults: function () {
-                        var userStates = parameters && $.isPlainObject(parameters.states)
+                        let userStates = parameters && $.isPlainObject(parameters.states)
                             ? parameters.states
                             : {};
                         $.each(settings.defaults, function (type, typeStates) {
@@ -193,8 +193,8 @@
 
                 toggle: {
                     state: function () {
-                        var apiRequest;
-                        var requestCancelled;
+                        let apiRequest;
+                        let requestCancelled;
                         if (module.allows('active') && module.is.enabled()) {
                             module.refresh();
                             if ($.fn.api !== undefined) {
@@ -339,7 +339,7 @@
 
                 flash: {
                     text: function (text, duration, callback) {
-                        var previousText = module.get.text();
+                        let previousText = module.get.text();
                         module.debug('Flashing text message', text, duration);
                         text = text || settings.text.flash;
                         duration = duration || settings.flashDuration;
@@ -355,8 +355,8 @@
                 reset: {
                     // on mouseout sets text to previous value
                     text: function () {
-                        var activeText = text.active || $module.data(metadata.storedText);
-                        var inactiveText = text.inactive || $module.data(metadata.storedText);
+                        let activeText = text.active || $module.data(metadata.storedText);
+                        let inactiveText = text.inactive || $module.data(metadata.storedText);
                         if (module.is.textEnabled()) {
                             if (module.is.active() && activeText) {
                                 module.verbose('Resetting active text', activeText);
@@ -371,7 +371,7 @@
 
                 update: {
                     text: function (text) {
-                        var currentText = module.get.text();
+                        let currentText = module.get.text();
                         if (text && text !== currentText) {
                             module.debug('Updating text', text);
                             if (settings.selector.text) {
@@ -441,9 +441,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -462,8 +462,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -485,17 +485,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

@@ -20,39 +20,39 @@
         : globalThis;
 
     $.fn.checkbox = function (parameters) {
-        var $allModules = $(this);
+        let $allModules = $(this);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
-        var returnedValue;
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.extend(true, {}, $.fn.checkbox.settings, parameters);
+            let settings = $.extend(true, {}, $.fn.checkbox.settings, parameters);
 
-            var className = settings.className;
-            var namespace = settings.namespace;
-            var selector = settings.selector;
-            var error = settings.error;
+            let className = settings.className;
+            let namespace = settings.namespace;
+            let selector = settings.selector;
+            let error = settings.error;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-            var $module = $(this);
-            var $label = $(this).children(selector.label);
-            var $input = $(this).children(selector.input);
-            var input = $input[0];
+            let $module = $(this);
+            let $label = $(this).children(selector.label);
+            let $input = $(this).children(selector.input);
+            let input = $input[0];
 
-            var initialLoad = false;
-            var shortcutPressed = false;
-            var instance = $module.data(moduleNamespace);
+            let initialLoad = false;
+            let shortcutPressed = false;
+            let instance = $module.data(moduleNamespace);
 
-            var observer;
-            var element = this;
-            var module;
+            let observer;
+            let element = this;
+            let module;
 
             module = {
 
@@ -143,7 +143,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var $element = $(selector);
+                    let $element = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -170,7 +170,7 @@
                         }
                     },
                     click: function (event) {
-                        var $target = $(event.target);
+                        let $target = $(event.target);
                         if ($target.is(selector.input)) {
                             module.verbose('Using default check action on initialized checkbox');
 
@@ -186,8 +186,8 @@
                         event.preventDefault();
                     },
                     keydown: function (event) {
-                        var key = event.which;
-                        var keyCode = {
+                        let key = event.which;
+                        let keyCode = {
                             enter: 13,
                             space: 32,
                             escape: 27,
@@ -197,10 +197,10 @@
                             down: 40,
                         };
 
-                        var r = module.get.radios().not(selector.disabled);
-                        var rIndex = r.index($module);
-                        var rLen = r.length;
-                        var checkIndex = false;
+                        let r = module.get.radios().not(selector.disabled);
+                        let rIndex = r.index($module);
+                        let rLen = r.length;
+                        let checkIndex = false;
 
                         if (key === keyCode.left || key === keyCode.up) {
                             checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
@@ -214,9 +214,9 @@
 
                                 return false;
                             }
-                            var nextOption = $(r[checkIndex]);
-                            var nextInput = nextOption.children(selector.input);
-                            var disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
+                            let nextOption = $(r[checkIndex]);
+                            let nextInput = nextOption.children(selector.input);
+                            let disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
                             if (disallowOption || settings.beforeChecked.apply(nextInput[0]) === false) {
                                 module.verbose('Next option should not allow check, cancelling key navigation');
 
@@ -337,7 +337,7 @@
 
                 get: {
                     radios: function () {
-                        var name = module.get.name();
+                        let name = module.get.name();
 
                         return $('input[name="' + name + '"]').closest(selector.checkbox);
                     },
@@ -553,9 +553,9 @@
 
                 trigger: {
                     change: function () {
-                        var inputElement = $input[0];
+                        let inputElement = $input[0];
                         if (inputElement) {
-                            var events = document.createEvent('HTMLEvents');
+                            let events = document.createEvent('HTMLEvents');
                             module.verbose('Triggering native change event');
                             events.initEvent('change', true, false);
                             inputElement.dispatchEvent(events);
@@ -601,7 +601,7 @@
                 },
 
                 uncheckOthers: function () {
-                    var $radios = module.get.otherRadios();
+                    let $radios = module.get.otherRadios();
                     module.debug('Unchecking other radios', $radios);
                     $radios.removeClass(className.checked);
                 },
@@ -673,9 +673,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -694,8 +694,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -717,17 +717,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

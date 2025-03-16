@@ -20,46 +20,46 @@
         : globalThis;
 
     $.fn.shape = function (parameters) {
-        var $allModules = $(this);
+        let $allModules = $(this);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
 
-        var returnedValue;
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.shape.settings, parameters)
                 : $.extend({}, $.fn.shape.settings);
 
             // internal aliases
-            var namespace = settings.namespace;
-            var selector = settings.selector;
-            var error = settings.error;
-            var className = settings.className;
+            let namespace = settings.namespace;
+            let selector = settings.selector;
+            let error = settings.error;
+            let className = settings.className;
 
             // define namespaces for modules
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
             // selector cache
-            var $module = $(this);
-            var $sides = $module.find('>' + selector.sides);
-            var $side = $sides.find('>' + selector.side);
+            let $module = $(this);
+            let $sides = $module.find('>' + selector.sides);
+            let $side = $sides.find('>' + selector.side);
 
             // private variables
-            var nextIndex = false;
-            var $activeSide;
-            var $nextSide;
+            let nextIndex = false;
+            let $activeSide;
+            let $nextSide;
 
             // standard module
-            var element = this;
-            var instance = $module.data(moduleNamespace);
-            var module;
+            let element = this;
+            let instance = $module.data(moduleNamespace);
+            let module;
 
             module = {
 
@@ -92,8 +92,8 @@
 
                 repaint: function () {
                     module.verbose('Forcing repaint event');
-                    var shape = $sides[0] || document.createElement('div');
-                    var fakeAssignment = shape.offsetWidth;
+                    let shape = $sides[0] || document.createElement('div');
+                    let fakeAssignment = shape.offsetWidth;
                 },
 
                 animate: function (propertyObject, callback) {
@@ -192,9 +192,9 @@
                     },
 
                     currentStageSize: function () {
-                        var $activeSide = $side.filter('.' + className.active);
-                        var width = $activeSide.outerWidth(true);
-                        var height = $activeSide.outerHeight(true);
+                        let $activeSide = $side.filter('.' + className.active);
+                        let width = $activeSide.outerWidth(true);
+                        let height = $activeSide.outerHeight(true);
                         $module
                             .css({
                                 width: width,
@@ -203,20 +203,20 @@
                     },
 
                     stageSize: function () {
-                        var $clone = $module.clone().addClass(className.loading);
-                        var $side = $clone.find('>' + selector.sides + '>' + selector.side);
-                        var $activeSide = $side.filter('.' + className.active);
-                        var $nextSide = nextIndex
+                        let $clone = $module.clone().addClass(className.loading);
+                        let $side = $clone.find('>' + selector.sides + '>' + selector.side);
+                        let $activeSide = $side.filter('.' + className.active);
+                        let $nextSide = nextIndex
                             ? $side.eq(nextIndex)
                             : ($activeSide.next(selector.side).length > 0
                                 ? $activeSide.next(selector.side)
                                 : $side.first());
-                        var newWidth = settings.width === 'next'
+                        let newWidth = settings.width === 'next'
                             ? $nextSide.outerWidth(true)
                             : (settings.width === 'initial'
                                 ? $module.width()
                                 : settings.width);
-                        var newHeight = settings.height === 'next'
+                        let newHeight = settings.height === 'next'
                             ? $nextSide.outerHeight(true)
                             : (settings.height === 'initial'
                                 ? $module.height()
@@ -269,7 +269,7 @@
 
                             return;
                         }
-                        var transform = module.get.transform[type]();
+                        let transform = module.get.transform[type]();
                         if (!module.is.animating()) {
                             module.debug('Flipping ' + type, $nextSide);
                             module.set.stageSize();
@@ -310,8 +310,8 @@
 
                     transform: {
                         up: function () {
-                            var translateZ = $activeSide.outerHeight(true) / 2;
-                            var translateY = $nextSide.outerHeight(true) - translateZ;
+                            let translateZ = $activeSide.outerHeight(true) / 2;
+                            let translateY = $nextSide.outerHeight(true) - translateZ;
 
                             return {
                                 transform: 'translateY(' + translateY + 'px) translateZ(-' + translateZ + 'px) rotateX(-90deg)',
@@ -319,7 +319,7 @@
                         },
 
                         down: function () {
-                            var translate = {
+                            let translate = {
                                 z: $activeSide.outerHeight(true) / 2,
                             };
 
@@ -329,8 +329,8 @@
                         },
 
                         left: function () {
-                            var translateZ = $activeSide.outerWidth(true) / 2;
-                            var translateX = $nextSide.outerWidth(true) - translateZ;
+                            let translateZ = $activeSide.outerWidth(true) / 2;
+                            let translateX = $nextSide.outerWidth(true) - translateZ;
 
                             return {
                                 transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)',
@@ -338,7 +338,7 @@
                         },
 
                         right: function () {
-                            var translate = {
+                            let translate = {
                                 z: $activeSide.outerWidth(true) / 2,
                             };
 
@@ -348,7 +348,7 @@
                         },
 
                         over: function () {
-                            var translate = {
+                            let translate = {
                                 x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                             };
 
@@ -358,7 +358,7 @@
                         },
 
                         back: function () {
-                            var translate = {
+                            let translate = {
                                 x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                             };
 
@@ -379,7 +379,7 @@
                 stage: {
 
                     above: function () {
-                        var box = {
+                        let box = {
                             origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                             depth: {
                                 active: $nextSide.outerHeight(true) / 2,
@@ -400,7 +400,7 @@
                     },
 
                     below: function () {
-                        var box = {
+                        let box = {
                             origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                             depth: {
                                 active: $nextSide.outerHeight(true) / 2,
@@ -421,11 +421,11 @@
                     },
 
                     left: function () {
-                        var height = {
+                        let height = {
                             active: $activeSide.outerWidth(true),
                             next: $nextSide.outerWidth(true),
                         };
-                        var box = {
+                        let box = {
                             origin: (height.active - height.next) / 2,
                             depth: {
                                 active: height.next / 2,
@@ -446,11 +446,11 @@
                     },
 
                     right: function () {
-                        var height = {
+                        let height = {
                             active: $activeSide.outerWidth(true),
                             next: $nextSide.outerWidth(true),
                         };
-                        var box = {
+                        let box = {
                             origin: (height.active - height.next) / 2,
                             depth: {
                                 active: height.next / 2,
@@ -471,11 +471,11 @@
                     },
 
                     behind: function () {
-                        var height = {
+                        let height = {
                             active: $activeSide.outerWidth(true),
                             next: $nextSide.outerWidth(true),
                         };
-                        var box = {
+                        let box = {
                             origin: (height.active - height.next) / 2,
                             depth: {
                                 active: height.next / 2,
@@ -546,9 +546,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -567,8 +567,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -593,17 +593,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -646,7 +646,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                var $inputs = $module.find('input');
+                let $inputs = $module.find('input');
                 if ($inputs.length > 0) {
                     $inputs.trigger('blur');
                     setTimeout(function () {

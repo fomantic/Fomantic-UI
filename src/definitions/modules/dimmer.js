@@ -20,41 +20,41 @@
         : globalThis;
 
     $.fn.dimmer = function (parameters) {
-        var $allModules = $(this);
+        let $allModules = $(this);
 
-        var time = Date.now();
-        var performance = [];
+        let time = Date.now();
+        let performance = [];
 
-        var query = arguments[0];
-        var methodInvoked = typeof query === 'string';
-        var queryArguments = [].slice.call(arguments, 1);
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
 
-        var returnedValue;
+        let returnedValue;
 
         $allModules.each(function () {
-            var settings = $.isPlainObject(parameters)
+            let settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                 : $.extend({}, $.fn.dimmer.settings);
 
-            var selector = settings.selector;
-            var namespace = settings.namespace;
-            var className = settings.className;
-            var error = settings.error;
+            let selector = settings.selector;
+            let namespace = settings.namespace;
+            let className = settings.className;
+            let error = settings.error;
 
-            var eventNamespace = '.' + namespace;
-            var moduleNamespace = 'module-' + namespace;
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-            var clickEvent = 'ontouchstart' in document.documentElement
+            let clickEvent = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click';
 
-            var $module = $(this);
-            var $dimmer;
-            var $dimmable;
+            let $module = $(this);
+            let $dimmer;
+            let $dimmable;
 
-            var element = this;
-            var instance = $module.data(moduleNamespace);
-            var module;
+            let element = this;
+            let instance = $module.data(moduleNamespace);
+            let module;
 
             module = {
 
@@ -140,7 +140,7 @@
                 },
 
                 addContent: function (element) {
-                    var $content = $(element);
+                    let $content = $(element);
                     module.debug('Add content to dimmer', $content);
                     if ($content.parent()[0] !== $dimmer[0]) {
                         $content.detach().appendTo($dimmer);
@@ -148,7 +148,7 @@
                 },
 
                 create: function () {
-                    var $element = $(settings.template.dimmer(settings));
+                    let $element = $(settings.template.dimmer(settings));
                     if (settings.dimmerName) {
                         module.debug('Creating named dimmer', settings.dimmerName);
                         $element.addClass(settings.dimmerName);
@@ -374,9 +374,9 @@
 
                 set: {
                     opacity: function (opacity) {
-                        var color = $dimmer.css('background-color');
-                        var colorArray = color.split(',');
-                        var isRGB = colorArray && colorArray.length >= 3;
+                        let color = $dimmer.css('background-color');
+                        let colorArray = color.split(',');
+                        let isRGB = colorArray && colorArray.length >= 3;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
                             colorArray[2] = colorArray[2].replace(')', '');
@@ -487,9 +487,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var currentTime;
-                        var executionTime;
-                        var previousTime;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -508,8 +508,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var title = settings.name + ':';
-                        var totalTime = 0;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -534,17 +534,17 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var object = instance;
-                    var maxDepth;
-                    var found;
-                    var response;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -678,8 +678,8 @@
 
         template: {
             dimmer: function (settings) {
-                var d = $('<div/>').addClass('ui dimmer');
-                var l;
+                let d = $('<div/>').addClass('ui dimmer');
+                let l;
                 if (settings.displayLoader) {
                     l = $('<div/>')
                         .addClass(settings.className.loader)
