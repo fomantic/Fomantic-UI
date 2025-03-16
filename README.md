@@ -3,7 +3,9 @@
 # Fomantic-UI
 The official community fork of the popular Semantic-UI framework.
 
-[![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
+[![CI](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml)
+[![Nightly Build](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml)
+
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
 
@@ -15,9 +17,6 @@ The official community fork of the popular Semantic-UI framework.
 
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![CDNJS](https://img.shields.io/cdnjs/v/fomantic-ui?color=e95420)](https://cdnjs.com/libraries/fomantic-ui)
-
-[![CI](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml)
-[![Nightly Build](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml)
 
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
@@ -59,7 +58,7 @@ Fomantic includes an interactive installer to help setup your project.
 * Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
 * Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
 
-[^1]: Fomantic-UI should basically still work in iOS Safari 9+, Android 6+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
+[^1]: Fomantic-UI should basically still work in iOS Safari 11+, Android 7+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
 
 ---
 
