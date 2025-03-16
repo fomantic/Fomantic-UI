@@ -795,7 +795,7 @@
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values() : module.get.value();
+                                let value = module.is.multiple() ? module.get.values(true) : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
