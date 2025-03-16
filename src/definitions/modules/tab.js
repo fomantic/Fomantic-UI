@@ -254,14 +254,6 @@
                     },
                 },
 
-                escape: {
-                    string: function (text) {
-                        text = String(text);
-
-                        return text.replace(regExp.escape, '\\$&');
-                    },
-                },
-
                 set: {
                     auto: function () {
                         let url = typeof settings.path === 'string'
@@ -364,8 +356,7 @@
                             settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                         } else if (tabPath.search('/') === -1 && tabPath !== '') {
                             // look for in page anchor
-                            tabPath = module.escape.string(tabPath);
-                            $anchor = $('#' + tabPath + ', a[name="' + tabPath + '"]');
+                            $anchor = $('#' + CSS.escape(tabPath) + ', a[name="' + CSS.escape(tabPath) + '"]');
                             currentPath = $anchor.closest('[data-tab]').data(metadata.tab);
                             $tab = module.get.tabElement(currentPath);
                             // if anchor exists, use parent tab
@@ -577,7 +568,7 @@
                         return module.utilities.pathToArray(module.get.defaultPath(tabPath));
                     },
                     defaultPath: function (tabPath) {
-                        let $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0);
+                        let $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + CSS.escape(tabPath) + '/"]').eq(0);
                         let defaultTab = $defaultNav.data(metadata.tab) || false;
                         if (defaultTab) {
                             module.debug('Found default tab', defaultTab);
@@ -597,7 +588,7 @@
                     navElement: function (tabPath) {
                         tabPath = tabPath || activeTabPath;
 
-                        return $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
+                        return $allModules.filter('[data-' + metadata.tab + '="' + CSS.escape(tabPath) + '"]');
                     },
                     tabElement: function (tabPath) {
                         let $fullPathTab;
@@ -607,8 +598,8 @@
                         tabPath = tabPath || activeTabPath;
                         tabPathArray = module.utilities.pathToArray(tabPath);
                         lastTab = module.utilities.last(tabPathArray);
-                        $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
-                        $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(lastTab) + '"]');
+                        $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + CSS.escape(tabPath) + '"]');
+                        $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + CSS.escape(lastTab) + '"]');
 
                         return $fullPathTab.length > 0
                             ? $fullPathTab
@@ -628,7 +619,7 @@
 
                             if ($tab.hasClass(className.active)) {
                                 let tabPath = $(this).data(metadata.tab);
-                                let $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
+                                let $anchor = $allModules.filter('[data-' + metadata.tab + '="' + CSS.escape(tabPath) + '"]');
 
                                 if ($anchor.hasClass(className.active)) {
                                     activeTab = tabPath;
