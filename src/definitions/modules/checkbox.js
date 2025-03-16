@@ -339,7 +339,7 @@
                     radios: function () {
                         let name = module.get.name();
 
-                        return $('input[name="' + name + '"]').closest(selector.checkbox);
+                        return $('input[name="' + CSS.escape(name) + '"]').closest(selector.checkbox);
                     },
                     otherRadios: function () {
                         return module.get.radios().not($module);

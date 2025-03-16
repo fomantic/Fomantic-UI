@@ -441,7 +441,7 @@
                                 if (!regExp.validate.test(el.name)) {
                                     return;
                                 }
-                                let isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox';
+                                let isCheckbox = $('[name="' + CSS.escape(el.name) + '"]', $form).attr('type') === 'checkbox';
                                 let floatValue = parseFloat(el.value);
                                 let value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'

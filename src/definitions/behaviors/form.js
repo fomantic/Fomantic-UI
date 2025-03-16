@@ -599,21 +599,20 @@
                     },
                     field: function (identifier, strict, ignoreMissing) {
                         module.verbose('Finding field with identifier', identifier);
-                        identifier = module.escape.string(identifier);
                         let t;
-                        t = $field.filter('#' + identifier);
+                        t = $field.filter('#' + CSS.escape(identifier));
                         if (t.length > 0) {
                             return t;
                         }
-                        t = $field.filter('[name="' + identifier + '"]');
+                        t = $field.filter('[name="' + CSS.escape(identifier) + '"]');
                         if (t.length > 0) {
                             return t;
                         }
-                        t = $field.filter('[name="' + identifier + '[]"]');
+                        t = $field.filter('[name="' + CSS.escape(identifier) + '[]"]');
                         if (t.length > 0) {
                             return t;
                         }
-                        t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]');
+                        t = $field.filter('[data-' + metadata.validate + '="' + CSS.escape(identifier) + '"]');
                         if (t.length > 0) {
                             return t;
                         }
@@ -802,14 +801,6 @@
                         module.error(error.noElement.replace('{element}', element));
 
                         return false;
-                    },
-                },
-
-                escape: {
-                    string: function (text) {
-                        text = String(text);
-
-                        return text.replace(regExp.escape, '\\$&');
                     },
                 },
 
@@ -1098,7 +1089,7 @@
                                     module.verbose('Selecting multiple', value, $field);
                                     $element.checkbox('uncheck');
                                     $.each(value, function (index, value) {
-                                        $multipleField = $field.filter('[value="' + value + '"]');
+                                        $multipleField = $field.filter('[value="' + CSS.escape(value) + '"]');
                                         $element = $multipleField.parent();
                                         if ($multipleField.length > 0) {
                                             $element.checkbox('check');
@@ -1106,7 +1097,7 @@
                                     });
                                 } else if (isRadio) {
                                     module.verbose('Selecting radio value', value, $field);
-                                    $field.filter('[value="' + value + '"]')
+                                    $field.filter('[value="' + CSS.escape(value) + '"]')
                                         .parent(selector.uiCheckbox)
                                         .checkbox('check');
                                 } else if (isCheckbox) {

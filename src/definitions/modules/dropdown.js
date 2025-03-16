@@ -735,7 +735,7 @@
                                 }
                                 if (module.is.multiple()) {
                                     $.each(preSelected, function (index, value) {
-                                        $item.filter('[data-' + metadata.value + '="' + value + '"]')
+                                        $item.filter('[data-' + metadata.value + '="' + CSS.escape(value) + '"]')
                                             .addClass(className.filtered);
                                     });
                                 }
@@ -2741,7 +2741,7 @@
                     },
                     optionValue: function (value) {
                         let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + module.escape.string(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
                         let hasOption = $option.length > 0;
                         if (hasOption) {
                             return;
@@ -2918,7 +2918,7 @@
                     },
                     optionValue: function (value) {
                         let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + module.escape.string(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
                         let hasOption = $option.length > 0;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
@@ -3017,7 +3017,7 @@
                     label: function (value, shouldAnimate) {
                         let escapedValue = module.escape.value(value);
                         let $labels = $module.find(selector.label);
-                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]');
+                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]');
                         module.verbose('Removing label', $removedLabel);
                         $removedLabel.remove();
                     },
@@ -3134,7 +3134,7 @@
                             escapedValue = escapedValue.toLowerCase();
                         }
 
-                        return $labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0;
+                        return $labels.filter('[data-' + metadata.value + '="' + CSS.escape(escapedValue) + '"]').length > 0;
                     },
                     maxSelections: function () {
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
