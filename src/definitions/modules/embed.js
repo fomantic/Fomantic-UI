@@ -621,7 +621,7 @@
                     '>': '&gt;',
                 };
 
-                return string.replace(badChars, (chr) => escape[chr]);
+                return String(string).replace(badChars, (chr) => escape[chr]);
             },
             iframe: function (url, parameters) {
                 let src = url;

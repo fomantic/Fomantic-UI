@@ -3578,7 +3578,7 @@
                             '>': '&gt;',
                         };
 
-                        return string.replace(badChars, (chr) => escape[chr]);
+                        return String(string).replace(badChars, (chr) => escape[chr]);
                     },
                 },
 
@@ -3991,7 +3991,7 @@
                 '>': '&gt;',
             };
 
-            return string.replace(badChars, (chr) => escape[chr]);
+            return String(string).replace(badChars, (chr) => escape[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {
