@@ -480,6 +480,9 @@
 
         templates: {
             escape: function (string) {
+                if (string === null) {
+                    string = '';
+                }
                 console.assert(typeof string === 'string');
 
                 const escapeMap = {
