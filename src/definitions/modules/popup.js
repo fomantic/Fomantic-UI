@@ -109,14 +109,12 @@
                 },
 
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        documentObserver = new MutationObserver(module.event.documentChanged);
-                        documentObserver.observe(document, {
-                            childList: true,
-                            subtree: true,
-                        });
-                        module.debug('Setting up mutation observer', documentObserver);
-                    }
+                    documentObserver = new MutationObserver(module.event.documentChanged);
+                    documentObserver.observe(document, {
+                        childList: true,
+                        subtree: true,
+                    });
+                    module.debug('Setting up mutation observer', documentObserver);
                 },
 
                 refresh: function () {

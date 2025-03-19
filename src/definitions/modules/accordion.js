@@ -82,17 +82,15 @@
                 },
 
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        observer = new MutationObserver(function (mutations) {
-                            module.debug('DOM tree modified, updating selector cache');
-                            module.refresh();
-                        });
-                        observer.observe(element, {
-                            childList: true,
-                            subtree: true,
-                        });
-                        module.debug('Setting up mutation observer', observer);
-                    }
+                    observer = new MutationObserver(function (mutations) {
+                        module.debug('DOM tree modified, updating selector cache');
+                        module.refresh();
+                    });
+                    observer.observe(element, {
+                        childList: true,
+                        subtree: true,
+                    });
+                    module.debug('Setting up mutation observer', observer);
                 },
 
                 bind: {
