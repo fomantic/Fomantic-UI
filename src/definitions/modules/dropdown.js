@@ -2539,7 +2539,6 @@
                         } else {
                             $input.addClass(className.noselection);
                         }
-                        let escapedValue = module.escape.value(value);
                         let hasInput = $input.length > 0;
                         let currentValue = module.get.values();
                         let stringValue = value !== undefined
@@ -2557,10 +2556,10 @@
                                 module.debug('Adding user option', value);
                                 module.add.optionValue(value);
                             }
-                            module.debug('Updating input value', escapedValue, currentValue);
+                            module.debug('Updating input value', value, currentValue);
                             internalChange = true;
                             $input
-                                .val(escapedValue);
+                                .val(value);
                             if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.debug('Input native change event ignored on initial load');
                             } else if (preventChangeTrigger !== true) {
@@ -2568,8 +2567,8 @@
                             }
                             internalChange = false;
                         } else {
-                            module.verbose('Storing value in metadata', escapedValue, $input);
-                            if (escapedValue !== currentValue) {
+                            module.verbose('Storing value in metadata', value, $input);
+                            if (value !== currentValue) {
                                 $module.data(metadata.value, stringValue);
                             }
                         }
@@ -2694,19 +2693,18 @@
                         let $next = module.is.searchSelection()
                             ? $search
                             : $text;
-                        let escapedValue = module.escape.value(value);
                         let $label;
                         if (settings.ignoreCase) {
-                            escapedValue = escapedValue.toLowerCase();
+                            value = value.toLowerCase();
                         }
                         $label = $('<a />')
                             .addClass(className.label)
-                            .attr('data-' + metadata.value, escapedValue)
-                            .html(templates.label(escapedValue, text, settings));
-                        $label = settings.onLabelCreate.call($label, escapedValue, text);
+                            .attr('data-' + metadata.value, value)
+                            .html(templates.label(value, text, settings));
+                        $label = settings.onLabelCreate.call($label, value, text);
 
                         if (module.has.label(value)) {
-                            module.debug('User selection already exists, skipping', escapedValue);
+                            module.debug('User selection already exists, skipping', value);
 
                             return;
                         }
@@ -2745,8 +2743,7 @@
                         }
                     },
                     optionValue: function (value) {
-                        let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
                         let hasOption = $option.length > 0;
                         if (hasOption) {
                             return;
@@ -2758,7 +2755,7 @@
                             $input.find('option.' + className.addition).remove();
                         }
                         $('<option/>')
-                            .prop('value', escapedValue)
+                            .prop('value', value)
                             .addClass(className.addition)
                             .text(value)
                             .appendTo($input);
@@ -2922,8 +2919,7 @@
                         module.remove.empty();
                     },
                     optionValue: function (value) {
-                        let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
                         let hasOption = $option.length > 0;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
@@ -2931,7 +2927,7 @@
                         // temporarily disconnect observer
                         module.disconnect.selectObserver();
                         $option.remove();
-                        module.verbose('Removing user addition as an <option>', escapedValue);
+                        module.verbose('Removing user addition as an <option>', value);
                         module.observe.select();
                     },
                     message: function () {
@@ -3020,9 +3016,8 @@
                         return values;
                     },
                     label: function (value, shouldAnimate) {
-                        let escapedValue = module.escape.value(value);
                         let $labels = $module.find(selector.label);
-                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]');
+                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? value.toLowerCase() : value) + '"]');
                         module.verbose('Removing label', $removedLabel);
                         $removedLabel.remove();
                     },
@@ -3133,13 +3128,12 @@
                         return $menu.children(selector.message).length > 0;
                     },
                     label: function (value) {
-                        let escapedValue = module.escape.value(value);
                         let $labels = $module.find(selector.label);
                         if (settings.ignoreCase) {
-                            escapedValue = escapedValue.toLowerCase();
+                            value = value.toLowerCase();
                         }
 
-                        return $labels.filter('[data-' + metadata.value + '="' + CSS.escape(escapedValue) + '"]').length > 0;
+                        return $labels.filter('[data-' + metadata.value + '="' + CSS.escape(value) + '"]').length > 0;
                     },
                     maxSelections: function () {
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
@@ -3544,26 +3538,6 @@
                 },
 
                 escape: {
-                    value: function (value) {
-                        let multipleValues = Array.isArray(value);
-                        let stringValue = typeof value === 'string';
-                        let isUnparsable = !stringValue && !multipleValues;
-                        let hasQuotes = stringValue && value.search(regExp.quote) !== -1;
-                        let values = [];
-                        if (isUnparsable || !hasQuotes) {
-                            return value;
-                        }
-                        module.debug('Encoding quote values for use in select', value);
-                        if (multipleValues) {
-                            $.each(value, function (index, value) {
-                                values.push(value.replace(regExp.quote, '&quot;'));
-                            });
-
-                            return values;
-                        }
-
-                        return value.replace(regExp.quote, '&quot;');
-                    },
                     string: function (text) {
                         text = String(text);
 
@@ -3879,7 +3853,6 @@
 
         regExp: {
             escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
-            quote: /"/g,
         },
 
         metadata: {
