@@ -789,7 +789,7 @@
 
 /* Emojis */
 @variationEmojiColons: true;
-@variationEmojiNoColons: true;
+@variationEmojiNoColons: false;
 @variationEmojiDisabled: true;
 @variationEmojiLoading: true;
 @variationEmojiLink: true;
