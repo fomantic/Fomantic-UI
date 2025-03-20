@@ -445,52 +445,50 @@
                     },
                 },
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        observer = new MutationObserver(function (mutations) {
-                            let collectNodes = function (parent) {
-                                let nodes = [];
-                                for (let c = 0, cl = parent.length; c < cl; c++) {
-                                    Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
-                                    nodes.push(parent[c]);
-                                }
-
-                                return nodes;
-                            };
-                            let shouldRefreshInputs = false;
-                            let ignoreAutofocus = true;
-                            mutations.every(function (mutation) {
-                                if (mutation.type === 'attributes') {
-                                    if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
-                                        shouldRefreshInputs = true;
-                                    }
-                                } else {
-                                    // mutationobserver only provides the parent nodes,
-                                    // so let's collect all childs as well to find nested inputs
-                                    let $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
-                                    let $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
-                                    if ($addedInputs.length > 0 || $removedInputs.length > 0) {
-                                        shouldRefreshInputs = true;
-                                        if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
-                                            ignoreAutofocus = false;
-                                        }
-                                    }
-                                }
-
-                                return !shouldRefreshInputs;
-                            });
-
-                            if (shouldRefreshInputs) {
-                                module.refreshInputs(ignoreAutofocus);
+                    observer = new MutationObserver(function (mutations) {
+                        let collectNodes = function (parent) {
+                            let nodes = [];
+                            for (let c = 0, cl = parent.length; c < cl; c++) {
+                                Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
+                                nodes.push(parent[c]);
                             }
+
+                            return nodes;
+                        };
+                        let shouldRefreshInputs = false;
+                        let ignoreAutofocus = true;
+                        mutations.every(function (mutation) {
+                            if (mutation.type === 'attributes') {
+                                if (observeAttributes && (mutation.attributeName === 'disabled' || $(mutation.target).find(':input').addBack(':input').filter(':visible').length > 0)) {
+                                    shouldRefreshInputs = true;
+                                }
+                            } else {
+                                // mutationobserver only provides the parent nodes,
+                                // so let's collect all childs as well to find nested inputs
+                                let $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
+                                let $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
+                                if ($addedInputs.length > 0 || $removedInputs.length > 0) {
+                                    shouldRefreshInputs = true;
+                                    if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
+                                        ignoreAutofocus = false;
+                                    }
+                                }
+                            }
+
+                            return !shouldRefreshInputs;
                         });
-                        observer.observe(element, {
-                            attributeFilter: ['class', 'disabled'],
-                            attributes: true,
-                            childList: true,
-                            subtree: true,
-                        });
-                        module.debug('Setting up mutation observer', observer);
-                    }
+
+                        if (shouldRefreshInputs) {
+                            module.refreshInputs(ignoreAutofocus);
+                        }
+                    });
+                    observer.observe(element, {
+                        attributeFilter: ['class', 'disabled'],
+                        attributes: true,
+                        childList: true,
+                        subtree: true,
+                    });
+                    module.debug('Setting up mutation observer', observer);
                 },
                 refresh: function () {
                     module.verbose('Refreshing selector cache');

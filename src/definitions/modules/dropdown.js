@@ -160,15 +160,13 @@
                 },
 
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        selectObserver = new MutationObserver(module.event.select.mutation);
-                        menuObserver = new MutationObserver(module.event.menu.mutation);
-                        classObserver = new MutationObserver(module.event.class.mutation);
-                        module.debug('Setting up mutation observer', selectObserver, menuObserver, classObserver);
-                        module.observe.select();
-                        module.observe.menu();
-                        module.observe.class();
-                    }
+                    selectObserver = new MutationObserver(module.event.select.mutation);
+                    menuObserver = new MutationObserver(module.event.menu.mutation);
+                    classObserver = new MutationObserver(module.event.class.mutation);
+                    module.debug('Setting up mutation observer', selectObserver, menuObserver, classObserver);
+                    module.observe.select();
+                    module.observe.menu();
+                    module.observe.class();
                 },
 
                 disconnect: {
