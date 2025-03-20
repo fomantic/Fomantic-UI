@@ -1397,7 +1397,7 @@
                     '>': '&gt;',
                 };
 
-                string = string.replace(badChars, (chr) => escape[chr]);
+                string = String(string).replace(badChars, (chr) => escape[chr]);
 
                 // FUI controlled HTML is still allowed
                 string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
