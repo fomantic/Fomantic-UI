@@ -2,12 +2,10 @@
            Summarize Docs
 *******************************/
 
-const
-    // node dependencies
-    console      = require('@fomantic/better-console'),
-    path = require('path'),
-    YAML         = require('js-yaml')
-;
+// node dependencies
+const console = require('@fomantic/better-console');
+const path = require('node:path');
+const YAML = require('js-yaml');
 
 let data = {};
 
@@ -49,14 +47,12 @@ function parser(file, callback) {
     }
 
     try {
-        let
-            /** @type {string} */
-            text     = String(file.contents.toString('utf8')),
-            lines    = text.split('\n'),
-            filename = file.path.slice(0, -4),
-            key      = 'server' + path.sep + 'documents',
-            position = filename.indexOf(key)
-        ;
+        /** @type {string} */
+        let text = String(file.contents.toString('utf8'));
+        let lines = text.split('\n');
+        let filename = file.path.slice(0, -4);
+        let key = 'server' + path.sep + 'documents';
+        let position = filename.indexOf(key);
 
         // exit conditions
         if (!lines) {
@@ -68,22 +64,20 @@ function parser(file, callback) {
 
         filename = filename.slice(position + key.length + 1, filename.length).replaceAll(path.win32.sep, path.posix.sep);
 
-        let
-            lineCount = lines.length,
-            active    = false,
-            yaml      = [],
-            categories = [
-                'UI Element',
-                'UI Global',
-                'UI Collection',
-                'UI View',
-                'UI Module',
-                'UI Behavior',
-            ],
-            index,
-            meta,
-            line
-        ;
+        let lineCount = lines.length;
+        let active = false;
+        let yaml = [];
+        let categories = [
+            'UI Element',
+            'UI Global',
+            'UI Collection',
+            'UI View',
+            'UI Module',
+            'UI Behavior',
+        ];
+        let index;
+        let meta;
+        let line;
 
         for (index = 0; index < lineCount; index++) {
             line = lines[index];
