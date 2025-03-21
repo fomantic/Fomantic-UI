@@ -2,13 +2,11 @@
  *         Build Task
  *******************************/
 
-const
-    // dependencies
-    gulp     = require('gulp'),
+// dependencies
+const gulp = require('gulp');
 
-    // config
-    install  = require('./config/project/install')
-;
+// config
+const install = require('./config/project/install');
 
 module.exports = function (callback) {
     console.info('Building Fomantic');

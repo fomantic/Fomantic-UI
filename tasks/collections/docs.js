@@ -3,10 +3,8 @@
  *******************************/
 
 // docs tasks
-const
-    buildDocs = require('../docs/build'),
-    serveDocs = require('../docs/serve')
-;
+const buildDocs = require('../docs/build');
+const serveDocs = require('../docs/serve');
 
 /*
   Lets you serve files to a local documentation instance

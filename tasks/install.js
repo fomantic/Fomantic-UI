@@ -12,47 +12,42 @@
    * Standard installer runs asking for paths to site files etc.
 */
 
-const
-    // node dependencies
-    fs             = require('fs-extra'),
-    path           = require('path'),
-    extend         = require('extend'),
-    console        = require('@fomantic/better-console'),
-    gulp           = require('gulp'),
+// node dependencies
+const fs = require('fs-extra');
+const path = require('node:path');
+const extend = require('extend');
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
 
-    // gulp dependencies
-    jsonEditor     = require('gulp-json-editor'),
-    plumber        = require('@fomantic/gulp-plumber'),
-    inquirer       = require('inquirer'),
-    rename         = require('gulp-rename'),
-    replace        = require('gulp-replace'),
-    requireDotFile = require('require-dot-file'),
-    wrench         = require('wrench-sui'),
+// gulp dependencies
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const inquirer = require('inquirer');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const requireDotFile = require('require-dot-file');
 
-    // install config
-    install        = require('./config/project/install'),
+// install config
+const install = require('./config/project/install');
 
-    // release config (name/title/etc)
-    release        = require('./config/project/release'),
+// release config (name/title/etc)
+const release = require('./config/project/release');
 
-    // shorthand
-    questions      = install.questions,
-    files          = install.files,
-    folders        = install.folders,
-    regExp         = install.regExp,
-    settings       = install.settings,
-    source         = install.source
-;
+// shorthand
+const questions = install.questions;
+const files = install.files;
+const folders = install.folders;
+const regExp = install.regExp;
+const settings = install.settings;
+const source = install.source;
 
 // Export install task
 module.exports = function (callback) {
-    let
-        currentConfig = requireDotFile('semantic.json', process.cwd()),
-        manager       = install.getPackageManager(),
-        rootQuestions = questions.root,
-        installFolder = false,
-        answers
-    ;
+    let currentConfig = requireDotFile('semantic.json', process.cwd());
+    let manager = install.getPackageManager();
+    let rootQuestions = questions.root;
+    let installFolder = false;
+    let answers;
 
     console.clear();
 
@@ -84,19 +79,17 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        let
-            updateFolder = path.join(manager.root, currentConfig.base),
-            updatePaths  = {
-                config: path.join(manager.root, files.config),
-                tasks: path.join(updateFolder, folders.tasks),
-                overridesImport: path.join(updateFolder, folders.overridesImport),
-                themeImport: path.join(updateFolder, folders.themeImport),
-                definition: path.join(currentConfig.paths.source.definitions),
-                site: path.join(currentConfig.paths.source.site),
-                theme: path.join(currentConfig.paths.source.themes),
-                defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
-            }
-        ;
+        let updateFolder = path.join(manager.root, currentConfig.base);
+        let updatePaths = {
+            config: path.join(manager.root, files.config),
+            tasks: path.join(updateFolder, folders.tasks),
+            overridesImport: path.join(updateFolder, folders.overridesImport),
+            themeImport: path.join(updateFolder, folders.themeImport),
+            definition: path.join(currentConfig.paths.source.definitions),
+            site: path.join(currentConfig.paths.source.site),
+            theme: path.join(currentConfig.paths.source.themes),
+            defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
+        };
 
         // duck-type if there is a project installed
         if (fs.pathExistsSync(updatePaths.definition)) {
@@ -105,34 +98,31 @@ module.exports = function (callback) {
                 console.log('Updating Fomantic UI from ' + currentConfig.version + ' to ' + release.version);
 
                 console.info('Updating ui definitions...');
-                wrench.copyDirSyncRecursive(source.definitions, updatePaths.definition, settings.wrench.overwrite);
+                fs.copySync(source.definitions, updatePaths.definition, settings.copy.overwrite);
 
                 console.info('Updating default theme...');
-                wrench.copyDirSyncRecursive(source.themes, updatePaths.theme, settings.wrench.merge);
-                wrench.copyDirSyncRecursive(source.defaultTheme, updatePaths.defaultTheme, settings.wrench.overwrite);
+                fs.copySync(source.themes, updatePaths.theme, settings.copy.merge);
+                fs.copySync(source.defaultTheme, updatePaths.defaultTheme, settings.copy.overwrite);
 
                 console.info('Updating tasks...');
-                wrench.copyDirSyncRecursive(source.tasks, updatePaths.tasks, settings.wrench.overwrite);
+                fs.copySync(source.tasks, updatePaths.tasks, settings.copy.overwrite);
 
                 console.info('Updating gulpfile.js');
                 gulp.src(source.userGulpFile)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updateFolder))
-                ;
+                    .pipe(gulp.dest(updateFolder));
 
                 // copy theme import
                 console.info('Updating theme import file');
                 gulp.src(source.themeImport)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updatePaths.themeImport))
-                ;
+                    .pipe(gulp.dest(updatePaths.themeImport));
                 console.info('Updating overrides import file');
                 gulp.src(source.overridesImport)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updatePaths.overridesImport))
-                ;
+                    .pipe(gulp.dest(updatePaths.overridesImport));
                 console.info('Adding new site theme files...');
-                wrench.copyDirSyncRecursive(source.site, updatePaths.site, settings.wrench.merge);
+                fs.copySync(source.site, updatePaths.site, settings.copy.merge);
 
                 console.info('Updating version...');
 
@@ -143,8 +133,7 @@ module.exports = function (callback) {
                     .pipe(jsonEditor({
                         version: release.version,
                     }))
-                    .pipe(gulp.dest(manager.root))
-                ;
+                    .pipe(gulp.dest(manager.root));
 
                 console.info('Update complete! Run "\u001B[92mgulp build\u001B[0m" to rebuild dist/ files.');
 
@@ -171,8 +160,7 @@ module.exports = function (callback) {
     if (manager.name === 'NPM') {
         rootQuestions[0].message = rootQuestions[0].message
             .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
-            .replace('{root}', manager.root)
-        ;
+            .replace('{root}', manager.root);
         // set default path to the detected PM root
         rootQuestions[0].default = manager.root;
         rootQuestions[1].default = manager.root;
@@ -203,8 +191,7 @@ module.exports = function (callback) {
                 .then((setupAnswers) => {
                     // hoist
                     answers = setupAnswers;
-                })
-            ;
+                });
         }
     });
 
@@ -231,15 +218,13 @@ module.exports = function (callback) {
              Paths
         --------------- */
 
-        let
-            installPaths = {
-                config: files.config,
-                configFolder: folders.config,
-                site: answers.site || folders.site,
-                themeConfig: files.themeConfig,
-                themeConfigFolder: folders.themeConfig,
-            }
-        ;
+        let installPaths = {
+            config: files.config,
+            configFolder: folders.config,
+            site: answers.site || folders.site,
+            themeConfig: files.themeConfig,
+            themeConfigFolder: folders.themeConfig,
+        };
 
         /* --------------
            NPM Install
@@ -295,36 +280,32 @@ module.exports = function (callback) {
             console.log('Installing to \u001B[92m' + answers.semanticRoot + '\u001B[0m');
 
             console.info('Copying UI definitions');
-            wrench.copyDirSyncRecursive(source.definitions, installPaths.definition, settings.wrench.overwrite);
+            fs.copySync(source.definitions, installPaths.definition, settings.copy.overwrite);
 
             console.info('Copying UI themes');
-            wrench.copyDirSyncRecursive(source.themes, installPaths.theme, settings.wrench.merge);
-            wrench.copyDirSyncRecursive(source.defaultTheme, installPaths.defaultTheme, settings.wrench.overwrite);
+            fs.copySync(source.themes, installPaths.theme, settings.copy.merge);
+            fs.copySync(source.defaultTheme, installPaths.defaultTheme, settings.copy.overwrite);
 
             console.info('Copying gulp tasks');
-            wrench.copyDirSyncRecursive(source.tasks, installPaths.tasks, settings.wrench.overwrite);
+            fs.copySync(source.tasks, installPaths.tasks, settings.copy.overwrite);
 
             // copy theme import
             console.info('Adding theme files');
             gulp.src(source.themeImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.themeImport))
-            ;
+                .pipe(gulp.dest(installPaths.themeImport));
             gulp.src(source.overridesImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.overridesImport))
-            ;
+                .pipe(gulp.dest(installPaths.overridesImport));
             gulp.src(source.lessImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.lessImport))
-            ;
+                .pipe(gulp.dest(installPaths.lessImport));
 
             // create gulp file
             console.info('Creating gulpfile.js');
             gulp.src(source.userGulpFile)
                 .pipe(plumber())
-                .pipe(gulp.dest(installFolder))
-            ;
+                .pipe(gulp.dest(installFolder));
         }
 
         /* --------------
@@ -337,19 +318,17 @@ module.exports = function (callback) {
         } else {
             console.info('Creating site theme folder', installPaths.site);
         }
-        wrench.copyDirSyncRecursive(source.site, installPaths.site, settings.wrench.merge);
+        fs.copySync(source.site, installPaths.site, settings.copy.merge);
 
         /* --------------
            Theme Config
         --------------- */
 
         gulp.task('create theme.config', function () {
-            let
-                // determine path to site theme folder from theme config
-                // force CSS path variable to use forward slashes for paths
-                pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder: '" + pathToSite + "/';"
-            ;
+            // determine path to site theme folder from theme config
+            // force CSS path variable to use forward slashes for paths
+            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            let siteVariable = "@siteFolder: '" + pathToSite + "/';";
 
             // rewrite site variable in theme.less
             console.info('Adjusting @siteFolder to:', pathToSite + '/');
@@ -360,8 +339,7 @@ module.exports = function (callback) {
                 return gulp.src(installPaths.themeConfig)
                     .pipe(plumber())
                     .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder))
-                ;
+                    .pipe(gulp.dest(installPaths.themeConfigFolder));
             }
 
             console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
@@ -370,8 +348,7 @@ module.exports = function (callback) {
                 .pipe(plumber())
                 .pipe(rename({ extname: '' }))
                 .pipe(replace(regExp.siteVariable, siteVariable))
-                .pipe(gulp.dest(installPaths.themeConfigFolder))
-            ;
+                .pipe(gulp.dest(installPaths.themeConfigFolder));
         });
 
         /* --------------
@@ -379,9 +356,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            let
-                jsonConfig = install.createJSON(answers)
-            ;
+            let jsonConfig = install.createJSON(answers);
 
             // adjust variables in theme.less
             if (fs.pathExistsSync(installPaths.config)) {
@@ -391,8 +366,7 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(rename(settings.rename.json)) // preserve file extension
                     .pipe(jsonEditor(jsonConfig))
-                    .pipe(gulp.dest(installPaths.configFolder))
-                ;
+                    .pipe(gulp.dest(installPaths.configFolder));
             }
 
             console.info('Creating config file (semantic.json)', installPaths.config);
@@ -401,8 +375,7 @@ module.exports = function (callback) {
                 .pipe(plumber())
                 .pipe(rename({ extname: '' })) // remove .template from ext
                 .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
-                .pipe(gulp.dest(installPaths.configFolder))
-            ;
+                .pipe(gulp.dest(installPaths.configFolder));
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);
@@ -432,8 +405,7 @@ module.exports = function (callback) {
                         } else {
                             callback();
                         }
-                    })
-                ;
+                    });
             }
         }
     });

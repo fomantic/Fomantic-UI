@@ -2,10 +2,8 @@
  *   Define Various Sub-Tasks
  *******************************/
 
-const
-    clean = require('../clean'),
-    version = require('../version')
-;
+const clean = require('../clean');
+const version = require('../version');
 
 /*
   Lets you serve files to a local documentation instance

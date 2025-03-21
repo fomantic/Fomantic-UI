@@ -304,28 +304,28 @@
 @iconMenuItemColor: @black;
 @iconMenuInvertedItemColor: @white;
 
-/* Tabular */
-@tabularBorderColor: @solidBorderColor;
-@tabularBackgroundColor: transparent;
-@tabularBackground: none @tabularBackgroundColor;
-@tabularBorderWidth: 1px;
-@tabularOppositeBorderWidth: @tabularBorderWidth + 1px;
-@tabularVerticalPadding: @itemVerticalPadding;
-@tabularHorizontalPadding: @relativeHuge;
-@tabularBorderRadius: @defaultBorderRadius;
-@tabularTextColor: @itemTextColor;
+/* Tabbed */
+@tabbedBorderColor: @solidBorderColor;
+@tabbedBackgroundColor: transparent;
+@tabbedBackground: none @tabbedBackgroundColor;
+@tabbedBorderWidth: 1px;
+@tabbedOppositeBorderWidth: @tabbedBorderWidth + 1px;
+@tabbedVerticalPadding: @itemVerticalPadding;
+@tabbedHorizontalPadding: @relativeHuge;
+@tabbedBorderRadius: @defaultBorderRadius;
+@tabbedTextColor: @itemTextColor;
 
-@tabularHoveredTextColor: @hoveredTextColor;
+@tabbedHoveredTextColor: @hoveredTextColor;
 
-@tabularVerticalBackground: none @tabularBackgroundColor;
+@tabbedVerticalBackground: none @tabbedBackgroundColor;
 
-@tabularFluidOffset: 1px;
-@tabularFluidWidth: e(%("calc(100%% + %d)", @tabularFluidOffset * 2));
+@tabbedFluidOffset: 1px;
+@tabbedFluidWidth: e(%("calc(100%% + %d)", @tabbedFluidOffset * 2));
 
-@tabularActiveBackground: none @white;
-@tabularActiveColor: @selectedTextColor;
-@tabularActiveBoxShadow: none;
-@tabularActiveWeight: @bold;
+@tabbedActiveBackground: none @white;
+@tabbedActiveColor: @selectedTextColor;
+@tabbedActiveBoxShadow: none;
+@tabbedActiveWeight: @bold;
 
 /* Pagination */
 @paginationMinWidth: 3em;
@@ -466,8 +466,8 @@
 @invertedDropdownSelectedItemBackground: @strongTransparentWhite;
 @invertedDropdownSelectedItemColor: @invertedDropdownItemColor;
 
-/* Tabular */
-@invertedTabularBorderColor: @solidWhiteBorderColor;
-@invertedTabularBorder: @borderWidth solid @invertedTabularBorderColor;
-@invertedTabularActiveBackground: none @black;
-@invertedTabularHoveredTextColor: @invertedHoveredTextColor;
+/* Tabbed */
+@invertedTabbedBorderColor: @solidWhiteBorderColor;
+@invertedTabbedBorder: @borderWidth solid @invertedTabbedBorderColor;
+@invertedTabbedActiveBackground: none @black;
+@invertedTabbedHoveredTextColor: @invertedHoveredTextColor;
