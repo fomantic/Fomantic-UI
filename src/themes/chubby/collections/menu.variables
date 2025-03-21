@@ -37,4 +37,4 @@
 @paginationActiveBackground: @lightGrey;
 
 @borderColor: @darkWhite;
-@tabularBorderWidth: 2px;
+@tabbedBorderWidth: 2px;

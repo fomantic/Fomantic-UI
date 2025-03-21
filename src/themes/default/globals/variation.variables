@@ -320,7 +320,7 @@
 @variationMenuSecondary: true;
 @variationMenuPointing: true;
 @variationMenuVertical: true;
-@variationMenuTabular: true;
+@variationMenuTabbed: true;
 @variationMenuPagination: true;
 @variationMenuText: true;
 @variationMenuFluid: true;
@@ -337,6 +337,7 @@
 @variationMenuEqualWidth: true;
 @variationMenuWrapping: true;
 @variationMenuWrapped: true;
+@variationMenuTabbedLegacyTabular: false;
 @variationMenuSizes: @variationAllSizes;
 @variationMenuColors: @variationAllColors;
 
