@@ -20,7 +20,16 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#if summary}}
     {{summary}}
   {{/if}}
-
+  {{#if major}}
+      {{#commit-list-enhanced commits heading='## Major Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[Rr]emove[d ]|[Bb]reaking)' exclude='(contributor[Ff]ix)'}}
+          - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+      {{/commit-list-enhanced}}
+  {{/if}}
+  {{#if minor}}
+      {{#commit-list-enhanced commits heading='## Minor Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[Rr]emove[d ]|[Bb]reaking)' exclude='(contributor|[Ff]ix)'}}
+          - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+      {{/commit-list-enhanced}}
+  {{/if}}
   {{#commit-list-enhanced commits heading='## Changes and new Features' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
   {{/commit-list-enhanced}}
   {{#commit-list-enhanced commits subject='^([aA]dd|[uUpdate])'}}
