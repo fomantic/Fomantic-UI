@@ -1973,9 +1973,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: settings.preserveHTML
-                                            ? text
-                                            : module.escape.htmlEntities(text),
+                                        text: text,
                                         disabled: disabled,
                                     });
                                 }
