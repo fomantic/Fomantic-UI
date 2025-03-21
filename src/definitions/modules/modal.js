@@ -1117,7 +1117,7 @@
                     },
                     dimmerHeight: function () {
                         if (!isBody && !settings.detachable) {
-                            var contextHeight = $context.prop('scrollHeight');
+                            let contextHeight = $context.prop('scrollHeight');
                             $dimmer.css({
                                 height: contextHeight,
                                 maxHeight: contextHeight,
