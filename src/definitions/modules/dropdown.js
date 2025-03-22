@@ -710,7 +710,9 @@
                             module.remove.message();
                         }
                         if (settings.allowAdditions) {
-                            module.add.userSuggestion(module.escape.htmlEntities(query));
+                            module.add.userSuggestion(settings.preserveHTML
+                                ? module.escape.htmlEntities(query)
+                                : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                             module.show();
@@ -1040,8 +1042,11 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
-                                notFoundTokens.push(value.trim());
+                            const valueTrimmed = settings.preserveHTML
+                                ? module.escape.htmlEntities(value.trim())
+                                : value.trim();
+                            if (module.set.selected(valueTrimmed, null, false, true) === false) {
+                                notFoundTokens.push(valueTrimmed);
                             }
                         });
                         event.preventDefault();
