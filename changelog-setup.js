@@ -14,6 +14,13 @@ const issueLinks = function (item) {
 };
 
 module.exports = function (Handlebars) {
+    Handlebars.registerHelper('commit-collector', function (merges, commits, options) {
+        const commitsFromMerges = merges.map((merge) => merge.commit);
+        const result = commits.concat(commitsFromMerges);
+
+        return options.fn(result);
+    });
+
     Handlebars.registerHelper('commit-list-enhanced', (context, options) => {
         const {
             exclude,
