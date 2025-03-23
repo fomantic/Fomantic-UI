@@ -20,17 +20,11 @@ All notable changes to this project will be documented in this file. Dates are d
   {{#if summary}}
     {{summary}}
   {{/if}}
-  {{#commit-collector merges commits}}
-    {{#if major}}
-      {{#commit-list-enhanced this heading='## Major Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[: ][Rr]emove[d ]|[Bb]reaking)' exclude='(contributor|[Ff]ix[e ]|[Cc]hangelog|support)'}}
-          - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-      {{/commit-list-enhanced}}
-    {{/if}}
-    {{#if minor}}
-      {{#commit-list-enhanced this heading='## Minor Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[: ][Rr]emove[d ]|[Bb]reaking)' exclude='(contributor|[Ff]ix[e ]|[Cc]hangelog|support)'}}
-          - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-      {{/commit-list-enhanced}}
-    {{/if}}
+
+  {{#commit-collector merges commits major minor}}
+    {{#commit-list-breaking this heading='## Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[: ][Rr]emove[d ]|[Bb]reaking)' exclude='(contributor|[Ff]ix[e ]|[Cc]hangelog|support)'}}
+      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list-breaking}}
     {{#commit-list-enhanced this heading='## Changes and new Features' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
     {{/commit-list-enhanced}}
     {{#commit-list-enhanced this subject='^([aA]dd|[uUpdate])'}}
@@ -205,7 +199,7 @@ All notable changes to this project will be documented in this file. Dates are d
     {{#commit-list-enhanced this heading='### CI Features' subject='feat\((ci|lint)\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
     {{/commit-list-enhanced}}
-    {{#commit-list-enhanced this heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)|build | dist$| dist |dist\/|[Rr]elease|[Rr]ebuild|[Rr]lsnotes| changelog|^[a-zA-Z]+:|[Vv]ersion tick|\[[\w ]+])'}}
+    {{#commit-list-enhanced this heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)|build | dist$| dist |dist\/|[Rr]elease|[Rr]ebuild|[Rr]lsnotes| changelog|^[a-zA-Z]+:|[Vv]ersion tick|\[[\w ]+]|Merge pull request|[Vv]ersion bump|bumped version)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
     {{/commit-list-enhanced}}
 
