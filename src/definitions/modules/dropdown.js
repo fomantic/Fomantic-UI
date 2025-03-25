@@ -232,7 +232,7 @@
                             : [values];
                         $.each(values, function (index, value) {
                             if (module.get.item(value) === false) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $userChoice = $('<div />')
                                     .html(html)
                                     .attr('data-' + metadata.value, value)
@@ -2787,7 +2787,7 @@
                                 .attr('data-' + metadata.text, value)
                                 .removeClass(className.filtered);
                             if (!settings.hideAdditions) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $addition
                                     .html(html);
                             }
