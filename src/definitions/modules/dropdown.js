@@ -232,7 +232,7 @@
                             : [values];
                         $.each(values, function (index, value) {
                             if (module.get.item(value) === false) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $userChoice = $('<div />')
                                     .html(html)
                                     .attr('data-' + metadata.value, value)
@@ -710,7 +710,9 @@
                             module.remove.message();
                         }
                         if (settings.allowAdditions) {
-                            module.add.userSuggestion(module.escape.htmlEntities(query));
+                            module.add.userSuggestion(settings.preserveHTML
+                                ? module.escape.htmlEntities(query)
+                                : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                             module.show();
@@ -1040,8 +1042,11 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
-                                notFoundTokens.push(value.trim());
+                            const valueTrimmed = settings.preserveHTML
+                                ? module.escape.htmlEntities(value.trim())
+                                : value.trim();
+                            if (module.set.selected(valueTrimmed, null, false, true) === false) {
+                                notFoundTokens.push(valueTrimmed);
                             }
                         });
                         event.preventDefault();
@@ -1779,7 +1784,9 @@
                         return $module.data(metadata.placeholderText) || '';
                     },
                     text: function () {
-                        return settings.preserveHTML ? $text.html() : $text.text();
+                        return settings.preserveHTML
+                            ? $text.html()
+                            : $text.text();
                     },
                     query: function () {
                         return String($search.val()).trim();
@@ -1948,7 +1955,7 @@
                             .find('option')
                             .each(function () {
                                 let $option = $(this);
-                                let name = $option.html();
+                                let name = module.escape.assumeUnescapedAmpersand($option.html());
                                 let disabled = $option.attr('disabled');
                                 let value = $option.attr('value') !== undefined
                                     ? $option.attr('value')
@@ -1971,7 +1978,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: module.escape.htmlEntities(text, true),
+                                        text: text,
                                         disabled: disabled,
                                     });
                                 }
@@ -2050,7 +2057,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2780,7 +2787,7 @@
                                 .attr('data-' + metadata.text, value)
                                 .removeClass(className.filtered);
                             if (!settings.hideAdditions) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $addition
                                     .html(html);
                             }
@@ -3562,12 +3569,8 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string, forceAmpersand) {
-                        forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
-
-                        const badChars = forceAmpersand
-                            ? /["&'<>]/g
-                            : /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+                    htmlEntities: function (string) {
+                        const badChars = /["&'<>]/g;
                         const escape = {
                             '"': '&quot;',
                             '&': '&amp;',
@@ -3577,6 +3580,16 @@
                         };
 
                         return String(string).replace(badChars, (chr) => escape[chr]);
+                    },
+
+                    // https://github.com/fomantic/Fomantic-UI/issues/2782
+                    // https://jsfiddle.net/wdyjfvz0/
+                    assumeUnescapedAmpersand: function (string) {
+                        if (settings.preserveHTML) {
+                            return string;
+                        }
+
+                        return string.replace('&amp;', '&');
                     },
                 },
 
@@ -3789,7 +3802,7 @@
 
         maxSelections: false, // When set to a number, limits the number of selections to this count
         useLabels: true, // whether multiple select should filter currently active selections from choices
-        delimiter: ',', // when multiselect uses normal <input >, the values will be delimited with this character
+        delimiter: ',', // when multiselect uses normal <input>, the values will be delimited with this character
 
         showOnFocus: false, // show the menu on focus
         allowReselection: false, // whether current value should trigger callbacks when reselected
@@ -3980,7 +3993,7 @@
                 return string;
             }
 
-            const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+            const badChars = /["&'<>]/g;
             const escape = {
                 '"': '&quot;',
                 '&': '&amp;',
