@@ -612,7 +612,7 @@
 
         templates: {
             escape: function (string) {
-                const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
+                const badChars = /["&'<>]/g;
                 const escape = {
                     '"': '&quot;',
                     '&': '&amp;',
