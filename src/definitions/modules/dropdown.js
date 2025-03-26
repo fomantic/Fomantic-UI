@@ -2074,7 +2074,7 @@
                                             optionValue = optionValue.toLowerCase();
                                             value = value.toLowerCase();
                                         }
-                                        if (module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
+                                        if (String(optionValue) === String(value)) {
                                             module.verbose('Found select item by value', optionValue, value);
                                             $selectedItem = $choice;
 
