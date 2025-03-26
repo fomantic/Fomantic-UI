@@ -1955,7 +1955,7 @@
                             .find('option')
                             .each(function () {
                                 let $option = $(this);
-                                let name = module.escape.assumeUnescapedAmpersand($option.html());
+                                let name = module.escape.assumeUnescapedAmpLtGt($option.html());
                                 let disabled = $option.attr('disabled');
                                 let value = $option.attr('value') !== undefined
                                     ? $option.attr('value')
@@ -3557,13 +3557,13 @@
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
-                    // https://jsfiddle.net/wdyjfvz0/
-                    assumeUnescapedAmpersand: function (string) {
+                    // https://jsfiddle.net/3efL7jnt/
+                    assumeUnescapedAmpLtGt: function (string) {
                         if (settings.preserveHTML) {
                             return string;
                         }
 
-                        return string.replaceAll('&amp;', '&');
+                        return string.replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>');
                     },
                 },
 
