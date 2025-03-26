@@ -1388,8 +1388,7 @@
                     return string;
                 }
 
-                const badChars = /["&'<>]/g;
-                const escape = {
+                const escapeMap = {
                     '"': '&quot;',
                     '&': '&amp;',
                     "'": '&apos;',
@@ -1397,7 +1396,7 @@
                     '>': '&gt;',
                 };
 
-                string = String(string).replace(badChars, (chr) => escape[chr]);
+                string = String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
 
                 // FUI controlled HTML is still allowed
                 string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');

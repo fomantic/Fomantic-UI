@@ -3544,8 +3544,7 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string) {
-                        const badChars = /["&'<>]/g;
-                        const escape = {
+                        const escapeMap = {
                             '"': '&quot;',
                             '&': '&amp;',
                             "'": '&apos;',
@@ -3553,7 +3552,7 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(badChars, (chr) => escape[chr]);
+                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
@@ -3966,8 +3965,7 @@
                 return string;
             }
 
-            const badChars = /["&'<>]/g;
-            const escape = {
+            const escapeMap = {
                 '"': '&quot;',
                 '&': '&amp;',
                 "'": '&apos;',
@@ -3975,7 +3973,7 @@
                 '>': '&gt;',
             };
 
-            return String(string).replace(badChars, (chr) => escape[chr]);
+            return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {

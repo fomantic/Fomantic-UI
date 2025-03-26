@@ -480,8 +480,7 @@
 
         templates: {
             escape: function (string) {
-                const badChars = /["&'<>]/g;
-                const escape = {
+                const escapeMap = {
                     '"': '&quot;',
                     '&': '&amp;',
                     "'": '&apos;',
@@ -489,7 +488,7 @@
                     '>': '&gt;',
                 };
 
-                return String(string).replace(badChars, (chr) => escape[chr]);
+                return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
             },
             icon: function (maxRating, iconClass) {
                 let icon = 1;
