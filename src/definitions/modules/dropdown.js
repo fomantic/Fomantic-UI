@@ -3562,7 +3562,13 @@
                             return string;
                         }
 
-                        return string.replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+                        const unescapeMap = {
+                            '&amp;': '&',
+                            '&lt;': '<',
+                            '&gt;': '>',
+                        };
+
+                        return string.replace(/&(?:amp|lt|gt);/g, (v) => unescapeMap[v]);
                     },
                 },
 
