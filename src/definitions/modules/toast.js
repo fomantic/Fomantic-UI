@@ -577,6 +577,8 @@
                         return result;
                     },
                     escape: function (string, settings) {
+                        console.assert(typeof string === 'string');
+
                         if (settings !== undefined && settings.preserveHTML) {
                             return string;
                         }

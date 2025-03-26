@@ -3544,6 +3544,8 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string) {
+                        console.assert(typeof string === 'string');
+
                         const escapeMap = {
                             '"': '&quot;',
                             '&': '&amp;',
@@ -3967,6 +3969,8 @@
     /* Templates */
     $.fn.dropdown.settings.templates = {
         escape: function (string, settings) {
+            console.assert(typeof string === 'string');
+
             if (settings !== undefined && settings.preserveHTML) {
                 return string;
             }

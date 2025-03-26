@@ -1455,6 +1455,8 @@
 
         templates: {
             escape: function (string) {
+                console.assert(typeof string === 'string');
+
                 const escapeMap = {
                     '"': '&quot;',
                     '&': '&amp;',
