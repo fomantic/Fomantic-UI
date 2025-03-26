@@ -882,7 +882,7 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+                        return string.replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
                 },
                 can: {

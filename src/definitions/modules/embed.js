@@ -620,7 +620,7 @@
                     '>': '&gt;',
                 };
 
-                return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+                return string.replace(/["&'<>]/g, (chr) => escapeMap[chr]);
             },
             iframe: function (url, parameters) {
                 let src = url;

@@ -3552,7 +3552,7 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+                        return string.replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
@@ -3979,7 +3979,7 @@
                 '>': '&gt;',
             };
 
-            return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+            return string.replace(/["&'<>]/g, (chr) => escapeMap[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {

@@ -1396,7 +1396,7 @@
                     '>': '&gt;',
                 };
 
-                string = String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+                string = string.replace(/["&'<>]/g, (chr) => escapeMap[chr]);
 
                 // FUI controlled HTML is still allowed
                 string = string.replace(/&lt;(\/)*mark&gt;/g, '<$1mark>');
