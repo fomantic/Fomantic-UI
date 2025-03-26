@@ -1024,12 +1024,9 @@
                             $input.html('');
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
-                                let value = settings.templates.escape(item[fields.value]);
-                                let name = settings.templates.escape(
-                                    item[fields.name] || '',
-                                    settings
-                                );
-                                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
+                                let value = item[fields.value];
+                                let name = item[fields.name] || '';
+                                $input.append('<option value="' + settings.templates.escape(value) + '"' + (item.selected === true ? ' selected' : '') + '>' + settings.templates.escape(name, settings) + '</option>');
                             });
                             module.observe.select();
                         }
