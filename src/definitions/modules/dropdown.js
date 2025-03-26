@@ -2842,7 +2842,9 @@
                         }
                         // extend current array
                         if (Array.isArray(currentValue)) {
-                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
+                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable)
+                                ? currentValue
+                                : currentValue.concat([addedValue]);
                             newValue = module.get.uniqueArray(newValue);
                         } else {
                             newValue = [addedValue];
