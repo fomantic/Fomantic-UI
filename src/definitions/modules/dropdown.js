@@ -1955,7 +1955,7 @@
                             .find('option')
                             .each(function () {
                                 let $option = $(this);
-                                let name = module.escape.assumeUnescapedAmpersand($option.html());
+                                let name = module.escape.assumeUnescapedAmpLtGt($option.html());
                                 let disabled = $option.attr('disabled');
                                 let value = $option.attr('value') !== undefined
                                     ? $option.attr('value')
@@ -3544,8 +3544,7 @@
                         return text.replace(regExp.escape, '\\$&');
                     },
                     htmlEntities: function (string) {
-                        const badChars = /["&'<>]/g;
-                        const escape = {
+                        const escapeMap = {
                             '"': '&quot;',
                             '&': '&amp;',
                             "'": '&apos;',
@@ -3553,17 +3552,23 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(badChars, (chr) => escape[chr]);
+                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
-                    // https://jsfiddle.net/wdyjfvz0/
-                    assumeUnescapedAmpersand: function (string) {
+                    // https://jsfiddle.net/3efL7jnt/
+                    assumeUnescapedAmpLtGt: function (string) {
                         if (settings.preserveHTML) {
                             return string;
                         }
 
-                        return string.replace('&amp;', '&');
+                        const unescapeMap = {
+                            '&amp;': '&',
+                            '&lt;': '<',
+                            '&gt;': '>',
+                        };
+
+                        return string.replace(/&(?:amp|lt|gt);/g, (v) => unescapeMap[v]);
                     },
                 },
 
@@ -3966,8 +3971,7 @@
                 return string;
             }
 
-            const badChars = /["&'<>]/g;
-            const escape = {
+            const escapeMap = {
                 '"': '&quot;',
                 '&': '&amp;',
                 "'": '&apos;',
@@ -3975,7 +3979,7 @@
                 '>': '&gt;',
             };
 
-            return String(string).replace(badChars, (chr) => escape[chr]);
+            return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {

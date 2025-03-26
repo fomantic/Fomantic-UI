@@ -1023,8 +1023,7 @@
                             return string;
                         }
 
-                        const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
-                        const escape = {
+                        const escapeMap = {
                             '"': '&quot;',
                             '&': '&amp;',
                             "'": '&apos;',
@@ -1032,7 +1031,7 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(badChars, (chr) => escape[chr]);
+                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
                 },
 
