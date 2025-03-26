@@ -3563,7 +3563,7 @@
                             return string;
                         }
 
-                        return string.replace('&amp;', '&');
+                        return string.replaceAll('&amp;', '&');
                     },
                 },
 
