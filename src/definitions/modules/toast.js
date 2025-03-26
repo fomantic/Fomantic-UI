@@ -581,7 +581,7 @@
                             return string;
                         }
 
-                        const badChars = /["&'<>]/g;
+                        const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
                         const escape = {
                             '"': '&quot;',
                             '&': '&amp;',
