@@ -1863,7 +1863,7 @@
                             ? ''
                             : value;
                     },
-                    values: function (raw = true) {
+                    values: function () {
                         let value = module.get.value();
                         if (value === '') {
                             return '';
@@ -1871,9 +1871,7 @@
 
                         return !module.has.selectInput() && module.is.multiple()
                             ? (typeof value === 'string' // delimited string
-                                ? (raw
-                                    ? value
-                                    : settings.templates.escape(value)).split(settings.delimiter)
+                                ? value.split(settings.delimiter)
                                 : '')
                             : value;
                     },
