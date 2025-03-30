@@ -232,7 +232,7 @@
                             : [values];
                         $.each(values, function (index, value) {
                             if (module.get.item(value) === false) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $userChoice = $('<div />')
                                     .html(html)
                                     .attr('data-' + metadata.value, value)
@@ -710,7 +710,9 @@
                             module.remove.message();
                         }
                         if (settings.allowAdditions) {
-                            module.add.userSuggestion(module.escape.htmlEntities(query));
+                            module.add.userSuggestion(settings.preserveHTML
+                                ? module.escape.htmlEntities(query)
+                                : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                             module.show();
@@ -793,7 +795,7 @@
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values() : module.get.value();
+                                let value = module.is.multiple() ? module.get.values(true) : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
@@ -1040,8 +1042,11 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
-                            if (module.set.selected(module.escape.htmlEntities(value.trim()), null, false, true) === false) {
-                                notFoundTokens.push(value.trim());
+                            const valueTrimmed = settings.preserveHTML
+                                ? module.escape.htmlEntities(value.trim())
+                                : value.trim();
+                            if (module.set.selected(valueTrimmed, null, false, true) === false) {
+                                notFoundTokens.push(valueTrimmed);
                             }
                         });
                         event.preventDefault();
@@ -1779,7 +1784,9 @@
                         return $module.data(metadata.placeholderText) || '';
                     },
                     text: function () {
-                        return settings.preserveHTML ? $text.html() : $text.text();
+                        return settings.preserveHTML
+                            ? $text.html()
+                            : $text.text();
                     },
                     query: function () {
                         return String($search.val()).trim();
@@ -1948,7 +1955,7 @@
                             .find('option')
                             .each(function () {
                                 let $option = $(this);
-                                let name = $option.html();
+                                let name = module.escape.assumeUnescapedAmpLtGt($option.html());
                                 let disabled = $option.attr('disabled');
                                 let value = $option.attr('value') !== undefined
                                     ? $option.attr('value')
@@ -1971,7 +1978,7 @@
                                     values.push({
                                         name: name,
                                         value: value,
-                                        text: module.escape.htmlEntities(text, true),
+                                        text: text,
                                         disabled: disabled,
                                     });
                                 }
@@ -2050,7 +2057,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String).map(module.escape.htmlEntities)) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2532,7 +2539,6 @@
                         } else {
                             $input.addClass(className.noselection);
                         }
-                        let escapedValue = module.escape.value(value);
                         let hasInput = $input.length > 0;
                         let currentValue = module.get.values();
                         let stringValue = value !== undefined
@@ -2550,10 +2556,10 @@
                                 module.debug('Adding user option', value);
                                 module.add.optionValue(value);
                             }
-                            module.debug('Updating input value', escapedValue, currentValue);
+                            module.debug('Updating input value', value, currentValue);
                             internalChange = true;
                             $input
-                                .val(escapedValue);
+                                .val(value);
                             if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.debug('Input native change event ignored on initial load');
                             } else if (preventChangeTrigger !== true) {
@@ -2561,8 +2567,8 @@
                             }
                             internalChange = false;
                         } else {
-                            module.verbose('Storing value in metadata', escapedValue, $input);
-                            if (escapedValue !== currentValue) {
+                            module.verbose('Storing value in metadata', value, $input);
+                            if (value !== currentValue) {
                                 $module.data(metadata.value, stringValue);
                             }
                         }
@@ -2687,19 +2693,18 @@
                         let $next = module.is.searchSelection()
                             ? $search
                             : $text;
-                        let escapedValue = module.escape.value(value);
                         let $label;
                         if (settings.ignoreCase) {
-                            escapedValue = escapedValue.toLowerCase();
+                            value = value.toLowerCase();
                         }
                         $label = $('<a />')
                             .addClass(className.label)
-                            .attr('data-' + metadata.value, escapedValue)
-                            .html(templates.label(escapedValue, text, settings));
-                        $label = settings.onLabelCreate.call($label, escapedValue, text);
+                            .attr('data-' + metadata.value, value)
+                            .html(templates.label(value, text, settings));
+                        $label = settings.onLabelCreate.call($label, value, text);
 
                         if (module.has.label(value)) {
-                            module.debug('User selection already exists, skipping', escapedValue);
+                            module.debug('User selection already exists, skipping', value);
 
                             return;
                         }
@@ -2738,8 +2743,7 @@
                         }
                     },
                     optionValue: function (value) {
-                        let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
                         let hasOption = $option.length > 0;
                         if (hasOption) {
                             return;
@@ -2751,7 +2755,7 @@
                             $input.find('option.' + className.addition).remove();
                         }
                         $('<option/>')
-                            .prop('value', escapedValue)
+                            .prop('value', value)
                             .addClass(className.addition)
                             .text(value)
                             .appendTo($input);
@@ -2780,7 +2784,7 @@
                                 .attr('data-' + metadata.text, value)
                                 .removeClass(className.filtered);
                             if (!settings.hideAdditions) {
-                                html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                html = settings.templates.addition(module.add.variables(message.addResult, settings.templates.escape(value, settings)));
                                 $addition
                                     .html(html);
                             }
@@ -2915,8 +2919,7 @@
                         module.remove.empty();
                     },
                     optionValue: function (value) {
-                        let escapedValue = module.escape.value(value);
-                        let $option = $input.find('option[value="' + CSS.escape(escapedValue) + '"]');
+                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
                         let hasOption = $option.length > 0;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
@@ -2924,7 +2927,7 @@
                         // temporarily disconnect observer
                         module.disconnect.selectObserver();
                         $option.remove();
-                        module.verbose('Removing user addition as an <option>', escapedValue);
+                        module.verbose('Removing user addition as an <option>', value);
                         module.observe.select();
                     },
                     message: function () {
@@ -3013,9 +3016,8 @@
                         return values;
                     },
                     label: function (value, shouldAnimate) {
-                        let escapedValue = module.escape.value(value);
                         let $labels = $module.find(selector.label);
-                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]');
+                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? value.toLowerCase() : value) + '"]');
                         module.verbose('Removing label', $removedLabel);
                         $removedLabel.remove();
                     },
@@ -3126,13 +3128,12 @@
                         return $menu.children(selector.message).length > 0;
                     },
                     label: function (value) {
-                        let escapedValue = module.escape.value(value);
                         let $labels = $module.find(selector.label);
                         if (settings.ignoreCase) {
-                            escapedValue = escapedValue.toLowerCase();
+                            value = value.toLowerCase();
                         }
 
-                        return $labels.filter('[data-' + metadata.value + '="' + CSS.escape(escapedValue) + '"]').length > 0;
+                        return $labels.filter('[data-' + metadata.value + '="' + CSS.escape(value) + '"]').length > 0;
                     },
                     maxSelections: function () {
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
@@ -3537,38 +3538,13 @@
                 },
 
                 escape: {
-                    value: function (value) {
-                        let multipleValues = Array.isArray(value);
-                        let stringValue = typeof value === 'string';
-                        let isUnparsable = !stringValue && !multipleValues;
-                        let hasQuotes = stringValue && value.search(regExp.quote) !== -1;
-                        let values = [];
-                        if (isUnparsable || !hasQuotes) {
-                            return value;
-                        }
-                        module.debug('Encoding quote values for use in select', value);
-                        if (multipleValues) {
-                            $.each(value, function (index, value) {
-                                values.push(value.replace(regExp.quote, '&quot;'));
-                            });
-
-                            return values;
-                        }
-
-                        return value.replace(regExp.quote, '&quot;');
-                    },
                     string: function (text) {
                         text = String(text);
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string, forceAmpersand) {
-                        forceAmpersand = typeof forceAmpersand === 'number' ? false : forceAmpersand;
-
-                        const badChars = forceAmpersand
-                            ? /["&'<>]/g
-                            : /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
-                        const escape = {
+                    htmlEntities: function (string) {
+                        const escapeMap = {
                             '"': '&quot;',
                             '&': '&amp;',
                             "'": '&apos;',
@@ -3576,7 +3552,23 @@
                             '>': '&gt;',
                         };
 
-                        return String(string).replace(badChars, (chr) => escape[chr]);
+                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
+                    },
+
+                    // https://github.com/fomantic/Fomantic-UI/issues/2782
+                    // https://jsfiddle.net/3efL7jnt/
+                    assumeUnescapedAmpLtGt: function (string) {
+                        if (settings.preserveHTML) {
+                            return string;
+                        }
+
+                        const unescapeMap = {
+                            '&amp;': '&',
+                            '&lt;': '<',
+                            '&gt;': '>',
+                        };
+
+                        return string.replace(/&(?:amp|lt|gt);/g, (v) => unescapeMap[v]);
                     },
                 },
 
@@ -3789,7 +3781,7 @@
 
         maxSelections: false, // When set to a number, limits the number of selections to this count
         useLabels: true, // whether multiple select should filter currently active selections from choices
-        delimiter: ',', // when multiselect uses normal <input >, the values will be delimited with this character
+        delimiter: ',', // when multiselect uses normal <input>, the values will be delimited with this character
 
         showOnFocus: false, // show the menu on focus
         allowReselection: false, // whether current value should trigger callbacks when reselected
@@ -3866,7 +3858,6 @@
 
         regExp: {
             escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
-            quote: /"/g,
         },
 
         metadata: {
@@ -3980,8 +3971,7 @@
                 return string;
             }
 
-            const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
-            const escape = {
+            const escapeMap = {
                 '"': '&quot;',
                 '&': '&amp;',
                 "'": '&apos;',
@@ -3989,7 +3979,7 @@
                 '>': '&gt;',
             };
 
-            return String(string).replace(badChars, (chr) => escape[chr]);
+            return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {
