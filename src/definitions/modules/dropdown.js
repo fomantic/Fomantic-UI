@@ -2540,7 +2540,7 @@
                             $input.addClass(className.noselection);
                         }
                         let hasInput = $input.length > 0;
-                        let currentValue = module.get.values();
+                        let currentValue = module.get.values(true);
                         let stringValue = value !== undefined
                             ? String(value)
                             : value;
