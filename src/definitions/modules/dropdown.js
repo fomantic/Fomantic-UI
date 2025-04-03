@@ -711,7 +711,7 @@
                         }
                         if (settings.allowAdditions) {
                             module.add.userSuggestion(settings.preserveHTML
-                                ? module.escape.htmlEntities(query)
+                                ? settings.templates.escape(query)
                                 : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
@@ -1039,9 +1039,10 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
+                            value = value.trim();
                             const valueTrimmed = settings.preserveHTML
-                                ? module.escape.htmlEntities(value.trim())
-                                : value.trim();
+                                ? settings.templates.escape(value)
+                                : value;
                             if (module.set.selected(valueTrimmed, null, false, true) === false) {
                                 notFoundTokens.push(valueTrimmed);
                             }
@@ -1872,7 +1873,7 @@
                             ? (typeof value === 'string' // delimited string
                                 ? (raw
                                     ? value
-                                    : module.escape.htmlEntities(value)).split(settings.delimiter)
+                                    : settings.templates.escape(value)).split(settings.delimiter)
                                 : '')
                             : value;
                     },
@@ -3541,17 +3542,6 @@
                         text = String(text);
 
                         return text.replace(regExp.escape, '\\$&');
-                    },
-                    htmlEntities: function (string) {
-                        const escapeMap = {
-                            '"': '&quot;',
-                            '&': '&amp;',
-                            "'": '&apos;',
-                            '<': '&lt;',
-                            '>': '&gt;',
-                        };
-
-                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
