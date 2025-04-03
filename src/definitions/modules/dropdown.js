@@ -795,7 +795,7 @@
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values(true) : module.get.value();
+                                let value = module.is.multiple() ? module.get.values() : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
@@ -1801,7 +1801,7 @@
                         return Math.ceil($sizer.width() + 1);
                     },
                     selectionCount: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let count;
                         count = module.is.multiple()
                             ? (Array.isArray(values) ? values.length : 0)
@@ -1815,7 +1815,7 @@
                             : settings.transition;
                     },
                     userValues: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         if (!values) {
                             return false;
                         }
@@ -1865,7 +1865,7 @@
                             ? ''
                             : value;
                     },
-                    values: function (raw) {
+                    values: function (raw = true) {
                         let value = module.get.value();
                         if (value === '') {
                             return '';
@@ -1880,7 +1880,7 @@
                             : value;
                     },
                     remoteValues: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let remoteValues = false;
                         if (values) {
                             if (typeof values === 'string') {
@@ -2036,8 +2036,8 @@
                         let isMultiple;
                         value = value !== undefined
                             ? value
-                            : (module.get.values(true) !== undefined
-                                ? module.get.values(true)
+                            : (module.get.values() !== undefined
+                                ? module.get.values()
                                 : module.get.text());
                         isMultiple = module.is.multiple() && Array.isArray(value);
                         shouldSearch = isMultiple
@@ -2540,7 +2540,7 @@
                             $input.addClass(className.noselection);
                         }
                         let hasInput = $input.length > 0;
-                        let currentValue = module.get.values(true);
+                        let currentValue = module.get.values();
                         let stringValue = value !== undefined
                             ? String(value)
                             : value;
@@ -2828,7 +2828,7 @@
                             $selectedItem = undefined;
                             addedText = undefined;
                         }
-                        let currentValue = module.get.values(true);
+                        let currentValue = module.get.values();
                         let newValue;
                         if (module.has.value(addedValue)) {
                             module.debug('Value already selected');
@@ -2985,7 +2985,7 @@
                         $item.removeClass(className.selected);
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let newValue;
                         if (module.has.selectInput()) {
                             module.verbose('Input is <select> removing selected option', removedValue);
@@ -3155,7 +3155,7 @@
                             : module.has.valueMatchingCase(value);
                     },
                     valueMatchingCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = Array.isArray(values)
                             ? values && ($.inArray(value, values) !== -1)
                             : values == value;
@@ -3163,7 +3163,7 @@
                         return !!hasValue;
                     },
                     valueIgnoringCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = false;
                         if (!Array.isArray(values)) {
                             values = [values];
