@@ -1880,7 +1880,7 @@
                             : value;
                     },
                     remoteValues: function () {
-                        let values = module.get.values();
+                        let values = module.get.values(true);
                         let remoteValues = false;
                         if (values) {
                             if (typeof values === 'string') {
