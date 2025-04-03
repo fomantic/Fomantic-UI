@@ -1801,7 +1801,7 @@
                         return Math.ceil($sizer.width() + 1);
                     },
                     selectionCount: function () {
-                        let values = module.get.values();
+                        let values = module.get.values(true);
                         let count;
                         count = module.is.multiple()
                             ? (Array.isArray(values) ? values.length : 0)
