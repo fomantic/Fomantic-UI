@@ -1880,7 +1880,7 @@
                             : value;
                     },
                     remoteValues: function () {
-                        let values = module.get.values();
+                        let values = module.get.values(true);
                         let remoteValues = false;
                         if (values) {
                             if (typeof values === 'string') {
@@ -2036,8 +2036,8 @@
                         let isMultiple;
                         value = value !== undefined
                             ? value
-                            : (module.get.values() !== undefined
-                                ? module.get.values()
+                            : (module.get.values(true) !== undefined
+                                ? module.get.values(true)
                                 : module.get.text());
                         isMultiple = module.is.multiple() && Array.isArray(value);
                         shouldSearch = isMultiple
@@ -2057,7 +2057,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if ($.inArray(String(optionValue), value.map(String)) !== -1) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
