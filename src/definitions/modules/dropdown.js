@@ -711,7 +711,7 @@
                         }
                         if (settings.allowAdditions) {
                             module.add.userSuggestion(settings.preserveHTML
-                                ? module.escape.htmlEntities(query)
+                                ? settings.templates.escape(query)
                                 : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
@@ -795,7 +795,7 @@
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values(true) : module.get.value();
+                                let value = module.is.multiple() ? module.get.values() : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
@@ -1024,12 +1024,9 @@
                             $input.html('');
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
-                                let value = settings.templates.escape(item[fields.value]);
-                                let name = settings.templates.escape(
-                                    item[fields.name] || '',
-                                    settings
-                                );
-                                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
+                                let value = item[fields.value];
+                                let name = item[fields.name] || '';
+                                $input.append('<option value="' + settings.templates.escape(value) + '"' + (item.selected === true ? ' selected' : '') + '>' + settings.templates.escape(name, settings) + '</option>');
                             });
                             module.observe.select();
                         }
@@ -1042,9 +1039,10 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
+                            value = value.trim();
                             const valueTrimmed = settings.preserveHTML
-                                ? module.escape.htmlEntities(value.trim())
-                                : value.trim();
+                                ? settings.templates.escape(value)
+                                : value;
                             if (module.set.selected(valueTrimmed, null, false, true) === false) {
                                 notFoundTokens.push(valueTrimmed);
                             }
@@ -1815,7 +1813,7 @@
                             : settings.transition;
                     },
                     userValues: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         if (!values) {
                             return false;
                         }
@@ -1865,7 +1863,7 @@
                             ? ''
                             : value;
                     },
-                    values: function (raw) {
+                    values: function () {
                         let value = module.get.value();
                         if (value === '') {
                             return '';
@@ -1873,14 +1871,12 @@
 
                         return !module.has.selectInput() && module.is.multiple()
                             ? (typeof value === 'string' // delimited string
-                                ? (raw
-                                    ? value
-                                    : module.escape.htmlEntities(value)).split(settings.delimiter)
+                                ? value.split(settings.delimiter)
                                 : '')
                             : value;
                     },
                     remoteValues: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let remoteValues = false;
                         if (values) {
                             if (typeof values === 'string') {
@@ -2036,8 +2032,8 @@
                         let isMultiple;
                         value = value !== undefined
                             ? value
-                            : (module.get.values(true) !== undefined
-                                ? module.get.values(true)
+                            : (module.get.values() !== undefined
+                                ? module.get.values()
                                 : module.get.text());
                         isMultiple = module.is.multiple() && Array.isArray(value);
                         shouldSearch = isMultiple
@@ -2074,7 +2070,7 @@
                                             optionValue = optionValue.toLowerCase();
                                             value = value.toLowerCase();
                                         }
-                                        if (module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
+                                        if (String(optionValue) === String(value)) {
                                             module.verbose('Found select item by value', optionValue, value);
                                             $selectedItem = $choice;
 
@@ -2540,7 +2536,7 @@
                             $input.addClass(className.noselection);
                         }
                         let hasInput = $input.length > 0;
-                        let currentValue = module.get.values(true);
+                        let currentValue = module.get.values();
                         let stringValue = value !== undefined
                             ? String(value)
                             : value;
@@ -2828,7 +2824,7 @@
                             $selectedItem = undefined;
                             addedText = undefined;
                         }
-                        let currentValue = module.get.values(true);
+                        let currentValue = module.get.values();
                         let newValue;
                         if (module.has.value(addedValue)) {
                             module.debug('Value already selected');
@@ -2842,7 +2838,9 @@
                         }
                         // extend current array
                         if (Array.isArray(currentValue)) {
-                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
+                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable)
+                                ? currentValue
+                                : currentValue.concat([addedValue]);
                             newValue = module.get.uniqueArray(newValue);
                         } else {
                             newValue = [addedValue];
@@ -2985,7 +2983,7 @@
                         $item.removeClass(className.selected);
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let newValue;
                         if (module.has.selectInput()) {
                             module.verbose('Input is <select> removing selected option', removedValue);
@@ -3155,7 +3153,7 @@
                             : module.has.valueMatchingCase(value);
                     },
                     valueMatchingCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = Array.isArray(values)
                             ? values && ($.inArray(value, values) !== -1)
                             : values == value;
@@ -3163,7 +3161,7 @@
                         return !!hasValue;
                     },
                     valueIgnoringCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = false;
                         if (!Array.isArray(values)) {
                             values = [values];
@@ -3542,17 +3540,6 @@
                         text = String(text);
 
                         return text.replace(regExp.escape, '\\$&');
-                    },
-                    htmlEntities: function (string) {
-                        const escapeMap = {
-                            '"': '&quot;',
-                            '&': '&amp;',
-                            "'": '&apos;',
-                            '<': '&lt;',
-                            '>': '&gt;',
-                        };
-
-                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
                     },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
