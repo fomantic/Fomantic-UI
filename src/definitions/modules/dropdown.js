@@ -2905,6 +2905,33 @@
                             .attr('data-' + metadata.value, escapedValue)
                             .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className))
                         ;
+                        $label.on ("click", function() {
+                            if ($(this).hasClass('editing')) {
+                                return;
+                            }
+                            $(this).addClass('editing');
+                            $(this).html($(this).children())
+                            let inputDiv = $('<input type="text" value="' + $(this).attr('data-value') + '"></div>')
+                            inputDiv.on('keydown', function(e) {
+                                // Prevent parent from acting on Backspace/Delete
+                                if (e.key === 'Backspace' || e.key === 'Delete') {
+                                    e.stopPropagation();
+                                }
+                                if (e.key === 'Enter') {
+                                    $(this).trigger('blur');
+                                }
+                            });
+                            inputDiv.on('blur', function() {
+                                let input = $(this);
+                                let container = input.parent()
+                                container.attr('data-value', input.val());
+                                container.prepend(input.val())
+                                container.removeClass('editing');
+                                input.remove()
+                            })
+                            $(this).prepend(inputDiv)
+                            inputDiv.trigger("focus")
+                        })
                         $label = settings.onLabelCreate.call($label, escapedValue, text);
 
                         if (module.has.label(value)) {
