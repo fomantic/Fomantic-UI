@@ -2705,7 +2705,8 @@
                                 $(this).addClass('editing');
                                 $(this).html($(this).children())
                                 $(this).children().hide();
-                                let inputDiv = $('<input type="text" value="' + $(this).attr('data-value') + '"></div>')
+                                let value = $(this).attr('data-value');
+                                let inputDiv = $('<input type="text">').val(value);
                                 inputDiv.on('keydown', function(e) {
                                     // Prevent parent from acting on Backspace/Delete while typing
                                     if (e.key === 'Backspace' || e.key === 'Delete') {
@@ -2744,7 +2745,7 @@
                                         module.add.label(newVal, newVal, true);
                                         module.add.value(newVal, newVal, $activeItem, false);
                                     } else {
-                                        container.prepend(input.val())
+                                        container.prepend(document.createTextNode(input.val()));
                                         container.removeClass('editing');
                                         input.remove()
                                         container.children('.close.icon, .delete.icon').show();
