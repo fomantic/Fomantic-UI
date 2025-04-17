@@ -2905,36 +2905,49 @@
                             .attr('data-' + metadata.value, escapedValue)
                             .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className))
                         ;
-                        $label.on ("click", function() {
-                            if ($(this).hasClass('editing')) {
-                                return;
-                            }
-                            $(this).addClass('editing');
-                            $(this).html($(this).children())
-                            let inputDiv = $('<input type="text" value="' + $(this).attr('data-value') + '"></div>')
-                            inputDiv.on('keydown', function(e) {
-                                // Prevent parent from acting on Backspace/Delete
-                                if (e.key === 'Backspace' || e.key === 'Delete') {
-                                    e.stopPropagation();
+                        if (settings.allowAdditions) {
+                            $label.on ("click", function(e) {
+                                if (e.target !== this || $(this).hasClass('editing')) {
+                                    return;
                                 }
-                                if (e.key === 'Enter') {
-                                    $(this).trigger('blur');
-                                }
-                            });
-                            inputDiv.on('blur', function() {
-                                let input = $(this);
-                                let container = input.parent()
-                                if (!(input.val()).trim()) {
-                                    container.remove();
-                                }
-                                container.attr('data-value', input.val());
-                                container.prepend(input.val())
-                                container.removeClass('editing');
-                                input.remove()
+                                $(this).addClass('editing');
+                                $(this).html($(this).children())
+                                $(this).children().hide();
+                                let inputDiv = $('<input type="text" value="' + $(this).attr('data-value') + '"></div>')
+                                inputDiv.on('keydown', function(e) {
+                                    // Prevent parent from acting on Backspace/Delete while typing
+                                    if (e.key === 'Backspace' || e.key === 'Delete') {
+                                        e.stopPropagation();
+                                    }
+                                    if (e.key === 'Enter') {
+                                        $(this).trigger('blur');
+                                    }
+                                });
+                                inputDiv.on('blur', function() {
+                                    let input = $(this);
+                                    let container = input.parent()
+
+                                    let oldVal = container.attr('data-value');
+                                    let newVal = input.val();
+                                    if (!(input.val()).trim()) {
+                                        module.remove.activeLabels(container);
+                                        return
+                                    }
+                                    let userVal = module.is.userValue()
+                                    if (oldVal !== newVal && !userVal) {
+                                        module.remove.activeLabels(container);
+                                        module.add.label(newVal, newVal, true);
+                                    } else {
+                                        container.prepend(input.val())
+                                        container.removeClass('editing');
+                                        input.remove()
+                                        container.children('.close.icon, .delete.icon').show();
+                                    }
+                                })
+                                $(this).prepend(inputDiv)
+                                inputDiv.trigger("focus")
                             })
-                            $(this).prepend(inputDiv)
-                            inputDiv.trigger("focus")
-                        })
+                        }
                         $label = settings.onLabelCreate.call($label, escapedValue, text);
 
                         if (module.has.label(value)) {
