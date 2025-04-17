@@ -3,10 +3,8 @@
  *******************************/
 
 // docs tasks
-const
-    buildDocs = require('../docs/build'),
-    serveDocs = require('../docs/serve')
-;
+const buildDocs = require('../docs/build');
+const serveDocs = require('../docs/serve');
 
 /*
   Lets you serve files to a local documentation instance
@@ -14,8 +12,8 @@ const
 */
 module.exports = function (gulp) {
     gulp.task('serve-docs', serveDocs);
-    gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';
+    gulp.task('serve-docs').description = 'Serve file changes to FUI Docs';
 
     gulp.task('build-docs', buildDocs);
-    gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
+    gulp.task('build-docs').description = 'Build all files and add to FUI Docs';
 };

@@ -94,7 +94,6 @@
 }
 
 /* Grid */
-.ui.page.grid.segment,
 .ui.grid > .row > .ui.segment.column,
 .ui.grid > .ui.segment.column {
     padding-top: @pageGridMargin;
@@ -484,11 +483,6 @@
         /* Horizontal Segment */
         .ui.horizontal.segments@{notCompact} > .segment@{notCompact} {
             flex: 1 1 auto;
-            & when (@supportIE) {
-                // https://github.com/Semantic-Org/Semantic-UI/issues/2550
-                // stylelint-disable-next-line property-no-vendor-prefix
-                -ms-flex: 1 1 0;
-            }
         }
         .ui.horizontal.segments > .segment {
             margin: 0;

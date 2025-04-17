@@ -4,13 +4,14 @@
 
 :white_check_mark: = Supported   :lock: = Security updates   :x: = Not supported
 
-| Version   | Supported          |
-| --------- | ------------------ |
-| 2.9.x     | :white_check_mark: |
-| 2.8.x     | :white_check_mark: |
-| 2.7.x     | :lock:             |
-| > 2.x.x   | :lock:             |
-| 1.x.x     | :x:                |
+| Version | Supported          |
+|---------|--------------------|
+| 2.10.x  | :white_check_mark: |
+| 2.9.x   | :white_check_mark: |
+| 2.8.x   | :lock:             |
+| 2.7.x   | :x:                |
+| < 2.7.0 | :x:                |
+| 1.x.x   | :x:                |
 
 > All security fixes will be added the next release. Unless the threat is major the fix will be released with in the normal release
 > schedule.

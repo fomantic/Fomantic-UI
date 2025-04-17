@@ -86,33 +86,3 @@
 @veryCompactRowSpacing: (@compactRowSpacing / 2);
 @veryCompactCelledRelaxedPadding: (@compactCelledRelaxedPadding / 2);
 @veryCompactCelledVeryRelaxedPadding: (@compactCelledVeryRelaxedPadding / 2);
-
-/*******************************
-             Legacy
-*******************************/
-
-/* --------------
-     Page
---------------- */
-
-/* Legacy (DO NOT USE)
- */
-@mobileWidth: auto;
-@mobileMargin: 0;
-@mobileGutter: 0;
-
-@tabletWidth: auto;
-@tabletMargin: 0;
-@tabletGutter: 2em;
-
-@computerWidth: auto;
-@computerMargin: 0;
-@computerGutter: 3%;
-
-@largeMonitorWidth: auto;
-@largeMonitorMargin: 0;
-@largeMonitorGutter: 15%;
-
-@widescreenMonitorWidth: auto;
-@widescreenMargin: 0;
-@widescreenMonitorGutter: 23%;

@@ -160,58 +160,6 @@
            Variations
 *******************************/
 
-& when (@variationGridPage) {
-    /* -----------------------
-           Page Grid
-    ------------------------- */
-
-    @media only screen and (max-width: @largestMobileScreen) {
-        .ui.page.grid {
-            width: @mobileWidth;
-            padding-left: @mobileGutter;
-            padding-right: @mobileGutter;
-            margin-left: 0;
-            margin-right: 0;
-        }
-    }
-    @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-        .ui.page.grid {
-            width: @tabletWidth;
-            margin-left: @tabletMargin;
-            margin-right: @tabletMargin;
-            padding-left: @tabletGutter;
-            padding-right: @tabletGutter;
-        }
-    }
-    @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-        .ui.page.grid {
-            width: @computerWidth;
-            margin-left: @computerMargin;
-            margin-right: @computerMargin;
-            padding-left: @computerGutter;
-            padding-right: @computerGutter;
-        }
-    }
-    @media only screen and (min-width: @largeMonitorBreakpoint) and (max-width: @largestLargeMonitor) {
-        .ui.page.grid {
-            width: @largeMonitorWidth;
-            margin-left: @largeMonitorMargin;
-            margin-right: @largeMonitorMargin;
-            padding-left: @largeMonitorGutter;
-            padding-right: @largeMonitorGutter;
-        }
-    }
-    @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-        .ui.page.grid {
-            width: @widescreenMonitorWidth;
-            margin-left: @widescreenMargin;
-            margin-right: @widescreenMargin;
-            padding-left: @widescreenMonitorGutter;
-            padding-right: @widescreenMonitorGutter;
-        }
-    }
-}
-
 /* -------------------
      Column Count
 -------------------- */
@@ -336,13 +284,6 @@
 }
 .ui.grid > [class*="sixteen column"].row > .column {
     width: @sixteenColumn !important;
-}
-
-& when (@variationGridCelled) and (@variationGridPage) {
-    /* Celled Page */
-    .ui.celled.page.grid {
-        box-shadow: none;
-    }
 }
 
 & when (@variationGridWide) {
@@ -1724,8 +1665,7 @@
         }
 
         /* Don't pad inside segment or nested grid */
-        .ui.grid .ui.stackable.grid,
-        .ui.segment@{notVertical} .ui.stackable.page.grid {
+        .ui.grid .ui.stackable.grid {
             margin-left: -(@stackableGutter / 2);
             margin-right: -(@stackableGutter / 2);
         }

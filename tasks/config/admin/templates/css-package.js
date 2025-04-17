@@ -1,6 +1,4 @@
-let
-    where = 'client' // Adds files only to the client
-;
+let where = 'client'; // Adds files only to the client
 
 Package.describe({
     name: 'fomantic:ui-css',
@@ -16,7 +14,6 @@ Package.onUse(function (api) {
 
     api.addAssets([
         // icons
-        'themes/default/assets/fonts/icons.woff',
         'themes/default/assets/fonts/icons.woff2',
     ], 'client');
 

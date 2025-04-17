@@ -406,18 +406,12 @@
 .ui.form ::placeholder {
     color: @inputPlaceholderColor;
 }
-.ui.form :-ms-input-placeholder when (@supportIE) {
-    color: @inputPlaceholderColor !important;
-}
 .ui.form ::-moz-placeholder {
     opacity: 1;
 }
 
 .ui.form :focus::placeholder {
     color: @inputPlaceholderFocusColor;
-}
-.ui.form :focus:-ms-input-placeholder when (@supportIE) {
-    color: @inputPlaceholderFocusColor !important;
 }
 
 /* --------------------
@@ -675,16 +669,10 @@
         .ui.form .@{state} ::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
-        .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
-            color: @formStates[@@state][inputPlaceholderColor] !important;
-        }
 
         .ui.form .@{state} .ui.dropdown > input:focus ~ .default.text,
         .ui.form .@{state} :focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
-        }
-        .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
-            color: @formStates[@@state][inputPlaceholderFocusColor] !important;
         }
 
         /*------------------

@@ -41,7 +41,6 @@
 @headerBorder: 1px solid @internalBorderColor;
 @headerDivider: none;
 @headerBackground: @offWhite;
-@headerBackgroundHex: @offWhite;
 @headerAlign: inherit;
 @headerVerticalAlign: inherit;
 @headerColor: @textColor;
@@ -57,7 +56,6 @@
 @footerBorder: 1px solid @borderColor;
 @footerDivider: none;
 @footerBackground: @offWhite;
-@footerBackgroundHex: @offWhite;
 @footerAlign: inherit;
 @footerVerticalAlign: inherit;
 @footerColor: @textColor;
@@ -219,12 +217,10 @@
 @invertedCellColor: @invertedTextColor;
 
 @invertedHeaderBackground: @veryStrongTransparentBlack;
-@invertedHeaderBackgroundHex: #252525;
 @invertedHeaderColor: @invertedTextColor;
 @invertedHeaderBorderColor: @invertedCellBorderColor;
 
 @invertedFooterBackground: @invertedHeaderBackground;
-@invertedFooterBackgroundHex: @invertedHeaderBackgroundHex;
 @invertedFooterColor: @invertedHeaderColor;
 @invertedFooterBorderColor: @invertedHeaderBorderColor;
 
@@ -274,7 +270,7 @@
 @stuckFooterBackground: @stuckHeaderBackground;
 
 @invertedStuckBackground: @invertedBackground;
-@invertedStuckHeaderBackground: @invertedHeaderBackgroundHex;
+@invertedStuckHeaderBackground: #252525;
 @invertedStuckFooterBackground: @invertedStuckHeaderBackground;
 
 @stuckZIndex: 800;

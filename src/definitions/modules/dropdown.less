@@ -439,18 +439,6 @@ select.ui.dropdown {
         opacity: @selectionIconOpacity;
         transition: @selectionIconTransition;
     }
-    & when (@variationDropdownCompact) {
-        /* Compact */
-        .ui.compact.selection.dropdown {
-            min-width: 0;
-            & > .menu {
-                width: auto;
-                &:not(.multiline) {
-                    width: max-content;
-                }
-            }
-        }
-    }
 
     /* Selection Menu */
     .ui.selection.dropdown@{notUnlimited} .menu {
@@ -628,13 +616,19 @@ select.ui.dropdown {
         .ui.ui.selection.dropdown@{notInverted}:has(> input:focus) {
             border-color: @selectionFocusBorderColor;
             box-shadow: none;
-            & > i.icon {
-                opacity: @selectionIconFocusOpacity;
+        }
+
+        .ui.ui.selection.dropdown {
+            &:focus,
+            &:has(> input:focus) {
+                & > i.icon:not(.remove) {
+                    opacity: @selectionIconFocusOpacity;
+                }
+                & > i.icon.remove:not(:hover) {
+                    opacity: @actionIconFocusOpacity;
+                }
             }
         }
-    }
-    .ui.ui.selection.dropdown:focus > i.icon {
-        opacity: @selectionIconFocusOpacity;
     }
 
     /* Visible */
@@ -712,7 +706,21 @@ select.ui.dropdown {
         }
     }
 }
-
+& when (@variationDropdownCompact) {
+    /* Compact */
+    .ui.compact.dropdown {
+        min-width: 0;
+        & > .menu {
+            width: auto;
+            &:not(.multiline) {
+                width: max-content;
+            }
+        }
+        & .menu > .item {
+            white-space: normal;
+        }
+    }
+}
 & when (@variationDropdownSearch) {
     /* --------------
        Searchable
@@ -1406,15 +1414,6 @@ select.ui.dropdown {
     .ui.dropdown > .visible.menu .scrolling.menu {
         display: block;
     }
-    & when (@supportIE) {
-        /* Scrollbar in IE */
-        @media all and (-ms-high-contrast: none) {
-            .ui.scrolling.dropdown .menu,
-            .ui.dropdown .scrolling.menu {
-                min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
-            }
-        }
-    }
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.scrolling.dropdown .menu,
         .ui.dropdown .scrolling.menu {
@@ -1530,12 +1529,6 @@ select.ui.dropdown {
     }
     .ui.simple.dropdown .menu {
         position: absolute;
-        & when (@supportIE) {
-            /* IE hack to make dropdown icons appear inline */
-            // stylelint-disable-next-line value-no-vendor-prefix
-            display: -ms-inline-flexbox !important;
-        }
-
         display: block;
         overflow: hidden;
         top: -9999px;
@@ -1825,15 +1818,15 @@ select.ui.dropdown {
     }
 
     /* Upward pointing */
-    .ui.pointing.upward.dropdown .menu,
-    .ui.top.pointing.upward.dropdown .menu {
+    .ui.pointing.upward.dropdown > .menu,
+    .ui.top.pointing.upward.dropdown > .menu {
         top: auto !important;
         bottom: 100% !important;
         margin: 0 0 @pointingMenuDistance;
         border-radius: @pointingUpwardMenuBorderRadius;
     }
-    .ui.pointing.upward.dropdown .menu::after,
-    .ui.top.pointing.upward.dropdown .menu::after {
+    .ui.pointing.upward.dropdown > .menu::after,
+    .ui.top.pointing.upward.dropdown > .menu::after {
         top: 100% !important;
         bottom: auto !important;
         box-shadow: @pointingUpwardArrowBoxShadow;
@@ -2086,16 +2079,7 @@ select.ui.dropdown {
         .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
             background: @thumbInvertedHoverBackground;
         }
-        & when (@supportIE) {
-            .ui.dropdown .inverted.menu,
-            .ui.inverted.dropdown .menu {
-                /* IE11 */
-                scrollbar-face-color: @thumbInvertedBackgroundHex;
-                scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-                scrollbar-track-color: @trackInvertedBackgroundHex;
-                scrollbar-arrow-color: @trackInvertedBackgroundHex;
-            }
-        }
+
         @supports (-moz-appearance: none) {
             .ui.dropdown .inverted.menu,
             .ui.inverted.dropdown .menu {

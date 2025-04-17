@@ -519,32 +519,6 @@
             }
         }
 
-        & when (@supportIE) {
-            /* IE scrollbar color needs hex values */
-            @media all and (-ms-high-contrast: none) {
-                .ui.scrolling.table > thead,
-                .ui.scrolling.table > tfoot {
-                    scrollbar-face-color: currentColor;
-                    scrollbar-shadow-color: currentColor;
-                    scrollbar-track-color: currentColor;
-                    scrollbar-arrow-color: currentColor;
-                }
-                .ui.scrolling.table > thead {
-                    color: @headerBackgroundHex;
-                }
-                .ui.scrolling.table > tfoot {
-                    color: @footerBackgroundHex;
-                }
-                & when (@variationTableInverted) {
-                    .ui.inverted.scrolling.table > thead {
-                        color: @invertedHeaderBackgroundHex;
-                    }
-                    .ui.inverted.scrolling.table > tfoot {
-                        color: @invertedFooterBackgroundHex;
-                    }
-                }
-            }
-        }
         & when (@variationTableInverted) {
             .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
                 background: @trackInvertedBackground;
@@ -558,15 +532,7 @@
             .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
                 background: @thumbInvertedHoverBackground;
             }
-            & when (@supportIE) {
-                .ui.inverted.scrolling.table > tbody {
-                    /* IE11 */
-                    scrollbar-face-color: @thumbInvertedBackgroundHex;
-                    scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-                    scrollbar-track-color: @trackInvertedBackgroundHex;
-                    scrollbar-arrow-color: @trackInvertedBackgroundHex;
-                }
-            }
+
             @supports (-moz-appearance: none) {
                 .ui.inverted.scrolling.table > tbody {
                     /* firefox: first color thumb, second track */
