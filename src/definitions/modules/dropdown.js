@@ -2728,6 +2728,16 @@
                                     }
                                     let userVal = module.is.userValue()
                                     if (oldVal !== newVal && !userVal) {
+
+                                        // check if new value matches with a non-user value
+                                        let nonAddedValues = $menu.children().map(function () {
+                                            return $(this).data('value');
+                                        }).get();
+                                        if (nonAddedValues.includes(newVal)) {
+                                            let $matchedMenuItem =  $menu.children('[data-value="' + newVal + '"]')
+                                            $matchedMenuItem.addClass(className.filtered)
+                                        }
+
                                         let $activeItem = $menu.children('.' + className.active).eq(0)
                                         module.remove.activeLabels(container);
                                         module.add.label(newVal, newVal, true);
