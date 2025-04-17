@@ -2935,8 +2935,10 @@
                                     }
                                     let userVal = module.is.userValue()
                                     if (oldVal !== newVal && !userVal) {
+                                        let $activeItem = $menu.children('.' + className.active).eq(0)
                                         module.remove.activeLabels(container);
                                         module.add.label(newVal, newVal, true);
+                                        module.add.value(newVal, newVal, $activeItem, false);
                                     } else {
                                         container.prepend(input.val())
                                         container.removeClass('editing');
