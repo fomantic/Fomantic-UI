@@ -2920,6 +2920,7 @@
                                         e.stopPropagation();
                                     }
                                     if (e.key === 'Enter') {
+                                        e.stopPropagation();
                                         $(this).trigger('blur');
                                     }
                                 });
