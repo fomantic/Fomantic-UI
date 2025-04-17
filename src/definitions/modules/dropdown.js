@@ -2735,6 +2735,7 @@
                                         }).get();
                                         if (nonAddedValues.includes(newVal)) {
                                             let $matchedMenuItem =  $menu.children('[data-value="' + newVal + '"]')
+                                            $matchedMenuItem.addClass(className.active)
                                             $matchedMenuItem.addClass(className.filtered)
                                         }
 
