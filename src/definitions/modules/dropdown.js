@@ -1920,9 +1920,10 @@
                         if (!$choice) {
                             return false;
                         }
+                        let choiceValue = $choice.data(metadata.value);
 
-                        return $choice.data(metadata.value) !== undefined
-                            ? String($choice.data(metadata.value))
+                        return choiceValue !== undefined
+                            ? JSON.stringify(choiceValue)
                             : (typeof choiceText === 'string'
                                 ? String(
                                     settings.ignoreSearchCase
@@ -2538,10 +2539,10 @@
                         let hasInput = $input.length > 0;
                         let currentValue = module.get.values();
                         let stringValue = value !== undefined
-                            ? String(value)
+                            ? JSON.stringify(value)
                             : value;
                         if (hasInput) {
-                            if (!settings.allowReselection && stringValue == currentValue) {
+                            if (!settings.allowReselection && stringValue === JSON.stringify(currentValue)) {
                                 module.verbose('Skipping value update already same value', value, currentValue);
                                 if (!module.is.initialLoad()) {
                                     return;
