@@ -1852,6 +1852,11 @@
                             return range.text.length - rangeLength;
                         }
                     },
+                    stringValue: function (value) {
+                        return typeof value === 'object'
+                            ? JSON.stringify(value)
+                            : String(value);
+                    },
                     value: function () {
                         let value = $input.length > 0
                             ? $input.val()
@@ -1923,7 +1928,7 @@
                         let choiceValue = $choice.data(metadata.value);
 
                         return choiceValue !== undefined
-                            ? JSON.stringify(choiceValue)
+                            ? module.get.stringValue(choiceValue)
                             : (typeof choiceText === 'string'
                                 ? String(
                                     settings.ignoreSearchCase
@@ -2539,10 +2544,10 @@
                         let hasInput = $input.length > 0;
                         let currentValue = module.get.values();
                         let stringValue = value !== undefined
-                            ? JSON.stringify(value)
+                            ? module.get.stringValue(value)
                             : value;
                         if (hasInput) {
-                            if (!settings.allowReselection && stringValue === JSON.stringify(currentValue)) {
+                            if (!settings.allowReselection && stringValue === module.get.stringValue(currentValue)) {
                                 module.verbose('Skipping value update already same value', value, currentValue);
                                 if (!module.is.initialLoad()) {
                                     return;
