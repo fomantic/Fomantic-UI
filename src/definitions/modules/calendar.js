@@ -732,11 +732,9 @@
                 },
 
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        classObserver = new MutationObserver(module.event.class.mutation);
-                        module.debug('Setting up mutation observer', classObserver);
-                        module.observe.class();
-                    }
+                    classObserver = new MutationObserver(module.event.class.mutation);
+                    module.debug('Setting up mutation observer', classObserver);
+                    module.observe.class();
                 },
 
                 disconnect: {

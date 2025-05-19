@@ -109,14 +109,12 @@
                 },
 
                 observeChanges: function () {
-                    if ('MutationObserver' in window) {
-                        documentObserver = new MutationObserver(module.event.documentChanged);
-                        documentObserver.observe(document, {
-                            childList: true,
-                            subtree: true,
-                        });
-                        module.debug('Setting up mutation observer', documentObserver);
-                    }
+                    documentObserver = new MutationObserver(module.event.documentChanged);
+                    documentObserver.observe(document, {
+                        childList: true,
+                        subtree: true,
+                    });
+                    module.debug('Setting up mutation observer', documentObserver);
                 },
 
                 refresh: function () {
@@ -1457,8 +1455,7 @@
 
         templates: {
             escape: function (string) {
-                const badChars = /["'<>]|&(?![\d#A-Za-z]{1,12};)/g;
-                const escape = {
+                const escapeMap = {
                     '"': '&quot;',
                     '&': '&amp;',
                     "'": '&apos;',
@@ -1466,7 +1463,7 @@
                     '>': '&gt;',
                 };
 
-                return String(string).replace(badChars, (chr) => escape[chr]);
+                return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
             },
             popup: function (text) {
                 let html = '';

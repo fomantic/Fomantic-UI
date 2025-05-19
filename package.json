@@ -75,7 +75,6 @@
     "@internal/eslint-plugin": "file:.eslint",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
-    "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^2.4.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "15",

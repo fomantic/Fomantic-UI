@@ -21,383 +21,388 @@ All notable changes to this project will be documented in this file. Dates are d
     {{summary}}
   {{/if}}
 
-  {{#commit-list-enhanced commits heading='## Changes and new Features' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits subject='^([aA]dd|[uUpdate])'}}
+  {{#commit-collector merges commits major minor}}
+    {{#commit-list-breaking this heading='## Breaking Changes' subject='([Nn]ew default|[Dd]rop[p ]|[Rr]ename|[: ][Rr]emove[d ]|[Bb]reaking)' exclude='(contributor|[Ff]ix[e ]|[Cc]hangelog|support)'}}
+      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list-breaking}}
+    {{#commit-list-enhanced this heading='## Changes and new Features' subject='^([fF]eat[( ]|[aA]dd|[uUpdate])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this subject='^([aA]dd|[uUpdate])'}}
       - {{subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Ad' subject='feat\(ad\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Ad' subject='feat\(ad\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Accordion' subject='feat\(accordion'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Accordion' subject='feat\(accordion'}}
     - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### API' subject='feat\(api'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### API' subject='feat\(api'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Breadcrumb' subject='feat\(breadcrumb'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Breadcrumb' subject='feat\(breadcrumb'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Button' subject='feat\(button'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Button' subject='feat\(button'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Calendar' subject='feat\(calendar'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Calendar' subject='feat\(calendar'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Card' subject='(feat\(card|\[Card])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Card' subject='(feat\(card|\[Card])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Checkbox' subject='feat\((checkbox|radio)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Checkbox' subject='feat\((checkbox|radio)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Comment' subject='feat\(comment'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Comment' subject='feat\(comment'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Container' subject='feat\(container'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Container' subject='feat\(container'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Dimmer' subject='feat\(dimmer'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Dimmer' subject='feat\(dimmer'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Divider' subject='feat\(divider'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Divider' subject='feat\(divider'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Dropdown' subject='(feat\(dropdown|\[Drop[Dd]own])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Dropdown' subject='(feat\(dropdown|\[Drop[Dd]own])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Embed' subject='feat\(embed'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Embed' subject='feat\(embed'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Emoji' subject='feat\(emoji'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Emoji' subject='feat\(emoji'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Feed' subject='feat\(feed'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Feed' subject='feat\(feed'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Flag' subject='(feat\(flag|\[Flag])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Flag' subject='(feat\(flag|\[Flag])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Flyout' subject='feat\(flyout'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Flyout' subject='feat\(flyout'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Form' subject='(feat\(form\)|\[Form])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Form' subject='(feat\(form\)|\[Form])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Form Validation' subject='(feat\(formvalidation|\[Form Validation])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Form Validation' subject='(feat\(formvalidation|\[Form Validation])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Grid' subject='feat\(grid'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Grid' subject='feat\(grid'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Header' subject='feat\(head(er|ing)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Header' subject='feat\(head(er|ing)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Icon' subject='feat\(icon'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Icon' subject='feat\(icon'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Image' subject='feat\(image'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Image' subject='feat\(image'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Input' subject='feat\(input'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Input' subject='feat\(input'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Item' subject='feat\(item'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Item' subject='feat\(item'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Label' subject='feat\(label'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Label' subject='feat\(label'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### List' subject='feat\(list'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### List' subject='feat\(list'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Loader' subject='feat\(loader'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Loader' subject='feat\(loader'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Menu' subject='(^(feat\()*[Mm]enu[:)]+|\[Menu])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Menu' subject='(^(feat\()*[Mm]enu[:)]+|\[Menu])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Message' subject='feat\(message'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Message' subject='feat\(message'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Modal' subject='^(feat\()*[Mm]odal[:)]+'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Modal' subject='^(feat\()*[Mm]odal[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Nag' subject='feat\(nag'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Nag' subject='feat\(nag'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Placeholder' subject='feat\(placeholder'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Placeholder' subject='feat\(placeholder'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Popup' subject='feat\((popup|tooltip)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Popup' subject='feat\((popup|tooltip)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Progress' subject='feat\(progress'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Progress' subject='feat\(progress'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Rail' subject='feat\(rail'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Rail' subject='feat\(rail'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Rating' subject='feat\(rating'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Rating' subject='feat\(rating'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Reveal' subject='feat\(reveal'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Reveal' subject='feat\(reveal'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Search' subject='(feat\(search|\[Search])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Search' subject='(feat\(search|\[Search])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Segment' subject='(feat\(segment|\[Segment])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Segment' subject='(feat\(segment|\[Segment])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Shape' subject='feat\(shape'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Shape' subject='feat\(shape'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Sidebar' subject='feat\(sidebar'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Sidebar' subject='feat\(sidebar'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Slider' subject='feat\(slider'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Slider' subject='feat\(slider'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### State' subject='feat\(state'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### State' subject='feat\(state'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Statistic' subject='feat\(statistic'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Statistic' subject='feat\(statistic'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Step' subject='feat\(step'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Step' subject='feat\(step'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Sticky' subject='feat\(sticky'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Sticky' subject='feat\(sticky'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Tab' subject='(feat\(tab\)|\[Tab])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Tab' subject='(feat\(tab\)|\[Tab])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Table' subject='(feat\(table|\[Table])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Table' subject='(feat\(table|\[Table])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Text' subject='feat\(text'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Text' subject='feat\(text'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Toast' subject='(feat\(toast|\[Toast])'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Toast' subject='(feat\(toast|\[Toast])'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Transition' subject='^(feat\()*[Tt]ransition[:)]+'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Transition' subject='^(feat\()*[Tt]ransition[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Visibility' subject='^(feat\()*[Vv]isibility[:)]+'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Visibility' subject='^(feat\()*[Vv]isibility[:)]+'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
 
-  {{#commit-list-enhanced commits heading='### Build Features' subject='feat\(build\)'}}
+    {{#commit-list-enhanced this heading='### Build Features' subject='feat\(build\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### CI Features' subject='feat\((ci|lint)\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### CI Features' subject='feat\((ci|lint)\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)|build | dist$| dist |dist\/|[Rr]elease|[Rr]ebuild|[Rr]lsnotes| changelog|^[a-zA-Z]+:|[Vv]ersion tick|\[[\w ]+])'}}
-    - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Misc Changes' exclude='(^(feat|[fF]ix|[bB]uild|[aA]dd|[uU]pdate|chore|docs|\d+\.\d+)|build | dist$| dist |dist\/|[Rr]elease|[Rr]ebuild|[Rr]lsnotes| changelog|^[a-zA-Z]+:|[Vv]ersion tick|\[[\w ]+]|Merge pull request|[Vv]ersion bump|bumped version)'}}
+      - {{noprefix subject}} [`{{shorthash}}`]({{href}})
+    {{/commit-list-enhanced}}
 
-  {{#commit-list-enhanced commits heading='## Bug Fixes' subject='^[fF]ix[( ]' exclude='(types|deps|chore)'}}
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits subject='^[fF]ix ]'}}
+    {{#commit-list-enhanced this heading='## Bug Fixes' subject='^[fF]ix[( ]' exclude='(types|deps|chore)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this subject='^[fF]ix ]'}}
       - {{subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Ad' subject='fix\(ad\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Ad' subject='fix\(ad\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Accordion' subject='fix\(accordion'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Accordion' subject='fix\(accordion'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### API' subject='fix\(api'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### API' subject='fix\(api'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Breadcrumb' subject='fix\(breadcrumb'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Breadcrumb' subject='fix\(breadcrumb'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Button' subject='fix\(button'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Button' subject='fix\(button'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Calendar' subject='fix\(calendar'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Calendar' subject='fix\(calendar'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Card' subject='fix\(card'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Card' subject='fix\(card'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Checkbox' subject='fix\((checkbox|radio)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Checkbox' subject='fix\((checkbox|radio)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Comment' subject='fix\(comment'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Comment' subject='fix\(comment'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Container' subject='fix\(container'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Container' subject='fix\(container'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Dimmer' subject='fix\(dimmer'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Dimmer' subject='fix\(dimmer'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Divider' subject='fix\(divider'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Divider' subject='fix\(divider'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Dropdown' subject='fix\(dropdown'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Dropdown' subject='fix\(dropdown'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Embed' subject='fix\(embed'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Embed' subject='fix\(embed'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Emoji' subject='fix\(emoji'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Emoji' subject='fix\(emoji'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Feed' subject='fix\(feed'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Feed' subject='fix\(feed'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Flag' subject='fix\(flag'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Flag' subject='fix\(flag'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Flyout' subject='fix\(flyout'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Flyout' subject='fix\(flyout'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Form' subject='fix\(form\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Form' subject='fix\(form\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Form Validation' subject='fix\(formvalidation'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Form Validation' subject='fix\(formvalidation'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Grid' subject='fix\(grid'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Grid' subject='fix\(grid'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Header' subject='fix\(head(er|ing)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Header' subject='fix\(head(er|ing)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Icon' subject='fix\(icon'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Icon' subject='fix\(icon'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Image' subject='fix\(image'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Image' subject='fix\(image'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Input' subject='fix\(input'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Input' subject='fix\(input'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Item' subject='fix\(item'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Item' subject='fix\(item'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Label' subject='fix\(label'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Label' subject='fix\(label'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### List' subject='fix\(list'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### List' subject='fix\(list'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Loader' subject='fix\(loader'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Loader' subject='fix\(loader'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Menu' subject='fix\(menu'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Menu' subject='fix\(menu'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Message' subject='fix\(message'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Message' subject='fix\(message'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Modal' subject='fix\(modal'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Modal' subject='fix\(modal'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Nag' subject='fix\(nag'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Nag' subject='fix\(nag'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Placeholder' subject='fix\(placeholder'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Placeholder' subject='fix\(placeholder'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Popup' subject='fix\((popup|tooltip)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Popup' subject='fix\((popup|tooltip)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Progress' subject='fix\(progress'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Progress' subject='fix\(progress'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Rail' subject='fix\(rail'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Rail' subject='fix\(rail'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Rating' subject='fix\(rating'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Rating' subject='fix\(rating'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Reveal' subject='fix\(reveal'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Reveal' subject='fix\(reveal'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Search' subject='fix\(search'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Search' subject='fix\(search'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Segment' subject='fix\(segment'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Segment' subject='fix\(segment'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Shape' subject='fix\(shape'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Shape' subject='fix\(shape'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Sidebar' subject='fix\(sidebar'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Sidebar' subject='fix\(sidebar'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Slider' subject='fix\(slider'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Slider' subject='fix\(slider'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### State' subject='fix\(state'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### State' subject='fix\(state'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Statistic' subject='fix\(statistic'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Statistic' subject='fix\(statistic'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Step' subject='fix\(step'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Step' subject='fix\(step'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Sticky' subject='fix\(sticky'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Sticky' subject='fix\(sticky'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Tab' subject='fix\(tab\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Tab' subject='fix\(tab\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Table' subject='fix\(table'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Table' subject='fix\(table'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Text' subject='fix\(text'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Text' subject='fix\(text'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Toast' subject='fix\(toast'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Toast' subject='fix\(toast'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Transition' subject='fix\(transition'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Transition' subject='fix\(transition'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Visibility' subject='fix\(visibility'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Visibility' subject='fix\(visibility'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
 
-  {{#commit-list-enhanced commits heading='### Build Fixes' subject='fix\(build\)'}}
+    {{#commit-list-enhanced this heading='### Build Fixes' subject='fix\(build\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### CI Fixes' subject='fix\((ci|lint)\)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### CI Fixes' subject='fix\((ci|lint)\)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='### Misc Fixes' subject='^[fF]ix ' exclude='(types|deps)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='### Misc Fixes' subject='^[fF]ix ' exclude='(types|deps)'}}
       - {{subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='## Theming Fixes' subject='fix\(theme'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='## Theming Fixes' subject='fix\(theme'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
 
-  {{#commit-list-enhanced commits heading='## Types' subject='\(types\)'}}
+    {{#commit-list-enhanced this heading='## Types' subject='\(types\)'}}
     - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-    {{#commit-list-enhanced commits heading='## Theming' subject='feat\(theme'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='## Theming' subject='feat\(theme'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='## Chore' subject='chore[()]' exclude='(contributor| dist|[( ]release)'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='## Chore' subject='chore[()]' exclude='(contributor| dist|[( ]release)'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
 
-  {{#commit-list-dependencies commits heading='## Dependency Updates' subject='\(dep'}}
+    {{#commit-list-dependencies this heading='## Dependency Updates' subject='\(dep'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-dependencies}}
-  {{#commit-list-enhanced commits heading='## Docs' subject='docs[():]' exclude='contributor'}}
+    {{/commit-list-dependencies}}
+    {{#commit-list-enhanced this heading='## Docs' subject='docs[():]' exclude='contributor'}}
       - {{noprefix subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
-  {{#commit-list-enhanced commits heading='## New contributors' subject='[^\-]contributor'}}
+    {{/commit-list-enhanced}}
+    {{#commit-list-enhanced this heading='## New contributors' subject='[^\-]contributor'}}
       - {{contributorlink subject}} [`{{shorthash}}`]({{href}})
-  {{/commit-list-enhanced}}
+    {{/commit-list-enhanced}}
+  {{/commit-collector}}
 
 {{/each}}
