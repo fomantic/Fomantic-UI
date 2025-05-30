@@ -33,8 +33,13 @@
     position: relative;
 }
 
-.ui.slider@{notCheckbox}:focus-visible {
-    outline: @focusVisibleOutline;
+.ui.slider@{notCheckbox}:focus {
+    outline: @focusOutline;
+}
+& when not (@focusVisibleOutline = none) {
+    .ui.slider@{notCheckbox}:focus-visible {
+        outline: @focusVisibleOutline;
+    }
 }
 
 .ui.slider .inner {

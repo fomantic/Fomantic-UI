@@ -89,7 +89,7 @@
     .ui.modal > .close:focus,
     .ui.modal > .close:hover {
         opacity: 1;
-        outline: none;
+        outline: @focusOutline;
     }
 }
 .ui.modal > .close:focus when not (@closeFocusVisibleOutline = none) {

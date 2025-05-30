@@ -76,7 +76,7 @@
     .ui.flyout > .close:focus,
     .ui.flyout > .close:hover {
         opacity: 1;
-        outline: none;
+        outline: @focusOutline;
     }
 }
 .ui.flyout > .close:focus-visible when not (@closeFocusVisibleOutline = none) {
