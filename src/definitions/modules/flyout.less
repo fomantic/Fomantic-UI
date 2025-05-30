@@ -44,8 +44,8 @@
     z-index: @topLayer;
     background: #fff;
     outline: none;
-    &:focus when not (@focusOutline = none) {
-        outline: @focusOutline;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
     }
 }
 
@@ -79,8 +79,8 @@
         outline: none;
     }
 }
-.ui.flyout > .close:focus when not (@closeFocusOutline = none) {
-    outline: @closeFocusOutline;
+.ui.flyout > .close:focus-visible when not (@closeFocusVisibleOutline = none) {
+    outline: @closeFocusVisibleOutline;
 }
 
 /* --------------

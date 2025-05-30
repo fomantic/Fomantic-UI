@@ -42,8 +42,8 @@
     user-select: text;
     will-change: top, left, margin, transform, opacity;
     outline: none;
-    &:focus when not (@focusOutline = none) {
-        outline: @focusOutline;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
     }
 }
 
@@ -92,8 +92,8 @@
         outline: none;
     }
 }
-.ui.modal > .close:focus when not (@closeFocusOutline = none) {
-    outline: @closeFocusOutline;
+.ui.modal > .close:focus when not (@closeFocusVisibleOutline = none) {
+    outline: @closeFocusVisibleOutline;
 }
 
 /* --------------

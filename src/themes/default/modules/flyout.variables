@@ -12,7 +12,7 @@
 @easing: @defaultEasing;
 
 /* Focus */
-@closeFocusOutline: @focusOutline;
+@closeFocusVisibleOutline: @focusVisibleOutline;
 
 /* Dimmer */
 @dimmerColor: rgba(0, 0, 0, 0.4);

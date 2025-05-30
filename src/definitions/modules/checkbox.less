@@ -42,8 +42,8 @@
     font-size: @relativeMedium;
     line-height: @checkboxLineHeight;
     min-width: @checkboxSize;
-    &:focus when not (@focusOutline = none) {
-        outline: @focusOutline;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
     }
 }
 
@@ -59,8 +59,8 @@
     z-index: 3;
     width: @checkboxSize;
     height: @checkboxSize;
-    &:focus when not (@inputFocusOutline = none) {
-        outline: @inputFocusOutline;
+    &:focus-visible when not (@inputFocusVisibleOutline = none) {
+        outline: @inputFocusVisibleOutline;
     }
 }
 
@@ -70,8 +70,8 @@
     display: block;
     outline: none;
     font-size: @labelFontSize;
-    &:focus when not (@labelFocusOutline = none) {
-        outline: @labelFocusOutline;
+    &:focus-visible when not (@labelFocusVisibleOutline = none) {
+        outline: @labelFocusVisibleOutline;
     }
 }
 

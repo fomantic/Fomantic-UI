@@ -176,8 +176,8 @@
     line-height: @textAreaLineHeight;
     resize: @textAreaResize;
     min-height: @actionTextareaMinHeight;
-    &:focus when not (@textAreaFocusOutline = none) {
-        outline: @textAreaFocusOutline;
+    &:focus-visible when not (@textAreaFocusVisibleOutline = none) {
+        outline: @textAreaFocusVisibleOutline;
     }
 }
 .ui.input > textarea {
@@ -441,8 +441,24 @@
     border-radius: @inputFocusBorderRadius;
     background: @inputFocusBackground;
     box-shadow: @inputFocusBoxShadow;
-    & when not (@inputFocusOutline = none) {
-        outline: @inputFocusOutline;
+}
+& when not (@inputFocusVisibleOutline = none) {
+    .ui.form input:not([type]):focus-visible,
+    .ui.form input[type="color"]:focus-visible,
+    .ui.form input[type="date"]:focus-visible,
+    .ui.form input[type="datetime-local"]:focus-visible,
+    .ui.form input[type="email"]:focus-visible,
+    .ui.form input[type="month"]:focus-visible,
+    .ui.form input[type="number"]:focus-visible,
+    .ui.form input[type="password"]:focus-visible,
+    .ui.form input[type="search"]:focus-visible,
+    .ui.form input[type="tel"]:focus-visible,
+    .ui.form input[type="time"]:focus-visible,
+    .ui.form input[type="text"]:focus-visible,
+    .ui.form input[type="file"]:focus-visible,
+    .ui.form input[type="url"]:focus-visible,
+    .ui.form input[type="week"]:focus-visible {
+        outline: @inputFocusVisibleOutline;
     }
 }
 & when (@variationInputAction) {

@@ -39,7 +39,11 @@
 
 .ui.calendar .calendar:focus,
 .ui.calendar.popup:focus {
-    outline: @focusOutline;
+    outline: 0;
+}
+.ui.calendar .calendar:focus-visible,
+.ui.calendar.popup:focus-visible {
+    outline: @focusVisibleOutline;
 }
 
 /*******************************

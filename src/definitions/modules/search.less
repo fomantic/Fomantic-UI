@@ -183,8 +183,10 @@
     border-color: @promptFocusBorderColor;
     background: @promptFocusBackground;
     color: @promptFocusColor;
-    & when not (@focusOutline = none) {
-        outline: @focusOutline;
+}
+& when not (@focusVisibleOutline = none) {
+    .ui.search > .prompt:focus-visible {
+        outline: @focusVisibleOutline;
     }
 }
 

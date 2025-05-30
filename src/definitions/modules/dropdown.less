@@ -48,8 +48,8 @@
     transition: @transition;
     user-select: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    &:focus when not (@focusOutline = none) {
-        outline: @focusOutline;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
     }
 }
 
@@ -80,8 +80,8 @@
     transition: @menuTransition;
     z-index: @menuZIndex;
     will-change: transform, opacity;
-    &:focus when not (@menuFocusOutline = none) {
-        outline: @menuFocusOutline;
+    &:focus-visible when not (@menuFocusVisibleOutline = none) {
+        outline: @menuFocusVisibleOutline;
     }
 }
 
@@ -423,8 +423,8 @@ select.ui.dropdown {
         border: @selectionBorder;
         border-radius: @selectionBorderRadius;
         transition: @selectionTransition;
-        &:focus when not (@selectionFocusOutline = none) {
-            outline: @selectionFocusOutline;
+        &:focus-visible when not (@selectionFocusVisibleOutline = none) {
+            outline: @selectionFocusVisibleOutline;
         }
     }
     .ui.selection.dropdown.visible,
@@ -463,8 +463,8 @@ select.ui.dropdown {
         width: @menuMinWidth;
         box-shadow: @selectionMenuBoxShadow;
         transition: @selectionMenuTransition;
-        &:focus when not (@selectionMenuFocusOutline = none) {
-            outline: @selectionMenuFocusOutline;
+        &:focus-visible when not (@selectionMenuFocusVisibleOutline = none) {
+            outline: @selectionMenuFocusVisibleOutline;
         }
     }
     .ui.selection.dropdown@{notPointing}@{notFloating} > .menu {
@@ -755,8 +755,8 @@ select.ui.dropdown {
         outline: none;
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
         padding: inherit;
-        &:focus when not (@searchFocusOutline = none) {
-            outline: @searchFocusOutline;
+        &:focus-visible when not (@searchFocusVisibleOutline = none) {
+            outline: @searchFocusVisibleOutline;
         }
     }
 
