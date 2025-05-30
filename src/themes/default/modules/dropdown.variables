@@ -33,6 +33,7 @@
 @menuTop: 100%;
 @menuTextAlign: left;
 @menuFocusVisibleOutline: @focusVisibleOutline;
+@menuFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 @menuBorderWidth: 1px;
 @menuBorderColor: @borderColor;
@@ -204,7 +205,9 @@
 @selectionFocusBoxShadow: none;
 @selectionFocusMenuBoxShadow: @raisedShadow;
 @selectionFocusVisibleOutline: @focusVisibleOutline;
+@selectionFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 @selectionMenuFocusVisibleOutline: @focusVisibleOutline;
+@selectionMenuFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Visible */
 @selectionVisibleTextFontWeight: @normal;
@@ -231,6 +234,7 @@
 
 @searchMinWidth: "";
 @searchFocusVisibleOutline: @focusVisibleOutline;
+@searchFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Search Selection */
 @searchSelectionLineHeight: @inputLineHeight;

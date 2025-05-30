@@ -51,7 +51,9 @@
 @checkboxFocusCheckColor: @selectedTextColor;
 @labelFocusColor: @selectedTextColor;
 @labelFocusVisibleOutline: @focusVisibleOutline;
+@labelFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 @inputFocusVisibleOutline: @focusVisibleOutline;
+@inputFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Active */
 @labelActiveColor: @selectedTextColor;

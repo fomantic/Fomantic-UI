@@ -178,6 +178,7 @@
     min-height: @actionTextareaMinHeight;
     &:focus-visible when not (@textAreaFocusVisibleOutline = none) {
         outline: @textAreaFocusVisibleOutline;
+        outline-offset: @textAreaFocusVisibleOutlineOffset;
     }
 }
 .ui.input > textarea {
@@ -459,6 +460,7 @@
     .ui.form input[type="url"]:focus-visible,
     .ui.form input[type="week"]:focus-visible {
         outline: @inputFocusVisibleOutline;
+        outline-offset: @inputFocusVisibleOutlineOffset;
     }
 }
 & when (@variationInputAction) {

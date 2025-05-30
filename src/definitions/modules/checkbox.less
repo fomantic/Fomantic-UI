@@ -44,6 +44,7 @@
     min-width: @checkboxSize;
     &:focus-visible when not (@focusVisibleOutline = none) {
         outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
     }
 }
 
@@ -61,6 +62,7 @@
     height: @checkboxSize;
     &:focus-visible when not (@inputFocusVisibleOutline = none) {
         outline: @inputFocusVisibleOutline;
+        outline-offset: @inputFocusVisibleOutlineOffset;
     }
 }
 
@@ -72,6 +74,7 @@
     font-size: @labelFontSize;
     &:focus-visible when not (@labelFocusVisibleOutline = none) {
         outline: @labelFocusVisibleOutline;
+        outline-offset: @labelFocusVisibleOutlineOffset;
     }
 }
 

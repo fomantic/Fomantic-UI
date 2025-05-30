@@ -17,6 +17,7 @@
 @closeSize: 1.25em;
 @closeColor: @white;
 @closeFocusVisibleOutline: @focusVisibleOutline;
+@closeFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 @closeHitbox: 2.25rem;
 @closeDistance: 0.25rem;

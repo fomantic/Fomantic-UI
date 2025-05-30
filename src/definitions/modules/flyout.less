@@ -46,6 +46,7 @@
     outline: none;
     &:focus-visible when not (@focusVisibleOutline = none) {
         outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
     }
 }
 
@@ -81,6 +82,7 @@
 }
 .ui.flyout > .close:focus-visible when not (@closeFocusVisibleOutline = none) {
     outline: @closeFocusVisibleOutline;
+    outline-offset: @closeFocusVisibleOutlineOffset;
 }
 
 /* --------------
