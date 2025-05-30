@@ -30,14 +30,14 @@ declare namespace FomanticUI {
         /**
          * Get the selected date
          */
-        (behavior: 'get date'): Date | string;
+        (behavior: 'get date', format?: string): Date | string;
 
         /**
          * Set the selected date.
          * Pass false to updateInput to disable updating the input.
          * Pass false to fireChange to disable the onBeforeChange and onChange callbacks for this change
          */
-        (behavior: 'set date', date: string, updateInput: boolean, fireChange: boolean): JQuery;
+        (behavior: 'set date', date: Date | string | null, updateInput?: boolean, fireChange?: boolean): JQuery;
 
         /**
          * Get the current selection mode (year, month, day, hour, minute)
@@ -52,7 +52,7 @@ declare namespace FomanticUI {
         /**
          * Get the start date for range selection
          */
-        (behavior: 'get startDate'): Date | string;
+        (behavior: 'get startDate', format?: string): Date | string;
 
         /**
          * Set the start date for range selection
@@ -62,7 +62,7 @@ declare namespace FomanticUI {
         /**
          * Get the end date for range selection
          */
-        (behavior: 'get endDate'): Date | string;
+        (behavior: 'get endDate', format?: string): Date | string;
 
         /**
          * Set the end date for range selection
@@ -72,7 +72,7 @@ declare namespace FomanticUI {
         /**
          * Get the currently focused date
          */
-        (behavior: 'get focusDate'): Date | string;
+        (behavior: 'get focusDate', format?: string): Date | string;
 
         /**
          * Set the currently focused date
@@ -82,12 +82,12 @@ declare namespace FomanticUI {
         /**
          * Set the minimal selectable date
          */
-        (behavior: 'set minDate', date: Date | string): JQuery;
+        (behavior: 'set minDate', date: Date | string | null): JQuery;
 
         /**
          * Set the maximal selectable date
          */
-        (behavior: 'set maxDate', date: Date | string): JQuery;
+        (behavior: 'set maxDate', date: Date | string | null): JQuery;
 
         (behavior: 'destroy'): JQuery;
 
@@ -141,7 +141,7 @@ declare namespace FomanticUI {
         /**
          * Month before day when parsing/converting date from/to text.
          *
-         * @default true
+         * @default false
          */
         monthFirst: boolean;
 
@@ -214,7 +214,7 @@ declare namespace FomanticUI {
          *
          * @default null
          */
-        initialDate: null | Date;
+        initialDate: Date | string | null;
 
         /**
          * Display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day').
@@ -319,13 +319,31 @@ declare namespace FomanticUI {
          *
          * @default false
          */
-        selectAdjacentDays: 5 | 10 | 15 | 20 | 30;
+        selectAdjacentDays: boolean;
 
         popupOptions: Calendar.PopupSettings;
 
         text: Calendar.TextSettings;
 
-        // endregion
+        formatter: Calendar.FormatterSettings;
+
+        /**
+         * Customizable methods to parse a given date
+         * Has to return a date object
+         */
+        parser: {
+            date: (text: string, settings: CalendarSettings) => Date;
+        }
+
+        /**
+         * DOM selector where the calendar popup should be attached to. By default (false) the calendar popup
+         * is attached as direct child of the triggering element.
+         *
+         * @default false
+         */
+        context: string | JQuery | false
+
+        // end region
 
         // region Callbacks
 
@@ -333,12 +351,12 @@ declare namespace FomanticUI {
          * Is called before a calendar date changes. 'return false;' will cancel the change.
          * @since 2.8.0
          */
-        onBeforeChange(this: JQuery): void;
+        onBeforeChange(this: JQuery, date?: Date, text?: string, mode?: string): void;
 
         /**
          * Is called after a calendar date has changed.
          */
-        onChange(this: JQuery): void;
+        onChange(this: JQuery, date?: Date): void;
 
         /**
          * Is called before a calendar is shown. 'return false;' will prevent the calendar to be shown.
@@ -364,7 +382,7 @@ declare namespace FomanticUI {
          * Is called when a cell of the calendar is selected providing its value and current mode.
          * 'return false;' will prevent the selection.
          */
-        onSelect(this: JQuery, date: Date, mode: string): void;
+        onSelect(this: JQuery, date?: Date, mode?: string): void;
 
         // endregion
 
@@ -436,6 +454,7 @@ declare namespace FomanticUI {
     namespace Calendar {
         type PopupSettings = Partial<Pick<Settings.Popup, keyof Settings.Popup>>;
         type TextSettings = Partial<Pick<Settings.Texts, keyof Settings.Texts>>;
+        type FormatterSettings = Partial<Pick<Settings.Formatters, keyof Settings.Formatters>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
@@ -472,6 +491,16 @@ declare namespace FomanticUI {
                 days: string[];
 
                 /**
+                 * @default ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+                 */
+                dayNamesShort: string[];
+
+                /**
+                 * @default ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                 */
+                dayNames: string[];
+
+                /**
                  * @default ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
                  */
                 months: string[];
@@ -505,6 +534,78 @@ declare namespace FomanticUI {
                  * @default 'Week'
                  */
                 weekNo: string;
+            }
+
+            interface Formatters {
+                /**
+                 *
+                 */
+                yearHeader(date: Date, settings?: CalendarSettings): string;
+
+                /**
+                 * @default 'YYYY'
+                 */
+                monthHeader: string;
+
+                /**
+                 * @default 'MMMM YYYY'
+                 */
+                dayHeader: string;
+
+                /**
+                 * @default 'MMMM D, YYYY'
+                 */
+                hourHeader: string;
+
+                /**
+                 * @default 'MMMM D, YYYY'
+                 */
+                minuteHeader: string;
+
+                /**
+                 * @default 'MMMM D, YYYY'
+                 */
+                dayColumnHeader(day: number, settings: CalendarSettings): string;
+
+                /**
+                 * @default 'MMMM D, YYYY h:mm A'
+                 */
+                datetime: string;
+
+                /**
+                 * @default 'MMMM D, YYYY'
+                 */
+                date: string;
+
+                /**
+                 * @default 'h:mm A'
+                 */
+                time: string;
+
+                /**
+                 * @default 'h:mm A'
+                 */
+                cellTime: string;
+
+                /**
+                 * @default 'MMMM YYYY'
+                 */
+                month: string;
+
+                /**
+                 * @default 'YYYY'
+                 */
+                year: string;
+
+                /**
+                 *
+                 */
+                today(settings: CalendarSettings): string;
+
+                /**
+                 *
+                 */
+                cell(cell: string, date: Date, cellOptions: any): any
             }
 
             interface Selectors {

@@ -163,7 +163,7 @@
 @selectionBorder: 1px solid @selectionBorderColor;
 @selectionBorderRadius: @borderRadius;
 
-@selectionIconOpacity: 0.8;
+@selectionIconOpacity: 0.5;
 @selectionIconZIndex: 3;
 @selectionIconHitbox: @selectionVerticalPadding;
 @selectionIconMargin: -@selectionIconHitbox;
@@ -221,6 +221,9 @@
 
 @selectionVisibleConnectingBorder: 0;
 @selectionVisibleIconOpacity: "";
+
+@selectionIconFocusOpacity: 1;
+@actionIconFocusOpacity: ((@selectionIconFocusOpacity * 68) / 100);
 
 /* --------------
      Search
@@ -319,7 +322,7 @@
 @selectedColor: @selectedTextColor;
 
 /* Clearable */
-@clearableIconOpacity: 0.6;
+@clearableIconOpacity: 0.5;
 @clearableIconActiveOpacity: 1;
 @clearableTextMargin: 1.5em;
 @clearableIconMargin: 1.5em;
@@ -484,3 +487,6 @@
 
 /* Resizable */
 @resizableDirection: vertical;
+
+@highlightMatchesBackground: @defaultHighlightMatchesBackground;
+@highlightMatchesColor: @defaultHighlightMatchesColor;

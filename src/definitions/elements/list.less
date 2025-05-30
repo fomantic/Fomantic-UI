@@ -17,6 +17,13 @@
 
 @import (multiple) "../../theme.config";
 
+@notSelection: if(@variationListSelection, e(":not(.selection)"));
+@notIcon: if(@variationListIcon, e(":not(.icon)"));
+@notHorizontal: if(@variationListHorizontal, e(":not(.horizontal)"));
+@notCelled: if(@variationListCelled, e(":not(.celled)"));
+
+@notLoading: if(@variationIconLoading, e(":not(.loading)"));
+
 /*******************************
             List
 *******************************/
@@ -87,7 +94,7 @@ ol.ui.list li:last-child,
 /* Child List */
 ul.ui.list ul,
 ol.ui.list ol,
-.ui.list .list:not(.icon) {
+.ui.list .list@{notIcon} {
     clear: both;
     margin: 0;
     padding: @childListPadding;
@@ -110,7 +117,7 @@ ol.ui.list ol li,
         margin: 0;
         padding-top: @iconOffset;
         transition: @iconTransition;
-        &:not(.loading) {
+        &@{notLoading} {
             padding-right: @iconDistance;
             vertical-align: @iconContentVerticalAlign;
         }
@@ -312,11 +319,11 @@ ol.ui.list ol li,
         margin-right: @horizontalSpacing;
         font-size: 1rem;
     }
-    .ui.horizontal.list:not(.celled) > .item:last-child {
+    .ui.horizontal.list@{notCelled} > .item:last-child {
         margin-right: 0;
         padding-right: 0;
     }
-    .ui.horizontal.list .list:not(.icon) {
+    .ui.horizontal.list .list@{notIcon} {
         padding-left: 0;
         padding-bottom: 0;
     }
@@ -585,7 +592,7 @@ ol.ui.list ol li,
     .ui.animated.list > .item {
         transition: @animatedListTransition;
     }
-    .ui.animated.list:not(.horizontal) > .item:hover {
+    .ui.animated.list@{notHorizontal} > .item:hover {
         padding-left: @animatedListIndent;
     }
 }
@@ -594,8 +601,8 @@ ol.ui.list ol li,
     /* -------------------
            Fitted
     -------------------- */
-    .ui.fitted.list:not(.selection) .list > .item,
-    .ui.fitted.list:not(.selection) > .item {
+    .ui.fitted.list@{notSelection} .list > .item,
+    .ui.fitted.list@{notSelection} > .item {
         padding-left: 0;
         padding-right: 0;
     }
@@ -643,7 +650,7 @@ ol.ui.list ol li,
     }
 
     ul.ui.list ul,
-    .ui.bulleted.list .list:not(.icon) {
+    .ui.bulleted.list .list@{notIcon} {
         padding-left: @bulletChildDistance;
     }
 
@@ -679,7 +686,7 @@ ol.ui.list ol li,
 
     ol.ui.list,
     .ui.ordered.list,
-    .ui.ordered.list .list:not(.icon),
+    .ui.ordered.list .list@{notIcon},
     ol.ui.list ol {
         counter-reset: @orderedCountName;
         margin-left: @orderedCountDistance;
@@ -727,7 +734,7 @@ ol.ui.list ol li,
 
     /* Child Lists */
     ol.ui.list ol,
-    .ui.ordered.list .list:not(.icon) {
+    .ui.ordered.list .list@{notIcon} {
         margin-left: @orderedChildCountDistance;
     }
     ol.ui.list ol li::before,
@@ -779,18 +786,18 @@ ol.ui.list ol li,
     }
 
     /* Sub Menu */
-    .ui.divided.list:not(.horizontal) .list > .item:first-child {
+    .ui.divided.list@{notHorizontal} .list > .item:first-child {
         border-top-width: @dividedBorderWidth;
     }
 
     & when (@variationListBulleted) {
         /* Divided bulleted */
-        .ui.divided.bulleted.list:not(.horizontal),
-        .ui.divided.bulleted.list .list:not(.icon) {
+        .ui.divided.bulleted.list@{notHorizontal},
+        .ui.divided.bulleted.list .list@{notIcon} {
             margin-left: 0;
             padding-left: 0;
         }
-        .ui.divided.bulleted.list > .item:not(.horizontal) {
+        .ui.divided.bulleted.list > .item@{notHorizontal} {
             padding-left: @bulletDistance;
         }
     }
@@ -804,7 +811,7 @@ ol.ui.list ol li,
         .ui.divided.ordered.list > .item {
             padding-left: @orderedCountDistance;
         }
-        .ui.divided.ordered.list .item .list:not(.icon) {
+        .ui.divided.ordered.list .item .list@{notIcon} {
             margin-left: 0;
             margin-right: 0;
             padding-bottom: @itemVerticalPadding;
@@ -896,7 +903,7 @@ ol.ui.list ol li,
         .ui.celled.bulleted.list > .item {
             padding-left: (@bulletDistance);
         }
-        .ui.celled.bulleted.list .item .list:not(.icon) {
+        .ui.celled.bulleted.list .item .list@{notIcon} {
             margin-left: -(@bulletDistance);
             margin-right: -(@bulletDistance);
             padding-bottom: @itemVerticalPadding;
@@ -912,7 +919,7 @@ ol.ui.list ol li,
         .ui.celled.ordered.list > .item {
             padding-left: @orderedCountDistance;
         }
-        .ui.celled.ordered.list .item .list:not(.icon) {
+        .ui.celled.ordered.list .item .list@{notIcon} {
             margin-left: 0;
             margin-right: 0;
             padding-bottom: @itemVerticalPadding;
@@ -961,10 +968,10 @@ ol.ui.list ol li,
            Relaxed
     -------------------- */
 
-    .ui.relaxed.list:not(.horizontal) > .item:not(:first-child) {
+    .ui.relaxed.list@{notHorizontal} > .item:not(:first-child) {
         padding-top: @relaxedItemVerticalPadding;
     }
-    .ui.relaxed.list:not(.horizontal) > .item:not(:last-child) {
+    .ui.relaxed.list@{notHorizontal} > .item:not(:last-child) {
         padding-bottom: @relaxedItemVerticalPadding;
     }
 
@@ -980,10 +987,10 @@ ol.ui.list ol li,
     }
     & when (@variationListVeryRelaxed) {
         /* Very Relaxed */
-        .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
+        .ui[class*="very relaxed"].list@{notHorizontal} > .item:not(:first-child) {
             padding-top: @veryRelaxedItemVerticalPadding;
         }
-        .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
+        .ui[class*="very relaxed"].list@{notHorizontal} > .item:not(:last-child) {
             padding-bottom: @veryRelaxedItemVerticalPadding;
         }
 

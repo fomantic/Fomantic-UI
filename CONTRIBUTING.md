@@ -26,7 +26,7 @@ When you create the issue please when possible include pictures or a [JSFiddle](
 
 When you create an issue please follow our naming convention this makes it easy to scan over issues.
 
-**Bugs:** [Scope] x does not do y
+**Bugs:** [Scope] x does not do y  
 **Enhancements:** [Scope] x should do y
 
 The scope is the component which has the issue or enhancement e.g. Segment, Grid, Dropdown etc. when you describe the issue in the summary keep it brief 60 characters max.
@@ -44,6 +44,9 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 - When you implement a new feature or fix a bug think about backwards compatibility. If your change is backwards compatible it is most likely to be merged sooner since you won't need to wait for a breaking change update.
 - Please commit using the [AngularJS Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) this is more of a nice to have and isn't required.
 - Please try and stick to a similar code style so everyone can read your code.
+- Fix linting issues
+- Adjust the types if necessary
+- For new features, please also create a PR explaining your change [in the docs repo](https://github.com/fomantic/Fomantic-UI-Docs)
 - When you commit don't include your dist files, this can cause merge conflicts and also adds unnecessary changes to the PR.
 
 #### Setup your environment

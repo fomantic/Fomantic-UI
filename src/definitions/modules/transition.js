@@ -20,36 +20,32 @@
         : globalThis;
 
     $.fn.transition = function () {
-        var
-            $allModules     = $(this),
+        let $allModules = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        let time = Date.now();
+        let performance = [];
 
-            moduleArguments = arguments,
-            query           = moduleArguments[0],
-            queryArguments  = [].slice.call(arguments, 1),
-            methodInvoked   = typeof query === 'string',
+        let moduleArguments = arguments;
+        let query = moduleArguments[0];
+        let queryArguments = [].slice.call(arguments, 1);
+        let methodInvoked = typeof query === 'string';
 
-            returnedValue
-        ;
+        let returnedValue;
         $allModules.each(function (index) {
-            var
-                $module  = $(this),
-                element  = this,
+            let $module = $(this);
+            let element = this;
 
-                // set at run time
-                settings,
-                instance,
+            // set at run time
+            let settings;
+            let instance;
 
-                error,
-                className,
-                metadata,
+            let error;
+            let className;
+            let metadata;
 
-                moduleNamespace,
-                eventNamespace,
-                module
-            ;
+            let moduleNamespace;
+            let eventNamespace;
+            let module;
 
             module = {
 
@@ -87,15 +83,13 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, instance)
-                    ;
+                        .data(moduleNamespace, instance);
                 },
 
                 destroy: function () {
                     module.verbose('Destroying previous module for', element);
                     $module
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                 },
 
                 refresh: function () {
@@ -105,10 +99,8 @@
 
                 forceRepaint: function () {
                     module.verbose('Forcing element repaint');
-                    var
-                        $parentElement = $module.parent(),
-                        $nextElement = $module.next()
-                    ;
+                    let $parentElement = $module.parent();
+                    let $nextElement = $module.next();
                     if ($nextElement.length === 0) {
                         $module.detach().appendTo($parentElement);
                     } else {
@@ -118,17 +110,13 @@
 
                 repaint: function () {
                     module.verbose('Repainting element');
-                    var
-                        fakeAssignment = element.offsetWidth
-                    ;
+                    let fakeAssignment = element.offsetWidth;
                 },
 
                 delay: function (interval) {
-                    var
-                        direction = module.get.animationDirection(),
-                        shouldReverse,
-                        delay
-                    ;
+                    let direction = module.get.animationDirection();
+                    let shouldReverse;
+                    let delay;
                     if (!direction) {
                         direction = module.can.transition()
                             ? module.get.direction()
@@ -142,7 +130,9 @@
                         ? ($allModules.length - index) * interval
                         : index * interval;
                     module.debug('Delaying animation by', delay);
-                    setTimeout(function () { module.animate(); }, delay);
+                    setTimeout(function () {
+                        module.animate();
+                    }, delay);
                 },
 
                 animate: function (overrideSettings) {
@@ -190,8 +180,7 @@
                             module.queuing = false;
                             module.repaint();
                             module.animate.apply(this, settings);
-                        })
-                    ;
+                        });
                 },
 
                 complete: function (event) {
@@ -220,14 +209,12 @@
 
                 force: {
                     visible: function () {
-                        var
-                            style          = $module.attr('style'),
-                            userStyle      = module.get.userStyle(style),
-                            displayType    = module.get.displayType(),
-                            overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
-                            inlineDisplay  = $module[0].style.display,
-                            mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
-                        ;
+                        let style = $module.attr('style');
+                        let userStyle = module.get.userStyle(style);
+                        let displayType = module.get.displayType();
+                        let overrideStyle = userStyle + 'display: ' + displayType + ' !important;';
+                        let inlineDisplay = $module[0].style.display;
+                        let mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
                         if (mustStayHidden) {
                             module.remove.transition();
 
@@ -235,35 +222,28 @@
                         }
                         module.verbose('Overriding default display to show element', displayType);
                         $module
-                            .attr('style', overrideStyle)
-                        ;
+                            .attr('style', overrideStyle);
 
                         return true;
                     },
                     hidden: function () {
-                        var
-                            style          = $module.attr('style'),
-                            currentDisplay = $module.css('display'),
-                            emptyStyle     = style === undefined || style === ''
-                        ;
+                        let style = $module.attr('style');
+                        let currentDisplay = $module.css('display');
+                        let emptyStyle = style === undefined || style === '';
                         if (currentDisplay !== 'none' && !module.is.hidden()) {
                             module.verbose('Overriding default display to hide element');
                             $module
-                                .css('display', 'none')
-                            ;
+                                .css('display', 'none');
                         } else if (emptyStyle) {
                             $module
-                                .removeAttr('style')
-                            ;
+                                .removeAttr('style');
                         }
                     },
                 },
 
                 has: {
                     direction: function (animation) {
-                        var
-                            hasDirection = false
-                        ;
+                        let hasDirection = false;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
@@ -277,9 +257,7 @@
                         return hasDirection;
                     },
                     inlineDisplay: function () {
-                        var
-                            style = $module.attr('style') || ''
-                        ;
+                        let style = $module.attr('style') || '';
 
                         return Array.isArray(style.match(/display.*?;/, ''));
                     },
@@ -292,7 +270,7 @@
 
                         // determine exact animation
                         animation = animation || settings.animation;
-                        var animationClass = module.get.animationClass(animation);
+                        let animationClass = module.get.animationClass(animation);
 
                         // save animation class in cache to restore class names
                         module.save.animation(animationClass);
@@ -314,8 +292,7 @@
                             $module
                                 .css({
                                     'animation-duration': duration,
-                                })
-                            ;
+                                });
                         }
                     },
                     direction: function (direction) {
@@ -329,34 +306,29 @@
                     looping: function () {
                         module.debug('Transition set to loop');
                         $module
-                            .addClass(className.looping)
-                        ;
+                            .addClass(className.looping);
                     },
                     hidden: function () {
                         $module
                             .addClass(className.transition)
-                            .addClass(className.hidden)
-                        ;
+                            .addClass(className.hidden);
                     },
                     inward: function () {
                         module.debug('Setting direction to inward');
                         $module
                             .removeClass(className.outward)
-                            .addClass(className.inward)
-                        ;
+                            .addClass(className.inward);
                     },
                     outward: function () {
                         module.debug('Setting direction to outward');
                         $module
                             .removeClass(className.inward)
-                            .addClass(className.outward)
-                        ;
+                            .addClass(className.outward);
                     },
                     visible: function () {
                         $module
                             .addClass(className.transition)
-                            .addClass(className.visible)
-                        ;
+                            .addClass(className.visible);
                     },
                 },
 
@@ -366,8 +338,7 @@
                         module.debug('Starting tween', animationClass);
                         $module
                             .addClass(animationClass)
-                            .one('animationend.complete' + eventNamespace, module.complete)
-                        ;
+                            .one('animationend.complete' + eventNamespace, module.complete);
                         if (settings.useFailSafe) {
                             module.add.failSafe();
                         }
@@ -396,13 +367,10 @@
 
                 restore: {
                     conditions: function () {
-                        var
-                            animation = module.get.currentAnimation()
-                        ;
+                        let animation = module.get.currentAnimation();
                         if (animation) {
                             $module
-                                .removeClass(animation)
-                            ;
+                                .removeClass(animation);
                             module.verbose('Removing animation class', module.cache);
                         }
                         module.remove.duration();
@@ -411,9 +379,7 @@
 
                 add: {
                     failSafe: function () {
-                        var
-                            duration = module.get.duration()
-                        ;
+                        let duration = module.get.duration();
                         module.timer = setTimeout(function () {
                             $module.triggerHandler('animationend');
                         }, duration + settings.failSafeDelay);
@@ -441,13 +407,11 @@
                     direction: function () {
                         $module
                             .removeClass(className.inward)
-                            .removeClass(className.outward)
-                        ;
+                            .removeClass(className.outward);
                     },
                     duration: function () {
                         $module
-                            .css('animation-duration', '')
-                        ;
+                            .css('animation-duration', '');
                     },
                     failSafe: function () {
                         module.verbose('Removing fail safe timer', module.timer);
@@ -466,16 +430,14 @@
                         if (module.is.looping()) {
                             module.reset();
                             $module
-                                .removeClass(className.looping)
-                            ;
+                                .removeClass(className.looping);
                         }
                     },
                     transition: function () {
                         $module
                             .removeClass(className.transition)
                             .removeClass(className.visible)
-                            .removeClass(className.hidden)
-                        ;
+                            .removeClass(className.hidden);
                     },
                 },
                 get: {
@@ -514,12 +476,10 @@
                         });
                     },
                     animationClass: function (animation) {
-                        var
-                            animationClass = animation || settings.animation,
-                            directionClass = module.can.transition() && !module.has.direction()
-                                ? module.get.direction() + ' '
-                                : ''
-                        ;
+                        let animationClass = animation || settings.animation;
+                        let directionClass = module.can.transition() && !module.has.direction()
+                            ? module.get.direction() + ' '
+                            : '';
 
                         return className.animating + ' '
                             + className.transition + ' '
@@ -542,9 +502,7 @@
                             : className.outward;
                     },
                     animationDirection: function (animation) {
-                        var
-                            direction
-                        ;
+                        let direction;
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
@@ -584,9 +542,9 @@
                             return settings.displayType;
                         }
                         if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
-                            var currentDisplay = $module.css('display');
+                            let currentDisplay = $module.css('display');
                             if (currentDisplay === '' || currentDisplay === 'none') {
-                                // create fake element to determine display state
+                                // create a fake element to determine display state
                                 module.can.transition(true);
                             } else {
                                 module.save.displayType(currentDisplay);
@@ -607,17 +565,15 @@
 
                 can: {
                     transition: function (forced) {
-                        var
-                            animation         = settings.animation,
-                            transitionExists  = module.get.transitionExists(animation),
-                            displayType       = module.get.displayType(false),
-                            elementClass,
-                            tagName,
-                            $clone,
-                            currentAnimation,
-                            inAnimation,
-                            directionExists
-                        ;
+                        let animation = settings.animation;
+                        let transitionExists = module.get.transitionExists(animation);
+                        let displayType = module.get.displayType(false);
+                        let elementClass;
+                        let tagName;
+                        let $clone;
+                        let currentAnimation;
+                        let inAnimation;
+                        let directionExists;
                         if (transitionExists === undefined || forced) {
                             module.verbose('Determining whether animation exists');
                             elementClass = $module.attr('class');
@@ -630,13 +586,11 @@
                                 .removeClass(className.outward)
                                 .addClass(className.animating)
                                 .addClass(className.transition)
-                                .css('animationName')
-                            ;
+                                .css('animationName');
                             $clone.detach().insertAfter($module);
                             inAnimation = $clone
                                 .addClass(className.inward)
-                                .css('animationName')
-                            ;
+                                .css('animationName');
                             if (!displayType) {
                                 $clone.detach().insertAfter($module);
                                 displayType = $clone
@@ -645,8 +599,7 @@
                                     .removeClass(className.hidden)
                                     .removeClass(className.visible)
                                     .show()
-                                    .css('display')
-                                ;
+                                    .css('display');
                                 module.verbose('Determining final display state', displayType);
                                 module.save.displayType(displayType);
                             }
@@ -717,7 +670,7 @@
                     if (module.is.animating()) {
                         module.reset();
                     }
-                    element.blur(); // IE will trigger focus change if element is not blurred before hiding
+                    element.blur();
                     module.remove.display();
                     module.remove.visible();
                     settings.onBeforeHide.call(element, module.hideNow);
@@ -831,11 +784,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -849,13 +800,13 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -881,19 +832,17 @@
                 },
                 // modified for transition to return invoke success
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -963,7 +912,7 @@
         // event namespace
         namespace: 'transition',
 
-        // delay between animations in group
+        // delay between animations in a group
         interval: 0,
 
         // whether group animations should be reversed
@@ -986,13 +935,13 @@
         // whether timeout should be used to ensure callback fires in cases animationend does not
         useFailSafe: true,
 
-        // delay in ms for fail safe
+        // delay in ms for fail-safe
         failSafeDelay: 100,
 
         // whether EXACT animation can occur twice in a row
         allowRepeats: false,
 
-        // Override final display type on visible
+        // Override the final display type on visible
         displayType: false,
 
         // animation duration

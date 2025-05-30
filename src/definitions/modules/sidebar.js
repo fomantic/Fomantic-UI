@@ -20,71 +20,68 @@
         : globalThis;
 
     $.fn.sidebar = function (parameters) {
-        var
-            $allModules     = $(this),
-            $window         = $(window),
-            $document       = $(document),
-            $body           = $('body'),
-            $html           = $('html'),
-            $head           = $('head'),
+        let $allModules = $(this);
+        let $window = $(window);
+        let $document = $(document);
+        let $body = $('body');
+        let $html = $('html');
+        let $head = $('head');
 
-            time            = Date.now(),
-            performance     = [],
+        let time = Date.now();
+        let performance = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
-            contextCheck    = function (context, win) {
-                var $context;
-                if ([window, document].indexOf(context) >= 0) {
-                    $context = $body;
-                } else {
-                    $context = $(win.document).find(context);
-                    if ($context.length === 0) {
-                        $context = win.frameElement ? contextCheck(context, win.parent) : $body;
-                    }
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
+        let contextCheck = function (context, win) {
+            let $context;
+            if ([window, document].indexOf(context) >= 0) {
+                $context = $body;
+            } else {
+                $context = $(win.document).find(context);
+                if ($context.length === 0) {
+                    $context = win.frameElement ? contextCheck(context, win.parent) : $body;
                 }
+            }
 
-                return $context;
-            },
-            returnedValue;
+            return $context;
+        };
+        let returnedValue;
 
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
-                    : $.extend({}, $.fn.sidebar.settings),
+            let settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
+                : $.extend({}, $.fn.sidebar.settings);
 
-                selector        = settings.selector,
-                className       = settings.className,
-                namespace       = settings.namespace,
-                regExp          = settings.regExp,
-                error           = settings.error,
+            let selector = settings.selector;
+            let className = settings.className;
+            let namespace = settings.namespace;
+            let regExp = settings.regExp;
+            let error = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $context        = contextCheck(settings.context, window),
-                isBody          = $context[0] === $body[0],
+            let $module = $(this);
+            let $context = contextCheck(settings.context, window);
+            let isBody = $context[0] === $body[0];
 
-                $sidebars       = $module.children(selector.sidebar),
-                $fixed          = $context.children(selector.fixed),
-                $pusher         = $context.children(selector.pusher),
-                $style,
+            let $sidebars = $module.children(selector.sidebar);
+            let $fixed = $context.children(selector.fixed);
+            let $pusher = $context.children(selector.pusher);
+            let $style;
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
+            let element = this;
+            let instance = $module.data(moduleNamespace);
 
-                elementNamespace,
-                id,
-                currentScroll,
-                initialBodyMargin = '',
-                tempBodyMargin = '',
-                hadScrollbar = false,
+            let elementNamespace;
+            let id;
+            let currentScroll;
+            let initialBodyMargin = '';
+            let tempBodyMargin = '';
+            let hadScrollbar = false;
 
-                module
-            ;
+            let module;
 
             module = {
 
@@ -111,8 +108,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 create: {
@@ -127,8 +123,7 @@
                     module.verbose('Destroying previous module for', $module);
                     $module
                         .off(eventNamespace)
-                        .removeData(moduleNamespace)
-                    ;
+                        .removeData(moduleNamespace);
                     // bound by uuid
                     $context.off(elementNamespace);
                     $window.off(elementNamespace);
@@ -138,10 +133,8 @@
                 event: {
                     clickaway: function (event) {
                         if (settings.closable) {
-                            var
-                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
-                                clickedContext  = $context.is(event.target)
-                            ;
+                            let clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
+                            let clickedContext = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -175,8 +168,7 @@
                         module.verbose('Adding clickaway events to context', $context);
                         $context
                             .on('click' + elementNamespace, module.event.clickaway)
-                            .on('touchend' + elementNamespace, module.event.clickaway)
-                        ;
+                            .on('touchend' + elementNamespace, module.event.clickaway);
                     },
                     scrollLock: function () {
                         if (settings.scrollLock) {
@@ -190,11 +182,9 @@
                         }
                         module.verbose('Adding events to contain sidebar scroll');
                         $document
-                            .on('touchmove' + elementNamespace, module.event.touch)
-                        ;
+                            .on('touchmove' + elementNamespace, module.event.touch);
                         $module
-                            .on('scroll' + eventNamespace, module.event.containScroll)
-                        ;
+                            .on('scroll' + eventNamespace, module.event.containScroll);
                     },
                 },
                 unbind: {
@@ -215,19 +205,17 @@
 
                 add: {
                     inlineCSS: function () {
-                        var
-                            width     = module.cache.width || $module.outerWidth(),
-                            height    = module.cache.height || $module.outerHeight(),
-                            isRTL     = module.is.rtl(),
-                            direction = module.get.direction(),
-                            distance  = {
-                                left: width,
-                                right: -width,
-                                top: height,
-                                bottom: -height,
-                            },
-                            style
-                        ;
+                        let width = module.cache.width || $module.outerWidth();
+                        let height = module.cache.height || $module.outerHeight();
+                        let isRTL = module.is.rtl();
+                        let direction = module.get.direction();
+                        let distance = {
+                            left: width,
+                            right: -width,
+                            top: height,
+                            bottom: -height,
+                        };
+                        let style;
 
                         if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
@@ -252,32 +240,9 @@
                                 + ' }';
                         }
 
-                        /* IE is only browser not to create context with transforms */
-                        /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
-                        if (module.is.ie()) {
-                            if (direction === 'left' || direction === 'right') {
-                                module.debug('Adding CSS rules for animation distance', width);
-                                style += ''
-                                    + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
-                                    + ' }';
-                            } else if (direction === 'top' || direction === 'bottom') {
-                                style += ''
-                                    + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                    + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                                    + ' }';
-                            }
-                            /* opposite sides visible forces content overlay */
-                            style += ''
-                                + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
-                                + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
-                                + '           transform: translate3d(0, 0, 0);'
-                                + ' }';
-                        }
                         style += '</style>';
                         $style = $(style)
-                            .appendTo($head)
-                        ;
+                            .appendTo($head);
                         module.debug('Adding sizing css to head', $style);
                     },
                 },
@@ -299,7 +264,7 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
-                    var ignored = element.offsetHeight;
+                    let ignored = element.offsetHeight;
                     element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
@@ -320,8 +285,7 @@
                                 .children()
                                 .not(selector.omitted)
                                 .not($sidebars)
-                                .wrapAll($pusher)
-                            ;
+                                .wrapAll($pusher);
                             module.refresh();
                         }
                         if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -337,17 +301,14 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    var
-                        $toggle = $(selector)
-                    ;
+                    let $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
                     if ($toggle.length > 0) {
                         module.debug('Attaching sidebar events to element', selector, event);
                         $toggle
-                            .on('click' + eventNamespace, event)
-                        ;
+                            .on('click' + eventNamespace, event);
                     } else {
                         module.error(error.notFound, selector);
                     }
@@ -355,7 +316,7 @@
                 can: {
                     leftBodyScrollbar: function () {
                         if (module.cache.leftBodyScrollbar === undefined) {
-                            module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
+                            module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari());
                         }
 
                         return module.cache.leftBodyScrollbar;
@@ -364,10 +325,8 @@
                 save: {
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        var
-                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
-                            bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
-                        ;
+                        let bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                     },
                 },
@@ -389,7 +348,7 @@
                         if (module.othersActive()) {
                             module.debug('Other sidebars currently visible');
                             if (settings.exclusive) {
-                                // if not overlay queue animation after hide
+                                // if not overlay, queue animation after hide
                                 if (settings.transition !== 'overlay') {
                                     module.hideOthers(module.show);
 
@@ -438,11 +397,9 @@
                 },
 
                 hideOthers: function (callback) {
-                    var
-                        $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
-                        sidebarCount   = $otherSidebars.length,
-                        callbackCount  = 0
-                    ;
+                    let $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
+                    let sidebarCount = $otherSidebars.length;
+                    let callbackCount = 0;
                     callback = callback || function () {};
                     $otherSidebars
                         .sidebar('hide', function () {
@@ -450,8 +407,7 @@
                             if (callbackCount === sidebarCount) {
                                 callback();
                             }
-                        })
-                    ;
+                        });
                 },
 
                 toggle: function () {
@@ -464,15 +420,13 @@
                 },
 
                 pushPage: function (callback) {
-                    var
-                        transition = module.get.transition(),
-                        $transition = transition === 'overlay' || module.othersActive()
-                            ? $module
-                            : $pusher,
-                        animate,
-                        dim,
-                        transitionEnd
-                    ;
+                    let transition = module.get.transition();
+                    let $transition = transition === 'overlay' || module.othersActive()
+                        ? $module
+                        : $pusher;
+                    let animate;
+                    let dim;
+                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -510,14 +464,12 @@
                 },
 
                 pullPage: function (callback) {
-                    var
-                        transition = module.get.transition(),
-                        $transition = transition === 'overlay' || module.othersActive()
-                            ? $module
-                            : $pusher,
-                        animate,
-                        transitionEnd
-                    ;
+                    let transition = module.get.transition();
+                    let $transition = transition === 'overlay' || module.othersActive()
+                        ? $module
+                        : $pusher;
+                    let animate;
+                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -575,13 +527,11 @@
 
                 set: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
-                                el = $(this),
-                                attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            let el = $(this);
+                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -675,13 +625,11 @@
                 },
                 restore: {
                     bodyMargin: function () {
-                        var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            var
-                                el = $(this),
-                                attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
-                            ;
+                            let el = $(this);
+                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -701,10 +649,8 @@
                         return className.left;
                     },
                     transition: function () {
-                        var
-                            direction = module.get.direction(),
-                            transition
-                        ;
+                        let direction = module.get.direction();
+                        let transition;
                         transition = module.is.mobile()
                             ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
@@ -730,13 +676,6 @@
 
                         return module.cache.isSafari;
                     },
-                    edge: function () {
-                        if (module.cache.isEdge === undefined) {
-                            module.cache.isEdge = !!window.setImmediate && !module.is.ie();
-                        }
-
-                        return module.cache.isEdge;
-                    },
                     firefox: function () {
                         if (module.cache.isFirefox === undefined) {
                             module.cache.isFirefox = !!window.InstallTrigger;
@@ -747,23 +686,9 @@
                     iframe: function () {
                         return !(self === top);
                     },
-                    ie: function () {
-                        if (module.cache.isIE === undefined) {
-                            var
-                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
-                                isIE = 'ActiveXObject' in window
-                            ;
-                            module.cache.isIE = isIE11 || isIE;
-                        }
-
-                        return module.cache.isIE;
-                    },
-
                     mobile: function () {
-                        var
-                            userAgent    = navigator.userAgent,
-                            isMobile     = userAgent.match(regExp.mobile)
-                        ;
+                        let userAgent = navigator.userAgent;
+                        let isMobile = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -853,11 +778,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -871,13 +794,13 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -899,22 +822,19 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {

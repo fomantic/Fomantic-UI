@@ -5,12 +5,12 @@ declare namespace FomanticUI {
         /**
          * Search for value currently set in search input.
          */
-        (behavior: 'query', callback: Function): JQuery;
+        (behavior: 'query', callback?: () => void): JQuery;
 
         /**
          * Displays message in search results with text, using template matching type.
          */
-        (behavior: 'display message', text: string, type: string): JQuery;
+        (behavior: 'display message', text: string, type?: string): JQuery;
 
         /**
          * Cancels current remote search query.
@@ -30,7 +30,7 @@ declare namespace FomanticUI {
         /**
          * Search remote endpoint for specified query and display results.
          */
-        (behavior: 'search remote', query: string, callback: Function): JQuery;
+        (behavior: 'search remote', query: string, callback?: () => void): JQuery;
 
         /**
          * Search object for specified query and return results.
@@ -75,7 +75,7 @@ declare namespace FomanticUI {
         /**
          * Clears value from cache, if no parameter passed clears all cache.
          */
-        (behavior: 'clear cache', query: string): JQuery;
+        (behavior: 'clear cache', query?: string): JQuery;
 
         /**
          * Writes cached results for query.
@@ -90,24 +90,24 @@ declare namespace FomanticUI {
         /**
          * Shows results container.
          */
-        (behavior: 'show results', callback: Function): JQuery;
+        (behavior: 'show results', callback?: () => void): JQuery;
 
         /**
          * Hide results container.
          */
-        (behavior: 'hide results', callback: Function): JQuery;
+        (behavior: 'hide results', callback?: () => void): JQuery;
 
         /**
          * Generates results using parser specified by 'settings.template'.
          */
-        (behavior: 'generate results', response: Function): JQuery;
+        (behavior: 'generate results', response: object): JQuery;
 
         /**
          * Removes all events.
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SearchSettings, keyof SearchSettings>>;
+        <K extends keyof SearchSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<SearchSettings, keyof SearchSettings>>;
         <K extends keyof SearchSettings>(behavior: 'setting', name: K, value: SearchSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
         (settings?: Partial<Pick<SearchSettings, keyof SearchSettings>>): JQuery;
@@ -124,7 +124,7 @@ declare namespace FomanticUI {
          * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
          * @default {}
          */
-        apiSettings: APISettings | JQueryAjaxSettings;
+        apiSettings: Partial<Pick<APISettings, keyof APISettings>> | JQueryAjaxSettings;
 
         /**
          * Minimum characters to query for results.
@@ -183,16 +183,21 @@ declare namespace FomanticUI {
         showNoResults: boolean;
 
         /**
-         * Specifying to "true" will use a fuzzy full text search, setting to "exact" will force the exact search to be matched somewhere in the string, setting to false will only match to start of string.
+         * Possible values
+         * * `exact` will force the exact search to be matched somewhere in the string.
+         * * `some` Will do the same as exact but supports multiple search values separated by whitespace. At least one word must match. (New in v2.9.1)
+         * * `all` is same as some but all words have to match in all given search fields of each record altogether. (New in v2.9.1)
+         * * `true` will use a fuzzy full text search.
+         * * `false` will only match to start of string.
          * @default 'exact'
          */
-        fullTextSearch: 'exact' | boolean;
+        fullTextSearch: 'exact' | 'some' | 'all' | boolean;
 
         /**
          * List mapping display content to JSON property, either with API or 'source'.
          * @default {}
          */
-        fields: object;
+        fields: Search.FieldsSettings;
 
         /**
          * Specify object properties inside local source object which will be searched.
@@ -228,6 +233,42 @@ declare namespace FomanticUI {
          */
         ignoreDiacritics: boolean;
 
+        /**
+         * Whether to consider case sensitivity on local searching
+         * @default true
+         */
+        ignoreSearchCase: boolean;
+
+        /**
+         * Whether search result should highlight matching strings
+         * @default false
+         */
+        highlightMatches: boolean;
+
+        /**
+         * Template to use (specified in settings.templates)
+         * @default 'standard'
+         */
+        type: 'escape' | 'message' | 'category' | 'standard';
+
+        /**
+         * Field to display in standard results template
+         * @default ''
+         */
+        displayField: string;
+
+        /**
+         * Whether to add events to prompt automatically
+         * @default true
+         */
+        automatic: boolean;
+
+        /**
+         * Whether to preserve possible HTML of resultset values
+         * @default false
+         */
+        preserveHTML: boolean;
+
         // endregion
 
         // region Callbacks
@@ -237,13 +278,13 @@ declare namespace FomanticUI {
          * The first parameter includes the filtered response results for that element.
          * The function should return 'false' to prevent default action (closing search results and selecting value).
          */
-        onSelect(this: JQuery, result: object, response: object): boolean;
+        onSelect(this: JQuery, result: object, response: object): any;
 
         /**
          * Callback after processing element template to add HTML to results.
          * Function should return 'false' to prevent default actions.
          */
-        onResultsAdd(this: JQuery, html: string): boolean;
+        onResultsAdd(this: JQuery, html: string): void | boolean;
 
         /**
          * Callback on search query.
@@ -347,29 +388,30 @@ declare namespace FomanticUI {
         type RegExpSettings = Partial<Pick<Settings.RegExps, keyof Settings.RegExps>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
+        type FieldsSettings = Partial<Pick<Settings.Fields, keyof Settings.Fields>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
             interface Templates {
                 /**
-                 * @default function(string)
+                 * @default function(string, settings)
                  */
-                escape: Function;
+                escape: (string: string, settings?: SearchSettings) => string;
 
                 /**
-                 * @default function(message, type)
+                 * @default function(message, type, header)
                  */
-                message: Function;
+                message: (message: string, type?: string, header?: string) => string;
 
                 /**
-                 * @default function(response)
+                 * @default function(response, settings)
                  */
-                category: Function;
+                category: (response: unknown, settings: SearchSettings) => string;
 
                 /**
-                 * @default function(response)
+                 * @default function(response, settings)
                  */
-                standard: Function;
+                standard: (response: unknown, settings: SearchSettings) => string;
             }
 
             interface Selectors {
@@ -448,6 +490,86 @@ declare namespace FomanticUI {
                  * @default 'results'
                  */
                 results: string;
+            }
+
+            interface Fields {
+                /**
+                 * Array of categories (category view)
+                 * @default 'results'
+                 */
+                categories: string;
+
+                /**
+                 * Name of category (category view)
+                 * @default 'name'
+                 */
+                categoryName: string;
+
+                /**
+                 * Array of results (category view)
+                 * @default 'results'
+                 */
+                categoryResults: string;
+
+                /**
+                 * Sesult description
+                 * @default ' description'
+                 */
+                description: string;
+
+                /**
+                 * Result image
+                 * @default 'image'
+                 */
+                image: string;
+
+                /**
+                 * Result alt text for image
+                 * @default 'alt'
+                 */
+                alt: string;
+
+                /**
+                 * Result price
+                 * @default 'price'
+                 */
+                price: string;
+
+                /**
+                 * Array of results (standard)
+                 * @default 'results'
+                 */
+                results: string;
+
+                /**
+                 * Result title
+                 * @default 'title'
+                 */
+                title: string;
+
+                /**
+                 * Result url
+                 * @default 'url'
+                 */
+                url: string;
+
+                /**
+                 * "view more" object name
+                 * @default 'action'
+                 */
+                action: string;
+
+                /**
+                 * "view more" text
+                 * @default 'text'
+                 */
+                actionText: string;
+
+                /**
+                 * "view more" url
+                 * @default 'url'
+                 */
+                actionURL: string;
             }
 
             interface Errors {

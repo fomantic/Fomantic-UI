@@ -55,7 +55,7 @@
 @imageVerticalAlign: start;
 
 @descriptionDistance: 2em;
-@descriptionMinWidth: "";
+@descriptionMinWidth: auto;
 @descriptionWidth: auto;
 @descriptionVerticalAlign: start;
 

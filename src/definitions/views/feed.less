@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notConnected: if(@variationFeedConnected, e(":not(.connected)"));
+
 /*******************************
          Activity Feed
 *******************************/
@@ -47,7 +49,7 @@
         border-top: @eventDivider;
     }
 }
-.ui.feed:not(.connected) > .event:first-child {
+.ui.feed@{notConnected} > .event:first-child {
     padding-top: 0;
 }
 .ui.feed > .event:last-child {
@@ -458,6 +460,17 @@
         .ui.inverted.feed > .event > .content .meta .active.like i.icon {
             color: @invertedLikeActiveColor;
         }
+    }
+
+    /* Action */
+    .ui.inverted.feed > .event > .content .meta a,
+    .ui.inverted.feed > .event > .content .meta > i.icon {
+        color: @invertedMetadataActionColor;
+    }
+    .ui.inverted.feed > .event > .content .meta a:hover,
+    .ui.inverted.feed > .event > .content .meta a:hover i.icon,
+    .ui.inverted.feed > .event > .content .meta > i.icon:hover {
+        color: @invertedMetadataActionHoverColor;
     }
 }
 

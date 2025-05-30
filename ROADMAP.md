@@ -30,16 +30,16 @@ If you want to find out more about v3 we recommend you read the following issues
 - Visual component tests ✏
 - CI/CD process ✏
 - Rewrite modules into ES6 with classes ✏🛳
-- Move to a [monorepo](https://en.wikipedia.org/wiki/Monorepo) with separate packages ✏🛳
+- Move to a [monorepo](https://en.wikipedia.org/wiki/Monorepo) with separate packages 💡
 - CLI tool ✏
 - Theme builder website 💡
 - Theme/plugin package sharing website 💡
 - Changing icon implementation from class based to HTML attribute based (`data-icon="user"`) ✏🛳
 - Theming implementation rewrite (behaviour will stay the same) ✏🛳
-- Move from LESS to SASS ✏🛳
+- Move from LESS to SASS 💡
 - v3 to v2 JavaScript polyfill package 💡
-- Browser support for all major browsers and IE11 ✏
-- Move SASS variables to CSS variables so they can be easily changed without compiling.
+- Browser support for all major browsers ✏🛳
+- Move LESS variables to CSS variables so they can be easily changed without compiling. ✏
 
 ### Library Implementations:
 

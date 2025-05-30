@@ -3,7 +3,9 @@
 # Fomantic-UI
 The official community fork of the popular Semantic-UI framework.
 
-[![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
+[![CI](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml)
+[![Nightly Build](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml)
+
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
 
@@ -16,14 +18,12 @@ The official community fork of the popular Semantic-UI framework.
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![CDNJS](https://img.shields.io/cdnjs/v/fomantic-ui?color=e95420)](https://cdnjs.com/libraries/fomantic-ui)
 
-[![CI](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/ci.yml)
-[![Nightly Build](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml/badge.svg?branch=develop)](https://github.com/fomantic/Fomantic-UI/actions/workflows/nightly.yml)
-
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
 [![Dependabot Status](https://badgen.net/github/dependabot/fomantic/Fomantic-UI/?icon=dependabot)](https://github.com/features/security)
 [![Known Build Dependency Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7496/badge)](https://bestpractices.coreinfrastructure.org/projects/7496)
+[![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20Fomantic%20UI%20Guru-006BFF)](https://gurubase.io/g/fomantic-ui)
 
 ---
 
@@ -57,11 +57,8 @@ Fomantic includes an interactive installer to help setup your project.
 
 * Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
 * Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
-* IE 11[^2]
-* Microsoft Edge 12-44[^2]
 
-[^1]: Fomantic-UI should basically still work in iOS Safari 9+, Android 6+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
-[^2]: Fomantic-UI should basically still work in IE11 / old Edge, but, starting from v2.9.0, we won't support them anymore in terms of dedicated bugfixes.
+[^1]: Fomantic-UI should basically still work in iOS Safari 11+, Android 7+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
 
 ---
 
@@ -69,8 +66,8 @@ Fomantic includes an interactive installer to help setup your project.
 
 | Environment | Install Command                       | Repository                                                       | Third-Party |
 |-------------|---------------------------------------|------------------------------------------------------------------|-------------|
-| CSS Only    | `npm install fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)          |             |
-| LESS        | `npm install fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS)        |             |
+| CSS Only    | `npm install fomantic-ui-css`         | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)   |             |
+| LESS        | `npm install fomantic-ui-less`        | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS) |             |
 | SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS) | ✅          |
 
 ---
@@ -94,20 +91,10 @@ Before creating a pull request be sure to read the [Contributing Guide](CONTRIBU
 
 ## Sponsors
 
-### Infrastructure hosted and powered by [DigitalOcean](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
-[![DigitalOcean](https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PNG/DO_Logo_Horizontal_Blue.png)](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
-
-Sign up now and get $100 in credit for 60 days! [Sign up here!](https://m.do.co/c/bece3e1afb7f)
-
-
 ### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
-
 ### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
-[![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport?from=Fomantic-UI)
 
 ---
-
-#### Credit
-Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)

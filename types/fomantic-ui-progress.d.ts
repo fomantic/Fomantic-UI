@@ -158,7 +158,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof ProgressSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ProgressSettings, keyof ProgressSettings>>;
+        <K extends keyof ProgressSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ProgressSettings, keyof ProgressSettings>>;
         <K extends keyof ProgressSettings>(behavior: 'setting', name: K, value: ProgressSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ProgressSettings, keyof ProgressSettings>>): JQuery;
         (settings?: Partial<Pick<ProgressSettings, keyof ProgressSettings>>): JQuery;
@@ -207,6 +207,12 @@ declare namespace FomanticUI {
          * @default 0
          */
         precision: number;
+
+        /**
+         * Sets current overall percent.
+         * @default false
+         */
+        percent: false | number;
 
         /**
          * Setting a total value will make each call to increment get closer to this total (i.e. 1/20, 2/20 etc).
@@ -349,7 +355,7 @@ declare namespace FomanticUI {
                  */
                 progress: string;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'
@@ -371,7 +377,7 @@ declare namespace FomanticUI {
                  */
                 warning: string;
             }
-        
+
             interface Texts {
                 /**
                  * @default false
@@ -408,14 +414,14 @@ declare namespace FomanticUI {
                  */
                 bars: string[];
             }
-        
+
             interface RegExps {
                 /**
                  * @default /\{\$*[A-z0-9]+\}/g
                  */
                 variable: RegExp;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'percent'
@@ -432,7 +438,7 @@ declare namespace FomanticUI {
                  */
                 value: string;
             }
-        
+
             interface Errors {
                 /**
                  * @default 'The method you called is not defined.'

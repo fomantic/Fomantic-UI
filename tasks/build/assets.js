@@ -2,29 +2,26 @@
  Build Task
  *******************************/
 
-const
-    gulp      = require('gulp'),
+const gulp = require('gulp');
 
-    // gulp dependencies
-    chmod     = require('gulp-chmod'),
-    gulpif    = require('gulp-if'),
-    normalize = require('normalize-path'),
-    print     = require('gulp-print').default,
+// gulp dependencies
+const chmod = require('gulp-chmod');
+const gulpif = require('gulp-if');
+const normalize = require('normalize-path');
+const print = require('gulp-print').default;
 
-    // config
-    config    = require('../config/user'),
-    tasks     = require('../config/tasks'),
-    install   = require('../config/project/install'),
+// config
+const config = require('../config/user');
+const tasks = require('../config/tasks');
+const install = require('../config/project/install');
 
-    log       = tasks.log
-;
+const log = tasks.log;
 
 function build(src, config) {
-    return gulp.src(src, { base: config.paths.source.themes })
+    return gulp.src(src, { base: config.paths.source.themes, encoding: false })
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.themes))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 function buildAssets(src, config, callback) {
@@ -42,7 +39,7 @@ function buildAssets(src, config, callback) {
     }
 
     // copy assets
-    let assets         = () => build(src, config);
+    let assets = () => build(src, config);
     assets.displayName = 'Building Assets';
 
     gulp.series(assets)(callback);
@@ -59,8 +56,7 @@ module.exports.watch = function (type, config) {
             console.log('Change in assets detected');
 
             return gulp.series((callback) => buildAssets(path, config, callback))();
-        })
-    ;
+        });
 };
 
 module.exports.buildAssets = buildAssets;

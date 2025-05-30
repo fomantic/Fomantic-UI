@@ -2,26 +2,24 @@
  *          Watch Task
  *******************************/
 
-const
-    // node dependencies
-    console    = require('better-console'),
-    gulp       = require('gulp'),
+// node dependencies
+const console = require('@fomantic/better-console');
 
-    // user config
-    config     = require('./config/user'),
+// user config
+const config = require('./config/user');
 
-    // task config
-    install    = require('./config/project/install'),
+// task config
+const install = require('./config/project/install');
 
-    css        = require('./build/css'),
-    js         = require('./build/javascript'),
-    assets     = require('./build/assets')
-;
+const css = require('./build/css');
+const js = require('./build/javascript');
+const assets = require('./build/assets');
 
 // export task
-module.exports = function () {
+module.exports = function (callback) {
     if (!install.isSetup()) {
         console.error('Cannot watch files. Run "gulp install" to set-up Fomantic');
+        callback();
 
         return;
     }
@@ -45,4 +43,6 @@ module.exports = function () {
     --------------- */
 
     assets.watch('default', config);
+
+    callback();
 };

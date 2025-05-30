@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Button
+ * # Fomantic-UI 2.9.4 - Button
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -838,7 +838,7 @@
   border-left-width: 0;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
-.ui.basic.vertical.buttons:not(.spaced) .button:first-child {
+.ui.basic.vertical.buttons:not(.spaced):not(.circular) .button:first-child {
   border-top: none;
 }
 
@@ -974,12 +974,30 @@
 /* --------------
         Circular
     --------------- */
-.ui.circular.button {
+.ui.ui.circular.buttons .button,
+.ui.ui.ui.ui.circular.button {
   border-radius: 10em;
+  min-width: 2.5em;
 }
+.ui.circular.buttons .button > .icon,
 .ui.circular.button > .icon {
   width: 1em;
   vertical-align: baseline;
+}
+.ui.circular.buttons:not(.vertical):not(.spaced) .button {
+  margin-right: 0.25em;
+}
+.ui.vertical.circular.buttons .button {
+  margin-bottom: 0.25em;
+}
+.ui.circular.basic.buttons {
+  border: none;
+}
+.ui.circular.basic.buttons .button {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+}
+.ui.circular.basic.buttons .button.basic {
+  border: none;
 }
 
 /* -------------------

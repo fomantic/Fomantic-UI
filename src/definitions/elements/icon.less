@@ -17,6 +17,13 @@
 
 @import (multiple) "../../theme.config";
 
+@notDisabled: if(@variationIconDisabled, e(":not(.disabled)"));
+@notCorner: if(@variationIconCorner, e(":not(.corner)"));
+@notRotated: if(@variationIconRotated, e(":not(.rotated)"));
+@notFlipped: if(@variationIconFlipped, e(":not(.flipped)"));
+@notBordered: if(@variationIconBordered, e(":not(.bordered)"));
+@notCircular: if(@variationIconCircular, e(":not(.circular)"));
+
 /*******************************
              Icon
 *******************************/
@@ -78,8 +85,8 @@ i.icon:hover,
 i.icons:hover,
 i.icon:active,
 i.icons:active,
-i.emphasized.icon:not(.disabled),
-i.emphasized.icons:not(.disabled) {
+i.emphasized.icon@{notDisabled},
+i.emphasized.icons@{notDisabled} {
     opacity: 1;
 }
 
@@ -113,8 +120,8 @@ i.emphasized.icons:not(.disabled) {
              Link
     -------------------- */
 
-    i.link.icon:not(.disabled),
-    i.link.icons:not(.disabled) {
+    i.link.icon@{notDisabled},
+    i.link.icons@{notDisabled} {
         cursor: pointer;
         opacity: @linkOpacity;
         transition: opacity @defaultDuration @defaultEasing;
@@ -163,11 +170,11 @@ i.emphasized.icons:not(.disabled) {
     }
 
     & when (@variationIconGroups) {
-        .icons i.flipped.icon:not(.corner):not(:first-child),
-        .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.horizontally.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(-1, 1);
         }
-        .icons i.vertically.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.vertically.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(1, -1);
         }
     }
@@ -194,16 +201,16 @@ i.emphasized.icons:not(.disabled) {
     }
 
     & when (@variationIconGroups) {
-        .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
-        .icons i.right.rotated.icon:not(.corner):not(:first-child),
-        .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
+        .icons i.rotated.rotated.icon@{notCorner}:not(:first-child),
+        .icons i.right.rotated.icon@{notCorner}:not(:first-child),
+        .icons i.clockwise.rotated.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) rotate(90deg);
         }
-        .icons i.left.rotated.icon:not(.corner):not(:first-child),
-        .icons i.counterclockwise.rotated.icon:not(.corner):not(:first-child) {
+        .icons i.left.rotated.icon@{notCorner}:not(:first-child),
+        .icons i.counterclockwise.rotated.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) rotate(-90deg);
         }
-        .icons i.halfway.rotated.icon:not(.corner):not(:first-child) {
+        .icons i.halfway.rotated.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) rotate(180deg);
         }
     }
@@ -245,28 +252,28 @@ i.emphasized.icons:not(.disabled) {
     }
 
     & when (@variationIconGroups) {
-        .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
-        .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
-        .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.rotated.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.right.rotated.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.clockwise.rotated.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
         }
-        .icons i.left.rotated.flipped.icon:not(.corner):not(:first-child),
-        .icons i.counterclockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.left.rotated.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.counterclockwise.rotated.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
         }
-        .icons i.halfway.rotated.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.halfway.rotated.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
         }
-        .icons i.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
-        .icons i.right.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
-        .icons i.clockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.rotated.vertically.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.right.rotated.vertically.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.clockwise.rotated.vertically.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
         }
-        .icons i.left.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
-        .icons i.counterclockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.left.rotated.vertically.flipped.icon@{notCorner}:not(:first-child),
+        .icons i.counterclockwise.rotated.vertically.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
         }
-        .icons i.halfway.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+        .icons i.halfway.rotated.vertically.flipped.icon@{notCorner}:not(:first-child) {
             transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
         }
     }
@@ -383,7 +390,7 @@ i.icons {
         top: 50%;
         left: 50%;
         margin: 0;
-        &:not(.corner):not(.rotated):not(.flipped) {
+        &@{notCorner}@{notRotated}@{notFlipped} {
             transform: translateX(-50%) translateY(-50%);
         }
     }
@@ -394,7 +401,7 @@ i.icons {
         height: auto;
         vertical-align: top;
     }
-    i.icons:not(.bordered):not(.circular) .icon:first-child:not(.rotated):not(.flipped) {
+    i.icons@{notBordered}@{notCircular} .icon:first-child@{notRotated}@{notFlipped} {
         transform: none;
     }
 
@@ -407,7 +414,7 @@ i.icons {
             bottom: @cornerOffset;
             font-size: @cornerIconSize;
             text-shadow: @cornerIconShadow;
-            &:not(.rotated):not(.flipped) {
+            &@{notRotated}@{notFlipped} {
                 transform: none;
             }
         }

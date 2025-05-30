@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Table
+ * # Fomantic-UI 2.9.4 - Table
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -109,16 +109,16 @@
 .ui.table > tfoot > tr > td:first-child {
   border-left: none;
 }
-.ui.table > tfoot > tr:first-child > th:first-child,
-.ui.table > tfoot > tr:first-child > td:first-child {
+.ui.table > tfoot > tr:last-child > th:first-child,
+.ui.table > tfoot > tr:last-child > td:first-child {
   border-radius: 0 0 0 0.28571429rem;
 }
-.ui.table > tfoot > tr:first-child > th:last-child,
-.ui.table > tfoot > tr:first-child > td:last-child {
+.ui.table > tfoot > tr:last-child > th:last-child,
+.ui.table > tfoot > tr:last-child > td:last-child {
   border-radius: 0 0 0.28571429rem 0;
 }
-.ui.table > tfoot > tr:first-child > th:only-child,
-.ui.table > tfoot > tr:first-child > td:only-child {
+.ui.table > tfoot > tr:last-child > th:only-child,
+.ui.table > tfoot > tr:last-child > td:only-child {
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 
@@ -559,9 +559,6 @@
   overflow-y: scroll;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
-  scrollbar-width: thin;
-  
-/* Firefox */
 }
 .ui.scrolling.table > thead > tr,
 .ui.scrolling.table > tfoot > tr,
@@ -569,6 +566,13 @@
   display: table;
   table-layout: fixed;
   width: 100%;
+}
+@supports (-moz-appearance: none) {
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot,
+  .ui.scrolling.table > tbody {
+    scrollbar-width: thin;
+  }
 }
 
 /* Camouflage scrollbars, we need them only to gain the same width as tbody */
@@ -595,19 +599,22 @@
   background: inherit;
   border-radius: 0.28571429rem;
 }
-
-/* Firefox & IE */
-.ui.scrolling.table > thead,
-.ui.scrolling.table > tfoot {
-  scrollbar-color: currentColor currentColor;
-  scrollbar-face-color: currentColor;
-  scrollbar-shadow-color: currentColor;
-  scrollbar-track-color: currentColor;
-  scrollbar-arrow-color: currentColor;
+@supports (-moz-appearance: none) {
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot {
+    scrollbar-color: currentColor currentColor;
+  }
 }
 
 /* IE scrollbar color needs hex values */
 @media all and (-ms-high-contrast: none) {
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot {
+    scrollbar-face-color: currentColor;
+    scrollbar-shadow-color: currentColor;
+    scrollbar-track-color: currentColor;
+    scrollbar-arrow-color: currentColor;
+  }
   .ui.scrolling.table > thead {
     color: #f9fafb;
   }
@@ -640,9 +647,13 @@
   scrollbar-shadow-color: #656565;
   scrollbar-track-color: #323232;
   scrollbar-arrow-color: #323232;
-  
+}
+@supports (-moz-appearance: none) {
+  .ui.inverted.scrolling.table > tbody {
+    
 /* firefox: first color thumb, second track */
-  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+    scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+  }
 }
 .ui.resizable.scrolling.table > tbody {
   resize: vertical;

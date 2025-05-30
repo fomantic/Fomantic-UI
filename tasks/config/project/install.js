@@ -2,13 +2,10 @@
             Set-up
 *******************************/
 
-const
-    fs             = require('fs'),
-    path           = require('path'),
-    requireDotFile = require('require-dot-file'),
-    defaults       = require('../defaults'),
-    release        = require('./release')
-;
+const path = require('node:path');
+const requireDotFile = require('require-dot-file');
+const defaults = require('../defaults');
+const release = require('./release');
 
 /*******************************
           When to Ask
@@ -83,50 +80,44 @@ module.exports = {
 
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function () {
-        let
-            config = when.hasConfig()
-        ;
+        let config = when.hasConfig();
 
         return config.autoInstall;
     },
 
     // checks if files are in a PM directory
     getPackageManager: function (directory) {
-        let
-            // returns last matching result (avoid sub-module detection)
-            walk = function (directory) {
-                let
-                    pathArray     = directory.split(path.sep),
-                    folder        = pathArray[pathArray.length - 1],
-                    nextDirectory = path.join(directory, path.sep, '..')
-                ;
-                if (folder === 'bower_components') {
-                    return {
-                        name: 'Bower',
-                        root: nextDirectory,
-                    };
-                }
-                if (folder === 'node_modules') {
-                    return {
-                        name: 'NPM',
-                        root: nextDirectory,
-                    };
-                }
-                if (folder === 'composer') {
-                    return {
-                        name: 'Composer',
-                        root: nextDirectory,
-                    };
-                }
-                if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return false;
-                }
-
-                // recurse downward
-                return walk(nextDirectory);
+        // returns last matching result (avoid sub-module detection)
+        let walk = function (directory) {
+            let pathArray = directory.split(path.sep);
+            let folder = pathArray[pathArray.length - 1];
+            let nextDirectory = path.join(directory, path.sep, '..');
+            if (folder === 'bower_components') {
+                return {
+                    name: 'Bower',
+                    root: nextDirectory,
+                };
             }
-        ;
-        // start walk from current directory if none specified
+            if (folder === 'node_modules') {
+                return {
+                    name: 'NPM',
+                    root: nextDirectory,
+                };
+            }
+            if (folder === 'composer') {
+                return {
+                    name: 'Composer',
+                    root: nextDirectory,
+                };
+            }
+            if (path.resolve(directory) === path.resolve(nextDirectory)) {
+                return false;
+            }
+
+            // recurse downward
+            return walk(nextDirectory);
+        };
+        // start walk from the current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
 
         return walk(directory);
@@ -134,27 +125,23 @@ module.exports = {
 
     // checks if files is PMed submodule
     isSubModule: function (directory) {
-        let
-            moduleFolders = 0,
-            walk = function (directory) {
-                let
-                    pathArray     = directory.split(path.sep),
-                    folder        = pathArray[pathArray.length - 2],
-                    nextDirectory = path.join(directory, path.sep, '..')
-                ;
-                if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
-                    moduleFolders++;
-                } else if (folder === '.pnpm') {
-                    moduleFolders--;
-                }
-                if (path.resolve(directory) === path.resolve(nextDirectory)) {
-                    return moduleFolders > 1;
-                }
-
-                // recurse downward
-                return walk(nextDirectory);
+        let moduleFolders = 0;
+        let walk = function (directory) {
+            let pathArray = directory.split(path.sep);
+            let folder = pathArray[pathArray.length - 2];
+            let nextDirectory = path.join(directory, path.sep, '..');
+            if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
+                moduleFolders++;
+            } else if (folder === '.pnpm') {
+                moduleFolders--;
             }
-        ;
+            if (path.resolve(directory) === path.resolve(nextDirectory)) {
+                return moduleFolders > 1;
+            }
+
+            // recurse downward
+            return walk(nextDirectory);
+        };
         // start walk from current directory if none specified
         directory = directory || path.join(__dirname, path.sep);
 
@@ -162,14 +149,12 @@ module.exports = {
     },
 
     createJSON: function (answers) {
-        let
-            json = {
-                paths: {
-                    source: {},
-                    output: {},
-                },
-            }
-        ;
+        let json = {
+            paths: {
+                source: {},
+                output: {},
+            },
+        };
 
         // add components
         if (answers.components) {
@@ -191,7 +176,7 @@ module.exports = {
             json.base = path.normalize(answers.semanticRoot);
         }
 
-        // record version number to avoid re-installing on same version
+        // record version number to avoid re-installing on the same version
         json.version = release.version;
 
         // add dist folder paths
@@ -256,7 +241,6 @@ module.exports = {
         config: 'semantic.json',
         overridesImport: 'src/overrides.less',
         lessImport: 'src/semantic.less',
-        site: 'src/site',
         themeConfig: 'src/theme.config',
         themeImport: 'src/theme.less',
     },
@@ -751,20 +735,18 @@ module.exports = {
         },
 
         /* Copy Install Folders */
-        wrench: {
+        copy: {
 
-            // overwrite existing files update & install (default theme / definition)
+            // overwrite existing files update and install (default theme / definition)
             overwrite: {
-                forceDelete: true,
-                excludeHiddenUnix: true,
-                preserveFiles: false,
+                overwrite: true,
+                preserveTimestamps: true,
             },
 
             // only create files that don't exist (site theme update)
             merge: {
-                forceDelete: false,
-                excludeHiddenUnix: true,
-                preserveFiles: true,
+                overwrite: false,
+                preserveTimestamps: true,
             },
 
         },

@@ -2,14 +2,12 @@
  *           Set-up
  *******************************/
 
-const
-    gulp   = require('gulp'),
+const gulp = require('gulp');
 
-    // read user config to know what task to load
-    config = require('./tasks/config/user'), // eslint-disable-line import/extensions
+// read user config to know what task to load
+const config = require('./tasks/config/user'); // eslint-disable-line import/extensions
 
-    rtl = require('./tasks/collections/rtl') // eslint-disable-line import/extensions
-;
+const rtl = require('./tasks/collections/rtl'); // eslint-disable-line import/extensions
 
 /*******************************
  *            Tasks

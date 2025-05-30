@@ -126,20 +126,20 @@
             Types
 *******************************/
 
-/* Selection */
-@selectionPromptBorderRadius: @defaultBorderRadius;
+/* Clearable */
+@clearableIconTransition: opacity @defaultDuration @defaultEasing;
+@clearableIconOpacity: 0.6;
+@clearableIconHoverOpacity: 1;
+@clearableIconWidth: 1em;
+@clearableIconHeight: @clearableIconWidth;
 
-@selectionCloseTop: 0;
-@selectionCloseTransition:
-    color @defaultDuration @defaultEasing,
-    opacity @defaultDuration @defaultEasing;
-@selectionCloseRight: 0;
-@selectionCloseIconOpacity: 0.8;
-@selectionCloseIconColor: "";
-@selectionCloseIconHoverOpacity: 1;
-@selectionCloseIconHoverColor: @red;
+@clearableIconInputRight: 1.85714em;
 
-@selectionCloseIconInputRight: 1.85714em;
+/*
+ * Times icon taken from Font Awesome Free 5.15.4 by @fontawesome [https://fontawesome.com]
+ * License - https://fontawesome.com/license/free
+ */
+@clearableIconBackground: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 352 512'%3E%3Cpath d='M242.7 256l100.1-100.1c12.3-12.3 12.3-32.2 0-44.5l-22.2-22.2c-12.3-12.3-32.2-12.3-44.5 0L176 189.3 75.9 89.2c-12.3-12.3-32.2-12.3-44.5 0L9.2 111.5c-12.3 12.3-12.3 32.2 0 44.5L109.3 256 9.2 356.1c-12.3 12.3-12.3 32.2 0 44.5l22.2 22.2c12.3 12.3 32.2 12.3 44.5 0L176 322.7l100.1 100.1c12.3 12.3 32.2 12.3 44.5 0l22.2-22.2c12.3-12.3 12.3-32.2 0-44.5L242.7 256z'/%3E%3C/svg%3E") no-repeat;
 
 /* Category */
 @categoryBackground: @darkWhite;
@@ -177,3 +177,6 @@
 
 /* Resizable */
 @resizableDirection: vertical;
+
+@highlightMatchesBackground: @defaultHighlightMatchesBackground;
+@highlightMatchesColor: @defaultHighlightMatchesColor;

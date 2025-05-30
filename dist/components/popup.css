@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Popup
+ * # Fomantic-UI 2.9.4 - Popup
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -20,7 +20,6 @@
   right: 0;
   
 /* Fixes content being squished when inline (moz only) */
-  min-width: -webkit-min-content;
   min-width: min-content;
   z-index: 1900;
   border: 1px solid #d4d4d5;

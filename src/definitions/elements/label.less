@@ -17,6 +17,12 @@
 
 @import (multiple) "../../theme.config";
 
+@notTag: if(@variationLabelTag, e(":not(.tag)"));
+@notImage: if(@variationLabelImage, e(":not(.image)"));
+@notRibbon: if(@variationLabelRibbon, e(":not(.ribbon)"));
+
+@notBasic: if(@variationSegmentBasic, e(":not(.basic)"));
+
 /*******************************
             Label
 *******************************/
@@ -164,19 +170,19 @@ a.ui.label {
     margin-bottom: @attachedSegmentPadding !important;
 }
 
-.ui.segment:not(.basic) > .ui.top.attached.label {
+.ui.segment@{notBasic} > .ui.top.attached.label {
     margin-top: @attachedOffset;
 }
-.ui.segment:not(.basic) > .ui.bottom.attached.label {
+.ui.segment@{notBasic} > .ui.bottom.attached.label {
     margin-bottom: @attachedOffset;
 }
-.ui.segment:not(.basic) > .ui.attached.label:not(.right) {
+.ui.segment@{notBasic} > .ui.attached.label:not(.right) {
     margin-left: @attachedOffset;
 }
-.ui.segment:not(.basic) > .ui.right.attached.label {
+.ui.segment@{notBasic} > .ui.right.attached.label {
     margin-right: @attachedOffset;
 }
-.ui.segment:not(.basic) > .ui.attached.label:not(.left):not(.right) {
+.ui.segment@{notBasic} > .ui.attached.label:not(.left):not(.right) {
     width: @attachedWidthOffset;
 }
 
@@ -184,6 +190,7 @@ a.ui.label {
              Types
 *******************************/
 & when (@variationLabelImage) {
+    .ui.image.labels .label,
     .ui.image.label {
         width: auto;
         margin-top: 0;
@@ -195,9 +202,13 @@ a.ui.label {
         padding: @imageLabelPadding;
         border-radius: @imageLabelBorderRadius;
         box-shadow: @imageLabelBoxShadow;
-        &.attached:not(.basic) when (@variationLabelAttached) {
+        &.attached@{notBasic} when (@variationLabelAttached) {
             padding: @imageLabelPadding;
         }
+    }
+    .ui.labels .image.label,
+    .ui.image.labels .label {
+        margin-bottom: @groupVerticalMargin;
     }
 
     .ui.image.label img {
@@ -637,8 +648,8 @@ a.ui.active.label:hover::before {
         padding-bottom: @basicVerticalPadding;
         padding-right: @basicHorizontalPadding;
     }
-    .ui.basic.labels:not(.tag):not(.image):not(.ribbon) .label,
-    .ui.basic.label:not(.tag):not(.image):not(.ribbon) {
+    .ui.basic.labels@{notTag}@{notImage}@{notRibbon} .label,
+    .ui.basic.label@{notTag}@{notImage}@{notRibbon} {
         padding-left: @basicHorizontalPadding;
     }
     & when (@variationLabelImage) {

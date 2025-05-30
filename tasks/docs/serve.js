@@ -2,32 +2,30 @@
  Serve Docs
  *******************************/
 
-const
-    extend      = require('extend'),
+const extend = require('extend');
 
-    // node dependencies
-    console     = require('better-console'),
-    gulp        = require('gulp'),
+// node dependencies
+const console = require('@fomantic/better-console');
+const gulp = require('gulp');
 
-    // gulp dependencies
-    print       = require('gulp-print').default,
+// gulp dependencies
+const print = require('gulp-print').default;
 
-    // user config
-    configDocs      = require('../config/docs'),
+// user config
+const configDocs = require('../config/docs');
 
-    // task config
-    tasks       = require('../config/tasks'),
-    configSetup = require('../config/project/config'),
+// task config
+const tasks = require('../config/tasks');
+const configSetup = require('../config/project/config');
 
-    // shorthand
-    log         = tasks.log,
+// shorthand
+const log = tasks.log;
 
-    css         = require('../build/css'),
-    js          = require('../build/javascript'),
-    assets      = require('../build/assets')
-;
+const css = require('../build/css');
+const js = require('../build/javascript');
+const assets = require('../build/assets');
 
-module.exports = function () {
+module.exports = function (callback) {
     // use a different config
     const config = extend(true, {}, configDocs);
     configSetup.addDerivedValues(config);
@@ -49,12 +47,11 @@ module.exports = function () {
 
             return gulp.src(path, {
                 base: 'src/',
+                encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.less))
-                .pipe(print(log.created))
-            ;
-        })
-    ;
+                .pipe(print(log.created));
+        });
 
     /* --------------
       Copy Examples
@@ -70,12 +67,11 @@ module.exports = function () {
 
             return gulp.src(path, {
                 base: 'examples/',
+                encoding: false,
             })
                 .pipe(gulp.dest(config.paths.output.examples))
-                .pipe(print(log.created))
-            ;
-        })
-    ;
+                .pipe(print(log.created));
+        });
 
     /* --------------
         Watch CSS
@@ -94,4 +90,6 @@ module.exports = function () {
     --------------- */
 
     assets.watch('docs', config);
+
+    callback();
 };

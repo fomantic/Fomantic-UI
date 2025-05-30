@@ -13,6 +13,11 @@ declare namespace FomanticUI {
         (behavior: 'animate continue'): JQuery;
 
         /**
+         * Show the toast
+         */
+        (behavior: 'show'): JQuery;
+
+        /**
          * Closes the toast
          */
         (behavior: 'close'): JQuery;
@@ -28,7 +33,7 @@ declare namespace FomanticUI {
         (behavior: 'get remainingTime'): number;
 
         (behavior: 'refresh' | 'destroy'): JQuery;
-        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ToastSettings, keyof ToastSettings>>;
+        <K extends keyof ToastSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ToastSettings, keyof ToastSettings>>;
         <K extends keyof ToastSettings>(behavior: 'setting', name: K, value: ToastSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
         (settings?: Partial<Pick<ToastSettings, keyof ToastSettings>>): JQuery;
@@ -121,6 +126,13 @@ declare namespace FomanticUI {
         showImage: false | string;
 
         /**
+         * Alt text for a given showImage.
+         *
+         * @default false
+         */
+        alt: false | string;
+
+        /**
          * Define if the toast should display an icon which matches to a given class.
          * If a string is given, this will be used as icon classname.
          *
@@ -199,7 +211,7 @@ declare namespace FomanticUI {
          * Whether HTML included in given title, message or actions should be preserved.
          * Set to 'false' in case you work with untrusted 3rd party content.
          *
-         * @default true
+         * @default false
          */
         preserveHTML: boolean;
 
@@ -273,7 +285,7 @@ declare namespace FomanticUI {
         /**
          * An array of objects. Each object defines an action with 'properties' 'text', 'class', 'icon' and 'click'.
          */
-        actions: Toast.ActionsSettings;
+        actions: Toast.ActionsSettings[];
 
         // endregion
 

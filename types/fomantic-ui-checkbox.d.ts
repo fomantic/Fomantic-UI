@@ -33,6 +33,11 @@ declare namespace FomanticUI {
         (behavior: 'enable'): JQuery;
 
         /**
+         * Disable interaction with a checkbox.
+         */
+        (behavior: 'disable'): JQuery;
+
+        /**
          * Set a checkbox state to checked without callbacks.
          */
         (behavior: 'set checked'): JQuery;
@@ -81,6 +86,11 @@ declare namespace FomanticUI {
          * Returns whether element is not checked.
          */
         (behavior: 'is unchecked'): boolean;
+
+        /**
+         * Returns whether element is not determinate.
+         */
+        (behavior: 'is indeterminate'): boolean;
 
         /**
          * Returns whether element is able to be changed.
@@ -175,22 +185,22 @@ declare namespace FomanticUI {
         /**
          * Callback before a checkbox is checked. Can cancel change by returning 'false'.
          */
-        beforeChecked(this: JQuery): void | false;
+        beforeChecked(this: JQuery): void | Promise<void> | boolean;
 
         /**
          * Callback before a checkbox is set to indeterminate. Can cancel change by returning 'false'.
          */
-        beforeIndeterminate(this: JQuery): void | false;
+        beforeIndeterminate(this: JQuery): void | Promise<void> | false;
 
         /**
          * Callback before a checkbox is set to determinate. Can cancel change by returning 'false'.
          */
-        beforeDeterminate(this: JQuery): void | false;
+        beforeDeterminate(this: JQuery): void | Promise<void> | false;
 
         /**
          * Callback before a checkbox is unchecked. Can cancel change by returning 'false'.
          */
-        beforeUnchecked(this: JQuery): void | false;
+        beforeUnchecked(this: JQuery): void | Promise<void> | false;
 
         /**
          * Callback after a checkbox is enabled.

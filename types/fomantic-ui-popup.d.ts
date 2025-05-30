@@ -67,7 +67,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<PopupSettings, keyof PopupSettings>>;
+        <K extends keyof PopupSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<PopupSettings, keyof PopupSettings>>;
         <K extends keyof PopupSettings>(behavior: 'setting', name: K, value: PopupSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
         (settings?: Partial<Pick<PopupSettings, keyof PopupSettings>>): JQuery;
@@ -84,7 +84,7 @@ declare namespace FomanticUI {
          * This is useful for including a pre-formatted popup.
          * @default false
          */
-        popup: false | string;
+        popup: false | string | JQuery;
 
         /**
          * Whether all other popups should be hidden when this popup is opened.
@@ -189,7 +189,7 @@ declare namespace FomanticUI {
          * Alternatively you can provide an object to set individual values for hide/show transitions as well as hide/show duration.
          * @default 'scale'
          */
-        transition: string | object;
+        transition: string | Popup.TransitionSettings;
 
         /**
          * Duration of animation events.
@@ -266,39 +266,39 @@ declare namespace FomanticUI {
         /**
          * Callback on popup element creation, with created popup.
          */
-        onCreate(this: JQuery): void;
+        onCreate(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback immediately before Popup is removed from DOM.
          */
-        onRemove(this: JQuery): void;
+        onRemove(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback before popup is shown.
          * Returning 'false' from this callback will cancel the popup from showing.
          */
-        onShow(this: JQuery): boolean;
+        onShow(this: JQuery, element?: JQuery<HTMLElement>): any;
 
         /**
          * Callback after popup is shown.
          */
-        onVisible(this: JQuery): void;
+        onVisible(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback before popup is hidden.
          * Returning 'false' from this callback will cancel the popup from hiding.
          */
-        onHide(this: JQuery): boolean;
+        onHide(this: JQuery, element?: JQuery<HTMLElement>): any;
 
         /**
          * Callback after popup is hidden.
          */
-        onHidden(this: JQuery): void;
+        onHidden(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         /**
          * Callback after popup cannot be placed on screen.
          */
-        onUnplaceable(this: JQuery): void;
+        onUnplaceable(this: JQuery, element?: JQuery<HTMLElement>): void;
 
         // endregion
 
@@ -390,19 +390,45 @@ declare namespace FomanticUI {
     }
 
     namespace Popup {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type MetadataSettings = Partial<Pick<Settings.Metadatas, keyof Settings.Metadatas>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '.ui.popup'
                  */
                 popup: string;
             }
-        
+
             interface Metadatas {
                 /**
                  * @default 'activator'
@@ -439,7 +465,7 @@ declare namespace FomanticUI {
                  */
                 variation: string;
             }
-        
+
             interface ClassNames {
                 /**
                  * @default 'active'

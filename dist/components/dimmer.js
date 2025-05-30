@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Dimmer
+ * # Fomantic-UI 2.9.4 - Dimmer
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -528,7 +528,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

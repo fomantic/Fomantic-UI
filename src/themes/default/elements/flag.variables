@@ -5,7 +5,7 @@
 /* --------------
     Path
 --------------- */
-@flagPath: "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/";
+@flagPath: "https://cdn.jsdelivr.net/gh/jdecked/twemoji@latest/assets/svg/";
 @flagFileType: "svg";
 
 /* -------------------
@@ -815,9 +815,9 @@
     };
     @1f1f2-1f1f0: {
         countrycode: mk;
-        class: macedonia;
-        aliasClass: false;
-        aliasClass2: false;
+        class: republic_of_north_macedonia;
+        aliasClass: north_macedonia;
+        aliasClass2: macedonia;
     };
     @1f1f2-1f1ec: {
         countrycode: mg;

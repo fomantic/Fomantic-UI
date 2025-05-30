@@ -107,7 +107,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof APISettings | JQueryAjaxSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>;
+        <K extends keyof APISettings | JQueryAjaxSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>;
         <K extends keyof APISettings>(behavior: 'setting', name: K, value: APISettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>): JQuery;
         (settings?: Partial<Pick<APISettings, keyof APISettings>> | Partial<Pick<JQueryAjaxSettings, keyof JQueryAjaxSettings>>): JQuery;
@@ -126,6 +126,12 @@ declare namespace FomanticUI {
         on: string;
 
         /**
+         * Object containing all templates endpoints
+         * @default {}
+         */
+        api: {[key: string]: string};
+
+        /**
          * Can be set to 'local' to cache successful returned AJAX responses when using a JSON API.
          * This helps avoid server roundtrips when API endpoints will return the same results when accessed repeatedly.
          * Setting to 'false', will add cache busting parameters to the URL.
@@ -137,7 +143,7 @@ declare namespace FomanticUI {
          * UI state will be applied to this element, defaults to triggering element.
          * @default false
          */
-        stateContext: false | JQuery;
+        stateContext: false | string | JQuery<any>;
 
         /**
          * Whether to encode parameters with 'encodeURIComponent' before adding into url string.
@@ -259,7 +265,7 @@ declare namespace FomanticUI {
          * Method for transmitting request to server.
          * @default 'get'
          */
-        method: 'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch';
+        method: Uppercase<'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch'> | Lowercase<'get' | 'post' | 'put' | 'delete' | 'head' | 'options' | 'patch'>;
 
         /**
          * Expected data type of response.

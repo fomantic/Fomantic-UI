@@ -20,6 +20,7 @@ module.exports = {
         '/test/helpers',
     ],
     rules: {
+        'brace-style': ['error', '1tbs'],
         'class-methods-use-this': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
@@ -42,12 +43,6 @@ module.exports = {
         'no-console': 'off',
         'no-continue': 'off',
         'no-lonely-if': 'off',
-        'no-multi-spaces': ['error', {
-            exceptions: {
-                Property: true,
-                VariableDeclarator: true,
-            },
-        }],
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -91,18 +86,14 @@ module.exports = {
         'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
-        'no-var': 'off', // https://github.com/fomantic/Fomantic-UI/pull/2584
-        'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
         'prefer-rest-params': 'off',
         'prefer-spread': 'off',
-        'semi-style': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-includes': 'off',
-        'unicorn/prefer-node-protocol': 'off', // needs Node 14+
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-prototype-methods': 'off',
@@ -120,4 +111,20 @@ module.exports = {
     globals: {
         jQuery: true,
     },
+    overrides: [{
+        files: ['**/*.ts'],
+        parser: '@typescript-eslint/parser',
+        extends: [
+            'plugin:@typescript-eslint/recommended',
+        ],
+        rules: {
+            // https://typescript-eslint.io/rules/no-use-before-define#how-to-use
+            'no-use-before-define': 'off',
+
+            // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
+            '@typescript-eslint/ban-types': 'off', // 16 eslint errors only, help wanted!
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off',
+        },
+    }],
 };

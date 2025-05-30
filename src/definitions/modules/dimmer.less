@@ -17,6 +17,9 @@
 
 @import (multiple) "../../theme.config";
 
+@notInverted: if(@variationDimmerInverted, e(":not(.inverted)"));
+@notPage: if(@variationDimmerPage, e(":not(.page)"));
+
 /*******************************
             Dimmer
 *******************************/
@@ -56,35 +59,29 @@
 }
 
 /* Loose Coupling */
-.ui.segment > .ui.dimmer:not(.page) {
+.ui.segment > .ui.dimmer@{notPage} {
     border-radius: inherit;
 }
 
 /* Scrollbars */
 & when (@useCustomScrollbars) {
-    .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
+    .ui.dimmer@{notInverted}::-webkit-scrollbar-track {
         background: @trackInvertedBackground;
     }
-    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb {
+    .ui.dimmer@{notInverted}::-webkit-scrollbar-thumb {
         background: @thumbInvertedBackground;
     }
-    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:window-inactive {
+    .ui.dimmer@{notInverted}::-webkit-scrollbar-thumb:window-inactive {
         background: @thumbInvertedInactiveBackground;
     }
-    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
+    .ui.dimmer@{notInverted}::-webkit-scrollbar-thumb:hover {
         background: @thumbInvertedHoverBackground;
     }
-    .ui.dimmer:not(.inverted) {
-        & when (@supportIE) {
-            /* IE11 */
-            scrollbar-face-color: @thumbInvertedBackgroundHex;
-            scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-            scrollbar-track-color: @trackInvertedBackgroundHex;
-            scrollbar-arrow-color: @trackInvertedBackgroundHex;
+    @supports (-moz-appearance: none) {
+        .ui.dimmer@{notInverted} {
+            /* firefox: first color thumb, second track */
+            scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
         }
-
-        /* firefox: first color thumb, second track */
-        scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
     }
 }
 

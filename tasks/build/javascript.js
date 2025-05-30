@@ -2,45 +2,44 @@
  Build Task
  *******************************/
 
-const
-    gulp       = require('gulp'),
+const gulp = require('gulp');
 
-    // node dependencies
-    console    = require('better-console'),
+// node dependencies
+const console = require('@fomantic/better-console');
 
-    // gulp dependencies
-    chmod      = require('gulp-chmod'),
-    concat     = require('gulp-concat'),
-    dedupe     = require('gulp-dedupe'),
-    flatten    = require('gulp-flatten'),
-    gulpif     = require('gulp-if'),
-    header     = require('gulp-header'),
-    normalize  = require('normalize-path'),
-    plumber    = require('gulp-plumber'),
-    print      = require('gulp-print').default,
-    rename     = require('gulp-rename'),
-    replace    = require('gulp-replace'),
-    uglify     = require('gulp-uglify'),
+// gulp dependencies
+const chmod = require('gulp-chmod');
+const concat = require('gulp-concat');
+const dedupe = require('@fomantic/gulp-dedupe');
+const flatten = require('gulp-flatten');
+const gulpif = require('gulp-if');
+const header = require('@fomantic/gulp-header');
+const normalize = require('normalize-path');
+const ordered = require('ordered-read-streams');
+const plumber = require('@fomantic/gulp-plumber');
+const print = require('gulp-print').default;
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const uglify = require('gulp-uglify');
 
-    // config
-    config     = require('../config/user'),
-    docsConfig = require('../config/docs'),
-    tasks      = require('../config/tasks'),
-    install    = require('../config/project/install'),
+// config
+const config = require('../config/user');
+const docsConfig = require('../config/docs');
+const tasks = require('../config/tasks');
+const install = require('../config/project/install');
 
-    // shorthand
-    globs      = config.globs,
-    assets     = config.paths.assets,
+// shorthand
+const globs = config.globs;
+const assets = config.paths.assets;
 
-    banner     = tasks.banner,
-    filenames  = tasks.filenames,
-    comments   = tasks.regExp.comments,
-    log        = tasks.log,
-    settings   = tasks.settings
-;
+const banner = tasks.banner;
+const filenames = tasks.filenames;
+const comments = tasks.regExp.comments;
+const log = tasks.log;
+const settings = tasks.settings;
 
 /**
- * Concat and uglify the Javascript files
+ * Concat and uglify the JavaScript files
  * @param {string|array} src - source files
  * @param type
  * @param config
@@ -59,20 +58,24 @@ function build(src, type, config) {
         .pipe(header(banner, settings.header))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.compressed))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 /**
- * Packages the Javascript files in dist
+ * Packages the JavaScript files in dist
  * @param {string} type - type of the js processing (none, rtl, docs)
  * @param {boolean} compress - should the output be compressed
  */
 function pack(type, compress) {
-    const output         = type === 'docs' ? docsConfig.paths.output : config.paths.output;
+    const output = type === 'docs' ? docsConfig.paths.output : config.paths.output;
     const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
-    return gulp.src(output.uncompressed + '/**/' + globs.components + globs.ignored + '.js')
+    let src = globs.components
+        .replace(/[{}]/g, '')
+        .split(',')
+        .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'));
+
+    return ordered(src)
         .pipe(plumber())
         .pipe(dedupe())
         .pipe(replace(assets.uncompressed, assets.packaged))
@@ -82,8 +85,7 @@ function pack(type, compress) {
         .pipe(header(banner, settings.header))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(output.packaged))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 function buildJS(src, type, config, callback) {
@@ -108,13 +110,13 @@ function buildJS(src, type, config, callback) {
     }
 
     // copy source javascript
-    const js       = () => build(src, type, config);
+    const js = () => build(src, type, config);
     js.displayName = 'Building un/compressed Javascript';
 
-    const packUncompressed       = () => pack(type, false);
+    const packUncompressed = () => pack(type, false);
     packUncompressed.displayName = 'Packing uncompressed Javascript';
 
-    const packCompressed       = () => pack(type, true);
+    const packCompressed = () => pack(type, true);
     packCompressed.displayName = 'Packing compressed Javascript';
 
     gulp.series(js, gulp.parallel(packUncompressed, packCompressed))(callback);
@@ -125,10 +127,8 @@ module.exports = function (callback) {
 };
 
 // We keep the changed files in an array to call build with all of them at the same time
-let
-    timeout,
-    files = []
-;
+let timeout;
+let files = [];
 
 module.exports.watch = function (type, config) {
     gulp
@@ -144,7 +144,7 @@ module.exports.watch = function (type, config) {
                 clearTimeout(timeout);
             }
 
-            // Add file to internal changed files array
+            // Add the file to the internal changed files array
             if (!files.includes(path)) {
                 files.push(path);
             }
@@ -159,8 +159,7 @@ module.exports.watch = function (type, config) {
                 // Reset internal changed files array
                 files = [];
             }, 1000);
-        })
-    ;
+        });
 };
 
 module.exports.buildJS = buildJS;

@@ -35,7 +35,7 @@ declare namespace FomanticUI {
          */
         (behavior: 'destroy'): JQuery;
 
-        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<SliderSettings, keyof SliderSettings>>;
+        <K extends keyof SliderSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<SliderSettings, keyof SliderSettings>>;
         <K extends keyof SliderSettings>(behavior: 'setting', name: K, value: SliderSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;
         (settings?: Partial<Pick<SliderSettings, keyof SliderSettings>>): JQuery;
@@ -79,6 +79,18 @@ declare namespace FomanticUI {
         end: number;
 
         /**
+         * Makes sure that the two thumbs of a range slider always need to have a difference of the given value.
+         * @default false
+         */
+        minRange: false | number;
+
+        /**
+         * Makes sure that the two thumbs of a range slider don't exceed a difference of the given value.
+         * @default false
+         */
+        maxRange: false | number;
+
+        /**
          * The type of label to display for a labeled slider.
          * Can be 'number' or 'letter'.
          * @default 'number'
@@ -89,13 +101,43 @@ declare namespace FomanticUI {
          * You can specify a function here which consumes the current label value as parameter and should return a custom label text according to the given value.
          * @default false
          */
-        interpretLabel: false | Function;
+        interpretLabel: false | ((value: any) => string);
+
+        /**
+         * String or array of strings to be used for labelType 'letter'
+         * @default 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+         */
+        letters: string | string[],
+
+        /**
+         * An array of label values which restrict the displayed labels to only those which are defined
+         * @default []
+         */
+        restrictedLabels: number[];
+
+        /**
+         * If the selected range labels should be highlighted
+         * @default false
+         */
+        highlightRange: boolean;
+
+        /**
+         * Whether a tooltip should be shown to the thumb(s) on hover. Will contain the current slider value.
+         * @default false
+         */
+        showThumbTooltip: boolean;
+
+        /**
+         * Tooltip configuration used when showThumbTooltip is true
+         * @default false
+         */
+        tooltipConfig: object;
 
         /**
          * Show ticks on a labeled slider.
          * @default false
          */
-        showLabelTicks: boolean;
+        showLabelTicks: boolean | 'always';
 
         /**
          * Define smoothness when the slider is moving.
@@ -107,7 +149,7 @@ declare namespace FomanticUI {
          * Whether labels should auto adjust on window resize.
          * @default true
          */
-        autoAdjustLabels: boolean;
+        autoAdjustLabels: boolean | 'fixed';
 
         /**
          * The distance between labels.
@@ -254,6 +296,16 @@ declare namespace FomanticUI {
                  * @default 'smooth'
                  */
                 smooth: string;
+
+                /**
+                 * @default 'label'
+                 */
+                label: string;
+
+                /**
+                 * @default 'active'
+                 */
+                active: string;
             }
 
             interface Metadatas {

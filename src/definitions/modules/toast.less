@@ -17,6 +17,17 @@
 
 @import (multiple) "../../theme.config";
 
+@notActions: if(@variationToastActions, e(":not(.actions)"));
+@notAttached: if(@variationToastAttached, e(":not(.attached)"));
+@notVertical: if(@variationToastVertical, e(":not(.vertical)"));
+@notCenter: if(@variationToastCenter, e(":not(.center)"));
+@notCentered: if(@variationToastCentered, e(":not(.centered)"));
+@notBasic: if(@variationToastBasic, e(":not(.basic)"));
+@notClose: if(@variationToastClose, e(":not(.close)"));
+@notUnclickable: if(@variationToastUnclickable, e(":not(.unclickable)"));
+
+@notFluid: if(@variationButtonFluid, e(":not(.fluid)"));
+
 /*******************************
         Toast container
 *******************************/
@@ -56,7 +67,7 @@
             & > * {
                 width: 100%;
                 border-radius: 0;
-                & > .vertical:not(.actions) when (@variationToastVertical) {
+                & > .vertical@{notActions} when (@variationToastVertical) {
                     flex: 1;
                 }
             }
@@ -130,7 +141,7 @@
         &:hover {
             opacity: @toastOpacityOnHover;
         }
-        &:not(.unclickable):hover {
+        &@{notUnclickable}:hover {
             cursor: @toastCursorOnHover;
         }
         & when (@variationToastFloating) {
@@ -195,18 +206,18 @@
             }
             &.icon when (@variationToastIcon) {
                 align-items: inherit;
-                & > :not(.icon):not(.actions) {
+                & > :not(.icon)@{notActions} {
                     padding-left: @toastIconMessageContentPadding;
                 }
-                & > i.icon:not(.close) when (@variationToastIcon) {
+                & > i.icon@{notClose} when (@variationToastIcon) {
                     display: inline-block;
                     position: absolute;
                     width: @toastIconMessageWidth;
                     top: 50%;
                     transform: translateY(-50%);
                 }
-                &:not(.vertical) {
-                    &.actions > i.icon:not(.close) when (@variationToastActions) and (@variationToastIcon) {
+                &@{notVertical} {
+                    &.actions > i.icon@{notClose} when (@variationToastActions) and (@variationToastIcon) {
                         top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
                         transform: none;
                     }
@@ -230,7 +241,7 @@
                 margin-top: -@toastCloseTopDistance;
                 margin-right: -@toastCloseTopDistance;
             }
-            &:not(.vertical) > .close.icon when (@variationToastClose) {
+            &@{notVertical} > .close.icon when (@variationToastClose) {
                 position: absolute;
                 top: @toastCloseTopDistance;
                 &:not(.left) {
@@ -243,7 +254,7 @@
         }
         & .ui.card when (@variationToastCard) {
             margin: 0;
-            &.attached:not(.vertical) when (@variationToastAttached) {
+            &.attached@{notVertical} when (@variationToastAttached) {
                 &.bottom {
                     border-top-left-radius: 0;
                     border-top-right-radius: 0;
@@ -296,7 +307,7 @@
         &:hover .pausable.progressing {
             animation-play-state: paused;
         }
-        & .ui.toast:not(.vertical) {
+        & .ui.toast@{notVertical} {
             display: block;
         }
         & :not(.comment) {
@@ -306,10 +317,10 @@
             & .actions when (@variationToastActions) {
                 padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
                 text-align: right;
-                &.attached:not(.vertical) when (@variationToastAttached) {
+                &.attached@{notVertical} when (@variationToastAttached) {
                     margin-right: @toastLeftRightMargin;
                 }
-                &:not(.basic):not(.attached) {
+                &@{notBasic}@{notAttached} {
                     background: @toastActionBackground;
                     border-top: @toastActionBorder;
                 }
@@ -333,13 +344,13 @@
             &.attached > .button when (@variationToastAttached) {
                 align-items: center;
             }
-            &:not(.attached) {
+            &@{notAttached} {
                 border-top: 0;
                 margin-top: -@toastActionPaddingBottom;
                 margin-bottom: -@toastActionPaddingBottom;
                 margin-left: @toastActionMarginLeft;
                 justify-content: space-around;
-                &:not(.basic) {
+                &@{notBasic} {
                     border-left: @toastActionBorder;
                 }
                 & > .button:not(:last-child) {
@@ -417,7 +428,7 @@
     }
 }
 
-.ui.attached:not(.vertical) when (@variationToastAttached) {
+.ui.attached@{notVertical} when (@variationToastAttached) {
     &:not(.top) {
         &.actions when (@variationToastActions) {
             border-bottom-left-radius: @toastBorderRadius;
@@ -480,19 +491,19 @@
         background-color: @toastNeutralColor;
         color: @toastNeutralTextColor;
     }
-    & > i.icon:not(.close) when (@variationToastIcon) {
+    & > i.icon@{notClose} when (@variationToastIcon) {
         font-size: @toastIconFontSize;
     }
-    &:not(.vertical) {
-        &:not(.centered):not(.center) {
-            & > i.icon:not(.close) when (@variationToastIcon) {
+    &@{notVertical} {
+        &@{notCentered}@{notCenter} {
+            & > i.icon@{notClose} when (@variationToastIcon) {
                 position: absolute;
             }
             & > .ui.image when (@variationToastImage) {
                 position: absolute;
             }
         }
-        & > i.icon:not(.close) when (@variationToastIcon) {
+        & > i.icon@{notClose} when (@variationToastIcon) {
             & + .content {
                 padding-left: @toastIconContentPadding;
             }
@@ -518,7 +529,7 @@
                 min-height: @toastSmallImageHeight;
             }
         }
-        &:not(.centered):not(.center) when (@variationToastImage) or (@variationToastIcon) {
+        &@{notCentered}@{notCenter} when (@variationToastImage) or (@variationToastIcon) {
             & > .centered.image,
             > .centered.icon {
                 transform: translateY(-50%);
@@ -544,13 +555,13 @@
         }
         & when (@variationToastImage) or (@variationToastIcon) {
             & > .ui.image + .content,
-            > i.icon:not(.close) + .content {
+            > i.icon@{notClose} + .content {
                 padding-left: @toastImageContentPadding;
             }
         }
         & > .ui.image when (@variationToastImage) {
             align-self: flex-start;
-            flex-shrink: 0; /* IE11 fix */
+            flex-shrink: 0;
         }
         & when (@variationToastImage) or (@variationToastIcon) {
             & > .centered.image,
@@ -619,7 +630,7 @@
 
         & > .content,
         & > .ui.image,
-        & > i.icon:not(.close) {
+        & > i.icon@{notClose} {
             align-self: center;
         }
     }
@@ -633,7 +644,7 @@
     .ui.toast-container .toast-box .center.aligned.actions {
         text-align: center;
 
-        &:not(.attached) > .button:not(.fluid) {
+        &@{notAttached} > .button@{notFluid} {
             margin-left: @toastActionCenteredMargin;
             margin-right: @toastActionCenteredMargin;
         }
@@ -679,7 +690,7 @@
             width: auto;
             max-width: 100%;
         }
-        & > *:not(.vertical) {
+        & > *@{notVertical} {
             min-width: @mobileWidth;
         }
         & when (@variationToastCard) {

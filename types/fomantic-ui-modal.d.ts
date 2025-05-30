@@ -5,12 +5,12 @@ declare namespace FomanticUI {
         /**
          * Shows the modal.
          */
-        (behavior: 'show'): JQuery;
+        (behavior: 'show', callback?: () => void): JQuery;
 
         /**
          * Hides the modal.
          */
-        (behavior: 'hide'): JQuery;
+        (behavior: 'hide', callback?: () => void): JQuery;
 
         /**
          * Toggles the modal.
@@ -62,8 +62,13 @@ declare namespace FomanticUI {
          */
         (behavior: 'set active'): JQuery;
 
+        /**
+         * Templates handling
+         */
+        (behavior: keyof Modal.TemplatesSettings, ...args: any): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+
         (behavior: 'destroy'): JQuery;
-        <K extends keyof ModalSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+        <K extends keyof ModalSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<ModalSettings, keyof ModalSettings>>;
         <K extends keyof ModalSettings>(behavior: 'setting', name: K, value: ModalSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
         (settings?: Partial<Pick<ModalSettings, keyof ModalSettings>>): JQuery;
@@ -166,13 +171,13 @@ declare namespace FomanticUI {
         /**
          * Custom settings to extend UI dimmer.
          */
-        dimmerSettings: DimmerSettings;
+        dimmerSettings: Partial<Pick<DimmerSettings, keyof DimmerSettings>>;
 
         /**
          * Custom settings to extend UI dimmer.
          * @default 'scale'
          */
-        transition: string | TransitionSettings;
+        transition: string | Modal.TransitionSettings;
 
         /**
          * Duration of animation.
@@ -193,6 +198,62 @@ declare namespace FomanticUI {
          * @default 10
          */
         scrollbarWidth: number;
+
+        // dynamic content
+
+        /**
+         * Title of dynamicly created modal.
+         * @default ''
+         */
+        title: string;
+
+        /**
+         * HTML content of dynamicly created modal.
+         * @default ''
+         */
+        content: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal.
+         * @default ''
+         */
+        class: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's title.
+         * @default ''
+         */
+        classTitle: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's content.
+         * @default ''
+         */
+        classContent: string;
+
+        /**
+         * CSS classname(s) of dynamicly created modal's actions.
+         * @default ''
+         */
+        classActions: string;
+
+        /**
+         * Determine if a close icon shoud be displayed on dynamicly created modal.
+         * @default false
+         */
+        closeIcon: boolean;
+
+        /**
+         *
+         * @default false
+         */
+        actions: any;
+
+        /**
+         *
+         * @default false
+         */
+        preserveHTML: boolean;
 
         // endregion
 
@@ -250,6 +311,8 @@ declare namespace FomanticUI {
 
         // region Config Template Settings
 
+        templates: Modal.TemplatesSettings;
+
         // endregion
 
         // region Debug Settings
@@ -296,11 +359,38 @@ declare namespace FomanticUI {
     }
 
     namespace Modal {
+        type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
+        type TemplatesSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>> & {[key: string]: (...args: any) => Partial<Pick<ModalSettings, keyof ModalSettings>>};
 
         namespace Settings {
+            interface Transition {
+
+                /**
+                 * Named animation show event to used.
+                 * Must be defined in CSS.
+                 */
+                showMethod: string;
+
+                /**
+                 * Duration of the CSS show transition animation
+                 */
+                showDuration: number;
+
+                /**
+                 * Named animation hide event to used.
+                 * Must be defined in CSS.
+                 */
+                hideMethod: string;
+
+                /**
+                 * Duration of the CSS hide transition animation
+                 */
+                hideDuration: number;
+            }
+
             interface Selectors {
                 /**
                  * @default '> .header'
@@ -465,6 +555,12 @@ declare namespace FomanticUI {
                  * @default 'The element you specified could not be found'
                  */
                 notFound: string;
+            }
+
+            interface Templates {
+                alert(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+                confirm(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
+                prompt(): Partial<Pick<ModalSettings, keyof ModalSettings>>;
             }
         }
     }

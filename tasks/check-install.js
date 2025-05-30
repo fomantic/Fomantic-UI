@@ -2,15 +2,12 @@
  *        Check Install
  *******************************/
 
-const
-    // node dependencies
-    gulp    = require('gulp'),
-    console = require('better-console'),
-    isSetup = require('./config/project/install').isSetup,
+// node dependencies
+const console = require('@fomantic/better-console');
+const isSetup = require('./config/project/install').isSetup;
 
-    install = require('./install'),
-    watch   = require('./watch')
-;
+const install = require('./install');
+const watch = require('./watch');
 
 // export task
 module.exports = function (callback) {

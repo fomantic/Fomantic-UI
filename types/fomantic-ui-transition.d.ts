@@ -50,7 +50,7 @@ declare namespace FomanticUI {
         /**
          * Enables animation looping.
          */
-        (behavior: 'looping'): JQuery;
+        (behavior: 'set looping'): JQuery;
 
         /**
          * Removes looping state from element.
@@ -112,11 +112,39 @@ declare namespace FomanticUI {
          */
         (behavior: 'is supported'): boolean;
 
+        (behavior: 'scale', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'zoom', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'fade' | 'fade up' | 'fade down' | 'fade left' | 'fade right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'horizontal flip' | 'vertical flip', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'drop', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'fly up' | 'fly down' | 'fly left' | 'fly right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'swing up' | 'swing down' | 'swing left' | 'swing right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'browse' | 'browse up' | 'browse down' | 'browse left' | 'browse right', duration?: any, onComplete?: () => any): JQuery;
+
+        (behavior: 'slide up' | 'slide down' | 'slide left' | 'slide right', duration?: any, onComplete?: () => any): JQuery;
+
+        // Static animations
+        (behavior: 'pulsating', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'jiggle', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'flash', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'shake', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'pulse', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'tada', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'bounce', duration?: any, onComplete?: () => any): JQuery;
+        (behavior: 'glow', duration?: any, onComplete?: () => any): JQuery;
+
         /**
          * Destroys instance and removes all events.
          */
         (behavior: 'destroy'): JQuery;
-        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value?: undefined, ): Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
+        <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value?: undefined,): Partial<Pick<TransitionSettings, keyof TransitionSettings>>;
         <K extends keyof TransitionSettings>(behavior: 'setting', name: K, value: TransitionSettings[K]): JQuery;
         (behavior: 'setting', value: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;
         (settings?: Partial<Pick<TransitionSettings, keyof TransitionSettings>>): JQuery;
@@ -154,16 +182,22 @@ declare namespace FomanticUI {
         displayType: false | string;
 
         /**
-         * Specify the final display type (block, inline-block etc) so that it doesn't have to be calculated.
-         * @default '500ms'
+         * Duration of the CSS transition animation
+         * @default false
          */
-        duration: string;
+        duration: string | number | false;
 
         /**
          * If enabled a 'timeout' will be added to ensure 'animationend' callback occurs even if element is hidden.
          * @default true
          */
         useFailSafe: boolean;
+
+        /**
+         * Delay in ms for fail safe
+         * @default 100
+         */
+        failSafeDelay: number;
 
         /**
          * If enabled will allow same animation to be queued while it is already occurring.
@@ -199,7 +233,7 @@ declare namespace FomanticUI {
          * Callback right before the show transition should start.
          * The 'showFunction' parameter has to be called inside the callback to trigger the transition show
          */
-        onBeforeShow(this: JQuery, showFunction: Function): void;
+        onBeforeShow(this: JQuery, showFunction: () => void): void;
 
         /**
          * Callback once the show transition has finished.
@@ -216,7 +250,7 @@ declare namespace FomanticUI {
          * Callback right before the hide transition should start.
          * The 'hideFunction' parameter has to be called inside the callback to trigger the transition hide.
          */
-        onBeforeHide(this: JQuery, hideFunction: Function): void;
+        onBeforeHide(this: JQuery, hideFunction: () => void): void;
 
         /**
          * Callback once the transition hide has finished.

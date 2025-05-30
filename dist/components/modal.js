@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Modal
+ * # Fomantic-UI 2.9.4 - Modal
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -527,7 +527,9 @@
                     },
                     debounce: function (method, delay) {
                         clearTimeout(module.timer);
-                        module.timer = setTimeout(function () { method(); }, delay);
+                        module.timer = setTimeout(function () {
+                            method();
+                        }, delay);
                     },
                     keyboard: function (event) {
                         var
@@ -1273,7 +1275,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
                         var

@@ -19,7 +19,6 @@ module.exports = {
     // file paths
     files: {
         config: 'semantic.json',
-        site: 'src/site',
         theme: 'src/theme.config',
     },
 
@@ -115,6 +114,8 @@ module.exports = {
     // whether to load admin tasks
     admin: false,
 
+    stripHeaders: false,
+
     header: {},
 
     // globs used for matching file patterns
@@ -122,5 +123,7 @@ module.exports = {
         ignored: '!(*.min|*.map|*.rtl)',
         ignoredRTL: '!(*.min|*.map)',
     },
+
+    fileName: 'semantic',
 
 };

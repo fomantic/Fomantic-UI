@@ -17,6 +17,12 @@
 
 @import (multiple) "../../theme.config";
 
+@notIndeterminate: if(@variationProgressIndeterminate, e(":not(.indeterminate)"));
+@notSliding: if(@variationProgressSliding, e(":not(.sliding)"));
+@notFilling: if(@variationProgressFilling, e(":not(.filling)"));
+@notSwinging: if(@variationProgressSwinging, e(":not(.swinging)"));
+@notBasic: if(@variationProgressBasic, e(":not(.basic)"));
+
 /*******************************
             Progress
 *******************************/
@@ -31,6 +37,14 @@
     background: @background;
     padding: @padding;
     border-radius: @borderRadius;
+}
+
+& when (@variationProgressBasic) {
+    .ui.basic.progress {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 .ui.progress:first-child {
@@ -50,14 +64,16 @@
     line-height: 1;
     position: @barPosition;
     width: @barInitialWidth;
-    min-width: @barMinWidth;
     background: @barBackground;
     border-radius: @barBorderRadius;
     transition: @barTransition;
     overflow: hidden;
+    &:not(:empty) {
+        min-width: @barMinWidth;
+    }
 }
-.ui.ui.ui.progress:not([data-percent]):not(.indeterminate) .bar,
-.ui.ui.ui.progress[data-percent="0"]:not(.indeterminate) .bar {
+.ui.ui.ui.progress:not([data-percent])@{notIndeterminate} .bar:not(:empty),
+.ui.ui.ui.progress[data-percent="0"]@{notIndeterminate} .bar:not(:empty) {
     background: transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -328,7 +344,9 @@
 
     .ui.active.progress .bar {
         position: relative;
-        min-width: @activeMinWidth;
+        &:not(:empty) {
+            min-width: @activeMinWidth;
+        }
     }
     .ui.active.progress .bar::after {
         content: "";
@@ -384,7 +402,7 @@
         Inverted
     --------------- */
 
-    .ui.inverted.progress {
+    .ui.inverted.progress@{notBasic} {
         background: @invertedBackground;
         border: @invertedBorder;
     }
@@ -561,7 +579,7 @@
             animation-name: progress-filling;
         }
     }
-    .ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
+    .ui.indeterminate.progress@{notSliding}@{notFilling}@{notSwinging} .bar::before {
         background: @indeterminatePulseColor;
     }
     & when (@variationProgressSliding) or (@variationProgressSwinging) or (@variationProgressFilling) {

@@ -17,6 +17,10 @@
 
 @import (multiple) "../../theme.config";
 
+@notBottom: if(@variationNagBottom, e(":not(.bottom)"));
+@notFixed: if(@variationNagFixed, e(":not(.fixed)"));
+@notOverlay: if(@variationNagOverlay, e(":not(.overlay)"));
+
 /*******************************
              Nag
 *******************************/
@@ -63,7 +67,7 @@ a.ui.nag {
     transition: @closeTransition;
 }
 
-.ui.nag:not(.overlay):not(.fixed) {
+.ui.nag@{notOverlay}@{notFixed} {
     border-radius: @borderRadius;
 }
 
@@ -192,7 +196,7 @@ a.ui.nag {
     .ui.ui.nags .nag {
         border-radius: @groupedBorderRadius;
     }
-    .ui.nags:not(.bottom) .nag:last-child {
+    .ui.nags@{notBottom} .nag:last-child {
         border-radius: @topBorderRadius;
     }
     & when(@variationNagBottom) {
@@ -200,10 +204,10 @@ a.ui.nag {
             border-radius: @bottomBorderRadius;
         }
     }
-    .ui.nags:not(.fixed):not(.overlay) .nag:first-child {
+    .ui.nags@{notFixed}@{notOverlay} .nag:first-child {
         border-radius: @bottomBorderRadius;
     }
-    .ui.nags:not(.fixed):not(.overlay) .nag:only-child {
+    .ui.nags@{notFixed}@{notOverlay} .nag:only-child {
         border-radius: @borderRadius;
     }
 }

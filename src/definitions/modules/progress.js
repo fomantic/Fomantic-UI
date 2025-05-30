@@ -20,45 +20,41 @@
         : globalThis;
 
     $.fn.progress = function (parameters) {
-        var
-            $allModules    = $(this),
+        let $allModules = $(this);
 
-            time           = Date.now(),
-            performance    = [],
+        let time = Date.now();
+        let performance = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
+        let query = arguments[0];
+        let methodInvoked = typeof query === 'string';
+        let queryArguments = [].slice.call(arguments, 1);
 
-            returnedValue
-        ;
+        let returnedValue;
 
         $allModules.each(function () {
-            var
-                settings          = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.progress.settings, parameters)
-                    : $.extend({}, $.fn.progress.settings),
+            let settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.progress.settings, parameters)
+                : $.extend({}, $.fn.progress.settings);
 
-                className       = settings.className,
-                metadata        = settings.metadata,
-                namespace       = settings.namespace,
-                selector        = settings.selector,
-                error           = settings.error,
+            let className = settings.className;
+            let metadata = settings.metadata;
+            let namespace = settings.namespace;
+            let selector = settings.selector;
+            let error = settings.error;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $bars           = $(this).find(selector.bar),
-                $progresses     = $(this).find(selector.progress),
-                $label          = $(this).find(selector.label),
+            let $module = $(this);
+            let $bars = $(this).find(selector.bar);
+            let $progresses = $(this).find(selector.progress);
+            let $label = $(this).find(selector.label);
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
+            let element = this;
+            let instance = $module.data(moduleNamespace);
 
-                animating = false,
-                module
-            ;
+            let animating = false;
+            let module;
             module = {
                 helper: {
                     sum: function (nums) {
@@ -69,13 +65,13 @@
                     /**
        * Derive precision for multiple progress with total and values.
        *
-       * This helper dervices a precision that is sufficiently large to show minimum value of multiple progress.
+       * This helper dervices a precision that is large enough to show the minimum value of multiple progress.
        *
        * Example1
        * - total: 1122
        * - values: [325, 111, 74, 612]
        * - min ratio: 74/1122 = 0.0659...
-       * - required precision:  100
+       * - required precision: 100
        *
        * Example2
        * - total: 10541
@@ -88,9 +84,9 @@
        * @returns {number} A precision. Could be 1, 10, 100, ... 1e+10.
        */
                     derivePrecision: function (min, total) {
-                        var precisionPower = 0;
-                        var precision = 1;
-                        var ratio = min / total;
+                        let precisionPower = 0;
+                        let precision = 1;
+                        let ratio = min / total;
                         while (precisionPower < 10) {
                             ratio *= precision;
                             if (ratio > 1) {
@@ -124,8 +120,7 @@
                     module.verbose('Storing instance of progress', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
                 destroy: function () {
                     module.verbose('Destroying previous progress for', $module);
@@ -151,13 +146,11 @@
 
                 read: {
                     metadata: function () {
-                        var
-                            data = {
-                                percent: module.helper.forceArray($module.data(metadata.percent)),
-                                total: $module.data(metadata.total),
-                                value: module.helper.forceArray($module.data(metadata.value)),
-                            }
-                        ;
+                        let data = {
+                            percent: module.helper.forceArray($module.data(metadata.percent)),
+                            total: $module.data(metadata.total),
+                            value: module.helper.forceArray($module.data(metadata.value)),
+                        };
                         if (data.total !== undefined) {
                             module.debug('Total value set from metadata', data.total);
                             module.set.total(data.total);
@@ -195,8 +188,7 @@
                             .one('transitionend' + eventNamespace, function (event) {
                                 clearTimeout(module.failSafeTimer);
                                 callback.call(this, event);
-                            })
-                        ;
+                            });
                         module.failSafeTimer = setTimeout(function () {
                             $bars.triggerHandler('transitionend');
                         }, settings.duration + settings.failSafeDelay);
@@ -205,10 +197,8 @@
                 },
 
                 increment: function (incrementValue) {
-                    var
-                        startValue,
-                        newValue
-                    ;
+                    let startValue;
+                    let newValue;
                     if (module.has.total()) {
                         startValue = module.get.value();
                         incrementValue = incrementValue || 1;
@@ -222,11 +212,9 @@
                     module.set.progress(newValue);
                 },
                 decrement: function (decrementValue) {
-                    var
-                        total     = module.get.total(),
-                        startValue,
-                        newValue
-                    ;
+                    let total = module.get.total();
+                    let startValue;
+                    let newValue;
                     if (total) {
                         startValue = module.get.value();
                         decrementValue = decrementValue || 1;
@@ -257,24 +245,21 @@
                             index = 0;
                         }
 
-                        var
-                            value   = module.get.value(index),
-                            total   = module.get.total(),
-                            percent = animating
-                                ? module.get.displayPercent(index)
-                                : module.get.percent(index),
-                            left = total !== false
-                                ? Math.max(0, total - value)
-                                : 100 - percent
-                        ;
+                        let value = module.get.value(index);
+                        let total = module.get.total();
+                        let percent = animating
+                            ? module.get.displayPercent(index)
+                            : module.get.percent(index);
+                        let left = total !== false
+                            ? Math.max(0, total - value)
+                            : 100 - percent;
                         templateText = templateText || '';
                         templateText = templateText
                             .replace('{value}', value)
                             .replace('{total}', total || 0)
                             .replace('{left}', left)
                             .replace('{percent}', percent)
-                            .replace('{bar}', settings.text.bars[index] || '')
-                        ;
+                            .replace('{bar}', settings.text.bars[index] || '');
                         module.verbose('Adding variables to progress bar text', templateText);
 
                         return templateText;
@@ -323,17 +308,15 @@
                             : value;
                     },
 
-                    // gets current displayed percentage (if animating values this is the intermediary value)
+                    // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
-                        var
-                            $bar           = $($bars[index]),
-                            barWidth       = $bar.width(),
-                            totalWidth     = $module.width(),
-                            minDisplay     = parseInt($bar.css('min-width'), 10),
-                            displayPercent = barWidth > minDisplay
-                                ? (barWidth / totalWidth) * 100
-                                : module.percent
-                        ;
+                        let $bar = $($bars[index]);
+                        let barWidth = $bar.width();
+                        let totalWidth = $module.width();
+                        let minDisplay = parseInt($bar.css('min-width'), 10);
+                        let displayPercent = barWidth > minDisplay
+                            ? (barWidth / totalWidth) * 100
+                            : module.percent;
 
                         return settings.precision > 0
                             ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
@@ -421,14 +404,14 @@
                     barWidth: function (values) {
                         module.debug('set bar width with ', values);
                         values = module.helper.forceArray(values);
-                        var firstNonZeroIndex = -1;
-                        var lastNonZeroIndex = -1;
-                        var valuesSum = module.helper.sum(values);
-                        var barCounts = $bars.length;
-                        var isMultiple = barCounts > 1;
-                        var percents = values.map(function (value, index) {
-                            var allZero = index === barCounts - 1 && valuesSum === 0;
-                            var $bar = $($bars[index]);
+                        let firstNonZeroIndex = -1;
+                        let lastNonZeroIndex = -1;
+                        let valuesSum = module.helper.sum(values);
+                        let barCounts = $bars.length;
+                        let isMultiple = barCounts > 1;
+                        let percents = values.map(function (value, index) {
+                            let allZero = index === barCounts - 1 && valuesSum === 0;
+                            let $bar = $($bars[index]);
                             if (value === 0 && isMultiple && !allZero) {
                                 $bar.css('display', 'none');
                             } else {
@@ -448,7 +431,7 @@
                             return parseFloat(value);
                         });
                         values.forEach(function (_, index) {
-                            var $bar = $($bars[index]);
+                            let $bar = $($bars[index]);
                             $bar.css({
                                 borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
                                 borderBottomLeftRadius: index === firstNonZeroIndex ? '' : '0',
@@ -457,8 +440,7 @@
                             });
                         });
                         $module
-                            .attr('data-percent', percents)
-                        ;
+                            .attr('data-percent', percents);
                     },
                     duration: function (duration) {
                         duration = duration || settings.duration;
@@ -469,8 +451,7 @@
                         $bars
                             .css({
                                 'transition-duration': duration,
-                            })
-                        ;
+                            });
                     },
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {
@@ -482,31 +463,30 @@
                                 ? Math.max(0, Math.min(100, percent))
                                 : percent;
                         });
-                        var hasTotal = module.has.total();
-                        var totalPercent = module.helper.sum(percents);
-                        var isMultipleValues = percents.length > 1 && hasTotal;
-                        var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+                        let hasTotal = module.has.total();
+                        let totalPercent = module.helper.sum(percents);
+                        let isMultipleValues = percents.length > 1 && hasTotal;
+                        let sumTotal = module.helper.sum(module.helper.forceArray(module.value));
                         if (isMultipleValues && sumTotal > module.total) {
-                            // Sum values instead of pecents to avoid precision issues when summing floats
+                            // Sum values instead of percents to avoid precision issues when summing floats
                             module.error(error.sumExceedsTotal, sumTotal, module.total);
                         } else if (!isMultipleValues && totalPercent > 100) {
-                            // Sum before rounding since sum of rounded may have error though sum of actual is fine
+                            // Sum before rounding, since sum of rounded may have error though sum of actual is fine
                             module.error(error.tooHigh, totalPercent);
                         } else if (totalPercent < 0) {
                             module.error(error.tooLow, totalPercent);
                         } else {
-                            var autoPrecision = settings.precision > 0
+                            let autoPrecision = settings.precision > 0
                                 ? settings.precision
                                 : (isMultipleValues
                                     ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
                                     : 0);
 
                             // round display percentage
-                            var roundedPercents = percents.map(function (percent) {
+                            let roundedPercents = percents.map(function (percent) {
                                 return autoPrecision > 0
                                     ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
-                                    : Math.round(percent)
-                                ;
+                                    : Math.round(percent);
                             });
                             module.percent = roundedPercents;
                             if (hasTotal) {
@@ -522,21 +502,17 @@
                         settings.onChange.call(element, percents, module.value, module.total);
                     },
                     labelInterval: function () {
-                        var
-                            animationCallback = function () {
-                                module.verbose('Bar finished animating, removing continuous label updates');
-                                clearInterval(module.interval);
-                                animating = false;
-                                module.set.labels();
-                            }
-                        ;
+                        let animationCallback = function () {
+                            module.verbose('Bar finished animating, removing continuous label updates');
+                            clearInterval(module.interval);
+                            animating = false;
+                            module.set.labels();
+                        };
                         clearInterval(module.interval);
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            var
-                                isInDOM = $.contains(document.documentElement, element)
-                            ;
+                            let isInDOM = $.contains(document.documentElement, element);
                             if (!isInDOM) {
                                 clearInterval(module.interval);
                                 animating = false;
@@ -582,7 +558,7 @@
                     },
                     barLabel: function (text) {
                         $progresses.each(function (index, element) {
-                            var $progress = $(element);
+                            let $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
                             } else if (settings.label === 'ratio' && module.has.total()) {
@@ -685,9 +661,7 @@
 
                 update: {
                     toNextValue: function () {
-                        var
-                            nextValue = module.nextValue
-                        ;
+                        let nextValue = module.nextValue;
                         if (nextValue) {
                             module.debug('Update interval complete using last updated value', nextValue);
                             module.update.progress(nextValue);
@@ -695,14 +669,12 @@
                         }
                     },
                     progress: function (values) {
-                        var hasTotal = module.has.total();
+                        let hasTotal = module.has.total();
                         if (hasTotal) {
                             module.set.value(values);
                         }
-                        var percentCompletes = module.helper.forceArray(values).map(function (value) {
-                            var
-                                percentComplete
-                            ;
+                        let percentCompletes = module.helper.forceArray(values).map(function (value) {
+                            let percentComplete;
                             value = module.get.numericValue(value);
                             if (value === false) {
                                 module.error(error.nonNumeric, value);
@@ -773,11 +745,9 @@
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -791,13 +761,13 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 500);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -819,22 +789,19 @@
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
@@ -920,7 +887,7 @@
         total: false,
         value: false,
 
-        // delay in ms for fail safe animation callback
+        // delay in ms for fail-safe animation callback
         failSafeDelay: 100,
 
         onLabelUpdate: function (state, text, value, total) {

@@ -17,6 +17,11 @@
 
 @import (multiple) "../../theme.config";
 
+@notHorizontal: if(@variationSegmentHorizontal, e(":not(.horizontal)"));
+@notCompact: if(@variationSegmentCompact, e(":not(.compact)"));
+@notInverted: if(@variationSegmentInverted, e(":not(.inverted)"));
+@notBasic: if(@variationSegmentBasic, e(":not(.basic)"));
+
 /*******************************
             Segment
 *******************************/
@@ -89,7 +94,6 @@
 }
 
 /* Grid */
-.ui.page.grid.segment,
 .ui.grid > .row > .ui.segment.column,
 .ui.grid > .ui.segment.column {
     padding-top: @pageGridMargin;
@@ -413,7 +417,7 @@
         border-top: @groupedSegmentDivider;
     }
 
-    .ui.segments:not(.horizontal) > .segment:first-child {
+    .ui.segments@{notHorizontal} > .segment:first-child {
         top: @attachedTopOffset;
         bottom: 0;
         border-top: none;
@@ -423,7 +427,7 @@
     }
 
     /* Bottom */
-    .ui.segments:not(.horizontal) > .segment:last-child {
+    .ui.segments@{notHorizontal} > .segment:last-child {
         top: @attachedBottomOffset;
         bottom: 0;
         margin-top: 0;
@@ -433,7 +437,7 @@
     }
 
     /* Only */
-    .ui.segments:not(.horizontal) > .segment:only-child {
+    .ui.segments@{notHorizontal} > .segment:only-child {
         border-radius: @borderRadius;
     }
 
@@ -445,7 +449,7 @@
     .ui.segments > .segments:first-child {
         border-top: none;
     }
-    .ui.segments > .segment + .segments:not(.horizontal) {
+    .ui.segments > .segment + .segments@{notHorizontal} {
         margin-top: 0;
     }
 
@@ -477,13 +481,8 @@
         }
 
         /* Horizontal Segment */
-        .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
+        .ui.horizontal.segments@{notCompact} > .segment@{notCompact} {
             flex: 1 1 auto;
-            & when (@supportIE) {
-                // https://github.com/Semantic-Org/Semantic-UI/issues/2550
-                // stylelint-disable-next-line property-no-vendor-prefix
-                -ms-flex: 1 1 0;
-            }
         }
         .ui.horizontal.segments > .segment {
             margin: 0;
@@ -616,7 +615,7 @@
         @color: @value;
         @c: @colors[@@color][color];
         & when not (@color=primary) and not (@color=secondary) {
-            .ui.ui.ui.ui.ui.@{color}.segment:not(.inverted) {
+            .ui.ui.ui.ui.ui.@{color}.segment@{notInverted} {
                 border-top: @coloredBorderSize solid @c;
             }
             & when (@variationSegmentInverted) {
@@ -755,7 +754,7 @@
         width: @attachedWidth;
         max-width: @attachedWidth;
         box-shadow: @attachedBoxShadow;
-        &:not(.basic) {
+        &@{notBasic} {
             border: @attachedBorder;
         }
     }

@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notDisabled: if(@variationCalendarDisabled, e(":not(.disabled)"));
+
 /*******************************
             Popup
 *******************************/
@@ -150,8 +152,8 @@
     box-shadow: @rangeBoxShadow;
 }
 
-.ui.calendar:not(.disabled):focus .ui.table tbody tr td.focus,
-.ui.calendar:not(.disabled).popup.active .ui.table tbody tr td.focus {
+.ui.calendar@{notDisabled}:focus .ui.table tbody tr td.focus,
+.ui.calendar@{notDisabled}.popup.active .ui.table tbody tr td.focus {
     box-shadow: @focusBoxShadow;
 }
 
@@ -162,8 +164,8 @@
         box-shadow: @rangeInvertedBoxShadow;
     }
 
-    .ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-    .ui.inverted.calendar:not(.disabled).popup.active .ui.table.inverted tbody tr td.focus {
+    .ui.inverted.calendar@{notDisabled} .calendar:focus .ui.table.inverted tbody tr td.focus,
+    .ui.inverted.calendar@{notDisabled}.popup.active .ui.table.inverted tbody tr td.focus {
         box-shadow: @focusInvertedBoxShadow;
     }
     .ui.inverted.calendar .ui.ui.ui.inverted.table tr .disabled {

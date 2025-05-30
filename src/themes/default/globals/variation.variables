@@ -82,6 +82,7 @@
 @variationHeaderDividing: true;
 @variationHeaderBlock: true;
 @variationHeaderAttached: true;
+@variationHeaderSeamless: true;
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 @variationHeaderColors: @variationAllColors;
@@ -185,6 +186,7 @@
 @variationLoaderIndeterminate: true;
 @variationLoaderText: true;
 @variationLoaderInline: true;
+@variationLoaderDouble: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
 @variationLoaderColors: @variationAllColors;
@@ -255,6 +257,9 @@
 @variationStepAttached: true;
 @variationStepEqualWidth: true;
 @variationStepSizes: @variationAllSizes;
+@variationStepCircular: true;
+@variationStepUnstackable: true;
+@variationStepColors: @variationAllColors;
 
 /* Text */
 @variationTextInverted: true;
@@ -283,11 +288,11 @@
 @variationFormGrouped: true;
 @variationFormEqualWidth: true;
 @variationFormWide: true;
+@variationFormUnstackable: true;
 @variationFormSizes: @variationAllSizes;
 
 /* Grid */
 @variationGridInverted: true;
-@variationGridPage: true;
 @variationGridCelled: true;
 @variationGridCentered: true;
 @variationGridRelaxed: true;
@@ -295,6 +300,7 @@
 @variationGridPadded: true;
 @variationGridFloated: true;
 @variationGridDivided: true;
+@variationGridHorizontal: true;
 @variationGridVertical: true;
 @variationGridAligned: true;
 @variationGridAttached: true;
@@ -314,7 +320,7 @@
 @variationMenuSecondary: true;
 @variationMenuPointing: true;
 @variationMenuVertical: true;
-@variationMenuTabular: true;
+@variationMenuTabbed: true;
 @variationMenuPagination: true;
 @variationMenuText: true;
 @variationMenuFluid: true;
@@ -331,6 +337,7 @@
 @variationMenuEqualWidth: true;
 @variationMenuWrapping: true;
 @variationMenuWrapped: true;
+@variationMenuTabbedLegacyTabular: false;
 @variationMenuSizes: @variationAllSizes;
 @variationMenuColors: @variationAllColors;
 
@@ -390,6 +397,9 @@
 @variationTableOverflowingVeryShort: true;
 @variationTableOverflowingLong: true;
 @variationTableOverflowingVeryLong: true;
+@variationTableRowSpanned: true;
+@variationTableFullWidth: true;
+@variationTableUnstackable: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 
@@ -526,6 +536,7 @@
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
 @variationCheckboxInvisible: true;
+@variationCheckboxCompact: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
 @variationCheckboxToggle: true;
@@ -572,6 +583,8 @@
 @variationDropdownPointing: true;
 @variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
+@variationDropdownUnlimited: true;
+@variationDropdownHighlightMatches: false;
 @variationDropdownSizes: @variationAllSizes;
 
 /* Embed */
@@ -594,6 +607,7 @@
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
 @variationFlyoutScrolling: true;
+@variationFlyoutClose: true;
 
 /* Modal */
 @variationModalInverted: true;
@@ -604,6 +618,7 @@
 @variationModalResizable: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
+@variationModalClose: true;
 @variationModalCloseInside: true;
 @variationModalCentered: true;
 @variationModalActions: true;
@@ -641,6 +656,7 @@
 /* Progress */
 @variationProgressInverted: true;
 @variationProgressDisabled: true;
+@variationProgressBasic: true;
 @variationProgressIndicating: true;
 @variationProgressIndeterminate: true;
 @variationProgressSliding: true;
@@ -665,7 +681,7 @@
 
 /* Search */
 @variationSearchDisabled: true;
-@variationSearchSelection: true;
+@variationSearchClear: true;
 @variationSearchCategory: true;
 @variationSearchHorizontalCategory: true;
 @variationSearchLoading: true;
@@ -677,6 +693,7 @@
 @variationSearchVeryLong: true;
 @variationSearchResizable: true;
 @variationSearchScrolling: true;
+@variationSearchHighlightMatches: false;
 @variationSearchSizes: @variationAllSizes;
 
 /* Shape */
@@ -709,6 +726,10 @@
 @variationSliderTicked: true;
 @variationSliderVertical: true;
 @variationSliderBasic: true;
+@variationSliderHighlight: true;
+@variationSliderBottomAligned: true;
+@variationSliderRightAligned: true;
+@variationSliderUiLabel: true;
 @variationSliderSizes: small, large, big;
 @variationSliderColors: @variationAllColors;
 
@@ -739,7 +760,8 @@
 @variationToastVertical: true;
 @variationToastAttached: true;
 @variationToastCompact: true;
-@variationToastCentered: true;
+@variationToastBasic: true;
+@variationToastUnclickable: true;
 @variationToastColors: @variationAllColors;
 
 /* Transition */
@@ -768,7 +790,7 @@
 
 /* Emojis */
 @variationEmojiColons: true;
-@variationEmojiNoColons: true;
+@variationEmojiNoColons: false;
 @variationEmojiDisabled: true;
 @variationEmojiLoading: true;
 @variationEmojiLink: true;

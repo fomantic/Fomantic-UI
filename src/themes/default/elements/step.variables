@@ -101,6 +101,39 @@
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
 
+/* Circular */
+@circularStepsMargin: @stepMargin;
+@circularStepsPadding: @stepMargin;
+@circularStepDisabledItemOpacity: 0.5;
+@circularStepColor: @borderColor;
+@circularStepBorderWidth: 2px;
+@circularStepBorder: @circularStepBorderWidth solid @circularStepColor;
+@circularStepRingSize: 2.2em;
+@circularStepIconSize: 0.95em;
+@circularStepIconDistance: calc((-@circularStepRingSize + @circularStepIconSize) - 0.3em);
+@circularStepCompletedIconLineHeight: 1em;
+@circularStepCompletedIconDistance: calc(-@circularStepRingSize + ((@circularStepRingSize / 2) / 2) + (@circularStepBorderWidth / 2));
+
+@circularStepContentMarginTop: -1.5em;
+@circularStepContentCenterAlignedMarginTop: -0.65em;
+@circularStepContentBottomAlignedMarginTop: 0.5em;
+@circularStepContentHorizontalPadding: 0.5em;
+@circularStepContentPadding: 0 @circularStepContentHorizontalPadding;
+@circularStepContentCenterAlignedMarginLeft: -@circularStepContentHorizontalPadding;
+@circularStepContentDescriptionDistance: 0.5em;
+@circularStepContentCenterAlignedBackground: @white;
+@invertedCircularStepContentCenterAlignedBackground: @black;
+
+@verticalCircularStepPadding: 3em;
+@verticalCircularStepContentPadding: 3.5em;
+@verticalCircularStepLineDistance: calc(@circularStepRingSize / unit(@circularStepBorderWidth));
+@verticalCircularStepIconDistance: calc((@circularStepRingSize / (unit(@circularStepRingSize) * unit(@circularStepBorderWidth))) + @circularStepBorderWidth);
+@verticalCircularStepCompletedIconDistance: calc((@circularStepRingSize / (unit(@circularStepRingSize) * unit(@circularStepBorderWidth))) + (@circularStepBorderWidth - (@circularStepBorderWidth / 2)));
+
+@circularStepActiveColor: @completedColor;
+@circularStepCompletedColor: @white;
+@circularStepCompletedBackground: @completedColor;
+
 /* -------------------
        States
 -------------------- */
