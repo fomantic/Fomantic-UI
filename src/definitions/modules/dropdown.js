@@ -1009,15 +1009,21 @@
                         let menuConfig = {};
                         menuConfig[fields.values] = values;
                         module.setup.menu(menuConfig);
-                        $.each(values, function (index, item) {
-                            if (item.selected === true) {
-                                module.debug('Setting initial selection to', item[fields.value]);
-                                module.set.selected(item[fields.value]);
-                                if (!module.is.multiple()) {
-                                    return false;
+                        let findSelected = function (values) {
+                            $.each(values, function (index, item) {
+                                let itemType = item.type || 'item';
+                                if (item.selected === true) {
+                                    module.debug('Setting initial selection to', item[fields.value]);
+                                    module.set.selected(item[fields.value]);
+                                    if (!module.is.multiple()) {
+                                        return false;
+                                    }
+                                } else if (itemType.indexOf('menu') !== -1) {
+                                    return findSelected(item.values || []);
                                 }
-                            }
-                        });
+                            });
+                        };
+                        findSelected(values);
 
                         if (module.has.selectInput()) {
                             module.disconnect.selectObserver();
