@@ -1010,18 +1010,23 @@
                         menuConfig[fields.values] = values;
                         module.setup.menu(menuConfig);
                         let findSelected = function (values) {
+                            let hasMultiple = true;
                             $.each(values, function (index, item) {
                                 let itemType = item.type || 'item';
                                 if (item.selected === true) {
                                     module.debug('Setting initial selection to', item[fields.value]);
                                     module.set.selected(item[fields.value]);
                                     if (!module.is.multiple()) {
-                                        return false;
+                                        hasMultiple = false;
                                     }
                                 } else if (itemType.indexOf('menu') !== -1) {
-                                    return findSelected(item.values || []);
+                                    hasMultiple = findSelected(item.values || []);
                                 }
+
+                                return hasMultiple;
                             });
+
+                            return hasMultiple;
                         };
                         findSelected(values);
 
