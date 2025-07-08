@@ -82,7 +82,8 @@
             let initialMouseDownInModal;
             let initialMouseDownInScrollbar;
             let initialBodyMargin = '';
-            let tempBodyMargin = '';
+            let initialBodyMarginInt = 0;
+            let tempBodyMargin = 0;
             let keepScrollingClass = false;
             let hadScrollbar = false;
             let windowRefocused = false;
@@ -779,9 +780,9 @@
                     },
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        let bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
                         let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
-                        tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
+                        tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },
                 },
 
@@ -793,7 +794,7 @@
                     },
                     bodyMargin: function () {
                         let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
-                        $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
+                        $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMarginInt === 0 ? '' : initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             let el = $(this);
                             let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
