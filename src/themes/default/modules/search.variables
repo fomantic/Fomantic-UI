@@ -108,7 +108,7 @@
 @actionHoverBackground: #e0e0e0;
 
 /* Loading */
-@invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
+@invertedLoaderFillColor: rgb(0 0 0 / 0.15);
 
 /* Active Category */
 @categoryActiveBackground: @darkWhite;
