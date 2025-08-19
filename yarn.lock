@@ -3756,9 +3756,9 @@ lead@^4.0.0:
   integrity sha512-DpMa59o5uGUWWjruMp71e6knmwKU3jRBBn1kjuLWN9EeIOxNeSAwvHf03WIl8g/ZMR2oSQC9ej3yeLBwdDc/pg==
 
 "less@^3.12.0 || ^4.0.0", "less@^3.7.1 || ^4.0.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/less/-/less-4.4.0.tgz#deaf881f4880ee80691beae925b8fac699d3a76d"
-  integrity sha512-kdTwsyRuncDfjEs0DlRILWNvxhDG/Zij4YLO4TMJgDLW+8OzpfkdPnRgrsRuY1o+oaxJGWsps5f/RVBgGmmN0w==
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/less/-/less-4.4.1.tgz#2f97168bf887ca6a9957ee69e16cc34f8b007cc7"
+  integrity sha512-X9HKyiXPi0f/ed0XhgUlBeFfxrlDP3xR4M7768Zl+WXLUViuL9AOPPJP4nCV0tgRWvTYvpNmN0SFhZOQzy16PA==
   dependencies:
     copy-anything "^2.0.1"
     parse-node-version "^1.0.1"
