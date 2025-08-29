@@ -47,7 +47,7 @@
     text-align: left;
     transition: @transition;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0);
     &:focus-visible when not (@focusVisibleOutline = none) {
         outline: @focusVisibleOutline;
         outline-offset: @focusVisibleOutlineOffset;
@@ -757,7 +757,7 @@ select.ui.dropdown {
         left: @textCursorSpacing;
         width: 100%;
         outline: none;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-tap-highlight-color: rgb(255 255 255 / 0);
         padding: inherit;
         &:focus-visible when not (@searchFocusVisibleOutline = none) {
             outline: @searchFocusVisibleOutline;

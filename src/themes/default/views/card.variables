@@ -99,7 +99,7 @@
 
 /* Description */
 @descriptionDistance: 0.5em;
-@descriptionColor: rgba(0, 0, 0, 0.68);
+@descriptionColor: rgb(0 0 0 / 0.68);
 
 /* Content Image */
 @contentImageWidth: "";
@@ -117,7 +117,7 @@
 @dimmerColor: "";
 
 /* Additional Content */
-@extraDivider: 1px solid rgba(0, 0, 0, 0.05);
+@extraDivider: 1px solid rgb(0 0 0 / 0.05);
 @extraBackground: none;
 @extraPosition: static;
 @extraWidth: auto;
@@ -142,8 +142,8 @@
 *******************************/
 
 /* Loading Dimmer */
-@loaderDimmerColor: rgba(255, 255, 255, 0.8);
-@loaderInvertedDimmerColor: rgba(0, 0, 0, 0.85);
+@loaderDimmerColor: rgb(255 255 255 / 0.8);
+@loaderInvertedDimmerColor: rgb(0 0 0 / 0.85);
 @loaderDimmerZIndex: 100;
 
 /* Loading Spinner */
@@ -227,7 +227,7 @@
 
 /* Inverted */
 @invertedBackground: @black;
-@invertedContentDivider: @borderWidth solid rgba(255, 255, 255, 0.15);
+@invertedContentDivider: @borderWidth solid rgb(255 255 255 / 0.15);
 @invertedHeaderColor: @invertedTextColor;
 @invertedHeaderLinkColor: @invertedTextColor;
 @invertedHeaderLinkHoverColor: @linkHoverColor;
@@ -237,7 +237,7 @@
 @invertedMetaLinkHoverColor: @invertedHoveredTextColor;
 @invertedExtraColor: @invertedLightTextColor;
 @invertedExtraLinkColor: @invertedUnselectedTextColor;
-@invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
+@invertedExtraDivider: 1px solid rgb(255 255 255 / 0.15);
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
     0 @shadowDistance 3px 0 @solidWhiteBorderColor,

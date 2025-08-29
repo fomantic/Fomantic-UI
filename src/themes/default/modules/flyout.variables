@@ -16,10 +16,10 @@
 @closeFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Dimmer */
-@dimmerColor: rgba(0, 0, 0, 0.4);
+@dimmerColor: rgb(0 0 0 / 0.4);
 @dimmerTransition: all @duration;
 
-@blurredBackgroundColor: rgba(0, 0, 0, 0.6);
+@blurredBackgroundColor: rgb(0 0 0 / 0.6);
 @blurredEndFilter: e("blur(5px) grayscale(0.7)");
 
 /* Color below page */
@@ -102,5 +102,5 @@
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
 @invertedActionBackground: #191a1b;
-@invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
+@invertedActionBorder: 1px solid rgb(34 36 38 / 0.85);
 @invertedActionColor: @white;
