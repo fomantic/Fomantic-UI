@@ -73,7 +73,7 @@
 @placeholderFocusColor: @inputPlaceholderFocusColor;
 
 /* Down */
-@downBorderColor: rgba(0, 0, 0, 0.3);
+@downBorderColor: rgb(0 0 0 / 0.3);
 @downBackground: #fafafa;
 @downColor: @textColor;
 @downBoxShadow: none;
@@ -85,7 +85,7 @@
 @focusBoxShadow: none;
 
 /* Loader */
-@invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
+@invertedLoaderFillColor: rgb(0 0 0 / 0.15);
 
 /* file */
 @fileButtonMargin: 1em;

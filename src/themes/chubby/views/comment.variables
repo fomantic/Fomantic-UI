@@ -10,8 +10,8 @@
 @commentBackground: #fff;
 @commentMargin: 1em 0 0;
 @commentPadding: 1em 1.5em;
-@commentBorder: 1px solid rgba(0, 0, 0, 0.1);
-@commentDivider: 1px solid rgba(0, 0, 0, 0.1);
+@commentBorder: 1px solid rgb(0 0 0 / 0.1);
+@commentDivider: 1px solid rgb(0 0 0 / 0.1);
 @firstCommentMargin: 1em;
 @firstCommentPadding: 1em;
 

@@ -27,9 +27,9 @@
 @metadataBackground: @white @subtleGradient;
 @metadataBorder: 1px solid @solidBorderColor;
 @metadataBorderRadius: 0.25em;
-@metadataBoxShadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+@metadataBoxShadow: 0 1px 1px rgb(0 0 0 / 0.05);
 @metadataPadding: 0.5em 1em;
-@metadataColor: rgba(0, 0, 0, 0.6);
+@metadataColor: rgb(0 0 0 / 0.6);
 
 /* -------------------
       Variations
