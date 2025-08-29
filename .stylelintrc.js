@@ -12,7 +12,6 @@ module.exports = {
         'at-rule-name-case': null,
         'at-rule-no-unknown': null,
         'block-no-empty': null,
-        'color-function-notation': 'legacy',
         'color-hex-case': 'lower',
         'declaration-colon-newline-after': null, // handled by Prettier
         'font-family-no-missing-generic-family-keyword': null,

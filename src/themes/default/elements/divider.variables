@@ -43,7 +43,7 @@
 
 /* Inverted */
 @invertedTextColor: @white;
-@invertedHighlightColor: rgba(255, 255, 255, 0.15);
+@invertedHighlightColor: rgb(255 255 255 / 0.15);
 @invertedShadowColor: @borderColor;
 
 /* Section */

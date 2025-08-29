@@ -77,7 +77,7 @@
 @metaFontSize: 1em;
 @metaLineHeight: 1em;
 @metaSpacing: 0.3em;
-@metaColor: rgba(0, 0, 0, 0.6);
+@metaColor: rgb(0 0 0 / 0.6);
 
 /* Icons */
 @actionOpacity: 0.75;
@@ -167,7 +167,7 @@
 @invertedContentLinkHoverColor: @linkColor;
 @invertedExtraColor: @invertedLightTextColor;
 @invertedDescriptionColor: @invertedTextColor;
-@invertedMetaColor: rgba(255, 255, 255, 0.8);
+@invertedMetaColor: rgb(255 255 255 / 0.8);
 @invertedLikeColor: if(iscolor(@likeColor), lighten(@likeColor, 10), @likeColor);
 @invertedLikeActiveColor: if(iscolor(@likeActiveColor), lighten(@likeActiveColor, 10), @likeActiveColor);
 @invertedFavoriteColor: if(iscolor(@favoriteColor), lighten(@favoriteColor, 10), @favoriteColor);

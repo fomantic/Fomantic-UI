@@ -2082,12 +2082,12 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 @circularSize: 2em;
 @circularPadding: 0.5em 0;
-@circularShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@circularShadow: 0 0 0 0.1em rgb(0 0 0 / 0.1) inset;
 
 @borderedSize: 2em;
 @borderedVerticalPadding: ((@borderedSize - @height) / 2);
 @borderedHorizontalPadding: 0;
-@borderedShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@borderedShadow: 0 0 0 0.1em rgb(0 0 0 / 0.1) inset;
 
 @coloredBoxShadow: 0 0 0 0.1em currentColor inset;
 

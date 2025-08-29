@@ -350,13 +350,13 @@
 
 /* Upward */
 @upwardSelectionVisibleBorderRadius: @selectionVisibleConnectingBorder @selectionVisibleConnectingBorder @borderRadius @borderRadius;
-@upwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
-@upwardSelectionMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
+@upwardMenuBoxShadow: 0 0 3px 0 rgb(0 0 0 / 0.08);
+@upwardSelectionMenuBoxShadow: 0 -2px 3px 0 rgb(0 0 0 / 0.08);
 @upwardSelectionMenuBorderRadius: @borderRadius @borderRadius 0 0;
-@upwardSelectionHoverBoxShadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
-@upwardSelectionVisibleBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
-@upwardSelectionActiveHoverBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
-@upwardSelectionActiveHoverMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
+@upwardSelectionHoverBoxShadow: 0 0 2px 0 rgb(0 0 0 / 0.05);
+@upwardSelectionVisibleBoxShadow: 0 0 3px 0 rgb(0 0 0 / 0.08);
+@upwardSelectionActiveHoverBoxShadow: 0 0 3px 0 rgb(0 0 0 / 0.05);
+@upwardSelectionActiveHoverMenuBoxShadow: 0 -2px 3px 0 rgb(0 0 0 / 0.08);
 
 /* Flyout Direction */
 @leftMenuDropdownIconFloat: left;
@@ -405,8 +405,8 @@
 @scrollhintEasing: @defaultEasing;
 @scrollhintIteration: 2;
 @scrollhintOffsetRight: @scrollhintWidth;
-@scrollhintStartColor: rgba(0, 0, 0, 0.75);
-@scrollhintEndColor: rgba(0, 0, 0, 0);
+@scrollhintStartColor: rgb(0 0 0 / 0.75);
+@scrollhintEndColor: rgb(0 0 0 / 0);
 
 /* --------------
     Inverted
@@ -445,7 +445,7 @@
 @invertedSelectionTextColor: @invertedMenuColor;
 @invertedSelectionInputTextColor: @white;
 
-@invertedSelectionHoverBorderColor: rgba(255, 255, 255, 0.25);
+@invertedSelectionHoverBorderColor: rgb(255 255 255 / 0.25);
 @invertedSelectionHoverBoxShadow: none;
 
 @invertedDefaultTextColor: @invertedUnselectedTextColor;
@@ -461,16 +461,16 @@
 
 @invertedMessageColor: @invertedUnselectedTextColor;
 
-@invertedInputHighlightBackground: rgba(255, 255, 255, 0.25);
+@invertedInputHighlightBackground: rgb(255 255 255 / 0.25);
 @invertedInputHighlightColor: @invertedMutedTextColor;
 
 /* Multiple */
-@invertedLabelBackgroundColor: rgba(255, 255, 255, 0.7);
+@invertedLabelBackgroundColor: rgb(255 255 255 / 0.7);
 @invertedLabelBackgroundImage: none;
-@invertedLabelColor: rgba(0, 0, 0, 1);
-@invertedLabelBoxShadow: 0 0 0 @labelBorderWidth rgba(255, 255, 255, 0) inset;
+@invertedLabelColor: rgb(0 0 0 / 1);
+@invertedLabelBoxShadow: 0 0 0 @labelBorderWidth rgb(255 255 255 / 0) inset;
 
-@invertedLabelHoverBackgroundColor: rgba(255, 255, 255, 0.9);
+@invertedLabelHoverBackgroundColor: rgb(255 255 255 / 0.9);
 @invertedLabelHoverBackgroundImage: none;
 @invertedLabelHoverTextColor: @invertedLabelColor;
 
@@ -478,8 +478,8 @@
 @invertedLabelIconHoverOpacity: 0.8;
 
 /* Scrollhint */
-@invertedScrollhintStartColor: rgba(255, 255, 255, 0.75);
-@invertedScrollhintEndColor: rgba(255, 255, 255, 0);
+@invertedScrollhintStartColor: rgb(255 255 255 / 0.75);
+@invertedScrollhintEndColor: rgb(255 255 255 / 0);
 
 /* Resizable */
 @resizableDirection: vertical;

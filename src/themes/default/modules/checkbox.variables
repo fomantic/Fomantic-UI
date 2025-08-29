@@ -71,7 +71,7 @@
 
 /* Disabled */
 @disabledCheckboxOpacity: 0.5;
-@disabledCheckboxLabelColor: rgba(0, 0, 0, 1);
+@disabledCheckboxLabelColor: rgb(0 0 0 / 1);
 
 /* -------------------
         Types
