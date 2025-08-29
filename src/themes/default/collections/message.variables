@@ -18,7 +18,7 @@
 @borderRadius: @defaultBorderRadius;
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @strongBorderColor inset;
-@shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
+@shadowShadow: 0 0 0 0 rgb(0 0 0 / 0);
 @boxShadow: @borderShadow, @shadowShadow;
 
 @transition:

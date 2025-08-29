@@ -47,7 +47,7 @@
     text-align: left;
     transition: @transition;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0);
 }
 
 /*******************************
@@ -616,13 +616,19 @@ select.ui.dropdown {
         .ui.ui.selection.dropdown@{notInverted}:has(> input:focus) {
             border-color: @selectionFocusBorderColor;
             box-shadow: none;
-            & > i.icon {
-                opacity: @selectionIconFocusOpacity;
+        }
+
+        .ui.ui.selection.dropdown {
+            &:focus,
+            &:has(> input:focus) {
+                & > i.icon:not(.remove) {
+                    opacity: @selectionIconFocusOpacity;
+                }
+                & > i.icon.remove:not(:hover) {
+                    opacity: @actionIconFocusOpacity;
+                }
             }
         }
-    }
-    .ui.ui.selection.dropdown:focus > i.icon {
-        opacity: @selectionIconFocusOpacity;
     }
 
     /* Visible */
@@ -735,7 +741,7 @@ select.ui.dropdown {
         left: @textCursorSpacing;
         width: 100%;
         outline: none;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-tap-highlight-color: rgb(255 255 255 / 0);
         padding: inherit;
     }
 

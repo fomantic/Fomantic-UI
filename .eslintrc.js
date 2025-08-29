@@ -43,12 +43,6 @@ module.exports = {
         'no-console': 'off',
         'no-continue': 'off',
         'no-lonely-if': 'off',
-        'no-multi-spaces': ['error', {
-            exceptions: {
-                Property: true,
-                VariableDeclarator: true,
-            },
-        }],
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -92,18 +86,14 @@ module.exports = {
         'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
-        'no-var': 'off', // https://github.com/fomantic/Fomantic-UI/pull/2584
-        'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
         'prefer-rest-params': 'off',
         'prefer-spread': 'off',
-        'semi-style': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-includes': 'off',
-        'unicorn/prefer-node-protocol': 'off', // needs Node 14+
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-prototype-methods': 'off',

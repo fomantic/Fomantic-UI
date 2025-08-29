@@ -26,7 +26,7 @@
 @horizontalPadding: 1.284em;
 @verticalPadding: 0.8571em;
 
-@activeBackgroundColor: rgba(0, 0, 0, 0.1);
+@activeBackgroundColor: rgb(0 0 0 / 0.1);
 
 @primaryColor: @blue;
 @coloredBackgroundImage: @subtleGradient;
@@ -41,7 +41,7 @@
 
 @downBackgroundColor: #e1e8ed;
 @downColor: #292f33;
-@downPressedShadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
+@downPressedShadow: 0 1px 4px rgb(0 0 0 / 0.2) inset;
 
-@labeledIconBackgroundColor: rgba(85, 172, 238, 0.05);
-@labeledIconBorder: rgba(0, 0, 0, 0.1);
+@labeledIconBackgroundColor: rgb(85 172 238 / 0.05);
+@labeledIconBorder: rgb(0 0 0 / 0.1);

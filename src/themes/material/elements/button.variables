@@ -19,7 +19,7 @@
 @textTransform: none;
 
 @backgroundColor: @white;
-@backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.02));
+@backgroundImage: linear-gradient(transparent, rgb(0 0 0 / 0.02));
 
 @solidBorderColor: #ddd;
 
@@ -41,10 +41,10 @@
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
     @borderBoxShadow,
-    0 2px 3px 0 rgba(0, 0, 0, 0.2) !important;
+    0 2px 3px 0 rgb(0 0 0 / 0.2) !important;
 
 @downBackgroundColor: @white;
-@downBackgroundImage: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04));
+@downBackgroundImage: linear-gradient(rgb(0 0 0 / 0.04), rgb(0 0 0 / 0.04));
 @downTextColor: #222;
 @downBoxShadow: @borderBoxShadow;
 
@@ -65,7 +65,7 @@
 @basicDownBoxShadow: @downBoxShadow;
 
 @basicActiveBackground: #fff;
-@basicActiveBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+@basicActiveBoxShadow: 0 0 0 1px rgb(0 0 0 / 0.2);
 
 /* Labeled */
 @labeledIconBackgroundColor: transparent;
@@ -75,7 +75,7 @@
 
 /* Colored */
 @coloredBackgroundImage: @subtleGradient;
-@coloredBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+@coloredBoxShadow: 0 0 0 1px rgb(0 0 0 / 0.1) inset;
 
 /* Primary */
 @primaryColor: #4184f3;

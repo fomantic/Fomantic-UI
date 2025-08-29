@@ -69,14 +69,12 @@
     "ordered-read-streams": "^1.0.1",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
-    "wrench-sui": "^0.0.3",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@internal/eslint-plugin": "file:.eslint",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
-    "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^2.4.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "15",

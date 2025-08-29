@@ -2,47 +2,45 @@
  *          Build Task
  *******************************/
 
-const
-    gulp         = require('gulp'),
+const gulp = require('gulp');
 
-    // node dependencies
-    console      = require('@fomantic/better-console'),
+// node dependencies
+const console = require('@fomantic/better-console');
 
-    // gulp dependencies
-    autoprefixer = require('gulp-autoprefixer'),
-    chmod        = require('gulp-chmod'),
-    concatCSS    = require('@fomantic/gulp-concat-css'),
-    dedupe       = require('@fomantic/gulp-dedupe'),
-    flatten      = require('gulp-flatten'),
-    gulpif       = require('gulp-if'),
-    header       = require('@fomantic/gulp-header'),
-    less         = require('gulp-less'),
-    minifyCSS    = require('gulp-clean-css'),
-    normalize    = require('normalize-path'),
-    ordered      = require('ordered-read-streams'),
-    plumber      = require('@fomantic/gulp-plumber'),
-    print        = require('gulp-print').default,
-    rename       = require('gulp-rename'),
-    replace      = require('gulp-replace'),
-    replaceExt   = require('replace-ext'),
-    rtlcss       = require('gulp-rtlcss'),
+// gulp dependencies
+const autoprefixer = require('gulp-autoprefixer');
+const chmod = require('gulp-chmod');
+const concatCSS = require('@fomantic/gulp-concat-css');
+const dedupe = require('@fomantic/gulp-dedupe');
+const flatten = require('gulp-flatten');
+const gulpif = require('gulp-if');
+const header = require('@fomantic/gulp-header');
+const less = require('gulp-less');
+const minifyCSS = require('gulp-clean-css');
+const normalize = require('normalize-path');
+const ordered = require('ordered-read-streams');
+const plumber = require('@fomantic/gulp-plumber');
+const print = require('gulp-print').default;
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const replaceExt = require('replace-ext');
+const rtlcss = require('gulp-rtlcss');
 
-    // config
-    config       = require('../config/user'),
-    docsConfig   = require('../config/docs'),
-    tasks        = require('../config/tasks'),
-    install      = require('../config/project/install'),
+// config
+const config = require('../config/user');
+const docsConfig = require('../config/docs');
+const tasks = require('../config/tasks');
+const install = require('../config/project/install');
 
-    // shorthand
-    globs        = config.globs,
-    assets       = config.paths.assets,
+// shorthand
+const globs = config.globs;
+const assets = config.paths.assets;
 
-    banner       = tasks.banner,
-    filenames    = tasks.filenames,
-    comments     = tasks.regExp.comments,
-    log          = tasks.log,
-    settings     = tasks.settings
-;
+const banner = tasks.banner;
+const filenames = tasks.filenames;
+const comments = tasks.regExp.comments;
+const log = tasks.log;
+const settings = tasks.settings;
 
 /**
  * Builds the CSS
@@ -82,8 +80,7 @@ function build(src, type, compress, config, opts) {
         .pipe(gulpif(fileExtension, rename(fileExtension)))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 /**
@@ -92,7 +89,7 @@ function build(src, type, compress, config, opts) {
  * @param {boolean} compress - should the output be compressed
  */
 function pack(type, compress) {
-    const output       = type === 'docs' ? docsConfig.paths.output : config.paths.output;
+    const output = type === 'docs' ? docsConfig.paths.output : config.paths.output;
     const ignoredGlobs = type === 'rtl' ? globs.ignoredRTL + '.rtl.css' : globs.ignored + '.css';
 
     let concatenatedCSS;
@@ -112,8 +109,7 @@ function pack(type, compress) {
             }
 
             return gulp.src(srcSingle);
-        })
-    ;
+        });
 
     return ordered(src)
         .pipe(plumber())
@@ -125,8 +121,7 @@ function pack(type, compress) {
         .pipe(gulpif(compress, minifyCSS(settings.concatMinify)))
         .pipe(header(banner, settings.header))
         .pipe(gulp.dest(output.packaged))
-        .pipe(print(log.created))
-    ;
+        .pipe(print(log.created));
 }
 
 function buildCSS(src, type, config, opts, callback) {
@@ -151,16 +146,16 @@ function buildCSS(src, type, config, opts, callback) {
         src = config.paths.source.definitions + '/**/{' + components + '}.less';
     }
 
-    const buildUncompressed       = () => build(src, type, false, config, opts);
+    const buildUncompressed = () => build(src, type, false, config, opts);
     buildUncompressed.displayName = 'Building uncompressed CSS';
 
-    const buildCompressed       = () => build(src, type, true, config, opts);
+    const buildCompressed = () => build(src, type, true, config, opts);
     buildCompressed.displayName = 'Building compressed CSS';
 
-    const packUncompressed       = () => pack(type, false);
+    const packUncompressed = () => pack(type, false);
     packUncompressed.displayName = 'Packing uncompressed CSS';
 
-    const packCompressed       = () => pack(type, true);
+    const packCompressed = () => pack(type, true);
     packCompressed.displayName = 'Packing compressed CSS';
 
     gulp.parallel(
@@ -178,9 +173,9 @@ function rtlAndNormal(src, callback) {
         src = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
     }
 
-    const rtl       = (callback) => buildCSS(src, 'rtl', config, {}, callback);
+    const rtl = (callback) => buildCSS(src, 'rtl', config, {}, callback);
     rtl.displayName = 'CSS Right-To-Left';
-    const css       = (callback) => buildCSS(src, 'default', config, {}, callback);
+    const css = (callback) => buildCSS(src, 'default', config, {}, callback);
     css.displayName = 'CSS';
 
     if (config.rtl === true || config.rtl === 'Yes') {
@@ -198,7 +193,7 @@ function docs(src, callback) {
         src = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
     }
 
-    const func       = (callback) => buildCSS(src, 'docs', config, {}, callback);
+    const func = (callback) => buildCSS(src, 'docs', config, {}, callback);
     func.displayName = 'CSS Docs';
 
     func(callback);
@@ -208,10 +203,8 @@ function docs(src, callback) {
 module.exports = rtlAndNormal;
 
 // We keep the changed files in an array to call build with all of them at the same time
-let
-    timeout,
-    files = []
-;
+let timeout;
+let files = [];
 
 /**
  * Watch changes in CSS files and call the correct build pipe
@@ -235,8 +228,7 @@ module.exports.watch = function (type, config) {
             files = [];
 
             return gulp.series(method)();
-        })
-    ;
+        });
 
     // Watch any less / overrides / variables files
     gulp.watch([
@@ -287,8 +279,7 @@ module.exports.watch = function (type, config) {
                 // Reset the internal changed files array
                 files = [];
             }, 1000);
-        })
-    ;
+        });
 };
 
 // Expose build CSS method
