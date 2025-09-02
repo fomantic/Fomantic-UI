@@ -633,15 +633,15 @@
     color: @iconColor;
 }
 
-.ui.button@{notIcon} > .icon:not(.button):not(.dropdown),
-.ui.button@{notIcon} > .icons:not(.button):not(.dropdown) {
+.ui.button@{notIcon} > .icon:not(.button, .dropdown),
+.ui.button@{notIcon} > .icons:not(.button, .dropdown) {
     margin: @iconMargin;
     vertical-align: @iconVerticalAlign;
 }
-.ui.button@{notIcon} > .icons:not(.button):not(.dropdown) > .icon {
+.ui.button@{notIcon} > .icons:not(.button, .dropdown) > .icon {
     vertical-align: @iconVerticalAlign;
 }
-.ui.button@{notIcon} > .right.icon:not(.button):not(.dropdown) {
+.ui.button@{notIcon} > .right.icon:not(.button, .dropdown) {
     margin: @rightIconMargin;
 }
 
