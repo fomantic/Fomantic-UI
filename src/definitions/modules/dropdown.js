@@ -768,7 +768,7 @@
                             module.add.message(message.serverError);
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onError === 'function') {
                                 settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
                             }
@@ -777,7 +777,7 @@
                             module.add.message(message.serverError);
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onFailure === 'function') {
                                 settings.apiSettings.onFailure.call(this, response, $module, xhr);
                             }
@@ -803,7 +803,7 @@
                             }
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onSuccess === 'function') {
                                 settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                             }
