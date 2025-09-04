@@ -19,16 +19,16 @@
         ? window
         : globalThis;
 
-    $.fn.form = function (parameters) {
+    $.fn.form = function (...args) {
         let $allModules = $(this);
         let $window = $(window);
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let returnedValue;
         $allModules.each(function () {
             let $module = $(this);
@@ -79,7 +79,7 @@
                         if (instance === undefined) {
                             module.instantiate();
                         }
-                        module.invoke(query);
+                        module.invoke(parameters);
                     } else {
                         if (instance !== undefined) {
                             instance.invoke('destroy');
@@ -1337,7 +1337,7 @@
                             }
                         } else {
                             if (showErrors && fieldErrors.length > 0) {
-                                formErrors = formErrors.concat(fieldErrors);
+                                formErrors = [...formErrors, ...fieldErrors];
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
                             }
@@ -1406,36 +1406,36 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
-                warn: function () {
+                warn: function (...args) {
                     if (!settings.silent) {
                         module.warn = Function.prototype.bind.call(console.warn, console, settings.name + ':');
-                        module.warn.apply(console, arguments);
+                        module.warn.apply(console, args);
                     }
                 },
                 performance: {
@@ -1450,7 +1450,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: Array.prototype.slice.call(message, 1) || '',
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
