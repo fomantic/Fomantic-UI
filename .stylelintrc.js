@@ -40,7 +40,6 @@ module.exports = {
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
-        'selector-not-notation': null, // https://caniuse.com/css-not-sel-list
         'selector-no-vendor-prefix': null,
     },
     reportNeedlessDisables: true,

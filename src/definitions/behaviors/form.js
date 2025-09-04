@@ -1646,7 +1646,7 @@
         selector: {
             checkbox: 'input[type="checkbox"], input[type="radio"]',
             clear: '.clear',
-            field: 'input:not(.search):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
+            field: 'input:not(.search, [type="reset"], [type="button"], [type="submit"]), textarea, select',
             file: 'input[type="file"]',
             group: '.field',
             input: 'input',
