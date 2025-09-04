@@ -1046,7 +1046,7 @@
                 },
 
                 popup: function () {
-                    return $activator.popup.apply($activator, arguments);
+                    return $activator.popup(...arguments);
                 },
 
                 focus: function () {

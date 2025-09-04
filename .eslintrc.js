@@ -89,7 +89,6 @@ module.exports = {
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
         'prefer-rest-params': 'off',
-        'prefer-spread': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
