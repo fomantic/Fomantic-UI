@@ -31,7 +31,7 @@
         let queryArguments = [].slice.call(arguments, 1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -958,7 +958,7 @@
                     query = settings.ignoreSearchCase ? query.toLowerCase() : query;
                     term = settings.ignoreSearchCase ? term.toLowerCase() : term;
 
-                    return term.indexOf(query) > -1;
+                    return term.includes(query);
                 },
                 filterActive: function () {
                     if (settings.useLabels) {
@@ -1019,7 +1019,7 @@
                                     if (!module.is.multiple()) {
                                         hasMultiple = false;
                                     }
-                                } else if (itemType.indexOf('menu') !== -1) {
+                                } else if (itemType.includes('menu')) {
                                     hasMultiple = findSelected(item.values || []);
                                 }
 
@@ -4005,7 +4005,7 @@
             let escape = settings.templates.escape;
             $.each(values, function (index, option) {
                 let itemType = option[fields.type] || 'item';
-                let isMenu = itemType.indexOf('menu') !== -1;
+                let isMenu = itemType.includes('menu');
                 let maybeData = '';
                 let dataObject = option[fields.data];
                 if (dataObject) {
@@ -4013,7 +4013,7 @@
                     let dataKeyEscaped;
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
-                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && !['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
                             maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
                         }
                     }
@@ -4034,7 +4034,7 @@
                     let hasDescription = escape(option[fields.description] || '', settings) !== '';
                     html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
-                        html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+                        html += '<i class="' + (itemType.includes('left') ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
                         html += '<img class="' + escape(option[fields.imageClass] || className.image) + '" src="' + escape(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + escape(option[fields.alt]) + '"' : '') + '>';

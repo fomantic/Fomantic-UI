@@ -673,7 +673,7 @@
                         term = term.toLowerCase();
                     }
 
-                    return term.indexOf(query) > -1;
+                    return term.includes(query);
                 },
                 wordSearch: function (query, term, matchAll) {
                     let allWords = query.split(/\s+/);

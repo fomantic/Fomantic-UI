@@ -492,7 +492,7 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        return ['file', 'checkbox', 'radio', 'hidden'].indexOf(type) >= 0 || $input.is('select') ? 'change' : 'input';
+                        return ['file', 'checkbox', 'radio', 'hidden'].includes(type) || $input.is('select') ? 'change' : 'input';
                     },
                     fieldsFromShorthand: function (fields) {
                         let fullFields = {};
@@ -537,7 +537,7 @@
                         let requiresName = prompt.search('{name}') !== -1;
                         let parts;
                         let suffixPrompt;
-                        if (ancillary && ['integer', 'decimal', 'number', 'size'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
+                        if (ancillary && ['integer', 'decimal', 'number', 'size'].includes(ruleName) && ancillary.includes('..')) {
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt && ruleName !== 'size') {
                                 suffixPrompt = parts[0] === ''
@@ -550,7 +550,7 @@
                             prompt = prompt.replace(/{min}/g, parts[0]);
                             prompt = prompt.replace(/{max}/g, parts[1]);
                         }
-                        if (ancillary && ['match', 'different'].indexOf(ruleName) >= 0) {
+                        if (ancillary && ['match', 'different'].includes(ruleName)) {
                             prompt = prompt.replace(/{ruleValue}/g, module.get.fieldLabel(ancillary, true));
                         }
                         if (requiresValue) {
@@ -682,7 +682,7 @@
                             let value = $field.val();
                             let isCheckbox = $field.is(selector.checkbox);
                             let isRadio = $field.is(selector.radio);
-                            let isMultiple = name.indexOf('[]') !== -1;
+                            let isMultiple = name.includes('[]');
                             let isCalendar = $calendar.length > 0 && module.can.useElement('calendar');
                             let isChecked = isCheckbox
                                 ? $field.is(':checked')
@@ -977,7 +977,7 @@
                             return;
                         }
                         $.each(validation[field].rules, function (index, rule) {
-                            if (rule && rules.indexOf(rule.type) !== -1) {
+                            if (rule && rules.includes(rule.type)) {
                                 module.debug('Removed rule', rule.type);
                                 validation[field].rules.splice(index, 1);
                             }
@@ -1169,7 +1169,7 @@
                             let validation = module.get.validation($el);
                             let hasNotEmptyRule = validation
                                 ? $.grep(validation.rules, function (rule) {
-                                    return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
+                                    return ['notEmpty', 'checked', 'empty'].includes(rule.type);
                                 }).length > 0
                                 : false;
                             let identifier = module.get.identifier(validation, $el);
@@ -1312,7 +1312,7 @@
                                                 // Always allow the first error prompt for new field identifiers
                                                 (!(identifier in formErrorsTracker)
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
-                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
+                                                || !formErrorsTracker[identifier].includes(fieldError))
                                                 // Limit the number of unique error prompts for every field identifier if specified
                                                 && (!errorLimit || (formErrorsTracker[identifier] || []).length < errorLimit)
                                             ) {
@@ -1801,10 +1801,10 @@
                 let min;
                 let max;
                 let parts;
-                if (!range || ['', '..'].indexOf(range) !== -1) {
+                if (!range || ['', '..'].includes(range)) {
 
                     // do nothing
-                } else if (range.indexOf('..') === -1) {
+                } else if (!range.includes('..')) {
                     if (regExp.test(range)) {
                         min = range - 0;
                         max = min;

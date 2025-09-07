@@ -529,7 +529,7 @@
                         }
 
                         return typeof duration === 'string'
-                            ? (duration.indexOf('ms') > -1
+                            ? (duration.includes('ms')
                                 ? parseFloat(duration)
                                 : parseFloat(duration) * 1000)
                             : duration;
