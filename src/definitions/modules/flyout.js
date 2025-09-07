@@ -450,8 +450,7 @@
                         let collectNodes = function (parent) {
                             let nodes = [];
                             for (let c = 0, cl = parent.length; c < cl; c++) {
-                                Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
-                                nodes.push(parent[c]);
+                                nodes.push(...collectNodes(parent[c].childNodes), parent[c]);
                             }
 
                             return nodes;
@@ -1097,7 +1096,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: Array.prototype.slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });

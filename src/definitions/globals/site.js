@@ -273,7 +273,7 @@
                         performance.push({
                             Element: element,
                             Name: message[0],
-                            Arguments: Array.prototype.slice.call(message, 1) || '',
+                            Arguments: message.slice(1),
                             'Execution Time': executionTime,
                         });
                     }

@@ -1480,7 +1480,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: Array.prototype.slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
