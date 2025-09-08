@@ -141,13 +141,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        let response;
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
-                        response = sessionStorage.getItem(url + module.get.normalizedData());
+                        let response = window.sessionStorage.getItem(url + module.get.normalizedData());
                         module.debug('Using cached response', url, settings.data, response);
                         response = module.decode.json(response);
 
@@ -156,15 +150,10 @@
                 },
                 write: {
                     cachedResponse: function (url, response) {
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
                         if ($.isPlainObject(response)) {
                             response = JSON.stringify(response);
                         }
-                        sessionStorage.setItem(url + module.get.normalizedData(), response);
+                        window.sessionStorage.setItem(url + module.get.normalizedData(), response);
                         module.verbose('Storing cached response for url', url, settings.data, response);
                     },
                 },
@@ -1131,7 +1120,6 @@
             missingAction: 'API action used but no url was defined',
             missingURL: 'No URL specified for api event',
             noReturnedValue: 'The beforeSend callback must return a settings object, beforeSend ignored.',
-            noStorage: 'Caching responses locally requires session storage',
             parseError: 'There was an error parsing your request',
             requiredParameter: 'Missing a required URL parameter: ',
             statusMessage: 'Server gave an error: ',

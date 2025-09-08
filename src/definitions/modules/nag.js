@@ -171,56 +171,52 @@
                         module.error(error.expiresFormat);
                     },
                     storage: function () {
-                        if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
+                        if (settings.storageMethod === 'localstorage') {
                             module.debug('Using local storage');
 
                             return window.localStorage;
                         }
-                        if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+                        if (settings.storageMethod === 'sessionstorage') {
                             module.debug('Using session storage');
 
                             return window.sessionStorage;
                         }
-                        if ('cookie' in document) {
-                            module.debug('Using cookie');
+                        module.debug('Using cookie');
 
-                            return {
-                                setItem: function (key, value, options) {
-                                    // RFC6265 compliant encoding
-                                    key = encodeURIComponent(key)
-                                        .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-                                        .replace(/[()]/g, escape);
-                                    value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
+                        return {
+                            setItem: function (key, value, options) {
+                                // RFC6265 compliant encoding
+                                key = encodeURIComponent(key)
+                                    .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+                                    .replace(/[()]/g, escape);
+                                value = encodeURIComponent(value)
+                                    .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
-                                    let cookieOptions = '';
-                                    for (let option in options) {
-                                        if (Object.prototype.hasOwnProperty.call(options, option)) {
-                                            cookieOptions += '; ' + option;
-                                            if (typeof options[option] === 'string') {
-                                                cookieOptions += '=' + options[option].split(';')[0];
-                                            }
+                                let cookieOptions = '';
+                                for (let option in options) {
+                                    if (Object.prototype.hasOwnProperty.call(options, option)) {
+                                        cookieOptions += '; ' + option;
+                                        if (typeof options[option] === 'string') {
+                                            cookieOptions += '=' + options[option].split(';')[0];
                                         }
                                     }
-                                    document.cookie = key + '=' + value + cookieOptions;
-                                },
-                                getItem: function (key) {
-                                    let cookies = document.cookie.split('; ');
-                                    for (let i = 0, il = cookies.length; i < il; i++) {
-                                        let parts = cookies[i].split('=');
-                                        let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
-                                        if (key === foundKey) {
-                                            return parts[1] || '';
-                                        }
+                                }
+                                document.cookie = key + '=' + value + cookieOptions;
+                            },
+                            getItem: function (key) {
+                                let cookies = document.cookie.split('; ');
+                                for (let i = 0, il = cookies.length; i < il; i++) {
+                                    let parts = cookies[i].split('=');
+                                    let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
+                                    if (key === foundKey) {
+                                        return parts[1] || '';
                                     }
-                                },
-                                removeItem: function (key, options) {
-                                    storage.setItem(key, '', options);
-                                },
-                            };
-                        }
-
-                        module.error(error.noStorage);
+                                }
+                            },
+                            removeItem: function (key, options) {
+                                storage.setItem(key, '', options);
+                            },
+                        };
                     },
                     storageOptions: function () {
                         let options = {};
@@ -489,7 +485,6 @@
         expirationKey: 'ExpirationDate',
 
         error: {
-            noStorage: 'Unsupported storage method',
             method: 'The method you called is not defined.',
             setItem: 'Unexpected error while setting value',
             expiresFormat: '"expires" must be a number of days or a Date Object',

@@ -2219,13 +2219,7 @@
 
                 read: {
                     remoteData: function (value) {
-                        let name;
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
-                        name = sessionStorage.getItem(value + elementNamespace);
+                        let name = window.sessionStorage.getItem(value + elementNamespace);
 
                         return name !== undefined
                             ? name
@@ -2258,13 +2252,8 @@
                         }
                     },
                     remoteData: function (name, value) {
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
                         module.verbose('Saving remote data to session storage', value, name);
-                        sessionStorage.setItem(value + elementNamespace, name);
+                        window.sessionStorage.setItem(value + elementNamespace, name);
                     },
                 },
 
@@ -3844,7 +3833,6 @@
             missingMultiple: '<select> requires multiple property to be set to correctly preserve multiple values',
             method: 'The method you called is not defined.',
             noAPI: 'The API module is required to load resources remotely',
-            noStorage: 'Saving remote data requires session storage',
             noElement: 'This module requires ui {element}',
         },
 
