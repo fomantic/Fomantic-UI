@@ -603,9 +603,9 @@
 
                         // avoid duplicates when pushing results
                         let addResult = function (array, result) {
-                            let notResult = $.inArray(result, results) === -1;
-                            let notFuzzyResult = $.inArray(result, fuzzyResults) === -1;
-                            let notExactResults = $.inArray(result, exactResults) === -1;
+                            let notResult = !results.includes(result);
+                            let notFuzzyResult = !fuzzyResults.includes(result);
+                            let notExactResults = !exactResults.includes(result);
                             if (notResult && notFuzzyResult && notExactResults) {
                                 array.push(result);
                             }

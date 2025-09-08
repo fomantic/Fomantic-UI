@@ -634,7 +634,7 @@
                 utilities: {
                     filterArray: function (keepArray, removeArray) {
                         return $.grep(keepArray, function (keepValue) {
-                            return $.inArray(keepValue, removeArray) === -1;
+                            return !removeArray.includes(keepValue);
                         });
                     },
                     last: function (array) {

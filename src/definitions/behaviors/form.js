@@ -2007,7 +2007,7 @@
                         validation = cards[type];
                         if (validation) {
                             valid = {
-                                length: $.inArray(cardNumber.length, validation.length) !== -1,
+                                length: validation.length.includes(cardNumber.length),
                                 pattern: cardNumber.search(validation.pattern) !== -1,
                             };
                             if (valid.length > 0 && valid.pattern) {
@@ -2023,7 +2023,7 @@
 
                 // skip luhn for UnionPay
                 unionPay = {
-                    number: $.inArray(cardNumber.length, cards.unionPay.length) !== -1,
+                    number: cards.unionPay.length.includes(cardNumber.length),
                     pattern: cardNumber.search(cards.unionPay.pattern) !== -1,
                 };
                 if (unionPay.number && unionPay.pattern) {

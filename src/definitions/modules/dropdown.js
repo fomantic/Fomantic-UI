@@ -1837,9 +1837,7 @@
                         });
                     },
                     uniqueArray: function (array) {
-                        return $.grep(array, function (value, index) {
-                            return $.inArray(value, array) === index;
-                        });
+                        return [...new Set(array)];
                     },
                     caretPosition: function (returnEndPos) {
                         let input = $search[0];
@@ -2064,7 +2062,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(String(optionValue), value.map(String)) !== -1) {
+                                        if (value.map(String).includes(String(optionValue))) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -3166,7 +3164,7 @@
                     valueMatchingCase: function (value) {
                         let values = module.get.values();
                         let hasValue = Array.isArray(values)
-                            ? values && ($.inArray(value, values) !== -1)
+                            ? values && values.includes(value)
                             : values == value;
 
                         return !!hasValue;
@@ -3296,7 +3294,7 @@
                         return $module.hasClass(className.selection);
                     },
                     userValue: function (value) {
-                        return $.inArray(value, module.get.userValues()) !== -1;
+                        return module.get.userValues().includes(value);
                     },
                     upward: function ($menu) {
                         let $element = $menu || $module;

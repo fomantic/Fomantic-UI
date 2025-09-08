@@ -824,8 +824,7 @@
                         return module.get.validatedMode(mode);
                     },
                     validatedMode: function (mode) {
-                        let validModes = module.get.validModes();
-                        if ($.inArray(mode, validModes) >= 0) {
+                        if (module.get.validModes().includes(mode)) {
                             return mode;
                         }
 
@@ -1720,9 +1719,9 @@
 
                 if (!isDateOnly) {
                     // am/pm
-                    isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0
+                    isAm = words.includes(settings.text.am.toLowerCase())
                         ? true
-                        : ($.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined);
+                        : (words.includes(settings.text.pm.toLowerCase()) ? false : undefined);
 
                     // time with ':'
                     for (i = 0; i < numbers.length; i++) {
