@@ -65,7 +65,7 @@
 @inputErrorPlaceholderFocusColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 5), @formErrorColor);
 
 /* Loading */
-@formLoaderDimmerColor: rgba(255, 255, 255, 0.6);
+@formLoaderDimmerColor: rgb(255 255 255 / 0.6);
 @formLoaderPath: "@{imagePath}/loader-large.gif";
 @formLoaderPosition: 50% 50%;
 

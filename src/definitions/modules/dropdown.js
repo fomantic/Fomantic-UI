@@ -19,19 +19,19 @@
         ? window
         : globalThis;
 
-    $.fn.dropdown = function (parameters) {
+    $.fn.dropdown = function (...args) {
         let $allModules = $(this);
         let $document = $(document);
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -711,7 +711,7 @@
                         }
                         if (settings.allowAdditions) {
                             module.add.userSuggestion(settings.preserveHTML
-                                ? module.escape.htmlEntities(query)
+                                ? settings.templates.escape(query)
                                 : query);
                         }
                         if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
@@ -768,7 +768,7 @@
                             module.add.message(message.serverError);
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onError === 'function') {
                                 settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
                             }
@@ -777,7 +777,7 @@
                             module.add.message(message.serverError);
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onFailure === 'function') {
                                 settings.apiSettings.onFailure.call(this, response, $module, xhr);
                             }
@@ -795,7 +795,7 @@
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values(true) : module.get.value();
+                                let value = module.is.multiple() ? module.get.values() : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
@@ -803,7 +803,7 @@
                             }
                             iconClicked = false;
                             focused = false;
-                            callback.apply(null, callbackParameters);
+                            callback(...callbackParameters);
                             if (typeof settings.apiSettings.onSuccess === 'function') {
                                 settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                             }
@@ -876,12 +876,12 @@
                             .not(results)
                             .addClass(className.filtered);
                         if (settings.highlightMatches && (settings.match === 'both' || settings.match === 'text')) {
-                            let querySplit = query.split('');
+                            let querySplit = [...query];
                             let diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
                             let htmlReg = '(?![^<]*>)';
                             let markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
-                            let markedReplacer = function () {
-                                let args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                            let markedReplacer = function (...args) {
+                                args = args.slice(1, querySplit.length * 2).map(function (x, i) {
                                     return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                 });
 
@@ -958,7 +958,7 @@
                     query = settings.ignoreSearchCase ? query.toLowerCase() : query;
                     term = settings.ignoreSearchCase ? term.toLowerCase() : term;
 
-                    return term.indexOf(query) > -1;
+                    return term.includes(query);
                 },
                 filterActive: function () {
                     if (settings.useLabels) {
@@ -1009,27 +1009,35 @@
                         let menuConfig = {};
                         menuConfig[fields.values] = values;
                         module.setup.menu(menuConfig);
-                        $.each(values, function (index, item) {
-                            if (item.selected === true) {
-                                module.debug('Setting initial selection to', item[fields.value]);
-                                module.set.selected(item[fields.value]);
-                                if (!module.is.multiple()) {
-                                    return false;
+                        let findSelected = function (values) {
+                            let hasMultiple = true;
+                            $.each(values, function (index, item) {
+                                let itemType = item.type || 'item';
+                                if (item.selected === true) {
+                                    module.debug('Setting initial selection to', item[fields.value]);
+                                    module.set.selected(item[fields.value]);
+                                    if (!module.is.multiple()) {
+                                        hasMultiple = false;
+                                    }
+                                } else if (itemType.includes('menu')) {
+                                    hasMultiple = findSelected(item.values || []);
                                 }
-                            }
-                        });
+
+                                return hasMultiple;
+                            });
+
+                            return hasMultiple;
+                        };
+                        findSelected(values);
 
                         if (module.has.selectInput()) {
                             module.disconnect.selectObserver();
                             $input.html('');
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
-                                let value = settings.templates.escape(item[fields.value]);
-                                let name = settings.templates.escape(
-                                    item[fields.name] || '',
-                                    settings
-                                );
-                                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
+                                let value = item[fields.value];
+                                let name = item[fields.name] || '';
+                                $input.append('<option value="' + settings.templates.escape(value) + '"' + (item.selected === true ? ' selected' : '') + '>' + settings.templates.escape(name, settings) + '</option>');
                             });
                             module.observe.select();
                         }
@@ -1042,9 +1050,10 @@
                         let tokens = pasteValue.split(settings.delimiter);
                         let notFoundTokens = [];
                         tokens.forEach(function (value) {
+                            value = value.trim();
                             const valueTrimmed = settings.preserveHTML
-                                ? module.escape.htmlEntities(value.trim())
-                                : value.trim();
+                                ? settings.templates.escape(value)
+                                : value;
                             if (module.set.selected(valueTrimmed, null, false, true) === false) {
                                 notFoundTokens.push(valueTrimmed);
                             }
@@ -1815,7 +1824,7 @@
                             : settings.transition;
                     },
                     userValues: function () {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         if (!values) {
                             return false;
                         }
@@ -1828,9 +1837,7 @@
                         });
                     },
                     uniqueArray: function (array) {
-                        return $.grep(array, function (value, index) {
-                            return $.inArray(value, array) === index;
-                        });
+                        return [...new Set(array)];
                     },
                     caretPosition: function (returnEndPos) {
                         let input = $search[0];
@@ -1865,7 +1872,7 @@
                             ? ''
                             : value;
                     },
-                    values: function (raw) {
+                    values: function () {
                         let value = module.get.value();
                         if (value === '') {
                             return '';
@@ -1873,9 +1880,7 @@
 
                         return !module.has.selectInput() && module.is.multiple()
                             ? (typeof value === 'string' // delimited string
-                                ? (raw
-                                    ? value
-                                    : module.escape.htmlEntities(value)).split(settings.delimiter)
+                                ? value.split(settings.delimiter)
                                 : '')
                             : value;
                     },
@@ -2057,7 +2062,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
+                                        if (value.map(String).includes(String(optionValue))) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -2074,7 +2079,7 @@
                                             optionValue = optionValue.toLowerCase();
                                             value = value.toLowerCase();
                                         }
-                                        if (module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
+                                        if (String(optionValue) === String(value)) {
                                             module.verbose('Found select item by value', optionValue, value);
                                             $selectedItem = $choice;
 
@@ -2212,13 +2217,7 @@
 
                 read: {
                     remoteData: function (value) {
-                        let name;
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
-                        name = sessionStorage.getItem(value + elementNamespace);
+                        let name = window.sessionStorage.getItem(value + elementNamespace);
 
                         return name !== undefined
                             ? name
@@ -2251,13 +2250,8 @@
                         }
                     },
                     remoteData: function (name, value) {
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
                         module.verbose('Saving remote data to session storage', value, name);
-                        sessionStorage.setItem(value + elementNamespace, name);
+                        window.sessionStorage.setItem(value + elementNamespace, name);
                     },
                 },
 
@@ -2828,7 +2822,7 @@
                             $selectedItem = undefined;
                             addedText = undefined;
                         }
-                        let currentValue = module.get.values(true);
+                        let currentValue = module.get.values();
                         let newValue;
                         if (module.has.value(addedValue)) {
                             module.debug('Value already selected');
@@ -2842,7 +2836,9 @@
                         }
                         // extend current array
                         if (Array.isArray(currentValue)) {
-                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
+                            newValue = $selectedItem && $selectedItem.hasClass(className.actionable)
+                                ? currentValue
+                                : [...currentValue, addedValue];
                             newValue = module.get.uniqueArray(newValue);
                         } else {
                             newValue = [addedValue];
@@ -2985,7 +2981,7 @@
                         $item.removeClass(className.selected);
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let newValue;
                         if (module.has.selectInput()) {
                             module.verbose('Input is <select> removing selected option', removedValue);
@@ -3155,15 +3151,15 @@
                             : module.has.valueMatchingCase(value);
                     },
                     valueMatchingCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = Array.isArray(values)
-                            ? values && ($.inArray(value, values) !== -1)
+                            ? values && values.includes(value)
                             : values == value;
 
                         return !!hasValue;
                     },
                     valueIgnoringCase: function (value) {
-                        let values = module.get.values(true);
+                        let values = module.get.values();
                         let hasValue = false;
                         if (!Array.isArray(values)) {
                             values = [values];
@@ -3287,7 +3283,7 @@
                         return $module.hasClass(className.selection);
                     },
                     userValue: function (value) {
-                        return $.inArray(value, module.get.userValues()) !== -1;
+                        return module.get.userValues().includes(value);
                     },
                     upward: function ($menu) {
                         let $element = $menu || $module;
@@ -3543,17 +3539,6 @@
 
                         return text.replace(regExp.escape, '\\$&');
                     },
-                    htmlEntities: function (string) {
-                        const escapeMap = {
-                            '"': '&quot;',
-                            '&': '&amp;',
-                            "'": '&apos;',
-                            '<': '&lt;',
-                            '>': '&gt;',
-                        };
-
-                        return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
-                    },
 
                     // https://github.com/fomantic/Fomantic-UI/issues/2782
                     // https://jsfiddle.net/3efL7jnt/
@@ -3595,30 +3580,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -3633,7 +3618,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -3654,13 +3639,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -3720,7 +3699,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
@@ -3852,7 +3831,6 @@
             missingMultiple: '<select> requires multiple property to be set to correctly preserve multiple values',
             method: 'The method you called is not defined.',
             noAPI: 'The API module is required to load resources remotely',
-            noStorage: 'Saving remote data requires session storage',
             noElement: 'This module requires ui {element}',
         },
 
@@ -4007,7 +3985,7 @@
             let escape = settings.templates.escape;
             $.each(values, function (index, option) {
                 let itemType = option[fields.type] || 'item';
-                let isMenu = itemType.indexOf('menu') !== -1;
+                let isMenu = itemType.includes('menu');
                 let maybeData = '';
                 let dataObject = option[fields.data];
                 if (dataObject) {
@@ -4015,7 +3993,7 @@
                     let dataKeyEscaped;
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
-                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && !['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
                             maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
                         }
                     }
@@ -4036,7 +4014,7 @@
                     let hasDescription = escape(option[fields.description] || '', settings) !== '';
                     html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
-                        html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+                        html += '<i class="' + (itemType.includes('left') ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
                         html += '<img class="' + escape(option[fields.imageClass] || className.image) + '" src="' + escape(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + escape(option[fields.alt]) + '"' : '') + '>';

@@ -37,16 +37,16 @@
 // prettier-ignore
 @placeholderLoadingGradient: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.08) 0,
-    rgba(0, 0, 0, 0.15) 15%,
-    rgba(0, 0, 0, 0.08) 30%
+    rgb(0 0 0 / 0.08) 0,
+    rgb(0 0 0 / 0.15) 15%,
+    rgb(0 0 0 / 0.08) 30%
 );
 // prettier-ignore
 @placeholderInvertedLoadingGradient: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.08) 0,
-    rgba(255, 255, 255, 0.14) 15%,
-    rgba(255, 255, 255, 0.08) 30%
+    rgb(255 255 255 / 0.08) 0,
+    rgb(255 255 255 / 0.14) 15%,
+    rgb(255 255 255 / 0.08) 30%
 );
 
 /* Variations */

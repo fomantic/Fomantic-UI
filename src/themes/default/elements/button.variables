@@ -23,7 +23,7 @@
 @tapColor: transparent;
 @fontFamily: @pageFont;
 @fontWeight: @bold;
-@textColor: rgba(0, 0, 0, 0.6);
+@textColor: rgb(0 0 0 / 0.6);
 @textShadow: none;
 @invertedTextShadow: @textShadow;
 @borderRadius: @defaultBorderRadius;
@@ -52,7 +52,7 @@
 @rightIconMargin: 0 -(@iconDistance / 2) 0 @iconDistance;
 
 /* Loader */
-@invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
+@invertedLoaderFillColor: rgb(0 0 0 / 0.15);
 
 @transition:
     opacity @defaultDuration @defaultEasing,
@@ -167,7 +167,7 @@
 
 /* Labeled Icon */
 @labeledIconWidth: 1em + (@verticalPadding * 2);
-@labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);
+@labeledIconBackgroundColor: rgb(0 0 0 / 0.05);
 @labeledIconPadding: (@horizontalPadding + @labeledIconWidth);
 @labeledIconBorder: transparent;
 @labeledIconColor: "";
@@ -211,7 +211,7 @@
 @basicDownBackground: #f8f8f8;
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
-    0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
+    0 0 0 @basicBorderSize rgb(0 0 0 / 0.15) inset,
     0 1px 4px 0 @borderColor inset;
 
 /* Basic Active */
@@ -225,11 +225,11 @@
 @basicInvertedDownBackground: @transparentWhite;
 @basicInvertedActiveBackground: @transparentWhite;
 
-@basicInvertedBoxShadow: 0 0 0 @invertedBorderSize rgba(255, 255, 255, 0.5) inset;
-@basicInvertedHoverBoxShadow: 0 0 0 @invertedBorderSize rgba(255, 255, 255, 1) inset;
-@basicInvertedFocusBoxShadow: 0 0 0 @invertedBorderSize rgba(255, 255, 255, 1) inset;
-@basicInvertedDownBoxShadow: 0 0 0 @invertedBorderSize rgba(255, 255, 255, 0.9) inset;
-@basicInvertedActiveBoxShadow: 0 0 0 @invertedBorderSize rgba(255, 255, 255, 0.7) inset;
+@basicInvertedBoxShadow: 0 0 0 @invertedBorderSize rgb(255 255 255 / 0.5) inset;
+@basicInvertedHoverBoxShadow: 0 0 0 @invertedBorderSize rgb(255 255 255 / 1) inset;
+@basicInvertedFocusBoxShadow: 0 0 0 @invertedBorderSize rgb(255 255 255 / 1) inset;
+@basicInvertedDownBoxShadow: 0 0 0 @invertedBorderSize rgb(255 255 255 / 0.9) inset;
+@basicInvertedActiveBoxShadow: 0 0 0 @invertedBorderSize rgb(255 255 255 / 0.7) inset;
 
 @basicInvertedColor: @darkWhite;
 @basicInvertedHoverColor: @darkWhiteHover;

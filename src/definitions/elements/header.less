@@ -17,7 +17,7 @@
 
 @import (multiple) "../../theme.config";
 
-@notCenteredAligned: if(@variationHeaderAligned, e(":not(.centered):not(.aligned)"));
+@notCenteredAligned: if(@variationHeaderAligned, e(":not(.centered, .aligned)"));
 @notIcon: if(@variationHeaderIcon, e(":not(.icon)"));
 
 /*******************************
@@ -430,7 +430,7 @@
         border: @blockBorder;
         border-radius: @blockBorderRadius;
     }
-    .ui.block.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    .ui.block.header:not(h1, h2, h3, h4, h5, h6) {
         font-size: @mediumBlock;
     }
     & when not (@variationHeaderSizes = false) {
@@ -477,7 +477,7 @@
     }
 
     /* Attached Sizes */
-    .ui.attached.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+    .ui.attached.header:not(h1, h2, h3, h4, h5, h6) {
         font-size: @mediumAttachedSize;
     }
     & when not (@variationHeaderSizes = false) {
@@ -494,7 +494,7 @@
         Sizing
 -------------------- */
 
-.ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+.ui.header:not(h1, h2, h3, h4, h5, h6) {
     font-size: @mediumFontSize;
 }
 

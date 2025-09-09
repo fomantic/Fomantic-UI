@@ -155,7 +155,7 @@
 
 .ui.modal > .content > i.icon + .description,
 .ui.modal > .content > .image + .description {
-    flex: 0 1 auto;
+    flex: auto;
     min-width: @descriptionMinWidth;
     width: @descriptionWidth;
     padding-left: @descriptionDistance;
@@ -552,8 +552,8 @@
         }
     }
     & when (@variationModalClose) {
-        .ui.modal > .close.inside + .header:not(.centered):not(.center):not(.icon),
-        .ui.fullscreen.modal > .close + .header:not(.centered):not(.center):not(.icon) {
+        .ui.modal > .close.inside + .header:not(.centered, .center, .icon),
+        .ui.fullscreen.modal > .close + .header:not(.centered, .center, .icon) {
             padding-right: @closeHitbox;
         }
         .ui.modal > .close.inside,

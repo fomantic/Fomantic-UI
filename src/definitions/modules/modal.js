@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.fn.modal = function (parameters) {
+    $.fn.modal = function (...args) {
         let $allModules = $(this);
         let $window = $(window);
         let $document = $(document);
@@ -28,12 +28,12 @@
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $body;
             } else {
                 $context = $(win.document).find(context);
@@ -82,7 +82,8 @@
             let initialMouseDownInModal;
             let initialMouseDownInScrollbar;
             let initialBodyMargin = '';
-            let tempBodyMargin = '';
+            let initialBodyMarginInt = 0;
+            let tempBodyMargin = 0;
             let keepScrollingClass = false;
             let hadScrollbar = false;
             let windowRefocused = false;
@@ -267,8 +268,7 @@
                         let collectNodes = function (parent) {
                             let nodes = [];
                             for (let c = 0, cl = parent.length; c < cl; c++) {
-                                Array.prototype.push.apply(nodes, collectNodes(parent[c].childNodes));
-                                nodes.push(parent[c]);
+                                nodes.push(...collectNodes(parent[c].childNodes), parent[c]);
                             }
 
                             return nodes;
@@ -423,7 +423,7 @@
                         });
                     },
                     preventScroll: function (event) {
-                        if (event.target.className.indexOf('dimmer') !== -1) {
+                        if (event.target.className.includes('dimmer')) {
                             event.preventDefault();
                         }
                     },
@@ -795,9 +795,9 @@
                     },
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        let bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
                         let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
-                        tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
+                        tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },
                 },
 
@@ -809,7 +809,7 @@
                     },
                     bodyMargin: function () {
                         let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
-                        $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
+                        $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMarginInt === 0 ? '' : initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             let el = $(this);
                             let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
@@ -1177,30 +1177,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -1215,7 +1215,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -1236,13 +1236,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -1300,10 +1294,10 @@
 
             if (methodInvoked) {
                 if (instance === undefined) {
-                    if (isFunction(settings.templates[query])) {
+                    if (isFunction(settings.templates[parameters])) {
                         settings.autoShow = true;
                         settings.className.modal = settings.className.template;
-                        settings = $.extend(true, {}, settings, settings.templates[query].apply(module, queryArguments));
+                        settings = $.extend(true, {}, settings, settings.templates[parameters].apply(module, queryArguments));
 
                         // reassign shortcuts
                         className = settings.className;
@@ -1313,8 +1307,8 @@
                     }
                     module.initialize();
                 }
-                if (!isFunction(settings.templates[query])) {
-                    module.invoke(query);
+                if (!isFunction(settings.templates[parameters])) {
+                    module.invoke(parameters);
                 }
             } else {
                 if (instance !== undefined) {
@@ -1473,8 +1467,7 @@
     };
 
     $.fn.modal.settings.templates = {
-        getArguments: function (args) {
-            let queryArguments = [].slice.call(args);
+        getArguments: function (queryArguments) {
             if ($.isPlainObject(queryArguments[0])) {
                 return $.extend({
                     handler: function () {},
@@ -1492,9 +1485,9 @@
                 title: queryArguments.pop() || '',
             };
         },
-        alert: function () {
+        alert: function (...args) {
             let settings = this.get.settings();
-            let args = settings.templates.getArguments(arguments);
+            args = settings.templates.getArguments(args);
             let approveFn = args.handler;
 
             return {
@@ -1508,9 +1501,9 @@
                 }],
             };
         },
-        confirm: function () {
+        confirm: function (...args) {
             let settings = this.get.settings();
-            let args = settings.templates.getArguments(arguments);
+            args = settings.templates.getArguments(args);
             let approveFn = function () {
                 args.handler(true);
             };
@@ -1534,10 +1527,10 @@
                 }],
             };
         },
-        prompt: function () {
+        prompt: function (...args) {
             let $this = this;
             let settings = this.get.settings();
-            let args = settings.templates.getArguments(arguments);
+            args = settings.templates.getArguments(args);
             let input = $($.parseHTML(args.content)).filter('.ui.input');
             let approveFn = function () {
                 let settings = $this.get.settings();
