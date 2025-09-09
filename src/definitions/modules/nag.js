@@ -31,7 +31,7 @@
         let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);

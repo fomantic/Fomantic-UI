@@ -36,7 +36,7 @@
         let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -344,7 +344,7 @@
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
                                     // allow legacy {$var} style
-                                    let variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.includes('$')
                                         ? templatedString.slice(2, -1)
                                         : templatedString.slice(1, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -373,7 +373,7 @@
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
                                     // allow legacy {/$var} style
-                                    let variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.includes('$')
                                         ? templatedString.slice(3, -1)
                                         : templatedString.slice(2, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -390,7 +390,7 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        url = url.indexOf('/' + templatedString) !== -1
+                                        url = url.includes('/' + templatedString)
                                             ? url.replace('/' + templatedString, '')
                                             : url.replace(templatedString, '');
                                     }
@@ -447,7 +447,7 @@
                                 } else {
                                     pushValues[pushKey] = [pushValues[pushKey], value];
                                 }
-                                if (pushKey.indexOf('[]') === -1) {
+                                if (!pushKey.includes('[]')) {
                                     value = pushValues[pushKey];
                                 }
 

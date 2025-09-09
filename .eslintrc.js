@@ -91,7 +91,6 @@ module.exports = {
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
-        'unicorn/prefer-includes': 'off',
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-reflect-apply': 'off',

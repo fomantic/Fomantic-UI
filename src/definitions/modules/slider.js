@@ -211,7 +211,7 @@
                         for (let i = 0; i <= len; i++) {
                             let stepValue = Math.round(((i * (step === 0 ? 1 : step)) + module.get.min()) * precision) / precision;
                             let labelText = module.get.label(i, stepValue);
-                            let showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.indexOf(labelText) >= 0;
+                            let showLabel = settings.restrictedLabels.length === 0 || settings.restrictedLabels.includes(labelText);
                             let $label = labelText !== '' && (showLabel || settings.showLabelTicks === 'always')
                                 ? ((!(i % module.get.gapRatio()) && i < ignoreLabels) || i === len
                                     ? $('<li/>', { class: className.label, 'data-value': stepValue, html: showLabel ? labelText : '' })

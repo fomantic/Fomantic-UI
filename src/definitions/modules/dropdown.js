@@ -31,7 +31,7 @@
         let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -958,7 +958,7 @@
                     query = settings.ignoreSearchCase ? query.toLowerCase() : query;
                     term = settings.ignoreSearchCase ? term.toLowerCase() : term;
 
-                    return term.indexOf(query) > -1;
+                    return term.includes(query);
                 },
                 filterActive: function () {
                     if (settings.useLabels) {
@@ -1019,7 +1019,7 @@
                                     if (!module.is.multiple()) {
                                         hasMultiple = false;
                                     }
-                                } else if (itemType.indexOf('menu') !== -1) {
+                                } else if (itemType.includes('menu')) {
                                     hasMultiple = findSelected(item.values || []);
                                 }
 
@@ -1837,9 +1837,7 @@
                         });
                     },
                     uniqueArray: function (array) {
-                        return $.grep(array, function (value, index) {
-                            return $.inArray(value, array) === index;
-                        });
+                        return [...new Set(array)];
                     },
                     caretPosition: function (returnEndPos) {
                         let input = $search[0];
@@ -2064,7 +2062,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(String(optionValue), value.map(String)) !== -1) {
+                                        if (value.map(String).includes(String(optionValue))) {
                                             $selectedItem = $selectedItem
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -3155,7 +3153,7 @@
                     valueMatchingCase: function (value) {
                         let values = module.get.values();
                         let hasValue = Array.isArray(values)
-                            ? values && ($.inArray(value, values) !== -1)
+                            ? values && values.includes(value)
                             : values == value;
 
                         return !!hasValue;
@@ -3285,7 +3283,7 @@
                         return $module.hasClass(className.selection);
                     },
                     userValue: function (value) {
-                        return $.inArray(value, module.get.userValues()) !== -1;
+                        return module.get.userValues().includes(value);
                     },
                     upward: function ($menu) {
                         let $element = $menu || $module;
@@ -3987,7 +3985,7 @@
             let escape = settings.templates.escape;
             $.each(values, function (index, option) {
                 let itemType = option[fields.type] || 'item';
-                let isMenu = itemType.indexOf('menu') !== -1;
+                let isMenu = itemType.includes('menu');
                 let maybeData = '';
                 let dataObject = option[fields.data];
                 if (dataObject) {
@@ -3995,7 +3993,7 @@
                     let dataKeyEscaped;
                     for (dataKey in dataObject) {
                         dataKeyEscaped = String(dataKey).replace(/\W/g, '');
-                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && ['text', 'value'].indexOf(dataKeyEscaped.toLowerCase()) === -1) {
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && !['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
                             maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
                         }
                     }
@@ -4016,7 +4014,7 @@
                     let hasDescription = escape(option[fields.description] || '', settings) !== '';
                     html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
-                        html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+                        html += '<i class="' + (itemType.includes('left') ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
                         html += '<img class="' + escape(option[fields.imageClass] || className.image) + '" src="' + escape(option[fields.image]) + '"' + (option[fields.alt] ? ' alt="' + escape(option[fields.alt]) + '"' : '') + '>';

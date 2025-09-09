@@ -33,7 +33,7 @@
         let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $body;
             } else {
                 $context = $(win.document).find(context);
@@ -409,7 +409,7 @@
                         });
                     },
                     preventScroll: function (event) {
-                        if (event.target.className.indexOf('dimmer') !== -1) {
+                        if (event.target.className.includes('dimmer')) {
                             event.preventDefault();
                         }
                     },

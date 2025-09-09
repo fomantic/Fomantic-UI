@@ -25,7 +25,7 @@ const currentRev = childProcess // get the current rev from the repo
 const getNextVersion = async function () {
     const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
         .then((r) => r.json())
-        .then((milestones) => milestones.filter((m) => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
+        .then((milestones) => milestones.filter((m) => !m.title.includes('x'))) // remove all versions with `x` in it
         .then((versions) => versions.map((m) => m.title)) // create array of versions
         .then((versions) => semver.sort(versions));
 
@@ -42,7 +42,7 @@ const getPublishedVersion = async function () {
             .then((p) => {
                 let nightly = p['dist-tags'].nightly ?? '';
                 let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead
+                let buildCommit = !nightly.includes('+') && versionInfo.gitHead
                     ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
                     : '';
 
