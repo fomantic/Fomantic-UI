@@ -19,15 +19,15 @@
         ? window
         : globalThis;
 
-    $.fn.search = function (parameters) {
+    $.fn.search = function (...args) {
         let $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let returnedValue;
         $allModules.each(function () {
             let settings = $.isPlainObject(parameters)
@@ -1027,12 +1027,12 @@
                         if (settings.highlightMatches) {
                             let results = response[fields.results];
                             let regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
-                            let querySplit = module.get.value().split('');
+                            let querySplit = [...module.get.value()];
                             let diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
                             let htmlReg = '(?![^<]*>)';
                             let markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
-                            let markedReplacer = function () {
-                                let args = [].slice.call(arguments, 1, querySplit.length * 2).map(function (x, i) {
+                            let markedReplacer = function (...args) {
+                                args = args.slice(1, querySplit.length * 2).map(function (x, i) {
                                     return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                 });
 
@@ -1093,30 +1093,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -1131,7 +1131,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -1214,7 +1214,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
