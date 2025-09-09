@@ -71,7 +71,7 @@ module.exports = function (callback) {
                     let stat = fs.statSync(filePath);
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
-                            files = files.concat(gatherFiles(filePath));
+                            files = [...files, ...gatherFiles(filePath)];
                         } else {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
                         }

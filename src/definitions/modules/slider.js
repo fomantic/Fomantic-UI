@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.fn.slider = function (parameters) {
+    $.fn.slider = function (...args) {
         let $allModules = $(this);
         let $document = $(document);
         let $window = $(window);
@@ -27,9 +27,9 @@
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
 
         let SINGLE_STEP = 1;
         let BIG_STEP = 2;
@@ -723,7 +723,7 @@
                                     return value;
                                 }
                                 let letterLabel = '';
-                                let letters = Array.isArray(settings.letters) ? settings.letters : String(settings.letters).split('');
+                                let letters = Array.isArray(settings.letters) ? settings.letters : [...String(settings.letters)];
                                 let lettersLen = letters.length;
 
                                 while (stepValue >= 0) {
@@ -1235,30 +1235,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
 
@@ -1274,7 +1274,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -1295,13 +1295,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -1362,7 +1356,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
