@@ -88,17 +88,12 @@ module.exports = {
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
-        'prefer-rest-params': 'off',
-        'prefer-spread': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
-        'unicorn/prefer-includes': 'off',
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-optional-catch-binding': 'off',
-        'unicorn/prefer-prototype-methods': 'off',
         'unicorn/prefer-reflect-apply': 'off',
-        'unicorn/prefer-spread': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
         'vars-on-top': 'off',
 

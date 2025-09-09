@@ -178,7 +178,7 @@ body.dimmable > .dimmer {
             filter: @blurredStartFilter;
             transition: @blurredTransition;
         }
-        .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+        .blurring.dimmed.dimmable > :not(.dimmer, .popup) {
             filter: @blurredEndFilter;
         }
     }

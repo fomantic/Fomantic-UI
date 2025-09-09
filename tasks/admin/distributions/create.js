@@ -54,7 +54,7 @@ module.exports = function (callback) {
             gatherFiles = function (dir) {
                 dir = dir || path.resolve('.');
                 let list = fs.readdirSync(dir);
-                let omitted = [
+                let omitted = new Set([
                     '.git',
                     'node_modules',
                     'package.js',
@@ -63,15 +63,15 @@ module.exports = function (callback) {
                     'package.json',
                     'bower.json',
                     '.gitignore',
-                ];
+                ]);
                 let files = [];
                 list.forEach(function (file) {
-                    let isOmitted = omitted.indexOf(file) > -1;
+                    let isOmitted = omitted.has(file);
                     let filePath = path.join(dir, file);
                     let stat = fs.statSync(filePath);
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
-                            files = files.concat(gatherFiles(filePath));
+                            files = [...files, ...gatherFiles(filePath)];
                         } else {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
                         }

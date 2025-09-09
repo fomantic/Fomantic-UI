@@ -215,7 +215,7 @@
         margin-left: @attachedXOffset;
         margin-right: @attachedXOffset;
     }
-    .ui.attached + .ui.attached.message:not(.top):not(.bottom) {
+    .ui.attached + .ui.attached.message:not(.top, .bottom) {
         margin-top: @attachedYOffset;
         border-radius: 0;
     }

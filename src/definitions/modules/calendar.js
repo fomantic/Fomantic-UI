@@ -19,16 +19,16 @@
         ? window
         : globalThis;
 
-    $.fn.calendar = function (parameters) {
+    $.fn.calendar = function (...args) {
         let $allModules = $(this);
         let $document = $(document);
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let returnedValue;
         let timeGapTable = {
             5: { row: 4, column: 3 },
@@ -155,32 +155,32 @@
                         if (isInverted) {
                             $container.addClass(className.inverted);
                         }
-                        let onVisible = function () {
+                        let onVisible = function (...args) {
                             module.refreshTooltips();
 
-                            return settings.onVisible.apply($container, arguments);
+                            return settings.onVisible.apply($container, args);
                         };
-                        let onHidden = function () {
+                        let onHidden = function (...args) {
                             module.blur();
 
-                            return settings.onHidden.apply($container, arguments);
+                            return settings.onHidden.apply($container, args);
                         };
                         if ($input.length === 0) {
                             // no input, $container has to handle focus/blur
                             $container.attr('tabindex', '0');
-                            onVisible = function () {
+                            onVisible = function (...args) {
                                 module.refreshTooltips();
                                 module.focus();
 
-                                return settings.onVisible.apply($container, arguments);
+                                return settings.onVisible.apply($container, args);
                             };
                         }
-                        let onShow = function () {
+                        let onShow = function (...args) {
                             // reset the focus date onShow
                             module.set.focusDate(module.get.date());
                             module.set.mode(module.get.validatedMode(settings.startMode));
 
-                            return settings.onShow.apply($container, arguments);
+                            return settings.onShow.apply($container, args);
                         };
                         let on = module.setting('on');
                         let options = $.extend({}, settings.popupOptions, {
@@ -545,7 +545,7 @@
                         let tooltipPosition = $cell.attr('data-position');
                         // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
                         let calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
-                        if (tooltipPosition.indexOf(calcPosition) === -1) {
+                        if (!tooltipPosition.includes(calcPosition)) {
                             $cell.attr('data-position', tooltipPosition.replace(/(left|right)/, calcPosition));
                         }
                     });
@@ -594,7 +594,7 @@
                             // prevent the mousedown on the calendar causing the input to lose focus
                             event.preventDefault();
                         }
-                        isTouchDown = event.type.indexOf('touch') >= 0;
+                        isTouchDown = event.type.includes('touch');
                         let target = $(event.target);
                         let date = target.data(metadata.date);
                         if (date) {
@@ -824,8 +824,7 @@
                         return module.get.validatedMode(mode);
                     },
                     validatedMode: function (mode) {
-                        let validModes = module.get.validModes();
-                        if ($.inArray(mode, validModes) >= 0) {
+                        if (module.get.validModes().includes(mode)) {
                             return mode;
                         }
 
@@ -847,11 +846,11 @@
                             if (!(settings.disableMonth || settings.type === 'year') || settings.type === 'month') {
                                 validModes.push('month');
                             }
-                            if (settings.type.indexOf('date') >= 0) {
+                            if (settings.type.includes('date')) {
                                 validModes.push('day');
                             }
                         }
-                        if (settings.type.indexOf('time') >= 0) {
+                        if (settings.type.includes('time')) {
                             validModes.push('hour');
                             if (!settings.disableMinute) {
                                 validModes.push('minute');
@@ -1045,8 +1044,8 @@
                     module.set.date();
                 },
 
-                popup: function () {
-                    return $activator.popup.apply($activator, arguments);
+                popup: function (...args) {
+                    return $activator.popup(...args);
                 },
 
                 focus: function () {
@@ -1135,7 +1134,7 @@
                         return module.helper.dateFormat(format, date);
                     },
                     isDisabled: function (date, mode) {
-                        return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
+                        return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.includes(date.getDay())) || settings.disabledDates.some(function (d) {
                             let blocked = false;
 
                             if (typeof d === 'string') {
@@ -1148,13 +1147,13 @@
                                     if (typeof d[metadata.year] === 'number') {
                                         blocked = date.getFullYear() === d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
-                                        blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
+                                        blocked = d[metadata.year].includes(date.getFullYear());
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
                                         blocked = date.getMonth() === d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
-                                        blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
+                                        blocked = d[metadata.month].includes(date.getMonth());
                                     } else if (d[metadata.month] instanceof Date) {
                                         let sdate = module.helper.sanitiseDate(d[metadata.month]);
 
@@ -1197,7 +1196,7 @@
                                     if (typeof d[metadata.days] === 'number') {
                                         blocked = date.getDay() === d[metadata.days];
                                     } else if (Array.isArray(d[metadata.days])) {
-                                        blocked = d[metadata.days].indexOf(date.getDay()) > -1;
+                                        blocked = d[metadata.days].includes(date.getDay());
                                     }
                                 }
 
@@ -1205,7 +1204,7 @@
                                     if (typeof d[metadata.hours] === 'number') {
                                         blocked = blocked && date.getHours() === d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
-                                        blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
+                                        blocked = blocked && d[metadata.hours].includes(date.getHours());
                                     }
                                 }
                             }
@@ -1253,7 +1252,7 @@
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.year])) {
-                                            if (d[metadata.year].indexOf(date.getFullYear()) > -1) {
+                                            if (d[metadata.year].includes(date.getFullYear())) {
                                                 return d;
                                             }
                                         }
@@ -1262,7 +1261,7 @@
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.month])) {
-                                            if (d[metadata.month].indexOf(date.getMonth()) > -1) {
+                                            if (d[metadata.month].includes(date.getMonth())) {
                                                 return d;
                                             }
                                         } else if (d[metadata.month] instanceof Date) {
@@ -1298,7 +1297,7 @@
                                         return d;
                                     }
                                     if (Array.isArray(d[metadata.hours])) {
-                                        if (d[metadata.hours].indexOf(date.getHours()) > -1) {
+                                        if (d[metadata.hours].includes(date.getHours())) {
                                             return d;
                                         }
                                     }
@@ -1315,7 +1314,7 @@
                                             return d;
                                         }
                                         if (Array.isArray(d[metadata.days])) {
-                                            if (d[metadata.days].indexOf(date.getDay()) > -1) {
+                                            if (d[metadata.days].includes(date.getDay())) {
                                                 return d;
                                             }
                                         }
@@ -1442,30 +1441,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -1480,7 +1479,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -1501,13 +1500,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -1567,7 +1560,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
@@ -1708,7 +1701,7 @@
                 let isAm;
 
                 let isTimeOnly = settings.type === 'time';
-                let isDateOnly = settings.type.indexOf('time') < 0;
+                let isDateOnly = !settings.type.includes('time');
 
                 let words = text.split(settings.regExp.dateWords);
                 let word;
@@ -1720,14 +1713,14 @@
 
                 if (!isDateOnly) {
                     // am/pm
-                    isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0
+                    isAm = words.includes(settings.text.am.toLowerCase())
                         ? true
-                        : ($.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined);
+                        : (words.includes(settings.text.pm.toLowerCase()) ? false : undefined);
 
                     // time with ':'
                     for (i = 0; i < numbers.length; i++) {
                         number = numbers[i];
-                        if (number.indexOf(':') >= 0) {
+                        if (number.includes(':')) {
                             if (hour < 0 || minute < 0) {
                                 parts = number.split(':');
                                 for (k = 0; k < Math.min(2, parts.length); k++) {
