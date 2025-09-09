@@ -314,7 +314,7 @@ declare namespace FomanticUI {
                 /**
                  * @default function
                  */
-                deQuote(string: string, encode: boolean): string;
+                escape(string: string): string;
 
                 /**
                  * @default function

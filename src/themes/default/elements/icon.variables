@@ -45,7 +45,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @fonts: {
     @solid: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{fontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -55,7 +55,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @outline: {
         font-family: @outlineFontName;
-        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{outlineFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{outlineFontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -65,7 +65,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     };
     @brand: {
         font-family: @brandFontName;
-        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{brandFontName}.woff") format("woff"));
+        src: url("@{fontPath}/@{brandFontName}.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: block;
@@ -2082,12 +2082,12 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 @circularSize: 2em;
 @circularPadding: 0.5em 0;
-@circularShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@circularShadow: 0 0 0 0.1em rgb(0 0 0 / 0.1) inset;
 
 @borderedSize: 2em;
 @borderedVerticalPadding: ((@borderedSize - @height) / 2);
 @borderedHorizontalPadding: 0;
-@borderedShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+@borderedShadow: 0 0 0 0.1em rgb(0 0 0 / 0.1) inset;
 
 @coloredBoxShadow: 0 0 0 0.1em currentColor inset;
 

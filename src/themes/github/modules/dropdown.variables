@@ -11,7 +11,7 @@
 
 @dropdownIconMargin: 0 0 0 2px;
 
-@raisedBoxShadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+@raisedBoxShadow: 0 3px 12px rgb(0 0 0 / 0.15);
 
 @menuPadding: @relative5px 0;
 

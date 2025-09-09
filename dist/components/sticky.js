@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Sticky
+ * # Fomantic-UI 2.9.4 - Sticky
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -746,7 +746,9 @@
                             });
                         }
                         clearTimeout(module.performance.timer);
-                        module.performance.timer = setTimeout(function () { module.performance.display(); }, 0);
+                        module.performance.timer = setTimeout(function () {
+                            module.performance.display();
+                        }, 0);
                     },
                     display: function () {
                         var

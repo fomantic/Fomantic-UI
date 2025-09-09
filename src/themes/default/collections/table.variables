@@ -41,7 +41,6 @@
 @headerBorder: 1px solid @internalBorderColor;
 @headerDivider: none;
 @headerBackground: @offWhite;
-@headerBackgroundHex: @offWhite;
 @headerAlign: inherit;
 @headerVerticalAlign: inherit;
 @headerColor: @textColor;
@@ -57,7 +56,6 @@
 @footerBorder: 1px solid @borderColor;
 @footerDivider: none;
 @footerBackground: @offWhite;
-@footerBackgroundHex: @offWhite;
 @footerAlign: inherit;
 @footerVerticalAlign: inherit;
 @footerColor: @textColor;
@@ -71,7 +69,7 @@
 @responsiveHeaderDisplay: block;
 @responsiveFooterDisplay: block;
 @responsiveRowVerticalPadding: 1em;
-@responsiveRowBoxShadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+@responsiveRowBoxShadow: 0 -1px 0 0 rgb(0 0 0 / 0.1) inset;
 @responsiveCellVerticalPadding: 0.25em;
 @responsiveCellHorizontalPadding: 0.75em;
 @responsiveCellBoxShadow: none;
@@ -169,8 +167,8 @@
 @attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Striped */
-@stripedBackground: rgba(0, 0, 50, 0.02);
-@invertedStripedBackground: rgba(255, 255, 255, 0.05);
+@stripedBackground: rgb(0 0 50 / 0.02);
+@invertedStripedBackground: rgb(255 255 255 / 0.05);
 
 /* Selectable */
 @selectableBackground: @transparentBlack;
@@ -219,12 +217,10 @@
 @invertedCellColor: @invertedTextColor;
 
 @invertedHeaderBackground: @veryStrongTransparentBlack;
-@invertedHeaderBackgroundHex: #252525;
 @invertedHeaderColor: @invertedTextColor;
 @invertedHeaderBorderColor: @invertedCellBorderColor;
 
 @invertedFooterBackground: @invertedHeaderBackground;
-@invertedFooterBackgroundHex: @invertedHeaderBackgroundHex;
 @invertedFooterColor: @invertedHeaderColor;
 @invertedFooterBorderColor: @invertedHeaderBorderColor;
 
@@ -240,7 +236,7 @@
 @basicTableHeaderBackground: transparent;
 @basicTableCellBackground: transparent;
 @basicTableHeaderDivider: none;
-@basicTableCellBorder: 1px solid rgba(0, 0, 0, 0.1);
+@basicTableCellBorder: 1px solid rgb(0 0 0 / 0.1);
 @basicTableCellPadding: "";
 @basicTableStripedBackground: @transparentBlack;
 
@@ -274,7 +270,7 @@
 @stuckFooterBackground: @stuckHeaderBackground;
 
 @invertedStuckBackground: @invertedBackground;
-@invertedStuckHeaderBackground: @invertedHeaderBackgroundHex;
+@invertedStuckHeaderBackground: #252525;
 @invertedStuckFooterBackground: @invertedStuckHeaderBackground;
 
 @stuckZIndex: 800;

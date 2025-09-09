@@ -263,6 +263,12 @@ declare namespace FomanticUI {
          */
         automatic: boolean;
 
+        /**
+         * Whether to preserve possible HTML of resultset values
+         * @default false
+         */
+        preserveHTML: boolean;
+
         // endregion
 
         // region Callbacks
@@ -388,9 +394,9 @@ declare namespace FomanticUI {
         namespace Settings {
             interface Templates {
                 /**
-                 * @default function(string, preserveHTML)
+                 * @default function(string, settings)
                  */
-                escape: (string: string, preserveHTML?: boolean) => string;
+                escape: (string: string, settings?: SearchSettings) => string;
 
                 /**
                  * @default function(message, type, header)
@@ -398,14 +404,14 @@ declare namespace FomanticUI {
                 message: (message: string, type?: string, header?: string) => string;
 
                 /**
-                 * @default function(response, fields, preserveHTML)
+                 * @default function(response, settings)
                  */
-                category: (response: unknown, fields: {[key: string]: string}, preserveHTML?: boolean) => string;
+                category: (response: unknown, settings: SearchSettings) => string;
 
                 /**
-                 * @default function(response, fields, preserveHTML)
+                 * @default function(response, settings)
                  */
-                standard: (response: unknown, fields: {[key: string]: string}, preserveHTML?: boolean) => string;
+                standard: (response: unknown, settings: SearchSettings) => string;
             }
 
             interface Selectors {

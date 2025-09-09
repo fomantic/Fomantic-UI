@@ -17,6 +17,11 @@
 
 @import (multiple) "../../theme.config";
 
+@notHorizontal: if(@variationSegmentHorizontal, e(":not(.horizontal)"));
+@notCompact: if(@variationSegmentCompact, e(":not(.compact)"));
+@notInverted: if(@variationSegmentInverted, e(":not(.inverted)"));
+@notBasic: if(@variationSegmentBasic, e(":not(.basic)"));
+
 /*******************************
             Segment
 *******************************/
@@ -78,18 +83,17 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
-    .ui.attached.segment:not(.top):not(.bottom) > [class*="top attached"].label {
+    .ui.attached.segment:not(.top, .bottom) > [class*="top attached"].label {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
-    .ui.attached.segment:not(.top):not(.bottom) > [class*="bottom attached"].label {
+    .ui.attached.segment:not(.top, .bottom) > [class*="bottom attached"].label {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
 }
 
 /* Grid */
-.ui.page.grid.segment,
 .ui.grid > .row > .ui.segment.column,
 .ui.grid > .ui.segment.column {
     padding-top: @pageGridMargin;
@@ -413,7 +417,7 @@
         border-top: @groupedSegmentDivider;
     }
 
-    .ui.segments:not(.horizontal) > .segment:first-child {
+    .ui.segments@{notHorizontal} > .segment:first-child {
         top: @attachedTopOffset;
         bottom: 0;
         border-top: none;
@@ -423,7 +427,7 @@
     }
 
     /* Bottom */
-    .ui.segments:not(.horizontal) > .segment:last-child {
+    .ui.segments@{notHorizontal} > .segment:last-child {
         top: @attachedBottomOffset;
         bottom: 0;
         margin-top: 0;
@@ -433,7 +437,7 @@
     }
 
     /* Only */
-    .ui.segments:not(.horizontal) > .segment:only-child {
+    .ui.segments@{notHorizontal} > .segment:only-child {
         border-radius: @borderRadius;
     }
 
@@ -445,7 +449,7 @@
     .ui.segments > .segments:first-child {
         border-top: none;
     }
-    .ui.segments > .segment + .segments:not(.horizontal) {
+    .ui.segments > .segment + .segments@{notHorizontal} {
         margin-top: 0;
     }
 
@@ -477,13 +481,8 @@
         }
 
         /* Horizontal Segment */
-        .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
+        .ui.horizontal.segments@{notCompact} > .segment@{notCompact} {
             flex: 1 1 auto;
-            & when (@supportIE) {
-                // https://github.com/Semantic-Org/Semantic-UI/issues/2550
-                // stylelint-disable-next-line property-no-vendor-prefix
-                -ms-flex: 1 1 0;
-            }
         }
         .ui.horizontal.segments > .segment {
             margin: 0;
@@ -498,7 +497,7 @@
         .ui.segments > .horizontal.segments:first-child {
             border-top: none;
         }
-        .ui.horizontal.segments:not(.stackable):not(.wrapping) > .segment:first-child {
+        .ui.horizontal.segments:not(.stackable, .wrapping) > .segment:first-child {
             border-left: none;
         }
         .ui.horizontal.segments > .segment:first-child {
@@ -616,7 +615,7 @@
         @color: @value;
         @c: @colors[@@color][color];
         & when not (@color=primary) and not (@color=secondary) {
-            .ui.ui.ui.ui.ui.@{color}.segment:not(.inverted) {
+            .ui.ui.ui.ui.ui.@{color}.segment@{notInverted} {
                 border-top: @coloredBorderSize solid @c;
             }
             & when (@variationSegmentInverted) {
@@ -755,11 +754,11 @@
         width: @attachedWidth;
         max-width: @attachedWidth;
         box-shadow: @attachedBoxShadow;
-        &:not(.basic) {
+        &@{notBasic} {
             border: @attachedBorder;
         }
     }
-    .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top):not([class*="left attached"]):not([class*="right attached"]) {
+    .ui.attached:not(.message, .text) + .ui.attached.segment:not(.top, [class*="left attached"], [class*="right attached"]) {
         border-top: none;
     }
 
@@ -801,7 +800,7 @@
     }
     & when (@variationSegmentSeamless) {
         .ui.seamless.attached.segment {
-            &:not(.top):not(.bottom):not([class*="right attached"]):not([class*="left attached"]) {
+            &:not(.top, .bottom, [class*="right attached"], [class*="left attached"]) {
                 border-top: none;
                 border-bottom: none;
             }

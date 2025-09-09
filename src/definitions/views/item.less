@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notUnstackable: if(@variationItemUnstackable, e(":not(.unstackable)"));
+
 /*******************************
             Standard
 *******************************/
@@ -370,22 +372,22 @@
 
 /* Mobile Only */
 @media only screen and (max-width: @largestMobileScreen) {
-    .ui.items:not(.unstackable) > .item {
+    .ui.items@{notUnstackable} > .item {
         flex-direction: column;
         margin: @mobileItemSpacing 0;
     }
-    .ui.items:not(.unstackable) > .item > .image {
+    .ui.items@{notUnstackable} > .item > .image {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    .ui.items:not(.unstackable) > .item > .image,
-    .ui.items:not(.unstackable) > .item > .image > img {
+    .ui.items@{notUnstackable} > .item > .image,
+    .ui.items@{notUnstackable} > .item > .image > img {
         max-width: 100% !important;
         width: @mobileImageWidth !important;
         max-height: @mobileImageMaxHeight !important;
     }
-    .ui.items:not(.unstackable) > .item > .image + .content {
+    .ui.items@{notUnstackable} > .item > .image + .content {
         display: block;
         padding: @mobileContentImageDistance 0 0;
     }

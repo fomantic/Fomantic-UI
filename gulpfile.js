@@ -2,15 +2,13 @@
  *           Set-up
  *******************************/
 
-const
-    gulp   = require('gulp'),
+const gulp = require('gulp');
 
-    // read user config to know what task to load
-    config = require('./tasks/config/user'),
+// read user config to know what task to load
+const config = require('./tasks/config/user');
 
-    admin = require('./tasks/collections/admin'),
-    rtl = require('./tasks/collections/rtl')
-;
+const admin = require('./tasks/collections/admin');
+const rtl = require('./tasks/collections/rtl');
 
 /*******************************
  *            Tasks

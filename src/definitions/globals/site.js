@@ -19,32 +19,30 @@
         ? window
         : globalThis;
 
-    $.fn.site = function (parameters) {
-        var
-            time           = Date.now(),
-            performance    = [],
+    $.fn.site = function (...args) {
+        let time = Date.now();
+        let performance = [];
 
-            query          = arguments[0],
-            methodInvoked  = typeof query === 'string',
-            queryArguments = [].slice.call(arguments, 1),
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
 
-            settings        = $.isPlainObject(parameters)
-                ? $.extend(true, {}, $.site.settings, parameters)
-                : $.extend({}, $.site.settings),
+        let settings = $.isPlainObject(parameters)
+            ? $.extend(true, {}, $.site.settings, parameters)
+            : $.extend({}, $.site.settings);
 
-            namespace       = settings.namespace,
-            error           = settings.error,
+        let namespace = settings.namespace;
+        let error = settings.error;
 
-            moduleNamespace = 'module-' + namespace,
+        let moduleNamespace = 'module-' + namespace;
 
-            $document       = $(document),
-            $module         = $document,
-            element         = this,
-            instance        = $module.data(moduleNamespace),
+        let $document = $(document);
+        let $module = $document;
+        let element = this;
+        let instance = $module.data(moduleNamespace);
 
-            module,
-            returnedValue
-        ;
+        let module;
+        let returnedValue;
         module = {
 
             initialize: function () {
@@ -55,8 +53,7 @@
                 module.verbose('Storing instance of site', module);
                 instance = module;
                 $module
-                    .data(moduleNamespace, module)
-                ;
+                    .data(moduleNamespace, module);
             },
 
             normalize: function () {
@@ -78,9 +75,7 @@
 
             enabled: {
                 modules: function (modules) {
-                    var
-                        enabledModules = []
-                    ;
+                    let enabledModules = [];
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (module.moduleExists(name)) {
@@ -94,9 +89,7 @@
 
             disabled: {
                 modules: function (modules) {
-                    var
-                        disabledModules = []
-                    ;
+                    let disabledModules = [];
                     modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (!module.moduleExists(name)) {
@@ -119,12 +112,10 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
-                            namespace = module.moduleExists(name)
-                                ? $.fn[name].settings.namespace || false
-                                : true,
-                            $existingModules
-                        ;
+                        let namespace = module.moduleExists(name)
+                            ? $.fn[name].settings.namespace || false
+                            : true;
+                        let $existingModules;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', setting, value, name);
                             $.fn[name].settings[setting] = value;
@@ -146,9 +137,7 @@
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
-                        var
-                            $existingModules
-                        ;
+                        let $existingModules;
                         if (module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
                             $.extend(true, $.fn[name].settings, newSettings);
@@ -224,8 +213,7 @@
             destroy: function () {
                 module.verbose('Destroying previous site for', $module);
                 $module
-                    .removeData(moduleNamespace)
-                ;
+                    .removeData(moduleNamespace);
             },
 
             cache: {},
@@ -248,37 +236,35 @@
                     return module[name];
                 }
             },
-            debug: function () {
+            debug: function (...args) {
                 if (settings.debug) {
                     if (settings.performance) {
-                        module.performance.log(arguments);
+                        module.performance.log(args);
                     } else {
                         module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                        module.debug.apply(console, arguments);
+                        module.debug.apply(console, args);
                     }
                 }
             },
-            verbose: function () {
+            verbose: function (...args) {
                 if (settings.verbose && settings.debug) {
                     if (settings.performance) {
-                        module.performance.log(arguments);
+                        module.performance.log(args);
                     } else {
                         module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                        module.verbose.apply(console, arguments);
+                        module.verbose.apply(console, args);
                     }
                 }
             },
-            error: function () {
+            error: function (...args) {
                 module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                module.error.apply(console, arguments);
+                module.error.apply(console, args);
             },
             performance: {
                 log: function (message) {
-                    var
-                        currentTime,
-                        executionTime,
-                        previousTime
-                    ;
+                    let currentTime;
+                    let executionTime;
+                    let previousTime;
                     if (settings.performance) {
                         currentTime = Date.now();
                         previousTime = time || currentTime;
@@ -287,7 +273,7 @@
                         performance.push({
                             Element: element,
                             Name: message[0],
-                            Arguments: [].slice.call(message, 1) || '',
+                            Arguments: message.slice(1),
                             'Execution Time': executionTime,
                         });
                     }
@@ -297,10 +283,8 @@
                     }, 500);
                 },
                 display: function () {
-                    var
-                        title = settings.name + ':',
-                        totalTime = 0
-                    ;
+                    let title = settings.name + ':';
+                    let totalTime = 0;
                     time = false;
                     clearTimeout(module.performance.timer);
                     $.each(performance, function (index, data) {
@@ -309,35 +293,26 @@
                     title += ' ' + totalTime + 'ms';
                     if (performance.length > 0) {
                         console.groupCollapsed(title);
-                        if (console.table) {
-                            console.table(performance);
-                        } else {
-                            $.each(performance, function (index, data) {
-                                console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                            });
-                        }
+                        console.table(performance);
                         console.groupEnd();
                     }
                     performance = [];
                 },
             },
             invoke: function (query, passedArguments, context) {
-                var
-                    object = instance,
-                    maxDepth,
-                    found,
-                    response
-                ;
+                let object = instance;
+                let maxDepth;
+                let found;
+                let response;
                 passedArguments = passedArguments || queryArguments;
                 context = context || element;
                 if (typeof query === 'string' && object !== undefined) {
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        var camelCaseValue = depth !== maxDepth
+                        let camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                            : query
-                        ;
+                            : query;
                         if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                             object = object[camelCaseValue];
                         } else if (object[camelCaseValue] !== undefined) {
@@ -378,7 +353,7 @@
             if (instance === undefined) {
                 module.initialize();
             }
-            module.invoke(query);
+            module.invoke(parameters);
         } else {
             if (instance !== undefined) {
                 module.destroy();

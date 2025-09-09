@@ -9,91 +9,69 @@
   * update package.json file
 */
 
-const
-    // node dependencies
-    fs              = require('fs'),
-    path            = require('path'),
-    gulp            = require('gulp'),
-    mergeStream     = require('merge-stream'),
+// node dependencies
+const fs = require('node:fs');
+const path = require('node:path');
+const gulp = require('gulp');
+const mergeStream = require('merge-stream');
 
-    // admin dependencies
-    flatten         = require('gulp-flatten'),
-    jsonEditor      = require('gulp-json-editor'),
-    plumber         = require('@fomantic/gulp-plumber'),
-    rename          = require('gulp-rename'),
-    replace         = require('gulp-replace'),
+// admin dependencies
+const flatten = require('gulp-flatten');
+const jsonEditor = require('gulp-json-editor');
+const plumber = require('@fomantic/gulp-plumber');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
 
-    // config
-    config          = require('../../config/user'),
-    release         = require('../../config/admin/release'),
-    project         = require('../../config/project/release'),
+// config
+const release = require('../../config/admin/release');
+const project = require('../../config/project/release');
 
-    // shorthand
-    version         = project.version,
-    output          = config.paths.output
-;
+// shorthand
+const version = project.version;
 
 module.exports = function (callback) {
-    let
-        stream,
-        index,
-        tasks = []
-    ;
+    let index;
+    let tasks = [];
 
     for (index in release.distributions) {
-        let
-            distribution = release.distributions[index]
-    ;
+        let distribution = release.distributions[index];
 
         // streams... designed to save time and make coding fun...
         (function (distribution) {
-            let
-                distLowerCase   = distribution.toLowerCase(),
-                outputDirectory = path.join(release.outputRoot, distLowerCase),
-                packageFile     = path.join(outputDirectory, release.files.npm),
-                repoName        = release.distRepoRoot + distribution,
-                regExp          = {
-                    match: {
-                        files: '{files}',
-                        version: '{version}',
-                    },
+            let distLowerCase = distribution.toLowerCase();
+            let outputDirectory = path.join(release.outputRoot, distLowerCase);
+            let packageFile = path.join(outputDirectory, release.files.npm);
+            let regExp = {
+                match: {
+                    files: '{files}',
+                    version: '{version}',
                 },
-                task = {
-                    all: distribution + ' copying files',
-                    repo: distribution + ' create repo',
-                    meteor: distribution + ' create meteor package.js',
-                    package: distribution + ' create package.json',
-                },
-                gatherFiles,
-                createList
-            ;
+            };
+            let gatherFiles;
+            let createList;
 
             // get files for meteor
             gatherFiles = function (dir) {
                 dir = dir || path.resolve('.');
-                let
-                    list  = fs.readdirSync(dir),
-                    omitted = [
-                        '.git',
-                        'node_modules',
-                        'package.js',
-                        'LICENSE',
-                        'README.md',
-                        'package.json',
-                        'bower.json',
-                        '.gitignore',
-                    ],
-                    files = []
-                ;
+                let list = fs.readdirSync(dir);
+                let omitted = new Set([
+                    '.git',
+                    'node_modules',
+                    'package.js',
+                    'LICENSE',
+                    'README.md',
+                    'package.json',
+                    'bower.json',
+                    '.gitignore',
+                ]);
+                let files = [];
                 list.forEach(function (file) {
-                    let
-                        isOmitted = omitted.indexOf(file) > -1,
-                        filePath  = path.join(dir, file),
-                        stat      = fs.statSync(filePath)
-                    ;
+                    let isOmitted = omitted.has(file);
+                    let filePath = path.join(dir, file);
+                    let stat = fs.statSync(filePath);
                     if (!isOmitted) {
                         if (stat && stat.isDirectory()) {
-                            files = files.concat(gatherFiles(filePath));
+                            files = [...files, ...gatherFiles(filePath)];
                         } else {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
                         }
@@ -115,71 +93,54 @@ module.exports = function (callback) {
             };
 
             tasks.push(function () {
-                let
-                    files     = gatherFiles(outputDirectory),
-                    filenames = createList(files)
-                ;
+                let files = gatherFiles(outputDirectory);
+                let filenames = createList(files);
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(replace(regExp.match.version, version))
                     .pipe(replace(regExp.match.files, filenames))
                     .pipe(rename(release.files.meteor))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             });
 
             if (distribution === 'CSS') {
                 tasks.push(function () {
-                    let
-                        themes,
-                        components,
-                        releases
-                    ;
+                    let themes;
+                    let components;
+                    let releases;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/', encoding: false })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     components = gulp.src('dist/components/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     releases = gulp.src('dist/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
 
                     return mergeStream(themes, components, releases);
                 });
             } else if (distribution === 'LESS') {
                 tasks.push(function () {
-                    let
-                        definitions,
-                        overridesImport,
-                        lessImport,
-                        themeImport,
-                        themeConfig,
-                        siteTheme,
-                        themes
-                    ;
+                    let definitions;
+                    let overridesImport;
+                    let lessImport;
+                    let themeImport;
+                    let themeConfig;
+                    let siteTheme;
+                    let themes;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     overridesImport = gulp.src('src/overrides.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     lessImport = gulp.src('src/semantic.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themeImport = gulp.src('src/theme.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themeConfig = gulp.src('src/theme.config.example', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     siteTheme = gulp.src('src/_site/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
                     themes = gulp.src('src/themes/**/*', { base: 'src/', encoding: false })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
 
                     return mergeStream(definitions, overridesImport, lessImport, themeImport, themeConfig, siteTheme, themes);
                 });
@@ -196,8 +157,7 @@ module.exports = function (callback) {
 
                         return pkg;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
             });
         })(distribution);
     }

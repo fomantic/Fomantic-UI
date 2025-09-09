@@ -446,12 +446,6 @@ declare namespace FomanticUI {
 
                 /**
                  * @default '{name} must have a value'
-                 * @deprecated Use notEmpty instead
-                 */
-                empty: string;
-
-                /**
-                 * @default '{name} must have a value'
                  */
                 notEmpty: string;
 
@@ -585,7 +579,6 @@ declare namespace FomanticUI {
             }
 
             interface Rules {
-                empty(value: unknown): boolean;
                 notEmpty(value: unknown): boolean;
                 checked(): boolean;
                 email(value: unknown): boolean;

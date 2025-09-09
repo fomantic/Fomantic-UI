@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Divider
+ * # Fomantic-UI 2.9.4 - Divider
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -40,8 +40,8 @@
 --------------- */
 
 /* Allow divider between each column row */
-.ui.grid > .column + .divider,
-.ui.grid > .row > .column + .divider {
+.ui.grid > .column + .divider:not(.vertical),
+.ui.grid > .row > .column + .divider:not(.vertical) {
   left: auto;
 }
 
@@ -108,7 +108,15 @@
 }
 
 /* Inside grid */
+.ui.stackable.grid .ui.vertical.divider,
+.ui.grid .stackable.row .ui.vertical.divider {
+  flex: 1;
+}
 @media only screen and (max-width: 767.98px) {
+  .ui.stackable.grid .column + .ui.vertical.divider,
+  .ui.grid .stackable.row .column + .ui.vertical.divider {
+    margin: 1rem;
+  }
   .ui.stackable.grid .ui.vertical.divider,
   .ui.grid .stackable.row .ui.vertical.divider {
     display: table;

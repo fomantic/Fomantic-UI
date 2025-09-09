@@ -31,9 +31,9 @@
 @linkHoverUnderline: underline;
 
 /* Borders */
-@borderColor: rgba(0, 0, 0, 0.13);
+@borderColor: rgb(0 0 0 / 0.13);
 @solidBorderColor: #ddd;
-@internalBorderColor: rgba(0, 0, 0, 0.06);
+@internalBorderColor: rgb(0 0 0 / 0.06);
 @selectedBorderColor: #51a7e8;
 
 /* Breakpoints */

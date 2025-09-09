@@ -52,7 +52,7 @@
 @placeholderBackground: @offWhite;
 @placeholderPadding: @padding;
 @placeholderBorderColor: @borderColor;
-@placeholderBoxShadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+@placeholderBoxShadow: 0 2px 25px 0 rgb(34 36 38 / 0.05) inset;
 @placeholderMinHeight: 18rem;
 @placeholderContentMaxWidth: 15rem;
 @placeholderContentInlineButtonMargin: 0 @5px 0 0;
@@ -74,15 +74,15 @@
 @stackedPadding: @verticalPadding + (0.4em);
 @tallStackedPadding: @verticalPadding + (0.8em);
 @stackedBorderColor: @borderColor;
-@invertedStackedBorderColor: rgba(225, 225, 225, 0.5);
+@invertedStackedBorderColor: rgb(225 225 225 / 0.5);
 
 /*******************************
             States
 *******************************/
 
 /* Loading Dimmer */
-@loaderDimmerColor: rgba(255, 255, 255, 0.8);
-@loaderInvertedDimmerColor: rgba(0, 0, 0, 0.85);
+@loaderDimmerColor: rgb(255 255 255 / 0.8);
+@loaderInvertedDimmerColor: rgb(0 0 0 / 0.85);
 @loaderDimmerZIndex: 100;
 
 /* Loading Spinner */
@@ -138,8 +138,8 @@
 @secondaryInvertedBackground:
     lighten(@black, (@secondaryInvertedLightness * 100))
     linear-gradient(
-        rgba(255, 255, 255, @secondaryInvertedLightness) 0,
-        rgba(255, 255, 255, @secondaryInvertedLightness) 100%
+        rgb(255 255 255 / @secondaryInvertedLightness) 0,
+        rgb(255 255 255 / @secondaryInvertedLightness) 100%
     );
 @secondaryInvertedColor: @invertedMutedTextColor;
 
@@ -148,8 +148,8 @@
 @tertiaryInvertedBackground:
     lighten(@black, (@tertiaryInvertedLightness * 100))
     linear-gradient(
-        rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
-        rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
+        rgb(255 255 255 / @tertiaryInvertedLightness) 0,
+        rgb(255 255 255 / @tertiaryInvertedLightness) 100%
     );
 @tertiaryInvertedColor: @invertedMutedTextColor;
 

@@ -7,11 +7,11 @@
     // prettier-ignore
     background-image: linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.08) 25%,
+        rgb(255 255 255 / 0.08) 25%,
         transparent 25%,
         transparent 50%,
-        rgba(255, 255, 255, 0.08) 50%,
-        rgba(255, 255, 255, 0.08) 75%,
+        rgb(255 255 255 / 0.08) 50%,
+        rgb(255 255 255 / 0.08) 75%,
         transparent 75%,
         transparent
     );

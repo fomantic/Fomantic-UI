@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notStyled: if(@variationAccordionStyled, e(":not(.styled)"));
+
 /*******************************
             Accordion
 *******************************/
@@ -44,12 +46,12 @@
 }
 
 /* Default Styling */
-.ui.accordion:not(.styled) .title ~ .content,
-.ui.accordion:not(.styled) .accordion .title ~ .content {
+.ui.accordion@{notStyled} .title ~ .content,
+.ui.accordion@{notStyled} .accordion .title ~ .content {
     margin: @contentMargin;
     padding: @contentPadding;
 }
-.ui.accordion:not(.styled) .title ~ .content:last-child {
+.ui.accordion@{notStyled} .title ~ .content:last-child {
     padding-bottom: 0;
 }
 
@@ -183,13 +185,13 @@
 
     /* Default Styling */
 
-    .ui.compact.accordion:not(.styled) > .title,
-    .ui.compact.accordion:not(.styled) .accordion > .title {
+    .ui.compact.accordion@{notStyled} > .title,
+    .ui.compact.accordion@{notStyled} .accordion > .title {
         padding: @titlePaddingCompact;
     }
 
-    .ui.compact.accordion:not(.styled) .title ~ .content,
-    .ui.compact.accordion:not(.styled) .accordion .title ~ .content {
+    .ui.compact.accordion@{notStyled} .title ~ .content,
+    .ui.compact.accordion@{notStyled} .accordion .title ~ .content {
         padding: @contentPaddingCompact;
     }
 
@@ -211,13 +213,13 @@
   --------------- */
 
 & when (@variationAccordionVeryCompact) {
-    .ui[class*="very compact"].accordion:not(.styled) > .title,
-    .ui[class*="very compact"].accordion:not(.styled) .accordion > .title {
+    .ui[class*="very compact"].accordion@{notStyled} > .title,
+    .ui[class*="very compact"].accordion@{notStyled} .accordion > .title {
         padding: @titlePaddingVeryCompact;
     }
 
-    .ui[class*="very compact"].accordion:not(.styled) .title ~ .content,
-    .ui[class*="very compact"].accordion:not(.styled) .accordion .title ~ .content {
+    .ui[class*="very compact"].accordion@{notStyled} .title ~ .content,
+    .ui[class*="very compact"].accordion@{notStyled} .accordion .title ~ .content {
         padding: @contentPaddingVeryCompact;
     }
 
@@ -351,8 +353,8 @@
 }
 
 & when (@variationAccordionTree) {
-    .ui.tree.accordion:not(.styled) .title ~ .content,
-    .ui.tree.accordion:not(.styled) .accordion .title ~ .content {
+    .ui.tree.accordion@{notStyled} .title ~ .content,
+    .ui.tree.accordion@{notStyled} .accordion .title ~ .content {
         padding: @treeContentPadding;
     }
     .ui.tree.accordion > .content,

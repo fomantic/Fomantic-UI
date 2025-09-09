@@ -17,6 +17,8 @@
 
 @import (multiple) "../../theme.config";
 
+@notRaised: if(@variationCardRaised, e(":not(.raised)"));
+
 /*******************************
             Standard
 *******************************/
@@ -358,9 +360,9 @@
     /* --------------
        Basic
     --------------- */
-    .ui.cards:not(.raised) > .basic.card:not(.raised),
-    .ui.ui.ui.basic.cards:not(.raised) > .card:not(.raised),
-    .ui.ui.ui.basic.card:not(.raised) {
+    .ui.cards@{notRaised} > .basic.card@{notRaised},
+    .ui.ui.ui.basic.cards@{notRaised} > .card@{notRaised},
+    .ui.ui.ui.basic.card@{notRaised} {
         box-shadow: none;
         & > .buttons,
         > .button {
@@ -369,8 +371,8 @@
         }
     }
     & when (@variationCardLink) {
-        .ui.ui.ui.ui.ui.basic.card:not(.raised):hover,
-        .ui.ui.ui.ui.ui.basic.cards:not(.raised) .card:not(.raised):hover {
+        .ui.ui.ui.ui.ui.basic.card@{notRaised}:hover,
+        .ui.ui.ui.ui.ui.basic.cards@{notRaised} .card@{notRaised}:hover {
             box-shadow: none;
         }
     }

@@ -39,7 +39,7 @@
 @subMenuDistance: 0.5em;
 @subMenuMargin: @subMenuDistance -@itemHorizontalPadding 0;
 @subMenuFontSize: @relativeTiny;
-@subMenuTextColor: rgba(0, 0, 0, 0.5);
+@subMenuTextColor: rgb(0 0 0 / 0.5);
 
 @subMenuIndent: 0;
 @subMenuHorizontalPadding: (@itemHorizontalPadding / @tinySize) + @subMenuIndent;
@@ -131,7 +131,7 @@
 @imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
-@dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+@dropdownMenuBoxShadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
 
 @dropdownBackground: #fff;
 @dropdownMenuDistance: 0;
@@ -154,7 +154,7 @@
 @dropdownHoveredItemColor: @selectedTextColor;
 
 /* Dropdown Variations */
-@dropdownVerticalMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+@dropdownVerticalMenuBoxShadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
 @secondaryDropdownMenuDistance: @relative5px;
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
@@ -297,35 +297,35 @@
 @tieredSubMenuActiveBackground: none transparent;
 @tieredSubMenuActiveColor: @selectedTextColor;
 
-@tieredInvertedSubMenuBackground: rgba(0, 0, 0, 0.2);
+@tieredInvertedSubMenuBackground: rgb(0 0 0 / 0.2);
 
 /* Icon */
 @iconMenuTextAlign: center;
 @iconMenuItemColor: @black;
 @iconMenuInvertedItemColor: @white;
 
-/* Tabular */
-@tabularBorderColor: @solidBorderColor;
-@tabularBackgroundColor: transparent;
-@tabularBackground: none @tabularBackgroundColor;
-@tabularBorderWidth: 1px;
-@tabularOppositeBorderWidth: @tabularBorderWidth + 1px;
-@tabularVerticalPadding: @itemVerticalPadding;
-@tabularHorizontalPadding: @relativeHuge;
-@tabularBorderRadius: @defaultBorderRadius;
-@tabularTextColor: @itemTextColor;
+/* Tabbed */
+@tabbedBorderColor: @solidBorderColor;
+@tabbedBackgroundColor: transparent;
+@tabbedBackground: none @tabbedBackgroundColor;
+@tabbedBorderWidth: 1px;
+@tabbedOppositeBorderWidth: @tabbedBorderWidth + 1px;
+@tabbedVerticalPadding: @itemVerticalPadding;
+@tabbedHorizontalPadding: @relativeHuge;
+@tabbedBorderRadius: @defaultBorderRadius;
+@tabbedTextColor: @itemTextColor;
 
-@tabularHoveredTextColor: @hoveredTextColor;
+@tabbedHoveredTextColor: @hoveredTextColor;
 
-@tabularVerticalBackground: none @tabularBackgroundColor;
+@tabbedVerticalBackground: none @tabbedBackgroundColor;
 
-@tabularFluidOffset: 1px;
-@tabularFluidWidth: e(%("calc(100%% + %d)", @tabularFluidOffset * 2));
+@tabbedFluidOffset: 1px;
+@tabbedFluidWidth: e(%("calc(100%% + %d)", @tabbedFluidOffset * 2));
 
-@tabularActiveBackground: none @white;
-@tabularActiveColor: @selectedTextColor;
-@tabularActiveBoxShadow: none;
-@tabularActiveWeight: @bold;
+@tabbedActiveBackground: none @white;
+@tabbedActiveColor: @selectedTextColor;
+@tabbedActiveBoxShadow: none;
+@tabbedActiveWeight: @bold;
 
 /* Pagination */
 @paginationMinWidth: 3em;
@@ -408,7 +408,7 @@
 @invertedSubMenuActiveColor: @white;
 
 /* Inverted Menu Divider */
-@invertedDividerBackground: rgba(255, 255, 255, 0.08);
+@invertedDividerBackground: rgb(255 255 255 / 0.08);
 @invertedVerticalDividerBackground: @invertedDividerBackground;
 
 /* Inverted Colored */
@@ -466,8 +466,8 @@
 @invertedDropdownSelectedItemBackground: @strongTransparentWhite;
 @invertedDropdownSelectedItemColor: @invertedDropdownItemColor;
 
-/* Tabular */
-@invertedTabularBorderColor: @solidWhiteBorderColor;
-@invertedTabularBorder: @borderWidth solid @invertedTabularBorderColor;
-@invertedTabularActiveBackground: none @black;
-@invertedTabularHoveredTextColor: @invertedHoveredTextColor;
+/* Tabbed */
+@invertedTabbedBorderColor: @solidWhiteBorderColor;
+@invertedTabbedBorder: @borderWidth solid @invertedTabbedBorderColor;
+@invertedTabbedActiveBackground: none @black;
+@invertedTabbedHoveredTextColor: @invertedHoveredTextColor;
