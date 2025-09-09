@@ -222,7 +222,7 @@
                     },
                     hideGracefully: function (event) {
                         let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
                         let inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
