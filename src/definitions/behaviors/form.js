@@ -541,26 +541,26 @@
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt && ruleName !== 'size') {
                                 suffixPrompt = parts[0] === ''
-                                    ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
+                                    ? settings.prompt.maxValue.replaceAll('{ruleValue}', '{max}')
                                     : (parts[1] === ''
-                                        ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
+                                        ? settings.prompt.minValue.replaceAll('{ruleValue}', '{min}')
                                         : settings.prompt.range);
-                                prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
+                                prompt += suffixPrompt.replaceAll('{name}', ' ' + settings.text.and);
                             }
-                            prompt = prompt.replace(/{min}/g, parts[0]);
-                            prompt = prompt.replace(/{max}/g, parts[1]);
+                            prompt = prompt.replaceAll('{min}', parts[0]);
+                            prompt = prompt.replaceAll('{max}', parts[1]);
                         }
                         if (ancillary && ['match', 'different'].includes(ruleName)) {
-                            prompt = prompt.replace(/{ruleValue}/g, module.get.fieldLabel(ancillary, true));
+                            prompt = prompt.replaceAll('{ruleValue}', module.get.fieldLabel(ancillary, true));
                         }
                         if (requiresValue) {
-                            prompt = prompt.replace(/{value}/g, $field.val());
+                            prompt = prompt.replaceAll('{value}', $field.val());
                         }
                         if (requiresName) {
-                            prompt = prompt.replace(/{name}/g, module.get.fieldLabel($field));
+                            prompt = prompt.replaceAll('{name}', module.get.fieldLabel($field));
                         }
-                        prompt = prompt.replace(/{identifier}/g, field.identifier);
-                        prompt = prompt.replace(/{ruleValue}/g, ancillary);
+                        prompt = prompt.replaceAll('{identifier}', field.identifier);
+                        prompt = prompt.replaceAll('{ruleValue}', ancillary);
                         if (!rule.prompt) {
                             module.verbose('Using default validation prompt for type', prompt, ruleName);
                         }
@@ -930,8 +930,8 @@
                                         if (tempErrors !== false) {
                                             $.each(tempErrors, function (index, tempError) {
                                                 customErrors.push(settings.prompt.addErrors
-                                                    .replace(/{name}/g, module.get.fieldLabel(id))
-                                                    .replace(/{error}/g, tempError));
+                                                    .replaceAll('{name}', module.get.fieldLabel(id))
+                                                    .replaceAll('{error}', tempError));
                                             });
                                         }
                                     }
