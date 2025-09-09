@@ -257,7 +257,7 @@
                 },
 
                 observeChanges: function () {
-                    if ('ResizeObserver' in window && settings.observeChanges) {
+                    if (settings.observeChanges) {
                         resizeObserver = new ResizeObserver(function (entries) {
                             module.refresh();
                         });
