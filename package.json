@@ -80,7 +80,7 @@
     "eslint-config-airbnb-base": "15",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "26.9.0",
-    "eslint-plugin-unicorn": "46",
+    "eslint-plugin-unicorn": "56",
     "node-fetch": "^2.6.0",
     "postcss": "^8.4.19",
     "postcss-less": "^6.0.0",
