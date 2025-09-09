@@ -23,7 +23,7 @@
         ? window
         : globalThis;
 
-    $.fn.api = function (parameters) {
+    $.fn.api = function (...args) {
         // use window context if none specified
         let $allModules = isFunction(this)
             ? $(window)
@@ -31,12 +31,12 @@
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -141,13 +141,7 @@
 
                 read: {
                     cachedResponse: function (url) {
-                        let response;
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
-                        response = sessionStorage.getItem(url + module.get.normalizedData());
+                        let response = window.sessionStorage.getItem(url + module.get.normalizedData());
                         module.debug('Using cached response', url, settings.data, response);
                         response = module.decode.json(response);
 
@@ -156,15 +150,10 @@
                 },
                 write: {
                     cachedResponse: function (url, response) {
-                        if (window.Storage === undefined) {
-                            module.error(error.noStorage);
-
-                            return;
-                        }
                         if ($.isPlainObject(response)) {
                             response = JSON.stringify(response);
                         }
-                        sessionStorage.setItem(url + module.get.normalizedData(), response);
+                        window.sessionStorage.setItem(url + module.get.normalizedData(), response);
                         module.verbose('Storing cached response for url', url, settings.data, response);
                     },
                 },
@@ -355,7 +344,7 @@
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
                                     // allow legacy {$var} style
-                                    let variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.includes('$')
                                         ? templatedString.slice(2, -1)
                                         : templatedString.slice(1, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -384,7 +373,7 @@
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
                                     // allow legacy {/$var} style
-                                    let variable = templatedString.indexOf('$') !== -1
+                                    let variable = templatedString.includes('$')
                                         ? templatedString.slice(3, -1)
                                         : templatedString.slice(2, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
@@ -401,7 +390,7 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        url = url.indexOf('/' + templatedString) !== -1
+                                        url = url.includes('/' + templatedString)
                                             ? url.replace('/' + templatedString, '')
                                             : url.replace(templatedString, '');
                                     }
@@ -458,7 +447,7 @@
                                 } else {
                                     pushValues[pushKey] = [pushValues[pushKey], value];
                                 }
-                                if (pushKey.indexOf('[]') === -1) {
+                                if (!pushKey.includes('[]')) {
                                     value = pushValues[pushKey];
                                 }
 
@@ -881,30 +870,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -919,7 +908,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 // 'Element'        : element,
                                 'Execution Time': executionTime,
                             });
@@ -940,13 +929,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -1006,7 +989,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
@@ -1137,7 +1120,6 @@
             missingAction: 'API action used but no url was defined',
             missingURL: 'No URL specified for api event',
             noReturnedValue: 'The beforeSend callback must return a settings object, beforeSend ignored.',
-            noStorage: 'Caching responses locally requires session storage',
             parseError: 'There was an error parsing your request',
             requiredParameter: 'Missing a required URL parameter: ',
             statusMessage: 'Server gave an error: ',

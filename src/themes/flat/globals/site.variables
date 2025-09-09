@@ -53,7 +53,7 @@
 
 @bodyBackground: #fcfcfc;
 @fontSize: 14px;
-@textColor: rgba(0, 0, 0, 0.8);
+@textColor: rgb(0 0 0 / 0.8);
 
 @headerMargin: 1em 0 1rem;
 @paragraphMargin: 0 0 1em;
@@ -70,19 +70,19 @@
   Background Colors
 -------------------- */
 
-@subtleTransparentBlack: rgba(0, 0, 0, 0.03);
-@transparentBlack: rgba(0, 0, 0, 0.05);
-@strongTransparentBlack: rgba(0, 0, 0, 0.1);
+@subtleTransparentBlack: rgb(0 0 0 / 0.03);
+@transparentBlack: rgb(0 0 0 / 0.05);
+@strongTransparentBlack: rgb(0 0 0 / 0.1);
 
-@subtleTransparentWhite: rgba(255, 255, 255, 0.01);
-@transparentWhite: rgba(255, 255, 255, 0.05);
-@strongTransparentWhite: rgba(255, 255, 255, 0.01);
+@subtleTransparentWhite: rgb(255 255 255 / 0.01);
+@transparentWhite: rgb(255 255 255 / 0.05);
+@strongTransparentWhite: rgb(255 255 255 / 0.01);
 
 /* Used for differentiating neutrals */
-@subtleGradient: linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+@subtleGradient: linear-gradient(transparent, rgb(0 0 0 / 0.05));
 
 /* Used for differentiating layers */
-@subtleShadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+@subtleShadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 
 /* -------------------
         Grid

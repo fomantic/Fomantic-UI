@@ -47,7 +47,7 @@
     text-align: left;
     transition: @transition;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0);
 }
 
 /*******************************
@@ -741,7 +741,7 @@ select.ui.dropdown {
         left: @textCursorSpacing;
         width: 100%;
         outline: none;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-tap-highlight-color: rgb(255 255 255 / 0);
         padding: inherit;
     }
 
@@ -1736,12 +1736,12 @@ select.ui.dropdown {
         margin: 0;
         transform: rotate(-45deg);
     }
-    .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu {
+    .ui.left:not(.top, .bottom).pointing.dropdown > .left.menu {
         left: auto !important;
         right: 100% !important;
         margin: 0 @pointingArrowDistanceFromEdge 0 0;
     }
-    .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu::after {
+    .ui.left:not(.top, .bottom).pointing.dropdown > .left.menu::after {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
@@ -1829,12 +1829,12 @@ select.ui.dropdown {
     }
 
     /* Right Pointing Upward */
-    .ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu {
+    .ui.right.pointing.upward.dropdown:not(.top, .bottom) .menu {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 @pointingArrowDistanceFromEdge 0 0;
     }
-    .ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+    .ui.right.pointing.upward.dropdown:not(.top, .bottom) .menu::after {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 @pointingArrowDistanceFromEdge 0;
@@ -1842,12 +1842,12 @@ select.ui.dropdown {
     }
 
     /* Left Pointing Upward */
-    .ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu {
+    .ui.left.pointing.upward.dropdown:not(.top, .bottom) .menu {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 0 @pointingArrowDistanceFromEdge;
     }
-    .ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+    .ui.left.pointing.upward.dropdown:not(.top, .bottom) .menu::after {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 @pointingArrowDistanceFromEdge 0;

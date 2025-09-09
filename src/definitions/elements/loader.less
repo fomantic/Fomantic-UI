@@ -210,17 +210,17 @@
         .ui.ui.@{color}.elastic.loader::before,
         .ui.@{color}.basic.elastic.loading.button::before,
         .ui.@{color}.basic.elastic.loading.button::after,
-        .ui.ui.ui.@{color}.elastic.loading:not(.segment):not(.segments):not(.card)::before,
+        .ui.ui.ui.@{color}.elastic.loading:not(.segment, .segments, .card)::before,
         .ui.ui.ui.@{color}.elastic.loading .input > i.icon::before,
         .ui.ui.ui.ui.@{color}.elastic.loading > i.icon::before,
-        .ui.ui.ui.ui.@{color}.loading:not(.usual):not(.button)::after,
+        .ui.ui.ui.ui.@{color}.loading:not(.usual, .button)::after,
         .ui.ui.ui.ui.@{color}.loading .input > i.icon::after,
         .ui.ui.ui.ui.@{color}.loading > i.icon::after,
         .ui.ui.ui.@{color}.loader::after {
             color: @c;
         }
         .ui.inverted.@{color}.elastic.loader::before,
-        .ui.ui.ui.inverted.@{color}.elastic.loading:not(.segment):not(.segments):not(.card)::before,
+        .ui.ui.ui.inverted.@{color}.elastic.loading:not(.segment, .segments, .card)::before,
         .ui.ui.ui.inverted.@{color}.elastic.loading .input > i.icon::before,
         .ui.ui.ui.inverted.@{color}.elastic.loading > i.icon::before,
         .ui.ui.ui.ui.inverted.@{color}.loading:not(.usual)::after,
@@ -242,7 +242,7 @@
 .ui.ui.ui.loader::after {
     border-color: currentColor;
 }
-.ui.ui.ui.ui.elastic.loading.button:not(.inverted):not(.basic)::before {
+.ui.ui.ui.ui.elastic.loading.button:not(.inverted, .basic)::before {
     color: @invertedLoaderLineColor;
 }
 .ui.elastic.basic.loading.button::before,
@@ -321,14 +321,14 @@
     .ui.inverted.dimmer > .ui.elastic.loader {
         color: @loaderLineColor;
     }
-    .ui.ui.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+    .ui.ui.elastic.loading:not(.form, .segment, .segments, .card)::after,
     .ui.ui.elastic.loading .input > i.icon::after,
     .ui.ui.elastic.loading > i.icon::after,
     .ui.ui.elastic.loader::after {
         animation: loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
         animation-delay: 0.3s;
     }
-    .ui.ui.ui.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+    .ui.ui.ui.elastic.loading:not(.form, .segment, .segments, .card)::before,
     .ui.ui.ui.elastic.loading .input > i.icon::before,
     .ui.ui.ui.elastic.loading > i.icon::before,
     .ui.ui.elastic.loader::before {
@@ -344,27 +344,27 @@
         }
     }
     & when (@variationLoaderSpeeds) {
-        .ui.ui.slow.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+        .ui.ui.slow.elastic.loading:not(.form, .segment, .segments, .card)::after,
         .ui.ui.slow.elastic.loading .input > i.icon::after,
         .ui.ui.slow.elastic.loading > i.icon::after,
         .ui.ui.slow.elastic.loader::after {
             animation-duration: 1.5s;
             animation-delay: 0.45s;
         }
-        .ui.ui.ui.slow.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+        .ui.ui.ui.slow.elastic.loading:not(.form, .segment, .segments, .card)::before,
         .ui.ui.ui.slow.elastic.loading .input > i.icon::before,
         .ui.ui.ui.slow.elastic.loading > i.icon::before,
         .ui.ui.slow.elastic.loader::before {
             animation-duration: 1.5s;
         }
-        .ui.ui.fast.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+        .ui.ui.fast.elastic.loading:not(.form, .segment, .segments, .card)::after,
         .ui.ui.fast.elastic.loading .input > i.icon::after,
         .ui.ui.fast.elastic.loading > i.icon::after,
         .ui.ui.fast.elastic.loader::after {
             animation-duration: 0.66s;
             animation-delay: 0.2s;
         }
-        .ui.ui.ui.fast.elastic.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+        .ui.ui.ui.fast.elastic.loading:not(.form, .segment, .segments, .card)::before,
         .ui.ui.ui.fast.elastic.loading .input > i.icon::before,
         .ui.ui.ui.fast.elastic.loading > i.icon::before,
         .ui.ui.fast.elastic.loader::before {

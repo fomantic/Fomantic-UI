@@ -3,7 +3,7 @@
 *******************************/
 
 @fontFamily: "Roboto", Arial, sans-serif;
-@boxShadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+@boxShadow: 0 1px 6px rgb(0 0 0 / 0.2);
 @dividerSize: 0;
 
 @itemVerticalPadding: @relativeLarge;

@@ -39,7 +39,7 @@
 @subMenuDistance: 0.5em;
 @subMenuMargin: @subMenuDistance -@itemHorizontalPadding 0;
 @subMenuFontSize: @relativeTiny;
-@subMenuTextColor: rgba(0, 0, 0, 0.5);
+@subMenuTextColor: rgb(0 0 0 / 0.5);
 
 @subMenuIndent: 0;
 @subMenuHorizontalPadding: (@itemHorizontalPadding / @tinySize) + @subMenuIndent;
@@ -131,7 +131,7 @@
 @imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
-@dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+@dropdownMenuBoxShadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
 
 @dropdownBackground: #fff;
 @dropdownMenuDistance: 0;
@@ -154,7 +154,7 @@
 @dropdownHoveredItemColor: @selectedTextColor;
 
 /* Dropdown Variations */
-@dropdownVerticalMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+@dropdownVerticalMenuBoxShadow: 0 1px 3px 0 rgb(0 0 0 / 0.08);
 @secondaryDropdownMenuDistance: @relative5px;
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
@@ -297,7 +297,7 @@
 @tieredSubMenuActiveBackground: none transparent;
 @tieredSubMenuActiveColor: @selectedTextColor;
 
-@tieredInvertedSubMenuBackground: rgba(0, 0, 0, 0.2);
+@tieredInvertedSubMenuBackground: rgb(0 0 0 / 0.2);
 
 /* Icon */
 @iconMenuTextAlign: center;
@@ -408,7 +408,7 @@
 @invertedSubMenuActiveColor: @white;
 
 /* Inverted Menu Divider */
-@invertedDividerBackground: rgba(255, 255, 255, 0.08);
+@invertedDividerBackground: rgb(255 255 255 / 0.08);
 @invertedVerticalDividerBackground: @invertedDividerBackground;
 
 /* Inverted Colored */

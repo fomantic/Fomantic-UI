@@ -18,7 +18,7 @@ const issueLinks = function (item) {
 module.exports = function (Handlebars) {
     Handlebars.registerHelper('commit-collector', (merges, commits, major, minor, options) => {
         const commitsFromMerges = merges.map((merge) => merge.commit);
-        const result = commits.concat(commitsFromMerges);
+        const result = [...commits, ...commitsFromMerges];
         isMajor = major;
         isMinor = minor;
 

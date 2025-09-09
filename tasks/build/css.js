@@ -104,7 +104,7 @@ function pack(type, compress) {
         .split(',')
         .map((c) => {
             let srcSingle = output.uncompressed + '/**/' + c + ignoredGlobs;
-            if (c === 'tab' && globs.components.indexOf('table') < 0) {
+            if (c === 'tab' && !globs.components.includes('table')) {
                 srcSingle = [srcSingle, '!' + output.uncompressed + '/**/table.css'];
             }
 
@@ -249,14 +249,14 @@ module.exports.watch = function (type, config) {
 
             // Determine which LESS file has to be recompiled
             let lessPath;
-            if (path.indexOf('site.variables') !== -1) {
+            if (path.includes('site.variables')) {
                 return;
             }
-            if (path.indexOf(config.paths.source.themes) !== -1) {
+            if (path.includes(config.paths.source.themes)) {
                 console.log('Change detected in packaged theme');
                 lessPath = replaceExt(path, '.less');
                 lessPath = lessPath.replace(tasks.regExp.theme, config.paths.source.definitions);
-            } else if (path.indexOf(config.paths.source.site) !== -1) {
+            } else if (path.includes(config.paths.source.site)) {
                 console.log('Change detected in site theme');
                 lessPath = replaceExt(path, '.less');
                 lessPath = lessPath.replace(config.paths.source.site, config.paths.source.definitions);

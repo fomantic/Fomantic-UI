@@ -19,19 +19,19 @@
         ? window
         : globalThis;
 
-    $.fn.nag = function (parameters) {
+    $.fn.nag = function (...args) {
         let $allModules = $(this);
         let $body = $('body');
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let contextCheck = function (context, win) {
             let $context;
-            if ([window, document].indexOf(context) >= 0) {
+            if ([window, document].includes(context)) {
                 $context = $(context);
             } else {
                 $context = $(win.document).find(context);
@@ -171,56 +171,52 @@
                         module.error(error.expiresFormat);
                     },
                     storage: function () {
-                        if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
+                        if (settings.storageMethod === 'localstorage') {
                             module.debug('Using local storage');
 
                             return window.localStorage;
                         }
-                        if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+                        if (settings.storageMethod === 'sessionstorage') {
                             module.debug('Using session storage');
 
                             return window.sessionStorage;
                         }
-                        if ('cookie' in document) {
-                            module.debug('Using cookie');
+                        module.debug('Using cookie');
 
-                            return {
-                                setItem: function (key, value, options) {
-                                    // RFC6265 compliant encoding
-                                    key = encodeURIComponent(key)
-                                        .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-                                        .replace(/[()]/g, escape);
-                                    value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
+                        return {
+                            setItem: function (key, value, options) {
+                                // RFC6265 compliant encoding
+                                key = encodeURIComponent(key)
+                                    .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+                                    .replace(/[()]/g, escape);
+                                value = encodeURIComponent(value)
+                                    .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
-                                    let cookieOptions = '';
-                                    for (let option in options) {
-                                        if (Object.prototype.hasOwnProperty.call(options, option)) {
-                                            cookieOptions += '; ' + option;
-                                            if (typeof options[option] === 'string') {
-                                                cookieOptions += '=' + options[option].split(';')[0];
-                                            }
+                                let cookieOptions = '';
+                                for (let option in options) {
+                                    if (Object.prototype.hasOwnProperty.call(options, option)) {
+                                        cookieOptions += '; ' + option;
+                                        if (typeof options[option] === 'string') {
+                                            cookieOptions += '=' + options[option].split(';')[0];
                                         }
                                     }
-                                    document.cookie = key + '=' + value + cookieOptions;
-                                },
-                                getItem: function (key) {
-                                    let cookies = document.cookie.split('; ');
-                                    for (let i = 0, il = cookies.length; i < il; i++) {
-                                        let parts = cookies[i].split('=');
-                                        let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
-                                        if (key === foundKey) {
-                                            return parts[1] || '';
-                                        }
+                                }
+                                document.cookie = key + '=' + value + cookieOptions;
+                            },
+                            getItem: function (key) {
+                                let cookies = document.cookie.split('; ');
+                                for (let i = 0, il = cookies.length; i < il; i++) {
+                                    let parts = cookies[i].split('=');
+                                    let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
+                                    if (key === foundKey) {
+                                        return parts[1] || '';
                                     }
-                                },
-                                removeItem: function (key, options) {
-                                    storage.setItem(key, '', options);
-                                },
-                            };
-                        }
-
-                        module.error(error.noStorage);
+                                }
+                            },
+                            removeItem: function (key, options) {
+                                storage.setItem(key, '', options);
+                            },
+                        };
                     },
                     storageOptions: function () {
                         let options = {};
@@ -312,30 +308,30 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
@@ -350,7 +346,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -371,13 +367,7 @@
                         title += ' ' + totalTime + 'ms';
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -437,7 +427,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
@@ -495,7 +485,6 @@
         expirationKey: 'ExpirationDate',
 
         error: {
-            noStorage: 'Unsupported storage method',
             method: 'The method you called is not defined.',
             setItem: 'Unexpected error while setting value',
             expiresFormat: '"expires" must be a number of days or a Date Object',

@@ -19,16 +19,16 @@
         ? window
         : globalThis;
 
-    $.fn.form = function (parameters) {
+    $.fn.form = function (...args) {
         let $allModules = $(this);
         let $window = $(window);
 
         let time = Date.now();
         let performance = [];
 
-        let query = arguments[0];
-        let methodInvoked = typeof query === 'string';
-        let queryArguments = [].slice.call(arguments, 1);
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
         let returnedValue;
         $allModules.each(function () {
             let $module = $(this);
@@ -79,7 +79,7 @@
                         if (instance === undefined) {
                             module.instantiate();
                         }
-                        module.invoke(query);
+                        module.invoke(parameters);
                     } else {
                         if (instance !== undefined) {
                             instance.invoke('destroy');
@@ -492,7 +492,7 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        return ['file', 'checkbox', 'radio', 'hidden'].indexOf(type) >= 0 || $input.is('select') ? 'change' : 'input';
+                        return ['file', 'checkbox', 'radio', 'hidden'].includes(type) || $input.is('select') ? 'change' : 'input';
                     },
                     fieldsFromShorthand: function (fields) {
                         let fullFields = {};
@@ -537,7 +537,7 @@
                         let requiresName = prompt.search('{name}') !== -1;
                         let parts;
                         let suffixPrompt;
-                        if (ancillary && ['integer', 'decimal', 'number', 'size'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
+                        if (ancillary && ['integer', 'decimal', 'number', 'size'].includes(ruleName) && ancillary.includes('..')) {
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt && ruleName !== 'size') {
                                 suffixPrompt = parts[0] === ''
@@ -550,7 +550,7 @@
                             prompt = prompt.replace(/{min}/g, parts[0]);
                             prompt = prompt.replace(/{max}/g, parts[1]);
                         }
-                        if (ancillary && ['match', 'different'].indexOf(ruleName) >= 0) {
+                        if (ancillary && ['match', 'different'].includes(ruleName)) {
                             prompt = prompt.replace(/{ruleValue}/g, module.get.fieldLabel(ancillary, true));
                         }
                         if (requiresValue) {
@@ -682,7 +682,7 @@
                             let value = $field.val();
                             let isCheckbox = $field.is(selector.checkbox);
                             let isRadio = $field.is(selector.radio);
-                            let isMultiple = name.indexOf('[]') !== -1;
+                            let isMultiple = name.includes('[]');
                             let isCalendar = $calendar.length > 0 && module.can.useElement('calendar');
                             let isChecked = isCheckbox
                                 ? $field.is(':checked')
@@ -977,7 +977,7 @@
                             return;
                         }
                         $.each(validation[field].rules, function (index, rule) {
-                            if (rule && rules.indexOf(rule.type) !== -1) {
+                            if (rule && rules.includes(rule.type)) {
                                 module.debug('Removed rule', rule.type);
                                 validation[field].rules.splice(index, 1);
                             }
@@ -1169,7 +1169,7 @@
                             let validation = module.get.validation($el);
                             let hasNotEmptyRule = validation
                                 ? $.grep(validation.rules, function (rule) {
-                                    return ['notEmpty', 'checked', 'empty'].indexOf(rule.type) >= 0;
+                                    return ['notEmpty', 'checked', 'empty'].includes(rule.type);
                                 }).length > 0
                                 : false;
                             let identifier = module.get.identifier(validation, $el);
@@ -1312,7 +1312,7 @@
                                                 // Always allow the first error prompt for new field identifiers
                                                 (!(identifier in formErrorsTracker)
                                                 // Also allow multiple error prompts per field identifier but make sure each prompt is unique
-                                                || formErrorsTracker[identifier].indexOf(fieldError) === -1)
+                                                || !formErrorsTracker[identifier].includes(fieldError))
                                                 // Limit the number of unique error prompts for every field identifier if specified
                                                 && (!errorLimit || (formErrorsTracker[identifier] || []).length < errorLimit)
                                             ) {
@@ -1337,7 +1337,7 @@
                             }
                         } else {
                             if (showErrors && fieldErrors.length > 0) {
-                                formErrors = formErrors.concat(fieldErrors);
+                                formErrors = [...formErrors, ...fieldErrors];
                                 module.add.prompt(identifier, fieldErrors, true);
                                 settings.onInvalid.call($field, fieldErrors);
                             }
@@ -1406,36 +1406,36 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
-                warn: function () {
+                warn: function (...args) {
                     if (!settings.silent) {
                         module.warn = Function.prototype.bind.call(console.warn, console, settings.name + ':');
-                        module.warn.apply(console, arguments);
+                        module.warn.apply(console, args);
                     }
                 },
                 performance: {
@@ -1450,7 +1450,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -1474,13 +1474,7 @@
                         }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
@@ -1646,7 +1640,7 @@
         selector: {
             checkbox: 'input[type="checkbox"], input[type="radio"]',
             clear: '.clear',
-            field: 'input:not(.search):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
+            field: 'input:not(.search, [type="reset"], [type="button"], [type="submit"]), textarea, select',
             file: 'input[type="file"]',
             group: '.field',
             input: 'input',
@@ -1801,10 +1795,10 @@
                 let min;
                 let max;
                 let parts;
-                if (!range || ['', '..'].indexOf(range) !== -1) {
+                if (!range || ['', '..'].includes(range)) {
 
                     // do nothing
-                } else if (range.indexOf('..') === -1) {
+                } else if (!range.includes('..')) {
                     if (regExp.test(range)) {
                         min = range - 0;
                         max = min;
@@ -2007,7 +2001,7 @@
                         validation = cards[type];
                         if (validation) {
                             valid = {
-                                length: $.inArray(cardNumber.length, validation.length) !== -1,
+                                length: validation.length.includes(cardNumber.length),
                                 pattern: cardNumber.search(validation.pattern) !== -1,
                             };
                             if (valid.length > 0 && valid.pattern) {
@@ -2023,7 +2017,7 @@
 
                 // skip luhn for UnionPay
                 unionPay = {
-                    number: $.inArray(cardNumber.length, cards.unionPay.length) !== -1,
+                    number: cards.unionPay.length.includes(cardNumber.length),
                     pattern: cardNumber.search(cards.unionPay.pattern) !== -1,
                 };
                 if (unionPay.number && unionPay.pattern) {

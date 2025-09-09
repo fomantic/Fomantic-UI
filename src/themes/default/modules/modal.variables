@@ -8,8 +8,8 @@
 @borderRadius: @defaultBorderRadius;
 @transformOrigin: 50% 25%;
 @boxShadow:
-    1px 3px 3px 0 rgba(0, 0, 0, 0.2),
-    1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+    1px 3px 3px 0 rgb(0 0 0 / 0.2),
+    1px 3px 15px 2px rgb(0 0 0 / 0.2);
 
 /* Close Icon */
 @closeOpacity: 0.8;
@@ -24,10 +24,10 @@
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
 @closeShadow:
-    -1px -1px 2px rgba(0, 0, 0, 0.3),
-    1px -1px 2px rgba(0, 0, 0, 0.3),
-    -1px 2px 2px rgba(0, 0, 0, 0.3),
-    1px 2px 2px rgba(0, 0, 0, 0.3);
+    -1px -1px 2px rgb(0 0 0 / 0.3),
+    1px -1px 2px rgb(0 0 0 / 0.3),
+    -1px 2px 2px rgb(0 0 0 / 0.3),
+    1px 2px 2px rgb(0 0 0 / 0.3);
 
 /* Header */
 @headerMargin: 0;
@@ -54,7 +54,7 @@
 @imageVerticalAlign: start;
 
 @descriptionDistance: 2em;
-@descriptionMinWidth: "";
+@descriptionMinWidth: auto;
 @descriptionWidth: auto;
 @descriptionVerticalAlign: start;
 
@@ -102,7 +102,7 @@
 @fullScreenMargin: 1em auto;
 
 /* Coupling */
-@invertedBoxShadow: 1px 3px 10px 2px rgba(0, 0, 0, 0.2);
+@invertedBoxShadow: 1px 3px 10px 2px rgb(0 0 0 / 0.2);
 
 /* -------------------
        States
@@ -253,14 +253,14 @@
 @invertedHeaderColor: @white;
 @invertedHeaderBackgroundColor: @darkTextColor;
 @invertedActionBackground: #191a1b;
-@invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
+@invertedActionBorder: 1px solid rgb(34 36 38 / 0.85);
 @invertedActionColor: @white;
-@invertedDimmerCloseColor: rgba(0, 0, 0, 0.85);
+@invertedDimmerCloseColor: rgb(0 0 0 / 0.85);
 @invertedCloseShadow:
-    -1px -1px 2px rgba(255, 255, 255, 0.3),
-    1px -1px 2px rgba(255, 255, 255, 0.3),
-    -1px 2px 2px rgba(255, 255, 255, 0.3),
-    1px 2px 2px rgba(255, 255, 255, 0.3);
+    -1px -1px 2px rgb(255 255 255 / 0.3),
+    1px -1px 2px rgb(255 255 255 / 0.3),
+    -1px 2px 2px rgb(255 255 255 / 0.3),
+    1px 2px 2px rgb(255 255 255 / 0.3);
 
 /* Resizable */
 @resizableDirection: vertical;
