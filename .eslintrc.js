@@ -41,7 +41,6 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'max-len': 'off',
         'no-console': 'off',
-        'no-continue': 'off',
         'no-lonely-if': 'off',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',

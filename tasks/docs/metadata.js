@@ -87,14 +87,13 @@ function parser(file, callback) {
                 if (startsWith(line, '---')) {
                     active = true;
                 }
-
-                continue;
+            } else {
+                // End of metadata block, stop parsing.
+                if (startsWith(line, '---')) {
+                    break;
+                }
+                yaml.push(line);
             }
-            // End of metadata block, stop parsing.
-            if (startsWith(line, '---')) {
-                break;
-            }
-            yaml.push(line);
         }
 
         // Parse yaml.
