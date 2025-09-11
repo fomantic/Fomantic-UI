@@ -92,7 +92,7 @@
                             if (ratio > 1) {
                                 break;
                             }
-                            precision = Math.pow(10, precisionPower++);
+                            precision = 10 ** precisionPower++;
                         }
 
                         return precision;

@@ -665,7 +665,7 @@
                             } else {
                                 decimalPlaces = settings.decimalPlaces;
                             }
-                            let precision = Math.pow(10, decimalPlaces);
+                            let precision = 10 ** decimalPlaces;
                             module.debug('Precision determined', precision);
                             module.cache.precision = precision;
                         }

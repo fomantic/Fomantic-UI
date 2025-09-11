@@ -86,7 +86,6 @@ module.exports = {
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
-        'prefer-exponentiation-operator': 'off',
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
