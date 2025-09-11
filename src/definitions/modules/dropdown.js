@@ -3992,9 +3992,11 @@
                     let dataKey;
                     let dataKeyEscaped;
                     for (dataKey in dataObject) {
-                        dataKeyEscaped = String(dataKey).replace(/\W/g, '');
-                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && !['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
-                            maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey)) {
+                            dataKeyEscaped = String(dataKey).replace(/\W/g, '');
+                            if (!['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
+                                maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
+                            }
                         }
                     }
                 }

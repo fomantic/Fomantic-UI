@@ -82,7 +82,6 @@ module.exports = {
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
-        'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
