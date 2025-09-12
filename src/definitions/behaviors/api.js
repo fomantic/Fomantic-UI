@@ -130,7 +130,7 @@
                         if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
-                            } catch (e) {
+                            } catch {
                                 // isn't json string
                             }
                         }
