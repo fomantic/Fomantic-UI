@@ -479,7 +479,7 @@
                         }
                         let $target = $(event.target);
                         let isInModal = $target.closest(selector.modal).length > 0;
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
                             module.debug('Dimmer clicked, hiding all modals');
                             if (settings.allowMultiple) {

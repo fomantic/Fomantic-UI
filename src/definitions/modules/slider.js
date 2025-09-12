@@ -189,7 +189,7 @@
                             if (attrValue) {
                                 attrValue = attrValue > max
                                     ? max
-                                    : (attrValue < min ? min : attrValue);
+                                    : Math.max(attrValue, min);
                                 ratio = (attrValue - min) / (max - min);
                             } else {
                                 ratio = (index + 1) / (numChildren + 1);
@@ -843,7 +843,7 @@
                         let max = module.get.max();
                         let value = val > max
                             ? max
-                            : (val < min ? min : val);
+                            : Math.max(val, min);
                         let trackLength = module.get.trackLength();
                         let ratio = (value - min) / (max - min);
                         let position = Math.round(ratio * trackLength);
@@ -884,7 +884,7 @@
                         let value;
                         newPos = newPos < 0
                             ? 0
-                            : (newPos > trackLength ? trackLength : newPos);
+                            : Math.min(newPos, trackLength);
                         ratio = newPos / trackLength;
                         if (module.is.reversed()) {
                             ratio = 1 - ratio;

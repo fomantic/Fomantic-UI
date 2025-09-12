@@ -25,6 +25,7 @@
         let time = Date.now();
         let performance = [];
 
+        let moduleArguments = args;
         let parameters = args[0];
         let queryArguments = args.slice(1);
         let methodInvoked = typeof parameters === 'string';
@@ -50,7 +51,7 @@
 
                 initialize: function () {
                     // get full settings
-                    settings = module.get.settings.apply(element, parameters);
+                    settings = module.get.settings(...moduleArguments);
 
                     // shorthand
                     className = settings.className;

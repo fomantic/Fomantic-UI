@@ -69,6 +69,7 @@ module.exports = {
         }],
         strict: 'off',
         'unicorn/catch-error-name': 'off',
+        'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-array-callback-reference': 'off',
         'unicorn/no-lonely-if': 'off',
         'unicorn/no-negated-condition': 'off',
@@ -77,7 +78,11 @@ module.exports = {
         'unicorn/numeric-separators-style': 'off',
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
+        'unicorn/prefer-at': 'off',
+        'unicorn/prefer-global-this': 'off',
         'unicorn/prefer-module': 'off',
+        'unicorn/prefer-string-raw': 'off',
+        'unicorn/prefer-string-replace-all': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'wrap-iife': ['error', 'inside'],
 

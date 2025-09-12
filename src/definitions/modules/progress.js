@@ -512,7 +512,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            let isInDOM = $.contains(document.documentElement, element);
+                            let isInDOM = document.documentElement.contains(element);
                             if (!isInDOM) {
                                 clearInterval(module.interval);
                                 animating = false;

@@ -413,7 +413,7 @@
                             return;
                         }
                         let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
 
                         return isInDOM && $target.closest(selector.message).length > 0;
                     },
@@ -661,10 +661,8 @@
                                 }
                             });
                         });
-                        $.merge(exactResults, fuzzyResults);
-                        $.merge(results, exactResults);
 
-                        return results;
+                        return [...results, ...exactResults, ...fuzzyResults];
                     },
                 },
                 exactSearch: function (query, term) {
@@ -1430,12 +1428,12 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                                    ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
                                     : '<a class="result">';
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                        + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1464,7 +1462,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }
@@ -1482,12 +1480,12 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                            ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
                             : '<a class="result">';
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                 + '</div>';
                         }
                         html += '<div class="content">';
@@ -1511,7 +1509,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }

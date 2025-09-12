@@ -518,9 +518,7 @@
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                                     : settings.onResponse.call(context, response))
                                 : false;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (translatedResponse) {
                                 module.debug('Modified API response in onResponse callback', settings.onResponse, translatedResponse, response);
                                 response = translatedResponse;
@@ -540,9 +538,7 @@
                             let context = this;
                             let elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (timeLeft > 0) {
                                 module.debug('Response completed early delaying state change by', timeLeft);
                             }
