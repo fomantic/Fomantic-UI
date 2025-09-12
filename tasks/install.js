@@ -166,7 +166,7 @@ module.exports = function (callback) {
         rootQuestions[1].default = manager.root;
 
         // insert PM questions after "Install Type" question
-        Array.prototype.splice.apply(questions.setup, [2, 0, ...rootQuestions]);
+        questions.setup.splice(2, 0, ...rootQuestions);
 
         // omit cleanup questions for managed install
         questions.cleanup = [];

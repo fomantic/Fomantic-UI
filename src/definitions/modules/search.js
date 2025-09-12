@@ -413,7 +413,7 @@
                             return;
                         }
                         let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
 
                         return isInDOM && $target.closest(selector.message).length > 0;
                     },
@@ -661,10 +661,8 @@
                                 }
                             });
                         });
-                        $.merge(exactResults, fuzzyResults);
-                        $.merge(results, exactResults);
 
-                        return results;
+                        return [...results, ...exactResults, ...fuzzyResults];
                     },
                 },
                 exactSearch: function (query, term) {
