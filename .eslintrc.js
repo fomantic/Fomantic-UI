@@ -91,13 +91,11 @@ module.exports = {
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
         'unicorn/no-array-for-each': 'off',
-        'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-reflect-apply': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
-        'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
         eqeqeq: 'off', // about 20 errors to be fixed manually

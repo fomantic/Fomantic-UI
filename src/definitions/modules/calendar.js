@@ -1234,9 +1234,7 @@
                     },
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
-                            let d;
-                            for (let i = 0; i < dates.length; i++) {
-                                d = dates[i];
+                            for (let d of dates) {
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1290,7 +1288,6 @@
                     },
                     findHourAsObject: function (date, mode, hours) {
                         if (mode === 'hour') {
-                            let d;
                             let hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
@@ -1303,8 +1300,7 @@
                                     }
                                 }
                             };
-                            for (let i = 0; i < hours.length; i++) {
-                                d = hours[i];
+                            for (let d of hours) {
                                 if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
