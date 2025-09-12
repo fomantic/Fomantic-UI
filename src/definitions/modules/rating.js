@@ -224,9 +224,7 @@
                 set: {
                     rating: function (rating) {
                         let ratingIndex = Math.floor(
-                            rating - 1 >= 0
-                                ? rating - 1
-                                : 0
+                            Math.max(rating - 1, 0)
                         );
                         let $activeIcon = $icon.eq(ratingIndex);
                         let $partialActiveIcon = rating <= 1

@@ -327,7 +327,7 @@ module.exports = function (callback) {
         gulp.task('create theme.config', function () {
             // determine path to site theme folder from theme config
             // force CSS path variable to use forward slashes for paths
-            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replaceAll('\\', '/');
             let siteVariable = "@siteFolder: '" + pathToSite + "/';";
 
             // rewrite site variable in theme.less
