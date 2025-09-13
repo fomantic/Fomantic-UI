@@ -938,9 +938,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        let queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -1659,7 +1659,7 @@
                             }
                         } else {
                             if (!module.has.search()) {
-                                module.set.selectedLetter(String.fromCharCode(pressedKey));
+                                module.set.selectedLetter(String.fromCodePoint(pressedKey));
                             }
                         }
                     },

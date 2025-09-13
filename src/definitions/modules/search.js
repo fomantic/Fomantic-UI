@@ -705,9 +705,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        let queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -828,7 +828,7 @@
                         let id;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
-                            letterID = String.fromCharCode(97 + categoryIndex);
+                            letterID = String.fromCodePoint(97 + categoryIndex);
                             id = letterID + resultID;
                             module.verbose('Creating category result id', id);
                         } else {

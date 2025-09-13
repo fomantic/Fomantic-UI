@@ -91,7 +91,6 @@ module.exports = {
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
         'unicorn/no-array-for-each': 'off',
-        'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-reflect-apply': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
