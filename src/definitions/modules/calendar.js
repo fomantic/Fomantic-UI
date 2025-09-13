@@ -1700,7 +1700,6 @@
                 let isDateOnly = !settings.type.includes('time');
 
                 let words = text.split(settings.regExp.dateWords);
-                let word;
                 let numbers = text.split(settings.regExp.dateNumbers);
                 let number;
 
@@ -1738,8 +1737,7 @@
 
                 if (!isTimeOnly) {
                     // textual month
-                    for (i = 0; i < words.length; i++) {
-                        word = words[i];
+                    for (const word of words) {
                         if (word.length > 0) {
                             for (j = 0; j < settings.text.months.length; j++) {
                                 monthString = settings.text.months[j];

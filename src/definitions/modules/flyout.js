@@ -449,8 +449,8 @@
                     observer = new MutationObserver(function (mutations) {
                         let collectNodes = function (parent) {
                             let nodes = [];
-                            for (let c = 0, cl = parent.length; c < cl; c++) {
-                                nodes.push(...collectNodes(parent[c].childNodes), parent[c]);
+                            for (const c of parent) {
+                                nodes.push(...collectNodes(c.childNodes), c);
                             }
 
                             return nodes;

@@ -897,9 +897,9 @@
                         if (event.type === 'touchmove' || event.type === 'touchend') {
                             let touchEvent = event.touches ? event : event.originalEvent;
                             let touch = touchEvent.changedTouches[0]; // fall back to first touch if correct touch not found
-                            for (let i = 0; i < touchEvent.touches.length; i++) {
-                                if (touchEvent.touches[i].identifier === touchIdentifier) {
-                                    touch = touchEvent.touches[i];
+                            for (const t of touchEvent.touches) {
+                                if (t.identifier === touchIdentifier) {
+                                    touch = t;
 
                                     break;
                                 }

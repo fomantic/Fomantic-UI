@@ -675,11 +675,9 @@
                 },
                 wordSearch: function (query, term, matchAll) {
                     let allWords = query.split(/\s+/);
-                    let w;
-                    let wL = allWords.length;
                     let found = false;
-                    for (w = 0; w < wL; w++) {
-                        found = module.exactSearch(allWords[w], term);
+                    for (const w of allWords) {
+                        found = module.exactSearch(w, term);
                         if ((!found && matchAll) || (found && !matchAll)) {
                             break;
                         }
