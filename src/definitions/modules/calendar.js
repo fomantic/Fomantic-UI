@@ -864,7 +864,7 @@
                             document.createEvent('TouchEvent');
 
                             return true;
-                        } catch (e) {
+                        } catch {
                             return false;
                         }
                     },
@@ -1234,9 +1234,7 @@
                     },
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
-                            let d;
-                            for (let i = 0; i < dates.length; i++) {
-                                d = dates[i];
+                            for (let d of dates) {
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1290,7 +1288,6 @@
                     },
                     findHourAsObject: function (date, mode, hours) {
                         if (mode === 'hour') {
-                            let d;
                             let hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
@@ -1303,8 +1300,7 @@
                                     }
                                 }
                             };
-                            for (let i = 0; i < hours.length; i++) {
-                                d = hours[i];
+                            for (let d of hours) {
                                 if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
@@ -1704,7 +1700,6 @@
                 let isDateOnly = !settings.type.includes('time');
 
                 let words = text.split(settings.regExp.dateWords);
-                let word;
                 let numbers = text.split(settings.regExp.dateNumbers);
                 let number;
 
@@ -1742,32 +1737,27 @@
 
                 if (!isTimeOnly) {
                     // textual month
-                    for (i = 0; i < words.length; i++) {
-                        word = words[i];
-                        if (word.length <= 0) {
-                            continue;
-                        }
-                        for (j = 0; j < settings.text.months.length; j++) {
-                            monthString = settings.text.months[j];
-                            monthString = monthString.slice(0, word.length).toLowerCase();
-                            if (monthString === word) {
-                                month = j + 1;
+                    for (const word of words) {
+                        if (word.length > 0) {
+                            for (j = 0; j < settings.text.months.length; j++) {
+                                monthString = settings.text.months[j];
+                                monthString = monthString.slice(0, word.length).toLowerCase();
+                                if (monthString === word) {
+                                    month = j + 1;
 
+                                    break;
+                                }
+                            }
+                            if (month >= 0) {
                                 break;
                             }
-                        }
-                        if (month >= 0) {
-                            break;
                         }
                     }
 
                     // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i], 10);
-                        if (isNaN(j)) {
-                            continue;
-                        }
-                        if (j >= settings.centuryBreak && i === numbers.length - 1) {
+                        if (!isNaN(j) && j >= settings.centuryBreak && i === numbers.length - 1) {
                             if (j <= 99) {
                                 j += settings.currentCentury - 100;
                             }
@@ -1785,10 +1775,7 @@
                                 ? i
                                 : (i === 1 ? 0 : 1);
                             j = parseInt(numbers[k], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 1 && j <= 12) {
+                            if (!isNaN(j) && j >= 1 && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
 
@@ -1800,10 +1787,7 @@
                     // day
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i], 10);
-                        if (isNaN(j)) {
-                            continue;
-                        }
-                        if (j >= 1 && j <= 31) {
+                        if (!isNaN(j) && j >= 1 && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
 
@@ -1815,16 +1799,15 @@
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j <= 99) {
-                                j += settings.currentCentury;
-                            }
-                            year = j;
-                            numbers.splice(i, 1);
+                            if (!isNaN(j)) {
+                                if (j <= 99) {
+                                    j += settings.currentCentury;
+                                }
+                                year = j;
+                                numbers.splice(i, 1);
 
-                            break;
+                                break;
+                            }
                         }
                     }
                 }
@@ -1834,10 +1817,7 @@
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 0 && j <= 23) {
+                            if (!isNaN(j) && j >= 0 && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
 
@@ -1850,10 +1830,7 @@
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 0 && j <= 59) {
+                            if (!isNaN(j) && j >= 0 && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
 

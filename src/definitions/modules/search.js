@@ -675,11 +675,9 @@
                 },
                 wordSearch: function (query, term, matchAll) {
                     let allWords = query.split(/\s+/);
-                    let w;
-                    let wL = allWords.length;
                     let found = false;
-                    for (w = 0; w < wL; w++) {
-                        found = module.exactSearch(allWords[w], term);
+                    for (const w of allWords) {
+                        found = module.exactSearch(w, term);
                         if ((!found && matchAll) || (found && !matchAll)) {
                             break;
                         }
@@ -705,9 +703,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        let queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -828,7 +826,7 @@
                         let id;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
-                            letterID = String.fromCharCode(97 + categoryIndex);
+                            letterID = String.fromCodePoint(97 + categoryIndex);
                             id = letterID + resultID;
                             module.verbose('Creating category result id', id);
                         } else {
@@ -1524,7 +1522,7 @@
 
     $.extend($.easing, {
         easeOutExpo: function (x) {
-            return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+            return x === 1 ? 1 : 1 - 2 ** (-10 * x);
         },
     });
 })(jQuery, window, document);

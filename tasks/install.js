@@ -273,7 +273,7 @@ module.exports = function (callback) {
                 fs.mkdirpSync(installPaths.definition);
                 fs.mkdirpSync(installPaths.theme);
                 fs.mkdirpSync(installPaths.tasks);
-            } catch (error) {
+            } catch {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
 

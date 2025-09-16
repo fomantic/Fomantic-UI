@@ -41,7 +41,6 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'max-len': 'off',
         'no-console': 'off',
-        'no-continue': 'off',
         'no-lonely-if': 'off',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
@@ -88,19 +87,13 @@ module.exports = {
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
-        'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
-        'prefer-exponentiation-operator': 'off',
         'unicorn/no-array-for-each': 'off',
-        'unicorn/no-for-loop': 'off', // autofixes to "for of"
-        'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-number-properties': 'off',
-        'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-reflect-apply': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
-        'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
         eqeqeq: 'off', // about 20 errors to be fixed manually

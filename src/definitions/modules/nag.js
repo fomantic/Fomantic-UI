@@ -205,8 +205,8 @@
                             },
                             getItem: function (key) {
                                 let cookies = document.cookie.split('; ');
-                                for (let i = 0, il = cookies.length; i < il; i++) {
-                                    let parts = cookies[i].split('=');
+                                for (const c of cookies) {
+                                    let parts = c.split('=');
                                     let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                     if (key === foundKey) {
                                         return parts[1] || '';

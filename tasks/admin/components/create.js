@@ -38,12 +38,9 @@ const version = project.version;
 const output = config.paths.output;
 
 module.exports = function (callback) {
-    let index;
     let tasks = [];
 
-    for (index in release.components) {
-        let component = release.components[index];
-
+    for (const component of release.components) {
         // streams... designed to save time and make coding fun...
         (function (component) {
             let outputDirectory = path.join(release.outputRoot, component);
