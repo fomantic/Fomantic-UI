@@ -230,9 +230,8 @@
                     change: function () {
                         let inputElement = $input[0];
                         if (inputElement) {
-                            let events = document.createEvent('HTMLEvents');
+                            let events = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
-                            events.initEvent('change', true, false);
                             inputElement.dispatchEvent(events);
                         }
                     },
