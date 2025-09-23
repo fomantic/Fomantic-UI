@@ -215,14 +215,14 @@
                         return;
                     }
 
-                    requestSettings.url = (requestSettings.base || settings.base) + url;
+                    requestSettings.url = settings.base + url;
 
                     // look for jQuery ajax parameters in settings
-                    ajaxSettings = $.extend(true, {}, settings, requestSettings, {
-                        type: requestSettings.method || requestSettings.type || settings.method || settings.type,
+                    ajaxSettings = $.extend(true, {}, settings, {
+                        type: settings.method || settings.type,
                         data: data,
-                        url: (requestSettings.base || settings.base) + url,
-                        beforeSend: requestSettings.beforeXHR || settings.beforeXHR,
+                        url: settings.base + url,
+                        beforeSend: settings.beforeXHR,
                         success: function () {},
                         failure: function () {},
                         complete: function () {},
@@ -781,8 +781,8 @@
                         return settings.on;
                     },
                     templatedURL: function (action) {
-                        action = action || requestSettings.action || settings.action || $module.data(metadata.action) || false;
-                        url = requestSettings.url || settings.url || $module.data(metadata.url) || false;
+                        action = action || settings.action || $module.data(metadata.action) || false;
+                        url = settings.url || $module.data(metadata.url) || false;
                         if (url) {
                             module.debug('Using specified url', url);
 
