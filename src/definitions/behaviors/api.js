@@ -215,14 +215,14 @@
                         return;
                     }
 
-                    requestSettings.url = settings.base + url;
+                    requestSettings.url = (requestSettings.base || settings.base) + url;
 
                     // look for jQuery ajax parameters in settings
-                    ajaxSettings = $.extend(true, {}, settings, {
-                        type: settings.method || settings.type,
+                    ajaxSettings = $.extend(true, {}, settings, requestSettings, {
+                        type: requestSettings.method || requestSettings.type || settings.method || settings.type,
                         data: data,
-                        url: settings.base + url,
-                        beforeSend: settings.beforeXHR,
+                        url: (requestSettings.base || settings.base) + url,
+                        beforeSend: requestSettings.beforeXHR || settings.beforeXHR,
                         success: function () {},
                         failure: function () {},
                         complete: function () {},
@@ -343,10 +343,7 @@
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    // allow legacy {$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(2, -1)
-                                        : templatedString.slice(1, -1);
+                                    let variable = templatedString.slice(1, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -372,10 +369,7 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    // allow legacy {/$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(3, -1)
-                                        : templatedString.slice(2, -1);
+                                    let variable = templatedString.slice(2, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -726,25 +720,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        let runSettings;
-                        runSettings = settings.beforeSend.call($module, settings);
-                        if (runSettings) {
-                            if (runSettings.success !== undefined) {
-                                module.debug('Legacy success callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.success);
-                                runSettings.onSuccess = runSettings.success;
-                            }
-                            if (runSettings.failure !== undefined) {
-                                module.debug('Legacy failure callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.failure);
-                                runSettings.onFailure = runSettings.failure;
-                            }
-                            if (runSettings.complete !== undefined) {
-                                module.debug('Legacy complete callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.complete);
-                                runSettings.onComplete = runSettings.complete;
-                            }
-                        }
+                        let runSettings = settings.beforeSend.call($module, settings);
                         if (runSettings === undefined) {
                             module.error(error.noReturnedValue);
                         }
@@ -805,8 +781,8 @@
                         return settings.on;
                     },
                     templatedURL: function (action) {
-                        action = action || settings.action || $module.data(metadata.action) || false;
-                        url = settings.url || $module.data(metadata.url) || false;
+                        action = action || requestSettings.action || settings.action || $module.data(metadata.action) || false;
+                        url = requestSettings.url || settings.url || $module.data(metadata.url) || false;
                         if (url) {
                             module.debug('Using specified url', url);
 
@@ -1111,7 +1087,6 @@
             error: 'There was an error with your request',
             exitConditions: 'API Request Aborted. Exit conditions met',
             JSONParse: 'JSON could not be parsed during error handling',
-            legacyParameters: 'You are using legacy API success callback names',
             method: 'The method you called is not defined',
             missingAction: 'API action used but no url was defined',
             missingURL: 'No URL specified for api event',
@@ -1123,8 +1098,8 @@
         },
 
         regExp: {
-            required: /{\$*[\da-z]+}/gi,
-            optional: /{\/\$*[\da-z]+}/gi,
+            required: /{[\da-z]+}/gi,
+            optional: /{\/[\da-z]+}/gi,
             validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
             key: /[\w-]+|(?=\[])/gi,
             push: /^$/,
