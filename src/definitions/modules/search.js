@@ -1458,7 +1458,7 @@
             title: 'title', // result title
             url: 'url', // result url
             id: 'id', // HTML 'id' attribute
-            classes: 'classes', // Classes specific to each result to add to the HTML 'class' attribute.
+            class: 'class', // Class specific to each result to add to the HTML 'class' attribute.
             action: 'action', // "view more" object name
             actionText: 'text', // "view more" text
             actionURL: 'url', // "view more" url
@@ -1538,15 +1538,15 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-                                    ? '<a href="' + result[fields.url].replace(/"/g, '') + '" '
-                                    : html += '<div ';
+                                    ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
+                                    : '<div ';
 
                                 html += result[fields.id] !== undefined
-                                    ? ' id="' + result[fields.id] + '" '
+                                    ? ' id="' + result[fields.id].replaceAll('"','') + '" '
                                     : '';
 
-                                html += result[fields.classes] !== undefined
-                                    ? ' class="result ' + result[fields.classes] + '">'
+                                html += result[fields.class] !== undefined
+                                    ? ' class="result ' + result[fields.class].replaceAll('"','') + '">'
                                     : ' class="result">';
 
                                 if (result[fields.image] !== undefined) {
@@ -1603,16 +1603,16 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-                            ? '<a href="' + result[fields.url].replace(/"/g, '') + '" '
+                            ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
                             : '<div ';
 
                         html += result[fields.id] !== undefined
-                            ? ' id="' + result[fields.id] + '" '
+                            ? 'id="' + result[fields.id].replaceAll('"','') + '" '
                             : '';
 
-                        html += result[fields.classes] !== undefined
-                            ? ' class="result ' + result[fields.classes] + '">'
-                            : ' class="result">';
+                        html += result[fields.class] !== undefined
+                            ? 'class="result ' + result[fields.class].replaceAll('"','') + '">'
+                            : 'class="result">';
 
                         if (result[fields.image] !== undefined) {
                             html += ''
