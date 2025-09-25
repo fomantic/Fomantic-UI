@@ -10,8 +10,8 @@
 @backgroundColor: #fff;
 @backgroundImage: none;
 @fontWeight: bold;
-@textColor: rgba(0, 0, 0, 0.6);
-@boxShadow: 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+@textColor: rgb(0 0 0 / 0.6);
+@boxShadow: 0 0 0 2px rgb(0 0 0 / 0.2) inset;
 
 /* Padding */
 @verticalPadding: 1.25em;
@@ -36,15 +36,15 @@
 
 @hoverBackgroundColor: #fafafa;
 @hoverBackgroundImage: none;
-@hoverBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.3) inset;
+@hoverBoxShadow: 0 0 0 2px rgb(0 0 0 / 0.3) inset;
 
 @downBackgroundColor: #f0f0f0;
 @downBackgroundImage: none;
-@downBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.35) inset !important;
+@downBoxShadow: 0 0 0 2px rgb(0 0 0 / 0.35) inset !important;
 
 @activeBackgroundColor: #ddd;
 @activeBackgroundImage: none;
-@activeBoxShadow: 0 0 0 2px rgba(0, 0, 0, 0.3) inset !important;
+@activeBoxShadow: 0 0 0 2px rgb(0 0 0 / 0.3) inset !important;
 
 @loadingBackgroundColor: #fff;
 
@@ -56,7 +56,7 @@
 @labeledIconWidth: 1em + (@verticalPadding * 2);
 @labeledIconBackgroundColor: transparent;
 @labeledIconPadding: (@horizontalPadding + 1em);
-@labeledIconBorder: rgba(0, 0, 0, 0.05);
+@labeledIconBorder: rgb(0 0 0 / 0.05);
 @labeledIconColor: "";
 
 @labeledIconLeftShadow: none;
@@ -68,10 +68,10 @@
 @basicLoadingColor: #fff;
 
 @basicHoverBackground: #fafafa;
-@basicHoverBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+@basicHoverBoxShadow: 0 0 0 1px rgb(0 0 0 / 0.15);
 
-@basicDownBackground: rgba(0, 0, 0, 0.02);
-@basicDownBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+@basicDownBackground: rgb(0 0 0 / 0.02);
+@basicDownBoxShadow: 0 0 0 1px rgb(0 0 0 / 0.2);
 
 @basicActiveBackground: @transparentBlack;
 @basicActiveColor: @selectedTextColor;
@@ -82,7 +82,7 @@
 @basicInvertedDownBackground: @transparentWhite;
 @basicInvertedActiveBackground: @transparentWhite;
 
-@basicInvertedBoxShadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+@basicInvertedBoxShadow: 0 0 0 2px rgb(255 255 255 / 0.5);
 @basicInvertedHoverBoxShadow: 0 0 0 2px @selectedWhiteBorderColor;
 @basicInvertedDownBoxShadow: 0 0 0 2px @selectedWhiteBorderColor;
 @basicInvertedActiveBoxShadow: 0 0 0 2px @selectedWhiteBorderColor;
@@ -101,7 +101,7 @@
 -------------------- */
 
 /* Colors */
-@coloredBackgroundImage: linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+@coloredBackgroundImage: linear-gradient(rgb(255 255 255 / 0.05), rgb(0 0 0 / 0.1));
 @coloredBoxShadow: @shadowBoxShadow;
 
 /* Compact */
@@ -110,7 +110,7 @@
 
 /* Attached */
 @attachedOffset: -1px;
-@attachedBoxShadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+@attachedBoxShadow: 0 0 0 1px rgb(0 0 0 / 0.1);
 @attachedHorizontalPadding: 0.75em;
 
 /* Floated */

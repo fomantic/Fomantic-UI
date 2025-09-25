@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Header
+ * # Fomantic-UI 2.9.4 - Header
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -727,6 +727,9 @@ a.ui.inverted.black.header.header.header:hover {
 }
 .ui.bottom.attached.header {
   border-radius: 0 0 0.28571429rem 0.28571429rem;
+}
+.ui.seamless.attached:not(.bottom).header {
+  border-bottom: none;
 }
 
 /* Attached Sizes */

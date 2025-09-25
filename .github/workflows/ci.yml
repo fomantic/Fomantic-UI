@@ -8,12 +8,12 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v5
     - name: Install dependencies
-      run: yarn && yarn add -D eslint-config-airbnb-base@^15 eslint-plugin-unicorn@^46 eslint-plugin-jest@^26.9.0 @typescript-eslint/eslint-plugin @typescript-eslint/parser typescript
+      run: yarn
     - name: Lint JS and LESS files
-      run: npm run lint
+      run: yarn lint
     - name: Assert LESS files formatting using Prettier
       run: >
         yarn add -D prettier@^3
@@ -26,11 +26,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [12, 14, 16, 18, 20, 22]
+        node-version: [18, 20, 22, 24]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
@@ -47,7 +47,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - uses: github/codeql-action/init@v3
       with:
         languages: 'javascript'

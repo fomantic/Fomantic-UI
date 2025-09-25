@@ -19,7 +19,6 @@ module.exports = {
     // file paths
     files: {
         config: 'semantic.json',
-        site: 'src/site',
         theme: 'src/theme.config',
     },
 
@@ -124,5 +123,7 @@ module.exports = {
         ignored: '!(*.min|*.map|*.rtl)',
         ignoredRTL: '!(*.min|*.map)',
     },
+
+    fileName: 'semantic',
 
 };

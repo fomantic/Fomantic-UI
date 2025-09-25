@@ -135,7 +135,7 @@
     margin: 0;
     outline: none;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: rgb(255 255 255 / 0);
     line-height: @inputLineHeight;
     padding: @inputPadding;
     font-size: @inputFontSize;
@@ -162,7 +162,7 @@
 .ui.form textarea {
     margin: 0;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: rgb(255 255 255 / 0);
     padding: @textAreaPadding;
     background: @textAreaBackground;
     border: @textAreaBorder;
@@ -406,18 +406,12 @@
 .ui.form ::placeholder {
     color: @inputPlaceholderColor;
 }
-.ui.form :-ms-input-placeholder when (@supportIE) {
-    color: @inputPlaceholderColor !important;
-}
 .ui.form ::-moz-placeholder {
     opacity: 1;
 }
 
 .ui.form :focus::placeholder {
     color: @inputPlaceholderFocusColor;
-}
-.ui.form :focus:-ms-input-placeholder when (@supportIE) {
-    color: @inputPlaceholderFocusColor !important;
 }
 
 /* --------------------
@@ -640,7 +634,12 @@
             box-shadow: @formStates[@@state][inputFocusBoxShadow];
         }
 
-        /* Preserve Native Select Stylings */
+        .ui.form .field.@{state} > textarea:hover:not(:focus),
+        .ui.form .field.@{state} > input:hover:not(:focus) {
+            border-color: @formStates[@@state][inputHoverBorderColor];
+        }
+
+        /* Preserve Native Select Styling */
         .ui.form .field.@{state} select {
             -webkit-appearance: menulist-button;
         }
@@ -670,16 +669,10 @@
         .ui.form .@{state} ::placeholder {
             color: @formStates[@@state][inputPlaceholderColor];
         }
-        .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
-            color: @formStates[@@state][inputPlaceholderColor] !important;
-        }
 
         .ui.form .@{state} .ui.dropdown > input:focus ~ .default.text,
         .ui.form .@{state} :focus::placeholder {
             color: @formStates[@@state][inputPlaceholderFocusColor];
-        }
-        .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
-            color: @formStates[@@state][inputPlaceholderFocusColor] !important;
         }
 
         /*------------------

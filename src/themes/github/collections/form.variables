@@ -8,7 +8,7 @@
 
 @inputBackground: #fafafa;
 @inputBorder: 1px solid #ccc;
-@inputBoxShadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
+@inputBoxShadow: 0 1px 2px rgb(0 0 0 / 0.075) inset;
 @inputBorderRadius: 3px;
 
 @labelFontWeight: bold;
@@ -20,8 +20,8 @@
 
 @inputFocusBackground: #fff;
 @inputFocusBoxShadow:
-    0 1px 2px rgba(0, 0, 0, 0.075) inset,
-    0 0 5px rgba(81, 167, 232, 0.5);
+    0 1px 2px rgb(0 0 0 / 0.075) inset,
+    0 0 5px rgb(81 167 232 / 0.5);
 @inputFocusBorderColor: #51a7e8;
 @inputFocusBorderRadius: @inputBorderRadius;
 

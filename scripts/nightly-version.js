@@ -1,9 +1,9 @@
 // node
-const fs = require('fs');
-const path = require('path');
-const childProcess = require('child_process');
+const fs = require('node:fs');
+const path = require('node:path');
+const childProcess = require('node:child_process');
 
-const process = require('process');
+const process = require('node:process');
 
 // npm
 const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies
@@ -20,16 +20,14 @@ const currentRev = childProcess // get the current rev from the repo
     .execSync('git rev-parse HEAD')
     .toString()
     .trim()
-    .slice(0, 7)
-;
+    .slice(0, 7);
 
 const getNextVersion = async function () {
     const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
         .then((r) => r.json())
-        .then((milestones) => milestones.filter((m) => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
+        .then((milestones) => milestones.filter((m) => !m.title.includes('x'))) // remove all versions with `x` in it
         .then((versions) => versions.map((m) => m.title)) // create array of versions
-        .then((versions) => semver.sort(versions))
-    ;
+        .then((versions) => semver.sort(versions));
 
     // Return first entry aka the smallest version in milestones which would therefore
     // be the next version
@@ -44,7 +42,7 @@ const getPublishedVersion = async function () {
             .then((p) => {
                 let nightly = p['dist-tags'].nightly ?? '';
                 let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead
+                let buildCommit = !nightly.includes('+') && versionInfo.gitHead
                     ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
                     : '';
 
@@ -95,5 +93,4 @@ getNightlyVersion()
             JSON.stringify(pkg, null, 2)
         );
     })
-    .then(() => console.log(`Done (${pkg.version})`))
-;
+    .then(() => console.log(`Done (${pkg.version})`));

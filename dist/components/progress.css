@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Progress
+ * # Fomantic-UI 2.9.4 - Progress
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -24,6 +24,11 @@
   padding: 0;
   border-radius: 0.28571429rem;
 }
+.ui.basic.progress {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
 .ui.progress:first-child {
   margin: 0 0 2.5em;
 }
@@ -43,14 +48,16 @@
   line-height: 1;
   position: relative;
   width: 0;
-  min-width: 2em;
   background: #888;
   border-radius: 0.28571429rem;
   transition: width 0.1s ease, background-color 0.1s ease;
   overflow: hidden;
 }
-.ui.ui.ui.progress:not([data-percent]):not(.indeterminate) .bar,
-.ui.ui.ui.progress[data-percent="0"]:not(.indeterminate) .bar {
+.ui.progress .bar:not(:empty) {
+  min-width: 2.5em;
+}
+.ui.ui.ui.progress:not([data-percent]):not(.indeterminate) .bar:not(:empty),
+.ui.ui.ui.progress[data-percent="0"]:not(.indeterminate) .bar:not(:empty) {
   background: transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -303,7 +310,9 @@
     --------------- */
 .ui.active.progress .bar {
   position: relative;
-  min-width: 2em;
+}
+.ui.active.progress .bar:not(:empty) {
+  min-width: 2.5em;
 }
 .ui.active.progress .bar::after {
   content: "";
@@ -352,7 +361,7 @@
 /* --------------
         Inverted
     --------------- */
-.ui.inverted.progress {
+.ui.inverted.progress:not(.basic) {
   background: rgba(255, 255, 255, 0.08);
   border: none;
 }

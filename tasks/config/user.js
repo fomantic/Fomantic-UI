@@ -2,32 +2,26 @@
              Set-up
 *******************************/
 
-const
-    // npm dependencies
-    fs              = require('fs'),
-    path            = require('path'),
-    extend          = require('extend'),
-    requireDotFile  = require('require-dot-file'),
+// npm dependencies
+const extend = require('extend');
+const requireDotFile = require('require-dot-file');
 
-    // semantic.json defaults
-    defaults        = require('./defaults'),
-    config          = require('./project/config')
-;
+// semantic.json defaults
+const defaults = require('./defaults');
+const config = require('./project/config');
 
-let
-    // Final config object
-    gulpConfig = {},
+// Final config object
+let gulpConfig;
 
-    // semantic.json settings
-    userConfig
-;
+// semantic.json settings
+let userConfig;
 
 /*******************************
           User Config
 *******************************/
 
 try {
-    // looks for config file across all parent directories
+    // looks for a config file across all parent directories
     userConfig = requireDotFile('semantic.json', process.cwd());
     if (userConfig.valueOf() === false) {
         console.error('No semantic.json config found');

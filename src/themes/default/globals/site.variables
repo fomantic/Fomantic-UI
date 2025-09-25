@@ -3,7 +3,6 @@
 *******************************/
 
 @import "variation.variables";
-@supportIE: true;
 
 /* -------------------
        Fonts
@@ -44,7 +43,7 @@
 @fonts: {
     @regularLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -53,7 +52,7 @@
     };
     @boldLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format("woff2");
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -62,7 +61,7 @@
     };
     @italicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format("woff2");
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -71,7 +70,7 @@
     };
     @boldItalicLatin: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format("woff2");
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -80,7 +79,7 @@
     };
     @regularSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format("woff2");
         font-style: normal;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -89,7 +88,7 @@
     };
     @boldSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format("woff2");
         font-style: normal;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -98,7 +97,7 @@
     };
     @italicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format("woff2");
         font-style: italic;
         font-weight: @normal;
         font-display: @fontDisplay;
@@ -107,7 +106,7 @@
     };
     @boldItalicSupplement: {
         font-family: @fontName;
-        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2") if(@supportIE, e(",") url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format("woff"));
+        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format("woff2");
         font-style: italic;
         font-weight: @bold;
         font-display: @fontDisplay;
@@ -233,7 +232,7 @@
 @pageOverflowX: hidden;
 
 @lineHeight: 1.4285em;
-@textColor: rgba(0, 0, 0, 0.87);
+@textColor: rgb(0 0 0 / 0.87);
 
 /* -------------------
       Paragraph
@@ -260,27 +259,21 @@
 @customScrollbarWidth: 10px;
 @customScrollbarHeight: 10px;
 
-@trackBackground: rgba(0, 0, 0, 0.1);
+@trackBackground: rgb(0 0 0 / 0.1);
 @trackBorderRadius: 0;
 
 @thumbBorderRadius: 5px;
-@thumbBackground: rgba(0, 0, 0, 0.25);
+@thumbBackground: rgb(0 0 0 / 0.25);
 @thumbTransition: color 0.2s ease;
 
-@thumbInactiveBackground: rgba(0, 0, 0, 0.15);
-@thumbHoverBackground: rgba(128, 135, 139, 0.8);
+@thumbInactiveBackground: rgb(0 0 0 / 0.15);
+@thumbHoverBackground: rgb(128 135 139 / 0.8);
 
 /* Inverted */
-@trackInvertedBackground: rgba(255, 255, 255, 0.1);
-@thumbInvertedBackground: rgba(255, 255, 255, 0.25);
-@thumbInvertedInactiveBackground: rgba(255, 255, 255, 0.15);
-@thumbInvertedHoverBackground: rgba(255, 255, 255, 0.35);
-
-/* IE needs hex values */
-@trackBackgroundHex: #e6e6e6;
-@thumbBackgroundHex: #bfbfbf;
-@trackInvertedBackgroundHex: #323232;
-@thumbInvertedBackgroundHex: #656565;
+@trackInvertedBackground: rgb(255 255 255 / 0.1);
+@thumbInvertedBackground: rgb(255 255 255 / 0.25);
+@thumbInvertedInactiveBackground: rgb(255 255 255 / 0.15);
+@thumbInvertedHoverBackground: rgb(255 255 255 / 0.35);
 
 /* Scrolling */
 @scrollingMobileMaxHeight: 15em;
@@ -296,7 +289,7 @@
 @highlightBackground: #cce2ff;
 @highlightColor: @textColor;
 
-@inputHighlightBackground: rgba(100, 100, 100, 0.4);
+@inputHighlightBackground: rgb(100 100 100 / 0.4);
 @inputHighlightColor: @textColor;
 
 /* -------------------
@@ -308,10 +301,10 @@
 @loaderSpeed: 0.6s;
 @loaderSpeedSlow: 0.9s;
 @loaderLineWidth: 0.2em;
-@loaderFillColor: rgba(0, 0, 0, 0.1);
+@loaderFillColor: rgb(0 0 0 / 0.1);
 @loaderLineColor: @grey;
 
-@invertedLoaderFillColor: rgba(255, 255, 255, 0.15);
+@invertedLoaderFillColor: rgb(255 255 255 / 0.15);
 @invertedLoaderLineColor: @white;
 
 /* -------------------
@@ -551,7 +544,7 @@
 
 /* Box Shadows */
 
-@shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
+@shadowShadow: 0 0 0 0 rgb(0 0 0 / 0);
 @borderWidth: 1px;
 
 @primaryBoxShadow:
@@ -649,14 +642,14 @@
      Alpha Colors
 -------------------- */
 
-@subtleTransparentBlack: rgba(0, 0, 0, 0.03);
-@transparentBlack: rgba(0, 0, 0, 0.05);
-@strongTransparentBlack: rgba(0, 0, 0, 0.1);
-@veryStrongTransparentBlack: rgba(0, 0, 0, 0.15);
+@subtleTransparentBlack: rgb(0 0 0 / 0.03);
+@transparentBlack: rgb(0 0 0 / 0.05);
+@strongTransparentBlack: rgb(0 0 0 / 0.1);
+@veryStrongTransparentBlack: rgb(0 0 0 / 0.15);
 
-@subtleTransparentWhite: rgba(255, 255, 255, 0.02);
-@transparentWhite: rgba(255, 255, 255, 0.08);
-@strongTransparentWhite: rgba(255, 255, 255, 0.15);
+@subtleTransparentWhite: rgb(255 255 255 / 0.02);
+@transparentWhite: rgb(255 255 255 / 0.08);
+@strongTransparentWhite: rgb(255 255 255 / 0.15);
 
 /* -------------------
        Accents
@@ -669,11 +662,11 @@
 @subtleShadow: 0 1px 2px 0 @borderColor;
 @bottomShadow: 0 2px 1px -1px @borderColor;
 @floatingShadow:
-    0 2px 4px 0 rgba(34, 36, 38, 0.12),
-    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+    0 2px 4px 0 rgb(34 36 38 / 0.12),
+    0 2px 10px 0 rgb(34 36 38 / 0.15);
 @invertedFloatingShadow:
-    0 2px 4px 0 rgba(225, 225, 225, 0.1),
-    0 2px 10px 0 rgba(225, 225, 225, 0.5);
+    0 2px 4px 0 rgb(225 225 225 / 0.1),
+    0 2px 10px 0 rgb(225 225 225 / 0.5);
 
 /*******************************
            Power-User
@@ -776,22 +769,22 @@
      Neutral Text
 -------------------- */
 
-@darkTextColor: rgba(0, 0, 0, 0.85);
-@mutedTextColor: rgba(0, 0, 0, 0.6);
-@lightTextColor: rgba(0, 0, 0, 0.4);
+@darkTextColor: rgb(0 0 0 / 0.85);
+@mutedTextColor: rgb(0 0 0 / 0.6);
+@lightTextColor: rgb(0 0 0 / 0.4);
 
-@unselectedTextColor: rgba(0, 0, 0, 0.4);
-@hoveredTextColor: rgba(0, 0, 0, 0.8);
-@pressedTextColor: rgba(0, 0, 0, 0.9);
-@selectedTextColor: rgba(0, 0, 0, 0.95);
+@unselectedTextColor: rgb(0 0 0 / 0.4);
+@hoveredTextColor: rgb(0 0 0 / 0.8);
+@pressedTextColor: rgb(0 0 0 / 0.9);
+@selectedTextColor: rgb(0 0 0 / 0.95);
 
-@invertedTextColor: rgba(255, 255, 255, 0.9);
-@invertedMutedTextColor: rgba(255, 255, 255, 0.8);
-@invertedLightTextColor: rgba(255, 255, 255, 0.7);
-@invertedUnselectedTextColor: rgba(255, 255, 255, 0.5);
-@invertedHoveredTextColor: rgba(255, 255, 255, 1);
-@invertedPressedTextColor: rgba(255, 255, 255, 1);
-@invertedSelectedTextColor: rgba(255, 255, 255, 1);
+@invertedTextColor: rgb(255 255 255 / 0.9);
+@invertedMutedTextColor: rgb(255 255 255 / 0.8);
+@invertedLightTextColor: rgb(255 255 255 / 0.7);
+@invertedUnselectedTextColor: rgb(255 255 255 / 0.5);
+@invertedHoveredTextColor: rgb(255 255 255 / 1);
+@invertedPressedTextColor: rgb(255 255 255 / 1);
+@invertedSelectedTextColor: rgb(255 255 255 / 1);
 
 /* -------------------
      Brand Colors
@@ -814,19 +807,19 @@
 
 @circularRadius: 500rem;
 
-@borderColor: rgba(34, 36, 38, 0.15);
-@strongBorderColor: rgba(34, 36, 38, 0.22);
-@internalBorderColor: rgba(34, 36, 38, 0.1);
-@selectedBorderColor: rgba(34, 36, 38, 0.35);
-@strongSelectedBorderColor: rgba(34, 36, 38, 0.5);
-@disabledBorderColor: rgba(34, 36, 38, 0.5);
+@borderColor: rgb(34 36 38 / 0.15);
+@strongBorderColor: rgb(34 36 38 / 0.22);
+@internalBorderColor: rgb(34 36 38 / 0.1);
+@selectedBorderColor: rgb(34 36 38 / 0.35);
+@strongSelectedBorderColor: rgb(34 36 38 / 0.5);
+@disabledBorderColor: rgb(34 36 38 / 0.5);
 
 @solidInternalBorderColor: #fafafa;
 @solidBorderColor: #d4d4d5;
 @solidSelectedBorderColor: #bcbdbd;
 
-@whiteBorderColor: rgba(255, 255, 255, 0.1);
-@selectedWhiteBorderColor: rgba(255, 255, 255, 0.8);
+@whiteBorderColor: rgb(255 255 255 / 0.1);
+@selectedWhiteBorderColor: rgb(255 255 255 / 0.8);
 
 @solidWhiteBorderColor: #555;
 @selectedSolidWhiteBorderColor: #999;
@@ -1065,8 +1058,8 @@
 
 @disabledOpacity: 0.45;
 @disabledPointerEvents: none;
-@disabledTextColor: rgba(40, 40, 40, 0.3);
-@invertedDisabledTextColor: rgba(225, 225, 225, 0.3);
+@disabledTextColor: rgb(40 40 40 / 0.3);
+@invertedDisabledTextColor: rgb(225 225 225 / 0.3);
 
 /* -------------------
         Hover
@@ -1074,8 +1067,8 @@
 
 /* ---  Shadows  --- */
 @floatingShadowHover:
-    0 2px 4px 0 rgba(34, 36, 38, 0.15),
-    0 2px 10px 0 rgba(34, 36, 38, 0.25);
+    0 2px 4px 0 rgb(34 36 38 / 0.15),
+    0 2px 10px 0 rgb(34 36 38 / 0.25);
 
 /* ---  Colors  --- */
 @primaryColorHover: if(iscolor(@primaryColor), saturate(darken(@primaryColor, 5), 10, relative), @primaryColor);
@@ -1510,21 +1503,25 @@
 @inputErrorFocusColor: @negativeTextColor;
 @inputErrorFocusBorder: @negativeBorderColor;
 @inputErrorFocusBoxShadow: none;
+@inputErrorHoverBorder: @negativeBorderColor;
 
 @inputInfoFocusBackground: @infoBackgroundColor;
 @inputInfoFocusColor: @infoTextColor;
 @inputInfoFocusBorder: @infoBorderColor;
 @inputInfoFocusBoxShadow: none;
+@inputInfoHoverBorder: @infoBorderColor;
 
 @inputSuccessFocusBackground: @positiveBackgroundColor;
 @inputSuccessFocusColor: @positiveTextColor;
 @inputSuccessFocusBorder: @positiveBorderColor;
 @inputSuccessFocusBoxShadow: none;
+@inputSuccessHoverBorder: @positiveBorderColor;
 
 @inputWarningFocusBackground: @warningBackgroundColor;
 @inputWarningFocusColor: @warningTextColor;
 @inputWarningFocusBorder: @warningBorderColor;
 @inputWarningFocusBoxShadow: none;
+@inputWarningHoverBorder: @warningBorderColor;
 
 /* Placeholder state */
 @inputErrorPlaceholderColor: if(iscolor(@formErrorColor), lighten(@formErrorColor, 40), @formErrorColor);

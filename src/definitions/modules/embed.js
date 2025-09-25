@@ -19,46 +19,42 @@
         ? window
         : globalThis;
 
-    $.fn.embed = function (parameters) {
-        var
-            $allModules     = $(this),
+    $.fn.embed = function (...args) {
+        let $allModules = $(this);
 
-            time            = Date.now(),
-            performance     = [],
+        let time = Date.now();
+        let performance = [];
 
-            query           = arguments[0],
-            methodInvoked   = typeof query === 'string',
-            queryArguments  = [].slice.call(arguments, 1),
+        let parameters = args[0];
+        let methodInvoked = typeof parameters === 'string';
+        let queryArguments = args.slice(1);
 
-            returnedValue
-        ;
+        let returnedValue;
 
         $allModules.each(function () {
-            var
-                settings        = $.isPlainObject(parameters)
-                    ? $.extend(true, {}, $.fn.embed.settings, parameters)
-                    : $.extend({}, $.fn.embed.settings),
+            let settings = $.isPlainObject(parameters)
+                ? $.extend(true, {}, $.fn.embed.settings, parameters)
+                : $.extend({}, $.fn.embed.settings);
 
-                selector        = settings.selector,
-                className       = settings.className,
-                sources         = settings.sources,
-                error           = settings.error,
-                metadata        = settings.metadata,
-                namespace       = settings.namespace,
-                templates       = settings.templates,
+            let selector = settings.selector;
+            let className = settings.className;
+            let sources = settings.sources;
+            let error = settings.error;
+            let metadata = settings.metadata;
+            let namespace = settings.namespace;
+            let templates = settings.templates;
 
-                eventNamespace  = '.' + namespace,
-                moduleNamespace = 'module-' + namespace,
+            let eventNamespace = '.' + namespace;
+            let moduleNamespace = 'module-' + namespace;
 
-                $module         = $(this),
-                $placeholder    = $module.find(selector.placeholder),
-                $icon           = $module.find(selector.icon),
-                $embed          = $module.find(selector.embed),
+            let $module = $(this);
+            let $placeholder = $module.find(selector.placeholder);
+            let $icon = $module.find(selector.icon);
+            let $embed = $module.find(selector.embed);
 
-                element         = this,
-                instance        = $module.data(moduleNamespace),
-                module
-            ;
+            let element = this;
+            let instance = $module.data(moduleNamespace);
+            let module;
 
             module = {
 
@@ -74,8 +70,7 @@
                     module.verbose('Storing instance of module', module);
                     instance = module;
                     $module
-                        .data(moduleNamespace, module)
-                    ;
+                        .data(moduleNamespace, module);
                 },
 
                 destroy: function () {
@@ -83,8 +78,7 @@
                     module.reset();
                     $module
                         .removeData(moduleNamespace)
-                        .off(eventNamespace)
-                    ;
+                        .off(eventNamespace);
                 },
 
                 refresh: function () {
@@ -100,16 +94,13 @@
                             module.debug('Adding placeholder events');
                             $module
                                 .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
-                                .on('click' + eventNamespace, selector.icon, module.createAndShow)
-                            ;
+                                .on('click' + eventNamespace, selector.icon, module.createAndShow);
                         }
                     },
                 },
 
                 create: function () {
-                    var
-                        placeholder = module.get.placeholder()
-                    ;
+                    let placeholder = module.get.placeholder();
                     if (placeholder) {
                         module.createPlaceholder();
                     } else {
@@ -118,10 +109,8 @@
                 },
 
                 createPlaceholder: function (placeholder) {
-                    var
-                        icon  = module.get.icon(),
-                        alt   = module.get.alt()
-                    ;
+                    let icon = module.get.icon();
+                    let alt = module.get.alt();
                     placeholder = placeholder || module.get.placeholder();
                     $module.html(templates.placeholder(placeholder, icon, alt));
                     module.debug('Creating placeholder for embed', placeholder, icon, alt);
@@ -133,16 +122,14 @@
                     $embed = $('<div/>')
                         .addClass(className.embed)
                         .html(module.generate.embed(url))
-                        .appendTo($module)
-                    ;
+                        .appendTo($module);
                     settings.onCreate.call(element, url);
                     module.debug('Creating embed object', $embed);
                 },
 
                 changeEmbed: function (url) {
                     $embed
-                        .html(module.generate.embed(url))
-                    ;
+                        .html(module.generate.embed(url));
                 },
 
                 createAndShow: function () {
@@ -155,8 +142,7 @@
                     module.debug('Changing video to ', source, id, url);
                     $module
                         .data(metadata.source, source)
-                        .data(metadata.id, id)
-                    ;
+                        .data(metadata.id, id);
                     if (url) {
                         $module.data(metadata.url, url);
                     } else {
@@ -169,7 +155,7 @@
                     }
                 },
 
-                // clears embed
+                // clear embed
                 reset: function () {
                     module.debug('Clearing embed and showing placeholder');
                     module.remove.data();
@@ -218,7 +204,7 @@
                             : module.determine.source());
                     },
                     type: function () {
-                        var source = module.get.source();
+                        let source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].type
@@ -238,9 +224,7 @@
                         }
                     },
                     source: function (url) {
-                        var
-                            matchedSource = false
-                        ;
+                        let matchedSource = false;
                         url = url || module.get.url();
                         if (url) {
                             $.each(sources, function (name, source) {
@@ -255,20 +239,16 @@
                         return matchedSource;
                     },
                     icon: function () {
-                        var
-                            source = module.get.source()
-                        ;
+                        let source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].icon
                             : false;
                     },
                     url: function () {
-                        var
-                            id     = settings.id || $module.data(metadata.id),
-                            source = settings.source || $module.data(metadata.source),
-                            url
-                        ;
+                        let id = settings.id || $module.data(metadata.id);
+                        let source = settings.source || $module.data(metadata.source);
+                        let url;
                         url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
@@ -294,8 +274,7 @@
                             .removeData(metadata.placeholder)
                             .removeData(metadata.alt)
                             .removeData(metadata.source)
-                            .removeData(metadata.url)
-                        ;
+                            .removeData(metadata.url);
                     },
                     active: function () {
                         $module.removeClass(className.active);
@@ -307,12 +286,12 @@
 
                 encode: {
                     parameters: function (parameters) {
-                        var
-                            urlString = [],
-                            index
-                        ;
+                        let urlString = [];
+                        let index;
                         for (index in parameters) {
-                            urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
+                            if (Object.prototype.hasOwnProperty.call(parameters, index)) {
+                                urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
+                            }
                         }
 
                         return urlString.join('&amp;');
@@ -322,11 +301,9 @@
                 generate: {
                     embed: function (url) {
                         module.debug('Generating embed html');
-                        var
-                            source = module.get.source(),
-                            html,
-                            parameters
-                        ;
+                        let source = module.get.source();
+                        let html;
+                        let parameters;
                         url = module.get.url(url);
                         if (url) {
                             parameters = module.generate.parameters(source);
@@ -338,11 +315,9 @@
                         return html;
                     },
                     parameters: function (source, extraParameters) {
-                        var
-                            parameters = sources[source] && sources[source].parameters !== undefined
-                                ? sources[source].parameters(settings)
-                                : {}
-                        ;
+                        let parameters = sources[source] && sources[source].parameters !== undefined
+                            ? sources[source].parameters(settings)
+                            : {};
                         extraParameters = extraParameters || settings.parameters;
                         if (extraParameters) {
                             parameters = $.extend({}, parameters, extraParameters);
@@ -399,39 +374,37 @@
                         return module[name];
                     }
                 },
-                debug: function () {
+                debug: function (...args) {
                     if (!settings.silent && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.debug.apply(console, arguments);
+                            module.debug.apply(console, args);
                         }
                     }
                 },
-                verbose: function () {
+                verbose: function (...args) {
                     if (!settings.silent && settings.verbose && settings.debug) {
                         if (settings.performance) {
-                            module.performance.log(arguments);
+                            module.performance.log(args);
                         } else {
                             module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
-                            module.verbose.apply(console, arguments);
+                            module.verbose.apply(console, args);
                         }
                     }
                 },
-                error: function () {
+                error: function (...args) {
                     if (!settings.silent) {
                         module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
-                        module.error.apply(console, arguments);
+                        module.error.apply(console, args);
                     }
                 },
                 performance: {
                     log: function (message) {
-                        var
-                            currentTime,
-                            executionTime,
-                            previousTime
-                        ;
+                        let currentTime;
+                        let executionTime;
+                        let previousTime;
                         if (settings.performance) {
                             currentTime = Date.now();
                             previousTime = time || currentTime;
@@ -439,7 +412,7 @@
                             time = currentTime;
                             performance.push({
                                 Name: message[0],
-                                Arguments: [].slice.call(message, 1) || '',
+                                Arguments: message.slice(1),
                                 Element: element,
                                 'Execution Time': executionTime,
                             });
@@ -450,10 +423,8 @@
                         }, 500);
                     },
                     display: function () {
-                        var
-                            title = settings.name + ':',
-                            totalTime = 0
-                        ;
+                        let title = settings.name + ':';
+                        let totalTime = 0;
                         time = false;
                         clearTimeout(module.performance.timer);
                         $.each(performance, function (index, data) {
@@ -465,35 +436,26 @@
                         }
                         if (performance.length > 0) {
                             console.groupCollapsed(title);
-                            if (console.table) {
-                                console.table(performance);
-                            } else {
-                                $.each(performance, function (index, data) {
-                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
-                                });
-                            }
+                            console.table(performance);
                             console.groupEnd();
                         }
                         performance = [];
                     },
                 },
                 invoke: function (query, passedArguments, context) {
-                    var
-                        object = instance,
-                        maxDepth,
-                        found,
-                        response
-                    ;
+                    let object = instance;
+                    let maxDepth;
+                    let found;
+                    let response;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = depth !== maxDepth
+                            let camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                : query
-                            ;
+                                : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
                                 object = object[camelCaseValue];
                             } else if (object[camelCaseValue] !== undefined) {
@@ -534,7 +496,7 @@
                 if (instance === undefined) {
                     module.initialize();
                 }
-                module.invoke(query);
+                module.invoke(parameters);
             } else {
                 if (instance !== undefined) {
                     instance.invoke('destroy');
@@ -645,33 +607,37 @@
         },
 
         templates: {
-            deQuote: function (string, encode) {
-                return String(string).replace(/"/g, encode ? '&quot;' : '');
+            escape: function (string) {
+                const escapeMap = {
+                    '"': '&quot;',
+                    '&': '&amp;',
+                    "'": '&apos;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                };
+
+                return String(string).replace(/["&'<>]/g, (chr) => escapeMap[chr]);
             },
             iframe: function (url, parameters) {
-                var
-                    src = url,
-                    deQuote = $.fn.embed.settings.templates.deQuote
-                ;
+                let src = url;
+                let escape = $.fn.embed.settings.templates.escape;
                 if (parameters) {
                     src += '?' + parameters;
                 }
 
                 return ''
-                    + '<iframe src="' + deQuote(src) + '"'
+                    + '<iframe src="' + escape(src) + '"'
                     + ' width="100%" height="100%"'
                     + ' msallowFullScreen allowFullScreen></iframe>';
             },
             placeholder: function (image, icon, alt) {
-                var
-                    html = '',
-                    deQuote = $.fn.embed.settings.templates.deQuote
-                ;
+                let html = '';
+                let escape = $.fn.embed.settings.templates.escape;
                 if (icon) {
-                    html += '<i class="' + deQuote(icon) + ' icon"></i>';
+                    html += '<i class="' + escape(icon) + ' icon"></i>';
                 }
                 if (image) {
-                    html += '<img class="placeholder" src="' + deQuote(image) + (alt ? '" alt="' + deQuote(alt) : '') + '">';
+                    html += '<img class="placeholder" src="' + escape(image) + '"' + (alt ? ' alt="' + escape(alt) + '"' : '') + '>';
                 }
 
                 return html;

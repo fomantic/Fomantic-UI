@@ -21,7 +21,7 @@
 
 /* Standard */
 @inactiveBackground: transparent;
-@inactiveColor: rgba(0, 0, 0, 0.15);
+@inactiveColor: rgb(0 0 0 / 0.15);
 
 @selectedBackground: @inactiveBackground;
 @selectedColor: @textColor;

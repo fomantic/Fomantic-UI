@@ -2,7 +2,7 @@
 
 ### Built-In Tools
 
-From the Fomantic directory you can setup gulp to build Fomantic by running.
+From the Fomantic directory you can set up gulp to build Fomantic by running.
 
 ```bash
 npm install
@@ -68,7 +68,7 @@ filename | usage | Initial Name
 
 You will only need to use Fomantic's build tools while refining your UI. When designing pages, you can rely on the compiled css packages in  `dist/`.
 
-When creating your UI you can try <a href="http://www.learnsemantic.com/themes/creating.html">downloading different themes</a>, adjusting your <a href="http://www.learnsemantic.com/developing/customizing.html#setting-global-variables">site-wide settings</a> (font-family, colors, etc) and tweaking components in your site's <a href="http://www.learnsemantic.com/developing/customizing.html#designing-for-the-long-now">component overrides</a>.
+When creating your UI you can try <a href="http://www.learnsemantic.com/themes/creating.html">downloading different themes</a>, adjusting your <a href="http://www.learnsemantic.com/developing/customizing.html#setting-global-variables">site-wide settings</a> (font-family, colors, etc.) and tweaking components in your site's <a href="http://www.learnsemantic.com/developing/customizing.html#designing-for-the-long-now">component overrides</a>.
 
 Files in the  `examples/` folder of your project can be useful for testing out changes in your UI. For example, you might run  `gulp watch` download a new theme to  `src/site/themes/` then adjust your  `theme.config` file with the name of the new theme and refresh  `examples/kitchensink.html` to inspect changes in the theme.
 
@@ -120,7 +120,7 @@ You may also specify your own custom LESS in `site/elements/button.overrides`. T
 
 You can modify `theme.config` to use any prepackaged theme available in `src/themes/`.
 
-For example you can modify `theme.config` to use a `github` button theme by changing
+For example, you can modify `theme.config` to use a `github` button theme by changing
 
 ```less
 @button: 'github';

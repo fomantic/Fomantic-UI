@@ -350,7 +350,7 @@ declare namespace FomanticUI {
         /**
          * Whether HTML included in dropdown values should be preserved.
          * Allows icons to show up in selected value.
-         * @default true
+         * @default false
          */
         preserveHTML: boolean;
 
@@ -497,6 +497,12 @@ declare namespace FomanticUI {
          * @default true
          */
         delay: object;
+
+        // endregion
+
+        // region Template Settings
+
+        templates: Dropdown.TemplateSettings;
 
         // endregion
 
@@ -647,6 +653,7 @@ declare namespace FomanticUI {
     }
 
     namespace Dropdown {
+        type TemplateSettings = Partial<Pick<Settings.Templates, keyof Settings.Templates>>;
         type TransitionSettings = Partial<Pick<Settings.Transition, keyof Settings.Transition>>;
         type SelectorSettings = Partial<Pick<Settings.Selectors, keyof Settings.Selectors>>;
         type ClassNameSettings = Partial<Pick<Settings.ClassNames, keyof Settings.ClassNames>>;
@@ -658,6 +665,43 @@ declare namespace FomanticUI {
         type ErrorSettings = Partial<Pick<Settings.Errors, keyof Settings.Errors>>;
 
         namespace Settings {
+            interface Templates {
+                /**
+                 * @default function(string, settings)
+                 */
+                escape: (string: string, settings?: DropdownSettings) => string;
+
+                /**
+                 * generates dropdown from select values
+                 * @default function(message, type, header)
+                 */
+                dropdown: (select: {placeholder?: string, values: {[key: string]: string}}, settings: DropdownSettings) => string;
+
+                /**
+                 * generates just menu from select
+                 * @default function(response, settings)
+                 */
+                menu: (values: {[key: string]: string}, settings: DropdownSettings) => string;
+
+                /**
+                 * generates label for multiselect
+                 * @default function(response, settings)
+                 */
+                label: (value: string, text: string, settings: DropdownSettings) => string;
+
+                /**
+                 * generates messages like "No results"
+                 * @default function(response, settings)
+                 */
+                message: (message: string) => string;
+
+                /**
+                 * generates user addition to the selection menu
+                 * @default function(response, settings)
+                 */
+                addition: (choice: string) => string;
+            }
+
             interface Transition {
 
                 /**

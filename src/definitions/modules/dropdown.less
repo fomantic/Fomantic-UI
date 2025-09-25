@@ -27,6 +27,7 @@
 @notButton: if(@variationDropdownButton, e(":not(.button)"));
 @notSimple: if(@variationDropdownSimple, e(":not(.simple)"));
 @notUpward: if(@variationDropdownUpward, e(":not(.upward)"));
+@notInverted: if(@variationDropdownInverted, e(":not(.inverted)"));
 
 @notTransparent: if(@variationInputTransparent, e(":not(.transparent)"));
 @notVertical: if(@variationMenuVertical, e(":not(.vertical)"));
@@ -46,7 +47,7 @@
     text-align: left;
     transition: @transition;
     user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0);
 }
 
 /*******************************
@@ -438,18 +439,6 @@ select.ui.dropdown {
         opacity: @selectionIconOpacity;
         transition: @selectionIconTransition;
     }
-    & when (@variationDropdownCompact) {
-        /* Compact */
-        .ui.compact.selection.dropdown {
-            min-width: 0;
-            & > .menu {
-                width: auto;
-                &:not(.multiline) {
-                    width: max-content;
-                }
-            }
-        }
-    }
 
     /* Selection Menu */
     .ui.selection.dropdown@{notUnlimited} .menu {
@@ -466,7 +455,7 @@ select.ui.dropdown {
         box-shadow: @selectionMenuBoxShadow;
         transition: @selectionMenuTransition;
     }
-    .ui.selection.dropdown@{notPointing}@{notFloating} .menu {
+    .ui.selection.dropdown@{notPointing}@{notFloating} > .menu {
         border-top-width: 0;
         border-radius: @selectionMenuBorderRadius;
     }
@@ -623,6 +612,24 @@ select.ui.dropdown {
         border-color: @selectionFocusBorderColor;
         box-shadow: @selectionFocusMenuBoxShadow;
     }
+    @supports selector(:has(.f)) {
+        .ui.ui.selection.dropdown@{notInverted}:has(> input:focus) {
+            border-color: @selectionFocusBorderColor;
+            box-shadow: none;
+        }
+
+        .ui.ui.selection.dropdown {
+            &:focus,
+            &:has(> input:focus) {
+                & > i.icon:not(.remove) {
+                    opacity: @selectionIconFocusOpacity;
+                }
+                & > i.icon.remove:not(:hover) {
+                    opacity: @actionIconFocusOpacity;
+                }
+            }
+        }
+    }
 
     /* Visible */
     .ui.selection.visible.dropdown > .text:not(.default) {
@@ -699,7 +706,21 @@ select.ui.dropdown {
         }
     }
 }
-
+& when (@variationDropdownCompact) {
+    /* Compact */
+    .ui.compact.dropdown {
+        min-width: 0;
+        & > .menu {
+            width: auto;
+            &:not(.multiline) {
+                width: max-content;
+            }
+        }
+        & .menu > .item {
+            white-space: normal;
+        }
+    }
+}
 & when (@variationDropdownSearch) {
     /* --------------
        Searchable
@@ -720,7 +741,7 @@ select.ui.dropdown {
         left: @textCursorSpacing;
         width: 100%;
         outline: none;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        -webkit-tap-highlight-color: rgb(255 255 255 / 0);
         padding: inherit;
     }
 
@@ -1313,7 +1334,7 @@ select.ui.dropdown {
 
     & when (@variationDropdownSelection) {
         /* Selection */
-        .ui.ui.upward.selection.dropdown@{notPointing}@{notFloating} .menu {
+        .ui.ui.upward.selection.dropdown@{notPointing}@{notFloating} > .menu {
             border-top-width: @menuBorderWidth;
             border-bottom-width: 0;
             box-shadow: @upwardSelectionMenuBoxShadow;
@@ -1381,15 +1402,6 @@ select.ui.dropdown {
     .ui.dropdown > .animating.menu .scrolling.menu,
     .ui.dropdown > .visible.menu .scrolling.menu {
         display: block;
-    }
-    & when (@supportIE) {
-        /* Scrollbar in IE */
-        @media all and (-ms-high-contrast: none) {
-            .ui.scrolling.dropdown .menu,
-            .ui.dropdown .scrolling.menu {
-                min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
-            }
-        }
     }
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.scrolling.dropdown .menu,
@@ -1506,12 +1518,6 @@ select.ui.dropdown {
     }
     .ui.simple.dropdown .menu {
         position: absolute;
-        & when (@supportIE) {
-            /* IE hack to make dropdown icons appear inline */
-            // stylelint-disable-next-line value-no-vendor-prefix
-            display: -ms-inline-flexbox !important;
-        }
-
         display: block;
         overflow: hidden;
         top: -9999px;
@@ -1730,12 +1736,12 @@ select.ui.dropdown {
         margin: 0;
         transform: rotate(-45deg);
     }
-    .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu {
+    .ui.left:not(.top, .bottom).pointing.dropdown > .left.menu {
         left: auto !important;
         right: 100% !important;
         margin: 0 @pointingArrowDistanceFromEdge 0 0;
     }
-    .ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu::after {
+    .ui.left:not(.top, .bottom).pointing.dropdown > .left.menu::after {
         top: 1em;
         left: auto;
         right: @pointingArrowOffset;
@@ -1801,15 +1807,15 @@ select.ui.dropdown {
     }
 
     /* Upward pointing */
-    .ui.pointing.upward.dropdown .menu,
-    .ui.top.pointing.upward.dropdown .menu {
+    .ui.pointing.upward.dropdown > .menu,
+    .ui.top.pointing.upward.dropdown > .menu {
         top: auto !important;
         bottom: 100% !important;
         margin: 0 0 @pointingMenuDistance;
         border-radius: @pointingUpwardMenuBorderRadius;
     }
-    .ui.pointing.upward.dropdown .menu::after,
-    .ui.top.pointing.upward.dropdown .menu::after {
+    .ui.pointing.upward.dropdown > .menu::after,
+    .ui.top.pointing.upward.dropdown > .menu::after {
         top: 100% !important;
         bottom: auto !important;
         box-shadow: @pointingUpwardArrowBoxShadow;
@@ -1823,12 +1829,12 @@ select.ui.dropdown {
     }
 
     /* Right Pointing Upward */
-    .ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu {
+    .ui.right.pointing.upward.dropdown:not(.top, .bottom) .menu {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 @pointingArrowDistanceFromEdge 0 0;
     }
-    .ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+    .ui.right.pointing.upward.dropdown:not(.top, .bottom) .menu::after {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 @pointingArrowDistanceFromEdge 0;
@@ -1836,12 +1842,12 @@ select.ui.dropdown {
     }
 
     /* Left Pointing Upward */
-    .ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu {
+    .ui.left.pointing.upward.dropdown:not(.top, .bottom) .menu {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 0 @pointingArrowDistanceFromEdge;
     }
-    .ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+    .ui.left.pointing.upward.dropdown:not(.top, .bottom) .menu::after {
         top: auto !important;
         bottom: 0 !important;
         margin: 0 0 @pointingArrowDistanceFromEdge 0;
@@ -2062,16 +2068,7 @@ select.ui.dropdown {
         .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
             background: @thumbInvertedHoverBackground;
         }
-        & when (@supportIE) {
-            .ui.dropdown .inverted.menu,
-            .ui.inverted.dropdown .menu {
-                /* IE11 */
-                scrollbar-face-color: @thumbInvertedBackgroundHex;
-                scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-                scrollbar-track-color: @trackInvertedBackgroundHex;
-                scrollbar-arrow-color: @trackInvertedBackgroundHex;
-            }
-        }
+
         @supports (-moz-appearance: none) {
             .ui.dropdown .inverted.menu,
             .ui.inverted.dropdown .menu {

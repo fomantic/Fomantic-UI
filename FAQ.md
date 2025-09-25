@@ -1,7 +1,7 @@
 # FAQ
 
 ### What is Fomantic-UI?
-Fomantic is a community fork of the popular [Semantic-UI](https://github.com/Semantic-Org/Semantic-UI) framework.
+Fomantic is the official community fork of the popular [Semantic-UI](https://github.com/Semantic-Org/Semantic-UI) framework.
 
 ### Why was Fomantic-UI created?
 Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues:
@@ -16,7 +16,12 @@ Fomantic was created to continue active development of Semantic-UI and has the i
 We welcome anyone who wants to help make Fomantic great to come help us. If you are wanting to start contributing please read the [CONTRIBUTING.md](CONTRIBUTING.md) guide before opening any pull request's this helps us keep PR's simple and efficient allowing us to merge and release new features and fixes quicker.
 
 ### How do I report an issue with the framework?
-If you have an issue with FUI we encourage you to [open an issue](https://github.com/fomantic/Fomantic-UI/issues/new) and let us know, if you just need some simple help join the FUI [Discord server](https://discordapp.com/invite/YChxjJ3) and ask the community for help.
+If you have an issue with FUI we encourage you to [open an issue](https://github.com/fomantic/Fomantic-UI/issues/new) and let us know
+
+### How to get help?
+If you just need some help:
+- join the FUI [Discord server](https://discordapp.com/invite/YChxjJ3) and ask the community for help channels.
+- Use [Github Discussions](https://github.com/fomantic/Fomantic-UI/discussions)
 
 ---
 

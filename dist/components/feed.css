@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.9.3 - Feed
+ * # Fomantic-UI 2.9.4 - Feed
  * https://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -399,6 +399,17 @@
 }
 .ui.inverted.feed > .event > .content .meta .active.like i.icon {
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* Action */
+.ui.inverted.feed > .event > .content .meta a,
+.ui.inverted.feed > .event > .content .meta > i.icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ui.inverted.feed > .event > .content .meta a:hover,
+.ui.inverted.feed > .event > .content .meta a:hover i.icon,
+.ui.inverted.feed > .event > .content .meta > i.icon:hover {
+  color: #ffffff;
 }
 
 /* --------------

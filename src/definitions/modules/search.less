@@ -29,7 +29,7 @@
     margin: 0;
     outline: none;
     -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: rgb(255 255 255 / 0);
     text-shadow: none;
     font-style: normal;
     font-weight: @normal;
@@ -307,9 +307,6 @@
     }
     .ui.search > .icon.input > input:placeholder-shown ~ .remove.icon,
     .ui.search.loading > .icon.input > .remove.icon {
-        display: none;
-    }
-    .ui.search > .icon.input > input:-ms-input-placeholder ~ .remove.icon when (@supportIE) {
         display: none;
     }
 }

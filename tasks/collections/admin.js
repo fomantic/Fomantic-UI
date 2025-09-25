@@ -2,24 +2,22 @@
  *    Admin Task Collection
  *******************************/
 
-const
-    // less/css distributions
-    initComponents      = require('../admin/components/init'),
-    createComponents    = require('../admin/components/create'),
-    updateComponents    = require('../admin/components/update'),
+// less/css distributions
+const initComponents = require('../admin/components/init');
+const createComponents = require('../admin/components/create');
+const updateComponents = require('../admin/components/update');
 
-    // single component releases
-    initDistributions   = require('../admin/distributions/init'),
-    createDistributions = require('../admin/distributions/create'),
-    updateDistributions = require('../admin/distributions/update'),
+// single component releases
+const initDistributions = require('../admin/distributions/init');
+const createDistributions = require('../admin/distributions/create');
+const updateDistributions = require('../admin/distributions/update');
 
-    release             = require('../admin/release'),
-    publish             = require('../admin/publish'),
-    register            = require('../admin/register')
-;
+const release = require('../admin/release');
+const publish = require('../admin/publish');
+const register = require('../admin/register');
 
 /*
-  This are tasks to be run by project maintainers
+  These are tasks to be run by project maintainers
   - Creating Component Repos
   - Syncing with GitHub via APIs
   - Modifying package files

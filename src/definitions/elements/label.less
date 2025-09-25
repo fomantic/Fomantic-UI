@@ -182,7 +182,7 @@ a.ui.label {
 .ui.segment@{notBasic} > .ui.right.attached.label {
     margin-right: @attachedOffset;
 }
-.ui.segment@{notBasic} > .ui.attached.label:not(.left):not(.right) {
+.ui.segment@{notBasic} > .ui.attached.label:not(.left, .right) {
     width: @attachedWidthOffset;
 }
 
@@ -471,6 +471,7 @@ a.ui.label {
     .ui.card .image > .ribbon.label {
         position: absolute;
         top: @ribbonImageTopDistance;
+        z-index: 1;
     }
     .ui.card .image > .ui.ribbon.label,
     .ui.image > .ui.ribbon.label {

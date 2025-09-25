@@ -2,12 +2,10 @@
             Set-up
 *******************************/
 
-const
-    fs       = require('fs'),
-    path     = require('path'),
+const fs = require('node:fs');
+const path = require('node:path');
 
-    defaults = require('../defaults')
-;
+const defaults = require('../defaults');
 
 /*******************************
             Exports
@@ -16,28 +14,24 @@ const
 module.exports = {
 
     getPath: function (file, directory) {
-        let
-            configPath,
-            walk = function (directory) {
-                let
-                    nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
-                    currentPath   = path.normalize(path.join(directory, file))
-                ;
-                if (fs.existsSync(currentPath)) {
-                    // found file
-                    configPath = path.normalize(directory);
-                } else {
-                    // reached file system root, let's stop
-                    if (nextDirectory === directory) {
-                        return;
-                    }
-                    // otherwise recurse
-                    walk(nextDirectory, file);
+        let configPath;
+        let walk = function (directory) {
+            let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            let currentPath = path.normalize(path.join(directory, file));
+            if (fs.existsSync(currentPath)) {
+                // found the file
+                configPath = path.normalize(directory);
+            } else {
+                // reached file system root, let's stop
+                if (nextDirectory === directory) {
+                    return;
                 }
+                // otherwise recurse
+                walk(nextDirectory, file);
             }
-        ;
+        };
 
-        // start walk from outside require-dot-files directory
+        // start the walk from outside require-dot-files directory
         file = file || defaults.files.config;
         directory = directory || path.join(__dirname, path.sep, '..');
         walk(directory);
@@ -51,12 +45,10 @@ module.exports = {
             File Paths
         --------------- */
 
-        let
-            configPath = this.getPath(),
-            sourcePaths = {},
-            outputPaths = {},
-            folder
-        ;
+        let configPath = this.getPath();
+        let sourcePaths = {};
+        let outputPaths = {};
+        let folder;
 
         // resolve paths (config location + base + path)
         for (folder in config.paths.source) {
@@ -81,14 +73,14 @@ module.exports = {
              CSS URLs
         --------------- */
 
-        // determine asset paths in css by finding relative path between themes and output
+        // determine asset paths in CSS by finding relative path between themes and output
         // force forward slashes
 
         config.paths.assets = {
             source: '../../themes', // source asset path is always the same
-            uncompressed: './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replace(/\\/g, '/'),
-            compressed: './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replace(/\\/g, '/'),
-            packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replace(/\\/g, '/'),
+            uncompressed: './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replaceAll('\\', '/'),
+            compressed: './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replaceAll('\\', '/'),
+            packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replaceAll('\\', '/'),
         };
 
         /* --------------
@@ -99,7 +91,7 @@ module.exports = {
             config.hasPermissions = true;
             config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
         } else {
-            // pass blank object to avoid causing errors
+            // pass a blank object to avoid causing errors
             config.permission = {};
             config.hasPermissions = false;
             config.parsedPermissions = {};
@@ -113,7 +105,7 @@ module.exports = {
             config.globs = {};
         }
 
-        // remove duplicates from component array
+        // remove duplicates from the component array
         if (Array.isArray(config.components)) {
             config.components = config.components.filter(function (component, index) {
                 return config.components.indexOf(component) === index;
@@ -123,12 +115,12 @@ module.exports = {
         const components = Array.isArray(config.components) && config.components.length > 0
             ? config.components
             : defaults.components;
-        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
+        const individuals = Array.isArray(config.individuals) && config.individuals.length > 0
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
-        // takes component object and creates file glob matching selected components
+        // takes the component object and creates file glob matching selected components
         config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
         // components that should be built, but excluded from main .css/.js files
