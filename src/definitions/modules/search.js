@@ -204,10 +204,9 @@
                         },
                         click: function (event) {
                             module.debug('Search result selected');
-
                             let $result = $(this);
                             let $title = $result.find(selector.title).eq(0);
-                            let $link = $result.is('a[href]') ? $result : $(),
+                            let $link = $result.is('a[href]') ? $result : $();
                             let href = $link.attr('href') || false;
                             let target = $link.attr('target') || false;
                             // title is used for result lookup
@@ -217,7 +216,6 @@
                             let results = module.get.results();
                             let result = $result.data(metadata.result) || module.get.result(value, results);
                             let oldValue = module.get.value();
-
                             if (isFunction(settings.onSelect)) {
                                 if (settings.onSelect.call(element, result, results) === false) {
                                     module.debug('Custom onSelect callback cancelled default select action');
@@ -1428,7 +1426,6 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-
                                     ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
                                     : '<div ';
 
@@ -1458,7 +1455,6 @@
                                 }
                                 html += ''
                                     + '</div>';
-
                                 html += result[fields.url]
                                     ? '</a>'
                                     : '</div>';
@@ -1493,7 +1489,6 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-
                             ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
                             : '<div ';
 
@@ -1523,7 +1518,6 @@
                         }
                         html += ''
                             + '</div>';
-
                         html += result[fields.url]
                             ? '</a>'
                             : '</div>';
