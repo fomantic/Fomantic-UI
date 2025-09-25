@@ -1430,11 +1430,11 @@
                                     : '<div ';
 
                                 html += result[fields.id] !== undefined
-                                    ? ' id="' + result[fields.id].replaceAll('"','') + '" '
+                                    ? ' id="' + result[fields.id].replaceAll('"', '') + '" '
                                     : '';
 
                                 html += result[fields.class] !== undefined
-                                    ? ' class="result ' + result[fields.class].replaceAll('"','') + '">'
+                                    ? ' class="result ' + result[fields.class].replaceAll('"', '') + '">'
                                     : ' class="result">';
 
                                 if (result[fields.image] !== undefined) {
@@ -1493,11 +1493,11 @@
                             : '<div ';
 
                         html += result[fields.id] !== undefined
-                            ? 'id="' + result[fields.id].replaceAll('"','') + '" '
+                            ? 'id="' + result[fields.id].replaceAll('"', '') + '" '
                             : '';
 
                         html += result[fields.class] !== undefined
-                            ? 'class="result ' + result[fields.class].replaceAll('"','') + '">'
+                            ? 'class="result ' + result[fields.class].replaceAll('"', '') + '">'
                             : 'class="result">';
 
                         if (result[fields.image] !== undefined) {
