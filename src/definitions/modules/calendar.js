@@ -230,9 +230,9 @@
                     change: function () {
                         let inputElement = $input[0];
                         if (inputElement) {
-                            let events = new Event('change', { bubbles: true });
+                            let event = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
-                            inputElement.dispatchEvent(events);
+                            inputElement.dispatchEvent(event);
                         }
                     },
                 },
