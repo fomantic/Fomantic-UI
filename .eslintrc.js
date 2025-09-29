@@ -68,7 +68,6 @@ module.exports = {
             },
         }],
         strict: 'off',
-        'unicorn/catch-error-name': 'off',
         'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-array-callback-reference': 'off',
         'unicorn/no-lonely-if': 'off',
