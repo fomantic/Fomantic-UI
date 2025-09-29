@@ -278,10 +278,8 @@
                         if ($actions && $actions.hasClass(className.vertical)) {
                             $toast.addClass(className.vertical);
                         }
-                        if ($actions.length > 0 && !$actions.hasClass(className.attached)) {
-                            if ($actions && (!$actions.hasClass(className.basic) || $actions.hasClass(className.left))) {
-                                $toast.addClass(className.actions);
-                            }
+                        if ($actions.length > 0 && !$actions.hasClass(className.attached) && $actions && (!$actions.hasClass(className.basic) || $actions.hasClass(className.left))) {
+                            $toast.addClass(className.actions);
                         }
                         if (settings.displayTime === 'auto') {
                             settings.displayTime = Math.max(settings.minDisplayTime, ($toast.text().split(' ').length / settings.wordsPerMinute) * 60000);

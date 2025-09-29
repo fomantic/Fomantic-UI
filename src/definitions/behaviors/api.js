@@ -241,22 +241,20 @@
                     if (!settings.throttle) {
                         module.debug('Sending request', data, ajaxSettings.method);
                         module.send.request();
+                    } else if (!settings.throttleFirstRequest && !module.timer) {
+                        module.debug('Sending request', data, ajaxSettings.method);
+                        module.send.request();
+                        module.timer = setTimeout(function () {}, settings.throttle);
                     } else {
-                        if (!settings.throttleFirstRequest && !module.timer) {
-                            module.debug('Sending request', data, ajaxSettings.method);
+                        module.debug('Throttling request', settings.throttle);
+                        clearTimeout(module.timer);
+                        module.timer = setTimeout(function () {
+                            if (module.timer) {
+                                delete module.timer;
+                            }
+                            module.debug('Sending throttled request', data, ajaxSettings.method);
                             module.send.request();
-                            module.timer = setTimeout(function () {}, settings.throttle);
-                        } else {
-                            module.debug('Throttling request', settings.throttle);
-                            clearTimeout(module.timer);
-                            module.timer = setTimeout(function () {
-                                if (module.timer) {
-                                    delete module.timer;
-                                }
-                                module.debug('Sending throttled request', data, ajaxSettings.method);
-                                module.send.request();
-                            }, settings.throttle);
-                        }
+                        }, settings.throttle);
                     }
                 },
 
@@ -580,15 +578,13 @@
                             }
                             if (status === 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                            } else if (status === 'error') {
-                                if (xhr !== undefined) {
-                                    module.debug('XHR produced a server error', status, httpMessage);
-                                    // make sure we have an error to display to console
-                                    if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
-                                        module.error(error.statusMessage + httpMessage, ajaxSettings.url);
-                                    }
-                                    settings.onError.call(context, errorMessage, $module, xhr);
+                            } else if (status === 'error' && xhr !== undefined) {
+                                module.debug('XHR produced a server error', status, httpMessage);
+                                // make sure we have an error to display to console
+                                if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
+                                    module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                                 }
+                                settings.onError.call(context, errorMessage, $module, xhr);
                             }
 
                             if (settings.errorDuration && status !== 'aborted') {

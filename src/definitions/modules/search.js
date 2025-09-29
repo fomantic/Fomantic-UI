@@ -218,13 +218,11 @@
                             let results = module.get.results();
                             let result = $result.data(metadata.result) || module.get.result(value, results);
                             let oldValue = module.get.value();
-                            if (isFunction(settings.onSelect)) {
-                                if (settings.onSelect.call(element, result, results) === false) {
-                                    module.debug('Custom onSelect callback cancelled default select action');
-                                    disabledBubbled = true;
+                            if (isFunction(settings.onSelect) && settings.onSelect.call(element, result, results) === false) {
+                                module.debug('Custom onSelect callback cancelled default select action');
+                                disabledBubbled = true;
 
-                                    return;
-                                }
+                                return;
                             }
                             module.hideResults();
                             if (value && module.get.value() === oldValue) {
@@ -331,14 +329,11 @@
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
                         }
-                    } else {
-                        // query shortcuts
-                        if (keyCode === keys.enter) {
-                            module.verbose('Enter key pressed, executing query');
-                            module.query();
-                            module.set.buttonPressed();
-                            $prompt.one('keyup', module.remove.buttonFocus);
-                        }
+                    } else if (keyCode === keys.enter) {
+                        module.verbose('Enter key pressed, executing query');
+                        module.query();
+                        module.set.buttonPressed();
+                        $prompt.one('keyup', module.remove.buttonFocus);
                     }
                 },
 
@@ -729,16 +724,14 @@
                         }
                         let searchHTML = module.generateResults(response);
                         module.verbose('Parsing server response', response);
-                        if (response !== undefined) {
-                            if (searchTerm !== undefined && response[fields.results] !== undefined) {
-                                module.addResults(searchHTML);
-                                module.inject.id(response[fields.results]);
-                                module.write.cache(searchTerm, {
-                                    html: searchHTML,
-                                    results: response[fields.results],
-                                });
-                                module.save.results(response[fields.results]);
-                            }
+                        if (response !== undefined && searchTerm !== undefined && response[fields.results] !== undefined) {
+                            module.addResults(searchHTML);
+                            module.inject.id(response[fields.results]);
+                            module.write.cache(searchTerm, {
+                                html: searchHTML,
+                                results: response[fields.results],
+                            });
+                            module.save.results(response[fields.results]);
                         }
                     },
                 },
@@ -918,12 +911,10 @@
                 },
 
                 addResults: function (html) {
-                    if (isFunction(settings.onResultsAdd)) {
-                        if (settings.onResultsAdd.call($results, html) === false) {
-                            module.debug('onResultsAdd callback cancelled default action');
+                    if (isFunction(settings.onResultsAdd) && settings.onResultsAdd.call($results, html) === false) {
+                        module.debug('onResultsAdd callback cancelled default action');
 
-                            return false;
-                        }
+                        return false;
                     }
                     if (html) {
                         $results
