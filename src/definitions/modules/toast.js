@@ -284,7 +284,7 @@
                             }
                         }
                         if (settings.displayTime === 'auto') {
-                            settings.displayTime = Math.max(settings.minDisplayTime, ($toast.text().split(' ').length / settings.wordsPerMinute) * 60000);
+                            settings.displayTime = Math.max(settings.minDisplayTime, ($toast.text().split(' ').length / settings.wordsPerMinute) * 60_000);
                         }
                         $toastBox.append($toast);
 
@@ -910,7 +910,7 @@
             }
             x -= 2.625 / d1;
 
-            return n1 * x * x + 0.984375;
+            return n1 * x * x + 0.984_375;
         },
         easeOutCubic: function (t) {
             return --t * t * t + 1;

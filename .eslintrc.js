@@ -9,7 +9,7 @@ module.exports = {
         'plugin:@internal/eslint-plugin/recommended',
     ],
     parserOptions: {
-        ecmaVersion: '2020',
+        ecmaVersion: '2021',
         sourceType: 'module',
     },
     ignorePatterns: [
@@ -75,7 +75,6 @@ module.exports = {
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-null': 'off',
         'unicorn/no-this-assignment': 'off',
-        'unicorn/numeric-separators-style': 'off',
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-at': 'off',
