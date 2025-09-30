@@ -279,14 +279,12 @@
                                     module.verbose('Changing text to deactivating text', text.deactivate);
                                     module.update.text(text.deactivate);
                                 }
-                            } else {
-                                if (text.hover) {
-                                    module.verbose('Changing text to hover text', text.hover);
-                                    module.update.text(text.hover);
-                                } else if (text.activate) {
-                                    module.verbose('Changing text to activating text', text.activate);
-                                    module.update.text(text.activate);
-                                }
+                            } else if (text.hover) {
+                                module.verbose('Changing text to hover text', text.hover);
+                                module.update.text(text.hover);
+                            } else if (text.activate) {
+                                module.verbose('Changing text to activating text', text.activate);
+                                module.update.text(text.activate);
                             }
                         }
                     },

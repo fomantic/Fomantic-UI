@@ -702,74 +702,72 @@
                                     } else {
                                         values[name].push(value);
                                     }
-                                } else {
-                                    if (isRadio) {
-                                        if (values[name] === undefined || values[name] === false) {
-                                            values[name] = isChecked
-                                                ? value || true
-                                                : false;
-                                        }
-                                    } else if (isCheckbox) {
-                                        values[name] = isChecked ? value || true : false;
-                                    } else if (isCalendar) {
-                                        let date = $calendar.calendar('get date');
+                                } else if (isRadio) {
+                                    if (values[name] === undefined || values[name] === false) {
+                                        values[name] = isChecked
+                                            ? value || true
+                                            : false;
+                                    }
+                                } else if (isCheckbox) {
+                                    values[name] = isChecked ? value || true : false;
+                                } else if (isCalendar) {
+                                    let date = $calendar.calendar('get date');
 
-                                        if (date !== null) {
-                                            switch (settings.dateHandling) {
-                                                case 'date': {
-                                                    values[name] = date;
+                                    if (date !== null) {
+                                        switch (settings.dateHandling) {
+                                            case 'date': {
+                                                values[name] = date;
 
-                                                    break;
-                                                }
-                                                case 'input': {
-                                                    values[name] = $calendar.calendar('get input date');
-
-                                                    break;
-                                                }
-                                                case 'formatter': {
-                                                    let type = $calendar.calendar('setting', 'type');
-
-                                                    switch (type) {
-                                                        case 'date': {
-                                                            values[name] = settings.formatter.date(date);
-
-                                                            break;
-                                                        }
-                                                        case 'datetime': {
-                                                            values[name] = settings.formatter.datetime(date);
-
-                                                            break;
-                                                        }
-                                                        case 'time': {
-                                                            values[name] = settings.formatter.time(date);
-
-                                                            break;
-                                                        }
-                                                        case 'month': {
-                                                            values[name] = settings.formatter.month(date);
-
-                                                            break;
-                                                        }
-                                                        case 'year': {
-                                                            values[name] = settings.formatter.year(date);
-
-                                                            break;
-                                                        }
-                                                        default: {
-                                                            module.debug('Wrong calendar mode', $calendar, type);
-                                                            values[name] = '';
-                                                        }
-                                                    }
-
-                                                    break;
-                                                }
+                                                break;
                                             }
-                                        } else {
-                                            values[name] = '';
+                                            case 'input': {
+                                                values[name] = $calendar.calendar('get input date');
+
+                                                break;
+                                            }
+                                            case 'formatter': {
+                                                let type = $calendar.calendar('setting', 'type');
+
+                                                switch (type) {
+                                                    case 'date': {
+                                                        values[name] = settings.formatter.date(date);
+
+                                                        break;
+                                                    }
+                                                    case 'datetime': {
+                                                        values[name] = settings.formatter.datetime(date);
+
+                                                        break;
+                                                    }
+                                                    case 'time': {
+                                                        values[name] = settings.formatter.time(date);
+
+                                                        break;
+                                                    }
+                                                    case 'month': {
+                                                        values[name] = settings.formatter.month(date);
+
+                                                        break;
+                                                    }
+                                                    case 'year': {
+                                                        values[name] = settings.formatter.year(date);
+
+                                                        break;
+                                                    }
+                                                    default: {
+                                                        module.debug('Wrong calendar mode', $calendar, type);
+                                                        values[name] = '';
+                                                    }
+                                                }
+
+                                                break;
+                                            }
                                         }
                                     } else {
-                                        values[name] = value;
+                                        values[name] = '';
                                     }
+                                } else {
+                                    values[name] = value;
                                 }
                             }
                         });

@@ -498,18 +498,14 @@
                             if (scroll.top <= element.top) {
                                 module.debug('Jumped from bottom fixed to top fixed, most likely used home/end button');
                                 module.setInitialPosition();
-                            } else {
-                                if (settings.pushing) {
-                                    if (module.is.bound() && scroll.bottom <= context.bottom) {
-                                        module.debug('Fixing bottom attached element to bottom of browser.');
-                                        module.fixBottom();
-                                    }
-                                } else {
-                                    if (module.is.bound() && (scroll.top <= context.bottom - element.height)) {
-                                        module.debug('Fixing bottom attached element to top of browser.');
-                                        module.fixTop();
-                                    }
+                            } else if (settings.pushing) {
+                                if (module.is.bound() && scroll.bottom <= context.bottom) {
+                                    module.debug('Fixing bottom attached element to bottom of browser.');
+                                    module.fixBottom();
                                 }
+                            } else if (module.is.bound() && (scroll.top <= context.bottom - element.height)) {
+                                module.debug('Fixing bottom attached element to top of browser.');
+                                module.fixTop();
                             }
                         }
                     }
