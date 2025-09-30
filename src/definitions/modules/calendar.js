@@ -690,6 +690,7 @@
 
                                     break;
                                 }
+                                // no default
                             }
                         }
 

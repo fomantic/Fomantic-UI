@@ -31,7 +31,6 @@ module.exports = {
         }],
         'consistent-return': 'off',
         curly: ['error', 'all'],
-        'default-case': 'off',
         'func-names': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',

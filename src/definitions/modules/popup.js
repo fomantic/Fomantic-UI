@@ -866,6 +866,7 @@
 
                                 break;
                             }
+                            // no default
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);
