@@ -404,8 +404,7 @@
                     disabled: function () {
                         $dimmer.addClass(className.disabled);
                     },
-                    variation: function (variation) {
-                        variation = variation || settings.variation;
+                    variation: function (variation = settings.variation) {
                         if (variation) {
                             $dimmer.addClass(variation);
                         }
@@ -426,8 +425,7 @@
                     disabled: function () {
                         $dimmer.removeClass(className.disabled);
                     },
-                    variation: function (variation) {
-                        variation = variation || settings.variation;
+                    variation: function (variation = settings.variation) {
                         if (variation) {
                             $dimmer.removeClass(variation);
                         }
@@ -525,13 +523,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

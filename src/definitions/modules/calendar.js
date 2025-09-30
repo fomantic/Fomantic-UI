@@ -499,8 +499,7 @@
                 },
 
                 update: {
-                    focus: function (updateRange, container) {
-                        container = container || $container;
+                    focus: function (updateRange, container = $container) {
                         let mode = module.get.mode();
                         let date = module.get.date();
                         let focusDate = module.get.focusDate();
@@ -1117,8 +1116,7 @@
                             return match.slice(1, -1);
                         });
                     },
-                    dateObjectOrFormatted: function (format, date) {
-                        format = format || '';
+                    dateObjectOrFormatted: function (format = '', date = null) {
                         date = module.helper.sanitiseDate(date) || null;
 
                         if (!date) {
@@ -1490,13 +1488,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
