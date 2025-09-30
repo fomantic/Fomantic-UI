@@ -200,10 +200,8 @@
                     module.verbose('Toggling dimmer visibility', $dimmer);
                     if (!module.is.dimmed()) {
                         module.show();
-                    } else {
-                        if (module.is.closable()) {
-                            module.hide();
-                        }
+                    } else if (module.is.closable()) {
+                        module.hide();
                     }
                 },
 

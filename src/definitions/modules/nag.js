@@ -254,8 +254,8 @@
                         module.debug('Value stored', key, value);
                         try {
                             storage.setItem(key, value, options);
-                        } catch (e) {
-                            module.error(error.setItem, e);
+                        } catch (error_) {
+                            module.error(error.setItem, error_);
                         }
                     },
                     get: function (key) {
