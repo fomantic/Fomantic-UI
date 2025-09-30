@@ -177,16 +177,16 @@
                         + ' click' + eventNamespace
                         + ' keyup' + eventNamespace
                         + ' keydown' + eventNamespace
-                        + ' blur' + eventNamespace, function (e) {
-                        module.determine.isDirty();
+                        + ' blur' + eventNamespace, function (event) {
+                        module.determine.isDirty(event);
                     });
 
-                    $module.on('dirty' + eventNamespace, function (e) {
-                        settings.onDirty.call();
+                    $module.on('dirty' + eventNamespace, function (event) {
+                        settings.onDirty.call(event);
                     });
 
-                    $module.on('clean' + eventNamespace, function (e) {
-                        settings.onClean.call();
+                    $module.on('clean' + eventNamespace, function (event) {
+                        settings.onClean.call(event);
                     });
                     if (attachEventsSelector) {
                         module.attachEvents(attachEventsSelector, attachEventsAction);
@@ -276,7 +276,7 @@
 
                         return allValid;
                     },
-                    isDirty: function (e) {
+                    isDirty: function (event) {
                         let formIsDirty = false;
 
                         $field.each(function (index, el) {
@@ -762,6 +762,7 @@
 
                                                 break;
                                             }
+                                            // no default
                                         }
                                     } else {
                                         values[name] = '';

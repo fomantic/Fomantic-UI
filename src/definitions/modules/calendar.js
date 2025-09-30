@@ -688,6 +688,7 @@
 
                                     break;
                                 }
+                                // no default
                             }
                         }
 

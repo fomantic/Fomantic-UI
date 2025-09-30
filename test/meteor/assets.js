@@ -9,7 +9,7 @@ assets.forEach(function (path) {
             if (error) {
                 test.fail({ message: 'Image failed to load' });
             } else {
-                test.isTrue(result.content.length > 10000, 'Image ' + path + ' could not be downloaded');
+                test.isTrue(result.content.length > 10_000, 'Image ' + path + ' could not be downloaded');
             }
             done();
         });

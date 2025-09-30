@@ -60,7 +60,6 @@
             let metadata = settings.metadata;
             let selector = settings.selector;
             let error = settings.error;
-            let regExp = settings.regExp;
 
             let eventNamespace = '.' + settings.namespace;
             let moduleNamespace = 'module-' + settings.namespace;
@@ -865,10 +864,6 @@
             path: 'History enabled, but no path was specified',
             recursion: 'Max recursive depth reached',
             state: 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>',
-        },
-
-        regExp: {
-            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
         },
 
         metadata: {
