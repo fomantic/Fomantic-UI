@@ -227,10 +227,8 @@
                     let cacheImage = document.createElement('img');
                     let handleLoad = function () {
                         loadedCounter++;
-                        if (loadedCounter >= images.length) {
-                            if (isFunction(callback)) {
-                                callback();
-                            }
+                        if (loadedCounter >= images.length && isFunction(callback)) {
+                            callback();
                         }
                     };
                     while (imagesLength--) {
@@ -310,10 +308,8 @@
                             module.debug('Element passed, adding fixed position', $module);
                             module.show.placeholder();
                             module.set.fixed();
-                            if (settings.transition) {
-                                if ($.fn.transition !== undefined) {
-                                    $module.transition(settings.transition, settings.duration);
-                                }
+                            if (settings.transition && $.fn.transition !== undefined) {
+                                $module.transition(settings.transition, settings.duration);
                             }
                         };
                         settings.onTopPassedReverse = function () {
@@ -781,11 +777,9 @@
                         module.save.elementCalculations();
                     },
                     occurred: function (callback) {
-                        if (callback) {
-                            if (module.cache.occurred[callback] === undefined || (module.cache.occurred[callback] !== true)) {
-                                module.verbose('Saving callback occurred', callback);
-                                module.cache.occurred[callback] = true;
-                            }
+                        if (callback && (module.cache.occurred[callback] === undefined || (module.cache.occurred[callback] !== true))) {
+                            module.verbose('Saving callback occurred', callback);
+                            module.cache.occurred[callback] = true;
                         }
                     },
                     scroll: function (scrollPosition) {

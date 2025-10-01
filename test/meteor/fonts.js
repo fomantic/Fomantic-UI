@@ -6,7 +6,7 @@
                 if (error) {
                     test.fail({ message: 'Font failed to load' });
                 } else {
-                    test.isTrue(result.content.length > 10000, extension + ' font could not be downloaded');
+                    test.isTrue(result.content.length > 10_000, extension + ' font could not be downloaded');
                 }
                 done();
             });

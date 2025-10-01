@@ -120,11 +120,9 @@
                 refresh: function () {
                     if (settings.popup) {
                         $popup = $document.find(settings.popup).eq(0);
-                    } else {
-                        if (settings.inline) {
-                            $popup = $target.nextAll(selector.popup).eq(0);
-                            settings.popup = $popup;
-                        }
+                    } else if (settings.inline) {
+                        $popup = $target.nextAll(selector.popup).eq(0);
+                        settings.popup = $popup;
                     }
                     if (settings.popup) {
                         module.set.invisible();
@@ -866,6 +864,7 @@
 
                                 break;
                             }
+                            // no default
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);
