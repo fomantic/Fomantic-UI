@@ -100,15 +100,12 @@
             },
 
             change: {
-                setting: function (setting, value, modules, modifyExisting) {
+                setting: function (setting, value, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? (modules === 'all'
                             ? settings.modules
                             : [modules])
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
                         let namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
@@ -127,13 +124,10 @@
                         }
                     });
                 },
-                settings: function (newSettings, modules, modifyExisting) {
+                settings: function (newSettings, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
                         let $existingModules;
                         if (module.moduleExists(name)) {

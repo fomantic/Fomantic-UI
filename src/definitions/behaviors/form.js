@@ -1252,10 +1252,7 @@
                     },
 
                     // takes a validation object and returns whether field passes validation
-                    field: function (field, fieldName, showErrors) {
-                        showErrors = showErrors !== undefined
-                            ? showErrors
-                            : true;
+                    field: function (field, fieldName, showErrors = true) {
                         if (typeof field === 'string') {
                             module.verbose('Validating field', field);
                             fieldName = field;

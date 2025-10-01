@@ -420,7 +420,7 @@
 
                 fetch: {
 
-                    content: function (tabPath, fullTabPath) {
+                    content: function (tabPath, fullTabPath = tabPath) {
                         let $tab = module.get.tabElement(tabPath);
                         let apiSettings = {
                             dataType: 'html',
@@ -462,7 +462,6 @@
                         let requestSettings;
                         let cachedContent;
 
-                        fullTabPath = fullTabPath || tabPath;
                         cachedContent = module.cache.read(fullTabPath);
 
                         if (settings.cache && cachedContent) {
