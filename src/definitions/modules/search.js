@@ -218,13 +218,11 @@
                             let results = module.get.results();
                             let result = $result.data(metadata.result) || module.get.result(value, results);
                             let oldValue = module.get.value();
-                            if (isFunction(settings.onSelect)) {
-                                if (settings.onSelect.call(element, result, results) === false) {
-                                    module.debug('Custom onSelect callback cancelled default select action');
-                                    disabledBubbled = true;
+                            if (isFunction(settings.onSelect) && settings.onSelect.call(element, result, results) === false) {
+                                module.debug('Custom onSelect callback cancelled default select action');
+                                disabledBubbled = true;
 
-                                    return;
-                                }
+                                return;
                             }
                             module.hideResults();
                             if (value && module.get.value() === oldValue) {
@@ -331,14 +329,11 @@
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
                         }
-                    } else {
-                        // query shortcuts
-                        if (keyCode === keys.enter) {
-                            module.verbose('Enter key pressed, executing query');
-                            module.query();
-                            module.set.buttonPressed();
-                            $prompt.one('keyup', module.remove.buttonFocus);
-                        }
+                    } else if (keyCode === keys.enter) {
+                        module.verbose('Enter key pressed, executing query');
+                        module.query();
+                        module.set.buttonPressed();
+                        $prompt.one('keyup', module.remove.buttonFocus);
                     }
                 },
 
@@ -413,7 +408,7 @@
                             return;
                         }
                         let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
 
                         return isInDOM && $target.closest(selector.message).length > 0;
                     },
@@ -661,10 +656,8 @@
                                 }
                             });
                         });
-                        $.merge(exactResults, fuzzyResults);
-                        $.merge(results, exactResults);
 
-                        return results;
+                        return [...results, ...exactResults, ...fuzzyResults];
                     },
                 },
                 exactSearch: function (query, term) {
@@ -677,11 +670,9 @@
                 },
                 wordSearch: function (query, term, matchAll) {
                     let allWords = query.split(/\s+/);
-                    let w;
-                    let wL = allWords.length;
                     let found = false;
-                    for (w = 0; w < wL; w++) {
-                        found = module.exactSearch(allWords[w], term);
+                    for (const w of allWords) {
+                        found = module.exactSearch(w, term);
                         if ((!found && matchAll) || (found && !matchAll)) {
                             break;
                         }
@@ -707,9 +698,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        let queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -733,16 +724,14 @@
                         }
                         let searchHTML = module.generateResults(response);
                         module.verbose('Parsing server response', response);
-                        if (response !== undefined) {
-                            if (searchTerm !== undefined && response[fields.results] !== undefined) {
-                                module.addResults(searchHTML);
-                                module.inject.id(response[fields.results]);
-                                module.write.cache(searchTerm, {
-                                    html: searchHTML,
-                                    results: response[fields.results],
-                                });
-                                module.save.results(response[fields.results]);
-                            }
+                        if (response !== undefined && searchTerm !== undefined && response[fields.results] !== undefined) {
+                            module.addResults(searchHTML);
+                            module.inject.id(response[fields.results]);
+                            module.write.cache(searchTerm, {
+                                html: searchHTML,
+                                results: response[fields.results],
+                            });
+                            module.save.results(response[fields.results]);
                         }
                     },
                 },
@@ -830,7 +819,7 @@
                         let id;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
-                            letterID = String.fromCharCode(97 + categoryIndex);
+                            letterID = String.fromCodePoint(97 + categoryIndex);
                             id = letterID + resultID;
                             module.verbose('Creating category result id', id);
                         } else {
@@ -922,12 +911,10 @@
                 },
 
                 addResults: function (html) {
-                    if (isFunction(settings.onResultsAdd)) {
-                        if (settings.onResultsAdd.call($results, html) === false) {
-                            module.debug('onResultsAdd callback cancelled default action');
+                    if (isFunction(settings.onResultsAdd) && settings.onResultsAdd.call($results, html) === false) {
+                        module.debug('onResultsAdd callback cancelled default action');
 
-                            return false;
-                        }
+                        return false;
                     }
                     if (html) {
                         $results
@@ -1430,12 +1417,12 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                                    ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
                                     : '<a class="result">';
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                        + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1464,7 +1451,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }
@@ -1482,12 +1469,12 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                            ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
                             : '<a class="result">';
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                 + '</div>';
                         }
                         html += '<div class="content">';
@@ -1511,7 +1498,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }
@@ -1526,7 +1513,7 @@
 
     $.extend($.easing, {
         easeOutExpo: function (x) {
-            return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+            return x === 1 ? 1 : 1 - 2 ** (-10 * x);
         },
     });
 })(jQuery, window, document);

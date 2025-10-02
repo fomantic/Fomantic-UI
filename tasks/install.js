@@ -166,7 +166,7 @@ module.exports = function (callback) {
         rootQuestions[1].default = manager.root;
 
         // insert PM questions after "Install Type" question
-        Array.prototype.splice.apply(questions.setup, [2, 0, ...rootQuestions]);
+        questions.setup.splice(2, 0, ...rootQuestions);
 
         // omit cleanup questions for managed install
         questions.cleanup = [];
@@ -273,7 +273,7 @@ module.exports = function (callback) {
                 fs.mkdirpSync(installPaths.definition);
                 fs.mkdirpSync(installPaths.theme);
                 fs.mkdirpSync(installPaths.tasks);
-            } catch (error) {
+            } catch {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
 
@@ -327,7 +327,7 @@ module.exports = function (callback) {
         gulp.task('create theme.config', function () {
             // determine path to site theme folder from theme config
             // force CSS path variable to use forward slashes for paths
-            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/');
+            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replaceAll('\\', '/');
             let siteVariable = "@siteFolder: '" + pathToSite + "/';";
 
             // rewrite site variable in theme.less

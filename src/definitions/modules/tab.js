@@ -60,7 +60,6 @@
             let metadata = settings.metadata;
             let selector = settings.selector;
             let error = settings.error;
-            let regExp = settings.regExp;
 
             let eventNamespace = '.' + settings.namespace;
             let moduleNamespace = 'module-' + settings.namespace;
@@ -411,14 +410,12 @@
                             $tab
                                 .empty()
                                 .append($(html).clone(true));
+                        } else if (evaluateScripts) {
+                            module.debug('Updating HTML and evaluating inline scripts', tabPath, html);
+                            $tab.html(html);
                         } else {
-                            if (evaluateScripts) {
-                                module.debug('Updating HTML and evaluating inline scripts', tabPath, html);
-                                $tab.html(html);
-                            } else {
-                                module.debug('Updating HTML', tabPath, html);
-                                tab.innerHTML = html;
-                            }
+                            module.debug('Updating HTML', tabPath, html);
+                            tab.innerHTML = html;
                         }
                     },
                 },
@@ -867,10 +864,6 @@
             path: 'History enabled, but no path was specified',
             recursion: 'Max recursive depth reached',
             state: 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>',
-        },
-
-        regExp: {
-            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
         },
 
         metadata: {

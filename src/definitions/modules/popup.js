@@ -120,11 +120,9 @@
                 refresh: function () {
                     if (settings.popup) {
                         $popup = $document.find(settings.popup).eq(0);
-                    } else {
-                        if (settings.inline) {
-                            $popup = $target.nextAll(selector.popup).eq(0);
-                            settings.popup = $popup;
-                        }
+                    } else if (settings.inline) {
+                        $popup = $target.nextAll(selector.popup).eq(0);
+                        settings.popup = $popup;
                     }
                     if (settings.popup) {
                         module.set.invisible();
@@ -222,7 +220,7 @@
                     },
                     hideGracefully: function (event) {
                         let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
                         let inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
@@ -866,6 +864,7 @@
 
                                 break;
                             }
+                            // no default
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);

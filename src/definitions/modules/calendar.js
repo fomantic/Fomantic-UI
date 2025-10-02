@@ -230,10 +230,9 @@
                     change: function () {
                         let inputElement = $input[0];
                         if (inputElement) {
-                            let events = document.createEvent('HTMLEvents');
+                            let event = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
-                            events.initEvent('change', true, false);
-                            inputElement.dispatchEvent(events);
+                            inputElement.dispatchEvent(event);
                         }
                     },
                 },
@@ -673,10 +672,8 @@
                                 // enter key
                                 case 13: {
                                     let date = module.get.focusDate();
-                                    if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
-                                        if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
-                                            module.selectDate(date);
-                                        }
+                                    if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode) && settings.onSelect.call(element, date, module.get.mode()) !== false) {
+                                        module.selectDate(date);
                                     }
                                     // disable form submission:
                                     event.preventDefault();
@@ -691,6 +688,7 @@
 
                                     break;
                                 }
+                                // no default
                             }
                         }
 
@@ -864,7 +862,7 @@
                             document.createEvent('TouchEvent');
 
                             return true;
-                        } catch (e) {
+                        } catch {
                             return false;
                         }
                     },
@@ -1234,9 +1232,7 @@
                     },
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
-                            let d;
-                            for (let i = 0; i < dates.length; i++) {
-                                d = dates[i];
+                            for (let d of dates) {
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1251,10 +1247,8 @@
                                         if (typeof d[metadata.year] === 'number' && date.getFullYear() === d[metadata.year]) {
                                             return d;
                                         }
-                                        if (Array.isArray(d[metadata.year])) {
-                                            if (d[metadata.year].includes(date.getFullYear())) {
-                                                return d;
-                                            }
+                                        if (Array.isArray(d[metadata.year]) && d[metadata.year].includes(date.getFullYear())) {
+                                            return d;
                                         }
                                     } else if (d[metadata.month]) {
                                         if (typeof d[metadata.month] === 'number' && date.getMonth() === d[metadata.month]) {
@@ -1274,12 +1268,10 @@
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode)) {
                                             return d;
                                         }
-                                        if (Array.isArray(d[metadata.date])) {
-                                            if (d[metadata.date].some(function (idate) {
-                                                return module.helper.dateEqual(date, idate, mode);
-                                            })) {
-                                                return d;
-                                            }
+                                        if (Array.isArray(d[metadata.date]) && d[metadata.date].some(function (idate) {
+                                            return module.helper.dateEqual(date, idate, mode);
+                                        })) {
+                                            return d;
                                         }
                                     }
                                 }
@@ -1290,21 +1282,17 @@
                     },
                     findHourAsObject: function (date, mode, hours) {
                         if (mode === 'hour') {
-                            let d;
                             let hourCheck = function (date, d) {
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number' && date.getHours() === d[metadata.hours]) {
                                         return d;
                                     }
-                                    if (Array.isArray(d[metadata.hours])) {
-                                        if (d[metadata.hours].includes(date.getHours())) {
-                                            return d;
-                                        }
+                                    if (Array.isArray(d[metadata.hours]) && d[metadata.hours].includes(date.getHours())) {
+                                        return d;
                                     }
                                 }
                             };
-                            for (let i = 0; i < hours.length; i++) {
-                                d = hours[i];
+                            for (let d of hours) {
                                 if (typeof d === 'number' && date.getHours() === d) {
                                     return null;
                                 }
@@ -1313,21 +1301,17 @@
                                         if (typeof d[metadata.days] === 'number' && date.getDay() === d[metadata.days]) {
                                             return d;
                                         }
-                                        if (Array.isArray(d[metadata.days])) {
-                                            if (d[metadata.days].includes(date.getDay())) {
-                                                return d;
-                                            }
+                                        if (Array.isArray(d[metadata.days]) && d[metadata.days].includes(date.getDay())) {
+                                            return d;
                                         }
                                     } else if (d[metadata.date] && hourCheck(date, d)) {
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                                             return d;
                                         }
-                                        if (Array.isArray(d[metadata.date])) {
-                                            if (d[metadata.date].some(function (idate) {
-                                                return module.helper.dateEqual(date, idate, mode);
-                                            })) {
-                                                return d;
-                                            }
+                                        if (Array.isArray(d[metadata.date]) && d[metadata.date].some(function (idate) {
+                                            return module.helper.dateEqual(date, idate, mode);
+                                        })) {
+                                            return d;
                                         }
                                     } else if (hourCheck(date, d)) {
                                         return d;
@@ -1704,7 +1688,6 @@
                 let isDateOnly = !settings.type.includes('time');
 
                 let words = text.split(settings.regExp.dateWords);
-                let word;
                 let numbers = text.split(settings.regExp.dateNumbers);
                 let number;
 
@@ -1742,32 +1725,27 @@
 
                 if (!isTimeOnly) {
                     // textual month
-                    for (i = 0; i < words.length; i++) {
-                        word = words[i];
-                        if (word.length <= 0) {
-                            continue;
-                        }
-                        for (j = 0; j < settings.text.months.length; j++) {
-                            monthString = settings.text.months[j];
-                            monthString = monthString.slice(0, word.length).toLowerCase();
-                            if (monthString === word) {
-                                month = j + 1;
+                    for (const word of words) {
+                        if (word.length > 0) {
+                            for (j = 0; j < settings.text.months.length; j++) {
+                                monthString = settings.text.months[j];
+                                monthString = monthString.slice(0, word.length).toLowerCase();
+                                if (monthString === word) {
+                                    month = j + 1;
 
+                                    break;
+                                }
+                            }
+                            if (month >= 0) {
                                 break;
                             }
-                        }
-                        if (month >= 0) {
-                            break;
                         }
                     }
 
                     // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i], 10);
-                        if (isNaN(j)) {
-                            continue;
-                        }
-                        if (j >= settings.centuryBreak && i === numbers.length - 1) {
+                        if (!isNaN(j) && j >= settings.centuryBreak && i === numbers.length - 1) {
                             if (j <= 99) {
                                 j += settings.currentCentury - 100;
                             }
@@ -1785,10 +1763,7 @@
                                 ? i
                                 : (i === 1 ? 0 : 1);
                             j = parseInt(numbers[k], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 1 && j <= 12) {
+                            if (!isNaN(j) && j >= 1 && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
 
@@ -1800,10 +1775,7 @@
                     // day
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i], 10);
-                        if (isNaN(j)) {
-                            continue;
-                        }
-                        if (j >= 1 && j <= 31) {
+                        if (!isNaN(j) && j >= 1 && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
 
@@ -1815,16 +1787,15 @@
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j <= 99) {
-                                j += settings.currentCentury;
-                            }
-                            year = j;
-                            numbers.splice(i, 1);
+                            if (!isNaN(j)) {
+                                if (j <= 99) {
+                                    j += settings.currentCentury;
+                                }
+                                year = j;
+                                numbers.splice(i, 1);
 
-                            break;
+                                break;
+                            }
                         }
                     }
                 }
@@ -1834,10 +1805,7 @@
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 0 && j <= 23) {
+                            if (!isNaN(j) && j >= 0 && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
 
@@ -1850,10 +1818,7 @@
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i], 10);
-                            if (isNaN(j)) {
-                                continue;
-                            }
-                            if (j >= 0 && j <= 59) {
+                            if (!isNaN(j) && j >= 0 && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
 

@@ -9,7 +9,7 @@ module.exports = {
         'plugin:@internal/eslint-plugin/recommended',
     ],
     parserOptions: {
-        ecmaVersion: '2020',
+        ecmaVersion: '2021',
         sourceType: 'module',
     },
     ignorePatterns: [
@@ -31,7 +31,6 @@ module.exports = {
         }],
         'consistent-return': 'off',
         curly: ['error', 'all'],
-        'default-case': 'off',
         'func-names': 'off',
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -41,13 +40,10 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'max-len': 'off',
         'no-console': 'off',
-        'no-continue': 'off',
-        'no-lonely-if': 'off',
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
         'no-restricted-syntax': 'off',
-        'no-underscore-dangle': 'off',
         'no-unused-vars': 'off',
         'object-shorthand': ['error', 'never'],
         'padding-line-between-statements': ['error', {
@@ -69,33 +65,29 @@ module.exports = {
             },
         }],
         strict: 'off',
-        'unicorn/catch-error-name': 'off',
+        'unicorn/no-anonymous-default-export': 'off',
         'unicorn/no-array-callback-reference': 'off',
-        'unicorn/no-lonely-if': 'off',
         'unicorn/no-negated-condition': 'off',
         'unicorn/no-null': 'off',
         'unicorn/no-this-assignment': 'off',
-        'unicorn/numeric-separators-style': 'off',
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
+        'unicorn/prefer-at': 'off',
+        'unicorn/prefer-global-this': 'off',
         'unicorn/prefer-module': 'off',
+        'unicorn/prefer-string-raw': 'off',
+        'unicorn/prefer-string-replace-all': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'wrap-iife': ['error', 'inside'],
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
-        'guard-for-in': 'off', // refactor to "for of"
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
         'prefer-const': 'off',
-        'prefer-exponentiation-operator': 'off',
         'unicorn/no-array-for-each': 'off',
-        'unicorn/no-for-loop': 'off', // autofixes to "for of"
-        'unicorn/prefer-code-point': 'off',
         'unicorn/prefer-number-properties': 'off',
-        'unicorn/prefer-optional-catch-binding': 'off',
         'unicorn/prefer-reflect-apply': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
-        'vars-on-top': 'off',
 
         // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
         eqeqeq: 'off', // about 20 errors to be fixed manually

@@ -189,7 +189,7 @@
                             if (attrValue) {
                                 attrValue = attrValue > max
                                     ? max
-                                    : (attrValue < min ? min : attrValue);
+                                    : Math.max(attrValue, min);
                                 ratio = (attrValue - min) / (max - min);
                             } else {
                                 ratio = (index + 1) / (numChildren + 1);
@@ -456,6 +456,7 @@
 
                                         break;
                                     }
+                                    // no default
                                 }
                             }
                         }
@@ -665,7 +666,7 @@
                             } else {
                                 decimalPlaces = settings.decimalPlaces;
                             }
-                            let precision = Math.pow(10, decimalPlaces);
+                            let precision = 10 ** decimalPlaces;
                             module.debug('Precision determined', precision);
                             module.cache.precision = precision;
                         }
@@ -843,7 +844,7 @@
                         let max = module.get.max();
                         let value = val > max
                             ? max
-                            : (val < min ? min : val);
+                            : Math.max(val, min);
                         let trackLength = module.get.trackLength();
                         let ratio = (value - min) / (max - min);
                         let position = Math.round(ratio * trackLength);
@@ -884,7 +885,7 @@
                         let value;
                         newPos = newPos < 0
                             ? 0
-                            : (newPos > trackLength ? trackLength : newPos);
+                            : Math.min(newPos, trackLength);
                         ratio = newPos / trackLength;
                         if (module.is.reversed()) {
                             ratio = 1 - ratio;
@@ -897,9 +898,9 @@
                         if (event.type === 'touchmove' || event.type === 'touchend') {
                             let touchEvent = event.touches ? event : event.originalEvent;
                             let touch = touchEvent.changedTouches[0]; // fall back to first touch if correct touch not found
-                            for (let i = 0; i < touchEvent.touches.length; i++) {
-                                if (touchEvent.touches[i].identifier === touchIdentifier) {
-                                    touch = touchEvent.touches[i];
+                            for (const t of touchEvent.touches) {
+                                if (t.identifier === touchIdentifier) {
+                                    touch = t;
 
                                     break;
                                 }
@@ -1138,14 +1139,12 @@
                                 thumbPosValue = { top: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', bottom: 'auto' };
                                 trackPosValue = { top: trackStartPosPercent + '%', bottom: trackEndPosPercent + '%' };
                             }
+                        } else if (module.is.reversed()) {
+                            thumbPosValue = { right: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', left: 'auto' };
+                            trackPosValue = { right: trackStartPosPercent + '%', left: trackEndPosPercent + '%' };
                         } else {
-                            if (module.is.reversed()) {
-                                thumbPosValue = { right: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', left: 'auto' };
-                                trackPosValue = { right: trackStartPosPercent + '%', left: trackEndPosPercent + '%' };
-                            } else {
-                                thumbPosValue = { left: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', right: 'auto' };
-                                trackPosValue = { left: trackStartPosPercent + '%', right: trackEndPosPercent + '%' };
-                            }
+                            thumbPosValue = { left: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', right: 'auto' };
+                            trackPosValue = { left: trackStartPosPercent + '%', right: trackEndPosPercent + '%' };
                         }
                         $targetThumb.css(thumbPosValue);
                         $trackFill.css(trackPosValue);

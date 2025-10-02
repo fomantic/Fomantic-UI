@@ -130,7 +130,7 @@
                         if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
-                            } catch (e) {
+                            } catch {
                                 // isn't json string
                             }
                         }
@@ -241,22 +241,20 @@
                     if (!settings.throttle) {
                         module.debug('Sending request', data, ajaxSettings.method);
                         module.send.request();
+                    } else if (!settings.throttleFirstRequest && !module.timer) {
+                        module.debug('Sending request', data, ajaxSettings.method);
+                        module.send.request();
+                        module.timer = setTimeout(function () {}, settings.throttle);
                     } else {
-                        if (!settings.throttleFirstRequest && !module.timer) {
-                            module.debug('Sending request', data, ajaxSettings.method);
+                        module.debug('Throttling request', settings.throttle);
+                        clearTimeout(module.timer);
+                        module.timer = setTimeout(function () {
+                            if (module.timer) {
+                                delete module.timer;
+                            }
+                            module.debug('Sending throttled request', data, ajaxSettings.method);
                             module.send.request();
-                            module.timer = setTimeout(function () {}, settings.throttle);
-                        } else {
-                            module.debug('Throttling request', settings.throttle);
-                            clearTimeout(module.timer);
-                            module.timer = setTimeout(function () {
-                                if (module.timer) {
-                                    delete module.timer;
-                                }
-                                module.debug('Sending throttled request', data, ajaxSettings.method);
-                                module.send.request();
-                            }, settings.throttle);
-                        }
+                        }, settings.throttle);
                     }
                 },
 
@@ -343,10 +341,7 @@
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    // allow legacy {$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(2, -1)
-                                        : templatedString.slice(1, -1);
+                                    let variable = templatedString.slice(1, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -372,10 +367,7 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    // allow legacy {/$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(3, -1)
-                                        : templatedString.slice(2, -1);
+                                    let variable = templatedString.slice(2, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -518,9 +510,7 @@
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                                     : settings.onResponse.call(context, response))
                                 : false;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (translatedResponse) {
                                 module.debug('Modified API response in onResponse callback', settings.onResponse, translatedResponse, response);
                                 response = translatedResponse;
@@ -540,9 +530,7 @@
                             let context = this;
                             let elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (timeLeft > 0) {
                                 module.debug('Response completed early delaying state change by', timeLeft);
                             }
@@ -590,15 +578,13 @@
                             }
                             if (status === 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                            } else if (status === 'error') {
-                                if (xhr !== undefined) {
-                                    module.debug('XHR produced a server error', status, httpMessage);
-                                    // make sure we have an error to display to console
-                                    if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
-                                        module.error(error.statusMessage + httpMessage, ajaxSettings.url);
-                                    }
-                                    settings.onError.call(context, errorMessage, $module, xhr);
+                            } else if (status === 'error' && xhr !== undefined) {
+                                module.debug('XHR produced a server error', status, httpMessage);
+                                // make sure we have an error to display to console
+                                if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
+                                    module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                                 }
+                                settings.onError.call(context, errorMessage, $module, xhr);
                             }
 
                             if (settings.errorDuration && status !== 'aborted') {
@@ -730,25 +716,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        let runSettings;
-                        runSettings = settings.beforeSend.call($module, settings);
-                        if (runSettings) {
-                            if (runSettings.success !== undefined) {
-                                module.debug('Legacy success callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.success);
-                                runSettings.onSuccess = runSettings.success;
-                            }
-                            if (runSettings.failure !== undefined) {
-                                module.debug('Legacy failure callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.failure);
-                                runSettings.onFailure = runSettings.failure;
-                            }
-                            if (runSettings.complete !== undefined) {
-                                module.debug('Legacy complete callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.complete);
-                                runSettings.onComplete = runSettings.complete;
-                            }
-                        }
+                        let runSettings = settings.beforeSend.call($module, settings);
                         if (runSettings === undefined) {
                             module.error(error.noReturnedValue);
                         }
@@ -1115,7 +1083,6 @@
             error: 'There was an error with your request',
             exitConditions: 'API Request Aborted. Exit conditions met',
             JSONParse: 'JSON could not be parsed during error handling',
-            legacyParameters: 'You are using legacy API success callback names',
             method: 'The method you called is not defined',
             missingAction: 'API action used but no url was defined',
             missingURL: 'No URL specified for api event',
@@ -1127,8 +1094,8 @@
         },
 
         regExp: {
-            required: /{\$*[\da-z]+}/gi,
-            optional: /{\/\$*[\da-z]+}/gi,
+            required: /{[\da-z]+}/gi,
+            optional: /{\/[\da-z]+}/gi,
             validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
             key: /[\w-]+|(?=\[])/gi,
             push: /^$/,

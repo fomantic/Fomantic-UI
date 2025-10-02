@@ -30,12 +30,9 @@ const project = require('../../config/project/release');
 const version = project.version;
 
 module.exports = function (callback) {
-    let index;
     let tasks = [];
 
-    for (index in release.distributions) {
-        let distribution = release.distributions[index];
-
+    for (const distribution of release.distributions) {
         // streams... designed to save time and make coding fun...
         (function (distribution) {
             let distLowerCase = distribution.toLowerCase();
@@ -83,13 +80,7 @@ module.exports = function (callback) {
 
             // spaces out list correctly
             createList = function (files) {
-                let filenames = '';
-                for (let file in files) {
-                    filenames += "'" + files[file] + "'"
-                        + (file === files.length - 1 ? '' : ',\n    ');
-                }
-
-                return filenames;
+                return files.map((f) => "'" + f + "'").join(',\n    ');
             };
 
             tasks.push(function () {

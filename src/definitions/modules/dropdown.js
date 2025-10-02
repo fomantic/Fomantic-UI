@@ -938,9 +938,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        let queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -1132,15 +1132,13 @@
                         },
                         blur: function (event) {
                             pageLostFocus = document.activeElement === this;
-                            if (module.is.searchSelection(true) && !willRefocus) {
-                                if (!itemActivated && !pageLostFocus) {
-                                    if (settings.forceSelection) {
-                                        module.forceSelection();
-                                    } else if (!settings.allowAdditions && !settings.keepSearchTerm && !module.has.menuSearch()) {
-                                        module.remove.searchTerm();
-                                    }
-                                    module.hide();
+                            if (module.is.searchSelection(true) && !willRefocus && !itemActivated && !pageLostFocus) {
+                                if (settings.forceSelection) {
+                                    module.forceSelection();
+                                } else if (!settings.allowAdditions && !settings.keepSearchTerm && !module.has.menuSearch()) {
+                                    module.remove.searchTerm();
                                 }
+                                module.hide();
                             }
                             willRefocus = false;
                         },
@@ -1245,10 +1243,8 @@
                             }
                         },
                         hide: function (event) {
-                            if (module.determine.eventInModule(event, module.hide)) {
-                                if (element.id && $(event.target).attr('for') === element.id) {
-                                    event.preventDefault();
-                                }
+                            if (module.determine.eventInModule(event, module.hide) && element.id && $(event.target).attr('for') === element.id) {
+                                event.preventDefault();
                             }
                         },
                     },
@@ -1458,10 +1454,8 @@
                                     case keys.backspace: {
                                         if (hasActiveLabel) {
                                             module.verbose('Removing active labels');
-                                            if (isLastLabel) {
-                                                if (isSearch && !isFocusedOnSearch) {
-                                                    module.focusSearch();
-                                                }
+                                            if (isLastLabel && isSearch && !isFocusedOnSearch) {
+                                                module.focusSearch();
                                             }
                                             $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
                                             module.remove.activeLabels($activeLabel);
@@ -1564,17 +1558,15 @@
                                     }
 
                                     // right arrow (show submenu)
-                                    if (pressedKey === keys.rightArrow) {
-                                        if (hasSubMenu) {
-                                            module.verbose('Right key pressed, opening sub-menu');
-                                            module.animate.show(false, $subMenu);
-                                            $selectedItem
-                                                .removeClass(className.selected);
-                                            $subMenu
-                                                .find(selector.item).eq(0)
-                                                .addClass(className.selected);
-                                            event.preventDefault();
-                                        }
+                                    if (pressedKey === keys.rightArrow && hasSubMenu) {
+                                        module.verbose('Right key pressed, opening sub-menu');
+                                        module.animate.show(false, $subMenu);
+                                        $selectedItem
+                                            .removeClass(className.selected);
+                                        $subMenu
+                                            .find(selector.item).eq(0)
+                                            .addClass(className.selected);
+                                        event.preventDefault();
                                     }
                                 }
 
@@ -1657,10 +1649,8 @@
                                     event.preventDefault();
                                 }
                             }
-                        } else {
-                            if (!module.has.search()) {
-                                module.set.selectedLetter(String.fromCharCode(pressedKey));
-                            }
+                        } else if (!module.has.search()) {
+                            module.set.selectedLetter(String.fromCodePoint(pressedKey));
                         }
                     },
                 },
@@ -1669,10 +1659,9 @@
                     change: function () {
                         let inputElement = $input[0];
                         if (inputElement) {
-                            let events = document.createEvent('HTMLEvents');
+                            let event = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
-                            events.initEvent('change', true, false);
-                            inputElement.dispatchEvent(events);
+                            inputElement.dispatchEvent(event);
                         }
                     },
                 },
@@ -3992,9 +3981,11 @@
                     let dataKey;
                     let dataKeyEscaped;
                     for (dataKey in dataObject) {
-                        dataKeyEscaped = String(dataKey).replace(/\W/g, '');
-                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey) && !['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
-                            maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
+                        if (Object.prototype.hasOwnProperty.call(dataObject, dataKey)) {
+                            dataKeyEscaped = String(dataKey).replace(/\W/g, '');
+                            if (!['text', 'value'].includes(dataKeyEscaped.toLowerCase())) {
+                                maybeData += ' data-' + dataKeyEscaped + '="' + escape(String(dataObject[dataKey])) + '"';
+                            }
                         }
                     }
                 }

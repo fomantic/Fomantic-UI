@@ -289,7 +289,9 @@
                         let urlString = [];
                         let index;
                         for (index in parameters) {
-                            urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
+                            if (Object.prototype.hasOwnProperty.call(parameters, index)) {
+                                urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
+                            }
                         }
 
                         return urlString.join('&amp;');

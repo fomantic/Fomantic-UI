@@ -267,8 +267,8 @@
                     observer = new MutationObserver(function (mutations) {
                         let collectNodes = function (parent) {
                             let nodes = [];
-                            for (let c = 0, cl = parent.length; c < cl; c++) {
-                                nodes.push(...collectNodes(parent[c].childNodes), parent[c]);
+                            for (const c of parent) {
+                                nodes.push(...collectNodes(c.childNodes), c);
                             }
 
                             return nodes;
@@ -493,7 +493,7 @@
                         }
                         let $target = $(event.target);
                         let isInModal = $target.closest(selector.modal).length > 0;
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        let isInDOM = document.documentElement.contains(event.target);
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
                             module.debug('Dimmer clicked, hiding all modals');
                             if (settings.allowMultiple) {

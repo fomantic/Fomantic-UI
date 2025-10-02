@@ -92,7 +92,7 @@
                             if (ratio > 1) {
                                 break;
                             }
-                            precision = Math.pow(10, precisionPower++);
+                            precision = 10 ** precisionPower++;
                         }
 
                         return precision;
@@ -512,7 +512,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            let isInDOM = $.contains(document.documentElement, element);
+                            let isInDOM = document.documentElement.contains(element);
                             if (!isInDOM) {
                                 clearInterval(module.interval);
                                 animating = false;

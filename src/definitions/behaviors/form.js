@@ -177,16 +177,16 @@
                         + ' click' + eventNamespace
                         + ' keyup' + eventNamespace
                         + ' keydown' + eventNamespace
-                        + ' blur' + eventNamespace, function (e) {
-                        module.determine.isDirty();
+                        + ' blur' + eventNamespace, function (event) {
+                        module.determine.isDirty(event);
                     });
 
-                    $module.on('dirty' + eventNamespace, function (e) {
-                        settings.onDirty.call();
+                    $module.on('dirty' + eventNamespace, function (event) {
+                        settings.onDirty.call(event);
                     });
 
-                    $module.on('clean' + eventNamespace, function (e) {
-                        settings.onClean.call();
+                    $module.on('clean' + eventNamespace, function (event) {
+                        settings.onClean.call(event);
                     });
                     if (attachEventsSelector) {
                         module.attachEvents(attachEventsSelector, attachEventsAction);
@@ -276,7 +276,7 @@
 
                         return allValid;
                     },
-                    isDirty: function (e) {
+                    isDirty: function (event) {
                         let formIsDirty = false;
 
                         $field.each(function (index, el) {
@@ -541,26 +541,26 @@
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt && ruleName !== 'size') {
                                 suffixPrompt = parts[0] === ''
-                                    ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
+                                    ? settings.prompt.maxValue.replaceAll('{ruleValue}', '{max}')
                                     : (parts[1] === ''
-                                        ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
+                                        ? settings.prompt.minValue.replaceAll('{ruleValue}', '{min}')
                                         : settings.prompt.range);
-                                prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
+                                prompt += suffixPrompt.replaceAll('{name}', ' ' + settings.text.and);
                             }
-                            prompt = prompt.replace(/{min}/g, parts[0]);
-                            prompt = prompt.replace(/{max}/g, parts[1]);
+                            prompt = prompt.replaceAll('{min}', parts[0]);
+                            prompt = prompt.replaceAll('{max}', parts[1]);
                         }
                         if (ancillary && ['match', 'different'].includes(ruleName)) {
-                            prompt = prompt.replace(/{ruleValue}/g, module.get.fieldLabel(ancillary, true));
+                            prompt = prompt.replaceAll('{ruleValue}', module.get.fieldLabel(ancillary, true));
                         }
                         if (requiresValue) {
-                            prompt = prompt.replace(/{value}/g, $field.val());
+                            prompt = prompt.replaceAll('{value}', $field.val());
                         }
                         if (requiresName) {
-                            prompt = prompt.replace(/{name}/g, module.get.fieldLabel($field));
+                            prompt = prompt.replaceAll('{name}', module.get.fieldLabel($field));
                         }
-                        prompt = prompt.replace(/{identifier}/g, field.identifier);
-                        prompt = prompt.replace(/{ruleValue}/g, ancillary);
+                        prompt = prompt.replaceAll('{identifier}', field.identifier);
+                        prompt = prompt.replaceAll('{ruleValue}', ancillary);
                         if (!rule.prompt) {
                             module.verbose('Using default validation prompt for type', prompt, ruleName);
                         }
@@ -702,74 +702,73 @@
                                     } else {
                                         values[name].push(value);
                                     }
-                                } else {
-                                    if (isRadio) {
-                                        if (values[name] === undefined || values[name] === false) {
-                                            values[name] = isChecked
-                                                ? value || true
-                                                : false;
-                                        }
-                                    } else if (isCheckbox) {
-                                        values[name] = isChecked ? value || true : false;
-                                    } else if (isCalendar) {
-                                        let date = $calendar.calendar('get date');
+                                } else if (isRadio) {
+                                    if (values[name] === undefined || values[name] === false) {
+                                        values[name] = isChecked
+                                            ? value || true
+                                            : false;
+                                    }
+                                } else if (isCheckbox) {
+                                    values[name] = isChecked ? value || true : false;
+                                } else if (isCalendar) {
+                                    let date = $calendar.calendar('get date');
 
-                                        if (date !== null) {
-                                            switch (settings.dateHandling) {
-                                                case 'date': {
-                                                    values[name] = date;
+                                    if (date !== null) {
+                                        switch (settings.dateHandling) {
+                                            case 'date': {
+                                                values[name] = date;
 
-                                                    break;
-                                                }
-                                                case 'input': {
-                                                    values[name] = $calendar.calendar('get input date');
-
-                                                    break;
-                                                }
-                                                case 'formatter': {
-                                                    let type = $calendar.calendar('setting', 'type');
-
-                                                    switch (type) {
-                                                        case 'date': {
-                                                            values[name] = settings.formatter.date(date);
-
-                                                            break;
-                                                        }
-                                                        case 'datetime': {
-                                                            values[name] = settings.formatter.datetime(date);
-
-                                                            break;
-                                                        }
-                                                        case 'time': {
-                                                            values[name] = settings.formatter.time(date);
-
-                                                            break;
-                                                        }
-                                                        case 'month': {
-                                                            values[name] = settings.formatter.month(date);
-
-                                                            break;
-                                                        }
-                                                        case 'year': {
-                                                            values[name] = settings.formatter.year(date);
-
-                                                            break;
-                                                        }
-                                                        default: {
-                                                            module.debug('Wrong calendar mode', $calendar, type);
-                                                            values[name] = '';
-                                                        }
-                                                    }
-
-                                                    break;
-                                                }
+                                                break;
                                             }
-                                        } else {
-                                            values[name] = '';
+                                            case 'input': {
+                                                values[name] = $calendar.calendar('get input date');
+
+                                                break;
+                                            }
+                                            case 'formatter': {
+                                                let type = $calendar.calendar('setting', 'type');
+
+                                                switch (type) {
+                                                    case 'date': {
+                                                        values[name] = settings.formatter.date(date);
+
+                                                        break;
+                                                    }
+                                                    case 'datetime': {
+                                                        values[name] = settings.formatter.datetime(date);
+
+                                                        break;
+                                                    }
+                                                    case 'time': {
+                                                        values[name] = settings.formatter.time(date);
+
+                                                        break;
+                                                    }
+                                                    case 'month': {
+                                                        values[name] = settings.formatter.month(date);
+
+                                                        break;
+                                                    }
+                                                    case 'year': {
+                                                        values[name] = settings.formatter.year(date);
+
+                                                        break;
+                                                    }
+                                                    default: {
+                                                        module.debug('Wrong calendar mode', $calendar, type);
+                                                        values[name] = '';
+                                                    }
+                                                }
+
+                                                break;
+                                            }
+                                            // no default
                                         }
                                     } else {
-                                        values[name] = value;
+                                        values[name] = '';
                                     }
+                                } else {
+                                    values[name] = value;
                                 }
                             }
                         });
@@ -930,8 +929,8 @@
                                         if (tempErrors !== false) {
                                             $.each(tempErrors, function (index, tempError) {
                                                 customErrors.push(settings.prompt.addErrors
-                                                    .replace(/{name}/g, module.get.fieldLabel(id))
-                                                    .replace(/{error}/g, tempError));
+                                                    .replaceAll('{name}', module.get.fieldLabel(id))
+                                                    .replaceAll('{error}', tempError));
                                             });
                                         }
                                     }

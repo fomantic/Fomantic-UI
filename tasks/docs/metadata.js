@@ -62,7 +62,7 @@ function parser(file, callback) {
             return callback(null, file);
         }
 
-        filename = filename.slice(position + key.length + 1, filename.length).replaceAll(path.win32.sep, path.posix.sep);
+        filename = filename.slice(position + key.length + 1).replaceAll(path.win32.sep, path.posix.sep);
 
         let lineCount = lines.length;
         let active = false;
@@ -87,14 +87,13 @@ function parser(file, callback) {
                 if (startsWith(line, '---')) {
                     active = true;
                 }
-
-                continue;
+            } else {
+                // End of metadata block, stop parsing.
+                if (startsWith(line, '---')) {
+                    break;
+                }
+                yaml.push(line);
             }
-            // End of metadata block, stop parsing.
-            if (startsWith(line, '---')) {
-                break;
-            }
-            yaml.push(line);
         }
 
         // Parse yaml.
