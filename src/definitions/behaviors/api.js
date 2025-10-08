@@ -716,7 +716,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        let runSettings = settings.beforeSend.call($module, settings);
+                        let runSettings = settings.beforeSend.call(element, settings);
                         if (runSettings === undefined) {
                             module.error(error.noReturnedValue);
                         }
