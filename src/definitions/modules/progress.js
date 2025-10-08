@@ -240,11 +240,7 @@
                 },
 
                 get: {
-                    text: function (templateText, index) {
-                        if (!index) {
-                            index = 0;
-                        }
-
+                    text: function (templateText = '', index = 0) {
                         let value = module.get.value(index);
                         let total = module.get.total();
                         let percent = animating
@@ -253,7 +249,6 @@
                         let left = total !== false
                             ? Math.max(0, total - value)
                             : 100 - percent;
-                        templateText = templateText || '';
                         templateText = templateText
                             .replace('{value}', value)
                             .replace('{total}', total || 0)
@@ -442,8 +437,7 @@
                         $module
                             .attr('data-percent', percents);
                     },
-                    duration: function (duration) {
-                        duration = duration || settings.duration;
+                    duration: function (duration = settings.duration) {
                         duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
@@ -570,8 +564,7 @@
                             }
                         });
                     },
-                    active: function (text) {
-                        text = text || settings.text.active;
+                    active: function (text = settings.text.active) {
                         module.debug('Setting active state');
                         if (settings.showActivity && !module.is.active()) {
                             $module.addClass(className.active);
@@ -587,8 +580,7 @@
                             settings.onActive.call(element, module.value, module.total);
                         });
                     },
-                    success: function (text, keepState) {
-                        text = text || settings.text.success || settings.text.active;
+                    success: function (text = settings.text.success || settings.text.active, keepState = false) {
                         module.debug('Setting success state');
                         $module.addClass(className.success);
                         module.remove.active();
@@ -606,8 +598,7 @@
                             settings.onSuccess.call(element, module.total);
                         });
                     },
-                    warning: function (text, keepState) {
-                        text = text || settings.text.warning;
+                    warning: function (text = settings.text.warning, keepState = false) {
                         module.debug('Setting warning state');
                         $module.addClass(className.warning);
                         module.remove.active();
@@ -622,8 +613,7 @@
                             settings.onWarning.call(element, module.value, module.total);
                         });
                     },
-                    error: function (text, keepState) {
-                        text = text || settings.text.error;
+                    error: function (text = settings.text.error, keepState = false) {
                         module.debug('Setting error state');
                         $module.addClass(className.error);
                         module.remove.active();
@@ -782,13 +772,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

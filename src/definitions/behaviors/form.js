@@ -1252,10 +1252,7 @@
                     },
 
                     // takes a validation object and returns whether field passes validation
-                    field: function (field, fieldName, showErrors) {
-                        showErrors = showErrors !== undefined
-                            ? showErrors
-                            : true;
+                    field: function (field, fieldName, showErrors = true) {
                         if (typeof field === 'string') {
                             module.verbose('Validating field', field);
                             fieldName = field;
@@ -1479,13 +1476,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

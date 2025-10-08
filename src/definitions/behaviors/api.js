@@ -331,13 +331,12 @@
                 },
 
                 add: {
-                    urlData: function (url, urlData) {
+                    urlData: function (url, urlData = settings.urlData) {
                         let requiredVariables;
                         let optionalVariables;
                         if (url) {
                             requiredVariables = url.match(regExp.required);
                             optionalVariables = url.match(regExp.optional);
-                            urlData = urlData || settings.urlData;
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
@@ -392,11 +391,10 @@
 
                         return url;
                     },
-                    formData: function (data) {
+                    formData: function (data = originalData || settings.data) {
                         let formData = {};
                         let hasOtherData;
                         let useFormDataApi = settings.serializeForm === 'formdata';
-                        data = data || originalData || settings.data;
                         hasOtherData = $.isPlainObject(data);
 
                         if (useFormDataApi) {
@@ -776,8 +774,7 @@
 
                         return settings.on;
                     },
-                    templatedURL: function (action) {
-                        action = action || settings.action || $module.data(metadata.action) || false;
+                    templatedURL: function (action = settings.action || $module.data(metadata.action) || false) {
                         url = settings.url || $module.data(metadata.url) || false;
                         if (url) {
                             module.debug('Using specified url', url);
@@ -903,13 +900,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
