@@ -721,10 +721,9 @@
                     }
                 },
 
-                execute: function (callback, callbackName) {
+                execute: function (callback = false, callbackName = '') {
                     let calculations = module.get.elementCalculations();
                     let screen = module.get.screenCalculations();
-                    callback = callback || false;
                     if (callback) {
                         if (settings.continuous) {
                             module.debug('Callback being called continuously', callbackName, calculations);
@@ -1030,13 +1029,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

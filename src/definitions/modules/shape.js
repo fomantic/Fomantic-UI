@@ -177,8 +177,7 @@
                         module.verbose('Next side set to', $nextSide);
                     },
 
-                    duration: function (duration) {
-                        duration = duration || settings.duration;
+                    duration: function (duration = settings.duration) {
                         duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
@@ -586,13 +585,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

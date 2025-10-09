@@ -241,13 +241,11 @@
                             ? cache[cacheKey]
                             : false;
                     },
-                    add: function (cacheKey, content) {
-                        cacheKey = cacheKey || activeTabPath;
+                    add: function (cacheKey = activeTabPath, content = '') {
                         module.debug('Adding cached content for', cacheKey);
                         cache[cacheKey] = content;
                     },
-                    remove: function (cacheKey) {
-                        cacheKey = cacheKey || activeTabPath;
+                    remove: function (cacheKey = activeTabPath) {
                         module.debug('Removing cached content for', cacheKey);
                         delete cache[cacheKey];
                     },
@@ -422,7 +420,7 @@
 
                 fetch: {
 
-                    content: function (tabPath, fullTabPath) {
+                    content: function (tabPath, fullTabPath = tabPath) {
                         let $tab = module.get.tabElement(tabPath);
                         let apiSettings = {
                             dataType: 'html',
@@ -464,7 +462,6 @@
                         let requestSettings;
                         let cachedContent;
 
-                        fullTabPath = fullTabPath || tabPath;
                         cachedContent = module.cache.read(fullTabPath);
 
                         if (settings.cache && cachedContent) {
@@ -582,17 +579,14 @@
 
                         return tabPath;
                     },
-                    navElement: function (tabPath) {
-                        tabPath = tabPath || activeTabPath;
-
+                    navElement: function (tabPath = activeTabPath) {
                         return $allModules.filter('[data-' + metadata.tab + '="' + CSS.escape(tabPath) + '"]');
                     },
-                    tabElement: function (tabPath) {
+                    tabElement: function (tabPath = activeTabPath) {
                         let $fullPathTab;
                         let $simplePathTab;
                         let tabPathArray;
                         let lastTab;
-                        tabPath = tabPath || activeTabPath;
                         tabPathArray = module.utilities.pathToArray(tabPath);
                         lastTab = module.utilities.last(tabPathArray);
                         $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + CSS.escape(tabPath) + '"]');
@@ -743,13 +737,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

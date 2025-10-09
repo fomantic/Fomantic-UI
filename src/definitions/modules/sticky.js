@@ -287,18 +287,15 @@
                 },
 
                 get: {
-                    direction: function (scroll) {
+                    direction: function (scroll = $scroll.scrollTop()) {
                         let direction = 'down';
-                        scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
                             direction = 'up';
                         }
 
                         return direction;
                     },
-                    scrollChange: function (scroll) {
-                        scroll = scroll || $scroll.scrollTop();
-
+                    scrollChange: function (scroll = $scroll.scrollTop()) {
                         return module.lastScroll
                             ? scroll - module.lastScroll
                             : 0;
@@ -313,8 +310,7 @@
                             : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
                     },
 
-                    elementScroll: function (scroll) {
-                        scroll = scroll || $scroll.scrollTop();
+                    elementScroll: function (scroll = $scroll.scrollTop()) {
                         let element = module.cache.element;
                         let scrollContext = module.cache.scrollContext;
                         let delta = module.get.scrollChange(scroll);
@@ -432,8 +428,7 @@
                     },
                 },
 
-                stick: function (scrollPosition) {
-                    let cachedPosition = scrollPosition || $scroll.scrollTop();
+                stick: function (scrollPosition = $scroll.scrollTop()) {
                     let cache = module.cache;
                     let fits = cache.fits;
                     let sameHeight = cache.sameHeight;
@@ -444,8 +439,8 @@
                         ? settings.bottomOffset
                         : settings.offset;
                     let scroll = {
-                        top: cachedPosition + offset,
-                        bottom: cachedPosition + offset + scrollContext.height,
+                        top: scrollPosition + offset,
+                        bottom: scrollPosition + offset + scrollContext.height,
                     };
                     let elementScroll = fits
                         ? 0
@@ -723,13 +718,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

@@ -307,8 +307,7 @@
                     }
                 },
 
-                show: function (callback) {
-                    callback = callback || function () {};
+                show: function (callback = function () {}) {
                     module.debug('Showing pop-up', settings.transition);
                     if (module.is.hidden() && !(module.is.active() && module.is.dropdown())) {
                         if (!module.exists()) {
@@ -332,8 +331,7 @@
                     }
                 },
 
-                hide: function (callback) {
-                    callback = callback || function () {};
+                hide: function (callback = function () {}) {
                     if (module.is.visible() || module.is.animating()) {
                         if (settings.onHide.call($popup, element) === false) {
                             module.debug('onHide callback returned false, cancelling popup animation');
@@ -592,11 +590,10 @@
 
                         return false;
                     },
-                    distanceFromBoundary: function (offset, calculations) {
+                    distanceFromBoundary: function (offset, calculations = module.get.calculations()) {
                         let distanceFromBoundary = {};
                         let popup;
                         let boundary;
-                        calculations = calculations || module.get.calculations();
 
                         // shorthand
                         popup = calculations.popup;
@@ -708,7 +705,7 @@
                 },
 
                 set: {
-                    position: function (position, calculations) {
+                    position: function (position = $module.data(metadata.position) || settings.position, calculations = module.get.calculations()) {
                         // exit conditions
                         if ($target.length === 0 || $popup.length === 0) {
                             module.error(error.notFound);
@@ -723,9 +720,6 @@
                         let positioning;
                         let popupOffset;
                         let distanceFromBoundary;
-
-                        calculations = calculations || module.get.calculations();
-                        position = position || $module.data(metadata.position) || settings.position;
 
                         offset = $module.data(metadata.offset) || settings.offset;
                         distanceAway = settings.distanceAway;
@@ -918,8 +912,7 @@
                         return true;
                     },
 
-                    fluidWidth: function (calculations) {
-                        calculations = calculations || module.get.calculations();
+                    fluidWidth: function (calculations = module.get.calculations()) {
                         module.debug('Automatically setting element width to parent width', calculations.parent.width);
                         $popup.css('width', calculations.container.width);
                     },
@@ -932,8 +925,7 @@
                         $popup.addClass(className.invisible);
                     },
 
-                    variation: function (variation) {
-                        variation = variation || module.get.variation();
+                    variation: function (variation = module.get.variation()) {
                         if (variation && module.has.popup()) {
                             module.verbose('Adding variation to popup', variation);
                             $popup.addClass(variation);
@@ -952,8 +944,7 @@
                     invisible: function () {
                         $popup.removeClass(className.invisible);
                     },
-                    variation: function (variation) {
-                        variation = variation || module.get.variation();
+                    variation: function (variation = module.get.variation()) {
                         if (variation) {
                             module.verbose('Removing variation', variation);
                             $popup.removeClass(variation);
@@ -1213,13 +1204,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
