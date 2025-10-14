@@ -47,7 +47,6 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 - Fix linting issues
 - Adjust the types if necessary
 - For new features, please also create a PR explaining your change [in the docs repo](https://github.com/fomantic/Fomantic-UI-Docs)
-- When you commit don't include your dist files, this can cause merge conflicts and also adds unnecessary changes to the PR.
 
 #### Setup your environment
 These few steps are the easiest way to setup your dev environment.
