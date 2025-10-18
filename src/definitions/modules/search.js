@@ -206,9 +206,7 @@
                             module.debug('Search result selected');
                             let $result = $(this);
                             let $title = $result.find(selector.title).eq(0);
-                            let $link = $result.is('a[href]')
-                                ? $result
-                                : $result.find('a[href]').eq(0);
+                            let $link = $result.is('a[href]') ? $result : $();
                             let href = $link.attr('href') || false;
                             let target = $link.attr('target') || false;
                             // title is used for result lookup
@@ -1338,6 +1336,8 @@
             results: 'results', // array of results (standard)
             title: 'title', // result title
             url: 'url', // result url
+            id: 'id', // HTML 'id' attribute
+            class: 'class', // Class specific to each result to add to the HTML 'class' attribute.
             action: 'action', // "view more" object name
             actionText: 'text', // "view more" text
             actionURL: 'url', // "view more" url
@@ -1408,8 +1408,17 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-                                    ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
-                                    : '<a class="result">';
+                                    ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
+                                    : '<div ';
+
+                                html += result[fields.id] !== undefined
+                                    ? ' id="' + result[fields.id].replaceAll('"', '') + '" '
+                                    : '';
+
+                                html += result[fields.class] !== undefined
+                                    ? ' class="result ' + result[fields.class].replaceAll('"', '') + '">'
+                                    : ' class="result">';
+
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
@@ -1428,7 +1437,9 @@
                                 }
                                 html += ''
                                     + '</div>';
-                                html += '</a>';
+                                html += result[fields.url]
+                                    ? '</a>'
+                                    : '</div>';
                             });
                             html += '</div>';
                             html += ''
@@ -1460,8 +1471,17 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-                            ? '<a class="result" href="' + result[fields.url].replaceAll('"', '') + '">'
-                            : '<a class="result">';
+                            ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
+                            : '<div ';
+
+                        html += result[fields.id] !== undefined
+                            ? 'id="' + result[fields.id].replaceAll('"', '') + '" '
+                            : '';
+
+                        html += result[fields.class] !== undefined
+                            ? 'class="result ' + result[fields.class].replaceAll('"', '') + '">'
+                            : 'class="result">';
+
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
@@ -1480,7 +1500,9 @@
                         }
                         html += ''
                             + '</div>';
-                        html += '</a>';
+                        html += result[fields.url]
+                            ? '</a>'
+                            : '</div>';
                     });
                     if (response[fields.action]) {
                         html += fields.actionURL === false
