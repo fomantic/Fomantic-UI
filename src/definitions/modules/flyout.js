@@ -659,11 +659,10 @@
                     return module.othersVisible() || module.othersAnimating();
                 },
 
-                hideOthers: function (callback) {
+                hideOthers: function (callback = function () {}) {
                     let $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
                     let flyoutCount = $otherFlyouts.length;
                     let callbackCount = 0;
-                    callback = callback || function () {};
                     $otherFlyouts
                         .flyout('hide', function () {
                             callbackCount++;
@@ -836,8 +835,7 @@
                     closing: function () {
                         $pusher.addClass(className.closing);
                     },
-                    direction: function (direction) {
-                        direction = direction || module.get.direction();
+                    direction: function (direction = module.get.direction()) {
                         $module.addClass(className[direction]);
                     },
                     visible: function () {
@@ -879,8 +877,7 @@
                     closing: function () {
                         $pusher.removeClass(className.closing);
                     },
-                    direction: function (direction) {
-                        direction = direction || module.get.direction();
+                    direction: function (direction = module.get.direction()) {
                         $module.removeClass(className[direction]);
                     },
                     visible: function () {
@@ -1123,13 +1120,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = element || context;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

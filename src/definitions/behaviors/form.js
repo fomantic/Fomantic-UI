@@ -182,11 +182,11 @@
                     });
 
                     $module.on('dirty' + eventNamespace, function (event) {
-                        settings.onDirty.call(event);
+                        settings.onDirty.call(element, event);
                     });
 
                     $module.on('clean' + eventNamespace, function (event) {
-                        settings.onClean.call(event);
+                        settings.onClean.call(element, event);
                     });
                     if (attachEventsSelector) {
                         module.attachEvents(attachEventsSelector, attachEventsAction);
@@ -510,13 +510,6 @@
                                     fullFields[name].rules.push({ type: rule });
                                 });
                             }
-
-                            $.each(fullFields[name].rules, function (index, rule) {
-                                let ruleName = module.get.ruleName(rule);
-                                if (ruleName === 'empty') {
-                                    module.warn('*** DEPRECATED *** : Rule "empty" for field "' + name + '" will be removed in a future version. -> Use "notEmpty" rule instead.');
-                                }
-                            });
                         });
 
                         return fullFields;
@@ -1168,7 +1161,7 @@
                             let validation = module.get.validation($el);
                             let hasNotEmptyRule = validation
                                 ? $.grep(validation.rules, function (rule) {
-                                    return ['notEmpty', 'checked', 'empty'].includes(rule.type);
+                                    return ['notEmpty', 'checked'].includes(rule.type);
                                 }).length > 0
                                 : false;
                             let identifier = module.get.identifier(validation, $el);
@@ -1252,10 +1245,7 @@
                     },
 
                     // takes a validation object and returns whether field passes validation
-                    field: function (field, fieldName, showErrors) {
-                        showErrors = showErrors !== undefined
-                            ? showErrors
-                            : true;
+                    field: function (field, fieldName, showErrors = true) {
                         if (typeof field === 'string') {
                             module.verbose('Validating field', field);
                             fieldName = field;
@@ -1479,13 +1469,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
@@ -1606,7 +1594,6 @@
             range: '{name} must be in a range from {min} to {max}',
             maxValue: '{name} must have a maximum value of {ruleValue}',
             minValue: '{name} must have a minimum value of {ruleValue}',
-            empty: '{name} must have a value',
             notEmpty: '{name} must have a value',
             checked: '{name} must be checked',
             email: '{name} must be a valid e-mail',

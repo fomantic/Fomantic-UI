@@ -74,9 +74,8 @@
             },
 
             enabled: {
-                modules: function (modules) {
+                modules: function (modules = settings.modules) {
                     let enabledModules = [];
-                    modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (module.moduleExists(name)) {
                             enabledModules.push(name);
@@ -88,9 +87,8 @@
             },
 
             disabled: {
-                modules: function (modules) {
+                modules: function (modules = settings.modules) {
                     let disabledModules = [];
-                    modules = modules || settings.modules;
                     $.each(modules, function (index, name) {
                         if (!module.moduleExists(name)) {
                             disabledModules.push(name);
@@ -102,15 +100,12 @@
             },
 
             change: {
-                setting: function (setting, value, modules, modifyExisting) {
+                setting: function (setting, value, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? (modules === 'all'
                             ? settings.modules
                             : [modules])
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
                         let namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
@@ -129,13 +124,10 @@
                         }
                     });
                 },
-                settings: function (newSettings, modules, modifyExisting) {
+                settings: function (newSettings, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
                         let $existingModules;
                         if (module.moduleExists(name)) {
@@ -157,13 +149,11 @@
                 console: function () {
                     module.console(true);
                 },
-                debug: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                debug: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Enabling debug for modules', modules);
                     module.change.setting('debug', true, modules, modifyExisting);
                 },
-                verbose: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                verbose: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Enabling verbose debug for modules', modules);
                     module.change.setting('verbose', true, modules, modifyExisting);
                 },
@@ -172,13 +162,11 @@
                 console: function () {
                     module.console(false);
                 },
-                debug: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                debug: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Disabling debug for modules', modules);
                     module.change.setting('debug', false, modules, modifyExisting);
                 },
-                verbose: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                verbose: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Disabling verbose debug for modules', modules);
                     module.change.setting('verbose', false, modules, modifyExisting);
                 },
@@ -299,13 +287,11 @@
                     performance = [];
                 },
             },
-            invoke: function (query, passedArguments, context) {
+            invoke: function (query, passedArguments = queryArguments, context = element) {
                 let object = instance;
                 let maxDepth;
                 let found;
                 let response;
-                passedArguments = passedArguments || queryArguments;
-                context = context || element;
                 if (typeof query === 'string' && object !== undefined) {
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;

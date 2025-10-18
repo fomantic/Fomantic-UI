@@ -125,24 +125,22 @@
                         .removeData(moduleNamespace);
                 },
 
-                show: function (callback) {
+                show: function (callback = function () {}) {
                     if (settings.onShow.call($toastBox, element) === false) {
                         module.debug('onShow callback returned false, cancelling toast animation');
 
                         return;
                     }
-                    callback = callback || function () {};
                     module.debug('Showing toast');
                     module.animate.show(callback);
                 },
 
-                close: function (callback) {
+                close: function (callback = function () {}) {
                     if (settings.onHide.call($toastBox, element) === false) {
                         module.debug('onHide callback returned false, cancelling toast animation');
 
                         return;
                     }
-                    callback = callback || function () {};
                     module.debug('Closing toast');
                     module.remove.visible();
                     module.unbind.events();
@@ -690,13 +688,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

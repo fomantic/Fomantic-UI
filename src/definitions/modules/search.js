@@ -491,8 +491,7 @@
                         $prompt
                             .val(value);
                     },
-                    type: function (type) {
-                        type = type || settings.type;
+                    type: function (type = settings.type) {
                         if (className[type]) {
                             $module.addClass(className[type]);
                         }
@@ -517,13 +516,12 @@
                     },
                 },
 
-                query: function (callback) {
+                query: function (callback = function () {}) {
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
                     let searchTerm = module.get.value();
                     let cache = module.read.cache(searchTerm);
-                    callback = callback || function () {};
                     if (module.has.minimumCharacters()) {
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
@@ -586,7 +584,7 @@
                         $module
                             .api('query');
                     },
-                    object: function (searchTerm, source, searchFields) {
+                    object: function (searchTerm, source = settings.source, searchFields = settings.searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
                         let results = [];
                         let exactResults = [];
@@ -603,10 +601,6 @@
                                 array.push(result);
                             }
                         };
-                        source = source || settings.source;
-                        searchFields = searchFields !== undefined
-                            ? searchFields
-                            : settings.searchFields;
 
                         // search fields should be an array to loop correctly
                         if (!Array.isArray(searchFields)) {
@@ -1052,8 +1046,7 @@
                     return html;
                 },
 
-                displayMessage: function (text, type, header) {
-                    type = type || 'standard';
+                displayMessage: function (text, type = 'standard', header = false) {
                     module.debug('Displaying message', text, type, header);
                     module.addResults(settings.templates.message(text, type, header));
 
@@ -1146,13 +1139,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
