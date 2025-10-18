@@ -207,7 +207,7 @@
                         }
 
                         if (!module.should.ignoreCallbacks() && checkIndex !== false) {
-                            if (settings.beforeUnchecked.apply(input) === false) {
+                            if (settings.beforeUnchecked.call(input) === false) {
                                 module.verbose('Option not allowed to be unchecked, cancelling key navigation');
 
                                 return false;
@@ -215,7 +215,7 @@
                             let nextOption = $(r[checkIndex]);
                             let nextInput = nextOption.children(selector.input);
                             let disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
-                            if (disallowOption || settings.beforeChecked.apply(nextInput[0]) === false) {
+                            if (disallowOption || settings.beforeChecked.call(nextInput[0]) === false) {
                                 module.verbose('Next option should not allow check, cancelling key navigation');
 
                                 return false;
@@ -381,7 +381,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeChecked.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeChecked.call(input) === false) {
                             module.debug('Should not allow check, beforeChecked cancelled');
 
                             return false;
@@ -395,7 +395,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeUnchecked.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeUnchecked.call(input) === false) {
                             module.debug('Should not allow uncheck, beforeUnchecked cancelled');
 
                             return false;
@@ -409,7 +409,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeIndeterminate.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeIndeterminate.call(input) === false) {
                             module.debug('Should not allow indeterminate, beforeIndeterminate cancelled');
 
                             return false;
@@ -423,7 +423,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeDeterminate.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeDeterminate.call(input) === false) {
                             module.debug('Should not allow determinate, beforeDeterminate cancelled');
 
                             return false;

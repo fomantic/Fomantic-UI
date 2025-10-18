@@ -609,7 +609,7 @@
                                         duration: settings.transition.showDuration || settings.duration,
                                         useFailSafe: true,
                                         onComplete: function () {
-                                            settings.onVisible.apply(element);
+                                            settings.onVisible.call(element);
                                             if (settings.keyboardShortcuts) {
                                                 module.add.keyboardShortcuts();
                                             }

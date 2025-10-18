@@ -179,7 +179,7 @@
                         .one('animationend.queue' + eventNamespace, function () {
                             module.queuing = false;
                             module.repaint();
-                            module.animate.apply(this, settings);
+                            module.animate.call(this, settings);
                         });
                 },
 

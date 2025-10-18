@@ -1207,7 +1207,7 @@
                                 $activeLabels.removeClass(className.active);
                                 $label.addClass(className.active);
                             }
-                            settings.onLabelSelect.apply(this, $labels.filter('.' + className.active));
+                            settings.onLabelSelect.call(this, $labels.filter('.' + className.active));
                             event.stopPropagation();
                         },
                     },

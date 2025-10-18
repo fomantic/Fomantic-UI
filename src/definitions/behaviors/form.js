@@ -182,11 +182,11 @@
                     });
 
                     $module.on('dirty' + eventNamespace, function (event) {
-                        settings.onDirty.call(event);
+                        settings.onDirty.call(element, event);
                     });
 
                     $module.on('clean' + eventNamespace, function (event) {
-                        settings.onClean.call(event);
+                        settings.onClean.call(element, event);
                     });
                     if (attachEventsSelector) {
                         module.attachEvents(attachEventsSelector, attachEventsAction);
