@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v5
-    - uses: actions/setup-node@v5
+    - uses: actions/setup-node@v6
     - name: Install dependencies
       run: yarn
     - name: Lint JS and LESS files
@@ -30,7 +30,7 @@ jobs:
     steps:
     - uses: actions/checkout@v5
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v5
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
@@ -48,11 +48,11 @@ jobs:
       security-events: write
     steps:
     - uses: actions/checkout@v5
-    - uses: github/codeql-action/init@v3
+    - uses: github/codeql-action/init@v4
       with:
         languages: 'javascript'
         config-file: ./.github/codeql/codeql-config.yml
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+      uses: github/codeql-action/autobuild@v4
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v4

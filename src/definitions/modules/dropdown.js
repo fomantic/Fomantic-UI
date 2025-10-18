@@ -219,11 +219,10 @@
                         elementNamespace = '.' + id;
                         module.verbose('Creating unique id for element', id);
                     },
-                    userChoice: function (values) {
+                    userChoice: function (values = module.get.userValues()) {
                         let $userChoices;
                         let $userChoice;
                         let html;
-                        values = values || module.get.userValues();
                         if (!values) {
                             return false;
                         }
@@ -1913,8 +1912,7 @@
                                     : $choice.text() && $choice.text().trim());
                         }
                     },
-                    choiceValue: function ($choice, choiceText) {
-                        choiceText = choiceText || module.get.choiceText($choice);
+                    choiceValue: function ($choice, choiceText = module.get.choiceText($choice)) {
                         if (!$choice) {
                             return false;
                         }
@@ -2333,8 +2331,7 @@
                     loading: function () {
                         $module.addClass(className.loading);
                     },
-                    placeholderText: function (text) {
-                        text = text || module.get.placeholderText();
+                    placeholderText: function (text = module.get.placeholderText()) {
                         module.debug('Setting placeholder text', text);
                         module.set.text(text);
                         $text.addClass(className.placeholder);
@@ -2786,11 +2783,10 @@
                         }
                         module.refreshItems();
                     },
-                    variables: function (message, term) {
+                    variables: function (message = '', term = module.get.query()) {
                         let hasCount = message.search('{count}') !== -1;
                         let hasMaxCount = message.search('{maxCount}') !== -1;
                         let hasTerm = message.search('{term}') !== -1;
-                        let query;
                         module.verbose('Adding templated variables to message', message);
                         if (hasCount) {
                             message = message.replace('{count}', module.get.selectionCount());
@@ -2799,8 +2795,7 @@
                             message = message.replace('{maxCount}', settings.maxSelections);
                         }
                         if (hasTerm) {
-                            query = term || module.get.query();
-                            message = message.replace('{term}', query);
+                            message = message.replace('{term}', term);
                         }
 
                         return message;
@@ -3634,13 +3629,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

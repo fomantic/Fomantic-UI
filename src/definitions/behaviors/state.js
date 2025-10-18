@@ -336,12 +336,9 @@
                 },
 
                 flash: {
-                    text: function (text, duration, callback) {
+                    text: function (text = settings.text.flash, duration = settings.flashDuration, callback = function () {}) {
                         let previousText = module.get.text();
                         module.debug('Flashing text message', text, duration);
-                        text = text || settings.text.flash;
-                        duration = duration || settings.flashDuration;
-                        callback = callback || function () {};
                         module.update.text(text);
                         setTimeout(function () {
                             module.update.text(previousText);
@@ -476,13 +473,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

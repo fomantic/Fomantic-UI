@@ -282,8 +282,7 @@
                             module.start.animation(animationClass);
                         }
                     },
-                    duration: function (animationName, duration) {
-                        duration = duration || settings.duration;
+                    duration: function (duration = settings.duration) {
                         duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
@@ -295,8 +294,7 @@
                                 });
                         }
                     },
-                    direction: function (direction) {
-                        direction = direction || module.get.direction();
+                    direction: function (direction = module.get.direction()) {
                         if (direction === className.inward) {
                             module.set.inward();
                         } else {
@@ -333,8 +331,7 @@
                 },
 
                 start: {
-                    animation: function (animationClass) {
-                        animationClass = animationClass || module.get.animationClass();
+                    animation: function (animationClass = module.get.animationClass()) {
                         module.debug('Starting tween', animationClass);
                         $module
                             .addClass(animationClass)
@@ -475,8 +472,7 @@
                             animation: animation,
                         });
                     },
-                    animationClass: function (animation) {
-                        let animationClass = animation || settings.animation;
+                    animationClass: function (animationClass = settings.animation) {
                         let directionClass = module.can.transition() && !module.has.direction()
                             ? module.get.direction() + ' '
                             : '';
@@ -501,9 +497,8 @@
                             ? className.inward
                             : className.outward;
                     },
-                    animationDirection: function (animation) {
+                    animationDirection: function (animation = settings.animation) {
                         let direction;
-                        animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
                             // search animation name for out/in class
@@ -522,8 +517,7 @@
 
                         return false;
                     },
-                    duration: function (duration) {
-                        duration = duration || settings.duration;
+                    duration: function (duration = settings.duration) {
                         if (duration === false) {
                             duration = $module.css('animation-duration') || 0;
                         }
@@ -553,9 +547,7 @@
 
                         return $module.data(metadata.displayType);
                     },
-                    userStyle: function (style) {
-                        style = style || $module.attr('style') || '';
-
+                    userStyle: function (style = $module.attr('style') || '') {
                         return style.replace(/display.*?;/, '');
                     },
                     transitionExists: function (animation) {
@@ -642,8 +634,7 @@
                     looping: function () {
                         return $module.hasClass(className.looping);
                     },
-                    occurring: function (animation) {
-                        animation = animation || settings.animation;
+                    occurring: function (animation = settings.animation) {
                         animation = '.' + animation.replace(' ', '.');
 
                         return $module.filter(animation).length > 0;
@@ -825,13 +816,11 @@
                     },
                 },
                 // modified for transition to return invoke success
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
