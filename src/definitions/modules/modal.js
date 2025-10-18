@@ -623,7 +623,7 @@
                                         duration: settings.transition.showDuration || settings.duration,
                                         useFailSafe: true,
                                         onComplete: function () {
-                                            settings.onVisible.apply(element);
+                                            settings.onVisible.call(element);
                                             if (settings.keyboardShortcuts) {
                                                 module.add.keyboardShortcuts();
                                             }
@@ -1242,13 +1242,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

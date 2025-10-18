@@ -108,17 +108,15 @@
                     }
                 },
 
-                createPlaceholder: function (placeholder) {
+                createPlaceholder: function (placeholder = module.get.placeholder()) {
                     let icon = module.get.icon();
                     let alt = module.get.alt();
-                    placeholder = placeholder || module.get.placeholder();
                     $module.html(templates.placeholder(placeholder, icon, alt));
                     module.debug('Creating placeholder for embed', placeholder, icon, alt);
                 },
 
-                createEmbed: function (url) {
+                createEmbed: function (url = module.get.url()) {
                     module.refresh();
-                    url = url || module.get.url();
                     $embed = $('<div/>')
                         .addClass(className.embed)
                         .html(module.generate.embed(url))
@@ -223,9 +221,8 @@
                             settings.autoplay = true;
                         }
                     },
-                    source: function (url) {
+                    source: function (url = module.get.url()) {
                         let matchedSource = false;
-                        url = url || module.get.url();
                         if (url) {
                             $.each(sources, function (name, source) {
                                 if (url.search(source.domain) !== -1) {
@@ -314,11 +311,10 @@
 
                         return html;
                     },
-                    parameters: function (source, extraParameters) {
+                    parameters: function (source, extraParameters = settings.parameters) {
                         let parameters = sources[source] && sources[source].parameters !== undefined
                             ? sources[source].parameters(settings)
                             : {};
-                        extraParameters = extraParameters || settings.parameters;
                         if (extraParameters) {
                             parameters = $.extend({}, parameters, extraParameters);
                         }
@@ -442,13 +438,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;

@@ -397,11 +397,10 @@
                     return module.othersVisible() || module.othersAnimating();
                 },
 
-                hideOthers: function (callback) {
+                hideOthers: function (callback = function () {}) {
                     let $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
                     let sidebarCount = $otherSidebars.length;
                     let callbackCount = 0;
-                    callback = callback || function () {};
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
@@ -567,12 +566,10 @@
                     closing: function () {
                         $pusher.addClass(className.closing);
                     },
-                    transition: function (transition) {
-                        transition = transition || module.get.transition();
+                    transition: function (transition = module.get.transition()) {
                         $module.addClass(transition);
                     },
-                    direction: function (direction) {
-                        direction = direction || module.get.direction();
+                    direction: function (direction = module.get.direction()) {
                         $module.addClass(className[direction]);
                     },
                     visible: function () {
@@ -609,12 +606,10 @@
                     closing: function () {
                         $pusher.removeClass(className.closing);
                     },
-                    transition: function (transition) {
-                        transition = transition || module.get.transition();
+                    transition: function (transition = module.get.transition()) {
                         $module.removeClass(transition);
                     },
-                    direction: function (direction) {
-                        direction = direction || module.get.direction();
+                    direction: function (direction = module.get.direction()) {
                         $module.removeClass(className[direction]);
                     },
                     visible: function () {
@@ -816,13 +811,11 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
