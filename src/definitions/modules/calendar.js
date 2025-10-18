@@ -75,7 +75,7 @@
             module = {
 
                 initialize: function () {
-                    module.debug('Initializing calendar for', element);
+                    module.debug('Initializing calendar for', element, $module);
 
                     isTouch = module.get.isTouch();
                     module.setup.config();
