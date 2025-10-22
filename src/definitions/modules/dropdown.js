@@ -2597,7 +2597,11 @@
                             if (settings.useLabels) {
                                 module.remove.selectedItem();
                                 if (value === undefined) {
-                                    module.remove.labels($module.find(selector.label), true);
+                                    let existingLabels = $module.find(selector.label);
+                                    if (existingLabels.length > 0) {
+                                        preventChangeTrigger = true;
+                                        module.remove.labels(existingLabels, true);
+                                    }
                                 }
                             }
                         } else {
@@ -3267,7 +3271,7 @@
                         return $module.hasClass(className.selection);
                     },
                     userValue: function (value) {
-                        return module.get.userValues().includes(value);
+                        return (module.get.userValues() || []).includes(value);
                     },
                     upward: function ($menu) {
                         let $element = $menu || $module;
