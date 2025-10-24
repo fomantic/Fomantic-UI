@@ -207,8 +207,8 @@
                             ? sources[source].type
                             : false;
                     },
-                    url: function () {
-                        return settings.url || ($module.data(metadata.url) !== undefined
+                    url: function (url) {
+                        return url || settings.url || ($module.data(metadata.url) !== undefined
                             ? $module.data(metadata.url)
                             : module.determine.url());
                     },

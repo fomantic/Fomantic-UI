@@ -525,10 +525,7 @@
                             $label.text(text);
                         }
                     },
-                    state: function (percent) {
-                        percent = percent !== undefined
-                            ? percent
-                            : module.helper.sum(module.percent);
+                    state: function (percent = module.helper.sum(module.percent)) {
                         if (percent === 100) {
                             if (settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                                 module.set.success();

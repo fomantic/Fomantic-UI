@@ -271,10 +271,7 @@
                     },
                 },
 
-                search: function (query) {
-                    query = query !== undefined
-                        ? query
-                        : module.get.query();
+                search: function (query = module.get.query()) {
                     module.verbose('Searching for query', query);
                     if (settings.fireOnInit === false && module.is.initialLoad()) {
                         module.verbose('Skipping callback on initial load', settings.onSearch);
@@ -1723,10 +1720,7 @@
 
                     nothing: function () {},
 
-                    activate: function (text, value, element) {
-                        value = value !== undefined
-                            ? value
-                            : text;
+                    activate: function (text, value = text, element = '') {
                         if (module.can.activate($(element))) {
                             module.set.selected(value, $(element), false, settings.keepSearchTerm);
                             if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
@@ -1735,10 +1729,7 @@
                         }
                     },
 
-                    select: function (text, value, element) {
-                        value = value !== undefined
-                            ? value
-                            : text;
+                    select: function (text, value = text, element = '') {
                         if (module.can.activate($(element))) {
                             module.set.value(value, text, $(element));
                             if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
@@ -1747,10 +1738,7 @@
                         }
                     },
 
-                    combo: function (text, value, element) {
-                        value = value !== undefined
-                            ? value
-                            : text;
+                    combo: function (text, value = text, element = '') {
                         module.set.selected(value, $(element));
                         module.hideAndClear();
                     },
@@ -1787,10 +1775,7 @@
                     query: function () {
                         return String($search.val()).trim();
                     },
-                    searchWidth: function (value) {
-                        value = value !== undefined
-                            ? value
-                            : $search.val();
+                    searchWidth: function (value = $search.val()) {
                         $sizer.text(value);
 
                         // prevent rounding issues
@@ -1890,10 +1875,7 @@
 
                         return remoteValues;
                     },
-                    choiceText: function ($choice, preserveHTML) {
-                        preserveHTML = preserveHTML !== undefined
-                            ? preserveHTML
-                            : settings.preserveHTML;
+                    choiceText: function ($choice, preserveHTML = settings.preserveHTML) {
                         if ($choice) {
                             if ($choice.find(selector.menu).length > 0) {
                                 module.verbose('Retrieving text of element with sub-menu');
@@ -2079,11 +2061,8 @@
                 },
 
                 check: {
-                    maxSelections: function (selectionCount) {
+                    maxSelections: function (selectionCount = module.get.selectionCount()) {
                         if (settings.maxSelections) {
-                            selectionCount = selectionCount !== undefined
-                                ? selectionCount
-                                : module.get.selectionCount();
                             if (selectionCount >= settings.maxSelections) {
                                 module.debug('Maximum selection count reached');
                                 if (settings.useLabels) {
@@ -2362,7 +2341,7 @@
                         const length = module.get.query().length;
                         $search.val(text.slice(0, length));
                     },
-                    scrollPosition: function ($item, forceScroll) {
+                    scrollPosition: function ($item, forceScroll = false) {
                         const edgeTolerance = 5;
                         let offset;
                         let itemOffset;
@@ -2375,9 +2354,6 @@
                         $item = $item || module.get.selectedItem();
                         const $menu = $item.closest(selector.menu);
                         const hasActive = $item && $item.length > 0;
-                        forceScroll = forceScroll !== undefined
-                            ? forceScroll
-                            : false;
                         if (module.get.activeItem().length === 0) {
                             forceScroll = false;
                         }
@@ -3062,13 +3038,9 @@
                     selectInput: function () {
                         return $input.is('select');
                     },
-                    minCharacters: function (searchTerm) {
+                    minCharacters: function (searchTerm = module.get.query()) {
                         if (settings.minCharacters && !iconClicked) {
-                            searchTerm = searchTerm !== undefined
-                                ? String(searchTerm)
-                                : String(module.get.query());
-
-                            return searchTerm.length >= settings.minCharacters;
+                            return String(searchTerm).length >= settings.minCharacters;
                         }
                         iconClicked = false;
 

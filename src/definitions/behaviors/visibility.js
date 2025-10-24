@@ -723,7 +723,7 @@
                 execute: function (callback = false, callbackName = '') {
                     const calculations = module.get.elementCalculations();
                     const screen = module.get.screenCalculations();
-                    if (callback) {
+                    if (isFunction(callback)) {
                         if (settings.continuous) {
                             module.debug('Callback being called continuously', callbackName, calculations);
                             callback.call(element, calculations, screen);
