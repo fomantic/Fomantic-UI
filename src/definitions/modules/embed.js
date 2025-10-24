@@ -208,8 +208,8 @@
                             ? sources[source].type
                             : false;
                     },
-                    url: function () {
-                        return settings.url || ($module.data(metadata.url) !== undefined
+                    url: function (url) {
+                        return url || settings.url || ($module.data(metadata.url) !== undefined
                             ? $module.data(metadata.url)
                             : module.determine.url());
                     },
@@ -245,8 +245,7 @@
                     url: function () {
                         let id = settings.id || $module.data(metadata.id);
                         let source = settings.source || $module.data(metadata.source);
-                        let url;
-                        url = sources[source] !== undefined
+                        let url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
                         if (url) {

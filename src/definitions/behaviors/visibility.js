@@ -724,7 +724,7 @@
                 execute: function (callback = false, callbackName = '') {
                     let calculations = module.get.elementCalculations();
                     let screen = module.get.screenCalculations();
-                    if (callback) {
+                    if (isFunction(callback)) {
                         if (settings.continuous) {
                             module.debug('Callback being called continuously', callbackName, calculations);
                             callback.call(element, calculations, screen);

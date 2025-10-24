@@ -113,7 +113,7 @@
                     let fakeAssignment = element.offsetWidth;
                 },
 
-                delay: function (interval) {
+                delay: function (interval = settings.interval) {
                     let direction = module.get.animationDirection();
                     let shouldReverse;
                     let delay;
@@ -122,9 +122,6 @@
                             ? module.get.direction()
                             : 'static';
                     }
-                    interval = interval !== undefined
-                        ? interval
-                        : settings.interval;
                     shouldReverse = settings.reverse === 'auto' && direction === className.outward;
                     delay = shouldReverse || settings.reverse === true
                         ? ($allModules.length - index) * interval
@@ -528,10 +525,7 @@
                                 : parseFloat(duration) * 1000)
                             : duration;
                     },
-                    displayType: function (shouldDetermine) {
-                        shouldDetermine = shouldDetermine !== undefined
-                            ? shouldDetermine
-                            : true;
+                    displayType: function (shouldDetermine = true) {
                         if (settings.displayType) {
                             return settings.displayType;
                         }
@@ -547,7 +541,9 @@
 
                         return $module.data(metadata.displayType);
                     },
-                    userStyle: function (style = $module.attr('style') || '') {
+                    userStyle: function (style) {
+                        style = style || $module.attr('style') || '';
+
                         return style.replace(/display.*?;/, '');
                     },
                     transitionExists: function (animation) {

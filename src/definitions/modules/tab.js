@@ -398,12 +398,9 @@
                 },
 
                 update: {
-                    content: function (tabPath, html, evaluateScripts) {
+                    content: function (tabPath, html, evaluateScripts = settings.evaluateScripts) {
                         let $tab = module.get.tabElement(tabPath);
                         let tab = $tab[0];
-                        evaluateScripts = evaluateScripts !== undefined
-                            ? evaluateScripts
-                            : settings.evaluateScripts;
                         if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
