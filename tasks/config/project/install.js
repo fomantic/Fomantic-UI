@@ -13,7 +13,7 @@ const release = require('./release');
 
 /* Preconditions for install questions */
 
-let when = {
+const when = {
 
     // path
     changeRoot: function (questions) {
@@ -61,7 +61,7 @@ let when = {
 
 /* Filters to user input from install questions */
 
-let filter = {
+const filter = {
     removeTrailingSlash: function (path) {
         return path.replace(/(\/$|\\$)+/gm, '');
     },
@@ -80,7 +80,7 @@ module.exports = {
 
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function () {
-        let config = when.hasConfig();
+        const config = when.hasConfig();
 
         return config.autoInstall;
     },
@@ -88,10 +88,10 @@ module.exports = {
     // checks if files are in a PM directory
     getPackageManager: function (directory) {
         // returns last matching result (avoid sub-module detection)
-        let walk = function (directory) {
-            let pathArray = directory.split(path.sep);
-            let folder = pathArray[pathArray.length - 1];
-            let nextDirectory = path.join(directory, path.sep, '..');
+        const walk = function (directory) {
+            const pathArray = directory.split(path.sep);
+            const folder = pathArray[pathArray.length - 1];
+            const nextDirectory = path.join(directory, path.sep, '..');
             if (folder === 'bower_components') {
                 return {
                     name: 'Bower',
@@ -126,10 +126,10 @@ module.exports = {
     // checks if files is PMed submodule
     isSubModule: function (directory) {
         let moduleFolders = 0;
-        let walk = function (directory) {
-            let pathArray = directory.split(path.sep);
-            let folder = pathArray[pathArray.length - 2];
-            let nextDirectory = path.join(directory, path.sep, '..');
+        const walk = function (directory) {
+            const pathArray = directory.split(path.sep);
+            const folder = pathArray[pathArray.length - 2];
+            const nextDirectory = path.join(directory, path.sep, '..');
             if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
                 moduleFolders++;
             } else if (folder === '.pnpm') {
@@ -149,7 +149,7 @@ module.exports = {
     },
 
     createJSON: function (answers) {
-        let json = {
+        const json = {
             paths: {
                 source: {},
                 output: {},

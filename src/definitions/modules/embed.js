@@ -20,43 +20,42 @@
         : globalThis;
 
     $.fn.embed = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.embed.settings, parameters)
                 : $.extend({}, $.fn.embed.settings);
 
-            let selector = settings.selector;
-            let className = settings.className;
-            let sources = settings.sources;
-            let error = settings.error;
-            let metadata = settings.metadata;
-            let namespace = settings.namespace;
-            let templates = settings.templates;
+            const selector = settings.selector;
+            const className = settings.className;
+            const sources = settings.sources;
+            const error = settings.error;
+            const metadata = settings.metadata;
+            const namespace = settings.namespace;
+            const templates = settings.templates;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
+            const $module = $(this);
             let $placeholder = $module.find(selector.placeholder);
             let $icon = $module.find(selector.icon);
             let $embed = $module.find(selector.embed);
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
-            let module;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.debug('Initializing embed');
@@ -100,7 +99,7 @@
                 },
 
                 create: function () {
-                    let placeholder = module.get.placeholder();
+                    const placeholder = module.get.placeholder();
                     if (placeholder) {
                         module.createPlaceholder();
                     } else {
@@ -109,8 +108,8 @@
                 },
 
                 createPlaceholder: function (placeholder = module.get.placeholder()) {
-                    let icon = module.get.icon();
-                    let alt = module.get.alt();
+                    const icon = module.get.icon();
+                    const alt = module.get.alt();
                     $module.html(templates.placeholder(placeholder, icon, alt));
                     module.debug('Creating placeholder for embed', placeholder, icon, alt);
                 },
@@ -202,7 +201,7 @@
                             : module.determine.source());
                     },
                     type: function () {
-                        let source = module.get.source();
+                        const source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].type
@@ -236,17 +235,16 @@
                         return matchedSource;
                     },
                     icon: function () {
-                        let source = module.get.source();
+                        const source = module.get.source();
 
                         return sources[source] !== undefined
                             ? sources[source].icon
                             : false;
                     },
                     url: function () {
-                        let id = settings.id || $module.data(metadata.id);
-                        let source = settings.source || $module.data(metadata.source);
-                        let url;
-                        url = sources[source] !== undefined
+                        const id = settings.id || $module.data(metadata.id);
+                        const source = settings.source || $module.data(metadata.source);
+                        const url = sources[source] !== undefined
                             ? sources[source].url.replace('{id}', id)
                             : false;
                         if (url) {
@@ -283,7 +281,7 @@
 
                 encode: {
                     parameters: function (parameters) {
-                        let urlString = [];
+                        const urlString = [];
                         let index;
                         for (index in parameters) {
                             if (Object.prototype.hasOwnProperty.call(parameters, index)) {
@@ -298,7 +296,7 @@
                 generate: {
                     embed: function (url) {
                         module.debug('Generating embed html');
-                        let source = module.get.source();
+                        const source = module.get.source();
                         let html;
                         let parameters;
                         url = module.get.url(url);
@@ -447,7 +445,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -614,7 +612,7 @@
             },
             iframe: function (url, parameters) {
                 let src = url;
-                let escape = $.fn.embed.settings.templates.escape;
+                const escape = $.fn.embed.settings.templates.escape;
                 if (parameters) {
                     src += '?' + parameters;
                 }
@@ -626,7 +624,7 @@
             },
             placeholder: function (image, icon, alt) {
                 let html = '';
-                let escape = $.fn.embed.settings.templates.escape;
+                const escape = $.fn.embed.settings.templates.escape;
                 if (icon) {
                     html += '<i class="' + escape(icon) + ' icon"></i>';
                 }

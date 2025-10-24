@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.nag = function (...args) {
-        let $allModules = $(this);
-        let $body = $('body');
+        const $allModules = $(this);
+        const $body = $('body');
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -44,26 +44,25 @@
         };
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.nag.settings, parameters)
                 : $.extend({}, $.fn.nag.settings);
 
-            let selector = settings.selector;
-            let error = settings.error;
-            let namespace = settings.namespace;
+            const selector = settings.selector;
+            const error = settings.error;
+            const namespace = settings.namespace;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = namespace + '-module';
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = namespace + '-module';
 
-            let $module = $(this);
+            const $module = $(this);
 
-            let $context = settings.context ? contextCheck(settings.context, window) : $body;
+            const $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-            let element = this;
-            let instance = $module.data(moduleNamespace);
+            const element = this;
+            const instance = $module.data(moduleNamespace);
             let storage;
-            let module;
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing element');
@@ -193,7 +192,7 @@
                                     .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent);
 
                                 let cookieOptions = '';
-                                for (let option in options) {
+                                for (const option in options) {
                                     if (Object.prototype.hasOwnProperty.call(options, option)) {
                                         cookieOptions += '; ' + option;
                                         if (typeof options[option] === 'string') {
@@ -204,10 +203,10 @@
                                 document.cookie = key + '=' + value + cookieOptions;
                             },
                             getItem: function (key) {
-                                let cookies = document.cookie.split('; ');
+                                const cookies = document.cookie.split('; ');
                                 for (const c of cookies) {
-                                    let parts = c.split('=');
-                                    let foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
+                                    const parts = c.split('=');
+                                    const foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent);
                                     if (key === foundKey) {
                                         return parts[1] || '';
                                     }
@@ -219,7 +218,7 @@
                         };
                     },
                     storageOptions: function () {
-                        let options = {};
+                        const options = {};
                         if (settings.expires) {
                             options.expires = module.get.expirationDate(settings.expires);
                         }
@@ -246,7 +245,7 @@
 
                 storage: {
                     set: function (key, value) {
-                        let options = module.get.storageOptions();
+                        const options = module.get.storageOptions();
                         if (storage === window.localStorage && options.expires) {
                             module.debug('Storing expiration value in localStorage', key, options.expires);
                             storage.setItem(key + settings.expirationKey, options.expires);
@@ -262,7 +261,7 @@
                         let storedValue;
                         storedValue = storage.getItem(key);
                         if (storage === window.localStorage) {
-                            let expiration = storage.getItem(key + settings.expirationKey);
+                            const expiration = storage.getItem(key + settings.expirationKey);
                             if (expiration !== null && expiration !== undefined && new Date(expiration) < new Date()) {
                                 module.debug('Value in localStorage has expired. Deleting key', key);
                                 module.storage.remove(key);
@@ -276,7 +275,7 @@
                         return storedValue;
                     },
                     remove: function (key) {
-                        let options = module.get.storageOptions();
+                        const options = module.get.storageOptions();
                         options.expires = module.get.expirationDate(-1);
                         if (storage === window.localStorage) {
                             storage.removeItem(key + settings.expirationKey);
@@ -382,7 +381,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

@@ -70,7 +70,7 @@ function pack(type, compress) {
     const output = type === 'docs' ? docsConfig.paths.output : config.paths.output;
     const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
-    let src = globs.components
+    const src = globs.components
         .replace(/[{}]/g, '')
         .split(',')
         .map((c) => gulp.src(output.uncompressed + '/**/' + c + globs.ignored + '.js'));

@@ -35,9 +35,8 @@ module.exports = function (callback) {
     const github = require('../../config/admin/github'); // eslint-disable-line global-require
 
     let index = -1;
-    let total = release.components.length;
+    const total = release.components.length;
     let timer;
-    let stepRepo;
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -46,7 +45,7 @@ module.exports = function (callback) {
     }
 
     // Do the Git commands synchronously per component, to avoid issues
-    stepRepo = function () {
+    const stepRepo = function () {
         index += 1;
         if (index >= total) {
             callback();
@@ -54,36 +53,36 @@ module.exports = function (callback) {
             return;
         }
 
-        let component = release.components[index];
-        let outputDirectory = path.resolve(path.join(release.outputRoot, component));
-        let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-        let repoName = release.componentRepoRoot + capitalizedComponent;
+        const component = release.components[index];
+        const outputDirectory = path.resolve(path.join(release.outputRoot, component));
+        const capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+        const repoName = release.componentRepoRoot + capitalizedComponent;
 
-        let commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
+        const commitArgs = oAuth.name !== undefined && oAuth.email !== undefined
             ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
             : '';
 
-        let componentPackage = fs.existsSync(outputDirectory + 'package.json')
+        const componentPackage = fs.existsSync(outputDirectory + 'package.json')
             ? require(outputDirectory + 'package.json') // eslint-disable-line global-require, import/no-dynamic-require
             : false;
 
-        let isNewVersion = version && componentPackage.version !== version;
+        const isNewVersion = version && componentPackage.version !== version;
 
-        let commitMessage = isNewVersion
+        const commitMessage = isNewVersion
             ? 'Updated component to version ' + version
             : 'Updated files from main repo';
 
-        let gitOptions = { cwd: outputDirectory };
-        let commitOptions = { args: commitArgs, cwd: outputDirectory };
-        let releaseOptions = { tag_name: version, owner: release.org, repo: repoName };
+        const gitOptions = { cwd: outputDirectory };
+        const commitOptions = { args: commitArgs, cwd: outputDirectory };
+        const releaseOptions = { tag_name: version, owner: release.org, repo: repoName };
 
-        let fileModeOptions = { args: 'config core.fileMode false', cwd: outputDirectory };
-        let usernameOptions = { args: 'config user.name "' + oAuth.name + '"', cwd: outputDirectory };
-        let emailOptions = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory };
-        let versionOptions = { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
+        const fileModeOptions = { args: 'config core.fileMode false', cwd: outputDirectory };
+        const usernameOptions = { args: 'config user.name "' + oAuth.name + '"', cwd: outputDirectory };
+        const emailOptions = { args: 'config user.email "' + oAuth.email + '"', cwd: outputDirectory };
+        const versionOptions = { args: 'rev-parse --verify HEAD', cwd: outputDirectory };
 
-        let localRepoSetup = fs.existsSync(path.join(outputDirectory, '.git'));
-        let canProceed = true;
+        const localRepoSetup = fs.existsSync(path.join(outputDirectory, '.git'));
+        const canProceed = true;
 
         console.info('Processing repository:' + outputDirectory);
 

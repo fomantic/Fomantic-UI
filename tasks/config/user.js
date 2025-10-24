@@ -10,9 +10,6 @@ const requireDotFile = require('require-dot-file');
 const defaults = require('./defaults');
 const config = require('./project/config');
 
-// Final config object
-let gulpConfig;
-
 // semantic.json settings
 let userConfig;
 
@@ -33,7 +30,7 @@ try {
 }
 
 // extend user config with defaults
-gulpConfig = !userConfig
+const gulpConfig = !userConfig
     ? extend(true, {}, defaults)
     : extend(false, {}, defaults, userConfig);
 

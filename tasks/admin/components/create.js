@@ -38,25 +38,25 @@ const version = project.version;
 const output = config.paths.output;
 
 module.exports = function (callback) {
-    let tasks = [];
+    const tasks = [];
 
     for (const component of release.components) {
         // streams... designed to save time and make coding fun...
         (function (component) {
-            let outputDirectory = path.join(release.outputRoot, component);
-            let isJavascript = fs.existsSync(output.compressed + component + '.js');
-            let isCSS = fs.existsSync(output.compressed + component + '.css');
-            let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-            let packageName = release.packageRoot + component;
-            let repoName = release.componentRepoRoot + capitalizedComponent;
-            let gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
-            let concatSettings = {
+            const outputDirectory = path.join(release.outputRoot, component);
+            const isJavascript = fs.existsSync(output.compressed + component + '.js');
+            const isCSS = fs.existsSync(output.compressed + component + '.css');
+            const capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+            const packageName = release.packageRoot + component;
+            const repoName = release.componentRepoRoot + capitalizedComponent;
+            const gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
+            const concatSettings = {
                 newline: '',
                 root: outputDirectory,
                 prepend: "    '",
                 append: "',",
             };
-            let regExp = {
+            const regExp = {
                 match: {
                     // templated values
                     name: '{component}',
@@ -96,7 +96,7 @@ module.exports = function (callback) {
                 },
             };
             // paths to includable assets
-            let manifest = {
+            const manifest = {
                 assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                 component: outputDirectory + '/' + component + '+(.js|.css)',
             };
