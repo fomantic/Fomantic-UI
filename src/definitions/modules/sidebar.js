@@ -404,7 +404,7 @@
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
-                            if (callbackCount === sidebarCount) {
+                            if (callbackCount === sidebarCount && isFunction(callback)) {
                                 callback();
                             }
                         });

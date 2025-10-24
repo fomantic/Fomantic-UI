@@ -444,14 +444,8 @@
                     results: function () {
                         return $module.data(metadata.results);
                     },
-                    result: function (value, results) {
+                    result: function (value = module.get.value(), results = module.get.results()) {
                         let result = false;
-                        value = value !== undefined
-                            ? value
-                            : module.get.value();
-                        results = results !== undefined
-                            ? results
-                            : module.get.results();
                         if (settings.type === 'category') {
                             module.debug('Finding result that matches', value);
                             $.each(results, function (index, category) {

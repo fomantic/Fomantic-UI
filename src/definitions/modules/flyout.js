@@ -666,7 +666,7 @@
                     $otherFlyouts
                         .flyout('hide', function () {
                             callbackCount++;
-                            if (callbackCount === flyoutCount) {
+                            if (callbackCount === flyoutCount && isFunction(callback)) {
                                 callback();
                             }
                         });
