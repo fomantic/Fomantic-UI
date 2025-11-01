@@ -20,18 +20,18 @@
         : globalThis;
 
     $.fn.modal = function (...args) {
-        let $allModules = $(this);
-        let $window = $(window);
-        let $document = $(document);
-        let $body = $('body');
+        const $allModules = $(this);
+        const $window = $(window);
+        const $document = $(document);
+        const $body = $('body');
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $body;
@@ -51,18 +51,18 @@
                 ? $.extend(true, {}, $.fn.modal.settings, parameters)
                 : $.extend({}, $.fn.modal.settings);
 
-            let selector = settings.selector;
+            const selector = settings.selector;
             let className = settings.className;
             let namespace = settings.namespace;
             let fields = settings.fields;
             let error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
             let $module = $(this);
-            let $context = contextCheck(settings.context, window);
-            let isBody = $context[0] === $body[0];
+            const $context = contextCheck(settings.context, window);
+            const isBody = $context[0] === $body[0];
             let $closeIcon = $module.find(selector.closeIcon);
             let $inputs;
 
@@ -72,7 +72,7 @@
             let $dimmable;
             let $dimmer;
 
-            let isModalComponent = $module.hasClass('modal');
+            const isModalComponent = $module.hasClass('modal');
 
             let element = this;
             let instance = isModalComponent ? $module.data(moduleNamespace) : undefined;
@@ -93,8 +93,7 @@
             let observer;
             let observeAttributes = false;
             let resizeObserver;
-            let module;
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.create.id();
@@ -122,12 +121,12 @@
                             $actions.empty();
                         }
                         settings.actions.forEach(function (el) {
-                            let icon = el[fields.icon]
+                            const icon = el[fields.icon]
                                 ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                 : '';
-                            let text = module.helpers.escape(el[fields.text] || '', settings);
-                            let cls = module.helpers.escape(el[fields.class] || '');
-                            let click = el[fields.click] && isFunction(el[fields.click])
+                            const text = module.helpers.escape(el[fields.text] || '', settings);
+                            const cls = module.helpers.escape(el[fields.class] || '');
+                            const click = el[fields.click] && isFunction(el[fields.click])
                                 ? el[fields.click]
                                 : function () {};
                             $actions.append($('<button/>', {
@@ -136,7 +135,7 @@
                                 class: className.button + ' ' + cls,
                                 on: {
                                     click: function () {
-                                        let button = $(this);
+                                        const button = $(this);
                                         if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
                                             return;
                                         }
@@ -186,12 +185,12 @@
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {
-                            let titleId = '_' + module.get.id() + 'title';
+                            const titleId = '_' + module.get.id() + 'title';
                             $module.attr('aria-labelledby', titleId);
                             $('<div/>', { class: className.title, id: titleId }).appendTo($module);
                         }
                         if (settings.content !== '') {
-                            let descId = '_' + module.get.id() + 'desc';
+                            const descId = '_' + module.get.id() + 'desc';
                             $module.attr('aria-describedby', descId);
                             $('<div/>', { class: className.content, id: descId }).appendTo($module);
                         }
@@ -202,11 +201,11 @@
                         element = $module[0];
                     },
                     dimmer: function () {
-                        let defaultSettings = {
+                        const defaultSettings = {
                             debug: settings.debug,
                             dimmerName: 'modals',
                         };
-                        let dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
+                        const dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
                         if ($.fn.dimmer === undefined) {
                             module.error(error.dimmer);
 
@@ -265,8 +264,8 @@
                         module.debug('Setting up resize observer', resizeObserver);
                     }
                     observer = new MutationObserver(function (mutations) {
-                        let collectNodes = function (parent) {
-                            let nodes = [];
+                        const collectNodes = function (parent) {
+                            const nodes = [];
                             for (const c of parent) {
                                 nodes.push(...collectNodes(c.childNodes), c);
                             }
@@ -285,8 +284,8 @@
                                 shouldRefresh = true;
                                 // mutationobserver only provides the parent nodes,
                                 // so let's collect all childs as well to find nested inputs
-                                let $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
-                                let $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
+                                const $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
+                                const $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                 if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                     shouldRefreshInputs = true;
                                     if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
@@ -357,7 +356,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    let $toggle = $(selector);
+                    const $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -442,21 +441,21 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        let keyCode = event.which;
+                        const keyCode = event.which;
                         if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
                             module.hide();
                         }
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            let keyCode = event.which;
+                            const keyCode = event.which;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
                                 $inputs.last().trigger('focus');
                                 event.preventDefault();
                             }
                         },
                         last: function (event) {
-                            let keyCode = event.which;
+                            const keyCode = event.which;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
                                 $inputs.first().trigger('focus');
                                 event.preventDefault();
@@ -464,8 +463,8 @@
                         },
                     },
                     mousedown: function (event) {
-                        let $target = $(event.target);
-                        let isRtl = module.is.rtl();
+                        const $target = $(event.target);
+                        const isRtl = module.is.rtl();
                         initialMouseDownInModal = $target.closest(selector.modal).length > 0;
                         if (initialMouseDownInModal) {
                             module.verbose('Mouse down event registered inside the modal');
@@ -491,9 +490,9 @@
 
                             return;
                         }
-                        let $target = $(event.target);
-                        let isInModal = $target.closest(selector.modal).length > 0;
-                        let isInDOM = document.documentElement.contains(event.target);
+                        const $target = $(event.target);
+                        const isInModal = $target.closest(selector.modal).length > 0;
+                        const isInDOM = document.documentElement.contains(event.target);
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
                             module.debug('Dimmer clicked, hiding all modals');
                             if (settings.allowMultiple) {
@@ -513,7 +512,7 @@
                         }, delay);
                     },
                     keyboard: function (event) {
-                        let keyCode = event.which;
+                        const keyCode = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding modal');
@@ -644,7 +643,7 @@
                 },
 
                 hideModal: function (callback, keepDimmed, hideOthersToo) {
-                    let $previousModal = $otherModals.filter('.' + className.active).last();
+                    const $previousModal = $otherModals.filter('.' + className.active).last();
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -735,7 +734,7 @@
                 },
 
                 hideAll: function (callback) {
-                    let $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating);
+                    const $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating);
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -757,7 +756,7 @@
                 },
 
                 hideOthers: function (callback) {
-                    let $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating);
+                    const $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating);
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -787,8 +786,8 @@
 
                 save: {
                     focus: function () {
-                        let $activeElement = $(document.activeElement);
-                        let inCurrentModal = $activeElement.closest($module).length > 0;
+                        const $activeElement = $(document.activeElement);
+                        const inCurrentModal = $activeElement.closest($module).length > 0;
                         if (!inCurrentModal) {
                             $focusedElement = $(document.activeElement).trigger('blur');
                         }
@@ -796,7 +795,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                        const bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },
                 },
@@ -808,11 +807,11 @@
                         }
                     },
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMarginInt === 0 ? '' : initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -881,9 +880,9 @@
 
                 cacheSizes: function (getScrollingMargins) {
                     $module.addClass(className.loading);
-                    let scrollHeight = $module.prop('scrollHeight');
-                    let modalWidth = $module.outerWidth();
-                    let modalHeight = $module.outerHeight();
+                    const scrollHeight = $module.prop('scrollHeight');
+                    const modalWidth = $module.outerWidth();
+                    const modalHeight = $module.outerHeight();
                     let scrollingTop = 0;
                     let bottomMargin = 0;
                     if (module.cache.pageHeight === undefined || modalHeight !== 0) {
@@ -949,14 +948,14 @@
                         return settings.useFlex;
                     },
                     fit: function () {
-                        let contextHeight = module.cache.contextHeight;
-                        let verticalCenter = module.cache.contextHeight / 2;
-                        let topOffset = module.cache.topOffset;
-                        let scrollingTop = module.cache.scrollingTop || 0;
-                        let scrollHeight = module.cache.scrollHeight - (module.cache.bottomMargin || 0);
-                        let height = module.cache.height;
-                        let paddingHeight = settings.padding;
-                        let startPosition = verticalCenter + topOffset;
+                        const contextHeight = module.cache.contextHeight;
+                        const verticalCenter = module.cache.contextHeight / 2;
+                        const topOffset = module.cache.topOffset;
+                        const scrollingTop = module.cache.scrollingTop || 0;
+                        const scrollHeight = module.cache.scrollHeight;
+                        const height = module.cache.height;
+                        const paddingHeight = settings.padding;
+                        const startPosition = verticalCenter + topOffset;
 
                         return scrollHeight > height
                             ? startPosition + scrollHeight + paddingHeight < contextHeight
@@ -1012,9 +1011,9 @@
                         observeAttributes = state !== false;
                     },
                     autofocus: function () {
-                        let $autofocus = $inputs.filter('[autofocus]');
-                        let $rawInputs = $inputs.filter(':input');
-                        let $input = ($autofocus.length > 0
+                        const $autofocus = $inputs.filter('[autofocus]');
+                        const $rawInputs = $inputs.filter(':input');
+                        const $input = ($autofocus.length > 0
                             ? $autofocus
                             : ($rawInputs.length > 0
                                 ? $rawInputs
@@ -1023,13 +1022,13 @@
                         $input.trigger('focus');
                     },
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         if (settings.detachable || module.can.fit()) {
                             $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         }
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -1049,7 +1048,7 @@
 
                             return;
                         }
-                        let defaultSettings = {
+                        const defaultSettings = {
                             debug: settings.debug,
                             dimmerName: 'modals',
                             closable: 'auto',
@@ -1059,7 +1058,7 @@
                                 hide: settings.transition.hideDuration || settings.duration,
                             },
                         };
-                        let dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
+                        const dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
                         if (settings.inverted) {
                             dimmerSettings.variation = dimmerSettings.variation !== undefined
                                 ? dimmerSettings.variation + ' inverted'
@@ -1081,8 +1080,8 @@
                     },
                     modalOffset: function () {
                         if (!settings.detachable) {
-                            let canFit = module.can.fit();
-                            let scrollTop = (isBody ? $document : $context).scrollTop();
+                            const canFit = module.can.fit();
+                            const scrollTop = (isBody ? $document : $context).scrollTop();
                             $module
                                 .css({
                                     top: !$module.hasClass('aligned') && canFit
@@ -1116,7 +1115,7 @@
                     },
                     dimmerHeight: function () {
                         if (!isBody && !settings.detachable) {
-                            let contextHeight = $context.prop('scrollHeight');
+                            const contextHeight = $context.prop('scrollHeight');
                             $dimmer.css({
                                 height: contextHeight,
                                 maxHeight: contextHeight,
@@ -1251,7 +1250,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1484,9 +1483,9 @@
             };
         },
         alert: function (...args) {
-            let settings = this.get.settings();
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
-            let approveFn = args.handler;
+            const approveFn = args.handler;
 
             return {
                 title: args.title,
@@ -1500,12 +1499,12 @@
             };
         },
         confirm: function (...args) {
-            let settings = this.get.settings();
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
-            let approveFn = function () {
+            const approveFn = function () {
                 args.handler(true);
             };
-            let denyFn = function () {
+            const denyFn = function () {
                 args.handler(false);
             };
 
@@ -1526,16 +1525,16 @@
             };
         },
         prompt: function (...args) {
-            let $this = this;
-            let settings = this.get.settings();
+            const $this = this;
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
-            let input = $($.parseHTML(args.content)).filter('.ui.input');
-            let approveFn = function () {
-                let settings = $this.get.settings();
-                let inputField = $this.get.element().find(settings.selector.prompt)[0];
+            const input = $($.parseHTML(args.content)).filter('.ui.input');
+            const approveFn = function () {
+                const settings = $this.get.settings();
+                const inputField = $this.get.element().find(settings.selector.prompt)[0];
                 args.handler($(inputField).val());
             };
-            let denyFn = function () {
+            const denyFn = function () {
                 args.handler(null);
             };
             if (input.length === 0) {

@@ -4,18 +4,14 @@
 
 const requireDotFile = require('require-dot-file');
 
-let config;
 let npmPackage;
-let version;
-let revision;
-let versionInFileName;
-let includeVersionInFileName;
+let versionInFileName = '';
 
 /*******************************
          Derived Values
 *******************************/
 
-config = requireDotFile('semantic.json', process.cwd());
+const config = requireDotFile('semantic.json', process.cwd());
 
 try {
     npmPackage = require('../../../package.json'); // eslint-disable-line global-require
@@ -28,16 +24,14 @@ try {
 }
 
 // looks for the version in config or package.json (whichever is available)
-version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
+const version = npmPackage && npmPackage.version !== undefined && npmPackage.name === 'fomantic-ui'
     ? npmPackage.version
     : config.version;
 
 // looks for revision in config.
-revision = config.revision === undefined ? '' : config.revision;
+const revision = config.revision === undefined ? '' : config.revision;
 
-includeVersionInFileName = config.includeVersionInFileName === undefined ? false : config.includeVersionInFileName;
-
-versionInFileName = '';
+const includeVersionInFileName = config.includeVersionInFileName === undefined ? false : config.includeVersionInFileName;
 
 if (includeVersionInFileName) {
     versionInFileName = '-' + version;

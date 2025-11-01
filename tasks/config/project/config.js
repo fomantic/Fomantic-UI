@@ -15,9 +15,9 @@ module.exports = {
 
     getPath: function (file, directory) {
         let configPath;
-        let walk = function (directory) {
-            let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
-            let currentPath = path.normalize(path.join(directory, file));
+        const walk = function (directory) {
+            const nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            const currentPath = path.normalize(path.join(directory, file));
             if (fs.existsSync(currentPath)) {
                 // found the file
                 configPath = path.normalize(directory);
@@ -45,9 +45,9 @@ module.exports = {
             File Paths
         --------------- */
 
-        let configPath = this.getPath();
-        let sourcePaths = {};
-        let outputPaths = {};
+        const configPath = this.getPath();
+        const sourcePaths = {};
+        const outputPaths = {};
         let folder;
 
         // resolve paths (config location + base + path)

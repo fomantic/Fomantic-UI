@@ -20,20 +20,20 @@
         : globalThis;
 
     $.fn.sidebar = function (...args) {
-        let $allModules = $(this);
-        let $window = $(window);
-        let $document = $(document);
-        let $body = $('body');
-        let $html = $('html');
-        let $head = $('head');
+        const $allModules = $(this);
+        const $window = $(window);
+        const $document = $(document);
+        const $body = $('body');
+        const $html = $('html');
+        const $head = $('head');
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $body;
@@ -49,29 +49,29 @@
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
                 : $.extend({}, $.fn.sidebar.settings);
 
-            let selector = settings.selector;
-            let className = settings.className;
-            let namespace = settings.namespace;
-            let regExp = settings.regExp;
-            let error = settings.error;
+            const selector = settings.selector;
+            const className = settings.className;
+            const namespace = settings.namespace;
+            const regExp = settings.regExp;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
+            const $module = $(this);
             let $context = contextCheck(settings.context, window);
-            let isBody = $context[0] === $body[0];
+            const isBody = $context[0] === $body[0];
 
             let $sidebars = $module.children(selector.sidebar);
             let $fixed = $context.children(selector.fixed);
             let $pusher = $context.children(selector.pusher);
             let $style;
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
 
             let elementNamespace;
@@ -82,9 +82,7 @@
             let tempBodyMargin = 0;
             let hadScrollbar = false;
 
-            let module;
-
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.debug('Initializing sidebar', parameters);
@@ -134,8 +132,8 @@
                 event: {
                     clickaway: function (event) {
                         if (settings.closable) {
-                            let clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            let clickedContext = $context.is(event.target);
+                            const clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
+                            const clickedContext = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -206,11 +204,11 @@
 
                 add: {
                     inlineCSS: function () {
-                        let width = module.cache.width || $module.outerWidth();
-                        let height = module.cache.height || $module.outerHeight();
-                        let isRTL = module.is.rtl();
-                        let direction = module.get.direction();
-                        let distance = {
+                        const width = module.cache.width || $module.outerWidth();
+                        const height = module.cache.height || $module.outerHeight();
+                        const isRTL = module.is.rtl();
+                        const direction = module.get.direction();
+                        const distance = {
                             left: width,
                             right: -width,
                             top: height,
@@ -265,7 +263,7 @@
                 repaint: function () {
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
-                    let ignored = element.offsetHeight;
+                    const ignored = element.offsetHeight;
                     element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
@@ -302,7 +300,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    let $toggle = $(selector);
+                    const $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -327,7 +325,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                        const bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },
                 },
@@ -398,13 +396,13 @@
                 },
 
                 hideOthers: function (callback = function () {}) {
-                    let $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
-                    let sidebarCount = $otherSidebars.length;
+                    const $otherSidebars = $sidebars.not($module).filter('.' + className.visible);
+                    const sidebarCount = $otherSidebars.length;
                     let callbackCount = 0;
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
-                            if (callbackCount === sidebarCount) {
+                            if (callbackCount === sidebarCount && isFunction(callback)) {
                                 callback();
                             }
                         });
@@ -420,13 +418,10 @@
                 },
 
                 pushPage: function (callback) {
-                    let transition = module.get.transition();
-                    let $transition = transition === 'overlay' || module.othersActive()
+                    const transition = module.get.transition();
+                    const $transition = transition === 'overlay' || module.othersActive()
                         ? $module
                         : $pusher;
-                    let animate;
-                    let dim;
-                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -439,16 +434,16 @@
                     module.bind.scrollLock();
                     module.set.transition(transition);
                     module.repaint();
-                    animate = function () {
+                    const animate = function () {
                         module.bind.clickaway();
                         module.add.inlineCSS();
                         module.set.animating();
                         module.set.visible();
                     };
-                    dim = function () {
+                    const dim = function () {
                         module.set.dimmed();
                     };
-                    transitionEnd = function (event) {
+                    const transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
                             $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
@@ -464,12 +459,10 @@
                 },
 
                 pullPage: function (callback) {
-                    let transition = module.get.transition();
-                    let $transition = transition === 'overlay' || module.othersActive()
+                    const transition = module.get.transition();
+                    const $transition = transition === 'overlay' || module.othersActive()
                         ? $module
                         : $pusher;
-                    let animate;
-                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -478,7 +471,7 @@
                     module.unbind.clickaway();
                     module.unbind.scrollLock();
 
-                    animate = function () {
+                    const animate = function () {
                         module.set.transition(transition);
                         module.set.animating();
                         if (settings.dimPage && !module.othersVisible()) {
@@ -486,7 +479,7 @@
                         }
                         module.remove.visible();
                     };
-                    transitionEnd = function (event) {
+                    const transitionEnd = function (event) {
                         if (event.target === $transition[0]) {
                             $transition.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
@@ -527,11 +520,11 @@
 
                 set: {
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -621,11 +614,11 @@
                 },
                 restore: {
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMarginInt === 0 ? '' : initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -645,9 +638,8 @@
                         return className.left;
                     },
                     transition: function () {
-                        let direction = module.get.direction();
-                        let transition;
-                        transition = module.is.mobile()
+                        const direction = module.get.direction();
+                        const transition = module.is.mobile()
                             ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
                                 : settings.mobileTransition)
@@ -683,8 +675,8 @@
                         return !(self === top);
                     },
                     mobile: function () {
-                        let userAgent = navigator.userAgent;
-                        let isMobile = userAgent.match(regExp.mobile);
+                        const userAgent = navigator.userAgent;
+                        const isMobile = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -820,7 +812,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

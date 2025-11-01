@@ -20,42 +20,41 @@
         : globalThis;
 
     $.fn.progress = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.progress.settings, parameters)
                 : $.extend({}, $.fn.progress.settings);
 
-            let className = settings.className;
-            let metadata = settings.metadata;
-            let namespace = settings.namespace;
-            let selector = settings.selector;
-            let error = settings.error;
+            const className = settings.className;
+            const metadata = settings.metadata;
+            const namespace = settings.namespace;
+            const selector = settings.selector;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
-            let $bars = $(this).find(selector.bar);
-            let $progresses = $(this).find(selector.progress);
-            let $label = $(this).find(selector.label);
+            const $module = $(this);
+            const $bars = $(this).find(selector.bar);
+            const $progresses = $(this).find(selector.progress);
+            const $label = $(this).find(selector.label);
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
 
             let animating = false;
-            let module;
-            module = {
+            const module = {
                 helper: {
                     sum: function (nums) {
                         return Array.isArray(nums) ? nums.reduce(function (left, right) {
@@ -146,7 +145,7 @@
 
                 read: {
                     metadata: function () {
-                        let data = {
+                        const data = {
                             percent: module.helper.forceArray($module.data(metadata.percent)),
                             total: $module.data(metadata.total),
                             value: module.helper.forceArray($module.data(metadata.value)),
@@ -212,7 +211,7 @@
                     module.set.progress(newValue);
                 },
                 decrement: function (decrementValue) {
-                    let total = module.get.total();
+                    const total = module.get.total();
                     let startValue;
                     let newValue;
                     if (total) {
@@ -241,12 +240,12 @@
 
                 get: {
                     text: function (templateText = '', index = 0) {
-                        let value = module.get.value(index);
-                        let total = module.get.total();
-                        let percent = animating
+                        const value = module.get.value(index);
+                        const total = module.get.total();
+                        const percent = animating
                             ? module.get.displayPercent(index)
                             : module.get.percent(index);
-                        let left = total !== false
+                        const left = total !== false
                             ? Math.max(0, total - value)
                             : 100 - percent;
                         templateText = templateText
@@ -305,11 +304,11 @@
 
                     // gets current displayed percentage (if animating values, this is the intermediary value)
                     displayPercent: function (index) {
-                        let $bar = $($bars[index]);
-                        let barWidth = $bar.width();
-                        let totalWidth = $module.width();
-                        let minDisplay = parseInt($bar.css('min-width'), 10);
-                        let displayPercent = barWidth > minDisplay
+                        const $bar = $($bars[index]);
+                        const barWidth = $bar.width();
+                        const totalWidth = $module.width();
+                        const minDisplay = parseInt($bar.css('min-width'), 10);
+                        const displayPercent = barWidth > minDisplay
                             ? (barWidth / totalWidth) * 100
                             : module.percent;
 
@@ -401,12 +400,12 @@
                         values = module.helper.forceArray(values);
                         let firstNonZeroIndex = -1;
                         let lastNonZeroIndex = -1;
-                        let valuesSum = module.helper.sum(values);
-                        let barCounts = $bars.length;
-                        let isMultiple = barCounts > 1;
-                        let percents = values.map(function (value, index) {
-                            let allZero = index === barCounts - 1 && valuesSum === 0;
-                            let $bar = $($bars[index]);
+                        const valuesSum = module.helper.sum(values);
+                        const barCounts = $bars.length;
+                        const isMultiple = barCounts > 1;
+                        const percents = values.map(function (value, index) {
+                            const allZero = index === barCounts - 1 && valuesSum === 0;
+                            const $bar = $($bars[index]);
                             if (value === 0 && isMultiple && !allZero) {
                                 $bar.css('display', 'none');
                             } else {
@@ -426,7 +425,7 @@
                             return parseFloat(value);
                         });
                         values.forEach(function (_, index) {
-                            let $bar = $($bars[index]);
+                            const $bar = $($bars[index]);
                             $bar.css({
                                 borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
                                 borderBottomLeftRadius: index === firstNonZeroIndex ? '' : '0',
@@ -457,10 +456,10 @@
                                 ? Math.max(0, Math.min(100, percent))
                                 : percent;
                         });
-                        let hasTotal = module.has.total();
-                        let totalPercent = module.helper.sum(percents);
-                        let isMultipleValues = percents.length > 1 && hasTotal;
-                        let sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+                        const hasTotal = module.has.total();
+                        const totalPercent = module.helper.sum(percents);
+                        const isMultipleValues = percents.length > 1 && hasTotal;
+                        const sumTotal = module.helper.sum(module.helper.forceArray(module.value));
                         if (isMultipleValues && sumTotal > module.total) {
                             // Sum values instead of percents to avoid precision issues when summing floats
                             module.error(error.sumExceedsTotal, sumTotal, module.total);
@@ -470,14 +469,14 @@
                         } else if (totalPercent < 0) {
                             module.error(error.tooLow, totalPercent);
                         } else {
-                            let autoPrecision = settings.precision > 0
+                            const autoPrecision = settings.precision > 0
                                 ? settings.precision
                                 : (isMultipleValues
                                     ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
                                     : 0);
 
                             // round display percentage
-                            let roundedPercents = percents.map(function (percent) {
+                            const roundedPercents = percents.map(function (percent) {
                                 return autoPrecision > 0
                                     ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                                     : Math.round(percent);
@@ -496,7 +495,7 @@
                         settings.onChange.call(element, percents, module.value, module.total);
                     },
                     labelInterval: function () {
-                        let animationCallback = function () {
+                        const animationCallback = function () {
                             module.verbose('Bar finished animating, removing continuous label updates');
                             clearInterval(module.interval);
                             animating = false;
@@ -506,7 +505,7 @@
                         module.bind.transitionEnd(animationCallback);
                         animating = true;
                         module.interval = setInterval(function () {
-                            let isInDOM = document.documentElement.contains(element);
+                            const isInDOM = document.documentElement.contains(element);
                             if (!isInDOM) {
                                 clearInterval(module.interval);
                                 animating = false;
@@ -526,10 +525,7 @@
                             $label.text(text);
                         }
                     },
-                    state: function (percent) {
-                        percent = percent !== undefined
-                            ? percent
-                            : module.helper.sum(module.percent);
+                    state: function (percent = module.helper.sum(module.percent)) {
                         if (percent === 100) {
                             if (settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                                 module.set.success();
@@ -552,7 +548,7 @@
                     },
                     barLabel: function (text) {
                         $progresses.each(function (index, element) {
-                            let $progress = $(element);
+                            const $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
                             } else if (settings.label === 'ratio' && module.has.total()) {
@@ -651,7 +647,7 @@
 
                 update: {
                     toNextValue: function () {
-                        let nextValue = module.nextValue;
+                        const nextValue = module.nextValue;
                         if (nextValue) {
                             module.debug('Update interval complete using last updated value', nextValue);
                             module.update.progress(nextValue);
@@ -659,11 +655,11 @@
                         }
                     },
                     progress: function (values) {
-                        let hasTotal = module.has.total();
+                        const hasTotal = module.has.total();
                         if (hasTotal) {
                             module.set.value(values);
                         }
-                        let percentCompletes = module.helper.forceArray(values).map(function (value) {
+                        const percentCompletes = module.helper.forceArray(values).map(function (value) {
                             let percentComplete;
                             value = module.get.numericValue(value);
                             if (value === false) {
@@ -781,7 +777,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

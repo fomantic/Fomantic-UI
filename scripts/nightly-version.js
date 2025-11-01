@@ -40,9 +40,9 @@ const getPublishedVersion = async function () {
         await fetch(`${npmBase}/${npmPackage}`)
             .then((r) => r.json())
             .then((p) => {
-                let nightly = p['dist-tags'].nightly ?? '';
-                let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = !nightly.includes('+') && versionInfo.gitHead
+                const nightly = p['dist-tags'].nightly ?? '';
+                const versionInfo = p.versions[nightly] ?? {};
+                const buildCommit = !nightly.includes('+') && versionInfo.gitHead
                     ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
                     : '';
 
