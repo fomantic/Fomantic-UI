@@ -28,9 +28,8 @@ const oAuth = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.
 
 module.exports = function (callback) {
     let index = -1;
-    let total = release.components.length;
+    const total = release.components.length;
     let timer;
-    let stepRepo;
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -39,7 +38,7 @@ module.exports = function (callback) {
     }
 
     // Do Git commands synchronously per component to avoid issues
-    stepRepo = function () {
+    const stepRepo = function () {
         index += 1;
 
         if (index >= total) {
@@ -48,17 +47,17 @@ module.exports = function (callback) {
             return;
         }
 
-        let component = release.components[index];
-        let outputDirectory = path.resolve(release.outputRoot + component);
-        let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-        let repoName = release.componentRepoRoot + capitalizedComponent;
+        const component = release.components[index];
+        const outputDirectory = path.resolve(release.outputRoot + component);
+        const capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+        const repoName = release.componentRepoRoot + capitalizedComponent;
 
-        let gitOptions = { cwd: outputDirectory };
-        let pullOptions = { args: '-q', cwd: outputDirectory, quiet: true };
-        let resetOptions = { args: '-q --hard', cwd: outputDirectory, quiet: true };
+        const gitOptions = { cwd: outputDirectory };
+        const pullOptions = { args: '-q', cwd: outputDirectory, quiet: true };
+        const resetOptions = { args: '-q --hard', cwd: outputDirectory, quiet: true };
 
-        let gitURL = 'git@github.com:' + release.org + '/' + repoName + '.git';
-        let localRepoSetup = fs.pathExistsSync(path.join(outputDirectory, '.git'));
+        const gitURL = 'git@github.com:' + release.org + '/' + repoName + '.git';
+        const localRepoSetup = fs.pathExistsSync(path.join(outputDirectory, '.git'));
 
         console.log('Processing repository: ' + outputDirectory);
 

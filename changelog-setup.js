@@ -9,7 +9,7 @@ const issueLinks = function (item) {
     if (typeof loopVersion !== 'string') {
         return item;
     }
-    let repository = semver.gte(loopVersion, '2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
+    const repository = semver.gte(loopVersion, '2.4.0') ? 'fomantic/Fomantic-UI' : 'Semantic-Org/Semantic-UI';
     item.subject = item.subject.replace(/#(\d+)([ ,]|$)/, '[`#$1`](https://github.com/' + repository + '/issues/$1) ');
 
     return item;
@@ -96,7 +96,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/^(\w+(\([^()]+\))?:|\[[\w ]+]) */, '');
+        const result = text.replace(/^(\w+(\([^()]+\))?:|\[[\w ]+]) */, '');
 
         return new Handlebars.SafeString(result);
     });
@@ -105,7 +105,7 @@ module.exports = function (Handlebars) {
         if (!(typeof text === 'string')) {
             return '';
         }
-        let result = text.replace(/add ([\dA-Za-z-]+) as a contributor/, '[`$1`](https://github.com/$1)');
+        const result = text.replace(/add ([\dA-Za-z-]+) as a contributor/, '[`$1`](https://github.com/$1)');
 
         return Handlebars.helpers.noprefix(result);
     });
@@ -127,14 +127,14 @@ module.exports = function (Handlebars) {
         changelogDeps = {};
         const depsRegex = /(?:build\(deps[A-Za-z-]*\):|\[Snyk]) (?:\[?[Ss]ecurity]? )?(?:bump|upgrade) ([\w./@-]+) from (\d+\.\d+\.\d+) to (\d+\.\d+\.\d+)/;
         const detectVersionRange = function (item) {
-            let subjectDetails = item.subject.match(depsRegex);
+            const subjectDetails = item.subject.match(depsRegex);
             if (!subjectDetails) {
                 return true;
             }
 
-            let depPackage = subjectDetails[1];
-            let depVersionFrom = subjectDetails[2];
-            let depVersionTo = subjectDetails[3];
+            const depPackage = subjectDetails[1];
+            const depVersionFrom = subjectDetails[2];
+            const depVersionTo = subjectDetails[3];
             if (!changelogDeps[depPackage]) {
                 changelogDeps[depPackage] = {
                     from: '999.999.999',
@@ -188,12 +188,12 @@ module.exports = function (Handlebars) {
             .filter(detectVersionRange)
             // adjust from version to create the whole range in one line (linked to the latest commit)
             .map((item) => {
-                let subjectDetails = item.subject.match(depsRegex);
+                const subjectDetails = item.subject.match(depsRegex);
                 if (!subjectDetails) {
                     return item;
                 }
-                let depPackage = subjectDetails[1];
-                let depVersionFrom = subjectDetails[2];
+                const depPackage = subjectDetails[1];
+                const depVersionFrom = subjectDetails[2];
                 item.subject = item.subject.replace(depVersionFrom, changelogDeps[depPackage].from);
 
                 return item;

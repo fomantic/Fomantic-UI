@@ -1,4 +1,4 @@
-let where = 'client'; // Adds files only to the client
+const where = 'client'; // Adds files only to the client
 
 Package.describe({
     name: 'semantic:ui',

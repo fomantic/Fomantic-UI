@@ -39,7 +39,7 @@ function buildAssets(src, config, callback) {
     }
 
     // copy assets
-    let assets = () => build(src, config);
+    const assets = () => build(src, config);
     assets.displayName = 'Building Assets';
 
     gulp.series(assets)(callback);

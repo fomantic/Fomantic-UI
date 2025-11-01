@@ -28,9 +28,8 @@ const oAuth = fs.pathExistsSync(path.join(__dirname, '/../../config/admin/oauth.
 
 module.exports = function (callback) {
     let index = -1;
-    let total = release.distributions.length;
+    const total = release.distributions.length;
     let timer;
-    let stepRepo;
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -39,7 +38,7 @@ module.exports = function (callback) {
     }
 
     // Do Git commands synchronously per component, to avoid issues
-    stepRepo = function () {
+    const stepRepo = function () {
         index += 1;
 
         if (index >= total) {
@@ -48,16 +47,16 @@ module.exports = function (callback) {
             return;
         }
 
-        let component = release.distributions[index];
-        let lowerCaseComponent = component.toLowerCase();
-        let outputDirectory = path.resolve(release.outputRoot + lowerCaseComponent);
-        let repoName = release.distRepoRoot + component;
+        const component = release.distributions[index];
+        const lowerCaseComponent = component.toLowerCase();
+        const outputDirectory = path.resolve(release.outputRoot + lowerCaseComponent);
+        const repoName = release.distRepoRoot + component;
 
-        let gitOptions = { cwd: outputDirectory };
-        let pullOptions = { args: '-q', cwd: outputDirectory, quiet: true };
-        let resetOptions = { args: '-q --hard', cwd: outputDirectory, quiet: true };
-        let gitURL = 'git@github.com:' + release.org + '/' + repoName + '.git';
-        let localRepoSetup = fs.pathExistsSync(path.join(outputDirectory, '.git'));
+        const gitOptions = { cwd: outputDirectory };
+        const pullOptions = { args: '-q', cwd: outputDirectory, quiet: true };
+        const resetOptions = { args: '-q --hard', cwd: outputDirectory, quiet: true };
+        const gitURL = 'git@github.com:' + release.org + '/' + repoName + '.git';
+        const localRepoSetup = fs.pathExistsSync(path.join(outputDirectory, '.git'));
 
         console.log('Processing repository: ' + outputDirectory);
 

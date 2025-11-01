@@ -20,20 +20,20 @@
         : globalThis;
 
     $.fn.flyout = function (...args) {
-        let $allModules = $(this);
-        let $window = $(window);
-        let $document = $(document);
-        let $html = $('html');
-        let $head = $('head');
-        let $body = $('body');
+        const $allModules = $(this);
+        const $window = $(window);
+        const $document = $(document);
+        const $html = $('html');
+        const $head = $('head');
+        const $body = $('body');
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $body;
@@ -53,15 +53,15 @@
                 ? $.extend(true, {}, $.fn.flyout.settings, parameters)
                 : $.extend({}, $.fn.flyout.settings);
 
-            let selector = settings.selector;
+            const selector = settings.selector;
             let className = settings.className;
             let namespace = settings.namespace;
             let fields = settings.fields;
-            let regExp = settings.regExp;
+            const regExp = settings.regExp;
             let error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
             let $module = $(this);
             let $context = contextCheck(settings.context, window);
@@ -73,13 +73,13 @@
             let $pusher = $context.children(selector.pusher);
             let $style;
 
-            let isFlyoutComponent = $module.hasClass('flyout');
+            const isFlyoutComponent = $module.hasClass('flyout');
 
             let element = this;
             let instance = isFlyoutComponent ? $module.data(moduleNamespace) : undefined;
 
             let ignoreRepeatedEvents = false;
-            let isBody = $context[0] === $body[0];
+            const isBody = $context[0] === $body[0];
             let initialBodyMargin = '';
             let initialBodyMarginInt = 0;
             let tempBodyMargin = 0;
@@ -92,9 +92,7 @@
             let observeAttributes = false;
             let currentScroll;
 
-            let module;
-
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.debug('Initializing flyout', parameters);
@@ -127,12 +125,12 @@
                             $actions.empty();
                         }
                         settings.actions.forEach(function (el) {
-                            let icon = el[fields.icon]
+                            const icon = el[fields.icon]
                                 ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                 : '';
-                            let text = module.helpers.escape(el[fields.text] || '', settings);
-                            let cls = module.helpers.escape(el[fields.class] || '');
-                            let click = el[fields.click] && isFunction(el[fields.click])
+                            const text = module.helpers.escape(el[fields.text] || '', settings);
+                            const cls = module.helpers.escape(el[fields.class] || '');
+                            const click = el[fields.click] && isFunction(el[fields.click])
                                 ? el[fields.click]
                                 : function () {};
                             $actions.append($('<button/>', {
@@ -196,12 +194,12 @@
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {
-                            let titleId = '_' + module.get.id() + 'title';
+                            const titleId = '_' + module.get.id() + 'title';
                             $module.attr('aria-labelledby', titleId);
                             $('<div/>', { class: className.header, id: titleId }).appendTo($module);
                         }
                         if (settings.content !== '') {
-                            let descId = '_' + module.get.id() + 'desc';
+                            const descId = '_' + module.get.id() + 'desc';
                             $module.attr('aria-describedby', descId);
                             $('<div/>', { class: className.content, id: descId }).appendTo($module);
                         }
@@ -238,7 +236,7 @@
 
                 event: {
                     keyboard: function (event) {
-                        let keyCode = event.which;
+                        const keyCode = event.which;
                         if (keyCode === settings.keys.escape) {
                             if (settings.closable) {
                                 module.debug('Escape key pressed hiding flyout');
@@ -263,8 +261,8 @@
                     },
                     clickaway: function (event) {
                         if (settings.closable) {
-                            let clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
-                            let clickedContext = $context.is(event.target);
+                            const clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target);
+                            const clickedContext = $context.is(event.target);
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
                                 module.hide();
@@ -279,21 +277,21 @@
                         module.hide();
                     },
                     closeKeyUp: function (event) {
-                        let keyCode = event.which;
+                        const keyCode = event.which;
                         if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
                             module.hide();
                         }
                     },
                     inputKeyDown: {
                         first: function (event) {
-                            let keyCode = event.which;
+                            const keyCode = event.which;
                             if (keyCode === settings.keys.tab && event.shiftKey) {
                                 $inputs.last().trigger('focus');
                                 event.preventDefault();
                             }
                         },
                         last: function (event) {
-                            let keyCode = event.which;
+                            const keyCode = event.which;
                             if (keyCode === settings.keys.tab && !event.shiftKey) {
                                 $inputs.first().trigger('focus');
                                 event.preventDefault();
@@ -399,11 +397,11 @@
 
                 add: {
                     inlineCSS: function () {
-                        let width = module.cache.width || $module.outerWidth();
-                        let height = module.cache.height || $module.outerHeight();
-                        let isRTL = module.is.rtl();
-                        let direction = module.get.direction();
-                        let distance = {
+                        const width = module.cache.width || $module.outerWidth();
+                        const height = module.cache.height || $module.outerHeight();
+                        const isRTL = module.is.rtl();
+                        const direction = module.get.direction();
+                        const distance = {
                             left: width,
                             right: -width,
                             top: height,
@@ -447,8 +445,8 @@
                 },
                 observeChanges: function () {
                     observer = new MutationObserver(function (mutations) {
-                        let collectNodes = function (parent) {
-                            let nodes = [];
+                        const collectNodes = function (parent) {
+                            const nodes = [];
                             for (const c of parent) {
                                 nodes.push(...collectNodes(c.childNodes), c);
                             }
@@ -465,8 +463,8 @@
                             } else {
                                 // mutationobserver only provides the parent nodes,
                                 // so let's collect all childs as well to find nested inputs
-                                let $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
-                                let $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
+                                const $addedInputs = $(collectNodes(mutation.addedNodes)).filter('a[href], [tabindex], :input:enabled').filter(':visible');
+                                const $removedInputs = $(collectNodes(mutation.removedNodes)).filter('a[href], [tabindex], :input');
                                 if ($addedInputs.length > 0 || $removedInputs.length > 0) {
                                     shouldRefreshInputs = true;
                                     if ($addedInputs.filter(':input').length > 0 || $removedInputs.filter(':input').length > 0) {
@@ -563,10 +561,10 @@
                     },
                     heights: function () {
                         module.debug('Setting up heights', $module);
-                        let $header = $module.children(selector.header);
-                        let $content = $module.children(selector.content);
-                        let $actions = $module.children(selector.actions);
-                        let newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0);
+                        const $header = $module.children(selector.header);
+                        const $content = $module.children(selector.content);
+                        const $actions = $module.children(selector.actions);
+                        const newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0);
                         if (newContentHeight > 0) {
                             $content.css('min-height', String(newContentHeight) + 'px');
                         }
@@ -574,7 +572,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    let $toggle = $(selector);
+                    const $toggle = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -660,8 +658,8 @@
                 },
 
                 hideOthers: function (callback = function () {}) {
-                    let $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
-                    let flyoutCount = $otherFlyouts.length;
+                    const $otherFlyouts = $flyouts.not($module).filter('.' + className.visible);
+                    const flyoutCount = $otherFlyouts.length;
                     let callbackCount = 0;
                     $otherFlyouts
                         .flyout('hide', function () {
@@ -682,9 +680,6 @@
                 },
 
                 pushPage: function (callback) {
-                    let animate;
-                    let dim;
-                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -693,16 +688,16 @@
                         currentScroll = (isBody ? $window : $context).scrollTop();
                     }
                     module.bind.scrollLock();
-                    animate = function () {
+                    const animate = function () {
                         module.bind.clickaway();
                         module.add.inlineCSS();
                         module.set.animating();
                         module.set.visible();
                     };
-                    dim = function () {
+                    const dim = function () {
                         module.set.dimmed();
                     };
-                    transitionEnd = function (event) {
+                    const transitionEnd = function (event) {
                         if (event.target === $module[0]) {
                             $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
@@ -718,8 +713,6 @@
                 },
 
                 pullPage: function (callback) {
-                    let animate;
-                    let transitionEnd;
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
@@ -733,7 +726,7 @@
                         }
                     }
 
-                    animate = function () {
+                    const animate = function () {
                         module.set.overlay();
                         module.set.animating();
                         if (settings.dimPage && !module.othersVisible()) {
@@ -741,7 +734,7 @@
                         }
                         module.remove.visible();
                     };
-                    transitionEnd = function (event) {
+                    const transitionEnd = function (event) {
                         if (event.target === $module[0]) {
                             $module.off('transitionend' + elementNamespace, transitionEnd);
                             module.remove.animating();
@@ -785,9 +778,9 @@
                         observeAttributes = state !== false;
                     },
                     autofocus: function () {
-                        let $autofocus = $inputs.filter('[autofocus]');
-                        let $rawInputs = $inputs.filter(':input');
-                        let $input = ($autofocus.length > 0
+                        const $autofocus = $inputs.filter('[autofocus]');
+                        const $rawInputs = $inputs.filter(':input');
+                        const $input = ($autofocus.length > 0
                             ? $autofocus
                             : ($rawInputs.length > 0
                                 ? $rawInputs
@@ -803,11 +796,11 @@
                         }
                     },
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                         });
                     },
@@ -925,8 +918,8 @@
 
                 save: {
                     focus: function () {
-                        let $activeElement = $(document.activeElement);
-                        let inCurrentFlyout = $activeElement.closest($module).length > 0;
+                        const $activeElement = $(document.activeElement);
+                        const inCurrentFlyout = $activeElement.closest($module).length > 0;
                         if (!inCurrentFlyout) {
                             $focusedElement = $(document.activeElement).trigger('blur');
                         }
@@ -934,7 +927,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
-                        let bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                        const bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },
                 },
@@ -958,8 +951,8 @@
                         return !(self === top);
                     },
                     mobile: function () {
-                        let userAgent = navigator.userAgent;
-                        let isMobile = userAgent.match(regExp.mobile);
+                        const userAgent = navigator.userAgent;
+                        const isMobile = userAgent.match(regExp.mobile);
                         if (isMobile) {
                             module.verbose('Browser was found to be mobile', userAgent);
 
@@ -1004,11 +997,11 @@
                         }
                     },
                     bodyMargin: function () {
-                        let position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                        const position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMarginInt === 0 ? '' : initialBodyMargin);
                         $context.find(selector.bodyFixed.replace('right', position)).each(function () {
-                            let el = $(this);
-                            let attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
+                            const el = $(this);
+                            const attribute = el.css('position') === 'fixed' ? 'padding-' + position : position;
                             el.css(attribute, '');
                         });
                     },
@@ -1129,7 +1122,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1341,7 +1334,7 @@
             };
         },
         alert: function (...args) {
-            let settings = this.get.settings();
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
 
             return {
@@ -1355,7 +1348,7 @@
             };
         },
         confirm: function (...args) {
-            let settings = this.get.settings();
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
 
             return {
@@ -1377,10 +1370,10 @@
             };
         },
         prompt: function (...args) {
-            let $this = this;
-            let settings = this.get.settings();
+            const $this = this;
+            const settings = this.get.settings();
             args = settings.templates.getArguments(args);
-            let input = $($.parseHTML(args.content)).filter('.ui.input');
+            const input = $($.parseHTML(args.content)).filter('.ui.input');
             if (input.length === 0) {
                 args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.escape(args.placeholder || '') + '" type="text" value="' + this.helpers.escape(args.defaultValue || '') + '"></div></p>';
             }
@@ -1392,8 +1385,8 @@
                     text: settings.text.ok,
                     class: settings.className.ok,
                     click: function () {
-                        let settings = $this.get.settings();
-                        let inputField = $this.get.element().find(settings.selector.prompt)[0];
+                        const settings = $this.get.settings();
+                        const inputField = $this.get.element().find(settings.selector.prompt)[0];
                         args.handler($(inputField).val());
                     },
                 }, {

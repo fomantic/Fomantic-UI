@@ -1,4 +1,4 @@
-let assets = [
+const assets = [
     'dist/themes/default/assets/images/flags.png',
 ];
 

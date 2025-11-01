@@ -99,7 +99,7 @@ function pack(type, compress) {
         concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
     }
 
-    let src = globs.components
+    const src = globs.components
         .replace(/[{}]/g, '')
         .split(',')
         .map((c) => {

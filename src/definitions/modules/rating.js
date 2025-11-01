@@ -20,40 +20,39 @@
         : globalThis;
 
     $.fn.rating = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.rating.settings, parameters)
                 : $.extend({}, $.fn.rating.settings);
 
-            let namespace = settings.namespace;
-            let className = settings.className;
-            let error = settings.error;
-            let metadata = settings.metadata;
-            let selector = settings.selector;
-            let cssVars = settings.cssVars;
+            const namespace = settings.namespace;
+            const className = settings.className;
+            const error = settings.error;
+            const metadata = settings.metadata;
+            const selector = settings.selector;
+            const cssVars = settings.cssVars;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let element = this;
+            const element = this;
             let instance = $(this).data(moduleNamespace);
 
-            let $module = $(this);
+            const $module = $(this);
             let $icon = $module.find(selector.icon);
 
             let initialLoad;
-            let module;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing rating module', settings);
@@ -93,9 +92,9 @@
 
                 setup: {
                     layout: function () {
-                        let maxRating = module.get.maxRating();
-                        let icon = module.get.icon();
-                        let html = $.fn.rating.settings.templates.icon(maxRating, icon);
+                        const maxRating = module.get.maxRating();
+                        const icon = module.get.icon();
+                        const html = $.fn.rating.settings.templates.icon(maxRating, icon);
                         module.debug('Generating icon html dynamically');
                         $module
                             .html(html);
@@ -105,7 +104,7 @@
 
                 event: {
                     mouseenter: function () {
-                        let $activeIcon = $(this);
+                        const $activeIcon = $(this);
                         $activeIcon
                             .nextAll()
                             .removeClass(className.selected);
@@ -123,10 +122,10 @@
                             .removeClass(className.selected);
                     },
                     click: function () {
-                        let $activeIcon = $(this);
-                        let currentRating = module.get.rating();
-                        let rating = $icon.index($activeIcon) + 1;
-                        let canClear = settings.clearable === 'auto'
+                        const $activeIcon = $(this);
+                        const currentRating = module.get.rating();
+                        const rating = $icon.index($activeIcon) + 1;
+                        const canClear = settings.clearable === 'auto'
                             ? $icon.length === 1
                             : settings.clearable;
                         if (canClear && currentRating === rating) {
@@ -188,7 +187,7 @@
 
                 get: {
                     icon: function () {
-                        let icon = $module.data(metadata.icon);
+                        const icon = $module.data(metadata.icon);
                         if (icon) {
                             $module.removeData(metadata.icon);
                         }
@@ -214,7 +213,7 @@
                         return settings.maxRating;
                     },
                     rating: function () {
-                        let currentRating = $icon.filter('.' + className.active).length;
+                        const currentRating = $icon.filter('.' + className.active).length;
                         module.verbose('Current rating retrieved', currentRating);
 
                         return currentRating;
@@ -223,14 +222,14 @@
 
                 set: {
                     rating: function (rating) {
-                        let ratingIndex = Math.floor(
+                        const ratingIndex = Math.floor(
                             Math.max(rating - 1, 0)
                         );
-                        let $activeIcon = $icon.eq(ratingIndex);
-                        let $partialActiveIcon = rating <= 1
+                        const $activeIcon = $icon.eq(ratingIndex);
+                        const $partialActiveIcon = rating <= 1
                             ? $activeIcon
                             : $activeIcon.next();
-                        let filledPercentage = (rating % 1) * 100;
+                        const filledPercentage = (rating % 1) * 100;
                         $module
                             .removeClass(className.selected);
                         $icon
@@ -365,7 +364,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -483,7 +482,7 @@
             icon: function (maxRating, iconClass) {
                 let icon = 1;
                 let html = '';
-                let escape = $.fn.rating.settings.templates.escape;
+                const escape = $.fn.rating.settings.templates.escape;
                 while (icon <= maxRating) {
                     html += '<i class="' + escape(iconClass) + ' icon"></i>';
                     icon++;

@@ -20,39 +20,38 @@
         : globalThis;
 
     $.fn.accordion = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                 : $.extend({}, $.fn.accordion.settings);
 
-            let className = settings.className;
-            let namespace = settings.namespace;
-            let selector = settings.selector;
-            let error = settings.error;
+            const className = settings.className;
+            const namespace = settings.namespace;
+            const selector = settings.selector;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
+            const $module = $(this);
             let $title = $module.find(selector.title);
             let $content = $module.find(selector.content);
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
             let observer;
-            let module;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.debug('Initializing', $module);
@@ -110,16 +109,16 @@
                 },
 
                 toggle: function (query) {
-                    let $activeTitle = query !== undefined
+                    const $activeTitle = query !== undefined
                         ? (typeof query === 'number'
                             ? $title.eq(query)
                             : $(query).closest(selector.title))
                         : $(this).closest(selector.title);
-                    let $activeContent = $activeTitle.next($content);
-                    let isAnimating = $activeContent.hasClass(className.animating);
-                    let isActive = $activeContent.hasClass(className.active);
-                    let isOpen = isActive && !isAnimating;
-                    let isOpening = !isActive && isAnimating;
+                    const $activeContent = $activeTitle.next($content);
+                    const isAnimating = $activeContent.hasClass(className.animating);
+                    const isActive = $activeContent.hasClass(className.active);
+                    const isOpen = isActive && !isAnimating;
+                    const isOpening = !isActive && isAnimating;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
                         if (settings.collapsible) {
@@ -133,15 +132,15 @@
                 },
 
                 open: function (query) {
-                    let $activeTitle = query !== undefined
+                    const $activeTitle = query !== undefined
                         ? (typeof query === 'number'
                             ? $title.eq(query)
                             : $(query).closest(selector.title))
                         : $(this).closest(selector.title);
-                    let $activeContent = $activeTitle.next($content);
-                    let isAnimating = $activeContent.hasClass(className.animating);
-                    let isActive = $activeContent.hasClass(className.active);
-                    let isOpen = isActive || isAnimating;
+                    const $activeContent = $activeTitle.next($content);
+                    const isAnimating = $activeContent.hasClass(className.animating);
+                    const isActive = $activeContent.hasClass(className.active);
+                    const isOpen = isActive || isAnimating;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
 
@@ -196,16 +195,16 @@
                 },
 
                 close: function (query) {
-                    let $activeTitle = query !== undefined
+                    const $activeTitle = query !== undefined
                         ? (typeof query === 'number'
                             ? $title.eq(query)
                             : $(query).closest(selector.title))
                         : $(this).closest(selector.title);
-                    let $activeContent = $activeTitle.next($content);
-                    let isAnimating = $activeContent.hasClass(className.animating);
-                    let isActive = $activeContent.hasClass(className.active);
-                    let isOpening = !isActive && isAnimating;
-                    let isClosing = isActive && isAnimating;
+                    const $activeContent = $activeTitle.next($content);
+                    const isAnimating = $activeContent.hasClass(className.animating);
+                    const isActive = $activeContent.hasClass(className.active);
+                    const isOpening = !isActive && isAnimating;
+                    const isClosing = isActive && isAnimating;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
                         settings.onClosing.call($activeContent);
@@ -251,13 +250,13 @@
                 },
 
                 closeOthers: function (index) {
-                    let $activeTitle = index !== undefined
+                    const $activeTitle = index !== undefined
                         ? $title.eq(index)
                         : $(this).closest(selector.title);
-                    let $parentTitles = $activeTitle.parents(selector.content).prev(selector.title);
-                    let $activeAccordion = $activeTitle.closest(selector.accordion);
-                    let activeSelector = selector.title + '.' + className.active + ':visible';
-                    let activeContent = selector.content + '.' + className.active + ':visible';
+                    const $parentTitles = $activeTitle.parents(selector.content).prev(selector.title);
+                    const $activeAccordion = $activeTitle.closest(selector.accordion);
+                    const activeSelector = selector.title + '.' + className.active + ':visible';
+                    const activeContent = selector.content + '.' + className.active + ':visible';
                     let $openTitles;
                     let $nestedTitles;
                     let $openContents;
@@ -311,7 +310,7 @@
 
                     display: function () {
                         module.verbose('Removing inline display from element', this);
-                        let $element = $(this);
+                        const $element = $(this);
                         $element.css('display', '');
                         if ($element.attr('style') === '') {
                             $element
@@ -322,7 +321,7 @@
 
                     opacity: function () {
                         module.verbose('Removing inline opacity from element', this);
-                        let $element = $(this);
+                        const $element = $(this);
                         $element.css('opacity', '');
                         if ($element.attr('style') === '') {
                             $element
@@ -433,7 +432,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

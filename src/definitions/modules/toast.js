@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.toast = function (...args) {
-        let $allModules = $(this);
-        let $body = $('body');
+        const $allModules = $(this);
+        const $body = $('body');
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -44,18 +44,18 @@
         };
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.toast.settings, parameters)
                 : $.extend({}, $.fn.toast.settings);
 
-            let className = settings.className;
-            let selector = settings.selector;
-            let error = settings.error;
-            let namespace = settings.namespace;
-            let fields = settings.fields;
+            const className = settings.className;
+            const selector = settings.selector;
+            const error = settings.error;
+            const namespace = settings.namespace;
+            const fields = settings.fields;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = namespace + '-module';
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = namespace + '-module';
 
             let $module = $(this);
             let $toastBox;
@@ -65,16 +65,15 @@
             let $progressBar;
             let $animationObject;
             let $close;
-            let $context = settings.context ? contextCheck(settings.context, window) : $body;
+            const $context = settings.context ? contextCheck(settings.context, window) : $body;
 
-            let isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
+            const isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card');
 
             let element = this;
             let instance = isToastComponent ? $module.data(moduleNamespace) : undefined;
 
             let id;
-            let module;
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing element');
@@ -162,11 +161,11 @@
                     },
                     toast: function () {
                         $toastBox = $('<div/>', { class: className.box });
-                        let iconClass = module.get.iconClass();
+                        const iconClass = module.get.iconClass();
                         if (!isToastComponent) {
                             module.verbose('Creating toast');
                             $toast = $('<div/>', { role: 'alert' });
-                            let $content = $('<div/>', { class: className.content });
+                            const $content = $('<div/>', { class: className.content });
                             if (iconClass !== '') {
                                 $toast.append($('<i/>', { class: iconClass + ' ' + className.icon }));
                             }
@@ -179,7 +178,7 @@
                                 }));
                             }
                             if (settings.title !== '') {
-                                let titleId = '_' + module.get.id() + 'title';
+                                const titleId = '_' + module.get.id() + 'title';
                                 $toast.attr('aria-labelledby', titleId);
                                 $content.append($('<div/>', {
                                     class: className.title,
@@ -187,7 +186,7 @@
                                     html: module.helpers.escape(settings.title, settings),
                                 }));
                             }
-                            let descId = '_' + module.get.id() + 'desc';
+                            const descId = '_' + module.get.id() + 'desc';
                             $toast.attr('aria-describedby', descId);
                             $content.append($('<div/>', {
                                 class: className.message,
@@ -248,13 +247,13 @@
                                 }
                             }
                             settings.actions.forEach(function (el) {
-                                let icon = el[fields.icon]
+                                const icon = el[fields.icon]
                                     ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
                                             + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                     : '';
-                                let text = module.helpers.escape(el[fields.text] || '', settings);
-                                let cls = module.helpers.escape(el[fields.class] || '');
-                                let click = el[fields.click] && isFunction(el[fields.click])
+                                const text = module.helpers.escape(el[fields.text] || '', settings);
+                                const cls = module.helpers.escape(el[fields.class] || '');
+                                const click = el[fields.click] && isFunction(el[fields.click])
                                     ? el[fields.click]
                                     : function () {};
                                 $actions.append($('<button/>', {
@@ -263,7 +262,7 @@
                                     class: className.button + ' ' + cls,
                                     on: {
                                         click: function () {
-                                            let $button = $(this);
+                                            const $button = $(this);
                                             if ($button.is(selector.approve) || $button.is(selector.deny) || click.call(element, $module) === false) {
                                                 return;
                                             }
@@ -316,7 +315,7 @@
                             element = $toast[0];
                         }
                         if (settings.displayTime > 0) {
-                            let progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
+                            const progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
                             if (settings.showProgress) {
                                 $progress = $('<div/>', {
                                     class: className.progress + ' ' + (settings.classProgress || settings.class),
@@ -563,7 +562,7 @@
 
                 helpers: {
                     toClass: function (selector) {
-                        let classes = selector.trim().split(/\s+/);
+                        const classes = selector.trim().split(/\s+/);
                         let result = '';
 
                         classes.forEach(function (element) {
@@ -697,7 +696,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -887,8 +886,8 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            let n1 = 7.5625;
-            let d1 = 2.75;
+            const n1 = 7.5625;
+            const d1 = 2.75;
             if (x < 1 / d1) {
                 return n1 * x * x;
             }

@@ -43,9 +43,9 @@ const source = install.source;
 
 // Export install task
 module.exports = function (callback) {
-    let currentConfig = requireDotFile('semantic.json', process.cwd());
-    let manager = install.getPackageManager();
-    let rootQuestions = questions.root;
+    const currentConfig = requireDotFile('semantic.json', process.cwd());
+    const manager = install.getPackageManager();
+    const rootQuestions = questions.root;
     let installFolder = false;
     let answers;
 
@@ -79,8 +79,8 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        let updateFolder = path.join(manager.root, currentConfig.base);
-        let updatePaths = {
+        const updateFolder = path.join(manager.root, currentConfig.base);
+        const updatePaths = {
             config: path.join(manager.root, files.config),
             tasks: path.join(updateFolder, folders.tasks),
             overridesImport: path.join(updateFolder, folders.overridesImport),
@@ -258,7 +258,7 @@ module.exports = function (callback) {
             installFolder = path.join(manager.root, answers.semanticRoot);
 
             // add install folder to all output paths
-            for (let destination in installPaths) {
+            for (const destination in installPaths) {
                 if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
                     installPaths[destination] = destination === 'config' || destination === 'configFolder'
@@ -327,8 +327,8 @@ module.exports = function (callback) {
         gulp.task('create theme.config', function () {
             // determine path to site theme folder from theme config
             // force CSS path variable to use forward slashes for paths
-            let pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replaceAll('\\', '/');
-            let siteVariable = "@siteFolder: '" + pathToSite + "/';";
+            const pathToSite = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replaceAll('\\', '/');
+            const siteVariable = "@siteFolder: '" + pathToSite + "/';";
 
             // rewrite site variable in theme.less
             console.info('Adjusting @siteFolder to:', pathToSite + '/');
@@ -356,7 +356,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            let jsonConfig = install.createJSON(answers);
+            const jsonConfig = install.createJSON(answers);
 
             // adjust variables in theme.less
             if (fs.pathExistsSync(installPaths.config)) {

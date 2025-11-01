@@ -21,15 +21,15 @@
 
     $.fn.dropdown = function (...args) {
         let $allModules = $(this);
-        let $document = $(document);
+        const $document = $(document);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -45,26 +45,26 @@
         let returnedValue;
 
         $allModules.each(function (elementIndex) {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.dropdown.settings, parameters)
                 : $.extend({}, $.fn.dropdown.settings);
 
-            let className = settings.className;
-            let message = settings.message;
-            let fields = settings.fields;
-            let keys = settings.keys;
-            let metadata = settings.metadata;
-            let namespace = settings.namespace;
-            let regExp = settings.regExp;
-            let selector = settings.selector;
-            let error = settings.error;
-            let templates = settings.templates;
+            const className = settings.className;
+            const message = settings.message;
+            const fields = settings.fields;
+            const keys = settings.keys;
+            const metadata = settings.metadata;
+            const namespace = settings.namespace;
+            const regExp = settings.regExp;
+            const selector = settings.selector;
+            const error = settings.error;
+            const templates = settings.templates;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
             let $module = $(this);
-            let $context = contextCheck(settings.context, window);
+            const $context = contextCheck(settings.context, window);
             let $text = $module.find(selector.text);
             let $search = $module.find(selector.search);
             let $sizer = $module.find(selector.sizer);
@@ -99,10 +99,9 @@
             let selectObserver;
             let menuObserver;
             let classObserver;
-            let module;
             let tempDisableApiCache = false;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.debug('Initializing dropdown', settings);
@@ -251,7 +250,7 @@
                         return $userChoices;
                     },
                     userLabels: function (value) {
-                        let userValues = module.get.userValues();
+                        const userValues = module.get.userValues();
                         if (userValues) {
                             module.debug('Adding user labels', userValues);
                             $.each(userValues, function (index, value) {
@@ -295,9 +294,9 @@
                     },
                     nextAvailable: function ($selected) {
                         $selected = $selected.eq(0);
-                        let $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0);
-                        let $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0);
-                        let hasNext = $nextAvailable.length > 0;
+                        const $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0);
+                        const $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0);
+                        const hasNext = $nextAvailable.length > 0;
                         if (hasNext) {
                             module.verbose('Moving selection to', $nextAvailable);
                             $nextAvailable.addClass(className.selected);
@@ -310,7 +309,7 @@
 
                 setup: {
                     api: function () {
-                        let apiSettings = {
+                        const apiSettings = {
                             debug: settings.debug,
                             urlData: {
                                 value: module.get.value(),
@@ -338,7 +337,7 @@
                         }
                         if (module.is.search() && !module.has.search()) {
                             module.verbose('Adding search input');
-                            let labelNode = $module.prev('label');
+                            const labelNode = $module.prev('label');
                             $search = $('<input />')
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
@@ -358,7 +357,7 @@
                         }
                     },
                     select: function () {
-                        let selectValues = module.get.selectValues();
+                        const selectValues = module.get.selectValues();
                         module.debug('Dropdown initialized on a select', selectValues);
                         if ($module.is('select')) {
                             $input = $module;
@@ -420,8 +419,8 @@
                         module.setup.returnedObject();
                     },
                     returnedObject: function () {
-                        let $firstModules = $allModules.slice(0, elementIndex);
-                        let $lastModules = $allModules.slice(elementIndex + 1);
+                        const $firstModules = $allModules.slice(0, elementIndex);
+                        const $lastModules = $allModules.slice(elementIndex + 1);
                         // adjust all modules to use the correct reference
                         $allModules = $firstModules.add($module).add($lastModules);
                     },
@@ -533,11 +532,11 @@
                             });
                             // Hide submenus explicitly. On some browsers (esp. mobile), they will not automatically receive a
                             // mouseleave event
-                            let $subMenu = $module.find(selector.menu);
+                            const $subMenu = $module.find(selector.menu);
                             if ($subMenu.length > 0) {
                                 module.verbose('Hiding sub-menu', $subMenu);
                                 $subMenu.each(function () {
-                                    let $sub = $(this);
+                                    const $sub = $(this);
                                     if (!module.is.animating($sub)) {
                                         module.animate.hide(false, $sub);
                                     }
@@ -567,7 +566,7 @@
                 },
 
                 hideSubMenus: function () {
-                    let $subMenus = $menu.children(selector.item).find(selector.menu);
+                    const $subMenus = $menu.children(selector.item).find(selector.menu);
                     module.verbose('Hiding sub menus', $subMenus);
                     $subMenus.transition('hide');
                 },
@@ -674,10 +673,10 @@
                 },
 
                 filter: function (query) {
-                    let searchTerm = query !== undefined
+                    const searchTerm = query !== undefined
                         ? query
                         : module.get.query();
-                    let afterFiltered = function () {
+                    const afterFiltered = function () {
                         if (module.is.multiple()) {
                             module.filterActive();
                         }
@@ -759,7 +758,7 @@
                             query: query,
                         },
                     };
-                    let apiCallbacks = {
+                    const apiCallbacks = {
                         onError: function (errorMessage, $module, xhr) {
                             module.add.message(message.serverError);
                             iconClicked = false;
@@ -784,14 +783,14 @@
                                 values = [];
                             }
                             module.remove.message();
-                            let menuConfig = {};
+                            const menuConfig = {};
                             menuConfig[fields.values] = values;
                             module.setup.menu(menuConfig);
 
                             if (values.length === 0 && !settings.allowAdditions) {
                                 module.add.message(message.noResults);
                             } else {
-                                let value = module.is.multiple() ? module.get.values() : module.get.value();
+                                const value = module.is.multiple() ? module.get.values() : module.get.value();
                                 if (value !== '') {
                                     module.verbose('Value(s) present after click icon, select value(s) in items');
                                     module.set.selected(value, null, true, true);
@@ -816,16 +815,16 @@
                 },
 
                 filterItems: function (query) {
-                    let searchTerm = module.remove.diacritics(
+                    const searchTerm = module.remove.diacritics(
                         query !== undefined
                             ? query
                             : module.get.query()
                     );
                     let results = null;
-                    let escapedTerm = module.escape.string(searchTerm);
-                    let regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
-                    let regExpFlags = regExpIgnore + 'gm';
-                    let beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags);
+                    const escapedTerm = module.escape.string(searchTerm);
+                    const regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
+                    const regExpFlags = regExpIgnore + 'gm';
+                    const beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags);
                     module.remove.filteredItem();
                     // avoid loop if we're matching nothing
                     if (module.has.query()) {
@@ -834,7 +833,7 @@
                         module.verbose('Searching for matching values', searchTerm);
                         $item
                             .each(function () {
-                                let $choice = $(this);
+                                const $choice = $(this);
                                 let text;
                                 let value;
                                 if ($choice.hasClass(className.unfilterable)) {
@@ -872,11 +871,11 @@
                             .not(results)
                             .addClass(className.filtered);
                         if (settings.highlightMatches && (settings.match === 'both' || settings.match === 'text')) {
-                            let querySplit = [...query];
-                            let diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
-                            let htmlReg = '(?![^<]*>)';
-                            let markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
-                            let markedReplacer = function (...args) {
+                            const querySplit = [...query];
+                            const diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
+                            const htmlReg = '(?![^<]*>)';
+                            const markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
+                            const markedReplacer = function (...args) {
                                 args = args.slice(1, querySplit.length * 2).map(function (x, i) {
                                     return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                 });
@@ -884,7 +883,7 @@
                                 return args.join('');
                             };
                             $.each(results, function (index, result) {
-                                let $result = $(result);
+                                const $result = $(result);
                                 let markedHTML = module.get.choiceText($result, true);
                                 if (settings.ignoreDiacritics) {
                                     markedHTML = markedHTML.normalize('NFD');
@@ -906,7 +905,7 @@
                             .filter(function () {
                                 // First find the last divider in this divider group
                                 // Dividers which are direct siblings are considered a group
-                                let $lastDivider = $(this).nextUntil(selector.item);
+                                const $lastDivider = $(this).nextUntil(selector.item);
 
                                 return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
@@ -920,8 +919,8 @@
                 },
 
                 fuzzySearch: function (query, term) {
-                    let termLength = term.length;
-                    let queryLength = query.length;
+                    const termLength = term.length;
+                    const queryLength = query.length;
                     if (settings.ignoreSearchCase) {
                         query = query.toLowerCase();
                         term = term.toLowerCase();
@@ -934,7 +933,7 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.codePointAt(characterIndex);
+                        const queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
                             if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
@@ -982,12 +981,12 @@
                 },
 
                 forceSelection: function () {
-                    let $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0);
-                    let $activeItem = $item.not(className.filtered).filter('.' + className.active).eq(0);
-                    let $selectedItem = $currentlySelected.length > 0
+                    const $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0);
+                    const $activeItem = $item.not(className.filtered).filter('.' + className.active).eq(0);
+                    const $selectedItem = $currentlySelected.length > 0
                         ? $currentlySelected
                         : $activeItem;
-                    let hasSelected = $selectedItem.length > 0;
+                    const hasSelected = $selectedItem.length > 0;
                     if (settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                         module.debug('Forcing partial selection to selected item', $selectedItem);
                         module.event.item.click.call($selectedItem, {}, true);
@@ -1002,13 +1001,13 @@
                             module.clear();
                         }
                         module.debug('Creating dropdown with specified values', values);
-                        let menuConfig = {};
+                        const menuConfig = {};
                         menuConfig[fields.values] = values;
                         module.setup.menu(menuConfig);
-                        let findSelected = function (values) {
+                        const findSelected = function (values) {
                             let hasMultiple = true;
                             $.each(values, function (index, item) {
-                                let itemType = item.type || 'item';
+                                const itemType = item.type || 'item';
                                 if (item.selected === true) {
                                     module.debug('Setting initial selection to', item[fields.value]);
                                     module.set.selected(item[fields.value]);
@@ -1031,8 +1030,8 @@
                             $input.html('');
                             $input.append('<option disabled selected value></option>');
                             $.each(values, function (index, item) {
-                                let value = item[fields.value];
-                                let name = item[fields.name] || '';
+                                const value = item[fields.value];
+                                const name = item[fields.name] || '';
                                 $input.append('<option value="' + settings.templates.escape(value) + '"' + (item.selected === true ? ' selected' : '') + '>' + settings.templates.escape(name, settings) + '</option>');
                             });
                             module.observe.select();
@@ -1042,9 +1041,9 @@
 
                 event: {
                     paste: function (event) {
-                        let pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text');
-                        let tokens = pasteValue.split(settings.delimiter);
-                        let notFoundTokens = [];
+                        const pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text');
+                        const tokens = pasteValue.split(settings.delimiter);
+                        const notFoundTokens = [];
                         tokens.forEach(function (value) {
                             value = value.trim();
                             const valueTrimmed = settings.preserveHTML
@@ -1056,12 +1055,12 @@
                         });
                         event.preventDefault();
                         if (notFoundTokens.length > 0) {
-                            let searchEl = $search[0];
-                            let startPos = searchEl.selectionStart;
-                            let endPos = searchEl.selectionEnd;
-                            let orgText = searchEl.value;
-                            let pasteText = notFoundTokens.join(settings.delimiter);
-                            let newEndPos = startPos + pasteText.length;
+                            const searchEl = $search[0];
+                            const startPos = searchEl.selectionStart;
+                            const endPos = searchEl.selectionEnd;
+                            const orgText = searchEl.value;
+                            const pasteText = notFoundTokens.join(settings.delimiter);
+                            const newEndPos = startPos + pasteText.length;
                             $search.val(orgText.slice(0, startPos) + pasteText + orgText.slice(endPos));
                             searchEl.selectionStart = newEndPos;
                             searchEl.selectionEnd = newEndPos;
@@ -1105,7 +1104,7 @@
                         }
                     },
                     click: function (event) {
-                        let $target = $(event.target);
+                        const $target = $(event.target);
                         // focus search
                         if ($target.is($module)) {
                             if (!module.is.focusedOnSearch()) {
@@ -1187,12 +1186,12 @@
                     },
                     label: {
                         click: function (event) {
-                            let $label = $(this);
-                            let $labels = $module.find(selector.label);
-                            let $activeLabels = $labels.filter('.' + className.active);
-                            let $nextActive = $label.nextAll('.' + className.active);
-                            let $prevActive = $label.prevAll('.' + className.active);
-                            let $range = $nextActive.length > 0
+                            const $label = $(this);
+                            const $labels = $module.find(selector.label);
+                            const $activeLabels = $labels.filter('.' + className.active);
+                            const $nextActive = $label.nextAll('.' + className.active);
+                            const $prevActive = $label.prevAll('.' + className.active);
+                            const $range = $nextActive.length > 0
                                 ? $label.nextUntil($nextActive).add($activeLabels).add($label)
                                 : $label.prevUntil($prevActive).add($activeLabels).add($label);
                             if (event.shiftKey) {
@@ -1210,7 +1209,7 @@
                     },
                     remove: {
                         click: function (event) {
-                            let $label = $(this).parent();
+                            const $label = $(this).parent();
                             if ($label.hasClass(className.active)) {
                                 // remove all selected labels
                                 module.remove.activeLabels();
@@ -1223,7 +1222,7 @@
                     },
                     test: {
                         toggle: function (event) {
-                            let toggleBehavior = module.is.multiple()
+                            const toggleBehavior = module.is.multiple()
                                 ? module.show
                                 : module.toggle;
                             if (module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
@@ -1267,16 +1266,16 @@
                     },
                     menu: {
                         mutation: function (mutations) {
-                            let mutation = mutations[0];
-                            let $addedNode = mutation.addedNodes
+                            const mutation = mutations[0];
+                            const $addedNode = mutation.addedNodes
                                 ? $(mutation.addedNodes[0])
                                 : $(false);
-                            let $removedNode = mutation.removedNodes
+                            const $removedNode = mutation.removedNodes
                                 ? $(mutation.removedNodes[0])
                                 : $(false);
-                            let $changedNodes = $addedNode.add($removedNode);
-                            let isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0;
-                            let isMessage = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0;
+                            const $changedNodes = $addedNode.add($removedNode);
+                            const isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0;
+                            const isMessage = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0;
                             if (isUserAddition || isMessage) {
                                 module.debug('Updating item selector cache');
                                 module.refreshItems();
@@ -1294,12 +1293,12 @@
                     },
                     item: {
                         mouseenter: function (event) {
-                            let $target = $(event.target);
-                            let $item = $(this);
-                            let $subMenu = $item.children(selector.menu);
-                            let $otherMenus = $item.siblings(selector.item).children(selector.menu);
-                            let hasSubMenu = $subMenu.length > 0;
-                            let isBubbledEvent = $subMenu.find($target).length > 0;
+                            const $target = $(event.target);
+                            const $item = $(this);
+                            const $subMenu = $item.children(selector.menu);
+                            const $otherMenus = $item.siblings(selector.item).children(selector.menu);
+                            const hasSubMenu = $subMenu.length > 0;
+                            const isBubbledEvent = $subMenu.find($target).length > 0;
                             if (!isBubbledEvent && hasSubMenu) {
                                 clearTimeout(module.itemTimer);
                                 module.itemTimer = setTimeout(function () {
@@ -1313,7 +1312,7 @@
                             }
                         },
                         mouseleave: function (event) {
-                            let $subMenu = $(this).find(selector.menu);
+                            const $subMenu = $(this).find(selector.menu);
                             if ($subMenu.length > 0) {
                                 clearTimeout(module.itemTimer);
                                 module.itemTimer = setTimeout(function () {
@@ -1325,15 +1324,15 @@
                             }
                         },
                         click: function (event, skipRefocus) {
-                            let $choice = $(this);
-                            let $target = event
+                            const $choice = $(this);
+                            const $target = event
                                 ? $(event.target || '')
                                 : $('');
-                            let $subMenu = $choice.find(selector.menu);
-                            let text = module.get.choiceText($choice);
-                            let value = module.get.choiceValue($choice, text);
-                            let hasSubMenu = $subMenu.length > 0;
-                            let isBubbledEvent = $subMenu.find($target).length > 0;
+                            const $subMenu = $choice.find(selector.menu);
+                            const text = module.get.choiceText($choice);
+                            const value = module.get.choiceValue($choice, text);
+                            const hasSubMenu = $subMenu.length > 0;
+                            const isBubbledEvent = $subMenu.find($target).length > 0;
                             if (document.activeElement.tagName.toLowerCase() !== 'input') {
                                 $(document.activeElement).trigger('blur');
                             }
@@ -1367,23 +1366,23 @@
                     document: {
                         // label selection should occur even when the element has no focus
                         keydown: function (event) {
-                            let pressedKey = event.which;
-                            let isShortcutKey = module.is.inObject(pressedKey, keys);
+                            const pressedKey = event.which;
+                            const isShortcutKey = module.is.inObject(pressedKey, keys);
                             if (isShortcutKey) {
-                                let $label = $module.find(selector.label);
+                                const $label = $module.find(selector.label);
                                 let $activeLabel = $label.filter('.' + className.active);
-                                let activeValue = $activeLabel.data(metadata.value);
-                                let labelIndex = $label.index($activeLabel);
-                                let labelCount = $label.length;
-                                let hasActiveLabel = $activeLabel.length > 0;
-                                let hasMultipleActive = $activeLabel.length > 1;
-                                let isFirstLabel = labelIndex === 0;
-                                let isLastLabel = labelIndex + 1 === labelCount;
-                                let isSearch = module.is.searchSelection();
-                                let isFocusedOnSearch = module.is.focusedOnSearch();
-                                let isFocused = module.is.focused();
-                                let caretAtStart = isFocusedOnSearch && module.get.caretPosition(false) === 0;
-                                let isSelectedSearch = caretAtStart && module.get.caretPosition(true) !== 0;
+                                const activeValue = $activeLabel.data(metadata.value);
+                                const labelIndex = $label.index($activeLabel);
+                                const labelCount = $label.length;
+                                const hasActiveLabel = $activeLabel.length > 0;
+                                const hasMultipleActive = $activeLabel.length > 1;
+                                const isFirstLabel = labelIndex === 0;
+                                const isLastLabel = labelIndex + 1 === labelCount;
+                                const isSearch = module.is.searchSelection();
+                                const isFocusedOnSearch = module.is.focusedOnSearch();
+                                const isFocused = module.is.focused();
+                                const caretAtStart = isFocusedOnSearch && module.get.caretPosition(false) === 0;
+                                const isSelectedSearch = caretAtStart && module.get.caretPosition(true) !== 0;
                                 if (isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                                     return;
                                 }
@@ -1480,24 +1479,24 @@
 
                     keydown: function (event) {
                         let pressedKey = event.which;
-                        let isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter;
+                        const isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter;
                         if (isShortcutKey) {
-                            let $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0);
-                            let $activeItem = $menu.children('.' + className.active).eq(0);
-                            let $selectedItem = $currentlySelected.length > 0
+                            const $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0);
+                            const $activeItem = $menu.children('.' + className.active).eq(0);
+                            const $selectedItem = $currentlySelected.length > 0
                                 ? $currentlySelected
                                 : $activeItem;
-                            let $visibleItems = $selectedItem.length > 0
+                            const $visibleItems = $selectedItem.length > 0
                                 ? $selectedItem.siblings(':not(.' + className.filtered + ')').addBack()
                                 : $menu.children(':not(.' + className.filtered + ')');
-                            let $subMenu = $selectedItem.children(selector.menu);
-                            let $parentMenu = $selectedItem.closest(selector.menu);
-                            let inVisibleMenu = $parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0;
-                            let hasSubMenu = $subMenu.length > 0;
-                            let hasSelectedItem = $selectedItem.length > 0;
-                            let selectedIsSelectable = $selectedItem.not(selector.unselectable).length > 0;
-                            let delimiterPressed = event.key === settings.delimiter && module.is.multiple();
-                            let isAdditionWithoutMenu = settings.allowAdditions && (pressedKey === keys.enter || delimiterPressed);
+                            const $subMenu = $selectedItem.children(selector.menu);
+                            const $parentMenu = $selectedItem.closest(selector.menu);
+                            const inVisibleMenu = $parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0;
+                            const hasSubMenu = $subMenu.length > 0;
+                            const hasSelectedItem = $selectedItem.length > 0;
+                            const selectedIsSelectable = $selectedItem.not(selector.unselectable).length > 0;
+                            const delimiterPressed = event.key === settings.delimiter && module.is.multiple();
+                            const isAdditionWithoutMenu = settings.allowAdditions && (pressedKey === keys.enter || delimiterPressed);
                             let $nextItem;
                             let isSubMenuItem;
                             // allow selection with the menu closed
@@ -1653,9 +1652,9 @@
 
                 trigger: {
                     change: function () {
-                        let inputElement = $input[0];
+                        const inputElement = $input[0];
                         if (inputElement) {
-                            let event = new Event('change', { bubbles: true });
+                            const event = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
                             inputElement.dispatchEvent(event);
                         }
@@ -1678,9 +1677,9 @@
                         selectActionActive = false;
                     },
                     eventInModule: function (event, callback) {
-                        let $target = $(event.target);
-                        let inDocument = $target.closest(document.documentElement).length > 0;
-                        let inModule = $target.closest($module).length > 0;
+                        const $target = $(event.target);
+                        const inDocument = $target.closest(document.documentElement).length > 0;
+                        const inModule = $target.closest($module).length > 0;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -1696,11 +1695,11 @@
                         return false;
                     },
                     eventOnElement: function (event, callback) {
-                        let $target = $(event.target);
-                        let $label = $target.closest(selector.siblingLabel);
-                        let inVisibleDOM = document.body.contains(event.target);
-                        let notOnLabel = $module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels);
-                        let notInMenu = $target.closest($menu).length === 0;
+                        const $target = $(event.target);
+                        const $label = $target.closest(selector.siblingLabel);
+                        const inVisibleDOM = document.body.contains(event.target);
+                        const notOnLabel = $module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels);
+                        const notInMenu = $target.closest($menu).length === 0;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -1783,13 +1782,11 @@
                         return Math.ceil($sizer.width() + 1);
                     },
                     selectionCount: function () {
-                        let values = module.get.values();
-                        let count;
-                        count = module.is.multiple()
+                        const values = module.get.values();
+
+                        return module.is.multiple()
                             ? (Array.isArray(values) ? values.length : 0)
                             : (module.get.value() !== '' ? 1 : 0);
-
-                        return count;
                     },
                     transition: function ($subMenu) {
                         return settings.transition === 'auto'
@@ -1813,7 +1810,7 @@
                         return [...new Set(array)];
                     },
                     caretPosition: function (returnEndPos) {
-                        let input = $search[0];
+                        const input = $search[0];
                         let range;
                         let rangeLength;
                         if (returnEndPos && 'selectionEnd' in input) {
@@ -1835,10 +1832,10 @@
                         }
                     },
                     value: function () {
-                        let value = $input.length > 0
+                        const value = $input.length > 0
                             ? $input.val()
                             : $module.data(metadata.value);
-                        let isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === '';
+                        const isEmptyMultiselect = Array.isArray(value) && value.length === 1 && value[0] === '';
 
                         // prevents the placeholder element from being selected when multiple
                         return value === undefined || isEmptyMultiselect
@@ -1846,7 +1843,7 @@
                             : value;
                     },
                     values: function () {
-                        let value = module.get.value();
+                        const value = module.get.value();
                         if (value === '') {
                             return '';
                         }
@@ -1865,7 +1862,7 @@
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
-                                let name = module.read.remoteData(value);
+                                const name = module.read.remoteData(value);
                                 module.verbose('Restoring value from session data', name, value);
                                 if (name) {
                                     if (!remoteValues) {
@@ -1910,7 +1907,7 @@
                                 : String(choiceText));
                     },
                     inputEvent: function () {
-                        let input = $search[0];
+                        const input = $search[0];
                         if (input) {
                             return input.oninput !== undefined
                                 ? 'input'
@@ -1922,22 +1919,22 @@
                         return false;
                     },
                     selectValues: function () {
-                        let select = {};
+                        const select = {};
                         let oldGroup = [];
-                        let values = [];
+                        const values = [];
                         $module
                             .find('option')
                             .each(function () {
-                                let $option = $(this);
-                                let name = module.escape.assumeUnescapedAmpLtGt($option.html());
-                                let disabled = $option.attr('disabled');
-                                let value = $option.attr('value') !== undefined
+                                const $option = $(this);
+                                const name = module.escape.assumeUnescapedAmpLtGt($option.html());
+                                const disabled = $option.attr('disabled');
+                                const value = $option.attr('value') !== undefined
                                     ? $option.attr('value')
                                     : name;
-                                let text = $option.data(metadata.text) !== undefined
+                                const text = $option.data(metadata.text) !== undefined
                                     ? $option.data(metadata.text)
                                     : name;
-                                let group = $option.parent('optgroup');
+                                const group = $option.parent('optgroup');
                                 if (settings.placeholder === 'auto' && value === '') {
                                     select.placeholder = name;
                                 } else {
@@ -1986,7 +1983,7 @@
                         return $item.filter('.' + className.active);
                     },
                     selectedItem: function () {
-                        let $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected);
+                        const $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected);
 
                         return $selectedItem.length > 0
                             ? $selectedItem
@@ -1994,8 +1991,8 @@
                     },
                     itemWithAdditions: function (value) {
                         let $items = module.get.item(value);
-                        let $userItems = module.create.userChoice(value);
-                        let hasUserItems = $userItems && $userItems.length > 0;
+                        const $userItems = module.create.userChoice(value);
+                        const hasUserItems = $userItems && $userItems.length > 0;
                         if (hasUserItems) {
                             $items = $items.length > 0
                                 ? $items.add($userItems)
@@ -2006,15 +2003,13 @@
                     },
                     item: function (value, strict) {
                         let $selectedItem = false;
-                        let shouldSearch;
-                        let isMultiple;
                         value = value !== undefined
                             ? value
                             : (module.get.values() !== undefined
                                 ? module.get.values()
                                 : module.get.text());
-                        isMultiple = module.is.multiple() && Array.isArray(value);
-                        shouldSearch = isMultiple
+                        const isMultiple = module.is.multiple() && Array.isArray(value);
+                        const shouldSearch = isMultiple
                             ? value.length > 0
                             : value !== undefined && value !== null;
                         strict = value === '' || value === false || value === true
@@ -2023,8 +2018,8 @@
                         if (shouldSearch) {
                             $item
                                 .each(function () {
-                                    let $choice = $(this);
-                                    let optionText = module.get.choiceText($choice);
+                                    const $choice = $(this);
+                                    const optionText = module.get.choiceText($choice);
                                     let optionValue = module.get.choiceValue($choice, optionText);
                                     // safe early exit
                                     if (optionValue === null || optionValue === undefined) {
@@ -2102,8 +2097,8 @@
                         module.restore.defaultValue();
                     },
                     defaultText: function () {
-                        let defaultText = module.get.defaultText();
-                        let placeholderText = module.get.placeholderText;
+                        const defaultText = module.get.defaultText();
+                        const placeholderText = module.get.placeholderText;
                         if (defaultText === placeholderText) {
                             module.debug('Restoring default placeholder text', defaultText);
                             module.set.placeholderText(defaultText);
@@ -2116,7 +2111,7 @@
                         module.set.placeholderText();
                     },
                     defaultValue: function () {
-                        let defaultValue = module.get.defaultValue();
+                        const defaultValue = module.get.defaultValue();
                         if (defaultValue !== undefined) {
                             module.debug('Restoring default value', defaultValue);
                             if (defaultValue !== '') {
@@ -2156,7 +2151,7 @@
                         } else {
                             module.set.selected();
                         }
-                        let value = module.get.value();
+                        const value = module.get.value();
                         if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
                             $input.removeClass(className.noselection);
                         } else {
@@ -2165,7 +2160,7 @@
                         module.remove.initialLoad();
                     },
                     remoteValues: function () {
-                        let values = module.get.remoteValues();
+                        const values = module.get.remoteValues();
                         module.debug('Recreating selected from session data', values);
                         if (values) {
                             if (module.is.single()) {
@@ -2183,7 +2178,7 @@
 
                 read: {
                     remoteData: function (value) {
-                        let name = window.sessionStorage.getItem(value + elementNamespace);
+                        const name = window.sessionStorage.getItem(value + elementNamespace);
 
                         return name !== undefined
                             ? name
@@ -2198,12 +2193,12 @@
                         module.save.defaultValue();
                     },
                     defaultValue: function () {
-                        let value = module.get.value();
+                        const value = module.get.value();
                         module.verbose('Saving default value as', value);
                         $module.data(metadata.defaultValue, value);
                     },
                     defaultText: function () {
-                        let text = module.get.text();
+                        const text = module.get.text();
                         module.verbose('Saving default text as', text);
                         $module.data(metadata.defaultText, text);
                     },
@@ -2243,26 +2238,23 @@
                 },
 
                 scrollPage: function (direction, $selectedItem) {
-                    let $currentItem = $selectedItem || module.get.selectedItem();
-                    let $menu = $currentItem.closest(selector.menu);
-                    let menuHeight = $menu.outerHeight();
-                    let currentScroll = $menu.scrollTop();
-                    let itemHeight = $item.eq(0).outerHeight();
-                    let itemsPerPage = Math.floor(menuHeight / itemHeight);
-                    let newScroll = direction === 'up'
+                    const $currentItem = $selectedItem || module.get.selectedItem();
+                    const $menu = $currentItem.closest(selector.menu);
+                    const menuHeight = $menu.outerHeight();
+                    const currentScroll = $menu.scrollTop();
+                    const itemHeight = $item.eq(0).outerHeight();
+                    const itemsPerPage = Math.floor(menuHeight / itemHeight);
+                    const newScroll = direction === 'up'
                         ? currentScroll - (itemHeight * itemsPerPage)
                         : currentScroll + (itemHeight * itemsPerPage);
-                    let $selectableItem = $item.not(selector.unselectable);
-                    let isWithinRange;
-                    let $nextSelectedItem;
-                    let elementIndex;
-                    elementIndex = direction === 'up'
+                    const $selectableItem = $item.not(selector.unselectable);
+                    const elementIndex = direction === 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
-                    isWithinRange = direction === 'up'
+                    const isWithinRange = direction === 'up'
                         ? elementIndex >= 0
                         : elementIndex < $selectableItem.length;
-                    $nextSelectedItem = isWithinRange
+                    const $nextSelectedItem = isWithinRange
                         ? $selectableItem.eq(elementIndex)
                         : (direction === 'up'
                             ? $selectableItem.first()
@@ -2283,15 +2275,15 @@
 
                 set: {
                     filtered: function () {
-                        let isMultiple = module.is.multiple();
-                        let isSearch = module.is.searchSelection();
-                        let isSearchMultiple = isMultiple && isSearch;
-                        let searchValue = isSearch
+                        const isMultiple = module.is.multiple();
+                        const isSearch = module.is.searchSelection();
+                        const isSearchMultiple = isMultiple && isSearch;
+                        const searchValue = isSearch
                             ? module.get.query()
                             : '';
-                        let hasSearchValue = typeof searchValue === 'string' && searchValue.length > 0;
-                        let searchWidth = module.get.searchWidth();
-                        let valueIsSet = searchValue !== '';
+                        const hasSearchValue = typeof searchValue === 'string' && searchValue.length > 0;
+                        const searchWidth = module.get.searchWidth();
+                        const valueIsSet = searchValue !== '';
                         if (isMultiple && hasSearchValue) {
                             module.verbose('Adjusting input width', searchWidth);
                             $search.css('width', searchWidth + 'px');
@@ -2346,13 +2338,11 @@
                         }
                     },
                     partialSearch: function (text) {
-                        let length = module.get.query().length;
+                        const length = module.get.query().length;
                         $search.val(text.slice(0, length));
                     },
                     scrollPosition: function ($item, forceScroll = false) {
-                        let edgeTolerance = 5;
-                        let $menu;
-                        let hasActive;
+                        const edgeTolerance = 5;
                         let offset;
                         let itemOffset;
                         let menuOffset;
@@ -2362,8 +2352,8 @@
                         let belowPage;
 
                         $item = $item || module.get.selectedItem();
-                        $menu = $item.closest(selector.menu);
-                        hasActive = $item && $item.length > 0;
+                        const $menu = $item.closest(selector.menu);
+                        const hasActive = $item && $item.length > 0;
                         if (module.get.activeItem().length === 0) {
                             forceScroll = false;
                         }
@@ -2410,9 +2400,9 @@
                         }
                     },
                     selectedItem: function ($item) {
-                        let value = module.get.choiceValue($item);
-                        let searchText = module.get.choiceText($item, false);
-                        let text = module.get.choiceText($item);
+                        const value = module.get.choiceValue($item);
+                        const searchText = module.get.choiceText($item, false);
+                        const text = module.get.choiceText($item);
                         module.debug('Setting user selection to item', $item);
                         module.remove.activeItem();
                         module.set.partialSearch(searchText);
@@ -2421,8 +2411,8 @@
                         module.set.text(text);
                     },
                     selectedLetter: function (letter) {
-                        let $selectedItem = $item.filter('.' + className.selected);
-                        let alreadySelectedLetter = $selectedItem.length > 0 && module.has.firstLetter($selectedItem, letter);
+                        const $selectedItem = $item.filter('.' + className.selected);
+                        const alreadySelectedLetter = $selectedItem.length > 0 && module.has.firstLetter($selectedItem, letter);
                         let $nextValue = false;
                         let $nextItem;
                         // check next of the same letter
@@ -2477,11 +2467,11 @@
                         }
                     },
                     upward: function ($currentMenu) {
-                        let $element = $currentMenu || $module;
+                        const $element = $currentMenu || $module;
                         $element.addClass(className.upward);
                     },
                     leftward: function ($currentMenu) {
-                        let $element = $currentMenu || $menu;
+                        const $element = $currentMenu || $menu;
                         $element.addClass(className.leftward);
                     },
                     value: function (value, text, $selected, preventChangeTrigger) {
@@ -2495,9 +2485,9 @@
                         } else {
                             $input.addClass(className.noselection);
                         }
-                        let hasInput = $input.length > 0;
-                        let currentValue = module.get.values();
-                        let stringValue = value !== undefined
+                        const hasInput = $input.length > 0;
+                        const currentValue = module.get.values();
+                        const stringValue = value !== undefined
                             ? String(value)
                             : value;
                         if (hasInput) {
@@ -2559,7 +2549,7 @@
                             preventChangeTrigger = $selectedItem;
                             $selectedItem = undefined;
                         }
-                        let isMultiple = module.is.multiple();
+                        const isMultiple = module.is.multiple();
                         $selectedItem = settings.allowAdditions
                             ? $selectedItem || module.get.itemWithAdditions(value)
                             : $selectedItem || module.get.item(value);
@@ -2573,7 +2563,7 @@
                             if (settings.useLabels) {
                                 module.remove.selectedItem();
                                 if (value === undefined) {
-                                    let existingLabels = $module.find(selector.label);
+                                    const existingLabels = $module.find(selector.label);
                                     if (existingLabels.length > 0) {
                                         preventChangeTrigger = true;
                                         module.remove.labels(existingLabels, true);
@@ -2591,15 +2581,15 @@
                         // select each item
                         $selectedItem
                             .each(function () {
-                                let $selected = $(this);
-                                let selectedText = module.get.choiceText($selected);
-                                let selectedValue = module.get.choiceValue($selected, selectedText);
+                                const $selected = $(this);
+                                const selectedText = module.get.choiceText($selected);
+                                const selectedValue = module.get.choiceValue($selected, selectedText);
 
-                                let isFiltered = $selected.hasClass(className.filtered);
-                                let isActive = $selected.hasClass(className.active);
-                                let isActionable = $selected.hasClass(className.actionable);
-                                let isUserValue = $selected.hasClass(className.addition);
-                                let shouldAnimate = isMultiple && $selectedItem && $selectedItem.length === 1;
+                                const isFiltered = $selected.hasClass(className.filtered);
+                                const isActive = $selected.hasClass(className.active);
+                                const isActionable = $selected.hasClass(className.actionable);
+                                const isUserValue = $selected.hasClass(className.addition);
+                                const shouldAnimate = isMultiple && $selectedItem && $selectedItem.length === 1;
                                 if (isActionable) {
                                     if ((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
                                         module.save.remoteData(selectedText, selectedValue);
@@ -2650,7 +2640,7 @@
 
                 add: {
                     label: function (value, text, shouldAnimate) {
-                        let $next = module.is.searchSelection()
+                        const $next = module.is.searchSelection()
                             ? $search
                             : $text;
                         let $label;
@@ -2690,8 +2680,8 @@
                         }
                     },
                     message: function (message) {
-                        let $message = $menu.children(selector.message);
-                        let html = settings.templates.message(module.add.variables(message));
+                        const $message = $menu.children(selector.message);
+                        const html = settings.templates.message(module.add.variables(message));
                         if ($message.length > 0) {
                             $message
                                 .html(html);
@@ -2703,8 +2693,8 @@
                         }
                     },
                     optionValue: function (value) {
-                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
-                        let hasOption = $option.length > 0;
+                        const $option = $input.find('option[value="' + CSS.escape(value) + '"]');
+                        const hasOption = $option.length > 0;
                         if (hasOption) {
                             return;
                         }
@@ -2724,9 +2714,9 @@
                     },
                     userSuggestion: function (value) {
                         let $addition = $menu.children(selector.addition);
-                        let $existingItem = module.get.item(value);
-                        let alreadyHasValue = $existingItem && $existingItem.not(selector.addition).length > 0;
-                        let hasUserSuggestion = $addition.length > 0;
+                        const $existingItem = module.get.item(value);
+                        const alreadyHasValue = $existingItem && $existingItem.not(selector.addition).length > 0;
+                        const hasUserSuggestion = $addition.length > 0;
                         let html;
                         if (settings.useLabels && module.has.maxSelections()) {
                             return;
@@ -2764,9 +2754,9 @@
                         module.refreshItems();
                     },
                     variables: function (message = '', term = module.get.query()) {
-                        let hasCount = message.search('{count}') !== -1;
-                        let hasMaxCount = message.search('{maxCount}') !== -1;
-                        let hasTerm = message.search('{term}') !== -1;
+                        const hasCount = message.search('{count}') !== -1;
+                        const hasMaxCount = message.search('{maxCount}') !== -1;
+                        const hasTerm = message.search('{term}') !== -1;
                         module.verbose('Adding templated variables to message', message);
                         if (hasCount) {
                             message = message.replace('{count}', module.get.selectionCount());
@@ -2786,7 +2776,7 @@
                             $selectedItem = undefined;
                             addedText = undefined;
                         }
-                        let currentValue = module.get.values();
+                        const currentValue = module.get.values();
                         let newValue;
                         if (module.has.value(addedValue)) {
                             module.debug('Value already selected');
@@ -2845,11 +2835,11 @@
                         initialLoad = false;
                     },
                     upward: function ($currentMenu) {
-                        let $element = $currentMenu || $module;
+                        const $element = $currentMenu || $module;
                         $element.removeClass(className.upward);
                     },
                     leftward: function ($currentMenu) {
-                        let $element = $currentMenu || $menu;
+                        const $element = $currentMenu || $menu;
                         $element.removeClass(className.leftward);
                     },
                     visible: function () {
@@ -2861,7 +2851,7 @@
                     filteredItem: function () {
                         if (settings.highlightMatches) {
                             $.each($item, function (index, item) {
-                                let $markItem = $(item);
+                                const $markItem = $(item);
                                 $markItem.html($markItem.html().replace(/<\/?mark>/g, ''));
                             });
                         }
@@ -2879,8 +2869,8 @@
                         module.remove.empty();
                     },
                     optionValue: function (value) {
-                        let $option = $input.find('option[value="' + CSS.escape(value) + '"]');
-                        let hasOption = $option.length > 0;
+                        const $option = $input.find('option[value="' + CSS.escape(value) + '"]');
+                        const hasOption = $option.length > 0;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
                         }
@@ -2915,9 +2905,9 @@
 
                         $selectedItem
                             .each(function () {
-                                let $selected = $(this);
-                                let selectedText = module.get.choiceText($selected);
-                                let selectedValue = module.get.choiceValue($selected, selectedText);
+                                const $selected = $(this);
+                                const selectedText = module.get.choiceText($selected);
+                                const selectedValue = module.get.choiceValue($selected, selectedText);
                                 if (module.is.multiple()) {
                                     if (settings.useLabels) {
                                         module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
@@ -2945,7 +2935,7 @@
                         $item.removeClass(className.selected);
                     },
                     value: function (removedValue, removedText, $removedItem, preventChangeTrigger) {
-                        let values = module.get.values();
+                        const values = module.get.values();
                         let newValue;
                         if (module.has.selectInput()) {
                             module.verbose('Input is <select> removing selected option', removedValue);
@@ -2976,8 +2966,8 @@
                         return values;
                     },
                     label: function (value, shouldAnimate) {
-                        let $labels = $module.find(selector.label);
-                        let $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? value.toLowerCase() : value) + '"]');
+                        const $labels = $module.find(selector.label);
+                        const $removedLabel = $labels.filter('[data-' + metadata.value + '="' + CSS.escape(settings.ignoreCase ? value.toLowerCase() : value) + '"]');
                         module.verbose('Removing label', $removedLabel);
                         $removedLabel.remove();
                     },
@@ -2991,12 +2981,12 @@
                         module.verbose('Removing labels', $labels);
                         $labels
                             .each(function () {
-                                let $label = $(this);
-                                let value = $label.data(metadata.value);
-                                let stringValue = value !== undefined
+                                const $label = $(this);
+                                const value = $label.data(metadata.value);
+                                const stringValue = value !== undefined
                                     ? String(value)
                                     : value;
-                                let isUserValue = module.is.userValue(stringValue);
+                                const isUserValue = module.is.userValue(stringValue);
                                 if (settings.onLabelRemove.call($label, value) === false) {
                                     module.debug('Label remove callback cancelled removal');
 
@@ -3057,14 +3047,12 @@
                         return true;
                     },
                     firstLetter: function ($item, letter) {
-                        let text;
-                        let firstLetter;
                         if (!$item || $item.length === 0 || typeof letter !== 'string') {
                             return false;
                         }
-                        text = module.get.choiceText($item, false);
+                        const text = module.get.choiceText($item, false);
                         letter = letter.toLowerCase();
-                        firstLetter = String(text).charAt(0).toLowerCase();
+                        const firstLetter = String(text).charAt(0).toLowerCase();
 
                         return letter == firstLetter;
                     },
@@ -3084,7 +3072,7 @@
                         return $menu.children(selector.message).length > 0;
                     },
                     label: function (value) {
-                        let $labels = $module.find(selector.label);
+                        const $labels = $module.find(selector.label);
                         if (settings.ignoreCase) {
                             value = value.toLowerCase();
                         }
@@ -3095,7 +3083,7 @@
                         return settings.maxSelections && module.get.selectionCount() >= settings.maxSelections;
                     },
                     allResultsFiltered: function () {
-                        let $normalResults = $item.not(selector.addition);
+                        const $normalResults = $item.not(selector.addition);
 
                         return $normalResults.filter(selector.unselectable).length === $normalResults.length;
                     },
@@ -3111,8 +3099,8 @@
                             : module.has.valueMatchingCase(value);
                     },
                     valueMatchingCase: function (value) {
-                        let values = module.get.values();
-                        let hasValue = Array.isArray(values)
+                        const values = module.get.values();
+                        const hasValue = Array.isArray(values)
                             ? values && values.includes(value)
                             : values == value;
 
@@ -3167,12 +3155,12 @@
                             : $menu.transition && $menu.transition('is animating');
                     },
                     leftward: function ($subMenu) {
-                        let $selectedMenu = $subMenu || $menu;
+                        const $selectedMenu = $subMenu || $menu;
 
                         return $selectedMenu.hasClass(className.leftward);
                     },
                     clearable: function () {
-                        let hasClearableClass = $module.hasClass(className.clearable);
+                        const hasClearableClass = $module.hasClass(className.clearable);
                         if (!hasClearableClass && settings.clearable) {
                             $module.addClass(className.clearable);
                         }
@@ -3246,7 +3234,7 @@
                         return (module.get.userValues() || []).includes(value);
                     },
                     upward: function ($menu) {
-                        let $element = $menu || $module;
+                        const $element = $menu || $module;
 
                         return $element.hasClass(className.upward);
                     },
@@ -3256,14 +3244,14 @@
                             : $menu.hasClass(className.visible);
                     },
                     verticallyScrollableContext: function () {
-                        let overflowY = $context[0] !== window
+                        const overflowY = $context[0] !== window
                             ? $context.css('overflow-y')
                             : false;
 
                         return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
-                        let overflowX = $context[0] !== window
+                        const overflowX = $context[0] !== window
                             ? $context.css('overflow-X')
                             : false;
 
@@ -3280,13 +3268,11 @@
                         );
                     },
                     openDownward: function ($subMenu) {
-                        let $currentMenu = $subMenu || $menu;
+                        const $currentMenu = $subMenu || $menu;
                         let canOpenDownward;
-                        let onScreen;
-                        let calculations;
                         $currentMenu
                             .addClass(className.loading);
-                        calculations = {
+                        const calculations = {
                             context: {
                                 offset: $context[0] === window
                                     ? { top: 0, left: 0 }
@@ -3305,7 +3291,7 @@
                         if (module.has.subMenu($currentMenu)) {
                             calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
                         }
-                        onScreen = {
+                        const onScreen = {
                             above: calculations.context.scrollTop <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
                             below: (calculations.context.scrollTop + calculations.context.height) >= calculations.menu.offset.top - calculations.context.offset.top + calculations.menu.height,
                         };
@@ -3324,13 +3310,12 @@
                         return canOpenDownward;
                     },
                     openRightward: function ($subMenu) {
-                        let $currentMenu = $subMenu || $menu;
+                        const $currentMenu = $subMenu || $menu;
                         let canOpenRightward = true;
                         let isOffscreenRight = false;
-                        let calculations;
                         $currentMenu
                             .addClass(className.loading);
-                        calculations = {
+                        const calculations = {
                             context: {
                                 offset: $context[0] === window
                                     ? { top: 0, left: 0 }
@@ -3376,21 +3361,20 @@
 
                 animate: {
                     show: function (callback, $subMenu) {
-                        let $currentMenu = $subMenu || $menu;
-                        let start = $subMenu
+                        const $currentMenu = $subMenu || $menu;
+                        const start = $subMenu
                             ? function () {}
                             : function () {
                                 module.hideSubMenus();
                                 module.hideOthers();
                                 module.set.active();
                             };
-                        let transition;
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
                         module.verbose('Doing menu show animation', $currentMenu);
                         module.set.direction($subMenu);
-                        transition = settings.transition.showMethod || module.get.transition($subMenu);
+                        const transition = settings.transition.showMethod || module.get.transition($subMenu);
                         if (module.is.selection()) {
                             module.set.scrollPosition(module.get.selectedItem(), true);
                         }
@@ -3420,14 +3404,14 @@
                         }
                     },
                     hide: function (callback, $subMenu) {
-                        let $currentMenu = $subMenu || $menu;
-                        let start = $subMenu
+                        const $currentMenu = $subMenu || $menu;
+                        const start = $subMenu
                             ? function () {}
                             : function () {
                                 module.unbind.intent();
                                 module.remove.active();
                             };
-                        let transition = settings.transition.hideMethod || module.get.transition($subMenu);
+                        const transition = settings.transition.hideMethod || module.get.transition($subMenu);
                         callback = isFunction(callback)
                             ? callback
                             : function () {};
@@ -3614,7 +3598,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -3919,10 +3903,10 @@
         },
         // generates dropdown from select values
         dropdown: function (select, settings) {
-            let placeholder = select.placeholder || false;
+            const placeholder = select.placeholder || false;
             let html = '';
-            let className = settings.className;
-            let escape = settings.templates.escape;
+            const className = settings.className;
+            const escape = settings.templates.escape;
             html += '<i class="dropdown icon"></i>';
             html += placeholder
                 ? '<div class="default text">' + escape(placeholder, settings) + '</div>'
@@ -3936,16 +3920,16 @@
 
         // generates just menu from select
         menu: function (response, settings) {
-            let fields = settings.fields;
-            let values = response[fields.values] || [];
+            const fields = settings.fields;
+            const values = response[fields.values] || [];
             let html = '';
-            let className = settings.className;
-            let escape = settings.templates.escape;
+            const className = settings.className;
+            const escape = settings.templates.escape;
             $.each(values, function (index, option) {
-                let itemType = option[fields.type] || 'item';
-                let isMenu = itemType.includes('menu');
+                const itemType = option[fields.type] || 'item';
+                const isMenu = itemType.includes('menu');
                 let maybeData = '';
-                let dataObject = option[fields.data];
+                const dataObject = option[fields.data];
                 if (dataObject) {
                     let dataKey;
                     let dataKeyEscaped;
@@ -3959,19 +3943,19 @@
                     }
                 }
                 if (itemType === 'item' || isMenu) {
-                    let maybeText = option[fields.text]
+                    const maybeText = option[fields.text]
                         ? ' data-text="' + escape(option[fields.text]) + '"'
                         : '';
-                    let maybeActionable = option[fields.actionable]
+                    const maybeActionable = option[fields.actionable]
                         ? className.actionable + ' '
                         : '';
-                    let maybeDisabled = option[fields.disabled]
+                    const maybeDisabled = option[fields.disabled]
                         ? className.disabled + ' '
                         : '';
-                    let maybeDescriptionVertical = option[fields.descriptionVertical]
+                    const maybeDescriptionVertical = option[fields.descriptionVertical]
                         ? className.descriptionVertical + ' '
                         : '';
-                    let hasDescription = escape(option[fields.description] || '', settings) !== '';
+                    const hasDescription = escape(option[fields.description] || '', settings) !== '';
                     html += '<div class="' + escape(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + escape(option[fields.value]) + '"' + maybeText + maybeData + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.includes('left') ? 'left' : '') + ' dropdown icon"></i>';
@@ -4000,8 +3984,8 @@
                     }
                     html += '</div>';
                 } else if (itemType === 'header') {
-                    let groupName = option[fields.name] || '';
-                    let groupIcon = option[fields.icon] || className.groupIcon;
+                    const groupName = option[fields.name] || '';
+                    const groupIcon = option[fields.icon] || className.groupIcon;
                     if (groupName !== '' || groupIcon !== '') {
                         html += '<div class="' + escape(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
@@ -4021,8 +4005,8 @@
 
         // generates label for multiselect
         label: function (value, text, settings) {
-            let className = settings.className;
-            let escape = settings.templates.escape;
+            const className = settings.className;
+            const escape = settings.templates.escape;
 
             return escape(text, settings) + '<i class="' + escape(className.delete) + ' icon"></i>';
         },

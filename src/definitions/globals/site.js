@@ -23,27 +23,26 @@
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
-        let settings = $.isPlainObject(parameters)
+        const settings = $.isPlainObject(parameters)
             ? $.extend(true, {}, $.site.settings, parameters)
             : $.extend({}, $.site.settings);
 
-        let namespace = settings.namespace;
-        let error = settings.error;
+        const namespace = settings.namespace;
+        const error = settings.error;
 
-        let moduleNamespace = 'module-' + namespace;
+        const moduleNamespace = 'module-' + namespace;
 
-        let $document = $(document);
-        let $module = $document;
-        let element = this;
+        const $document = $(document);
+        const $module = $document;
+        const element = this;
         let instance = $module.data(moduleNamespace);
 
-        let module;
         let returnedValue;
-        module = {
+        const module = {
 
             initialize: function () {
                 module.instantiate();
@@ -75,7 +74,7 @@
 
             enabled: {
                 modules: function (modules = settings.modules) {
-                    let enabledModules = [];
+                    const enabledModules = [];
                     $.each(modules, function (index, name) {
                         if (module.moduleExists(name)) {
                             enabledModules.push(name);
@@ -88,7 +87,7 @@
 
             disabled: {
                 modules: function (modules = settings.modules) {
-                    let disabledModules = [];
+                    const disabledModules = [];
                     $.each(modules, function (index, name) {
                         if (!module.moduleExists(name)) {
                             disabledModules.push(name);
@@ -107,7 +106,7 @@
                             : [modules])
                         : modules || settings.modules;
                     $.each(modules, function (index, name) {
-                        let namespace = module.moduleExists(name)
+                        const namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
                             : true;
                         let $existingModules;
@@ -296,7 +295,7 @@
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        let camelCaseValue = depth !== maxDepth
+                        const camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query;
                         if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
