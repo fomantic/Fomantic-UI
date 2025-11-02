@@ -1267,13 +1267,7 @@
                     menu: {
                         mutation: function (mutations) {
                             const mutation = mutations[0];
-                            const $addedNode = mutation.addedNodes
-                                ? $(mutation.addedNodes[0])
-                                : $(false);
-                            const $removedNode = mutation.removedNodes
-                                ? $(mutation.removedNodes[0])
-                                : $(false);
-                            const $changedNodes = $addedNode.add($removedNode);
+                            const $changedNodes = $([...mutation.addedNodes, ...mutation.removedNodes]);
                             const isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0;
                             const isMessage = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0;
                             if (isUserAddition || isMessage) {
