@@ -718,11 +718,11 @@
                     },
                     class: {
                         mutation: function (mutations) {
-                            mutations.forEach(function (mutation) {
+                            for (const mutation of mutations) {
                                 if (mutation.attributeName === 'class') {
                                     module.check.disabled();
                                 }
-                            });
+                            }
                         },
                     },
                 },

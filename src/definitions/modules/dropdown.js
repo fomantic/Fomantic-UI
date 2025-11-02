@@ -1044,7 +1044,7 @@
                         const pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text');
                         const tokens = pasteValue.split(settings.delimiter);
                         const notFoundTokens = [];
-                        tokens.forEach(function (value) {
+                        for (let value of tokens) {
                             value = value.trim();
                             const valueTrimmed = settings.preserveHTML
                                 ? settings.templates.escape(value)
@@ -1052,7 +1052,7 @@
                             if (module.set.selected(valueTrimmed, null, false, true) === false) {
                                 notFoundTokens.push(valueTrimmed);
                             }
-                        });
+                        }
                         event.preventDefault();
                         if (notFoundTokens.length > 0) {
                             const searchEl = $search[0];
@@ -1245,11 +1245,11 @@
                     },
                     class: {
                         mutation: function (mutations) {
-                            mutations.forEach(function (mutation) {
+                            for (const mutation of mutations) {
                                 if (mutation.attributeName === 'class') {
                                     module.check.disabled();
                                 }
-                            });
+                            }
                         },
                     },
                     select: {

@@ -60,7 +60,7 @@ module.exports = function (callback) {
                     '.gitignore',
                 ]);
                 let files = [];
-                list.forEach(function (file) {
+                for (const file of list) {
                     const isOmitted = omitted.has(file);
                     const filePath = path.join(dir, file);
                     const stat = fs.statSync(filePath);
@@ -71,7 +71,7 @@ module.exports = function (callback) {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
                         }
                     }
-                });
+                }
 
                 return files;
             };

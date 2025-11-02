@@ -398,7 +398,9 @@ module.exports = function (callback) {
                 inquirer.prompt(questions.cleanup)
                     .then((answers) => {
                         if (answers.cleanup === 'yes') {
-                            install.setupFiles.forEach((file) => fs.removeSync(file));
+                            for (const file of install.setupFiles) {
+                                fs.removeSync(file);
+                            }
                         }
                         if (answers.build === 'yes') {
                             gulp.series('build')(callback);

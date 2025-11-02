@@ -83,7 +83,6 @@ module.exports = {
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
         'no-restricted-globals': 'off',
         'no-restricted-properties': 'off',
-        'unicorn/no-array-for-each': 'off',
         'unicorn/prefer-number-properties': 'off',
         'unicorn/prefer-reflect-apply': 'off',
         'unicorn/prefer-top-level-await': 'off', // needs Node 14+
