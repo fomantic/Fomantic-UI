@@ -206,16 +206,16 @@
                         }
                     },
                     documentChanged: function (mutations) {
-                        Array.prototype.forEach.call(mutations, function (mutation) {
+                        for (const mutation of mutations) {
                             if (mutation.removedNodes) {
-                                Array.prototype.forEach.call(mutation.removedNodes, function (node) {
+                                for (const node of mutation.removedNodes) {
                                     if (node === element || $(node).find(element).length > 0) {
                                         module.debug('Element removed from DOM, tearing down events');
                                         module.destroy();
                                     }
-                                });
+                                }
                             }
-                        });
+                        }
                     },
                     hideGracefully: function (event) {
                         const $target = $(event.target);
