@@ -543,12 +543,12 @@
 
                         // add in margins if inline
                         calculations.target.margin.top = settings.inline
-                            ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
+                            ? Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                             : 0;
                         calculations.target.margin.left = settings.inline
                             ? (module.is.rtl()
-                                ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
-                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
+                                ? Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
+                                : Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
                             : 0;
                         // calculate screen boundaries
                         const screen = calculations.screen;
