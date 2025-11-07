@@ -1044,7 +1044,7 @@
                         const pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text');
                         const tokens = pasteValue.split(settings.delimiter);
                         const notFoundTokens = [];
-                        tokens.forEach(function (value) {
+                        for (let value of tokens) {
                             value = value.trim();
                             const valueTrimmed = settings.preserveHTML
                                 ? settings.templates.escape(value)
@@ -1052,7 +1052,7 @@
                             if (module.set.selected(valueTrimmed, null, false, true) === false) {
                                 notFoundTokens.push(valueTrimmed);
                             }
-                        });
+                        }
                         event.preventDefault();
                         if (notFoundTokens.length > 0) {
                             const searchEl = $search[0];
@@ -1245,11 +1245,11 @@
                     },
                     class: {
                         mutation: function (mutations) {
-                            mutations.forEach(function (mutation) {
+                            for (const mutation of mutations) {
                                 if (mutation.attributeName === 'class') {
                                     module.check.disabled();
                                 }
-                            });
+                            }
                         },
                     },
                     select: {
@@ -1267,13 +1267,7 @@
                     menu: {
                         mutation: function (mutations) {
                             const mutation = mutations[0];
-                            const $addedNode = mutation.addedNodes
-                                ? $(mutation.addedNodes[0])
-                                : $(false);
-                            const $removedNode = mutation.removedNodes
-                                ? $(mutation.removedNodes[0])
-                                : $(false);
-                            const $changedNodes = $addedNode.add($removedNode);
+                            const $changedNodes = $([...mutation.addedNodes, ...mutation.removedNodes]);
                             const isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0;
                             const isMessage = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0;
                             if (isUserAddition || isMessage) {
