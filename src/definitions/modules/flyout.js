@@ -950,7 +950,7 @@
                         return module.cache.isFirefox;
                     },
                     iframe: function () {
-                        return !(self === top);
+                        return !(window.self === window.top);
                     },
                     mobile: function () {
                         const userAgent = navigator.userAgent;

@@ -958,7 +958,7 @@
                         return module.cache.isFirefox;
                     },
                     iframe: function () {
-                        return !(self === top);
+                        return !(window.self === window.top);
                     },
                 },
 
