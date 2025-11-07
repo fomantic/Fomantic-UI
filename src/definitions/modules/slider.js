@@ -815,9 +815,9 @@
                             : pagePos - module.get.trackOffset() - module.get.trackStartPos();
                     },
                     closestThumb: function (eventPos) {
-                        const thumbPos = parseFloat(module.determine.thumbPos($thumb));
+                        const thumbPos = Number.parseFloat(module.determine.thumbPos($thumb));
                         const thumbDelta = Math.abs(eventPos - thumbPos);
-                        const secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb));
+                        const secondThumbPos = Number.parseFloat(module.determine.thumbPos($secondThumb));
                         const secondThumbDelta = Math.abs(eventPos - secondThumbPos);
                         if (thumbDelta === secondThumbDelta && module.get.thumbValue() === module.get.min()) {
                             return $secondThumb;
@@ -826,9 +826,9 @@
                         return thumbDelta <= secondThumbDelta ? $thumb : $secondThumb;
                     },
                     closestThumbPos: function (eventPos) {
-                        const thumbPos = parseFloat(module.determine.thumbPos($thumb));
+                        const thumbPos = Number.parseFloat(module.determine.thumbPos($thumb));
                         const thumbDelta = Math.abs(eventPos - thumbPos);
-                        const secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb));
+                        const secondThumbPos = Number.parseFloat(module.determine.thumbPos($secondThumb));
                         const secondThumbDelta = Math.abs(eventPos - secondThumbPos);
 
                         return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
@@ -987,7 +987,7 @@
                                 const $child = $(this);
                                 let attrValue = $child.attr('data-value');
                                 if (attrValue) {
-                                    attrValue = parseInt(attrValue, 10);
+                                    attrValue = Number.parseInt(attrValue, 10);
                                     if (attrValue >= thumbVal && attrValue <= secondThumbVal) {
                                         $child.addClass(className.active);
                                     } else {

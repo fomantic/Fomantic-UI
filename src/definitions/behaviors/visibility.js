@@ -826,8 +826,8 @@
                         // offset
                         if (settings.includeMargin) {
                             element.margin = {};
-                            element.margin.top = parseInt($module.css('margin-top'), 10);
-                            element.margin.bottom = parseInt($module.css('margin-bottom'), 10);
+                            element.margin.top = Number.parseInt($module.css('margin-top'), 10);
+                            element.margin.bottom = Number.parseInt($module.css('margin-bottom'), 10);
                             element.top = element.offset.top - element.margin.top;
                             element.bottom = element.offset.top + element.height + element.margin.bottom;
                         } else {
@@ -882,10 +882,10 @@
                     pixelsPassed: function (amount) {
                         const element = module.get.elementCalculations();
                         if (amount.search('%') > -1) {
-                            return element.height * (parseInt(amount, 10) / 100);
+                            return element.height * (Number.parseInt(amount, 10) / 100);
                         }
 
-                        return parseInt(amount, 10);
+                        return Number.parseInt(amount, 10);
                     },
                     occurred: function (callback) {
                         return module.cache.occurred !== undefined

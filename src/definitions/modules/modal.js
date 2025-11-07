@@ -778,7 +778,7 @@
                     },
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
-                        initialBodyMarginInt = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
+                        initialBodyMarginInt = Number.parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10);
                         const bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
                         tempBodyMargin = initialBodyMarginInt + bodyScrollbarWidth;
                     },

@@ -518,8 +518,8 @@
 
                         return typeof duration === 'string'
                             ? (duration.includes('ms')
-                                ? parseFloat(duration)
-                                : parseFloat(duration) * 1000)
+                                ? Number.parseFloat(duration)
+                                : Number.parseFloat(duration) * 1000)
                             : duration;
                     },
                     displayType: function (shouldDetermine = true) {
