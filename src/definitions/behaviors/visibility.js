@@ -176,16 +176,14 @@
                         }, 100);
                     },
                     contextChanged: function (mutations) {
-                        Array.prototype.forEach.call(mutations, function (mutation) {
-                            if (mutation.removedNodes) {
-                                Array.prototype.forEach.call(mutation.removedNodes, function (node) {
-                                    if (node === element || $(node).find(element).length > 0) {
-                                        module.debug('Element removed from DOM, tearing down events');
-                                        module.destroy();
-                                    }
-                                });
+                        for (const mutation of mutations) {
+                            for (const node of mutation.removedNodes) {
+                                if (node === element || $(node).find(element).length > 0) {
+                                    module.debug('Element removed from DOM, tearing down events');
+                                    module.destroy();
+                                }
                             }
-                        });
+                        }
                     },
                     resize: function () {
                         module.debug('Window resized');
@@ -826,8 +824,8 @@
                         // offset
                         if (settings.includeMargin) {
                             element.margin = {};
-                            element.margin.top = parseInt($module.css('margin-top'), 10);
-                            element.margin.bottom = parseInt($module.css('margin-bottom'), 10);
+                            element.margin.top = Number.parseInt($module.css('margin-top'), 10);
+                            element.margin.bottom = Number.parseInt($module.css('margin-bottom'), 10);
                             element.top = element.offset.top - element.margin.top;
                             element.bottom = element.offset.top + element.height + element.margin.bottom;
                         } else {
@@ -882,10 +880,10 @@
                     pixelsPassed: function (amount) {
                         const element = module.get.elementCalculations();
                         if (amount.search('%') > -1) {
-                            return element.height * (parseInt(amount, 10) / 100);
+                            return element.height * (Number.parseInt(amount, 10) / 100);
                         }
 
-                        return parseInt(amount, 10);
+                        return Number.parseInt(amount, 10);
                     },
                     occurred: function (callback) {
                         return module.cache.occurred !== undefined

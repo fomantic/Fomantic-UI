@@ -541,7 +541,7 @@
                         const tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^\d.]/g, '');
                         const tooltipPosition = $cell.attr('data-position');
                         // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
-                        const calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
+                        const calcPosition = (winWidth - $cell.width() - (Number.parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
                         if (!tooltipPosition.includes(calcPosition)) {
                             $cell.attr('data-position', tooltipPosition.replace(/(left|right)/, calcPosition));
                         }
@@ -718,11 +718,11 @@
                     },
                     class: {
                         mutation: function (mutations) {
-                            mutations.forEach(function (mutation) {
+                            for (const mutation of mutations) {
                                 if (mutation.attributeName === 'class') {
                                     module.check.disabled();
                                 }
-                            });
+                            }
                         },
                     },
                 },
@@ -1323,7 +1323,7 @@
                         if (!(date instanceof Date)) {
                             date = parser.date('' + date, settings);
                         }
-                        if (!date || isNaN(date.getTime())) {
+                        if (!date || Number.isNaN(date.getTime())) {
                             return null;
                         }
 
@@ -1664,7 +1664,7 @@
                 const textDate = new Date(text);
                 const numberOnly = text.match(/^\d+$/) !== null;
                 const isShortYear = text.match(/^(?:\d{1,2}[./-]){2}\d{1,2}$/) !== null;
-                if (!isShortYear && !numberOnly && !isNaN(textDate.getDate())) {
+                if (!isShortYear && !numberOnly && !Number.isNaN(textDate.getDate())) {
                     return textDate;
                 }
                 text = text.toLowerCase();
@@ -1702,8 +1702,8 @@
                             if (hour < 0 || minute < 0) {
                                 parts = number.split(':');
                                 for (k = 0; k < Math.min(2, parts.length); k++) {
-                                    j = parseInt(parts[k], 10);
-                                    if (isNaN(j)) {
+                                    j = Number.parseInt(parts[k], 10);
+                                    if (Number.isNaN(j)) {
                                         j = 0;
                                     }
                                     if (k === 0) {
@@ -1739,8 +1739,8 @@
 
                     // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i], 10);
-                        if (!isNaN(j) && j >= settings.centuryBreak && i === numbers.length - 1) {
+                        j = Number.parseInt(numbers[i], 10);
+                        if (!Number.isNaN(j) && j >= settings.centuryBreak && i === numbers.length - 1) {
                             if (j <= 99) {
                                 j += settings.currentCentury - 100;
                             }
@@ -1757,8 +1757,8 @@
                             k = i > 1 || settings.monthFirst
                                 ? i
                                 : (i === 1 ? 0 : 1);
-                            j = parseInt(numbers[k], 10);
-                            if (!isNaN(j) && j >= 1 && j <= 12) {
+                            j = Number.parseInt(numbers[k], 10);
+                            if (!Number.isNaN(j) && j >= 1 && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
 
@@ -1769,8 +1769,8 @@
 
                     // day
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i], 10);
-                        if (!isNaN(j) && j >= 1 && j <= 31) {
+                        j = Number.parseInt(numbers[i], 10);
+                        if (!Number.isNaN(j) && j >= 1 && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
 
@@ -1781,8 +1781,8 @@
                     // year <= settings.centuryBreak
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
-                            j = parseInt(numbers[i], 10);
-                            if (!isNaN(j)) {
+                            j = Number.parseInt(numbers[i], 10);
+                            if (!Number.isNaN(j)) {
                                 if (j <= 99) {
                                     j += settings.currentCentury;
                                 }
@@ -1799,8 +1799,8 @@
                     // hour
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i], 10);
-                            if (!isNaN(j) && j >= 0 && j <= 23) {
+                            j = Number.parseInt(numbers[i], 10);
+                            if (!Number.isNaN(j) && j >= 0 && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
 
@@ -1812,8 +1812,8 @@
                     // minute
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i], 10);
-                            if (!isNaN(j) && j >= 0 && j <= 59) {
+                            j = Number.parseInt(numbers[i], 10);
+                            if (!Number.isNaN(j) && j >= 0 && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
 
@@ -1859,7 +1859,7 @@
                     date = new Date(year, month, 0, hour, minute);
                 }
 
-                return isNaN(date.getTime()) ? null : date;
+                return Number.isNaN(date.getTime()) ? null : date;
             },
         },
 

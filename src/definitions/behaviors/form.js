@@ -2014,7 +2014,7 @@
                 ];
                 let sum = 0;
                 while (length--) {
-                    sum += producedValue[multiple][parseInt(cardNumber.charAt(length), 10)];
+                    sum += producedValue[multiple][Number.parseInt(cardNumber.charAt(length), 10)];
                     multiple ^= 1; // eslint-disable-line no-bitwise
                 }
 

@@ -171,16 +171,14 @@
                         }, 100);
                     },
                     documentChanged: function (mutations) {
-                        Array.prototype.forEach.call(mutations, function (mutation) {
-                            if (mutation.removedNodes) {
-                                Array.prototype.forEach.call(mutation.removedNodes, function (node) {
-                                    if (node === element || $(node).find(element).length > 0) {
-                                        module.debug('Element removed from DOM, tearing down events');
-                                        module.destroy();
-                                    }
-                                });
+                        for (const mutation of mutations) {
+                            for (const node of mutation.removedNodes) {
+                                if (node === element || $(node).find(element).length > 0) {
+                                    module.debug('Element removed from DOM, tearing down events');
+                                    module.destroy();
+                                }
                             }
-                        });
+                        }
                     },
                     load: function () {
                         module.verbose('Page contents finished loading');
@@ -236,8 +234,8 @@
                         };
                         const element = {
                             margin: {
-                                top: parseInt($module.css('margin-top'), 10),
-                                bottom: parseInt($module.css('margin-bottom'), 10),
+                                top: Number.parseInt($module.css('margin-top'), 10),
+                                bottom: Number.parseInt($module.css('margin-bottom'), 10),
                             },
                             offset: $module.offset(),
                             width: $module.outerWidth(),
@@ -305,8 +303,8 @@
                         }
 
                         return module.is.top()
-                            ? Math.abs(parseInt($module.css('top'), 10)) || 0
-                            : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
+                            ? Math.abs(Number.parseInt($module.css('top'), 10)) || 0
+                            : Math.abs(Number.parseInt($module.css('bottom'), 10)) || 0;
                     },
 
                     elementScroll: function (scroll = $scroll.scrollTop()) {

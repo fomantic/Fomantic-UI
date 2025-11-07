@@ -419,7 +419,7 @@
                                     return;
                                 }
                                 const isCheckbox = $('[name="' + CSS.escape(el.name) + '"]', $form).attr('type') === 'checkbox';
-                                const floatValue = parseFloat(el.value);
+                                const floatValue = Number.parseFloat(el.value);
                                 let value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
                                         || (String(floatValue) === el.value
