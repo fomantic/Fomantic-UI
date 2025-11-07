@@ -30,17 +30,17 @@
     1px 2px 2px rgb(0 0 0 / 0.3);
 
 /* Header */
-@headerMargin: 0;
-@headerVerticalPadding: 1.25rem;
-@headerHorizontalPadding: 1.5rem;
-@headerPadding: @headerVerticalPadding @headerHorizontalPadding;
-@headerBackground: @white;
-@headerColor: @darkTextColor;
-@headerFontSize: @huge;
-@headerBoxShadow: none;
-@headerFontWeight: @bold;
-@headerFontFamily: @headerFont;
-@headerBorder: 1px solid @borderColor;
+@headingMargin: 0;
+@headingVerticalPadding: 1.25rem;
+@headingHorizontalPadding: 1.5rem;
+@headingPadding: @headingVerticalPadding @headingHorizontalPadding;
+@headingBackground: @white;
+@headingColor: @darkTextColor;
+@headingFontSize: @huge;
+@headingBoxShadow: none;
+@headingFontWeight: @bold;
+@headingFontFamily: @headingFont;
+@headingBorder: 1px solid @borderColor;
 
 /* Content */
 @contentFontSize: 1em;
@@ -69,7 +69,7 @@
 @buttonLeftDistance: @buttonCenteredDistance;
 
 /* Inner Close Position (Tablet/Mobile) */
-@innerCloseTop: (@headerVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
+@innerCloseTop: (@headingVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
 @innerCloseRight: 1rem;
 @innerCloseColor: @textColor;
 

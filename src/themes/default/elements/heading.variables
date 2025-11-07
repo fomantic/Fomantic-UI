@@ -1,5 +1,5 @@
 /*******************************
-            Header
+            Heading
 *******************************/
 
 /* -------------------
@@ -7,13 +7,13 @@
 -------------------- */
 
 @textTransform: none;
-@fontFamily: @headerFont;
-@fontWeight: @headerFontWeight;
-@lineHeight: @headerLineHeight;
-@lineHeightOffset: @headerLineHeightOffset;
+@fontFamily: @headingFont;
+@fontWeight: @headingFontWeight;
+@lineHeight: @headingLineHeight;
+@lineHeightOffset: @headingLineHeightOffset;
 
-@topMargin: @headerTopMargin;
-@bottomMargin: @headerBottomMargin;
+@topMargin: @headingTopMargin;
+@bottomMargin: @headingBottomMargin;
 @margin: @topMargin 0 @bottomMargin;
 
 @firstMargin: -@lineHeightOffset;
@@ -36,10 +36,10 @@
 @hugeSubHeadingSize: @relativeMedium;
 @massiveSubHeadingSize: @relativeLarge;
 
-/* Sub Header */
-@subHeaderMargin: 0;
-@subHeaderLineHeight: 1.2em;
-@subHeaderColor: @mutedTextColor;
+/* Sub Heading */
+@subHeadingMargin: 0;
+@subHeadingLineHeight: 1.2em;
+@subHeadingColor: @mutedTextColor;
 
 /* Icon */
 @iconOpacity: 1;
@@ -65,7 +65,7 @@
 @contentIconAlignment: middle;
 @contentImageAlignment: middle;
 
-/* Paragraph after Header */
+/* Paragraph after Heading */
 @nextParagraphDistance: 0;
 
 /* -------------------
@@ -82,35 +82,35 @@
 @tinyFontSize: unit(@h5, em);
 @miniFontSize: unit(@h6, em);
 
-/* Sub Header */
-@h1SubHeaderFontSize: @large;
-@h2SubHeaderFontSize: @large;
-@h3SubHeaderFontSize: @medium;
-@h4SubHeaderFontSize: @medium;
-@h5SubHeaderFontSize: @small;
-@h6SubHeaderFontSize: @small;
+/* Sub Heading */
+@h1SubHeadingFontSize: @large;
+@h2SubHeadingFontSize: @large;
+@h3SubHeadingFontSize: @medium;
+@h4SubHeadingFontSize: @medium;
+@h5SubHeadingFontSize: @small;
+@h6SubHeadingFontSize: @small;
 
-@massiveSubHeaderFontSize: @huge;
-@hugeSubHeaderFontSize: @h1SubHeaderFontSize;
-@bigSubHeaderFontSize: @h1SubHeaderFontSize;
-@largeSubHeaderFontSize: @h2SubHeaderFontSize;
-@subHeaderFontSize: @h3SubHeaderFontSize;
-@smallSubHeaderFontSize: @h4SubHeaderFontSize;
-@tinySubHeaderFontSize: @h5SubHeaderFontSize;
-@miniSubHeaderFontSize: @h6SubHeaderFontSize;
+@massiveSubHeadingFontSize: @huge;
+@hugeSubHeadingFontSize: @h1SubHeadingFontSize;
+@bigSubHeadingFontSize: @h1SubHeadingFontSize;
+@largeSubHeadingFontSize: @h2SubHeadingFontSize;
+@subHeadingFontSize: @h3SubHeadingFontSize;
+@smallSubHeadingFontSize: @h4SubHeadingFontSize;
+@tinySubHeadingFontSize: @h5SubHeadingFontSize;
+@miniSubHeadingFontSize: @h6SubHeadingFontSize;
 
-/* Icon Header */
-@iconHeaderSize: 3em;
-@iconHeaderOpacity: 1;
-@iconHeaderMargin: 0.5rem;
-@circularHeaderIconSize: 2em;
-@squareHeaderIconSize: 2em;
-@cornerIconHeaderSize: calc(@iconHeaderSize * 0.45);
+/* Icon Heading */
+@iconHeadingSize: 3em;
+@iconHeadingOpacity: 1;
+@iconHeadingMargin: 0.5rem;
+@circularHeadingIconSize: 2em;
+@squareHeadingIconSize: 2em;
+@cornerIconHeadingSize: calc(@iconHeadingSize * 0.45);
 
 /* No Line Height Offset */
-@iconHeaderTopMargin: 2rem;
-@iconHeaderBottomMargin: @bottomMargin;
-@iconHeaderFirstMargin: 0;
+@iconHeadingTopMargin: 2rem;
+@iconHeadingBottomMargin: @bottomMargin;
+@iconHeadingFirstMargin: 0;
 
 /* Divided */
 @dividedBorderWidth: 1px;
@@ -118,7 +118,7 @@
 @dividedColoredBorderWidth: 2px;
 
 @dividedBorderPadding: @3px;
-@dividedSubHeaderPadding: @3px;
+@dividedSubHeadingPadding: @3px;
 @dividedIconPadding: 0;
 
 /* Block */
@@ -159,7 +159,7 @@
 
 /* Inverted */
 @invertedColor: @white;
-@invertedSubHeaderColor: @invertedMutedTextColor;
+@invertedSubHeadingColor: @invertedMutedTextColor;
 @invertedDividedBorderColor: @whiteBorderColor;
 @invertedBlockBackground: @lightBlack @subtleGradient;
 @invertedAttachedBackground: @black;

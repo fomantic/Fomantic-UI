@@ -5,7 +5,7 @@
 @verticalPadding: 15px;
 @horizontalPadding: 15px;
 
-@headerFontSize: 1.15em;
+@headingFontSize: 1.15em;
 
 @infoTextColor: #264c72;
 @warningTextColor: #613a00;

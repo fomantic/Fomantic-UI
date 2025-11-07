@@ -62,14 +62,14 @@
 @closeRight: 1.5rem;
 
 /* Header */
-@headerMargin: 0;
-@headerVerticalPadding: 1.25rem;
-@headerHorizontalPadding: 1.5rem;
-@headerPadding: @headerVerticalPadding @headerHorizontalPadding;
-@headerBackground: @white;
-@headerColor: @darkTextColor;
-@headerBoxShadow: none;
-@headerBorder: 1px solid @borderColor;
+@headingMargin: 0;
+@headingVerticalPadding: 1.25rem;
+@headingHorizontalPadding: 1.5rem;
+@headingPadding: @headingVerticalPadding @headingHorizontalPadding;
+@headingBackground: @white;
+@headingColor: @darkTextColor;
+@headingBoxShadow: none;
+@headingBorder: 1px solid @borderColor;
 
 /* Content */
 @contentFontSize: 1em;

@@ -56,7 +56,7 @@
 }
 
 /* Arrow */
-.ui.accordion .ui.header > .dropdown.icon,
+.ui.accordion .ui.heading > .dropdown.icon,
 .ui.accordion .title > .dropdown.icon,
 .ui.accordion .accordion .title > .dropdown.icon {
     display: @iconDisplay;
@@ -92,7 +92,7 @@
 }
 
 /* Header */
-.ui.accordion .ui.header > .dropdown.icon {
+.ui.accordion .ui.heading > .dropdown.icon {
     font-size: @iconFontSize;
     margin: @iconMargin;
 }
@@ -363,6 +363,11 @@
     }
     .ui.tree.accordion .accordion {
         margin-top: @treeContentTopMargin;
+    }
+}
+
+& when (@variationHeadingLegacyHeader) {
+    .header:extend(.heading all) {
     }
 }
 

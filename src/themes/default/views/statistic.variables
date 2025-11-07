@@ -35,7 +35,7 @@
 @labelSize: @relativeMedium;
 @topLabelDistance: 0;
 @bottomLabelDistance: 0;
-@labelFont: @headerFont;
+@labelFont: @headingFont;
 @labelFontWeight: @bold;
 @labelColor: @textColor;
 @labelLineHeight: @relativeLarge;

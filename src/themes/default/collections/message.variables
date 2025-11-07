@@ -28,12 +28,12 @@
     box-shadow @defaultDuration @defaultEasing;
 
 /* Header */
-@headerFontSize: @relativeLarge;
-@headerFontWeight: @bold;
-@headerDisplay: block;
-@headerDistance: 0;
-@headerMargin: -@headerLineHeightOffset 0 @headerDistance 0;
-@headerParagraphDistance: 0.25em;
+@headingFontSize: @relativeLarge;
+@headingFontWeight: @bold;
+@headingDisplay: block;
+@headingDistance: 0;
+@headingMargin: -@headingLineHeightOffset 0 @headingDistance 0;
+@headingParagraphDistance: 0.25em;
 
 /* Paragraph */
 @messageTextOpacity: 0.85;

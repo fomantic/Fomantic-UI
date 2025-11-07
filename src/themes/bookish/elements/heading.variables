@@ -1,19 +1,19 @@
 /* -------------------
-       Header
+       Heading
 -------------------- */
 
-@headerFont: "Karma", "Times New Roman", serif;
+@headingFont: "Karma", "Times New Roman", serif;
 @fontWeight: @normal;
 
 @iconSize: 1.5em;
 @iconOffset: 0.2em;
 @iconAlignment: top;
 
-@subHeaderFontSize: 0.85rem;
+@subHeadingFontSize: 0.85rem;
 
 @dividedBorder: 1px dotted rgb(0 0 0 / 0.2);
 
-/* Block Header */
+/* Block Heading */
 @blockVerticalPadding: 1.3em;
 @blockHorizontalPadding: 1em;
 

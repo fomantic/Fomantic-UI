@@ -65,10 +65,10 @@
 -------------------- */
 & when (@variationSegmentInverted) {
     /* Header */
-    .ui.inverted.segments .segment > .ui.header .sub.header,
-    .ui.inverted.segments .segment > .ui.header,
-    .ui.inverted.segment > .ui.header .sub.header,
-    .ui.inverted.segment > .ui.header {
+    .ui.inverted.segments .segment > .ui.heading .sub.heading,
+    .ui.inverted.segments .segment > .ui.heading,
+    .ui.inverted.segment > .ui.heading .sub.heading,
+    .ui.inverted.segment > .ui.heading {
         color: @white;
     }
 }
@@ -1028,6 +1028,11 @@
             font-size: @s;
         }
     });
+}
+
+& when (@variationHeadingLegacyHeader) {
+    .header:extend(.heading all) {
+    }
 }
 
 // stylelint-disable no-invalid-position-at-import-rule

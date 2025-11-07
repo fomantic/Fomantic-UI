@@ -6,7 +6,7 @@
        Fonts
 -------------------- */
 
-@headerFont: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@headingFont: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 @pageFont: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif;
 @googleFontName: "Roboto";
 
@@ -29,8 +29,8 @@
   Page Heading
 --------------- */
 
-@headerLineHeight: 1.33em;
-@headerFontWeight: 400;
+@headingLineHeight: 1.33em;
+@headingFontWeight: 400;
 
 @h1: 2.25rem;
 @h2: 2rem;

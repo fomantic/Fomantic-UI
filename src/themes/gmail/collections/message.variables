@@ -5,7 +5,7 @@
 @verticalPadding: 7px;
 @horizontalPadding: 15px;
 
-@headerFontSize: 1em;
+@headingFontSize: 1em;
 
 @floatingBoxShadow: 0 2px 4px rgb(0 0 0 / 0.2);
 

@@ -70,22 +70,23 @@
 @variationDividerSizes: @variationAllSizes;
 @variationDividerColors: @variationAllColors;
 
-/* Header */
-@variationHeaderDisabled: true;
-@variationHeaderInverted: true;
-@variationHeaderSub: true;
-@variationHeaderIcon: true;
-@variationHeaderAligned: true;
-@variationHeaderJustified: true;
-@variationHeaderFloated: true;
-@variationHeaderFitted: true;
-@variationHeaderDividing: true;
-@variationHeaderBlock: true;
-@variationHeaderAttached: true;
-@variationHeaderSeamless: true;
-@variationHeaderTags: h1, h2, h3, h4, h5, h6;
-@variationHeaderSizes: @variationAllSizes;
-@variationHeaderColors: @variationAllColors;
+/* Heading */
+@variationHeadingDisabled: true;
+@variationHeadingInverted: true;
+@variationHeadingSub: true;
+@variationHeadingIcon: true;
+@variationHeadingAligned: true;
+@variationHeadingJustified: true;
+@variationHeadingFloated: true;
+@variationHeadingFitted: true;
+@variationHeadingDividing: true;
+@variationHeadingBlock: true;
+@variationHeadingAttached: true;
+@variationHeadingSeamless: true;
+@variationHeadingTags: h1, h2, h3, h4, h5, h6;
+@variationHeadingLegacyHeader: false;
+@variationHeadingSizes: @variationAllSizes;
+@variationHeadingColors: @variationAllColors;
 
 /* Icon */
 @variationIconDeprecated: true;

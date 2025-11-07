@@ -77,20 +77,20 @@
 
 /* Headers */
 .ui.table > thead {
-    box-shadow: @headerBoxShadow;
+    box-shadow: @headingBoxShadow;
 }
 .ui.table > thead > tr > th {
     cursor: auto;
-    background: @headerBackground;
-    text-align: @headerAlign;
-    color: @headerColor;
-    padding: @headerVerticalPadding @headerHorizontalPadding;
-    vertical-align: @headerVerticalAlign;
-    font-style: @headerFontStyle;
-    font-weight: @headerFontWeight;
-    text-transform: @headerTextTransform;
-    border-bottom: @headerBorder;
-    border-left: @headerDivider;
+    background: @headingBackground;
+    text-align: @headingAlign;
+    color: @headingColor;
+    padding: @headingVerticalPadding @headingHorizontalPadding;
+    vertical-align: @headingVerticalAlign;
+    font-style: @headingFontStyle;
+    font-weight: @headingFontWeight;
+    text-transform: @headingTextTransform;
+    border-bottom: @headingBorder;
+    border-left: @headingDivider;
 }
 
 .ui.table > thead > tr > th:first-child {
@@ -487,8 +487,8 @@
 
     /* Camouflage scrollbars, we need them only to gain the same width as tbody */
     .ui.scrolling.table > thead {
-        background: @headerBackground;
-        color: @headerBackground;
+        background: @headingBackground;
+        color: @headingBackground;
         border-radius: @borderRadius @borderRadius 0 0;
     }
     .ui.scrolling.table > tfoot {
@@ -656,8 +656,8 @@
         border-collapse: collapse;
     }
     .ui.structured.table > thead > tr > th {
-        border-left: @headerDivider;
-        border-right: @headerDivider;
+        border-left: @headingDivider;
+        border-right: @headingDivider;
     }
     & when (@variationTableSortable) {
         .ui.structured.sortable.table > thead > tr > th {

@@ -2,7 +2,7 @@
    Table Variables
 -------------------- */
 
-@headerBackground: @white;
+@headingBackground: @white;
 @footerBackground: @white;
 
 @cellVerticalPadding: 1em;

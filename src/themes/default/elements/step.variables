@@ -45,7 +45,7 @@
 @iconAlign: center;
 
 /* Title */
-@titleFontFamily: @headerFont;
+@titleFontFamily: @headingFont;
 @titleFontWeight: @bold;
 @titleFontSize: @relativeLarge;
 @titleColor: @darkTextColor;

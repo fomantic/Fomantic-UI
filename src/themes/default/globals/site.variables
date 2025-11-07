@@ -31,7 +31,7 @@
     "Segoe UI Symbol",
     "Noto Color Emoji";
 
-@headerFont: @fontName, @fallbackFonts;
+@headingFont: @fontName, @fallbackFonts;
 @pageFont: @fontName, @fallbackFonts;
 
 @fontDisplay: swap;
@@ -168,8 +168,8 @@
   Page Heading
 --------------- */
 
-@headerFontWeight: @bold;
-@headerLineHeight: unit((18 / 14), em);
+@headingFontWeight: @bold;
+@headingLineHeight: unit((18 / 14), em);
 
 @h1: unit((28 / 14), rem);
 @h2: unit((24 / 14), rem);
@@ -840,12 +840,12 @@
 
 /* Used to match floats with text */
 @lineHeightOffset: ((@lineHeight - 1em) / 2);
-@headerLineHeightOffset: ((@headerLineHeight - 1em) / 2);
+@headingLineHeightOffset: ((@headingLineHeight - 1em) / 2);
 
 /* Header Spacing */
-@headerTopMargin: e(%("calc(2rem - %d)", @headerLineHeightOffset));
-@headerBottomMargin: 1rem;
-@headerMargin: @headerTopMargin 0 @headerBottomMargin;
+@headingTopMargin: e(%("calc(2rem - %d)", @headingLineHeightOffset));
+@headingBottomMargin: 1rem;
+@headingMargin: @headingTopMargin 0 @headingBottomMargin;
 
 /* Minimum Mobile Width */
 @pageMinWidth: 320px;

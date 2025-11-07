@@ -38,18 +38,18 @@
 @cellBorder: 1px solid @internalBorderColor;
 
 /* Table Header */
-@headerBorder: 1px solid @internalBorderColor;
-@headerDivider: none;
-@headerBackground: @offWhite;
-@headerAlign: inherit;
-@headerVerticalAlign: inherit;
-@headerColor: @textColor;
-@headerVerticalPadding: @relativeSmall;
-@headerHorizontalPadding: @cellHorizontalPadding;
-@headerFontStyle: none;
-@headerFontWeight: @bold;
-@headerTextTransform: none;
-@headerBoxShadow: none;
+@headingBorder: 1px solid @internalBorderColor;
+@headingDivider: none;
+@headingBackground: @offWhite;
+@headingAlign: inherit;
+@headingVerticalAlign: inherit;
+@headingColor: @textColor;
+@headingVerticalPadding: @relativeSmall;
+@headingHorizontalPadding: @cellHorizontalPadding;
+@headingFontStyle: none;
+@headingFontWeight: @bold;
+@headingTextTransform: none;
+@headingBoxShadow: none;
 
 /* Table Footer */
 @footerBoxShadow: none;

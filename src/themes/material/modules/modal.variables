@@ -1,12 +1,12 @@
 @boxShadow: 0 10px 18px rgb(0 0 0 / 0.22);
 @borderRadius: 0;
 
-@headerBackground: @white;
-@headerVerticalPadding: 1.7142rem;
-@headerHorizontalPadding: 1.7142rem;
-@headerFontWeight: 400;
-@headerFontFamily: "Roboto", "Helvetica Neue", Arial, sans-serif;
-@headerBorder: none;
+@headingBackground: @white;
+@headingVerticalPadding: 1.7142rem;
+@headingHorizontalPadding: 1.7142rem;
+@headingFontWeight: 400;
+@headingFontFamily: "Roboto", "Helvetica Neue", Arial, sans-serif;
+@headingBorder: none;
 
 @contentPadding: 1rem 2rem 2rem;
 

@@ -4,12 +4,12 @@
 
 @import (css) url("https://fonts.googleapis.com/css2?family=Karma");
 
-h1.ui.header,
-.ui.huge.header {
+h1.ui.heading,
+.ui.huge.heading {
     font-weight: bold;
 }
 
-h2.ui.header,
-.ui.large.header {
+h2.ui.heading,
+.ui.large.heading {
     font-weight: bold;
 }

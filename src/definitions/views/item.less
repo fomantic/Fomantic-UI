@@ -143,15 +143,15 @@
 & when (@variationItemHeader) {
     .ui.items > .item > .content > .header {
         display: inline-block;
-        margin: @headerMargin;
-        font-family: @headerFont;
-        font-weight: @headerFontWeight;
-        color: @headerColor;
+        margin: @headingMargin;
+        font-family: @headingFont;
+        font-weight: @headingFontWeight;
+        color: @headingColor;
     }
 
     /* Default Header Size */
     .ui.items > .item > .content > .header:not(.ui) {
-        font-size: @headerFontSize;
+        font-size: @headingFontSize;
     }
 }
 
@@ -252,10 +252,10 @@
 & when (@variationItemHeader) {
     /* Header */
     .ui.items > .item > .content > a.header {
-        color: @headerLinkColor;
+        color: @headingLinkColor;
     }
     .ui.items > .item > .content > a.header:hover {
-        color: @headerLinkHoverColor;
+        color: @headingLinkHoverColor;
     }
 }
 
@@ -475,7 +475,7 @@
     & when (@variationItemHeader) {
         .ui.items a.item:hover .content .header,
         .ui.link.items > .item:hover .content .header {
-            color: @headerLinkHoverColor;
+            color: @headingLinkHoverColor;
         }
     }
 }

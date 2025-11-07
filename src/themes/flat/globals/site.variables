@@ -13,7 +13,7 @@
        Fonts
 -------------------- */
 
-@headerFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+@headingFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 @pageFont: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 
 /* -------------------
@@ -55,7 +55,7 @@
 @fontSize: 14px;
 @textColor: rgb(0 0 0 / 0.8);
 
-@headerMargin: 1em 0 1rem;
+@headingMargin: 1em 0 1rem;
 @paragraphMargin: 0 0 1em;
 
 @linkColor: #009fda;

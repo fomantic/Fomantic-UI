@@ -64,11 +64,11 @@
 @contentBorder: none;
 
 /* Header */
-@headerMargin: "";
-@headerFontWeight: @bold;
-@headerFontSize: @relativeBig;
-@headerLineHeightOffset: (-(@lineHeight - 1em) / 2);
-@headerColor: @darkTextColor;
+@headingMargin: "";
+@headingFontWeight: @bold;
+@headingFontSize: @relativeBig;
+@headingLineHeightOffset: (-(@lineHeight - 1em) / 2);
+@headingColor: @darkTextColor;
 
 /* Metadata */
 @metaFontSize: @relativeMedium;
@@ -91,8 +91,8 @@
 @contentLinkHoverColor: "";
 @contentLinkTransition: color @defaultDuration @defaultEasing;
 
-@headerLinkColor: @headerColor;
-@headerLinkHoverColor: @linkHoverColor;
+@headingLinkColor: @headingColor;
+@headingLinkHoverColor: @linkHoverColor;
 
 @metaLinkColor: @lightTextColor;
 @metaLinkHoverColor: @textColor;

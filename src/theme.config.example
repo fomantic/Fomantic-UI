@@ -27,7 +27,7 @@
 @divider: 'default';
 @emoji: 'default';
 @flag: 'default';
-@header: 'default';
+@heading: 'default';
 @icon: 'default';
 @image: 'default';
 @input: 'default';

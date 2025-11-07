@@ -33,11 +33,11 @@
 @popupDistanceAway: @arrowSize;
 
 /* Header */
-@headerFontFamily: @headerFont;
-@headerFontWeight: @bold;
-@headerFontSize: @relativeLarge;
-@headerDistance: @relative7px;
-@headerLineHeight: 1.2;
+@headingFontFamily: @headingFont;
+@headingFontWeight: @bold;
+@headingFontSize: @relativeLarge;
+@headingDistance: @relative7px;
+@headingLineHeight: 1.2;
 
 /* Content Border */
 @border: @borderWidth solid @borderColor;

@@ -67,10 +67,10 @@
 @contentColor: @textColor;
 
 /* Header */
-@headerMargin: -@lineHeightOffset 0 0;
-@headerFontWeight: @bold;
-@headerFontSize: @relativeBig;
-@headerColor: @darkTextColor;
+@headingMargin: -@lineHeightOffset 0 0;
+@headingFontWeight: @bold;
+@headingFontSize: @relativeBig;
+@headingColor: @darkTextColor;
 
 /* Metadata */
 @metaMargin: 0.5em 0 0.5em;
@@ -91,8 +91,8 @@
 @likeActiveColor: #ff2733;
 
 /* Links */
-@headerLinkColor: @headerColor;
-@headerLinkHoverColor: @linkHoverColor;
+@headingLinkColor: @headingColor;
+@headingLinkHoverColor: @linkHoverColor;
 @metaLinkColor: @lightTextColor;
 @metaLinkHoverColor: @textColor;
 @contentLinkColor: "";

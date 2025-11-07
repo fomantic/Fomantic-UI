@@ -80,7 +80,7 @@ module.exports = {
         'flyout',
         'form',
         'grid',
-        'header',
+        'heading',
         'icon',
         'image',
         'input',

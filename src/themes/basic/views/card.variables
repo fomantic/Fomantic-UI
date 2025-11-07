@@ -24,9 +24,9 @@
 @extraLinkColor: @textColor;
 @extraLinkHoverColor: @linkHoverColor;
 
-@headerFontSize: @relativeLarge;
-@headerLinkColor: @textColor;
-@headerLinkHoverColor: @linkHoverColor;
+@headingFontSize: @relativeLarge;
+@headingLinkColor: @textColor;
+@headingLinkHoverColor: @linkHoverColor;
 
 @imageBorderRadius: @borderRadius;
 @imageBorder: 1px solid @borderColor;

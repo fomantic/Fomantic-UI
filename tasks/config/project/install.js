@@ -349,7 +349,7 @@ module.exports = {
                     { name: 'divider', checked: true },
                     { name: 'emoji', checked: true },
                     { name: 'flag', checked: true },
-                    { name: 'header', checked: true },
+                    { name: 'heading', checked: true },
                     { name: 'icon', checked: true },
                     { name: 'image', checked: true },
                     { name: 'input', checked: true },

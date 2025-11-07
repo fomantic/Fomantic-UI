@@ -2,7 +2,7 @@
        Header
 -------------------- */
 
-@headerFont:
+@headingFont:
     "Source Sans Pro",
     Helvetica Neue,
     Helvetica,

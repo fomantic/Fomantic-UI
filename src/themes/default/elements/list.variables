@@ -52,7 +52,7 @@
 @contentColor: @textColor;
 
 /* Header */
-@itemHeaderFontFamily: @headerFont;
+@itemHeaderFontFamily: @headingFont;
 @itemHeaderFontWeight: @bold;
 @itemHeaderColor: @textColor;
 
