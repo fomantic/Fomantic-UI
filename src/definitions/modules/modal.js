@@ -902,8 +902,8 @@
                     if (getScrollingMargins) {
                         if (module.can.useFlex()) {
                             $module.addClass(className.scrolling);
-                            scrollingTop = parseInt($module.css('top').replace(/[^\d.]/g, ''), 10) || 0;
-                            bottomMargin = parseInt(window.getComputedStyle($module[0], '::after').height.replace(/[^\d.]/g, ''), 10) || 0;
+                            scrollingTop = Number.parseInt($module.css('top').replace(/[^\d.]/g, ''), 10) || 0;
+                            bottomMargin = Number.parseInt(window.getComputedStyle($module[0], '::after').height.replace(/[^\d.]/g, ''), 10) || 0;
                             $module.removeClass(className.scrolling);
                         }
                         $.extend(module.cache, {
