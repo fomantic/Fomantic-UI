@@ -234,8 +234,8 @@
                         };
                         const element = {
                             margin: {
-                                top: parseInt($module.css('margin-top'), 10),
-                                bottom: parseInt($module.css('margin-bottom'), 10),
+                                top: Number.parseInt($module.css('margin-top'), 10),
+                                bottom: Number.parseInt($module.css('margin-bottom'), 10),
                             },
                             offset: $module.offset(),
                             width: $module.outerWidth(),
@@ -303,8 +303,8 @@
                         }
 
                         return module.is.top()
-                            ? Math.abs(parseInt($module.css('top'), 10)) || 0
-                            : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
+                            ? Math.abs(Number.parseInt($module.css('top'), 10)) || 0
+                            : Math.abs(Number.parseInt($module.css('bottom'), 10)) || 0;
                     },
 
                     elementScroll: function (scroll = $scroll.scrollTop()) {
