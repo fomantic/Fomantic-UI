@@ -99,7 +99,7 @@
                     forceArray: function (element) {
                         return Array.isArray(element)
                             ? element
-                            : (!isNaN(element)
+                            : (!Number.isNaN(Number(element))
                                 ? [element]
                                 : (typeof element === 'string' ? element.split(',') : [])); // eslint-disable-line unicorn/no-nested-ternary
                     },
@@ -307,7 +307,7 @@
                         const $bar = $($bars[index]);
                         const barWidth = $bar.width();
                         const totalWidth = $module.width();
-                        const minDisplay = parseInt($bar.css('min-width'), 10);
+                        const minDisplay = Number.parseInt($bar.css('min-width'), 10);
                         const displayPercent = barWidth > minDisplay
                             ? (barWidth / totalWidth) * 100
                             : module.percent;
@@ -422,9 +422,9 @@
                                 });
                             }
 
-                            return parseFloat(value);
+                            return Number.parseFloat(value);
                         });
-                        values.forEach(function (_, index) {
+                        for (const [index, _] of values.entries()) {
                             const $bar = $($bars[index]);
                             $bar.css({
                                 borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
@@ -432,7 +432,7 @@
                                 borderTopRightRadius: index === lastNonZeroIndex ? '' : '0',
                                 borderBottomRightRadius: index === lastNonZeroIndex ? '' : '0',
                             });
-                        });
+                        }
                         $module
                             .attr('data-percent', percents);
                     },
