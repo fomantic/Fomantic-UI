@@ -124,7 +124,7 @@
                         } else {
                             $actions.empty();
                         }
-                        settings.actions.forEach(function (el) {
+                        for (const el of settings.actions) {
                             const icon = el[fields.icon]
                                 ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.escape(el[fields.icon]) + ' icon"></i>'
                                 : '';
@@ -133,20 +133,22 @@
                             const click = el[fields.click] && isFunction(el[fields.click])
                                 ? el[fields.click]
                                 : function () {};
+                            const elementRef = element;
+                            const $moduleRef = $module;
                             $actions.append($('<button/>', {
                                 html: icon + text,
                                 'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
                                 class: className.button + ' ' + cls,
                                 on: {
                                     click: function () {
-                                        if (click.call(element, $module) === false) {
+                                        if (click.call(elementRef, $moduleRef) === false) {
                                             return;
                                         }
                                         module.hide();
                                     },
                                 },
                             }));
-                        });
+                        }
                     }
 
                     // avoids locking rendering if initialized in onReady

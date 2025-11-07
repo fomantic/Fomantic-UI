@@ -3,7 +3,7 @@ const assets = [
 ];
 
 // Check that the font files are downloadable. Meteor places assets at /packages/<packageName>/.
-assets.forEach(function (path) {
+for (const path of assets) {
     Tinytest.addAsync('image ' + path + ' is shipped', function (test, done) {
         HTTP.get('/packages/semantic_ui/' + path, function callback(error, result) {
             if (error) {
@@ -14,4 +14,4 @@ assets.forEach(function (path) {
             done();
         });
     });
-});
+}

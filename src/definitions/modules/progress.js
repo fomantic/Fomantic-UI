@@ -424,7 +424,7 @@
 
                             return Number.parseFloat(value);
                         });
-                        values.forEach(function (_, index) {
+                        for (const [index, _] of values.entries()) {
                             const $bar = $($bars[index]);
                             $bar.css({
                                 borderTopLeftRadius: index === firstNonZeroIndex ? '' : '0',
@@ -432,7 +432,7 @@
                                 borderTopRightRadius: index === lastNonZeroIndex ? '' : '0',
                                 borderBottomRightRadius: index === lastNonZeroIndex ? '' : '0',
                             });
-                        });
+                        }
                         $module
                             .attr('data-percent', percents);
                     },
