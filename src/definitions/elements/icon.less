@@ -408,10 +408,7 @@ i.icons {
     & when (@variationIconCorner) {
         /* Corner Icon */
         i.icons .corner.icon {
-            top: auto;
-            left: auto;
-            right: @cornerOffset;
-            bottom: @cornerOffset;
+            inset: auto @cornerOffset @cornerOffset auto;
             font-size: @cornerIconSize;
             text-shadow: @cornerIconShadow;
             &@{notRotated}@{notFlipped} {
@@ -419,28 +416,16 @@ i.icons {
             }
         }
         i.icons .icon.corner[class*="top right"] {
-            top: @cornerOffset;
-            left: auto;
-            right: @cornerOffset;
-            bottom: auto;
+            inset: @cornerOffset @cornerOffset auto auto;
         }
         i.icons .icon.corner[class*="top left"] {
-            top: @cornerOffset;
-            left: @cornerOffset;
-            right: auto;
-            bottom: auto;
+            inset: @cornerOffset auto auto @cornerOffset;
         }
         i.icons .icon.corner[class*="bottom left"] {
-            top: auto;
-            left: @cornerOffset;
-            right: auto;
-            bottom: @cornerOffset;
+            inset: auto auto @cornerOffset @cornerOffset;
         }
         i.icons .icon.corner[class*="bottom right"] {
-            top: auto;
-            left: auto;
-            right: @cornerOffset;
-            bottom: @cornerOffset;
+            inset: auto @cornerOffset @cornerOffset auto;
         }
         & when (@variationIconInverted) {
             i.icons .inverted.corner.icon {
@@ -490,31 +475,19 @@ i.icons {
         i.circular.icons .icon.corner,
         i.bordered.icons .icon.corner[class*="bottom right"],
         i.circular.icons .icon.corner[class*="bottom right"] {
-            top: auto;
-            left: auto;
-            right: @borderedGroupCornerOffset;
-            bottom: @borderedGroupCornerOffset;
+            inset: auto @borderedGroupCornerOffset @borderedGroupCornerOffset auto;
         }
         i.bordered.icons .icon.corner[class*="top right"],
         i.circular.icons .icon.corner[class*="top right"] {
-            top: @borderedGroupCornerOffset;
-            left: auto;
-            right: @borderedGroupCornerOffset;
-            bottom: auto;
+            inset: @borderedGroupCornerOffset @borderedGroupCornerOffset auto auto;
         }
         i.bordered.icons .icon.corner[class*="top left"],
         i.circular.icons .icon.corner[class*="top left"] {
-            top: @borderedGroupCornerOffset;
-            left: @borderedGroupCornerOffset;
-            right: auto;
-            bottom: auto;
+            inset: @borderedGroupCornerOffset auto auto @borderedGroupCornerOffset;
         }
         i.bordered.icons .icon.corner[class*="bottom left"],
         i.circular.icons .icon.corner[class*="bottom left"] {
-            top: auto;
-            left: @borderedGroupCornerOffset;
-            right: auto;
-            bottom: @borderedGroupCornerOffset;
+            inset: auto auto @borderedGroupCornerOffset @borderedGroupCornerOffset;
         }
     }
 }
@@ -630,6 +603,7 @@ i.icons {
     }
 
     .generateIcons(@icon-duotone-map);
+  // stylelint-disable less/no-duplicate-variables
     .generateIcons(@icon-duotone-secondary-map, false, after);
 
     & when (@variationIconAliases) {
@@ -662,5 +636,4 @@ i.icons {
     }
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

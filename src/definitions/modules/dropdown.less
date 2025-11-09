@@ -442,8 +442,7 @@ select.ui.dropdown {
 
     /* Selection Menu */
     .ui.selection.dropdown@{notUnlimited} .menu {
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
     }
@@ -798,8 +797,7 @@ select.ui.dropdown {
 
     /* Search Menu */
     .ui.search.dropdown@{notUnlimited} .menu {
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
     }
@@ -1375,8 +1373,7 @@ select.ui.dropdown {
     /* Selection Menu */
     .ui.scrolling.dropdown .menu,
     .ui.dropdown .scrolling.menu {
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
         min-width: 100% !important;
@@ -1595,8 +1592,7 @@ select.ui.dropdown {
         /* Scrolling */
         .ui.simple.scrolling.active.dropdown > .menu,
         .ui.simple.scrolling.dropdown:hover > .menu {
-            overflow-x: hidden;
-            overflow-y: auto;
+            overflow: hidden auto;
             overscroll-behavior: @overscrollBehavior;
         }
     }
@@ -1685,17 +1681,11 @@ select.ui.dropdown {
 
     /* Top Left Pointing */
     .ui.top.left.pointing.dropdown > .menu {
-        top: 100%;
-        bottom: auto;
-        left: 0;
-        right: auto;
+        inset: 100% auto auto 0;
         margin: @pointingArrowDistanceFromEdge 0 0;
     }
     .ui.top.left.pointing.dropdown > .menu {
-        top: 100%;
-        bottom: auto;
-        left: 0;
-        right: auto;
+        inset: 100% auto auto 0;
         margin: @pointingArrowDistanceFromEdge 0 0;
     }
     .ui.top.left.pointing.dropdown > .menu::after {
@@ -1708,10 +1698,7 @@ select.ui.dropdown {
 
     /* Top Right Pointing */
     .ui.top.right.pointing.dropdown > .menu {
-        top: 100%;
-        bottom: auto;
-        right: 0;
-        left: auto;
+        inset: 100% 0 auto auto;
         margin: @pointingArrowDistanceFromEdge 0 0;
     }
     .ui.top.pointing.dropdown > .left.menu::after,
@@ -1766,10 +1753,7 @@ select.ui.dropdown {
 
     /* Bottom Pointing */
     .ui.bottom.pointing.dropdown > .menu {
-        top: auto;
-        bottom: 100%;
-        left: 0;
-        right: auto;
+        inset: auto auto 100% 0;
         margin: 0 0 @pointingArrowDistanceFromEdge;
     }
     .ui.bottom.pointing.dropdown > .menu::after {
@@ -2101,5 +2085,4 @@ select.ui.dropdown {
     }
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

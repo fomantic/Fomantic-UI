@@ -18,7 +18,6 @@
 @disabledOpacity: 0.3;
 
 @black: #444c55;
-@orange: #fde07b;
 
 @linkColor: #0066c0;
 @linkHoverColor: #c45500;

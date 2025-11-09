@@ -1,6 +1,6 @@
 module.exports = {
     extends: [
-        'stylelint-config-standard',
+        'stylelint-config-standard-less',
     ],
     customSyntax: 'postcss-less',
     ignoreFiles: [
@@ -10,9 +10,7 @@ module.exports = {
     rules: {
         'at-rule-empty-line-before': null,
         'at-rule-name-case': null,
-        'at-rule-no-unknown': null,
         'block-no-empty': null,
-        'color-hex-case': 'lower',
         'declaration-colon-newline-after': null, // handled by Prettier
         'font-family-no-missing-generic-family-keyword': null,
         'function-no-unknown': null,
@@ -35,7 +33,6 @@ module.exports = {
             ],
         }],
         'rule-empty-line-before': null,
-        'string-quotes': 'double',
         'value-keyword-case': null,
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11

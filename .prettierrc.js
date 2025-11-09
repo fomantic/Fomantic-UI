@@ -6,6 +6,7 @@ module.exports = {
             options: {
                 parser: 'less',
                 printWidth: Infinity,
+                singleQuote: false,
             },
         },
     ],
