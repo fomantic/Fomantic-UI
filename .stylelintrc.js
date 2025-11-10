@@ -9,21 +9,17 @@ module.exports = {
     ],
     rules: {
         'at-rule-empty-line-before': null,
-        'at-rule-name-case': null,
         'block-no-empty': null,
-        'declaration-colon-newline-after': null, // handled by Prettier
         'font-family-no-missing-generic-family-keyword': null,
         'function-no-unknown': null,
         'import-notation': null,
         indentation: null, // handled by Prettier
         'keyframes-name-pattern': null,
         linebreaks: 'unix',
-        'max-line-length': null,
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // handled by Prettier
         'no-duplicate-selectors': null,
         'number-max-precision': 5,
-        'property-case': null,
         'property-no-vendor-prefix': [true, {
             ignoreProperties: [
                 'background-clip', // https://caniuse.com/background-clip-text
