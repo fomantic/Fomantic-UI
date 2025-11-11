@@ -15,7 +15,6 @@ module.exports = {
         'import-notation': null,
         indentation: null, // handled by Prettier
         'keyframes-name-pattern': null,
-        linebreaks: 'unix',
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // handled by Prettier
         'no-duplicate-selectors': null,
