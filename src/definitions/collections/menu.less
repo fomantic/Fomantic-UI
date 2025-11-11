@@ -1707,10 +1707,7 @@ Floated Menu / Item
 
     .ui.fixed.menu,
     .ui[class*="top fixed"].menu {
-        top: 0;
-        left: 0;
-        right: auto;
-        bottom: auto;
+        inset: 0 auto auto 0;
     }
     .ui[class*="top fixed"].menu {
         border-top: none;
@@ -1721,10 +1718,7 @@ Floated Menu / Item
         border-top: none;
         border-bottom: none;
         border-right: none;
-        top: 0;
-        right: 0;
-        left: auto;
-        bottom: auto;
+        inset: 0 0 auto auto;
         width: auto;
         height: 100%;
     }
@@ -1732,19 +1726,13 @@ Floated Menu / Item
         border-bottom: none;
         border-left: none;
         border-right: none;
-        bottom: 0;
-        left: 0;
-        top: auto;
-        right: auto;
+        inset: auto auto 0 0;
     }
     .ui[class*="left fixed"].menu {
         border-top: none;
         border-bottom: none;
         border-left: none;
-        top: 0;
-        left: 0;
-        right: auto;
-        bottom: auto;
+        inset: 0 auto auto 0;
         width: auto;
         height: 100%;
     }
@@ -1780,10 +1768,7 @@ Floated Menu / Item
     & when (@variationMenuVertical) {
         .ui.vertical.pointing.menu .item::after {
             position: absolute;
-            top: 50%;
-            right: 0;
-            bottom: auto;
-            left: auto;
+            inset: 50% 0 auto auto;
             transform: translateX(50%) translateY(-50%) rotate(45deg);
             margin: 0 -(@arrowBorderWidth / 2) 0 0;
             border: none;
@@ -2023,5 +2008,4 @@ Floated Menu / Item
     }
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

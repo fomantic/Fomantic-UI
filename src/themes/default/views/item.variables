@@ -46,7 +46,6 @@
 @imageVerticalAlign: start;
 @imageMargin: 0;
 @imagePadding: 0;
-@imageBorder: none;
 @imageBorderRadius: 0.125rem;
 @imageBoxShadow: none;
 @imageBorder: none;

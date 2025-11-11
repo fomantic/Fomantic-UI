@@ -23,7 +23,6 @@
 
 @borderBoxShadowColor: rgb(0 0 0 / 0.14);
 
-@green: #5cb85c;
 @red: #d9534f;
 @blue: #337ab7;
 @green: #60b044;
