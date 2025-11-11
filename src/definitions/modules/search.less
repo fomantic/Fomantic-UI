@@ -402,8 +402,7 @@
     .ui.scrolling.search > .results,
     .ui.search.long > .results,
     .ui.search.short > .results {
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden auto;
         overscroll-behavior: @overscrollBehavior;
         backface-visibility: hidden;
     }
@@ -597,5 +596,4 @@
     }
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

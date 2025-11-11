@@ -156,7 +156,6 @@
 @iconButtonOpacity: 0.9;
 
 /* Labeled */
-@labeledLabelFontSize: @medium;
 @labeledLabelAlign: center;
 @labeledLabelPadding: "";
 @labeledLabelFontSize: @relativeMedium;

@@ -7,7 +7,6 @@
     Helvetica,
     Arial,
     sans-serif;
-@textColor: #66757f;
 @blue: #55acee;
 
 /* -------------------

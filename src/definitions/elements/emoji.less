@@ -79,6 +79,7 @@ each(@size-map, {
     }
 });
 
+// stylelint-disable less/no-duplicate-variables
 each(@emoji-map, {
     & when (@variationEmojiColons) {
         em[data-emoji=":@{value}:"]::before {
@@ -93,5 +94,4 @@ each(@emoji-map, {
 
 /* rtl:end:ignore */
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";
