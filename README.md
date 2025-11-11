@@ -55,10 +55,12 @@ Fomantic includes an interactive installer to help setup your project.
 
 ### 💻 Browser Support
 
-* Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
-* Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
-
-[^1]: Fomantic-UI should basically still work in iOS Safari 11+, Android 7+, but, starting from v2.9.0, we won't support them anymore if anything works different than in recent versions.
+* [![Chrome](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/chrome/chrome_16x16.png)]() Chrome >= 88
+* [![Edge](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/edge/edge_16x16.png)]() Edge >= 88
+* [![Safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/archive/safari-ios_1-6/safari-ios_1-6_16x16.png)]() Safari >= 14.1
+* [![Firefox](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/firefox/firefox_16x16.png)]() Firefox >= 82
+* [![iOS](https://img.shields.io/badge/-ffffff?logo=apple&logoColor=black)]() iOS >= 14.1
+* [![Android](https://img.shields.io/badge/-ffffff?logo=android&logoColor=43dd88)]() Android >= 8
 
 ---
 
