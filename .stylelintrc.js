@@ -11,12 +11,9 @@ module.exports = {
         'at-rule-empty-line-before': null,
         'block-no-empty': null,
         'font-family-no-missing-generic-family-keyword': null,
-        'function-no-unknown': null,
         'import-notation': null,
-        indentation: null, // handled by Prettier
         'keyframes-name-pattern': null,
         'no-descending-specificity': null,
-        'no-extra-semicolons': null, // handled by Prettier
         'no-duplicate-selectors': null,
         'number-max-precision': 5,
         'property-no-vendor-prefix': [true, {
