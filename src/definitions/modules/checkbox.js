@@ -153,13 +153,6 @@
                     }
                 },
 
-                preventDefaultOnInputTarget: function () {
-                    if (event !== undefined && event !== null && $(event.target).is(selector.input)) {
-                        module.verbose('Preventing default check action after manual check action');
-                        event.preventDefault();
-                    }
-                },
-
                 event: {
                     change: function (event) {
                         if (!module.should.ignoreCallbacks()) {
@@ -262,7 +255,6 @@
                         settings.onChecked.call(input);
                         module.trigger.change();
                     }
-                    module.preventDefaultOnInputTarget();
                 },
 
                 uncheck: function () {
@@ -275,7 +267,6 @@
                         settings.onUnchecked.call(input);
                         module.trigger.change();
                     }
-                    module.preventDefaultOnInputTarget();
                 },
 
                 indeterminate: function () {
