@@ -14,6 +14,8 @@ if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
         'edge >= 88',
         'safari >= 14.1',
         'firefox >= 82',
+        'opera >= 75',
+        'samsung >= 15',
         'ios >= 14.1',
         'android >= 8',
         '>0.3%',

@@ -59,6 +59,8 @@ Fomantic includes an interactive installer to help setup your project.
 * [![Edge](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/edge/edge_16x16.png)]() Edge >= 88
 * [![Safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/archive/safari-ios_1-6/safari-ios_1-6_16x16.png)]() Safari >= 14.1
 * [![Firefox](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/firefox/firefox_16x16.png)]() Firefox >= 82
+* [![Opera](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/opera/opera_16x16.png)]() Opera >= 75
+* [![Saumsung Internet](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/samsung-internet/samsung-internet_16x16.png)]() Samsung Internet >= 15
 * [![iOS](https://img.shields.io/badge/-ffffff?logo=apple&logoColor=black)]() iOS >= 14.1
 * [![Android](https://img.shields.io/badge/-ffffff?logo=android&logoColor=43dd88)]() Android >= 8
 
