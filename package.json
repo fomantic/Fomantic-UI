@@ -93,6 +93,10 @@
     "node": ">=18.18",
     "npm": ">=10"
   },
+  "resolutions": {
+    "brace-expansion": "^2.0.2",
+    "glob": "^10.5.0"
+  },
   "title": "Fomantic UI",
   "style": "dist/semantic.css"
 }
