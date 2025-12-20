@@ -20,8 +20,10 @@
         : globalThis;
 
     $.fn.toast = function (...args) {
-        const $allModules = $(this);
         const $body = $('body');
+        const $allModules = isFunction(this)
+            ? $body
+            : $(this);
 
         let time = Date.now();
         let performance = [];
