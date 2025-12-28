@@ -19,6 +19,7 @@ if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
         'ios >= 14.1',
         'android >= 8',
         '>0.3%',
+        'not dead',
     ];
 }
 
