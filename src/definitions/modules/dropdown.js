@@ -2747,7 +2747,7 @@
                         }
                         module.refreshItems();
                     },
-                    variables: function (message = '', term = module.get.query()) {
+                    variables: function (message = '', term = settings.templates.escape(module.get.query())) {
                         const hasCount = message.search('{count}') !== -1;
                         const hasMaxCount = message.search('{maxCount}') !== -1;
                         const hasTerm = message.search('{term}') !== -1;
