@@ -1253,6 +1253,11 @@
                             return true;
                         }
                         const identifier = field.identifier || fieldName;
+                        if (!identifier) {
+                            module.debug('No identifier given. Skipping');
+
+                            return true;
+                        }
                         const $field = module.get.field(identifier);
                         const $fieldGroup = $field.closest($group);
                         const $dependsField = field.depends
