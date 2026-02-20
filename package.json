@@ -31,7 +31,6 @@
     "lint-fix": "eslint --ext .js,.ts . --fix && stylelint \"**/*.{css,less,overrides,variables}\" --fix"
   },
   "dependencies": {
-    "@actions/core": "^1.6.0",
     "@fomantic/better-console": "^1.0.2",
     "@fomantic/gulp-concat-css": "^4.0.0",
     "@fomantic/gulp-concat-filenames": "^2.0.0",
@@ -39,8 +38,6 @@
     "@fomantic/gulp-git": "^3.0.0",
     "@fomantic/gulp-header": "^2.1.1",
     "@fomantic/gulp-plumber": "^1.2.2",
-    "@octokit/core": "^6.1.4",
-    "@octokit/rest": "^21.1.1",
     "browserslist": "^4.21.4",
     "extend": "^3.0.2",
     "fs-extra": "^11.3.0",
@@ -72,7 +69,10 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@actions/core": "^1.6.0",
     "@internal/eslint-plugin": "file:.eslint",
+    "@octokit/core": "^6.1.4",
+    "@octokit/rest": "^21.1.1",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "auto-changelog": "^2.4.0",
