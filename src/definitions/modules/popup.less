@@ -237,18 +237,12 @@
                 /* Top Center (default) */
                 [data-tooltip]:not([data-position])::after,
                 [data-position="top center"][data-tooltip]::after {
-                    top: auto;
-                    right: auto;
-                    left: 50%;
-                    bottom: 100%;
+                    inset: auto auto 100% 50%;
                     margin-bottom: @tooltipDistanceAway;
                 }
                 [data-tooltip]:not([data-position])::before,
                 [data-position="top center"][data-tooltip]::before {
-                    top: auto;
-                    right: auto;
-                    bottom: 100%;
-                    left: 50%;
+                    inset: auto auto 100% 50%;
                     background: @tooltipArrowTopBackground;
                     margin-left: @tooltipArrowHorizontalOffset;
                     margin-bottom: -@tooltipArrowVerticalOffset;
@@ -257,17 +251,11 @@
             & when (@variationPopupLeft) {
                 /* Top Left */
                 [data-position="top left"][data-tooltip]::after {
-                    top: auto;
-                    right: auto;
-                    left: 0;
-                    bottom: 100%;
+                    inset: auto auto 100% 0;
                     margin-bottom: @tooltipDistanceAway;
                 }
                 [data-position="top left"][data-tooltip]::before {
-                    top: auto;
-                    right: auto;
-                    bottom: 100%;
-                    left: @arrowDistanceFromEdge;
+                    inset: auto auto 100% @arrowDistanceFromEdge;
                     margin-left: @tooltipArrowHorizontalOffset;
                     margin-bottom: -@tooltipArrowVerticalOffset;
                 }
@@ -275,17 +263,11 @@
             & when (@variationPopupRight) {
                 /* Top Right */
                 [data-position="top right"][data-tooltip]::after {
-                    top: auto;
-                    left: auto;
-                    right: 0;
-                    bottom: 100%;
+                    inset: auto 0 100% auto;
                     margin-bottom: @tooltipDistanceAway;
                 }
                 [data-position="top right"][data-tooltip]::before {
-                    top: auto;
-                    left: auto;
-                    bottom: 100%;
-                    right: @arrowDistanceFromEdge;
+                    inset: auto @arrowDistanceFromEdge 100% auto;
                     margin-left: @tooltipArrowHorizontalOffset;
                     margin-bottom: -@tooltipArrowVerticalOffset;
                 }
@@ -300,17 +282,11 @@
             & when (@variationPopupCenter) {
                 /* Bottom Center */
                 [data-position="bottom center"][data-tooltip]::after {
-                    bottom: auto;
-                    right: auto;
-                    left: 50%;
-                    top: 100%;
+                    inset: 100% auto auto 50%;
                     margin-top: @tooltipDistanceAway;
                 }
                 [data-position="bottom center"][data-tooltip]::before {
-                    bottom: auto;
-                    right: auto;
-                    top: 100%;
-                    left: 50%;
+                    inset: 100% auto auto 50%;
                     margin-left: @tooltipArrowHorizontalOffset;
                     margin-top: -@arrowOffset;
                 }
@@ -323,10 +299,7 @@
                     margin-top: @tooltipDistanceAway;
                 }
                 [data-position="bottom left"][data-tooltip]::before {
-                    bottom: auto;
-                    right: auto;
-                    top: 100%;
-                    left: @arrowDistanceFromEdge;
+                    inset: 100% auto auto @arrowDistanceFromEdge;
                     margin-left: @tooltipArrowHorizontalOffset;
                     margin-top: -@tooltipArrowVerticalOffset;
                 }
@@ -339,10 +312,7 @@
                     margin-top: @tooltipDistanceAway;
                 }
                 [data-position="bottom right"][data-tooltip]::before {
-                    bottom: auto;
-                    left: auto;
-                    top: 100%;
-                    right: @arrowDistanceFromEdge;
+                    inset: 100% @arrowDistanceFromEdge auto auto;
                     margin-left: @tooltipArrowVerticalOffset;
                     margin-top: -@tooltipArrowHorizontalOffset;
                 }
@@ -548,10 +518,7 @@
     /* --- Below --- */
     .ui.bottom.center.popup::before {
         margin-left: @arrowOffset;
-        top: @arrowOffset;
-        left: 50%;
-        right: auto;
-        bottom: auto;
+        inset: @arrowOffset auto auto 50%;
         box-shadow: @bottomArrowBoxShadow;
     }
 
@@ -561,10 +528,7 @@
 
     /* rtl:rename */
     .ui.bottom.left.popup::before {
-        top: @arrowOffset;
-        left: @arrowDistanceFromEdge;
-        right: auto;
-        bottom: auto;
+        inset: @arrowOffset auto auto @arrowDistanceFromEdge;
         margin-left: 0;
         box-shadow: @bottomArrowBoxShadow;
     }
@@ -575,10 +539,7 @@
 
     /* rtl:rename */
     .ui.bottom.right.popup::before {
-        top: @arrowOffset;
-        right: @arrowDistanceFromEdge;
-        bottom: auto;
-        left: auto;
+        inset: @arrowOffset @arrowDistanceFromEdge auto auto;
         margin-left: 0;
         box-shadow: @bottomArrowBoxShadow;
     }
@@ -588,10 +549,7 @@
     /* --- Above --- */
     & when (@variationPopupCenter) {
         .ui.top.center.popup::before {
-            top: auto;
-            right: auto;
-            bottom: @arrowOffset;
-            left: 50%;
+            inset: auto auto @arrowOffset 50%;
             margin-left: @arrowOffset;
         }
     }
@@ -602,10 +560,7 @@
 
         /* rtl:rename */
         .ui.top.left.popup::before {
-            bottom: @arrowOffset;
-            left: @arrowDistanceFromEdge;
-            top: auto;
-            right: auto;
+            inset: auto auto @arrowOffset @arrowDistanceFromEdge;
             margin-left: 0;
         }
     }
@@ -616,10 +571,7 @@
 
         /* rtl:rename */
         .ui.top.right.popup::before {
-            bottom: @arrowOffset;
-            right: @arrowDistanceFromEdge;
-            top: auto;
-            left: auto;
+            inset: auto @arrowDistanceFromEdge @arrowOffset auto;
             margin-left: 0;
         }
     }
@@ -631,10 +583,7 @@
     /* rtl:rename */
     & when (@variationPopupLeft) {
         .ui.left.center.popup::before {
-            top: 50%;
-            right: @arrowOffset;
-            bottom: auto;
-            left: auto;
+            inset: 50% @arrowOffset auto auto;
             margin-top: @arrowOffset;
             box-shadow: @leftArrowBoxShadow;
         }
@@ -644,10 +593,7 @@
 
         /* rtl:rename */
         .ui.right.center.popup::before {
-            top: 50%;
-            left: @arrowOffset;
-            bottom: auto;
-            right: auto;
+            inset: 50% auto auto @arrowOffset;
             margin-top: @arrowOffset;
             box-shadow: @rightArrowBoxShadow;
         }
@@ -932,5 +878,4 @@
     });
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

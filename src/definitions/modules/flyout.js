@@ -20,12 +20,13 @@
         : globalThis;
 
     $.fn.flyout = function (...args) {
-        const $allModules = $(this);
         const $window = $(window);
         const $document = $(document);
-        const $html = $('html');
         const $head = $('head');
         const $body = $('body');
+        const $allModules = isFunction(this)
+            ? $body
+            : $(this);
 
         let time = Date.now();
         let performance = [];
@@ -950,7 +951,7 @@
                         return module.cache.isFirefox;
                     },
                     iframe: function () {
-                        return !(self === top);
+                        return !(window.self === window.top);
                     },
                     mobile: function () {
                         const userAgent = navigator.userAgent;

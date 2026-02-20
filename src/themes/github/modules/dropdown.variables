@@ -4,8 +4,6 @@
 
 @transition: width @defaultDuration @defaultEasing;
 
-@menuPadding: 0;
-
 @itemVerticalPadding: @relative8px;
 @itemHorizontalPadding: @relative14px;
 

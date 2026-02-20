@@ -8,7 +8,7 @@ const process = require('node:process');
 // npm
 const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies
 const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
-const actions = require('@actions/core');
+const actions = require('@actions/core'); // eslint-disable-line import/no-extraneous-dependencies
 
 const pkg = require('../package.json');
 

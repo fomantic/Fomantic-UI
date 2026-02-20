@@ -794,9 +794,7 @@
     };
 
     // shortcut for tabbed content with no defined navigation
-    $.tab = function (...args) {
-        $(window).tab.apply(this, args);
-    };
+    $.tab = $.fn.tab;
 
     $.fn.tab.settings = {
 

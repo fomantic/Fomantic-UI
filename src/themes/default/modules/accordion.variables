@@ -75,7 +75,6 @@
 @styledTitlePadding: 0.75em 1em;
 @styledTitleFontWeight: @bold;
 @styledTitleColor: @unselectedTextColor;
-@styledTitleTransition: background-color @defaultDuration @defaultEasing;
 @styledTitleBorder: 1px solid @borderColor;
 @styledTitleTransition:
     background @defaultDuration @defaultEasing,

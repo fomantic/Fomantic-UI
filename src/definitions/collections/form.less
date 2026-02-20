@@ -372,10 +372,7 @@
     .ui.form .inline.fields .field .prompt::before,
     .ui.form .inline.field .prompt::before {
         border-width: 0 0 @inlinePromptBorderWidth @inlinePromptBorderWidth;
-        bottom: auto;
-        right: auto;
-        top: 50%;
-        left: 0;
+        inset: 50% auto auto 0;
     }
 }
 
@@ -405,8 +402,6 @@
 /* browsers require these rules separate */
 .ui.form ::placeholder {
     color: @inputPlaceholderColor;
-}
-.ui.form ::-moz-placeholder {
     opacity: 1;
 }
 
@@ -1195,5 +1190,4 @@
     });
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

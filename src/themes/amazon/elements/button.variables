@@ -29,7 +29,6 @@
     0 1px 0 1px rgb(255 255 255 / 0.3) inset,
     0 0 0 1px #adb2bb inset;
 
-@coloredBackgroundImage: linear-gradient(rgb(255 255 255 / 0.2), rgb(0 0 0 / 0.2));
 @coloredBoxShadow: 0 1px 0 0 rgb(255 255 255 / 0.2) inset;
 
 @downBoxShadow:
