@@ -990,16 +990,15 @@ async-settle@^2.0.0:
     async-done "^2.0.0"
 
 auto-changelog@^2.4.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.5.0.tgz#c7a3a203a99b54c3c7286b247911966581103c10"
-  integrity sha512-UTnLjT7I9U2U/xkCUH5buDlp8C7g0SGChfib+iDrJkamcj5kaMqNKHNfbKJw1kthJUq8sUo3i3q2S6FzO/l/wA==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.5.1.tgz#4c576f1b2d34154e5c6d1d2603fbe11f920c00a7"
+  integrity sha512-vpG10KkmGaeMHwvCK2G+4j6e1+ZxVnhDadHnbG0sFuiB2fzAPIybicp5782btmf4+UGfHklVCUcHWZyN3YiXKg==
   dependencies:
     commander "^7.2.0"
-    handlebars "^4.7.7"
+    handlebars "^4.7.9"
     import-cwd "^3.0.0"
-    node-fetch "^2.6.1"
-    parse-github-url "^1.0.3"
-    semver "^7.3.5"
+    parse-github-url "^1.0.4"
+    semver "^7.7.4"
 
 autoprefixer@^10.2.6:
   version "10.4.13"
@@ -3015,7 +3014,7 @@ gulplog@^2.2.0:
   dependencies:
     glogg "^2.2.0"
 
-handlebars@^4.7.7:
+handlebars@^4.7.9:
   version "4.7.9"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.9.tgz#6f139082ab58dc4e5a0e51efe7db5ae890d56a0f"
   integrity sha512-4E71E0rpOaQuJR2A3xDZ+GM1HyWYv1clR58tC8emQNeQe3RH7MAzSbat+V0wG78LQBo6m6bzSG/L4pBuCsgnUQ==
@@ -4138,7 +4137,7 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-node-fetch@^2.6.0, node-fetch@^2.6.1:
+node-fetch@^2.6.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
@@ -4424,10 +4423,10 @@ parse-filepath@^1.0.2:
     map-cache "^0.2.0"
     path-root "^0.1.1"
 
-parse-github-url@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.3.tgz#2ab55642c8685b63fbe2a196f5abe4ae9bd68abc"
-  integrity sha512-tfalY5/4SqGaV/GIGzWyHnFjlpTPTNpENR9Ea2lLldSJ8EWXMsvacWucqY3m3I4YPtas15IxTLQVQ5NSYXPrww==
+parse-github-url@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/parse-github-url/-/parse-github-url-1.0.4.tgz#4b08752d219b4168a5502366cc459fe48fa8aa9f"
+  integrity sha512-CEtCOt55fHmd6DpBc/N7H5NC4vJpcquhzzs9Iw2mRj8bVxo1O5TQI5MXKOMO7+yBOqD+5dKCCRK4Kj1KskZc6Q==
 
 parse-import@^2.0.0:
   version "2.0.0"
@@ -5055,7 +5054,7 @@ semver@^6.3.0, semver@^6.3.1:
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.3, semver@^7.7.3:
+semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.3, semver@^7.7.3, semver@^7.7.4:
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.4.tgz#28464e36060e991fa7a11d0279d2d3f3b57a7e8a"
   integrity sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==
