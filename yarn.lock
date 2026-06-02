@@ -990,15 +990,15 @@ async-settle@^2.0.0:
     async-done "^2.0.0"
 
 auto-changelog@^2.4.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.5.1.tgz#4c576f1b2d34154e5c6d1d2603fbe11f920c00a7"
-  integrity sha512-vpG10KkmGaeMHwvCK2G+4j6e1+ZxVnhDadHnbG0sFuiB2fzAPIybicp5782btmf4+UGfHklVCUcHWZyN3YiXKg==
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.6.0.tgz#30f7ad70fba7f76927320ad8de40dac1311751d5"
+  integrity sha512-jJgUkuWXQ7fPLPXOMQk/XSSmy7KvzpzhjJa6w660dq1KTEez/GW2CPckBra3jMMMMpcwxp84bOslo29qRCewzA==
   dependencies:
     commander "^7.2.0"
     handlebars "^4.7.9"
     import-cwd "^3.0.0"
     parse-github-url "^1.0.4"
-    semver "^7.7.4"
+    semver "^7.8.1"
 
 autoprefixer@^10.2.6:
   version "10.4.13"
@@ -5054,7 +5054,7 @@ semver@^6.3.0, semver@^6.3.1:
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.3, semver@^7.7.3, semver@^7.7.4:
+semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.5.3, semver@^7.6.3, semver@^7.7.3, semver@^7.8.1:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.8.1.tgz#bf4970b5e70fda0686363cc18bfe8805d5ed957e"
   integrity sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==
