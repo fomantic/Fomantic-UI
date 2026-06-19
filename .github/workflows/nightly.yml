@@ -14,7 +14,7 @@ jobs:
     outputs:
       shouldPublish: ${{ steps.nightly-version.outputs.shouldPublish }}
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
       with:
         ref: develop
     - uses: actions/setup-node@v6
