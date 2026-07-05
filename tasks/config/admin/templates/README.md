@@ -9,11 +9,6 @@ An update in `2.0.8` has fixed an issue which may have prevented some single com
 
 If you're looking for the full version of Fomantic including all components and build tools [check out the main project repository](https://github.com/fomantic/Fomantic-UI)
 
-#### To install with Bower
-```
-bower install fomantic-ui-{component}
-```
-
 #### To install with NPM
 ```
 npm install fomantic-ui-{component}

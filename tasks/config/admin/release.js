@@ -15,7 +15,6 @@ module.exports = {
     },
 
     templates: {
-        bower: './tasks/config/admin/templates/bower.json',
         composer: './tasks/config/admin/templates/composer.json',
         package: './tasks/config/admin/templates/package.json',
         meteor: {
@@ -58,7 +57,7 @@ module.exports = {
         'CSS',
     ],
 
-    // components that get separate repositories for bower/npm
+    // components that get separate repositories for npm
     components: [
         'accordion',
         'ad',
