@@ -136,9 +136,9 @@
 @scrollingTop: 1em;
 
 /* Scrolling Content */
-@scrollingContentMaxHeight: calc(80vh - 10rem);
-@overlayFullscreenScrollingContentMaxHeight: calc(100vh - 9.1rem);
-@overlayFullscreenScrollingContentMaxHeightMobile: calc(100vh - 8.1rem);
+@scrollingContentMaxHeight: calc(80dvh - 10rem);
+@overlayFullscreenScrollingContentMaxHeight: calc(100dvh - 9.1rem);
+@overlayFullscreenScrollingContentMaxHeightMobile: calc(100dvh - 8.1rem);
 
 /* -------------------
       Variations
