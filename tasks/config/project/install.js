@@ -92,12 +92,6 @@ module.exports = {
             const pathArray = directory.split(path.sep);
             const folder = pathArray[pathArray.length - 1];
             const nextDirectory = path.join(directory, path.sep, '..');
-            if (folder === 'bower_components') {
-                return {
-                    name: 'Bower',
-                    root: nextDirectory,
-                };
-            }
             if (folder === 'node_modules') {
                 return {
                     name: 'NPM',
@@ -130,7 +124,7 @@ module.exports = {
             const pathArray = directory.split(path.sep);
             const folder = pathArray[pathArray.length - 2];
             const nextDirectory = path.join(directory, path.sep, '..');
-            if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
+            if (['node_modules', 'composer'].includes(folder)) {
                 moduleFolders++;
             } else if (folder === '.pnpm') {
                 moduleFolders--;
