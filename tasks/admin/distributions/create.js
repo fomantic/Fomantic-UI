@@ -56,7 +56,6 @@ module.exports = function (callback) {
                     'LICENSE',
                     'README.md',
                     'package.json',
-                    'bower.json',
                     '.gitignore',
                 ]);
                 let files = [];
