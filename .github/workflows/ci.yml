@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v7
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@v7
     - name: Install dependencies
       run: yarn
     - name: Lint JS and LESS files
@@ -30,7 +30,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
