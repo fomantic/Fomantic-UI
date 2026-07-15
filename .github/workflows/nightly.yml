@@ -19,7 +19,7 @@ jobs:
         ref: develop
     - uses: actions/setup-node@v7
       with:
-        node-version: 20
+        node-version: 24
         registry-url: https://registry.npmjs.org/
     # Ensure npm 11.5.1 or later is installed
     - name: Update npm
