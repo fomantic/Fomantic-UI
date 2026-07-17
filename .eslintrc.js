@@ -32,6 +32,7 @@ module.exports = {
         'consistent-return': 'off',
         curly: ['error', 'all'],
         'func-names': 'off',
+        'import/no-extraneous-dependencies': ['error', {}],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         indent: ['error', 4, {
