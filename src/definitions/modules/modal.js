@@ -301,7 +301,7 @@
                             return !shouldRefreshInputs;
                         });
 
-                        if (!resizeObserver && shouldRefresh && settings.observeChanges) {
+                        if (!resizeObserver && shouldRefresh) {
                             module.debug('DOM tree modified, refreshing');
                             module.refresh();
                         }
