@@ -94,8 +94,10 @@
     "npm": ">=10"
   },
   "resolutions": {
-    "brace-expansion": "^2.0.2",
-    "glob": "^10.5.0"
+    "brace-expansion": "^2.0.3",
+    "glob": "^10.5.0",
+    "minimatch": "^9.0.7",
+    "picomatch": "^4.0.4"
   },
   "title": "Fomantic UI",
   "style": "dist/semantic.css"

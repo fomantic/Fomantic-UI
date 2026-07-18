@@ -1,4 +1,4 @@
-const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
+const semver = require('semver');
 
 let changelogDeps = {};
 let loopVersion = '';
