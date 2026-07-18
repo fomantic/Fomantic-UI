@@ -9,7 +9,6 @@
   * create commonjs files as index.js for NPM release
   * create release notes that filter only items related to the component
   * custom package.json file from template
-  * create bower.json from template
   * create README from template
   * create meteor.js file
 */
@@ -134,32 +133,6 @@ module.exports = function (callback) {
                     .pipe(gulp.dest(outputDirectory));
             }
 
-            // extend bower.json
-            function extendBower() {
-                return gulp.src(release.templates.bower)
-                    .pipe(plumber())
-                    .pipe(flatten())
-                    .pipe(jsonEditor(function (bower) {
-                        bower.name = packageName;
-                        bower.description = capitalizedComponent + ' - Fomantic UI';
-                        if (isJavascript) {
-                            bower.main = isCSS
-                                ? [component + '.js', component + '.css']
-                                : [component + '.js'];
-                            bower.dependencies = {
-                                jquery: '>=1.8',
-                            };
-                        } else {
-                            bower.main = [
-                                component + '.css',
-                            ];
-                        }
-
-                        return bower;
-                    }))
-                    .pipe(gulp.dest(outputDirectory));
-            }
-
             // extend package.json
             function extendPackage() {
                 return gulp.src(release.templates.package)
@@ -259,7 +232,6 @@ module.exports = function (callback) {
             tasks.push(gulp.series(
                 copyDist,
                 createNpmModule,
-                extendBower,
                 createReadme,
                 extendPackage,
                 extendComposer,

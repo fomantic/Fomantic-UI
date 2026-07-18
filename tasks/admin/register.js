@@ -4,7 +4,6 @@
 
 /*
   Task to register component repos with Package Managers
-  * Registers a component with bower
   * Registers a component with NPM
 */
 
