@@ -187,9 +187,9 @@
     vinyl "^3.0.0"
 
 "@fomantic/gulp-header@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@fomantic/gulp-header/-/gulp-header-2.1.1.tgz#29fda82b5dbb455fb501bea7812c1214e3eaf7d1"
-  integrity sha512-jpQpZJSn1ApefG4vyypbENvIBP1d4+0g+rcqGFjNA8x9jgGP8IqIgjUhgFF67vu7f08RvYJetpdnl4dgDy82dQ==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@fomantic/gulp-header/-/gulp-header-2.2.0.tgz#3a1669790761693bf5a95fe7dc7c345f09f41f06"
+  integrity sha512-AUwcFwL1PpSNlQsG00h4ks4MtG1R+5eFv/wnPfMFU/iWLXSKELT7JKKYWMAma8HIqRlGWImSd6sALXCEW0Amsw==
   dependencies:
     concat-with-sourcemaps "^1.1.0"
     map-stream "^0.1.0"
