@@ -27,10 +27,12 @@ The official community fork of the popular Semantic-UI framework.
 
 ---
 
-> *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
->
-> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
->
+> [!NOTE]
+> Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart.
+> For more info please read the following issues Semantic-Org/Semantic-UI#6109 Semantic-Org/Semantic-UI#6413
+
+> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3.
+> You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
 > To be clear merging back into SUI is still our intention, read [this comment](https://github.com/fomantic/Fomantic-UI/issues/319#issuecomment-461736399) for more info
 
 ---
@@ -40,12 +42,12 @@ Fomantic allows developers to build beautiful websites fast, with **concise HTML
 ## 📡 Installation
 
 ```bash
-$ npm install fomantic-ui
+npm install fomantic-ui
 ```
 
 Living on the edge? Try our nightly build and test new features and bug fixes early!
 ```bash
-$ npm install fomantic-ui@nightly
+npm install fomantic-ui@nightly
 ```
 
 Fomantic includes an interactive installer to help setup your project.
@@ -93,6 +95,8 @@ or you can ask in our community [Discord](https://discord.gg/YChxjJ3) server.
 
 Before creating a pull request be sure to read the [Contributing Guide](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md), this is where we explain everything you need to know about contributing to Fomantic.
 
+---
+
 ## Sponsors
 
 ### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
@@ -100,5 +104,3 @@ Before creating a pull request be sure to read the [Contributing Guide](CONTRIBU
 
 ### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
 [![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSourceSupport?from=Fomantic-UI)
-
----
