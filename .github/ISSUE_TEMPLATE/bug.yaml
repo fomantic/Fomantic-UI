@@ -1,0 +1,95 @@
+name: Bug Report
+title: "[scope] summary of your bug"
+description: Use this if something isn't working how you think it should or you think you've found a bug
+projects: []
+labels:
+  - state/awaiting-investigation
+  - state/awaiting-triage
+  - type/bug
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: Bug Report
+      description: Describe what's wrong in great detail
+      placeholder: Describe what's wrong in great detail.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Tell us how to reproduce your issue
+      placeholder: |
+        1.
+        2.
+        3.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: Expected result
+      placeholder: Tell us what result you were expecting
+      description: Tell us what result you were expecting
+    validations:
+      required: true
+  - type: textarea
+    id: actual-result
+    attributes:
+      label: Actual result
+      description: Tell us what the actual result was
+    validations:
+      required: true
+  - type: textarea
+    id: testcase
+    attributes:
+      label: Testcase
+      placeholder: |
+        If possible create an example of your issue via a JSFiddle. 
+        
+        How to create an example  
+        1. Open the following JSFiddle - https://jsfiddle.net/31d6y7mn
+        2. Click "Fork" at the top
+        3. Add the minimum required HTML, CSS and JavaScript which reproduces your issue
+        4. Click "Save" at the top
+        5. Copy the URL of your fiddle and link it here
+      description: |
+        If possible create an example of your issue via a JSFiddle. 
+        
+        How to create an example  
+        1. Open the following JSFiddle - https://jsfiddle.net/31d6y7mn
+        2. Click "Fork" at the top
+        3. Add the minimum required HTML, CSS and JavaScript which reproduces your issue
+        4. Click "Save" at the top
+        5. Copy the URL of your fiddle and link it here
+    validations:
+      required: false
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      placeholder: |
+        - If possible include images or gifs of your issue.
+        - E.g. Incorrect component CSS should include an image of what the component looks like.
+        - If your looking for a tool we recommend ShareX - https://github.com/ShareX/ShareX 
+      description: |
+        - If possible include images or gifs of your issue.
+        - E.g. Incorrect component CSS should include an image of what the component looks like.
+        - If your looking for a tool we recommend ShareX - https://github.com/ShareX/ShareX 
+        
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Include the version of the library you are using
+      placeholder: 2.x.x
+      value: 2.x.x
+    validations:
+      required: true
