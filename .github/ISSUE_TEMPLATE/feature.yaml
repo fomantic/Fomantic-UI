@@ -1,0 +1,45 @@
+name: Feature Request
+title: "[scope] summary of your request"
+description: Use this to suggest new feature/enhancements
+projects: []
+labels:
+  - state/awaiting-triage
+  - type/feat
+body:
+  - type: textarea
+    id: detail
+    attributes:
+      label: Explain your request in great detail.
+      description: |
+        Things to consider:
+        - Why should we add this feature/enhancement
+        - What problem(s) does it solve
+        - Complexity
+        - How we should implement it
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example (Optional)
+      description: |
+        If possible demonstrate your request via a JSFiddle. How to create an example:
+        1. Open the following JSFiddle - https://jsfiddle.net/31d6y7mn
+        2. Click Fork at the top
+        3. Add the HTML, CSS and JavaScript which shows your request
+        4. Click Save at the top
+        5. Copy the URL of your fiddle and link it here
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: ScreenShot (Optional)
+      description: |
+        - If possible include images or gifs of your issue.
+        - E.g. Incorrect component CSS should include an image of what the component looks like.
+        - If your looking for a tool we recommend ShareX - https://github.com/ShareX/ShareX
+    validations:
+      required: false
