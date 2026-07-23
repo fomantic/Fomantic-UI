@@ -3,19 +3,23 @@ const console = require('@fomantic/better-console');
 const config = require('./user');
 const release = require('./project/release');
 
-let defaultBrowsers = browserslist(browserslist.defaults);
-let userBrowsers = browserslist();
-let hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
+const defaultBrowsers = browserslist(browserslist.defaults);
+const userBrowsers = browserslist();
+const hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
 
-let prefix = config.prefix || {};
+const prefix = config.prefix || {};
 if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
     prefix.overrideBrowserslist = [
-        'last 2 Chrome versions',
-        'last 2 Firefox versions',
-        'last 2 Safari versions',
-        'last 4 iOS major versions',
-        'last 4 Android major versions',
-        'last 4 ChromeAndroid versions',
+        'chrome >= 88',
+        'edge >= 88',
+        'safari >= 14.1',
+        'firefox >= 82',
+        'opera >= 75',
+        'samsung >= 15',
+        'ios >= 14.1',
+        'android >= 8',
+        '>0.3%',
+        'not dead',
     ];
 }
 
@@ -99,7 +103,7 @@ module.exports = {
         plumber: {
             less: {
                 errorHandler: function (error) {
-                    let regExp = {
+                    const regExp = {
                         variable: /@(\S.*?)\s/,
                     };
                     let element;

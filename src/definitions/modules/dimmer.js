@@ -20,43 +20,42 @@
         : globalThis;
 
     $.fn.dimmer = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                 : $.extend({}, $.fn.dimmer.settings);
 
-            let selector = settings.selector;
-            let namespace = settings.namespace;
-            let className = settings.className;
-            let error = settings.error;
+            const selector = settings.selector;
+            const namespace = settings.namespace;
+            const className = settings.className;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let clickEvent = 'ontouchstart' in document.documentElement
+            const clickEvent = 'ontouchstart' in document.documentElement
                 ? 'touchstart'
                 : 'click';
 
-            let $module = $(this);
+            const $module = $(this);
             let $dimmer;
             let $dimmable;
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
-            let module;
 
-            module = {
+            const module = {
 
                 preinitialize: function () {
                     if (module.is.dimmer()) {
@@ -140,7 +139,7 @@
                 },
 
                 addContent: function (element) {
-                    let $content = $(element);
+                    const $content = $(element);
                     module.debug('Add content to dimmer', $content);
                     if ($content.parent()[0] !== $dimmer[0]) {
                         $content.detach().appendTo($dimmer);
@@ -148,7 +147,7 @@
                 },
 
                 create: function () {
-                    let $element = $(settings.template.dimmer(settings));
+                    const $element = $(settings.template.dimmer(settings));
                     if (settings.dimmerName) {
                         module.debug('Creating named dimmer', settings.dimmerName);
                         $element.addClass(settings.dimmerName);
@@ -200,10 +199,8 @@
                     module.verbose('Toggling dimmer visibility', $dimmer);
                     if (!module.is.dimmed()) {
                         module.show();
-                    } else {
-                        if (module.is.closable()) {
-                            module.hide();
-                        }
+                    } else if (module.is.closable()) {
+                        module.hide();
                     }
                 },
 
@@ -375,8 +372,8 @@
                 set: {
                     opacity: function (opacity) {
                         let color = $dimmer.css('background-color');
-                        let colorArray = color.split(',');
-                        let isRGB = colorArray && colorArray.length >= 3;
+                        const colorArray = color.split(',');
+                        const isRGB = colorArray && colorArray.length >= 3;
                         opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                         if (isRGB) {
                             colorArray[2] = colorArray[2].replace(')', '');
@@ -406,8 +403,7 @@
                     disabled: function () {
                         $dimmer.addClass(className.disabled);
                     },
-                    variation: function (variation) {
-                        variation = variation || settings.variation;
+                    variation: function (variation = settings.variation) {
                         if (variation) {
                             $dimmer.addClass(variation);
                         }
@@ -428,8 +424,7 @@
                     disabled: function () {
                         $dimmer.removeClass(className.disabled);
                     },
-                    variation: function (variation) {
-                        variation = variation || settings.variation;
+                    variation: function (variation = settings.variation) {
                         if (variation) {
                             $dimmer.removeClass(variation);
                         }
@@ -527,18 +522,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -672,7 +665,7 @@
 
         template: {
             dimmer: function (settings) {
-                let d = $('<div/>').addClass('ui dimmer');
+                const d = $('<div/>').addClass('ui dimmer');
                 let l;
                 if (settings.displayLoader) {
                     l = $('<div/>')

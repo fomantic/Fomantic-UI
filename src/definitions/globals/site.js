@@ -23,27 +23,26 @@
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
 
-        let settings = $.isPlainObject(parameters)
+        const settings = $.isPlainObject(parameters)
             ? $.extend(true, {}, $.site.settings, parameters)
             : $.extend({}, $.site.settings);
 
-        let namespace = settings.namespace;
-        let error = settings.error;
+        const namespace = settings.namespace;
+        const error = settings.error;
 
-        let moduleNamespace = 'module-' + namespace;
+        const moduleNamespace = 'module-' + namespace;
 
-        let $document = $(document);
-        let $module = $document;
-        let element = this;
+        const $document = $(document);
+        const $module = $document;
+        const element = this;
         let instance = $module.data(moduleNamespace);
 
-        let module;
         let returnedValue;
-        module = {
+        const module = {
 
             initialize: function () {
                 module.instantiate();
@@ -74,9 +73,8 @@
             },
 
             enabled: {
-                modules: function (modules) {
-                    let enabledModules = [];
-                    modules = modules || settings.modules;
+                modules: function (modules = settings.modules) {
+                    const enabledModules = [];
                     $.each(modules, function (index, name) {
                         if (module.moduleExists(name)) {
                             enabledModules.push(name);
@@ -88,9 +86,8 @@
             },
 
             disabled: {
-                modules: function (modules) {
-                    let disabledModules = [];
-                    modules = modules || settings.modules;
+                modules: function (modules = settings.modules) {
+                    const disabledModules = [];
                     $.each(modules, function (index, name) {
                         if (!module.moduleExists(name)) {
                             disabledModules.push(name);
@@ -102,17 +99,14 @@
             },
 
             change: {
-                setting: function (setting, value, modules, modifyExisting) {
+                setting: function (setting, value, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? (modules === 'all'
                             ? settings.modules
                             : [modules])
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
-                        let namespace = module.moduleExists(name)
+                        const namespace = module.moduleExists(name)
                             ? $.fn[name].settings.namespace || false
                             : true;
                         let $existingModules;
@@ -129,13 +123,10 @@
                         }
                     });
                 },
-                settings: function (newSettings, modules, modifyExisting) {
+                settings: function (newSettings, modules, modifyExisting = true) {
                     modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = modifyExisting !== undefined
-                        ? modifyExisting
-                        : true;
                     $.each(modules, function (index, name) {
                         let $existingModules;
                         if (module.moduleExists(name)) {
@@ -157,13 +148,11 @@
                 console: function () {
                     module.console(true);
                 },
-                debug: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                debug: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Enabling debug for modules', modules);
                     module.change.setting('debug', true, modules, modifyExisting);
                 },
-                verbose: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                verbose: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Enabling verbose debug for modules', modules);
                     module.change.setting('verbose', true, modules, modifyExisting);
                 },
@@ -172,13 +161,11 @@
                 console: function () {
                     module.console(false);
                 },
-                debug: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                debug: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Disabling debug for modules', modules);
                     module.change.setting('debug', false, modules, modifyExisting);
                 },
-                verbose: function (modules, modifyExisting) {
-                    modules = modules || settings.modules;
+                verbose: function (modules = settings.modules, modifyExisting = true) {
                     module.debug('Disabling verbose debug for modules', modules);
                     module.change.setting('verbose', false, modules, modifyExisting);
                 },
@@ -299,18 +286,16 @@
                     performance = [];
                 },
             },
-            invoke: function (query, passedArguments, context) {
+            invoke: function (query, passedArguments = queryArguments, context = element) {
                 let object = instance;
                 let maxDepth;
                 let found;
                 let response;
-                passedArguments = passedArguments || queryArguments;
-                context = context || element;
                 if (typeof query === 'string' && object !== undefined) {
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        let camelCaseValue = depth !== maxDepth
+                        const camelCaseValue = depth !== maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query;
                         if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

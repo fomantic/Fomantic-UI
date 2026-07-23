@@ -49,7 +49,6 @@
 /* Image */
 @imageBackground: @transparentBlack;
 @imagePadding: 0;
-@imageBorder: none;
 @imageBoxShadow: none;
 @imageBorder: none;
 

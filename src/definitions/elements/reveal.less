@@ -225,10 +225,7 @@
         position: static !important;
         display: block !important;
         opacity: 1 !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: auto !important;
-        bottom: auto !important;
+        inset: 0 auto auto 0 !important;
         transform: none !important;
     }
     .ui.disabled.reveal:hover > .hidden.hidden.content {
@@ -280,5 +277,4 @@
     });
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

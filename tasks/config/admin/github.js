@@ -18,7 +18,7 @@ if (!oAuth) {
     console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
 }
 
-let github = new GithubAPI.Octokit({
+const github = new GithubAPI.Octokit({
     auth: oAuth.token,
 });
 

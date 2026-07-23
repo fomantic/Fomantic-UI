@@ -9,7 +9,6 @@
   * create commonjs files as index.js for NPM release
   * create release notes that filter only items related to the component
   * custom package.json file from template
-  * create bower.json from template
   * create README from template
   * create meteor.js file
 */
@@ -38,28 +37,25 @@ const version = project.version;
 const output = config.paths.output;
 
 module.exports = function (callback) {
-    let index;
-    let tasks = [];
+    const tasks = [];
 
-    for (index in release.components) {
-        let component = release.components[index];
-
+    for (const component of release.components) {
         // streams... designed to save time and make coding fun...
         (function (component) {
-            let outputDirectory = path.join(release.outputRoot, component);
-            let isJavascript = fs.existsSync(output.compressed + component + '.js');
-            let isCSS = fs.existsSync(output.compressed + component + '.css');
-            let capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
-            let packageName = release.packageRoot + component;
-            let repoName = release.componentRepoRoot + capitalizedComponent;
-            let gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
-            let concatSettings = {
+            const outputDirectory = path.join(release.outputRoot, component);
+            const isJavascript = fs.existsSync(output.compressed + component + '.js');
+            const isCSS = fs.existsSync(output.compressed + component + '.css');
+            const capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1);
+            const packageName = release.packageRoot + component;
+            const repoName = release.componentRepoRoot + capitalizedComponent;
+            const gitURL = 'https://github.com/' + release.org + '/' + repoName + '.git';
+            const concatSettings = {
                 newline: '',
                 root: outputDirectory,
                 prepend: "    '",
                 append: "',",
             };
-            let regExp = {
+            const regExp = {
                 match: {
                     // templated values
                     name: '{component}',
@@ -99,7 +95,7 @@ module.exports = function (callback) {
                 },
             };
             // paths to includable assets
-            let manifest = {
+            const manifest = {
                 assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                 component: outputDirectory + '/' + component + '+(.js|.css)',
             };
@@ -134,32 +130,6 @@ module.exports = function (callback) {
                     .pipe(flatten())
                     .pipe(replace(regExp.match.name, regExp.replace.name))
                     .pipe(replace(regExp.match.titleName, regExp.replace.titleName))
-                    .pipe(gulp.dest(outputDirectory));
-            }
-
-            // extend bower.json
-            function extendBower() {
-                return gulp.src(release.templates.bower)
-                    .pipe(plumber())
-                    .pipe(flatten())
-                    .pipe(jsonEditor(function (bower) {
-                        bower.name = packageName;
-                        bower.description = capitalizedComponent + ' - Fomantic UI';
-                        if (isJavascript) {
-                            bower.main = isCSS
-                                ? [component + '.js', component + '.css']
-                                : [component + '.js'];
-                            bower.dependencies = {
-                                jquery: '>=1.8',
-                            };
-                        } else {
-                            bower.main = [
-                                component + '.css',
-                            ];
-                        }
-
-                        return bower;
-                    }))
                     .pipe(gulp.dest(outputDirectory));
             }
 
@@ -262,7 +232,6 @@ module.exports = function (callback) {
             tasks.push(gulp.series(
                 copyDist,
                 createNpmModule,
-                extendBower,
                 createReadme,
                 extendPackage,
                 extendComposer,

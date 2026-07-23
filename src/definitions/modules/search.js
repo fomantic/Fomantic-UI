@@ -20,47 +20,45 @@
         : globalThis;
 
     $.fn.search = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.search.settings, parameters)
                 : $.extend({}, $.fn.search.settings);
 
-            let className = settings.className;
-            let metadata = settings.metadata;
-            let regExp = settings.regExp;
-            let fields = settings.fields;
-            let selector = settings.selector;
-            let error = settings.error;
-            let namespace = settings.namespace;
+            const className = settings.className;
+            const metadata = settings.metadata;
+            const regExp = settings.regExp;
+            const fields = settings.fields;
+            const selector = settings.selector;
+            const error = settings.error;
+            const namespace = settings.namespace;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = namespace + '-module';
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = namespace + '-module';
 
-            let $module = $(this);
+            const $module = $(this);
             let $prompt = $module.find(selector.prompt);
             let $searchButton = $module.find(selector.searchButton);
             let $results = $module.find(selector.results);
             let $result = $module.find(selector.result);
             let $category = $module.find(selector.category);
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
 
             let disabledBubbled = false;
             let resultsDismissed = false;
 
-            let module;
-
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing module');
@@ -158,8 +156,8 @@
                         }
                     },
                     blur: function (event) {
-                        let pageLostFocus = document.activeElement === this;
-                        let callback = function () {
+                        const pageLostFocus = document.activeElement === this;
+                        const callback = function () {
                             module.cancel.query();
                             module.remove.focus();
                             module.timer = setTimeout(function () {
@@ -204,27 +202,23 @@
                         },
                         click: function (event) {
                             module.debug('Search result selected');
-                            let $result = $(this);
-                            let $title = $result.find(selector.title).eq(0);
-                            let $link = $result.is('a[href]')
-                                ? $result
-                                : $result.find('a[href]').eq(0);
-                            let href = $link.attr('href') || false;
-                            let target = $link.attr('target') || false;
+                            const $result = $(this);
+                            const $title = $result.find(selector.title).eq(0);
+                            const $link = $result.is('a[href]') ? $result : $();
+                            const href = $link.attr('href') || false;
+                            const target = $link.attr('target') || false;
                             // title is used for result lookup
-                            let value = $title.length > 0
+                            const value = $title.length > 0
                                 ? $title.text()
                                 : false;
-                            let results = module.get.results();
-                            let result = $result.data(metadata.result) || module.get.result(value, results);
-                            let oldValue = module.get.value();
-                            if (isFunction(settings.onSelect)) {
-                                if (settings.onSelect.call(element, result, results) === false) {
-                                    module.debug('Custom onSelect callback cancelled default select action');
-                                    disabledBubbled = true;
+                            const results = module.get.results();
+                            const result = $result.data(metadata.result) || module.get.result(value, results);
+                            const oldValue = module.get.value();
+                            if (isFunction(settings.onSelect) && settings.onSelect.call(element, result, results) === false) {
+                                module.debug('Custom onSelect callback cancelled default select action');
+                                disabledBubbled = true;
 
-                                    return;
-                                }
+                                return;
                             }
                             module.hideResults();
                             if (value && module.get.value() === oldValue) {
@@ -243,18 +237,14 @@
                     },
                 },
                 ensureVisible: function ($el) {
-                    let elTop;
-                    let elBottom;
-                    let resultsScrollTop;
-                    let resultsHeight;
                     if ($el.length === 0) {
                         return;
                     }
-                    elTop = $el.position().top;
-                    elBottom = elTop + $el.outerHeight(true);
+                    const elTop = $el.position().top;
+                    const elBottom = elTop + $el.outerHeight(true);
 
-                    resultsScrollTop = $results.scrollTop();
-                    resultsHeight = $results.height();
+                    const resultsScrollTop = $results.scrollTop();
+                    const resultsHeight = $results.height();
 
                     if (elTop < 0) {
                         $results.scrollTop(resultsScrollTop + elTop);
@@ -264,15 +254,15 @@
                 },
                 handleKeyboard: function (event) {
                     // force selector refresh
-                    let $result = $module.find(selector.result);
-                    let $category = $module.find(selector.category);
-                    let $activeResult = $result.filter('.' + className.active);
-                    let currentIndex = $result.index($activeResult);
-                    let resultSize = $result.length;
-                    let hasActiveResult = $activeResult.length > 0;
+                    const $result = $module.find(selector.result);
+                    const $category = $module.find(selector.category);
+                    const $activeResult = $result.filter('.' + className.active);
+                    const currentIndex = $result.index($activeResult);
+                    const resultSize = $result.length;
+                    const hasActiveResult = $activeResult.length > 0;
 
-                    let keyCode = event.which;
-                    let keys = {
+                    const keyCode = event.which;
+                    const keys = {
                         backspace: 8,
                         enter: 13,
                         escape: 27,
@@ -331,20 +321,17 @@
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
                         }
-                    } else {
-                        // query shortcuts
-                        if (keyCode === keys.enter) {
-                            module.verbose('Enter key pressed, executing query');
-                            module.query();
-                            module.set.buttonPressed();
-                            $prompt.one('keyup', module.remove.buttonFocus);
-                        }
+                    } else if (keyCode === keys.enter) {
+                        module.verbose('Enter key pressed, executing query');
+                        module.query();
+                        module.set.buttonPressed();
+                        $prompt.one('keyup', module.remove.buttonFocus);
                     }
                 },
 
                 setup: {
                     api: function (searchTerm, callback) {
-                        let apiSettings = {
+                        const apiSettings = {
                             debug: settings.debug,
                             on: false,
                             cache: settings.cache,
@@ -353,7 +340,7 @@
                                 query: searchTerm,
                             },
                         };
-                        let apiCallbacks = {
+                        const apiCallbacks = {
                             onSuccess: function (response, $module, xhr) {
                                 module.parse.response.call(element, response, searchTerm);
                                 callback();
@@ -412,8 +399,8 @@
                         if (!event.target) {
                             return;
                         }
-                        let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
+                        const $target = $(event.target);
+                        const isInDOM = document.documentElement.contains(event.target);
 
                         return isInDOM && $target.closest(selector.message).length > 0;
                     },
@@ -436,8 +423,8 @@
                         }
                     },
                     inputEvent: function () {
-                        let prompt = $prompt[0];
-                        let inputEvent = prompt !== undefined && prompt.oninput !== undefined
+                        const prompt = $prompt[0];
+                        const inputEvent = prompt !== undefined && prompt.oninput !== undefined
                             ? 'input'
                             : (prompt !== undefined && prompt.onpropertychange !== undefined
                                 ? 'propertychange'
@@ -451,14 +438,8 @@
                     results: function () {
                         return $module.data(metadata.results);
                     },
-                    result: function (value, results) {
+                    result: function (value = module.get.value(), results = module.get.results()) {
                         let result = false;
-                        value = value !== undefined
-                            ? value
-                            : module.get.value();
-                        results = results !== undefined
-                            ? results
-                            : module.get.results();
                         if (settings.type === 'category') {
                             module.debug('Finding result that matches', value);
                             $.each(results, function (index, category) {
@@ -498,8 +479,7 @@
                         $prompt
                             .val(value);
                     },
-                    type: function (type) {
-                        type = type || settings.type;
+                    type: function (type = settings.type) {
                         if (className[type]) {
                             $module.addClass(className[type]);
                         }
@@ -524,13 +504,12 @@
                     },
                 },
 
-                query: function (callback) {
+                query: function (callback = function () {}) {
                     callback = isFunction(callback)
                         ? callback
                         : function () {};
-                    let searchTerm = module.get.value();
-                    let cache = module.read.cache(searchTerm);
-                    callback = callback || function () {};
+                    const searchTerm = module.get.value();
+                    const cache = module.read.cache(searchTerm);
                     if (module.has.minimumCharacters()) {
                         if (cache) {
                             module.debug('Reading result from cache', searchTerm);
@@ -560,7 +539,6 @@
                 search: {
                     local: function (searchTerm) {
                         let results = module.search.object(searchTerm, settings.source);
-                        let searchHTML;
                         module.set.loading();
                         module.save.results(results);
                         module.debug('Returned full local search results', results);
@@ -571,7 +549,7 @@
                         if (settings.type === 'category') {
                             results = module.create.categoryResults(results);
                         }
-                        searchHTML = module.generateResults({
+                        const searchHTML = module.generateResults({
                             results: results,
                         });
                         module.remove.loading();
@@ -593,27 +571,23 @@
                         $module
                             .api('query');
                     },
-                    object: function (searchTerm, source, searchFields) {
+                    object: function (searchTerm, source = settings.source, searchFields = settings.searchFields) {
                         searchTerm = module.remove.diacritics(String(searchTerm));
-                        let results = [];
-                        let exactResults = [];
-                        let fuzzyResults = [];
-                        let searchExp = searchTerm.replace(regExp.escape, '\\$&');
-                        let matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : '');
+                        const results = [];
+                        const exactResults = [];
+                        const fuzzyResults = [];
+                        const searchExp = searchTerm.replace(regExp.escape, '\\$&');
+                        const matchRegExp = new RegExp(regExp.beginsWith + searchExp, settings.ignoreSearchCase ? 'i' : '');
 
                         // avoid duplicates when pushing results
-                        let addResult = function (array, result) {
-                            let notResult = !results.includes(result);
-                            let notFuzzyResult = !fuzzyResults.includes(result);
-                            let notExactResults = !exactResults.includes(result);
+                        const addResult = function (array, result) {
+                            const notResult = !results.includes(result);
+                            const notFuzzyResult = !fuzzyResults.includes(result);
+                            const notExactResults = !exactResults.includes(result);
                             if (notResult && notFuzzyResult && notExactResults) {
                                 array.push(result);
                             }
                         };
-                        source = source || settings.source;
-                        searchFields = searchFields !== undefined
-                            ? searchFields
-                            : settings.searchFields;
 
                         // search fields should be an array to loop correctly
                         if (!Array.isArray(searchFields)) {
@@ -627,11 +601,11 @@
                             return [];
                         }
                         // iterate through search fields looking for matches
-                        let lastSearchFieldIndex = searchFields.length - 1;
+                        const lastSearchFieldIndex = searchFields.length - 1;
                         $.each(source, function (label, content) {
-                            let concatenatedContent = [];
+                            const concatenatedContent = [];
                             $.each(searchFields, function (index, field) {
-                                let fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
+                                const fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
                                 if (fieldExists) {
                                     let text;
                                     text = typeof content[field] === 'string'
@@ -661,10 +635,8 @@
                                 }
                             });
                         });
-                        $.merge(exactResults, fuzzyResults);
-                        $.merge(results, exactResults);
 
-                        return results;
+                        return [...results, ...exactResults, ...fuzzyResults];
                     },
                 },
                 exactSearch: function (query, term) {
@@ -676,12 +648,10 @@
                     return term.includes(query);
                 },
                 wordSearch: function (query, term, matchAll) {
-                    let allWords = query.split(/\s+/);
-                    let w;
-                    let wL = allWords.length;
+                    const allWords = query.split(/\s+/);
                     let found = false;
-                    for (w = 0; w < wL; w++) {
-                        found = module.exactSearch(allWords[w], term);
+                    for (const w of allWords) {
+                        found = module.exactSearch(w, term);
                         if ((!found && matchAll) || (found && !matchAll)) {
                             break;
                         }
@@ -690,8 +660,8 @@
                     return found;
                 },
                 fuzzySearch: function (query, term) {
-                    let termLength = term.length;
-                    let queryLength = query.length;
+                    const termLength = term.length;
+                    const queryLength = query.length;
                     if (typeof query !== 'string') {
                         return false;
                     }
@@ -707,9 +677,9 @@
                     }
                     for (let characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         let continueSearch = false;
-                        let queryCharacter = query.charCodeAt(characterIndex);
+                        const queryCharacter = query.codePointAt(characterIndex);
                         while (nextCharacterIndex < termLength) {
-                            if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            if (term.codePointAt(nextCharacterIndex++) === queryCharacter) {
                                 continueSearch = true;
 
                                 break;
@@ -727,22 +697,20 @@
                 parse: {
                     response: function (response, searchTerm) {
                         if (Array.isArray(response)) {
-                            let o = {};
+                            const o = {};
                             o[fields.results] = response;
                             response = o;
                         }
-                        let searchHTML = module.generateResults(response);
+                        const searchHTML = module.generateResults(response);
                         module.verbose('Parsing server response', response);
-                        if (response !== undefined) {
-                            if (searchTerm !== undefined && response[fields.results] !== undefined) {
-                                module.addResults(searchHTML);
-                                module.inject.id(response[fields.results]);
-                                module.write.cache(searchTerm, {
-                                    html: searchHTML,
-                                    results: response[fields.results],
-                                });
-                                module.save.results(response[fields.results]);
-                            }
+                        if (response !== undefined && searchTerm !== undefined && response[fields.results] !== undefined) {
+                            module.addResults(searchHTML);
+                            module.inject.id(response[fields.results]);
+                            module.write.cache(searchTerm, {
+                                html: searchHTML,
+                                results: response[fields.results],
+                            });
+                            module.save.results(response[fields.results]);
                         }
                     },
                 },
@@ -757,8 +725,8 @@
 
                 has: {
                     minimumCharacters: function () {
-                        let searchTerm = module.get.value();
-                        let numCharacters = searchTerm.length;
+                        const searchTerm = module.get.value();
+                        const numCharacters = searchTerm.length;
 
                         return numCharacters >= settings.minCharacters;
                     },
@@ -766,7 +734,7 @@
                         if ($results.length === 0) {
                             return false;
                         }
-                        let html = $results.html();
+                        const html = $results.html();
 
                         return html !== '';
                     },
@@ -774,7 +742,7 @@
 
                 clear: {
                     cache: function (value) {
-                        let cache = $module.data(metadata.cache);
+                        const cache = $module.data(metadata.cache);
                         if (!value) {
                             module.debug('Clearing cache', value);
                             $module.removeData(metadata.cache);
@@ -791,7 +759,7 @@
 
                 read: {
                     cache: function (name) {
-                        let cache = $module.data(metadata.cache);
+                        const cache = $module.data(metadata.cache);
                         if (settings.cache) {
                             module.verbose('Checking cache for generated html for query', name);
 
@@ -806,7 +774,7 @@
 
                 create: {
                     categoryResults: function (results) {
-                        let categoryResults = {};
+                        const categoryResults = {};
                         $.each(results, function (index, result) {
                             if (!result.category) {
                                 return;
@@ -825,12 +793,12 @@
                         return categoryResults;
                     },
                     id: function (resultIndex, categoryIndex) {
-                        let resultID = resultIndex + 1; // not zero indexed
+                        const resultID = resultIndex + 1; // not zero indexed
                         let letterID;
                         let id;
                         if (categoryIndex !== undefined) {
                             // start char code for "A"
-                            letterID = String.fromCharCode(97 + categoryIndex);
+                            letterID = String.fromCodePoint(97 + categoryIndex);
                             id = letterID + resultID;
                             module.verbose('Creating category result id', id);
                         } else {
@@ -852,7 +820,7 @@
                 inject: {
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
-                        let $selectedResult = categoryIndex !== undefined
+                        const $selectedResult = categoryIndex !== undefined
                             ? $results
                                 .children().eq(categoryIndex)
                                 .children(selector.results)
@@ -909,7 +877,7 @@
 
                 write: {
                     cache: function (name, value) {
-                        let cache = $module.data(metadata.cache) !== undefined
+                        const cache = $module.data(metadata.cache) !== undefined
                             ? $module.data(metadata.cache)
                             : {};
                         if (settings.cache) {
@@ -922,12 +890,10 @@
                 },
 
                 addResults: function (html) {
-                    if (isFunction(settings.onResultsAdd)) {
-                        if (settings.onResultsAdd.call($results, html) === false) {
-                            module.debug('onResultsAdd callback cancelled default action');
+                    if (isFunction(settings.onResultsAdd) && settings.onResultsAdd.call($results, html) === false) {
+                        module.debug('onResultsAdd callback cancelled default action');
 
-                            return false;
-                        }
+                        return false;
                     }
                     if (html) {
                         $results
@@ -962,7 +928,7 @@
                                     silent: settings.silent,
                                     duration: settings.duration,
                                     onShow: function () {
-                                        let $firstResult = $module.find(selector.result).eq(0);
+                                        const $firstResult = $module.find(selector.result).eq(0);
                                         module.ensureVisible($firstResult);
                                     },
                                     onComplete: function () {
@@ -1010,9 +976,9 @@
 
                 generateResults: function (response) {
                     module.debug('Generating html from response', response);
-                    let template = settings.templates[settings.type];
-                    let isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
-                    let isProperArray = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
+                    const template = settings.templates[settings.type];
+                    const isProperObject = $.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results]);
+                    const isProperArray = Array.isArray(response[fields.results]) && response[fields.results].length > 0;
                     let html = '';
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
@@ -1025,13 +991,13 @@
                             }
                         }
                         if (settings.highlightMatches) {
-                            let results = response[fields.results];
-                            let regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
-                            let querySplit = [...module.get.value()];
-                            let diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
-                            let htmlReg = '(?![^<]*>)';
-                            let markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
-                            let markedReplacer = function (...args) {
+                            const results = response[fields.results];
+                            const regExpIgnore = settings.ignoreSearchCase ? 'i' : '';
+                            const querySplit = [...module.get.value()];
+                            const diacriticReg = settings.ignoreDiacritics ? '[\u0300-\u036F]?' : '';
+                            const htmlReg = '(?![^<]*>)';
+                            const markedRegExp = new RegExp(htmlReg + '(' + querySplit.join(diacriticReg + ')(.*?)' + htmlReg + '(') + diacriticReg + ')', regExpIgnore);
+                            const markedReplacer = function (...args) {
                                 args = args.slice(1, querySplit.length * 2).map(function (x, i) {
                                     return i & 1 ? x : '<mark>' + x + '</mark>'; // eslint-disable-line no-bitwise
                                 });
@@ -1040,7 +1006,7 @@
                             };
                             $.each(results, function (label, content) {
                                 $.each(settings.searchFields, function (index, field) {
-                                    let fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
+                                    const fieldExists = typeof content[field] === 'string' || typeof content[field] === 'number';
                                     if (fieldExists) {
                                         let markedHTML = typeof content[field] === 'string'
                                             ? content[field]
@@ -1067,8 +1033,7 @@
                     return html;
                 },
 
-                displayMessage: function (text, type, header) {
-                    type = type || 'standard';
+                displayMessage: function (text, type = 'standard', header = false) {
                     module.debug('Displaying message', text, type, header);
                     module.addResults(settings.templates.message(text, type, header));
 
@@ -1161,18 +1126,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1360,6 +1323,8 @@
             results: 'results', // array of results (standard)
             title: 'title', // result title
             url: 'url', // result url
+            id: 'id', // HTML 'id' attribute
+            class: 'class', // Class specific to each result to add to the HTML 'class' attribute.
             action: 'action', // "view more" object name
             actionText: 'text', // "view more" text
             actionURL: 'url', // "view more" url
@@ -1414,8 +1379,8 @@
             },
             category: function (response, settings) {
                 let html = '';
-                let fields = settings.fields;
-                let escape = settings.templates.escape;
+                const fields = settings.fields;
+                const escape = settings.templates.escape;
                 if (response[fields.categoryResults] !== undefined) {
                     // each category
                     $.each(response[fields.categoryResults], function (index, category) {
@@ -1430,12 +1395,21 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 html += result[fields.url]
-                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
-                                    : '<a class="result">';
+                                    ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
+                                    : '<div ';
+
+                                html += result[fields.id] !== undefined
+                                    ? ' id="' + result[fields.id].replaceAll('"', '') + '" '
+                                    : '';
+
+                                html += result[fields.class] !== undefined
+                                    ? ' class="result ' + result[fields.class].replaceAll('"', '') + '">'
+                                    : ' class="result">';
+
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                        + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1450,7 +1424,9 @@
                                 }
                                 html += ''
                                     + '</div>';
-                                html += '</a>';
+                                html += result[fields.url]
+                                    ? '</a>'
+                                    : '</div>';
                             });
                             html += '</div>';
                             html += ''
@@ -1464,7 +1440,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }
@@ -1476,18 +1452,27 @@
             },
             standard: function (response, settings) {
                 let html = '';
-                let fields = settings.fields;
-                let escape = settings.templates.escape;
+                const fields = settings.fields;
+                const escape = settings.templates.escape;
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         html += result[fields.url]
-                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
-                            : '<a class="result">';
+                            ? '<a href="' + result[fields.url].replaceAll('"', '') + '" '
+                            : '<div ';
+
+                        html += result[fields.id] !== undefined
+                            ? 'id="' + result[fields.id].replaceAll('"', '') + '" '
+                            : '';
+
+                        html += result[fields.class] !== undefined
+                            ? 'class="result ' + result[fields.class].replaceAll('"', '') + '">'
+                            : 'class="result">';
+
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replace(/"/g, '') + '"' : '') + '>'
+                                + ' <img src="' + result[fields.image].replaceAll('"', '') + '"' + (result[fields.alt] ? ' alt="' + result[fields.alt].replaceAll('"', '') + '"' : '') + '>'
                                 + '</div>';
                         }
                         html += '<div class="content">';
@@ -1502,7 +1487,9 @@
                         }
                         html += ''
                             + '</div>';
-                        html += '</a>';
+                        html += result[fields.url]
+                            ? '</a>'
+                            : '</div>';
                     });
                     if (response[fields.action]) {
                         html += fields.actionURL === false
@@ -1511,7 +1498,7 @@
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</div>'
                             : ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replaceAll('"', '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], settings)
                                 + '</a>';
                     }
@@ -1526,7 +1513,7 @@
 
     $.extend($.easing, {
         easeOutExpo: function (x) {
-            return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+            return x === 1 ? 1 : 1 - 2 ** (-10 * x);
         },
     });
 })(jQuery, window, document);

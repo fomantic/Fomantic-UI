@@ -15,9 +15,9 @@ module.exports = {
 
     getPath: function (file, directory) {
         let configPath;
-        let walk = function (directory) {
-            let nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
-            let currentPath = path.normalize(path.join(directory, file));
+        const walk = function (directory) {
+            const nextDirectory = path.resolve(path.join(directory, path.sep, '..'));
+            const currentPath = path.normalize(path.join(directory, file));
             if (fs.existsSync(currentPath)) {
                 // found the file
                 configPath = path.normalize(directory);
@@ -45,9 +45,9 @@ module.exports = {
             File Paths
         --------------- */
 
-        let configPath = this.getPath();
-        let sourcePaths = {};
-        let outputPaths = {};
+        const configPath = this.getPath();
+        const sourcePaths = {};
+        const outputPaths = {};
         let folder;
 
         // resolve paths (config location + base + path)
@@ -78,9 +78,9 @@ module.exports = {
 
         config.paths.assets = {
             source: '../../themes', // source asset path is always the same
-            uncompressed: './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replace(/\\/g, '/'),
-            compressed: './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replace(/\\/g, '/'),
-            packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replace(/\\/g, '/'),
+            uncompressed: './' + path.relative(config.paths.output.uncompressed, config.paths.output.themes).replaceAll('\\', '/'),
+            compressed: './' + path.relative(config.paths.output.compressed, config.paths.output.themes).replaceAll('\\', '/'),
+            packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replaceAll('\\', '/'),
         };
 
         /* --------------
@@ -89,7 +89,7 @@ module.exports = {
 
         if (config.permission) {
             config.hasPermissions = true;
-            config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
+            config.parsedPermissions = typeof config.permission === 'string' ? Number.parseInt(config.permission, 8) : config.permission;
         } else {
             // pass a blank object to avoid causing errors
             config.permission = {};

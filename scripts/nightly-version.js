@@ -6,8 +6,8 @@ const childProcess = require('node:child_process');
 const process = require('node:process');
 
 // npm
-const fetch = require('node-fetch'); // eslint-disable-line import/no-extraneous-dependencies
-const semver = require('semver'); // eslint-disable-line import/no-extraneous-dependencies
+const fetch = require('node-fetch');
+const semver = require('semver');
 const actions = require('@actions/core');
 
 const pkg = require('../package.json');
@@ -40,9 +40,9 @@ const getPublishedVersion = async function () {
         await fetch(`${npmBase}/${npmPackage}`)
             .then((r) => r.json())
             .then((p) => {
-                let nightly = p['dist-tags'].nightly ?? '';
-                let versionInfo = p.versions[nightly] ?? {};
-                let buildCommit = !nightly.includes('+') && versionInfo.gitHead
+                const nightly = p['dist-tags'].nightly ?? '';
+                const versionInfo = p.versions[nightly] ?? {};
+                const buildCommit = !nightly.includes('+') && versionInfo.gitHead
                     ? '+' + (versionInfo.gitHead ?? '').slice(0, 7)
                     : '';
 

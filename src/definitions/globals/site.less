@@ -128,7 +128,7 @@ a:hover {
 & when (@useCustomScrollbars) {
     /* Force Simple Scrollbars */
     body ::-webkit-scrollbar {
-        -webkit-appearance: none;
+        appearance: none;
         width: @customScrollbarWidth;
         height: @customScrollbarHeight;
     }
@@ -196,5 +196,4 @@ input::selection {
     color: @inputHighlightColor;
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

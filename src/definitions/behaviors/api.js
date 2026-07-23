@@ -25,16 +25,16 @@
 
     $.fn.api = function (...args) {
         // use window context if none specified
-        let $allModules = isFunction(this)
+        const $allModules = isFunction(this)
             ? $(window)
             : $(this);
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -50,28 +50,28 @@
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.api.settings, parameters)
                 : $.extend({}, $.fn.api.settings);
 
             // internal aliases
-            let regExp = settings.regExp;
-            let namespace = settings.namespace;
-            let metadata = settings.metadata;
-            let selector = settings.selector;
-            let error = settings.error;
-            let className = settings.className;
+            const regExp = settings.regExp;
+            const namespace = settings.namespace;
+            const metadata = settings.metadata;
+            const selector = settings.selector;
+            const error = settings.error;
+            const className = settings.className;
 
             // define namespaces for modules
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
             // element that creates request
-            let $module = $(this);
-            let $form = $module.closest(selector.form);
+            const $module = $(this);
+            const $form = $module.closest(selector.form);
 
             // context used for state
-            let $context = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
+            const $context = settings.stateContext ? contextCheck(settings.stateContext, window) : $module;
 
             // request details
             let ajaxSettings;
@@ -82,12 +82,11 @@
             let originalData;
 
             // standard module
-            let element = this;
-            let context = $context[0];
+            const element = this;
+            const context = $context[0];
             let instance = $module.data(moduleNamespace);
-            let module;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     if (!methodInvoked) {
@@ -113,7 +112,7 @@
 
                 bind: {
                     events: function () {
-                        let triggerEvent = module.get.event();
+                        const triggerEvent = module.get.event();
                         if (triggerEvent) {
                             module.verbose('Attaching API events to element', triggerEvent);
                             $module
@@ -130,7 +129,7 @@
                         if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
-                            } catch (e) {
+                            } catch {
                                 // isn't json string
                             }
                         }
@@ -241,22 +240,20 @@
                     if (!settings.throttle) {
                         module.debug('Sending request', data, ajaxSettings.method);
                         module.send.request();
+                    } else if (!settings.throttleFirstRequest && !module.timer) {
+                        module.debug('Sending request', data, ajaxSettings.method);
+                        module.send.request();
+                        module.timer = setTimeout(function () {}, settings.throttle);
                     } else {
-                        if (!settings.throttleFirstRequest && !module.timer) {
-                            module.debug('Sending request', data, ajaxSettings.method);
+                        module.debug('Throttling request', settings.throttle);
+                        clearTimeout(module.timer);
+                        module.timer = setTimeout(function () {
+                            if (module.timer) {
+                                delete module.timer;
+                            }
+                            module.debug('Sending throttled request', data, ajaxSettings.method);
                             module.send.request();
-                            module.timer = setTimeout(function () {}, settings.throttle);
-                        } else {
-                            module.debug('Throttling request', settings.throttle);
-                            clearTimeout(module.timer);
-                            module.timer = setTimeout(function () {
-                                if (module.timer) {
-                                    delete module.timer;
-                                }
-                                module.debug('Sending throttled request', data, ajaxSettings.method);
-                                module.send.request();
-                            }, settings.throttle);
-                        }
+                        }, settings.throttle);
                     }
                 },
 
@@ -333,20 +330,16 @@
                 },
 
                 add: {
-                    urlData: function (url, urlData) {
+                    urlData: function (url, urlData = settings.urlData) {
                         let requiredVariables;
                         let optionalVariables;
                         if (url) {
                             requiredVariables = url.match(regExp.required);
                             optionalVariables = url.match(regExp.optional);
-                            urlData = urlData || settings.urlData;
                             if (requiredVariables) {
                                 module.debug('Looking for required URL variables', requiredVariables);
                                 $.each(requiredVariables, function (index, templatedString) {
-                                    // allow legacy {$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(2, -1)
-                                        : templatedString.slice(1, -1);
+                                    const variable = templatedString.slice(1, -1);
                                     let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
@@ -372,11 +365,8 @@
                             if (optionalVariables) {
                                 module.debug('Looking for optional URL variables', requiredVariables);
                                 $.each(optionalVariables, function (index, templatedString) {
-                                    // allow legacy {/$var} style
-                                    let variable = templatedString.includes('$')
-                                        ? templatedString.slice(3, -1)
-                                        : templatedString.slice(2, -1);
-                                    let value = $.isPlainObject(urlData) && urlData[variable] !== undefined
+                                    const variable = templatedString.slice(2, -1);
+                                    const value = $.isPlainObject(urlData) && urlData[variable] !== undefined
                                         ? urlData[variable]
                                         : ($module.data(variable) !== undefined
                                             ? $module.data(variable)
@@ -400,22 +390,20 @@
 
                         return url;
                     },
-                    formData: function (data) {
+                    formData: function (data = originalData || settings.data) {
                         let formData = {};
-                        let hasOtherData;
-                        let useFormDataApi = settings.serializeForm === 'formdata';
-                        data = data || originalData || settings.data;
-                        hasOtherData = $.isPlainObject(data);
+                        const useFormDataApi = settings.serializeForm === 'formdata';
+                        const hasOtherData = $.isPlainObject(data);
 
                         if (useFormDataApi) {
                             formData = new FormData($form[0]);
                             settings.processData = settings.processData !== undefined ? settings.processData : false;
                             settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
-                            let formArray = $form.serializeArray();
-                            let pushes = {};
-                            let pushValues = {};
-                            let build = function (base, key, value) {
+                            const formArray = $form.serializeArray();
+                            const pushes = {};
+                            const pushValues = {};
+                            const build = function (base, key, value) {
                                 base[key] = value;
 
                                 return base;
@@ -430,15 +418,15 @@
                                 if (!regExp.validate.test(el.name)) {
                                     return;
                                 }
-                                let isCheckbox = $('[name="' + CSS.escape(el.name) + '"]', $form).attr('type') === 'checkbox';
-                                let floatValue = parseFloat(el.value);
+                                const isCheckbox = $('[name="' + CSS.escape(el.name) + '"]', $form).attr('type') === 'checkbox';
+                                const floatValue = Number.parseFloat(el.value);
                                 let value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
                                         || (String(floatValue) === el.value
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value));
-                                let nameKeys = el.name.match(regExp.key) || [];
-                                let pushKey = el.name.replace(/\[]$/, '');
+                                const nameKeys = el.name.match(regExp.key) || [];
+                                const pushKey = el.name.replace(/\[]$/, '');
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
                                     pushValues[pushKey] = value;
@@ -452,7 +440,7 @@
                                 }
 
                                 while (nameKeys.length > 0) {
-                                    let k = nameKeys.pop();
+                                    const k = nameKeys.pop();
 
                                     if (k === '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
@@ -510,17 +498,15 @@
                             // nothing special
                         },
                         done: function (response, textStatus, xhr) {
-                            let context = this;
-                            let elapsedTime = Date.now() - requestStartTime;
+                            const context = this;
+                            const elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
-                            let translatedResponse = isFunction(settings.onResponse)
+                            const translatedResponse = isFunction(settings.onResponse)
                                 ? (module.is.expectingJSON() && !settings.rawResponse
                                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                                     : settings.onResponse.call(context, response))
                                 : false;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (translatedResponse) {
                                 module.debug('Modified API response in onResponse callback', settings.onResponse, translatedResponse, response);
                                 response = translatedResponse;
@@ -537,12 +523,10 @@
                             }, timeLeft);
                         },
                         fail: function (xhr, status, httpMessage) {
-                            let context = this;
-                            let elapsedTime = Date.now() - requestStartTime;
+                            const context = this;
+                            const elapsedTime = Date.now() - requestStartTime;
                             let timeLeft = settings.loadingDuration - elapsedTime;
-                            timeLeft = timeLeft > 0
-                                ? timeLeft
-                                : 0;
+                            timeLeft = Math.max(timeLeft, 0);
                             if (timeLeft > 0) {
                                 module.debug('Response completed early delaying state change by', timeLeft);
                             }
@@ -580,8 +564,8 @@
                         },
                         fail: function (xhr, status, httpMessage) {
                             // pull response from xhr if available
-                            let response = module.get.responseFromXHR(xhr);
-                            let errorMessage = module.get.errorFromRequest(response, status, httpMessage);
+                            const response = module.get.responseFromXHR(xhr);
+                            const errorMessage = module.get.errorFromRequest(response, status, httpMessage);
                             if (status === 'aborted') {
                                 module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                 settings.onAbort.call(context, status, $module, xhr);
@@ -590,15 +574,13 @@
                             }
                             if (status === 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                            } else if (status === 'error') {
-                                if (xhr !== undefined) {
-                                    module.debug('XHR produced a server error', status, httpMessage);
-                                    // make sure we have an error to display to console
-                                    if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
-                                        module.error(error.statusMessage + httpMessage, ajaxSettings.url);
-                                    }
-                                    settings.onError.call(context, errorMessage, $module, xhr);
+                            } else if (status === 'error' && xhr !== undefined) {
+                                module.debug('XHR produced a server error', status, httpMessage);
+                                // make sure we have an error to display to console
+                                if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
+                                    module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                                 }
+                                settings.onError.call(context, errorMessage, $module, xhr);
                             }
 
                             if (settings.errorDuration && status !== 'aborted') {
@@ -628,16 +610,15 @@
 
                     mockedXHR: function () {
                         // xhr does not simulate these properties of xhr but must return them
-                        let textStatus = false;
-                        let status = false;
-                        let httpMessage = false;
-                        let responder = settings.mockResponse || settings.response;
-                        let asyncResponder = settings.mockResponseAsync || settings.responseAsync;
+                        const textStatus = false;
+                        const status = false;
+                        const httpMessage = false;
+                        const responder = settings.mockResponse || settings.response;
+                        const asyncResponder = settings.mockResponseAsync || settings.responseAsync;
                         let asyncCallback;
                         let response;
-                        let mockedXHR;
 
-                        mockedXHR = $.Deferred()
+                        const mockedXHR = $.Deferred()
                             .always(module.event.xhr.complete)
                             .done(module.event.xhr.done)
                             .fail(module.event.xhr.fail);
@@ -670,9 +651,8 @@
                     },
 
                     xhr: function () {
-                        let xhr;
                         // ajax request promise
-                        xhr = $.ajax(ajaxSettings)
+                        const xhr = $.ajax(ajaxSettings)
                             .always(module.event.xhr.always)
                             .done(module.event.xhr.done)
                             .fail(module.event.xhr.fail);
@@ -730,25 +710,7 @@
                         return module.xhr || false;
                     },
                     settings: function () {
-                        let runSettings;
-                        runSettings = settings.beforeSend.call($module, settings);
-                        if (runSettings) {
-                            if (runSettings.success !== undefined) {
-                                module.debug('Legacy success callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.success);
-                                runSettings.onSuccess = runSettings.success;
-                            }
-                            if (runSettings.failure !== undefined) {
-                                module.debug('Legacy failure callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.failure);
-                                runSettings.onFailure = runSettings.failure;
-                            }
-                            if (runSettings.complete !== undefined) {
-                                module.debug('Legacy complete callback detected', runSettings);
-                                module.error(error.legacyParameters, runSettings.complete);
-                                runSettings.onComplete = runSettings.complete;
-                            }
-                        }
+                        const runSettings = settings.beforeSend.call(element, settings);
                         if (runSettings === undefined) {
                             module.error(error.noReturnedValue);
                         }
@@ -761,9 +723,9 @@
                             : $.extend(true, {}, settings);
                     },
                     urlEncodedValue: function (value) {
-                        let decodedValue = window.decodeURIComponent(value);
-                        let encodedValue = window.encodeURIComponent(value);
-                        let alreadyEncoded = decodedValue !== value;
+                        const decodedValue = window.decodeURIComponent(value);
+                        const encodedValue = window.encodeURIComponent(value);
+                        const alreadyEncoded = decodedValue !== value;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
 
@@ -774,7 +736,7 @@
                         return encodedValue;
                     },
                     defaultData: function () {
-                        let data = {};
+                        const data = {};
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();
@@ -808,8 +770,7 @@
 
                         return settings.on;
                     },
-                    templatedURL: function (action) {
-                        action = action || settings.action || $module.data(metadata.action) || false;
+                    templatedURL: function (action = settings.action || $module.data(metadata.action) || false) {
                         url = settings.url || $module.data(metadata.url) || false;
                         if (url) {
                             module.debug('Using specified url', url);
@@ -834,7 +795,7 @@
                 },
 
                 abort: function () {
-                    let xhr = module.get.xhr();
+                    const xhr = module.get.xhr();
                     if (xhr && xhr.state() !== 'resolved') {
                         module.debug('Cancelling API request');
                         xhr.abort();
@@ -935,18 +896,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1115,7 +1074,6 @@
             error: 'There was an error with your request',
             exitConditions: 'API Request Aborted. Exit conditions met',
             JSONParse: 'JSON could not be parsed during error handling',
-            legacyParameters: 'You are using legacy API success callback names',
             method: 'The method you called is not defined',
             missingAction: 'API action used but no url was defined',
             missingURL: 'No URL specified for api event',
@@ -1127,8 +1085,8 @@
         },
 
         regExp: {
-            required: /{\$*[\da-z]+}/gi,
-            optional: /{\/\$*[\da-z]+}/gi,
+            required: /{[\da-z]+}/gi,
+            optional: /{\/[\da-z]+}/gi,
             validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
             key: /[\w-]+|(?=\[])/gi,
             push: /^$/,

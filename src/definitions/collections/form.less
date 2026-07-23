@@ -134,7 +134,7 @@
     font-family: @inputFont;
     margin: 0;
     outline: none;
-    -webkit-appearance: none;
+    appearance: none;
     -webkit-tap-highlight-color: rgb(255 255 255 / 0);
     line-height: @inputLineHeight;
     padding: @inputPadding;
@@ -161,7 +161,7 @@
 .ui.input textarea,
 .ui.form textarea {
     margin: 0;
-    -webkit-appearance: none;
+    appearance: none;
     -webkit-tap-highlight-color: rgb(255 255 255 / 0);
     padding: @textAreaPadding;
     background: @textAreaBackground;
@@ -376,10 +376,7 @@
     .ui.form .inline.fields .field .prompt::before,
     .ui.form .inline.field .prompt::before {
         border-width: 0 0 @inlinePromptBorderWidth @inlinePromptBorderWidth;
-        bottom: auto;
-        right: auto;
-        top: 50%;
-        left: 0;
+        inset: 50% auto auto 0;
     }
 }
 
@@ -409,8 +406,6 @@
 /* browsers require these rules separate */
 .ui.form ::placeholder {
     color: @inputPlaceholderColor;
-}
-.ui.form ::-moz-placeholder {
     opacity: 1;
 }
 
@@ -514,7 +509,7 @@
     border-radius: @textAreaFocusBorderRadius;
     background: @textAreaFocusBackground;
     box-shadow: @textAreaFocusBoxShadow;
-    -webkit-appearance: none;
+    appearance: none;
 }
 
 /* Focus */
@@ -1219,5 +1214,4 @@
     });
 }
 
-// stylelint-disable no-invalid-position-at-import-rule
 @import (multiple, optional) "../../overrides.less";

@@ -20,22 +20,22 @@
         : globalThis;
 
     $.fn.popup = function (...args) {
-        let $allModules = $(this);
-        let $document = $(document);
-        let $window = $(window);
-        let $body = $('body');
+        const $allModules = $(this);
+        const $document = $(document);
+        const $window = $(window);
+        const $body = $('body');
 
-        let clickEvent = 'ontouchstart' in document.documentElement
+        const clickEvent = 'ontouchstart' in document.documentElement
             ? 'touchstart'
             : 'click';
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -51,24 +51,24 @@
 
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.popup.settings, parameters)
                 : $.extend({}, $.fn.popup.settings);
 
-            let selector = settings.selector;
-            let className = settings.className;
-            let error = settings.error;
-            let metadata = settings.metadata;
-            let namespace = settings.namespace;
+            const selector = settings.selector;
+            const className = settings.className;
+            const error = settings.error;
+            const metadata = settings.metadata;
+            const namespace = settings.namespace;
 
-            let eventNamespace = '.' + settings.namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + settings.namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
-            let $context = contextCheck(settings.context, window);
-            let $scrollContext = contextCheck(settings.scrollContext, window);
-            let $boundary = contextCheck(settings.boundary, window);
-            let $target = settings.target ? contextCheck(settings.target, window) : $module;
+            const $module = $(this);
+            const $context = contextCheck(settings.context, window);
+            const $scrollContext = contextCheck(settings.scrollContext, window);
+            const $boundary = contextCheck(settings.boundary, window);
+            const $target = settings.target ? contextCheck(settings.target, window) : $module;
 
             let $popup;
             let $offsetParent;
@@ -77,15 +77,14 @@
             let triedPositions = false;
             let openedWithTouch = false;
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
 
             let documentObserver;
             let elementNamespace;
             let id;
-            let module;
 
-            module = {
+            const module = {
 
                 // binds events
                 initialize: function () {
@@ -120,11 +119,9 @@
                 refresh: function () {
                     if (settings.popup) {
                         $popup = $document.find(settings.popup).eq(0);
-                    } else {
-                        if (settings.inline) {
-                            $popup = $target.nextAll(selector.popup).eq(0);
-                            settings.popup = $popup;
-                        }
+                    } else if (settings.inline) {
+                        $popup = $target.nextAll(selector.popup).eq(0);
+                        settings.popup = $popup;
                     }
                     if (settings.popup) {
                         module.set.invisible();
@@ -178,7 +175,7 @@
 
                 event: {
                     start: function (event) {
-                        let delay = $.isPlainObject(settings.delay)
+                        const delay = $.isPlainObject(settings.delay)
                             ? settings.delay.show
                             : settings.delay;
                         clearTimeout(module.hideTimer);
@@ -189,7 +186,7 @@
                         }
                     },
                     end: function () {
-                        let delay = $.isPlainObject(settings.delay)
+                        const delay = $.isPlainObject(settings.delay)
                             ? settings.delay.hide
                             : settings.delay;
                         clearTimeout(module.showTimer);
@@ -209,21 +206,19 @@
                         }
                     },
                     documentChanged: function (mutations) {
-                        Array.prototype.forEach.call(mutations, function (mutation) {
-                            if (mutation.removedNodes) {
-                                Array.prototype.forEach.call(mutation.removedNodes, function (node) {
-                                    if (node === element || $(node).find(element).length > 0) {
-                                        module.debug('Element removed from DOM, tearing down events');
-                                        module.destroy();
-                                    }
-                                });
+                        for (const mutation of mutations) {
+                            for (const node of mutation.removedNodes) {
+                                if (node === element || $(node).find(element).length > 0) {
+                                    module.debug('Element removed from DOM, tearing down events');
+                                    module.destroy();
+                                }
                             }
-                        });
+                        }
                     },
                     hideGracefully: function (event) {
-                        let $target = $(event.target);
-                        let isInDOM = $.contains(document.documentElement, event.target);
-                        let inPopup = $target.closest(selector.popup).length > 0;
+                        const $target = $(event.target);
+                        const isInDOM = document.documentElement.contains(event.target);
+                        const inPopup = $target.closest(selector.popup).length > 0;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
                             module.debug('Click occurred outside popup hiding popup');
@@ -236,11 +231,11 @@
 
                 // generates popup html from metadata
                 create: function () {
-                    let targetSibling = $target.next(selector.popup);
-                    let contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
+                    const targetSibling = $target.next(selector.popup);
+                    const contentFallback = !settings.popup && targetSibling.length === 0 ? $module.attr('title') : false;
                     let html = module.get.html();
-                    let title = module.get.title();
-                    let content = module.get.content(contentFallback);
+                    const title = module.get.title();
+                    const content = module.get.content(contentFallback);
 
                     if (html || content || title) {
                         module.debug('Creating pop-up html');
@@ -309,8 +304,7 @@
                     }
                 },
 
-                show: function (callback) {
-                    callback = callback || function () {};
+                show: function (callback = function () {}) {
                     module.debug('Showing pop-up', settings.transition);
                     if (module.is.hidden() && !(module.is.active() && module.is.dropdown())) {
                         if (!module.exists()) {
@@ -334,8 +328,7 @@
                     }
                 },
 
-                hide: function (callback) {
-                    callback = callback || function () {};
+                hide: function (callback = function () {}) {
                     if (module.is.visible() || module.is.animating()) {
                         if (settings.onHide.call($popup, element) === false) {
                             module.debug('onHide callback returned false, cancelling popup animation');
@@ -483,22 +476,20 @@
                         return $popup.offset();
                     },
                     calculations: function () {
-                        let $popupOffsetParent = module.get.offsetParent($popup);
-                        let targetElement = $target[0];
-                        let isWindowEl = $boundary[0] === window;
-                        let targetOffset = $target.offset();
-                        let parentOffset = settings.inline || (settings.popup && settings.movePopup)
+                        const $popupOffsetParent = module.get.offsetParent($popup);
+                        const targetElement = $target[0];
+                        const isWindowEl = $boundary[0] === window;
+                        const targetOffset = $target.offset();
+                        const parentOffset = settings.inline || (settings.popup && settings.movePopup)
                             ? $target.offsetParent().offset()
                             : { top: 0, left: 0 };
-                        let screenPosition = isWindowEl
+                        const screenPosition = isWindowEl
                             ? { top: 0, left: 0 }
                             : $boundary.offset();
-                        let calculations = {};
-                        let scroll = isWindowEl
+                        const scroll = isWindowEl
                             ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                             : { top: 0, left: 0 };
-                        let screen;
-                        calculations = {
+                        const calculations = {
                             // element which is launching popup
                             target: {
                                 element: $target[0],
@@ -533,7 +524,7 @@
 
                         // if popup offset context is different from target, then adjust calculations
                         if ($popupOffsetParent[0] !== $offsetParent[0]) {
-                            let popupOffset = $popupOffsetParent.offset();
+                            const popupOffset = $popupOffsetParent.offset();
                             calculations.target.top -= popupOffset.top;
                             calculations.target.left -= popupOffset.left;
                             calculations.parent.width = $popupOffsetParent.outerWidth();
@@ -550,15 +541,15 @@
 
                         // add in margins if inline
                         calculations.target.margin.top = settings.inline
-                            ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
+                            ? Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                             : 0;
                         calculations.target.margin.left = settings.inline
                             ? (module.is.rtl()
-                                ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
-                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
+                                ? Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
+                                : Number.parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
                             : 0;
                         // calculate screen boundaries
-                        screen = calculations.screen;
+                        const screen = calculations.screen;
                         calculations.boundary = {
                             top: screen.top + screen.scroll.top,
                             bottom: screen.top + screen.scroll.top + screen.height,
@@ -594,15 +585,12 @@
 
                         return false;
                     },
-                    distanceFromBoundary: function (offset, calculations) {
+                    distanceFromBoundary: function (offset, calculations = module.get.calculations()) {
                         let distanceFromBoundary = {};
-                        let popup;
-                        let boundary;
-                        calculations = calculations || module.get.calculations();
 
                         // shorthand
-                        popup = calculations.popup;
-                        boundary = calculations.boundary;
+                        const popup = calculations.popup;
+                        const boundary = calculations.boundary;
 
                         if (offset) {
                             distanceFromBoundary = {
@@ -617,7 +605,7 @@
                         return distanceFromBoundary;
                     },
                     offsetParent: function ($element) {
-                        let element = $element !== undefined
+                        const element = $element !== undefined
                             ? $element[0]
                             : $target[0];
                         let parentNode = element.parentNode;
@@ -652,21 +640,21 @@
                         };
                     },
                     nextPosition: function (position) {
-                        let positions = position.split(' ');
-                        let verticalPosition = positions[0];
-                        let horizontalPosition = positions[1];
-                        let opposite = {
+                        const positions = position.split(' ');
+                        const verticalPosition = positions[0];
+                        const horizontalPosition = positions[1];
+                        const opposite = {
                             top: 'bottom',
                             bottom: 'top',
                             left: 'right',
                             right: 'left',
                         };
-                        let adjacent = {
+                        const adjacent = {
                             left: 'center',
                             center: 'right',
                             right: 'left',
                         };
-                        let backup = {
+                        const backup = {
                             'top left': 'top center',
                             'top center': 'top right',
                             'top right': 'right center',
@@ -676,7 +664,7 @@
                             'bottom left': 'left center',
                             'left center': 'top left',
                         };
-                        let adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom';
+                        const adjacentsAvailable = verticalPosition === 'top' || verticalPosition === 'bottom';
                         let oppositeTried = false;
                         let adjacentTried = false;
                         let nextPosition = false;
@@ -710,7 +698,7 @@
                 },
 
                 set: {
-                    position: function (position, calculations) {
+                    position: function (position = $module.data(metadata.position) || settings.position, calculations = module.get.calculations()) {
                         // exit conditions
                         if ($target.length === 0 || $popup.length === 0) {
                             module.error(error.notFound);
@@ -719,23 +707,15 @@
                         }
                         let offset;
                         let distanceAway;
-                        let target;
-                        let popup;
-                        let parent;
                         let positioning;
-                        let popupOffset;
-                        let distanceFromBoundary;
-
-                        calculations = calculations || module.get.calculations();
-                        position = position || $module.data(metadata.position) || settings.position;
 
                         offset = $module.data(metadata.offset) || settings.offset;
                         distanceAway = settings.distanceAway;
 
                         // shorthand
-                        target = calculations.target;
-                        popup = calculations.popup;
-                        parent = calculations.parent;
+                        const target = calculations.target;
+                        const popup = calculations.popup;
+                        const parent = calculations.parent;
 
                         if (module.should.centerArrow(calculations)) {
                             module.verbose('Adjusting offset to center arrow on small target element');
@@ -866,6 +846,7 @@
 
                                 break;
                             }
+                            // no default
                         }
                         if (positioning === undefined) {
                             module.error(error.invalidPosition, position);
@@ -880,10 +861,10 @@
                             .addClass(position);
                         module.set.invisible();
 
-                        popupOffset = module.get.popupOffset();
+                        const popupOffset = module.get.popupOffset();
 
                         // see if any boundaries are surpassed with this tentative position
-                        distanceFromBoundary = module.get.distanceFromBoundary(popupOffset, calculations);
+                        const distanceFromBoundary = module.get.distanceFromBoundary(popupOffset, calculations);
 
                         if (!settings.forcePosition && module.is.offstage(distanceFromBoundary, position)) {
                             module.debug('Position is outside viewport', position);
@@ -919,8 +900,7 @@
                         return true;
                     },
 
-                    fluidWidth: function (calculations) {
-                        calculations = calculations || module.get.calculations();
+                    fluidWidth: function (calculations = module.get.calculations()) {
                         module.debug('Automatically setting element width to parent width', calculations.parent.width);
                         $popup.css('width', calculations.container.width);
                     },
@@ -933,8 +913,7 @@
                         $popup.addClass(className.invisible);
                     },
 
-                    variation: function (variation) {
-                        variation = variation || module.get.variation();
+                    variation: function (variation = module.get.variation()) {
                         if (variation && module.has.popup()) {
                             module.verbose('Adding variation to popup', variation);
                             $popup.addClass(variation);
@@ -953,8 +932,7 @@
                     invisible: function () {
                         $popup.removeClass(className.invisible);
                     },
-                    variation: function (variation) {
-                        variation = variation || module.get.variation();
+                    variation: function (variation = module.get.variation()) {
                         if (variation) {
                             module.verbose('Removing variation', variation);
                             $popup.removeClass(variation);
@@ -1079,7 +1057,7 @@
                         return settings.closable;
                     },
                     offstage: function (distanceFromBoundary, position) {
-                        let offstage = [];
+                        const offstage = [];
                         // return boundaries that have been surpassed
                         $.each(distanceFromBoundary, function (direction, distance) {
                             if (distance < -settings.jitter) {
@@ -1214,18 +1192,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
@@ -1461,7 +1437,7 @@
             },
             popup: function (text) {
                 let html = '';
-                let escape = $.fn.popup.settings.templates.escape;
+                const escape = $.fn.popup.settings.templates.escape;
                 if (text !== undefined) {
                     if (text.title) {
                         text.title = escape(text.title);

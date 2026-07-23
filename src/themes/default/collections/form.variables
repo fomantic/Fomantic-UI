@@ -133,7 +133,6 @@
 /* Inverted */
 @invertedInputBackground: @inputBackground;
 @invertedInputBorderColor: @whiteBorderColor;
-@invertedInputBoxShadow: @inputBoxShadow;
 @invertedInputColor: @inputColor;
 @invertedLabelColor: @invertedTextColor;
 @invertedInputBoxShadow: none;

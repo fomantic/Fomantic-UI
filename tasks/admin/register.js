@@ -4,7 +4,6 @@
 
 /*
   Task to register component repos with Package Managers
-  * Registers a component with bower
   * Registers a component with NPM
 */
 
@@ -15,8 +14,8 @@ const process = require('node:child_process');
 const release = require('../config/admin/release');
 
 // register components and distributions
-let repos = [release.distributions, ...release.components];
-let total = repos.length;
+const repos = [release.distributions, ...release.components];
+const total = repos.length;
 let index = -1;
 
 let stepRepo;
@@ -32,11 +31,11 @@ module.exports = function (callback) {
 
             return;
         }
-        let repo = repos[index].toLowerCase();
-        let outputDirectory = release.outputRoot + repo + '/';
-        let exec = process.exec;
-        let execSettings = { cwd: outputDirectory };
-        let updateNPM = 'npm publish;meteor publish;';
+        const repo = repos[index].toLowerCase();
+        const outputDirectory = release.outputRoot + repo + '/';
+        const exec = process.exec;
+        const execSettings = { cwd: outputDirectory };
+        const updateNPM = 'npm publish;meteor publish;';
 
         /* Register with NPM */
         exec(updateNPM, execSettings, function (err, stdout, stderr) {

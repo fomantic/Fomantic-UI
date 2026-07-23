@@ -20,15 +20,15 @@
         : globalThis;
 
     $.fn.state = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -43,28 +43,27 @@
         };
         let returnedValue;
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.state.settings, parameters)
                 : $.extend({}, $.fn.state.settings);
 
-            let error = settings.error;
-            let metadata = settings.metadata;
-            let className = settings.className;
-            let namespace = settings.namespace;
-            let states = settings.states;
-            let text = settings.text;
+            const error = settings.error;
+            const metadata = settings.metadata;
+            const className = settings.className;
+            const namespace = settings.namespace;
+            const states = settings.states;
+            const text = settings.text;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = namespace + '-module';
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = namespace + '-module';
 
             let $module = $(this);
-            let $context = settings.context ? contextCheck(settings.context, window) : $module;
+            const $context = settings.context ? contextCheck(settings.context, window) : $module;
 
-            let element = this;
+            const element = this;
             let instance = $module.data(moduleNamespace);
 
-            let module;
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing module');
@@ -105,7 +104,7 @@
 
                 add: {
                     defaults: function () {
-                        let userStates = parameters && $.isPlainObject(parameters.states)
+                        const userStates = parameters && $.isPlainObject(parameters.states)
                             ? parameters.states
                             : {};
                         $.each(settings.defaults, function (type, typeStates) {
@@ -279,14 +278,12 @@
                                     module.verbose('Changing text to deactivating text', text.deactivate);
                                     module.update.text(text.deactivate);
                                 }
-                            } else {
-                                if (text.hover) {
-                                    module.verbose('Changing text to hover text', text.hover);
-                                    module.update.text(text.hover);
-                                } else if (text.activate) {
-                                    module.verbose('Changing text to activating text', text.activate);
-                                    module.update.text(text.activate);
-                                }
+                            } else if (text.hover) {
+                                module.verbose('Changing text to hover text', text.hover);
+                                module.update.text(text.hover);
+                            } else if (text.activate) {
+                                module.verbose('Changing text to activating text', text.activate);
+                                module.update.text(text.activate);
                             }
                         }
                     },
@@ -338,12 +335,9 @@
                 },
 
                 flash: {
-                    text: function (text, duration, callback) {
-                        let previousText = module.get.text();
+                    text: function (text = settings.text.flash, duration = settings.flashDuration, callback = function () {}) {
+                        const previousText = module.get.text();
                         module.debug('Flashing text message', text, duration);
-                        text = text || settings.text.flash;
-                        duration = duration || settings.flashDuration;
-                        callback = callback || function () {};
                         module.update.text(text);
                         setTimeout(function () {
                             module.update.text(previousText);
@@ -355,8 +349,8 @@
                 reset: {
                     // on mouseout sets text to previous value
                     text: function () {
-                        let activeText = text.active || $module.data(metadata.storedText);
-                        let inactiveText = text.inactive || $module.data(metadata.storedText);
+                        const activeText = text.active || $module.data(metadata.storedText);
+                        const inactiveText = text.inactive || $module.data(metadata.storedText);
                         if (module.is.textEnabled()) {
                             if (module.is.active() && activeText) {
                                 module.verbose('Resetting active text', activeText);
@@ -371,7 +365,7 @@
 
                 update: {
                     text: function (text) {
-                        let currentText = module.get.text();
+                        const currentText = module.get.text();
                         if (text && text !== currentText) {
                             module.debug('Updating text', text);
                             if (settings.selector.text) {
@@ -478,18 +472,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

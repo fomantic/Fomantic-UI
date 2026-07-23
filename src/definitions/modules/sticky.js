@@ -20,16 +20,16 @@
         : globalThis;
 
     $.fn.sticky = function (...args) {
-        let $allModules = $(this);
-        let $document = $(document);
+        const $allModules = $(this);
+        const $document = $(document);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
-        let contextCheck = function (context, win) {
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
+        const contextCheck = function (context, win) {
             let $context;
             if ([window, document].includes(context)) {
                 $context = $(context);
@@ -45,32 +45,31 @@
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.isPlainObject(parameters)
+            const settings = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                 : $.extend({}, $.fn.sticky.settings);
 
-            let className = settings.className;
-            let namespace = settings.namespace;
-            let error = settings.error;
+            const className = settings.className;
+            const namespace = settings.namespace;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
-            let $module = $(this);
-            let $window = $(window);
-            let $scroll = contextCheck(settings.scrollContext, window);
+            const $module = $(this);
+            const $window = $(window);
+            const $scroll = contextCheck(settings.scrollContext, window);
             let $container;
             let $context;
 
             let instance = $module.data(moduleNamespace);
 
-            let element = this;
+            const element = this;
 
             let documentObserver;
             let observer;
-            let module;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.determineContainer();
@@ -172,16 +171,14 @@
                         }, 100);
                     },
                     documentChanged: function (mutations) {
-                        Array.prototype.forEach.call(mutations, function (mutation) {
-                            if (mutation.removedNodes) {
-                                Array.prototype.forEach.call(mutation.removedNodes, function (node) {
-                                    if (node === element || $(node).find(element).length > 0) {
-                                        module.debug('Element removed from DOM, tearing down events');
-                                        module.destroy();
-                                    }
-                                });
+                        for (const mutation of mutations) {
+                            for (const node of mutation.removedNodes) {
+                                if (node === element || $(node).find(element).length > 0) {
+                                    module.debug('Element removed from DOM, tearing down events');
+                                    module.destroy();
+                                }
                             }
-                        });
+                        }
                     },
                     load: function () {
                         module.verbose('Page contents finished loading');
@@ -217,7 +214,7 @@
 
                 supports: {
                     sticky: function () {
-                        let $element = $('<div/>');
+                        const $element = $('<div/>');
                         $element.addClass(className.supported);
 
                         return $element.css('position').match('sticky');
@@ -232,19 +229,19 @@
                         module.elementScroll = scroll;
                     },
                     positions: function () {
-                        let scrollContext = {
+                        const scrollContext = {
                             height: $scroll.height(),
                         };
-                        let element = {
+                        const element = {
                             margin: {
-                                top: parseInt($module.css('margin-top'), 10),
-                                bottom: parseInt($module.css('margin-bottom'), 10),
+                                top: Number.parseInt($module.css('margin-top'), 10),
+                                bottom: Number.parseInt($module.css('margin-bottom'), 10),
                             },
                             offset: $module.offset(),
                             width: $module.outerWidth(),
                             height: $module.outerHeight(),
                         };
-                        let context = {
+                        const context = {
                             offset: $context.offset(),
                             height: $context.outerHeight(),
                         };
@@ -287,18 +284,15 @@
                 },
 
                 get: {
-                    direction: function (scroll) {
+                    direction: function (scroll = $scroll.scrollTop()) {
                         let direction = 'down';
-                        scroll = scroll || $scroll.scrollTop();
                         if (module.lastScroll && module.lastScroll > scroll) {
                             direction = 'up';
                         }
 
                         return direction;
                     },
-                    scrollChange: function (scroll) {
-                        scroll = scroll || $scroll.scrollTop();
-
+                    scrollChange: function (scroll = $scroll.scrollTop()) {
                         return module.lastScroll
                             ? scroll - module.lastScroll
                             : 0;
@@ -309,18 +303,17 @@
                         }
 
                         return module.is.top()
-                            ? Math.abs(parseInt($module.css('top'), 10)) || 0
-                            : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
+                            ? Math.abs(Number.parseInt($module.css('top'), 10)) || 0
+                            : Math.abs(Number.parseInt($module.css('bottom'), 10)) || 0;
                     },
 
-                    elementScroll: function (scroll) {
-                        scroll = scroll || $scroll.scrollTop();
-                        let element = module.cache.element;
-                        let scrollContext = module.cache.scrollContext;
-                        let delta = module.get.scrollChange(scroll);
-                        let maxScroll = element.height - scrollContext.height + settings.offset;
+                    elementScroll: function (scroll = $scroll.scrollTop()) {
+                        const element = module.cache.element;
+                        const scrollContext = module.cache.scrollContext;
+                        const delta = module.get.scrollChange(scroll);
+                        const maxScroll = element.height - scrollContext.height + settings.offset;
                         let elementScroll = module.get.currentElementScroll();
-                        let possibleScroll = elementScroll + delta;
+                        const possibleScroll = elementScroll + delta;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
                         } else if (possibleScroll > maxScroll) {
@@ -356,11 +349,11 @@
                             .css('margin-top', settings.offset);
                     },
                     containerSize: function () {
-                        let tagName = $container[0].tagName;
+                        const tagName = $container[0].tagName;
                         if (tagName === 'HTML' || tagName === 'body') {
                             module.determineContainer();
                         } else {
-                            let tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
+                            const tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
                             if (tallestHeight - $container.outerHeight() > settings.jitter) {
                                 module.debug('Context is taller than container. Specifying exact height for container', module.cache.context.height);
                                 $container.css({
@@ -380,7 +373,7 @@
                         }
                     },
                     minimumSize: function () {
-                        let element = module.cache.element;
+                        const element = module.cache.element;
                         $container
                             .css('min-height', element.height);
                     },
@@ -432,28 +425,27 @@
                     },
                 },
 
-                stick: function (scrollPosition) {
-                    let cachedPosition = scrollPosition || $scroll.scrollTop();
-                    let cache = module.cache;
-                    let fits = cache.fits;
-                    let sameHeight = cache.sameHeight;
-                    let element = cache.element;
-                    let scrollContext = cache.scrollContext;
-                    let context = cache.context;
-                    let offset = module.is.bottom() && settings.pushing
+                stick: function (scrollPosition = $scroll.scrollTop()) {
+                    const cache = module.cache;
+                    const fits = cache.fits;
+                    const sameHeight = cache.sameHeight;
+                    const element = cache.element;
+                    const scrollContext = cache.scrollContext;
+                    const context = cache.context;
+                    const offset = module.is.bottom() && settings.pushing
                         ? settings.bottomOffset
                         : settings.offset;
-                    let scroll = {
-                        top: cachedPosition + offset,
-                        bottom: cachedPosition + offset + scrollContext.height,
+                    const scroll = {
+                        top: scrollPosition + offset,
+                        bottom: scrollPosition + offset + scrollContext.height,
                     };
-                    let elementScroll = fits
+                    const elementScroll = fits
                         ? 0
                         : module.get.elementScroll(scroll.top);
 
                     // shorthand
-                    let doesntFit = !fits;
-                    let elementVisible = element.height !== 0;
+                    const doesntFit = !fits;
+                    const elementVisible = element.height !== 0;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
                             if (scroll.top >= context.bottom) {
@@ -498,18 +490,14 @@
                             if (scroll.top <= element.top) {
                                 module.debug('Jumped from bottom fixed to top fixed, most likely used home/end button');
                                 module.setInitialPosition();
-                            } else {
-                                if (settings.pushing) {
-                                    if (module.is.bound() && scroll.bottom <= context.bottom) {
-                                        module.debug('Fixing bottom attached element to bottom of browser.');
-                                        module.fixBottom();
-                                    }
-                                } else {
-                                    if (module.is.bound() && (scroll.top <= context.bottom - element.height)) {
-                                        module.debug('Fixing bottom attached element to top of browser.');
-                                        module.fixTop();
-                                    }
+                            } else if (settings.pushing) {
+                                if (module.is.bound() && scroll.bottom <= context.bottom) {
+                                    module.debug('Fixing bottom attached element to bottom of browser.');
+                                    module.fixBottom();
                                 }
+                            } else if (module.is.bound() && (scroll.top <= context.bottom - element.height)) {
+                                module.debug('Fixing bottom attached element to top of browser.');
+                                module.fixTop();
                             }
                         }
                     }
@@ -727,18 +715,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {

@@ -20,26 +20,26 @@
         : globalThis;
 
     $.fn.checkbox = function (...args) {
-        let $allModules = $(this);
+        const $allModules = $(this);
 
         let time = Date.now();
         let performance = [];
 
-        let parameters = args[0];
-        let methodInvoked = typeof parameters === 'string';
-        let queryArguments = args.slice(1);
+        const parameters = args[0];
+        const methodInvoked = typeof parameters === 'string';
+        const queryArguments = args.slice(1);
         let returnedValue;
 
         $allModules.each(function () {
-            let settings = $.extend(true, {}, $.fn.checkbox.settings, parameters);
+            const settings = $.extend(true, {}, $.fn.checkbox.settings, parameters);
 
-            let className = settings.className;
-            let namespace = settings.namespace;
-            let selector = settings.selector;
-            let error = settings.error;
+            const className = settings.className;
+            const namespace = settings.namespace;
+            const selector = settings.selector;
+            const error = settings.error;
 
-            let eventNamespace = '.' + namespace;
-            let moduleNamespace = 'module-' + namespace;
+            const eventNamespace = '.' + namespace;
+            const moduleNamespace = 'module-' + namespace;
 
             let $module = $(this);
             let $label = $(this).children(selector.label);
@@ -51,10 +51,9 @@
             let instance = $module.data(moduleNamespace);
 
             let observer;
-            let element = this;
-            let module;
+            const element = this;
 
-            module = {
+            const module = {
 
                 initialize: function () {
                     module.verbose('Initializing checkbox', settings);
@@ -141,7 +140,7 @@
                 },
 
                 attachEvents: function (selector, event) {
-                    let $element = $(selector);
+                    const $element = $(selector);
                     event = isFunction(module[event])
                         ? module[event]
                         : module.toggle;
@@ -154,13 +153,6 @@
                     }
                 },
 
-                preventDefaultOnInputTarget: function () {
-                    if (event !== undefined && event !== null && $(event.target).is(selector.input)) {
-                        module.verbose('Preventing default check action after manual check action');
-                        event.preventDefault();
-                    }
-                },
-
                 event: {
                     change: function (event) {
                         if (!module.should.ignoreCallbacks()) {
@@ -168,7 +160,7 @@
                         }
                     },
                     click: function (event) {
-                        let $target = $(event.target);
+                        const $target = $(event.target);
                         if ($target.is(selector.input)) {
                             module.verbose('Using default check action on initialized checkbox');
 
@@ -184,8 +176,8 @@
                         event.preventDefault();
                     },
                     keydown: function (event) {
-                        let key = event.which;
-                        let keyCode = {
+                        const key = event.which;
+                        const keyCode = {
                             enter: 13,
                             space: 32,
                             escape: 27,
@@ -195,9 +187,9 @@
                             down: 40,
                         };
 
-                        let r = module.get.radios().not(selector.disabled);
-                        let rIndex = r.index($module);
-                        let rLen = r.length;
+                        const r = module.get.radios().not(selector.disabled);
+                        const rIndex = r.index($module);
+                        const rLen = r.length;
                         let checkIndex = false;
 
                         if (key === keyCode.left || key === keyCode.up) {
@@ -207,15 +199,15 @@
                         }
 
                         if (!module.should.ignoreCallbacks() && checkIndex !== false) {
-                            if (settings.beforeUnchecked.apply(input) === false) {
+                            if (settings.beforeUnchecked.call(input) === false) {
                                 module.verbose('Option not allowed to be unchecked, cancelling key navigation');
 
                                 return false;
                             }
-                            let nextOption = $(r[checkIndex]);
-                            let nextInput = nextOption.children(selector.input);
-                            let disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
-                            if (disallowOption || settings.beforeChecked.apply(nextInput[0]) === false) {
+                            const nextOption = $(r[checkIndex]);
+                            const nextInput = nextOption.children(selector.input);
+                            const disallowOption = nextOption.hasClass(className.readOnly) || nextInput.prop('readonly');
+                            if (disallowOption || settings.beforeChecked.call(nextInput[0]) === false) {
                                 module.verbose('Next option should not allow check, cancelling key navigation');
 
                                 return false;
@@ -263,7 +255,6 @@
                         settings.onChecked.call(input);
                         module.trigger.change();
                     }
-                    module.preventDefaultOnInputTarget();
                 },
 
                 uncheck: function () {
@@ -276,7 +267,6 @@
                         settings.onUnchecked.call(input);
                         module.trigger.change();
                     }
-                    module.preventDefaultOnInputTarget();
                 },
 
                 indeterminate: function () {
@@ -335,7 +325,7 @@
 
                 get: {
                     radios: function () {
-                        let name = module.get.name();
+                        const name = module.get.name();
 
                         return $('input[name="' + CSS.escape(name) + '"]').closest(selector.checkbox);
                     },
@@ -381,7 +371,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeChecked.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeChecked.call(input) === false) {
                             module.debug('Should not allow check, beforeChecked cancelled');
 
                             return false;
@@ -395,7 +385,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeUnchecked.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeUnchecked.call(input) === false) {
                             module.debug('Should not allow uncheck, beforeUnchecked cancelled');
 
                             return false;
@@ -409,7 +399,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeIndeterminate.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeIndeterminate.call(input) === false) {
                             module.debug('Should not allow indeterminate, beforeIndeterminate cancelled');
 
                             return false;
@@ -423,7 +413,7 @@
 
                             return false;
                         }
-                        if (!module.should.ignoreCallbacks() && settings.beforeDeterminate.apply(input) === false) {
+                        if (!module.should.ignoreCallbacks() && settings.beforeDeterminate.call(input) === false) {
                             module.debug('Should not allow determinate, beforeDeterminate cancelled');
 
                             return false;
@@ -551,12 +541,11 @@
 
                 trigger: {
                     change: function () {
-                        let inputElement = $input[0];
+                        const inputElement = $input[0];
                         if (inputElement) {
-                            let events = document.createEvent('HTMLEvents');
+                            const event = new Event('change', { bubbles: true });
                             module.verbose('Triggering native change event');
-                            events.initEvent('change', true, false);
-                            inputElement.dispatchEvent(events);
+                            inputElement.dispatchEvent(event);
                         }
                     },
                 },
@@ -599,7 +588,7 @@
                 },
 
                 uncheckOthers: function () {
-                    let $radios = module.get.otherRadios();
+                    const $radios = module.get.otherRadios();
                     module.debug('Unchecking other radios', $radios);
                     $radios.removeClass(className.checked);
                 },
@@ -708,18 +697,16 @@
                         performance = [];
                     },
                 },
-                invoke: function (query, passedArguments, context) {
+                invoke: function (query, passedArguments = queryArguments, context = element) {
                     let object = instance;
                     let maxDepth;
                     let found;
                     let response;
-                    passedArguments = passedArguments || queryArguments;
-                    context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            let camelCaseValue = depth !== maxDepth
+                            const camelCaseValue = depth !== maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth !== maxDepth)) {
