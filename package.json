@@ -66,7 +66,7 @@
     "ordered-read-streams": "^1.0.1",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^5.2.2"
   },
   "devDependencies": {
     "@actions/core": "^1.6.0",
