@@ -524,6 +524,7 @@
 @variationAccordionVeryCompact: true;
 @variationAccordionRightDropdown: true;
 @variationAccordionTree: true;
+@variationAccordionExclusive: true;
 
 /* Calendar */
 @variationCalendarInverted: true;
