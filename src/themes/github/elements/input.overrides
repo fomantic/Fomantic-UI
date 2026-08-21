@@ -16,7 +16,7 @@
     font-weight: normal;
     align-self: center;
     font-size: 12px;
-    margin: @2px;
+    margin: @absolute2px;
     border-radius: @borderRadius !important;
     padding: @relative5px @relative8px !important;
 }

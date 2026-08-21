@@ -431,13 +431,13 @@
 @attachedBottomBoxShadow: @attachedBoxShadow;
 
 /* Resize large sizes */
-@mini: @11px;
-@tiny: @12px;
-@small: @13px;
-@large: @15px;
-@big: @16px;
-@huge: @17px;
-@massive: @18px;
+@mini: @absolute11px;
+@tiny: @absolute12px;
+@small: @absolute13px;
+@large: @absolute15px;
+@big: @absolute16px;
+@huge: @absolute17px;
+@massive: @absolute18px;
 
 /* Sizes */
 @miniWidth: 9rem;

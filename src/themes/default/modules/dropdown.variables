@@ -274,8 +274,8 @@
 
 /* Selection Label */
 @labelSize: @relativeMedium;
-@labelHorizontalMargin: @4px;
-@labelVerticalMargin: @2px;
+@labelHorizontalMargin: @absolute4px;
+@labelVerticalMargin: @absolute2px;
 @labelMargin: @labelVerticalMargin @labelHorizontalMargin @labelVerticalMargin 0;
 @labelBorderWidth: 1px;
 @labelBoxShadow: 0 0 0 @labelBorderWidth @borderColor inset;

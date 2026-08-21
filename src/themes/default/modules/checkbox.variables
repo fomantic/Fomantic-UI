@@ -12,7 +12,7 @@
 /* Checkbox */
 @checkboxBackground: @white;
 @checkboxBorder: 1px solid @solidBorderColor;
-@checkboxBorderRadius: @3px;
+@checkboxBorderRadius: @absolute3px;
 @checkboxTransition:
     border @defaultDuration @defaultEasing,
     opacity @defaultDuration @defaultEasing,
@@ -119,7 +119,7 @@
 @sliderWidth: @sliderLineWidth;
 @sliderHeight: (@sliderHandleSize + @sliderHandleOffset);
 
-@sliderLineHeight: @3px;
+@sliderLineHeight: @absolute3px;
 @sliderLineVerticalOffset: 0.4rem;
 @sliderLineColor: @transparentBlack;
 @sliderLineRadius: @circularRadius;
