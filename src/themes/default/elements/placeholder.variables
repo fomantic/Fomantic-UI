@@ -19,7 +19,7 @@
 
 /* Header Image */
 @placeholderImageWidth: 3em;
-@placeholderImageTextIndent: @10px;
+@placeholderImageTextIndent: @absolute10px;
 
 /* Paragraph */
 @placeholderHeaderLineOneOutdent: 20%;

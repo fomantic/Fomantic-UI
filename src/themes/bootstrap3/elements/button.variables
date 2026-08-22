@@ -12,7 +12,7 @@
 @fontWeight: @normal;
 @textColor: rgb(51 51 51 / 1);
 
-@borderRadius: @4px;
+@borderRadius: @absolute4px;
 
 @lineHeight: 1.42857;
 @verticalPadding: 0.8571em;

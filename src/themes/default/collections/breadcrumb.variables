@@ -10,7 +10,7 @@
 @display: inline-block;
 @verticalAlign: middle;
 
-@dividerSpacing: @3px;
+@dividerSpacing: @absolute3px;
 @dividerOpacity: 0.7;
 @dividerColor: @lightTextColor;
 

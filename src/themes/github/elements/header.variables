@@ -6,4 +6,4 @@
        Element
 -------------------- */
 
-@iconMargin: @4px;
+@iconMargin: @absolute4px;

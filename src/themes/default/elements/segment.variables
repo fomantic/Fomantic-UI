@@ -55,7 +55,7 @@
 @placeholderBoxShadow: 0 2px 25px 0 rgb(34 36 38 / 0.05) inset;
 @placeholderMinHeight: 18rem;
 @placeholderContentMaxWidth: 15rem;
-@placeholderContentInlineButtonMargin: 0 @5px 0 0;
+@placeholderContentInlineButtonMargin: 0 @absolute5px 0 0;
 
 /* Piled */
 @piledZIndex: auto;

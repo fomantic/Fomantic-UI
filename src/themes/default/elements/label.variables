@@ -205,7 +205,7 @@
 @attachedVerticalPadding: 0.75em;
 @attachedHorizontalPadding: 1em;
 
-@attachedCornerBorderRadius: @3px;
+@attachedCornerBorderRadius: @absolute3px;
 @attachedBorderRadius: @borderRadius;
 
 @attachedOffset: -@borderWidth;
@@ -262,10 +262,10 @@
 -------------------- */
 
 /* Sizing */
-@mini: @9px;
-@tiny: @10px;
-@small: @11px;
-@medium: @12px;
+@mini: @absolute9px;
+@tiny: @absolute10px;
+@small: @absolute11px;
+@medium: @absolute12px;
 @large: @absoluteMedium;
 @big: @absoluteBig;
 @huge: @absoluteHuge;

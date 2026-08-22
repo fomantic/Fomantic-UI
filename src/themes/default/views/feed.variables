@@ -14,7 +14,7 @@
 
 /* Event */
 @eventWidth: 100%;
-@eventPadding: @3px 0;
+@eventPadding: @absolute3px 0;
 @eventMargin: 0;
 @eventBackground: none;
 @eventDivider: none;

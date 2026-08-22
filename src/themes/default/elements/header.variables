@@ -22,7 +22,7 @@
 @verticalPadding: 0;
 
 /* Sub Heading */
-@subHeadingDistance: @2px;
+@subHeadingDistance: @absolute2px;
 @subHeadingFontSize: @relativeTiny;
 @subHeadingFontWeight: @bold;
 @subHeadingTextTransform: uppercase;
@@ -117,8 +117,8 @@
 @dividedBorder: @dividedBorderWidth solid @borderColor;
 @dividedColoredBorderWidth: 2px;
 
-@dividedBorderPadding: @3px;
-@dividedSubHeaderPadding: @3px;
+@dividedBorderPadding: @absolute3px;
+@dividedSubHeaderPadding: @absolute3px;
 @dividedIconPadding: 0;
 
 /* Block */
