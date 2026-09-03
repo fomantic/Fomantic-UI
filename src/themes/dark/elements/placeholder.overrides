@@ -1,0 +1,7 @@
+.ui.placeholder,
+.ui.placeholder .image.header:after,
+.ui.placeholder .line,
+.ui.placeholder .line:after,
+.ui.placeholder>:before {
+  background-color: @gray-dark;
+}

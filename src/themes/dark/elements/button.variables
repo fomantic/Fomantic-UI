@@ -1,0 +1,6 @@
+@textColor: #fff;
+@backgroundColor: @gray;
+@activeBackgroundColor: @gray-dark;
+@boxShadow: none;
+@downBackgroundColor: @gray-darker;
+@basicDownBackground: @gray-darker;

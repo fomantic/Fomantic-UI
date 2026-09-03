@@ -1,0 +1,20 @@
+@inputColor: @gray-dark;
+@inputPlaceholderColor: @gray;
+@inputFocusColor: #000;
+@formErrorColor: @gray-lighter;
+@inputErrorFocusColor: @formErrorColor;
+
+/* Select */
+@selectBackground: @gray-darker;
+@textAreaBackground:  @gray-darker;
+
+
+/*-------------------
+        States
+--------------------*/
+
+/* Focus */
+@inputFocusBackground:  @gray-darker;
+
+/* Text Area Focus */
+@textAreaFocusBackground:  @gray-darker;
