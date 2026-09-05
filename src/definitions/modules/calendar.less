@@ -39,7 +39,14 @@
 
 .ui.calendar .calendar:focus,
 .ui.calendar.popup:focus {
-    outline: 0;
+    outline: @focusOutline;
+}
+& when not (@focusVisibleOutline = none) {
+    .ui.calendar .calendar:focus-visible,
+    .ui.calendar.popup:focus-visible {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 /*******************************

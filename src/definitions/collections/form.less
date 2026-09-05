@@ -176,6 +176,10 @@
     line-height: @textAreaLineHeight;
     resize: @textAreaResize;
     min-height: @actionTextareaMinHeight;
+    &:focus-visible when not (@textAreaFocusVisibleOutline = none) {
+        outline: @textAreaFocusVisibleOutline;
+        outline-offset: @textAreaFocusVisibleOutlineOffset;
+    }
 }
 .ui.input > textarea {
     flex: 1 1 auto;
@@ -433,6 +437,26 @@
     border-radius: @inputFocusBorderRadius;
     background: @inputFocusBackground;
     box-shadow: @inputFocusBoxShadow;
+}
+& when not (@inputFocusVisibleOutline = none) {
+    .ui.form input:not([type]):focus-visible,
+    .ui.form input[type="color"]:focus-visible,
+    .ui.form input[type="date"]:focus-visible,
+    .ui.form input[type="datetime-local"]:focus-visible,
+    .ui.form input[type="email"]:focus-visible,
+    .ui.form input[type="month"]:focus-visible,
+    .ui.form input[type="number"]:focus-visible,
+    .ui.form input[type="password"]:focus-visible,
+    .ui.form input[type="search"]:focus-visible,
+    .ui.form input[type="tel"]:focus-visible,
+    .ui.form input[type="time"]:focus-visible,
+    .ui.form input[type="text"]:focus-visible,
+    .ui.form input[type="file"]:focus-visible,
+    .ui.form input[type="url"]:focus-visible,
+    .ui.form input[type="week"]:focus-visible {
+        outline: @inputFocusVisibleOutline;
+        outline-offset: @inputFocusVisibleOutlineOffset;
+    }
 }
 & when (@variationInputAction) {
     .ui.form .ui.action.input:not([class*="left action"]) {
