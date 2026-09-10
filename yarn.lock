@@ -990,9 +990,9 @@ async-settle@^2.0.0:
     async-done "^2.0.0"
 
 auto-changelog@^2.4.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.6.0.tgz#30f7ad70fba7f76927320ad8de40dac1311751d5"
-  integrity sha512-jJgUkuWXQ7fPLPXOMQk/XSSmy7KvzpzhjJa6w660dq1KTEez/GW2CPckBra3jMMMMpcwxp84bOslo29qRCewzA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/auto-changelog/-/auto-changelog-2.6.1.tgz#7ad092e38555da3b8a9ff8f1d49f559de9a7eb59"
+  integrity sha512-YQJgU1i/qWTk8W/IIE6oUk1DBYr/jiFbksP+LuGRHOzmhviIGhK1otjqSSMUf2aqUdeOW8SUYNSZjiD6Qcun7w==
   dependencies:
     commander "^7.2.0"
     handlebars "^4.7.9"
