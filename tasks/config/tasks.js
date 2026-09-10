@@ -10,14 +10,14 @@ const hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify
 const prefix = config.prefix || {};
 if (!prefix.overrideBrowserslist && !hasBrowserslistConfig) {
     prefix.overrideBrowserslist = [
-        'chrome >= 88',
-        'edge >= 88',
-        'safari >= 14.1',
-        'firefox >= 82',
-        'opera >= 75',
-        'samsung >= 15',
-        'ios >= 14.1',
-        'android >= 8',
+        'chrome >= 108',
+        'edge >= 108',
+        'safari >= 15.4',
+        'firefox >= 101',
+        'opera >= 80',
+        'samsung >= 21',
+        'ios >= 15.4',
+        'android >= 10',
         '>0.3%',
         'not dead',
     ];

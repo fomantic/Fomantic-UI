@@ -163,10 +163,6 @@
                         module.setup.cache();
                     });
 
-                    if (module.get.direction() === 'left' || module.get.direction() === 'right') {
-                        module.setup.heights();
-                        module.bind.resize();
-                    }
                     module.bind.events();
                     module.observeChanges();
                     module.instantiate();
@@ -249,9 +245,6 @@
                             }
                             event.preventDefault();
                         }
-                    },
-                    resize: function () {
-                        module.setup.heights();
                     },
                     focus: function () {
                         windowRefocused = true;
@@ -342,10 +335,6 @@
                 },
 
                 bind: {
-                    resize: function () {
-                        module.verbose('Adding resize event to window', $window);
-                        $window.on('resize' + elementNamespace, module.event.resize);
-                    },
                     events: function () {
                         module.verbose('Attaching events');
                         $module
@@ -561,16 +550,6 @@
                         module.clear.cache();
                         module.set.pushable();
                         module.set.direction();
-                    },
-                    heights: function () {
-                        module.debug('Setting up heights', $module);
-                        const $header = $module.children(selector.header);
-                        const $content = $module.children(selector.content);
-                        const $actions = $module.children(selector.actions);
-                        const newContentHeight = ($context.height() || 0) - ($header.outerHeight() || 0) - ($actions.outerHeight() || 0);
-                        if (newContentHeight > 0) {
-                            $content.css('min-height', String(newContentHeight) + 'px');
-                        }
                     },
                 },
 
