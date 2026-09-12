@@ -1,4 +1,4 @@
-/// <reference path="index.d.ts" />
+import './index.d.ts';
 
 $().accordion(); // $ExpectType JQuery<HTMLElement>
 $().api();// $ExpectType JQuery
