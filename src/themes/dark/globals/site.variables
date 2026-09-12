@@ -1,0 +1,91 @@
+@white: #fff;
+@gray-100: #f8f9fa;
+@gray-200: #ebebeb;
+@gray-300: #dee2e6;
+@gray-400: #ced4da;
+@gray-500: #adb5bd;
+@gray-600: #999;
+@gray-700: #444;
+@gray-800: #303030;
+@gray-900: #222;
+@black: #000;
+
+@blue: #375a7f;
+@indigo: #6610f2;
+@purple: #6f42c1;
+@pink: #e83e8c;
+@red: #e74c3c;
+@orange: #fd7e14;
+@yellow: #f39c12;
+@green: #00bc8c;
+@teal: #20c997;
+@cyan: #3498db;
+
+@primary: @blue;
+@secondary: @gray-700;
+@success: @green;
+@info: @cyan;
+@warning: @yellow;
+@danger: @red;
+@light: @gray-800;
+@dark: @gray-800;
+
+@gray-base: #000;
+@gray-darker: lighten(@gray-base, 13.5%); // #222
+@gray-dark: #303030; // #333
+@gray: #464545;
+@gray-light: #999; // #999
+@gray-lighter: #ebebeb; // #eee
+
+@primaryColor: #375a7f;
+@positiveColor: #00bc8c;
+@infoColor: #3498db;
+@warningColor: #f39c12;
+@negativeColor: #e74c3c;
+
+@pageBackground: @gray-darker;
+@textColor: #fff;
+@linkColor: @primaryColor;
+@linkHoverColor: @linkColor;
+@fontName: "Lato";
+
+@invertedDisabledTextColor: #aaa;
+@disabledTextColor: #fff;
+@disabledBorderColor: transparent;
+@positiveTextColor: #fff;
+@positiveBackgroundColor: #00bc8c;
+@positiveBorderColor: @positiveColor;
+@infoTextColor: #fff;
+@infoBackgroundColor: @infoColor;
+@infoBorderColor: @infoColor;
+@warningTextColor: #fff;
+@warningBackgroundColor: #f39c12;
+@warningBorderColor: @warningColor;
+@negativeTextColor: darken(@textColor, 10%);
+@negativeBackgroundColor: #e74c3c;
+@negativeBorderColor: @negativeColor;
+
+
+@darktextcolor: rgba(255, 255, 255, 0.9);
+@mutedtextcolor: rgba(255, 255, 255, 0.8);
+@lighttextcolor: rgba(255, 255, 255, 0.7);
+@unselectedtextcolor: rgba(255, 255, 255, 0.5);
+@hoveredtextcolor: rgba(255, 255, 255, 1);
+@pressedtextcolor: rgba(255, 255, 255, 1);
+@selectedtextcolor: rgba(255, 255, 255, 1);
+@disabledtextcolor: rgba(255, 255, 255, 0.2);
+
+@invertedtextcolor: rgba(255, 255, 255, 0.9);
+@invertedmutedtextcolor: rgba(255, 255, 255, 0.8);
+@invertedlighttextcolor: rgba(255, 255, 255, 0.7);
+@invertedunselectedtextcolor: rgba(255, 255, 255, 0.5);
+@invertedhoveredtextcolor: rgba(255, 255, 255, 1);
+@invertedpressedtextcolor: rgba(255, 255, 255, 1);
+@invertedselectedtextcolor: rgba(255, 255, 255, 1);
+@inverteddisabledtextcolor: rgba(255, 255, 255, 0.2);
+
+@borderColor: @gray;
+
+@solidBorderColor: @gray-light;
+@inputColor: @gray;
+@inputPlaceholderColor: lighten(@gray, 10%);
