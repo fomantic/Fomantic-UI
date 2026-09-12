@@ -42,6 +42,10 @@
     user-select: text;
     will-change: top, left, margin, transform, opacity;
     outline: none;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 .ui.modal > :first-child@{notClose}:not(.dimmer),
@@ -86,8 +90,12 @@
     .ui.modal > .close:focus,
     .ui.modal > .close:hover {
         opacity: 1;
-        outline: none;
+        outline: @focusOutline;
     }
+}
+.ui.modal > .close:focus-visible when not (@closeFocusVisibleOutline = none) {
+    outline: @closeFocusVisibleOutline;
+    outline-offset: @closeFocusVisibleOutlineOffset;
 }
 
 /* --------------
