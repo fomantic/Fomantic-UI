@@ -11,6 +11,10 @@
 @duration: 500ms;
 @easing: @defaultEasing;
 
+/* Focus */
+@closeFocusVisibleOutline: @focusVisibleOutline;
+@closeFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
+
 /* Dimmer */
 @dimmerColor: rgb(0 0 0 / 0.4);
 @dimmerTransition: all @duration;

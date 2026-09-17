@@ -89,6 +89,12 @@
     background-image: @focusBackgroundImage;
     box-shadow: @focusBoxShadow;
 }
+& when not (@focusVisibleOutline = none) {
+    .ui.button:focus-visible {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
+}
 
 .ui.button:focus .icon {
     opacity: @iconFocusOpacity;

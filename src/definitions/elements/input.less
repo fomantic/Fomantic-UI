@@ -64,6 +64,10 @@
         transition: @iconTransition;
         cursor: pointer;
     }
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 /* --------------------

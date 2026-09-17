@@ -42,6 +42,10 @@
     font-size: @relativeMedium;
     line-height: @checkboxLineHeight;
     min-width: @checkboxSize;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 /* HTML Checkbox */
@@ -56,6 +60,10 @@
     z-index: 3;
     width: @checkboxSize;
     height: @checkboxSize;
+    &:focus-visible when not (@inputFocusVisibleOutline = none) {
+        outline: @inputFocusVisibleOutline;
+        outline-offset: @inputFocusVisibleOutlineOffset;
+    }
 }
 
 .ui.checkbox label {
@@ -64,6 +72,10 @@
     display: block;
     outline: none;
     font-size: @labelFontSize;
+    &:focus-visible when not (@labelFocusVisibleOutline = none) {
+        outline: @labelFocusVisibleOutline;
+        outline-offset: @labelFocusVisibleOutlineOffset;
+    }
 }
 
 .ui.checkbox@{notInvisible} label {
