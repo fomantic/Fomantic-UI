@@ -1,0 +1,4 @@
+.ui.definition.table>thead:not(.full-width)>tr>th:first-child {
+    background: @gray-dark;
+    box-shadow: none;
+}

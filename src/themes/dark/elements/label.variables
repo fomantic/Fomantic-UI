@@ -1,0 +1,11 @@
+@backgroundColor: @gray;
+@color: @white;
+@labelActiveTextColor: @primaryColor;
+@labelHoverTextColor: #fff;
+@ribbonShadowColor: @gray;
+@labelHoverBackgroundColor: darken(@gray, 10%);
+
+/* Basic */
+@basicBackground: none @gray-dark;
+@basicBorder: @basicBorderWidth solid @borderColor;
+@basicColor: @textColor;

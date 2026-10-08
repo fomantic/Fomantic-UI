@@ -1,0 +1,3 @@
+@itemLinkColor: @linkColor;
+@itemHeaderLinkColor: darken(@linkColor, 5%);
+@itemDescriptionColor: @gray-light;
