@@ -75,7 +75,7 @@ Fomantic includes an interactive installer to help setup your project.
 | CSS Only    | `npm install fomantic-ui-css`         | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)              |             |
 | LESS        | `npm install fomantic-ui-less`        | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS)            |             |
 | SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS)            | ✅         |
-| React       | `npm install react-fomantic-ui'`      | [react-Fomantic-UI](https://github.com/Fomantic-UI-React/react-fomantic-ui) | ✅         |
+| React       | `npm install react-fomantic-ui`      | [react-Fomantic-UI](https://github.com/Fomantic-UI-React/react-fomantic-ui) | ✅         |
 
 ---
 
