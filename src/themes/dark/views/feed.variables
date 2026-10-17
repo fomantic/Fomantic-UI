@@ -1,0 +1,5 @@
+@metadataActionColor: @gray-light;
+@iconLabelColor: @gray-light;
+
+/* Date */
+@dateColor: @gray-light;
