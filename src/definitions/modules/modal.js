@@ -94,6 +94,7 @@
             let id;
             let observer;
             let observeAttributes = false;
+            let resizeObserver;
             const module = {
 
                 initialize: function () {
@@ -241,6 +242,9 @@
                     if (observer) {
                         observer.disconnect();
                     }
+                    if (resizeObserver) {
+                        resizeObserver.disconnect();
+                    }
                     module.verbose('Destroying previous modal');
                     $module
                         .removeData(moduleNamespace)
@@ -256,6 +260,13 @@
                 },
 
                 observeChanges: function () {
+                    if (settings.observeChanges) {
+                        resizeObserver = new ResizeObserver(function (entries) {
+                            module.refresh();
+                        });
+                        resizeObserver.observe(element);
+                        module.debug('Setting up resize observer', resizeObserver);
+                    }
                     observer = new MutationObserver(function (mutations) {
                         const collectNodes = function (parent) {
                             const nodes = [];
@@ -290,7 +301,7 @@
                             return !shouldRefreshInputs;
                         });
 
-                        if (shouldRefresh && settings.observeChanges) {
+                        if (!resizeObserver && shouldRefresh) {
                             module.debug('DOM tree modified, refreshing');
                             module.refresh();
                         }
@@ -309,12 +320,15 @@
 
                 refresh: function () {
                     module.remove.scrolling();
-                    module.cacheSizes();
-                    if (!module.can.useFlex()) {
-                        module.set.modalOffset();
+                    if ($module.css('display') !== 'none') {
+                        module.cacheSizes();
+                        if (!module.can.useFlex()) {
+                            module.set.modalOffset();
+                        }
+                        module.set.screenHeight();
+                        module.set.dimmerHeight();
+                        module.set.type();
                     }
-                    module.set.screenHeight();
-                    module.set.type();
                 },
 
                 refreshModals: function () {
@@ -571,7 +585,7 @@
                         }
                         hadScrollbar = module.has.scrollbar();
                         module.showDimmer();
-                        module.cacheSizes();
+                        module.cacheSizes(true);
                         if (hadScrollbar) {
                             module.set.bodyMargin();
                         }
@@ -695,7 +709,8 @@
                     if ($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active')) {
                         if (hadScrollbar) {
                             if (!isBody) {
-                                $dimmer.css('top', $dimmable.scrollTop());
+                                $dimmer.css('top', settings.detachable ? $dimmable.scrollTop() : 0);
+                                module.set.dimmerHeight();
                             }
                             module.save.bodyMargin();
                         }
@@ -715,6 +730,7 @@
                             }
                             module.remove.clickaway();
                             module.remove.screenHeight();
+                            module.remove.dimmerHeight();
                         });
                     } else {
                         module.debug('Dimmer is not visible cannot hide');
@@ -832,11 +848,26 @@
                             $context.removeAttr('style');
                         }
                     },
+                    dimmerStyle: function () {
+                        if ($dimmer.attr('style') === '') {
+                            module.verbose('Removing dimmer style attribute');
+                            $dimmer.removeAttr('style');
+                        }
+                    },
                     screenHeight: function () {
                         module.debug('Removing page height');
                         $context
                             .css('height', '');
                         module.remove.bodyStyle();
+                    },
+                    dimmerHeight: function () {
+                        module.debug('Removing dimmer height');
+                        $dimmer.css({
+                            top: '',
+                            height: '',
+                            maxHeight: '',
+                        });
+                        module.remove.dimmerStyle();
                     },
                     keyboardShortcuts: function () {
                         module.verbose('Removing keyboard shortcuts');
@@ -851,11 +882,13 @@
                     },
                 },
 
-                cacheSizes: function () {
+                cacheSizes: function (getScrollingMargins) {
                     $module.addClass(className.loading);
                     const scrollHeight = $module.prop('scrollHeight');
                     const modalWidth = $module.outerWidth();
                     const modalHeight = $module.outerHeight();
+                    let scrollingTop = 0;
+                    let bottomMargin = 0;
                     if (module.cache.pageHeight === undefined || modalHeight !== 0) {
                         $.extend(module.cache, {
                             pageHeight: $document.outerHeight(),
@@ -867,6 +900,18 @@
                                 : $dimmable.height(),
                         });
                         module.cache.topOffset = -(module.cache.height / 2);
+                    }
+                    if (getScrollingMargins) {
+                        if (module.can.useFlex()) {
+                            $module.addClass(className.scrolling);
+                            scrollingTop = Number.parseInt($module.css('top').replace(/[^\d.]/g, ''), 10) || 0;
+                            bottomMargin = Number.parseInt(window.getComputedStyle($module[0], '::after').height.replace(/[^\d.]/g, ''), 10) || 0;
+                            $module.removeClass(className.scrolling);
+                        }
+                        $.extend(module.cache, {
+                            scrollingTop: scrollingTop,
+                            bottomMargin: bottomMargin,
+                        });
                     }
                     $module.removeClass(className.loading);
                     module.debug('Caching modal and container sizes', module.cache);
@@ -910,6 +955,7 @@
                         const contextHeight = module.cache.contextHeight;
                         const verticalCenter = module.cache.contextHeight / 2;
                         const topOffset = module.cache.topOffset;
+                        const scrollingTop = module.cache.scrollingTop || 0;
                         const scrollHeight = module.cache.scrollHeight;
                         const height = module.cache.height;
                         const paddingHeight = settings.padding;
@@ -917,7 +963,7 @@
 
                         return scrollHeight > height
                             ? startPosition + scrollHeight + paddingHeight < contextHeight
-                            : height + (paddingHeight * 2) < contextHeight;
+                            : height + (paddingHeight * 2) - scrollingTop < contextHeight;
                     },
                 },
                 has: {
@@ -1039,13 +1085,14 @@
                     modalOffset: function () {
                         if (!settings.detachable) {
                             const canFit = module.can.fit();
+                            const scrollTop = (isBody ? $document : $context).scrollTop();
                             $module
                                 .css({
                                     top: !$module.hasClass('aligned') && canFit
-                                        ? $document.scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
+                                        ? scrollTop + (module.cache.contextHeight - module.cache.height) / 2
                                         : (!canFit || $module.hasClass('top')
-                                            ? $document.scrollTop() + settings.padding
-                                            : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding)),
+                                            ? scrollTop + settings.padding
+                                            : scrollTop + (module.cache.contextHeight - module.cache.height - settings.padding)),
                                     marginLeft: -(module.cache.width / 2),
                                 });
                         } else {
@@ -1060,12 +1107,23 @@
                         module.verbose('Setting modal offset for legacy mode');
                     },
                     screenHeight: function () {
-                        if (module.can.fit()) {
-                            $context.css('height', '');
-                        } else if (!$module.hasClass('bottom')) {
-                            module.debug('Modal is taller than page content, resizing page height');
-                            $context
-                                .css('height', module.cache.height + (settings.padding * 2) + 'px');
+                        if (!isBody && !settings.detachable) {
+                            if (module.can.fit() || hadScrollbar) {
+                                $context.css('height', '');
+                            } else if (!$module.hasClass('bottom')) {
+                                module.debug('Modal is taller than page content, resizing page height');
+                                $context
+                                    .css('height', module.cache.height + (settings.padding * 2) + 'px');
+                            }
+                        }
+                    },
+                    dimmerHeight: function () {
+                        if (!isBody && !settings.detachable) {
+                            const contextHeight = $context.prop('scrollHeight');
+                            $dimmer.css({
+                                height: contextHeight,
+                                maxHeight: contextHeight,
+                            });
                         }
                     },
                     active: function () {
