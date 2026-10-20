@@ -622,7 +622,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     })
     jasmine.getEnv().addEqualityTester(function (a, b) {
       if(a instanceof jQuery && b instanceof jQuery) {
-        if(a.size() != b.size()) {
+        if(a.length != b.length) {
           return jasmine.undefined
         }
         else if(a.is(b)) {

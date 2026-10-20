@@ -30,7 +30,7 @@ function moduleTests(ui) {
         // module available in scope
         $module = $(element);
 
-        if ($module.size() === 1) { // one module available in fixture
+        if ($module.length === 1) { // one module available in fixture
             $oneModule = $module;
             $clone = $module.clone().appendTo($(sandbox()));
             $modules = $clone.add($module);
@@ -59,7 +59,7 @@ function moduleTests(ui) {
         it('allows chaining when no settings returned', function () {
             const $chain = $modules[module]();
             expect($chain).toExist();
-            expect($chain.size()).toBe($modules.size());
+            expect($chain.length).toBe($modules.length);
         });
 
         it('returns a string when one setting returned', function () {
