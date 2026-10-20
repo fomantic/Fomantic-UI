@@ -299,8 +299,10 @@
                                 .removeClass(className.active);
                             $result
                                 .removeClass(className.active)
+                                .trigger('focusout')
                                 .eq(newIndex)
                                 .addClass(className.active)
+                                .trigger('focusin')
                                 .closest($category)
                                 .addClass(className.active);
                             module.ensureVisible($result.eq(newIndex));
@@ -314,8 +316,10 @@
                                 .removeClass(className.active);
                             $result
                                 .removeClass(className.active)
+                                .trigger('focusout')
                                 .eq(newIndex)
                                 .addClass(className.active)
+                                .trigger('focusin')
                                 .closest($category)
                                 .addClass(className.active);
                             module.ensureVisible($result.eq(newIndex));
