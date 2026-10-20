@@ -69,7 +69,7 @@ function moduleTests(ui) {
 
         it('returns an array when multiple settings returned', function () {
             const result = $modules[module]('setting', 'name');
-            expect($.isArray(result)).toBeTruthy();
+            expect(Array.isArray(result)).toBeTruthy();
         });
 
         it('has an instance in metadata after init', function () {
