@@ -2645,6 +2645,64 @@
                             .addClass(className.label)
                             .attr('data-' + metadata.value, value)
                             .html(templates.label(value, text, settings));
+                        if (settings.allowAdditions) {
+                            $label.on('click', function (e) {
+                                if (e.target !== this || $(this).hasClass('editing')) {
+                                    return;
+                                }
+                                $(this).addClass('editing');
+                                $(this).html($(this).children());
+                                $(this).children().hide();
+                                let value = $(this).attr('data-value');
+                                let inputDiv = $('<input type="text">').val(value);
+                                inputDiv.on('keydown', function (e) {
+                                    // Prevent parent from acting on Backspace/Delete while typing
+                                    if (e.key === 'Backspace' || e.key === 'Delete') {
+                                        e.stopPropagation();
+                                    }
+                                    if (e.key === 'Enter') {
+                                        e.stopPropagation();
+                                        $(this).trigger('blur');
+                                    }
+                                });
+                                inputDiv.on('blur', function () {
+                                    let input = $(this);
+                                    let container = input.parent();
+
+                                    let oldVal = container.attr('data-value');
+                                    let newVal = input.val();
+                                    if (!input.val().trim()) {
+                                        module.remove.activeLabels(container);
+
+                                        return;
+                                    }
+                                    let userVal = module.is.userValue();
+                                    if (oldVal !== newVal && !userVal) {
+                                        // check if new value matches with a non-user value
+                                        let nonAddedValues = $menu.children().map(function () {
+                                            return $(this).data('value');
+                                        }).get();
+                                        if (nonAddedValues.includes(newVal)) {
+                                            let $matchedMenuItem = $menu.children('[data-value="' + newVal + '"]');
+                                            $matchedMenuItem.addClass(className.active);
+                                            $matchedMenuItem.addClass(className.filtered);
+                                        }
+
+                                        let $activeItem = $menu.children('.' + className.active).eq(0);
+                                        module.remove.activeLabels(container);
+                                        module.add.label(newVal, newVal, true);
+                                        module.add.value(newVal, newVal, $activeItem, false);
+                                    } else {
+                                        container.prepend(document.createTextNode(input.val()));
+                                        container.removeClass('editing');
+                                        input.remove();
+                                        container.children('.close.icon, .delete.icon').show();
+                                    }
+                                });
+                                $(this).prepend(inputDiv);
+                                inputDiv.trigger('focus');
+                            });
+                        }
                         $label = settings.onLabelCreate.call($label, value, text);
 
                         if (module.has.label(value)) {
