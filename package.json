@@ -58,7 +58,7 @@
     "gulp-tap": "^1.0.1",
     "gulp-uglify": "^3.0.1",
     "inquirer": "^8.2.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.0 || ^4.0.0",
     "less": "^3.12.0 || ^4.0.0",
     "map-stream": "^0.1.0",
     "merge-stream": "^2.0.0",
