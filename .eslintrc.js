@@ -106,9 +106,7 @@ module.exports = {
             'no-use-before-define': 'off',
 
             // TODO rules with a lot of errors to be fixed manually, fix in a separate PR
-            '@typescript-eslint/ban-types': 'off', // 16 eslint errors only, help wanted!
             '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/triple-slash-reference': 'off',
         },
     }],
 };
