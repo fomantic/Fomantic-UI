@@ -397,9 +397,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       },
 
       toHaveText: function (text) {
-        var trimmedText = $.trim(this.actual.text())
+        var trimmedText = this.actual.text().trim()
 
-        if (text && $.isFunction(text.test)) {
+        if (text && typeof text.test === 'function') {
           return text.test(trimmedText)
         } else {
           return trimmedText == text
@@ -407,9 +407,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       },
 
       toContainText: function (text) {
-        var trimmedText = $.trim(this.actual.text())
+        var trimmedText = this.actual.text().trim()
 
-        if (text && $.isFunction(text.test)) {
+        if (text && typeof text.test === 'function') {
           return text.test(trimmedText)
         } else {
           return trimmedText.indexOf(text) != -1
@@ -498,7 +498,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
               var result = jQueryMatchers[methodName].apply(this, arguments)
                 , element
 
-              if (this.actual.get && (element = this.actual.get()[0]) && !$.isWindow(element) && element.tagName !== "HTML")
+              if (this.actual.get && (element = this.actual.get()[0]) && element !== element.window && element.tagName !== "HTML")
                 this.actual = jasmine.JQuery.elementToString(this.actual)
 
               return result
@@ -622,7 +622,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     })
     jasmine.getEnv().addEqualityTester(function (a, b) {
       if(a instanceof jQuery && b instanceof jQuery) {
-        if(a.size() != b.size()) {
+        if(a.length != b.length) {
           return jasmine.undefined
         }
         else if(a.is(b)) {
