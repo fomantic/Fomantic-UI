@@ -33,6 +33,8 @@
 @topLayer: 102;
 @dimmerLayer: 1000;
 
+@iOStouchAction: pan-y;
+
 /* -------------------
       Variations
 -------------------- */
