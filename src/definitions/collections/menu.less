@@ -1421,6 +1421,87 @@ Floated Menu / Item
         .ui.collapsible.pointing.menu .active.item::after when (@variationMenuPointing) {
             display: none;
         }
+
+        /* Nested Sub Menu */
+        .ui.collapsible.menu > .menu > .menu,
+        .ui.collapsible.menu > .container > .menu > .menu {
+            flex-direction: column;
+            width: 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .ui.collapsible.menu > .menu > .menu > .item,
+        .ui.collapsible.menu > .container > .menu > .menu > .item {
+            width: 100% !important;
+        }
+        .ui.collapsible.menu > .menu > .menu > .item::before,
+        .ui.collapsible.menu > .container > .menu > .menu > .item::before {
+            top: 0;
+            right: auto;
+            left: 0;
+            width: 100%;
+            height: @dividerSize;
+        }
+    }
+
+    /* Overlay */
+    @media only screen and (min-width: @tabletBreakpoint) {
+        .ui.overlay.collapsible.menu > .menu:not(.right, .center),
+        .ui.overlay.collapsible.menu > .container > .menu:not(.right, .center) {
+            display: flex;
+            flex-grow: 1;
+        }
+    }
+
+    @media only screen and (max-width: @largestMobileScreen) {
+        .ui.overlay.collapsible.menu:not(.fixed, .sticky) {
+            position: relative;
+        }
+        .ui.overlay.collapsible.active.menu > .container > .menu {
+            display: flex;
+        }
+        .ui.overlay.collapsible.active.menu {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .ui.overlay.collapsible.menu > .container {
+            background: inherit;
+        }
+        .ui.overlay.collapsible.menu > .menu,
+        .ui.overlay.collapsible.menu > .container > .menu {
+            position: absolute;
+            top: 100%;
+            left: -@borderWidth;
+            right: -@borderWidth;
+            z-index: @collapsibleOverlayZIndex;
+            background: inherit;
+            border: inherit;
+            border-top: none;
+            border-radius: 0 0 @borderRadius @borderRadius;
+            box-shadow: @collapsibleOverlayBoxShadow;
+        }
+        .ui.overlay.inverted.collapsible.menu > .menu,
+        .ui.overlay.inverted.collapsible.menu > .container > .menu,
+        .ui.overlay.secondary.collapsible.menu > .menu,
+        .ui.overlay.secondary.collapsible.menu > .container > .menu,
+        .ui.overlay.text.collapsible.menu > .menu,
+        .ui.overlay.text.collapsible.menu > .container > .menu {
+            left: 0;
+            right: 0;
+        }
+        .ui.overlay.secondary.collapsible.menu > .menu,
+        .ui.overlay.secondary.collapsible.menu > .container > .menu,
+        .ui.overlay.text.collapsible.menu > .menu,
+        .ui.overlay.text.collapsible.menu > .container > .menu {
+            background: @collapsibleOverlayBackground;
+            border-radius: 0;
+        }
+        .ui.overlay.secondary.inverted.collapsible.menu > .menu,
+        .ui.overlay.secondary.inverted.collapsible.menu > .container > .menu,
+        .ui.overlay.text.inverted.collapsible.menu > .menu,
+        .ui.overlay.text.inverted.collapsible.menu > .container > .menu {
+            background: @invertedCollapsibleOverlayBackground;
+        }
     }
 
     @keyframes collapsibleMenuShow {
