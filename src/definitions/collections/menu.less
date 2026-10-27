@@ -1350,6 +1350,106 @@ Floated Menu / Item
     }
 }
 
+& when (@variationMenuCollapsible) {
+    /* --------------
+        Collapsible
+    --------------- */
+
+    .ui.collapsible.menu > .toggle.item,
+    .ui.collapsible.menu > .container > .toggle.item {
+        display: none;
+    }
+
+    @media only screen and (max-width: @largestMobileScreen) {
+        .ui.collapsible.menu,
+        .ui.collapsible.menu > .container {
+            flex-wrap: wrap;
+        }
+
+        /* Toggle */
+        .ui.collapsible.menu > .toggle.item,
+        .ui.collapsible.menu > .container > .toggle.item {
+            display: flex;
+            margin-left: auto !important;
+        }
+        .ui.collapsible.menu > .toggle.item::before,
+        .ui.collapsible.menu > .container > .toggle.item::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Collapsed */
+        .ui.collapsible.menu:not(.active) > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .menu,
+        .ui.collapsible.menu:not(.active) > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .container > .menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(@collapsibleDistance);
+            transition: @collapsibleTransition;
+        }
+
+        /* Expanded */
+        .ui.collapsible.menu > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .container > .menu {
+            order: 1;
+            flex: 0 0 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            animation: @collapsibleAnimation;
+        }
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .menu {
+            flex-direction: column;
+        }
+        .ui.collapsible.menu > .menu > .item,
+        .ui.collapsible.menu > .container > .menu > .item {
+            width: 100% !important;
+        }
+        .ui.collapsible.menu > .item:not(.header, .toggle)::before,
+        .ui.collapsible.menu > .menu > .item::before,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle)::before,
+        .ui.collapsible.menu > .container > .menu > .item::before {
+            top: 0;
+            right: auto;
+            left: 0;
+            width: 100%;
+            height: @dividerSize;
+        }
+        .ui.collapsible.pointing.menu .active.item::after when (@variationMenuPointing) {
+            display: none;
+        }
+    }
+
+    @keyframes collapsibleMenuShow {
+        0% {
+            opacity: 0;
+            transform: translateY(@collapsibleDistance);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .ui.collapsible.menu > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .container > .menu {
+            animation: none;
+        }
+        .ui.collapsible.menu:not(.active) > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .menu,
+        .ui.collapsible.menu:not(.active) > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .container > .menu {
+            transition: none;
+        }
+    }
+}
+
 /* --------------
      Colors
 --------------- */

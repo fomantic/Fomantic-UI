@@ -430,6 +430,15 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow: @attachedBoxShadow;
 
+/* Collapsible */
+@collapsibleDuration: 0.2s;
+@collapsibleDistance: -0.5em;
+@collapsibleAnimation: collapsibleMenuShow @collapsibleDuration @defaultEasing;
+@collapsibleTransition:
+    opacity @collapsibleDuration @defaultEasing,
+    transform @collapsibleDuration @defaultEasing,
+    display @collapsibleDuration allow-discrete;
+
 /* Resize large sizes */
 @mini: @absolute11px;
 @tiny: @absolute12px;
