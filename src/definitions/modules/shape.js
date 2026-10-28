@@ -134,22 +134,14 @@
 
                 reset: function () {
                     module.verbose('Animating states reset');
-                    $module
-                        .removeClass(className.animating)
-                        .attr('style', '')
-                        .removeAttr('style');
-                    // removeAttr style does not consistently work in safari
-                    $sides
-                        .attr('style', '')
-                        .removeAttr('style');
-                    $side
-                        .attr('style', '')
-                        .removeAttr('style')
-                        .removeClass(className.hidden);
-                    $nextSide
-                        .removeClass(className.animating)
-                        .attr('style', '')
-                        .removeAttr('style');
+                    $module.removeClass(className.animating);
+                    $side.removeClass(className.hidden);
+                    $nextSide.removeClass(className.animating);
+                    // Chrome keeps an empty style attribute if it is not read before its removal
+                    $module.add($sides).add($side).each(function () {
+                        this.getAttribute('style');
+                        this.removeAttribute('style');
+                    });
                 },
 
                 is: {
