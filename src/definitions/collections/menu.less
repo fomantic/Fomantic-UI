@@ -1350,6 +1350,187 @@ Floated Menu / Item
     }
 }
 
+& when (@variationMenuCollapsible) {
+    /* --------------
+        Collapsible
+    --------------- */
+
+    .ui.collapsible.menu > .toggle.item,
+    .ui.collapsible.menu > .container > .toggle.item {
+        display: none;
+    }
+
+    @media only screen and (max-width: @largestMobileScreen) {
+        .ui.collapsible.menu,
+        .ui.collapsible.menu > .container {
+            flex-wrap: wrap;
+        }
+
+        /* Toggle */
+        .ui.collapsible.menu > .toggle.item,
+        .ui.collapsible.menu > .container > .toggle.item {
+            display: flex;
+            margin-left: auto !important;
+        }
+        .ui.collapsible.menu > .toggle.item::before,
+        .ui.collapsible.menu > .container > .toggle.item::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Collapsed */
+        .ui.collapsible.menu:not(.active) > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .menu,
+        .ui.collapsible.menu:not(.active) > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .container > .menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(@collapsibleDistance);
+            transition: @collapsibleTransition;
+        }
+
+        /* Expanded */
+        .ui.collapsible.menu > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .container > .menu {
+            order: 1;
+            flex: 0 0 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            animation: @collapsibleAnimation;
+        }
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .menu {
+            flex-direction: column;
+        }
+        .ui.collapsible.menu > .menu > .item,
+        .ui.collapsible.menu > .container > .menu > .item {
+            width: 100% !important;
+        }
+        .ui.collapsible.menu > .item:not(.header, .toggle)::before,
+        .ui.collapsible.menu > .menu > .item::before,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle)::before,
+        .ui.collapsible.menu > .container > .menu > .item::before {
+            top: 0;
+            right: auto;
+            left: 0;
+            width: 100%;
+            height: @dividerSize;
+        }
+        .ui.collapsible.pointing.menu .active.item::after when (@variationMenuPointing) {
+            display: none;
+        }
+
+        /* Nested Sub Menu */
+        .ui.collapsible.menu > .menu > .menu,
+        .ui.collapsible.menu > .container > .menu > .menu {
+            flex-direction: column;
+            width: 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .ui.collapsible.menu > .menu > .menu > .item,
+        .ui.collapsible.menu > .container > .menu > .menu > .item {
+            width: 100% !important;
+        }
+        .ui.collapsible.menu > .menu > .menu > .item::before,
+        .ui.collapsible.menu > .container > .menu > .menu > .item::before {
+            top: 0;
+            right: auto;
+            left: 0;
+            width: 100%;
+            height: @dividerSize;
+        }
+    }
+
+    /* Overlay */
+    @media only screen and (min-width: @tabletBreakpoint) {
+        .ui.overlay.collapsible.menu > .menu:not(.right, .center),
+        .ui.overlay.collapsible.menu > .container > .menu:not(.right, .center) {
+            display: flex;
+            flex-grow: 1;
+        }
+    }
+
+    @media only screen and (max-width: @largestMobileScreen) {
+        .ui.overlay.collapsible.menu:not(.fixed, .sticky) {
+            position: relative;
+        }
+        .ui.overlay.collapsible.active.menu > .container > .menu {
+            display: flex;
+        }
+        .ui.overlay.collapsible.active.menu {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .ui.overlay.collapsible.menu > .container {
+            background: inherit;
+        }
+        .ui.overlay.collapsible.menu > .menu,
+        .ui.overlay.collapsible.menu > .container > .menu {
+            position: absolute;
+            top: 100%;
+            left: -@borderWidth;
+            right: -@borderWidth;
+            z-index: @collapsibleOverlayZIndex;
+            background: inherit;
+            border: inherit;
+            border-top: none;
+            border-radius: 0 0 @borderRadius @borderRadius;
+            box-shadow: @collapsibleOverlayBoxShadow;
+        }
+        .ui.overlay.inverted.collapsible.menu > .menu,
+        .ui.overlay.inverted.collapsible.menu > .container > .menu,
+        .ui.overlay.secondary.collapsible.menu > .menu,
+        .ui.overlay.secondary.collapsible.menu > .container > .menu,
+        .ui.overlay.text.collapsible.menu > .menu,
+        .ui.overlay.text.collapsible.menu > .container > .menu {
+            left: 0;
+            right: 0;
+        }
+        .ui.overlay.secondary.collapsible.menu > .menu,
+        .ui.overlay.secondary.collapsible.menu > .container > .menu,
+        .ui.overlay.text.collapsible.menu > .menu,
+        .ui.overlay.text.collapsible.menu > .container > .menu {
+            background: @collapsibleOverlayBackground;
+            border-radius: 0;
+        }
+        .ui.overlay.secondary.inverted.collapsible.menu > .menu,
+        .ui.overlay.secondary.inverted.collapsible.menu > .container > .menu,
+        .ui.overlay.text.inverted.collapsible.menu > .menu,
+        .ui.overlay.text.inverted.collapsible.menu > .container > .menu {
+            background: @invertedCollapsibleOverlayBackground;
+        }
+    }
+
+    @keyframes collapsibleMenuShow {
+        0% {
+            opacity: 0;
+            transform: translateY(@collapsibleDistance);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .ui.collapsible.menu > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .menu,
+        .ui.collapsible.menu > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu > .container > .menu {
+            animation: none;
+        }
+        .ui.collapsible.menu:not(.active) > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .menu,
+        .ui.collapsible.menu:not(.active) > .container > .item:not(.header, .toggle),
+        .ui.collapsible.menu:not(.active) > .container > .menu {
+            transition: none;
+        }
+    }
+}
+
 /* --------------
      Colors
 --------------- */
