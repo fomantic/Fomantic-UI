@@ -203,10 +203,7 @@
 
                 force: {
                     visible: function () {
-                        const style = $module.attr('style');
-                        const userStyle = module.get.userStyle(style);
                         const displayType = module.get.displayType();
-                        const overrideStyle = userStyle + 'display: ' + displayType + ' !important;';
                         const inlineDisplay = $module[0].style.display;
                         const mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
                         if (mustStayHidden) {
@@ -215,8 +212,7 @@
                             return false;
                         }
                         module.verbose('Overriding default display to show element', displayType);
-                        $module
-                            .attr('style', overrideStyle);
+                        $module[0].style.setProperty('display', displayType, 'important');
 
                         return true;
                     },
@@ -537,11 +533,6 @@
                         }
 
                         return $module.data(metadata.displayType);
-                    },
-                    userStyle: function (style) {
-                        style = style || $module.attr('style') || '';
-
-                        return style.replace(/display.*?;/, '');
                     },
                     transitionExists: function (animation) {
                         return $.fn.transition.exists[animation];

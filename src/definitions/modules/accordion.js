@@ -313,9 +313,7 @@
                         const $element = $(this);
                         $element.css('display', '');
                         if ($element.attr('style') === '') {
-                            $element
-                                .attr('style', '')
-                                .removeAttr('style');
+                            $element.removeAttr('style');
                         }
                     },
 
@@ -324,9 +322,7 @@
                         const $element = $(this);
                         $element.css('opacity', '');
                         if ($element.attr('style') === '') {
-                            $element
-                                .attr('style', '')
-                                .removeAttr('style');
+                            $element.removeAttr('style');
                         }
                     },
 
