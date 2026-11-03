@@ -1,0 +1,10 @@
+/*******************************
+            Comments
+*******************************/
+
+/* Metadata */
+@metadataColor: @gray-light;
+
+/* Actions */
+@actionLinkColor:  @gray-light;
+@actionLinkHoverColor: @white;

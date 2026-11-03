@@ -1,0 +1,60 @@
+@sliderLineColor: @gray;
+@toggleLaneBackground: @gray;
+@radioActiveBulletColor: @gray-base;
+@radioFocusBulletColor: @gray-base;
+@radioActiveFocusBulletColor: @gray-base;
+@bulletColor: @gray-base;
+@checkboxActiveCheckColor: @gray-base;
+@checkboxActiveFocusCheckColor: @gray-base;
+
+
+
+/*******************************
+            Checkbox
+*******************************/
+
+/*-------------------
+        States
+--------------------*/
+
+/* Hover */
+@labelHoverColor: @gray-light;
+
+/* Pressed */
+@labelPressedColor: @gray-light;
+
+/* Focus */
+@labelFocusColor: @gray-light;;
+
+/* Active */
+@labelActiveColor:  @gray-light;
+
+/* Active Focus */
+@checkboxActiveFocusCheckColor:  @gray-light;;
+
+
+/*-------------------
+        Types
+--------------------*/
+/* Slider & Toggle Handle */
+@sliderOffLabelColor:  @gray-light;
+
+
+/* Slider States */
+@sliderHoverLabelColor:  @gray-light;
+
+@sliderOnLabelColor:  @gray-light;
+
+@sliderOnFocusLabelColor: @gray-light;
+
+
+/* Toggle */
+@toggleOnLabelColor:  @gray-light;
+@toggleOnLaneColor: @primaryColor;
+
+@toggleOnHandleBoxShadow: @handleBoxShadow;
+
+@toggleOnFocusLaneColor: @primaryColorFocus;
+@toggleOnFocusLabelColor: @gray-light;
+
+
