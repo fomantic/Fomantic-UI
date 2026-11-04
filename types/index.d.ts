@@ -2,32 +2,31 @@
 // Project: https://github.com/fomantic/Fomantic-UI
 // Definitions by: Fomantic Team <https://github.com/fomantic>
 
-/// <reference types="jquery" />
+import type {} from 'jquery';
 
-/// <reference path="fomantic-ui-accordion.d.ts" />
-/// <reference path="fomantic-ui-api.d.ts" />
-/// <reference path="fomantic-ui-calendar.d.ts" />
-/// <reference path="fomantic-ui-checkbox.d.ts" />
-/// <reference path="fomantic-ui-dimmer.d.ts" />
-/// <reference path="fomantic-ui-dimmer.d.ts" />
-/// <reference path="fomantic-ui-dropdown.d.ts" />
-/// <reference path="fomantic-ui-embed.d.ts" />
-/// <reference path="fomantic-ui-flyout.d.ts" />
-/// <reference path="fomantic-ui-form.d.ts" />
-/// <reference path="fomantic-ui-modal.d.ts" />
-/// <reference path="fomantic-ui-nag.d.ts" />
-/// <reference path="fomantic-ui-popup.d.ts" />
-/// <reference path="fomantic-ui-progress.d.ts" />
-/// <reference path="fomantic-ui-rating.d.ts" />
-/// <reference path="fomantic-ui-search.d.ts" />
-/// <reference path="fomantic-ui-shape.d.ts" />
-/// <reference path="fomantic-ui-sidebar.d.ts" />
-/// <reference path="fomantic-ui-slider.d.ts" />
-/// <reference path="fomantic-ui-sticky.d.ts" />
-/// <reference path="fomantic-ui-tab.d.ts" />
-/// <reference path="fomantic-ui-toast.d.ts" />
-/// <reference path="fomantic-ui-transition.d.ts" />
-/// <reference path="fomantic-ui-visibility.d.ts" />
+import './fomantic-ui-accordion.d.ts';
+import './fomantic-ui-api.d.ts';
+import './fomantic-ui-calendar.d.ts';
+import './fomantic-ui-checkbox.d.ts';
+import './fomantic-ui-dimmer.d.ts';
+import './fomantic-ui-dropdown.d.ts';
+import './fomantic-ui-embed.d.ts';
+import './fomantic-ui-flyout.d.ts';
+import './fomantic-ui-form.d.ts';
+import './fomantic-ui-modal.d.ts';
+import './fomantic-ui-nag.d.ts';
+import './fomantic-ui-popup.d.ts';
+import './fomantic-ui-progress.d.ts';
+import './fomantic-ui-rating.d.ts';
+import './fomantic-ui-search.d.ts';
+import './fomantic-ui-shape.d.ts';
+import './fomantic-ui-sidebar.d.ts';
+import './fomantic-ui-slider.d.ts';
+import './fomantic-ui-sticky.d.ts';
+import './fomantic-ui-tab.d.ts';
+import './fomantic-ui-toast.d.ts';
+import './fomantic-ui-transition.d.ts';
+import './fomantic-ui-visibility.d.ts';
 
 interface JQuery {
     accordion: FomanticUI.Accordion;
