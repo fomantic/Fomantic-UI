@@ -184,6 +184,12 @@
     background: @promptFocusBackground;
     color: @promptFocusColor;
 }
+& when not (@focusVisibleOutline = none) {
+    .ui.search > .prompt:focus-visible {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
+}
 
 & when (@variationSearchLoading) {
     /* --------------------

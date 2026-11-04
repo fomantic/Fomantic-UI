@@ -48,6 +48,10 @@
     transition: @transition;
     user-select: none;
     -webkit-tap-highlight-color: rgb(0 0 0 / 0);
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 /*******************************
@@ -77,6 +81,10 @@
     transition: @menuTransition;
     z-index: @menuZIndex;
     will-change: transform, opacity;
+    &:focus-visible when not (@menuFocusVisibleOutline = none) {
+        outline: @menuFocusVisibleOutline;
+        outline-offset: @menuFocusVisibleOutlineOffset;
+    }
 }
 
 .ui.dropdown .menu > * {
@@ -405,7 +413,7 @@ select.ui.dropdown {
         word-wrap: break-word;
         line-height: 1em;
         white-space: normal;
-        outline: 0;
+        outline: none;
         transform: rotateZ(0);
         min-width: @selectionMinWidth;
         min-height: @selectionMinHeight;
@@ -417,6 +425,10 @@ select.ui.dropdown {
         border: @selectionBorder;
         border-radius: @selectionBorderRadius;
         transition: @selectionTransition;
+        &:focus-visible when not (@selectionFocusVisibleOutline = none) {
+            outline: @selectionFocusVisibleOutline;
+            outline-offset: @selectionFocusVisibleOutlineOffset;
+        }
     }
     .ui.selection.dropdown.visible,
     .ui.selection.dropdown.active {
@@ -453,6 +465,10 @@ select.ui.dropdown {
         width: @menuMinWidth;
         box-shadow: @selectionMenuBoxShadow;
         transition: @selectionMenuTransition;
+        &:focus-visible when not (@selectionMenuFocusVisibleOutline = none) {
+            outline: @selectionMenuFocusVisibleOutline;
+            outline-offset: @selectionMenuFocusVisibleOutlineOffset;
+        }
     }
     .ui.selection.dropdown@{notPointing}@{notFloating} > .menu {
         border-top-width: 0;
@@ -742,6 +758,10 @@ select.ui.dropdown {
         outline: none;
         -webkit-tap-highlight-color: rgb(255 255 255 / 0);
         padding: inherit;
+        &:focus-visible when not (@searchFocusVisibleOutline = none) {
+            outline: @searchFocusVisibleOutline;
+            outline-offset: @searchFocusVisibleOutlineOffset;
+        }
     }
 
     /* Text Layering */
