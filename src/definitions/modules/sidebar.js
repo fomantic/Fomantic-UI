@@ -86,6 +86,9 @@
                     module.debug('Initializing sidebar', parameters);
 
                     module.create.id();
+                    if (module.is.ios()) {
+                        module.set.ios();
+                    }
 
                     // avoids locking rendering if initialized in onReady
                     if (settings.delaySetup) {
