@@ -617,7 +617,8 @@
                                 .on('focus' + eventNamespace, selector.search, module.event.search.focus)
                                 .on('click' + eventNamespace, selector.search, module.event.search.focus)
                                 .on('blur' + eventNamespace, selector.search, module.event.search.blur)
-                                .on('click' + eventNamespace, selector.text, module.event.text.focus);
+                                .on('click' + eventNamespace, selector.text, module.event.text.focus)
+                                .on('click' + eventNamespace, selector.input, module.event.select.click);
                             if (module.is.multiple()) {
                                 $module
                                     .on('click' + eventNamespace, module.event.click)
@@ -1116,6 +1117,9 @@
                     },
                     search: {
                         focus: function (event) {
+                            if (module.is.forwardedLabelClick(event)) {
+                                return;
+                            }
                             activated = true;
                             if (module.is.multiple()) {
                                 module.remove.activeLabel();
@@ -1253,6 +1257,11 @@
                         },
                     },
                     select: {
+                        click: function (event) {
+                            if (!module.is.bubbledLabelClick(event) && !module.is.disabled()) {
+                                module.focusSearch();
+                            }
+                        },
                         mutation: function (mutations) {
                             if (module.is.selectMutation(mutations)) {
                                 module.debug('<select> modified, recreating menu');
@@ -3127,6 +3136,9 @@
                     },
                     animatingOutward: function () {
                         return $menu.transition('is outward');
+                    },
+                    forwardedLabelClick: function (event) {
+                        return $(event.target).is($input);
                     },
                     bubbledLabelClick: function (event) {
                         return $(event.target).is('select, input') && $module.closest('label').length > 0;
