@@ -1,0 +1,73 @@
+/*******************************
+            Search
+*******************************/
+
+/* Search Prompt */
+@promptBackground: @gray-dark;
+@promptBorder: 1px solid @gray;
+@promptColor: @white;
+
+
+/* Result Box */
+@resultsBackground:  @gray-dark;
+@resultsBorder: 1px solid  @gray;
+
+/* Result */
+@resultTextColor:  @gray-light;
+@resultDivider: 1px solid  @gray;
+/* Result Content */
+@resultTitleColor: @white;
+
+/* Description */
+@resultDescriptionColor:@gray-light;
+
+/* Special Message */
+@messageHeaderColor:  @white;
+@messageDescriptionColor: @gray-light;
+
+/* All Results Link */
+@actionBackground:  @white;
+@actionColor: @gray-light;
+
+
+/*******************************
+            States
+*******************************/
+
+/* Focus */
+@promptFocusBackground: @gray-dark;
+@promptFocusBorderColor: @primary;
+@promptFocusColor: @white;
+
+/* Hover */
+@resultHoverBackground: @gray-dark;
+@actionHoverBackground: #E0E0E0;
+
+/* Loading */
+@invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
+
+/* Active Category */
+@categoryActiveBackground:@gray-dark;
+@categoryNameActiveColor: @primary;
+
+/* Active Result */
+@resultActiveBorderLeft:  @gray;
+@resultActiveBackground: @gray-dark;
+@resultActiveTitleColor: @primary;
+@resultActiveDescriptionColor: @gray-light;
+
+/*******************************
+            Types
+*******************************/
+
+/* Selection */
+@selectionCloseIconHoverColor: @red;
+
+/* Category */
+@categoryBackground:@gray-dark;
+@categoryDivider: 1px solid  @gray;
+
+@categoryResultBackground: @gray-dark;
+@categoryResultLeftBorder: 1px solid  @gray;
+
+@categoryNameColor: @white;

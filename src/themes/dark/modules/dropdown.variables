@@ -1,0 +1,70 @@
+/* Menu */
+@menuBackground: @gray-darker;
+@menuBorderColor: @secondary;
+
+/* Menu Item */
+@itemColor:  @white;
+
+/* Menu Header */
+@menuHeaderColor: @white;
+
+/* Menu Divider */
+@menuDividerColor: @secondary;
+@menuDividerBorder: @menuDividerSize solid @secondary;
+
+/* Description */
+@itemDescriptionColor: @gray-light;
+
+/* Message */
+@messageColor: @unselectedTextColor;
+
+/*-------------------
+        Types
+--------------------*/
+
+/*------------
+   Selection
+--------------*/
+@selectionBackground: @gray-dark;
+@selectionItemDivider: 1px solid @gray;
+
+/* <select> */
+@selectBorder: 1px solid @gray;
+@selectionTextColor: @primary;
+@selectionBorderColor: @gray;
+@selectionBorder: 1px solid @gray;
+
+/* Hover */
+@selectionHoverBorderColor: @gray;
+
+/* Focus */
+@selectionFocusBorderColor: @gray;
+
+/* Visible */
+@selectionVisibleTextColor: @hoveredTextColor;
+@selectionVisibleBorderColor: @gray;
+
+
+/* Visible Hover */
+@selectionActiveHoverBorderColor: @gray;
+
+
+/*-------------------
+       States
+--------------------*/
+
+/* Hovered */
+@hoveredItemBackground: @primary;
+@hoveredItemColor: @white;
+
+/* Default Text */
+@defaultTextColor: @white;
+@defaultTextFocusColor: @secondary;
+
+/* Active Menu Item */
+@activeItemBackground:  @primary;
+@activeItemColor: @white;
+
+/* Selected */
+@selectedBackground: @primary;
+@selectedColor:  @white;
