@@ -25,7 +25,6 @@
         const $document = $(document);
         const $body = $('body');
         const $html = $('html');
-        const $head = $('head');
 
         let time = Date.now();
         let performance = [];
@@ -69,7 +68,6 @@
             let $sidebars = $module.children(selector.sidebar);
             let $fixed = $context.children(selector.fixed);
             let $pusher = $context.children(selector.pusher);
-            let $style;
 
             const element = this;
             let instance = $module.data(moduleNamespace);
@@ -204,45 +202,12 @@
 
                 add: {
                     inlineCSS: function () {
-                        const width = module.cache.width || $module.outerWidth();
-                        const height = module.cache.height || $module.outerHeight();
-                        const isRTL = module.is.rtl();
                         const direction = module.get.direction();
-                        const distance = {
-                            left: width,
-                            right: -width,
-                            top: height,
-                            bottom: -height,
-                        };
-                        let style;
-
-                        if (isRTL) {
-                            module.verbose('RTL detected, flipping widths');
-                            distance.left = -width;
-                            distance.right = width;
-                        }
-
-                        style = '<style>';
-
-                        if (direction === 'left' || direction === 'right') {
-                            module.debug('Adding CSS rules for animation distance', width);
-                            style += ''
-                                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
-                                + ' }';
-                        } else if (direction === 'top' || direction === 'bottom') {
-                            style += ''
-                                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                                + ' }';
-                        }
-
-                        style += '</style>';
-                        $style = $(style)
-                            .appendTo($head);
-                        module.debug('Adding sizing css to head', $style);
+                        const distance = direction === 'top' || direction === 'bottom'
+                            ? module.cache.height || $module.outerHeight()
+                            : module.cache.width || $module.outerWidth();
+                        module.debug('Adding CSS variable for animation distance', distance);
+                        $context.css('--sidebar-' + direction + '-distance', distance + 'px');
                     },
                 },
 
@@ -575,9 +540,21 @@
                 remove: {
 
                     inlineCSS: function () {
-                        module.debug('Removing inline css styles', $style);
-                        if ($style && $style.length > 0) {
-                            $style.remove();
+                        const direction = module.get.direction();
+                        const $visible = $sidebars.not($module).filter('.' + className.visible + '.' + direction).last();
+                        if ($visible.length > 0) {
+                            const distance = direction === 'top' || direction === 'bottom'
+                                ? $visible.outerHeight()
+                                : $visible.outerWidth();
+                            module.debug('Using the distance of another visible sidebar', distance);
+                            $context.css('--sidebar-' + direction + '-distance', distance + 'px');
+
+                            return;
+                        }
+                        module.debug('Removing CSS variable for animation distance');
+                        $context.css('--sidebar-' + direction + '-distance', '');
+                        if ($context.attr('style') === '') {
+                            $context.removeAttr('style');
                         }
                     },
 

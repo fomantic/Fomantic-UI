@@ -232,29 +232,30 @@ body.pushable > .pusher {
     }
 }
 
-/* Visible On Load */
+/* Visible On Load
+   The module sets the distance variables. calc() lets rtlcss flip the values. */
 & when (@variationSidebarLeft) {
     .ui.visible.left.sidebar ~ .fixed,
     .ui.visible.left.sidebar ~ .pusher {
-        transform: translate3d(@width, 0, 0);
+        transform: translate3d(calc(var(--sidebar-left-distance, @width)), 0, 0);
     }
 }
 & when (@variationSidebarRight) {
     .ui.visible.right.sidebar ~ .fixed,
     .ui.visible.right.sidebar ~ .pusher {
-        transform: translate3d(-@width, 0, 0);
+        transform: translate3d(calc(-1 * var(--sidebar-right-distance, @width)), 0, 0);
     }
 }
 & when (@variationSidebarTop) {
     .ui.visible.top.sidebar ~ .fixed,
     .ui.visible.top.sidebar ~ .pusher {
-        transform: translate3d(0, @height, 0);
+        transform: translate3d(0, var(--sidebar-top-distance, @height), 0);
     }
 }
 & when (@variationSidebarBottom) {
     .ui.visible.bottom.sidebar ~ .fixed,
     .ui.visible.bottom.sidebar ~ .pusher {
-        transform: translate3d(0, -@height, 0);
+        transform: translate3d(0, calc(-1 * var(--sidebar-bottom-distance, @height)), 0);
     }
 }
 

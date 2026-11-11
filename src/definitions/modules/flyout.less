@@ -364,29 +364,30 @@ body.pushable > .pusher {
     }
 }
 
-/* Visible On Load */
+/* Visible On Load
+   The module sets the distance variables. calc() lets rtlcss flip the values. */
 & when (@variationFlyoutLeft) {
     .ui.visible.left.flyout ~ .fixed,
     .ui.visible.left.flyout ~ .pusher {
-        transform: translate3d(@width, 0, 0);
+        transform: translate3d(calc(var(--flyout-left-distance, @width)), 0, 0);
     }
 }
 & when (@variationFlyoutRight) {
     .ui.visible.right.flyout ~ .fixed,
     .ui.visible.right.flyout ~ .pusher {
-        transform: translate3d(-@width, 0, 0);
+        transform: translate3d(calc(-1 * var(--flyout-right-distance, @width)), 0, 0);
     }
 }
 & when (@variationFlyoutTop) {
     .ui.visible.top.flyout ~ .fixed,
     .ui.visible.top.flyout ~ .pusher {
-        transform: translate3d(0, @height, 0);
+        transform: translate3d(0, var(--flyout-top-distance, @height), 0);
     }
 }
 & when (@variationFlyoutBottom) {
     .ui.visible.bottom.flyout ~ .fixed,
     .ui.visible.bottom.flyout ~ .pusher {
-        transform: translate3d(0, -@height, 0);
+        transform: translate3d(0, calc(-1 * var(--flyout-bottom-distance, @height)), 0);
     }
 }
 
