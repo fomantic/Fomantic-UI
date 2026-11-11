@@ -113,6 +113,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
       <td align="center" valign="top" width="25%"><a href="https://github.com/dreaming-augustin"><img src="https://avatars.githubusercontent.com/u/1203641?v=4&size=60" width="60px" height="60px" alt="dreaming-augustin"/><br /><sub><b>dreaming-augustin</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=dreaming-augustin" title="Code">💻</a></td>
       <td align="center" valign="top" width="25%"><a href="https://github.com/BrianJavier99"><img src="https://avatars.githubusercontent.com/u/105766366?v=4&size=60" width="60px" height="60px" alt="BrianJavier99"/><br /><sub><b>BrianJavier99</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=BrianJavier99" title="Code">💻</a></td>
       <td align="center" valign="top" width="25%"><a href="https://yaal.coop"><img src="https://avatars.githubusercontent.com/u/60163?v=4&size=60" width="60px" height="60px" alt="Éloi Rivard"/><br /><sub><b>Éloi Rivard</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=azmeuk" title="Code">💻</a></td>
+      <td align="center" valign="top" width="25%"><a href="https://github.com/alexandre184"><img src="https://avatars.githubusercontent.com/u/110398901?v=4&size=60" width="60px" height="60px" alt="alexandre184"/><br /><sub><b>alexandre184</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=alexandre184" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
