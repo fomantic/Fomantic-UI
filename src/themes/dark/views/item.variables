@@ -1,0 +1,22 @@
+/*******************************
+             Item
+*******************************/
+
+/*-------------------
+       Content
+--------------------*/
+
+/* Content */
+@contentColor: @textColor;
+
+/* Header */
+@headerColor: @white;
+
+/* Metadata */
+@metaColor: @gray-light;
+
+/* Description */
+@descriptionColor:  @gray-light;
+
+/* Additional Content */
+@extraColor:  @gray-light;

@@ -1,0 +1,11 @@
+@background: @gray-dark;
+@borderColor: lighten(@gray-dark, 5%);
+@attachedBorder: @borderWidth solid @borderColor;
+@stackedPageBackground: lighten(@pageBackground, 5%);
+
+/*******************************
+            Types
+*******************************/
+
+/* Placeholder */
+@placeholderBackground: @gray-dark;
