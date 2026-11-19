@@ -987,6 +987,17 @@ select.ui.dropdown {
         .ui.multiple.search.dropdown@{notSelection} > input.search:first-child {
             min-width: @multipleSearchMinWidth;
         }
+
+        /* Edited label close/delete icon positioning */
+        .ui.multiple.search.dropdown > .ui.label.editing > .close.icon,
+        .ui.multiple.search.dropdown > .ui.label.editing > .delete.icon {
+            margin: 0.3em 0 0 0.5em;
+        }
+
+        .ui.multiple.search.dropdown > .ui.label > input[type="text"] {
+            padding: 1px;
+            vertical-align: baseline;
+        }
     }
 }
 
