@@ -44,6 +44,10 @@
     z-index: @topLayer;
     background: #fff;
     outline: none;
+    &:focus-visible when not (@focusVisibleOutline = none) {
+        outline: @focusVisibleOutline;
+        outline-offset: @focusVisibleOutlineOffset;
+    }
 }
 
 /* GPU Layers for Child Elements */
@@ -73,8 +77,12 @@
     .ui.flyout > .close:focus,
     .ui.flyout > .close:hover {
         opacity: 1;
-        outline: none;
+        outline: @focusOutline;
     }
+}
+.ui.flyout > .close:focus-visible when not (@closeFocusVisibleOutline = none) {
+    outline: @closeFocusVisibleOutline;
+    outline-offset: @closeFocusVisibleOutlineOffset;
 }
 
 /* --------------

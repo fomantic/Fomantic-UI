@@ -92,6 +92,8 @@
 @inputFocusColor: @selectedTextColor;
 @inputFocusBoxShadow: @inputFocusPointerSize 0 0 0 @selectedBorderColor inset;
 @inputFocusBorderRadius: @inputBorderRadius;
+@inputFocusVisibleOutline: @focusVisibleOutline;
+@inputFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Text Area Focus */
 @textAreaFocusBackground: @inputFocusBackground;
@@ -99,6 +101,8 @@
 @textAreaFocusColor: @inputFocusColor;
 @textAreaFocusBoxShadow: @inputFocusBoxShadow;
 @textAreaFocusBorderRadius: @inputFocusBorderRadius;
+@textAreaFocusVisibleOutline: @focusVisibleOutline;
+@textAreaFocusVisibleOutlineOffset: @focusVisibleOutlineOffset;
 
 /* Disabled */
 @disabledLabelOpacity: @disabledOpacity;
