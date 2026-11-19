@@ -326,6 +326,7 @@
 @variationMenuFluid: true;
 @variationMenuLabeled: true;
 @variationMenuStackable: true;
+@variationMenuCollapsible: true;
 @variationMenuFloated: true;
 @variationMenuCentered: true;
 @variationMenuFitted: true;
